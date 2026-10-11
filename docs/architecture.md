@@ -62,8 +62,10 @@ without its application resources; CI explicitly requires the published
 `resources.pri` before attempting a launch.
 
 The catalog explicitly names its index `resources.pri`, omits the library-style
-initial path prefix, and puts compiled XAML in that index rather than embedding
-XBF in the executable. These SDK properties keep `ms-appx:///App.xaml` and the
+initial path prefix, and uses the SDK's default embedding of compiled XAML in
+that index. Disabling XBF embedding creates references to loose files that the
+unpackaged publish pipeline does not copy. These SDK properties keep
+`ms-appx:///App.xaml` and the
 catalog’s resource paths aligned with the unpackaged runtime lookup contract.
 
 ## Scaffold acceptance criteria
