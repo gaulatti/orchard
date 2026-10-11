@@ -73,8 +73,10 @@ public sealed partial class MainWindow : Window
             CatalogRoot.UpdateLayout();
             Require(CatalogRoot.ActualWidth > 0 && PrimaryAction.ActualWidth > 0, "Controls did not lay out.");
             var scheme = theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark;
+            await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
             Require(PrimaryAction.Background is SolidColorBrush brush &&
-                ColorHex(brush.Color) == BleeckerTokens.Colors(scheme)["primary"], "Primary action does not use the Bleecker theme.");
+                ColorHex(brush.Color) == BleeckerTokens.Colors(scheme)["primary"],
+                $"Primary action does not use the Bleecker theme: requested={theme}, actual={CatalogRoot.ActualTheme}, background={DescribeBrush(PrimaryAction.Background)}, expected={BleeckerTokens.Colors(scheme)["primary"]}.");
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing font: {font}");
@@ -85,15 +87,8 @@ public sealed partial class MainWindow : Window
             Require(!DisabledAction.IsEnabled, "Disabled action became enabled.");
             HeadlineInput.Text = "A Windows-native newsroom";
             Require(HeadlineInput.Text.Length > 0, "Text input rejected its value.");
-            var bitmap = new RenderTargetBitmap();
-            await bitmap.RenderAsync(CatalogRoot);
-            Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "The catalog did not render.");
-            var pixels = await bitmap.GetPixelsAsync();
-            var bytes = new byte[checked((int)pixels.Length)];
-            using (var reader = DataReader.FromBuffer(pixels)) reader.ReadBytes(bytes);
-            Require(bytes.Where((_, offset) => offset % 4 != 3).Distinct().Count() > 8, "The render is blank.");
-            await SavePngAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"), bytes, bitmap.PixelWidth, bitmap.PixelHeight);
-            captures.Add(new { theme = theme.ToString(), width = bitmap.PixelWidth, height = bitmap.PixelHeight });
+            var size = await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+            captures.Add(new { theme = theme.ToString(), width = size.Width, height = size.Height });
         }
         ThemeSelector.SelectedIndex = 0;
         Require(CatalogRoot.RequestedTheme == ElementTheme.Default, "System appearance did not reset.");
@@ -107,6 +102,21 @@ public sealed partial class MainWindow : Window
     }
 
     private static string ColorHex(Windows.UI.Color color) => $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
+
+    private static string DescribeBrush(Brush? brush) => brush is SolidColorBrush solid ? ColorHex(solid.Color) : brush?.GetType().FullName ?? "null";
+
+    private async Task<SizeInt32> CaptureAsync(string path)
+    {
+        var bitmap = new RenderTargetBitmap();
+        await bitmap.RenderAsync(CatalogRoot);
+        Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "The catalog did not render.");
+        var pixels = await bitmap.GetPixelsAsync();
+        var bytes = new byte[checked((int)pixels.Length)];
+        using (var reader = DataReader.FromBuffer(pixels)) reader.ReadBytes(bytes);
+        Require(bytes.Where((_, offset) => offset % 4 != 3).Distinct().Count() > 8, "The render is blank.");
+        await SavePngAsync(path, bytes, bitmap.PixelWidth, bitmap.PixelHeight);
+        return new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
+    }
 
     private static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
     {
