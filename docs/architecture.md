@@ -76,7 +76,8 @@ the complete self-contained x64 catalog, and launches it with
 `--smoke-output`. The catalog checks theme colors, font selection and presence,
 native button invocation, input, disabled state, layout, and theme reset. It
 renders the actual XAML tree using `RenderTargetBitmap` and writes PNGs and a
-structured result report. Failure exits nonzero; the workflow never treats a
+structured result report, including initialization failures before the window
+loads. Failure exits nonzero; the workflow never treats a
 build as runtime proof.
 
 Reproduce on Windows:
