@@ -54,8 +54,9 @@ Use `ThemeResource` for color consumers and `StaticResource` for typography and
 geometry. Load `XamlControlsResources` before Orchard resources. Font files
 are copied to `Orchard/Assets/Fonts` in the consuming app output.
 
-The catalog keeps `EnableMsixTooling=true` to enable the SDK’s application
-resource-index build pipeline. `WindowsPackageType=None` still makes the app
+The catalog keeps `EnableMsixTooling=true` and explicitly enables
+`AppxGeneratePriEnabled` for the SDK’s application resource-index build
+pipeline. `WindowsPackageType=None` still makes the app
 unpackaged. Removing the tooling property can leave a compiling executable
 without its application resources; CI explicitly requires the published
 `resources.pri` before attempting a launch.

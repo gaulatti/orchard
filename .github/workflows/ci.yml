@@ -34,6 +34,8 @@ jobs:
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore -o artifacts/catalog
       - name: Verify application resource packaging
         run: |
+          dotnet msbuild samples/Orchard.Catalog/Orchard.Catalog.csproj -target:Build -p:Configuration=Release -p:Platform=x64 -getProperty:OutputType,EnableMsixTooling,MsixPackageSupport,AppxGeneratePriEnabled,ProjectPriFileName,ProjectPriFullPath,TargetPlatformIdentifierAdjusted,_SupportXbfAsEmbedFileResources
+          Get-ChildItem artifacts/catalog -Filter *.pri | Select-Object Name,Length
           if (-not (Test-Path artifacts/catalog/resources.pri)) {
             throw 'Published catalog is missing its application resource index.'
           }
