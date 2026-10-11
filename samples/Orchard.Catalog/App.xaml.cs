@@ -26,13 +26,24 @@ public partial class App : Application
             foreach (var name in new[] { "Heading", "Body", "PrimaryButton", "SecondaryButton", "TextBox", "ComboBox" })
             {
                 var key = $"Bleecker{name}Style";
-                try { _ = Resources[key]; }
+                try { _ = FindResource(Resources, key); }
                 catch (Exception error) { throw new InvalidOperationException($"Could not load Orchard resource {key}.", error); }
             }
             _window = new MainWindow();
             _window.Activate();
         }
         catch (Exception error) { ReportSmokeFailure(error); throw; }
+    }
+
+    private static object FindResource(ResourceDictionary dictionary, string key)
+    {
+        if (dictionary.TryGetValue(key, out var value)) return value;
+        foreach (var merged in dictionary.MergedDictionaries.Reverse())
+        {
+            try { return FindResource(merged, key); }
+            catch (KeyNotFoundException) { }
+        }
+        throw new KeyNotFoundException(key);
     }
 
     private static void ReportSmokeFailure(Exception error)
