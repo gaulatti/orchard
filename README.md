@@ -1,0 +1,98 @@
+# orchard
+
+Gaulatti’s native **Windows** component library, built with C# and WinUI 3.
+Orchard implements Bleecker’s visual language for Windows. Sabella owns Apple
+platforms; Linux will have its own implementation.
+
+This first scaffold contains a reusable library, a Visual Studio solution, and
+a runnable component catalog. It establishes typography, token generation,
+light/dark themes, high contrast resource mappings, and initial button/input
+styles. It is not the Windows newsroom application or complete component parity.
+
+## Open in Visual Studio
+
+1. On Windows, install **Visual Studio 2026** with the **WinUI application
+   development** workload, following [Microsoft’s setup guide](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here).
+2. Install **.NET SDK 10.0.401**. `global.json` deliberately requires this exact
+   version; a different installed feature band does not substitute for it.
+3. Clone `git@github.com:gaulatti/orchard.git` and open **`Orchard.sln`**.
+4. Select **Debug / x64** on an Intel/AMD machine, or **Debug / ARM64** on a
+   Windows ARM machine.
+5. Set **Orchard.Catalog** as the startup project and press **F5**.
+
+The catalog is unpackaged and self contained. Building restores .NET and
+Windows App SDK dependencies; launching the resulting output does not require
+an MSIX registration or a separate Windows App SDK runtime installation. Keep
+the complete output directory together.
+
+The solution targets the Windows SDK `10.0.26100.0`, with declared minimum
+Windows API version `10.0.17763.0`. WinUI compilation and runtime verification
+require Windows. Pure token contract tests and the generator can also run on
+macOS; this does not make Orchard a cross-platform UI library.
+
+## Terminal workflow
+
+From the repository root, in Windows PowerShell:
+
+```powershell
+dotnet build Orchard.sln -c Release -p:Platform=x64
+dotnet test tests/Orchard.Tests/Orchard.Tests.csproj
+./scripts/run-catalog.ps1
+```
+
+Use `./scripts/run-catalog.ps1 -Platform ARM64` on Windows ARM. The current
+GitHub Actions runtime gate exercises x64; ARM64 remains a declared build target
+until it is exercised on an ARM machine.
+
+## Repository layout
+
+| Path | Purpose |
+| --- | --- |
+| `Orchard.sln` | Visual Studio solution |
+| `src/Orchard` | Reusable WinUI library and Bleecker resources |
+| `samples/Orchard.Catalog` | Development catalog and native runtime smoke checks |
+| `tests/Orchard.Tests` | Token-to-C# and token-to-XAML contract tests |
+| `tokens` | Pinned upstream Bleecker snapshot and provenance |
+| `scripts` | Token generation and Windows launch/verification commands |
+
+## Consume the library
+
+Add a project reference to `src/Orchard/Orchard.csproj`. In the application’s
+resource dictionary, load WinUI resources first, then Orchard:
+
+```xml
+<ResourceDictionary.MergedDictionaries>
+    <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+    <ResourceDictionary Source="ms-appx:///Orchard/Themes/Orchard.xaml" />
+</ResourceDictionary.MergedDictionaries>
+```
+
+Apply explicit styles such as `BleeckerPrimaryButtonStyle`,
+`BleeckerSecondaryButtonStyle`, `BleeckerHeadingStyle`, `BleeckerBodyStyle`,
+`BleeckerTextBoxStyle`, and `BleeckerComboBoxStyle`. Use `{ThemeResource ...}` for
+colors so an open page reacts to theme changes.
+
+See [architecture and verification](docs/architecture.md) for boundaries,
+accepted scaffold behavior, and the remaining component work.
+
+## Design tokens and fonts
+
+`tokens/bleecker.source.ts` is an exact snapshot of Bleecker’s canonical token
+source, pinned by commit and SHA-256 in `tokens/source-lock.json`. No sibling
+checkout or network fetch is needed to generate or use Orchard.
+
+With Node.js 24 or later:
+
+```sh
+node scripts/generate-tokens.mjs
+node scripts/generate-tokens.mjs --check
+```
+
+The generated JSON, C# tokens, and XAML dictionaries are committed together.
+To adopt an upstream change, review the source diff, copy the exact source at
+the selected Bleecker commit, update its provenance/hash, regenerate, and run
+the contract tests and catalog. Do not edit generated files directly.
+
+Encode Sans and Libre Franklin are bundled under the SIL Open Font License.
+Attribution and license texts are adjacent to the fonts. The vendored Bleecker
+source retains its MIT license under `tokens/LICENSE-Bleecker.txt`.

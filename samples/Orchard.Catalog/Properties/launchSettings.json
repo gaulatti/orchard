@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Orchard.Catalog": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+name: Windows validation
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 25
+    env:
+      CI: 'true'
+      DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      DOTNET_NOLOGO: '1'
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - name: Verify token generation
+        run: node scripts/generate-tokens.mjs --check
+      - name: Build the Visual Studio solution
+        run: dotnet build Orchard.sln -c Release -p:Platform=x64
+      - name: Test token and resource contracts
+        run: dotnet test tests/Orchard.Tests/Orchard.Tests.csproj -c Release --logger trx --results-directory artifacts/tests
+      - name: Publish unpackaged catalog
+        run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore -o artifacts/catalog
+      - name: Exercise and render native controls
+        run: ./scripts/smoke-catalog.ps1
+      - name: Upload catalog and verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: orchard-windows-x64
+          path: artifacts/
+          if-no-files-found: warn
