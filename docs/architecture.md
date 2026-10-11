@@ -61,6 +61,11 @@ unpackaged. Removing the tooling property can leave a compiling executable
 without its application resources; CI explicitly requires the published
 `resources.pri` before attempting a launch.
 
+The catalog explicitly names its index `resources.pri`, omits the library-style
+initial path prefix, and puts compiled XAML in that index rather than embedding
+XBF in the executable. These SDK properties keep `ms-appx:///App.xaml` and the
+catalog’s resource paths aligned with the unpackaged runtime lookup contract.
+
 ## Scaffold acceptance criteria
 
 1. `Orchard.sln` contains a reusable library, a runnable catalog startup project,

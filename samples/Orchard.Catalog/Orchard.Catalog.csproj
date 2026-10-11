@@ -12,6 +12,9 @@
         <WinUISDKReferences>false</WinUISDKReferences>
         <EnableMsixTooling>true</EnableMsixTooling>
         <AppxGeneratePriEnabled>true</AppxGeneratePriEnabled>
+        <ProjectPriFileName>resources.pri</ProjectPriFileName>
+        <PrependPriInitialPath>false</PrependPriInitialPath>
+        <DisableEmbeddedXbf>true</DisableEmbeddedXbf>
         <WindowsPackageType>None</WindowsPackageType>
         <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
         <SelfContained>true</SelfContained>
