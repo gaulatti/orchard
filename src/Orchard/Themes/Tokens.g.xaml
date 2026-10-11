@@ -173,7 +173,7 @@
             <SolidColorBrush x:Key="AccentButtonBackground" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
-            <SolidColorBrush x:Key="AccentButtonBackgroundDisabled" Color="{ThemeResource SystemColorGrayTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="AccentButtonBackgroundDisabled" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonForeground" Color="{ThemeResource SystemColorHighlightTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonForegroundPointerOver" Color="{ThemeResource SystemColorHighlightTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonForegroundPressed" Color="{ThemeResource SystemColorHighlightTextColor}" Opacity="1" />
@@ -185,7 +185,7 @@
             <SolidColorBrush x:Key="ButtonBackground" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
-            <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{ThemeResource SystemColorGrayTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonForegroundPressed" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />

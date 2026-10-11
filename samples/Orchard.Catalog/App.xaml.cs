@@ -46,7 +46,14 @@ public partial class App : Application
         throw new KeyNotFoundException(key);
     }
 
-    private static void ReportSmokeFailure(Exception error)
+    private static object DescribeResources(ResourceDictionary dictionary) => new
+    {
+        source = dictionary.Source?.ToString(),
+        count = dictionary.Count,
+        merged = dictionary.MergedDictionaries.Select(DescribeResources).ToArray()
+    };
+
+    private void ReportSmokeFailure(Exception error)
     {
         var arguments = Environment.GetCommandLineArgs();
         var index = Array.IndexOf(arguments, "--smoke-output");
@@ -54,7 +61,7 @@ public partial class App : Application
         var folder = Path.GetFullPath(arguments[index + 1]);
         Directory.CreateDirectory(folder);
         File.WriteAllText(Path.Combine(folder, "result.json"), System.Text.Json.JsonSerializer.Serialize(
-            new { passed = false, stage = "startup", error = error.ToString(), resourceErrors = ResourceErrors }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+            new { passed = false, stage = "startup", error = error.ToString(), resourceErrors = ResourceErrors, resources = DescribeResources(Resources) }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         Environment.Exit(1);
     }
 }

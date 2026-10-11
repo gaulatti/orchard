@@ -77,6 +77,12 @@ public sealed class TokenContractTests
             StringAssert.StartsWith((string)brush.Attribute("Color")!, "{ThemeResource SystemColor");
             Assert.AreEqual("1", (string?)brush.Attribute("Opacity") ?? "1");
         }
+        foreach (var prefix in new[] { "Button", "AccentButton" })
+        {
+            var brushes = themes["HighContrast"].Elements(Xaml + "SolidColorBrush").ToDictionary(element => (string)element.Attribute(X + "Key")!);
+            Assert.AreNotEqual((string?)brushes[$"{prefix}BackgroundDisabled"].Attribute("Color"),
+                (string?)brushes[$"{prefix}ForegroundDisabled"].Attribute("Color"), "Disabled text must remain distinct from its surface.");
+        }
     }
 
     [TestMethod]

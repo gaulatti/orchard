@@ -47,8 +47,9 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     for (const state of ['', 'PointerOver', 'Pressed', 'Disabled']) {
       // Retain WinUI's state machine. Opacity gives visible feedback without inventing new palette entries.
       const opacity = state === 'Disabled' ? '0.4' : state === 'Pressed' ? '0.8' : state === 'PointerOver' ? '0.9' : '1';
+      const disabledColor = name.endsWith('Background') ? 'SystemColorWindowColor' : 'SystemColorGrayTextColor';
       const color = theme === 'HighContrast'
-        ? `{ThemeResource ${state === 'Disabled' ? 'SystemColorGrayTextColor' : highContrastColor(key)}}` : argb(colors[key]);
+        ? `{ThemeResource ${state === 'Disabled' ? disabledColor : highContrastColor(key)}}` : argb(colors[key]);
       xaml += `            <SolidColorBrush x:Key="${name}${state}" Color="${color}" Opacity="${theme === 'HighContrast' ? '1' : opacity}" />\n`;
     }
   }

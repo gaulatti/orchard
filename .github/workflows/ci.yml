@@ -32,6 +32,8 @@ jobs:
         run: dotnet test tests/Orchard.Tests/Orchard.Tests.csproj -c Release --logger trx --results-directory artifacts/tests
       - name: Publish unpackaged catalog
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore -o artifacts/catalog
+      - name: Record generated application initialization
+        run: Get-ChildItem samples/Orchard.Catalog/obj -Recurse -Filter App.g.i.cs | ForEach-Object { Get-Content $_.FullName }
       - name: Exercise and render native controls
         run: ./scripts/smoke-catalog.ps1
       - name: Upload catalog and verification evidence
