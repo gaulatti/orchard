@@ -2,6 +2,9 @@ using System.Windows.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Media;
 
 namespace Orchard;
 
@@ -15,6 +18,7 @@ public sealed class BleeckerButton : ContentControl
     private ProgressRing? progress;
     private Border? linkUnderline;
     private ResourceDictionary? palette;
+    private bool pointerOver;
 
     public BleeckerButton() => DefaultStyleKey = typeof(BleeckerButton);
 
@@ -47,6 +51,10 @@ public sealed class BleeckerButton : ContentControl
         if (action is not null)
         {
             action.Click -= OnClick;
+            action.PointerEntered -= OnPointerEntered;
+            action.PointerExited -= OnPointerExited;
+            action.IsEnabledChanged -= OnActionEnabledChanged;
+            action.Loaded -= OnActionLoaded;
             if (palette is not null) action.Resources.MergedDictionaries.Remove(palette);
         }
         base.OnApplyTemplate();
@@ -56,6 +64,11 @@ public sealed class BleeckerButton : ContentControl
             ?? throw new InvalidOperationException("BleeckerButton requires a ProgressRing named PART_Progress.");
         linkUnderline = GetTemplateChild("PART_LinkUnderline") as Border;
         action.Click += OnClick;
+        pointerOver = false;
+        action.PointerEntered += OnPointerEntered;
+        action.PointerExited += OnPointerExited;
+        action.IsEnabledChanged += OnActionEnabledChanged;
+        action.Loaded += OnActionLoaded;
         ApplyVariant();
     }
 
@@ -71,6 +84,7 @@ public sealed class BleeckerButton : ContentControl
         action.Resources.MergedDictionaries.Add(palette);
         // Reapply explicit setters in the new palette's resource scope.
         action.Style = (Style)palette[typeof(Button)];
+        BindLinkUnderline();
         ApplyPresentation();
     }
 
@@ -88,13 +102,41 @@ public sealed class BleeckerButton : ContentControl
         };
         action.MinHeight = Variant == BleeckerButtonVariant.Link ? 0 : height;
         action.Padding = Variant == BleeckerButtonVariant.Link ? new Thickness(0) : new Thickness(padding, 4, padding, 4);
-        action.FontSize = font;
+        // The source link recipe deliberately omits the size classes and inherits 16px.
+        action.FontSize = Variant == BleeckerButtonVariant.Link ? 16 : font;
         action.IsEnabled = !IsLoading;
         progress.Visibility = IsLoading ? Visibility.Visible : Visibility.Collapsed;
         progress.IsActive = IsLoading;
-        if (linkUnderline is not null)
-            linkUnderline.Visibility = Variant == BleeckerButtonVariant.Link ? Visibility.Visible : Visibility.Collapsed;
+        UpdateLinkUnderline();
         AutomationProperties.SetItemStatus(action, IsLoading ? LoadingText : "");
+    }
+
+    private void OnPointerEntered(object sender, PointerRoutedEventArgs args) { pointerOver = true; UpdateLinkUnderline(); }
+    private void OnActionLoaded(object sender, RoutedEventArgs args) => BindLinkUnderline();
+    private void BindLinkUnderline()
+    {
+        if (action is null || linkUnderline is null) return;
+        action.ApplyTemplate();
+        if (FindPresenter(action) is { } presenter)
+            linkUnderline.SetBinding(Border.BackgroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
+    }
+    private static ContentPresenter? FindPresenter(DependencyObject root)
+    {
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
+        {
+            var child = VisualTreeHelper.GetChild(root, i);
+            if (child is ContentPresenter presenter) return presenter;
+            if (FindPresenter(child) is { } nested) return nested;
+        }
+        return null;
+    }
+    private void OnPointerExited(object sender, PointerRoutedEventArgs args) { pointerOver = false; UpdateLinkUnderline(); }
+    private void OnActionEnabledChanged(object sender, DependencyPropertyChangedEventArgs args) => UpdateLinkUnderline();
+    private void UpdateLinkUnderline()
+    {
+        if (linkUnderline is not null)
+            linkUnderline.Visibility = Variant == BleeckerButtonVariant.Link && pointerOver && action?.IsEnabled == true
+                ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void OnClick(object sender, RoutedEventArgs args)

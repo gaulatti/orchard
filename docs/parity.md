@@ -17,7 +17,7 @@ Visual acceptance requires comparison with the rendered pinned Bleecker referenc
 
 The available development host is Intel x64. ARM64 compilation is verified separately; no ARM64 machine is currently available for runtime acceptance.
 
-The first visual audit identifies unresolved Windows defaults in current previews: native focus rings, the native loading spinner and catalog SymbolIcon glyphs. Bleecker's link underline is hover-only, while the current Windows wrapper shows it persistently. State motion and shadows also require rendered reference comparison. These are tracked acceptance gaps, not approved visual substitutions.
+The first visual audit identifies unresolved Windows defaults in current previews: native focus rings, the native loading spinner and catalog SymbolIcon glyphs. The link now uses Bleecker's hover-only underline. State motion, shadows and typography still require full rendered reference comparison. These are tracked acceptance gaps, not approved visual substitutions. See [rendered comparison evidence](visual-audit.md).
 
 | Component contract | Windows implementation | Catalog / regression / runtime evidence | Remaining gap |
 | --- | --- | --- | --- |

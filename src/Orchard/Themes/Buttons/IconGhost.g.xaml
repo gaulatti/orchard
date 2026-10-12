@@ -16,16 +16,16 @@
             <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#FF2C5784" Opacity="0" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="Default">
-            <SolidColorBrush x:Key="ButtonBackground" Color="#FFF0F4F8" Opacity="0" />
+            <SolidColorBrush x:Key="ButtonBackground" Color="#FFFFFFFF" Opacity="0" />
             <SolidColorBrush x:Key="ButtonForeground" Color="#FFF0F4F8" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF5BA3F5" Opacity="0" />
-            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#FFF0F4F8" Opacity="0.06" />
+            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#FFFFFFFF" Opacity="0.06" />
             <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFF0F4F8" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#FF5BA3F5" Opacity="0" />
-            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FFF0F4F8" Opacity="0.06" />
+            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FFFFFFFF" Opacity="0.06" />
             <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFF0F4F8" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#FF5BA3F5" Opacity="0" />
-            <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#FFF0F4F8" Opacity="0" />
+            <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#FFFFFFFF" Opacity="0" />
             <SolidColorBrush x:Key="ButtonForegroundDisabled" Color="#FFF0F4F8" Opacity="0.45" />
             <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#FF5BA3F5" Opacity="0" />
         </ResourceDictionary>

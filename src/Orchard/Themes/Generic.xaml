@@ -47,10 +47,10 @@
                                           IsActive="False" Visibility="Collapsed" VerticalAlignment="Center" Margin="0,0,8,0"
                                           Foreground="{Binding Foreground, ElementName=PART_Action}"
                                           AutomationProperties.AccessibilityView="Raw" />
-                            <ContentPresenter Grid.Column="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                            <ContentPresenter x:Name="PART_Content" Grid.Column="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
                                               VerticalAlignment="Center" />
                             <Border x:Name="PART_LinkUnderline" Grid.Column="1" Height="1" VerticalAlignment="Bottom"
-                                    Background="{Binding Foreground, ElementName=PART_Action}" Visibility="Collapsed"
+                                    Visibility="Collapsed"
                                     IsHitTestVisible="False" />
                         </Grid>
                     </Button>

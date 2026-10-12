@@ -116,22 +116,22 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
       const hover = state === 'PointerOver' || state === 'Pressed';
       let background, foreground, border;
       switch (variant) {
-        case 'Primary': background = [hover && !dark ? 'deepSea' : 'primary', hover && dark ? 0.9 : 1]; foreground = ['primaryForeground', 1]; border = background; break;
-        case 'Secondary': background = [dark ? 'deepSea' : hover ? 'lightSand' : 'card', 1]; foreground = ['textPrimary', 1]; border = [dark ? 'textPrimary' : 'sand', dark ? 0.18 : 0.45]; break;
+        case 'Primary': background = [hover && !dark ? 'deepSea' : 'primary', hover && dark ? 0.9 : 1]; foreground = [dark ? 'deepSea' : '#ffffff', 1]; border = ['primary', 1]; if (hover && !dark) border = ['deepSea', 1]; break;
+        case 'Secondary': background = [dark ? hover ? '#ffffff' : 'deepSea' : hover ? 'lightSand' : '#ffffff', hover ? dark ? 0.06 : 0.35 : 1]; foreground = ['textPrimary', 1]; border = [dark ? '#ffffff' : 'sand', dark ? 0.18 : hover ? 0.75 : 0.45]; break;
         case 'Outline': background = ['primary', hover ? dark ? 0.07 : 0.045 : 0]; foreground = ['primary', 1]; border = ['primary', hover ? 0.7 : 0.45]; break;
-        case 'Subtle': background = [dark ? 'textPrimary' : hover ? 'sand' : 'lightSand', dark ? hover ? 0.11 : 0.07 : hover ? 0.25 : 0.75]; foreground = [dark ? 'textPrimary' : 'deepSea', 1]; border = ['primary', 0]; break;
-        case 'Ghost': background = [dark ? 'textPrimary' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
+        case 'Subtle': background = [dark ? '#ffffff' : hover ? 'sand' : 'lightSand', dark ? hover ? 0.11 : 0.07 : hover ? 0.25 : 0.75]; foreground = [dark ? 'textPrimary' : 'deepSea', 1]; border = ['primary', 0]; break;
+        case 'Ghost': background = [dark ? '#ffffff' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
         case 'Link': background = ['primary', 0]; foreground = [hover ? dark ? 'lightSand' : 'deepSea' : 'primary', 1]; border = ['primary', 0]; break;
-        case 'Destructive': background = ['destructive', hover ? 0.9 : 1]; foreground = ['destructiveForeground', 1]; border = background; break;
-        case 'IconDefault': background = [dark ? hover ? 'textPrimary' : 'deepSea' : hover ? 'lightSand' : 'card', hover ? dark ? 0.06 : 0.45 : 1]; foreground = ['textPrimary', 1]; border = [dark ? 'textPrimary' : 'sand', dark ? 0.15 : hover ? 0.65 : 0.35]; break;
-        case 'IconSubtle': background = [dark ? 'textPrimary' : hover ? 'sand' : 'lightSand', dark ? hover ? 0.11 : 0.07 : hover ? 0.25 : 0.75]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
-        case 'IconGhost': background = [dark ? 'textPrimary' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
+        case 'Destructive': background = ['terracotta', hover ? 0.9 : 1]; foreground = ['#ffffff', 1]; border = background; break;
+        case 'IconDefault': background = [dark ? hover ? '#ffffff' : 'deepSea' : hover ? 'lightSand' : '#ffffff', hover ? dark ? 0.06 : 0.45 : 1]; foreground = ['textPrimary', 1]; border = [dark ? '#ffffff' : 'sand', dark ? 0.15 : hover ? 0.65 : 0.35]; break;
+        case 'IconSubtle': background = [dark ? '#ffffff' : hover ? 'sand' : 'lightSand', dark ? hover ? 0.11 : 0.07 : hover ? 0.25 : 0.75]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
+        case 'IconGhost': background = [dark ? '#ffffff' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
       }
       for (const [property, [key, alpha]] of Object.entries({ Background: background, Foreground: foreground, BorderBrush: border })) {
         const filled = variant === 'Primary' || variant === 'Destructive';
         const system = property === 'Background' ? filled ? 'SystemColorHighlightColor' : 'SystemColorWindowColor'
           : state === 'Disabled' ? 'SystemColorGrayTextColor' : filled ? 'SystemColorHighlightTextColor' : 'SystemColorWindowTextColor';
-        const color = theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(colors[key]);
+        const color = theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(key.startsWith('#') ? key : colors[key]);
         const opacity = theme === 'HighContrast' ? 1 : alpha * (state === 'Disabled' ? 0.45 : 1);
         button += `            <SolidColorBrush x:Key="Button${property}${state}" Color="${color}" Opacity="${opacity}" />\n`;
       }

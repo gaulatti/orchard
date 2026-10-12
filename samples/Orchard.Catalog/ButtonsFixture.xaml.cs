@@ -68,22 +68,52 @@ public sealed partial class ButtonsFixture : UserControl
             LoadingAction.UpdateLayout();
             await Task.Delay(120);
             var presenter = Find<ContentPresenter>(native) ?? throw new InvalidOperationException("Native presenter is missing.");
+            if (variant == BleeckerButtonVariant.Link)
+            {
+                foreach (var size in Enum.GetValues<BleeckerButtonSize>())
+                {
+                    LoadingAction.Size = size;
+                    Require(native.FontSize == 16 && native.MinHeight == 0 && native.Padding == new Thickness(0),
+                        "Link inherited a button size recipe instead of the source's un-sized text treatment.");
+                }
+                LoadingAction.Size = BleeckerButtonSize.Medium;
+                Require(FindNamed<Border>(LoadingAction, "PART_LinkUnderline")?.Visibility == Visibility.Collapsed,
+                    "Link underline must be absent before pointer hover.");
+            }
             var token = variant switch
             {
-                BleeckerButtonVariant.Primary => "primaryForeground",
-                BleeckerButtonVariant.Destructive => "destructiveForeground",
+                BleeckerButtonVariant.Primary => scheme == BleeckerColorScheme.Dark ? "deepSea" : "#FFFFFFFF",
+                BleeckerButtonVariant.Destructive => "#FFFFFFFF",
                 BleeckerButtonVariant.Outline or BleeckerButtonVariant.Link => "primary",
                 BleeckerButtonVariant.Subtle when scheme == BleeckerColorScheme.Light => "deepSea",
                 _ => "textPrimary"
             };
             Require(presenter.Foreground is SolidColorBrush brush &&
-                $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}" == BleeckerTokens.Colors(scheme)[token],
+                $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}" == (token.StartsWith('#') ? token : BleeckerTokens.Colors(scheme)[token]),
                 $"{scheme} {variant} did not resolve its foreground at the native action scope.");
             foreach (var state in new[] { "PointerOver", "Pressed", "Disabled", "Normal" })
             {
                 Require(VisualStateManager.GoToState(native, state, false), $"Native button is missing {state}.");
                 await Task.Delay(250);
+                if (variant == BleeckerButtonVariant.Link)
+                {
+                    var underline = FindNamed<Border>(LoadingAction, "PART_LinkUnderline")!;
+                    Require(underline.Background is SolidColorBrush line && presenter.Foreground is SolidColorBrush text && line.Color == text.Color,
+                        "Link underline did not follow the rendered text state color.");
+                }
                 var suffix = state == "Normal" ? "" : state;
+                if (variant == BleeckerButtonVariant.Secondary && state == "PointerOver")
+                {
+                    // Independent expectations from the pinned rendered Bleecker recipe.
+                    var fill = (SolidColorBrush)presenter.Background;
+                    var edge = (SolidColorBrush)presenter.BorderBrush;
+                    Require(Math.Abs(fill.Opacity - (scheme == BleeckerColorScheme.Dark ? 0.06 : 0.35)) < 0.001 &&
+                        Math.Abs(edge.Opacity - (scheme == BleeckerColorScheme.Dark ? 0.18 : 0.75)) < 0.001,
+                        "Secondary hover opacity does not match Bleecker.");
+                    if (scheme == BleeckerColorScheme.Dark)
+                        Require(fill.Color == Microsoft.UI.Colors.White && edge.Color == Microsoft.UI.Colors.White,
+                            "Bleecker white overlays were replaced with a semantic text color.");
+                }
                 foreach (var (property, rendered) in new[] { ("Background", presenter.Background), ("Foreground", presenter.Foreground), ("BorderBrush", presenter.BorderBrush) })
                 {
                     // Direct dictionary indexing otherwise uses the process theme,
@@ -136,6 +166,17 @@ public sealed partial class ButtonsFixture : UserControl
             var child = VisualTreeHelper.GetChild(owner, i);
             if (child is T match) return match;
             if (Find<T>(child) is { } nested) return nested;
+        }
+        return null;
+    }
+
+    private static T? FindNamed<T>(DependencyObject owner, string name) where T : FrameworkElement
+    {
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(owner); i++)
+        {
+            var child = VisualTreeHelper.GetChild(owner, i);
+            if (child is T match && match.Name == name) return match;
+            if (FindNamed<T>(child, name) is { } nested) return nested;
         }
         return null;
     }
