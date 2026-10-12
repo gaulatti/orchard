@@ -15,6 +15,7 @@
   },
   "controls": {
     "BleeckerButtonGroup": "MainWindow.xaml",
-    "BleeckerButton": "ButtonsFixture.xaml"
+    "BleeckerButton": "ButtonsFixture.xaml",
+    "BleeckerIconButton": "IconButtonsFixture.xaml"
   }
 }

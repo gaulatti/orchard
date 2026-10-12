@@ -100,7 +100,7 @@ const outputs = { 'tokens/bleecker.tokens.json': JSON.stringify(tokens, null, 2)
   'src/Orchard/Themes/Tokens.g.xaml': xaml, 'src/Orchard/Tokens/BleeckerTokens.g.cs': cs };
 // Button recipes follow the fixed component inventory at a86059013cd59684ce452849278ea81e734f2066.
 // Keep native Button templates; each instance imports only its selected palette.
-for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Link', 'Destructive']) {
+for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Link', 'Destructive', 'IconDefault', 'IconSubtle', 'IconGhost']) {
   let button = `<!-- Generated Bleecker ${variant} native button palette; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
   for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
     const dark = theme === 'Default';
@@ -116,6 +116,9 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
         case 'Ghost': background = [dark ? 'textPrimary' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
         case 'Link': background = ['primary', 0]; foreground = [hover ? dark ? 'lightSand' : 'deepSea' : 'primary', 1]; border = ['primary', 0]; break;
         case 'Destructive': background = ['destructive', hover ? 0.9 : 1]; foreground = ['destructiveForeground', 1]; border = background; break;
+        case 'IconDefault': background = [dark ? hover ? 'textPrimary' : 'deepSea' : hover ? 'lightSand' : 'card', hover ? dark ? 0.06 : 0.45 : 1]; foreground = ['textPrimary', 1]; border = [dark ? 'textPrimary' : 'sand', dark ? 0.15 : hover ? 0.65 : 0.35]; break;
+        case 'IconSubtle': background = [dark ? 'textPrimary' : hover ? 'sand' : 'lightSand', dark ? hover ? 0.11 : 0.07 : hover ? 0.25 : 0.75]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
+        case 'IconGhost': background = [dark ? 'textPrimary' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
       }
       for (const [property, [key, alpha]] of Object.entries({ Background: background, Foreground: foreground, BorderBrush: border })) {
         const filled = variant === 'Primary' || variant === 'Destructive';
@@ -135,7 +138,7 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="${variant.startsWith('Icon') ? 'Left' : 'Stretch'}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>

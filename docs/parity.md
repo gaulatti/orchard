@@ -96,7 +96,7 @@ Every interactive entry additionally requires hover, pressed, focus, selection a
 | hero-carousel | Pending | Pending | Full pinned contract |
 | field-help-tooltip | Pending | Pending | Full pinned contract |
 | icon-badge | Pending | Pending | Full pinned contract |
-| icon-button | Pending | Pending | Full pinned contract |
+| icon-button | `BleeckerIconButton`: three variants and three sizes | Nine registered combinations; x64 dimensions, names/roles, command and state checks; light/dark captures; package fixture; ARM64 build | In progress: physical input, tooltip, Narrator, contrast, scaling, motion and ARM64 runtime; see [usage](icon-buttons.md) |
 | loading-spinner | Pending | Pending | Full pinned contract |
 | media-library | Pending | Pending | Full pinned contract |
 | modal | Pending | Pending | Full pinned contract |

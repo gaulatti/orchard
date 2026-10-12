@@ -4,10 +4,10 @@ Gaulatti’s native **Windows** component library, built with C# and WinUI 3.
 Orchard implements Bleecker’s visual language for Windows. Sabella owns Apple
 platforms; Linux will have its own implementation.
 
-This first scaffold contains a reusable library, a Visual Studio solution, and
-a runnable component catalog. It establishes typography, token generation,
-light/dark themes, high contrast resource mappings, and initial button/input
-styles. It is not the Windows newsroom application or complete component parity.
+The library and runnable Visual Studio catalog provide typography, generated
+tokens, light/dark themes, high contrast resource mappings, button and icon-button
+variants, connected button groups, toggle styles and initial input styles.
+Full component parity and platform acceptance remain in progress.
 
 ## Open in Visual Studio
 
@@ -83,6 +83,10 @@ Apply explicit styles such as `BleeckerPrimaryButtonStyle`,
 `BleeckerSecondaryButtonStyle`, `BleeckerHeadingStyle`, `BleeckerBodyStyle`,
 `BleeckerTextBoxStyle`, and `BleeckerComboBoxStyle`. Use `{ThemeResource ...}` for
 colors so an open page reacts to theme changes.
+
+Action component usage and remaining acceptance are documented separately:
+[buttons](docs/buttons.md), [icon buttons](docs/icon-buttons.md),
+[button groups](docs/button-group.md), and [toggles](docs/toggles.md).
 
 See [architecture and verification](docs/architecture.md) for boundaries,
 accepted scaffold behavior, and the remaining component work.

@@ -40,6 +40,7 @@ public sealed partial class MainWindow : Window
                 PackageAction.ApplyTemplate();
                 var native = VisualTreeHelper.GetChild(PackageAction, 0) as Button;
                 Require(native is not null && native.ActualWidth > 0, "Packaged component template did not load.");
+                Require(PackageIcon.ActualWidth == 40 && PackageIcon.ActualHeight == 40, "Packaged icon control did not lay out.");
                 var componentColor = ((SolidColorBrush)native!.Background).Color;
                 Require($"#{componentColor.A:X2}{componentColor.R:X2}{componentColor.G:X2}{componentColor.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], "Packaged per-variant resources did not load.");
                 await CaptureAsync(theme);
@@ -52,6 +53,10 @@ public sealed partial class MainWindow : Window
             ((IInvokeProvider)new ButtonAutomationPeer((Button)VisualTreeHelper.GetChild(PackageAction, 0)).GetPattern(PatternInterface.Invoke)).Invoke();
             await Task.Delay(100);
             Require(Result.Text == "Saved: Package interaction verified", "Packaged component Click event failed.");
+            Result.Text = "Ready";
+            ((IInvokeProvider)new ButtonAutomationPeer(PackageIcon).GetPattern(PatternInterface.Invoke)).Invoke();
+            await Task.Delay(100);
+            Require(Result.Text == "Saved: Package interaction verified", "Packaged icon activation failed.");
             App.Report(true, "Package resources, fonts, light/dark themes, layout and native action verified.");
         }
         catch (Exception error) { App.Report(false, error.ToString()); }
