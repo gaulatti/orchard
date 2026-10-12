@@ -165,6 +165,20 @@ the native Content-owned label retained its 17.5px automatic line. The next
 candidate scopes the default style to the checkbox's private dictionary and
 adds consumer style/local-property/data-template regression checks.
 
+At `84e6ef2`, [run 38302708416](https://github.com/gaulatti/orchard/actions/runs/38302708416)
+passed builds and all 23 tests. Both native jobs reached the consumer data
+template assertion after the default rich row and explicit style/local line
+overrides passed. The next fixture waits for binding propagation and retains
+template text/layout diagnostics before restoring the original rich content.
+Template clearing, motion, appearance, Switch and independent runtime
+consumption remain unreached. A separate local isolated x64 consumer build
+passed with runtime disabled; its package SHA-256 is
+`644e34e16dc42e5ac0466692c0bdc2e9e6c9654eb85a6d254b0edf8007114131`.
+The x64 captures/report were downloaded and hash-verified from artifact
+`11770703516`, SHA-256
+`f4714cf3c154b40a7a9f8ae0495b85980ed3d77c4d162a42c2248e2a6c29e7aa`,
+under `artifacts/ci-checkbox-84e6ef2-x64`.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

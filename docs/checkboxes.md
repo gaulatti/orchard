@@ -117,6 +117,11 @@ At `d0a66dd`, the description acquired the presenter-scoped style but the
 native Content-owned label did not, producing 39.5px on both architectures.
 The style now lives in the checkbox's private dictionary so both ownership
 paths can resolve it. Verification continues to require the full 42px row.
+At `84e6ef2`, the default 42px row and the explicit style/local overrides pass.
+The consumer data-template check then fails before template replacement.
+The next fixture waits for normal binding propagation and records template
+text, data-context type and geometry before restoration; the exact 62px
+acceptance remains unchanged.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

@@ -16,6 +16,7 @@ public sealed partial class CheckboxesFixture : UserControl
 {
     private readonly ConsumerState state = new();
     private readonly List<object> motion = [];
+    private readonly List<object> richSamples = [];
     public CheckboxesFixture() { InitializeComponent(); DataContext = state; }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
@@ -24,6 +25,7 @@ public sealed partial class CheckboxesFixture : UserControl
         var passed = false;
         Exception? originalFailure = null;
         var verifiedSteps = new List<string>();
+        richSamples.Clear();
         try
         {
             UpdateLayout();
@@ -86,26 +88,41 @@ public sealed partial class CheckboxesFixture : UserControl
                 var consumerStyle = (Style)Resources["ConsumerCheckboxTextStyle"];
                 var styled = new TextBlock { Text = "Consumer label", Style = consumerStyle };
                 Rich.Content = styled; UpdateLayout();
+                richSamples.Add(new { phase = "consumer-style", row = Measure(Rich) });
                 Require(ReferenceEquals(styled.Style, consumerStyle) && styled.LineHeight == 28 && Rich.ActualHeight == 50,
                     "Checkbox replaced the consumer's explicit rich text style.");
                 await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-style-{scheme}.png"));
                 var local = new TextBlock { Text = "Consumer label", LineHeight = 30, LineStackingStrategy = LineStackingStrategy.BlockLineHeight };
                 Rich.Content = local; UpdateLayout();
+                richSamples.Add(new { phase = "local-properties", row = Measure(Rich) });
                 Require(local.LineHeight == 30 && Rich.ActualHeight == 52, "Checkbox replaced the consumer's local rich text properties.");
                 await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-local-{scheme}.png"));
                 var data = new ConsumerLabel("Consumer label", "Second template line");
                 var template = (DataTemplate)Resources["ConsumerCheckboxLabelTemplate"];
                 Rich.Content = data; Rich.ContentTemplate = template; UpdateLayout();
+                await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == data.Title && Find<TextBlock>(Rich, "ConsumerDetails").Text == data.Details,
+                    "Consumer template bindings did not reach the owned data.");
+                var templateSnapshot = new { phase = "data-template", row = Measure(Rich),
+                    title = MeasureRichContent(Find<TextBlock>(Rich, "ConsumerTitle")), details = MeasureRichContent(Find<TextBlock>(Rich, "ConsumerDetails")),
+                    contextType = Find<TextBlock>(Rich, "ConsumerTitle").DataContext?.GetType().FullName };
+                richSamples.Add(templateSnapshot);
+                await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-template-{scheme}.png"));
                 Require(ReferenceEquals(Rich.Content, data) && ReferenceEquals(Rich.ContentTemplate, template) &&
                     Find<TextBlock>(Rich, "ConsumerTitle").Text == data.Title && Find<TextBlock>(Rich, "ConsumerDetails").Text == data.Details &&
                     Find<TextBlock>(Rich, "ConsumerTitle").LineHeight == 20 && Find<TextBlock>(Rich, "ConsumerDetails").LineHeight == 20 && Rich.ActualHeight == 62,
-                    "Consumer data template did not receive the checkbox's branded defaults.");
-                await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-template-{scheme}.png"));
+                    $"Consumer data template did not receive the checkbox's branded defaults: {JsonSerializer.Serialize(templateSnapshot)}.");
                 Rich.Content = data with { Title = "Updated template label" }; UpdateLayout();
-                Require(Find<TextBlock>(Rich, "ConsumerTitle").Text == "Updated template label", "Updated consumer data did not reach the label template.");
+                await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == "Updated template label", "Updated consumer data did not reach the label template.");
                 verifiedSteps.Add("Consumer rich styles, local line height and data templates");
             }
-            finally { Rich.ContentTemplate = null; Rich.Content = richLabel; UpdateLayout(); }
+            finally
+            {
+                richSamples.Add(new { phase = "before-restoration", row = Measure(Rich),
+                    contentType = Rich.Content?.GetType().FullName,
+                    templateText = HostedText(Find<ContentPresenter>(Rich, "PART_RichLabel")).Select(text => new {
+                        metrics = MeasureRichContent(text), contextType = text.DataContext?.GetType().FullName }).ToArray() });
+                Rich.ContentTemplate = null; Rich.Content = richLabel; UpdateLayout();
+            }
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) && Rich.ActualHeight == 42,
                 "Restoring rich content lost its identity or branded geometry.");
             Require(Default.Focus(FocusState.Keyboard), "Checkbox did not receive native keyboard focus.");
@@ -168,7 +185,7 @@ public sealed partial class CheckboxesFixture : UserControl
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-measurements-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale,
                     animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
-                    originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion }, new JsonSerializerOptions { WriteIndented = true }));
+                    originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion, richSamples }, new JsonSerializerOptions { WriteIndented = true }));
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-{scheme}.png"));
         }
     }
@@ -237,6 +254,12 @@ public sealed partial class CheckboxesFixture : UserControl
         ? new { text.Text, text.ActualWidth, text.ActualHeight, text.LineHeight,
             strategy = text.LineStackingStrategy.ToString(), family = text.FontFamily.Source, weight = text.FontWeight.Weight }
         : null;
+    private static IEnumerable<TextBlock> HostedText(DependencyObject parent)
+    {
+        if (parent is TextBlock text) yield return text;
+        for (var index = 0; index < VisualTreeHelper.GetChildrenCount(parent); index++)
+            foreach (var child in HostedText(VisualTreeHelper.GetChild(parent, index))) yield return child;
+    }
     private object MeasureForReport(BleeckerCheckbox control)
     {
         try { return Measure(control); }
