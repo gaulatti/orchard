@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -41,10 +42,13 @@ public sealed partial class ProgressFixture : UserControl
                 "Progress fill has elliptical edges instead of a straight pill body.");
             Require(label.Text == "65%" && label.MinWidth == 40 && label.Margin.Left == 12 && label.LineHeight == 16 &&
                 control.FontFamily.Source.Contains("EncodeSans-Medium.ttf"), "Progress label lost percentage, spacing or typography.");
-            Require(control.ActualWidth == 320 && control.ActualHeight == 16 && track.ActualWidth == 268 && label.ActualWidth == 40 &&
+            var labelSlot = LayoutInformation.GetLayoutSlot(label);
+            Require(control.ActualWidth == 320 && control.ActualHeight == 16 && track.ActualWidth == 268 &&
+                labelSlot.Width - label.Margin.Left - label.Margin.Right == 40 &&
                 label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X == 280,
                 $"Progress row allocation differs from the rendered 320px reference: row={control.ActualWidth:R}x{control.ActualHeight:R}, " +
-                $"track={track.ActualWidth:R}, label={label.ActualWidth:R}, labelX={label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X:R}.");
+                $"track={track.ActualWidth:R}, labelSlot={labelSlot}, textWidth={label.ActualWidth:R}, " +
+                $"labelX={label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X:R}.");
             var key = control.Variant switch { BleeckerProgressVariant.Warning => scheme == BleeckerColorScheme.Dark ? "accentGold" : "sunset",
                 BleeckerProgressVariant.Destructive => "terracotta", _ => scheme == BleeckerColorScheme.Dark ? "accentBlue" : "sea" };
             Require(Hex(fill.Background) == BleeckerTokens.Colors(scheme)[key], "Progress fill variant differs from the theme.");
@@ -89,6 +93,7 @@ public sealed partial class ProgressFixture : UserControl
                 track = new { track.ActualWidth, track.ActualHeight, color = Hex(track.Background), opacity = track.Background.Opacity },
                 fill = new { fill.ActualWidth, fill.ActualHeight, color = Hex(fill.Background) },
                 label = new { label.Text, label.ActualWidth, label.ActualHeight, label.FontSize,
+                    allocatedWidth = LayoutInformation.GetLayoutSlot(label).Width - label.Margin.Left - label.Margin.Right,
                     font = label.FontFamily.Source, weight = label.FontWeight.Weight, color = Hex(label.Foreground),
                     x = label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X }
             };

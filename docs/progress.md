@@ -55,6 +55,12 @@ the corresponding PNG paths. Native measurements are emitted per theme as
 smoke output. Native geometry assertions cover row allocation; exact raster
 edges and glyphs remain separate acceptance checks.
 
+The first allocation check incorrectly compared `TextBlock.ActualWidth` with the
+CSS label box. In x64 CI the native row was 320×16, track 268 and label x=280,
+but the TextBlock reported 21.366px for its formatted `65%` text. The regression
+now checks the label's layout slot minus margins against the required 40px
+allocation, and records both the allocated width and the reported text width.
+
 The layout regression resizes a labeled progress display to 200px and 360px,
 checks proportional fill and consumer range retention, replaces its template
 visuals, and verifies that fill and label are restored. These checks are pending
