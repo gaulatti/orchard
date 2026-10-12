@@ -314,6 +314,24 @@ Resting palette fixtures temporarily disable hit testing on disabled rows and
 restore it before this physical matrix. Local compilation/tests pass; this new
 pointer implementation requires its own hosted x64/ARM64 runtime evidence.
 
+At `625262b`, the native ARM64 catalog and independent consumer pass; the x64
+catalog passes disabled box/label/description and stationary enable/disable,
+then fails to restore hover after reparenting into a fixture Grid. Its screen
+box remains 20px at the same coordinates, with resting sand/60 and arrow rather
+than expected sea/50 and not-allowed. The x64 artifact `11778231848` was
+downloaded and hash-verified (SHA-256
+`a92513ffc7111604d55247d571f2f33d8541fa377a6387e2904cc71e383d2be0`).
+Failure reports now retain native hit elements, ancestor visibility/hit testing/
+clipping, current geometry and tracker registration. Tracker fields are read
+only as diagnostics; acceptance still uses physical cursor handles and actual
+rendered output. The x64 remount failure remains unresolved.
+
+The pinned browser's rounded box also excludes its extreme corner points from
+the input hit target (`artifacts/checkbox-reference-corner-hit-Light.json`).
+Matching that corner hit region remains open; the current native observer uses
+rectangular box bounds. Border-radius hit testing must not be accepted solely
+from center-point cursor checks.
+
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
 (including the disabled input's cursor), consumer rich-content edge cases,

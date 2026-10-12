@@ -154,7 +154,8 @@ public sealed partial class CheckboxesFixture
                         border = Hex(failedBrush), failedBrush.Opacity, expectedAlpha = alpha,
                         inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
                         cursor = CurrentCheckboxCursor().ToInt64(), expectedCursor = cursor,
-                        expectedCursorHandle = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor)).ToInt64() });
+                        expectedCursorHandle = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor)).ToInt64(),
+                        pointer = DescribeDisabledPointer(input, control) });
                     throw;
                 }
                 var position = PointerPosition();
@@ -192,6 +193,37 @@ public sealed partial class CheckboxesFixture
     }
 
     private static PointerPoint PointerPosition() { Require(ReadCheckboxPointer(out var point), "Could not read physical checkbox pointer."); return point; }
+    private object DescribeDisabledPointer(NativeInputSession input, BleeckerCheckbox control)
+    {
+        var screen = PointerPosition();
+        var client = NativeScreenCapture.ClientBounds(input.Window);
+        var position = new Point((screen.X - client.X) / XamlRoot.RasterizationScale,
+            (screen.Y - client.Y) / XamlRoot.RasterizationScale);
+        var root = XamlRoot.Content;
+        var hits = VisualTreeHelper.FindElementsInHostCoordinates(position, root).Take(8).ToArray();
+        var ancestors = new List<object>();
+        for (DependencyObject? current = Find<Border>(control, "PART_Box"); current is not null; current = VisualTreeHelper.GetParent(current))
+            ancestors.Add(Describe(current));
+        var flags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
+        var tracker = typeof(BleeckerCheckbox).GetField("disabledPointer", flags)?.GetValue(control);
+        var observer = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker);
+        // Internal fields are diagnostics only; acceptance uses rendered output
+        // and physical cursor handles rather than the implementation's booleans.
+        return new { control.IsLoaded, control.IsHitTestVisible, screen.X, screen.Y, rootPosition = position,
+            boxBounds = input.ScreenBounds(Find<Border>(control, "PART_Box")), registered = observer is not null,
+            implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),
+            ancestors, hits = hits.Select(Describe).ToArray() };
+
+        object Describe(DependencyObject item)
+        {
+            var element = item as FrameworkElement;
+            var ui = item as UIElement;
+            var clip = ui?.Clip as RectangleGeometry;
+            return new { type = item.GetType().FullName, element?.Name, element?.IsLoaded, ui?.IsHitTestVisible,
+                visibility = ui?.Visibility.ToString(), element?.ActualWidth, element?.ActualHeight,
+                position = element?.TransformToVisual(root).TransformPoint(new Point()), clip = clip?.Rect };
+        }
+    }
     [StructLayout(LayoutKind.Sequential)] private struct PointerPoint { public int X; public int Y; }
     [DllImport("user32.dll", EntryPoint = "GetCursorPos")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadCheckboxPointer(out PointerPoint point);
     [DllImport("user32.dll", EntryPoint = "GetCursor")] private static extern IntPtr CurrentCheckboxCursor();
