@@ -29,7 +29,10 @@ public partial class App : Application
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllText(path, JsonSerializer.Serialize(new { passed, message,
             assembly = typeof(Orchard.BleeckerTokens).Assembly.Location,
-            architecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString() },
+            architecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString(),
+            osArchitecture = System.Runtime.InteropServices.RuntimeInformation.OSArchitecture.ToString(),
+            osDescription = System.Runtime.InteropServices.RuntimeInformation.OSDescription,
+            framework = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription },
             new JsonSerializerOptions { WriteIndented = true }));
         Environment.Exit(passed ? 0 : 1);
     }

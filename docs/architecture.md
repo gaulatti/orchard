@@ -111,6 +111,19 @@ loads. A render is also captured before theme assertions, so an incorrect
 control color leaves visual evidence for investigation. Failure exits nonzero; the workflow never treats a
 build as runtime proof.
 
+The `arm64-runtime` job uses GitHub's native `windows-11-arm` runner, publishes
+the ARM64 catalog and runs the same fixture matrix plus the independent ARM64
+package consumer. Runtime reports contain process architecture, OS architecture,
+Windows/.NET versions and catalog display/text scale and animation preference.
+`smoke-catalog.ps1 -ExpectedArchitecture Arm64` requires both process and OS to
+be ARM64; the x64 job similarly requires X64. The package verifier requires the
+selected process architecture and requires an ARM64 OS for ARM64 runtime work.
+The separate `arm64-build` job retains cross-compilation coverage on x64.
+GitHub documents the runner and free public-repository availability in its
+[hosted-runner reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
+The first native ARM64 runtime result is pending; workflow configuration alone
+does not establish runtime acceptance.
+
 Reproduce on Windows:
 
 ```powershell
@@ -128,7 +141,7 @@ test reports, and native renders. The smoke check exercises automation
 providers, not physical mouse/keyboard interaction. Font asset presence and
 the selected family URI are checked; pixel-level typeface identity is not
 asserted. This scaffold gate does not establish live-feed performance,
-rich-document editing quality, screen-reader behavior, ARM64 runtime behavior,
+rich-document editing quality, screen-reader behavior,
 or finished component parity.
 
 ## Independent package verification
@@ -153,11 +166,15 @@ CI also builds the solution and clean package consumer for ARM64 on its x64
 runner. `-Platform ARM64 -BuildOnly` records `runtimeVerified: false`; it never
 counts cross-compilation as ARM64 runtime acceptance. Run the same command
 without `-BuildOnly` in a Windows ARM64 session to exercise that runtime.
+The native ARM64 workflow runs this command without `-BuildOnly` and retains
+the runnable catalog, consumer, package, captures and reports in the separate
+`orchard-windows-arm64-runtime` artifact. These runtime checks cover the
+implemented fixtures; they do not establish full visual or platform acceptance.
 
 This verifies the existing foundation through a package boundary. The consumer
 will need the completed Orchard application shell and additional representative
 components as the inventory is implemented. It does not prove full parity,
-Narrator acceptance, ARM64 runtime behavior, or a published NuGet feed release.
+Narrator acceptance or a published NuGet feed release.
 
 The public repository’s wiki was unavailable during initialization. Setup and
 architecture documentation therefore live in this repository; no wiki remote

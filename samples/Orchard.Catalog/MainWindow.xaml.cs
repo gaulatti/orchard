@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Text.Json;
+using System.Runtime.InteropServices;
+using Windows.UI.ViewManagement;
 using Windows.Graphics;
 using Windows.Graphics.Imaging;
 using Windows.Storage.Streams;
@@ -60,7 +62,7 @@ public sealed partial class MainWindow : Window
         catch (Exception error)
         {
             await File.WriteAllTextAsync(Path.Combine(folder, "result.json"),
-                JsonSerializer.Serialize(new { passed = false, error = error.ToString() }, new JsonSerializerOptions { WriteIndented = true }));
+                JsonSerializer.Serialize(new { passed = false, error = error.ToString(), environment = RuntimeEnvironment() }, new JsonSerializerOptions { WriteIndented = true }));
             Environment.Exit(1);
         }
     }
@@ -76,7 +78,7 @@ public sealed partial class MainWindow : Window
             await Tooltips.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
             await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
-        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "tooltips" }));
+        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "tooltips", environment = RuntimeEnvironment() }));
     }
 
     private async Task RunInputSmokeAsync(string folder)
@@ -90,7 +92,7 @@ public sealed partial class MainWindow : Window
             await Inputs.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
             await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
-        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "input" }));
+        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "input", environment = RuntimeEnvironment() }));
     }
 
     private async Task RunSmokeAsync(string folder)
@@ -197,7 +199,7 @@ public sealed partial class MainWindow : Window
         ThemeSelector.SelectedIndex = 0;
         Require(CatalogRoot.RequestedTheme == ElementTheme.Default, "System appearance did not reset.");
         await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(
-            new { passed = true, actionCount, systemAppearance = true,
+            new { passed = true, actionCount, systemAppearance = true, environment = RuntimeEnvironment(),
                 buttonStates = new[] { "Normal", "PointerOver", "Pressed", "Disabled" },
                 buttonSpinner = new { referenceVector = true, animationsEnabled = Buttons.SpinnerAnimationsEnabled,
                     rotationObserved = Buttons.SpinnerAnimationsEnabled, reducedMotionStaticObserved = !Buttons.SpinnerAnimationsEnabled, stopAndReset = true },
@@ -206,6 +208,21 @@ public sealed partial class MainWindow : Window
                 toggles = new { automationOnOff = true, consumerStatePropagation = true, variants = new[] { "default", "outline" },
                     states = new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Checked", "CheckedPointerOver", "CheckedPressed", "CheckedDisabled" } },
                 captures }, new JsonSerializerOptions { WriteIndented = true }));
+    }
+
+    private object RuntimeEnvironment()
+    {
+        var settings = new UISettings();
+        return new
+        {
+            processArchitecture = RuntimeInformation.ProcessArchitecture.ToString(),
+            osArchitecture = RuntimeInformation.OSArchitecture.ToString(),
+            osDescription = RuntimeInformation.OSDescription,
+            framework = RuntimeInformation.FrameworkDescription,
+            displayScale = CatalogRoot.XamlRoot?.RasterizationScale,
+            textScale = settings.TextScaleFactor,
+            animationsEnabled = settings.AnimationsEnabled
+        };
     }
 
     private static void Require(bool condition, string message)

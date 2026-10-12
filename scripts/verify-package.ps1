@@ -93,6 +93,9 @@ if ($process.ExitCode -ne 0) {
 }
 $runtime = Get-Content -LiteralPath $runtimeReport -Raw | ConvertFrom-Json
 if (-not $runtime.passed) { throw 'Package consumer reported failure.' }
+if ($runtime.architecture -ne $Platform -or ($Platform -eq 'ARM64' -and $runtime.osArchitecture -ne 'Arm64')) {
+    throw "Package consumer requires $Platform runtime; reported process=$($runtime.architecture), OS=$($runtime.osArchitecture)."
+}
 [ordered]@{
     passed = $true
     version = $version

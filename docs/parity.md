@@ -17,7 +17,7 @@ Every interactive entry additionally requires hover, pressed, focus, selection a
 
 Visual acceptance requires comparison with the rendered pinned Bleecker reference across every variant, size, theme and interaction state. Match typography, spacing, dimensions, colors, borders, radii, icons and motion. Native Windows semantics may be retained, but Windows defaults must not override the branded appearance. Token assertions and successful native-control interaction alone do not establish visual parity. Existing components remain in progress until this comparison is verified, including focus, loading and animated transitions.
 
-The available development host is Intel x64. ARM64 compilation is verified separately; no ARM64 machine is currently available for runtime acceptance.
+The available development host is Intel x64. ARM64 compilation is verified separately. A native `windows-11-arm` GitHub Actions job now runs the catalog and independent package consumer and checks their process/OS architecture; its first runtime result is pending. No local ARM64 machine is available for manual Narrator/contrast acceptance.
 
 The visual audit tracks unresolved Windows defaults in current previews. Icon-button fixtures now use pinned Lucide vectors instead of SymbolIcon glyphs; other preview surfaces still require audit. The button loading indicator now uses the reference Lucide arc. Focus rings use Bleecker brushes and geometry, and the link uses the reference hover-only underline. The remaining focus matrix, state motion, shadows and typography still require full rendered comparison. These are tracked acceptance gaps, not approved visual substitutions. See [rendered comparison evidence](visual-audit.md).
 
