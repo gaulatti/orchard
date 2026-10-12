@@ -50,6 +50,9 @@ and share the tested CSS reversal behavior with Switch. Palette changes do not
 restart unchanged property clocks. Reduced motion settles immediately; motion
 also snaps while Windows contrast is enabled. Rendering/settings/palette
 subscriptions detach on unload or template replacement and restore on reload.
+Temporarily clearing Template removes presentation without losing consumer
+state. Rich label/description elements detach from their old presenters before
+the replacement template receives them, preserving single visual ownership.
 
 The pinned default Storybook render measures 291.71875×42px, with 20px label and
 description lines and the 12/2px gaps. The light baseline and measurements are
@@ -67,6 +70,8 @@ states, template replacement, live appearance with retained state, intermediate
 glyph motion and reversals. Reports and captures are retained as
 `checkbox-measurements-{Light,Dark}.json` and `checkbox-{Light,Dark}.png`, including
 on failure. The independent package consumer instantiates and toggles it.
+If a template is unavailable on failure, the report explicitly marks that row's
+measurement error and preserves the original verification exception.
 
 The first x64/ARM64 run at `79f1053` stopped at its glyph geometry assertion.
 The x64 capture also exposed inherited RTL mirroring. The follow-up keeps the

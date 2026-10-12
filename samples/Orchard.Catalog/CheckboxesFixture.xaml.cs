@@ -22,15 +22,19 @@ public sealed partial class CheckboxesFixture : UserControl
     {
         var controls = Rows.Children.OfType<BleeckerCheckbox>().ToArray();
         var passed = false;
+        Exception? originalFailure = null;
+        var verifiedSteps = new List<string>();
         try
         {
             UpdateLayout();
+            await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-initial-{scheme}.png"));
             foreach (var control in controls) VerifyPresentation(control, scheme);
             Require(Default.ActualHeight == 42 && Math.Abs(Default.ActualWidth - 291.71875) < .1,
                 $"Checkbox default differs from the reference 291.71875x42: {Default.ActualWidth:R}x{Default.ActualHeight:R}.");
             Require(Bare.ActualWidth == 20 && Bare.ActualHeight == 20 && DescriptionOnly.ActualHeight == 22, "Bare or description-only checkbox retained the wrong spacing.");
             Require(Long.ActualHeight > 42 && Find<TextBlock>(Long, "PART_Label").ActualHeight > 20,
                 "Constrained checkbox text did not wrap on first display.");
+            verifiedSteps.Add("Initial row geometry, palette, opacity separation and wrapping");
             var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Default);
             Require(peer.GetAutomationControlType() == AutomationControlType.CheckBox && peer.IsControlElement() && peer.IsContentElement() &&
                 peer.GetName() == "Enable notifications Send alerts when a device starts playback." && peer.IsKeyboardFocusable(),
@@ -47,6 +51,7 @@ public sealed partial class CheckboxesFixture : UserControl
                 Require(provider.ToggleState == ToggleState.On && events == 2, "Consumer state did not reach the native checkbox exactly once.");
             }
             finally { Default.Checked -= Count; Default.Unchecked -= Count; }
+            verifiedSteps.Add("Native UIA role/name/value and exactly-once consumer events");
             foreach (var control in new[] { DisabledOff, DisabledOn })
             {
                 var before = control.IsChecked; var rejected = false;
@@ -55,11 +60,13 @@ public sealed partial class CheckboxesFixture : UserControl
                 catch (COMException error) when (error.HResult == unchecked((int)0x80040200)) { rejected = true; }
                 Require(rejected && control.IsChecked == before && !control.Focus(FocusState.Keyboard), "Disabled checkbox accepted activation or keyboard focus.");
             }
+            verifiedSteps.Add("Disabled off/on rejected native activation and focus");
             var bound = (IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(Bound).GetPattern(PatternInterface.Toggle);
             bound.Toggle(); await SettleAsync(Bound);
             Require(state.Selected && BindingStatus.Text == "True", "Checkbox did not update its consumer binding.");
             state.Selected = false; await SettleAsync(Bound);
             Require(Bound.IsChecked == false && bound.ToggleState == ToggleState.Off && BindingStatus.Text == "False", "Consumer binding did not update the checkbox.");
+            verifiedSteps.Add("Two-way consumer binding in both directions");
             Default.Content = "Updated label"; Default.Description = "Updated description"; UpdateLayout();
             Require(peer.GetName() == "Updated label Updated description" && Find<TextBlock>(Default, "PART_Label").Text == "Updated label",
                 "Checkbox content update lost presentation or its complete name.");
@@ -70,12 +77,14 @@ public sealed partial class CheckboxesFixture : UserControl
             var richLabel = Rich.Content; var richDescription = Rich.Description;
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
                 ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Checkbox replaced consumer-owned rich content.");
+            verifiedSteps.Add("Live text, explicit accessible name and consumer rich-content identity");
             Require(Default.Focus(FocusState.Keyboard), "Checkbox did not receive native keyboard focus.");
             await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 1, "Keyboard checkbox focus ring did not settle.");
             Require(Find<Border>(Default, "PART_FocusRing").ActualWidth == 28 && Find<Border>(Default, "PART_FocusOffset").ActualWidth == 24,
                 "Checkbox focus ring lost its 2px ring and 2px offset.");
             Require(Default.Focus(FocusState.Pointer), "Checkbox did not receive pointer focus.");
             await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 0, "Pointer focus retained a keyboard ring.");
+            verifiedSteps.Add("Native keyboard and pointer focus modalities");
             foreach (var visualState in new[] { "UncheckedPointerOver", "UncheckedPressed", "UncheckedNormal" })
             {
                 Require(VisualStateManager.GoToState(Off, visualState, false), $"Missing checkbox state {visualState}.");
@@ -84,10 +93,20 @@ public sealed partial class CheckboxesFixture : UserControl
                 Require(Math.Abs(border.Opacity - (float)(visualState == "UncheckedPointerOver" ? .5 : scheme == BleeckerColorScheme.Light ? .6 : .2)) < 1e-9,
                     $"Checkbox border differs in {visualState}.");
             }
-            var template = Off.Template;
-            Off.Template = null; Off.ApplyTemplate(); Off.Template = template; Off.ApplyTemplate(); UpdateLayout();
+            verifiedSteps.Add("Unchecked hover, pressed and normal border states");
+            foreach (var control in new[] { Off, Rich })
+            {
+                var template = control.Template;
+                try { control.Template = null; control.ApplyTemplate(); }
+                finally { control.Template = template; control.ApplyTemplate(); }
+            }
+            UpdateLayout();
             await SettleAsync(Off); VerifyPresentation(Off, scheme);
+            Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
+                ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Template replacement lost consumer-owned rich content.");
+            verifiedSteps.Add("Plain and rich template replacement with retained content");
             await VerifyMotionAsync();
+            verifiedSteps.Add("Applicable intermediate/reversed or reduced glyph motion");
             var original = ((FrameworkElement)XamlRoot.Content).RequestedTheme;
             var values = controls.Select(control => control.IsChecked).ToArray();
             try
@@ -100,14 +119,16 @@ public sealed partial class CheckboxesFixture : UserControl
             finally { ((FrameworkElement)XamlRoot.Content).RequestedTheme = original; }
             foreach (var control in controls) await SettleAsync(control);
             foreach (var control in controls) VerifyPresentation(control, scheme);
+            verifiedSteps.Add("All rows changed and restored appearance with retained consumer state");
             passed = true;
         }
+        catch (Exception error) { originalFailure = error; throw; }
         finally
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-measurements-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale,
                     animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
-                    measurements = controls.Select(Measure).ToArray(), motion }, new JsonSerializerOptions { WriteIndented = true }));
+                    originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion }, new JsonSerializerOptions { WriteIndented = true }));
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-{scheme}.png"));
         }
     }
@@ -165,6 +186,12 @@ public sealed partial class CheckboxesFixture : UserControl
             inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
             label = new { label.Text, label.ActualWidth, label.ActualHeight, label.BaselineOffset },
             description = new { description.Text, description.ActualWidth, description.ActualHeight, description.BaselineOffset } };
+    }
+    private object MeasureForReport(BleeckerCheckbox control)
+    {
+        try { return Measure(control); }
+        catch (InvalidOperationException error) when (error.Message.StartsWith("Missing checkbox part ", StringComparison.Ordinal))
+        { return new { control.Name, measurementError = error.Message }; }
     }
     private Task SettleAsync(BleeckerCheckbox control) => WaitAsync(() =>
         Find<Viewbox>(control, "PART_Glyph").Opacity == (control.IsChecked == true ? 1 : 0) &&

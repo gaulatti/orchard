@@ -68,7 +68,17 @@ public sealed class BleeckerCheckbox : CheckBox
     {
         StopMotion(); StopObservingPalette();
         if (states is not null) states.CurrentStateChanged -= OnStateChanged;
+        if (richLabel is not null) richLabel.Content = null;
+        if (richDescription is not null) richDescription.Content = null;
         base.OnApplyTemplate();
+        if (Template is null)
+        {
+            box = focusRing = focusOffset = null;
+            inputChrome = textColumn = null;
+            glyph = null; label = description = null; richLabel = richDescription = null;
+            probes = []; states = null; visualState = "";
+            return;
+        }
         box = Part<Border>("PART_Box"); inputChrome = Part<Grid>("PART_InputChrome"); glyph = Part<Viewbox>("PART_Glyph");
         focusRing = Part<Border>("PART_FocusRing"); focusOffset = Part<Border>("PART_FocusOffset");
         textColumn = Part<Grid>("PART_TextColumn"); label = Part<TextBlock>("PART_Label"); description = Part<TextBlock>("PART_Description");
