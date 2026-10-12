@@ -42,7 +42,8 @@ dotnet test tests/Orchard.Tests/Orchard.Tests.csproj
 
 Use `./scripts/run-catalog.ps1 -Platform ARM64` on Windows ARM. The current
 GitHub Actions runtime gate exercises x64; ARM64 remains a declared build target
-until it is exercised on an ARM machine.
+with automated solution and package-consumer cross-compilation. ARM64 runtime
+support remains unverified until it is exercised on an ARM machine.
 
 ## Repository layout
 
@@ -57,8 +58,19 @@ until it is exercised on an ARM machine.
 
 ## Consume the library
 
-Add a project reference to `src/Orchard/Orchard.csproj`. In the application’s
-resource dictionary, load WinUI resources first, then Orchard:
+Build a local NuGet package and verify it independently:
+
+```powershell
+dotnet pack src/Orchard/Orchard.csproj -c Release -p:Platform=x64 -o artifacts/packages
+./scripts/verify-package.ps1
+```
+
+Add `artifacts/packages` as a NuGet source in the consuming application and
+reference `Gaulatti.Orchard` version `0.1.0`. The package supplies the library,
+compiled XAML resources, fonts and their licenses. It needs no sibling checkout.
+For library development, a project reference to `src/Orchard/Orchard.csproj` also
+works. In the application’s resource dictionary, load WinUI resources first,
+then Orchard:
 
 ```xml
 <ResourceDictionary.MergedDictionaries>

@@ -6,7 +6,7 @@ $ErrorActionPreference = 'Stop'
 $executablePath = (Resolve-Path $Executable).Path
 $outputPath = [System.IO.Path]::GetFullPath($Output)
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
-$process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"" -PassThru
+$process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"" -PassThru -WindowStyle Hidden
 if (-not $process.WaitForExit(60000)) {
     $process.Kill()
     throw 'Catalog runtime check timed out.'

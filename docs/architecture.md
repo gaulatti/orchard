@@ -126,6 +126,34 @@ asserted. This scaffold gate does not establish live-feed performance,
 rich-document editing quality, screen-reader behavior, ARM64 runtime behavior,
 or finished component parity.
 
+## Independent package verification
+
+`dotnet pack` includes the compiled library/resource index, XAML, one copy of each
+bundled font, OFL licenses, Bleecker attribution and a package README.
+The managed library targets AnyCPU while the applications select x64 or ARM64.
+The package verifier inspects the PE header and rejects an architecture-specific
+library in the common NuGet `lib` directory.
+`buildTransitive/Gaulatti.Orchard.targets` copies font assets to the same
+`Orchard/Assets/Fonts` URI paths for package consumers as project consumers.
+
+`scripts/verify-package.ps1` checks the archive, creates a new consumer outside
+the checkout, uses a fresh isolated NuGet cache, restores the exact package via
+source mapping and verifies its SHA-256. The consumer has its own pinned SDK
+configuration and package references. It publishes and runs a small native shell
+with all six foundation styles, tests light/dark colors and button invocation,
+checks bundled fonts/licenses, and captures native renders. CI retains the
+package, runnable consumer and reports under `artifacts`. The temporary source
+and package cache are retained for diagnosis; their path is in the report.
+CI also builds the solution and clean package consumer for ARM64 on its x64
+runner. `-Platform ARM64 -BuildOnly` records `runtimeVerified: false`; it never
+counts cross-compilation as ARM64 runtime acceptance. Run the same command
+without `-BuildOnly` in a Windows ARM64 session to exercise that runtime.
+
+This verifies the existing foundation through a package boundary. The consumer
+will need the completed Orchard application shell and additional representative
+components as the inventory is implemented. It does not prove full parity,
+Narrator acceptance, ARM64 runtime behavior, or a published NuGet feed release.
+
 The public repository’s wiki was unavailable during initialization. Setup and
 architecture documentation therefore live in this repository; no wiki remote
 or wiki content was fabricated.

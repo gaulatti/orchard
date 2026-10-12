@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+        <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+        <RootNamespace>PackageConsumer</RootNamespace>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Platforms>x64;ARM64</Platforms>
+        <RuntimeIdentifier Condition="'$(Platform)' == 'ARM64'">win-arm64</RuntimeIdentifier>
+        <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x64</RuntimeIdentifier>
+        <UseWinUI>true</UseWinUI>
+        <WinUISDKReferences>false</WinUISDKReferences>
+        <EnableMsixTooling>true</EnableMsixTooling>
+        <AppxGeneratePriEnabled>true</AppxGeneratePriEnabled>
+        <ProjectPriFileName>resources.pri</ProjectPriFileName>
+        <PrependPriInitialPath>false</PrependPriInitialPath>
+        <WindowsPackageType>None</WindowsPackageType>
+        <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+        <SelfContained>true</SelfContained>
+        <PublishTrimmed>false</PublishTrimmed>
+        <IsPackable>false</IsPackable>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <OrchardPackageVersion Condition="'$(OrchardPackageVersion)' == ''">0.1.0</OrchardPackageVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <Manifest Include="$(ApplicationManifest)" />
+        <PackageReference Include="Gaulatti.Orchard" Version="$(OrchardPackageVersion)" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.5.1" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7175" PrivateAssets="all" />
+    </ItemGroup>
+</Project>
