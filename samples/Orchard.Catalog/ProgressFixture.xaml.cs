@@ -3,6 +3,8 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Orchard.Catalog;
 
@@ -28,11 +30,21 @@ public sealed partial class ProgressFixture : UserControl
             var height = control.ProgressSize switch { BleeckerProgressSize.Small => 6, BleeckerProgressSize.Medium => 8, _ => 12 };
             Require(track.ActualHeight == height && fill.ActualHeight == height && Math.Abs(fill.ActualWidth - track.ActualWidth * .65) < 1,
                 "Progress size or proportional fill differs from the reference.");
+            Require(track.CornerRadius.TopLeft == height / 2d && fill.CornerRadius.TopLeft == height / 2d,
+                "Progress pill radius differs from half its height.");
+            var bitmap = new RenderTargetBitmap();
+            await bitmap.RenderAsync(fill);
+            var pixels = (await bitmap.GetPixelsAsync()).ToArray();
+            var x = bitmap.PixelWidth / 4;
+            Require(bitmap.PixelHeight > 0 && pixels[(x * 4) + 3] >= 250 &&
+                pixels[((bitmap.PixelHeight - 1) * bitmap.PixelWidth + x) * 4 + 3] >= 250,
+                "Progress fill has elliptical edges instead of a straight pill body.");
             Require(label.Text == "65%" && label.MinWidth == 40 && label.Margin.Left == 12 && label.LineHeight == 16 &&
                 control.FontFamily.Source.Contains("EncodeSans-Medium.ttf"), "Progress label lost percentage, spacing or typography.");
             Require(control.ActualWidth == 320 && control.ActualHeight == 16 && track.ActualWidth == 268 && label.ActualWidth == 40 &&
                 label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X == 280,
-                "Progress row allocation differs from the rendered 320px reference.");
+                $"Progress row allocation differs from the rendered 320px reference: row={control.ActualWidth:R}x{control.ActualHeight:R}, " +
+                $"track={track.ActualWidth:R}, label={label.ActualWidth:R}, labelX={label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X:R}.");
             var key = control.Variant switch { BleeckerProgressVariant.Warning => scheme == BleeckerColorScheme.Dark ? "accentGold" : "sunset",
                 BleeckerProgressVariant.Destructive => "terracotta", _ => scheme == BleeckerColorScheme.Dark ? "accentBlue" : "sea" };
             Require(Hex(fill.Background) == BleeckerTokens.Colors(scheme)[key], "Progress fill variant differs from the theme.");

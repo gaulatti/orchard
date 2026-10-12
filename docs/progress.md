@@ -24,6 +24,15 @@ Encode Sans medium at 12px, a 16px line box, tabular numerals, a minimum 40px
 width and a 12px gap. Theme resources switch the palette; contrast mode uses
 system colors.
 
+WinUI does not normalize a `999` radius like CSS `rounded-full`: the first CI
+captures at `artifacts/ci-progress-09c9bf6` show long elliptical caps. Track radii
+now use half the track height, and fill radii use half the smaller rendered
+dimension. A rendering observer follows that radius only while width is animated
+and detaches on completion, interruption, unload and template replacement.
+The native pixel regression samples the top/bottom straight body at quarter
+width, where the earlier elliptical fill had transparent pixels. This fix is
+pending runtime verification at this checkpoint.
+
 Value changes request the 240ms overlay transition with the premium cubic
 curve. Reduced motion settles immediately. Resize and template replacement
 recompute the destination; unload stops the storyboard and detaches preference

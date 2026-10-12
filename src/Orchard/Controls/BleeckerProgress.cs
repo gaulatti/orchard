@@ -34,7 +34,7 @@ public sealed class BleeckerProgress : Control
         Unloaded += (_, _) =>
         {
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged -= OnMotionChanged;
-            motion?.Stop(); motion = null;
+            StopMotion();
         };
     }
 
@@ -66,7 +66,7 @@ public sealed class BleeckerProgress : Control
 
     protected override void OnApplyTemplate()
     {
-        motion?.Stop(); motion = null;
+        StopMotion();
         if (track is not null) track.SizeChanged -= OnTrackSizeChanged;
         base.OnApplyTemplate();
         track = GetTemplateChild("PART_Track") as Border;
@@ -83,7 +83,12 @@ public sealed class BleeckerProgress : Control
     {
         var height = ProgressSize switch { BleeckerProgressSize.Small => 6d, BleeckerProgressSize.Medium => 8d,
             BleeckerProgressSize.Large => 12d, _ => throw new ArgumentOutOfRangeException(nameof(ProgressSize)) };
-        if (track is not null) track.Height = height;
+        if (track is not null)
+        {
+            track.Height = height;
+            track.CornerRadius = new CornerRadius(height / 2);
+        }
+        UpdateValue(false);
     }
 
     private void UpdateValue(bool animate)
@@ -91,12 +96,14 @@ public sealed class BleeckerProgress : Control
         if (track is null || fill is null || label is null) return;
         var percentage = Math.Clamp(Value / Max * 100, 0, 100);
         var from = fill.ActualWidth;
-        motion?.Stop(); motion = null;
+        StopMotion();
         var width = track.ActualWidth * percentage / 100;
         fill.Width = width;
+        UpdateFillRadius(width);
         label.Text = $"{Math.Floor(percentage + .5).ToString(System.Globalization.CultureInfo.InvariantCulture)}%";
         label.Visibility = ShowLabel ? Visibility.Visible : Visibility.Collapsed;
         if (!animate || !IsLoaded || !settings.AnimationsEnabled || !double.IsFinite(width) || Math.Abs(from - width) < .000001) return;
+        UpdateFillRadius(from);
         var duration = TimeSpan.FromMilliseconds(BleeckerTokens.Durations["overlay"]);
         var animation = new DoubleAnimationUsingKeyFrames { Duration = duration, EnableDependentAnimation = true };
         animation.KeyFrames.Add(new DiscreteDoubleKeyFrame { KeyTime = TimeSpan.Zero, Value = from });
@@ -106,9 +113,29 @@ public sealed class BleeckerProgress : Control
         Storyboard.SetTargetProperty(animation, "Width");
         var storyboard = new Storyboard { Duration = duration };
         storyboard.Children.Add(animation);
-        storyboard.Completed += (_, _) => { if (ReferenceEquals(motion, storyboard)) { storyboard.Stop(); motion = null; } };
+        storyboard.Completed += (_, _) => { if (ReferenceEquals(motion, storyboard)) { StopMotion(); UpdateFillRadius(width); } };
         motion = storyboard;
         storyboard.Begin();
+        CompositionTarget.Rendering += OnWidthFrame;
+    }
+
+    private void StopMotion()
+    {
+        CompositionTarget.Rendering -= OnWidthFrame;
+        motion?.Stop();
+        motion = null;
+    }
+
+    private void OnWidthFrame(object? sender, object args)
+    {
+        if (motion is not null && fill is not null) UpdateFillRadius(fill.ActualWidth);
+    }
+
+    private void UpdateFillRadius(double width)
+    {
+        if (track is null || fill is null || !double.IsFinite(width)) return;
+        var radius = Math.Min(track.Height, width) / 2;
+        if (fill.CornerRadius.TopLeft != radius) fill.CornerRadius = new CornerRadius(radius);
     }
 
     private void ApplyVariant()
