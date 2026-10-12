@@ -147,6 +147,9 @@ public sealed partial class SwitchesFixture : UserControl
         var thumb = Find<Microsoft.UI.Xaml.Shapes.Ellipse>(control, "PART_Thumb");
         var label = Find<TextBlock>(control, "PART_Label");
         var root = Find<Grid>(control, "PART_Root");
+        var pointerInput = Find<Microsoft.UI.Xaml.Controls.Primitives.Thumb>(control, "SwitchThumb");
+        Require(!pointerInput.IsTabStop && pointerInput.ActualWidth == control.ActualWidth && pointerInput.ActualHeight == control.ActualHeight,
+            "Native switch pointer input does not cover its track and label exactly once.");
         var point = thumb.TransformToVisual(track).TransformPoint(new Point());
         Require(track.ActualWidth == 36 && track.ActualHeight == 20 && track.CornerRadius.TopLeft == 10 && track.BorderThickness == new Thickness(1) &&
             thumb.ActualWidth == 16 && thumb.ActualHeight == 16 &&

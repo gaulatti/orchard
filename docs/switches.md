@@ -25,6 +25,12 @@ the Windows On/Off captions. This preserves the single source label.
 The Switch theme dictionary is available to the library template and is also
 attached directly to the native input before its template is applied. This
 supports resource lookup before the nested input joins the owner's visual tree.
+The pinned SDK template also requires a Thumb named SwitchThumb for pointer
+activation and dragging. Its transparent template spans the complete branded
+row, including the label and gap, and adds no tab stop or accessible child.
+Omitting this native input part allowed UIA and Space to work while physical
+clicks did nothing. Template application now requires the input part, and the
+fixture verifies that it covers the complete row before physical activation.
 
 The track is 36×20px, with a 1px border and 10px radius. The white thumb is
 16×16px, inset 2px, and moves 16px when on. The label uses bundled Encode Sans

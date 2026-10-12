@@ -93,6 +93,8 @@ public sealed class BleeckerSwitch : Control
         nativePalette = new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Switch.xaml") };
         action.Resources.MergedDictionaries.Add(nativePalette);
         action.ApplyTemplate();
+        _ = Part<Microsoft.UI.Xaml.Controls.Primitives.Thumb>("SwitchThumb")
+            ?? throw new InvalidOperationException("The native switch template requires its SwitchThumb pointer input part.");
         action.IsOn = IsOn;
         action.Toggled += OnNativeToggled;
         track = Part<Border>("PART_Track");

@@ -136,6 +136,11 @@
                 <TextBlock x:Name="PART_OnStroke" Visibility="Collapsed" Foreground="{ThemeResource SwitchOnStroke}" />
                 <TextBlock x:Name="PART_OffThumb" Visibility="Collapsed" Foreground="{ThemeResource SwitchOffThumb}" />
                 <TextBlock x:Name="PART_OnThumb" Visibility="Collapsed" Foreground="{ThemeResource SwitchOnThumb}" />
+                <Thumb x:Name="SwitchThumb" Grid.ColumnSpan="2" IsTabStop="False" UseSystemFocusVisuals="False"
+                    MinWidth="0" MinHeight="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    AutomationProperties.AccessibilityView="Raw">
+                    <Thumb.Template><ControlTemplate TargetType="Thumb"><Rectangle Fill="Transparent" /></ControlTemplate></Thumb.Template>
+                </Thumb>
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
                 </Style></ToggleSwitch.Style>
