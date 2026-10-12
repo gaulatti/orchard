@@ -30,6 +30,9 @@ public sealed partial class ProgressFixture : UserControl
                 "Progress size or proportional fill differs from the reference.");
             Require(label.Text == "65%" && label.MinWidth == 40 && label.Margin.Left == 12 && label.LineHeight == 16 &&
                 control.FontFamily.Source.Contains("EncodeSans-Medium.ttf"), "Progress label lost percentage, spacing or typography.");
+            Require(control.ActualWidth == 320 && control.ActualHeight == 16 && track.ActualWidth == 268 && label.ActualWidth == 40 &&
+                label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X == 280,
+                "Progress row allocation differs from the rendered 320px reference.");
             var key = control.Variant switch { BleeckerProgressVariant.Warning => scheme == BleeckerColorScheme.Dark ? "accentGold" : "sunset",
                 BleeckerProgressVariant.Destructive => "terracotta", _ => scheme == BleeckerColorScheme.Dark ? "accentBlue" : "sea" };
             Require(Hex(fill.Background) == BleeckerTokens.Colors(scheme)[key], "Progress fill variant differs from the theme.");
@@ -61,7 +64,60 @@ public sealed partial class ProgressFixture : UserControl
         finally { Plain.Value = 65; Plain.Max = 100; Plain.ShowLabel = false; }
         await SettleAsync(() => Math.Abs(Find<Border>(Plain, "PART_Fill").ActualWidth -
             Find<Border>(Plain, "PART_Track").ActualWidth * .65) < 1);
+        await VerifyLayoutLifecycleAsync();
+        var measurements = Matrix.Children.OfType<BleeckerProgress>().Select(control =>
+        {
+            var track = Find<Border>(control, "PART_Track");
+            var fill = Find<Border>(control, "PART_Fill");
+            var label = Find<TextBlock>(control, "PART_Label");
+            return new
+            {
+                size = control.ProgressSize.ToString(), variant = control.Variant.ToString(),
+                control.ActualWidth, control.ActualHeight,
+                track = new { track.ActualWidth, track.ActualHeight, color = Hex(track.Background), opacity = track.Background.Opacity },
+                fill = new { fill.ActualWidth, fill.ActualHeight, color = Hex(fill.Background) },
+                label = new { label.Text, label.ActualWidth, label.ActualHeight, label.FontSize,
+                    font = label.FontFamily.Source, weight = label.FontWeight.Weight, color = Hex(label.Foreground),
+                    x = label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X }
+            };
+        });
+        await File.WriteAllTextAsync(Path.Combine(folder, $"progress-measurements-{scheme}.json"),
+            System.Text.Json.JsonSerializer.Serialize(new { scheme, displayScale = XamlRoot.RasterizationScale,
+                textScale = new Windows.UI.ViewManagement.UISettings().TextScaleFactor, measurements },
+                new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"progress-{scheme}.png"));
+    }
+
+    private async Task VerifyLayoutLifecycleAsync()
+    {
+        var originalWidth = Plain.Width;
+        var originalTemplate = Plain.Template;
+        try
+        {
+            Plain.ShowLabel = true;
+            foreach (var width in new[] { 200d, 360d })
+            {
+                Plain.Width = width;
+                UpdateLayout();
+                await SettleAsync(() => Plain.ActualWidth == width && Math.Abs(Find<Border>(Plain, "PART_Fill").ActualWidth -
+                    Find<Border>(Plain, "PART_Track").ActualWidth * .65) < 1);
+                Require(Find<Border>(Plain, "PART_Track").ActualWidth == width - 52 && Plain.Value == 65 && Plain.Max == 100,
+                    "Progress resize changed its label allocation or consumer range.");
+            }
+            var previousTrack = Find<Border>(Plain, "PART_Track");
+            Plain.Template = null;
+            Plain.ApplyTemplate();
+            Plain.Template = originalTemplate;
+            Plain.ApplyTemplate();
+            UpdateLayout();
+            Require(!ReferenceEquals(previousTrack, Find<Border>(Plain, "PART_Track")), "Progress did not replace its template visuals.");
+            await SettleAsync(() => Math.Abs(Find<Border>(Plain, "PART_Fill").ActualWidth -
+                Find<Border>(Plain, "PART_Track").ActualWidth * .65) < 1);
+            Require(Find<TextBlock>(Plain, "PART_Label").Text == "65%", "Progress template replacement lost its label.");
+        }
+        finally { Plain.Template = originalTemplate; Plain.Width = originalWidth; Plain.ShowLabel = false; UpdateLayout(); }
+        await SettleAsync(() => Plain.ActualWidth == originalWidth && Math.Abs(Find<Border>(Plain, "PART_Fill").ActualWidth -
+            Find<Border>(Plain, "PART_Track").ActualWidth * .65) < 1);
     }
 
     private async Task SettleAsync(Func<bool> condition)

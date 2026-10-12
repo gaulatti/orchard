@@ -36,8 +36,23 @@ consumer values across negative/over-maximum inputs, a custom maximum, label
 rounding, a named read-only UIA range and rejected UIA writes. The independent
 NuGet consumer also creates the control.
 
+The rendered pinned browser matrix covers all 12 combinations in both themes.
+At 320px row width and 65% value, each row is 16px high, the track is 268px
+wide, the label is 40px wide at x=280px, and the browser fill is 174.1875px
+wide. Reference measurements and captures are retained at
+`artifacts/progress-reference-light.json` / `progress-reference-dark.json` and
+the corresponding PNG paths. Native measurements are emitted per theme as
+`progress-measurements-Light.json` / `progress-measurements-Dark.json` in the
+smoke output. Native geometry assertions cover row allocation; exact raster
+edges and glyphs remain separate acceptance checks.
+
+The layout regression resizes a labeled progress display to 200px and 360px,
+checks proportional fill and consumer range retention, replaces its template
+visuals, and verifies that fill and label are restored. These checks are pending
+runtime verification at this checkpoint.
+
 Acceptance remains open: rendered native/browser comparison, exact pill edges
-and typography, enabled/interrupted motion, live appearance/resize/template
-lifecycle, invalid or zero maxima/nonfinite values, out-of-range native UIA
+and typography, enabled/interrupted motion, live appearance and unload/reload,
+invalid or zero maxima/nonfinite values, out-of-range native UIA
 conformance, contrast/Narrator, isolated scaling and ARM64 runtime. Do not change
 the developer's desktop-wide settings to perform scaling checks.
