@@ -17,6 +17,13 @@
             <StackPanel Spacing="8"><TextBlock Text="99+" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerNotificationBadge x:Name="Overflow" Count="120" HorizontalAlignment="Left" />
             </StackPanel>
+            <StackPanel Spacing="8"><TextBlock Text="Long content" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerNotificationBadge x:Name="LongContent" Count="1" HorizontalAlignment="Left">
+                    <orchard:BleeckerNotificationItem Id="long" Title="Regional coverage update ready for editorial review"
+                        Description="東京 · São Paulo · القاهرة — a fictional local update with additional detail for the newsroom."
+                        Timestamp="Updated just now" IsUnread="True" />
+                </orchard:BleeckerNotificationBadge>
+            </StackPanel>
         </StackPanel>
         <TextBlock x:Name="Result" Text="No notification action yet" Style="{StaticResource BleeckerBodyStyle}" />
         <TextBlock x:Name="InputTrace" Text="Keyboard evidence: no popup input yet" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />

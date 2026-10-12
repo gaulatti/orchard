@@ -76,6 +76,20 @@ public sealed partial class NotificationsFixture : UserControl
         Require(new ButtonAutomationPeer(rows[0]).GetName() == "New order Order #1234 received 2m ago",
             "Notification action omitted its description or timestamp from accessibility.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-{scheme.ToString().ToLowerInvariant()}.png"));
+        var root = (FrameworkElement)XamlRoot.Content;
+        var originalTheme = root.RequestedTheme;
+        var changedScheme = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
+        try
+        {
+            root.RequestedTheme = changedScheme == BleeckerColorScheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+            await Task.Delay(150);
+            VerifyPalette(presenter, rows[0], counter, changedScheme);
+            Require(popup.IsOpen && presenter.ActualWidth == 320, "Live theme change dismissed or resized notifications.");
+            await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-live-{changedScheme.ToString().ToLowerInvariant()}.png"));
+        }
+        finally { root.RequestedTheme = originalTheme; }
+        await Task.Delay(150);
+        VerifyPalette(presenter, rows[0], counter, scheme);
         Require(mark.Focus(FocusState.Keyboard), "Notification header did not accept keyboard focus.");
         Require(rows[0].Focus(FocusState.Keyboard), "Notification row did not accept keyboard focus.");
         Require(Descendants<Border>(rows[0]).Single(border => border.Name == "FocusHighlight").Opacity == 1,
@@ -126,6 +140,60 @@ public sealed partial class NotificationsFixture : UserControl
         Require(((TextBlock)emptyStack.Children[2]).Visibility == Visibility.Visible && ((Border)Empty.FindName("CountBadge")).Visibility == Visibility.Collapsed,
             "Clearing items changed the independent count or failed to restore the empty state.");
         emptyPopup.Hide();
+        await Task.Delay(150);
+        await VerifyLongContentAsync(scheme, folder);
+    }
+
+    private static void VerifyPalette(FlyoutPresenter presenter, Button row, Border counter, BleeckerColorScheme scheme)
+    {
+        var colors = BleeckerTokens.Colors(scheme);
+        var surface = Descendants<BleeckerOverlaySurface>(presenter).Single();
+        Require(BrushColor(surface.Background) == colors[scheme == BleeckerColorScheme.Dark ? "deepSea" : "card"],
+            "Open notification surface retained its previous theme.");
+        var text = Descendants<TextBlock>(row).Where(block => block.Visibility == Visibility.Visible && block.ActualHeight > 0).ToArray();
+        Require(BrushColor(text[0].Foreground) == colors["textPrimary"] && BrushColor(text[1].Foreground) == colors["textSecondary"],
+            $"Open notification text palette mismatch: {BrushColor(text[0].Foreground)}/{BrushColor(text[1].Foreground)} for {scheme}.");
+        Require(BrushColor(Descendants<Microsoft.UI.Xaml.Shapes.Ellipse>(row).Single().Fill) == colors["sea"] &&
+            BrushColor(counter.Background) == colors["terracotta"], "Notification dot or counter retained its previous theme.");
+    }
+
+    private static string BrushColor(Brush brush)
+    {
+        var color = ((SolidColorBrush)brush).Color;
+        return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
+    }
+
+    private async Task VerifyLongContentAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var trigger = (BleeckerIconButton)LongContent.FindName("Trigger");
+        var popup = (Flyout)trigger.Flyout;
+        await OpenAsync(trigger, popup);
+        var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(item => item.Child).OfType<FlyoutPresenter>().Single();
+        var row = Descendants<Button>((ItemsControl)((StackPanel)popup.Content).Children[3]).Single();
+        Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), row), "A notification without a header action did not focus its first row.");
+        var tallHeight = row.ActualHeight;
+        await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-long-{scheme.ToString().ToLowerInvariant()}.png"));
+        Require(presenter.ActualWidth == 320 && tallHeight > 72,
+            $"Long notification did not wrap inside the reference popup width: popup={presenter.ActualWidth}, row={row.ActualWidth}x{tallHeight}.");
+        foreach (var text in Descendants<TextBlock>(row).Where(text => text.ActualHeight > 0))
+        {
+            var origin = text.TransformToVisual(row).TransformPoint(new Windows.Foundation.Point());
+            Require(!text.IsTextTrimmed && origin.X >= 0 && origin.Y >= 0 &&
+                origin.X + text.ActualWidth <= row.ActualWidth + 0.1 && origin.Y + text.ActualHeight <= row.ActualHeight + 0.1,
+                "Long/non-Latin notification text escaped its row bounds.");
+        }
+        var item = LongContent.Items[0];
+        var originalTitle = item.Title;
+        var originalDescription = item.Description;
+        item.Title = "Short update";
+        item.Description = "Ready";
+        await Task.Delay(100);
+        Require(row.ActualHeight == 72, "Live notification text update did not reduce the row height.");
+        item.Title = originalTitle;
+        item.Description = originalDescription;
+        await Task.Delay(100);
+        Require(row.ActualHeight == tallHeight, "Restoring long text did not restore wrapped layout.");
+        popup.Hide();
         await Task.Delay(150);
     }
     private static async Task OpenAsync(Button trigger, Flyout popup)
