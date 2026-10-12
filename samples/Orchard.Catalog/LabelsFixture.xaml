@@ -1,0 +1,29 @@
+<UserControl x:Class="Orchard.Catalog.LabelsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <UserControl.Resources>
+        <ResourceDictionary><ResourceDictionary.ThemeDictionaries>
+            <ResourceDictionary x:Key="Default"><Style x:Key="LabelErrorStyle" TargetType="orchard:BleeckerLabel"><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /></Style></ResourceDictionary>
+            <ResourceDictionary x:Key="Light"><Style x:Key="LabelErrorStyle" TargetType="orchard:BleeckerLabel"><Setter Property="Foreground" Value="{ThemeResource BleeckerTerracottaBrush}" /></Style></ResourceDictionary>
+            <ResourceDictionary x:Key="HighContrast"><Style x:Key="LabelErrorStyle" TargetType="orchard:BleeckerLabel"><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /></Style></ResourceDictionary>
+        </ResourceDictionary.ThemeDictionaries></ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel Spacing="16" Margin="0,0,0,40">
+        <TextBlock Text="Labels" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <StackPanel Width="384" HorizontalAlignment="Left" Spacing="6">
+            <orchard:BleeckerLabel x:Name="EmailLabel" Content="Email Address" Target="{Binding ElementName=EmailInput}" />
+            <TextBox x:Name="EmailInput" PlaceholderText="Email" Style="{StaticResource BleeckerTextBoxStyle}" />
+        </StackPanel>
+        <orchard:BleeckerLabel x:Name="ErrorLabel" Content="Username" Style="{ThemeResource LabelErrorStyle}" />
+        <orchard:BleeckerLabel x:Name="DisabledLabel" Content="Unavailable field" IsEnabled="False" />
+        <orchard:BleeckerLabel x:Name="EmptyLabel" Content="" />
+        <orchard:BleeckerLabel x:Name="LongLabel" Width="140" HorizontalAlignment="Left" Content="A longer coverage label wraps within its consumer-owned width" />
+        <orchard:BleeckerLabel Content="東京 · São Paulo · القاهرة" />
+        <orchard:BleeckerLabel x:Name="RichLabel" AutomationProperties.Name="Coverage with help" Target="{Binding ElementName=RichInput}">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+                <TextBlock Text="Coverage" LineHeight="13" LineStackingStrategy="BlockLineHeight" />
+                <Button x:Name="NestedAction" Content="Help" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+            </StackPanel>
+        </orchard:BleeckerLabel>
+        <TextBox x:Name="RichInput" Width="384" HorizontalAlignment="Left" PlaceholderText="Coverage" Style="{StaticResource BleeckerTextBoxStyle}" />
+    </StackPanel>
+</UserControl>

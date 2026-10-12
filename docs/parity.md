@@ -79,7 +79,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | hover-card | Pending | Pending | Full pinned contract |
 | input | Pending | Pending | Full pinned contract |
 | kbd | Pending | Pending | Full pinned contract |
-| label | Pending | Pending | Rendered default/error reference audited in both themes; [contract and acceptance](label-reference.md); implementation and full verification pending |
+| label | `BleeckerLabel`, explicit typography and input association | Default, error styling, disabled, empty, wrapped, non-Latin and rich content | In progress: [preview](labels.md), physical input, exact rendering, contrast/Narrator/scaling and ARM64; [reference](label-reference.md) |
 | menubar | Pending | Pending | Full pinned contract |
 | navigation-menu | Pending | Pending | Full pinned contract |
 | otp-input | Pending | Pending | Full pinned contract |

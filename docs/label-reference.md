@@ -2,7 +2,7 @@
 
 Reference: Bleecker `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/label.tsx`, `stories/components/Label.stories.tsx`, and installed
-Radix Label 2.1.10. Windows implementation remains pending.
+Radix Label 2.1.10. The [Windows preview](labels.md) remains in progress.
 
 ## Rendered contract
 
