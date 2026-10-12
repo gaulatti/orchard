@@ -41,7 +41,17 @@ public sealed class BleeckerCheckbox : CheckBox
         RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateSelectorProperty, (_, _) => UpdateContent());
-        RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
+        RegisterPropertyChangedCallback(TemplateProperty, (_, _) =>
+        {
+            if (Template is null)
+            {
+                DetachTemplate();
+                // An empty custom template must not trigger CheckBox's stock
+                // theme-template lookup on the following layout pass.
+                DefaultStyleKey = null!;
+            }
+            else DefaultStyleKey = typeof(BleeckerCheckbox);
+        });
         RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => { if (Visibility != Visibility.Visible) UpdateVisuals(false); });
         PointerEntered += (_, _) => { pointerOver = true; UpdateVisuals(true); };
         PointerExited += (_, _) => { pointerOver = false; UpdateVisuals(true); };

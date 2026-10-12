@@ -163,9 +163,15 @@ public sealed partial class CheckboxesFixture : UserControl
                     templateSamples.Add(DescribeTemplate(control, "before-clear"));
                     control.Template = null;
                     templateSamples.Add(DescribeTemplate(control, "assigned-null"));
-                    // Assignment clears the native tree. Exercise normal layout
-                    // while empty, then apply only the restored nonempty template.
-                    UpdateLayout(); await Task.Delay(1); UpdateLayout();
+                    // The empty template must survive both explicit application
+                    // and a normal layout pass without selecting Windows chrome.
+                    try
+                    {
+                        control.ApplyTemplate();
+                        templateSamples.Add(DescribeTemplate(control, "applied-null"));
+                        UpdateLayout(); await Task.Delay(1); UpdateLayout();
+                    }
+                    catch { templateSamples.Add(DescribeTemplate(control, "null-application-or-layout-failed")); throw; }
                     templateSamples.Add(DescribeTemplate(control, "laid-out-null"));
                     Require(control.Template is null && VisualTreeHelper.GetChildrenCount(control) == 0 &&
                         control.IsChecked == checkedValue && ReferenceEquals(control.Content, labelValue) &&
@@ -240,7 +246,7 @@ public sealed partial class CheckboxesFixture : UserControl
             for (var index = 0; index < suffixes.Length; index++)
             {
                 NonLatin.FontFamily = new FontFamily(original.Source + suffixes[index]);
-                UpdateLayout();
+                UpdateLayout(); await Task.Delay(50); UpdateLayout();
                 var label = Find<TextBlock>(NonLatin, "PART_Label");
                 probes.Add(new { font = label.FontFamily.Source, label.Language, label.FontSize,
                     weight = label.FontWeight.Weight, label.ActualWidth, label.ActualHeight, label.BaselineOffset });
@@ -323,7 +329,12 @@ public sealed partial class CheckboxesFixture : UserControl
         localIsNull = control.ReadLocalValue(Control.TemplateProperty) is null,
         localIsUnset = control.ReadLocalValue(Control.TemplateProperty) == DependencyProperty.UnsetValue,
         visualChildren = Enumerable.Range(0, VisualTreeHelper.GetChildrenCount(control))
-            .Select(index => VisualTreeHelper.GetChild(control, index).GetType().FullName).ToArray()
+            .Select(index => VisualTreeHelper.GetChild(control, index)).Select(child => new
+            {
+                type = child.GetType().FullName, name = (child as FrameworkElement)?.Name,
+                width = (child as FrameworkElement)?.ActualWidth, height = (child as FrameworkElement)?.ActualHeight,
+                visibility = (child as UIElement)?.Visibility.ToString()
+            }).ToArray()
     };
     private static IEnumerable<TextBlock> HostedText(DependencyObject parent)
     {

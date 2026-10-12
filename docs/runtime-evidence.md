@@ -208,6 +208,20 @@ The snapshots were hash-verified from artifact `11772384171`, SHA-256
 `e3ff9a0c9c1476ce416b231fdadac218461e3c944ddc26b71e537290dd155510`,
 under `artifacts/ci-checkbox-775c1b1-x64`.
 
+At `ec16816`, [run 38307865801](https://github.com/gaulatti/orchard/actions/runs/38307865801)
+fails during normal null-template layout with the original managed error,
+`BleeckerCheckbox requires PART_Box`. Thus the failure is not limited to an
+explicit application call: native theme lookup selects non-Orchard chrome.
+The next correction clears the default style key while empty and restores it
+with a nonempty template. Verification retains explicit ApplyTemplate(null),
+normal empty layout, consumer state/content/name updates and restoration.
+The x64 font probes and captures were downloaded and hash-verified from
+artifact `11773291932`, SHA-256
+`da33f36824120a31e03325164059c68414fdfa2026f0cde9278240516f0a81c1`,
+under `artifacts/ci-checkbox-ec16816-x64`. Its explicit Yu Gothic probe measures
+111.439453px against the source's 111.453125px; the default is 99.538086px.
+This is retained probe evidence, not a change to the shared font stack.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

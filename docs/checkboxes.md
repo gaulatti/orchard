@@ -66,10 +66,10 @@ Temporarily clearing Template removes presentation without losing consumer
 state. Rich label/description elements detach from their old presenters before
 the replacement template receives them, preserving single visual ownership.
 Null assignment detaches Orchard's observers/content through the template
-property callback, because WinUI clears the tree without calling OnApplyTemplate.
-ApplyTemplate is used after restoring a nonempty template. Explicitly invoking
-the pinned native ApplyTemplate with null throws before Orchard's template
-hook; that SDK boundary remains a documented limitation. The lifecycle fixture
+property callback. It also disables the default style key while empty, so the
+next layout does not load stock Windows checkbox chrome. A nonempty consumer
+template restores Orchard's style key. Native verification of this correction
+remains open. The lifecycle fixture
 requires an empty visual tree after normal layout, retained consumer objects,
 native value/content/name updates while empty, and successful nonempty restoration.
 
@@ -150,6 +150,10 @@ At `775c1b1`, the x64 snapshots confirm null assignment immediately removes all
 visual children and original-template restoration rebuilds them. No managed
 template exception is traced: the explicit null ApplyTemplate failure happens
 before Orchard's override. Cleanup now observes null assignment itself.
+At `ec16816`, normal layout exposes the same underlying issue directly: WinUI
+loads a template without PART_Box after null assignment. The default style key
+is now cleared while empty, and the original explicit ApplyTemplate(null)
+check is retained alongside normal layout and restoration.
 
 The Japanese DOM audit compares actual text layout, rather than canvas
 measurement. The pinned component is 111.453125px wide for its Japanese label;
@@ -159,6 +163,11 @@ and screenshot are retained as `artifacts/checkbox-reference-cjk-dom.{json,jpg}`
 Native fixture font probes compare the original stack with explicit Japanese
 families and restore the consumer font. These are evidence probes; the library
 font stack remains unchanged pending native glyph comparison.
+At `ec16816`, the x64 original label is 99.538086px; the Yu Gothic probe is
+111.439453px, within 0.014px of the rendered source. Yu Gothic UI and the
+Meiryo probe retain 99.538086px. The native/source comparison is
+retained at `artifacts/checkbox-cjk-comparison-Light.png`; the original stack
+remains unchanged while broader script/weight/platform verification continues.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
