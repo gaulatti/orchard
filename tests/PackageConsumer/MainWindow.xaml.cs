@@ -44,6 +44,12 @@ public sealed partial class MainWindow : Window
                 Require(native!.FontWeight.Weight == 500 && native.FontFamily.Source.Contains("EncodeSans-Medium.ttf#Encode Sans"),
                     "Packaged component did not resolve the bundled medium font.");
                 Require(PackageIcon.ActualWidth == 40 && PackageIcon.ActualHeight == 40, "Packaged icon control did not lay out.");
+                PackageIcon.IsEnabled = false;
+                await Task.Delay(100);
+                var iconPresenter = (ContentPresenter)VisualTreeHelper.GetChild(PackageIcon, 0);
+                Require(SaveVector.Foreground is SolidColorBrush iconBrush && iconPresenter.Foreground is SolidColorBrush iconText && iconBrush.Color == iconText.Color && Math.Abs(iconBrush.Opacity - iconText.Opacity) < 0.001,
+                    "Consumer-owned vector did not follow the packaged disabled foreground.");
+                PackageIcon.IsEnabled = true;
                 Require(PackageGroup.ActualWidth > 0 && PackageGridItem.ActualHeight >= 36, "Packaged toggle group template did not lay out.");
                 var componentColor = ((SolidColorBrush)native!.Background).Color;
                 Require($"#{componentColor.A:X2}{componentColor.R:X2}{componentColor.G:X2}{componentColor.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], "Packaged per-variant resources did not load.");

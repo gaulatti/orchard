@@ -17,7 +17,7 @@ Visual acceptance requires comparison with the rendered pinned Bleecker referenc
 
 The available development host is Intel x64. ARM64 compilation is verified separately; no ARM64 machine is currently available for runtime acceptance.
 
-The visual audit identifies unresolved Windows defaults in current previews, including catalog SymbolIcon glyphs. The button loading indicator now uses the reference Lucide arc. Focus rings use Bleecker brushes and geometry, and the link uses the reference hover-only underline. The remaining focus matrix, state motion, shadows and typography still require full rendered comparison. These are tracked acceptance gaps, not approved visual substitutions. See [rendered comparison evidence](visual-audit.md).
+The visual audit tracks unresolved Windows defaults in current previews. Icon-button fixtures now use pinned Lucide vectors instead of SymbolIcon glyphs; other preview surfaces still require audit. The button loading indicator now uses the reference Lucide arc. Focus rings use Bleecker brushes and geometry, and the link uses the reference hover-only underline. The remaining focus matrix, state motion, shadows and typography still require full rendered comparison. These are tracked acceptance gaps, not approved visual substitutions. See [rendered comparison evidence](visual-audit.md).
 
 | Component contract | Windows implementation | Catalog / regression / runtime evidence | Remaining gap |
 | --- | --- | --- | --- |

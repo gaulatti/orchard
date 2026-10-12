@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 
 namespace Orchard;
 
@@ -10,11 +11,42 @@ public enum BleeckerIconButtonSize { Small, Medium, Large }
 public sealed class BleeckerIconButton : Button
 {
     private ResourceDictionary? palette;
+    private Control? foregroundContent;
+    private Binding? foregroundBinding;
+    private Control? observedContent;
+    private long styleCallback;
 
     public BleeckerIconButton()
     {
         ApplyVariant();
         ApplySize();
+        RegisterPropertyChangedCallback(ContentProperty, (_, _) => BindContentForeground());
+    }
+
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+        BindContentForeground();
+    }
+
+    private void BindContentForeground()
+    {
+        if (observedContent is not null) observedContent.UnregisterPropertyChangedCallback(StyleProperty, styleCallback);
+        observedContent = Content as Control;
+        if (observedContent is not null)
+            styleCallback = observedContent.RegisterPropertyChangedCallback(StyleProperty, (_, _) => BindContentForeground());
+        if (foregroundContent is not null && foregroundContent.GetBindingExpression(ForegroundProperty)?.ParentBinding == foregroundBinding)
+            foregroundContent.ClearValue(ForegroundProperty);
+        foregroundContent = null;
+        foregroundBinding = null;
+        if (Content is not Control content || content.ReadLocalValue(ForegroundProperty) != DependencyProperty.UnsetValue) return;
+        for (var style = content.Style; style is not null; style = style.BasedOn)
+            if (style.Setters.OfType<Setter>().Any(setter => setter.Property == ForegroundProperty)) return;
+        if (Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChildrenCount(this) == 0 ||
+            Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChild(this, 0) is not ContentPresenter presenter) return;
+        foregroundContent = content;
+        foregroundBinding = new Binding { Source = presenter, Path = new PropertyPath("Foreground") };
+        content.SetBinding(ForegroundProperty, foregroundBinding);
     }
 
     public static readonly DependencyProperty VariantProperty = DependencyProperty.Register(

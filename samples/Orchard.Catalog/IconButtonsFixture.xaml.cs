@@ -25,6 +25,11 @@ public sealed partial class IconButtonsFixture : UserControl
         {
             var dimension = button.Size switch { BleeckerIconButtonSize.Small => 32, BleeckerIconButtonSize.Medium => 40, _ => 44 };
             Require(button.ActualWidth == dimension && button.ActualHeight == dimension, "Icon button lost its pinned square dimensions.");
+            Require(!Descendants(button).OfType<SymbolIcon>().Any(), "Icon fixture reverted to a Windows glyph.");
+            var vector = Descendants(button).OfType<Viewbox>().Single();
+            Require(vector.ActualWidth == 18 && vector.ActualHeight == 18, "Lucide icon lost its reference dimensions.");
+            var paths = Descendants(vector).OfType<Microsoft.UI.Xaml.Shapes.Path>().ToArray();
+            Require(paths.Length > 0 && paths.All(path => path.StrokeThickness == 2 && path.StrokeStartLineCap == PenLineCap.Round && path.StrokeEndLineCap == PenLineCap.Round), "Lucide strokes differ from the reference.");
             var peer = new ButtonAutomationPeer(button);
             Require(peer.GetAutomationControlType() == AutomationControlType.Button && !string.IsNullOrWhiteSpace(peer.GetName()), "Icon action has no button role or accessible name.");
         }
@@ -42,6 +47,11 @@ public sealed partial class IconButtonsFixture : UserControl
             {
                 Require(VisualStateManager.GoToState(button, state, false), $"Missing icon button state {state}.");
                 await Task.Delay(120);
+                foreach (var path in Descendants(button).OfType<Microsoft.UI.Xaml.Shapes.Path>())
+                {
+                    Require(path.Stroke is SolidColorBrush stroke && presenter.Foreground is SolidColorBrush foreground && stroke.Color == foreground.Color && Math.Abs(stroke.Opacity - foreground.Opacity) < 0.001,
+                        $"{scheme} {button.Variant} {state} icon does not follow rendered text color.");
+                }
                 foreach (var (property, rendered) in new[] { ("Background", presenter.Background), ("Foreground", presenter.Foreground), ("BorderBrush", presenter.BorderBrush) })
                 {
                     var expected = (SolidColorBrush)resources[$"Button{property}{(state == "Normal" ? "" : state)}"];
@@ -50,6 +60,23 @@ public sealed partial class IconButtonsFixture : UserControl
                 }
             }
         }
+        var original = (Control)EditAction.Content;
+        var custom = new ContentControl { Foreground = new SolidColorBrush(Microsoft.UI.Colors.Red) };
+        EditAction.Content = custom;
+        Require(original.ReadLocalValue(Control.ForegroundProperty) == DependencyProperty.UnsetValue, "Detached icon retained the button's foreground binding.");
+        Require(((SolidColorBrush)custom.Foreground).Color == Microsoft.UI.Colors.Red, "Consumer icon color was overwritten.");
+        var customStyle = new Style(typeof(ContentControl));
+        customStyle.Setters.Add(new Setter(Control.ForegroundProperty, new SolidColorBrush(Microsoft.UI.Colors.Green)));
+        var styled = new ContentControl { Style = customStyle };
+        EditAction.Content = styled;
+        Require(styled.ReadLocalValue(Control.ForegroundProperty) == DependencyProperty.UnsetValue, "Consumer style foreground was overwritten.");
+        EditAction.Content = original;
+        var originalStyle = original.Style;
+        original.Style = customStyle;
+        Require(original.ReadLocalValue(Control.ForegroundProperty) == DependencyProperty.UnsetValue, "A replacement consumer style could not take ownership of its foreground.");
+        original.Style = originalStyle;
+        Require(original.GetBindingExpression(Control.ForegroundProperty) is not null, "Reference foreground was not restored after replacing the custom style.");
+        await Task.Delay(80);
     }
 
     private static IEnumerable<DependencyObject> Descendants(DependencyObject parent)

@@ -23,6 +23,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Manifest Include="$(ApplicationManifest)" />
+        <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />

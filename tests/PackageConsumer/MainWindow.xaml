@@ -4,6 +4,18 @@
     xmlns:orchard="using:Orchard"
     Title="Orchard package consumer">
     <Grid x:Name="Root" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
+        <Grid.Resources>
+            <!-- Consumer-owned Lucide 0.563.0 Save geometry; see the package's Lucide notice. -->
+            <Style x:Key="SaveIcon" TargetType="ContentControl">
+                <Setter Property="IsTabStop" Value="False" />
+                <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ContentControl">
+                    <Viewbox Width="18" Height="18"><Canvas Width="24" Height="24">
+                        <Path Data="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7 M7 3v4a1 1 0 0 0 1 1h7"
+                              Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                    </Canvas></Viewbox>
+                </ControlTemplate></Setter.Value></Setter>
+            </Style>
+        </Grid.Resources>
         <NavigationView PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Overview" Icon="Home" IsSelected="True" />
@@ -21,7 +33,7 @@
                 <Button x:Name="Action" Content="Save locally" Click="OnSave" Style="{StaticResource BleeckerPrimaryButtonStyle}" />
                 <Button Content="Secondary action" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
-                <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon" ToolTipService.ToolTip="Save with icon"><SymbolIcon Symbol="Save" /></orchard:BleeckerIconButton>
+                <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon" ToolTipService.ToolTip="Save with icon"><ContentControl x:Name="SaveVector" Style="{StaticResource SaveIcon}" /></orchard:BleeckerIconButton>
                 <orchard:BleeckerToggleGroup x:Name="PackageGroup" SelectedValue="list" AutomationProperties.Name="Package view">
                     <orchard:BleeckerToggleGroupItem Value="list" Content="List" />
                     <orchard:BleeckerToggleGroupItem x:Name="PackageGridItem" Value="grid" Content="Grid" />
