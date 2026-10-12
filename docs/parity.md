@@ -77,7 +77,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | empty | Pending | Pending | Full pinned contract |
 | eyebrow | Pending | Pending | Full pinned contract |
 | hover-card | Pending | Pending | Full pinned contract |
-| input | Pending | Pending | Full pinned contract |
+| input | `BleeckerInput`: three sizes, adornments, validation and native editing | Registered light/dark fixtures; native editing, motion, typography, 24 reading-direction and 72 physical-adornment cases; independent consumer | In progress: [reference comparison](input-reference.md), fallback typography, scaling (225% Japanese viewport failure), contrast/Narrator, full motion parity and ARM64 runtime; see [usage](inputs.md) |
 | kbd | Pending | Pending | Full pinned contract |
 | label | `BleeckerLabel`, explicit typography and input association | Default, error styling, disabled, empty, wrapped, non-Latin and rich content | In progress: [preview](labels.md), physical input, exact rendering, contrast/Narrator/scaling and ARM64; [reference](label-reference.md) |
 | menubar | Pending | Pending | Full pinned contract |
