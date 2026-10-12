@@ -199,16 +199,30 @@ internal static class BleeckerPointerCursor
     {
         if (!IsOwner(candidate)) return;
         owner = null;
-        if (GetCursor() != LoadCursorW(IntPtr.Zero, new IntPtr(32648)) || root.XamlRoot is not XamlRoot xamlRoot) return;
+        if (GetCursor() != LoadCursorW(IntPtr.Zero, new IntPtr(32648))) return;
+        Restore(root);
+        // A routed PointerMoved can reach this observer before WinUI publishes
+        // the destination's cursor. Restore again after that dispatch, using
+        // the current selection and only while our root still owns the point.
+        root.DispatcherQueue.TryEnqueue(() =>
+        {
+            if (owner is not null || root.XamlRoot is not XamlRoot xamlRoot) return;
+            var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(xamlRoot.ContentIslandEnvironment.AppWindowId);
+            if (GetCursorPos(out var point) && GetAncestor(WindowFromPoint(point), 2) == window) Restore(root);
+        });
+    }
+
+    private static void Restore(UIElement root)
+    {
+        if (root.XamlRoot is not XamlRoot xamlRoot) return;
         var island = ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(xamlRoot.ContentIslandEnvironment));
         var source = InputPointerSource.GetForIsland(island);
         var cursor = source.Cursor;
         // Restore WinUI's current selection, including custom resource cursors.
         // A cursor remembered on entry becomes stale under stationary movement.
-        source.Cursor = null;
-        source.Cursor = cursor;
         if (cursor is null) SetCursor(IntPtr.Zero);
         else if (cursor is InputSystemCursor system) SetSystem(system.CursorShape);
+        else { source.Cursor = null; source.Cursor = cursor; }
     }
 
     internal static void SetSystem(InputSystemCursorShape shape)
@@ -235,6 +249,10 @@ internal static class BleeckerPointerCursor
         };
         SetCursor(LoadCursorW(IntPtr.Zero, new IntPtr(resource)));
     }
+    [StructLayout(LayoutKind.Sequential)] private struct NativePoint { public int X; public int Y; }
+    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out NativePoint point);
+    [DllImport("user32.dll")] private static extern IntPtr WindowFromPoint(NativePoint point);
+    [DllImport("user32.dll")] private static extern IntPtr GetAncestor(IntPtr window, uint flags);
     [DllImport("user32.dll")] private static extern IntPtr GetCursor();
     [DllImport("user32.dll")] private static extern IntPtr SetCursor(IntPtr cursor);
     [DllImport("user32.dll")] private static extern IntPtr LoadCursorW(IntPtr instance, IntPtr name);

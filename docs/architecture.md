@@ -66,10 +66,14 @@ are copied to `Orchard/Assets/Fonts` in the consuming app output.
 Disabled Input and Checkbox pointer behavior uses an internal observer shared
 per XAML root. It queries the native pointer and performs at most one root hit
 test per observation, then applies each control's own bounds, visibility, ancestor
-clipping and occlusion. Checkbox supplies its 20px box; Input supplies its editor
-bounds. Each control detaches on enable/unload, and Checkbox also detaches on
+clipping and occlusion. Checkbox supplies its rounded 20px box and uses the
+browser's 1×1 pointer sample; Input currently supplies its control bounds.
+Each control detaches on enable/unload, and Checkbox also detaches on
 template replacement. One thread-local native cursor owner prevents competing
-controls from restoring stale overrides; release reapplies WinUI's current cursor.
+controls from restoring stale overrides; release immediately reapplies WinUI's
+current cursor and reconciles once after input dispatch while that root still
+owns the screen point and no newer disabled control owns the override. System
+cursor restoration does not change the root input source's cursor property.
 
 The catalog keeps `EnableMsixTooling=true` and explicitly enables
 `AppxGeneratePriEnabled` for the SDK’s application resource-index build

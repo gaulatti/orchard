@@ -341,6 +341,15 @@ center; desktop ownership does not explain this failure. The fixture now saves
 the actual native cursor, the Input's ProtectedCursor, the root input source's
 cursor, current hit elements and observer state at that transition. Acceptance
 still compares the physical cursor handle with the system I-beam handle.
+The `8b8be3c` ARM64 capture shows the entered Input loaded/enabled, with
+ProtectedCursor and InputPointerSource.Cursor both IBeam, but the native cursor
+still Arrow. The Checkbox observer is registered and no longer hovered. The
+shared release now restores immediately, then queues one reconciliation after
+the current pointer dispatch. That reconciliation reads WinUI's current cursor,
+requires no newer disabled owner and checks the root still owns the native
+screen point. System cursor restoration no longer changes InputPointerSource's
+cursor property; resource cursor restoration retains its native API path.
+The strict physical I-beam transition remains the regression boundary.
 
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual

@@ -20,6 +20,16 @@ ARM64 `11779716166` has SHA-256
 Both archives were downloaded and verified. This partial run does not replace
 the complete `ebfb6ac` baseline above.
 
+The diagnostic `8b8be3c` run
+[38323217756](https://github.com/gaulatti/orchard/actions/runs/38323217756)
+passes the complete x64 catalog and package consumer. ARM64 passes the remount
+and geometry phases, then reproduces the enabled Input cursor failure: WinUI's
+cursor properties select IBeam while the actual native handle remains Arrow.
+The ARM64 archive `11780000790` has SHA-256
+`05b5ecb34d8f565c9db107ce6a8e6593c6b28c00735ad569e9120848ec34e325`
+and was downloaded and verified. The release correction retains the physical
+I-beam acceptance check; it needs new native evidence on both architectures.
+
 Commit `ebfb6ac` passes all three jobs in
 [run 38319267360](https://github.com/gaulatti/orchard/actions/runs/38319267360).
 Both native architectures pass the complete Light/Dark catalog, 23 tests and
