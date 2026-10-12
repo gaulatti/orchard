@@ -34,6 +34,9 @@ public sealed partial class MainWindow : Window
                 await Task.Delay(250);
                 Root.UpdateLayout();
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
+                Require(PackageSpinner.ActualWidth == 16 && PackageSpinner.ActualHeight == 16 &&
+                    FrameworkElementAutomationPeer.CreatePeerForElement(PackageSpinner).GetAutomationControlType() == AutomationControlType.ProgressBar,
+                    "Packaged loading spinner lost its geometry or progress role.");
                 var scheme = theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark;
                 var color = ((SolidColorBrush)Action.Background).Color;
                 Require($"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], $"Package theme mismatch: {theme}");

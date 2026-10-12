@@ -3438,14 +3438,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerLoadingSpinner.cs", "src/Orchard/Themes/Generic.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/LoadingSpinnersFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/LoadingSpinnersFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Normal animation and live preference switching",
+        "Actual contrast settings, Narrator, scaling and constrained composition",
+        "ARM64 runtime and complete visual acceptance"
       ]
     },
     {

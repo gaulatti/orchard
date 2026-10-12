@@ -84,6 +84,10 @@ public sealed partial class MainWindow : Window
             await Buttons.VerifyAsync(scheme);
             await IconButtons.VerifyAsync(scheme);
             await ToggleGroups.VerifyAsync();
+            await LoadingSpinners.VerifyAsync(scheme);
+            CatalogScroll.ChangeView(null, CatalogScroll.ScrollableHeight, null, disableAnimation: true);
+            await Task.Delay(350);
+            await CaptureAsync(Path.Combine(folder, $"loading-spinners-{theme.ToString().ToLowerInvariant()}.png"));
             ToggleGroups.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"toggle-groups-{theme.ToString().ToLowerInvariant()}.png"));
@@ -119,6 +123,7 @@ public sealed partial class MainWindow : Window
                 buttonSpinner = new { referenceVector = true, animationsEnabled = Buttons.SpinnerAnimationsEnabled,
                     rotationObserved = Buttons.SpinnerAnimationsEnabled, reducedMotionStaticObserved = !Buttons.SpinnerAnimationsEnabled, stopAndReset = true },
                 buttonProperties = new[] { "Background", "Foreground", "BorderBrush", "Opacity" },
+                loadingSpinner = new { sizes = new[] { 16, 32, 48 }, animationsEnabled = LoadingSpinners.AnimationsEnabled, hiddenAndUnloadedReset = true },
                 toggles = new { automationOnOff = true, consumerStatePropagation = true, variants = new[] { "default", "outline" },
                     states = new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Checked", "CheckedPointerOver", "CheckedPressed", "CheckedDisabled" } },
                 captures }, new JsonSerializerOptions { WriteIndented = true }));

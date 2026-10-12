@@ -22,7 +22,10 @@
                 <NavigationViewItem Content="Library" Icon="Library" />
             </NavigationView.MenuItems>
             <StackPanel Margin="32" Spacing="16" MaxWidth="640">
-                <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />
+                    <orchard:BleeckerLoadingSpinner x:Name="PackageSpinner" Size="Small" AutomationProperties.Name="Preparing local preview" />
+                </StackPanel>
                 <TextBlock Text="Fictional local content. Resources and fonts come from the NuGet package."
                            Style="{StaticResource BleeckerBodyStyle}" />
                 <TextBox x:Name="Input" Header="Title" Text="Harbor update" Style="{StaticResource BleeckerTextBoxStyle}" />

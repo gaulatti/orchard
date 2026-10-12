@@ -2,6 +2,18 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Orchard">
+    <Style TargetType="local:BleeckerLoadingSpinner">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerPrimaryBrush}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerLoadingSpinner">
+            <Canvas x:Name="PART_Canvas">
+                <Canvas.RenderTransform><RotateTransform /></Canvas.RenderTransform>
+                <Path x:Name="PART_Arc" Stroke="{TemplateBinding Foreground}" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" />
+            </Canvas>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerToggleGroup">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Left" />

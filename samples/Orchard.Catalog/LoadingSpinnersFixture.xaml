@@ -1,0 +1,14 @@
+<UserControl x:Class="Orchard.Catalog.LoadingSpinnersFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Loading spinners" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Small · medium · large. Motion follows Windows animation preferences." Style="{StaticResource BleeckerBodyStyle}" />
+        <StackPanel x:Name="Sizes" Orientation="Horizontal" Spacing="24">
+            <orchard:BleeckerLoadingSpinner Size="Small" AutomationProperties.Name="Loading headlines" />
+            <orchard:BleeckerLoadingSpinner x:Name="DynamicSpinner" AutomationProperties.Name="Syncing changes" />
+            <orchard:BleeckerLoadingSpinner Size="Large" AutomationProperties.Name="Preparing preview" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
