@@ -6,6 +6,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Inputs.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Keyboard.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Eyebrow.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Progress.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -82,6 +83,25 @@
                 <ContentPresenter x:Name="StartAdornment" Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="EndAdornment" Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="DescriptionPresenter" Grid.Row="2" Content="{TemplateBinding Description}" AutomationProperties.AccessibilityView="Raw" x:Load="False" />
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerProgress">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontSize" Value="12" /><Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{ThemeResource ProgressFill}" />
+        <Setter Property="Background" Value="{ThemeResource ProgressTrack}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerProgress">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <Border x:Name="PART_Track" CornerRadius="999" Background="{TemplateBinding Background}" VerticalAlignment="Center">
+                    <Border x:Name="PART_Fill" CornerRadius="999" Background="{TemplateBinding Foreground}" HorizontalAlignment="Left" />
+                </Border>
+                <TextBlock x:Name="PART_Label" Grid.Column="1" Margin="12,0,0,0" MinWidth="40" VerticalAlignment="Center" TextAlignment="Right"
+                    FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                    LineHeight="16" LineStackingStrategy="BlockLineHeight"
+                    Typography.NumeralAlignment="Tabular" Foreground="{ThemeResource ProgressLabel}" AutomationProperties.AccessibilityView="Raw" />
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>

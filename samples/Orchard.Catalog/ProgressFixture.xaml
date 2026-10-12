@@ -1,0 +1,10 @@
+<UserControl x:Class="Orchard.Catalog.ProgressFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16" Margin="0,0,0,40">
+        <TextBlock Text="Progress" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <StackPanel x:Name="Matrix" Width="320" HorizontalAlignment="Left" Spacing="16" />
+        <orchard:BleeckerProgress x:Name="Plain" Width="320" HorizontalAlignment="Left" Value="65" AutomationProperties.Name="Upload" />
+        <orchard:BleeckerProgress x:Name="Disabled" Width="320" HorizontalAlignment="Left" Value="40" ShowLabel="True" IsEnabled="False" />
+        <orchard:BleeckerProgress Width="180" HorizontalAlignment="Left" Value="80" ShowLabel="True" FlowDirection="RightToLeft" />
+    </StackPanel>
+</UserControl>

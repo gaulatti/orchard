@@ -84,7 +84,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | navigation-menu | Pending | Pending | Full pinned contract |
 | otp-input | Pending | Pending | Full pinned contract |
 | popover | Pending | Pending | Full pinned contract |
-| progress | Pending | Pending | Full pinned contract |
+| progress | `BleeckerProgress`: three sizes, four variants and optional label | Registered size/variant matrix and independent consumer; runtime verification pending | In progress: [usage and gaps](progress.md); exact rendering, motion, lifecycle, edge values, accessibility, scaling and ARM64 runtime |
 | progress-stack | Pending | Pending | Full pinned contract |
 | radio-group | Pending | Pending | Full pinned contract |
 | checkbox | Pending | Pending | Full pinned contract |

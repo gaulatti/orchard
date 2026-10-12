@@ -2601,13 +2601,13 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerProgress.cs", "src/Orchard/Themes/Progress.xaml", "src/Orchard/Themes/Generic.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/ProgressFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/ProgressFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
+        "Finish rendered comparison, enabled/interrupted motion and lifecycle checks in docs/progress.md",
+        "Verify edge maxima/nonfinite values, native UIA, isolated scaling, contrast and ARM64 runtime",
         "Verify runtime, accessibility and visuals"
       ]
     },

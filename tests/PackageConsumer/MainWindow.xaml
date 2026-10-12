@@ -68,6 +68,7 @@
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerKbd x:Name="PackageKeyboard" Content="Esc" />
                 <orchard:BleeckerEyebrow x:Name="PackageEyebrow" Content="Straße" Rule="True" />
+                <orchard:BleeckerProgress x:Name="PackageProgress" Value="65" ShowLabel="True" AutomationProperties.Name="Package progress" />
             </StackPanel>
             </orchard:BleeckerCard>
         </NavigationView>

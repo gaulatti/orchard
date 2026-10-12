@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="ProgressDefault" Color="#2C5784" />
+            <SolidColorBrush x:Key="ProgressWarning" Color="#FF9677" />
+            <SolidColorBrush x:Key="ProgressDestructive" Color="#A65D57" />
+            <SolidColorBrush x:Key="ProgressFill" Color="#2C5784" />
+            <SolidColorBrush x:Key="ProgressTrack" Color="#E6D5B8" Opacity="0.15" />
+            <SolidColorBrush x:Key="ProgressLabel" Color="#595959" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="ProgressDefault" Color="#5BA3F5" />
+            <SolidColorBrush x:Key="ProgressWarning" Color="#D4AF37" />
+            <SolidColorBrush x:Key="ProgressDestructive" Color="#D47B75" />
+            <SolidColorBrush x:Key="ProgressFill" Color="#5BA3F5" />
+            <SolidColorBrush x:Key="ProgressTrack" Color="#1A2332" Opacity="0.2" />
+            <SolidColorBrush x:Key="ProgressLabel" Color="#F0F4F8" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="ProgressFill" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="ProgressTrack" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="ProgressLabel" Color="{ThemeResource SystemColorWindowTextColor}" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>
