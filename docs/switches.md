@@ -21,6 +21,9 @@ automation provider. The wrapper delegates its UIA Toggle pattern and focus to
 the native control; it reports the Windows CheckBox role and suppresses duplicate
 accessible children. Its visible template renders the Bleecker label and omits
 the Windows On/Off captions. This preserves the single source label.
+The Switch theme dictionary is available to the library template and is also
+attached directly to the native input before its template is applied. This
+supports resource lookup before the nested input joins the owner's visual tree.
 
 The track is 36×20px, with a 1px border and 10px radius. The white thumb is
 16×16px, inset 2px, and moves 16px when on. The label uses bundled Encode Sans
@@ -54,6 +57,9 @@ motion preference. A separate moving audit case explicitly restores the pinned
 it does not change desktop settings or reference component source. The track
 alpha at that point is .971037 and the thumb displacement is 14.9522px. A unit
 regression compares the native easing calculation with these observed values.
+The source color sampled into a 1px sRGB canvas is RGBA 46,88,133,248;
+a second regression checks premultiplied color interpolation against that raster,
+allowing one channel step for the canvas alpha round-trip.
 
 The registered Switches catalog fixture exercises rendered geometry/palette,
 disabled rejection, UIA activation/focus, consumer state in both directions,
@@ -62,6 +68,10 @@ template replacement, unload/reload and intermediate/reversed motion. It emits
 `switch-measurements-{Light,Dark}.json` and corresponding native captures.
 The independent NuGet consumer also instantiates and toggles the control.
 Runtime evidence must be collected before these checks are claimed as passed.
+The dedicated hosted CI desktop additionally sends actual Space/Tab and pointer
+input to its own foreground catalog window, verifying label/track activation,
+disabled rejection and RTL activation. Local smoke checks omit physical input
+and explicitly record that omission, preserving the developer's foreground app.
 
 Acceptance remains open: complete native/browser raster comparison (glyphs,
 baselines, pill edges, shadows and fallback fonts), actual keyboard/pointer/drag

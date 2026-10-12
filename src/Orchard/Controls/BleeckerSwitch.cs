@@ -15,6 +15,7 @@ namespace Orchard;
 public sealed class BleeckerSwitch : Control
 {
     private ToggleSwitch? action;
+    private ResourceDictionary? nativePalette;
     private readonly UISettings settings = new();
     private readonly AccessibilitySettings accessibility = new();
     private readonly InputSystemCursor hand = InputSystemCursor.Create(InputSystemCursorShape.Hand);
@@ -81,10 +82,16 @@ public sealed class BleeckerSwitch : Control
     protected override void OnApplyTemplate()
     {
         StopMotion(); StopObservingPalette(); ClearShadow();
-        if (action is not null) action.Toggled -= OnNativeToggled;
+        if (action is not null)
+        {
+            action.Toggled -= OnNativeToggled;
+            if (nativePalette is not null) action.Resources.MergedDictionaries.Remove(nativePalette);
+        }
         base.OnApplyTemplate();
         action = GetTemplateChild("PART_Switch") as ToggleSwitch
             ?? throw new InvalidOperationException("BleeckerSwitch requires a native ToggleSwitch named PART_Switch.");
+        nativePalette = new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Switch.xaml") };
+        action.Resources.MergedDictionaries.Add(nativePalette);
         action.ApplyTemplate();
         action.IsOn = IsOn;
         action.Toggled += OnNativeToggled;
