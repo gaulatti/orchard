@@ -98,6 +98,50 @@ cs += dictionary('DarkColors', tokens.themes.dark, 'string', value => JSON.strin
 cs += `    public static FrozenDictionary<string, string> Colors(BleeckerColorScheme scheme) => scheme switch\n    {\n        BleeckerColorScheme.Light => LightColors,\n        BleeckerColorScheme.Dark => DarkColors,\n        _ => throw new ArgumentOutOfRangeException(nameof(scheme), scheme, "Unknown color scheme.")\n    };\n}\n`;
 const outputs = { 'tokens/bleecker.tokens.json': JSON.stringify(tokens, null, 2) + '\n',
   'src/Orchard/Themes/Tokens.g.xaml': xaml, 'src/Orchard/Tokens/BleeckerTokens.g.cs': cs };
+// Button recipes follow the fixed component inventory at a86059013cd59684ce452849278ea81e734f2066.
+// Keep native Button templates; each instance imports only its selected palette.
+for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Link', 'Destructive']) {
+  let button = `<!-- Generated Bleecker ${variant} native button palette; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+  for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+    const dark = theme === 'Default';
+    button += `        <ResourceDictionary x:Key="${theme}">\n`;
+    for (const state of ['', 'PointerOver', 'Pressed', 'Disabled']) {
+      const hover = state === 'PointerOver' || state === 'Pressed';
+      let background, foreground, border;
+      switch (variant) {
+        case 'Primary': background = [hover && !dark ? 'deepSea' : 'primary', hover && dark ? 0.9 : 1]; foreground = ['primaryForeground', 1]; border = background; break;
+        case 'Secondary': background = [dark ? 'deepSea' : hover ? 'lightSand' : 'card', 1]; foreground = ['textPrimary', 1]; border = [dark ? 'textPrimary' : 'sand', dark ? 0.18 : 0.45]; break;
+        case 'Outline': background = ['primary', hover ? dark ? 0.07 : 0.045 : 0]; foreground = ['primary', 1]; border = ['primary', hover ? 0.7 : 0.45]; break;
+        case 'Subtle': background = [dark ? 'textPrimary' : hover ? 'sand' : 'lightSand', dark ? hover ? 0.11 : 0.07 : hover ? 0.25 : 0.75]; foreground = [dark ? 'textPrimary' : 'deepSea', 1]; border = ['primary', 0]; break;
+        case 'Ghost': background = [dark ? 'textPrimary' : 'sand', hover ? dark ? 0.06 : 0.12 : 0]; foreground = ['textPrimary', 1]; border = ['primary', 0]; break;
+        case 'Link': background = ['primary', 0]; foreground = [hover ? dark ? 'lightSand' : 'deepSea' : 'primary', 1]; border = ['primary', 0]; break;
+        case 'Destructive': background = ['destructive', hover ? 0.9 : 1]; foreground = ['destructiveForeground', 1]; border = background; break;
+      }
+      for (const [property, [key, alpha]] of Object.entries({ Background: background, Foreground: foreground, BorderBrush: border })) {
+        const filled = variant === 'Primary' || variant === 'Destructive';
+        const system = property === 'Background' ? filled ? 'SystemColorHighlightColor' : 'SystemColorWindowColor'
+          : state === 'Disabled' ? 'SystemColorGrayTextColor' : filled ? 'SystemColorHighlightTextColor' : 'SystemColorWindowTextColor';
+        const color = theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(colors[key]);
+        const opacity = theme === 'HighContrast' ? 1 : alpha * (state === 'Disabled' ? 0.45 : 1);
+        button += `            <SolidColorBrush x:Key="Button${property}${state}" Color="${color}" Opacity="${opacity}" />\n`;
+      }
+    }
+    button += '        </ResourceDictionary>\n';
+  }
+  button += `    </ResourceDictionary.ThemeDictionaries>
+    <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+        <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
+        <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+</ResourceDictionary>\n`;
+  outputs[`src/Orchard/Themes/Buttons/${variant}.g.xaml`] = button;
+}
 for (const [path, content] of Object.entries(outputs)) {
   const url = new URL(path, root);
   if (check) {

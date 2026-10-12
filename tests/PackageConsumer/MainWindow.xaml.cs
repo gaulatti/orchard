@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Media;
@@ -36,12 +37,21 @@ public sealed partial class MainWindow : Window
                 var scheme = theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark;
                 var color = ((SolidColorBrush)Action.Background).Color;
                 Require($"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], $"Package theme mismatch: {theme}");
+                PackageAction.ApplyTemplate();
+                var native = VisualTreeHelper.GetChild(PackageAction, 0) as Button;
+                Require(native is not null && native.ActualWidth > 0, "Packaged component template did not load.");
+                var componentColor = ((SolidColorBrush)native!.Background).Color;
+                Require($"#{componentColor.A:X2}{componentColor.R:X2}{componentColor.G:X2}{componentColor.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], "Packaged per-variant resources did not load.");
                 await CaptureAsync(theme);
             }
             Input.Text = "Package interaction verified";
             ((IInvokeProvider)new ButtonAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke();
             await Task.Delay(100);
             Require(Result.Text == "Saved: Package interaction verified", "Package button invocation failed.");
+            Result.Text = "Ready";
+            ((IInvokeProvider)new ButtonAutomationPeer((Button)VisualTreeHelper.GetChild(PackageAction, 0)).GetPattern(PatternInterface.Invoke)).Invoke();
+            await Task.Delay(100);
+            Require(Result.Text == "Saved: Package interaction verified", "Packaged component Click event failed.");
             App.Report(true, "Package resources, fonts, light/dark themes, layout and native action verified.");
         }
         catch (Exception error) { App.Report(false, error.ToString()); }

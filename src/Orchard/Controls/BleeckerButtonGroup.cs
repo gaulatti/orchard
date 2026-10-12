@@ -10,8 +10,8 @@ namespace Orchard;
 /// <summary>A connected strip of native buttons. Each button retains its own command and focus.</summary>
 public sealed class BleeckerButtonGroup : Panel
 {
-    private readonly Dictionary<ButtonBase, ChildAppearance> appearances = new();
-    private ButtonBase[] visible = [];
+    private readonly Dictionary<Control, ChildAppearance> appearances = new();
+    private Control[] visible = [];
     private double[] widths = [];
 
     public BleeckerButtonGroup()
@@ -36,10 +36,10 @@ public sealed class BleeckerButtonGroup : Panel
     {
         if (Orientation is not (Orientation.Horizontal or Orientation.Vertical))
             throw new InvalidOperationException("Button group orientation must be Horizontal or Vertical.");
-        if (Children.Any(child => child is not ButtonBase))
-            throw new InvalidOperationException("BleeckerButtonGroup accepts native ButtonBase children only.");
+        if (Children.Any(child => child is not ButtonBase and not BleeckerButton))
+            throw new InvalidOperationException("BleeckerButtonGroup accepts ButtonBase or BleeckerButton children only.");
 
-        var children = Children.Cast<ButtonBase>().ToArray();
+        var children = Children.Cast<Control>().ToArray();
         foreach (var removed in appearances.Keys.Except(children).ToArray())
         {
             appearances[removed].Restore(removed);
@@ -105,12 +105,12 @@ public sealed class BleeckerButtonGroup : Panel
         appearances.Clear();
     }
 
-    private sealed class ChildAppearance(ButtonBase child)
+    private sealed class ChildAppearance(Control child)
     {
         private readonly LocalValue radius = new(child, Control.CornerRadiusProperty);
         private readonly LocalValue border = new(child, Control.BorderThicknessProperty);
         private readonly LocalValue margin = new(child, MarginProperty);
-        public void Restore(ButtonBase target)
+        public void Restore(Control target)
         {
             radius.Restore(target, Control.CornerRadiusProperty);
             border.Restore(target, Control.BorderThicknessProperty);

@@ -81,6 +81,10 @@ public sealed partial class MainWindow : Window
             await VerifyButtonStatesAsync(DisabledAction, scheme, disabled: true);
             VerifyButtonGroup();
             await Toggles.VerifyAsync(scheme);
+            await Buttons.VerifyAsync(scheme);
+            Buttons.StartBringIntoView();
+            await Task.Delay(350);
+            await CaptureAsync(Path.Combine(folder, $"buttons-{theme.ToString().ToLowerInvariant()}.png"));
             Toggles.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"toggles-{theme.ToString().ToLowerInvariant()}.png"));

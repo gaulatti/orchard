@@ -61,6 +61,7 @@
                              TextWrapping="Wrap" MinHeight="100" Style="{StaticResource BleeckerTextBoxStyle}" />
                 </StackPanel>
                 <local:TogglesFixture x:Name="Toggles" />
+                <local:ButtonsFixture x:Name="Buttons" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>

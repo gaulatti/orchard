@@ -1,6 +1,7 @@
 <Window x:Class="PackageConsumer.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard"
     Title="Orchard package consumer">
     <Grid x:Name="Root" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <NavigationView PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
@@ -19,6 +20,7 @@
                 </ComboBox>
                 <Button x:Name="Action" Content="Save locally" Click="OnSave" Style="{StaticResource BleeckerPrimaryButtonStyle}" />
                 <Button Content="Secondary action" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" AutomationProperties.Name="Package component" />
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
             </StackPanel>
         </NavigationView>

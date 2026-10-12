@@ -1,0 +1,33 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Orchard">
+    <Style TargetType="local:BleeckerButton">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="AutomationProperties.AccessibilityView" Value="Raw" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BleeckerButton">
+                    <Button x:Name="PART_Action" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                            CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}"
+                            AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}"
+                            AutomationProperties.HelpText="{TemplateBinding AutomationProperties.HelpText}">
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <ProgressRing x:Name="PART_Progress" Width="16" Height="16" MinWidth="0" MinHeight="0"
+                                          IsActive="False" Visibility="Collapsed" VerticalAlignment="Center" Margin="0,0,8,0"
+                                          Foreground="{Binding Foreground, ElementName=PART_Action}"
+                                          AutomationProperties.AccessibilityView="Raw" />
+                            <ContentPresenter Grid.Column="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              VerticalAlignment="Center" />
+                        </Grid>
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

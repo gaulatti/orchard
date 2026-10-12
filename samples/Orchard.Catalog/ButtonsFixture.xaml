@@ -1,0 +1,45 @@
+<UserControl x:Class="Orchard.Catalog.ButtonsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Buttons" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Seven variants · four sizes · native commands and loading" Style="{StaticResource BleeckerBodyStyle}" />
+        <Grid ColumnSpacing="20">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+            <StackPanel Spacing="8">
+                <orchard:BleeckerButton Content="Primary" AutomationProperties.Name="Primary" />
+                <orchard:BleeckerButton Variant="Secondary" Content="Secondary" />
+                <orchard:BleeckerButton Variant="Outline" Content="Outline" />
+                <orchard:BleeckerButton Variant="Subtle" Content="Subtle" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Spacing="8">
+                <orchard:BleeckerButton Variant="Ghost" Content="Ghost" />
+                <orchard:BleeckerButton Variant="Link" Content="Link action" />
+                <orchard:BleeckerButton Variant="Destructive" Content="Destructive" />
+                <orchard:BleeckerButton Content="Unavailable" IsEnabled="False" />
+                <orchard:BleeckerButton Content="Loading preview" IsLoading="True" />
+            </StackPanel>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <orchard:BleeckerButton Size="ExtraSmall" Content="Extra small" />
+            <orchard:BleeckerButton Size="Small" Content="Small" />
+            <orchard:BleeckerButton Size="Medium" Content="Medium" />
+            <orchard:BleeckerButton Size="Large" Content="Large" />
+        </StackPanel>
+        <ToggleSwitch x:Name="ConsumerEnabled" Header="Consumer enables action" IsOn="True" />
+        <ToggleSwitch x:Name="LoadingSwitch" Header="Simulate loading" />
+        <orchard:BleeckerButton x:Name="LoadingAction" Content="Run preview" AutomationProperties.Name="Run preview"
+                               IsEnabled="{Binding IsOn, ElementName=ConsumerEnabled}"
+                               IsLoading="{Binding IsOn, ElementName=LoadingSwitch}" CommandParameter="preview" />
+        <orchard:BleeckerButton Variant="Outline" HorizontalAlignment="Stretch" Content="Full-width action" />
+        <orchard:BleeckerButtonGroup x:Name="GroupedActions" HorizontalAlignment="Left" AutomationProperties.Name="Preview actions">
+            <orchard:BleeckerButton Variant="Secondary" Content="Preview" />
+            <orchard:BleeckerButton Variant="Secondary" Content="Details" />
+        </orchard:BleeckerButtonGroup>
+        <orchard:BleeckerButton Variant="Secondary" MaxWidth="260" AutomationProperties.Name="Review international coverage">
+            <TextBlock Text="Review international coverage · 東京 · São Paulo · القاهرة" TextWrapping="Wrap" />
+        </orchard:BleeckerButton>
+        <TextBlock x:Name="ButtonResult" Text="No command yet" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite" />
+    </StackPanel>
+</UserControl>
