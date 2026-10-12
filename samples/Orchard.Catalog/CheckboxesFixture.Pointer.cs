@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using Microsoft.UI.Content;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -131,9 +133,20 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff, "input-to-checkbox", true, 32648);
             editor.IsEnabled = true;
             await Check(DisabledOff, "other-owner-enabled", true, 32648);
+            samples.Add(new { phase = "editor-enabled-away", cursor = DescribeEditorCursor(input, editor) });
             await input.MoveAsync(editor);
-            await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32513)),
-                "Enabled editor lost its text cursor after leaving a disabled checkbox.");
+            samples.Add(new { phase = "editor-entered", cursor = DescribeEditorCursor(input, editor) });
+            try
+            {
+                await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32513)),
+                    "Enabled editor lost its text cursor after leaving a disabled checkbox.");
+            }
+            catch
+            {
+                samples.Add(new { phase = "editor-cursor-failed", cursor = DescribeEditorCursor(input, editor),
+                    previousOwner = DescribeDisabledPointer(input, DisabledOff) });
+                throw;
+            }
             samples.Add(new { phase = "checkbox-to-input", cursor = CurrentCheckboxCursor().ToInt64() });
             editor.IsEnabled = false;
             await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)),
@@ -210,6 +223,30 @@ public sealed partial class CheckboxesFixture
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale, samples }, new JsonSerializerOptions { WriteIndented = true }));
         }
         physicalInputSteps.Add("Disabled box-only hover/cursor, stationary lifecycle, clipping/scrolling/RTL and shared Input cursor ownership");
+    }
+
+    private object DescribeEditorCursor(NativeInputSession input, BleeckerInput editor)
+    {
+        var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public;
+        var tracker = typeof(BleeckerInput).GetField("disabledPointer", flags)?.GetValue(editor);
+        var protectedCursor = typeof(UIElement).GetProperty("ProtectedCursor", flags)?.GetValue(editor) as InputCursor;
+        var island = ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(editor.XamlRoot.ContentIslandEnvironment));
+        var sourceCursor = InputPointerSource.GetForIsland(island).Cursor;
+        var screen = PointerPosition();
+        var client = NativeScreenCapture.ClientBounds(input.Window);
+        var position = new Point((screen.X - client.X) / editor.XamlRoot.RasterizationScale,
+            (screen.Y - client.Y) / editor.XamlRoot.RasterizationScale);
+        return new { editor.IsEnabled, editor.IsLoaded, focus = editor.FocusState.ToString(),
+            native = CurrentCheckboxCursor().ToInt64(), expectedText = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32513)).ToInt64(),
+            protectedCursor = Cursor(protectedCursor), sourceCursor = Cursor(sourceCursor),
+            registered = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker) is not null,
+            implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),
+            pointerOver = typeof(BleeckerInput).GetField("pointerOver", flags)?.GetValue(editor),
+            hits = VisualTreeHelper.FindElementsInHostCoordinates(position, editor.XamlRoot.Content).Take(8)
+                .Select(item => new { type = item.GetType().FullName, name = (item as FrameworkElement)?.Name }).ToArray() };
+
+        static object Cursor(InputCursor? value) => new { type = value?.GetType().FullName,
+            shape = (value as InputSystemCursor)?.CursorShape.ToString() };
     }
 
     private static PointerPoint PointerPosition() { Require(ReadCheckboxPointer(out var point), "Could not read physical checkbox pointer."); return point; }

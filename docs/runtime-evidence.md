@@ -8,6 +8,18 @@ No component has full visual, input, accessibility and scaling acceptance.
 
 ## Rendered Checkbox names and resting Input validation
 
+The newer `bf910af` pointer candidate in
+[run 38322267056](https://github.com/gaulatti/orchard/actions/runs/38322267056)
+builds and passes 23 tests on both architectures. Both native catalogs pass
+Checkbox remount/rapid-remount, clipping, scrolling and RTL, then fail the
+enabled Input I-beam transition. Neither reaches package-consumer verification.
+The archived x64 evidence `11779656182` has SHA-256
+`b86793c623784cf134e9a301b7566d5e287a173a97cca0302438eabf8265cb55`;
+ARM64 `11779716166` has SHA-256
+`3ae86f7f376834f8486b1fd80496b06955492acc607a38fc24b23e371acff86c`.
+Both archives were downloaded and verified. This partial run does not replace
+the complete `ebfb6ac` baseline above.
+
 Commit `ebfb6ac` passes all three jobs in
 [run 38319267360](https://github.com/gaulatti/orchard/actions/runs/38319267360).
 Both native architectures pass the complete Light/Dark catalog, 23 tests and

@@ -333,6 +333,15 @@ detachment still release immediately. The physical matrix adds three rapid
 remove/add cycles for both Checkbox and Input, retaining a stationary pointer
 and checking actual cursor/hover output. This correction needs a new native run.
 
+At `bf910af`, native x64 and ARM64 both pass remount, all three Checkbox
+rapid-remount cycles, clipping, visibility, scrolling and RTL. Both then fail
+the strict I-beam check when moving from the disabled Checkbox to the enabled
+Input. The catalog still owns foreground and the pointer is at the Input's
+center; desktop ownership does not explain this failure. The fixture now saves
+the actual native cursor, the Input's ProtectedCursor, the root input source's
+cursor, current hit elements and observer state at that transition. Acceptance
+still compares the physical cursor handle with the system I-beam handle.
+
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual
 foreground process/class/package alongside the owned screen point. Physical
