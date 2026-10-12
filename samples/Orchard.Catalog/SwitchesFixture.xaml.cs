@@ -111,7 +111,7 @@ public sealed partial class SwitchesFixture : UserControl
         // Ordinary local catalog verification does not take over the user's input.
         if (Environment.GetEnvironmentVariable("CI") == "true")
         {
-            try { await VerifyPhysicalInputAsync(); }
+            try { await VerifyPhysicalInputAsync(scheme, folder); }
             finally
             {
                 await File.WriteAllTextAsync(Path.Combine(folder, $"switch-physical-input-{scheme}.json"),
@@ -168,8 +168,9 @@ public sealed partial class SwitchesFixture : UserControl
             var gap = control.FlowDirection == FlowDirection.RightToLeft ? trackBounds.Left - labelBounds.Right : labelBounds.Left - trackBounds.Right;
             Require(Math.Abs(gap - 12) < .01, $"Switch label gap differs: {control.Name}, gap={gap:R}.");
         }
-        if (control.Name == "LongLabel") Require(control.ActualHeight == 80 && Math.Abs(label.ActualWidth - 152) < .01,
-            $"Long switch label differs from its 152px-wide, four 20px reference lines: label={label.ActualWidth:R}x{label.ActualHeight:R}.");
+        var labelAllocation = Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(label).Width - label.Margin.Left - label.Margin.Right;
+        if (control.Name == "LongLabel") Require(control.ActualHeight == 80 && Math.Abs(labelAllocation - 152) < .01,
+            $"Long switch label differs from its 152px-wide, four 20px reference lines: allocation={labelAllocation:R}, height={label.ActualHeight:R}.");
         if (control.Name == "Off") Require(control.ActualHeight == 20 && label.DesiredSize.Height == 20 && label.ActualWidth > 120,
             $"First-display switch label wrapped or clipped despite available width: control={control.ActualWidth:R}x{control.ActualHeight:R}, label={label.ActualWidth:R}x{label.ActualHeight:R}, desired={label.DesiredSize}.");
         if (control.Name == "Off") Require(Math.Abs(control.ActualWidth - 173.296875) < .05,
@@ -257,7 +258,7 @@ public sealed partial class SwitchesFixture : UserControl
         foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
     }
 
-    private async Task VerifyPhysicalInputAsync()
+    private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)
     {
         physicalInputSteps.Clear();
         using var process = Process.GetCurrentProcess();
@@ -279,6 +280,13 @@ public sealed partial class SwitchesFixture : UserControl
             physicalInputSteps.Add("Own catalog window acquired foreground input");
             Off.IsOn = false;
             await SettleAsync(Off, false);
+            var screenRect = await NativeScreenCapture.CaptureClientAsync(window, Path.Combine(folder, $"switch-window-{scheme}.png"));
+            await File.WriteAllTextAsync(Path.Combine(folder, $"switch-window-bounds-{scheme}.json"),
+                JsonSerializer.Serialize(new { client = screenRect, displayScale = XamlRoot.RasterizationScale,
+                    rows = Rows.Children.OfType<BleeckerSwitch>().Select(control => new { control.Name,
+                        screen = FrameworkElementAutomationPeer.CreatePeerForElement(Find<ToggleSwitch>(control, "PART_Switch")).GetBoundingRectangle() }) },
+                    new JsonSerializerOptions { WriteIndented = true }));
+            physicalInputSteps.Add("Composed client pixels captured with native thumb shadows");
             var native = Find<ToggleSwitch>(Off, "PART_Switch");
             Require(native.Focus(FocusState.Keyboard), "Native switch could not receive keyboard focus.");
             SendKey(0x20); // Space

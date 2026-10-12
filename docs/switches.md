@@ -39,9 +39,14 @@ inline-flex sizing and prevents the star column from shrinking an ordinary
 label to its longest word and clipping it during first arrangement. The native
 input and visible label stretch to their allocated widths. The unwrapped
 measurement disables layout rounding too, avoiding whole-pixel inflation of the
-natural row width. The runtime fixture checks the initial single-line row
+natural row width. Its preferred row width is rounded outward by one native
+float step: subtracting the track and margin must not round the label's available
+width below the glyph advance and move its final word to a second line.
+The runtime fixture checks the initial single-line row
 against its 173.296875px browser measurement with 0.05px text-shaping tolerance,
-and the four-line 200px row retains a 152px label allocation.
+and the four-line 200px row retains a 152px label allocation. The allocation is
+measured from the layout slot minus the margin; TextBlock ActualWidth reports
+its longest rendered line, which can be narrower than the wrapping allocation.
 
 The source's hidden checkbox has no visible focus treatment, so the template does not add a
 Windows stock focus ring. Keyboard focus visibility remains an acceptance gap.
@@ -103,6 +108,12 @@ and restores the pointer. Painted template parts have no automation peer, so
 pointer targets use their visual bounds relative to the native input's screen
 rectangle and the XamlRoot display scale. Partial physical steps are retained
 even when a later check fails.
+Hosted CI also emits `switch-window-{Light,Dark}.png` from the composed client
+pixels, with screen bounds in a companion JSON file. The capture requires its
+own foreground window, checks that the client is visible and unoccluded, and
+flushes desktop composition before copying screen pixels. This includes the
+composition thumb shadow omitted by XAML RenderTargetBitmap captures. These
+screenshots support visual inspection; capturing alone does not establish parity.
 The disabled-activation regression accepts the native UIA ElementNotEnabled
 HRESULT `0x80040200`, which this SDK projection exposes as COMException, while
 also requiring the consumer Boolean to remain unchanged.

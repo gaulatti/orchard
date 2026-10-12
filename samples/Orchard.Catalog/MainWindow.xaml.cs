@@ -311,7 +311,7 @@ public sealed partial class MainWindow : Window
         return new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
     }
 
-    private static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
+    internal static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
     {
         using var stream = new InMemoryRandomAccessStream();
         var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);

@@ -143,6 +143,10 @@ public sealed class BleeckerSwitch : Control
         intrinsicLabel.FlowDirection = label.FlowDirection;
         intrinsicLabel.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
         var preferredWidth = 36 + (string.IsNullOrEmpty(Label) ? 0 : 12 + intrinsicLabel.DesiredSize.Width);
+        // XAML's float-sized layout can round the row back below its measured
+        // glyph advance after subtracting the track and margin. One outward
+        // float step prevents an otherwise available final word from wrapping.
+        if (!string.IsNullOrEmpty(Label)) preferredWidth = MathF.BitIncrement((float)preferredWidth);
         var width = Math.Min(availableSize.Width, preferredWidth);
         var measured = base.MeasureOverride(new Windows.Foundation.Size(width, availableSize.Height));
         return new Windows.Foundation.Size(width, measured.Height);
