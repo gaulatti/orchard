@@ -7,6 +7,7 @@
             <SolidColorBrush x:Key="BleeckerMenuBackgroundBrush" Color="#FFFFFFFF" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuBorderBrush" Color="#FFE6D5B8" Opacity="0.35" />
             <SolidColorBrush x:Key="BleeckerMenuHoverBrush" Color="#FFE6D5B8" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="#FF1A374D" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FF000000" Opacity="0.05" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF1A374D" />
@@ -116,6 +117,7 @@
             <SolidColorBrush x:Key="BleeckerMenuBackgroundBrush" Color="#FF182533" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
             <SolidColorBrush x:Key="BleeckerMenuHoverBrush" Color="#FF1A2332" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="#FFF0F4F8" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF182533" />
@@ -225,6 +227,7 @@
             <SolidColorBrush x:Key="BleeckerMenuBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="{ThemeResource SystemColorWindowTextColor}" />

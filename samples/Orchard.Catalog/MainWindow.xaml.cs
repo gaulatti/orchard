@@ -89,6 +89,7 @@ public sealed partial class MainWindow : Window
             await Separators.VerifyAsync(scheme);
             await StatusBadges.VerifyAsync(scheme);
             await Menus.VerifyAsync(scheme, folder);
+            await Notifications.VerifyAsync(scheme, folder);
             StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"status-badges-{theme.ToString().ToLowerInvariant()}.png"));

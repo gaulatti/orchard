@@ -1796,14 +1796,23 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerNotificationBadge.xaml",
+        "src/Orchard/Controls/BleeckerNotificationBadge.xaml.cs",
+        "src/Orchard/Controls/BleeckerNotificationItem.cs"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/NotificationsFixture.xaml"
+      ],
+      "regressionTests": [
+        "NotificationsFixture.VerifyAsync",
+        "PackageConsumer.MainWindow.OnLoaded"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Reference motion, exact shadow and edge placement",
+        "Full pointer/keyboard/disabled, focus restoration, long content and constrained viewport matrix",
+        "Live themes, contrast colors, Narrator, text/display scaling and actual ARM64 runtime"
       ]
     },
     {

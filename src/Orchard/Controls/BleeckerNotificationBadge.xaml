@@ -1,0 +1,102 @@
+<UserControl x:Class="Orchard.BleeckerNotificationBadge"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard" IsTabStop="False">
+    <Grid Width="40" Height="40">
+        <local:BleeckerIconButton x:Name="Trigger" AutomationProperties.Name="Notifications">
+            <local:BleeckerIconButton.Content>
+                <ContentControl IsTabStop="False" IsHitTestVisible="False">
+                    <ContentControl.Template><ControlTemplate TargetType="ContentControl">
+                        <!-- Lucide Bell 0.563.0; see licenses/LICENSE-Lucide.txt. -->
+                        <Viewbox Width="18" Height="18"><Canvas Width="24" Height="24">
+                            <Path Data="M10.268 21a2 2 0 0 0 3.464 0 M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+                                Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                        </Canvas></Viewbox>
+                    </ControlTemplate></ContentControl.Template>
+                </ContentControl>
+            </local:BleeckerIconButton.Content>
+            <local:BleeckerIconButton.Flyout>
+                <Flyout x:Name="Popup" Placement="BottomEdgeAlignedRight" AreOpenCloseAnimationsEnabled="False" ShouldConstrainToRootBounds="True">
+                    <Flyout.FlyoutPresenterStyle><Style TargetType="FlyoutPresenter">
+                        <Setter Property="Width" Value="320" /><Setter Property="MinWidth" Value="320" /><Setter Property="MinHeight" Value="0" />
+                        <Setter Property="Padding" Value="6" /><Setter Property="CornerRadius" Value="7" />
+                        <Setter Property="IsDefaultShadowEnabled" Value="False" />
+                        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="FlyoutPresenter">
+                            <local:BleeckerOverlaySurface AutomationProperties.AccessibilityView="Raw">
+                                <ScrollViewer HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" IsTabStop="False">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                </ScrollViewer>
+                            </local:BleeckerOverlaySurface>
+                        </ControlTemplate></Setter.Value></Setter>
+                    </Style></Flyout.FlyoutPresenterStyle>
+                    <StackPanel>
+                        <Grid Padding="8,6"><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                            <local:BleeckerMenuLabel Text="Notifications" />
+                            <Button x:Name="MarkRead" Grid.Column="1" Content="Mark all read" VerticalAlignment="Center" local:BleeckerMenuFocus.IsEnabled="True">
+                                <Button.Style><Style TargetType="Button">
+                                    <Setter Property="MinHeight" Value="0" /><Setter Property="MinWidth" Value="0" /><Setter Property="Padding" Value="0" />
+                                    <Setter Property="UseSystemFocusVisuals" Value="False" /><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="12" />
+                                    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal" />
+                                                    <VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="LinkText.Foreground" Value="{ThemeResource BleeckerNotificationLinkHoverBrush}" /><Setter Target="LinkText.TextDecorations" Value="Underline" /></VisualState.Setters></VisualState>
+                                                    <VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="LinkText.Foreground" Value="{ThemeResource BleeckerNotificationLinkHoverBrush}" /><Setter Target="LinkText.TextDecorations" Value="Underline" /></VisualState.Setters></VisualState>
+                                                    <VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="LinkText.Opacity" Value="0.5" /></VisualState.Setters></VisualState>
+                                                </VisualStateGroup>
+                                                <VisualStateGroup x:Name="FocusStates"><VisualState x:Name="Unfocused" /><VisualState x:Name="Focused"><VisualState.Setters><Setter Target="LinkText.TextDecorations" Value="Underline" /></VisualState.Setters></VisualState></VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <TextBlock x:Name="LinkText" Text="{TemplateBinding Content}" Foreground="{ThemeResource BleeckerSeaBrush}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="16" LineStackingStrategy="BlockLineHeight" />
+                                        </Grid>
+                                    </ControlTemplate></Setter.Value></Setter>
+                                </Style></Button.Style>
+                            </Button>
+                        </Grid>
+                        <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
+                        <TextBlock x:Name="EmptyState" Text="No notifications" Padding="8,24" TextAlignment="Center" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
+                        <ItemsControl x:Name="NotificationItems" ItemsSource="{x:Bind Items, Mode=OneWay}">
+                            <ItemsControl.ItemTemplate><DataTemplate x:DataType="local:BleeckerNotificationItem">
+                                <Button Click="OnNotificationClick" Command="{x:Bind Command, Mode=OneWay}" CommandParameter="{x:Bind CommandParameter, Mode=OneWay}" AutomationProperties.Name="{x:Bind local:BleeckerNotificationBadge.ItemName(Title, Description, Timestamp), Mode=OneWay}" local:BleeckerMenuFocus.IsEnabled="True">
+                                    <Button.Style><Style TargetType="Button">
+                                        <Setter Property="HorizontalAlignment" Value="Stretch" /><Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="Padding" Value="8" />
+                                        <Setter Property="UseSystemFocusVisuals" Value="False" /><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="14" />
+                                        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+                                            <Grid x:Name="RowRoot" CornerRadius="7" Background="Transparent">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal" />
+                                                        <VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="RowRoot.Background" Value="{ThemeResource BleeckerMenuHoverBrush}" /></VisualState.Setters></VisualState>
+                                                        <VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="RowRoot.Background" Value="{ThemeResource BleeckerMenuHoverBrush}" /></VisualState.Setters></VisualState>
+                                                        <VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="RowRoot.Opacity" Value="0.5" /></VisualState.Setters></VisualState>
+                                                    </VisualStateGroup>
+                                                    <VisualStateGroup x:Name="FocusStates"><VisualState x:Name="Unfocused" /><VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState></VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="7" Opacity="0" IsHitTestVisible="False">
+                                                    <Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="7" />
+                                                </Border>
+                                                <ContentPresenter Padding="{TemplateBinding Padding}" Content="{TemplateBinding Content}" HorizontalContentAlignment="Stretch" />
+                                            </Grid>
+                                        </ControlTemplate></Setter.Value></Setter>
+                                    </Style></Button.Style>
+                                    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                        <Ellipse Width="8" Height="8" Margin="0,6,8,0" VerticalAlignment="Top" Fill="{ThemeResource BleeckerSeaBrush}" Visibility="{x:Bind local:BleeckerNotificationBadge.UnreadVisibility(IsUnread), Mode=OneWay}" />
+                                        <StackPanel Grid.Column="1">
+                                            <Grid>
+                                                <TextBlock Text="{x:Bind Title, Mode=OneWay}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextPrimaryBrush}" TextWrapping="Wrap" Visibility="{x:Bind local:BleeckerNotificationBadge.ReadVisibility(IsUnread), Mode=OneWay}" />
+                                                <TextBlock Text="{x:Bind Title, Mode=OneWay}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextPrimaryBrush}" TextWrapping="Wrap" Visibility="{x:Bind local:BleeckerNotificationBadge.UnreadVisibility(IsUnread), Mode=OneWay}" />
+                                            </Grid>
+                                            <TextBlock Text="{x:Bind Description, Mode=OneWay}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" LineHeight="16" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="Wrap" Visibility="{x:Bind local:BleeckerNotificationBadge.TextVisibility(Description), Mode=OneWay}" />
+                                            <TextBlock Text="{x:Bind Timestamp, Mode=OneWay}" Margin="0,4,0,0" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" LineHeight="16" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="Wrap" Visibility="{x:Bind local:BleeckerNotificationBadge.TextVisibility(Timestamp), Mode=OneWay}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Button>
+                            </DataTemplate></ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Flyout>
+            </local:BleeckerIconButton.Flyout>
+        </local:BleeckerIconButton>
+        <Border x:Name="CountBadge" Height="16" MinWidth="16" Padding="4,0" CornerRadius="8" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{ThemeResource BleeckerTerracottaBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw">
+            <TextBlock x:Name="CountText" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="10" LineHeight="15" LineStackingStrategy="BlockLineHeight" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+    </Grid>
+</UserControl>

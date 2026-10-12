@@ -46,6 +46,7 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     ['Hover', theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors.sand), theme === 'Default' ? .15 : .1]])
     xaml += `            <SolidColorBrush x:Key="BleeckerMenu${name}Brush" Color="${color}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
   // Pinned separator.tsx: bg-black/5 dark:bg-white/10; no interaction styling.
+  xaml += `            <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(theme === 'Default' ? colors.textPrimary : colors.deepSea)}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .05}" />\n`;
   for (const [key, value] of Object.entries(colors)) {
     const color = theme === 'HighContrast' ? `{ThemeResource ${highContrastColor(key)}}` : argb(value);

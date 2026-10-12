@@ -1,0 +1,23 @@
+<UserControl x:Class="Orchard.Catalog.NotificationsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16">
+        <TextBlock Text="Notifications" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <StackPanel Orientation="Horizontal" Spacing="24">
+            <StackPanel Spacing="8"><TextBlock Text="Unread" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerNotificationBadge x:Name="Badge" Count="3" HorizontalAlignment="Left">
+                    <orchard:BleeckerNotificationItem Id="1" Title="New order" Description="Order #1234 received" Timestamp="2m ago" IsUnread="True" />
+                    <orchard:BleeckerNotificationItem Id="2" Title="Payment failed" Description="Order #1230" Timestamp="1h ago" IsUnread="True" />
+                    <orchard:BleeckerNotificationItem Id="3" Title="Weekly report ready" Timestamp="3h ago" />
+                </orchard:BleeckerNotificationBadge>
+            </StackPanel>
+            <StackPanel Spacing="8"><TextBlock Text="Empty" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerNotificationBadge x:Name="Empty" HorizontalAlignment="Left" />
+            </StackPanel>
+            <StackPanel Spacing="8"><TextBlock Text="99+" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerNotificationBadge x:Name="Overflow" Count="120" HorizontalAlignment="Left" />
+            </StackPanel>
+        </StackPanel>
+        <TextBlock x:Name="Result" Text="No notification action yet" Style="{StaticResource BleeckerBodyStyle}" />
+    </StackPanel>
+</UserControl>

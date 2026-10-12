@@ -61,6 +61,18 @@ public sealed partial class MainWindow : Window
                     $"Packaged menu label mismatch: height={PackageLabel.ActualHeight}, font={PackageLabel.FontFamily.Source}, control={labelPeer.IsControlElement()}, content={labelPeer.IsContentElement()}, name={labelPeer.GetName()}, type={labelPeer.GetAutomationControlType()}.");
                 PackageMenu.Hide();
                 await Task.Delay(150);
+                var notificationTrigger = (BleeckerIconButton)PackageNotifications.FindName("Trigger");
+                ((IInvokeProvider)new ButtonAutomationPeer(notificationTrigger).GetPattern(PatternInterface.Invoke)).Invoke();
+                await Task.Delay(200);
+                var notificationPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot)
+                    .Select(popup => popup.Child).OfType<FlyoutPresenter>().Single();
+                Require(notificationPresenter.ActualWidth == 320 && notificationTrigger.ActualHeight == 40 &&
+                    ((TextBlock)PackageNotifications.FindName("CountText")).Text == "1",
+                    "Packaged notification control lost its XAML resources or geometry.");
+                Require(((ItemsControl)PackageNotifications.FindName("NotificationItems")).Items.Count == 1,
+                    "Packaged notification collection did not reach the popup.");
+                notificationTrigger.Flyout.Hide();
+                await Task.Delay(150);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
                 Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 20 && PackageCard.ActualWidth > 0,
                     "Packaged card did not load its geometry and content template.");

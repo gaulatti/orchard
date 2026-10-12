@@ -31,6 +31,9 @@
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />
                     <orchard:BleeckerLoadingSpinner x:Name="PackageSpinner" Size="Small" AutomationProperties.Name="Preparing local preview" />
+                    <orchard:BleeckerNotificationBadge x:Name="PackageNotifications" Count="1">
+                        <orchard:BleeckerNotificationItem Id="local-review" Title="Local review" IsUnread="True" />
+                    </orchard:BleeckerNotificationBadge>
                 </StackPanel>
                 <TextBlock Text="Fictional local content. Resources and fonts come from the NuGet package."
                            Style="{StaticResource BleeckerBodyStyle}" />
