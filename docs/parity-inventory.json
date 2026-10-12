@@ -2970,12 +2970,12 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": ["src/Orchard/Controls/BleeckerSwitch.cs", "src/Orchard/Themes/Switch.xaml", "src/Orchard/Themes/Generic.xaml"],
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerSwitch.cs", "src/Orchard/Motion/BleeckerCssTransition.cs", "src/Orchard/Colors/BleeckerColorMix.cs", "src/Orchard/Themes/Switch.xaml", "src/Orchard/Themes/Generic.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/SwitchesFixture.xaml"],
       "regressionTests": ["samples/Orchard.Catalog/SwitchesFixture.xaml.cs: VerifyAsync", "tests/Orchard.Tests/SwitchMotionTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Resolve native ARM64 foreground input and collect remaining motion/consumer runtime evidence; x64 registered checks passed at 7001e3e",
+        "Resolve the native ARM64 WWAHost occlusion and collect remaining Dark-started/physical/consumer runtime evidence; x64 registered checks passed at f725ece; ARM64 Light-started motion/appearance passed before physical input failed",
         "Complete native/browser typography, pill, shadow and animation raster comparison",
         "Resolve Japanese fallback width mismatch (native 99.538086px; browser 111.453125px)",
         "Verify remaining drag/cursor/focus, animated appearance, live system contrast/Narrator and isolated scaling"

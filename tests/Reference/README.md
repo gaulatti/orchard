@@ -24,3 +24,13 @@ available candidate faces. Segoe UI/Arial matching the Japanese width does not
 identify the CJK fallback glyph family. Candidate output must not silently
 become a library font mapping. Browser observed here: Windows x64 Chrome 155;
 native x64/ARM64 probes are emitted by the registered Switches fixture.
+
+FontFace `local()` resolves face names. Some families require the `Regular`
+suffix; a failed bare-family lookup does not prove that the family is absent.
+The probe also compares canvas rasters from its successfully loaded aliases.
+Direct CSS family requests can silently choose another family, so zero
+`differingChannels` from a direct request is insufficient proof of identity.
+`namedDifferingChannels` uses the loaded face alias. Yu Gothic UI Regular gives
+99.538086px in canvas, matching the native default's advance, while full Yu
+Gothic faces give the reference's DOM width but different canvas glyphs. None
+of the tested named CJK faces matches the canonical canvas raster exactly.

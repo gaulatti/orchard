@@ -18,9 +18,16 @@
 document.getElementById('probe').addEventListener('click', async () => {
   await document.fonts.ready;
   const japanese='通知を有効にする';
-  const families=['Segoe UI','Arial','Yu Gothic UI','Yu Gothic','Meiryo UI','Meiryo','MS PGothic','MS Gothic','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK JP','Noto Sans JP','Noto Sans CJK SC','Arial Unicode MS','Droid Sans Fallback'];
+  const families=['Segoe UI','Arial','Yu Gothic UI','Yu Gothic UI Regular','Yu Gothic UI Semibold','Yu Gothic UI Semilight','Yu Gothic','Yu Gothic Regular','Yu Gothic Medium','Yu Gothic Bold','Meiryo UI','Meiryo','MS PGothic','MS Gothic','Microsoft YaHei UI','Microsoft YaHei UI Bold','Microsoft YaHei UI Light','Microsoft YaHei','Microsoft JhengHei UI','Microsoft JhengHei','SimSun'];
   const result={userAgent:navigator.userAgent,language:navigator.language,canonical:{japanese:document.getElementById('japanese').getBoundingClientRect().width,latin:document.getElementById('latin').getBoundingClientRect().width,font:getComputedStyle(document.getElementById('canonical')).font},fonts:Array.from(document.fonts).map(f=>({family:f.family,weight:f.weight,status:f.status})),candidates:[]};
   document.getElementById('rows').replaceChildren();
+  function raster(family) {
+    const canvas=document.createElement('canvas');canvas.width=160;canvas.height=28;
+    const ctx=canvas.getContext('2d');ctx.font='500 14px '+family;ctx.fillStyle='#2d2d2d';ctx.fillText(japanese,0,20);
+    return {width:ctx.measureText(japanese).width,pixels:ctx.getImageData(0,0,160,28).data};
+  }
+  const canonical=raster(getComputedStyle(document.getElementById('canonical')).fontFamily);
+  result.canonical.canvasWidth=canonical.width;
   for(let i=0;i<families.length;i++) {
     const family=families[i],alias='AuditLocal'+i;
     const face=new FontFace(alias,'local("'+family+'")',{weight:'500'});
@@ -32,7 +39,10 @@ document.getElementById('probe').addEventListener('click', async () => {
     row.append(name,sample,width);document.getElementById('rows').append(row);
     const measured=span.getBoundingClientRect().width;width.textContent=String(measured);
     const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');ctx.font='500 14px "'+alias+'"';
-    result.candidates.push({family,available:true,width:measured,canvasWidth:ctx.measureText(japanese).width});
+    const direct=raster('"'+family+'"'),named=raster('"'+alias+'"');let different=0,namedDifferent=0;
+    for(let p=0;p<direct.pixels.length;p++) {if(direct.pixels[p]!==canonical.pixels[p]) different++;if(named.pixels[p]!==canonical.pixels[p]) namedDifferent++;}
+    const style=getComputedStyle(span);
+    result.candidates.push({family,available:true,width:measured,canvasWidth:ctx.measureText(japanese).width,directCanvasWidth:direct.width,differingChannels:different,namedDifferingChannels:namedDifferent,style:{size:style.fontSize,weight:style.fontWeight,kerning:style.fontKerning}});
   }
   document.getElementById('result').textContent=JSON.stringify(result,null,2);
 });

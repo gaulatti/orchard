@@ -43,6 +43,40 @@ they do not support a lossless pixel-equality claim. Exact glyph/pill/shadow
 raster comparison, animated state/appearance transitions, drag/cursor/focus,
 contrast/Narrator and isolated scaling remain unaccepted.
 
+## Switch motion and hosted desktop follow-up
+
+At `f725ecea147cf88b0d6c1e57092f57e6fd198b96`,
+[run 38291211362](https://github.com/gaulatti/orchard/actions/runs/38291211362)
+passed x64 catalog/runtime and the independent consumer. Package 0.1.0 reports
+SHA-256 `de7c3c134dc77180bc117b27fd1e6db2e0ab2a00bdd6fd27d88d61c697b34487`.
+The x64 artifact `11766796078`, SHA-256
+`1ce00b21cae104a7c2db1cbb3a5e7d1733f3e1399a7d8316b15b2e93a6dd0f16`,
+was downloaded and hash-verified under `artifacts/ci-switch-f725ece-x64`.
+
+The native ARM64 job passed the Switch's Light appearance and motion checks
+before its physical-input failure. Animations were enabled. Separate reports
+retain intermediate track colors, off alpha, thumb movement, reversal and a
+palette change during a toggle. The appearance report marks `passed: true`;
+motion verification returned before physical input began. This verifies these
+Light-started checks, not the unexecuted Dark-started or full input matrix.
+The ARM64 artifact `11766885762`, SHA-256
+`bc060aefe622c54bdcb241e0067857413aa477659a6079b735b0b942588140b1`,
+was downloaded and hash-verified under `artifacts/ci-switch-f725ece-arm64`.
+
+The ARM64 session is active console session 2, WinSta0/Default, WTS state 0.
+The catalog is visible, uncloaked and topmost. The intended point is instead
+covered by a topmost `WWAHost` CoreWindow in the same session, and the Alt retry
+still cannot activate the catalog. Additional diagnostics query that process's
+application identity without its title or content. The physical check continues
+to reject an unowned target; the ARM64 consumer runtime remains skipped.
+
+Font probes at `fc93aa2` returned identical x64/ARM64 widths: 99.538086px for the
+default bundled family, and the same result with Segoe UI/Arial appended.
+Microsoft YaHei UI or MS Gothic produces 112px, which still differs from the
+111.453125px browser reference. These are diagnostic candidates, not accepted
+font mappings. Motion raster parity, fallback glyphs and the other acceptance
+gaps remain open.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

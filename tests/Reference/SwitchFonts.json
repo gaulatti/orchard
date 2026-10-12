@@ -4,7 +4,8 @@
   "canonical": {
     "japanese": 111.453125,
     "latin": 125.296875,
-    "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif"
+    "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+    "canvasWidth": 112
   },
   "fonts": [
     {
@@ -73,21 +74,121 @@
       "family": "Segoe UI",
       "available": true,
       "width": 111.453125,
-      "canvasWidth": 112
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 0,
+      "namedDifferingChannels": 0,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
       "family": "Arial",
       "available": true,
       "width": 111.453125,
-      "canvasWidth": 112
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 0,
+      "namedDifferingChannels": 0,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
       "family": "Yu Gothic UI",
       "available": false
     },
     {
+      "family": "Yu Gothic UI Regular",
+      "available": true,
+      "width": 99.546875,
+      "canvasWidth": 99.5380859375,
+      "directCanvasWidth": 99.5380859375,
+      "differingChannels": 3518,
+      "namedDifferingChannels": 3518,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
+      "family": "Yu Gothic UI Semibold",
+      "available": true,
+      "width": 100.625,
+      "canvasWidth": 100.611328125,
+      "directCanvasWidth": 100.611328125,
+      "differingChannels": 3697,
+      "namedDifferingChannels": 3697,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
+      "family": "Yu Gothic UI Semilight",
+      "available": true,
+      "width": 99.546875,
+      "canvasWidth": 99.5380859375,
+      "directCanvasWidth": 112,
+      "differingChannels": 0,
+      "namedDifferingChannels": 3432,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
       "family": "Yu Gothic",
       "available": false
+    },
+    {
+      "family": "Yu Gothic Regular",
+      "available": true,
+      "width": 111.453125,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 2583,
+      "namedDifferingChannels": 2583,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
+      "family": "Yu Gothic Medium",
+      "available": true,
+      "width": 111.453125,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 1714,
+      "namedDifferingChannels": 1714,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
+      "family": "Yu Gothic Bold",
+      "available": true,
+      "width": 111.453125,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 0,
+      "namedDifferingChannels": 2986,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
       "family": "Meiryo UI",
@@ -101,45 +202,127 @@
       "family": "MS PGothic",
       "available": true,
       "width": 106,
-      "canvasWidth": 106
+      "canvasWidth": 106,
+      "directCanvasWidth": 106,
+      "differingChannels": 2931,
+      "namedDifferingChannels": 2931,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
       "family": "MS Gothic",
       "available": true,
       "width": 112,
-      "canvasWidth": 112
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 2396,
+      "namedDifferingChannels": 2396,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
       "family": "Microsoft YaHei UI",
       "available": true,
       "width": 112,
-      "canvasWidth": 112
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 1064,
+      "namedDifferingChannels": 1064,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
+      "family": "Microsoft YaHei UI Bold",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 0,
+      "namedDifferingChannels": 1904,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
+    },
+    {
+      "family": "Microsoft YaHei UI Light",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 2871,
+      "namedDifferingChannels": 2871,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
       "family": "Microsoft YaHei",
       "available": true,
       "width": 112,
-      "canvasWidth": 112
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 1064,
+      "namedDifferingChannels": 1064,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
-      "family": "Noto Sans CJK JP",
-      "available": false
+      "family": "Microsoft JhengHei UI",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 2241,
+      "namedDifferingChannels": 2241,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
-      "family": "Noto Sans JP",
-      "available": false
+      "family": "Microsoft JhengHei",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 2241,
+      "namedDifferingChannels": 2241,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     },
     {
-      "family": "Noto Sans CJK SC",
-      "available": false
-    },
-    {
-      "family": "Arial Unicode MS",
-      "available": false
-    },
-    {
-      "family": "Droid Sans Fallback",
-      "available": false
+      "family": "SimSun",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112,
+      "directCanvasWidth": 112,
+      "differingChannels": 2611,
+      "namedDifferingChannels": 2611,
+      "style": {
+        "size": "14px",
+        "weight": "500",
+        "kerning": "auto"
+      }
     }
   ]
 }

@@ -144,7 +144,8 @@ only retained as a diagnostic. The check retains foreground, session and input
 desktop diagnostics even when activation fails.
 An occluded target also retains HWND class, executable basename, process/session,
 topmost status, visibility and DWM
-cloaking diagnostics, without other windows' titles or content. Window-station,
+cloaking diagnostics, plus the owning application's AUMID, without other windows'
+titles or content. Window-station,
 console-session and WTS connection state distinguish an inactive session from
 a geometry error. The fixture emits isolated Japanese label captures for the
 bundled font and explicit candidate font lists, restoring the original after

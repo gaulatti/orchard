@@ -63,10 +63,27 @@ internal static class NativeScreenCapture
                 catch (InvalidOperationException) { processReadError = "exited"; }
                 catch (System.ComponentModel.Win32Exception error) { processReadError = $"win32-{error.NativeErrorCode}"; }
             }
-            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, executable, processReadError, session,
+            var application = ApplicationIdentity(process);
+            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, executable, processReadError, application, session,
                 topmost = (GetWindowLongPtr(target, -20).ToInt64() & 8) != 0,
                 visible = IsWindowVisible(target), cloaked = status >= 0 ? (uint?)cloaked : null };
         }
+    }
+
+    private static object ApplicationIdentity(uint process)
+    {
+        var handle = OpenProcess(0x1000, false, process); // PROCESS_QUERY_LIMITED_INFORMATION
+        if (handle == IntPtr.Zero) return new { id = (string?)null, status = Marshal.GetLastWin32Error() };
+        try
+        {
+            uint length = 0;
+            var status = GetApplicationUserModelId(handle, ref length, null);
+            if (status != 122) return new { id = (string?)null, status };
+            var id = new System.Text.StringBuilder(checked((int)length));
+            status = GetApplicationUserModelId(handle, ref length, id);
+            return new { id = status == 0 ? id.ToString() : null, status };
+        }
+        finally { CloseHandle(handle); }
     }
 
     internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
@@ -135,6 +152,9 @@ internal static class NativeScreenCapture
     }
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
     [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
+    [DllImport("kernel32.dll", SetLastError = true)] private static extern IntPtr OpenProcess(uint access, [MarshalAs(UnmanagedType.Bool)] bool inherit, uint process);
+    [DllImport("kernel32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool CloseHandle(IntPtr handle);
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)] private static extern int GetApplicationUserModelId(IntPtr process, ref uint length, System.Text.StringBuilder? id);
     [DllImport("kernel32.dll")] private static extern uint WTSGetActiveConsoleSessionId();
     [DllImport("kernel32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ProcessIdToSessionId(uint process, out uint session);
     [DllImport("wtsapi32.dll", EntryPoint = "WTSQuerySessionInformationW", ExactSpelling = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool WTSQuerySessionInformation(IntPtr server, int session, int information, out IntPtr value, out uint length);
