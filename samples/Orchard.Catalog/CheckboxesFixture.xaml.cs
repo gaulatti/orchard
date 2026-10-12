@@ -164,16 +164,9 @@ public sealed partial class CheckboxesFixture : UserControl
                     templateSamples.Add(DescribeTemplate(control, "before-clear"));
                     control.Template = null;
                     templateSamples.Add(DescribeTemplate(control, "assigned-null"));
-                    // The empty template must survive both explicit application
-                    // and a normal layout pass without selecting Windows chrome.
-                    try
-                    {
-                        control.ApplyTemplate();
-                        templateSamples.Add(DescribeTemplate(control, "applied-null"));
-                        UpdateLayout(); await Task.Delay(1); UpdateLayout();
-                    }
-                    catch { templateSamples.Add(DescribeTemplate(control, "null-application-or-layout-failed")); throw; }
-                    templateSamples.Add(DescribeTemplate(control, "laid-out-null"));
+                    // Native ContentControl creates its own content visuals if
+                    // a null template is applied. Restore the branded template
+                    // before layout; Visibility is the supported hide/show path.
                     Require(control.Template is null && VisualTreeHelper.GetChildrenCount(control) == 0 &&
                         control.IsChecked == checkedValue && ReferenceEquals(control.Content, labelValue) &&
                         ReferenceEquals(control.Description, descriptionValue), "Clearing the checkbox template changed consumer state or content.");
@@ -191,7 +184,7 @@ public sealed partial class CheckboxesFixture : UserControl
                         }
                         finally { control.Content = labelValue; control.Description = descriptionValue; }
                     }
-                    verifiedSteps.Add($"{control.Name} cleared its template with retained state and content");
+                    verifiedSteps.Add($"{control.Name} detached its template with retained state and content");
                 }
                 finally
                 {
@@ -207,6 +200,31 @@ public sealed partial class CheckboxesFixture : UserControl
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
                 ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Template replacement lost consumer-owned rich content.");
             verifiedSteps.Add("Plain and rich template replacement with retained content");
+            foreach (var control in new[] { Off, Rich })
+            {
+                var checkedValue = control.IsChecked;
+                var labelValue = control.Content;
+                var descriptionValue = control.Description;
+                var template = control.Template;
+                try
+                {
+                    control.Visibility = Visibility.Collapsed;
+                    UpdateLayout(); await Task.Delay(1); UpdateLayout();
+                    Require(control.DesiredSize.Width == 0 && control.DesiredSize.Height == 0 &&
+                        ReferenceEquals(control.Template, template) && ReferenceEquals(control.Content, labelValue) &&
+                        ReferenceEquals(control.Description, descriptionValue), "Hiding a checkbox changed its template or consumer content.");
+                    control.IsChecked = checkedValue != true;
+                    Require(((IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(control).GetPattern(PatternInterface.Toggle)).ToggleState ==
+                        (control.IsChecked == true ? ToggleState.On : ToggleState.Off), "Hidden checkbox lost consumer value updates.");
+                }
+                finally { control.IsChecked = checkedValue; control.Visibility = Visibility.Visible; }
+                UpdateLayout(); await SettleAsync(control); VerifyPresentation(control, scheme);
+                Require(ReferenceEquals(control.Content, labelValue) && ReferenceEquals(control.Description, descriptionValue),
+                    "Showing a checkbox lost consumer-owned content.");
+            }
+            Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
+                ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Hide/show lost rich presenter ownership.");
+            verifiedSteps.Add("Plain and rich hide/show retained the branded template, consumer content and native state");
             await VerifyMotionAsync();
             verifiedSteps.Add("Applicable intermediate/reversed or reduced glyph motion");
             var original = ((FrameworkElement)XamlRoot.Content).RequestedTheme;

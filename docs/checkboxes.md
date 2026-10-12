@@ -62,16 +62,18 @@ and share the tested CSS reversal behavior with Switch. Palette changes do not
 restart unchanged property clocks. Reduced motion settles immediately; motion
 also snaps while Windows contrast is enabled. Rendering/settings/palette
 subscriptions detach on unload or template replacement and restore on reload.
-Temporarily clearing Template removes presentation without losing consumer
-state. Rich label/description elements detach from their old presenters before
-the replacement template receives them, preserving single visual ownership.
-Null assignment detaches Orchard's observers/content through the template
-property callback. The constructor points DefaultStyleResourceUri at Orchard's
-Generic.xaml so native default-style lookup uses the branded resource file.
-The style key remains fixed after construction. Native verification of this
-correction remains open. The lifecycle fixture
-requires an empty visual tree after normal layout, retained consumer objects,
-native value/content/name updates while empty, and successful nonempty restoration.
+Use Visibility.Collapsed to hide a checkbox while retaining its template,
+consumer state and content. A rendered replacement template must provide the
+required PART_* elements. When replacing a template, rich label/description
+elements detach from their old presenters before the replacement receives
+them, preserving single visual ownership. Null assignment detaches Orchard's
+observers/content immediately; restore a valid template before application or
+layout. Null is not a persistent empty-presentation state: native ContentControl
+creates default content visuals when it has content and no template. Orchard
+does not rewrite a consumer's template value or binding to suppress that SDK
+behavior. The style key remains fixed after construction. The lifecycle fixture
+checks immediate detachment, retained value/content/name, branded restoration
+and hide/show through normal layout with retained rich presenter ownership.
 
 The pinned default Storybook render measures 291.71875×42px, with 20px label and
 description lines and the 12/2px gaps. The light baseline and measurements are
@@ -150,14 +152,22 @@ At `775c1b1`, the x64 snapshots confirm null assignment immediately removes all
 visual children and original-template restoration rebuilds them. No managed
 template exception is traced: the explicit null ApplyTemplate failure happens
 before Orchard's override. Cleanup now observes null assignment itself.
-At `ec16816`, normal layout exposes the same underlying issue directly: WinUI
-loads a template without PART_Box after null assignment. The default style key
-is now cleared while empty, and the original explicit ApplyTemplate(null)
-check is retained alongside normal layout and restoration.
+At `ec16816`, normal layout exposes a template without PART_Box after null
+assignment. Clearing the default style key was attempted as a correction.
 At `2bf7205`, both architectures reject changing DefaultStyleKey after control
 initialization, including on restoration. That approach has been removed.
-The constructor now uses the SDK's DefaultStyleResourceUri property to name
-the actual branded style file; consumer Template bindings remain untouched.
+At `8dccce0`, an explicit constructor DefaultStyleResourceUri builds cleanly
+but x64 still fails at null ApplyTemplate. Its retained phase report shows a
+new unnamed Grid and a nonnull effective template despite the preceding null
+assignment. This matches the native
+[ContentControl application path](https://github.com/microsoft/microsoft-ui-xaml/blob/821749494b17ad994e05af503516e4aaab7c062d/dxaml/xcp/core/core/elements/ContentControl.cpp#L418),
+which creates default content visuals when no template child exists. The
+earlier assumption that this was stock CheckBox style lookup was incorrect.
+The unnecessary resource-URI override has been removed. The fixture now
+verifies detachment/restoration before layout and a separate Collapsed/Visible
+cycle through normal layout; it retains branded parts, consumer state/content,
+native value/name updates and rich ownership checks. Applying a persistent
+null template is not a supported way to hide a ContentControl-derived checkbox.
 
 The Japanese DOM audit compares actual text layout, rather than canvas
 measurement. The pinned component is 111.453125px wide for its Japanese label;

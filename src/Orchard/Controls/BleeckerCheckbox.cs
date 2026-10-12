@@ -34,7 +34,6 @@ public sealed class BleeckerCheckbox : CheckBox
     public BleeckerCheckbox()
     {
         DefaultStyleKey = typeof(BleeckerCheckbox);
-        DefaultStyleResourceUri = new Uri("ms-appx:///Orchard/Themes/Generic.xaml");
         Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Checkbox.xaml") });
         RegisterPropertyChangedCallback(IsCheckedProperty, (_, _) => UpdateVisuals(true));
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => UpdateVisuals(true));

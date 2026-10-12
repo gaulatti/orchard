@@ -229,6 +229,19 @@ been removed. DefaultStyleResourceUri is now set during construction to
 Orchard's Generic.xaml, using the pinned SDK property documented by
 [Microsoft](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control.defaultstyleresourceuri?view=windows-app-sdk-2.0).
 The same null application/layout/state/content/restoration gates remain active.
+At `8dccce0`, [run 38311418818](https://github.com/gaulatti/orchard/actions/runs/38311418818)
+again fails null-template application on x64 and ARM64; ARM64 build/independent
+consumer build passes. The x64 phase report is retained in the digest-verified
+`artifacts/ci-checkbox-8dccce0-x64` archive (SHA256
+`2942b4e88ab1b8e0f40871e2c08ff9293f281aff3aadbe9868a6f48624903b67`).
+It proves application creates an unnamed Grid and replaces the null effective
+template. Microsoft's ContentControl source explains this native content
+presentation path; it is not evidence of stock CheckBox style lookup. The
+constructor resource-URI experiment is removed. Lifecycle acceptance now
+checks immediate detach/valid restore and normal-layout hide/show using
+Visibility, including native state, content/name and rich ownership. A
+persistent null-template empty state was an incorrect fixture assumption;
+the consumer Template property and bindings remain untouched by Orchard.
 The checkbox fixture now captures an additional six-script, three-weight
 font comparison with explicit language tags, before its template lifecycle
 checks. The original and Yu Gothic candidates use actual bundled font
