@@ -37,6 +37,8 @@ public sealed partial class MainWindow : Window
                 Root.UpdateLayout();
                 Require(PackageEyebrow.ActualHeight == 16 && PackageEyebrow.FontSize == 11 && !PackageEyebrow.IsTabStop &&
                     PackageEyebrow.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf"), "Packaged eyebrow lost its resources or geometry.");
+                Require(((Grid)VisualTreeHelper.GetChild(PackageEyebrow, 0)).Children.OfType<TextBlock>().Single().Text == "STRASSE" &&
+                    (string)PackageEyebrow.Content == "Straße", "Packaged eyebrow lost the embedded Unicode mapping or changed consumer content.");
                 Require(PackageKeyboard.ActualHeight == 20 && PackageKeyboard.FontSize == 11 && !PackageKeyboard.IsTabStop &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageKeyboard).GetName() == "Esc",
                     "Packaged keyboard display lost its template, typography or accessible content.");

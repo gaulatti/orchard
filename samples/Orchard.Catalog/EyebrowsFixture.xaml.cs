@@ -16,6 +16,8 @@ public sealed partial class EyebrowsFixture : UserControl
         var text = Find<TextBlock>(Accent, "PART_Text");
         Require(text.Text == "PRIVATE CLIENT SERVICES" && (string)Accent.Content == "Private client services",
             "Eyebrow did not uppercase its display while retaining consumer content.");
+        Require(Find<TextBlock>(Expansion, "PART_Text").Text == "STRASSE · FFI · Ι\u0308\u0301" &&
+            (string)Expansion.Content == "Straße · ﬃ · ΐ", "Unicode uppercase expansions did not reach the displayed eyebrow or changed consumer content.");
         Require(text.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") && text.FontSize == 11 && text.FontWeight.Weight == 600 &&
             text.CharacterSpacing == 120 && text.LineHeight == 16 && Accent.ActualHeight == 16,
             $"Eyebrow typography differs: height={Accent.ActualHeight}.");

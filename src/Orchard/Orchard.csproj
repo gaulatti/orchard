@@ -15,6 +15,7 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />
     </ItemGroup>
@@ -40,5 +41,6 @@
         <None Include="../../tokens/LICENSE-Bleecker.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Radix.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-Unicode.txt" Pack="true" PackagePath="licenses/" />
     </ItemGroup>
 </Project>

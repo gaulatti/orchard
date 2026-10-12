@@ -10,6 +10,7 @@
         <orchard:BleeckerEyebrow x:Name="Empty" Content="" />
         <orchard:BleeckerEyebrow x:Name="Wrapped" Content="A longer section label wraps within the available content width" Width="180" Rule="True" />
         <orchard:BleeckerEyebrow Content="東京 · São Paulo · القاهرة" />
+        <orchard:BleeckerEyebrow x:Name="Expansion" Content="Straße · ﬃ · ΐ" />
         <orchard:BleeckerEyebrow x:Name="Disabled" Content="Disabled section" IsEnabled="False" />
         <orchard:BleeckerEyebrow x:Name="Rich" AutomationProperties.Name="Coverage">
             <TextBlock Text="COVERAGE" LineHeight="16" LineStackingStrategy="BlockLineHeight" />

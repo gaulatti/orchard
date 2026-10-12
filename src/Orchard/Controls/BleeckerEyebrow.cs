@@ -52,7 +52,7 @@ public sealed class BleeckerEyebrow : ContentControl
     {
         if (text is null || rich is null) return;
         var plain = (Content is null || Content is string) && ContentTemplate is null && ContentTemplateSelector is null;
-        text.Text = plain ? (Content as string ?? string.Empty).ToUpperInvariant() : string.Empty;
+        text.Text = plain ? BleeckerTextCasing.Uppercase(Content as string ?? string.Empty) : string.Empty;
         text.Visibility = plain ? Visibility.Visible : Visibility.Collapsed;
         rich.Visibility = plain ? Visibility.Collapsed : Visibility.Visible;
         rich.ContentTemplate = ContentTemplate;
