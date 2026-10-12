@@ -14,8 +14,8 @@
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerCard">
             <Grid>
                 <Canvas IsHitTestVisible="False">
-                    <Rectangle x:Name="PART_NearMask" Fill="{TemplateBinding Background}" />
-                    <Rectangle x:Name="PART_FarMask" Fill="{TemplateBinding Background}" />
+                    <Path x:Name="PART_NearMask" Fill="{TemplateBinding Background}" />
+                    <Path x:Name="PART_FarMask" Fill="{TemplateBinding Background}" />
                 </Canvas>
                 <Grid x:Name="PART_ShadowHost" IsHitTestVisible="False" />
                 <Border x:Name="PART_Surface" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"

@@ -28,5 +28,16 @@
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
             </StackPanel>
         </orchard:BleeckerCard>
+        <TextBlock Text="Overflow fixture: oversized content must stay inside the rounded card." Style="{StaticResource BleeckerBodyStyle}" />
+        <StackPanel Orientation="Horizontal" Spacing="24">
+        <Grid x:Name="ClipFixture" Width="160" Height="120" HorizontalAlignment="Left" Background="{ThemeResource BleeckerBackgroundBrush}">
+            <orchard:BleeckerCard x:Name="ClipCard" Width="80" Height="80" PaddingSize="None" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid Width="160" Height="120" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource BleeckerPrimaryBrush}" />
+            </orchard:BleeckerCard>
+        </Grid>
+        <orchard:BleeckerCard Variant="Elevated" CornerRadius="20,8,4,16" PaddingSize="Small" Width="160" Height="80" VerticalAlignment="Center">
+            <TextBlock Text="Asymmetric corners" TextWrapping="Wrap" />
+        </orchard:BleeckerCard>
+        </StackPanel>
     </StackPanel>
 </UserControl>

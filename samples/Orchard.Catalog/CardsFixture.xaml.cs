@@ -5,6 +5,9 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Data;
+using Windows.Storage.Streams;
 
 namespace Orchard.Catalog;
 
@@ -50,6 +53,39 @@ public sealed partial class CardsFixture : UserControl
         await Task.Delay(100);
         Require(Math.Abs(((SolidColorBrush)SurfaceCard.Background).Opacity - (scheme == BleeckerColorScheme.Dark ? .035 : .45)) < .001, "Live card variant did not refresh resources.");
         SurfaceCard.Variant = BleeckerCardVariant.Surface;
+        var source = new Border { Background = new SolidColorBrush(Microsoft.UI.Colors.Coral) };
+        SurfaceCard.SetBinding(Control.BackgroundProperty, new Binding { Source = source, Path = new PropertyPath("Background") });
+        SurfaceCard.Variant = BleeckerCardVariant.Outlined;
+        source.Background = new SolidColorBrush(Microsoft.UI.Colors.CornflowerBlue);
+        await Task.Delay(80);
+        Require(SurfaceCard.GetBindingExpression(Control.BackgroundProperty) is not null && Hex((SolidColorBrush)SurfaceCard.Background) == "#FF6495ED", "Changing variant replaced a consumer background binding.");
+        SurfaceCard.ClearValue(Control.BackgroundProperty);
+        SurfaceCard.Variant = BleeckerCardVariant.Surface;
+        var elevated = Variants.Children.OfType<BleeckerCard>().Single(card => card.Variant == BleeckerCardVariant.Elevated);
+        elevated.CornerRadius = new CornerRadius(20, 8, 4, 16);
+        await Task.Delay(80);
+        var elevatedRoot = (Grid)VisualTreeHelper.GetChild(elevated, 0);
+        var mask = (Microsoft.UI.Xaml.Shapes.Path)((Canvas)elevatedRoot.Children[0]).Children[0];
+        var outline = ((PathGeometry)mask.Data).Figures.Single();
+        Require(outline.StartPoint.X == 20 && outline.Segments.OfType<ArcSegment>().Select(arc => arc.Size.Width).SequenceEqual(new double[] { 8, 4, 16, 20 }), "Changing card corners left the elevation mask stale.");
+        elevated.ClearValue(Control.CornerRadiusProperty);
+        await VerifyClippingAsync(scheme);
+    }
+    private async Task VerifyClippingAsync(BleeckerColorScheme scheme)
+    {
+        var bitmap = new RenderTargetBitmap();
+        await bitmap.RenderAsync(ClipFixture);
+        var buffer = await bitmap.GetPixelsAsync();
+        var pixels = new byte[checked((int)buffer.Length)];
+        using (var reader = DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+        string Pixel(int x, int y)
+        {
+            var offset = (y * bitmap.PixelWidth + x) * 4;
+            return $"#{pixels[offset + 3]:X2}{pixels[offset + 2]:X2}{pixels[offset + 1]:X2}{pixels[offset]:X2}";
+        }
+        Require(Pixel(50, 50) == BleeckerTokens.Colors(scheme)["primary"], "Overflow fixture did not render its content.");
+        Require(Pixel(130, 50) == BleeckerTokens.Colors(scheme)["background"], "Card content overflowed the right edge.");
+        Require(Pixel(20, 20) == BleeckerTokens.Colors(scheme)["background"], "Card content ignored rounded corner clipping.");
     }
     private static string Hex(SolidColorBrush brush) => $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}";
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

@@ -3,7 +3,8 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
-using Microsoft.UI.Xaml.Shapes;
+using Microsoft.UI.Xaml.Media;
+using Windows.Foundation;
 using Windows.UI.ViewManagement;
 
 namespace Orchard;
@@ -16,8 +17,8 @@ public sealed class BleeckerCard : ContentControl
 {
     private ResourceDictionary? palette;
     private Grid? shadowHost;
-    private Rectangle? nearMask;
-    private Rectangle? farMask;
+    private Microsoft.UI.Xaml.Shapes.Path? nearMask;
+    private Microsoft.UI.Xaml.Shapes.Path? farMask;
     private readonly AccessibilitySettings accessibility = new();
     private readonly UISettings uiSettings = new();
 
@@ -27,6 +28,7 @@ public sealed class BleeckerCard : ContentControl
         ApplyVariant();
         ApplyPadding();
         SizeChanged += (_, _) => UpdateShadow();
+        RegisterPropertyChangedCallback(CornerRadiusProperty, (_, _) => UpdateShadow());
         Loaded += (_, _) => { uiSettings.ColorValuesChanged += OnColorsChanged; UpdateShadow(); };
         Unloaded += (_, _) => { uiSettings.ColorValuesChanged -= OnColorsChanged; ClearShadow(); };
     }
@@ -43,8 +45,8 @@ public sealed class BleeckerCard : ContentControl
         ClearShadow();
         base.OnApplyTemplate();
         shadowHost = GetTemplateChild("PART_ShadowHost") as Grid;
-        nearMask = GetTemplateChild("PART_NearMask") as Rectangle;
-        farMask = GetTemplateChild("PART_FarMask") as Rectangle;
+        nearMask = GetTemplateChild("PART_NearMask") as Microsoft.UI.Xaml.Shapes.Path;
+        farMask = GetTemplateChild("PART_FarMask") as Microsoft.UI.Xaml.Shapes.Path;
         UpdateShadow();
     }
     private void ApplyVariant()
@@ -84,7 +86,7 @@ public sealed class BleeckerCard : ContentControl
             var inset = -layer.Spread;
             mask.Width = Math.Max(0, ActualWidth - inset * 2);
             mask.Height = Math.Max(0, ActualHeight - inset * 2);
-            mask.RadiusX = mask.RadiusY = Math.Max(0, CornerRadius.TopLeft - inset);
+            mask.Data = RoundedMask(mask.Width, mask.Height, CornerRadius, inset);
             Canvas.SetLeft(mask, inset); Canvas.SetTop(mask, inset);
             var shadow = compositor.CreateDropShadow();
             shadow.BlurRadius = layer.Blur;
@@ -99,5 +101,30 @@ public sealed class BleeckerCard : ContentControl
             layers.Children.InsertAtTop(sprite);
         }
         ElementCompositionPreview.SetElementChildVisual(shadowHost, layers);
+    }
+
+    private static PathGeometry RoundedMask(double width, double height, CornerRadius corners, double inset)
+    {
+        var radii = new[] { corners.TopLeft, corners.TopRight, corners.BottomRight, corners.BottomLeft }
+            .Select(radius => Math.Max(0, radius - inset)).ToArray();
+        // Normalize overlapping corners together, preserving their relative sizes.
+        var scale = 1d;
+        foreach (var (length, total) in new[] { (width, radii[0] + radii[1]), (height, radii[1] + radii[2]), (width, radii[2] + radii[3]), (height, radii[3] + radii[0]) })
+            if (total > 0) scale = Math.Min(scale, length / total);
+        for (var i = 0; i < radii.Length; i++) radii[i] *= scale;
+        var figure = new PathFigure { StartPoint = new Point(radii[0], 0), IsClosed = true, IsFilled = true };
+        void Line(double x, double y) => figure.Segments.Add(new LineSegment { Point = new Point(x, y) });
+        void Corner(double radius, double x, double y)
+        {
+            if (radius == 0) Line(x, y);
+            else figure.Segments.Add(new ArcSegment { Point = new Point(x, y), Size = new Size(radius, radius), SweepDirection = SweepDirection.Clockwise });
+        }
+        Line(width - radii[1], 0); Corner(radii[1], width, radii[1]);
+        Line(width, height - radii[2]); Corner(radii[2], width - radii[2], height);
+        Line(radii[3], height); Corner(radii[3], 0, height - radii[3]);
+        Line(0, radii[0]); Corner(radii[0], radii[0], 0);
+        var geometry = new PathGeometry();
+        geometry.Figures.Add(figure);
+        return geometry;
     }
 }

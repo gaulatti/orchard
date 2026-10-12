@@ -34,8 +34,12 @@ public sealed partial class MainWindow : Window
                 await Task.Delay(250);
                 Root.UpdateLayout();
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
-                Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 12 && PackageCard.ActualWidth > 0,
+                Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 20 && PackageCard.ActualWidth > 0,
                     "Packaged card did not load its geometry and content template.");
+                var cardRoot = (Grid)VisualTreeHelper.GetChild(PackageCard, 0);
+                var cardMask = (Microsoft.UI.Xaml.Shapes.Path)((Canvas)cardRoot.Children[0]).Children[0];
+                Require(((PathGeometry)cardMask.Data).Figures.Single().Segments.OfType<ArcSegment>().Select(arc => arc.Size.Width).SequenceEqual(new double[] { 8, 4, 16, 20 }),
+                    "Packaged elevation did not retain consumer corner geometry.");
                 Require(PackageSpinner.ActualWidth == 16 && PackageSpinner.ActualHeight == 16 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSpinner).GetAutomationControlType() == AutomationControlType.ProgressBar,
                     "Packaged loading spinner lost its geometry or progress role.");

@@ -21,7 +21,7 @@
                 <NavigationViewItem Content="Overview" Icon="Home" IsSelected="True" />
                 <NavigationViewItem Content="Library" Icon="Library" />
             </NavigationView.MenuItems>
-            <orchard:BleeckerCard x:Name="PackageCard" Margin="32" MaxWidth="640" PaddingSize="Small">
+            <orchard:BleeckerCard x:Name="PackageCard" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated" CornerRadius="20,8,4,16">
             <StackPanel Spacing="16">
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />

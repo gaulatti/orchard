@@ -38,4 +38,6 @@ The standalone `components-loadingspinner--default` browser reference renders a 
 
 Card reference `components-card--surface-hierarchy` confirms 24px default padding, 12px corners, dark deep-sea fill, white borders at .09/.15/.10 for Surface/Outlined/Elevated, and .035 white fill with .07 border for Subtle. The custom elevated shadow uses the two canonical raised-shadow layers; native layer counts and static surface recipes are checked. The catalog adds all five variants and four padding sizes with wrapping consumer content and a working child action. Exact blur rasterization, clipping and surface transitions remain open; see [card acceptance](cards.md).
 
+Card edge checks now verify actual pixels inside an oversized child, beyond the card's right edge, and outside its rounded corner in both themes. Consumer background bindings survive variant changes. Changing asymmetric corners also rebuilds each shadow-mask arc; this fixes a reproduced stale-mask failure. Broader transformed/scaled clipping and exact blur comparison remain open.
+
 Open comparison work includes shaping, line heights and text baselines, exact underline offset, the remaining focus matrix, shadows, disabled group opacity/compositing, remaining icons and loading/motion cases, and a complete rendered variant/size/theme/state matrix. Native-template behavior alone cannot close these gaps.
