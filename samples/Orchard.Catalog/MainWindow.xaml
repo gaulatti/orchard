@@ -66,6 +66,7 @@
                 <local:ToggleGroupsFixture x:Name="ToggleGroups" />
                 <local:LoadingSpinnersFixture x:Name="LoadingSpinners" />
                 <local:CardsFixture x:Name="Cards" />
+                <local:SeparatorsFixture x:Name="Separators" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>

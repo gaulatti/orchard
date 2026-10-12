@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FF000000" Opacity="0.05" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF1A374D" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -109,6 +110,7 @@
             <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="#FFE6D5B8" Opacity="0.2" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -214,6 +216,7 @@
             <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="#FFFFFFFF" Opacity="0.07" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="{ThemeResource SystemColorWindowTextColor}" />

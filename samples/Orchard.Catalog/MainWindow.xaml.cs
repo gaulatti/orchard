@@ -86,8 +86,12 @@ public sealed partial class MainWindow : Window
             await ToggleGroups.VerifyAsync();
             await LoadingSpinners.VerifyAsync(scheme);
             await Cards.VerifyAsync(scheme);
+            await Separators.VerifyAsync(scheme);
             CatalogScroll.ChangeView(null, CatalogScroll.ScrollableHeight, null, disableAnimation: true);
             await Task.Delay(350);
+            await CaptureAsync(Path.Combine(folder, $"separators-{theme.ToString().ToLowerInvariant()}.png"));
+            Cards.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
+            await Task.Delay(100);
             await CaptureAsync(Path.Combine(folder, $"cards-{theme.ToString().ToLowerInvariant()}.png"));
             LoadingSpinners.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(100);

@@ -2770,14 +2770,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerSeparator.cs", "src/Orchard/Themes/Generic.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/SeparatorsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/SeparatorsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Actual Windows contrast settings and Narrator",
+        "Fractional display scaling and physical keyboard traversal",
+        "ARM64 runtime and complete rendered parity"
       ]
     },
     {

@@ -5,6 +5,13 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="local:BleeckerSeparator">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Background" Value="{ThemeResource BleeckerSeparatorBrush}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSeparator">
+            <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerCard">
         <Setter Property="Background" Value="{ThemeResource CardBackground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource CardBorderBrush}" />

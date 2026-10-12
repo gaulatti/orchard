@@ -1,0 +1,24 @@
+<UserControl x:Class="Orchard.Catalog.SeparatorsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16">
+        <TextBlock Text="Separators" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Horizontal · vertical · decorative and semantic" Style="{StaticResource BleeckerBodyStyle}" />
+        <StackPanel x:Name="Constrained" Width="320" HorizontalAlignment="Left" Spacing="16">
+            <TextBlock Text="Monitoring workspace" Style="{StaticResource BleeckerBodyStyle}" />
+            <orchard:BleeckerSeparator x:Name="Horizontal" />
+            <TextBlock Text="東京 · São Paulo · القاهرة" Style="{StaticResource BleeckerBodyStyle}" />
+            <orchard:BleeckerSeparator x:Name="Semantic" Decorative="False" AutomationProperties.Name="Workspace sections" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="48" Spacing="16">
+            <TextBlock Text="Editorial" VerticalAlignment="Center" Style="{StaticResource BleeckerBodyStyle}" />
+            <orchard:BleeckerSeparator x:Name="Vertical" Orientation="Vertical" Decorative="False" AutomationProperties.Name="Workspace columns" />
+            <TextBlock Text="Media library" VerticalAlignment="Center" Style="{StaticResource BleeckerBodyStyle}" />
+        </StackPanel>
+        <TextBlock Text="Live orientation, bounded by a 240 × 48 container" Style="{StaticResource BleeckerBodyStyle}" />
+        <Grid Width="240" Height="48" HorizontalAlignment="Left">
+            <orchard:BleeckerSeparator x:Name="Changing" />
+        </Grid>
+    </StackPanel>
+</UserControl>
