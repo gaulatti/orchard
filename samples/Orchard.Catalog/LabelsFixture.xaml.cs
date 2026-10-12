@@ -39,7 +39,36 @@ public sealed partial class LabelsFixture : UserControl
         EmailInput.ClearValue(AutomationProperties.NameProperty);
         await VerifyContentAsync();
         await VerifyAssociationLifecycleAsync();
+        await VerifyLiveAppearanceAsync(scheme);
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"labels-{scheme}.png"));
+    }
+
+    private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme)
+    {
+        var host = (FrameworkElement)XamlRoot.Content;
+        var original = host.RequestedTheme;
+        var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
+        var width = EmailLabel.ActualWidth;
+        var height = EmailLabel.ActualHeight;
+        try
+        {
+            host.RequestedTheme = alternate == BleeckerColorScheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+            await AwaitAsync(() => HasPalette(alternate), "Labels retained the old palette after a live theme change.");
+            Require(EmailLabel.ActualWidth == width && EmailLabel.ActualHeight == height && ReferenceEquals(AutomationProperties.GetLabeledBy(EmailInput), EmailLabel), "Theme change altered label geometry or association.");
+        }
+        finally { host.RequestedTheme = original; }
+        await AwaitAsync(() => HasPalette(scheme), "Labels did not restore their original palette.");
+
+        bool HasPalette(BleeckerColorScheme expected)
+        {
+            var colors = BleeckerTokens.Colors(expected);
+            return Hex(EmailLabel.Foreground) == colors["textPrimary"] && Hex(ErrorLabel.Foreground) == colors[expected == BleeckerColorScheme.Light ? "terracotta" : "textPrimary"];
+        }
+        static string Hex(Brush brush)
+        {
+            var color = ((SolidColorBrush)brush).Color;
+            return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
+        }
     }
 
     private async Task VerifyContentAsync()
