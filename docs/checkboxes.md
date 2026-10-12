@@ -66,10 +66,10 @@ Temporarily clearing Template removes presentation without losing consumer
 state. Rich label/description elements detach from their old presenters before
 the replacement template receives them, preserving single visual ownership.
 Null assignment detaches Orchard's observers/content through the template
-property callback. It also disables the default style key while empty, so the
-next layout does not load stock Windows checkbox chrome. A nonempty consumer
-template restores Orchard's style key. Native verification of this correction
-remains open. The lifecycle fixture
+property callback. The constructor points DefaultStyleResourceUri at Orchard's
+Generic.xaml so native default-style lookup uses the branded resource file.
+The style key remains fixed after construction. Native verification of this
+correction remains open. The lifecycle fixture
 requires an empty visual tree after normal layout, retained consumer objects,
 native value/content/name updates while empty, and successful nonempty restoration.
 
@@ -154,6 +154,10 @@ At `ec16816`, normal layout exposes the same underlying issue directly: WinUI
 loads a template without PART_Box after null assignment. The default style key
 is now cleared while empty, and the original explicit ApplyTemplate(null)
 check is retained alongside normal layout and restoration.
+At `2bf7205`, both architectures reject changing DefaultStyleKey after control
+initialization, including on restoration. That approach has been removed.
+The constructor now uses the SDK's DefaultStyleResourceUri property to name
+the actual branded style file; consumer Template bindings remain untouched.
 
 The Japanese DOM audit compares actual text layout, rather than canvas
 measurement. The pinned component is 111.453125px wide for its Japanese label;

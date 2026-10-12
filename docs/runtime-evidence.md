@@ -222,6 +222,14 @@ under `artifacts/ci-checkbox-ec16816-x64`. Its explicit Yu Gothic probe measures
 111.439453px against the source's 111.453125px; the default is 99.538086px.
 This is retained probe evidence, not a change to the shared font stack.
 
+At `2bf7205`, [run 38309805067](https://github.com/gaulatti/orchard/actions/runs/38309805067)
+passes builds/unit checks and rejects post-initialization DefaultStyleKey
+changes with COMException 0x80004005 on both architectures. The mutation has
+been removed. DefaultStyleResourceUri is now set during construction to
+Orchard's Generic.xaml, using the pinned SDK property documented by
+[Microsoft](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control.defaultstyleresourceuri?view=windows-app-sdk-2.0).
+The same null application/layout/state/content/restoration gates remain active.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

@@ -34,6 +34,7 @@ public sealed class BleeckerCheckbox : CheckBox
     public BleeckerCheckbox()
     {
         DefaultStyleKey = typeof(BleeckerCheckbox);
+        DefaultStyleResourceUri = new Uri("ms-appx:///Orchard/Themes/Generic.xaml");
         Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Checkbox.xaml") });
         RegisterPropertyChangedCallback(IsCheckedProperty, (_, _) => UpdateVisuals(true));
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => UpdateVisuals(true));
@@ -41,17 +42,7 @@ public sealed class BleeckerCheckbox : CheckBox
         RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateSelectorProperty, (_, _) => UpdateContent());
-        RegisterPropertyChangedCallback(TemplateProperty, (_, _) =>
-        {
-            if (Template is null)
-            {
-                DetachTemplate();
-                // An empty custom template must not trigger CheckBox's stock
-                // theme-template lookup on the following layout pass.
-                DefaultStyleKey = null!;
-            }
-            else DefaultStyleKey = typeof(BleeckerCheckbox);
-        });
+        RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
         RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => { if (Visibility != Visibility.Visible) UpdateVisuals(false); });
         PointerEntered += (_, _) => { pointerOver = true; UpdateVisuals(true); };
         PointerExited += (_, _) => { pointerOver = false; UpdateVisuals(true); };
