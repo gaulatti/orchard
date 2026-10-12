@@ -163,6 +163,16 @@ public sealed partial class InputsFixture : UserControl
 
     private async Task VerifyDisabledErrorAsync(BleeckerColorScheme scheme, string folder)
     {
+        // This fixture asserts the resting error cascade. Disabled pointer
+        // lifecycle checks exercise the reference's separate hover cascade.
+        var hitTestVisible = DisabledErrorInput.IsHitTestVisible;
+        DisabledErrorInput.IsHitTestVisible = false;
+        try { await VerifyNonHoverDisabledErrorAsync(scheme, folder); }
+        finally { DisabledErrorInput.IsHitTestVisible = hitTestVisible; }
+    }
+
+    private async Task VerifyNonHoverDisabledErrorAsync(BleeckerColorScheme scheme, string folder)
+    {
         var editor = Find<Grid>(DisabledErrorInput, "Editor");
         var border = Find<Border>(DisabledErrorInput, "BorderElement");
         var expectedBackground = scheme == BleeckerColorScheme.Dark ? "#A60D1821" : "#A6F9F6F2";
@@ -173,7 +183,7 @@ public sealed partial class InputsFixture : UserControl
             var root = (FrameworkElement)VisualTreeHelper.GetChild(DisabledErrorInput, 0);
             var palette = Find<Border>(DisabledErrorInput, "InputPalette");
             var focused = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement;
-            return new { phase, scheme, DisabledErrorInput.IsEnabled, DisabledErrorInput.IsError,
+            return new { phase, scheme, DisabledErrorInput.IsEnabled, DisabledErrorInput.IsError, DisabledErrorInput.IsHitTestVisible,
                 focus = DisabledErrorInput.FocusState.ToString(), focusedElement = focused?.Name,
                 editorOpacity = editor.Opacity, border = Hex(border.BorderBrush), background = Hex(border.Background),
                 paletteBorder = Hex(palette.BorderBrush), paletteOpacity = palette.Opacity,
@@ -183,6 +193,8 @@ public sealed partial class InputsFixture : UserControl
         string Details() => System.Text.Json.JsonSerializer.Serialize(Snapshot("wait-failed"));
         try
         {
+            await AwaitAsync(() => Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"],
+                "Disabled validation did not leave hover before the resting error check.", Details);
             samples.Add(Snapshot("initial-disabled-error"));
             Require(Hex(border.Background) == expectedBackground && Hex(Find<Border>(DisabledInput, "BorderElement").Background) == expectedBackground,
                 "Disabled inputs must use light-sand at 65% alpha before editor opacity, with or without validation.");
@@ -198,6 +210,9 @@ public sealed partial class InputsFixture : UserControl
             samples.Add(Snapshot("enabled-error-requested"));
             await AwaitAsync(() => Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabled validation did not settle.", Details);
             samples.Add(Snapshot("enabled-error-settled"));
+            var enabledRoot = (FrameworkElement)VisualTreeHelper.GetChild(DisabledErrorInput, 0);
+            Require(VisualStateManager.GetVisualStateGroups(enabledRoot).Single(group => group.Name == "InputStates").CurrentState?.Name == "InputNormalError",
+                "Resting validation check selected a hover or focused state.");
             Require(Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
             DisabledErrorInput.IsEnabled = false;
             await AwaitAsync(() => Math.Abs(editor.Opacity - .6) < .000001 && Hex(border.Background) == expectedBackground, "Disabled opacity and background did not settle.", Details);

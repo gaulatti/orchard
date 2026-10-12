@@ -251,3 +251,13 @@ the requested/current visual states, focus owner, palette and rendered
 brushes/opacity at each transition and on failure. These diagnostics distinguish
 an unexpected hover/focus state from unsettled motion without changing or
 weakening the acceptance criterion. No product styling changes accompany them.
+
+The `9c6a8ce` ARM64 diagnostics identify `InputHoveredError` as the cause of
+that run's resting-border assertion failure: the stationary desktop pointer
+selected the correct reference hover border (`#40FFFFFF` in Dark), with full
+editor opacity and matching rendered/palette brushes. The resting validation
+fixture now temporarily disables hit testing on its target, waits for the
+resting error border, and asserts `InputNormalError` after enabling. It restores
+the original hit-testing setting in `finally`. The physical disabled-pointer
+lifecycle fixture continues to verify the hover/error cascade separately.
+This fixture correction does not change product styling or shorten its waits.

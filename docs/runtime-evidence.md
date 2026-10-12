@@ -47,6 +47,26 @@ rendered settlement in this run; the previous failure's cause remains unproven.
 The Checkbox rich-name diagnostics also expose model string representations
 for data templates. These gaps and the full acceptance matrix remain open.
 
+At `9c6a8ce`, [run 38318155884](https://github.com/gaulatti/orchard/actions/runs/38318155884)
+passes x64 catalog/consumer and ARM64 compilation. The Checkbox's rendered
+rich-content names pass eight regression cases in both x64 appearances and
+ARM64 Light, including live text, updated label/description data templates,
+collapsed content, explicit subtree names and owner name/label precedence.
+ARM64 then fails Dark Input's resting validation assertion: diagnostics show
+`InputHoveredError`, matching palette/rendered `#40FFFFFF` and opacity 1. This
+identifies pointer interference in that run; it does not retroactively prove
+the cause of the undiagnosed `3485f52` failure. ARM64 Dark Checkbox and its
+independent package consumer were not reached.
+
+The x64 artifact `11777688804` has SHA-256
+`835d436b6027e12b8966a12e5acbf2052816d52e5c27b8e77f91f431360f72c7`;
+ARM64 artifact `11777753571` has SHA-256
+`3699facdbd33c56922586c58cd4130ef5f8cf07bda136c6680322ed315f8bb5d`.
+Both were downloaded and verified under `artifacts/ci-checkbox-9c6a8ce-{x64,arm64}`.
+The resting Input fixture correction requires another native run. The last
+complete runtime baseline remains `0e35493`; no full component acceptance is
+claimed by these partial results.
+
 ## Switch x64 runtime
 
 Commit `7001e3e46627263c909e3b324b139681e5f2434a` passed the x64 job in
