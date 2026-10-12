@@ -113,7 +113,12 @@ disabled rejection and RTL activation. Local smoke checks omit physical input
 and explicitly record that omission, preserving the developer's foreground app.
 The hosted check maximizes its own initially hidden window and temporarily makes
 it topmost. If Windows refuses a foreground request, a real click activates that
-window before keyboard checks begin. Cleanup removes the temporary topmost state
+window before keyboard checks begin. Each click first proves the target point
+belongs to the catalog's own top-level HWND. If it still lacks foreground input,
+a transient Alt press/release precedes one more foreground request, using
+Windows' documented foreground-lock release behavior. This does not change
+global foreground-lock settings or attach another thread's input queue.
+Cleanup removes the temporary topmost state
 and restores the pointer. Its HWND comes from XamlRoot.ContentIslandEnvironment
 AppWindowId and is checked against the process ID; Process.MainWindowHandle is
 only retained as a diagnostic. The check retains foreground, session and input

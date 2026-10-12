@@ -29,6 +29,9 @@ internal static class NativeScreenCapture
         return new Rect(origin.X, origin.Y, client.Right - client.Left, client.Bottom - client.Top);
     }
 
+    internal static bool OwnsScreenPoint(IntPtr window, int x, int y) =>
+        GetAncestor(WindowFromPoint(new ScreenPoint(x, y)), 2) == window;
+
     internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
     {
         if (Environment.GetEnvironmentVariable("CI") != "true" || GetForegroundWindow() != window)

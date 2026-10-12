@@ -282,6 +282,15 @@ public sealed partial class SwitchesFixture : UserControl
             foregroundRequested = SetForegroundWindow(window);
             await Task.Delay(100);
             if (GetForegroundWindow() != window) await ClickAsync(Find<Border>(Off, "PART_Track"), false);
+            if (GetForegroundWindow() != window)
+            {
+                // Windows clears the foreground lock in response to Alt.
+                // Use a transient key on this isolated CI desktop; no global
+                // foreground-lock setting or input-queue attachment is changed.
+                SendKey(0x12);
+                await Task.Delay(100);
+                foregroundRequested = SetForegroundWindow(window);
+            }
             await WaitAsync(() => GetForegroundWindow() == window,
                 $"Physical switch check did not own the foreground window: own={window}, heuristic={process.MainWindowHandle}, foreground={GetForegroundWindow()}, session={process.SessionId}, requested={foregroundRequested}.");
             physicalInputSteps.Add("Own catalog window acquired foreground input");
@@ -342,7 +351,12 @@ public sealed partial class SwitchesFixture : UserControl
             if (requireForeground) Require(GetForegroundWindow() == window, "Physical input lost its foreground window.");
             var bounds = ScreenBounds(target);
             Require(bounds.Width > 0 && bounds.Height > 0, "Physical switch target has no screen bounds.");
-            Require(SetCursorPos((int)(bounds.X + bounds.Width / 2), (int)(bounds.Y + bounds.Height / 2)), "Could not position CI pointer.");
+            var x = (int)(bounds.X + bounds.Width / 2);
+            var y = (int)(bounds.Y + bounds.Height / 2);
+            Require(NativeScreenCapture.OwnsScreenPoint(window, x, y),
+                $"Physical switch target does not belong to its own window: target={target.Name}, point={x},{y}, client={NativeScreenCapture.ClientBounds(window)}.");
+            Require(SetCursorPos(x, y), "Could not position CI pointer.");
+            await Task.Delay(30);
             Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0002 } } },
                   new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0004 } } }]);
             await Task.Delay(100);
