@@ -6,6 +6,13 @@ inventory entries; 92 entries remain pending. The earlier `5412997` checkpoint
 covered 18 entries. Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
 
+Cursor evidence from earlier physical fixtures uses the UI thread's GetCursor
+handle. That does not independently establish the global displayed cursor;
+Microsoft documents GetCursorInfo for that observation. Current Checkbox and
+Input transition diagnostics now retain both, including global visibility and
+screen position. No visible-cursor acceptance follows from earlier thread-only
+handle assertions. Rendered hover borders/opacity are independent observations.
+
 ## Rendered Checkbox names and resting Input validation
 
 The newer `bf910af` pointer candidate in

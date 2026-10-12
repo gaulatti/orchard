@@ -350,6 +350,15 @@ requires no newer disabled owner and checks the root still owns the native
 screen point. System cursor restoration no longer changes InputPointerSource's
 cursor property; resource cursor restoration retains its native API path.
 The strict physical I-beam transition remains the regression boundary.
+The `f8c67a8` x64 run still fails that check. The fixture now also records
+GetCursorInfo's global cursor handle, visibility flags and screen point for
+every Checkbox boundary sample and Input transition. Microsoft's
+[GetCursor documentation](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getcursor)
+distinguishes the calling thread's cursor from
+[global cursor information](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getcursorinfo).
+Earlier handle checks use GetCursor and cannot by themselves prove the visible
+desktop cursor. Global observation is initially diagnostic; the existing gate
+is retained until those observations establish the actual failure boundary.
 
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual

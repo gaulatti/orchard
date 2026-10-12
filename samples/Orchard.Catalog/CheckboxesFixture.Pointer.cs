@@ -193,6 +193,7 @@ public sealed partial class CheckboxesFixture
                         border = Hex(failedBrush), failedBrush.Opacity, expectedAlpha = alpha,
                         inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
                         cursor = CurrentCheckboxCursor().ToInt64(), expectedCursor = cursor,
+                        globalCursor = DescribeGlobalCursor(),
                         expectedCursorHandle = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor)).ToInt64(),
                         pointer = DescribeDisabledPointer(input, control) });
                     throw;
@@ -212,6 +213,7 @@ public sealed partial class CheckboxesFixture
                 samples.Add(new { phase, control.Name, control.IsEnabled, control.IsChecked, hover,
                     direction = control.FlowDirection.ToString(), border = Hex(brush), brush.Opacity,
                     inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity, cursor = CurrentCheckboxCursor().ToInt64(),
+                    globalCursor = DescribeGlobalCursor(),
                     expectedCursor = cursor, position.X, position.Y });
             }
         }
@@ -244,6 +246,7 @@ public sealed partial class CheckboxesFixture
             (screen.Y - client.Y) / editor.XamlRoot.RasterizationScale);
         return new { editor.IsEnabled, editor.IsLoaded, focus = editor.FocusState.ToString(),
             native = CurrentCheckboxCursor().ToInt64(), expectedText = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32513)).ToInt64(),
+            globalCursor = DescribeGlobalCursor(),
             protectedCursor = Cursor(protectedCursor), sourceCursor = Cursor(sourceCursor),
             registered = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker) is not null,
             implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),
@@ -256,6 +259,13 @@ public sealed partial class CheckboxesFixture
     }
 
     private static PointerPoint PointerPosition() { Require(ReadCheckboxPointer(out var point), "Could not read physical checkbox pointer."); return point; }
+    private static object DescribeGlobalCursor()
+    {
+        var info = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
+        var succeeded = ReadGlobalCursor(ref info);
+        return new { succeeded, error = succeeded ? 0 : Marshal.GetLastWin32Error(), info.Flags,
+            handle = info.Cursor.ToInt64(), info.Position.X, info.Position.Y };
+    }
     private object DescribeDisabledPointer(NativeInputSession input, BleeckerCheckbox control)
     {
         var screen = PointerPosition();
@@ -289,6 +299,14 @@ public sealed partial class CheckboxesFixture
         }
     }
     [StructLayout(LayoutKind.Sequential)] private struct PointerPoint { public int X; public int Y; }
+    [StructLayout(LayoutKind.Sequential)] private struct CursorInformation
+    {
+        public uint Size, Flags;
+        public IntPtr Cursor;
+        public PointerPoint Position;
+    }
+    [DllImport("user32.dll", EntryPoint = "GetCursorInfo", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadGlobalCursor(ref CursorInformation info);
     [DllImport("user32.dll", EntryPoint = "GetCursorPos")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadCheckboxPointer(out PointerPoint point);
     [DllImport("user32.dll", EntryPoint = "GetCursor")] private static extern IntPtr CurrentCheckboxCursor();
     [DllImport("user32.dll", EntryPoint = "LoadCursorW")] private static extern IntPtr CheckboxSystemCursor(IntPtr instance, IntPtr name);
