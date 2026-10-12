@@ -60,6 +60,7 @@ public sealed partial class SwitchesFixture : UserControl
             var rejected = false;
             try { ((IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(control).GetPattern(PatternInterface.Toggle)).Toggle(); }
             catch (ElementNotEnabledException) { rejected = true; }
+            catch (COMException error) when (error.HResult == unchecked((int)0x80040200)) { rejected = true; }
             Require(rejected && control.IsOn == before && !Find<ToggleSwitch>(control, "PART_Switch").Focus(FocusState.Keyboard),
                 "Disabled switch accepted native activation or keyboard focus.");
         }
@@ -79,6 +80,7 @@ public sealed partial class SwitchesFixture : UserControl
             VerifyPresentation(Off, scheme);
         }
         await VerifyLifecycleAsync(scheme);
+        await VerifyLiveAppearanceAsync(scheme);
         // Physical input is restricted to the dedicated hosted CI desktop.
         // Ordinary local catalog verification does not take over the user's input.
         if (Environment.GetEnvironmentVariable("CI") == "true") await VerifyPhysicalInputAsync();
@@ -187,6 +189,25 @@ public sealed partial class SwitchesFixture : UserControl
         }
         Off.IsOn = false;
         await SettleAsync(Off, false);
+    }
+
+    private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme)
+    {
+        var host = (FrameworkElement)XamlRoot.Content;
+        var originalTheme = host.RequestedTheme;
+        var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
+        try
+        {
+            host.RequestedTheme = alternate == BleeckerColorScheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+            await WaitAsync(() => Hex(Find<Border>(On, "PART_Track").Background) == (alternate == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5"),
+                "Checked switch did not observe a live appearance change.");
+            foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, alternate);
+            Require(On.IsOn && !Off.IsOn && DisabledOn.IsOn && !DisabledOff.IsOn, "Appearance change altered consumer switch state.");
+        }
+        finally { host.RequestedTheme = originalTheme; }
+        await WaitAsync(() => Hex(Find<Border>(On, "PART_Track").Background) == (scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5"),
+            "Checked switch did not restore its original appearance.");
+        foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
     }
 
     private async Task VerifyPhysicalInputAsync()

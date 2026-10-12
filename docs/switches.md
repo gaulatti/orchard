@@ -68,10 +68,15 @@ template replacement, unload/reload and intermediate/reversed motion. It emits
 `switch-measurements-{Light,Dark}.json` and corresponding native captures.
 The independent NuGet consumer also instantiates and toggles the control.
 Runtime evidence must be collected before these checks are claimed as passed.
+The mounted fixture also switches appearance in place and verifies the off/on,
+disabled and edge-case palette while retaining every consumer Boolean value.
 The dedicated hosted CI desktop additionally sends actual Space/Tab and pointer
 input to its own foreground catalog window, verifying label/track activation,
 disabled rejection and RTL activation. Local smoke checks omit physical input
 and explicitly record that omission, preserving the developer's foreground app.
+The disabled-activation regression accepts the native UIA ElementNotEnabled
+HRESULT `0x80040200`, which this SDK projection exposes as COMException, while
+also requiring the consumer Boolean to remain unchanged.
 
 Acceptance remains open: complete native/browser raster comparison (glyphs,
 baselines, pill edges, shadows and fallback fonts), actual keyboard/pointer/drag
