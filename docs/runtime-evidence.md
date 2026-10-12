@@ -268,6 +268,30 @@ checks with a catalog-only NativeInputSession. Foreground input and pointer
 hit points must belong to the catalog's own native window. Captures include
 the composed keyboard/pointer window; reports retain incremental checks and
 desktop diagnostics. Runtime verification of these new gates is pending.
+At `3dac874`, [run 38312883131](https://github.com/gaulatti/orchard/actions/runs/38312883131)
+passes x64 build, 23 unit tests, full catalog runtime and the independent
+NuGet consumer (package SHA256
+`ed41e1ded3ed586d6d02261229aded4b9c3f2436905a469f898fd0b16b03553b`).
+ARM64 passes its build/independent consumer build and light checkbox lifecycle,
+motion, physical input and command checks with animations enabled. The dark
+forced hover check fails because the foreground-acquisition fallback toggled
+Off during light testing and left its state selected. Acquisition now clicks
+the static heading, state cleanup includes Off, and hover/held press/exit are
+tested through actual input. Native captures and reports are retained in
+`artifacts/ci-checkbox-3dac874-x64` (archive SHA256
+`358ed4ee233eb6168cfdb39b2c5b262a5ff2e9f2f8558cb0f41157b6339d7b12`)
+and `artifacts/ci-checkbox-3dac874-arm64` (archive SHA256
+`bf2854db389331e44572a40214013322efde299d6297b8549cab03fe760d37ab`).
+This is x64 acceptance of the current registered runtime gates, not full visual
+acceptance or a new shared architecture baseline.
+Inspection of the ARM64 composed keyboard capture also reveals a missing
+visible focus ring despite its reported 28px size. The focus layers now use
+negative layout margins, matching their outer extents without growing the
+20px input. A native pixel regression checks both outer edges and the inner
+offset in the captured window, after a rendering opportunity, and retains
+`checkbox-focus-pixels-{Light,Dark}.json`. This correction needs fresh runtime
+and rendered verification; the earlier dimension/opacity check alone was
+insufficient evidence of visible focus chrome.
 
 ## Shared x64 and ARM64 baseline
 

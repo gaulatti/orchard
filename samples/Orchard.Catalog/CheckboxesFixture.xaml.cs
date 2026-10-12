@@ -145,15 +145,6 @@ public sealed partial class CheckboxesFixture : UserControl
             Require(Default.Focus(FocusState.Pointer), "Checkbox did not receive pointer focus.");
             await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 0, "Pointer focus retained a keyboard ring.");
             verifiedSteps.Add("Native keyboard and pointer focus modalities");
-            foreach (var visualState in new[] { "UncheckedPointerOver", "UncheckedPressed", "UncheckedNormal" })
-            {
-                Require(VisualStateManager.GoToState(Off, visualState, false), $"Missing checkbox state {visualState}.");
-                await SettleAsync(Off);
-                var border = Find<Border>(Off, "PART_Box").BorderBrush;
-                Require(Math.Abs(border.Opacity - (float)(visualState == "UncheckedPointerOver" ? .5 : scheme == BleeckerColorScheme.Light ? .6 : .2)) < 1e-9,
-                    $"Checkbox border differs in {visualState}.");
-            }
-            verifiedSteps.Add("Unchecked hover, pressed and normal border states");
             await InspectFontFallbackAsync(scheme, folder);
             await InspectScriptWeightsAsync(scheme, folder);
             foreach (var control in new[] { Off, Rich })
@@ -247,7 +238,7 @@ public sealed partial class CheckboxesFixture : UserControl
             foreach (var control in controls) VerifyPresentation(control, scheme);
             verifiedSteps.Add("All rows changed and restored appearance with retained consumer state");
             await VerifyPhysicalInputAsync(scheme, folder);
-            verifiedSteps.Add("Physical Space/Tab, box/label/description/RTL clicks, disabled rejection and native commands");
+            verifiedSteps.Add("Physical hover/press/exit, Space/Tab, box/label/description/RTL clicks, disabled rejection and native commands");
             passed = true;
         }
         catch (Exception error) { originalFailure = error; throw; }
@@ -265,7 +256,7 @@ public sealed partial class CheckboxesFixture : UserControl
     private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"checkbox-{scheme}");
-        var defaultValue = Default.IsChecked; var rtlValue = Rtl.IsChecked;
+        var defaultValue = Default.IsChecked; var rtlValue = Rtl.IsChecked; var offValue = Off.IsChecked;
         var originalCommand = Default.Command; var originalParameter = Default.CommandParameter;
         var command = new ConsumerCommand(); var parameter = new object();
         var clicks = 0; var changes = 0;
@@ -273,8 +264,30 @@ public sealed partial class CheckboxesFixture : UserControl
         void Changed(object sender, RoutedEventArgs args) => changes++;
         try
         {
-            await input.AcquireAsync(Find<Border>(Off, "PART_Box"));
+            await input.AcquireAsync(CheckboxHeading);
             physicalInputSteps.Add("Own catalog window acquired foreground input");
+            Off.IsChecked = false;
+            await input.MoveAsync(Find<Border>(Off, "PART_Box"));
+            await WaitAsync(() => Off.IsChecked == false && Math.Abs(Find<Border>(Off, "PART_Box").BorderBrush.Opacity - .5) < 1e-9,
+                "Physical unchecked hover did not reach the source border.");
+            await MainWindow.CaptureElementAsync(Off, Path.Combine(folder, $"checkbox-hover-{scheme}.png"));
+            input.PointerButton(true);
+            try
+            {
+                await WaitAsync(() => Off.IsChecked == false &&
+                    VisualStateManager.GetVisualStateGroups(Find<Grid>(Off, "PART_Root")).Single(group => group.Name == "CombinedStates").CurrentState?.Name == "UncheckedPressed" &&
+                    Math.Abs(Find<Border>(Off, "PART_Box").BorderBrush.Opacity - .5) < 1e-9,
+                    "Physical unchecked press did not retain the source hover border.");
+                await MainWindow.CaptureElementAsync(Off, Path.Combine(folder, $"checkbox-pressed-{scheme}.png"));
+            }
+            finally { input.PointerButton(false); }
+            await WaitAsync(() => Off.IsChecked == true, "Physical release did not activate its checkbox.");
+            await input.MoveAsync(Find<Border>(Default, "PART_Box"));
+            Off.IsChecked = false; await SettleAsync(Off);
+            Require(Math.Abs(Find<Border>(Off, "PART_Box").BorderBrush.Opacity - (float)(scheme == BleeckerColorScheme.Light ? .6 : .2)) < 1e-9,
+                "Physical pointer exit did not restore the source normal border.");
+            await MainWindow.CaptureElementAsync(Off, Path.Combine(folder, $"checkbox-normal-{scheme}.png"));
+            physicalInputSteps.Add("Real hover/held press/release/pointer exit matched source border states and activation");
             Default.IsChecked = true; await SettleAsync(Default);
             Default.Command = command; Default.CommandParameter = parameter;
             Default.Click += Clicked; Default.Checked += Changed; Default.Unchecked += Changed;
@@ -282,7 +295,10 @@ public sealed partial class CheckboxesFixture : UserControl
             input.Key(0x20);
             await WaitAsync(() => Default.IsChecked == false, "Physical Space did not toggle the checkbox.");
             await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 1, "Physical keyboard focus lost its branded ring.");
-            await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"checkbox-keyboard-window-{scheme}.png"));
+            await Task.Delay(50);
+            var focusCapture = Path.Combine(folder, $"checkbox-keyboard-window-{scheme}.png");
+            await NativeScreenCapture.CaptureClientAsync(input.Window, focusCapture);
+            await VerifyFocusPixelsAsync(input, focusCapture, scheme, folder);
             physicalInputSteps.Add("Space toggled the focused checkbox and retained its keyboard ring");
             input.Key(0x09);
             await WaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Off), "Physical Tab did not reach the next checkbox.");
@@ -327,7 +343,7 @@ public sealed partial class CheckboxesFixture : UserControl
         {
             Default.Click -= Clicked; Default.Checked -= Changed; Default.Unchecked -= Changed;
             Default.Command = originalCommand; Default.CommandParameter = originalParameter;
-            Default.IsChecked = defaultValue; Rtl.IsChecked = rtlValue;
+            Default.IsChecked = defaultValue; Rtl.IsChecked = rtlValue; Off.IsChecked = offValue;
         }
         await SettleAsync(Default); await SettleAsync(Rtl);
     }
@@ -340,6 +356,47 @@ public sealed partial class CheckboxesFixture : UserControl
         public bool CanExecute(object? parameter) => enabled;
         public void Execute(object? parameter) => Parameters.Add(parameter);
         public event EventHandler? CanExecuteChanged;
+    }
+
+    private async Task VerifyFocusPixelsAsync(NativeInputSession input, string path, BleeckerColorScheme scheme, string folder)
+    {
+        var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(path);
+        using var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+        var decoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
+        var data = await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,
+            Windows.Graphics.Imaging.BitmapAlphaMode.Straight, new Windows.Graphics.Imaging.BitmapTransform(),
+            Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,
+            Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage);
+        var pixels = data.DetachPixelData();
+        var box = input.ScreenBounds(Find<Border>(Default, "PART_Box"));
+        var client = NativeScreenCapture.ClientBounds(input.Window);
+        var scale = XamlRoot.RasterizationScale;
+        var background = Pixel(box.Left - 6 * scale, box.Top + 10 * scale);
+        var left = Pixel(box.Left - 3 * scale, box.Top + 10 * scale);
+        var right = Pixel(box.Right + 3 * scale, box.Top + 10 * scale);
+        var offset = Pixel(box.Left - scale, box.Top + 10 * scale);
+        var brush = (SolidColorBrush)Find<Border>(Default, "PART_FocusRing").BorderBrush;
+        var color = brush.Color; var opacity = brush.Opacity;
+        var expected = new[] { Mix(color.R, background[0]), Mix(color.G, background[1]), Mix(color.B, background[2]) };
+        var offsetColor = ((SolidColorBrush)Find<Border>(Default, "PART_FocusOffset").Background).Color;
+        var expectedOffset = new[] { (int)offsetColor.R, offsetColor.G, offsetColor.B };
+        await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-focus-pixels-{scheme}.json"),
+            JsonSerializer.Serialize(new { scale, box, client, background, left, right, expected, offset, expectedOffset },
+                new JsonSerializerOptions { WriteIndented = true }));
+        Require(Matches(left, expected) && Matches(right, expected), "Composed checkbox focus ring is clipped or has the wrong rendered color.");
+        Require(Matches(offset, expectedOffset), "Composed checkbox focus offset is clipped or has the wrong rendered color.");
+        physicalInputSteps.Add("Composed pixels verified the ring beyond both box edges and its inner offset");
+
+        int Mix(byte foreground, int behind) => (int)Math.Round(foreground * opacity + behind * (1 - opacity));
+        int[] Pixel(double x, double y)
+        {
+            var column = (int)Math.Round(x - client.X); var row = (int)Math.Round(y - client.Y);
+            Require(column >= 0 && row >= 0 && column < decoder.PixelWidth && row < decoder.PixelHeight,
+                "Focus pixel probe exceeds the composed capture.");
+            var index = checked((row * (int)decoder.PixelWidth + column) * 4);
+            return [pixels[index + 2], pixels[index + 1], pixels[index]];
+        }
+        static bool Matches(int[] actual, int[] expected) => actual.Zip(expected).All(pair => Math.Abs(pair.First - pair.Second) <= 2);
     }
 
     private async Task InspectFontFallbackAsync(BleeckerColorScheme scheme, string folder)

@@ -51,6 +51,11 @@ Unchecked hover uses the active theme's sea at 50% (dark #5BA3F5).
 Keyboard focus uses a 2px active-sea/20 ring and a
 2px white/deep-sea offset; pointer focus omits the ring. The complete native
 template removes Windows default typography, minimum sizes, glyph and chrome.
+Negative margins give the 28/24px focus layers their full layout space around
+the 20px input. Size assertions alone do not prove these layers paint outside
+the box: the physical keyboard fixture checks composed pixels at both outer
+edges and at the inner offset, against the theme brush composited over the
+captured background. The report retains observed and expected colors.
 Disabled changes only the input chrome to 50% opacity. The checkmark and text
 retain full opacity, matching the source's separate SVG and text siblings.
 Windows contrast uses paired Window/WindowText and Highlight/HighlightText
@@ -210,6 +215,17 @@ desktop diagnostics and incremental steps are retained even on failure. The
 session removes temporary topmost status and restores the pointer in cleanup.
 These new physical checks still require hosted native runtime verification;
 disabled cursor behavior remains a separate open acceptance item.
+At `3dac874`, the complete registered x64 catalog and independent NuGet runtime
+consumer pass; the light/dark checkbox reports include lifecycle, physical
+input and command checks. ARM64 passes the light fixture with animations
+enabled, including the same physical checks, then fails a forced dark hover
+state. The retained report shows Off remained checked: the foreground fallback
+click activated that probe in light mode. Acquisition now targets the static
+fixture heading, and the physical fixture restores Off alongside other state.
+Hover/press/exit acceptance now uses real pointer movement and held-button
+input, including the source's hover border while pressed, with native captures.
+The session releases any held pointer button during failure cleanup. The
+shared x64/ARM64 baseline remains unchanged until the whole run passes.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

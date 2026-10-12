@@ -12,7 +12,7 @@
         </Style>
     </UserControl.Resources>
     <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
-        <TextBlock Text="Checkbox" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock x:Name="CheckboxHeading" Text="Checkbox" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <orchard:BleeckerCheckbox x:Name="Default" Content="Enable notifications" Description="Send alerts when a device starts playback." IsChecked="True" />
         <orchard:BleeckerCheckbox x:Name="Off" Content="Unchecked option" />
         <orchard:BleeckerCheckbox x:Name="DisabledOff" Content="Unchecked (disabled)" Description="The text retains full opacity." IsEnabled="False" />

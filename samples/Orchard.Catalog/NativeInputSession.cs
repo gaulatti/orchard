@@ -12,6 +12,7 @@ internal sealed class NativeInputSession : IDisposable
     private readonly XamlRoot root;
     private readonly CursorPoint originalPointer;
     private readonly string folder, prefix;
+    private bool pointerButtonDown;
     internal IntPtr Window { get; }
 
     internal NativeInputSession(XamlRoot root, string folder, string prefix)
@@ -49,6 +50,14 @@ internal sealed class NativeInputSession : IDisposable
 
     internal async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
     {
+        await MoveAsync(target, requireForeground);
+        PointerButton(true, requireForeground);
+        PointerButton(false, requireForeground);
+        await Task.Delay(100);
+    }
+
+    internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true)
+    {
         if (requireForeground) Require(GetForegroundWindow() == Window, "Physical pointer input lost the catalog foreground window.");
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
         await Task.Delay(100);
@@ -63,10 +72,15 @@ internal sealed class NativeInputSession : IDisposable
         }
         Require(SetCursorPos(x, y), "Could not position the fixture pointer.");
         await Task.Delay(30);
-        if (requireForeground) Require(GetForegroundWindow() == Window, "Catalog lost foreground before its pointer click.");
-        Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0002 } } },
-              new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0004 } } }]);
-        await Task.Delay(100);
+    }
+
+    internal void PointerButton(bool down, bool requireForeground = true)
+    {
+        if (requireForeground) Require(GetForegroundWindow() == Window, "Catalog lost foreground before its pointer action.");
+        Require(GetCursorPos(out var point) && NativeScreenCapture.OwnsScreenPoint(Window, point.X, point.Y),
+            "Physical pointer action lost its owned screen point.");
+        Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = down ? 0x0002u : 0x0004u } } }]);
+        pointerButtonDown = down;
     }
 
     internal Rect ScreenBounds(FrameworkElement target)
@@ -88,8 +102,19 @@ internal sealed class NativeInputSession : IDisposable
         }
         finally
         {
-            SetWindowPos(Window, new IntPtr(-2), 0, 0, 0, 0, 0x0013);
-            SetCursorPos(originalPointer.X, originalPointer.Y);
+            try
+            {
+                if (pointerButtonDown)
+                {
+                    Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0004 } } }]);
+                    pointerButtonDown = false;
+                }
+            }
+            finally
+            {
+                SetWindowPos(Window, new IntPtr(-2), 0, 0, 0, 0, 0x0013);
+                SetCursorPos(originalPointer.X, originalPointer.Y);
+            }
         }
     }
 
