@@ -8,19 +8,29 @@ internal static class BleeckerColorMix
     {
         if (progress <= 0) return from;
         if (progress >= 1) return to;
-        var alpha = from.Alpha + (to.Alpha - from.Alpha) * progress;
-        if (alpha <= 0) return (0, 0, 0, 0);
-        var first = ToLab(from.R, from.G, from.B);
-        var second = ToLab(to.R, to.G, to.B);
-        var lab = new double[3];
-        for (var index = 0; index < 3; index++)
-            lab[index] = (first[index] * from.Alpha * (1 - progress) + second[index] * to.Alpha * progress) / alpha;
-        var l = Math.Pow(lab[0] + .3963377774 * lab[1] + .2158037573 * lab[2], 3);
-        var m = Math.Pow(lab[0] - .1055613458 * lab[1] - .0638541728 * lab[2], 3);
-        var s = Math.Pow(lab[0] - .0894841775 * lab[1] - 1.2914855480 * lab[2], 3);
+        return EncodePremultiplied(MixPremultiplied(Premultiply(from), Premultiply(to), progress));
+    }
+
+    internal static (double L, double A, double B, double Alpha) Premultiply((byte R, byte G, byte B, double Alpha) color)
+    {
+        var lab = ToLab(color.R, color.G, color.B);
+        return (lab[0] * color.Alpha, lab[1] * color.Alpha, lab[2] * color.Alpha, color.Alpha);
+    }
+    internal static (double L, double A, double B, double Alpha) MixPremultiplied(
+        (double L, double A, double B, double Alpha) from, (double L, double A, double B, double Alpha) to, double progress) =>
+        (from.L + (to.L - from.L) * progress, from.A + (to.A - from.A) * progress,
+            from.B + (to.B - from.B) * progress, from.Alpha + (to.Alpha - from.Alpha) * progress);
+
+    internal static (byte R, byte G, byte B, double Alpha) EncodePremultiplied((double L, double A, double B, double Alpha) color)
+    {
+        if (color.Alpha <= 0) return (0, 0, 0, 0);
+        var first = color.L / color.Alpha; var second = color.A / color.Alpha; var third = color.B / color.Alpha;
+        var l = Math.Pow(first + .3963377774 * second + .2158037573 * third, 3);
+        var m = Math.Pow(first - .1055613458 * second - .0638541728 * third, 3);
+        var s = Math.Pow(first - .0894841775 * second - 1.2914855480 * third, 3);
         return (Encode(4.0767416621 * l - 3.3077115913 * m + .2309699292 * s),
             Encode(-1.2684380046 * l + 2.6097574011 * m - .3413193965 * s),
-            Encode(-.0041960863 * l - .7034186147 * m + 1.7076147010 * s), alpha);
+            Encode(-.0041960863 * l - .7034186147 * m + 1.7076147010 * s), color.Alpha);
     }
 
     internal static double Premium(double progress)

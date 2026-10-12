@@ -1,0 +1,145 @@
+{
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "language": "en-US",
+  "canonical": {
+    "japanese": 111.453125,
+    "latin": 125.296875,
+    "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif"
+  },
+  "fonts": [
+    {
+      "family": "Encode Sans",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "400",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "500",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "500",
+      "status": "loaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "600",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "700",
+      "status": "unloaded"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": "700",
+      "status": "loaded"
+    }
+  ],
+  "candidates": [
+    {
+      "family": "Segoe UI",
+      "available": true,
+      "width": 111.453125,
+      "canvasWidth": 112
+    },
+    {
+      "family": "Arial",
+      "available": true,
+      "width": 111.453125,
+      "canvasWidth": 112
+    },
+    {
+      "family": "Yu Gothic UI",
+      "available": false
+    },
+    {
+      "family": "Yu Gothic",
+      "available": false
+    },
+    {
+      "family": "Meiryo UI",
+      "available": false
+    },
+    {
+      "family": "Meiryo",
+      "available": false
+    },
+    {
+      "family": "MS PGothic",
+      "available": true,
+      "width": 106,
+      "canvasWidth": 106
+    },
+    {
+      "family": "MS Gothic",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112
+    },
+    {
+      "family": "Microsoft YaHei UI",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112
+    },
+    {
+      "family": "Microsoft YaHei",
+      "available": true,
+      "width": 112,
+      "canvasWidth": 112
+    },
+    {
+      "family": "Noto Sans CJK JP",
+      "available": false
+    },
+    {
+      "family": "Noto Sans JP",
+      "available": false
+    },
+    {
+      "family": "Noto Sans CJK SC",
+      "available": false
+    },
+    {
+      "family": "Arial Unicode MS",
+      "available": false
+    },
+    {
+      "family": "Droid Sans Fallback",
+      "available": false
+    }
+  ]
+}

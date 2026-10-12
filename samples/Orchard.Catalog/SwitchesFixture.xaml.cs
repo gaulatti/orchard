@@ -19,6 +19,7 @@ public sealed partial class SwitchesFixture : UserControl
 {
     private readonly ConsumerState state = new();
     private readonly List<object> motionSamples = [];
+    private readonly List<object> appearanceSamples = [];
     private readonly List<string> physicalInputSteps = [];
 
     public SwitchesFixture() { InitializeComponent(); DataContext = state; }
@@ -108,6 +109,13 @@ public sealed partial class SwitchesFixture : UserControl
         await VerifyLifecycleAsync(scheme);
         await VerifyLiveAppearanceAsync(scheme);
         await InspectFontFallbackAsync(scheme, folder);
+        try { await VerifyMotionAsync(scheme); }
+        finally
+        {
+            await File.WriteAllTextAsync(Path.Combine(folder, $"switch-motion-{scheme}.json"),
+                JsonSerializer.Serialize(new { animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
+                    motionSamples, appearanceSamples }, new JsonSerializerOptions { WriteIndented = true }));
+        }
         // Physical input is restricted to the dedicated hosted CI desktop.
         // Ordinary local catalog verification does not take over the user's input.
         if (Environment.GetEnvironmentVariable("CI") == "true")
@@ -119,7 +127,6 @@ public sealed partial class SwitchesFixture : UserControl
                     JsonSerializer.Serialize(physicalInputSteps, new JsonSerializerOptions { WriteIndented = true }));
             }
         }
-        await VerifyMotionAsync();
         var measurements = Rows.Children.OfType<BleeckerSwitch>().Select(control =>
         {
             var track = Find<Border>(control, "PART_Track");
@@ -214,7 +221,7 @@ public sealed partial class SwitchesFixture : UserControl
         await SettleAsync(Off, false);
     }
 
-    private async Task VerifyMotionAsync()
+    private async Task VerifyMotionAsync(BleeckerColorScheme scheme)
     {
         motionSamples.Clear();
         var animations = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
@@ -224,7 +231,8 @@ public sealed partial class SwitchesFixture : UserControl
         while (timer.ElapsedMilliseconds < 300)
         {
             var x = ((TranslateTransform)Find<Grid>(Off, "SwitchKnob").RenderTransform).X;
-            motionSamples.Add(new { elapsed = timer.Elapsed.TotalMilliseconds, x });
+            var fill = Find<Border>(Off, "PART_Track").Background;
+            motionSamples.Add(new { elapsed = timer.Elapsed.TotalMilliseconds, x, color = Hex(fill), alpha = fill.Opacity });
             sawIntermediate |= x > .01 && x < 15.99;
             if (x >= 16) break;
             await Task.Delay(1);
@@ -241,6 +249,28 @@ public sealed partial class SwitchesFixture : UserControl
         }
         Off.IsOn = false;
         await SettleAsync(Off, false);
+        if (animations)
+        {
+            var host = (FrameworkElement)XamlRoot.Content;
+            var originalTheme = host.RequestedTheme;
+            var startColor = Hex(Find<Border>(On, "PART_Track").Background);
+            var targetColor = scheme == BleeckerColorScheme.Light ? "#FF5BA3F5" : "#FF2C5784";
+            try
+            {
+                Off.IsOn = true;
+                await WaitAsync(() => { var x = ((TranslateTransform)Find<Grid>(Off, "SwitchKnob").RenderTransform).X; return x > .01 && x < 15.99; },
+                    "Switch did not start its thumb before the palette interruption.");
+                host.RequestedTheme = scheme == BleeckerColorScheme.Light ? ElementTheme.Dark : ElementTheme.Light;
+                await WaitAsync(() => { var color = Hex(Find<Border>(On, "PART_Track").Background); return color != startColor && color != targetColor; },
+                    "Palette interruption did not produce an intermediate track color.");
+                var x = ((TranslateTransform)Find<Grid>(Off, "SwitchKnob").RenderTransform).X;
+                motionSamples.Add(new { phase = "palette-during-toggle", x, checkedColor = Hex(Find<Border>(On, "PART_Track").Background) });
+                Require(x > .01 && x < 15.99 && Off.IsOn, "Palette interruption snapped or reversed the moving thumb.");
+                await SettleAsync(Off, true);
+            }
+            finally { host.RequestedTheme = originalTheme; Off.IsOn = false; }
+            await SettleAsync(Off, false);
+        }
     }
 
     private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme)
@@ -248,18 +278,39 @@ public sealed partial class SwitchesFixture : UserControl
         var host = (FrameworkElement)XamlRoot.Content;
         var originalTheme = host.RequestedTheme;
         var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
+        appearanceSamples.Clear();
         try
         {
+            var initial = Hex(Find<Border>(On, "PART_Track").Background);
+            var target = alternate == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5";
+            var animated = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
+            var timer = Stopwatch.StartNew();
             host.RequestedTheme = alternate == BleeckerColorScheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-            await WaitAsync(() => Hex(Find<Border>(On, "PART_Track").Background) == (alternate == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5"),
+            var sawIntermediate = false;
+            while (timer.ElapsedMilliseconds < 300 && !PaletteSettled(alternate))
+            {
+                var fill = Find<Border>(On, "PART_Track").Background;
+                var color = Hex(fill);
+                var x = ((TranslateTransform)Find<Grid>(On, "SwitchKnob").RenderTransform).X;
+                appearanceSamples.Add(new { elapsed = timer.Elapsed.TotalMilliseconds, color, alpha = fill.Opacity, x });
+                sawIntermediate |= color != initial && color != target;
+                Require(x == 16, "Appearance change restarted the settled checked thumb.");
+                await Task.Delay(1);
+            }
+            Require(!animated || sawIntermediate, "Animated appearance change skipped every intermediate track color.");
+            await WaitAsync(() => PaletteSettled(alternate),
                 "Checked switch did not observe a live appearance change.");
             foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, alternate);
             Require(On.IsOn && !Off.IsOn && DisabledOn.IsOn && !DisabledOff.IsOn, "Appearance change altered consumer switch state.");
         }
         finally { host.RequestedTheme = originalTheme; }
-        await WaitAsync(() => Hex(Find<Border>(On, "PART_Track").Background) == (scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5"),
+        await WaitAsync(() => PaletteSettled(scheme),
             "Checked switch did not restore its original appearance.");
         foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
+
+        bool PaletteSettled(BleeckerColorScheme palette) =>
+            Hex(Find<Border>(On, "PART_Track").Background) == (palette == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5") &&
+            Math.Abs(Find<Border>(Off, "PART_Track").Background.Opacity - (palette == BleeckerColorScheme.Light ? .25 : .15)) < 1e-9;
     }
 
     private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)

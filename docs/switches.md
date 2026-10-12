@@ -74,8 +74,12 @@ require the background at the outer pill bounds.
 Track color transitions use 190ms; thumb translation uses 220ms. Both follow
 the source cubic-bezier(.22,1,.36,1). Color interpolation uses premultiplied
 Oklab, following [CSS color interpolation](https://www.w3.org/TR/css-color-4/#interpolation-alpha).
-Interrupted transitions sample their current presentation and shorten
-the reverse path. Windows reduced motion settles immediately. Motion and palette
+Track fill, stroke and thumb position keep independent clocks. Palette changes
+animate the track for 190ms and preserve the thumb's current path. Interrupted
+colors retain continuous premultiplied Oklab values, avoiding an 8-bit round-trip
+before retargeting. Reversals retain CSS's reversing-adjusted start and shortening
+factor; a third destination starts a full transition from the current presentation.
+Windows reduced motion and motion while contrast is enabled settle immediately. Motion and palette
 observers detach on unload/template replacement; reload restores presentation.
 
 The reference audit retains geometry and palette under
@@ -91,11 +95,19 @@ regression compares the native easing calculation with these observed values.
 The source color sampled into a 1px sRGB canvas is RGBA 46,88,133,248;
 a second regression checks premultiplied color interpolation against that raster,
 allowing one channel step for the canvas alpha round-trip.
+An isolated CSS audit using the source color-mix expression observes repeated
+reversal durations 182.662684ms and 153.358570ms, followed by a full 190ms dark
+palette transition. Unit regressions check their rendered color samples and
+that unchanged destinations preserve the thumb clock.
+The probe pages and observed output are retained under
+[tests/Reference](../tests/Reference/README.md).
 
 The registered Switches catalog fixture exercises rendered geometry/palette,
 disabled rejection, UIA activation/focus, consumer state in both directions,
 two-way binding, live labels, explicit names, hover/press state retention,
-template replacement, unload/reload and intermediate/reversed motion. It emits
+template replacement, unload/reload and intermediate/reversed motion. Motion
+and appearance samples are retained separately before physical input, so an
+inactive hosted desktop does not erase animation evidence. It emits
 `switch-measurements-{Light,Dark}.json` and corresponding native captures.
 The independent NuGet consumer also instantiates and toggles the control.
 The x64 catalog and isolated consumer at 7001e3e passed the registered light/dark

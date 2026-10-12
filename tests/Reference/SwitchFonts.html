@@ -1,0 +1,39 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Orchard reference font audit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;500;600;700&display=swap">
+<style>
+  body { margin:32px; background:white; color:#2d2d2d; font:500 14px/20px 'Encode Sans',ui-sans-serif,system-ui,sans-serif; }
+  h1 { font-size:24px; line-height:32px; }
+  table { border-collapse:collapse; margin-top:20px; }
+  td,th { padding:6px 20px 6px 0; text-align:left; }
+  pre { white-space:pre-wrap; font:12px/18px monospace; }
+</style>
+<h1>Reference fallback font audit</h1>
+<p id="canonical"><span id="latin">Enable notifications</span> / <span id="japanese">通知を有効にする</span></p>
+<button id="probe">Measure fonts</button>
+<table><thead><tr><th>Family</th><th>Japanese</th><th>Width</th></tr></thead><tbody id="rows"></tbody></table>
+<pre id="result">Not measured</pre>
+<script>
+document.getElementById('probe').addEventListener('click', async () => {
+  await document.fonts.ready;
+  const japanese='通知を有効にする';
+  const families=['Segoe UI','Arial','Yu Gothic UI','Yu Gothic','Meiryo UI','Meiryo','MS PGothic','MS Gothic','Microsoft YaHei UI','Microsoft YaHei','Noto Sans CJK JP','Noto Sans JP','Noto Sans CJK SC','Arial Unicode MS','Droid Sans Fallback'];
+  const result={userAgent:navigator.userAgent,language:navigator.language,canonical:{japanese:document.getElementById('japanese').getBoundingClientRect().width,latin:document.getElementById('latin').getBoundingClientRect().width,font:getComputedStyle(document.getElementById('canonical')).font},fonts:Array.from(document.fonts).map(f=>({family:f.family,weight:f.weight,status:f.status})),candidates:[]};
+  document.getElementById('rows').replaceChildren();
+  for(let i=0;i<families.length;i++) {
+    const family=families[i],alias='AuditLocal'+i;
+    const face=new FontFace(alias,'local("'+family+'")',{weight:'500'});
+    try {await face.load();} catch { result.candidates.push({family,available:false}); continue; }
+    document.fonts.add(face);
+    const row=document.createElement('tr'),name=document.createElement('td'),sample=document.createElement('td'),width=document.createElement('td');
+    name.textContent=family;sample.textContent=japanese;sample.style.fontFamily='"'+alias+'",sans-serif';
+    const span=document.createElement('span');span.textContent=japanese;span.style.fontFamily=sample.style.fontFamily;sample.replaceChildren(span);
+    row.append(name,sample,width);document.getElementById('rows').append(row);
+    const measured=span.getBoundingClientRect().width;width.textContent=String(measured);
+    const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');ctx.font='500 14px "'+alias+'"';
+    result.candidates.push({family,available:true,width:measured,canvasWidth:ctx.measureText(japanese).width});
+  }
+  document.getElementById('result').textContent=JSON.stringify(result,null,2);
+});
+</script>

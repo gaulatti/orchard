@@ -31,9 +31,11 @@ public sealed class BleeckerSwitch : Control
     private readonly SolidColorBrush trackFill = new();
     private readonly SolidColorBrush trackStroke = new();
     private readonly SolidColorBrush thumbFill = new();
-    private System.Diagnostics.Stopwatch? motion;
-    private double trackFraction, trackFrom, thumbFrom, trackDuration, thumbDuration;
-    private bool motionTarget;
+    private readonly System.Diagnostics.Stopwatch clock = System.Diagnostics.Stopwatch.StartNew();
+    private readonly BleeckerCssTransition<double> thumbMotion = new((from, to, progress) => from + (to - from) * progress);
+    private readonly BleeckerCssTransition<(double L, double A, double B, double Alpha)> fillMotion = new(BleeckerColorMix.MixPremultiplied);
+    private readonly BleeckerCssTransition<(double L, double A, double B, double Alpha)> strokeMotion = new(BleeckerColorMix.MixPremultiplied);
+    private bool rendering;
 
     public BleeckerSwitch()
     {
@@ -153,7 +155,7 @@ public sealed class BleeckerSwitch : Control
         var measured = base.MeasureOverride(new Windows.Foundation.Size(width, availableSize.Height));
         return new Windows.Foundation.Size(width, measured.Height);
     }
-    private void OnColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => { UpdateVisuals(false); UpdateShadow(); });
+    private void OnColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => { UpdateVisuals(true); UpdateShadow(); });
     private void OnMotionChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(() => UpdateVisuals(false));
 
     private void ObservePalette()
@@ -163,12 +165,12 @@ public sealed class BleeckerSwitch : Control
         {
             var token = probe.RegisterPropertyChangedCallback(TextBlock.ForegroundProperty, (_, _) =>
             {
-                ObservePalette(); UpdateVisuals(false);
+                ObservePalette(); UpdateVisuals(true);
             });
             paletteObservers.Add((probe, TextBlock.ForegroundProperty, token));
             if (probe.Foreground is SolidColorBrush brush)
                 foreach (var property in new[] { SolidColorBrush.ColorProperty, Brush.OpacityProperty })
-                    paletteObservers.Add((brush, property, brush.RegisterPropertyChangedCallback(property, (_, _) => UpdateVisuals(false))));
+                    paletteObservers.Add((brush, property, brush.RegisterPropertyChangedCallback(property, (_, _) => UpdateVisuals(true))));
         }
     }
     private void StopObservingPalette()
@@ -176,50 +178,37 @@ public sealed class BleeckerSwitch : Control
         foreach (var observer in paletteObservers) observer.Owner.UnregisterPropertyChangedCallback(observer.Property, observer.Token);
         paletteObservers.Clear();
     }
-    private void StopMotion() { CompositionTarget.Rendering -= OnFrame; motion = null; }
+    private void StopMotion() { CompositionTarget.Rendering -= OnFrame; rendering = false; }
 
     private void UpdateVisuals(bool animate)
     {
         if (translation is null || probes.Length != 6) return;
-        var wasMoving = motion is not null;
-        if (wasMoving) PaintFrame();
-        StopMotion();
-        if (!animate || !IsLoaded || Visibility != Visibility.Visible || !settings.AnimationsEnabled)
+        var time = clock.Elapsed.TotalMilliseconds;
+        var enabled = animate && IsLoaded && Visibility == Visibility.Visible && settings.AnimationsEnabled && !accessibility.HighContrast;
+        var colorDuration = BleeckerTokens.Durations["control"];
+        fillMotion.Retarget(BleeckerColorMix.Premultiply(Sample(probes[IsOn ? 1 : 0].Foreground)), time, colorDuration, enabled);
+        strokeMotion.Retarget(BleeckerColorMix.Premultiply(Sample(probes[IsOn ? 3 : 2].Foreground)), time, colorDuration, enabled);
+        thumbMotion.Retarget(IsOn ? 16 : 0, time, BleeckerTokens.Durations["surface"], enabled);
+        PaintFrame(time);
+        if (IsMoving(time))
         {
-            trackFraction = IsOn ? 1 : 0;
-            translation.X = IsOn ? 16 : 0;
-            PaintColors();
-            return;
+            if (!rendering) { CompositionTarget.Rendering += OnFrame; rendering = true; }
         }
-        trackFrom = trackFraction; thumbFrom = translation.X;
-        motionTarget = IsOn;
-        var target = IsOn ? 1d : 0d;
-        // CSS reversals shorten each transition in proportion to the distance
-        // remaining between the current presentation and its binary endpoint.
-        trackDuration = BleeckerTokens.Durations["control"] * (wasMoving ? Math.Abs(target - trackFrom) : 1);
-        thumbDuration = BleeckerTokens.Durations["surface"] * (wasMoving ? Math.Abs(target * 16 - thumbFrom) / 16 : 1);
-        motion = System.Diagnostics.Stopwatch.StartNew();
-        CompositionTarget.Rendering += OnFrame;
+        else StopMotion();
     }
+    private bool IsMoving(double time) => fillMotion.IsRunning(time) || strokeMotion.IsRunning(time) || thumbMotion.IsRunning(time);
     private void OnFrame(object? sender, object args)
     {
-        if (motion is null) return;
-        PaintFrame();
-        if (motion.Elapsed.TotalMilliseconds >= Math.Max(trackDuration, thumbDuration)) StopMotion();
+        var time = clock.Elapsed.TotalMilliseconds;
+        PaintFrame(time);
+        if (!IsMoving(time)) StopMotion();
     }
-    private void PaintFrame()
+    private void PaintFrame(double time)
     {
-        if (motion is null || translation is null) return;
-        var elapsed = motion.Elapsed.TotalMilliseconds;
-        var target = motionTarget ? 1d : 0d;
-        trackFraction = trackFrom + (target - trackFrom) * BleeckerColorMix.Premium(trackDuration > 0 ? elapsed / trackDuration : 1);
-        translation.X = thumbFrom + (target * 16 - thumbFrom) * BleeckerColorMix.Premium(thumbDuration > 0 ? elapsed / thumbDuration : 1);
-        PaintColors();
-    }
-    private void PaintColors()
-    {
-        Paint(trackFill, BleeckerColorMix.Mix(Sample(probes[0].Foreground), Sample(probes[1].Foreground), trackFraction));
-        Paint(trackStroke, BleeckerColorMix.Mix(Sample(probes[2].Foreground), Sample(probes[3].Foreground), trackFraction));
+        if (translation is null) return;
+        translation.X = thumbMotion.ValueAt(time);
+        Paint(trackFill, BleeckerColorMix.EncodePremultiplied(fillMotion.ValueAt(time)));
+        Paint(trackStroke, BleeckerColorMix.EncodePremultiplied(strokeMotion.ValueAt(time)));
         Paint(thumbFill, Sample(probes[IsOn ? 5 : 4].Foreground));
     }
     private static (byte R, byte G, byte B, double Alpha) Sample(Brush brush)

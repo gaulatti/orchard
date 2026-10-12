@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>Orchard CSS transition audit</title>
+<style>
+body {margin:32px;font:14px/20px sans-serif;color:#2d2d2d;background:white}
+#track {width:36px;height:20px;border-radius:10px;background:color-mix(in oklab,#e6d5b8 25%,transparent);position:relative;margin:20px 0}
+#thumb {width:16px;height:16px;border-radius:50%;background:white;position:absolute;left:2px;top:2px;transform:translateX(0)}
+pre {white-space:pre-wrap}
+</style>
+<h1>CSS transition clock audit</h1><button id="run">Freeze transition sequence</button><div id="track"><div id="thumb"></div></div><pre id="result">Not run</pre>
+<script>
+const track=document.getElementById('track'),thumb=document.getElementById('thumb');
+document.getElementById('run').onclick=async()=>{
+  track.getAnimations().forEach(a=>a.cancel());thumb.getAnimations().forEach(a=>a.cancel());
+  track.style.transition='none';thumb.style.transition='none';track.style.backgroundColor='color-mix(in oklab,#e6d5b8 25%,transparent)';thumb.style.transform='translateX(0px)';
+  getComputedStyle(track).backgroundColor;getComputedStyle(thumb).transform;
+  await new Promise(requestAnimationFrame);
+  track.style.transition='background-color 190ms cubic-bezier(.22,1,.36,1)';thumb.style.transition='transform 220ms cubic-bezier(.22,1,.36,1)';
+  getComputedStyle(track).backgroundColor;getComputedStyle(thumb).transform;
+  const samples=[];
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const ctx=canvas.getContext('2d');
+  function freeze(element,time) {getComputedStyle(element).backgroundColor;for(const a of element.getAnimations()) {a.pause();a.currentTime=time;}}
+  function sample(name){const color=getComputedStyle(track).backgroundColor;ctx.clearRect(0,0,1,1);ctx.fillStyle=color;ctx.fillRect(0,0,1,1);samples.push({name,color,rgba:Array.from(ctx.getImageData(0,0,1,1).data),duration:track.getAnimations().map(a=>a.effect.getTiming().duration),progress:track.getAnimations().map(a=>a.effect.getComputedTiming().progress),thumb:getComputedStyle(thumb).transform,thumbTime:thumb.getAnimations().map(a=>a.currentTime)});}
+  track.style.backgroundColor='#2c5784';thumb.style.transform='translateX(16px)';freeze(track,95);freeze(thumb,95);sample('on95');
+  track.style.backgroundColor='color-mix(in oklab,#e6d5b8 25%,transparent)';freeze(track,50);sample('reverse50');
+  track.style.backgroundColor='#2c5784';freeze(track,25);sample('reverseAgain25');
+  track.style.backgroundColor='#5ba3f5';freeze(track,95);sample('dark95');
+  document.getElementById('result').textContent=JSON.stringify(samples,null,2);
+};
+</script>
