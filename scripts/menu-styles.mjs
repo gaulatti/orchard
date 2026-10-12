@@ -56,5 +56,11 @@ export function menuStyles() {
     </Style>
 `;
   }
+  for (const [kind, type] of [['Item', 'MenuFlyoutItem'], ['Submenu', 'MenuFlyoutSubItem']]) {
+    xaml += `    <Style x:Key="BleeckerMenuInset${kind}Style" TargetType="${type}" BasedOn="{StaticResource BleeckerMenu${kind}Style}">
+        <Setter Property="Padding" Value="32,6,8,6" />
+    </Style>
+`;
+  }
   return xaml + '</ResourceDictionary>\n';
 }

@@ -45,6 +45,8 @@ public sealed partial class MainWindow : Window
                 Require(ElementCompositionPreview.GetElementChildVisual((Grid)menuSurfaceRoot.Children[1]) is ContainerVisual menuShadows && menuShadows.Children.Count == 2,
                     "Packaged menu did not render its overlay shadow layers.");
                 var labelPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageLabel);
+                Require(PackageInset.Padding == new Thickness(32, 6, 8, 6) && PackageInset.ActualHeight == 32,
+                    "Packaged inset item lost its reference geometry.");
                 var presentedLabel = FrameworkElementAutomationPeer.CreatePeerForElement(menuPresenter).GetChildren()
                     .SingleOrDefault(peer => peer.GetName() == "Account");
                 Require(presentedLabel is not null && presentedLabel.GetAutomationControlType() == AutomationControlType.Text &&

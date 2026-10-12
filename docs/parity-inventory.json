@@ -1703,6 +1703,8 @@
         "src/Orchard/Controls/BleeckerOverlaySurface.cs",
         "BleeckerMenuPresenterStyle",
         "BleeckerMenuItemStyle",
+          "BleeckerMenuInsetItemStyle",
+          "BleeckerMenuInsetSubmenuStyle",
         "BleeckerMenuCheckboxStyle",
         "BleeckerMenuRadioStyle",
         "BleeckerMenuSubmenuStyle",
@@ -1716,7 +1718,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-          "Rich rows/icons/inset action rows and indeterminate states; constrained label content and Narrator behavior",
+          "Rich rows/icons and indeterminate states; constrained label content and Narrator behavior",
         "Exact overlay shadow rasterization and edge placement, entry/exit and item transition motion",
         "All physical pointer/keyboard/focus states and closed-menu selection persistence",
         "Contrast foregrounds, Narrator, scaling, constrained content and ARM64 runtime",

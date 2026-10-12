@@ -43,7 +43,7 @@
                 <Button x:Name="MenuTrigger" Content="Display options" Style="{StaticResource BleeckerSecondaryButtonStyle}">
                     <Button.Flyout><orchard:BleeckerDropdownMenu x:Name="PackageMenu">
                         <orchard:BleeckerMenuLabel x:Name="PackageLabel" Text="Account" />
-                        <MenuFlyoutItem Text="Profile" Style="{StaticResource BleeckerMenuItemStyle}" />
+                        <MenuFlyoutItem x:Name="PackageInset" Text="Profile" Style="{StaticResource BleeckerMenuInsetItemStyle}" />
                         <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
                         <ToggleMenuFlyoutItem Text="Revenue" IsChecked="True" Style="{StaticResource BleeckerMenuCheckboxStyle}" />
                     </orchard:BleeckerDropdownMenu></Button.Flyout>

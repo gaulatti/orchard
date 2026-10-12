@@ -26,6 +26,8 @@ public sealed partial class MenusFixture : UserControl
         VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(presenter, 0));
         VerifyShadow(ShadowPreview);
         VerifyLabels(presenter);
+        VerifyInset(InsetAction);
+        VerifyInset(Submenu);
         foreach (var item in Menu.Items.OfType<MenuFlyoutItem>().Where(item => item is not BleeckerMenuLabel))
             Require(item.FontSize == 14 && item.CornerRadius.TopLeft == 7 && item.Padding.Top == 6 && item.ActualHeight == 32, $"Menu item geometry mismatch: {item.Text} {item.ActualHeight}.");
         var root = (Grid)VisualTreeHelper.GetChild(Action, 0);
@@ -53,6 +55,7 @@ public sealed partial class MenusFixture : UserControl
         Require(childPresenter.MinWidth == 144 && childPresenter.ActualWidth == 144 && presenter.MinWidth == 176,
             $"Root/submenu geometry mismatch: root={presenter.MinWidth}, child={childPresenter.MinWidth}/{childPresenter.ActualWidth}.");
         VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(childPresenter, 0));
+        VerifyInset(NestedInsetAction);
         var nestedLabel = FrameworkElementAutomationPeer.CreatePeerForElement(childPresenter).GetChildren()
             .SingleOrDefault(peer => peer.GetName() == "More actions");
         Require(nestedLabel is not null && nestedLabel.GetAutomationControlType() == AutomationControlType.Text &&
@@ -68,6 +71,10 @@ public sealed partial class MenusFixture : UserControl
         var before = actions;
         await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke());
         Require(actions == before + 1 && !Menu.IsOpen, "Native menu invocation did not execute and dismiss.");
+        Menu.ShowAt(Trigger);
+        await Task.Delay(150);
+        await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(InsetAction).GetPattern(PatternInterface.Invoke)).Invoke());
+        Require(actions == before + 2 && !Menu.IsOpen, "Inset menu invocation did not execute and dismiss.");
         var originalStyle = Menu.MenuFlyoutPresenterStyle;
         var consumerStyle = new Style(typeof(MenuFlyoutPresenter)) { BasedOn = originalStyle };
         consumerStyle.Setters.Add(new Setter(FrameworkElement.MinWidthProperty, 220d));
@@ -85,6 +92,17 @@ public sealed partial class MenusFixture : UserControl
         Require(presenter.MinWidth == 176, "Restored default root menu lost its width.");
         Menu.Hide();
         await Task.Delay(150);
+    }
+    private static void VerifyInset(Control item)
+    {
+        var root = (Grid)VisualTreeHelper.GetChild(item, 0);
+        var content = (Grid)root.Children[1];
+        var text = content.Children.OfType<TextBlock>().Single(child => child.Name == "TextBlock");
+        Require(item.Padding == new Thickness(32, 6, 8, 6) && item.ActualHeight == 32 &&
+            text.TransformToVisual(item).TransformPoint(default).X == 32,
+            $"Inset menu row differs from the reference: {item.Name}.");
+        Require(item.FontSize == 14 && item.FontFamily.Source.Contains("EncodeSans-Regular.ttf") && item.CornerRadius.TopLeft == 7,
+            "Inset menu row lost the base typography or corners.");
     }
     private void VerifyLabels(MenuFlyoutPresenter presenter)
     {

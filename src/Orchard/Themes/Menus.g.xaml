@@ -144,4 +144,10 @@
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
+    <Style x:Key="BleeckerMenuInsetItemStyle" TargetType="MenuFlyoutItem" BasedOn="{StaticResource BleeckerMenuItemStyle}">
+        <Setter Property="Padding" Value="32,6,8,6" />
+    </Style>
+    <Style x:Key="BleeckerMenuInsetSubmenuStyle" TargetType="MenuFlyoutSubItem" BasedOn="{StaticResource BleeckerMenuSubmenuStyle}">
+        <Setter Property="Padding" Value="32,6,8,6" />
+    </Style>
 </ResourceDictionary>
