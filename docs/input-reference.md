@@ -203,8 +203,8 @@ Orchard previously inferred reading direction from Arabic content and aligned
 default LTR entered text on the right. Its branded style now sets
 `TextReadingOrder=UseFlowDirection` and `TextAlignment=Start`; the placeholder
 binds both properties. Explicit consumer values remain dependency-property
-overrides. This does not establish RTL adornment parity: Bleecker positions its
-icons at physical left/right independently of the input's `dir`.
+overrides. Bleecker positions its icons at physical left/right independently of
+the input's `dir`; the subsequent adornment correction below covers that layout.
 
 The fixture checks visible glyph centroids for entered text and placeholders
 in both directions, all three sizes and both themes. All 24 cases pass at 100%
@@ -254,7 +254,40 @@ themes and a native action. Package SHA-256:
 ARM64 runtime remains unverified. This native-only change has no backend metrics
 impact. The public wiki remote remains unavailable; documentation lives here.
 
-### Remaining acceptance
+### Adornment direction correction
+
+The reference's start/end icons stay at physical left/right for both directions
+(`artifacts/input-adornment-reference.jpg`). Native inherited mirroring moved
+the start icon from x=12 to x=292 and reversed the search glyph in a 320px RTL
+input. The pre-fix fixture fails on that position, with retained evidence at
+`artifacts/smoke-input-adornment-before`.
+
+The template now fixes its surrounding layout to LTR and binds the editing and
+placeholder presenters to the control's text direction. A shared physical
+viewport owns border inset and padding so asymmetric adornment padding cannot
+mirror with the text. This preserves native editing and the existing baseline
+adjustment. Consumer icon content keeps its own appearance rather than being
+implicitly mirrored by the template.
+
+`InputsFixture.AdornmentDirection.cs` covers all three sizes, start-only,
+end-only and paired adornments, both directions, filled/placeholder states and
+both themes. All 72 cases pass at `artifacts/smoke-input-adornment-final`. Checks
+measure icon positions and editor bounds in fixture coordinates, placeholder
+alignment to the reading edge and entered-text containment. The existing 24
+direction checks and Latin baseline comparisons also pass. Raster captures show
+the search glyph retaining its orientation. Full Input acceptance remains open.
+
+The full catalog runtime suite passes at
+`artifacts/smoke-input-adornment-integration`, alongside all 13 tests, token
+drift, x64 publish and ARM64 compilation. Direct native typing, Ctrl+A
+replacement and Tab traversal pass in the published catalog, retained in
+`artifacts/input-adornment-native-editing.jpg`. The isolated package consumer
+passes at `artifacts/package-consumer-input-adornment`; package SHA-256 is
+`0c42fb30fdb706ce90c99a004892135832730ee1c00a571bfbaabf5d3221f8cf`.
+ARM64 runtime, scaling and full typography parity remain open. This template
+change has no backend metrics impact; the unavailable public wiki is unchanged.
+
+### Remaining acceptance gates
 
 - Register all three sizes, empty/populated, both adornments independently and
   together, valid/error, read-only/disabled, keyboard/pointer focus and hover.

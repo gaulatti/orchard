@@ -20,7 +20,7 @@
         <Setter Property="TextReadingOrder" Value="UseFlowDirection" />
         <Setter Property="TextAlignment" Value="Start" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerInput">
-            <Grid>
+            <Grid FlowDirection="LeftToRight">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal" /><VisualState x:Name="PointerOver" /><VisualState x:Name="Focused" /><VisualState x:Name="Disabled" /></VisualStateGroup>
                     <VisualStateGroup x:Name="InputStates">
@@ -66,14 +66,16 @@
                     <Grid x:Name="InputShadowHost" IsHitTestVisible="False" />
                     <Border x:Name="InputRing" Margin="-2" BorderThickness="2" CornerRadius="9" BorderBrush="{ThemeResource BleeckerInputRingBrush}" Opacity="0" IsHitTestVisible="False" />
                     <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" />
-                    <ScrollViewer x:Name="ContentElement" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
+                    <Grid x:Name="InputTextViewport" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                    <ScrollViewer x:Name="ContentElement" FlowDirection="{TemplateBinding FlowDirection}"
                         FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
                         Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Hidden"
                         VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" IsTabStop="False" ZoomMode="Disabled" AutomationProperties.AccessibilityView="Raw" />
-                    <TextBlock x:Name="PlaceholderTextContentPresenter" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
+                    <TextBlock x:Name="PlaceholderTextContentPresenter" FlowDirection="{TemplateBinding FlowDirection}"
                         FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
                         Text="{TemplateBinding PlaceholderText}" TextReadingOrder="{TemplateBinding TextReadingOrder}" TextAlignment="{TemplateBinding TextAlignment}"
                         Foreground="{TemplateBinding PlaceholderForeground}" VerticalAlignment="Center" IsHitTestVisible="False" />
+                    </Grid>
                 </Grid>
                 <ContentPresenter x:Name="StartAdornment" Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="EndAdornment" Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />

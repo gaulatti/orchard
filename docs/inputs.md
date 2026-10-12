@@ -8,8 +8,10 @@ Text and placeholders use `FlowDirection` with start alignment by default,
 matching Bleecker's LTR/RTL input alignment rather than inferring alignment from
 the entered script. The Input fixture verifies 24 rendered alignment cases
 across sizes and themes, and captures Japanese, Arabic, Hindi and mixed Unicode
-values. See the reference audit for the remaining fallback-font and RTL
-adornment gaps; these checks do not establish complete multilingual parity.
+values. Adornments and their padding stay on physical left/right sides in both
+directions, with a further 72 runtime fixture cases covering placement and text
+insets. See the reference audit for remaining fallback-font gaps; these checks
+do not establish complete multilingual parity.
 
 ```xml
 <orchard:BleeckerLabel Content="Title" Target="{Binding ElementName=TitleInput}" />
