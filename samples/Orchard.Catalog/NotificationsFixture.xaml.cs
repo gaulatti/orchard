@@ -82,14 +82,12 @@ public sealed partial class NotificationsFixture : UserControl
         try
         {
             root.RequestedTheme = changedScheme == BleeckerColorScheme.Light ? ElementTheme.Light : ElementTheme.Dark;
-            await Task.Delay(150);
-            VerifyPalette(presenter, rows[0], counter, changedScheme);
+            await AwaitVerificationAsync(() => VerifyPalette(presenter, rows[0], counter, changedScheme));
             Require(popup.IsOpen && presenter.ActualWidth == 320, "Live theme change dismissed or resized notifications.");
             await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-live-{changedScheme.ToString().ToLowerInvariant()}.png"));
         }
         finally { root.RequestedTheme = originalTheme; }
-        await Task.Delay(150);
-        VerifyPalette(presenter, rows[0], counter, scheme);
+        await AwaitVerificationAsync(() => VerifyPalette(presenter, rows[0], counter, scheme));
         Require(mark.Focus(FocusState.Keyboard), "Notification header did not accept keyboard focus.");
         Require(rows[0].Focus(FocusState.Keyboard), "Notification row did not accept keyboard focus.");
         Require(Descendants<Border>(rows[0]).Single(border => border.Name == "FocusHighlight").Opacity == 1,
@@ -187,12 +185,10 @@ public sealed partial class NotificationsFixture : UserControl
         var originalDescription = item.Description;
         item.Title = "Short update";
         item.Description = "Ready";
-        await Task.Delay(100);
-        Require(row.ActualHeight == 72, "Live notification text update did not reduce the row height.");
+        await AwaitVerificationAsync(() => Require(row.ActualHeight == 72, "Live notification text update did not reduce the row height."));
         item.Title = originalTitle;
         item.Description = originalDescription;
-        await Task.Delay(100);
-        Require(row.ActualHeight == tallHeight, "Restoring long text did not restore wrapped layout.");
+        await AwaitVerificationAsync(() => Require(row.ActualHeight == tallHeight, "Restoring long text did not restore wrapped layout."));
         popup.Hide();
         await Task.Delay(150);
     }
@@ -219,6 +215,15 @@ public sealed partial class NotificationsFixture : UserControl
         }
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
+    private static async Task AwaitVerificationAsync(Action verify)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (true)
+        {
+            try { verify(); return; }
+            catch (InvalidOperationException) when (elapsed.Elapsed < TimeSpan.FromSeconds(1)) { await Task.Delay(16); }
+        }
+    }
     private sealed class ActionCommand(Action<object?> action) : ICommand
     {
         private bool enabled = true;
