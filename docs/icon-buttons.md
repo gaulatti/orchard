@@ -24,4 +24,6 @@ Palettes derive from canonical tokens in generated, per-variant theme dictionari
 
 The catalog registers all nine size/variant combinations plus a disabled action. Published x64 checks assert square dimensions, 18px vector size and round strokes, accessible names/button roles, native command and parameter delivery, and rendered background/foreground/border and icon stroke values across normal, hover, pressed and disabled states for all three variants in both themes. Consumer color/style ownership and content replacement are checked. The light/dark `icon-buttons-*.png` captures are visually inspected. The independent package consumer includes its own Lucide Save vector and checks layout, disabled foreground propagation and invocation.
 
-Still open: physical keyboard/pointer and tooltip interaction, Narrator, actual Windows contrast settings, display/text scaling, reduced motion and ARM64 runtime. ARM64 compilation is separate evidence and does not establish runtime support.
+Physical desktop testing in the dark theme verifies the Edit fixture: pointer click increments its command result, Tab/Shift+Tab displays its branded focus ring, Space increments the result again, and its Edit story tooltip appears. Evidence: `artifacts/icon-keyboard-dark.jpg`.
+
+Still open: the remaining physical keyboard/pointer and tooltip matrix, Narrator, actual Windows contrast settings, display/text scaling, reduced motion and ARM64 runtime. ARM64 compilation is separate evidence and does not establish runtime support.
