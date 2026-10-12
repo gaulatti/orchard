@@ -31,7 +31,7 @@ on their previous preview until the applicable input/textarea contracts pass.
 
 Remaining work includes exact glyph/baseline and scaling comparison, reference
 hover/disabled precedence, error semantics, shadow raster comparison, motion/reduced motion,
-live theme and brush updates, broader editing/clipboard
+live brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
 adorned, error, disabled, read-only and constrained multilingual examples.
@@ -74,3 +74,12 @@ and unload/reload cleanup in both themes. x64 publish, ARM64 build and 13
 unit/coverage tests pass. The live light-theme hover capture is retained at
 `artifacts/input-light-hover-shadow.jpg`; it is a rendering checkpoint, not
 an exact blur comparison or motion acceptance.
+
+Live-theme regression switches between light and dark with an invalid editor
+focused and text selected. It checks normal background/border/text/placeholder,
+error focus border/ring, disabled invalid background/border and decorative icon
+foreground together. Restoring the original theme must preserve consumer text,
+selection, focus and geometry. This check covers ordinary appearance changes;
+Windows contrast switching and live mutation of consumer brushes remain open.
+Both directions pass in the full catalog suite at
+`artifacts/smoke-input-live-theme`. This checkpoint changes verification only.

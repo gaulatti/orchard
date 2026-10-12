@@ -41,8 +41,54 @@ public sealed partial class InputsFixture : UserControl
         ReadOnlyInput.Focus(FocusState.Keyboard);
         VerifyDynamicGeometry();
         VerifyDisabledError(scheme);
+        await VerifyLiveThemesAsync(scheme);
         await VerifyShadowLifecycleAsync();
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
+    }
+
+    private async Task VerifyLiveThemesAsync(BleeckerColorScheme scheme)
+    {
+        var host = (FrameworkElement)XamlRoot.Content;
+        var originalTheme = host.RequestedTheme;
+        var originalText = ErrorInput.Text;
+        var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
+        ErrorInput.Select(0, 6);
+        Require(ErrorInput.Focus(FocusState.Keyboard), "Could not focus invalid input before changing appearance.");
+        await AwaitAsync(() => ErrorInput.FocusState != FocusState.Unfocused, "Invalid input did not acquire focus.");
+        var width = ErrorInput.ActualWidth;
+        var height = ErrorInput.ActualHeight;
+        try
+        {
+            host.RequestedTheme = alternate == BleeckerColorScheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+            await AwaitAsync(() => Matches(alternate), "Input retained stale palette values after a live theme change.");
+            Require(ErrorInput.FocusState != FocusState.Unfocused && ErrorInput.SelectedText == originalText[..6] &&
+                ErrorInput.ActualWidth == width && ErrorInput.ActualHeight == height, "Appearance change altered focus, selection or geometry.");
+        }
+        finally { host.RequestedTheme = originalTheme; }
+        await AwaitAsync(() => Matches(scheme), "Input did not restore its original theme palette.");
+        Require(ErrorInput.Text == originalText && ErrorInput.SelectedText == originalText[..6], "Theme restoration altered consumer text or selection.");
+        ReadOnlyInput.Focus(FocusState.Keyboard);
+
+        bool Matches(BleeckerColorScheme expected)
+        {
+            var colors = BleeckerTokens.Colors(expected);
+            var dark = expected == BleeckerColorScheme.Dark;
+            var normal = Find<Border>(MediumInput, "BorderElement");
+            var error = Find<Border>(ErrorInput, "BorderElement");
+            var ring = Find<Border>(ErrorInput, "InputRing");
+            var disabledError = Find<Border>(DisabledErrorInput, "BorderElement");
+            var placeholder = Find<TextBlock>(MediumInput, "PlaceholderTextContentPresenter");
+            var adornment = Find<ContentPresenter>(IconsInput, "StartAdornment");
+            return Hex(normal.Background) == (dark ? "#FF182533" : "#FFFFFFFF") &&
+                Hex(normal.BorderBrush) == (dark ? "#26FFFFFF" : "#66E6D5B8") &&
+                Hex(MediumInput.Foreground) == colors["textPrimary"] &&
+                Hex(placeholder.Foreground) == (dark ? "#FFB8C5D6" : "#8C595959") &&
+                Hex(error.BorderBrush) == colors[dark ? "accentBlue" : "terracotta"] &&
+                Hex(ring.BorderBrush) == (dark ? "#1F5BA3F5" : "#26A65D57") && ring.Opacity == 1 &&
+                Hex(disabledError.BorderBrush) == colors["terracotta"] &&
+                Hex(disabledError.Background) == (dark ? "#FF182533" : "#A6F9F6F2") &&
+                Hex(adornment.Foreground) == colors["textSecondary"];
+        }
     }
 
     private async Task VerifyShadowLifecycleAsync()
