@@ -2,8 +2,8 @@
 
 Pinned Bleecker commit: `a86059013cd59684ce452849278ea81e734f2066`.
 Sources: `src/components/kbd.tsx`, `stories/components/Kbd.stories.tsx`
-and the pinned build's `dist/styles.css`. This is a source audit; rendered
-comparison and the Windows implementation remain pending.
+and the pinned build's `dist/styles.css`. A Windows preview is implemented;
+complete rendered comparison and acceptance remain pending.
 
 ## Content and behavior
 
@@ -41,6 +41,16 @@ browser font and glyph metrics must be measured before accepting a native font
 choice. The separator inherits the surrounding font family; it is not assigned
 the keycap's mono family. There is no component-defined animation or disabled
 opacity. Windows contrast mode must use the required system colors.
+
+The local browser audit renders identical content with the unchanged reference
+stack and explicit Consolas. On this Windows Chrome host both rows have identical
+measured widths: K/P 20.0625px, Esc 32.15625px, command symbol 26.0625px, Ctrl
+38.203125px and Shift 44.25px; every cap is 20px high. The retained evidence is
+`artifacts/kbd-font-browser.json` and `artifacts/kbd-font-browser-dark.png`.
+This supports Consolas for those glyphs, but does not identify all fallback fonts
+or establish exact native raster parity. The screenshot transport produced JPEG
+bytes; pixel differences between translated row crops are not an exact glyph
+acceptance check.
 
 ## Acceptance evidence to collect
 

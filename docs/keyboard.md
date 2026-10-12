@@ -28,10 +28,15 @@ mode. No disabled dimming or animation is added.
 The catalog's **Keyboard shortcuts** fixture covers single, multiple, empty,
 Unicode, long, disabled, RTL and rich content. Runtime checks exercise collection
 mutation/replacement, precedence, accessibility roles/names, theme foregrounds
-and baseline geometry. The independent package consumer includes a keycap.
+and baseline geometry. A counted collection observer verifies detach on unload
+and replacement, one subscription on reload, and changes made while unloaded.
+Per-theme JSON records native keycap dimensions, child positions, font and
+palette values for comparison with the browser. The independent package
+consumer includes a keycap.
 
-Acceptance is still open: the provisional Windows mono family is Consolas from
-the source font stack, pending actual browser font/glyph comparison. Rendered
+Acceptance is still open: Consolas matches the browser reference's measured
+widths for the audited Latin keys and command symbol; native glyph comparison
+and other fallback content remain unverified. Rendered
 shadow corners, baseline and inline alignment, rich/template edge cases,
-unload/reload runtime, contrast, Narrator, isolated scaling, constrained width
+contrast, Narrator, isolated scaling, constrained width
 and ARM64 runtime still need verification. The component is not marked complete.

@@ -45,8 +45,81 @@ public sealed partial class KeyboardFixture : UserControl
         Require(peer.GetName() == "Explicit shortcut", "Keys replaced the consumer accessibility name.");
         Combo.ClearValue(AutomationProperties.NameProperty);
         keys.Remove("detached");
+        await VerifyCollectionLifecycleAsync();
         UpdateLayout();
+        var measurements = new[] { Single, Combo, ThreeKeys, Empty, Rich }.Select(control => new
+        {
+            control.Name, control.ActualWidth, control.ActualHeight,
+            font = control.FontFamily.Source, control.FontSize, weight = control.FontWeight.Weight,
+            foreground = Hex(control.Foreground), background = Hex(control.Background),
+            backgroundOpacity = control.Background.Opacity, border = Hex(control.BorderBrush), borderOpacity = control.BorderBrush.Opacity,
+            children = Find<StackPanel>(control, "PART_Combination").Children.OfType<FrameworkElement>().Select(child => new
+            {
+                kind = child.GetType().Name, child.ActualWidth, child.ActualHeight,
+                origin = child.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()),
+                text = child is BleeckerKbd cap ? cap.Content as string : (child as TextBlock)?.Text
+            })
+        });
+        await File.WriteAllTextAsync(Path.Combine(folder, $"keyboard-measurements-{scheme}.json"),
+            System.Text.Json.JsonSerializer.Serialize(new { scheme, displayScale = XamlRoot.RasterizationScale,
+                textScale = new Windows.UI.ViewManagement.UISettings().TextScaleFactor, measurements },
+                new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"keyboard-{scheme}.png"));
+    }
+
+    private async Task VerifyCollectionLifecycleAsync()
+    {
+        var panel = (StackPanel)Content;
+        var position = panel.Children.IndexOf(Combo);
+        var collection = new ObservedKeys("Ctrl", "S");
+        try
+        {
+            Combo.Keys = collection;
+            Require(collection.Subscribers == 1, "Loaded keyboard display did not subscribe exactly once.");
+            panel.Children.Remove(Combo);
+            await AwaitAsync(() => !Combo.IsLoaded, "Keyboard display did not unload.");
+            Require(collection.Subscribers == 0, "Unloaded keyboard display retained its collection subscription.");
+            collection.Add("Shift");
+            panel.Children.Insert(position, Combo);
+            UpdateLayout();
+            await AwaitAsync(() => Combo.IsLoaded && collection.Subscribers == 1, "Reloaded keyboard display did not restore one collection subscription.");
+            Require(Find<StackPanel>(Combo, "PART_Combination").Children.Count == 5 &&
+                FrameworkElementAutomationPeer.CreatePeerForElement(Combo).GetName() == "Ctrl+S+Shift",
+                "Reloaded keyboard display did not render changes made while detached.");
+            Combo.Keys = keys;
+            Require(collection.Subscribers == 0, "Collection replacement retained the previous subscription.");
+        }
+        finally
+        {
+            if (!panel.Children.Contains(Combo)) panel.Children.Insert(position, Combo);
+            Combo.Keys = keys;
+        }
+    }
+
+    private async Task AwaitAsync(Func<bool> condition, string message)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); await Task.Delay(16); }
+        Require(condition(), message);
+    }
+
+    private sealed class ObservedKeys(params string[] initial) : IEnumerable<string>, System.Collections.Specialized.INotifyCollectionChanged
+    {
+        private readonly List<string> values = [.. initial];
+        private System.Collections.Specialized.NotifyCollectionChangedEventHandler? changed;
+        public int Subscribers { get; private set; }
+        public event System.Collections.Specialized.NotifyCollectionChangedEventHandler? CollectionChanged
+        {
+            add { changed += value; Subscribers++; }
+            remove { changed -= value; Subscribers--; }
+        }
+        public void Add(string value)
+        {
+            values.Add(value);
+            changed?.Invoke(this, new(System.Collections.Specialized.NotifyCollectionChangedAction.Add, value, values.Count - 1));
+        }
+        public IEnumerator<string> GetEnumerator() => values.GetEnumerator();
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     private static string Hex(Brush brush)
