@@ -44,6 +44,8 @@ public sealed partial class MenusFixture : UserControl
         await Task.Delay(200);
         var childPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single(candidate => candidate != presenter);
         Require(childPresenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf") && childPresenter.Padding.Left == 6, "Submenu popup retained Windows appearance.");
+        Require(childPresenter.MinWidth == 144 && childPresenter.ActualWidth == 144 && presenter.MinWidth == 176,
+            $"Root/submenu geometry mismatch: root={presenter.MinWidth}, child={childPresenter.MinWidth}/{childPresenter.ActualWidth}.");
         await MainWindow.CaptureElementAsync(childPresenter, Path.Combine(folder, $"submenu-{scheme.ToString().ToLowerInvariant()}.png"));
         expansion.Collapse();
         await Task.Delay(100);
@@ -57,6 +59,23 @@ public sealed partial class MenusFixture : UserControl
         ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke();
         await Task.Delay(100);
         Require(actions == before + 1 && !Menu.IsOpen, "Native menu invocation did not execute and dismiss.");
+        var originalStyle = Menu.MenuFlyoutPresenterStyle;
+        var consumerStyle = new Style(typeof(MenuFlyoutPresenter)) { BasedOn = originalStyle };
+        consumerStyle.Setters.Add(new Setter(FrameworkElement.MinWidthProperty, 220d));
+        Menu.MenuFlyoutPresenterStyle = consumerStyle;
+        Menu.ShowAt(Trigger);
+        await Task.Delay(200);
+        presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
+        Require(presenter.MinWidth == 220 && presenter.ActualWidth == 220, "Consumer presenter width was overridden.");
+        Menu.Hide();
+        await Task.Delay(150);
+        Menu.MenuFlyoutPresenterStyle = originalStyle;
+        Menu.ShowAt(Trigger);
+        await Task.Delay(200);
+        presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
+        Require(presenter.MinWidth == 176, "Restored default root menu lost its width.");
+        Menu.Hide();
+        await Task.Delay(150);
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
 }

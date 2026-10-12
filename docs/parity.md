@@ -62,7 +62,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | date-range-picker | Pending | Pending | Full pinned contract |
 | filter-chip | Pending | Pending | Full pinned contract |
 | search-input | Pending | Pending | Full pinned contract |
-| dropdown-menu | Six native menu styles | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: submenu width, rich rows, shadow/motion, physical input, contrast/scaling/Narrator and ARM64 runtime; see [menu gaps](menus.md) |
+| dropdown-menu | `BleeckerDropdownMenu`, native item styles and focus behavior | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: rich rows, shadow/motion, full physical input, contrast/scaling/Narrator and ARM64 runtime; see [menu gaps](menus.md) |
 | metric | Pending | Pending | Full pinned contract |
 | notification-badge | Pending | Pending | Full pinned contract |
 | accordion | Pending | Pending | Full pinned contract |

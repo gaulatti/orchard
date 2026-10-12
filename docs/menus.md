@@ -1,6 +1,8 @@
 # Menu foundation (in progress)
 
-The generated `Menus.g.xaml` dictionary is merged by Orchard's resource entry point. Apply `BleeckerMenuPresenterStyle` to a native `MenuFlyout.MenuFlyoutPresenterStyle`, and apply `BleeckerMenuItemStyle`, `BleeckerMenuCheckboxStyle`, `BleeckerMenuRadioStyle`, `BleeckerMenuSubmenuStyle` and `BleeckerMenuSeparatorStyle` to the corresponding native items. Consumer code owns labels, checked values, radio groups, command handlers and shortcuts. `KeyboardAcceleratorTextOverride` only displays a hint; it does not register an accelerator.
+Use `BleeckerDropdownMenu` with native menu items styled using `BleeckerMenuItemStyle`, `BleeckerMenuCheckboxStyle`, `BleeckerMenuRadioStyle`, `BleeckerMenuSubmenuStyle` and `BleeckerMenuSeparatorStyle`. It supplies a 176px root minimum and a 144px submenu minimum, matching the reference's distinct popup sizes. Consumer code owns labels, checked values, radio groups, command handlers and shortcuts. `KeyboardAcceleratorTextOverride` only displays a hint; it does not register an accelerator.
+
+The generated `Menus.g.xaml` dictionary is merged by Orchard's resource entry point. Existing native integrations can apply `BleeckerMenuPresenterStyle` directly to `MenuFlyout.MenuFlyoutPresenterStyle`; that single style gives both levels a 176px minimum. The wrapper supplies the distinct defaults through root and shared presenter styles, without setting a local minimum on the presenter. An explicitly assigned `MenuFlyoutPresenterStyle` owns both levels' appearance and dimensions. Returning to the wrapper's original style restores its distinct defaults. Open/close animation remains disabled until the reference motion is implemented.
 
 This is an unfinished foundation, not accepted DropdownMenu parity. The pinned Bleecker recipe supplies Encode Sans Regular 14px/20px item typography, 8px horizontal and 6px vertical padding, 7px corners, 6px popup padding, a 1px border, the light/dark palette and Lucide selection/chevron paths. Windows' default presenter shadow is disabled. Native invocation, dismissal and selection behavior remain active.
 
@@ -12,7 +14,6 @@ The focus regression checks actual keyboard focus and removal of the previous ro
 
 Remaining requirements:
 
-- Submenu minimum width is currently inherited as 176px; the reference requires 144px.
 - Reference overlay shadows, 220ms entry, exit animation and 190ms item transitions are not implemented. Catalog open/close animations are disabled rather than using Windows motion.
 - Labels, inset rows, rich content/icons, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented.
 - Shortcut spacing, text baselines, overflow/scrolling, placement offset and all pointer/keyboard/focus states need rendered comparison.

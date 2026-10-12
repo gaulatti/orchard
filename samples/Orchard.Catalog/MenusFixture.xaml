@@ -5,7 +5,7 @@
         <TextBlock Text="Dropdown menus" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <Button x:Name="Trigger" Content="Display options" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
             <Button.Flyout>
-                <MenuFlyout x:Name="Menu" MenuFlyoutPresenterStyle="{StaticResource BleeckerMenuPresenterStyle}" AreOpenCloseAnimationsEnabled="False">
+                <orchard:BleeckerDropdownMenu x:Name="Menu">
                     <MenuFlyoutItem x:Name="Action" Text="Profile" Click="OnAction" orchard:BleeckerMenuFocus.IsEnabled="True" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutItem Text="Settings" KeyboardAcceleratorTextOverride="Ctrl+S" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutItem Text="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerMenuItemStyle}" />
@@ -16,9 +16,14 @@
                     <MenuFlyoutSubItem x:Name="Submenu" Text="More options" Style="{StaticResource BleeckerMenuSubmenuStyle}">
                         <MenuFlyoutItem Text="Archive" Style="{StaticResource BleeckerMenuItemStyle}" />
                     </MenuFlyoutSubItem>
-                </MenuFlyout>
+                </orchard:BleeckerDropdownMenu>
             </Button.Flyout>
         </Button>
         <TextBlock x:Name="Result" Text="No menu action yet" Style="{StaticResource BleeckerBodyStyle}" />
+        <Button Content="Native presenter style" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+            <Button.Flyout><MenuFlyout MenuFlyoutPresenterStyle="{StaticResource BleeckerMenuPresenterStyle}" AreOpenCloseAnimationsEnabled="False">
+                <MenuFlyoutItem Text="Native integration" Style="{StaticResource BleeckerMenuItemStyle}" />
+            </MenuFlyout></Button.Flyout>
+        </Button>
     </StackPanel>
 </UserControl>
