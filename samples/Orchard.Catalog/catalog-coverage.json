@@ -23,6 +23,7 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerInput": "InputsFixture.xaml",
     "BleeckerLabel": "LabelsFixture.xaml",
     "BleeckerFieldHelpTooltip": "FieldHelpFixture.xaml",
     "BleeckerTooltip": "TooltipsFixture.xaml",

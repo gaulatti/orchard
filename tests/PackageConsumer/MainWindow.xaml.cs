@@ -35,6 +35,9 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                Require(Input.ActualHeight == 40 && Input.FontSize == 14 && Input.FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
+                    FrameworkElementAutomationPeer.CreatePeerForElement(Input).GetAutomationControlType() == AutomationControlType.Edit,
+                    "Packaged input lost its geometry, font or native editor.");
                 Require(PackageFieldLabel.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && PackageFieldLabel.FontSize == 13 &&
                     !PackageFieldLabel.IsTabStop && ReferenceEquals(Microsoft.UI.Xaml.Automation.AutomationProperties.GetLabeledBy(Input), PackageFieldLabel) &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageFieldLabel).GetName() == "Title", "Packaged field label lost typography or input association.");

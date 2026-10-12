@@ -3,9 +3,60 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Orchard">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Inputs.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="local:BleeckerInput" BasedOn="{StaticResource DefaultTextBoxStyle}">
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontWeight" Value="Normal" /><Setter Property="CharacterSpacing" Value="0" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="Background" Value="{ThemeResource BleeckerInputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource BleeckerInputBorderBrush}" />
+        <Setter Property="PlaceholderForeground" Value="{ThemeResource BleeckerInputPlaceholderBrush}" />
+        <Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="7" />
+        <Setter Property="MinWidth" Value="0" /><Setter Property="UseSystemFocusVisuals" Value="False" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerInput">
+            <Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal" /><VisualState x:Name="PointerOver" /><VisualState x:Name="Focused" /><VisualState x:Name="Disabled" /></VisualStateGroup>
+                    <VisualStateGroup x:Name="InputStates">
+                        <VisualState x:Name="InputNormal" />
+                        <VisualState x:Name="InputHovered"><VisualState.Setters><Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputFocused"><VisualState.Setters>
+                            <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputFocusBrush}" /><Setter Target="InputRing.Opacity" Value="1" />
+                        </VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputNormalError"><VisualState.Setters><Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputHoveredError"><VisualState.Setters><Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputFocusedError"><VisualState.Setters>
+                            <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputErrorFocusBrush}" />
+                            <Setter Target="InputRing.BorderBrush" Value="{ThemeResource BleeckerInputErrorRingBrush}" /><Setter Target="InputRing.Opacity" Value="1" />
+                        </VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputDisabled"><VisualState.Setters>
+                            <Setter Target="Editor.Opacity" Value="0.6" /><Setter Target="BorderElement.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
+                        </VisualState.Setters></VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                <ContentPresenter x:Name="HeaderContentPresenter" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Visibility="Collapsed" />
+                <Grid x:Name="Editor" Grid.Row="1" MinHeight="{TemplateBinding MinHeight}">
+                    <Border x:Name="InputRing" Margin="-2" BorderThickness="2" CornerRadius="9" BorderBrush="{ThemeResource BleeckerInputRingBrush}" Opacity="0" IsHitTestVisible="False" />
+                    <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" />
+                    <ScrollViewer x:Name="ContentElement" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
+                        FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
+                        Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Hidden"
+                        VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" IsTabStop="False" ZoomMode="Disabled" AutomationProperties.AccessibilityView="Raw" />
+                    <TextBlock x:Name="PlaceholderTextContentPresenter" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
+                        FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
+                        Text="{TemplateBinding PlaceholderText}" Foreground="{TemplateBinding PlaceholderForeground}" VerticalAlignment="Center" IsHitTestVisible="False" />
+                </Grid>
+                <ContentPresenter Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
+                <ContentPresenter Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
+                <ContentPresenter x:Name="DescriptionPresenter" Grid.Row="2" Content="{TemplateBinding Description}" AutomationProperties.AccessibilityView="Raw" x:Load="False" />
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerLabel">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
