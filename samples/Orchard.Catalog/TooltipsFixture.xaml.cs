@@ -63,6 +63,27 @@ public sealed partial class TooltipsFixture : UserControl
         Require(!TopTip.IsOpen && BottomTip.IsOpen, "Opening another tooltip did not dismiss the previous one.");
         Require(Microsoft.UI.Xaml.Automation.AutomationProperties.GetDescribedBy(BottomTrigger).Contains(BottomTip), "Tooltip owner lost its accessible description relationship.");
         BottomTip.IsOpen = false;
+        await VerifyMotionLifecycleAsync();
+    }
+
+    private async Task VerifyMotionLifecycleAsync()
+    {
+        TopTip.IsOpen = true;
+        await Task.Delay(30);
+        var root = Descendants<FrameworkElement>(TopTip).Single(item => item.Name == "PART_MotionRoot");
+        Require(root.Opacity == 1 && root.RenderTransform is ScaleTransform { ScaleX: 1, ScaleY: 1 }, "Instant tooltip entry animated or retained an old transform.");
+        TopTip.IsOpen = false;
+        if (!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled)
+            Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), "Reduced-motion dismissal retained a popup.");
+        else
+            Require(VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), "Normal-motion dismissal removed the popup before its exit animation.");
+        TopTip.IsOpen = true;
+        await Task.Delay(250);
+        Require(TopTip.IsOpen && VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Count(item => ReferenceEquals(item.Child, TopTip)) == 1,
+            "An interrupted exit removed the reopened tooltip or leaked a popup.");
+        TopTip.IsOpen = false;
+        await Task.Delay(250);
+        Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), $"Completed tooltip exit retained its popup: open={TopTip.IsOpen}, opacity={root.Opacity}.");
     }
 
     private async Task VerifyCollisionsAsync(BleeckerColorScheme scheme, string folder)

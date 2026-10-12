@@ -12,7 +12,7 @@ using Windows.Foundation;
 namespace Orchard;
 
 /// <summary>A branded tooltip with an application-constrained popup and explicit owner.</summary>
-public sealed class BleeckerTooltip : ContentControl
+public sealed partial class BleeckerTooltip : ContentControl
 {
     private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<XamlRoot, OpenTooltip> current = new();
     private sealed class OpenTooltip { public WeakReference<BleeckerTooltip>? Value; }
@@ -45,7 +45,7 @@ public sealed class BleeckerTooltip : ContentControl
         DefaultStyleKey = typeof(BleeckerTooltip);
         hoverTimer = DispatcherQueue.CreateTimer();
         hoverTimer.IsRepeating = false;
-        hoverTimer.Tick += (_, _) => { if (target?.IsLoaded == true && target is not Control { IsEnabled: false }) IsOpen = true; };
+        hoverTimer.Tick += (_, _) => { if (target?.IsLoaded == true && target is not Control { IsEnabled: false }) { delayedEntry = true; IsOpen = true; } };
         PointerEntered += (_, _) => transitArea = null;
         PointerExited += OnContentExited;
         AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerMoved), true);
@@ -54,6 +54,7 @@ public sealed class BleeckerTooltip : ContentControl
     private void Connect(FrameworkElement? value)
     {
         IsOpen = false;
+        FinishClose();
         hoverTimer.Stop();
         if (target is not null)
         {
@@ -119,7 +120,7 @@ public sealed class BleeckerTooltip : ContentControl
         { hoverTimer.Stop(); IsOpen = true; }
     }
     private void OnTargetBlurred(object sender, RoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
-    private void OnTargetUnloaded(object sender, RoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
+    private void OnTargetUnloaded(object sender, RoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; FinishClose(); }
 
     private void SetOpen(bool open)
     {
@@ -128,14 +129,13 @@ public sealed class BleeckerTooltip : ContentControl
         {
             if (popup is null) return;
             FrameworkElementAutomationPeer.FromElement(this)?.RaiseAutomationEvent(AutomationEvents.ToolTipClosed);
-            popup.IsOpen = false;
-            popup.Child = null;
-            DetachInput();
             lastClosed = DateTimeOffset.UtcNow;
+            BeginMotion(false);
             Closed?.Invoke(this, EventArgs.Empty);
             return;
         }
         if (target?.XamlRoot is null) throw new InvalidOperationException("Attach BleeckerTooltip to a loaded PlacementTarget before opening it.");
+        FinishClose();
         XamlRoot = target.XamlRoot;
         var slot = current.GetOrCreateValue(XamlRoot);
         if (slot.Value?.TryGetTarget(out var previous) == true && !ReferenceEquals(previous, this)) previous.IsOpen = false;
@@ -150,6 +150,8 @@ public sealed class BleeckerTooltip : ContentControl
         ApplyTemplate();
         UpdateLayout();
         UpdatePlacement();
+        if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) motionSettings.AnimationsEnabledChanged += OnMotionSettingsChanged;
+        BeginMotion(true);
         FrameworkElementAutomationPeer.CreatePeerForElement(this)?.RaiseAutomationEvent(AutomationEvents.ToolTipOpened);
         Opened?.Invoke(this, EventArgs.Empty);
     }
@@ -241,6 +243,7 @@ public sealed class BleeckerTooltip : ContentControl
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
+        motionRoot = GetTemplateChild("PART_MotionRoot") as FrameworkElement;
         surface = GetTemplateChild("PART_Surface") as BleeckerOverlaySurface;
         arrow = GetTemplateChild("PART_Arrow") as Polygon;
         arrowPlacement = null;
