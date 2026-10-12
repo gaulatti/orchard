@@ -322,6 +322,7 @@
     <x:Double x:Key="BleeckerSpacingContainer">32</x:Double>
     <x:Double x:Key="BleeckerSpacingSection">48</x:Double>
     <x:Double x:Key="BleeckerSpacingPage">64</x:Double>
+    <FontFamily x:Key="BleeckerPrimaryMediumFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans</FontFamily>
     <CornerRadius x:Key="BleeckerButtonCornerRadius">7</CornerRadius>
     <CornerRadius x:Key="BleeckerCardCornerRadius">12</CornerRadius>
     <CornerRadius x:Key="BleeckerUiCornerRadius">7</CornerRadius>

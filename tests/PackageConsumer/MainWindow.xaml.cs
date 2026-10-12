@@ -25,7 +25,7 @@ public sealed partial class MainWindow : Window
         if (!Environment.GetCommandLineArgs().Contains("--verify-output")) return;
         try
         {
-            foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf", "OFL-EncodeSans.txt", "OFL-LibreFranklin.txt" })
+            foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf", "OFL-EncodeSans.txt", "OFL-LibreFranklin.txt" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing package asset: {font}");
             Require(Heading.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans"), "Package font URI not selected.");
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -40,6 +40,8 @@ public sealed partial class MainWindow : Window
                 PackageAction.ApplyTemplate();
                 var native = VisualTreeHelper.GetChild(PackageAction, 0) as Button;
                 Require(native is not null && native.ActualWidth > 0, "Packaged component template did not load.");
+                Require(native!.FontWeight.Weight == 500 && native.FontFamily.Source.Contains("EncodeSans-Medium.ttf#Encode Sans"),
+                    "Packaged component did not resolve the bundled medium font.");
                 Require(PackageIcon.ActualWidth == 40 && PackageIcon.ActualHeight == 40, "Packaged icon control did not lay out.");
                 Require(PackageGroup.ActualWidth > 0 && PackageGridItem.ActualHeight >= 36, "Packaged toggle group template did not lay out.");
                 var componentColor = ((SolidColorBrush)native!.Background).Color;

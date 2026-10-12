@@ -22,6 +22,8 @@ For custom icon content, supply an accessible name. For long text, use a wrappin
 
 ## Verification
 
+Button text selects `BleeckerPrimaryMediumFontFamily` and weight 500 explicitly. The package includes the real Encode Sans Medium face; no locally installed font is required. Explicit font properties on consumer-owned content retain their normal WinUI precedence.
+
 The catalog registers all variants/sizes, disabled/loading controls, full-width and multilingual wrapping fixtures. Runtime checks cover native command invocation and parameters, loading rejection, restoration of consumer-enabled state without replacing the binding, per-variant rendered colors in both themes, and connected-group integration. `CanExecuteChanged` is verified in both directions, including loading and size changes while execution is forbidden. A replacement template is instantiated and its native action is invoked to verify exactly one command and Click event, then the original template is restored. The independent package consumer instantiates the custom control, loads its template and per-variant resources, and invokes its Click event.
 
 Consumer templates must provide `PART_Action` (`Button`) and `PART_Progress` (`ProgressRing`). They may provide `PART_LinkUnderline` (`Border`) for the built-in link treatment. Keep the native action's command, parameter, content and automation bindings when replacing the template. Missing required parts fail explicitly.

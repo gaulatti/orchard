@@ -5,7 +5,10 @@
 - Libre Franklin: `googlefonts/Libre-Franklin` commit
   `310b7eef1f7b7ba82322295e0034675ea68040b0`, `fonts/ttf`.
 
-The initial catalog bundles Regular and SemiBold faces from each family.
-These are the same font assets used by Sabella. The adjacent `OFL-*.txt` files
+The catalog bundles Regular and SemiBold faces from each family, plus Encode Sans
+Medium for Bleecker's weight-500 controls. The Medium face comes from the same
+pinned Encode Sans commit; its OS/2 weight class is 500 and its SHA-256 is
+`40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98`.
+Regular and SemiBold are the same assets used by Sabella. The adjacent `OFL-*.txt` files
 contain each family’s SIL Open Font License. Retain them when redistributing
 the font assets.

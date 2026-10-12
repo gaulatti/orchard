@@ -66,6 +66,19 @@ public sealed class TokenContractTests
     }
 
     [TestMethod]
+    public void MediumControlFaceIsThePinnedRealWeight500Font()
+    {
+        var bytes = File.ReadAllBytes(Fixture("EncodeSans-Medium.ttf"));
+        Assert.AreEqual("40A222AF6B6DCD6940866415DF454F2E27E798F5DC16539D72C67449C0EECA98",
+            Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)));
+        var count = System.Buffers.Binary.BinaryPrimitives.ReadUInt16BigEndian(bytes.AsSpan(4));
+        var os2 = Enumerable.Range(0, count).Select(i => 12 + 16 * i)
+            .Single(offset => System.Text.Encoding.ASCII.GetString(bytes, offset, 4) == "OS/2");
+        var table = checked((int)System.Buffers.Binary.BinaryPrimitives.ReadUInt32BigEndian(bytes.AsSpan(os2 + 8)));
+        Assert.AreEqual((ushort)500, System.Buffers.Binary.BinaryPrimitives.ReadUInt16BigEndian(bytes.AsSpan(table + 4)));
+    }
+
+    [TestMethod]
     public void HighContrastProvidesEveryResourceUsingWindowsAccessibilityColors()
     {
         var xaml = XDocument.Load(Fixture("Tokens.g.xaml"));

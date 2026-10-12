@@ -8,6 +8,7 @@
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../src/Orchard/Tokens/BleeckerTokens.g.cs" Link="BleeckerTokens.g.cs" />
         <None Include="../../tokens/bleecker.tokens.json" Link="Fixtures/bleecker.tokens.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Medium.ttf" Link="Fixtures/EncodeSans-Medium.ttf" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Themes/Tokens.g.xaml" Link="Fixtures/Tokens.g.xaml" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Themes/Orchard.xaml" Link="Fixtures/Orchard.xaml" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/**/*.xaml" Exclude="../../src/Orchard/bin/**;../../src/Orchard/obj/**" Link="Fixtures/Library/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />

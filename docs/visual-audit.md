@@ -22,4 +22,6 @@ The dark link hover color has poor contrast against the reference surface. Orcha
 
 Corrections made: hover-only link underline, size-independent 16px link text, dark primary text, literal-white overlays instead of semantic text colors, secondary hover fill/border opacity, and destructive white text. Independent runtime assertions check secondary hover values as well as generated-resource resolution.
 
-Open comparison work includes actual medium-weight font assets and shaping, line heights and text baselines, exact underline offset, branded focus rings, shadows, disabled group opacity/compositing, icons, loading indicator, normal and reduced motion, and a complete rendered variant/size/theme/state matrix. Native-template behavior alone cannot close these gaps.
+Control styles now explicitly select the bundled Encode Sans Medium face and weight 500. The font file's pinned hash and OS/2 weight metadata are tested; published catalog and independent package checks verify font resolution. Full shaping and baseline comparison remains open.
+
+Open comparison work includes shaping, line heights and text baselines, exact underline offset, branded focus rings, shadows, disabled group opacity/compositing, icons, loading indicator, normal and reduced motion, and a complete rendered variant/size/theme/state matrix. Native-template behavior alone cannot close these gaps.

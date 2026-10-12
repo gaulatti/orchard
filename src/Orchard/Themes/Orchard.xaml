@@ -22,7 +22,8 @@
         <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
         <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />
     </Style>
@@ -30,7 +31,8 @@
         <Setter Property="Background" Value="{ThemeResource AccentButtonBackground}" />
         <Setter Property="Foreground" Value="{ThemeResource AccentButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource AccentButtonBorderBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />
     </Style>
@@ -39,7 +41,8 @@
         <Setter Property="Foreground" Value="{ThemeResource ToggleButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource ToggleButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="MinHeight" Value="36" />

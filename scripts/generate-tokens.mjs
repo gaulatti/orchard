@@ -93,6 +93,7 @@ for (const [role, family] of Object.entries(tokens.fontFamilies)) {
   xaml += `    <FontFamily x:Key="Bleecker${pascal(role)}SemiboldFontFamily">ms-appx:///Orchard/Assets/Fonts/${semibold}#${family}</FontFamily>\n`;
 }
 for (const [key, value] of Object.entries(tokens.spacing)) xaml += `    <x:Double x:Key="BleeckerSpacing${pascal(key)}">${value}</x:Double>\n`;
+xaml += '    <FontFamily x:Key="BleeckerPrimaryMediumFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans</FontFamily>\n';
 for (const [key, value] of Object.entries(tokens.radii)) xaml += `    <CornerRadius x:Key="Bleecker${pascal(key)}CornerRadius">${value}</CornerRadius>\n`;
 xaml += '</ResourceDictionary>\n';
 
@@ -143,7 +144,8 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
         <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
         <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
-        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="HorizontalAlignment" Value="${variant.startsWith('Icon') ? 'Left' : 'Stretch'}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />

@@ -17,12 +17,12 @@ $archive = [IO.Compression.ZipFile]::OpenRead($packagePath)
 try {
     $entries = @($archive.Entries | ForEach-Object FullName)
     foreach ($required in @('buildTransitive/Gaulatti.Orchard.targets', 'README.md', 'licenses/LICENSE-Bleecker.txt',
-        'assets/fonts/EncodeSans-Regular.ttf', 'assets/fonts/EncodeSans-SemiBold.ttf',
+        'assets/fonts/EncodeSans-Regular.ttf', 'assets/fonts/EncodeSans-Medium.ttf', 'assets/fonts/EncodeSans-SemiBold.ttf',
         'assets/fonts/LibreFranklin-Regular.ttf', 'assets/fonts/LibreFranklin-SemiBold.ttf',
         'assets/fonts/OFL-EncodeSans.txt', 'assets/fonts/OFL-LibreFranklin.txt')) {
         if ($required -notin $entries) { throw "Missing package entry: $required" }
     }
-    if (@($entries | Where-Object { $_ -match '\.ttf$' }).Count -ne 4) { throw 'Package must contain each bundled font exactly once.' }
+    if (@($entries | Where-Object { $_ -match '\.ttf$' }).Count -ne 5) { throw 'Package must contain each bundled font exactly once.' }
     if ($entries | Where-Object { $_ -match 'Catalog|Tests|\.cs$' }) { throw 'Application-facing package contains development infrastructure.' }
     $assemblyEntries = @($archive.Entries | Where-Object { $_.FullName -match '^lib/[^/]+/Orchard\.dll$' })
     if ($assemblyEntries.Count -ne 1) { throw 'Package must expose exactly one portable Orchard assembly.' }

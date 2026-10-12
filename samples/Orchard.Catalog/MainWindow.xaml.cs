@@ -99,7 +99,7 @@ public sealed partial class MainWindow : Window
             CatalogScroll.ChangeView(null, 0, null, disableAnimation: true);
             await Task.Delay(100);
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");
-            foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
+            foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing font: {font}");
             var peer = new ButtonAutomationPeer(PrimaryAction);
             ((IInvokeProvider)peer.GetPattern(PatternInterface.Invoke)).Invoke();

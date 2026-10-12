@@ -29,6 +29,8 @@ public sealed partial class ButtonsFixture : UserControl
         LoadingAction.ApplyTemplate();
         var native = Find<Button>(LoadingAction) ?? throw new InvalidOperationException("BleeckerButton has no native action.");
         var peer = new ButtonAutomationPeer(native);
+        Require(native.FontWeight.Weight == 500 && native.FontFamily.Source.Contains("EncodeSans-Medium.ttf#Encode Sans", StringComparison.Ordinal),
+            "Button did not select the bundled medium-weight face.");
         var invoke = (IInvokeProvider)peer.GetPattern(PatternInterface.Invoke);
         Require(peer.GetName() == "Run preview", "Button lost its accessible name.");
         var before = invocations;
