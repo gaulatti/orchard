@@ -65,6 +65,13 @@ subscriptions detach on unload or template replacement and restore on reload.
 Temporarily clearing Template removes presentation without losing consumer
 state. Rich label/description elements detach from their old presenters before
 the replacement template receives them, preserving single visual ownership.
+Null assignment detaches Orchard's observers/content through the template
+property callback, because WinUI clears the tree without calling OnApplyTemplate.
+ApplyTemplate is used after restoring a nonempty template. Explicitly invoking
+the pinned native ApplyTemplate with null throws before Orchard's template
+hook; that SDK boundary remains a documented limitation. The lifecycle fixture
+requires an empty visual tree after normal layout, retained consumer objects,
+native value/content/name updates while empty, and successful nonempty restoration.
 
 The pinned default Storybook render measures 291.71875×42px, with 20px label and
 description lines and the 12/2px gaps. The light baseline and measurements are
@@ -139,6 +146,19 @@ template row and live consumer style changes. Both then fail when applying a
 cleared template. The smoke report now distinguishes assignment, application
 and restoration, and native template exceptions retain their managed
 diagnostic through Trace. The lifecycle gate remains active.
+At `775c1b1`, the x64 snapshots confirm null assignment immediately removes all
+visual children and original-template restoration rebuilds them. No managed
+template exception is traced: the explicit null ApplyTemplate failure happens
+before Orchard's override. Cleanup now observes null assignment itself.
+
+The Japanese DOM audit compares actual text layout, rather than canvas
+measurement. The pinned component is 111.453125px wide for its Japanese label;
+the explicit Yu Gothic UI probe is 99.546875px at weight 400 and 100.625px at
+500. Yu Gothic is 111.453125px at all three tested weights. The browser report
+and screenshot are retained as `artifacts/checkbox-reference-cjk-dom.{json,jpg}`.
+Native fixture font probes compare the original stack with explicit Japanese
+families and restore the consumer font. These are evidence probes; the library
+font stack remains unchanged pending native glyph comparison.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

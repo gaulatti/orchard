@@ -41,6 +41,7 @@ public sealed class BleeckerCheckbox : CheckBox
         RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateSelectorProperty, (_, _) => UpdateContent());
+        RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
         RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => { if (Visibility != Visibility.Visible) UpdateVisuals(false); });
         PointerEntered += (_, _) => { pointerOver = true; UpdateVisuals(true); };
         PointerExited += (_, _) => { pointerOver = false; UpdateVisuals(true); };
@@ -79,18 +80,8 @@ public sealed class BleeckerCheckbox : CheckBox
 
     private void ApplyBleeckerTemplate()
     {
-        StopMotion(); StopObservingPalette(); StopObservingRichLayout(); richDefaults.Clear();
-        if (states is not null) states.CurrentStateChanged -= OnStateChanged;
-        if (richLabel is not null) richLabel.Content = null;
-        if (richDescription is not null) richDescription.Content = null;
-        if (Template is null)
-        {
-            box = focusRing = focusOffset = null;
-            inputChrome = textColumn = null;
-            glyph = null; label = description = null; richLabel = richDescription = null;
-            probes = []; states = null; visualState = "";
-            return;
-        }
+        DetachTemplate();
+        if (Template is null) return;
         base.OnApplyTemplate();
         box = Part<Border>("PART_Box"); inputChrome = Part<Grid>("PART_InputChrome"); glyph = Part<Viewbox>("PART_Glyph");
         focusRing = Part<Border>("PART_FocusRing"); focusOffset = Part<Border>("PART_FocusOffset");
@@ -106,12 +97,25 @@ public sealed class BleeckerCheckbox : CheckBox
         UpdateVisuals(false);
     }
 
+    private void DetachTemplate()
+    {
+        StopMotion(); StopObservingPalette(); StopObservingRichLayout(); richDefaults.Clear();
+        if (states is not null) states.CurrentStateChanged -= OnStateChanged;
+        if (richLabel is not null) richLabel.Content = null;
+        if (richDescription is not null) richDescription.Content = null;
+        box = focusRing = focusOffset = null;
+        inputChrome = textColumn = null;
+        glyph = null; label = description = null; richLabel = richDescription = null;
+        probes = []; states = null; visualState = ""; pointerOver = false;
+    }
+
     private T Part<T>(string name) where T : FrameworkElement => GetTemplateChild(name) as T
         ?? throw new InvalidOperationException($"BleeckerCheckbox requires {name}.");
     private void OnStateChanged(object sender, VisualStateChangedEventArgs args) { visualState = args.NewState?.Name ?? ""; UpdateVisuals(true); }
 
     private void UpdateContent()
     {
+        FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
         if (label is null || description is null || richLabel is null || richDescription is null || textColumn is null) return;
         richDefaults.Clear();
         var plainLabel = (Content is null or string) && ContentTemplate is null && ContentTemplateSelector is null;
@@ -129,7 +133,7 @@ public sealed class BleeckerCheckbox : CheckBox
         richDescription.Visibility = !plainDescription && hasDescription ? Visibility.Visible : Visibility.Collapsed;
         textColumn.Visibility = hasLabel || hasDescription ? Visibility.Visible : Visibility.Collapsed;
         ObserveRichLayout();
-        InvalidateMeasure(); FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
+        InvalidateMeasure();
     }
 
     private void ObserveRichLayout()

@@ -196,6 +196,18 @@ under `artifacts/ci-checkbox-7a0def1-x64`. Template phase diagnostics and the
 original managed exception trace will distinguish clearing from native style
 resolution; no lifecycle assertion has been relaxed.
 
+At `775c1b1`, [run 38306688055](https://github.com/gaulatti/orchard/actions/runs/38306688055)
+records zero visual children immediately after null assignment and a rebuilt
+Grid after original-template restoration. The x64 original failure remains the
+explicit native ApplyTemplate(null) invocation; no managed override error is
+traced. Null-property cleanup now detaches Orchard observers and owned content.
+The fixture verifies empty-tree layout and native value/content/name updates before restoring
+and applying the nonempty template. Explicit native ApplyTemplate(null) remains
+a documented SDK limitation, rather than a verified library capability.
+The snapshots were hash-verified from artifact `11772384171`, SHA-256
+`e3ff9a0c9c1476ce416b231fdadac218461e3c944ddc26b71e537290dd155510`,
+under `artifacts/ci-checkbox-775c1b1-x64`.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

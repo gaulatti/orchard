@@ -151,6 +151,7 @@ public sealed partial class CheckboxesFixture : UserControl
                     $"Checkbox border differs in {visualState}.");
             }
             verifiedSteps.Add("Unchecked hover, pressed and normal border states");
+            await InspectFontFallbackAsync(scheme, folder);
             foreach (var control in new[] { Off, Rich })
             {
                 var template = control.Template;
@@ -162,10 +163,27 @@ public sealed partial class CheckboxesFixture : UserControl
                     templateSamples.Add(DescribeTemplate(control, "before-clear"));
                     control.Template = null;
                     templateSamples.Add(DescribeTemplate(control, "assigned-null"));
-                    control.ApplyTemplate();
-                    templateSamples.Add(DescribeTemplate(control, "applied-null"));
-                    Require(control.IsChecked == checkedValue && ReferenceEquals(control.Content, labelValue) &&
+                    // Assignment clears the native tree. Exercise normal layout
+                    // while empty, then apply only the restored nonempty template.
+                    UpdateLayout(); await Task.Delay(1); UpdateLayout();
+                    templateSamples.Add(DescribeTemplate(control, "laid-out-null"));
+                    Require(control.Template is null && VisualTreeHelper.GetChildrenCount(control) == 0 &&
+                        control.IsChecked == checkedValue && ReferenceEquals(control.Content, labelValue) &&
                         ReferenceEquals(control.Description, descriptionValue), "Clearing the checkbox template changed consumer state or content.");
+                    control.IsChecked = checkedValue != true;
+                    Require(((IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(control).GetPattern(PatternInterface.Toggle)).ToggleState ==
+                        (control.IsChecked == true ? ToggleState.On : ToggleState.Off), "Consumer updates lost the native value while the template was cleared.");
+                    control.IsChecked = checkedValue;
+                    if (labelValue is string)
+                    {
+                        try
+                        {
+                            control.Content = "Updated while empty"; control.Description = "Consumer description while empty";
+                            Require(FrameworkElementAutomationPeer.CreatePeerForElement(control).GetName() == "Updated while empty Consumer description while empty",
+                                "Consumer content updates lost the accessible name while the template was cleared.");
+                        }
+                        finally { control.Content = labelValue; control.Description = descriptionValue; }
+                    }
                     verifiedSteps.Add($"{control.Name} cleared its template with retained state and content");
                 }
                 finally
@@ -208,6 +226,31 @@ public sealed partial class CheckboxesFixture : UserControl
                     originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion, richSamples, templateSamples }, new JsonSerializerOptions { WriteIndented = true }));
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-{scheme}.png"));
         }
+    }
+
+    private async Task InspectFontFallbackAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var original = NonLatin.FontFamily;
+        var probes = new List<object>();
+        // Evidence only: identify the DOM/native Japanese font discrepancy
+        // without replacing the library's typography contract.
+        var suffixes = new[] { "", ", Yu Gothic", ", Yu Gothic UI", ", Meiryo" };
+        try
+        {
+            for (var index = 0; index < suffixes.Length; index++)
+            {
+                NonLatin.FontFamily = new FontFamily(original.Source + suffixes[index]);
+                UpdateLayout();
+                var label = Find<TextBlock>(NonLatin, "PART_Label");
+                probes.Add(new { font = label.FontFamily.Source, label.Language, label.FontSize,
+                    weight = label.FontWeight.Weight, label.ActualWidth, label.ActualHeight, label.BaselineOffset });
+                await MainWindow.CaptureElementAsync(NonLatin, Path.Combine(folder, $"checkbox-font-fallback-{index}-{scheme}.png"));
+            }
+            await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-font-fallback-{scheme}.json"),
+                JsonSerializer.Serialize(probes, new JsonSerializerOptions { WriteIndented = true }));
+        }
+        finally { NonLatin.FontFamily = original; UpdateLayout(); }
+        Require(ReferenceEquals(NonLatin.FontFamily, original), "Font evidence probe did not restore consumer typography.");
     }
 
     private async Task VerifyMotionAsync()
