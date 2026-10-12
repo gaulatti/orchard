@@ -25,6 +25,7 @@ public sealed partial class MenusFixture : UserControl
         Require(presenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Menu presenter retained Windows typography.");
         VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(presenter, 0));
         VerifyShadow(ShadowPreview);
+        VerifyLabels();
         foreach (var item in Menu.Items.OfType<MenuFlyoutItem>())
             Require(item.FontSize == 14 && item.CornerRadius.TopLeft == 7 && item.Padding.Top == 6 && item.ActualHeight == 32, $"Menu item geometry mismatch: {item.Text} {item.ActualHeight}.");
         var root = (Grid)VisualTreeHelper.GetChild(Action, 0);
@@ -80,6 +81,41 @@ public sealed partial class MenusFixture : UserControl
         Require(presenter.MinWidth == 176, "Restored default root menu lost its width.");
         Menu.Hide();
         await Task.Delay(150);
+    }
+    private void VerifyLabels()
+    {
+        foreach (var label in Menu.Items.OfType<BleeckerMenuLabel>())
+        {
+            var layout = (Grid)VisualTreeHelper.GetChild(label, 0);
+            var text = (TextBlock)layout.Children[1];
+            Require(label.ActualHeight == 27 && label.FontSize == 10 && label.CharacterSpacing == 90 &&
+                label.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") && text.LineHeight == 15,
+                $"Menu label typography/geometry mismatch: {label.Text}, height={label.ActualHeight}.");
+            Require(text.TransformToVisual(label).TransformPoint(default).X == (label.Inset ? 32 : 8), "Menu label inset mismatch.");
+            Require(!label.IsTabStop && !label.Focus(FocusState.Keyboard), "Menu section label became a keyboard action.");
+            var peer = FrameworkElementAutomationPeer.CreatePeerForElement(label);
+            Require(peer.IsControlElement() && peer.IsContentElement() && peer.GetAutomationControlType() == AutomationControlType.Text && peer.GetName() == label.Text &&
+                peer.GetPattern(PatternInterface.Invoke) is null && peer.GetPattern(PatternInterface.Toggle) is null,
+                "Menu section label lost its text-only accessibility contract.");
+        }
+        var sectionLayout = (Grid)VisualTreeHelper.GetChild(SectionLabel, 0);
+        var sectionText = (TextBlock)sectionLayout.Children[1];
+        var originalLanguage = SectionLabel.Language;
+        SectionLabel.Language = "tr-TR";
+        SectionLabel.Text = "içerik";
+        Require(sectionText.Text == "İÇERİK", "Menu label ignored live text/language changes.");
+        var paddingStyle = new Style(typeof(BleeckerMenuLabel));
+        paddingStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(12, 6, 8, 6)));
+        SectionLabel.Style = paddingStyle;
+        SectionLabel.Inset = true;
+        SectionLabel.UpdateLayout();
+        Require(SectionLabel.Padding.Left == 12 && sectionText.TransformToVisual(SectionLabel).TransformPoint(default).X == 36,
+            "Inset replaced consumer label padding.");
+        SectionLabel.Style = null;
+        SectionLabel.Inset = false;
+        SectionLabel.Language = originalLanguage;
+        SectionLabel.Text = "Account";
+        SectionLabel.UpdateLayout();
     }
     private async Task InvokeAndWaitForCloseAsync(System.Action invoke)
     {

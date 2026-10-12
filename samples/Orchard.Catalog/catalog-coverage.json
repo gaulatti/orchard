@@ -20,6 +20,7 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerMenuLabel": "MenusFixture.xaml",
     "BleeckerOverlaySurface": "MenusFixture.xaml",
     "BleeckerDropdownMenu": "MenusFixture.xaml",
     "BleeckerMenuFocus": "MenusFixture.xaml",

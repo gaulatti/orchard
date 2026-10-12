@@ -44,6 +44,11 @@ public sealed partial class MainWindow : Window
                 var menuSurfaceRoot = (Grid)VisualTreeHelper.GetChild(menuSurface, 0);
                 Require(ElementCompositionPreview.GetElementChildVisual((Grid)menuSurfaceRoot.Children[1]) is ContainerVisual menuShadows && menuShadows.Children.Count == 2,
                     "Packaged menu did not render its overlay shadow layers.");
+                var labelPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageLabel);
+                Require(PackageLabel.ActualHeight == 27 && PackageLabel.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") &&
+                    labelPeer.IsControlElement() && labelPeer.IsContentElement() && labelPeer.GetName() == "Account" &&
+                    labelPeer.GetAutomationControlType() == AutomationControlType.Text,
+                    $"Packaged menu label mismatch: height={PackageLabel.ActualHeight}, font={PackageLabel.FontFamily.Source}, control={labelPeer.IsControlElement()}, content={labelPeer.IsContentElement()}, name={labelPeer.GetName()}, type={labelPeer.GetAutomationControlType()}.");
                 PackageMenu.Hide();
                 await Task.Delay(150);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");

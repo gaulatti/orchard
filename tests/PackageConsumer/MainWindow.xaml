@@ -42,6 +42,7 @@
                 <Button x:Name="Action" Content="Save locally" Click="OnSave" Style="{StaticResource BleeckerPrimaryButtonStyle}" />
                 <Button x:Name="MenuTrigger" Content="Display options" Style="{StaticResource BleeckerSecondaryButtonStyle}">
                     <Button.Flyout><orchard:BleeckerDropdownMenu x:Name="PackageMenu">
+                        <orchard:BleeckerMenuLabel x:Name="PackageLabel" Text="Account" />
                         <MenuFlyoutItem Text="Profile" Style="{StaticResource BleeckerMenuItemStyle}" />
                         <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
                         <ToggleMenuFlyoutItem Text="Revenue" IsChecked="True" Style="{StaticResource BleeckerMenuCheckboxStyle}" />

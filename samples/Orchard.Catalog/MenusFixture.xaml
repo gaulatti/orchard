@@ -9,10 +9,12 @@
         <Button x:Name="Trigger" Content="Display options" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
             <Button.Flyout>
                 <orchard:BleeckerDropdownMenu x:Name="Menu">
+                    <orchard:BleeckerMenuLabel x:Name="SectionLabel" Text="Account" />
                     <MenuFlyoutItem x:Name="Action" Text="Profile" Click="OnAction" orchard:BleeckerMenuFocus.IsEnabled="True" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutItem Text="Settings" KeyboardAcceleratorTextOverride="Ctrl+S" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutItem Text="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
+                    <orchard:BleeckerMenuLabel Text="Visible fields" Inset="True" />
                     <ToggleMenuFlyoutItem x:Name="Checkbox" Text="Revenue" IsChecked="True" Style="{StaticResource BleeckerMenuCheckboxStyle}" />
                     <RadioMenuFlyoutItem x:Name="Compact" Text="Compact" GroupName="CatalogDensity" Style="{StaticResource BleeckerMenuRadioStyle}" />
                     <RadioMenuFlyoutItem x:Name="Comfortable" Text="Comfortable" GroupName="CatalogDensity" IsChecked="True" Style="{StaticResource BleeckerMenuRadioStyle}" />

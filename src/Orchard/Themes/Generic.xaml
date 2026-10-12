@@ -6,6 +6,22 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="local:BleeckerMenuLabel">
+        <Setter Property="IsTabStop" Value="False" /><Setter Property="AllowFocusOnInteraction" Value="False" />
+        <Setter Property="MinHeight" Value="0" /><Setter Property="Padding" Value="8,6" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimarySemiboldFontFamily}" />
+        <Setter Property="FontSize" Value="10" /><Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="CharacterSpacing" Value="90" /><Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerMenuLabel">
+            <Grid Padding="{TemplateBinding Padding}">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                <Border x:Name="PART_Inset" Width="0" />
+                <TextBlock x:Name="PART_Text" Grid.Column="1" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"
+                    FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
+                    LineHeight="15" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" AutomationProperties.AccessibilityView="Raw" />
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerOverlaySurface">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="16" />

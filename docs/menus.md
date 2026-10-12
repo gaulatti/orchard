@@ -16,10 +16,12 @@ The focus regression checks actual keyboard focus and removal of the previous ro
 
 `MenusFixture` is registered in catalog coverage. Published x64 checks open real root and nested popups in both themes, inspect geometry and font selection, exercise checkbox and radio state, invoke a command and verify dismissal. Captures are retained as `menu-light/dark.png` and `submenu-light/dark.png`. Radio-group checks run while the items are loaded; native checkbox activation dismisses the popup asynchronously, so the harness waits before reopening it. Passing these checks does not establish the remaining visual and interaction contracts.
 
+`BleeckerMenuLabel Text="Visible fields"` supplies a non-actionable section heading: Encode Sans Semibold 10px/15px, 0.09em tracking, uppercase display, secondary foreground and 8/6px padding (27px single-line height). `Inset="True"` adds 24px before the text, producing the reference's 32px left inset without replacing consumer padding or its style. Casing follows `Language`, updates live and preserves the original `Text` as the accessible name. Explicit automation names remain consumer-owned. The control derives from the native non-actionable separator because `MenuFlyoutItemBase` has no usable constructor; its custom peer reports text with no invoke/toggle pattern. **Known accessibility gap:** the native presenter filters separator-derived items out of its child tree, so these labels are currently missing from external UI Automation despite correct direct-peer results. A presenter-level implementation and Narrator verification are required before acceptance.
+
 Remaining requirements:
 
 - Exact overlay shadow rasterization, 220ms entry, exit animation and 190ms item transitions remain open. Catalog open/close animations are disabled rather than using Windows motion.
-- Labels, inset rows, rich content/icons, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented.
+- Inset action rows, rich content/icons, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented. Label wrapping, text scaling, RTL and Narrator behavior still need full acceptance.
 - Shortcut spacing, text baselines, overflow/scrolling, placement offset and all pointer/keyboard/focus states need rendered comparison.
 - Verify radio selection persistence when values change while the popup is closed, theme changes while open, nested dismissal, focus restoration and modal ownership.
 - Contrast hover foregrounds, actual contrast settings, Narrator, text/display scaling and ARM64 runtime still require implementation or verification. ARM64 hardware is unavailable on this Intel host.

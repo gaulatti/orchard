@@ -1699,6 +1699,7 @@
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDropdownMenu.cs",
+        "src/Orchard/Controls/BleeckerMenuLabel.cs",
         "src/Orchard/Controls/BleeckerOverlaySurface.cs",
         "BleeckerMenuPresenterStyle",
         "BleeckerMenuItemStyle",
@@ -1715,7 +1716,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Rich rows/labels/icons/inset and indeterminate states",
+          "Rich rows/icons/inset action rows and indeterminate states; constrained label content and presenter accessibility-tree inclusion",
         "Exact overlay shadow rasterization and edge placement, entry/exit and item transition motion",
         "All physical pointer/keyboard/focus states and closed-menu selection persistence",
         "Contrast foregrounds, Narrator, scaling, constrained content and ARM64 runtime",
