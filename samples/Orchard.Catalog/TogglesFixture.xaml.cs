@@ -49,8 +49,15 @@ public sealed partial class TogglesFixture : UserControl
                 Require(presenter.Foreground is SolidColorBrush brush &&
                     $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}" == expected,
                     $"{scheme} {state}: toggle retained a system foreground instead of {expected}.");
-                Require(presenter.Background is SolidColorBrush background && background.Opacity < 0.3,
-                    $"{scheme} {state}: toggle lost its transparent/tinted surface.");
+                var disabled = state.EndsWith("Disabled", StringComparison.Ordinal);
+                var hovered = state.Contains("PointerOver", StringComparison.Ordinal) || state.Contains("Pressed", StringComparison.Ordinal);
+                var surfaceAlpha = selected || hovered ? scheme == BleeckerColorScheme.Dark ? 0.15 : 0.1 : 0;
+                var edgeAlpha = selected ? 1 : scheme == BleeckerColorScheme.Dark ? 0.4 : 0.3;
+                if (disabled) { surfaceAlpha *= 0.5; edgeAlpha *= 0.5; }
+                Require(presenter.Background is SolidColorBrush background && Math.Abs(background.Opacity - surfaceAlpha) < 0.001,
+                    $"{scheme} {state}: toggle surface opacity differs from the reference.");
+                Require(presenter.BorderBrush is SolidColorBrush edge && Math.Abs(edge.Opacity - edgeAlpha) < 0.001,
+                    $"{scheme} {state}: toggle outline opacity differs from the reference.");
             }
             VisualStateManager.GoToState(toggle, toggle.IsChecked == true ? "Checked" : "Normal", false);
         }

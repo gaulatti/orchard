@@ -68,23 +68,23 @@
             <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#14000000" Opacity="0.4" />
             <SolidColorBrush x:Key="ToggleButtonBackground" Color="#FFE6D5B8" Opacity="0" />
             <SolidColorBrush x:Key="ToggleButtonForeground" Color="#FF595959" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="#FFE6D5B8" Opacity="0.4" />
+            <SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="#FFE6D5B8" Opacity="0.3" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="#FFE6D5B8" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundPointerOver" Color="#FF2D2D2D" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBorderBrushPointerOver" Color="#FFE6D5B8" Opacity="0.4" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="#FFE6D5B8" Opacity="0.16" />
+            <SolidColorBrush x:Key="ToggleButtonBorderBrushPointerOver" Color="#FFE6D5B8" Opacity="0.3" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="#FFE6D5B8" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundPressed" Color="#FF2D2D2D" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBorderBrushPressed" Color="#FFE6D5B8" Opacity="0.4" />
+            <SolidColorBrush x:Key="ToggleButtonBorderBrushPressed" Color="#FFE6D5B8" Opacity="0.3" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundDisabled" Color="#FFE6D5B8" Opacity="0" />
             <SolidColorBrush x:Key="ToggleButtonForegroundDisabled" Color="#FF595959" Opacity="0.5" />
-            <SolidColorBrush x:Key="ToggleButtonBorderBrushDisabled" Color="#FFE6D5B8" Opacity="0.2" />
+            <SolidColorBrush x:Key="ToggleButtonBorderBrushDisabled" Color="#FFE6D5B8" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="#FF2C5784" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundChecked" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushChecked" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPointerOver" Color="#FF2C5784" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundCheckedPointerOver" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushCheckedPointerOver" Color="#FF2C5784" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="#FF2C5784" Opacity="0.16" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="#FF2C5784" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundCheckedPressed" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushCheckedPressed" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedDisabled" Color="#FF2C5784" Opacity="0.05" />
@@ -96,7 +96,7 @@
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminatePointerOver" Color="#FF2C5784" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminatePointerOver" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminatePointerOver" Color="#FF2C5784" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminatePressed" Color="#FF2C5784" Opacity="0.16" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminatePressed" Color="#FF2C5784" Opacity="0.1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminatePressed" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminatePressed" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminateDisabled" Color="#FF2C5784" Opacity="0.05" />
@@ -171,10 +171,10 @@
             <SolidColorBrush x:Key="ToggleButtonBackground" Color="#FF1A2332" Opacity="0" />
             <SolidColorBrush x:Key="ToggleButtonForeground" Color="#FFB8C5D6" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrush" Color="#FF1A2332" Opacity="0.4" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="#FF1A2332" Opacity="0.1" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundPointerOver" Color="#FF1A2332" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonForegroundPointerOver" Color="#FFF0F4F8" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushPointerOver" Color="#FF1A2332" Opacity="0.4" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="#FF1A2332" Opacity="0.16" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundPressed" Color="#FF1A2332" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonForegroundPressed" Color="#FFF0F4F8" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushPressed" Color="#FF1A2332" Opacity="0.4" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundDisabled" Color="#FF1A2332" Opacity="0" />
@@ -186,7 +186,7 @@
             <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPointerOver" Color="#FF5BA3F5" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonForegroundCheckedPointerOver" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushCheckedPointerOver" Color="#FF5BA3F5" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="#FF5BA3F5" Opacity="0.21" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="#FF5BA3F5" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonForegroundCheckedPressed" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushCheckedPressed" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedDisabled" Color="#FF5BA3F5" Opacity="0.075" />
@@ -198,14 +198,14 @@
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminatePointerOver" Color="#FF5BA3F5" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminatePointerOver" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminatePointerOver" Color="#FF5BA3F5" Opacity="1" />
-            <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminatePressed" Color="#FF5BA3F5" Opacity="0.21" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminatePressed" Color="#FF5BA3F5" Opacity="0.15" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminatePressed" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminatePressed" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminateDisabled" Color="#FF5BA3F5" Opacity="0.075" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminateDisabled" Color="#FF5BA3F5" Opacity="0.5" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminateDisabled" Color="#FF5BA3F5" Opacity="0.5" />
-            <SolidColorBrush x:Key="BleeckerToggleGroupBackgroundBrush" Color="#FFF0F4F8" Opacity="0.05" />
-            <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="#FFF0F4F8" Opacity="0.07" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBackgroundBrush" Color="#FFFFFFFF" Opacity="0.05" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="#FFFFFFFF" Opacity="0.07" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />

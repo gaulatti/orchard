@@ -112,11 +112,20 @@ public sealed class BleeckerToggleGroup : ItemsControl
         {
             var sizeName = Size == BleeckerControlSize.Medium ? "" : Size.ToString();
             var variantName = Variant == BleeckerToggleVariant.Outline ? "Outline" : "";
+            Style? groupStyle = null;
             foreach (var item in containers)
             {
                 if (item.ReadLocalValue(StyleProperty) == DependencyProperty.UnsetValue || ReferenceEquals(item.Style, item.AssignedGroupStyle))
                 {
-                    item.AssignedGroupStyle = (Style)Application.Current.Resources[$"Bleecker{sizeName}{variantName}ToggleStyle"];
+                    if (groupStyle is null)
+                    {
+                        groupStyle = new Style(typeof(BleeckerToggleGroupItem))
+                        {
+                            BasedOn = (Style)Application.Current.Resources[$"Bleecker{sizeName}{variantName}ToggleStyle"]
+                        };
+                        groupStyle.Setters.Add(new Setter(CornerRadiusProperty, new CornerRadius(8)));
+                    }
+                    item.AssignedGroupStyle = groupStyle;
                     item.Style = item.AssignedGroupStyle;
                 }
                 item.IsThreeState = false;

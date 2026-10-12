@@ -64,10 +64,9 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
           ? interaction === 'PointerOver' || interaction === 'Pressed' ? 'textPrimary' : 'textSecondary'
           : 'sand';
         let opacity = property === 'Background'
-          ? selected ? (theme === 'Default' ? 0.15 : 0.1) : interaction === '' || disabled ? 0 : 0.1
-          : property === 'BorderBrush' && !selected ? 0.4 : 1;
+          ? selected ? (theme === 'Default' ? 0.15 : 0.1) : interaction === '' || disabled ? 0 : theme === 'Default' ? 0.15 : 0.1
+          : property === 'BorderBrush' && !selected ? theme === 'Default' ? 0.4 : 0.3 : 1;
         if (disabled) opacity *= 0.5;
-        if (interaction === 'Pressed' && property === 'Background') opacity += 0.06;
         const systemColor = property === 'Background'
           ? selected ? 'SystemColorHighlightColor' : 'SystemColorWindowColor'
           : disabled ? 'SystemColorGrayTextColor' : selected ? 'SystemColorHighlightTextColor' : 'SystemColorWindowTextColor';
@@ -79,7 +78,7 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
   for (const property of ['Background', 'Border']) {
     const dark = theme === 'Default';
     const key = dark ? 'textPrimary' : property === 'Background' ? 'lightSand' : 'sand';
-    const color = theme === 'HighContrast' ? `{ThemeResource ${property === 'Background' ? 'SystemColorWindowColor' : 'SystemColorWindowTextColor'}}` : argb(colors[key]);
+    const color = theme === 'HighContrast' ? `{ThemeResource ${property === 'Background' ? 'SystemColorWindowColor' : 'SystemColorWindowTextColor'}}` : argb(dark ? '#ffffff' : colors[key]);
     const opacity = theme === 'HighContrast' ? 1 : dark ? property === 'Background' ? 0.05 : 0.07 : property === 'Background' ? 0.65 : 0.2;
     xaml += `            <SolidColorBrush x:Key="BleeckerToggleGroup${property}Brush" Color="${color}" Opacity="${opacity}" />\n`;
   }

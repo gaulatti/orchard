@@ -22,6 +22,8 @@ Generated resources supply normal, hover, pressed, disabled, checked and indeter
 
 ## Evidence and remaining acceptance
 
+The reference recipes use 10% light / 15% dark surface tints for hover and selection, with no additional pressed tint. Unselected outline borders use 30% light / 40% dark sand. Runtime checks assert those exact values for all eight states. Grouped items use an 8px radius; standalone toggles retain the 7px button token. Branded focus and motion, and disabled whole-control opacity compositing, remain part of the open visual audit.
+
 The x64 published catalog's `TogglesFixture.VerifyAsync` toggles on/off through the native automation provider, verifies the consumer's visible result, and checks eight rendered states for both variants in light/dark. All six styles are registered with the catalog coverage gate. The smoke artifact includes `toggles-light.png`, `toggles-dark.png`, and the result report.
 
 In the Windows 11 desktop session, Tab/Shift+Tab showed native focus, Space selected Follow updates, pointer activation cleared it, and Tab moved to Large. Pointer activation also cleared the selected outline toggle. Both theme captures were inspected, including the wrapped Japanese, Portuguese and Arabic label at a constrained width.

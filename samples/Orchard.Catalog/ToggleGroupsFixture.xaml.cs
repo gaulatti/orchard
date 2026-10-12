@@ -21,6 +21,16 @@ public sealed partial class ToggleGroupsFixture : UserControl
     internal async Task VerifyAsync()
     {
         SingleGroup.UpdateLayout();
+        Require(ListItem.CornerRadius == new CornerRadius(8), "Grouped toggles must use the reference's 8px radius.");
+        var inheritedStyle = GridItem.Style;
+        var consumerStyle = new Style(typeof(BleeckerToggleGroupItem)) { BasedOn = inheritedStyle };
+        consumerStyle.Setters.Add(new Setter(Control.CornerRadiusProperty, new CornerRadius(12)));
+        GridItem.Style = consumerStyle;
+        SingleGroup.Variant = BleeckerToggleVariant.Outline;
+        Require(ReferenceEquals(GridItem.Style, consumerStyle) && GridItem.CornerRadius == new CornerRadius(12),
+            "Group presentation replaced a consumer-supplied item style.");
+        GridItem.Style = inheritedStyle;
+        SingleGroup.Variant = BleeckerToggleVariant.Default;
         var groupPeer = FrameworkElementAutomationPeer.CreatePeerForElement(SingleGroup);
         var selection = (ISelectionProvider)groupPeer.GetPattern(PatternInterface.Selection);
         var listPeer = FrameworkElementAutomationPeer.CreatePeerForElement(ListItem);
