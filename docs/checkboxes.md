@@ -29,8 +29,8 @@ The check remains left-to-right inside an RTL row; only row layout follows the
 reading direction. Inheriting RTL into the vector would mirror its geometry.
 Label and
 description use Encode Sans at 14px/20px, medium and regular respectively.
-Rich presenters inherit the same 20px block line height into consumer text;
-explicit consumer text properties continue to take precedence.
+Rich presenters supply a scoped default TextBlock style with the same 20px
+block line height; explicit consumer text properties/styles take precedence.
 Text starts 12px after the box. Description has a 2px top margin, including
 when there is no label. Both strings wrap beside a top-aligned box; empty
 content collapses the text column. Intrinsic measurement preserves the larger
@@ -99,6 +99,13 @@ changes still require native verification. That matrix also confirms that dark
 deep-sea, hover and focus must use dark token values, rather than the light
 brand constants. Runtime checks now verify the source's dark fill and focus
 palette as well as geometry.
+
+Run [38300873774](https://github.com/gaulatti/orchard/actions/runs/38300873774)
+at `48386d4` passed builds and unit checks, then correctly rejected the rich row
+at 37px on both architectures: ContentPresenter's own LineHeight does not
+propagate into consumer-owned TextBlocks. The follow-up scopes a TextBlock
+style to each rich presenter. It retains the 42px runtime acceptance check;
+template clearing and the subsequent checks were not reached in that run.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

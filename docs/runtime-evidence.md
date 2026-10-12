@@ -150,6 +150,14 @@ retained under `artifacts/checkbox-reference-matrix-{Light,Dark}` and
 and adds native boundary checks; it does not establish their runtime acceptance
 until the hosted checks return. The shared baseline remains unchanged.
 
+At `48386d4`, [run 38300873774](https://github.com/gaulatti/orchard/actions/runs/38300873774)
+again passed builds and all 23 tests. The new native rich-content boundary check
+failed on both architectures at 165.083999×37px. The owned TextBlocks retain
+LineHeight 0 / MaxHeight despite the presenters' LineHeight 20. The follow-up
+supplies scoped TextBlock style defaults, preserving explicit consumer
+formatting. That run did not reach template replacement, motion, appearance,
+Switch or independent runtime consumption.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)
