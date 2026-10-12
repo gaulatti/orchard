@@ -29,7 +29,8 @@ public sealed partial class ProgressFixture : UserControl
             var fill = Find<Border>(control, "PART_Fill");
             var label = Find<TextBlock>(control, "PART_Label");
             var height = control.ProgressSize switch { BleeckerProgressSize.Small => 6, BleeckerProgressSize.Medium => 8, _ => 12 };
-            Require(track.ActualHeight == height && fill.ActualHeight == height && Math.Abs(fill.ActualWidth - track.ActualWidth * .65) < 1,
+            Require(track.ActualHeight == height && fill.ActualHeight == height && !control.UseLayoutRounding &&
+                Math.Abs(fill.ActualWidth - track.ActualWidth * .65) < .001,
                 "Progress size or proportional fill differs from the reference.");
             Require(track.CornerRadius.TopLeft == height / 2d && fill.CornerRadius.TopLeft == height / 2d,
                 "Progress pill radius differs from half its height.");
@@ -89,10 +90,10 @@ public sealed partial class ProgressFixture : UserControl
             return new
             {
                 size = control.ProgressSize.ToString(), variant = control.Variant.ToString(),
-                control.ActualWidth, control.ActualHeight,
+                control.ActualWidth, control.ActualHeight, control.UseLayoutRounding,
                 track = new { track.ActualWidth, track.ActualHeight, color = Hex(track.Background), opacity = track.Background.Opacity },
                 fill = new { fill.ActualWidth, fill.ActualHeight, color = Hex(fill.Background) },
-                label = new { label.Text, label.ActualWidth, label.ActualHeight, label.FontSize,
+                label = new { label.Text, label.ActualWidth, label.ActualHeight, label.FontSize, label.BaselineOffset,
                     allocatedWidth = LayoutInformation.GetLayoutSlot(label).Width - label.Margin.Left - label.Margin.Right,
                     font = label.FontFamily.Source, weight = label.FontWeight.Weight, color = Hex(label.Foreground),
                     x = label.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).X }

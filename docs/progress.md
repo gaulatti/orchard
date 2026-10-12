@@ -31,7 +31,9 @@ dimension. A rendering observer follows that radius only while width is animated
 and detaches on completion, interruption, unload and template replacement.
 The native pixel regression samples the top/bottom straight body at quarter
 width, where the earlier elliptical fill had transparent pixels. This fix is
-pending runtime verification at this checkpoint.
+verified in x64 CI run `38267087734` at commit `4c76d59`; all 12 combinations
+passed in light and dark themes. Corrected captures and measurements are retained
+under `artifacts/ci-progress-4c76d59/smoke`.
 
 Value changes request the 240ms overlay transition with the premium cubic
 curve. Reduced motion settles immediately. Resize and template replacement
@@ -63,8 +65,15 @@ allocation, and records both the allocated width and the reported text width.
 
 The layout regression resizes a labeled progress display to 200px and 360px,
 checks proportional fill and consumer range retention, replaces its template
-visuals, and verifies that fill and label are restored. These checks are pending
-runtime verification at this checkpoint.
+visuals, and verifies that fill and label are restored. These checks and the
+independent package consumer passed in that x64 CI run.
+
+The captures also exposed Windows layout rounding: a mathematically 174.2px
+fill was reported as 174px, while the rendered browser measured 174.1875px
+(CSS layout-unit quantization). The default style now disables layout rounding
+within Progress, preserving fractional fill dimensions. The regression requires
+the rendered width to agree with the calculated percentage within 0.001px.
+This fractional-width correction is pending runtime verification.
 
 Acceptance remains open: rendered native/browser comparison, exact pill edges
 and typography, enabled/interrupted motion, live appearance and unload/reload,

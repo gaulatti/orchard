@@ -88,6 +88,7 @@
     </Style>
     <Style TargetType="local:BleeckerProgress">
         <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="UseLayoutRounding" Value="False" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
         <Setter Property="FontSize" Value="12" /><Setter Property="FontWeight" Value="Medium" />
         <Setter Property="Foreground" Value="{ThemeResource ProgressFill}" />
