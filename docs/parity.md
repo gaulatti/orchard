@@ -87,7 +87,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | progress | `BleeckerProgress`: three sizes, four variants and optional label | Registered size/variant matrix and independent consumer; runtime verification pending | In progress: [usage and gaps](progress.md); exact rendering, motion, lifecycle, edge values, accessibility, scaling and ARM64 runtime |
 | progress-stack | Pending | Pending | Full pinned contract |
 | radio-group | Pending | Pending | Full pinned contract |
-| checkbox | Pending | Pending | Full pinned contract |
+| checkbox | `BleeckerCheckbox`: native selection with consumer label/description content | Registered Checkboxes fixture and independent package consumer; runtime verification pending | In progress: [usage and gaps](checkboxes.md); exact rendering, input/cursor/focus, lifecycle, accessibility, scaling, motion and x64/ARM64 runtime |
 | scroll-area | Pending | Pending | Full pinned contract |
 | separator | Pending | Pending | Full pinned contract |
 | sheet | Pending | Pending | Full pinned contract |

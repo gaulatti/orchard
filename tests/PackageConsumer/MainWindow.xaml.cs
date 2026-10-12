@@ -47,6 +47,15 @@ public sealed partial class MainWindow : Window
                 Require(PackageSwitch.IsOn && switchToggle.ToggleState == ToggleState.On, "Packaged native switch did not update consumer state.");
                 PackageSwitch.IsOn = false;
                 Require(switchToggle.ToggleState == ToggleState.Off, "Packaged consumer state did not reach the native switch.");
+                var checkboxPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageCheckbox);
+                var checkboxToggle = (IToggleProvider)checkboxPeer.GetPattern(PatternInterface.Toggle);
+                Require(checkboxPeer.GetAutomationControlType() == AutomationControlType.CheckBox && checkboxPeer.GetName() == "Package notifications Consumer-owned checkbox state" &&
+                    PackageCheckbox.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && PackageCheckbox.ActualHeight == 42,
+                    "Packaged checkbox lost its template, content, font or native role.");
+                checkboxToggle.Toggle();
+                Require(PackageCheckbox.IsChecked == true && checkboxToggle.ToggleState == ToggleState.On, "Packaged checkbox did not reach consumer state.");
+                PackageCheckbox.IsChecked = false;
+                Require(checkboxToggle.ToggleState == ToggleState.Off, "Packaged consumer state did not reach its checkbox.");
                 var packagedRange = (IRangeValueProvider)FrameworkElementAutomationPeer.CreatePeerForElement(PackageProgress).GetPattern(PatternInterface.RangeValue);
                 Require(packagedRange.IsReadOnly && packagedRange.Value == 65 && packagedRange.Maximum == 100 && PackageProgress.FontSize == 12,
                     "Packaged progress lost its resources or native range semantics.");

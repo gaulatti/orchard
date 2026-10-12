@@ -1,0 +1,21 @@
+<UserControl x:Class="Orchard.Catalog.CheckboxesFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
+        <TextBlock Text="Checkbox" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <orchard:BleeckerCheckbox x:Name="Default" Content="Enable notifications" Description="Send alerts when a device starts playback." IsChecked="True" />
+        <orchard:BleeckerCheckbox x:Name="Off" Content="Unchecked option" />
+        <orchard:BleeckerCheckbox x:Name="DisabledOff" Content="Unchecked (disabled)" Description="The text retains full opacity." IsEnabled="False" />
+        <orchard:BleeckerCheckbox x:Name="DisabledOn" Content="Checked (disabled)" Description="The checkmark retains full opacity." IsChecked="True" IsEnabled="False" />
+        <orchard:BleeckerCheckbox x:Name="Bare" IsChecked="True" AutomationProperties.Name="Select row" />
+        <orchard:BleeckerCheckbox x:Name="DescriptionOnly" Description="Description without a label" />
+        <orchard:BleeckerCheckbox x:Name="Long" Width="200" Content="Keep notifications enabled while reviewing the editorial queue" Description="Send alerts when a device starts playback." />
+        <orchard:BleeckerCheckbox x:Name="NonLatin" Content="通知を有効にする" Description="تمكين الإشعارات" />
+        <orchard:BleeckerCheckbox x:Name="Rtl" Content="تمكين الإشعارات" FlowDirection="RightToLeft" IsChecked="True" />
+        <orchard:BleeckerCheckbox x:Name="Rich" AutomationProperties.Name="Rich consumer label">
+            <orchard:BleeckerCheckbox.Content><TextBlock Text="Consumer label" TextWrapping="Wrap" /></orchard:BleeckerCheckbox.Content>
+            <orchard:BleeckerCheckbox.Description><TextBlock Text="Consumer description" TextWrapping="Wrap" /></orchard:BleeckerCheckbox.Description>
+        </orchard:BleeckerCheckbox>
+        <orchard:BleeckerCheckbox x:Name="Bound" Content="Consumer state" IsChecked="{Binding Selected, Mode=TwoWay}" />
+        <TextBlock x:Name="BindingStatus" Text="{Binding Selected}" Style="{StaticResource BleeckerBodyStyle}" />
+    </StackPanel>
+</UserControl>

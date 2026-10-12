@@ -88,6 +88,7 @@
                 <local:EyebrowsFixture x:Name="Eyebrows" />
                 <local:ProgressFixture x:Name="Progress" />
                 <local:SwitchesFixture x:Name="Switches" />
+                <local:CheckboxesFixture x:Name="Checkboxes" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

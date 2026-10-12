@@ -7,7 +7,8 @@ platforms; Linux will have its own implementation.
 The library and runnable Visual Studio catalog provide typography, generated
 tokens, light/dark themes, high contrast resource mappings, button and icon-button
 variants, connected button groups, toggle styles, a native switch preview and
-initial input styles. See [Switch usage and acceptance](docs/switches.md).
+initial input styles. See [Switch usage and acceptance](docs/switches.md) and
+[Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
 The catalog has a searchable component list. Selecting a component mounts its

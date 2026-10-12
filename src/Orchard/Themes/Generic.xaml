@@ -8,6 +8,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Eyebrow.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Progress.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Switch.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Checkbox.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -84,6 +85,57 @@
                 <ContentPresenter x:Name="StartAdornment" Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="EndAdornment" Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="DescriptionPresenter" Grid.Row="2" Content="{TemplateBinding Description}" AutomationProperties.AccessibilityView="Raw" x:Load="False" />
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerCheckbox">
+        <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" /><Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="UseSystemFocusVisuals" Value="False" /><Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontSize" Value="14" /><Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerCheckbox">
+            <Grid x:Name="PART_Root" Background="Transparent">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CombinedStates">
+                        <VisualState x:Name="UncheckedNormal" /><VisualState x:Name="UncheckedPointerOver" /><VisualState x:Name="UncheckedPressed" /><VisualState x:Name="UncheckedDisabled" />
+                        <VisualState x:Name="CheckedNormal" /><VisualState x:Name="CheckedPointerOver" /><VisualState x:Name="CheckedPressed" /><VisualState x:Name="CheckedDisabled" />
+                        <VisualState x:Name="IndeterminateNormal" /><VisualState x:Name="IndeterminatePointerOver" /><VisualState x:Name="IndeterminatePressed" /><VisualState x:Name="IndeterminateDisabled" />
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="FocusStates"><VisualState x:Name="Focused" /><VisualState x:Name="PointerFocused" /><VisualState x:Name="Unfocused" /></VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="20" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                <Grid Width="20" Height="20" VerticalAlignment="Top" AutomationProperties.AccessibilityView="Raw">
+                    <Grid x:Name="PART_InputChrome" Width="20" Height="20" IsHitTestVisible="False">
+                        <Border x:Name="PART_FocusRing" Width="28" Height="28" BorderThickness="2" CornerRadius="8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Border x:Name="PART_FocusOffset" Width="24" Height="24" CornerRadius="6" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Border x:Name="PART_Box" Width="20" Height="20" CornerRadius="4" BorderThickness="1" BackgroundSizing="OuterBorderEdge" />
+                    </Grid>
+                    <Viewbox x:Name="PART_Glyph" Width="14" Height="14" Stretch="Uniform" IsHitTestVisible="False">
+                        <Canvas Width="14" Height="10">
+                            <Path x:Name="PART_Check" Data="M1 5L4.5 8.5L13 1" Stroke="{ThemeResource CheckboxGlyph}" StrokeThickness="2"
+                                StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+                <Grid x:Name="PART_TextColumn" Grid.Column="1" Margin="12,0,0,0">
+                    <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                    <TextBlock x:Name="PART_Label" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding Foreground}" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords" AutomationProperties.AccessibilityView="Raw" />
+                    <ContentPresenter x:Name="PART_RichLabel" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding Foreground}" />
+                    <TextBlock x:Name="PART_Description" Grid.Row="1" Margin="0,2,0,0" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="Normal"
+                        Foreground="{ThemeResource BleeckerTextSecondaryBrush}" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords" AutomationProperties.AccessibilityView="Raw" />
+                    <ContentPresenter x:Name="PART_RichDescription" Grid.Row="1" Margin="0,2,0,0" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="Normal"
+                        Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
+                </Grid>
+                <TextBlock x:Name="PART_OffFill" Visibility="Collapsed" Foreground="{ThemeResource CheckboxOffFill}" />
+                <TextBlock x:Name="PART_OnFill" Visibility="Collapsed" Foreground="{ThemeResource CheckboxOnFill}" />
+                <TextBlock x:Name="PART_OffStroke" Visibility="Collapsed" Foreground="{ThemeResource CheckboxOffStroke}" />
+                <TextBlock x:Name="PART_HoverStroke" Visibility="Collapsed" Foreground="{ThemeResource CheckboxHoverStroke}" />
+                <TextBlock x:Name="PART_OnStroke" Visibility="Collapsed" Foreground="{ThemeResource CheckboxOnStroke}" />
+                <TextBlock x:Name="PART_FocusStroke" Visibility="Collapsed" Foreground="{ThemeResource CheckboxFocusStroke}" />
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>

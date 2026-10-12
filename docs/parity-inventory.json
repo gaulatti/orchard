@@ -2719,14 +2719,27 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerCheckbox.cs",
+        "src/Orchard/Themes/Checkbox.xaml",
+        "src/Orchard/Themes/Generic.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/CheckboxesFixture.xaml",
+        "samples/Orchard.Catalog/CheckboxesFixture.xaml.cs",
+        "tests/PackageConsumer/MainWindow.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/CatalogCoverageTests.cs",
+        "samples/Orchard.Catalog/CheckboxesFixture.xaml.cs",
+        "tests/PackageConsumer/MainWindow.xaml.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Native x64/ARM64 runtime and exact rendered reference comparison remain unverified",
+        "Full physical pointer/keyboard/focus and disabled cursor matrix",
+        "Rich-content edges, non-Latin fallback glyphs, lifecycle and isolated scaling",
+        "Live system/contrast appearance, Narrator and exact interrupted motion raster/timing"
       ]
     },
     {
