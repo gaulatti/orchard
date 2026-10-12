@@ -1,12 +1,14 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
-    [string]$Output = 'artifacts/smoke'
+    [string]$Output = 'artifacts/smoke',
+    [ValidateSet('all', 'input')][string]$Component = 'all'
 )
 $ErrorActionPreference = 'Stop'
 $executablePath = (Resolve-Path $Executable).Path
 $outputPath = [System.IO.Path]::GetFullPath($Output)
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
-$process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"" -PassThru -WindowStyle Hidden
+$componentArgument = if ($Component -eq 'input') { ' --smoke-input' } else { '' }
+$process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument" -PassThru -WindowStyle Hidden
 if (-not $process.WaitForExit(180000)) {
     $process.Kill()
     throw 'Catalog runtime check timed out.'

@@ -23,27 +23,29 @@
                     <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal" /><VisualState x:Name="PointerOver" /><VisualState x:Name="Focused" /><VisualState x:Name="Disabled" /></VisualStateGroup>
                     <VisualStateGroup x:Name="InputStates">
                         <VisualState x:Name="InputNormal" />
-                        <VisualState x:Name="InputHovered"><VisualState.Setters><Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputHovered"><VisualState.Setters><Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" /></VisualState.Setters></VisualState>
                         <VisualState x:Name="InputFocused"><VisualState.Setters>
-                            <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputFocusBrush}" /><Setter Target="InputRing.Opacity" Value="1" />
+                            <Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputFocusBrush}" /><Setter Target="InputRingPalette.Opacity" Value="1" />
                         </VisualState.Setters></VisualState>
-                        <VisualState x:Name="InputNormalError"><VisualState.Setters><Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" /></VisualState.Setters></VisualState>
-                        <VisualState x:Name="InputHoveredError"><VisualState.Setters><Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputNormalError"><VisualState.Setters><Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputHoveredError"><VisualState.Setters><Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" /></VisualState.Setters></VisualState>
                         <VisualState x:Name="InputFocusedError"><VisualState.Setters>
-                            <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputErrorFocusBrush}" />
-                            <Setter Target="InputRing.BorderBrush" Value="{ThemeResource BleeckerInputErrorRingBrush}" /><Setter Target="InputRing.Opacity" Value="1" />
+                            <Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputErrorFocusBrush}" />
+                            <Setter Target="InputRingPalette.BorderBrush" Value="{ThemeResource BleeckerInputErrorRingBrush}" /><Setter Target="InputRingPalette.Opacity" Value="1" />
                         </VisualState.Setters></VisualState>
                         <VisualState x:Name="InputDisabled"><VisualState.Setters>
-                            <Setter Target="Editor.Opacity" Value="0.6" /><Setter Target="BorderElement.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
+                            <Setter Target="InputPalette.Opacity" Value="0.6" /><Setter Target="InputPalette.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
                         </VisualState.Setters></VisualState>
                         <VisualState x:Name="InputDisabledError"><VisualState.Setters>
-                            <Setter Target="Editor.Opacity" Value="0.6" /><Setter Target="BorderElement.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
-                            <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" />
+                            <Setter Target="InputPalette.Opacity" Value="0.6" /><Setter Target="InputPalette.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
+                            <Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" />
                         </VisualState.Setters></VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
                 <ContentPresenter x:Name="HeaderContentPresenter" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Visibility="Collapsed" />
+                <Border x:Name="InputPalette" Visibility="Collapsed" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" />
+                <Border x:Name="InputRingPalette" Visibility="Collapsed" BorderBrush="{ThemeResource BleeckerInputRingBrush}" Opacity="0" />
                 <Grid x:Name="Editor" Grid.Row="1" MinHeight="{TemplateBinding MinHeight}">
                     <Canvas Opacity="0" IsHitTestVisible="False"><Path x:Name="InputShadowMask" Fill="White" /></Canvas>
                     <Grid x:Name="InputShadowHost" IsHitTestVisible="False" />

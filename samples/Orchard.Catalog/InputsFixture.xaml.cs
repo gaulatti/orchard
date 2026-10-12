@@ -40,8 +40,9 @@ public sealed partial class InputsFixture : UserControl
         MediumInput.Text = "";
         ReadOnlyInput.Focus(FocusState.Keyboard);
         VerifyDynamicGeometry();
-        VerifyDisabledError(scheme);
+        await VerifyDisabledErrorAsync(scheme);
         await VerifyLiveThemesAsync(scheme);
+        await VerifyMotionAsync(scheme, folder);
         await VerifyShadowLifecycleAsync();
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
     }
@@ -57,15 +58,16 @@ public sealed partial class InputsFixture : UserControl
         await AwaitAsync(() => ErrorInput.FocusState != FocusState.Unfocused, "Invalid input did not acquire focus.");
         var width = ErrorInput.ActualWidth;
         var height = ErrorInput.ActualHeight;
+        var paletteDetails = "";
         try
         {
             host.RequestedTheme = alternate == BleeckerColorScheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
-            await AwaitAsync(() => Matches(alternate), "Input retained stale palette values after a live theme change.");
+            await AwaitAsync(() => Matches(alternate), "Input retained stale palette values after a live theme change.", () => paletteDetails);
             Require(ErrorInput.FocusState != FocusState.Unfocused && ErrorInput.SelectedText == originalText[..6] &&
                 ErrorInput.ActualWidth == width && ErrorInput.ActualHeight == height, "Appearance change altered focus, selection or geometry.");
         }
         finally { host.RequestedTheme = originalTheme; }
-        await AwaitAsync(() => Matches(scheme), "Input did not restore its original theme palette.");
+        await AwaitAsync(() => Matches(scheme), "Input did not restore its original theme palette.", () => paletteDetails);
         Require(ErrorInput.Text == originalText && ErrorInput.SelectedText == originalText[..6], "Theme restoration altered consumer text or selection.");
         ReadOnlyInput.Focus(FocusState.Keyboard);
 
@@ -79,6 +81,7 @@ public sealed partial class InputsFixture : UserControl
             var disabledError = Find<Border>(DisabledErrorInput, "BorderElement");
             var placeholder = Find<TextBlock>(MediumInput, "PlaceholderTextContentPresenter");
             var adornment = Find<ContentPresenter>(IconsInput, "StartAdornment");
+            paletteDetails = $"expected={expected}; theme={MediumInput.ActualTheme}; background={Hex(normal.Background)}; border={Hex(normal.BorderBrush)}; text={Hex(MediumInput.Foreground)}; placeholder={Hex(placeholder.Foreground)}; error={Hex(error.BorderBrush)}; ring={Hex(ring.BorderBrush)}/{ring.Opacity}; disabled={Hex(disabledError.BorderBrush)}/{Hex(disabledError.Background)}; icon={Hex(adornment.Foreground)}";
             return Hex(normal.Background) == (dark ? "#FF182533" : "#FFFFFFFF") &&
                 Hex(normal.BorderBrush) == (dark ? "#26FFFFFF" : "#66E6D5B8") &&
                 Hex(MediumInput.Foreground) == colors["textPrimary"] &&
@@ -128,26 +131,73 @@ public sealed partial class InputsFixture : UserControl
         }
     }
 
-    private async Task AwaitAsync(Func<bool> condition, string message)
+    private async Task AwaitAsync(Func<bool> condition, string message, Func<string>? details = null)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); await Task.Delay(16); }
-        Require(condition(), message);
+        Require(condition(), $"{message} {details?.Invoke()}");
     }
 
-    private void VerifyDisabledError(BleeckerColorScheme scheme)
+    private async Task VerifyDisabledErrorAsync(BleeckerColorScheme scheme)
     {
         var editor = Find<Grid>(DisabledErrorInput, "Editor");
         var border = Find<Border>(DisabledErrorInput, "BorderElement");
         Require(Math.Abs(editor.Opacity - .6) < .000001, "Disabled error input lost its opacity.");
         Require(Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Disabled error input lost its error border.");
         DisabledErrorInput.IsError = false;
+        await AwaitAsync(() => Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"], "Disabled validation did not clear.");
         Require(Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"] && Math.Abs(editor.Opacity - .6) < .000001,
             "Clearing disabled validation retained the error border or removed disabled opacity.");
         DisabledErrorInput.IsError = true;
         DisabledErrorInput.IsEnabled = true;
-        Require(editor.Opacity == 1 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
+        await AwaitAsync(() => Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabled validation did not settle.");
+        Require(Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
         DisabledErrorInput.IsEnabled = false;
+        await AwaitAsync(() => Math.Abs(editor.Opacity - .6) < .000001, "Disabled opacity did not settle.");
+    }
+
+    private async Task VerifyMotionAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var border = Find<Border>(MediumInput, "BorderElement");
+        var editor = Find<Grid>(MediumInput, "Editor");
+        var before = Hex(border.BorderBrush);
+        var expected = BleeckerTokens.Colors(scheme)["terracotta"];
+        var otherBorder = Find<Border>(SmallInput, "BorderElement");
+        var otherColor = Hex(otherBorder.BorderBrush);
+        var samples = new List<(double Milliseconds, string Color, double Opacity)>();
+        var elapsed = new System.Diagnostics.Stopwatch();
+        var finished = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var started = false;
+        void Sample(object? sender, object args)
+        {
+            if (!started)
+            {
+                started = true;
+                elapsed.Start();
+                MediumInput.IsError = true;
+                MediumInput.IsEnabled = false;
+            }
+            samples.Add((elapsed.Elapsed.TotalMilliseconds, Hex(border.BorderBrush), editor.Opacity));
+            if (elapsed.Elapsed.TotalMilliseconds >= 400) finished.TrySetResult();
+        }
+        CompositionTarget.Rendering += Sample;
+        try { await finished.Task.WaitAsync(TimeSpan.FromSeconds(3)); }
+        finally { CompositionTarget.Rendering -= Sample; }
+        var enabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
+        await System.IO.File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"input-motion-{scheme}.json"),
+            System.Text.Json.JsonSerializer.Serialize(new { enabled, samples = samples.Select(sample => new { sample.Milliseconds, sample.Color, sample.Opacity }) },
+                new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+        Require(Hex(border.BorderBrush) == expected && Math.Abs(editor.Opacity - .6) < .000001, "Input motion did not reach the disabled-error appearance.");
+        Require(Hex(otherBorder.BorderBrush) == otherColor && !ReferenceEquals(border.BorderBrush, otherBorder.BorderBrush), "Input motion changed another editor's brush.");
+        if (enabled)
+        {
+            Require(samples.Any(sample => sample.Color != before && sample.Color != expected), "Input color transition had no observed intermediate frame.");
+            Require(samples.Any(sample => sample.Opacity > .600001 && sample.Opacity < .999999), "Input opacity transition had no observed intermediate frame.");
+        }
+        else Require(samples.All(sample => sample.Color == expected && Math.Abs(sample.Opacity - .6) < .000001), "Reduced-motion input did not settle immediately.");
+        MediumInput.IsEnabled = true;
+        MediumInput.IsError = false;
+        await AwaitAsync(() => Hex(border.BorderBrush) == before && editor.Opacity == 1, "Input motion did not restore its rest appearance.");
     }
 
     private void VerifyDynamicGeometry()

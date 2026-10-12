@@ -30,7 +30,7 @@ Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 
 Remaining work includes exact glyph/baseline and scaling comparison, reference
-hover/disabled precedence, error semantics, shadow raster comparison, motion/reduced motion,
+hover/disabled precedence, error semantics, shadow raster comparison and motion,
 live brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
@@ -83,3 +83,38 @@ selection, focus and geometry. This check covers ordinary appearance changes;
 Windows contrast switching and live mutation of consumer brushes remain open.
 Both directions pass in the full catalog suite at
 `artifacts/smoke-input-live-theme`. This checkpoint changes verification only.
+
+## Color and opacity motion preview
+
+Border, background, focus-ring color and focus/disabled opacity use the 190ms
+control duration and cubic-bezier(.22,1,.36,1). Each editor owns its animated
+brushes. New state changes begin from the currently rendered values, while
+unchanged colors skip interpolation. Source brush color/opacity changes update
+the presentation without modifying shared resources. Non-solid consumer brushes
+remain supported and are applied immediately rather than color-interpolated.
+
+Reduced motion settles immediately. Live theme changes, motion-preference
+changes and unload stop active transitions and apply their destination values.
+The shadow transition remains separate unfinished work; this implementation
+does not establish complete Input motion parity.
+
+For focused diagnostics, run `scripts/smoke-catalog.ps1 -Component input` with
+the usual executable/output arguments. This mounts the same Input fixture alone
+and retains the same assertions. The default remains the full catalog suite.
+The full enabled-motion run on this host missed entire 190ms transitions:
+`artifacts/smoke-input-motion-enabled-idle/input-motion-Light.json` records a
+gap from 1ms to 228ms. Catalog frame responsiveness therefore remains an open
+performance issue; isolated motion evidence does not close that requirement.
+
+The enabled focused run passes at `artifacts/smoke-input-motion-focused-ready`.
+Its JSON samples include intermediate colors and opacity values in both themes
+and assert that another input's brush remains unchanged. The same run also
+checks live theme restoration across the animated state palette. Windows
+animation effects were restored to their original Off setting after this run.
+The full reduced-motion suite passes at
+`artifacts/smoke-input-motion-reduced-final`, including immediate color/opacity
+settling. The final x64 publish and ARM64 build pass. Neither the isolated
+enabled run nor these builds establish full-catalog enabled-motion performance,
+exact browser/native interpolation equivalence, or ARM64 runtime acceptance.
+The isolated package consumer passes at
+`artifacts/package-consumer-input-motion`; all 13 unit/coverage tests pass.

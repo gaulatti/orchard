@@ -51,7 +51,8 @@ public sealed partial class MainWindow : Window
         Directory.CreateDirectory(folder);
         try
         {
-            await RunSmokeAsync(folder);
+            if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
+            else await RunSmokeAsync(folder);
             Environment.Exit(0);
         }
         catch (Exception error)
@@ -63,6 +64,21 @@ public sealed partial class MainWindow : Window
     }
 
     // Catalog-only runtime check. The reusable library has no command-line or automation dependencies.
+    private async Task RunInputSmokeAsync(string folder)
+    {
+        ((StackPanel)CatalogScroll.Content).Children.Remove(Inputs);
+        CatalogScroll.Content = new StackPanel { Margin = new Thickness(32), Children = { Inputs } };
+        foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+        {
+            CatalogRoot.RequestedTheme = theme;
+            await Task.Delay(250);
+            CatalogRoot.UpdateLayout();
+            await Inputs.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+            await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "input" }));
+    }
+
     private async Task RunSmokeAsync(string folder)
     {
         var captures = new List<object>();

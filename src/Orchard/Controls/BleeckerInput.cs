@@ -9,18 +9,21 @@ public enum BleeckerInputSize { Small, Medium, Large }
 public sealed partial class BleeckerInput : TextBox
 {
     private bool pointerOver;
+    private string? appearanceState;
+    private bool applyingAppearance;
 
     public BleeckerInput()
     {
         DefaultStyleKey = typeof(BleeckerInput);
         InitializeShadow();
+        InitializeMotion();
         PointerEntered += (_, _) => { pointerOver = true; UpdateAppearance(); };
         PointerExited += (_, _) => { pointerOver = false; UpdateAppearance(); };
         GotFocus += (_, _) => UpdateAppearance();
         LostFocus += (_, _) => UpdateAppearance();
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => UpdateAppearance());
         RegisterPropertyChangedCallback(FocusStateProperty, (_, _) => UpdateAppearance());
-        Loaded += (_, _) => { UpdateGeometry(); UpdateAppearance(); };
+        Loaded += (_, _) => { UpdateGeometry(); UpdateAppearance(false); };
     }
 
     public static readonly DependencyProperty InputSizeProperty = DependencyProperty.Register(nameof(InputSize), typeof(BleeckerInputSize), typeof(BleeckerInput),
@@ -38,8 +41,10 @@ public sealed partial class BleeckerInput : TextBox
     {
         base.OnApplyTemplate();
         ApplyShadowTemplate();
+        ApplyMotionTemplate();
+        appearanceState = null;
         UpdateGeometry();
-        UpdateAppearance();
+        UpdateAppearance(false);
     }
 
     private static void OnGeometryChanged(DependencyObject owner, DependencyPropertyChangedEventArgs _) => ((BleeckerInput)owner).UpdateGeometry();
@@ -57,11 +62,16 @@ public sealed partial class BleeckerInput : TextBox
         Padding = new Thickness(StartIcon is null ? inset : 40, 0, EndIcon is null ? inset : 40, 0);
     }
 
-    private void UpdateAppearance()
+    private void UpdateAppearance(bool animate = true)
     {
         var state = !IsEnabled ? "InputDisabled" : FocusState != FocusState.Unfocused ? "InputFocused" : pointerOver ? "InputHovered" : "InputNormal";
         if (IsError) state += "Error";
-        VisualStateManager.GoToState(this, state, false);
+        var changed = appearanceState != state;
+        appearanceState = state;
+        applyingAppearance = true;
+        try { VisualStateManager.GoToState(this, state, false); }
+        finally { applyingAppearance = false; }
+        if (changed || !animate) RequestMotion(animate);
         UpdateShadow();
     }
 }
