@@ -67,6 +67,19 @@ in both themes, while focus remains false and the cursor is `not-allowed`.
 Orchard's dark disabled background is corrected; disabled hover and cursor
 behavior remain open implementation gaps.
 
+The x64 disabled-pointer investigation found that WinUI routes the pointer to
+the enclosing ScrollViewer chrome, and omits disabled TextBox elements from
+`FindElementsInHostCoordinates`, including its `includeAllElements` overload.
+Setting `ProtectedCursor` to `UniversalNo` alone leaves the native arrow cursor.
+An unpublished bounds/chrome observer and native cursor prototype produces the
+dark disabled hover border while retaining disabled focus semantics and .6
+opacity. Direct cursor-handle checks distinguish the actual system cursor from
+the capture tool's pointer marker. Moving between disabled inputs exposed a
+cursor ownership ordering bug; the revised prototype passes that transition.
+Stationary-pointer scrolling/resizing, clipping/occlusion, enable/disable,
+unload/reload, cursor restoration and light-theme regression remain required
+before this work can be published. These findings do not close acceptance.
+
 ## Behavior and native boundary
 
 Input defaults to text and forwards native input props, refs and event handlers.
