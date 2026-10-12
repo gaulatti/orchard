@@ -102,6 +102,8 @@
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminateDisabled" Color="#FF2C5784" Opacity="0.05" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminateDisabled" Color="#FF2C5784" Opacity="0.5" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminateDisabled" Color="#FF2C5784" Opacity="0.5" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBackgroundBrush" Color="#FFF9F6F2" Opacity="0.65" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="#FFE6D5B8" Opacity="0.2" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="Default">
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
@@ -202,6 +204,8 @@
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminateDisabled" Color="#FF5BA3F5" Opacity="0.075" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminateDisabled" Color="#FF5BA3F5" Opacity="0.5" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminateDisabled" Color="#FF5BA3F5" Opacity="0.5" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBackgroundBrush" Color="#FFF0F4F8" Opacity="0.05" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="#FFF0F4F8" Opacity="0.07" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
@@ -302,6 +306,8 @@
             <SolidColorBrush x:Key="ToggleButtonBackgroundIndeterminateDisabled" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonForegroundIndeterminateDisabled" Color="{ThemeResource SystemColorGrayTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="ToggleButtonBorderBrushIndeterminateDisabled" Color="{ThemeResource SystemColorGrayTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerToggleGroupBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
     <FontFamily x:Key="BleeckerPrimaryFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Regular.ttf#Encode Sans</FontFamily>

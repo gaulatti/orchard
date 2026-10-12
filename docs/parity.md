@@ -13,6 +13,12 @@ Machine-readable contracts, public symbols, literal variants, states, evidence p
 
 Every interactive entry additionally requires hover, pressed, focus, selection and loading where applicable, keyboard activation/dismissal/focus restoration, long/multiline/non-Latin content, theme changes and reduced motion. Overlays must verify open-content theme changes. Collections must preserve selection across updates and sorting. Dialogs must explicitly protect unsaved edits.
 
+Visual acceptance requires comparison with the rendered pinned Bleecker reference across every variant, size, theme and interaction state. Match typography, spacing, dimensions, colors, borders, radii, icons and motion. Native Windows semantics may be retained, but Windows defaults must not override the branded appearance. Token assertions and successful native-control interaction alone do not establish visual parity. Existing components remain in progress until this comparison is verified, including focus, loading and animated transitions.
+
+The available development host is Intel x64. ARM64 compilation is verified separately; no ARM64 machine is currently available for runtime acceptance.
+
+The first visual audit identifies unresolved Windows defaults in current previews: native focus rings, the native loading spinner and catalog SymbolIcon glyphs. Bleecker's link underline is hover-only, while the current Windows wrapper shows it persistently. State motion and shadows also require rendered reference comparison. These are tracked acceptance gaps, not approved visual substitutions.
+
 | Component contract | Windows implementation | Catalog / regression / runtime evidence | Remaining gap |
 | --- | --- | --- | --- |
 | brand-lockup | Pending | Pending | Full pinned contract |
@@ -88,7 +94,7 @@ Every interactive entry additionally requires hover, pressed, focus, selection a
 | switch | Pending | Pending | Full pinned contract |
 | textarea | Pending | Pending | Full pinned contract |
 | toggle | Six native `ToggleButton` styles | Registered size/variant fixtures; x64 automation/state checks; desktop pointer and Space/Tab; light/dark captures | In progress: Narrator, contrast, scaling, reduced motion, binding/command regressions, ARM64 runtime; see [usage](toggles.md) |
-| toggle-group | Pending | Pending | Full pinned contract |
+| toggle-group | `BleeckerToggleGroup` and native toggle items; optional single/multiple selection | Registered binding, collection, disabled and constrained fixtures; x64 UIA and physical input; package consumer; ARM64 build | In progress: Narrator, contrast, scaling, motion, broader RTL/error fixtures and ARM64 runtime; see [usage](toggle-groups.md) |
 | tooltip | Pending | Pending | Full pinned contract |
 | feed-item | Pending | Pending | Full pinned contract |
 | field | Pending | Pending | Full pinned contract |

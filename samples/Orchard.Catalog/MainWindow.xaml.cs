@@ -83,6 +83,10 @@ public sealed partial class MainWindow : Window
             await Toggles.VerifyAsync(scheme);
             await Buttons.VerifyAsync(scheme);
             await IconButtons.VerifyAsync(scheme);
+            await ToggleGroups.VerifyAsync();
+            ToggleGroups.StartBringIntoView();
+            await Task.Delay(350);
+            await CaptureAsync(Path.Combine(folder, $"toggle-groups-{theme.ToString().ToLowerInvariant()}.png"));
             IconButtons.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"icon-buttons-{theme.ToString().ToLowerInvariant()}.png"));

@@ -1,0 +1,33 @@
+<UserControl x:Class="Orchard.Catalog.ToggleGroupsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Toggle groups" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Choose one view, or clear it by activating it again." Style="{StaticResource BleeckerBodyStyle}" />
+        <TextBox x:Name="SelectionValueInput" Header="Consumer selection value (list/grid/empty)" Text="list" Width="300" HorizontalAlignment="Left" Style="{StaticResource BleeckerTextBoxStyle}" />
+        <orchard:BleeckerToggleGroup x:Name="SingleGroup" SelectedValue="{Binding Text, ElementName=SelectionValueInput, Mode=TwoWay}" AutomationProperties.Name="View (choose one or none)">
+            <orchard:BleeckerToggleGroupItem x:Name="ListItem" Value="list" Content="List" />
+            <orchard:BleeckerToggleGroupItem x:Name="GridItem" Value="grid" Content="Grid" />
+            <orchard:BleeckerToggleGroupItem Value="timeline" Content="Timeline" IsEnabled="False" />
+        </orchard:BleeckerToggleGroup>
+        <TextBlock Text="Choose any number of coverage topics." Style="{StaticResource BleeckerBodyStyle}" />
+        <orchard:BleeckerToggleGroup x:Name="MultipleGroup" SelectionMode="Multiple" Variant="Outline" Size="Small" AutomationProperties.Name="Topics (choose multiple)">
+            <orchard:BleeckerToggleGroupItem x:Name="LocalItem" Value="local" Content="Local" />
+            <orchard:BleeckerToggleGroupItem x:Name="CultureItem" Value="culture" Content="Culture" />
+            <orchard:BleeckerToggleGroupItem Value="science" Content="Science" />
+        </orchard:BleeckerToggleGroup>
+        <TextBlock Text="Constrained width: scroll to reach every action." Style="{StaticResource BleeckerBodyStyle}" />
+        <orchard:BleeckerToggleGroup Width="260" Size="Large" AutomationProperties.Name="International desks">
+            <orchard:BleeckerToggleGroupItem Value="tokyo" Content="東京" />
+            <orchard:BleeckerToggleGroupItem Value="saopaulo" Content="São Paulo" />
+            <orchard:BleeckerToggleGroupItem Value="cairo" Content="القاهرة" />
+            <orchard:BleeckerToggleGroupItem Value="international" Content="International coverage" />
+        </orchard:BleeckerToggleGroup>
+        <orchard:BleeckerToggleGroup IsEnabled="False" SelectedValue="locked" AutomationProperties.Name="Unavailable views">
+            <orchard:BleeckerToggleGroupItem Value="locked" Content="Selected, unavailable" />
+            <orchard:BleeckerToggleGroupItem Value="other" Content="Unavailable" />
+        </orchard:BleeckerToggleGroup>
+        <TextBlock x:Name="SelectionResult" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite" />
+    </StackPanel>
+</UserControl>

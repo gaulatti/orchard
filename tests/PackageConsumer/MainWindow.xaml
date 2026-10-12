@@ -22,6 +22,10 @@
                 <Button Content="Secondary action" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" AutomationProperties.Name="Package component" />
                 <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon" ToolTipService.ToolTip="Save with icon"><SymbolIcon Symbol="Save" /></orchard:BleeckerIconButton>
+                <orchard:BleeckerToggleGroup x:Name="PackageGroup" SelectedValue="list" AutomationProperties.Name="Package view">
+                    <orchard:BleeckerToggleGroupItem Value="list" Content="List" />
+                    <orchard:BleeckerToggleGroupItem x:Name="PackageGridItem" Value="grid" Content="Grid" />
+                </orchard:BleeckerToggleGroup>
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
             </StackPanel>
         </NavigationView>

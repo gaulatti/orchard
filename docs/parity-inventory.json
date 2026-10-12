@@ -3066,14 +3066,24 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerToggleGroup.cs",
+        "src/Orchard/Controls/BleeckerToggleGroupItem.cs",
+        "src/Orchard/Themes/Generic.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/ToggleGroupsFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/ToggleGroupsFixture.xaml.cs",
+        "tests/PackageConsumer/MainWindow.xaml.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Verify rendered Bleecker parity across every variant, size, theme and interaction state, including typography, spacing, dimensions, colors, borders, radii, icons and motion",
+        "Verify broader keyboard/RTL and error-state fixtures",
+        "Verify Narrator, actual Windows contrast, display/text scaling and reduced motion",
+        "Verify ARM64 runtime on ARM64 hardware; current host is Intel x64"
       ]
     },
     {

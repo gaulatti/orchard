@@ -76,6 +76,13 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
       }
     }
   }
+  for (const property of ['Background', 'Border']) {
+    const dark = theme === 'Default';
+    const key = dark ? 'textPrimary' : property === 'Background' ? 'lightSand' : 'sand';
+    const color = theme === 'HighContrast' ? `{ThemeResource ${property === 'Background' ? 'SystemColorWindowColor' : 'SystemColorWindowTextColor'}}` : argb(colors[key]);
+    const opacity = theme === 'HighContrast' ? 1 : dark ? property === 'Background' ? 0.05 : 0.07 : property === 'Background' ? 0.65 : 0.2;
+    xaml += `            <SolidColorBrush x:Key="BleeckerToggleGroup${property}Brush" Color="${color}" Opacity="${opacity}" />\n`;
+  }
   xaml += '        </ResourceDictionary>\n';
 }
 xaml += '    </ResourceDictionary.ThemeDictionaries>\n';

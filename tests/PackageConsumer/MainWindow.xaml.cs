@@ -41,6 +41,7 @@ public sealed partial class MainWindow : Window
                 var native = VisualTreeHelper.GetChild(PackageAction, 0) as Button;
                 Require(native is not null && native.ActualWidth > 0, "Packaged component template did not load.");
                 Require(PackageIcon.ActualWidth == 40 && PackageIcon.ActualHeight == 40, "Packaged icon control did not lay out.");
+                Require(PackageGroup.ActualWidth > 0 && PackageGridItem.ActualHeight >= 36, "Packaged toggle group template did not lay out.");
                 var componentColor = ((SolidColorBrush)native!.Background).Color;
                 Require($"#{componentColor.A:X2}{componentColor.R:X2}{componentColor.G:X2}{componentColor.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], "Packaged per-variant resources did not load.");
                 await CaptureAsync(theme);
@@ -57,6 +58,11 @@ public sealed partial class MainWindow : Window
             ((IInvokeProvider)new ButtonAutomationPeer(PackageIcon).GetPattern(PatternInterface.Invoke)).Invoke();
             await Task.Delay(100);
             Require(Result.Text == "Saved: Package interaction verified", "Packaged icon activation failed.");
+            var selection = (ISelectionItemProvider)FrameworkElementAutomationPeer.CreatePeerForElement(PackageGridItem).GetPattern(PatternInterface.SelectionItem);
+            selection.Select();
+            Require(PackageGroup.SelectedValue == "grid" && PackageGridItem.IsChecked == true, "Packaged group selection failed.");
+            selection.RemoveFromSelection();
+            Require(string.IsNullOrEmpty(PackageGroup.SelectedValue), "Packaged group optional selection failed.");
             App.Report(true, "Package resources, fonts, light/dark themes, layout and native action verified.");
         }
         catch (Exception error) { App.Report(false, error.ToString()); }

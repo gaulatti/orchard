@@ -63,6 +63,7 @@
                 <local:TogglesFixture x:Name="Toggles" />
                 <local:ButtonsFixture x:Name="Buttons" />
                 <local:IconButtonsFixture x:Name="IconButtons" />
+                <local:ToggleGroupsFixture x:Name="ToggleGroups" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>

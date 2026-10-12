@@ -86,7 +86,8 @@ colors so an open page reacts to theme changes.
 
 Action component usage and remaining acceptance are documented separately:
 [buttons](docs/buttons.md), [icon buttons](docs/icon-buttons.md),
-[button groups](docs/button-group.md), and [toggles](docs/toggles.md).
+[button groups](docs/button-group.md), [toggles](docs/toggles.md), and
+[toggle groups](docs/toggle-groups.md).
 
 See [architecture and verification](docs/architecture.md) for boundaries,
 accepted scaffold behavior, and the remaining component work.
