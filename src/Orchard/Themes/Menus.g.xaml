@@ -38,14 +38,15 @@
                     <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
                     <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState>
                 </VisualStateGroup>
-                
+                <VisualStateGroup x:Name="KeyboardAcceleratorTextVisibility"><VisualState x:Name="KeyboardAcceleratorTextCollapsed" /><VisualState x:Name="KeyboardAcceleratorTextVisible"><VisualState.Setters><Setter Target="KeyboardAcceleratorTextBlock.Visibility" Value="Visible" /></VisualState.Setters></VisualState></VisualStateGroup>
+
                 </VisualStateManager.VisualStateGroups>
                 <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" IsHitTestVisible="False"><Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" /></Border>
                 <Grid Padding="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
-                
+
                 <TextBlock x:Name="TextBlock" Grid.Column="0" Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="20" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" TextWrapping="Wrap" />
-                <TextBlock Grid.Column="1" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" Margin="8,0,0,0" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
+                <TextBlock x:Name="KeyboardAcceleratorTextBlock" Visibility="Collapsed" Grid.Column="1" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
                 </Grid>
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
@@ -69,6 +70,7 @@
                     <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
                     <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState>
                 </VisualStateGroup>
+                <VisualStateGroup x:Name="KeyboardAcceleratorTextVisibility"><VisualState x:Name="KeyboardAcceleratorTextCollapsed" /><VisualState x:Name="KeyboardAcceleratorTextVisible"><VisualState.Setters><Setter Target="KeyboardAcceleratorTextBlock.Visibility" Value="Visible" /></VisualState.Setters></VisualState></VisualStateGroup>
                 <VisualStateGroup x:Name="CheckStates"><VisualState x:Name="Unchecked" /><VisualState x:Name="UncheckedWithIcon" /><VisualState x:Name="Checked"><VisualState.Setters><Setter Target="CheckGlyph.Opacity" Value="1" /></VisualState.Setters></VisualState><VisualState x:Name="CheckedWithIcon"><VisualState.Setters><Setter Target="CheckGlyph.Opacity" Value="1" /></VisualState.Setters></VisualState></VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" IsHitTestVisible="False"><Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" /></Border>
@@ -76,7 +78,7 @@
                 <Grid.ColumnDefinitions><ColumnDefinition Width="24" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                 <Viewbox x:Name="CheckGlyph" Width="16" Height="16" Margin="-1,0,0,0" Opacity="0" HorizontalAlignment="Left" VerticalAlignment="Center"><Canvas Width="24" Height="24"><Path Data="M20 6 9 17 4 12" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" /></Canvas></Viewbox>
                 <TextBlock x:Name="TextBlock" Grid.Column="1" Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="20" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" TextWrapping="Wrap" />
-                <TextBlock Grid.Column="2" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" Margin="8,0,0,0" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
+                <TextBlock x:Name="KeyboardAcceleratorTextBlock" Visibility="Collapsed" Grid.Column="2" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
                 </Grid>
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
@@ -100,6 +102,7 @@
                     <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
                     <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState>
                 </VisualStateGroup>
+                <VisualStateGroup x:Name="KeyboardAcceleratorTextVisibility"><VisualState x:Name="KeyboardAcceleratorTextCollapsed" /><VisualState x:Name="KeyboardAcceleratorTextVisible"><VisualState.Setters><Setter Target="KeyboardAcceleratorTextBlock.Visibility" Value="Visible" /></VisualState.Setters></VisualState></VisualStateGroup>
                 <VisualStateGroup x:Name="CheckStates"><VisualState x:Name="Unchecked" /><VisualState x:Name="UncheckedWithIcon" /><VisualState x:Name="Checked"><VisualState.Setters><Setter Target="CheckGlyph.Opacity" Value="1" /></VisualState.Setters></VisualState><VisualState x:Name="CheckedWithIcon"><VisualState.Setters><Setter Target="CheckGlyph.Opacity" Value="1" /></VisualState.Setters></VisualState></VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" IsHitTestVisible="False"><Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" /></Border>
@@ -107,7 +110,7 @@
                 <Grid.ColumnDefinitions><ColumnDefinition Width="24" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                 <Viewbox x:Name="CheckGlyph" Width="8" Height="8" Margin="3,0,0,0" Opacity="0" HorizontalAlignment="Left" VerticalAlignment="Center"><Canvas Width="24" Height="24"><Ellipse Canvas.Left="1" Canvas.Top="1" Width="22" Height="22" Fill="{TemplateBinding Foreground}" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" /></Canvas></Viewbox>
                 <TextBlock x:Name="TextBlock" Grid.Column="1" Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="20" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" TextWrapping="Wrap" />
-                <TextBlock Grid.Column="2" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" Margin="8,0,0,0" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
+                <TextBlock x:Name="KeyboardAcceleratorTextBlock" Visibility="Collapsed" Grid.Column="2" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
                 </Grid>
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
@@ -132,14 +135,47 @@
                     <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
                     <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState>
                 </VisualStateGroup>
-                
+
+
                 </VisualStateManager.VisualStateGroups>
                 <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" IsHitTestVisible="False"><Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" /></Border>
                 <Grid Padding="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
-                
+
                 <TextBlock x:Name="TextBlock" Grid.Column="0" Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="20" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" TextWrapping="Wrap" />
                 <Viewbox Grid.Column="1" Width="16" Height="16" Margin="8,0,0,0"><Canvas Width="24" Height="24"><Path Data="M9 18l6-6-6-6" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" /></Canvas></Viewbox>
+                </Grid>
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="BleeckerMenuContentItemStyle" TargetType="local:BleeckerMenuContentItem">
+        <Setter Property="local:BleeckerMenuFocus.IsEnabled" Value="True" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Normal" /><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="Background" Value="Transparent" /><Setter Property="Padding" Value="8,6" />
+        <Setter Property="MinHeight" Value="0" /><Setter Property="UseSystemFocusVisuals" Value="False" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerUiCornerRadius}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerMenuContentItem">
+            <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+                <VisualStateManager.VisualStateGroups><VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="LayoutRoot.Background" Value="{ThemeResource BleeckerMenuHoverBrush}" /></VisualState.Setters></VisualState>
+                    <VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="LayoutRoot.Background" Value="{ThemeResource BleeckerMenuHoverBrush}" /></VisualState.Setters></VisualState>
+                    <VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="LayoutRoot.Opacity" Value="0.5" /></VisualState.Setters></VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
+                    <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="KeyboardAcceleratorTextVisibility"><VisualState x:Name="KeyboardAcceleratorTextCollapsed" /><VisualState x:Name="KeyboardAcceleratorTextVisible"><VisualState.Setters><Setter Target="KeyboardAcceleratorTextBlock.Visibility" Value="Visible" /></VisualState.Setters></VisualState></VisualStateGroup>
+
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" IsHitTestVisible="False"><Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" /></Border>
+                <Grid Padding="{TemplateBinding Padding}">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+
+                <ContentPresenter x:Name="ItemContent" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" />
+                <TextBlock x:Name="KeyboardAcceleratorTextBlock" Visibility="Collapsed" Grid.Column="1" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
                 </Grid>
             </Grid>
         </ControlTemplate></Setter.Value></Setter>

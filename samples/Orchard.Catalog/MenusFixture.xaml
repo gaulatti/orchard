@@ -1,6 +1,7 @@
 <UserControl x:Class="Orchard.Catalog.MenusFixture"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <UserControl.Resources><ResourceDictionary><ResourceDictionary.MergedDictionaries><ResourceDictionary Source="ReferenceIcons.xaml" /></ResourceDictionary.MergedDictionaries></ResourceDictionary></UserControl.Resources>
     <StackPanel Spacing="16">
         <TextBlock Text="Dropdown menus" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <orchard:BleeckerOverlaySurface x:Name="ShadowPreview" Width="224" Padding="14" HorizontalAlignment="Left" Margin="0,0,0,32">
@@ -11,6 +12,12 @@
                 <orchard:BleeckerDropdownMenu x:Name="Menu">
                     <orchard:BleeckerMenuLabel x:Name="SectionLabel" Text="Account" />
                     <MenuFlyoutItem x:Name="Action" Text="Profile" Click="OnAction" orchard:BleeckerMenuFocus.IsEnabled="True" Style="{StaticResource BleeckerMenuItemStyle}" />
+                    <orchard:BleeckerMenuContentItem x:Name="RichAction" Text="Edit profile" Click="OnAction" Style="{StaticResource BleeckerMenuContentItemStyle}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Viewbox Width="16" Height="16"><ContentControl Style="{StaticResource LucideEditIcon}" Foreground="{Binding Foreground, ElementName=RichAction}" /></Viewbox>
+                            <TextBlock x:Name="RichText" Text="Edit profile" LineHeight="20" LineStackingStrategy="BlockLineHeight" />
+                        </StackPanel>
+                    </orchard:BleeckerMenuContentItem>
                     <MenuFlyoutItem x:Name="InsetAction" Text="Settings" Click="OnAction" KeyboardAcceleratorTextOverride="Ctrl+S" Style="{StaticResource BleeckerMenuInsetItemStyle}" />
                     <MenuFlyoutItem Text="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />

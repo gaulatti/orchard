@@ -28,6 +28,7 @@ public sealed partial class MenusFixture : UserControl
         VerifyLabels(presenter);
         VerifyInset(InsetAction);
         VerifyInset(Submenu);
+        VerifyContentAndShortcuts();
         foreach (var item in Menu.Items.OfType<MenuFlyoutItem>().Where(item => item is not BleeckerMenuLabel))
             Require(item.FontSize == 14 && item.CornerRadius.TopLeft == 7 && item.Padding.Top == 6 && item.ActualHeight == 32, $"Menu item geometry mismatch: {item.Text} {item.ActualHeight}.");
         var root = (Grid)VisualTreeHelper.GetChild(Action, 0);
@@ -75,6 +76,10 @@ public sealed partial class MenusFixture : UserControl
         await Task.Delay(150);
         await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(InsetAction).GetPattern(PatternInterface.Invoke)).Invoke());
         Require(actions == before + 2 && !Menu.IsOpen, "Inset menu invocation did not execute and dismiss.");
+        Menu.ShowAt(Trigger);
+        await Task.Delay(150);
+        await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(RichAction).GetPattern(PatternInterface.Invoke)).Invoke());
+        Require(actions == before + 3 && !Menu.IsOpen, "Composed menu invocation did not execute and dismiss.");
         var originalStyle = Menu.MenuFlyoutPresenterStyle;
         var consumerStyle = new Style(typeof(MenuFlyoutPresenter)) { BasedOn = originalStyle };
         consumerStyle.Setters.Add(new Setter(FrameworkElement.MinWidthProperty, 220d));
@@ -92,6 +97,31 @@ public sealed partial class MenusFixture : UserControl
         Require(presenter.MinWidth == 176, "Restored default root menu lost its width.");
         Menu.Hide();
         await Task.Delay(150);
+    }
+    private void VerifyContentAndShortcuts()
+    {
+        Require(RichText.FontFamily.Source.Contains("EncodeSans-Regular.ttf") && RichText.FontSize == 14 && RichAction.ActualHeight == 32,
+            "Composed menu content inherited Windows typography or row height.");
+        var content = RichAction.Content;
+        var replacement = new TextBlock { Text = "Editorial\nreview", LineHeight = 20, LineStackingStrategy = LineStackingStrategy.BlockLineHeight };
+        RichAction.Content = replacement;
+        RichAction.UpdateLayout();
+        Require(RichAction.ActualHeight == 52 && replacement.FontSize == 14 && replacement.FontFamily.Source.Contains("EncodeSans-Regular.ttf"),
+            "Composed menu did not update variable-height content.");
+        RichAction.Content = content;
+        RichAction.UpdateLayout();
+        var peer = FrameworkElementAutomationPeer.CreatePeerForElement(RichAction);
+        Require(peer.GetName() == "Edit profile" && peer.GetPattern(PatternInterface.Invoke) is not null,
+            "Composed menu lost its native action name or invoke pattern.");
+        foreach (var item in new MenuFlyoutItem[] { Action, InsetAction, RichAction, Checkbox, Compact })
+        {
+            var root = (Grid)VisualTreeHelper.GetChild(item, 0);
+            var layout = (Grid)root.Children[1];
+            var shortcut = layout.Children.OfType<TextBlock>().Single(text => text.Name == "KeyboardAcceleratorTextBlock");
+            var hasShortcut = !string.IsNullOrEmpty(item.KeyboardAcceleratorTextOverride);
+            Require((hasShortcut ? shortcut.Visibility == Visibility.Visible && shortcut.ActualWidth > 0 : shortcut.ActualWidth == 0) && shortcut.Margin == new Thickness(0),
+                $"Menu shortcut layout mismatch: {item.Text}, hint={hasShortcut}, visibility={shortcut.Visibility}, width={shortcut.ActualWidth}, margin={shortcut.Margin}.");
+        }
     }
     private static void VerifyInset(Control item)
     {

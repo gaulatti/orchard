@@ -22,7 +22,7 @@ export function menuStyles() {
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="MenuFlyoutSeparator"><Border Background="{ThemeResource BleeckerBorderBrush}" /></ControlTemplate></Setter.Value></Setter>
     </Style>
 `;
-  for (const [kind, type] of [['Item','MenuFlyoutItem'], ['Checkbox','ToggleMenuFlyoutItem'], ['Radio','RadioMenuFlyoutItem'], ['Submenu','MenuFlyoutSubItem']]) {
+  for (const [kind, type] of [['Item','MenuFlyoutItem'], ['Checkbox','ToggleMenuFlyoutItem'], ['Radio','RadioMenuFlyoutItem'], ['Submenu','MenuFlyoutSubItem'], ['ContentItem','local:BleeckerMenuContentItem']]) {
     const selection = kind === 'Checkbox' || kind === 'Radio', submenu = kind === 'Submenu';
     xaml += `    <Style x:Key="BleeckerMenu${kind}Style" TargetType="${type}">
         <Setter Property="local:BleeckerMenuFocus.IsEnabled" Value="True" />
@@ -42,14 +42,15 @@ export function menuStyles() {
                     <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
                     <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="FocusHighlight.Opacity" Value="1" /></VisualState.Setters></VisualState>
                 </VisualStateGroup>
+                ${!submenu ? '<VisualStateGroup x:Name="KeyboardAcceleratorTextVisibility"><VisualState x:Name="KeyboardAcceleratorTextCollapsed" /><VisualState x:Name="KeyboardAcceleratorTextVisible"><VisualState.Setters><Setter Target="KeyboardAcceleratorTextBlock.Visibility" Value="Visible" /></VisualState.Setters></VisualState></VisualStateGroup>' : ''}
                 ${selection ? `<VisualStateGroup x:Name="CheckStates"><VisualState x:Name="Unchecked" /><VisualState x:Name="UncheckedWithIcon" />${['Checked','CheckedWithIcon'].map(state=>`<VisualState x:Name="${state}"><VisualState.Setters><Setter Target="CheckGlyph.Opacity" Value="1" /></VisualState.Setters></VisualState>`).join('')}</VisualStateGroup>` : ''}
                 </VisualStateManager.VisualStateGroups>
                 <Border x:Name="FocusHighlight" Background="{ThemeResource BleeckerMenuBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" IsHitTestVisible="False"><Border Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" /></Border>
                 <Grid Padding="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>${selection ? '<ColumnDefinition Width="24" />' : ''}<ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                 ${selection ? kind === 'Radio' ? '<Viewbox x:Name="CheckGlyph" Width="8" Height="8" Margin="3,0,0,0" Opacity="0" HorizontalAlignment="Left" VerticalAlignment="Center"><Canvas Width="24" Height="24"><Ellipse Canvas.Left="1" Canvas.Top="1" Width="22" Height="22" Fill="{TemplateBinding Foreground}" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" /></Canvas></Viewbox>' : '<Viewbox x:Name="CheckGlyph" Width="16" Height="16" Margin="-1,0,0,0" Opacity="0" HorizontalAlignment="Left" VerticalAlignment="Center"><Canvas Width="24" Height="24"><Path Data="M20 6 9 17 4 12" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" /></Canvas></Viewbox>' : ''}
-                <TextBlock x:Name="TextBlock" Grid.Column="${selection ? 1 : 0}" Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="20" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" TextWrapping="Wrap" />
-                ${submenu ? '<Viewbox Grid.Column="1" Width="16" Height="16" Margin="8,0,0,0"><Canvas Width="24" Height="24"><Path Data="M9 18l6-6-6-6" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" /></Canvas></Viewbox>' : `<TextBlock Grid.Column="${selection ? 2 : 1}" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" Margin="8,0,0,0" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />`}
+                ${kind === 'ContentItem' ? '<ContentPresenter x:Name="ItemContent" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" />' : `<TextBlock x:Name="TextBlock" Grid.Column="${selection ? 1 : 0}" Text="{TemplateBinding Text}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" LineHeight="20" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" TextWrapping="Wrap" />`}
+                ${submenu ? '<Viewbox Grid.Column="1" Width="16" Height="16" Margin="8,0,0,0"><Canvas Width="24" Height="24"><Path Data="M9 18l6-6-6-6" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" /></Canvas></Viewbox>' : `<TextBlock x:Name="KeyboardAcceleratorTextBlock" Visibility="Collapsed" Grid.Column="${selection ? 2 : 1}" Text="{TemplateBinding KeyboardAcceleratorTextOverride}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="12" CharacterSpacing="100" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />`}
                 </Grid>
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
@@ -62,5 +63,5 @@ export function menuStyles() {
     </Style>
 `;
   }
-  return xaml + '</ResourceDictionary>\n';
+  return (xaml + '</ResourceDictionary>\n').replace(/[\t ]+$/gm, '');
 }

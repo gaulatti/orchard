@@ -44,6 +44,9 @@
                     <Button.Flyout><orchard:BleeckerDropdownMenu x:Name="PackageMenu">
                         <orchard:BleeckerMenuLabel x:Name="PackageLabel" Text="Account" />
                         <MenuFlyoutItem x:Name="PackageInset" Text="Profile" Style="{StaticResource BleeckerMenuInsetItemStyle}" />
+                        <orchard:BleeckerMenuContentItem x:Name="PackageContentItem" Text="Review locally">
+                            <TextBlock x:Name="PackageContentText" Text="Review locally" LineHeight="20" LineStackingStrategy="BlockLineHeight" />
+                        </orchard:BleeckerMenuContentItem>
                         <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
                         <ToggleMenuFlyoutItem Text="Revenue" IsChecked="True" Style="{StaticResource BleeckerMenuCheckboxStyle}" />
                     </orchard:BleeckerDropdownMenu></Button.Flyout>

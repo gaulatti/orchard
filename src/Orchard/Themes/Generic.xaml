@@ -6,6 +6,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="local:BleeckerMenuContentItem" BasedOn="{StaticResource BleeckerMenuContentItemStyle}" />
     <Style TargetType="local:BleeckerMenuLabel">
         <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="IsTabStop" Value="False" /><Setter Property="AllowFocusOnInteraction" Value="False" />

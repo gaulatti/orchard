@@ -1,5 +1,6 @@
 {
   "styles": {
+    "BleeckerMenuContentItemStyle": "MenusFixture.xaml",
     "BleeckerMenuInsetItemStyle": "MenusFixture.xaml",
     "BleeckerMenuInsetSubmenuStyle": "MenusFixture.xaml",
     "BleeckerMenuPresenterStyle": "MenusFixture.xaml",
@@ -22,6 +23,7 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerMenuContentItem": "MenusFixture.xaml",
     "BleeckerMenuLabel": "MenusFixture.xaml",
     "BleeckerOverlaySurface": "MenusFixture.xaml",
     "BleeckerDropdownMenu": "MenusFixture.xaml",

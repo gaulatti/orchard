@@ -20,10 +20,14 @@ The focus regression checks actual keyboard focus and removal of the previous ro
 
 Use `BleeckerMenuInsetItemStyle` or `BleeckerMenuInsetSubmenuStyle` for the reference inset variants. They inherit the complete regular item/submenu templates and set padding to `32,6,8,6`, aligning text with selection-row labels while retaining 32px single-line height. Catalog checks cover root actions, submenu triggers and nested actions in light/dark, including normal invocation and dismissal. Consumer styles can derive from these keys and own their padding.
 
+`BleeckerMenuContentItem` accepts a consumer-composed `UIElement` through `Content` (also its XAML content property). This mirrors Bleecker's arbitrary row children without imposing a Windows icon glyph or fixed icon slot. Set inherited `Text` to the action's accessible name, and use native `Click`, `Command` and `CommandParameter` for invocation. The default template supplies Encode Sans Regular 14px and the standard row padding, colors, focus and disabled states. Compose presentation elements such as vectors and text; do not place independent buttons or other interactive controls inside a menu action. Consumer content owns its internal layout, icon dimensions and text line heights. For a regular single-line row, use a 20px text line height. The fixture uses the existing pinned Lucide Edit geometry at 16px with an explicit 8px content gap; these are consumer composition values, not a new universal icon policy.
+
+Shortcut templates follow native visibility states and have no fixed left margin or cross-row minimum width. Empty hints consume zero layout width. Setting `KeyboardAcceleratorTextOverride` remains display-only. Composed content can grow vertically and be replaced while open; the catalog verifies replacement, inherited fonts, accessible naming and native invocation/dismissal.
+
 Remaining requirements:
 
 - Exact overlay shadow rasterization, 220ms entry, exit animation and 190ms item transitions remain open. Catalog open/close animations are disabled rather than using Windows motion.
-- Rich content/icons, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented. Label wrapping, text scaling, RTL and Narrator behavior still need full acceptance.
+- Complete notification/rich-row compositions, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented. Label wrapping, text scaling, RTL and Narrator behavior still need full acceptance.
 - Shortcut spacing, text baselines, overflow/scrolling, placement offset and all pointer/keyboard/focus states need rendered comparison.
 - Verify radio selection persistence when values change while the popup is closed, theme changes while open, nested dismissal, focus restoration and modal ownership.
 - Contrast hover foregrounds, actual contrast settings, Narrator, text/display scaling and ARM64 runtime still require implementation or verification. ARM64 hardware is unavailable on this Intel host.
