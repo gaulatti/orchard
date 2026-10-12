@@ -17,6 +17,7 @@ public sealed class BleeckerCheckbox : CheckBox
     private readonly BleeckerCssTransition<(double L, double A, double B, double Alpha)> strokeMotion = new(BleeckerColorMix.MixPremultiplied);
     private readonly BleeckerCssTransition<double> glyphMotion = new(Lerp), opacityMotion = new(Lerp), focusMotion = new(Lerp);
     private readonly SolidColorBrush fill = new(), stroke = new();
+    private readonly BleeckerRichTextDefaults richDefaults = new();
     private readonly List<(DependencyObject Owner, DependencyProperty Property, long Token)> observers = [];
     private readonly TextBlock intrinsicLabel = new() { TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false };
     private readonly TextBlock intrinsicDescription = new() { TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false };
@@ -28,7 +29,7 @@ public sealed class BleeckerCheckbox : CheckBox
     private TextBlock[] probes = [];
     private VisualStateGroup? states;
     private string visualState = "";
-    private bool pointerOver, rendering;
+    private bool pointerOver, rendering, richLayoutObserved;
 
     public BleeckerCheckbox()
     {
@@ -47,13 +48,13 @@ public sealed class BleeckerCheckbox : CheckBox
         {
             settings.ColorValuesChanged += OnColorsChanged;
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged += OnMotionChanged;
-            ObservePalette(); UpdateVisuals(false);
+            ObservePalette(); UpdateVisuals(false); ObserveRichLayout();
         };
         Unloaded += (_, _) =>
         {
             settings.ColorValuesChanged -= OnColorsChanged;
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged -= OnMotionChanged;
-            StopMotion(); StopObservingPalette(); pointerOver = false;
+            StopMotion(); StopObservingPalette(); StopObservingRichLayout(); richDefaults.Clear(); pointerOver = false;
         };
     }
 
@@ -66,7 +67,7 @@ public sealed class BleeckerCheckbox : CheckBox
 
     protected override void OnApplyTemplate()
     {
-        StopMotion(); StopObservingPalette();
+        StopMotion(); StopObservingPalette(); StopObservingRichLayout(); richDefaults.Clear();
         if (states is not null) states.CurrentStateChanged -= OnStateChanged;
         if (richLabel is not null) richLabel.Content = null;
         if (richDescription is not null) richDescription.Content = null;
@@ -100,6 +101,7 @@ public sealed class BleeckerCheckbox : CheckBox
     private void UpdateContent()
     {
         if (label is null || description is null || richLabel is null || richDescription is null || textColumn is null) return;
+        richDefaults.Clear();
         var plainLabel = (Content is null or string) && ContentTemplate is null && ContentTemplateSelector is null;
         var plainDescription = (Description is null or string) && DescriptionTemplate is null;
         var hasLabel = plainLabel ? !string.IsNullOrEmpty(Content as string) : Content is not null || ContentTemplate is not null;
@@ -114,7 +116,22 @@ public sealed class BleeckerCheckbox : CheckBox
         richLabel.Visibility = !plainLabel && hasLabel ? Visibility.Visible : Visibility.Collapsed;
         richDescription.Visibility = !plainDescription && hasDescription ? Visibility.Visible : Visibility.Collapsed;
         textColumn.Visibility = hasLabel || hasDescription ? Visibility.Visible : Visibility.Collapsed;
+        ObserveRichLayout();
         InvalidateMeasure(); FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
+    }
+
+    private void ObserveRichLayout()
+    {
+        var needed = IsLoaded && (richLabel?.Visibility == Visibility.Visible || richDescription?.Visibility == Visibility.Visible);
+        if (needed && !richLayoutObserved) { LayoutUpdated += OnRichLayout; richLayoutObserved = true; }
+        else if (!needed) StopObservingRichLayout();
+        if (needed) ApplyRichDefaults();
+    }
+    private void StopObservingRichLayout() { LayoutUpdated -= OnRichLayout; richLayoutObserved = false; }
+    private void OnRichLayout(object? sender, object args) => ApplyRichDefaults();
+    private void ApplyRichDefaults()
+    {
+        if (textColumn is not null) richDefaults.Apply(textColumn);
     }
 
     protected override Windows.Foundation.Size MeasureOverride(Windows.Foundation.Size available)

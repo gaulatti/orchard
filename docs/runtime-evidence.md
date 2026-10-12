@@ -179,6 +179,14 @@ The x64 captures/report were downloaded and hash-verified from artifact
 `f4714cf3c154b40a7a9f8ae0495b85980ed3d77c4d162a42c2248e2a6c29e7aa`,
 under `artifacts/ci-checkbox-84e6ef2-x64`.
 
+At `d382242`, [run 38304146283](https://github.com/gaulatti/orchard/actions/runs/38304146283)
+shows that consumer template binding succeeds on x64 and ARM64. Both reports identify
+correct strings and the expected ConsumerLabel data context, but each template
+line remains LineHeight 0 / MaxHeight at 17.5px, yielding 57px rather than 62px.
+The next candidate supplies the source line defaults to template-generated
+text only when no local value, binding or style setter supplies them. It keeps
+the consumer template/styles intact and removes owned defaults on detachment.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

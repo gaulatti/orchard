@@ -111,6 +111,14 @@ public sealed partial class CheckboxesFixture : UserControl
                     Find<TextBlock>(Rich, "ConsumerTitle").Text == data.Title && Find<TextBlock>(Rich, "ConsumerDetails").Text == data.Details &&
                     Find<TextBlock>(Rich, "ConsumerTitle").LineHeight == 20 && Find<TextBlock>(Rich, "ConsumerDetails").LineHeight == 20 && Rich.ActualHeight == 62,
                     $"Consumer data template did not receive the checkbox's branded defaults: {JsonSerializer.Serialize(templateSnapshot)}.");
+                var templateTitle = Find<TextBlock>(Rich, "ConsumerTitle");
+                templateTitle.Style = consumerStyle; UpdateLayout();
+                await WaitAsync(() => templateTitle.LineHeight == 28 && Rich.ActualHeight == 70,
+                    "A live consumer style did not replace the checkbox's owned line defaults.");
+                Require(ReferenceEquals(templateTitle.Style, consumerStyle), "Checkbox replaced a live consumer text style.");
+                templateTitle.Style = null; UpdateLayout();
+                await WaitAsync(() => templateTitle.LineHeight == 20 && Rich.ActualHeight == 62,
+                    "Removing the consumer style did not restore the branded line defaults.");
                 Rich.Content = data with { Title = "Updated template label" }; UpdateLayout();
                 await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == "Updated template label", "Updated consumer data did not reach the label template.");
                 verifiedSteps.Add("Consumer rich styles, local line height and data templates");

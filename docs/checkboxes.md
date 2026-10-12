@@ -33,6 +33,12 @@ The checkbox's private resource dictionary supplies a default TextBlock style
 with the same 20px block line height. It covers the native Content ownership
 path and the description/template visual tree; explicit consumer text
 properties/styles take precedence.
+Template-generated TextBlock/RichTextBlock elements whose declaration scope
+does not resolve that style receive the same defaults during layout. Local
+values, bindings and style setters remain authoritative; owned defaults and
+style observers detach on content/template replacement, generated subtree
+removal or unload. Changing an explicit style on generated text releases the
+owned values before that style takes effect.
 Text starts 12px after the box. Description has a 2px top margin, including
 when there is no label. Both strings wrap beside a top-aligned box; empty
 content collapses the text column. Intrinsic measurement preserves the larger
@@ -83,6 +89,8 @@ local text properties (30px lines), and a two-line consumer data template.
 It verifies their resulting 50/52/62px row heights, data updates, template/content
 identity and restoration of the original 42px row. Individual captures are
 retained as `checkbox-rich-{style,local,template}-{Light,Dark}.png`.
+The template row also applies and removes a consumer style after layout,
+requiring 70px and then 62px without replacing the style or template.
 
 The first x64/ARM64 run at `79f1053` stopped at its glyph geometry assertion.
 The x64 capture also exposed inherited RTL mirroring. The follow-up keeps the
@@ -122,6 +130,10 @@ The consumer data-template check then fails before template replacement.
 The next fixture waits for normal binding propagation and records template
 text, data-context type and geometry before restoration; the exact 62px
 acceptance remains unchanged.
+At `d382242`, binding succeeds and the template receives the expected data,
+but both template lines retain 17.5px automatic heights (57px total). Default
+line formatting now also reaches those generated elements, without changing
+the consumer's template or style identity. Native verification remains open.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
