@@ -2,8 +2,8 @@
 
 Reference: Bleecker `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/input.tsx` and `stories/components/Input.stories.tsx`.
-Input remains pending implementation; the existing `BleeckerTextBoxStyle` is not
-an accepted implementation of this contract.
+`BleeckerInput` is an incomplete implementation; neither it nor the existing
+`BleeckerTextBoxStyle` has full visual acceptance for this contract.
 
 ## Geometry and typography
 
@@ -15,8 +15,10 @@ an accepted implementation of this contract.
 
 The rendered Default story confirms Encode Sans regular, 14px / 20px line height,
 zero vertical padding, a 1px border and 7px radius. Its 320px width belongs to the
-story container; the component fills its consumer's width. Small/large line
-boxes still require rendered verification.
+story container; the component fills its consumer's width. The local three-size
+audit fixture additionally measures Small at 13px/19.5px and Large at
+15px/22.5px. All three render the listed heights/padding, 1px borders and 7px
+radii. Native text baseline/line-box equivalence remains unverified.
 
 Start/end adornments are consumer-owned decorative content, centered vertically,
 12px from their corresponding outer edge. Each occupied side gets a 40px text
@@ -45,14 +47,25 @@ Dark focus rules override the error border/ring. Preserve the actual cascade;
 do not assume error styling wins in every state. Focus after pointer click also
 retains the hover shadow. The source rest shadow is `0 1px 2px rgba(26,55,77,.025)`;
 hover is `0 3px 10px -8px rgba(26,55,77,.25)`. Hover borders are sand at 70% and
-white at 25% respectively; error/hover precedence still needs isolated checks.
+white at 25% respectively. Isolated rendered Error checks confirm that hover
+overrides the terracotta border in both themes when the input is unfocused.
 
 The source transitions background, border, shadow and opacity over the 190ms
 control token with cubic-bezier(.22,1,.36,1). This host's reduced-motion setting
 yielded a computed duration of 0.00001s. That observation does not verify the
 enabled-motion curve. Disabled source styling applies light-sand/65 background,
 opacity .6 and not-allowed cursor to the input itself, leaving sibling adornments
-outside that opacity. Dark/disabled cascade remains to be measured.
+outside that opacity.
+
+A local Storybook audit fixture imports the unchanged pinned Input and renders
+`disabled`, then `disabled error`. Computed styles confirm light-sand at 65%
+alpha in both appearances: `#F9F6F2` in light and `#0D1821` in dark, with .6
+input opacity applied separately. The dark disabled rule wins over the ordinary
+opaque deep-sea background. Disabled error retains terracotta at rest. Pointer
+hover still changes both disabled cases to the ordinary hover border and shadow
+in both themes, while focus remains false and the cursor is `not-allowed`.
+Orchard's dark disabled background is corrected; disabled hover and cursor
+behavior remain open implementation gaps.
 
 ## Behavior and native boundary
 

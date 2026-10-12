@@ -89,7 +89,7 @@ public sealed partial class InputsFixture : UserControl
                 Hex(error.BorderBrush) == colors[dark ? "accentBlue" : "terracotta"] &&
                 Hex(ring.BorderBrush) == (dark ? "#1F5BA3F5" : "#26A65D57") && ring.Opacity == 1 &&
                 Hex(disabledError.BorderBrush) == colors["terracotta"] &&
-                Hex(disabledError.Background) == (dark ? "#FF182533" : "#A6F9F6F2") &&
+                Hex(disabledError.Background) == (dark ? "#A60D1821" : "#A6F9F6F2") &&
                 Hex(adornment.Foreground) == colors["textSecondary"];
         }
     }
@@ -142,6 +142,9 @@ public sealed partial class InputsFixture : UserControl
     {
         var editor = Find<Grid>(DisabledErrorInput, "Editor");
         var border = Find<Border>(DisabledErrorInput, "BorderElement");
+        var expectedBackground = scheme == BleeckerColorScheme.Dark ? "#A60D1821" : "#A6F9F6F2";
+        Require(Hex(border.Background) == expectedBackground && Hex(Find<Border>(DisabledInput, "BorderElement").Background) == expectedBackground,
+            "Disabled inputs must use light-sand at 65% alpha before editor opacity, with or without validation.");
         Require(Math.Abs(editor.Opacity - .6) < .000001, "Disabled error input lost its opacity.");
         Require(Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Disabled error input lost its error border.");
         DisabledErrorInput.IsError = false;
@@ -153,7 +156,7 @@ public sealed partial class InputsFixture : UserControl
         await AwaitAsync(() => Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabled validation did not settle.");
         Require(Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
         DisabledErrorInput.IsEnabled = false;
-        await AwaitAsync(() => Math.Abs(editor.Opacity - .6) < .000001, "Disabled opacity did not settle.");
+        await AwaitAsync(() => Math.Abs(editor.Opacity - .6) < .000001 && Hex(border.Background) == expectedBackground, "Disabled opacity and background did not settle.");
     }
 
     private async Task VerifyMotionAsync(BleeckerColorScheme scheme, string folder)

@@ -29,8 +29,8 @@ paired system colors, but actual contrast acceptance remains outstanding.
 Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 
-Remaining work includes exact glyph/baseline and scaling comparison, reference
-hover/disabled precedence, error semantics, shadow raster comparison and motion,
+Remaining work includes exact glyph/baseline and scaling comparison, disabled
+hover/cursor behavior, error semantics, shadow raster comparison and motion,
 live brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
@@ -54,6 +54,9 @@ cast is not an equivalent test.
 
 The disabled/error combination retains its terracotta border while the editor
 is dimmed to .6 opacity. Decorative adornments remain outside the dimmed editor.
+Both themes use light-sand at 65% alpha as the disabled background, separately
+from the editor's .6 opacity. Dark therefore uses `#A60D1821`, not the ordinary
+opaque deep-sea fill. The rendered pinned reference confirms this cascade.
 The registered fixture includes this combination. Runtime regression coverage
 also changes each size with adornments removed and restored, and checks that
 presentation changes retain native text selection.
@@ -118,3 +121,15 @@ enabled run nor these builds establish full-catalog enabled-motion performance,
 exact browser/native interpolation equivalence, or ARM64 runtime acceptance.
 The isolated package consumer passes at
 `artifacts/package-consumer-input-motion`; all 13 unit/coverage tests pass.
+
+The searchable catalog now passes its full suite with animations enabled at
+`artifacts/smoke-navigation-motion`, including intermediate Input frames in both
+themes. This supersedes the earlier full-catalog sampling failure as the latest
+result; repeatable performance budgets and exact motion equivalence remain open.
+
+Disabled-background correction passes the focused light/dark runtime suite at
+`artifacts/smoke-input-disabled-background`, including plain/invalid disabled
+states, re-enabling/disabling and live theme restoration. The captured dark
+fixture was visually inspected. All 13 tests and x64 publish pass. Disabled
+hover still needs its reference border/shadow behavior and not-allowed cursor;
+the background correction does not close the full disabled-state contract.
