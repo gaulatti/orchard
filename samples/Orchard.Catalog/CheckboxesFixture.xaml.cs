@@ -85,7 +85,15 @@ public sealed partial class CheckboxesFixture : UserControl
             AutomationProperties.SetName(Default, "");
             Default.Content = "Enable notifications"; Default.Description = "Send alerts when a device starts playback.";
             var richLabel = Rich.Content; var richDescription = Rich.Description;
-            richSamples.Add(new { phase = "rich-default-name", accessibleName = InspectDefaultName(Rich) });
+            richSamples.Add(new { phase = "rich-default-name", accessibleName = InspectDefaultName(Rich, "Consumer label Consumer description") });
+            var directText = (TextBlock)richLabel;
+            var originalText = directText.Text;
+            try
+            {
+                directText.Text = "Updated consumer text"; UpdateLayout();
+                richSamples.Add(new { phase = "rich-live-text-name", accessibleName = InspectDefaultName(Rich, "Updated consumer text Consumer description") });
+            }
+            finally { directText.Text = originalText; UpdateLayout(); }
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
                 ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Checkbox replaced consumer-owned rich content.");
             verifiedSteps.Add("Live text, explicit accessible name and consumer rich-content identity");
@@ -108,7 +116,7 @@ public sealed partial class CheckboxesFixture : UserControl
                 Rich.Content = data; Rich.ContentTemplate = template; UpdateLayout();
                 await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == data.Title && Find<TextBlock>(Rich, "ConsumerDetails").Text == data.Details,
                     "Consumer template bindings did not reach the owned data.");
-                var templateSnapshot = new { phase = "data-template", row = Measure(Rich), accessibleName = InspectDefaultName(Rich),
+                var templateSnapshot = new { phase = "data-template", row = Measure(Rich), accessibleName = InspectDefaultName(Rich, "Consumer label Second template line Consumer description"),
                     title = MeasureRichContent(Find<TextBlock>(Rich, "ConsumerTitle")), details = MeasureRichContent(Find<TextBlock>(Rich, "ConsumerDetails")),
                     contextType = Find<TextBlock>(Rich, "ConsumerTitle").DataContext?.GetType().FullName };
                 richSamples.Add(templateSnapshot);
@@ -118,6 +126,10 @@ public sealed partial class CheckboxesFixture : UserControl
                     Find<TextBlock>(Rich, "ConsumerTitle").LineHeight == 20 && Find<TextBlock>(Rich, "ConsumerDetails").LineHeight == 20 && Rich.ActualHeight == 62,
                     $"Consumer data template did not receive the checkbox's branded defaults: {JsonSerializer.Serialize(templateSnapshot)}.");
                 var templateTitle = Find<TextBlock>(Rich, "ConsumerTitle");
+                AutomationProperties.SetName(templateTitle, "Named consumer title");
+                richSamples.Add(new { phase = "named-template-subtree", accessibleName = InspectDefaultName(Rich,
+                    "Named consumer title Second template line Consumer description") });
+                templateTitle.ClearValue(AutomationProperties.NameProperty);
                 templateTitle.Style = consumerStyle; UpdateLayout();
                 await WaitAsync(() => templateTitle.LineHeight == 28 && Rich.ActualHeight == 70,
                     "A live consumer style did not replace the checkbox's owned line defaults.");
@@ -127,7 +139,25 @@ public sealed partial class CheckboxesFixture : UserControl
                     "Removing the consumer style did not restore the branded line defaults.");
                 Rich.Content = data with { Title = "Updated template label" }; UpdateLayout();
                 await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == "Updated template label", "Updated consumer data did not reach the label template.");
-                richSamples.Add(new { phase = "updated-template-name", accessibleName = InspectDefaultName(Rich) });
+                richSamples.Add(new { phase = "updated-template-name", accessibleName = InspectDefaultName(Rich, "Updated template label Second template line Consumer description") });
+                var details = Find<TextBlock>(Rich, "ConsumerDetails");
+                details.Visibility = Visibility.Collapsed; UpdateLayout();
+                richSamples.Add(new { phase = "collapsed-template-text-name", accessibleName = InspectDefaultName(Rich, "Updated template label Consumer description") });
+                details.Visibility = Visibility.Visible; UpdateLayout();
+                var descriptionData = new ConsumerLabel("Template description", "Description detail");
+                Rich.Description = descriptionData; Rich.DescriptionTemplate = template; UpdateLayout();
+                await WaitAsync(() => Find<TextBlock>(Find<ContentPresenter>(Rich, "PART_RichDescription"), "ConsumerDetails").Text == descriptionData.Details,
+                    "Consumer description template did not render its data.");
+                richSamples.Add(new { phase = "description-template-name", accessibleName = InspectDefaultName(Rich,
+                    "Updated template label Second template line Template description Description detail") });
+                Require(ReferenceEquals(Rich.Description, descriptionData) && ReferenceEquals(Rich.DescriptionTemplate, template),
+                    "Accessible naming replaced the consumer's description data or template.");
+                AutomationProperties.SetLabeledBy(Rich, CheckboxHeading);
+                richSamples.Add(new { phase = "labeled-by-name", accessibleName = InspectDefaultName(Rich, "Checkbox") });
+                Require(FrameworkElementAutomationPeer.CreatePeerForElement(Rich).GetName() == "Rich consumer label",
+                    "Consumer explicit Name lost precedence over LabeledBy.");
+                AutomationProperties.SetLabeledBy(Rich, null);
+                verifiedSteps.Add("Rendered rich/template names, live text/data, hidden text exclusion and explicit Name/LabeledBy precedence");
                 verifiedSteps.Add("Consumer rich styles, local line height and data templates");
             }
             finally
@@ -136,7 +166,9 @@ public sealed partial class CheckboxesFixture : UserControl
                     contentType = Rich.Content?.GetType().FullName,
                     templateText = HostedText(Find<ContentPresenter>(Rich, "PART_RichLabel")).Select(text => new {
                         metrics = MeasureRichContent(text), contextType = text.DataContext?.GetType().FullName }).ToArray() });
-                Rich.ContentTemplate = null; Rich.Content = richLabel; UpdateLayout();
+                AutomationProperties.SetLabeledBy(Rich, null);
+                Rich.ContentTemplate = null; Rich.Content = richLabel;
+                Rich.DescriptionTemplate = null; Rich.Description = richDescription; UpdateLayout();
             }
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) && Rich.ActualHeight == 42,
                 "Restoring rich content lost its identity or branded geometry.");
@@ -463,7 +495,10 @@ public sealed partial class CheckboxesFixture : UserControl
                         "original" => source,
                         "yu-gothic" => new FontFamily(source.Source + ", Yu Gothic"),
                         "yu-gothic-direct" => new FontFamily("Yu Gothic"),
+                        "yu-gothic-medium-direct" => new FontFamily("Yu Gothic Medium"),
                         "segoe-ui-direct" => new FontFamily("Segoe UI"),
+                        "segoe-ui-semibold-direct" => new FontFamily("Segoe UI Semibold"),
+                        "arabic-segmented" => source,
                         "arial-direct" => new FontFamily("Arial"),
                         "tahoma-direct" => new FontFamily("Tahoma"),
                         _ => throw new InvalidOperationException($"Unknown font evidence candidate {candidate}.")
@@ -471,13 +506,28 @@ public sealed partial class CheckboxesFixture : UserControl
                     FontWeight = new Windows.UI.Text.FontWeight { Weight = weight.Value },
                     FontSize = 14, TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false
                 };
+                if (candidate == "arabic-segmented")
+                {
+                    text.Text = "";
+                    foreach (var part in System.Text.RegularExpressions.Regex.Split(script.Text, "(\\s+)"))
+                        text.Inlines.Add(new Microsoft.UI.Xaml.Documents.Run
+                        {
+                            Text = part,
+                            FontFamily = string.IsNullOrWhiteSpace(part) ? source : new FontFamily(weight.Value == 400 ? "Segoe UI" : "Segoe UI Semibold"),
+                            FontWeight = new Windows.UI.Text.FontWeight { Weight = weight.Value }
+                        });
+                    Require(string.Concat(text.Inlines.OfType<Microsoft.UI.Xaml.Documents.Run>().Select(run => run.Text)) == script.Text,
+                        "Segmented font evidence lost consumer text.");
+                }
                 NonLatin.Language = script.Language;
                 NonLatin.Content = text;
                 UpdateLayout(); await Task.Delay(50); UpdateLayout();
                 Require(text.LineHeight == 20 && text.ActualHeight == 20 && double.IsFinite(text.ActualWidth),
                     "Script evidence probe did not receive the branded text layout.");
                 probes.Add(new { name = script.Name, language = text.Language, weight = weight.Value, candidate,
-                    text = text.Text, font = text.FontFamily.Source, text.FontSize, text.LineHeight,
+                    text = script.Text, nativeText = text.Text, font = text.FontFamily.Source, text.FontSize, text.LineHeight,
+                    runs = text.Inlines.OfType<Microsoft.UI.Xaml.Documents.Run>().Select(run =>
+                        new { run.Text, font = run.FontFamily.Source, weight = run.FontWeight.Weight }).ToArray(),
                     text.ActualWidth, text.ActualHeight, text.BaselineOffset, rowWidth = NonLatin.ActualWidth });
                 await MainWindow.CaptureElementAsync(NonLatin,
                     Path.Combine(folder, $"checkbox-script-{script.Name}-{weight.Value}-{candidate}-{scheme}.png"));
@@ -513,10 +563,16 @@ public sealed partial class CheckboxesFixture : UserControl
     {
         yield return "original";
         yield return "yu-gothic";
-        if (name == "japanese") yield return "yu-gothic-direct";
+        if (name == "japanese")
+        {
+            yield return "yu-gothic-direct";
+            yield return "yu-gothic-medium-direct";
+        }
         if (name == "arabic")
         {
             yield return "segoe-ui-direct";
+            yield return "segoe-ui-semibold-direct";
+            yield return "arabic-segmented";
             yield return "arial-direct";
             yield return "tahoma-direct";
         }
@@ -586,7 +642,7 @@ public sealed partial class CheckboxesFixture : UserControl
         ? new { text.Text, text.ActualWidth, text.ActualHeight, text.LineHeight,
             strategy = text.LineStackingStrategy.ToString(), family = text.FontFamily.Source, weight = text.FontWeight.Weight }
         : null;
-    private static object InspectDefaultName(BleeckerCheckbox control)
+    private static object InspectDefaultName(BleeckerCheckbox control, string? expected = null)
     {
         // The fixture owns this explicit Name. Observe the native default
         // without permanently masking it or modifying consumer content.
@@ -594,9 +650,11 @@ public sealed partial class CheckboxesFixture : UserControl
         try
         {
             AutomationProperties.SetName(control, "");
-            return new { name = FrameworkElementAutomationPeer.CreatePeerForElement(control).GetName() };
+            var name = FrameworkElementAutomationPeer.CreatePeerForElement(control).GetName();
+            if (expected is not null) Require(name == expected, $"Rendered checkbox name differs: {name}; expected {expected}.");
+            return new { name };
         }
-        catch (Exception error) { return new { error = error.ToString() }; }
+        catch (Exception error) when (expected is null) { return new { error = error.ToString() }; }
         finally
         {
             if (localName == DependencyProperty.UnsetValue) control.ClearValue(AutomationProperties.NameProperty);

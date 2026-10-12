@@ -29,6 +29,7 @@ public sealed class BleeckerCheckbox : CheckBox
     private TextBlock[] probes = [];
     private VisualStateGroup? states;
     private string visualState = "";
+    private string? observedRichName;
     private bool pointerOver, rendering, richLayoutObserved;
 
     public BleeckerCheckbox()
@@ -107,6 +108,7 @@ public sealed class BleeckerCheckbox : CheckBox
         inputChrome = textColumn = null;
         glyph = null; label = description = null; richLabel = richDescription = null;
         probes = []; states = null; visualState = ""; pointerOver = false;
+        observedRichName = null;
     }
 
     private T Part<T>(string name) where T : FrameworkElement => GetTemplateChild(name) as T
@@ -148,7 +150,34 @@ public sealed class BleeckerCheckbox : CheckBox
     private void ApplyRichDefaults()
     {
         if (textColumn is not null) richDefaults.Apply(textColumn);
+        var peer = FrameworkElementAutomationPeer.FromElement(this);
+        if (peer is null) return;
+        var name = ContentAccessibleName();
+        if (name != observedRichName) { observedRichName = name; peer.InvalidatePeer(); }
     }
+
+    private string ContentAccessibleName() => JoinNames(
+        (Content is null or string) && ContentTemplate is null && ContentTemplateSelector is null
+            ? Content as string ?? "" : RichAccessibleName(richLabel),
+        (Description is null or string) && DescriptionTemplate is null
+            ? Description as string ?? "" : RichAccessibleName(richDescription));
+
+    private static string RichAccessibleName(DependencyObject? root)
+    {
+        if (root is null || root is UIElement { Visibility: Visibility.Collapsed }) return "";
+        var explicitName = AutomationProperties.GetName(root);
+        if (!string.IsNullOrEmpty(explicitName)) return explicitName;
+        if (AutomationProperties.GetLabeledBy(root) is UIElement label)
+            return FrameworkElementAutomationPeer.CreatePeerForElement(label)?.GetName() ?? "";
+        var count = VisualTreeHelper.GetChildrenCount(root);
+        if (root is UIElement element && (root is TextBlock or RichTextBlock || count == 0))
+            return FrameworkElementAutomationPeer.CreatePeerForElement(element)?.GetName() ?? "";
+        // Read the template's visible content, never the backing model's string
+        // representation. Named consumer subtrees retain their own semantics.
+        return JoinNames(Enumerable.Range(0, count).Select(index => RichAccessibleName(VisualTreeHelper.GetChild(root, index))).ToArray());
+    }
+
+    private static string JoinNames(params string[] names) => string.Join(" ", names.Where(value => !string.IsNullOrEmpty(value)));
 
     protected override Windows.Foundation.Size MeasureOverride(Windows.Foundation.Size available)
     {
@@ -219,9 +248,7 @@ public sealed class BleeckerCheckbox : CheckBox
         protected override string GetNameCore()
         {
             if (!string.IsNullOrEmpty(AutomationProperties.GetName(owner)) || AutomationProperties.GetLabeledBy(owner) is not null) return base.GetNameCore();
-            var label = owner.Content is string plain ? plain : base.GetNameCore();
-            var description = owner.Description is string text ? text : owner.Description is UIElement element ? FrameworkElementAutomationPeer.CreatePeerForElement(element)?.GetName() ?? "" : "";
-            return string.Join(" ", new[] { label, description }.Where(value => !string.IsNullOrEmpty(value)));
+            return owner.ContentAccessibleName();
         }
     }
 }

@@ -19,8 +19,11 @@ Unchecked, Indeterminate and Click events. The normal two-state behavior remains
 the native default; a consumer can explicitly use native IsThreeState. Null
 selection renders the source's unchecked chrome rather than inventing a bar.
 Use AutomationProperties.Name or LabeledBy to override the default accessible
-name, which includes plain label and description text. A bare checkbox needs an
-explicit name. Rich content retains its consumer-owned elements.
+name, which includes rendered label and description text, including consumer
+data templates. Collapsed child text is excluded; named consumer subtrees keep
+their own accessible names. A bare checkbox needs an explicit name. Rich content
+retains its consumer-owned elements, data and templates. Rich layout changes
+invalidate the checkbox peer when its default name changes.
 
 There is one source size and no variants. The box is 20×20px, with a 1px border,
 4px radius and the reference white 14×14 SVG check. The SVG's 14×10 viewBox is
@@ -253,6 +256,27 @@ The rich-content reports now inspect native default names with the fixture's
 explicit override temporarily removed and restored. These diagnostic names
 cover direct TextBlock content, a consumer data template and live template data;
 they do not establish complete accessibility acceptance.
+The next font evidence cases compare Yu Gothic Medium, Segoe UI Semibold and
+an Arabic word/space run split. The browser remains heavier at Arabic 500 with
+font-synthesis-weight disabled, and its explicit Segoe UI Semibold renders the
+same width as its Segoe UI 500. Canonical font-table space advances at 14px are
+3.423/3.451/3.486px for Encode Sans 400/500/600, versus 3.834961/3.848633px for
+Segoe UI regular/semibold. These differences are consistent with the observed
+whole-run width gap within native/browser layout quantization. The diagnostic preserves primary
+spaces and selects the observed Arabic word face, retaining the full consumer
+string and exposed font weight. There are now 57 cases per appearance. These
+are evidence probes; shared library typography is unchanged.
+At `0e35493`, both architecture jobs pass the complete Light/Dark catalog and
+independent NuGet runtime consumer; the ARM64 build also passes. The retained
+Input diagnostic is in InputNormalError with ReadOnlyInput focused, correct
+palette, border and opacity. The prior Dark failure was not reproduced, so its
+cause is still unproven. Rich TextBlock naming is correct, but a data template
+announces `ConsumerLabel { Title = ... }` rather than the rendered label.
+The checkbox peer now reads the rendered rich label/description tree, excludes
+collapsed children and respects named subtrees. Native regressions require
+direct/live text, label and description templates, live model updates, hidden
+text exclusion and consumer Name/LabeledBy precedence, with ownership restored.
+This fix still requires a new native run and does not establish Narrator acceptance.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

@@ -1,11 +1,51 @@
 # Native Windows runtime evidence
 
-The catalog fixtures and independent NuGet consumer at commit `5412997` passed
-on both x64 and native ARM64. That baseline covers 18 in-progress inventory
-entries. The added Switch and Checkbox previews raise the current inventory to
-20 in-progress and 92 pending entries. Their x64 catalog and package-consumer
-checks have passed; the additional ARM64 desktop checks are still being verified.
+The catalog fixtures and independent NuGet consumer at commit `0e35493` passed
+on both x64 and native ARM64. That runtime baseline covers 20 in-progress
+inventory entries; 92 entries remain pending. The earlier `5412997` checkpoint
+covered 18 entries. Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
+
+## Checkbox and Switch native runtime checkpoint
+
+Commit `0e354939d430a06ead949c0fc98cb198b4f46e42` passes all three jobs in
+[run 38316642519](https://github.com/gaulatti/orchard/actions/runs/38316642519).
+Both runtime jobs build/test/publish the catalog and pack/run an isolated NuGet
+consumer. Their 23 unit/resource tests pass. Native reports confirm:
+
+| Evidence | x64 | ARM64 |
+|---|---|---|
+| Process / OS architecture | X64 / X64 | Arm64 / Arm64 |
+| Windows build | 26100 | 26200 |
+| .NET runtime | 10.0.12 | 10.0.12 |
+| Display / text scale | 1 / 1 | 1 / 1 |
+| Windows animations | Disabled | Enabled |
+| Light / Dark catalog | Passed / passed | Passed / passed |
+| Independent package consumer | Passed | Passed |
+
+The Checkbox reports include real hover/held press/release/exit, physical
+Space/Tab, disabled skipping/rejection, box/label/description/RTL clicks,
+exactly-once command/value events, consumer binding and template/visibility
+lifecycle. Composed pixel samples verify the focus ring beyond both box edges
+and its offset. The Switch also passes both appearances and native physical
+input. All 48 Checkbox font-probe dimensions agree across architectures, but
+the probes identify remaining source font mismatches rather than accepting them.
+
+Package 0.1.0 SHA-256 is
+`9d584e2bb3e9135b8ce33813645230305e235a1c9a6e98403ad9c20f9a52b8fe` on x64 and
+`b16df6883c1b513ff2846890071832c657280095057cb4f301747d695a15d8b5` on ARM64.
+The x64 artifact `11777456732` has SHA-256
+`8cad4468b21f813414b8b5f72b6a67d73b27be49699eb91b0217aa816acb03b5`;
+the ARM64 runtime artifact `11777611609` has SHA-256
+`2e90b8f3d321d114fdcd8225bc7c52261295442a4a331d3a8108929aa0d54d11`.
+Both archives were downloaded and hash-verified. Selected reports/captures
+are retained under `artifacts/ci-checkbox-0e35493-{x64,arm64}`.
+
+The prior `3485f52` ARM64 run passed Light, then failed Dark Input validation.
+The new diagnostic reports show correct InputNormalError, focus, palette and
+rendered settlement in this run; the previous failure's cause remains unproven.
+The Checkbox rich-name diagnostics also expose model string representations
+for data templates. These gaps and the full acceptance matrix remain open.
 
 ## Switch x64 runtime
 
