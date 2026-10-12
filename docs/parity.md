@@ -93,7 +93,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | sheet | Pending | Pending | Full pinned contract |
 | slider | Pending | Pending | Full pinned contract |
 | sonner | Pending | Pending | Full pinned contract |
-| switch | `BleeckerSwitch`: native binary toggle and optional label | Registered off/on, disabled, no-label, wrapping, non-Latin, RTL and binding fixture; independent consumer; runtime evidence pending | In progress: [usage and gaps](switches.md); exact rendering, physical input/drag, focus, contrast/Narrator/scaling and full platform acceptance |
+| switch | `BleeckerSwitch`: native binary toggle and optional label | x64 light/dark native layout, UIA/binding/lifecycle, live appearance, physical Space/Tab/track/label/RTL, reduced motion and independent consumer passed; composed screenshots retained | In progress: [usage and gaps](switches.md); Japanese fallback width, exact raster/motion/drag/cursor/focus, contrast/Narrator/scaling and remaining ARM64 desktop checks |
 | textarea | Pending | Pending | Full pinned contract |
 | toggle | Six native `ToggleButton` styles | Registered size/variant fixtures; x64 automation/state checks; desktop pointer and Space/Tab; light/dark captures | In progress: Narrator, contrast, scaling, reduced motion, binding/command regressions, remaining ARM64 state checks; see [usage](toggles.md) |
 | toggle-group | `BleeckerToggleGroup` and native toggle items; optional single/multiple selection | Registered binding, collection, disabled and constrained fixtures; x64 UIA and physical input; package consumer; ARM64 build | In progress: Narrator, contrast, scaling, motion, broader RTL/error fixtures and remaining ARM64 state checks; see [usage](toggle-groups.md) |

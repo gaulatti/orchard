@@ -7,6 +7,20 @@ namespace Orchard.Catalog;
 // visuals that RenderTargetBitmap omits, including the switch thumb shadow.
 internal static class NativeScreenCapture
 {
+    internal static object DescribeDesktop()
+    {
+        var input = OpenInputDesktop(0, false, 1); // DESKTOP_READOBJECTS
+        var inputError = input == IntPtr.Zero ? Marshal.GetLastWin32Error() : 0;
+        try { return new { thread = Name(GetThreadDesktop(GetCurrentThreadId())), input = input == IntPtr.Zero ? null : Name(input), inputError }; }
+        finally { if (input != IntPtr.Zero) CloseDesktop(input); }
+
+        static string? Name(IntPtr desktop)
+        {
+            var name = new System.Text.StringBuilder(256);
+            return GetUserObjectInformation(desktop, 2, name, 512, out _) ? name.ToString() : null;
+        }
+    }
+
     internal static Rect ClientBounds(IntPtr window)
     {
         var origin = new ScreenPoint(0, 0);
@@ -80,6 +94,11 @@ internal static class NativeScreenCapture
         public uint ClrUsed, ClrImportant, Color;
     }
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
+    [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
+    [DllImport("user32.dll")] private static extern IntPtr GetThreadDesktop(uint thread);
+    [DllImport("user32.dll", SetLastError = true)] private static extern IntPtr OpenInputDesktop(uint flags, [MarshalAs(UnmanagedType.Bool)] bool inherit, uint access);
+    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool CloseDesktop(IntPtr desktop);
+    [DllImport("user32.dll", EntryPoint = "GetUserObjectInformationW", CharSet = CharSet.Unicode, ExactSpelling = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetUserObjectInformation(IntPtr obj, int index, System.Text.StringBuilder value, uint length, out uint needed);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetClientRect(IntPtr window, out ScreenRect rect);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ClientToScreen(IntPtr window, ref ScreenPoint point);
     [DllImport("user32.dll")] private static extern IntPtr WindowFromPoint(ScreenPoint point);

@@ -266,8 +266,11 @@ public sealed partial class SwitchesFixture : UserControl
         physicalInputSteps.Clear();
         using var process = Process.GetCurrentProcess();
         process.Refresh();
-        var window = process.MainWindowHandle;
+        var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);
         Require(window != IntPtr.Zero, "Physical switch check could not identify its own window.");
+        GetWindowThreadProcessId(window, out var windowProcess);
+        Require(windowProcess == process.Id, "Physical switch check resolved a window outside its own process.");
+        var foregroundRequested = false;
         Require(GetCursorPos(out var originalPointer), "Physical switch check could not read its pointer position.");
         try
         {
@@ -276,10 +279,11 @@ public sealed partial class SwitchesFixture : UserControl
             // refuses a programmatic foreground request.
             ShowWindow(window, 3); // SW_SHOWMAXIMIZED: keep the client inside the hosted monitor.
             Require(SetWindowPos(window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the CI catalog window.");
-            SetForegroundWindow(window);
+            foregroundRequested = SetForegroundWindow(window);
             await Task.Delay(100);
             if (GetForegroundWindow() != window) await ClickAsync(Find<Border>(Off, "PART_Track"), false);
-            await WaitAsync(() => GetForegroundWindow() == window, "Physical switch check did not own the foreground window.");
+            await WaitAsync(() => GetForegroundWindow() == window,
+                $"Physical switch check did not own the foreground window: own={window}, heuristic={process.MainWindowHandle}, foreground={GetForegroundWindow()}, session={process.SessionId}, requested={foregroundRequested}.");
             physicalInputSteps.Add("Own catalog window acquired foreground input");
             Off.IsOn = false;
             await SettleAsync(Off, false);
@@ -323,6 +327,10 @@ public sealed partial class SwitchesFixture : UserControl
         }
         finally
         {
+            await File.WriteAllTextAsync(Path.Combine(folder, $"switch-desktop-{scheme}.json"),
+                JsonSerializer.Serialize(new { window = window.ToInt64(), heuristicWindow = process.MainWindowHandle.ToInt64(),
+                    foregroundWindow = GetForegroundWindow().ToInt64(), process.SessionId, foregroundRequested,
+                    desktop = NativeScreenCapture.DescribeDesktop() }, new JsonSerializerOptions { WriteIndented = true }));
             Off.IsOn = false; Rtl.IsOn = true;
             SetWindowPos(window, new IntPtr(-2), 0, 0, 0, 0, 0x0013); // Remove temporary topmost status.
             SetCursorPos(originalPointer.X, originalPointer.Y);
@@ -370,6 +378,7 @@ public sealed partial class SwitchesFixture : UserControl
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindow(IntPtr window, int command);
     [DllImport("user32.dll", SetLastError = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetWindowPos(IntPtr window, IntPtr insertAfter, int x, int y, int width, int height, uint flags);
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out CursorPoint point);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetCursorPos(int x, int y);
 

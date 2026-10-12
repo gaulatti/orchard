@@ -98,7 +98,11 @@ two-way binding, live labels, explicit names, hover/press state retention,
 template replacement, unload/reload and intermediate/reversed motion. It emits
 `switch-measurements-{Light,Dark}.json` and corresponding native captures.
 The independent NuGet consumer also instantiates and toggles the control.
-Runtime evidence must be collected before these checks are claimed as passed.
+The x64 catalog and isolated consumer at 7001e3e passed the registered light/dark
+checks, including actual Space/Tab and track/label/RTL clicks. That host had
+animations disabled, so it verified immediate reduced-motion settlement rather
+than intermediate motion. Native ARM64 desktop activation remains unresolved.
+See [runtime evidence](runtime-evidence.md) for reports, captures and exact scope.
 The mounted fixture also switches appearance in place and verifies the off/on,
 disabled and edge-case palette while retaining every consumer Boolean value.
 Unload verification waits for the actual Unloaded event before checking that the
@@ -110,7 +114,10 @@ and explicitly record that omission, preserving the developer's foreground app.
 The hosted check maximizes its own initially hidden window and temporarily makes
 it topmost. If Windows refuses a foreground request, a real click activates that
 window before keyboard checks begin. Cleanup removes the temporary topmost state
-and restores the pointer. Painted template parts have no automation peer, so
+and restores the pointer. Its HWND comes from XamlRoot.ContentIslandEnvironment
+AppWindowId and is checked against the process ID; Process.MainWindowHandle is
+only retained as a diagnostic. The check retains foreground, session and input
+desktop diagnostics even when activation fails. Painted template parts have no automation peer, so
 pointer targets transform their visual bounds to XamlRoot.Content, apply the
 display scale, then add the HWND client origin obtained through ClientToScreen.
 In-process peer bounds in this SDK projection were client-relative and did not

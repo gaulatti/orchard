@@ -2975,9 +2975,10 @@
       "regressionTests": ["samples/Orchard.Catalog/SwitchesFixture.xaml.cs: VerifyAsync", "tests/Orchard.Tests/SwitchMotionTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Collect x64 and native ARM64 runtime evidence for registered checks",
+        "Resolve native ARM64 foreground input and collect remaining motion/consumer runtime evidence; x64 registered checks passed at 7001e3e",
         "Complete native/browser typography, pill, shadow and animation raster comparison",
-        "Verify actual keyboard/pointer/drag, focus visibility, live system appearance, contrast/Narrator and isolated scaling"
+        "Resolve Japanese fallback width mismatch (native 99.538086px; browser 111.453125px)",
+        "Verify remaining drag/cursor/focus, animated appearance, live system contrast/Narrator and isolated scaling"
       ]
     },
     {

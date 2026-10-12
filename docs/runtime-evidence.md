@@ -3,8 +3,47 @@
 The catalog fixtures and independent NuGet consumer at commit `5412997` passed
 on both x64 and native ARM64. That baseline covers 18 in-progress inventory
 entries. The added Switch preview raises the current inventory to 19 in-progress
-and 93 pending entries; its additional native checks are still being verified.
+and 93 pending entries. Its x64 catalog and package-consumer checks have passed;
+its additional ARM64 desktop checks are still being verified.
 No component has full visual, input, accessibility and scaling acceptance.
+
+## Switch x64 runtime
+
+Commit `7001e3e46627263c909e3b324b139681e5f2434a` passed the x64 job in
+[run 38283953920](https://github.com/gaulatti/orchard/actions/runs/38283953920).
+The catalog report records X64 process and OS, Windows 10.0.26100, .NET 10.0.12,
+display/text scale 1 and animations disabled. In both light and dark, the Switch
+fixture passed geometry/palette, first-display wrapping, UIA state/name/focus,
+disabled rejection, consumer binding, template/unload/reload, live appearance,
+reduced-motion settlement, physical Space/Tab, track/label clicks and RTL
+activation. Native input required the pinned SDK's transparent SwitchThumb part.
+This run does not verify intermediate animation frames.
+
+The x64 artifact is `11763240141`, SHA-256
+`c4163aae82022a2897c76bc2d0f8589c82183166708dbd72881f01a9fa0d2256`.
+The downloaded archive was hash-verified at
+`artifacts/ci-switch-7001e3e-x64.zip`. Selected reports and composed client
+screenshots are under `artifacts/ci-switch-7001e3e-x64/`. The client captures fit
+the physical monitor and include the composition thumb shadow.
+
+The independent consumer reports runtime success for package 0.1.0, SHA-256
+`601082af3516cf0eab9f2f28c09da57ead2968009b54d9e1e46aa9cf199055de`.
+Its process and OS are X64. The ARM64 cross-build/isolated-consumer build also
+passed. The native ARM64 job reached the Switch desktop check but could not
+acquire foreground input; the independent ARM64 runtime consumer was skipped.
+The next diagnostic uses the XamlRoot AppWindowId as the authoritative HWND and
+retains the foreground/session/input-desktop state. This is not an ARM64 pass.
+
+Full Switch acceptance remains open. The natural Latin row measures
+173.272018px against the browser's 173.296875px, while the 200px constrained row
+retains four lines and a 152px text allocation. Japanese fallback glyphs measure
+99.538086px against 111.453125px in the reference, a visible width mismatch that
+must be resolved. The browser captures are JPEG despite their .png filenames;
+they do not support a lossless pixel-equality claim. Exact glyph/pill/shadow
+raster comparison, animated state/appearance transitions, drag/cursor/focus,
+contrast/Narrator and isolated scaling remain unaccepted.
+
+## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)
 at commit `403d8783416eae79086a6b59c714131a88a44121`. All three jobs passed:
