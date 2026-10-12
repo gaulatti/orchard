@@ -19,5 +19,6 @@
             </StackPanel>
         </StackPanel>
         <TextBlock x:Name="Result" Text="No notification action yet" Style="{StaticResource BleeckerBodyStyle}" />
+        <TextBlock x:Name="InputTrace" Text="Keyboard evidence: no popup input yet" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
     </StackPanel>
 </UserControl>

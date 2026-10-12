@@ -15,6 +15,9 @@ public sealed partial class NotificationsFixture : UserControl
     public NotificationsFixture()
     {
         InitializeComponent();
+        var popupContent = (UIElement)((Flyout)((BleeckerIconButton)Badge.FindName("Trigger")).Flyout).Content;
+        popupContent.GotFocus += (_, _) => UpdateInputTrace("focus");
+        popupContent.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler((_, args) => UpdateInputTrace(args.Key.ToString())), true);
         Badge.MarkAllReadCommand = new ActionCommand(_ =>
         {
             marked++;
@@ -29,6 +32,13 @@ public sealed partial class NotificationsFixture : UserControl
             item.Command = new ActionCommand(parameter => { selected++; Result.Text = $"Selected notification {parameter}: {selected}"; });
             Overflow.Items.Add(item);
         }
+    }
+
+    private void UpdateInputTrace(string action)
+    {
+        var focused = FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement;
+        var name = focused is null ? "none" : FrameworkElementAutomationPeer.CreatePeerForElement(focused)?.GetName();
+        InputTrace.Text = $"Keyboard evidence: {action}; focus: {name ?? focused?.GetType().Name ?? "none"}";
     }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
@@ -50,7 +60,11 @@ public sealed partial class NotificationsFixture : UserControl
         var header = (Grid)stack.Children[0];
         var mark = (Button)header.Children[1];
         var items = (ItemsControl)stack.Children[3];
+        Require(!items.IsTabStop, "Notification list container must not add an empty Tab stop.");
         var rows = Descendants<Button>(items).ToArray();
+        var separator = (MenuFlyoutSeparator)stack.Children[1];
+        Require(!separator.IsTabStop && !separator.AllowFocusOnInteraction && !separator.Focus(FocusState.Keyboard),
+            "Notification separator must not trap keyboard focus outside a native menu presenter.");
         Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), mark),
             "Notification popup did not initially focus the header action.");
         Require(presenter.ActualWidth == 320 && presenter.ActualHeight == 262 && header.ActualHeight == 39 && rows.Length == 3,

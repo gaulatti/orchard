@@ -52,9 +52,9 @@
                                 </Style></Button.Style>
                             </Button>
                         </Grid>
-                        <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
+                        <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" IsTabStop="False" AllowFocusOnInteraction="False" />
                         <TextBlock x:Name="EmptyState" Text="No notifications" Padding="8,24" TextAlignment="Center" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
-                        <ItemsControl x:Name="NotificationItems" ItemsSource="{x:Bind Items, Mode=OneWay}">
+                        <ItemsControl x:Name="NotificationItems" ItemsSource="{x:Bind Items, Mode=OneWay}" IsTabStop="False" TabNavigation="Local">
                             <ItemsControl.ItemTemplate><DataTemplate x:DataType="local:BleeckerNotificationItem">
                                 <Button Click="OnNotificationClick" Command="{x:Bind Command, Mode=OneWay}" CommandParameter="{x:Bind CommandParameter, Mode=OneWay}" AutomationProperties.Name="{x:Bind local:BleeckerNotificationBadge.ItemName(Title, Description, Timestamp), Mode=OneWay}" local:BleeckerMenuFocus.IsEnabled="True">
                                     <Button.Style><Style TargetType="Button">
