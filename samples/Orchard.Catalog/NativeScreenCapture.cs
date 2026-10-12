@@ -70,18 +70,39 @@ internal static class NativeScreenCapture
         }
     }
 
-    private static object ApplicationIdentity(uint process)
+    internal static object? MinimizeHostedWelcome(IntPtr catalog)
+    {
+        if (Environment.GetEnvironmentVariable("CI") != "true")
+            throw new InvalidOperationException("Welcome-window preparation is restricted to hosted CI.");
+        var window = GetForegroundWindow();
+        if (window == IntPtr.Zero || window == catalog) return null;
+        GetWindowThreadProcessId(window, out var process);
+        var application = ApplicationIdentity(process);
+        if (application.id != "Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy!App") return null;
+        using var owner = System.Diagnostics.Process.GetProcessById((int)process);
+        using var current = System.Diagnostics.Process.GetCurrentProcess();
+        if (owner.SessionId != current.SessionId)
+            throw new InvalidOperationException("Hosted welcome window is outside the catalog session.");
+        // Minimize only the identified first-login window on the isolated runner.
+        // Leave welcome choices, process lifetime and arbitrary apps alone.
+        var requested = ShowWindowAsync(window, 6); // SW_MINIMIZE
+        return new { window = window.ToInt64(), process, application, owner.SessionId, minimizeRequested = requested };
+    }
+
+    private sealed record ApplicationInfo(string? id, int status);
+
+    private static ApplicationInfo ApplicationIdentity(uint process)
     {
         var handle = OpenProcess(0x1000, false, process); // PROCESS_QUERY_LIMITED_INFORMATION
-        if (handle == IntPtr.Zero) return new { id = (string?)null, status = Marshal.GetLastWin32Error() };
+        if (handle == IntPtr.Zero) return new(null, Marshal.GetLastWin32Error());
         try
         {
             uint length = 0;
             var status = GetApplicationUserModelId(handle, ref length, null);
-            if (status != 122) return new { id = (string?)null, status };
+            if (status != 122) return new(null, status);
             var id = new System.Text.StringBuilder(checked((int)length));
             status = GetApplicationUserModelId(handle, ref length, id);
-            return new { id = status == 0 ? id.ToString() : null, status };
+            return new(status == 0 ? id.ToString() : null, status);
         }
         finally { CloseHandle(handle); }
     }
@@ -151,6 +172,7 @@ internal static class NativeScreenCapture
         public uint ClrUsed, ClrImportant, Color;
     }
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindowAsync(IntPtr window, int command);
     [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
     [DllImport("kernel32.dll", SetLastError = true)] private static extern IntPtr OpenProcess(uint access, [MarshalAs(UnmanagedType.Bool)] bool inherit, uint process);
     [DllImport("kernel32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool CloseHandle(IntPtr handle);

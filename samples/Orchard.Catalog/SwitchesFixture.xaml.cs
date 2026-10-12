@@ -361,6 +361,13 @@ public sealed partial class SwitchesFixture : UserControl
         Require(GetCursorPos(out var originalPointer), "Physical switch check could not read its pointer position.");
         try
         {
+            var welcome = NativeScreenCapture.MinimizeHostedWelcome(window);
+            if (welcome is not null)
+            {
+                await File.WriteAllTextAsync(Path.Combine(folder, $"switch-hosted-welcome-{scheme}.json"),
+                    JsonSerializer.Serialize(welcome, new JsonSerializerOptions { WriteIndented = true }));
+                await Task.Delay(100);
+            }
             // The smoke process starts hidden. Expose only its own hosted-CI
             // window, then retry after Alt before attempting a pointer click.
             // An occluding CoreWindow can otherwise prevent that retry entirely.

@@ -89,6 +89,20 @@ was downloaded and hash-verified under `artifacts/ci-switch-19c1cb2-arm64`.
 The next fixture waits for every row's fill and border endpoints and retains
 all row values on failure. This run does not replace the shared baseline below.
 
+At `4b91993af77a7a56d6aa774e26e15180e9250749`,
+[run 38294745658](https://github.com/gaulatti/orchard/actions/runs/38294745658)
+passes all nine rows' alternate/restored palette endpoints on native ARM64,
+with the Light-started motion checks returning before physical input. The
+target-ownership diagnostic identifies the covering welcome app as
+`Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy!App`, in the catalog's
+active session. Artifact `11768680948`, SHA-256
+`61c451ca0f2c65174fa5f749739bf234c13c9dd065fbd07abd595da11b042882`,
+was downloaded and hash-verified under `artifacts/ci-switch-4b91993-arm64`.
+Physical input, Dark-started checks and the ARM64 consumer remain unexecuted.
+The next hosted check requests normal minimization of that exact foreground
+application and keeps all foreground, occlusion and ownership gates active.
+It does not change the developer's desktop or accept welcome preferences.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

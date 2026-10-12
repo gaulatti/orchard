@@ -150,7 +150,16 @@ desktop diagnostics even when activation fails.
 An occluded target also retains HWND class, executable basename, process/session,
 topmost status, visibility and DWM
 cloaking diagnostics, plus the owning application's AUMID, without other windows'
-titles or content. Window-station,
+titles or content.
+The native ARM64 diagnostic identifies its covering window as
+`Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy!App`. Hosted preparation
+requests normal minimization only when the foreground AUMID exactly matches
+that welcome app and its session matches the catalog. It records the request
+in `switch-hosted-welcome-{Light,Dark}.json`. The foreground and target-ownership
+gates still prove whether that request exposed the catalog; the request itself
+is not success. This code refuses to run outside CI. It makes no welcome
+choices, changes no Windows preferences and does not terminate that process.
+Window-station,
 console-session and WTS connection state distinguish an inactive session from
 a geometry error. The fixture emits isolated Japanese label captures for the
 bundled font and explicit candidate font lists, restoring the original after
