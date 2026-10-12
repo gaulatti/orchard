@@ -20,5 +20,16 @@
                 <orchard:BleeckerTooltipService.ToolTip><orchard:BleeckerTooltip x:Name="LongTip" Content="Regional coverage update: 東京 · São Paulo · القاهرة. Review this fictional newsroom update before continuing." /></orchard:BleeckerTooltipService.ToolTip>
             </Button>
         </StackPanel>
+        <Button x:Name="TemplateTrigger" Content="Consumer template" HorizontalAlignment="Left" Margin="110,0,0,60" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+            <orchard:BleeckerTooltipService.ToolTip>
+                <orchard:BleeckerTooltip x:Name="TemplateTip" Content="Fictional editorial guidance: review the selected coverage before continuing." AutomationProperties.Name="Editorial guidance">
+                    <orchard:BleeckerTooltip.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" LineHeight="19.5" LineStackingStrategy="BlockLineHeight" />
+                        </DataTemplate>
+                    </orchard:BleeckerTooltip.ContentTemplate>
+                </orchard:BleeckerTooltip>
+            </orchard:BleeckerTooltipService.ToolTip>
+        </Button>
     </StackPanel>
 </UserControl>

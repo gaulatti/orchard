@@ -82,6 +82,14 @@ public sealed partial class MainWindow : Window
                     PackageTooltip.FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageTooltip).GetAutomationControlType() == AutomationControlType.ToolTip,
                     "Packaged tooltip lost its template, font, geometry or native role.");
+                var tooltipColor = ((SolidColorBrush)tooltipSurface.Background).Color;
+                Root.RequestedTheme = theme == ElementTheme.Light ? ElementTheme.Dark : ElementTheme.Light;
+                await Task.Delay(250);
+                Require(PackageTooltip.IsOpen && PackageTooltip.ActualTheme == Root.ActualTheme && ((SolidColorBrush)tooltipSurface.Background).Color != tooltipColor,
+                    "Packaged tooltip did not follow its owner's live appearance.");
+                Root.RequestedTheme = theme;
+                await Task.Delay(250);
+                Require(((SolidColorBrush)tooltipSurface.Background).Color == tooltipColor, "Packaged tooltip did not restore its original appearance.");
                 PackageTooltip.IsOpen = false;
                 await Task.Delay(80);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");

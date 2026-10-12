@@ -64,6 +64,7 @@ public sealed partial class BleeckerTooltip : ContentControl
             target.GotFocus -= OnTargetFocused;
             target.LostFocus -= OnTargetBlurred;
             target.Unloaded -= OnTargetUnloaded;
+            target.ActualThemeChanged -= OnTargetThemeChanged;
             AutomationProperties.GetDescribedBy(target).Remove(this);
         }
         target = value;
@@ -74,6 +75,7 @@ public sealed partial class BleeckerTooltip : ContentControl
         target.GotFocus += OnTargetFocused;
         target.LostFocus += OnTargetBlurred;
         target.Unloaded += OnTargetUnloaded;
+        target.ActualThemeChanged += OnTargetThemeChanged;
         AutomationProperties.GetDescribedBy(target).Add(this);
     }
 
@@ -121,6 +123,10 @@ public sealed partial class BleeckerTooltip : ContentControl
     }
     private void OnTargetBlurred(object sender, RoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
     private void OnTargetUnloaded(object sender, RoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; FinishClose(); }
+    private void OnTargetThemeChanged(FrameworkElement sender, object args)
+    {
+        if (popup is not null) popup.RequestedTheme = sender.ActualTheme;
+    }
 
     private void SetOpen(bool open)
     {
@@ -140,7 +146,7 @@ public sealed partial class BleeckerTooltip : ContentControl
         var slot = current.GetOrCreateValue(XamlRoot);
         if (slot.Value?.TryGetTarget(out var previous) == true && !ReferenceEquals(previous, this)) previous.IsOpen = false;
         slot.Value = new WeakReference<BleeckerTooltip>(this);
-        popup = new Popup { XamlRoot = XamlRoot, ShouldConstrainToRootBounds = true, Child = this };
+        popup = new Popup { XamlRoot = XamlRoot, RequestedTheme = target.ActualTheme, ShouldConstrainToRootBounds = true, Child = this };
         inputRoot = XamlRoot.Content;
         inputRoot.AddHandler(KeyDownEvent, new KeyEventHandler(OnRootKeyDown), true);
         inputRoot.AddHandler(PointerPressedEvent, new PointerEventHandler(OnTargetPressed), true);

@@ -15,7 +15,7 @@ public sealed partial class TooltipsFixture : UserControl
     {
         StartBringIntoView();
         await Task.Delay(150);
-        foreach (var tip in new[] { TopTip, BottomTip, LeftTip, RightTip, LongTip })
+        foreach (var tip in new[] { TopTip, BottomTip, LeftTip, RightTip, LongTip, TemplateTip })
         {
             tip.IsOpen = true;
             await Task.Delay(180);
@@ -42,13 +42,17 @@ public sealed partial class TooltipsFixture : UserControl
                     "Tooltip lost its native role or became a keyboard stop.");
                 Require(!text.IsTextTrimmed && (tip != LongTip || text.ActualHeight > 19.5), "Long tooltip text did not wrap.");
                 await MainWindow.CaptureElementAsync(tip, System.IO.Path.Combine(folder, $"tooltip-{tip.Name}-{scheme.ToString().ToLowerInvariant()}.png"));
-                if (tip == LongTip)
+                await VerifyLiveAppearanceAsync(tip, surface, text, arrow, scheme, folder);
+                if (tip == TemplateTip)
+                    Require(FrameworkElementAutomationPeer.CreatePeerForElement(tip).GetName() == "Editorial guidance", "Consumer tooltip name was replaced by its data content.");
+                if (tip == LongTip || tip == TemplateTip)
                 {
                     var original = tip.Content;
                     var longHeight = surface.ActualHeight;
                     tip.Content = "Short update";
                     await Task.Delay(80);
                     Require(surface.ActualHeight < longHeight, "Tooltip did not remeasure a live content change.");
+                    Require(Descendants<TextBlock>(surface).First().Text == "Short update", "Tooltip template did not receive updated consumer content.");
                     tip.Content = original;
                     await Task.Delay(80);
                     Require(surface.ActualHeight == longHeight, "Tooltip did not restore its wrapped content height.");
@@ -64,6 +68,35 @@ public sealed partial class TooltipsFixture : UserControl
         Require(Microsoft.UI.Xaml.Automation.AutomationProperties.GetDescribedBy(BottomTrigger).Contains(BottomTip), "Tooltip owner lost its accessible description relationship.");
         BottomTip.IsOpen = false;
         await VerifyMotionLifecycleAsync();
+    }
+
+    private async Task VerifyLiveAppearanceAsync(BleeckerTooltip tip, BleeckerOverlaySurface surface, TextBlock text, Polygon arrow, BleeckerColorScheme scheme, string folder)
+    {
+        var root = (FrameworkElement)XamlRoot.Content;
+        var original = root.RequestedTheme;
+        var changed = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
+        var width = surface.ActualWidth;
+        var height = surface.ActualHeight;
+        try
+        {
+            root.RequestedTheme = changed == BleeckerColorScheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+            await Task.Delay(250);
+            VerifyPalette(changed);
+            Require(tip.IsOpen && surface.ActualWidth == width && surface.ActualHeight == height, "Live appearance changed tooltip visibility or geometry.");
+            await MainWindow.CaptureElementAsync(tip, System.IO.Path.Combine(folder, $"tooltip-live-{tip.Name}-{changed}.png"));
+        }
+        finally { root.RequestedTheme = original; }
+        await Task.Delay(250);
+        VerifyPalette(scheme);
+
+        void VerifyPalette(BleeckerColorScheme expected)
+        {
+            var colors = BleeckerTokens.Colors(expected);
+            Require(ColorHex((SolidColorBrush)surface.Background).Equals(colors[expected == BleeckerColorScheme.Dark ? "sand" : "deepSea"], StringComparison.OrdinalIgnoreCase)
+                && ColorHex((SolidColorBrush)text.Foreground).Equals(expected == BleeckerColorScheme.Dark ? colors["textPrimary"] : "#FFFFFFFF", StringComparison.OrdinalIgnoreCase)
+                && ((SolidColorBrush)arrow.Fill).Color == ((SolidColorBrush)surface.Background).Color,
+                $"Open tooltip retained its previous appearance: expected={expected}, actual={tip.ActualTheme}, background={ColorHex((SolidColorBrush)surface.Background)}, foreground={ColorHex((SolidColorBrush)text.Foreground)}.");
+        }
     }
 
     private async Task VerifyMotionLifecycleAsync()

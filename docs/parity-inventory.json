@@ -3153,7 +3153,7 @@
       "remainingGaps": [
         "Verify collision corners, very small viewports and exact shadow rasterization",
           "Verify rendered entry/exit motion curves and hover/skip timing",
-          "Verify full physical pointer transit matrix, modal ownership, live appearance and consumer templates",
+          "Verify full physical pointer transit matrix, modal ownership, explicit nested theme overrides and richer consumer templates",
         "Verify rendered reference parity, actual Windows contrast, Narrator, display/text scaling and ARM64 runtime"
       ]
     },
