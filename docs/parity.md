@@ -79,7 +79,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | hover-card | Pending | Pending | Full pinned contract |
 | input | Pending | Pending | Full pinned contract |
 | kbd | Pending | Pending | Full pinned contract |
-| label | Pending | Pending | Full pinned contract |
+| label | Pending | Pending | Rendered default/error reference audited in both themes; [contract and acceptance](label-reference.md); implementation and full verification pending |
 | menubar | Pending | Pending | Full pinned contract |
 | navigation-menu | Pending | Pending | Full pinned contract |
 | otp-input | Pending | Pending | Full pinned contract |
