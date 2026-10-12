@@ -18,6 +18,7 @@ public sealed partial class BleeckerInput : TextBox
         InitializeShadow();
         InitializeMotion();
         InitializePointer();
+        InitializeTypography();
         GotFocus += (_, _) => UpdateAppearance();
         LostFocus += (_, _) => UpdateAppearance();
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { UpdatePointerObservation(); UpdateAppearance(); });
@@ -41,6 +42,7 @@ public sealed partial class BleeckerInput : TextBox
         base.OnApplyTemplate();
         ApplyShadowTemplate();
         ApplyMotionTemplate();
+        ApplyTypographyTemplate();
         appearanceState = null;
         UpdateGeometry();
         UpdateAppearance(false);

@@ -37,8 +37,11 @@ The catalog fixture covers all sizes and representative empty, populated,
 adorned, error, disabled, read-only and constrained multilingual examples.
 The focused smoke also captures every size with identical entered/placeholder
 text and records native line geometry. The [typography audit](input-reference.md#typography-comparison-at-100-display-scale)
-identifies unresolved Medium entered-text and Small/Large placeholder offsets
-at 100% display scale; no baseline correction has been applied yet.
+records the original Medium entered-text and Small/Large placeholder offsets.
+The current baseline correction passes the retained browser text-row profiles
+for all three sizes, entered/placeholder text, both themes and live size changes
+at 100% display scale. Other scales, fallback scripts and complete raster parity
+remain unverified.
 
 ## Verification checkpoint
 

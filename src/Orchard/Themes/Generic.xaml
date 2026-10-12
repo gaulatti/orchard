@@ -55,7 +55,12 @@
                 <Border x:Name="InputPalette" Visibility="Collapsed" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" />
                 <Border x:Name="InputRingPalette" Visibility="Collapsed" BorderBrush="{ThemeResource BleeckerInputRingBrush}" Opacity="0" />
                 <Grid x:Name="Editor" Grid.Row="1" MinHeight="{TemplateBinding MinHeight}">
-                    <Canvas Opacity="0" IsHitTestVisible="False"><Path x:Name="InputShadowMask" Fill="White" /><Path x:Name="InputShadowExteriorMask" Fill="White" /></Canvas>
+                    <Canvas Opacity="0" IsHitTestVisible="False">
+                        <Path x:Name="InputShadowMask" Fill="White" /><Path x:Name="InputShadowExteriorMask" Fill="White" />
+                        <TextBlock x:Name="InputFontMetrics" Text="Hg" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"
+                            FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}"
+                            IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" AutomationProperties.AccessibilityView="Raw" />
+                    </Canvas>
                     <Grid x:Name="InputShadowHost" IsHitTestVisible="False" />
                     <Border x:Name="InputRing" Margin="-2" BorderThickness="2" CornerRadius="9" BorderBrush="{ThemeResource BleeckerInputRingBrush}" Opacity="0" IsHitTestVisible="False" />
                     <Border x:Name="BorderElement" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" />

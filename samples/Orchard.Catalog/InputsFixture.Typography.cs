@@ -16,9 +16,12 @@ public sealed partial class InputsFixture
         {
             foreach (var input in inputs)
             {
-                input.Text = "Harbor update";
+                input.Text = "";
                 input.PlaceholderText = "Harbor update";
             }
+            UpdateLayout();
+            await Task.Delay(50);
+            foreach (var input in inputs) input.Text = "Harbor update";
             UpdateLayout();
             await Task.Delay(50);
             foreach (var input in inputs)
@@ -46,10 +49,12 @@ public sealed partial class InputsFixture
                 });
             }
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"input-typography-filled-{scheme}.png"));
+            foreach (var input in inputs) await VerifyTypographyPixelsAsync(input, "filled", folder, scheme);
             foreach (var input in inputs) input.Text = "";
             UpdateLayout();
             await Task.Delay(50);
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"input-typography-placeholder-{scheme}.png"));
+            foreach (var input in inputs) await VerifyTypographyPixelsAsync(input, "placeholder", folder, scheme);
             File.WriteAllText(Path.Combine(folder, $"input-typography-{scheme}.json"),
                 JsonSerializer.Serialize(measurements, new JsonSerializerOptions { WriteIndented = true }));
         }
@@ -60,6 +65,38 @@ public sealed partial class InputsFixture
                 inputs[index].Text = originals[index].Text;
                 inputs[index].PlaceholderText = originals[index].PlaceholderText;
             }
+            UpdateLayout();
+        }
+    }
+
+    private async Task VerifyTypographySizeChangesAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var originalSize = MediumInput.InputSize;
+        var originalText = MediumInput.Text;
+        var originalPlaceholder = MediumInput.PlaceholderText;
+        var output = Path.Combine(folder, "typography-size-changes");
+        Directory.CreateDirectory(output);
+        try
+        {
+            MediumInput.PlaceholderText = "Harbor update";
+            foreach (var size in new[] { BleeckerInputSize.Large, BleeckerInputSize.Small, BleeckerInputSize.Medium })
+            {
+                MediumInput.InputSize = size;
+                MediumInput.Text = "Harbor update";
+                UpdateLayout();
+                await Task.Delay(50);
+                await VerifyTypographyPixelsAsync(MediumInput, "filled", output, scheme);
+                MediumInput.Text = "";
+                UpdateLayout();
+                await Task.Delay(50);
+                await VerifyTypographyPixelsAsync(MediumInput, "placeholder", output, scheme);
+            }
+        }
+        finally
+        {
+            MediumInput.InputSize = originalSize;
+            MediumInput.Text = originalText;
+            MediumInput.PlaceholderText = originalPlaceholder;
             UpdateLayout();
         }
     }

@@ -18,7 +18,8 @@ zero vertical padding, a 1px border and 7px radius. Its 320px width belongs to t
 story container; the component fills its consumer's width. The local three-size
 audit fixture additionally measures Small at 13px/19.5px and Large at
 15px/22.5px. All three render the listed heights/padding, 1px borders and 7px
-radii. Native text baseline/line-box equivalence remains unverified.
+radii. Full native raster and scaling equivalence remains unverified; the
+100% baseline checkpoint below covers the measured Latin sample.
 
 ### Typography comparison at 100% display scale
 
@@ -52,14 +53,54 @@ rectangle, editor origin/height and placeholder origin/height/baseline using
 the pinned WinUI APIs, and checks that the line fits its viewport. It restores
 the fixture's original text and placeholders afterward. These checks expose
 geometry and clipping; they deliberately do not assert that an uncorrected
-baseline matches Bleecker. Baseline correction, actual-window placeholder
-confirmation, light-theme raster comparison and other display/text scales
-remain required before typography acceptance.
+baseline matches Bleecker. This initial audit identified work needed before
+typography acceptance; the correction checkpoint below records subsequent work.
 
 The diagnostics checkpoint passes the focused light/dark runtime suite at
 `artifacts/smoke-input-typography-verified`, all 13 unit/coverage tests, x64
 publish and ARM64 compilation. This change is confined to catalog verification
 and documentation; it does not change the library or packaged control behavior.
+
+### Baseline correction checkpoint
+
+The current control centers a separately measured font line box and aligns its
+baseline to a device pixel. It compensates for the different baseline rounding
+observed in the pinned RichEdit editor and TextBlock placeholder. The invisible
+font measurement remains available when the placeholder is collapsed. Corrections
+apply only to the text presenters; borders, rings, icons and shadows retain their
+geometry. A one-frame rendering callback runs after font, size, template or root
+changes and detaches on unload. Other fonts, fallback scripts and scaling still
+need verification before treating this rounding model as generally accepted.
+
+The catalog embeds `Reference/InputTypography.json`: normalized text-row profiles
+from the pinned browser's dark, 100% `Harbor update` captures, covering all three
+sizes and both entered/placeholder text. The check renders the real fixture,
+locates each input, normalizes foreground/background contrast and compares row
+profiles at vertical offsets -2 through +2. It requires the best match at zero
+offset and rejects blank text captures. This measures vertical alignment, not
+complete glyph, color, shadow or component equivalence. The original native
+captures fail this comparison for Medium entered text and Small/Large placeholders.
+
+All 12 static size/state/theme comparisons and 12 live size-change comparisons
+pass at 100% in `artifacts/smoke-input-baseline-final`. Entered and placeholder
+text now align best with the browser without a vertical translation. The fixture
+first lays out visible placeholders before reading their geometry; this corrects
+the earlier diagnostic's zero/stale measurements for initially populated inputs.
+At other display scales the retained browser profile is explicitly reported as
+unverified, rather than being used as proof for an unmeasured scale. Actual-window
+placeholder confirmation, other display/text scales, fallback scripts and full
+glyph raster parity remain open.
+
+The actual published window confirms zero-offset entered-text alignment for
+all three sizes in `artifacts/input-baseline-corrected-native-dark.jpg` and
+`artifacts/input-baseline-corrected-native-alignment.json`. Physical typing into
+Medium updates the native editor and its external UI Automation value. The full
+reduced-motion catalog suite passes at `artifacts/smoke-input-baseline-integration`;
+all 13 unit/coverage tests, x64 publish and ARM64 compilation pass.
+The independent x64 package consumer passes at
+`artifacts/package-consumer-input-baseline`, verifying resources, fonts, both
+themes and a native action. Package SHA-256:
+`777c053ca0111f4481457f4bb4775942673ce2595b2aa925ca42e7dafbb1bdb4`.
 
 Start/end adornments are consumer-owned decorative content, centered vertically,
 12px from their corresponding outer edge. Each occupied side gets a 40px text
