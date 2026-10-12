@@ -24,6 +24,9 @@
                                           AutomationProperties.AccessibilityView="Raw" />
                             <ContentPresenter Grid.Column="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
                                               VerticalAlignment="Center" />
+                            <Border x:Name="PART_LinkUnderline" Grid.Column="1" Height="1" VerticalAlignment="Bottom"
+                                    Background="{Binding Foreground, ElementName=PART_Action}" Visibility="Collapsed"
+                                    IsHitTestVisible="False" />
                         </Grid>
                     </Button>
                 </ControlTemplate>

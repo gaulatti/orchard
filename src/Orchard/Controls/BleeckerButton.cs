@@ -13,6 +13,7 @@ public sealed class BleeckerButton : ContentControl
 {
     private Button? action;
     private ProgressRing? progress;
+    private Border? linkUnderline;
     private ResourceDictionary? palette;
 
     public BleeckerButton() => DefaultStyleKey = typeof(BleeckerButton);
@@ -53,6 +54,7 @@ public sealed class BleeckerButton : ContentControl
             ?? throw new InvalidOperationException("BleeckerButton requires a native Button named PART_Action.");
         progress = GetTemplateChild("PART_Progress") as ProgressRing
             ?? throw new InvalidOperationException("BleeckerButton requires a ProgressRing named PART_Progress.");
+        linkUnderline = GetTemplateChild("PART_LinkUnderline") as Border;
         action.Click += OnClick;
         ApplyVariant();
     }
@@ -90,6 +92,8 @@ public sealed class BleeckerButton : ContentControl
         action.IsEnabled = !IsLoading;
         progress.Visibility = IsLoading ? Visibility.Visible : Visibility.Collapsed;
         progress.IsActive = IsLoading;
+        if (linkUnderline is not null)
+            linkUnderline.Visibility = Variant == BleeckerButtonVariant.Link ? Visibility.Visible : Visibility.Collapsed;
         AutomationProperties.SetItemStatus(action, IsLoading ? LoadingText : "");
     }
 

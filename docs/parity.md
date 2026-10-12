@@ -19,7 +19,7 @@ Every interactive entry additionally requires hover, pressed, focus, selection a
 | bauhaus-background | Pending | Pending | Full pinned contract |
 | activity-item | Pending | Pending | Full pinned contract |
 | attention-surface | Pending | Pending | Full pinned contract |
-| button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, CanExecute/template edge cases, link treatment, Narrator, contrast, scaling, motion, ARM64 runtime; see [usage](buttons.md) |
+| button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, Narrator, contrast, scaling, motion, ARM64 runtime; see [usage](buttons.md) |
 | button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, Narrator, contrast, scaling, ARM64 runtime; see [usage](button-group.md) |
 | card | Pending | Pending | Full pinned contract |
 | chart | Pending | Pending | Full pinned contract |

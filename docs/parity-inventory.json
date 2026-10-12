@@ -334,8 +334,8 @@
       "regressionTests": ["samples/Orchard.Catalog/ButtonsFixture.xaml.cs: VerifyAsync", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify native CanExecute transitions, template replacement and loading focus behavior",
-        "Complete link underline treatment, keyboard/pointer wrapper checks and scaling",
+        "Verify loading focus behavior",
+        "Complete keyboard/pointer wrapper checks and scaling",
         "Verify Narrator, actual contrast, reduced motion and ARM64 runtime"
       ]
     },

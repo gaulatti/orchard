@@ -11,15 +11,17 @@ namespace Orchard.Catalog;
 public sealed partial class ButtonsFixture : UserControl
 {
     private int invocations;
+    private readonly PreviewCommand previewCommand;
 
     public ButtonsFixture()
     {
         InitializeComponent();
-        LoadingAction.Command = new PreviewCommand(parameter =>
+        previewCommand = new PreviewCommand(parameter =>
         {
             invocations++;
             ButtonResult.Text = $"Command {parameter}: {invocations}";
         });
+        LoadingAction.Command = previewCommand;
     }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme)
@@ -48,6 +50,18 @@ public sealed partial class ButtonsFixture : UserControl
         ConsumerEnabled.IsOn = true;
         await Task.Delay(80);
         Require(native.IsEnabled, "Consumer re-enabling did not reach the native action.");
+        previewCommand.SetCanExecute(false);
+        await Task.Delay(80);
+        Require(!native.IsEnabled, "CanExecuteChanged(false) did not disable the action.");
+        LoadingSwitch.IsOn = true;
+        LoadingSwitch.IsOn = false;
+        LoadingAction.Size = BleeckerButtonSize.Large;
+        await Task.Delay(80);
+        Require(!native.IsEnabled, "A presentation change bypassed CanExecute(false).");
+        previewCommand.SetCanExecute(true);
+        LoadingAction.Size = BleeckerButtonSize.Medium;
+        await Task.Delay(80);
+        Require(native.IsEnabled, "CanExecuteChanged(true) did not re-enable the action.");
         foreach (var variant in Enum.GetValues<BleeckerButtonVariant>())
         {
             LoadingAction.Variant = variant;
@@ -83,6 +97,31 @@ public sealed partial class ButtonsFixture : UserControl
             }
         }
         LoadingAction.Variant = BleeckerButtonVariant.Primary;
+        var originalTemplate = LoadingAction.Template;
+        LoadingAction.Template = (ControlTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("""
+            <ControlTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:orchard="using:Orchard" TargetType="orchard:BleeckerButton">
+                <Button x:Name="PART_Action" Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}">
+                    <StackPanel Orientation="Horizontal"><ProgressRing x:Name="PART_Progress" Width="16" Height="16" /><TextBlock Text="Alternate template" /></StackPanel>
+                </Button>
+            </ControlTemplate>
+            """);
+        LoadingAction.ApplyTemplate();
+        LoadingAction.UpdateLayout();
+        var replacement = Find<Button>(LoadingAction)!;
+        Require(!ReferenceEquals(native, replacement), "Template replacement did not create a new native action.");
+        var clicks = 0;
+        RoutedEventHandler onClick = (_, _) => clicks++;
+        LoadingAction.Click += onClick;
+        var countBeforeReplacement = invocations;
+        ((IInvokeProvider)new ButtonAutomationPeer(replacement).GetPattern(PatternInterface.Invoke)).Invoke();
+        await Task.Delay(80);
+        Require(clicks == 1 && invocations == countBeforeReplacement + 1, "Template replacement lost or duplicated activation.");
+        LoadingAction.Click -= onClick;
+        LoadingAction.Template = originalTemplate;
+        LoadingAction.ApplyTemplate();
+        LoadingAction.UpdateLayout();
         GroupedActions.UpdateLayout();
         var groupedFirst = Find<Button>(GroupedActions.Children[0])!;
         var groupedLast = Find<Button>(GroupedActions.Children[1])!;
@@ -110,8 +149,14 @@ public sealed partial class ButtonsFixture : UserControl
 
     private sealed class PreviewCommand(Action<object?> execute) : ICommand
     {
-        public event EventHandler? CanExecuteChanged { add { } remove { } }
-        public bool CanExecute(object? parameter) => true;
+        private bool allowed = true;
+        public event EventHandler? CanExecuteChanged;
+        public bool CanExecute(object? parameter) => allowed;
         public void Execute(object? parameter) => execute(parameter);
+        public void SetCanExecute(bool value)
+        {
+            allowed = value;
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
