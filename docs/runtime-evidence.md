@@ -1,9 +1,10 @@
 # Native Windows runtime evidence
 
-The implemented catalog fixtures and independent NuGet consumer pass on both
-x64 and native ARM64. This is a runtime baseline for the 18 in-progress inventory
-entries; the 94 pending entries and every remaining per-component acceptance gap
-remain open.
+The catalog fixtures and independent NuGet consumer at commit `5412997` passed
+on both x64 and native ARM64. That baseline covers 18 in-progress inventory
+entries. The added Switch preview raises the current inventory to 19 in-progress
+and 93 pending entries; its additional native checks are still being verified.
+No component has full visual, input, accessibility and scaling acceptance.
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)
 at commit `403d8783416eae79086a6b59c714131a88a44121`. All three jobs passed:

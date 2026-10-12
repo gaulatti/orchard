@@ -22,10 +22,10 @@ public sealed class BleeckerSwitch : Control
     private readonly InputSystemCursor prohibited = InputSystemCursor.Create(InputSystemCursorShape.UniversalNo);
     private readonly List<(DependencyObject Owner, DependencyProperty Property, long Token)> paletteObservers = [];
     private Border? track;
-    private Border? thumb;
+    private Microsoft.UI.Xaml.Shapes.Ellipse? thumb;
     private TextBlock? label;
+    private readonly TextBlock intrinsicLabel = new() { TextWrapping = TextWrapping.NoWrap };
     private Grid? shadowHost;
-    private Microsoft.UI.Xaml.Shapes.Ellipse? shadowMask;
     private TranslateTransform? translation;
     private TextBlock[] probes = [];
     private readonly SolidColorBrush trackFill = new();
@@ -96,15 +96,14 @@ public sealed class BleeckerSwitch : Control
         action.IsOn = IsOn;
         action.Toggled += OnNativeToggled;
         track = Part<Border>("PART_Track");
-        thumb = Part<Border>("PART_Thumb");
+        thumb = Part<Microsoft.UI.Xaml.Shapes.Ellipse>("PART_Thumb");
         label = Part<TextBlock>("PART_Label");
         shadowHost = Part<Grid>("PART_ShadowHost");
-        shadowMask = Part<Microsoft.UI.Xaml.Shapes.Ellipse>("PART_ShadowMask");
         translation = Part<Grid>("SwitchKnob")?.RenderTransform as TranslateTransform;
         probes = new[] { "PART_OffFill", "PART_OnFill", "PART_OffStroke", "PART_OnStroke", "PART_OffThumb", "PART_OnThumb" }
             .Select(Part<TextBlock>).OfType<TextBlock>().ToArray();
         if (track is not null) { track.Background = trackFill; track.BorderBrush = trackStroke; }
-        if (thumb is not null) thumb.Background = thumbFill;
+        if (thumb is not null) thumb.Fill = thumbFill;
         UpdateLabel();
         UpdateAccessibleName();
         if (IsLoaded) ObservePalette();
@@ -132,9 +131,19 @@ public sealed class BleeckerSwitch : Control
         // Inline-flex prefers the full label width and wraps only when bounded.
         // A wrapping TextBlock in a star column can instead report its shortest
         // word width on first display, then clip after the final narrow arrange.
-        label.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
-        var preferredWidth = 36 + (string.IsNullOrEmpty(Label) ? 0 : label.DesiredSize.Width);
-        return base.MeasureOverride(new Windows.Foundation.Size(Math.Min(availableSize.Width, preferredWidth), availableSize.Height));
+        intrinsicLabel.Text = Label ?? string.Empty;
+        intrinsicLabel.FontFamily = label.FontFamily;
+        intrinsicLabel.FontSize = label.FontSize;
+        intrinsicLabel.FontWeight = label.FontWeight;
+        intrinsicLabel.FontStyle = label.FontStyle;
+        intrinsicLabel.FontStretch = label.FontStretch;
+        intrinsicLabel.CharacterSpacing = label.CharacterSpacing;
+        intrinsicLabel.IsTextScaleFactorEnabled = label.IsTextScaleFactorEnabled;
+        intrinsicLabel.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
+        var preferredWidth = 36 + (string.IsNullOrEmpty(Label) ? 0 : 12 + intrinsicLabel.DesiredSize.Width);
+        var width = Math.Min(availableSize.Width, preferredWidth);
+        var measured = base.MeasureOverride(new Windows.Foundation.Size(width, availableSize.Height));
+        return new Windows.Foundation.Size(width, measured.Height);
     }
     private void OnColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => { UpdateVisuals(false); UpdateShadow(); });
     private void OnMotionChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(() => UpdateVisuals(false));
@@ -219,7 +228,7 @@ public sealed class BleeckerSwitch : Control
     private void ClearShadow() { if (shadowHost is not null) ElementCompositionPreview.SetElementChildVisual(shadowHost, null); }
     private void UpdateShadow()
     {
-        if (shadowHost is null || shadowMask is null) return;
+        if (shadowHost is null || thumb is null) return;
         ClearShadow();
         shadowHost.Visibility = IsLoaded && !accessibility.HighContrast ? Visibility.Visible : Visibility.Collapsed;
         if (shadowHost.Visibility != Visibility.Visible) return;
@@ -227,7 +236,7 @@ public sealed class BleeckerSwitch : Control
         var shadow = compositor.CreateDropShadow();
         shadow.BlurRadius = 2; shadow.Offset = new Vector3(0, 1, 0);
         shadow.Color = Windows.UI.Color.FromArgb(255, 26, 55, 77); shadow.Opacity = .18f;
-        shadow.Mask = shadowMask.GetAlphaMask();
+        shadow.Mask = thumb.GetAlphaMask();
         var visual = compositor.CreateSpriteVisual(); visual.Size = new Vector2(16, 16); visual.Shadow = shadow;
         ElementCompositionPreview.SetElementChildVisual(shadowHost, visual);
     }
@@ -246,12 +255,15 @@ public sealed class BleeckerSwitch : Control
         public ToggleState ToggleState => NativeToggle.ToggleState;
         public void Toggle() => NativeToggle.Toggle();
         protected override string GetClassNameCore() => nameof(BleeckerSwitch);
-        protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.CheckBox;
+        protected override AutomationControlType GetAutomationControlTypeCore() => NativePeer.GetAutomationControlType();
+        protected override string GetLocalizedControlTypeCore() => NativePeer.GetLocalizedControlType();
+        protected override bool IsControlElementCore() => NativePeer.IsControlElement();
+        protected override bool IsContentElementCore() => NativePeer.IsContentElement();
         protected override object GetPatternCore(PatternInterface pattern) => pattern == PatternInterface.Toggle ? this : base.GetPatternCore(pattern);
         protected override IList<AutomationPeer> GetChildrenCore() => null!;
-        protected override bool IsKeyboardFocusableCore() => owner.IsEnabled;
-        protected override bool HasKeyboardFocusCore() => owner.action is not null && owner.action.FocusState != FocusState.Unfocused;
-        protected override void SetFocusCore() => owner.action?.Focus(FocusState.Programmatic);
+        protected override bool IsKeyboardFocusableCore() => NativePeer.IsKeyboardFocusable();
+        protected override bool HasKeyboardFocusCore() => NativePeer.HasKeyboardFocus();
+        protected override void SetFocusCore() => NativePeer.SetFocus();
         protected override string GetNameCore() => !string.IsNullOrEmpty(AutomationProperties.GetName(owner)) || AutomationProperties.GetLabeledBy(owner) is not null
             ? base.GetNameCore() : owner.Label ?? string.Empty;
     }

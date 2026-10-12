@@ -37,9 +37,11 @@ public sealed partial class MainWindow : Window
                 await Task.Delay(250);
                 Root.UpdateLayout();
                 var switchPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageSwitch);
+                var nativeSwitchPeer = FrameworkElementAutomationPeer.CreatePeerForElement((ToggleSwitch)VisualTreeHelper.GetChild(PackageSwitch, 0));
                 var switchToggle = (IToggleProvider)switchPeer.GetPattern(PatternInterface.Toggle);
                 Require(PackageSwitch.FontSize == 14 && PackageSwitch.FontFamily.Source.Contains("EncodeSans-Medium.ttf") &&
-                    switchPeer.GetName() == "Package notifications" && switchPeer.GetAutomationControlType() == AutomationControlType.CheckBox,
+                    switchPeer.GetName() == "Package notifications" && switchPeer.GetAutomationControlType() == nativeSwitchPeer.GetAutomationControlType() &&
+                    switchPeer.IsControlElement() && switchPeer.IsContentElement(),
                     "Packaged switch lost its native semantics, label or bundled font.");
                 switchToggle.Toggle();
                 Require(PackageSwitch.IsOn && switchToggle.ToggleState == ToggleState.On, "Packaged native switch did not update consumer state.");

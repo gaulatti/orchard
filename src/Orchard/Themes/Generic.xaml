@@ -119,11 +119,11 @@
                 <Grid.ColumnDefinitions><ColumnDefinition Width="36" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                 <Grid x:Name="SwitchAreaGrid" Width="36" Height="20" VerticalAlignment="Center" FlowDirection="LeftToRight">
                     <Rectangle x:Name="SwitchKnobBounds" Width="36" Height="20" Opacity="0" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
-                    <Border x:Name="PART_Track" Width="36" Height="20" CornerRadius="10" BorderThickness="1" />
+                    <Border x:Name="PART_Track" Width="36" Height="20" CornerRadius="10" BorderThickness="1" BackgroundSizing="OuterBorderEdge" />
                     <Grid x:Name="SwitchKnob" Width="20" Height="20" HorizontalAlignment="Left">
                         <Grid.RenderTransform><TranslateTransform x:Name="KnobTranslateTransform" /></Grid.RenderTransform>
-                        <Grid x:Name="PART_ShadowHost" Width="16" Height="16" IsHitTestVisible="False"><Ellipse x:Name="PART_ShadowMask" Fill="Black" Width="16" Height="16" /></Grid>
-                        <Border x:Name="PART_Thumb" Width="16" Height="16" CornerRadius="8" IsHitTestVisible="False" />
+                        <Grid x:Name="PART_ShadowHost" Width="16" Height="16" IsHitTestVisible="False" />
+                        <Ellipse x:Name="PART_Thumb" Width="16" Height="16" IsHitTestVisible="False" />
                     </Grid>
                 </Grid>
                 <TextBlock x:Name="PART_Label" Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" Text="{TemplateBinding Header}"

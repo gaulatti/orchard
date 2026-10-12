@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -39,10 +40,21 @@ public sealed partial class SwitchesFixture : UserControl
                         desiredHeight = label.DesiredSize.Height, slot = Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(label).ToString() } };
             }), new JsonSerializerOptions { WriteIndented = true }));
         foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
+        var trackBitmap = new RenderTargetBitmap();
+        await trackBitmap.RenderAsync(Find<Border>(On, "PART_Track"));
+        var trackPixels = await trackBitmap.GetPixelsAsync();
+        var trackBytes = new byte[checked((int)trackPixels.Length)];
+        using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(trackPixels)) reader.ReadBytes(trackBytes);
+        Require(trackBytes[(trackBitmap.PixelHeight / 2 * trackBitmap.PixelWidth) * 4 + 3] >= 200 &&
+            trackBytes[(trackBitmap.PixelHeight / 2 * trackBitmap.PixelWidth + trackBitmap.PixelWidth - 1) * 4 + 3] >= 200 &&
+            trackBytes[(trackBitmap.PixelWidth / 2) * 4 + 3] >= 200,
+            "Checked switch background was inset by its transparent border instead of filling the 36x20 outer pill.");
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Off);
+        var nativePeer = FrameworkElementAutomationPeer.CreatePeerForElement(Find<ToggleSwitch>(Off, "PART_Switch"));
         var toggle = (IToggleProvider)peer.GetPattern(PatternInterface.Toggle);
-        Require(peer.GetAutomationControlType() == AutomationControlType.CheckBox && peer.GetName() == Off.Label &&
-            toggle.ToggleState == ToggleState.Off && peer.IsKeyboardFocusable(), "Switch lost native toggle semantics or its label.");
+        Require(peer.GetAutomationControlType() == nativePeer.GetAutomationControlType() && peer.GetLocalizedControlType() == nativePeer.GetLocalizedControlType() &&
+            peer.IsControlElement() && peer.IsContentElement() && (peer.GetChildren()?.Count ?? 0) == 0 && peer.GetName() == Off.Label &&
+            toggle.ToggleState == ToggleState.Off && peer.IsKeyboardFocusable(), "Switch lost native toggle semantics, accessible visibility or its label.");
         var count = 0;
         void OnToggled(object sender, RoutedEventArgs args) => count++;
         Off.Toggled += OnToggled;
@@ -63,8 +75,11 @@ public sealed partial class SwitchesFixture : UserControl
             AutomationProperties.SetName(Off, "Explicit name");
             Require(peer.GetName() == "Explicit name" && FrameworkElementAutomationPeer.CreatePeerForElement(Find<ToggleSwitch>(Off, "PART_Switch")).GetName() == "Explicit name",
                 "Switch explicit accessible name did not reach its focused native input.");
+            AutomationProperties.SetName(Off, "");
+            AutomationProperties.SetLabeledBy(Off, SwitchHeading);
+            Require(peer.GetName() == "Switch" && nativePeer.GetName() == "Switch", "Switch did not preserve its associated accessible label.");
         }
-        finally { Off.Toggled -= OnToggled; Off.Label = "Enable notifications"; AutomationProperties.SetName(Off, ""); Off.IsOn = false; }
+        finally { Off.Toggled -= OnToggled; Off.Label = "Enable notifications"; AutomationProperties.SetName(Off, ""); AutomationProperties.SetLabeledBy(Off, null); Off.IsOn = false; }
         foreach (var control in new[] { DisabledOff, DisabledOn })
         {
             var before = control.IsOn;
@@ -99,13 +114,13 @@ public sealed partial class SwitchesFixture : UserControl
         var measurements = Rows.Children.OfType<BleeckerSwitch>().Select(control =>
         {
             var track = Find<Border>(control, "PART_Track");
-            var thumb = Find<Border>(control, "PART_Thumb");
+            var thumb = Find<Microsoft.UI.Xaml.Shapes.Ellipse>(control, "PART_Thumb");
             var label = Find<TextBlock>(control, "PART_Label");
             var thumbOrigin = thumb.TransformToVisual(track).TransformPoint(new Point());
             return new { control.Name, control.IsOn, control.IsEnabled, control.Label, control.ActualWidth, control.ActualHeight,
                 track = new { track.ActualWidth, track.ActualHeight, color = Hex(track.Background), opacity = track.Background.Opacity,
                     stroke = Hex(track.BorderBrush), strokeOpacity = track.BorderBrush.Opacity, radius = track.CornerRadius.TopLeft },
-                thumb = new { thumb.ActualWidth, thumb.ActualHeight, x = thumbOrigin.X, y = thumbOrigin.Y, color = Hex(thumb.Background) },
+                thumb = new { thumb.ActualWidth, thumb.ActualHeight, x = thumbOrigin.X, y = thumbOrigin.Y, color = Hex(thumb.Fill) },
                 label = new { label.ActualWidth, label.ActualHeight, label.FontSize, label.LineHeight, label.BaselineOffset,
                     font = label.FontFamily.Source, weight = label.FontWeight.Weight, color = Hex(label.Foreground), label.Visibility } };
         });
@@ -121,12 +136,12 @@ public sealed partial class SwitchesFixture : UserControl
     private void VerifyPresentation(BleeckerSwitch control, BleeckerColorScheme scheme)
     {
         var track = Find<Border>(control, "PART_Track");
-        var thumb = Find<Border>(control, "PART_Thumb");
+        var thumb = Find<Microsoft.UI.Xaml.Shapes.Ellipse>(control, "PART_Thumb");
         var label = Find<TextBlock>(control, "PART_Label");
         var root = Find<Grid>(control, "PART_Root");
         var point = thumb.TransformToVisual(track).TransformPoint(new Point());
         Require(track.ActualWidth == 36 && track.ActualHeight == 20 && track.CornerRadius.TopLeft == 10 && track.BorderThickness == new Thickness(1) &&
-            thumb.ActualWidth == 16 && thumb.ActualHeight == 16 && thumb.CornerRadius.TopLeft == 8 &&
+            thumb.ActualWidth == 16 && thumb.ActualHeight == 16 &&
             Math.Abs(point.X - (control.IsOn ? 18 : 2)) < .001 && Math.Abs(point.Y - 2) < .001,
             $"Switch geometry differs from its 36x20 reference: {control.Name}, track={track.ActualWidth}x{track.ActualHeight}, thumb={thumb.ActualWidth}x{thumb.ActualHeight} at {point}.");
         var offColor = scheme == BleeckerColorScheme.Light ? "#FFE6D5B8" : "#FFFFFFFF";
@@ -134,7 +149,7 @@ public sealed partial class SwitchesFixture : UserControl
         var offOpacity = scheme == BleeckerColorScheme.Light ? .25 : .15;
         Require(Hex(track.Background) == (control.IsOn ? onColor : offColor) && Math.Abs(track.Background.Opacity - (control.IsOn ? 1 : offOpacity)) < .000001 &&
             Math.Abs(track.BorderBrush.Opacity - (control.IsOn ? 0 : scheme == BleeckerColorScheme.Light ? .35 : .10)) < .000001 &&
-            Hex(thumb.Background) == "#FFFFFFFF" && root.Opacity == (control.IsEnabled ? 1 : .5), $"Switch palette/disabled opacity differs for {control.Name}.");
+            Hex(thumb.Fill) == "#FFFFFFFF" && root.Opacity == (control.IsEnabled ? 1 : .5), $"Switch palette/disabled opacity differs for {control.Name}.");
         Require(control.FontSize == 14 && label.FontWeight.Weight == 500 && label.LineHeight == 20 && label.Margin.Left == 12 &&
             control.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && !Find<ToggleSwitch>(control, "PART_Switch").UseSystemFocusVisuals,
             "Switch acquired Windows typography, focus styling or label spacing.");

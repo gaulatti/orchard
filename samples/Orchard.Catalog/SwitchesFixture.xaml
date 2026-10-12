@@ -1,7 +1,7 @@
 <UserControl x:Class="Orchard.Catalog.SwitchesFixture"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
     <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
-        <TextBlock Text="Switch" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock x:Name="SwitchHeading" Text="Switch" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <orchard:BleeckerSwitch x:Name="Off" Label="Enable notifications" />
         <orchard:BleeckerSwitch x:Name="On" Label="Dark mode" IsOn="True" />
         <orchard:BleeckerSwitch x:Name="DisabledOff" Label="Off (disabled)" IsEnabled="False" />

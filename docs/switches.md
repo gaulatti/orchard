@@ -18,7 +18,8 @@ AutomationProperties.Name and LabeledBy take precedence over Label.
 The pinned WinUI SDK seals ToggleSwitch, so the public control wraps one native
 ToggleSwitch. That input owns activation, dragging, focus and its Toggle
 automation provider. The wrapper delegates its UIA Toggle pattern and focus to
-the native control; it reports the Windows CheckBox role and suppresses duplicate
+the native control; it preserves the native role, localized control type and
+accessible control/content visibility, and suppresses duplicate
 accessible children. Its visible template renders the Bleecker label and omits
 the Windows On/Off captions. This preserves the single source label.
 The Switch theme dictionary is available to the library template and is also
@@ -31,14 +32,15 @@ medium, 14px/20px with a 12px gap. It wraps beside the vertically centered track
 There is one source size and no visual variant API. Disabled content has 50%
 opacity; hover and press retain the same colors and geometry.
 
-The control measures the label at its preferred width, then constrains the row
+The control measures an unwrapped copy of the label with the visible text's
+font/scaling properties to determine its preferred width, then constrains the row
 to available space before the final wrapped measure. This follows source
 inline-flex sizing and prevents the star column from shrinking an ordinary
 label to its longest word and clipping it during first arrangement. The native
 input stretches to the wrapper's allocation. The runtime fixture checks the
 initial single-line label and the four-line 200px label separately.
-The source's
-hidden checkbox has no visible focus treatment, so the template does not add a
+
+The source's hidden checkbox has no visible focus treatment, so the template does not add a
 Windows stock focus ring. Keyboard focus visibility remains an acceptance gap.
 
 Light off uses sand at 25% fill and 35% border opacity; light on uses sea. Dark
@@ -47,6 +49,13 @@ Windows contrast maps off/on to system Window/Highlight and paired text colors,
 and removes the thumb shadow. The ordinary thumb shadow has the source deep-sea
 color at 18% opacity, a 1px vertical offset and a 2px composition blur. CSS and
 composition shadow rasterization still require rendered comparison.
+The visible thumb ellipse also supplies the shadow alpha mask. An additional
+painted black mask underneath the thumb would darken its antialiased edges.
+The track uses OuterBorderEdge background sizing. WinUI's inner-edge default
+left a transparent 1px inset on the checked track, reducing its visible pill to
+34×18px. CSS draws the background underneath the transparent border. Native
+raster regression now samples both side midpoints and the top midpoint to
+require the background at the outer pill bounds.
 
 Track color transitions use 190ms; thumb translation uses 220ms. Both follow
 the source cubic-bezier(.22,1,.36,1). Color interpolation uses premultiplied
