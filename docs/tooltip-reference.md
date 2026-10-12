@@ -60,6 +60,13 @@ ownership must be proved in the actual runtime before selecting it as the
 finished implementation. The inspected ToolTipService API does not expose
 Bleecker's delay/skip-delay properties.
 
+The Windows probe confirmed that the native tooltip's internal Popup reports
+ActualPlacement/DesiredPlacement as Auto, has no placement target, and remains
+unconstrained when ShouldConstrainToRootBounds is changed after opening.
+Orchard therefore now owns the Popup before opening and supplies its placement
+target through BleeckerTooltipService. The original native-window path is
+retained only as historical evidence under artifacts/smoke-tooltip-probe.
+
 Acceptance must cover all four sides, keyboard and pointer entry, dismissal,
 content transit, collision-driven side changes, modal ownership, consumer
 content and live updates, long/multiline/non-Latin text, disabled triggers,

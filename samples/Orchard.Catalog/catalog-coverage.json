@@ -24,6 +24,7 @@
   },
   "controls": {
     "BleeckerTooltip": "TooltipsFixture.xaml",
+    "BleeckerTooltipService": "TooltipsFixture.xaml",
     "BleeckerNotificationBadge": "NotificationsFixture.xaml",
     "BleeckerNotificationItem": "NotificationsFixture.xaml",
     "BleeckerMenuContentItem": "MenusFixture.xaml",

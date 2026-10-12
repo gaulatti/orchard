@@ -46,6 +46,7 @@ public sealed class CatalogCoverageTests
         {
             var fixture = XDocument.Load(Path.Combine(catalog, registration.Value.GetString()!));
             Assert.IsTrue(fixture.Descendants().Any(element => element.Name.LocalName == registration.Name ||
+                (element.Name.LocalName.StartsWith(registration.Name + ".", StringComparison.Ordinal) && element.HasElements) ||
                 element.Attributes().Any(attribute => attribute.Name.LocalName.StartsWith(registration.Name + ".", StringComparison.Ordinal))),
                 $"Registered fixture does not instantiate {registration.Name}.");
         }

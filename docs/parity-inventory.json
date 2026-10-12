@@ -3146,14 +3146,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": ["src/Orchard/Controls/BleeckerTooltip.cs", "src/Orchard/Themes/Generic.xaml"],
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerTooltip.cs", "src/Orchard/Controls/BleeckerTooltipService.cs", "src/Orchard/Themes/Generic.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/TooltipsFixture.xaml"],
       "regressionTests": ["samples/Orchard.Catalog/TooltipsFixture.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Match clearance and collision padding; orient arrow after native placement flips",
-        "Remove native popup shadow clipping and implement reference hover timing, skip delay and motion",
-        "Verify pointer transit, modal ownership, live appearance, consumer templates and complete physical input matrix",
+        "Verify collision corners, very small viewports and exact shadow rasterization",
+        "Implement reference entry/exit motion and verify hover/skip timing",
+        "Implement pointer transit and verify modal ownership, live appearance, consumer templates and complete physical input matrix",
         "Verify rendered reference parity, actual Windows contrast, Narrator, display/text scaling and ARM64 runtime"
       ]
     },
