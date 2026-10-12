@@ -8,7 +8,19 @@ namespace Orchard.Catalog;
 
 public sealed partial class LabelsFixture : UserControl
 {
-    public LabelsFixture() => InitializeComponent();
+    private int nestedActions;
+    public LabelsFixture()
+    {
+        InitializeComponent();
+        NestedAction.Click += OnNestedAction;
+        PointerAction.Click += OnNestedAction;
+    }
+
+    private void OnNestedAction(object sender, RoutedEventArgs args)
+    {
+        nestedActions++;
+        DispatcherQueue.TryEnqueue(() => NestedResult.Text = $"Nested actions: {nestedActions}; focus: {(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name}");
+    }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
@@ -37,6 +49,9 @@ public sealed partial class LabelsFixture : UserControl
         AutomationProperties.SetName(EmailInput, "Consumer override");
         Require(FrameworkElementAutomationPeer.CreatePeerForElement(EmailInput).GetName() == "Consumer override", "Label replaced an explicit consumer accessibility name.");
         EmailInput.ClearValue(AutomationProperties.NameProperty);
+        var actionCount = nestedActions;
+        ((Microsoft.UI.Xaml.Automation.Provider.IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(PointerAction).GetPattern(PatternInterface.Invoke)).Invoke();
+        await AwaitAsync(() => nestedActions == actionCount + 1, "Non-tabbable nested button lost its consumer action.");
         await VerifyContentAsync();
         await VerifyAssociationLifecycleAsync();
         await VerifyLiveAppearanceAsync(scheme);

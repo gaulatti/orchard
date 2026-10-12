@@ -25,8 +25,10 @@
             <StackPanel Orientation="Horizontal" Spacing="6">
                 <TextBlock Text="Coverage" LineHeight="13" LineStackingStrategy="BlockLineHeight" />
                 <Button x:Name="NestedAction" Content="Help" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                <Button x:Name="PointerAction" Content="Pointer action" IsTabStop="False" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
             </StackPanel>
         </orchard:BleeckerLabel>
         <TextBox x:Name="RichInput" Width="384" HorizontalAlignment="Left" PlaceholderText="Coverage" Style="{StaticResource BleeckerTextBoxStyle}" />
+        <TextBlock x:Name="NestedResult" Text="No nested action yet" Style="{StaticResource BleeckerBodyStyle}" />
     </StackPanel>
 </UserControl>

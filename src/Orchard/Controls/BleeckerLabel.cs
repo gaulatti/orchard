@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 
@@ -83,7 +84,7 @@ public sealed class BleeckerLabel : ContentControl
     {
         if (!IsEnabled || Target is not { IsEnabled: true } target) return;
         for (var element = args.OriginalSource as DependencyObject; element is not null && !ReferenceEquals(element, this); element = VisualTreeHelper.GetParent(element))
-            if (element is Control { IsTabStop: true }) return;
+            if (element is ButtonBase or TextBox or PasswordBox or RichEditBox or Selector or ToggleSwitch or Slider or NumberBox or Control { IsTabStop: true }) return;
         target.Focus(FocusState.Pointer);
     }
 

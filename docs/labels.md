@@ -15,7 +15,7 @@ content use a separate presenter; consumers own their rich-content layout and
 should provide an explicit accessible name when needed.
 
 The label adds no Tab stop. A plain-label tap requests pointer focus on its
-enabled Target. Taps from nested tabbable controls retain their own action.
+enabled Target. Nested buttons and native input controls retain their own actions even when excluded from Tab navigation. Other tabbable controls also retain their own actions.
 While loaded, the label supplies the target's AutomationProperties.LabeledBy
 relationship. Detaching or changing Target restores the earlier relationship if
 the consumer has not replaced it in the meantime. Explicit input automation
@@ -45,3 +45,5 @@ The independent x64 NuGet consumer passes at artifacts/package-consumer-label-pr
 Content and lifecycle regression passes in both themes at artifacts/smoke-label-lifecycle: DataTemplate updates, returning to plain text, template selection, UIElement replacement and visual detachment, Target transfer, preservation of a newer consumer association, unload/reload restoration, and the native input peer's labeled-by relationship. The dark template capture was inspected. These checks exercise the existing library; no product implementation change was required.
 
 Live appearance checks pass in both directions at artifacts/smoke-label-theme-cursor: normal text follows primary text, the consumer error label changes between terracotta/light and primary/dark, and dimensions and association remain unchanged. A separate physical disabled-cursor probe on a fully visible maximized catalog still displayed an arrow despite assigning UniversalNo to ProtectedCursor (artifacts/label-disabled-cursor-full.jpg). That ineffective assignment was removed; disabled-cursor parity remains open.
+
+Nested-action verification: artifacts/smoke-label-nested passes both themes, including UIA invocation of a nested non-tabbable button. Physical dark-theme clicks increment its consumer action count and preserve focus in the previously focused EmailInput rather than redirecting it to RichInput (artifacts/label-nested-pointer-focus.jpg). x64 publish and ARM64 build pass. The complete nested input/control matrix remains unverified.
