@@ -29,4 +29,8 @@
             <SolidColorBrush x:Key="CheckboxGlyph" Color="{ThemeResource SystemColorHighlightTextColor}" Opacity="1" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
+    <Style TargetType="TextBlock">
+        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+    </Style>
 </ResourceDictionary>

@@ -126,19 +126,11 @@
                     <TextBlock x:Name="PART_Label" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
                         Foreground="{TemplateBinding Foreground}" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords" AutomationProperties.AccessibilityView="Raw" />
                     <ContentPresenter x:Name="PART_RichLabel" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
-                        Foreground="{TemplateBinding Foreground}" LineHeight="20" LineStackingStrategy="BlockLineHeight">
-                        <ContentPresenter.Resources><Style TargetType="TextBlock">
-                            <Setter Property="LineHeight" Value="20" /><Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
-                        </Style></ContentPresenter.Resources>
-                    </ContentPresenter>
+                        Foreground="{TemplateBinding Foreground}" LineHeight="20" LineStackingStrategy="BlockLineHeight" />
                     <TextBlock x:Name="PART_Description" Grid.Row="1" Margin="0,2,0,0" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="Normal"
                         Foreground="{ThemeResource BleeckerTextSecondaryBrush}" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords" AutomationProperties.AccessibilityView="Raw" />
                     <ContentPresenter x:Name="PART_RichDescription" Grid.Row="1" Margin="0,2,0,0" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="Normal"
-                        Foreground="{ThemeResource BleeckerTextSecondaryBrush}" LineHeight="20" LineStackingStrategy="BlockLineHeight">
-                        <ContentPresenter.Resources><Style TargetType="TextBlock">
-                            <Setter Property="LineHeight" Value="20" /><Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
-                        </Style></ContentPresenter.Resources>
-                    </ContentPresenter>
+                        Foreground="{ThemeResource BleeckerTextSecondaryBrush}" LineHeight="20" LineStackingStrategy="BlockLineHeight" />
                 </Grid>
                 <TextBlock x:Name="PART_OffFill" Visibility="Collapsed" Foreground="{ThemeResource CheckboxOffFill}" />
                 <TextBlock x:Name="PART_OnFill" Visibility="Collapsed" Foreground="{ThemeResource CheckboxOnFill}" />

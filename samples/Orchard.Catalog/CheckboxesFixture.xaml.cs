@@ -81,6 +81,33 @@ public sealed partial class CheckboxesFixture : UserControl
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
                 ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Checkbox replaced consumer-owned rich content.");
             verifiedSteps.Add("Live text, explicit accessible name and consumer rich-content identity");
+            try
+            {
+                var consumerStyle = (Style)Resources["ConsumerCheckboxTextStyle"];
+                var styled = new TextBlock { Text = "Consumer label", Style = consumerStyle };
+                Rich.Content = styled; UpdateLayout();
+                Require(ReferenceEquals(styled.Style, consumerStyle) && styled.LineHeight == 28 && Rich.ActualHeight == 50,
+                    "Checkbox replaced the consumer's explicit rich text style.");
+                await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-style-{scheme}.png"));
+                var local = new TextBlock { Text = "Consumer label", LineHeight = 30, LineStackingStrategy = LineStackingStrategy.BlockLineHeight };
+                Rich.Content = local; UpdateLayout();
+                Require(local.LineHeight == 30 && Rich.ActualHeight == 52, "Checkbox replaced the consumer's local rich text properties.");
+                await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-local-{scheme}.png"));
+                var data = new ConsumerLabel("Consumer label", "Second template line");
+                var template = (DataTemplate)Resources["ConsumerCheckboxLabelTemplate"];
+                Rich.Content = data; Rich.ContentTemplate = template; UpdateLayout();
+                Require(ReferenceEquals(Rich.Content, data) && ReferenceEquals(Rich.ContentTemplate, template) &&
+                    Find<TextBlock>(Rich, "ConsumerTitle").Text == data.Title && Find<TextBlock>(Rich, "ConsumerDetails").Text == data.Details &&
+                    Find<TextBlock>(Rich, "ConsumerTitle").LineHeight == 20 && Find<TextBlock>(Rich, "ConsumerDetails").LineHeight == 20 && Rich.ActualHeight == 62,
+                    "Consumer data template did not receive the checkbox's branded defaults.");
+                await MainWindow.CaptureElementAsync(Rich, Path.Combine(folder, $"checkbox-rich-template-{scheme}.png"));
+                Rich.Content = data with { Title = "Updated template label" }; UpdateLayout();
+                Require(Find<TextBlock>(Rich, "ConsumerTitle").Text == "Updated template label", "Updated consumer data did not reach the label template.");
+                verifiedSteps.Add("Consumer rich styles, local line height and data templates");
+            }
+            finally { Rich.ContentTemplate = null; Rich.Content = richLabel; UpdateLayout(); }
+            Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) && Rich.ActualHeight == 42,
+                "Restoring rich content lost its identity or branded geometry.");
             Require(Default.Focus(FocusState.Keyboard), "Checkbox did not receive native keyboard focus.");
             await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 1, "Keyboard checkbox focus ring did not settle.");
             Require(Find<Border>(Default, "PART_FocusRing").ActualWidth == 28 && Find<Border>(Default, "PART_FocusOffset").ActualWidth == 24,
@@ -235,6 +262,7 @@ public sealed partial class CheckboxesFixture : UserControl
         throw new InvalidOperationException($"Missing checkbox part {name}.");
     }
     private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
+    private sealed record ConsumerLabel(string Title, string Details);
     private sealed class ConsumerState : INotifyPropertyChanged
     {
         private bool selected;

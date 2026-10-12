@@ -158,6 +158,13 @@ supplies scoped TextBlock style defaults, preserving explicit consumer
 formatting. That run did not reach template replacement, motion, appearance,
 Switch or independent runtime consumption.
 
+At `d0a66dd`, [run 38301875168](https://github.com/gaulatti/orchard/actions/runs/38301875168)
+passed builds and unit checks, then failed the rich row at 39.5px on both
+architectures. The description resolved the presenter-scoped 20px style;
+the native Content-owned label retained its 17.5px automatic line. The next
+candidate scopes the default style to the checkbox's private dictionary and
+adds consumer style/local-property/data-template regression checks.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

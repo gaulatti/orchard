@@ -244,7 +244,12 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     checkbox += `            <SolidColorBrush x:Key="Checkbox${name}" Color="${contrast ? `{ThemeResource SystemColor${system}Color}` : argb(color)}" Opacity="${contrast ? 1 : opacity}" />\n`;
   checkbox += '        </ResourceDictionary>\n';
 }
-outputs['src/Orchard/Themes/Checkbox.xaml'] = checkbox + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
+outputs['src/Orchard/Themes/Checkbox.xaml'] = checkbox + `    </ResourceDictionary.ThemeDictionaries>
+    <Style TargetType="TextBlock">
+        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+    </Style>
+</ResourceDictionary>\n`;
 for (const [path, content] of Object.entries(outputs)) {
   const url = new URL(path, root);
   if (check) {

@@ -29,8 +29,10 @@ The check remains left-to-right inside an RTL row; only row layout follows the
 reading direction. Inheriting RTL into the vector would mirror its geometry.
 Label and
 description use Encode Sans at 14px/20px, medium and regular respectively.
-Rich presenters supply a scoped default TextBlock style with the same 20px
-block line height; explicit consumer text properties/styles take precedence.
+The checkbox's private resource dictionary supplies a default TextBlock style
+with the same 20px block line height. It covers the native Content ownership
+path and the description/template visual tree; explicit consumer text
+properties/styles take precedence.
 Text starts 12px after the box. Description has a 2px top margin, including
 when there is no label. Both strings wrap beside a top-aligned box; empty
 content collapses the text column. Intrinsic measurement preserves the larger
@@ -76,6 +78,11 @@ glyph motion and reversals. Reports and captures are retained as
 on failure. The independent package consumer instantiates and toggles it.
 If a template is unavailable on failure, the report explicitly marks that row's
 measurement error and preserves the original verification exception.
+The same rich row also exercises an explicit consumer text style (28px lines),
+local text properties (30px lines), and a two-line consumer data template.
+It verifies their resulting 50/52/62px row heights, data updates, template/content
+identity and restoration of the original 42px row. Individual captures are
+retained as `checkbox-rich-{style,local,template}-{Light,Dark}.png`.
 
 The first x64/ARM64 run at `79f1053` stopped at its glyph geometry assertion.
 The x64 capture also exposed inherited RTL mirroring. The follow-up keeps the
@@ -106,6 +113,10 @@ at 37px on both architectures: ContentPresenter's own LineHeight does not
 propagate into consumer-owned TextBlocks. The follow-up scopes a TextBlock
 style to each rich presenter. It retains the 42px runtime acceptance check;
 template clearing and the subsequent checks were not reached in that run.
+At `d0a66dd`, the description acquired the presenter-scoped style but the
+native Content-owned label did not, producing 39.5px on both architectures.
+The style now lives in the checkbox's private dictionary so both ownership
+paths can resolve it. Verification continues to require the full 42px row.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
