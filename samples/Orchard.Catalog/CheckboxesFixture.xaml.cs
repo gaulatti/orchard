@@ -17,6 +17,7 @@ public sealed partial class CheckboxesFixture : UserControl
     private readonly ConsumerState state = new();
     private readonly List<object> motion = [];
     private readonly List<object> richSamples = [];
+    private readonly List<object> templateSamples = [];
     public CheckboxesFixture() { InitializeComponent(); DataContext = state; }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
@@ -26,6 +27,7 @@ public sealed partial class CheckboxesFixture : UserControl
         Exception? originalFailure = null;
         var verifiedSteps = new List<string>();
         richSamples.Clear();
+        templateSamples.Clear();
         try
         {
             UpdateLayout();
@@ -157,12 +159,22 @@ public sealed partial class CheckboxesFixture : UserControl
                 var descriptionValue = control.Description;
                 try
                 {
-                    control.Template = null; control.ApplyTemplate();
+                    templateSamples.Add(DescribeTemplate(control, "before-clear"));
+                    control.Template = null;
+                    templateSamples.Add(DescribeTemplate(control, "assigned-null"));
+                    control.ApplyTemplate();
+                    templateSamples.Add(DescribeTemplate(control, "applied-null"));
                     Require(control.IsChecked == checkedValue && ReferenceEquals(control.Content, labelValue) &&
                         ReferenceEquals(control.Description, descriptionValue), "Clearing the checkbox template changed consumer state or content.");
                     verifiedSteps.Add($"{control.Name} cleared its template with retained state and content");
                 }
-                finally { control.Template = template; control.ApplyTemplate(); }
+                finally
+                {
+                    control.Template = template;
+                    templateSamples.Add(DescribeTemplate(control, "assigned-original"));
+                    control.ApplyTemplate();
+                    templateSamples.Add(DescribeTemplate(control, "restored"));
+                }
                 verifiedSteps.Add($"{control.Name} restored its template");
             }
             UpdateLayout();
@@ -193,7 +205,7 @@ public sealed partial class CheckboxesFixture : UserControl
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-measurements-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale,
                     animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
-                    originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion, richSamples }, new JsonSerializerOptions { WriteIndented = true }));
+                    originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion, richSamples, templateSamples }, new JsonSerializerOptions { WriteIndented = true }));
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-{scheme}.png"));
         }
     }
@@ -262,6 +274,14 @@ public sealed partial class CheckboxesFixture : UserControl
         ? new { text.Text, text.ActualWidth, text.ActualHeight, text.LineHeight,
             strategy = text.LineStackingStrategy.ToString(), family = text.FontFamily.Source, weight = text.FontWeight.Weight }
         : null;
+    private static object DescribeTemplate(BleeckerCheckbox control, string phase) => new
+    {
+        control.Name, phase, templateIsNull = control.Template is null,
+        localIsNull = control.ReadLocalValue(Control.TemplateProperty) is null,
+        localIsUnset = control.ReadLocalValue(Control.TemplateProperty) == DependencyProperty.UnsetValue,
+        visualChildren = Enumerable.Range(0, VisualTreeHelper.GetChildrenCount(control))
+            .Select(index => VisualTreeHelper.GetChild(control, index).GetType().FullName).ToArray()
+    };
     private static IEnumerable<TextBlock> HostedText(DependencyObject parent)
     {
         if (parent is TextBlock text) yield return text;

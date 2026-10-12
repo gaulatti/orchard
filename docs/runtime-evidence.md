@@ -187,6 +187,15 @@ The next candidate supplies the source line defaults to template-generated
 text only when no local value, binding or style setter supplies them. It keeps
 the consumer template/styles intact and removes owned defaults on detachment.
 
+At `7a0def1`, [run 38305820220](https://github.com/gaulatti/orchard/actions/runs/38305820220)
+passes builds/unit checks and the rich-content native boundary checks on both
+architectures, then fails at ApplyTemplate after assigning null. The x64 report
+and captures were hash-verified from artifact `11771893712`, SHA-256
+`1b3cff8a4a96e64d04e36b57803855a01ce911b350e794efeb379de74507f11f`,
+under `artifacts/ci-checkbox-7a0def1-x64`. Template phase diagnostics and the
+original managed exception trace will distinguish clearing from native style
+resolution; no lifecycle assertion has been relaxed.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

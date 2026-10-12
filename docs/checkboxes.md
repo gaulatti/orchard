@@ -134,6 +134,11 @@ At `d382242`, binding succeeds and the template receives the expected data,
 but both template lines retain 17.5px automatic heights (57px total). Default
 line formatting now also reaches those generated elements, without changing
 the consumer's template or style identity. Native verification remains open.
+At `7a0def1`, x64 and ARM64 pass the rich-content checks, including the 62px
+template row and live consumer style changes. Both then fail when applying a
+cleared template. The smoke report now distinguishes assignment, application
+and restoration, and native template exceptions retain their managed
+diagnostic through Trace. The lifecycle gate remains active.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

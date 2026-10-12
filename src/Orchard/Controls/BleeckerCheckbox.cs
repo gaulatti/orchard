@@ -67,6 +67,18 @@ public sealed class BleeckerCheckbox : CheckBox
 
     protected override void OnApplyTemplate()
     {
+        try { ApplyBleeckerTemplate(); }
+        catch (Exception error)
+        {
+            // A native ApplyTemplate boundary can replace a managed exception
+            // with a generic XamlParseException. Retain the original diagnostic.
+            System.Diagnostics.Trace.TraceError("BleeckerCheckbox template application failed (Template null: {0}): {1}", Template is null, error);
+            throw;
+        }
+    }
+
+    private void ApplyBleeckerTemplate()
+    {
         StopMotion(); StopObservingPalette(); StopObservingRichLayout(); richDefaults.Clear();
         if (states is not null) states.CurrentStateChanged -= OnStateChanged;
         if (richLabel is not null) richLabel.Content = null;

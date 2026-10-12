@@ -12,6 +12,7 @@ public partial class App : Application
         UnhandledException += (_, args) => ReportSmokeFailure(args.Exception);
         if (Environment.GetCommandLineArgs().Contains("--smoke-output", StringComparer.Ordinal))
         {
+            System.Diagnostics.Trace.Listeners.Add(new System.Diagnostics.ConsoleTraceListener());
             DebugSettings.IsXamlResourceReferenceTracingEnabled = true;
             DebugSettings.XamlResourceReferenceFailed += (_, args) => ResourceErrors.Add(args.Message);
         }
