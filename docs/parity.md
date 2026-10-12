@@ -64,7 +64,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | search-input | Pending | Pending | Full pinned contract |
 | dropdown-menu | `BleeckerDropdownMenu`, native item styles and focus behavior | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: rich rows, shadow/motion, full physical input, contrast/scaling/Narrator and ARM64 runtime; see [menu gaps](menus.md) |
 | metric | Pending | Pending | Full pinned contract |
-| notification-badge | Pending | Pending | Full pinned contract |
+| notification-badge | `BleeckerNotificationBadge` and consumer-owned notification items | Registered populated/empty/count/long-content fixtures; x64 light/dark popup geometry, command/collection updates, live appearance and physical keyboard checks; independent package consumer | In progress: full state/input matrix, shadow/motion, contrast/Narrator/scaling and ARM64 runtime; see [evidence and gaps](notifications.md) |
 | accordion | Pending | Pending | Full pinned contract |
 | alert | Pending | Pending | Full pinned contract |
 | alert-dialog | Pending | Pending | Full pinned contract |
@@ -97,7 +97,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | textarea | Pending | Pending | Full pinned contract |
 | toggle | Six native `ToggleButton` styles | Registered size/variant fixtures; x64 automation/state checks; desktop pointer and Space/Tab; light/dark captures | In progress: Narrator, contrast, scaling, reduced motion, binding/command regressions, ARM64 runtime; see [usage](toggles.md) |
 | toggle-group | `BleeckerToggleGroup` and native toggle items; optional single/multiple selection | Registered binding, collection, disabled and constrained fixtures; x64 UIA and physical input; package consumer; ARM64 build | In progress: Narrator, contrast, scaling, motion, broader RTL/error fixtures and ARM64 runtime; see [usage](toggle-groups.md) |
-| tooltip | Pending | Pending | Full pinned contract |
+| tooltip | Pending | [Rendered pinned reference audit](tooltip-reference.md): all four sides in light, top in dark, keyboard entry/dismissal | Full Windows implementation and acceptance remain pending |
 | feed-item | Pending | Pending | Full pinned contract |
 | field | Pending | Pending | Full pinned contract |
 | header-select | Pending | Pending | Full pinned contract |
