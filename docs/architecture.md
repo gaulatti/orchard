@@ -63,6 +63,14 @@ Use `ThemeResource` for color consumers and `StaticResource` for typography and
 geometry. Load `XamlControlsResources` before Orchard resources. Font files
 are copied to `Orchard/Assets/Fonts` in the consuming app output.
 
+Disabled Input and Checkbox pointer behavior uses an internal observer shared
+per XAML root. It queries the native pointer and performs at most one root hit
+test per observation, then applies each control's own bounds, visibility, ancestor
+clipping and occlusion. Checkbox supplies its 20px box; Input supplies its editor
+bounds. Each control detaches on enable/unload, and Checkbox also detaches on
+template replacement. One thread-local native cursor owner prevents competing
+controls from restoring stale overrides; release reapplies WinUI's current cursor.
+
 The catalog keeps `EnableMsixTooling=true` and explicitly enables
 `AppxGeneratePriEnabled` for the SDK’s application resource-index build
 pipeline. `WindowsPackageType=None` still makes the app

@@ -31,9 +31,14 @@ public sealed partial class CheckboxesFixture : UserControl
         richSamples.Clear();
         templateSamples.Clear();
         physicalInputSteps.Clear();
+        var restingHitTests = new[] { DisabledOff, DisabledOn }.ToDictionary(control => control, control => control.IsHitTestVisible);
         try
         {
+            // Geometry/palette fixtures select rest; the physical matrix below
+            // separately verifies the disabled box's narrower hover boundary.
+            foreach (var control in restingHitTests.Keys) control.IsHitTestVisible = false;
             UpdateLayout();
+            foreach (var control in restingHitTests.Keys) await SettleAsync(control);
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-initial-{scheme}.png"));
             foreach (var control in controls) VerifyPresentation(control, scheme);
             Require(Default.ActualHeight == 42 && Math.Abs(Default.ActualWidth - 291.71875) < .1,
@@ -271,6 +276,7 @@ public sealed partial class CheckboxesFixture : UserControl
             foreach (var control in controls) await SettleAsync(control);
             foreach (var control in controls) VerifyPresentation(control, scheme);
             verifiedSteps.Add("All rows changed and restored appearance with retained consumer state");
+            foreach (var entry in restingHitTests) entry.Key.IsHitTestVisible = entry.Value;
             await VerifyPhysicalInputAsync(scheme, folder);
             verifiedSteps.Add("Physical hover/press/exit, Space/Tab, box/label/description/RTL clicks, disabled rejection and native commands");
             passed = true;
@@ -278,6 +284,7 @@ public sealed partial class CheckboxesFixture : UserControl
         catch (Exception error) { originalFailure = error; throw; }
         finally
         {
+            foreach (var entry in restingHitTests) entry.Key.IsHitTestVisible = entry.Value;
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-measurements-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale,
                     animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
@@ -365,6 +372,7 @@ public sealed partial class CheckboxesFixture : UserControl
                 Require(control.IsChecked == value, "Physical box or label click changed a disabled checkbox.");
             }
             physicalInputSteps.Add("Disabled off/on rejected box and label activation");
+            await VerifyDisabledPointerAsync(input, scheme, folder);
             Rtl.IsChecked = true;
             await input.ClickAsync(Find<Border>(Rtl, "PART_Box"));
             await WaitAsync(() => Rtl.IsChecked == false, "Physical RTL box did not toggle off.");

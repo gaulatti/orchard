@@ -1,10 +1,31 @@
 # Native Windows runtime evidence
 
-The catalog fixtures and independent NuGet consumer at commit `0e35493` passed
+The catalog fixtures and independent NuGet consumer at commit `ebfb6ac` passed
 on both x64 and native ARM64. That runtime baseline covers 20 in-progress
 inventory entries; 92 entries remain pending. The earlier `5412997` checkpoint
 covered 18 entries. Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
+
+## Rendered Checkbox names and resting Input validation
+
+Commit `ebfb6ac` passes all three jobs in
+[run 38319267360](https://github.com/gaulatti/orchard/actions/runs/38319267360).
+Both native architectures pass the complete Light/Dark catalog, 23 tests and
+independent NuGet consumer. Eight strict rich-name cases pass in each appearance
+on each architecture. Dark Input's diagnostic explicitly selects
+`InputNormalError`, with hit testing temporarily disabled, `#FFD47B75` rendered
+and palette border, and full enabled editor opacity. This verifies the resting
+fixture correction; physical hover remains a separate contract.
+
+The x64 archive `11778171441` has SHA-256
+`c171a20fc9f0a60527c4769c5248f2fee3fcc7329ccd3d92c38784b5da44c152`;
+ARM64 archive `11779000272` has SHA-256
+`39c640f5ca815ae4e8c16967e2f44ffdd0b052f8f4a6760ef44491c5cdaec705`.
+Both were downloaded and verified under `artifacts/ci-checkbox-ebfb6ac-{x64,arm64}`.
+Package SHA-256 is `c02bb6b15080c6e585f9ba5e60416bda1411f97e2a152bcd1d7d7ff916525bd7`
+on x64 and `1cb0a84836b518eb5ef956a2d424ede44ff491d865e5b8bae13e043e2718f0b5`
+on ARM64. The 57 font probes remain diagnostic; full font, Narrator, scaling,
+contrast, motion and component parity acceptance remains open.
 
 ## Checkbox and Switch native runtime checkpoint
 
@@ -63,9 +84,8 @@ The x64 artifact `11777688804` has SHA-256
 ARM64 artifact `11777753571` has SHA-256
 `3699facdbd33c56922586c58cd4130ef5f8cf07bda136c6680322ed315f8bb5d`.
 Both were downloaded and verified under `artifacts/ci-checkbox-9c6a8ce-{x64,arm64}`.
-The resting Input fixture correction requires another native run. The last
-complete runtime baseline remains `0e35493`; no full component acceptance is
-claimed by these partial results.
+The resting Input fixture correction passes at the later `ebfb6ac` checkpoint
+above. No full component acceptance is claimed by these partial results.
 
 ## Switch x64 runtime
 

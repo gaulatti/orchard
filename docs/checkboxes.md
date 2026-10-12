@@ -61,6 +61,12 @@ edges and at the inner offset, against the theme brush composited over the
 captured background. The report retains observed and expected colors.
 Disabled changes only the input chrome to 50% opacity. The checkmark and text
 retain full opacity, matching the source's separate SVG and text siblings.
+Enabled associated-label hover selects the input's hover border across its
+text. A disabled associated label does not propagate hover to the input:
+only the 20px box selects the hover border and not-allowed cursor. Label and
+description retain the normal arrow cursor and resting border. Checked hover
+retains the checked border. Root pointer observation leaves native activation,
+focus refusal, UIA disabled state and consumer-owned content unchanged.
 Windows contrast uses paired Window/WindowText and Highlight/HighlightText
 colors, with a visible system-colored focus ring.
 
@@ -276,7 +282,37 @@ The checkbox peer now reads the rendered rich label/description tree, excludes
 collapsed children and respects named subtrees. Native regressions require
 direct/live text, label and description templates, live model updates, hidden
 text exclusion and consumer Name/LabeledBy precedence, with ownership restored.
-This fix still requires a new native run and does not establish Narrator acceptance.
+At `ebfb6ac`, eight strict rich-name regressions pass in both appearances on
+x64 and native ARM64, alongside the full catalog and independent package
+consumer. This does not establish Narrator acceptance.
+
+## Disabled pointer boundary and shared cursor fixture
+
+Pinned browser measurements distinguish disabled box hover from associated
+label hover: the box uses sea/50, opacity .5 and `not-allowed`; hovering its
+disabled label leaves the box at sand/60 and the label cursor at `default`.
+Enabled label hover does propagate to the input. Source captures and computed
+styles are retained at `artifacts/checkbox-reference-{disabled-box,disabled-label,enabled-label}-Light.{json,jpg}`.
+
+The native Checkbox now supplies only `PART_Box` bounds to the shared disabled
+pointer observer. Input retains its complete editor bounds. One observer per
+XAML root shares native pointer queries, rendering/layout observation and hit
+testing; one cursor owner coordinates both control types. Target and ancestor
+visibility/clipping, scroll viewport bounds, native scroll chrome and sibling
+occlusion govern hover. Enable/unload and Checkbox template replacement release
+the registration and native override.
+
+The existing physical Checkbox fixture adds disabled off/on box, label and
+description cursor/border checks, enabled label hover, stationary enable/disable,
+template detach/restore, occlusion, clipping, movement, hit testing, hide/show,
+unload/reload, scrolling, RTL and movement between Input and Checkbox. It
+asserts native cursor handles, theme stroke colors/opacity, input-only disabled
+opacity and retained glyph/text opacity. Reports are
+`checkbox-disabled-pointer-{Light,Dark}.json`; box/label hover captures are
+`checkbox-{DisabledOff,DisabledOn}-{box,label}-hover-{Light,Dark}.png`.
+Resting palette fixtures temporarily disable hit testing on disabled rows and
+restore it before this physical matrix. Local compilation/tests pass; this new
+pointer implementation requires its own hosted x64/ARM64 runtime evidence.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

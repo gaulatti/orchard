@@ -8,7 +8,7 @@ using Windows.UI.ViewManagement;
 namespace Orchard;
 
 /// <summary>A native checkbox with Bleecker chrome and consumer-owned label/description content.</summary>
-public sealed class BleeckerCheckbox : CheckBox
+public sealed partial class BleeckerCheckbox : CheckBox
 {
     private readonly UISettings settings = new();
     private readonly AccessibilitySettings accessibility = new();
@@ -36,16 +36,15 @@ public sealed class BleeckerCheckbox : CheckBox
     {
         DefaultStyleKey = typeof(BleeckerCheckbox);
         Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Checkbox.xaml") });
+        InitializePointer();
         RegisterPropertyChangedCallback(IsCheckedProperty, (_, _) => UpdateVisuals(true));
-        RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => UpdateVisuals(true));
+        RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { UpdatePointerObservation(); UpdateVisuals(true); });
         RegisterPropertyChangedCallback(FocusStateProperty, (_, _) => UpdateVisuals(true));
         RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateSelectorProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
-        RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => { if (Visibility != Visibility.Visible) UpdateVisuals(false); });
-        PointerEntered += (_, _) => { pointerOver = true; UpdateVisuals(true); };
-        PointerExited += (_, _) => { pointerOver = false; UpdateVisuals(true); };
+        RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => { UpdatePointerObservation(); if (Visibility != Visibility.Visible) UpdateVisuals(false); });
         Loaded += (_, _) =>
         {
             settings.ColorValuesChanged += OnColorsChanged;
@@ -96,10 +95,12 @@ public sealed class BleeckerCheckbox : CheckBox
         UpdateContent();
         if (IsLoaded) ObservePalette();
         UpdateVisuals(false);
+        UpdatePointerObservation();
     }
 
     private void DetachTemplate()
     {
+        disabledPointer?.Detach();
         StopMotion(); StopObservingPalette(); StopObservingRichLayout(); richDefaults.Clear();
         if (states is not null) states.CurrentStateChanged -= OnStateChanged;
         if (richLabel is not null) richLabel.Content = null;

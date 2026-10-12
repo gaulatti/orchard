@@ -169,8 +169,11 @@ Plain and invalid disabled inputs use the reference hover border and shadow,
 retain .6 editor opacity, refuse focus, and select the not-allowed system cursor.
 The control observes the root pointer because WinUI routes disabled TextBox
 input to enclosing scroll chrome. A rendering observer refreshes stationary
-pointer geometry, including clipping, scrolling and remounts. It detaches on
-enable or unload. Native cursor restoration uses WinUI's current selected system
+pointer geometry, including clipping, scrolling and remounts. Its registration
+detaches on enable or unload. Input and Checkbox share one observer per XAML
+root and one native cursor override owner. The observer stops when its last
+disabled control detaches; pointer queries and hit testing are shared across
+registered controls. Native cursor restoration uses WinUI's current selected system
 cursor rather than a cursor saved before entering the input.
 
 Open Input in the catalog and choose **Verify disabled pointer lifecycle**.
