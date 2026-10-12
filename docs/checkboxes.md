@@ -190,6 +190,26 @@ These reports (`checkbox-script-weights-{Light,Dark}.json`) and per-case native
 captures are diagnostic evidence; they do not establish font parity or change
 the library's font resources. The corresponding pinned browser measurements
 and render are retained at `artifacts/checkbox-reference-script-weights-Light.{json,jpg}`.
+At `7afa247`, all 36 probe dimensions agree across native x64 and ARM64.
+The Yu Gothic candidate matches Japanese 400/500 within 0.014px, but Japanese
+600 grows to 113.681641px against the browser's 111.453125px. Native Arabic
+400/500 measures 93.846664px against 93.4375/93.46875px in the browser, and
+its medium appearance remains lighter. A global Yu Gothic addition would not
+resolve the complete contract. The eight-case comparison is retained at
+`artifacts/checkbox-script-weights-comparison-Light.png`; these are open font
+gaps, and the shared font resources remain unchanged.
+
+The physical-input fixture uses a catalog-only NativeInputSession. It resolves
+the catalog's HWND and verifies its process before acquiring foreground input;
+every click verifies the screen point belongs to that window. Targets use
+normal StartBringIntoView to remain reachable on hosted monitors. The fixture
+checks Space, Tab including disabled skipping, box/label/description activation,
+RTL box/label activation, exactly-once Click/value/command delivery, parameter
+identity and CanExecute rejection/restoration. Keyboard and pointer captures,
+desktop diagnostics and incremental steps are retained even on failure. The
+session removes temporary topmost status and restores the pointer in cleanup.
+These new physical checks still require hosted native runtime verification;
+disabled cursor behavior remains a separate open acceptance item.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

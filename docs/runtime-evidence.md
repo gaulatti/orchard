@@ -242,11 +242,32 @@ checks immediate detach/valid restore and normal-layout hide/show using
 Visibility, including native state, content/name and rich ownership. A
 persistent null-template empty state was an incorrect fixture assumption;
 the consumer Template property and bindings remain untouched by Orchard.
+At `7062317`, [run 38312230166](https://github.com/gaulatti/orchard/actions/runs/38312230166)
+passes template detachment/restoration, then rejects the hide/show fixture on
+both architectures because a fresh Toggle pattern is unavailable while the
+control is collapsed. The fixture now retains the native provider while the
+control is visible before checking consumer state updates during collapse.
+No library behavior is changed to manufacture an accessible hidden control.
 The checkbox fixture now captures an additional six-script, three-weight
 font comparison with explicit language tags, before its template lifecycle
 checks. The original and Yu Gothic candidates use actual bundled font
 resources. Reports and captures restore the consumer content and language;
 the shared library font stack is unchanged pending comparison.
+At `7afa247`, [run 38311616439](https://github.com/gaulatti/orchard/actions/runs/38311616439)
+completes the 36 native script/font probes on x64 and ARM64 before the known
+null-template failure. Both architectures produce identical probe dimensions.
+Digest-verified archives are retained at `artifacts/ci-checkbox-7afa247-x64`
+(SHA256 `11e66feef27e090747da2b7e8cf0df379ab6ca395f846aabe46192cfbfc01a7f`)
+and `artifacts/ci-checkbox-7afa247-arm64`
+(SHA256 `c2cbcd41ed53eaab0038ddae3ff336f052bd7baf72188376c5548d5d99013c6e`).
+The retained comparison exposes semibold Japanese and Arabic font differences;
+native architecture agreement does not establish browser parity.
+
+The checkbox fixture now adds physical keyboard/pointer and inherited-command
+checks with a catalog-only NativeInputSession. Foreground input and pointer
+hit points must belong to the catalog's own native window. Captures include
+the composed keyboard/pointer window; reports retain incremental checks and
+desktop diagnostics. Runtime verification of these new gates is pending.
 
 ## Shared x64 and ARM64 baseline
 

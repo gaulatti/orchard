@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Windows.Input;
 using Windows.Foundation;
 
 namespace Orchard.Catalog;
@@ -18,6 +19,7 @@ public sealed partial class CheckboxesFixture : UserControl
     private readonly List<object> motion = [];
     private readonly List<object> richSamples = [];
     private readonly List<object> templateSamples = [];
+    private readonly List<string> physicalInputSteps = [];
     public CheckboxesFixture() { InitializeComponent(); DataContext = state; }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
@@ -28,6 +30,7 @@ public sealed partial class CheckboxesFixture : UserControl
         var verifiedSteps = new List<string>();
         richSamples.Clear();
         templateSamples.Clear();
+        physicalInputSteps.Clear();
         try
         {
             UpdateLayout();
@@ -206,6 +209,9 @@ public sealed partial class CheckboxesFixture : UserControl
                 var labelValue = control.Content;
                 var descriptionValue = control.Description;
                 var template = control.Template;
+                // UIA does not expose a fresh Toggle pattern for a collapsed
+                // control. Retain the provider while the control is visible.
+                var toggle = (IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(control).GetPattern(PatternInterface.Toggle);
                 try
                 {
                     control.Visibility = Visibility.Collapsed;
@@ -214,7 +220,7 @@ public sealed partial class CheckboxesFixture : UserControl
                         ReferenceEquals(control.Template, template) && ReferenceEquals(control.Content, labelValue) &&
                         ReferenceEquals(control.Description, descriptionValue), "Hiding a checkbox changed its template or consumer content.");
                     control.IsChecked = checkedValue != true;
-                    Require(((IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(control).GetPattern(PatternInterface.Toggle)).ToggleState ==
+                    Require(toggle.ToggleState ==
                         (control.IsChecked == true ? ToggleState.On : ToggleState.Off), "Hidden checkbox lost consumer value updates.");
                 }
                 finally { control.IsChecked = checkedValue; control.Visibility = Visibility.Visible; }
@@ -240,6 +246,8 @@ public sealed partial class CheckboxesFixture : UserControl
             foreach (var control in controls) await SettleAsync(control);
             foreach (var control in controls) VerifyPresentation(control, scheme);
             verifiedSteps.Add("All rows changed and restored appearance with retained consumer state");
+            await VerifyPhysicalInputAsync(scheme, folder);
+            verifiedSteps.Add("Physical Space/Tab, box/label/description/RTL clicks, disabled rejection and native commands");
             passed = true;
         }
         catch (Exception error) { originalFailure = error; throw; }
@@ -248,9 +256,90 @@ public sealed partial class CheckboxesFixture : UserControl
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-measurements-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale,
                     animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
-                    originalFailure = originalFailure?.ToString(), verifiedSteps, measurements = controls.Select(MeasureForReport).ToArray(), motion, richSamples, templateSamples }, new JsonSerializerOptions { WriteIndented = true }));
+                    originalFailure = originalFailure?.ToString(), verifiedSteps, physicalInputSteps,
+                    measurements = controls.Select(MeasureForReport).ToArray(), motion, richSamples, templateSamples }, new JsonSerializerOptions { WriteIndented = true }));
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"checkbox-{scheme}.png"));
         }
+    }
+
+    private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)
+    {
+        using var input = new NativeInputSession(XamlRoot, folder, $"checkbox-{scheme}");
+        var defaultValue = Default.IsChecked; var rtlValue = Rtl.IsChecked;
+        var originalCommand = Default.Command; var originalParameter = Default.CommandParameter;
+        var command = new ConsumerCommand(); var parameter = new object();
+        var clicks = 0; var changes = 0;
+        void Clicked(object sender, RoutedEventArgs args) => clicks++;
+        void Changed(object sender, RoutedEventArgs args) => changes++;
+        try
+        {
+            await input.AcquireAsync(Find<Border>(Off, "PART_Box"));
+            physicalInputSteps.Add("Own catalog window acquired foreground input");
+            Default.IsChecked = true; await SettleAsync(Default);
+            Default.Command = command; Default.CommandParameter = parameter;
+            Default.Click += Clicked; Default.Checked += Changed; Default.Unchecked += Changed;
+            Require(Default.Focus(FocusState.Keyboard), "Physical checkbox could not receive keyboard focus.");
+            input.Key(0x20);
+            await WaitAsync(() => Default.IsChecked == false, "Physical Space did not toggle the checkbox.");
+            await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 1, "Physical keyboard focus lost its branded ring.");
+            await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"checkbox-keyboard-window-{scheme}.png"));
+            physicalInputSteps.Add("Space toggled the focused checkbox and retained its keyboard ring");
+            input.Key(0x09);
+            await WaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Off), "Physical Tab did not reach the next checkbox.");
+            input.Key(0x09);
+            await WaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Bare), "Physical Tab did not skip disabled checkboxes.");
+            physicalInputSteps.Add("Tab advanced once per checkbox and skipped disabled off/on");
+            await input.ClickAsync(Find<Border>(Default, "PART_Box"));
+            await WaitAsync(() => Default.IsChecked == true, "Physical box click did not toggle on.");
+            await WaitAsync(() => Find<Border>(Default, "PART_FocusRing").Opacity == 0, "Physical pointer activation retained a keyboard ring.");
+            await input.ClickAsync(Find<TextBlock>(Default, "PART_Label"));
+            await WaitAsync(() => Default.IsChecked == false, "Physical label click did not toggle off.");
+            await input.ClickAsync(Find<TextBlock>(Default, "PART_Description"));
+            await WaitAsync(() => Default.IsChecked == true, "Physical description click did not toggle on.");
+            Require(clicks == 4 && changes == 4 && command.Parameters.Count == 4 && command.Parameters.All(value => ReferenceEquals(value, parameter)),
+                "Physical checkbox actions did not reach Click, value events and the consumer command exactly once.");
+            physicalInputSteps.Add("Box, label and description activated with exactly-once events/command and consumer parameter identity");
+            command.Enabled = false;
+            await WaitAsync(() => !Default.IsEnabled, "Native checkbox ignored Command.CanExecute changes.");
+            await input.ClickAsync(Find<Border>(Default, "PART_Box"));
+            Require(Default.IsChecked == true && clicks == 4 && changes == 4 && command.Parameters.Count == 4,
+                "A rejected native command still activated the checkbox.");
+            command.Enabled = true;
+            await WaitAsync(() => Default.IsEnabled, "Native checkbox did not restore command availability.");
+            physicalInputSteps.Add("Command.CanExecute disabled physical activation and restored availability");
+            foreach (var control in new[] { DisabledOff, DisabledOn })
+            {
+                var value = control.IsChecked;
+                await input.ClickAsync(Find<Border>(control, "PART_Box"));
+                await input.ClickAsync(Find<TextBlock>(control, "PART_Label"));
+                Require(control.IsChecked == value, "Physical box or label click changed a disabled checkbox.");
+            }
+            physicalInputSteps.Add("Disabled off/on rejected box and label activation");
+            Rtl.IsChecked = true;
+            await input.ClickAsync(Find<Border>(Rtl, "PART_Box"));
+            await WaitAsync(() => Rtl.IsChecked == false, "Physical RTL box did not toggle off.");
+            await input.ClickAsync(Find<TextBlock>(Rtl, "PART_Label"));
+            await WaitAsync(() => Rtl.IsChecked == true, "Physical RTL label did not toggle on.");
+            physicalInputSteps.Add("RTL box and label both activated the native input");
+            await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"checkbox-pointer-window-{scheme}.png"));
+        }
+        finally
+        {
+            Default.Click -= Clicked; Default.Checked -= Changed; Default.Unchecked -= Changed;
+            Default.Command = originalCommand; Default.CommandParameter = originalParameter;
+            Default.IsChecked = defaultValue; Rtl.IsChecked = rtlValue;
+        }
+        await SettleAsync(Default); await SettleAsync(Rtl);
+    }
+
+    private sealed class ConsumerCommand : ICommand
+    {
+        private bool enabled = true;
+        internal bool Enabled { get => enabled; set { enabled = value; CanExecuteChanged?.Invoke(this, EventArgs.Empty); } }
+        internal List<object?> Parameters { get; } = [];
+        public bool CanExecute(object? parameter) => enabled;
+        public void Execute(object? parameter) => Parameters.Add(parameter);
+        public event EventHandler? CanExecuteChanged;
     }
 
     private async Task InspectFontFallbackAsync(BleeckerColorScheme scheme, string folder)
