@@ -42,6 +42,9 @@
             <SolidColorBrush x:Key="BleeckerDestructiveForegroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerAccentBrush" Color="#FFF9F6F2" />
             <SolidColorBrush x:Key="BleeckerAccentForegroundBrush" Color="#FF2D2D2D" />
+            <SolidColorBrush x:Key="BleeckerButtonFocusRingBrush" Color="#FF2C5784" Opacity="0.35" />
+            <SolidColorBrush x:Key="BleeckerToggleFocusRingBrush" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFocusOffsetBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="AccentButtonBackground" Color="#FF2C5784" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="#FF2C5784" Opacity="0.9" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="#FF2C5784" Opacity="0.8" />
@@ -144,6 +147,9 @@
             <SolidColorBrush x:Key="BleeckerDestructiveForegroundBrush" Color="#FF0D1821" />
             <SolidColorBrush x:Key="BleeckerAccentBrush" Color="#FF1A2332" />
             <SolidColorBrush x:Key="BleeckerAccentForegroundBrush" Color="#FFF0F4F8" />
+            <SolidColorBrush x:Key="BleeckerButtonFocusRingBrush" Color="#FF5BA3F5" Opacity="0.45" />
+            <SolidColorBrush x:Key="BleeckerToggleFocusRingBrush" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFocusOffsetBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="AccentButtonBackground" Color="#FF5BA3F5" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="#FF5BA3F5" Opacity="0.9" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="#FF5BA3F5" Opacity="0.8" />
@@ -246,6 +252,9 @@
             <SolidColorBrush x:Key="BleeckerDestructiveForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAccentBrush" Color="{ThemeResource SystemColorWindowColor}" />
             <SolidColorBrush x:Key="BleeckerAccentForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerButtonFocusRingBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerToggleFocusRingBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFocusOffsetBrush" Color="{ThemeResource SystemColorWindowColor}" />
             <SolidColorBrush x:Key="AccentButtonBackground" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPointerOver" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="AccentButtonBackgroundPressed" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />

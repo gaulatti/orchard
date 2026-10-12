@@ -43,6 +43,12 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     const color = theme === 'HighContrast' ? `{ThemeResource ${highContrastColor(key)}}` : argb(value);
     xaml += `            <SolidColorBrush x:Key="Bleecker${pascal(key)}Brush" Color="${color}" />\n`;
   }
+  for (const [name, alpha] of [['BleeckerButtonFocusRingBrush', theme === 'Default' ? 0.45 : 0.35], ['BleeckerToggleFocusRingBrush', 1]]) {
+    const color = theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors[theme === 'Default' ? 'accentBlue' : 'sea']);
+    xaml += `            <SolidColorBrush x:Key="${name}" Color="${color}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  }
+  const offsetColor = theme === 'HighContrast' ? '{ThemeResource SystemColorWindowColor}' : argb(theme === 'Default' ? colors.deepSea : '#ffffff');
+  xaml += `            <SolidColorBrush x:Key="BleeckerFocusOffsetBrush" Color="${offsetColor}" />\n`;
   for (const [name, key] of Object.entries(buttonTokens)) {
     for (const state of ['', 'PointerOver', 'Pressed', 'Disabled']) {
       // Retain WinUI's state machine. Opacity gives visible feedback without inventing new palette entries.
@@ -112,6 +118,9 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
   for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
     const dark = theme === 'Default';
     button += `        <ResourceDictionary x:Key="${theme}">\n`;
+    const focusAlpha = variant.startsWith('Icon') ? dark ? 0.4 : 0.3 : dark ? 0.45 : 0.35;
+    const focusColor = theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors[dark ? 'accentBlue' : 'sea']);
+    button += `            <SolidColorBrush x:Key="ButtonFocusRingBrush" Color="${focusColor}" Opacity="${theme === 'HighContrast' ? 1 : focusAlpha}" />\n`;
     for (const state of ['', 'PointerOver', 'Pressed', 'Disabled']) {
       const hover = state === 'PointerOver' || state === 'Pressed';
       let background, foreground, border;
@@ -145,6 +154,12 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
         <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource ButtonFocusRingBrush}" />
+        <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" />
+        <Setter Property="FocusVisualPrimaryThickness" Value="2" />
+        <Setter Property="FocusVisualSecondaryThickness" Value="2" />
+        <Setter Property="FocusVisualMargin" Value="-4" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="HorizontalAlignment" Value="${variant.startsWith('Icon') ? 'Left' : 'Stretch'}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />

@@ -24,4 +24,10 @@ Corrections made: hover-only link underline, size-independent 16px link text, da
 
 Control styles now explicitly select the bundled Encode Sans Medium face and weight 500. The font file's pinned hash and OS/2 weight metadata are tested; published catalog and independent package checks verify font resolution. Full shaping and baseline comparison remains open.
 
-Open comparison work includes shaping, line heights and text baselines, exact underline offset, branded focus rings, shadows, disabled group opacity/compositing, icons, loading indicator, normal and reduced motion, and a complete rendered variant/size/theme/state matrix. Native-template behavior alone cannot close these gaps.
+Buttons now specify a 2px outer focus ring and 2px reference-colored offset. Ring opacity is 35% light / 45% dark for text buttons and 30% / 40% for icon buttons. Toggles use an opaque 2px ring without an offset. Light uses sea; dark uses accent blue. Contrast resources use the system highlight/window colors. Native keyboard focus and navigation remain active.
+
+Desktop Tab testing verifies the branded ring on the foundational secondary action in both themes and on the custom secondary-button wrapper in light. Captures are `artifacts/focus-dark.jpg`, `artifacts/focus-light.jpg`, and `artifacts/focus-wrapper-light.jpg`. Runtime assertions cover button variants and toggle geometry in both themes. Full focus acceptance still requires the remaining sizes, icon/toggle physical focus, edge clipping, actual contrast settings and scaling.
+
+Focus implementation uses the pinned WinUI API's [outer/inner thickness](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.frameworkelement.focusvisualprimarythickness?view=windows-app-sdk-2.0) and [negative outer margin](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.frameworkelement.focusvisualmargin?view=windows-app-sdk-2.0) properties.
+
+Open comparison work includes shaping, line heights and text baselines, exact underline offset, the remaining focus matrix, shadows, disabled group opacity/compositing, icons, loading indicator, normal and reduced motion, and a complete rendered variant/size/theme/state matrix. Native-template behavior alone cannot close these gaps.

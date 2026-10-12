@@ -69,6 +69,10 @@ public sealed partial class ButtonsFixture : UserControl
             LoadingAction.Variant = variant;
             LoadingAction.UpdateLayout();
             await Task.Delay(120);
+            Require(native.FocusVisualPrimaryBrush is SolidColorBrush focusRing &&
+                Math.Abs(focusRing.Opacity - (scheme == BleeckerColorScheme.Dark ? 0.45 : 0.35)) < 0.001 &&
+                native.FocusVisualPrimaryThickness == new Thickness(2) && native.FocusVisualSecondaryThickness == new Thickness(2) &&
+                native.FocusVisualMargin == new Thickness(-4), "Button focus visuals escaped the branded ring recipe.");
             var presenter = Find<ContentPresenter>(native) ?? throw new InvalidOperationException("Native presenter is missing.");
             if (variant == BleeckerButtonVariant.Link)
             {

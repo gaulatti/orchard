@@ -38,6 +38,9 @@ public sealed partial class TogglesFixture : UserControl
         foreach (var toggle in new[] { DefaultToggle, OutlineToggle })
         {
             toggle.ApplyTemplate();
+            Require(toggle.FocusVisualPrimaryBrush is SolidColorBrush ring && ring.Opacity == 1 &&
+                toggle.FocusVisualPrimaryThickness == new Thickness(2) && toggle.FocusVisualSecondaryThickness == new Thickness(0) &&
+                toggle.FocusVisualMargin == new Thickness(-2), "Toggle focus geometry differs from the reference.");
             var presenter = VisualTreeHelper.GetChild(toggle, 0) as ContentPresenter
                 ?? throw new InvalidOperationException("Native toggle template lost its presenter.");
             foreach (var state in new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Checked", "CheckedPointerOver", "CheckedPressed", "CheckedDisabled" })

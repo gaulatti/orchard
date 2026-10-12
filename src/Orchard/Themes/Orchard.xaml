@@ -26,6 +26,12 @@
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerButtonFocusRingBrush}" />
+        <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" />
+        <Setter Property="FocusVisualPrimaryThickness" Value="2" />
+        <Setter Property="FocusVisualSecondaryThickness" Value="2" />
+        <Setter Property="FocusVisualMargin" Value="-4" />
     </Style>
     <Style x:Key="BleeckerPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
         <Setter Property="Background" Value="{ThemeResource AccentButtonBackground}" />
@@ -35,6 +41,12 @@
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerButtonFocusRingBrush}" />
+        <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" />
+        <Setter Property="FocusVisualPrimaryThickness" Value="2" />
+        <Setter Property="FocusVisualSecondaryThickness" Value="2" />
+        <Setter Property="FocusVisualMargin" Value="-4" />
     </Style>
     <Style x:Key="BleeckerToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource DefaultToggleButtonStyle}">
         <Setter Property="Background" Value="{ThemeResource ToggleButtonBackground}" />
@@ -49,6 +61,12 @@
         <Setter Property="Padding" Value="12,6" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerToggleFocusRingBrush}" />
+        <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" />
+        <Setter Property="FocusVisualPrimaryThickness" Value="2" />
+        <Setter Property="FocusVisualSecondaryThickness" Value="0" />
+        <Setter Property="FocusVisualMargin" Value="-2" />
     </Style>
     <Style x:Key="BleeckerSmallToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource BleeckerToggleStyle}">
         <Setter Property="MinHeight" Value="32" />

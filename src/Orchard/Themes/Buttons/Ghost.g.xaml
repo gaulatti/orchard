@@ -2,6 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="ButtonFocusRingBrush" Color="#FF2C5784" Opacity="0.35" />
             <SolidColorBrush x:Key="ButtonBackground" Color="#FFE6D5B8" Opacity="0" />
             <SolidColorBrush x:Key="ButtonForeground" Color="#FF2D2D2D" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF2C5784" Opacity="0" />
@@ -16,6 +17,7 @@
             <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#FF2C5784" Opacity="0" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="ButtonFocusRingBrush" Color="#FF5BA3F5" Opacity="0.45" />
             <SolidColorBrush x:Key="ButtonBackground" Color="#FFFFFFFF" Opacity="0" />
             <SolidColorBrush x:Key="ButtonForeground" Color="#FFF0F4F8" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF5BA3F5" Opacity="0" />
@@ -30,6 +32,7 @@
             <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#FF5BA3F5" Opacity="0" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="ButtonFocusRingBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBackground" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="ButtonBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
@@ -50,6 +53,12 @@
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
         <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource ButtonFocusRingBrush}" />
+        <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" />
+        <Setter Property="FocusVisualPrimaryThickness" Value="2" />
+        <Setter Property="FocusVisualSecondaryThickness" Value="2" />
+        <Setter Property="FocusVisualMargin" Value="-4" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
