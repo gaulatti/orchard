@@ -97,6 +97,7 @@
         <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSwitch">
             <ToggleSwitch x:Name="PART_Switch" Header="{TemplateBinding Label}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
                 Foreground="{TemplateBinding Foreground}" IsEnabled="{TemplateBinding IsEnabled}">
                 <ToggleSwitch.Style><Style TargetType="ToggleSwitch">

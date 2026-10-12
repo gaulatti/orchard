@@ -27,6 +27,17 @@ public sealed partial class SwitchesFixture : UserControl
         UpdateLayout();
         await Task.Delay(100);
         await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"switch-initial-{scheme}.png"));
+        await MainWindow.CaptureElementAsync(XamlRoot.Content, Path.Combine(folder, $"switch-context-{scheme}.png"));
+        await File.WriteAllTextAsync(Path.Combine(folder, $"switch-initial-measurements-{scheme}.json"),
+            JsonSerializer.Serialize(Rows.Children.OfType<BleeckerSwitch>().Select(control =>
+            {
+                var label = Find<TextBlock>(control, "PART_Label");
+                var native = Find<ToggleSwitch>(control, "PART_Switch");
+                return new { control.Name, control.ActualWidth, control.ActualHeight, desiredWidth = control.DesiredSize.Width,
+                    desiredHeight = control.DesiredSize.Height, nativeWidth = native.ActualWidth, nativeHeight = native.ActualHeight,
+                    label = new { label.Text, label.ActualWidth, label.ActualHeight, desiredWidth = label.DesiredSize.Width,
+                        desiredHeight = label.DesiredSize.Height, slot = Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(label).ToString() } };
+            }), new JsonSerializerOptions { WriteIndented = true }));
         foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Off);
         var toggle = (IToggleProvider)peer.GetPattern(PatternInterface.Toggle);
@@ -135,6 +146,8 @@ public sealed partial class SwitchesFixture : UserControl
             Require(Math.Abs(gap - 12) < .01, $"Switch label gap differs: {control.Name}, gap={gap:R}.");
         }
         if (control.Name == "LongLabel") Require(control.ActualHeight == 80, $"Long switch label differs from its four 20px reference lines: {control.ActualHeight:R}.");
+        if (control.Name == "Off") Require(control.ActualHeight == 20 && label.DesiredSize.Height == 20 && label.ActualWidth > 120,
+            $"First-display switch label wrapped or clipped despite available width: control={control.ActualWidth:R}x{control.ActualHeight:R}, label={label.ActualWidth:R}x{label.ActualHeight:R}, desired={label.DesiredSize}.");
     }
 
     private async Task VerifyLifecycleAsync(BleeckerColorScheme scheme)
@@ -147,12 +160,20 @@ public sealed partial class SwitchesFixture : UserControl
         oldNative.IsOn = true;
         Require(!Off.IsOn, "Detached native switch still changed consumer state.");
         VerifyPresentation(Off, scheme);
-        Rows.Children.Remove(Off);
-        await WaitAsync(() => !Off.IsLoaded, "Switch did not unload.");
+        var unloaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        void OnUnloaded(object sender, RoutedEventArgs args) => unloaded.TrySetResult();
+        Off.Unloaded += OnUnloaded;
+        try { Rows.Children.Remove(Off); await unloaded.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { Off.Unloaded -= OnUnloaded; }
+        Require(!Off.IsLoaded, "Switch did not unload.");
         Require(ElementCompositionPreview.GetElementChildVisual(Find<Grid>(Off, "PART_ShadowHost")) is null, "Unloaded switch retained its composition shadow.");
         Off.IsOn = true;
-        Rows.Children.Insert(1, Off);
-        await WaitAsync(() => Off.IsLoaded, "Switch did not reload.");
+        var loaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        void OnLoaded(object sender, RoutedEventArgs args) => loaded.TrySetResult();
+        Off.Loaded += OnLoaded;
+        try { Rows.Children.Insert(1, Off); await loaded.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { Off.Loaded -= OnLoaded; }
+        Require(Off.IsLoaded, "Switch did not reload.");
         UpdateLayout();
         await SettleAsync(Off, true);
         VerifyPresentation(Off, scheme);

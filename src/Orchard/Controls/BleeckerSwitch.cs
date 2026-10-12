@@ -126,6 +126,16 @@ public sealed class BleeckerSwitch : Control
     }
 
     private void UpdateLabel() { if (label is not null) label.Visibility = string.IsNullOrEmpty(Label) ? Visibility.Collapsed : Visibility.Visible; }
+    protected override Windows.Foundation.Size MeasureOverride(Windows.Foundation.Size availableSize)
+    {
+        if (label is null) return base.MeasureOverride(availableSize);
+        // Inline-flex prefers the full label width and wraps only when bounded.
+        // A wrapping TextBlock in a star column can instead report its shortest
+        // word width on first display, then clip after the final narrow arrange.
+        label.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
+        var preferredWidth = 36 + (string.IsNullOrEmpty(Label) ? 0 : label.DesiredSize.Width);
+        return base.MeasureOverride(new Windows.Foundation.Size(Math.Min(availableSize.Width, preferredWidth), availableSize.Height));
+    }
     private void OnColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => { UpdateVisuals(false); UpdateShadow(); });
     private void OnMotionChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(() => UpdateVisuals(false));
 

@@ -29,7 +29,15 @@ The track is 36×20px, with a 1px border and 10px radius. The white thumb is
 16×16px, inset 2px, and moves 16px when on. The label uses bundled Encode Sans
 medium, 14px/20px with a 12px gap. It wraps beside the vertically centered track.
 There is one source size and no visual variant API. Disabled content has 50%
-opacity; hover and press retain the same colors and geometry. The source's
+opacity; hover and press retain the same colors and geometry.
+
+The control measures the label at its preferred width, then constrains the row
+to available space before the final wrapped measure. This follows source
+inline-flex sizing and prevents the star column from shrinking an ordinary
+label to its longest word and clipping it during first arrangement. The native
+input stretches to the wrapper's allocation. The runtime fixture checks the
+initial single-line label and the four-line 200px label separately.
+The source's
 hidden checkbox has no visible focus treatment, so the template does not add a
 Windows stock focus ring. Keyboard focus visibility remains an acceptance gap.
 
@@ -70,6 +78,8 @@ The independent NuGet consumer also instantiates and toggles the control.
 Runtime evidence must be collected before these checks are claimed as passed.
 The mounted fixture also switches appearance in place and verifies the off/on,
 disabled and edge-case palette while retaining every consumer Boolean value.
+Unload verification waits for the actual Unloaded event before checking that the
+composition shadow has detached; IsLoaded can become false before event cleanup.
 The dedicated hosted CI desktop additionally sends actual Space/Tab and pointer
 input to its own foreground catalog window, verifying label/track activation,
 disabled rejection and RTL activation. Local smoke checks omit physical input
