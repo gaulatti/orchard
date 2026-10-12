@@ -2,9 +2,9 @@
 
 The catalog fixtures and independent NuGet consumer at commit `5412997` passed
 on both x64 and native ARM64. That baseline covers 18 in-progress inventory
-entries. The added Switch preview raises the current inventory to 19 in-progress
-and 93 pending entries. Its x64 catalog and package-consumer checks have passed;
-its additional ARM64 desktop checks are still being verified.
+entries. The added Switch and Checkbox previews raise the current inventory to
+20 in-progress and 92 pending entries. Their x64 catalog and package-consumer
+checks have passed; the additional ARM64 desktop checks are still being verified.
 No component has full visual, input, accessibility and scaling acceptance.
 
 ## Switch x64 runtime

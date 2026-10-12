@@ -238,6 +238,21 @@ Pointer movement now uses SendInput with absolute virtual-desktop coordinates,
 matching the physical button/keyboard input path. Every movement records the
 requested and actual position and owned-window hit, and rejects a missed target.
 This change requires a new native run; the rendered focus fix remains unverified.
+At `3485f52`, the complete x64 catalog and independent NuGet consumer pass.
+The native ARM64 Light checkbox also passes with animations enabled, including
+hover/held press/exit, keyboard/pointer activation, commands and lifecycle.
+The ARM64 run later fails Dark Input validation before its Dark checkbox or
+independent consumer. This does not replace the shared full-runtime baseline.
+Composed pixel checks verify the focus ring at both box edges and the inner
+offset on x64 Light/Dark and ARM64 Light. All 48 Light font-probe dimensions
+agree across architectures. Explicit Segoe UI retains the regular Arabic
+appearance at 500, while the browser's medium text is heavier; selecting that
+family alone does not resolve the gap. The comparison is retained at
+`artifacts/checkbox-arabic-family-comparison-Light.png`.
+The rich-content reports now inspect native default names with the fixture's
+explicit override temporarily removed and restored. These diagnostic names
+cover direct TextBlock content, a consumer data template and live template data;
+they do not establish complete accessibility acceptance.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

@@ -85,6 +85,7 @@ public sealed partial class CheckboxesFixture : UserControl
             AutomationProperties.SetName(Default, "");
             Default.Content = "Enable notifications"; Default.Description = "Send alerts when a device starts playback.";
             var richLabel = Rich.Content; var richDescription = Rich.Description;
+            richSamples.Add(new { phase = "rich-default-name", accessibleName = InspectDefaultName(Rich) });
             Require(ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichLabel").Content, richLabel) &&
                 ReferenceEquals(Find<ContentPresenter>(Rich, "PART_RichDescription").Content, richDescription), "Checkbox replaced consumer-owned rich content.");
             verifiedSteps.Add("Live text, explicit accessible name and consumer rich-content identity");
@@ -107,7 +108,7 @@ public sealed partial class CheckboxesFixture : UserControl
                 Rich.Content = data; Rich.ContentTemplate = template; UpdateLayout();
                 await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == data.Title && Find<TextBlock>(Rich, "ConsumerDetails").Text == data.Details,
                     "Consumer template bindings did not reach the owned data.");
-                var templateSnapshot = new { phase = "data-template", row = Measure(Rich),
+                var templateSnapshot = new { phase = "data-template", row = Measure(Rich), accessibleName = InspectDefaultName(Rich),
                     title = MeasureRichContent(Find<TextBlock>(Rich, "ConsumerTitle")), details = MeasureRichContent(Find<TextBlock>(Rich, "ConsumerDetails")),
                     contextType = Find<TextBlock>(Rich, "ConsumerTitle").DataContext?.GetType().FullName };
                 richSamples.Add(templateSnapshot);
@@ -126,6 +127,7 @@ public sealed partial class CheckboxesFixture : UserControl
                     "Removing the consumer style did not restore the branded line defaults.");
                 Rich.Content = data with { Title = "Updated template label" }; UpdateLayout();
                 await WaitAsync(() => Find<TextBlock>(Rich, "ConsumerTitle").Text == "Updated template label", "Updated consumer data did not reach the label template.");
+                richSamples.Add(new { phase = "updated-template-name", accessibleName = InspectDefaultName(Rich) });
                 verifiedSteps.Add("Consumer rich styles, local line height and data templates");
             }
             finally
@@ -584,6 +586,23 @@ public sealed partial class CheckboxesFixture : UserControl
         ? new { text.Text, text.ActualWidth, text.ActualHeight, text.LineHeight,
             strategy = text.LineStackingStrategy.ToString(), family = text.FontFamily.Source, weight = text.FontWeight.Weight }
         : null;
+    private static object InspectDefaultName(BleeckerCheckbox control)
+    {
+        // The fixture owns this explicit Name. Observe the native default
+        // without permanently masking it or modifying consumer content.
+        var localName = control.ReadLocalValue(AutomationProperties.NameProperty);
+        try
+        {
+            AutomationProperties.SetName(control, "");
+            return new { name = FrameworkElementAutomationPeer.CreatePeerForElement(control).GetName() };
+        }
+        catch (Exception error) { return new { error = error.ToString() }; }
+        finally
+        {
+            if (localName == DependencyProperty.UnsetValue) control.ClearValue(AutomationProperties.NameProperty);
+            else control.SetValue(AutomationProperties.NameProperty, localName);
+        }
+    }
     private static object DescribeTemplate(BleeckerCheckbox control, string phase) => new
     {
         control.Name, phase, templateIsNull = control.Template is null,

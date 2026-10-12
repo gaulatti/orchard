@@ -241,3 +241,13 @@ The independent x64 consumer passes at
 `artifacts/package-consumer-input-shadow-final`, including packaged resources,
 fonts, both themes and a native action. Package SHA-256:
 `e68523aedf7a509cc0a31efa38c781fd4ed9169d980e094eedbcf6db59543b7e`.
+
+At `3485f52`, the x64 catalog and independent consumer pass. Native ARM64
+passes Light Input and the later Light Checkbox/Switch checks, then fails
+Dark Input's disabled-to-enabled validation check. The assertion still requires
+the enabled error border and full editor opacity. The fixture now retains
+`input-disabled-validation-{Light,Dark}.json` and element captures, including
+the requested/current visual states, focus owner, palette and rendered
+brushes/opacity at each transition and on failure. These diagnostics distinguish
+an unexpected hover/focus state from unsettled motion without changing or
+weakening the acceptance criterion. No product styling changes accompany them.

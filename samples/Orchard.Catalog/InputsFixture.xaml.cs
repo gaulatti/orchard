@@ -40,7 +40,7 @@ public sealed partial class InputsFixture : UserControl
         MediumInput.Text = "";
         ReadOnlyInput.Focus(FocusState.Keyboard);
         VerifyDynamicGeometry();
-        await VerifyDisabledErrorAsync(scheme);
+        await VerifyDisabledErrorAsync(scheme, folder);
         await VerifyLiveThemesAsync(scheme);
         await VerifyMotionAsync(scheme, folder);
         await VerifyShadowLifecycleAsync();
@@ -161,25 +161,55 @@ public sealed partial class InputsFixture : UserControl
         Require(condition(), $"{message} {details?.Invoke()}");
     }
 
-    private async Task VerifyDisabledErrorAsync(BleeckerColorScheme scheme)
+    private async Task VerifyDisabledErrorAsync(BleeckerColorScheme scheme, string folder)
     {
         var editor = Find<Grid>(DisabledErrorInput, "Editor");
         var border = Find<Border>(DisabledErrorInput, "BorderElement");
         var expectedBackground = scheme == BleeckerColorScheme.Dark ? "#A60D1821" : "#A6F9F6F2";
-        Require(Hex(border.Background) == expectedBackground && Hex(Find<Border>(DisabledInput, "BorderElement").Background) == expectedBackground,
-            "Disabled inputs must use light-sand at 65% alpha before editor opacity, with or without validation.");
-        Require(Math.Abs(editor.Opacity - .6) < .000001, "Disabled error input lost its opacity.");
-        Require(Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Disabled error input lost its error border.");
-        DisabledErrorInput.IsError = false;
-        await AwaitAsync(() => Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"], "Disabled validation did not clear.");
-        Require(Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"] && Math.Abs(editor.Opacity - .6) < .000001,
-            "Clearing disabled validation retained the error border or removed disabled opacity.");
-        DisabledErrorInput.IsError = true;
-        DisabledErrorInput.IsEnabled = true;
-        await AwaitAsync(() => Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabled validation did not settle.");
-        Require(Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
-        DisabledErrorInput.IsEnabled = false;
-        await AwaitAsync(() => Math.Abs(editor.Opacity - .6) < .000001 && Hex(border.Background) == expectedBackground, "Disabled opacity and background did not settle.");
+        var samples = new List<object>();
+        var passed = false;
+        object Snapshot(string phase)
+        {
+            var root = (FrameworkElement)VisualTreeHelper.GetChild(DisabledErrorInput, 0);
+            var palette = Find<Border>(DisabledErrorInput, "InputPalette");
+            var focused = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement;
+            return new { phase, scheme, DisabledErrorInput.IsEnabled, DisabledErrorInput.IsError,
+                focus = DisabledErrorInput.FocusState.ToString(), focusedElement = focused?.Name,
+                editorOpacity = editor.Opacity, border = Hex(border.BorderBrush), background = Hex(border.Background),
+                paletteBorder = Hex(palette.BorderBrush), paletteOpacity = palette.Opacity,
+                states = VisualStateManager.GetVisualStateGroups(root).Select(group =>
+                    new { group.Name, current = group.CurrentState?.Name }).ToArray() };
+        }
+        string Details() => System.Text.Json.JsonSerializer.Serialize(Snapshot("wait-failed"));
+        try
+        {
+            samples.Add(Snapshot("initial-disabled-error"));
+            Require(Hex(border.Background) == expectedBackground && Hex(Find<Border>(DisabledInput, "BorderElement").Background) == expectedBackground,
+                "Disabled inputs must use light-sand at 65% alpha before editor opacity, with or without validation.");
+            Require(Math.Abs(editor.Opacity - .6) < .000001, "Disabled error input lost its opacity.");
+            Require(Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Disabled error input lost its error border.");
+            DisabledErrorInput.IsError = false;
+            await AwaitAsync(() => Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"], "Disabled validation did not clear.", Details);
+            samples.Add(Snapshot("disabled-error-cleared"));
+            Require(Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"] && Math.Abs(editor.Opacity - .6) < .000001,
+                "Clearing disabled validation retained the error border or removed disabled opacity.");
+            DisabledErrorInput.IsError = true;
+            DisabledErrorInput.IsEnabled = true;
+            samples.Add(Snapshot("enabled-error-requested"));
+            await AwaitAsync(() => Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabled validation did not settle.", Details);
+            samples.Add(Snapshot("enabled-error-settled"));
+            Require(Math.Abs(editor.Opacity - 1) < .000001 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
+            DisabledErrorInput.IsEnabled = false;
+            await AwaitAsync(() => Math.Abs(editor.Opacity - .6) < .000001 && Hex(border.Background) == expectedBackground, "Disabled opacity and background did not settle.", Details);
+            passed = true;
+        }
+        finally
+        {
+            samples.Add(Snapshot("final"));
+            await System.IO.File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"input-disabled-validation-{scheme}.json"),
+                System.Text.Json.JsonSerializer.Serialize(new { passed, samples }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+            await MainWindow.CaptureElementAsync(DisabledErrorInput, System.IO.Path.Combine(folder, $"input-disabled-validation-{scheme}.png"));
+        }
     }
 
     private async Task VerifyMotionAsync(BleeckerColorScheme scheme, string folder)
