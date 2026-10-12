@@ -79,6 +79,7 @@ public sealed partial class MainWindow : Window
                 $"Primary action does not use the Bleecker theme: requested={theme}, actual={CatalogRoot.ActualTheme}, background={DescribeBrush(PrimaryAction.Background)}, expected={BleeckerTokens.Colors(scheme)["primary"]}.");
             await VerifyButtonStatesAsync(PrimaryAction, scheme);
             await VerifyButtonStatesAsync(DisabledAction, scheme, disabled: true);
+            VerifyButtonGroup();
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing font: {font}");
@@ -103,6 +104,37 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private void VerifyButtonGroup()
+    {
+        var first = (Button)ActionGroup.Children[0];
+        var middle = (Button)ActionGroup.Children[1];
+        var last = (Button)ActionGroup.Children[2];
+        var radius = BleeckerTokens.Radii["button"];
+        Require(first.CornerRadius.TopLeft == radius && first.CornerRadius.TopRight == 0,
+            "Horizontal group first corners are incorrect.");
+        Require(middle.CornerRadius == new CornerRadius(0) && first.BorderThickness.Right == 0 && last.BorderThickness.Right == 1,
+            "Group internal corners/borders are incorrect.");
+        Require(FrameworkElementAutomationPeer.CreatePeerForElement(ActionGroup)?.GetAutomationControlType() == AutomationControlType.Group,
+            "Button group has no accessible group role.");
+        Require(!last.IsEnabled, "Group enabled a disabled action.");
+        last.Visibility = Visibility.Collapsed;
+        ActionGroup.UpdateLayout();
+        Require(middle.CornerRadius.TopRight == radius && middle.BorderThickness.Right == 1,
+            "Collapsed action left an internal edge at the end of the group.");
+        last.Visibility = Visibility.Visible;
+        ActionGroup.Orientation = Orientation.Vertical;
+        ActionGroup.UpdateLayout();
+        Require(first.CornerRadius.TopRight == radius && first.CornerRadius.BottomLeft == 0 && first.BorderThickness.Bottom == 0,
+            "Vertical group did not update its edges.");
+        ActionGroup.Orientation = Orientation.Horizontal;
+        ActionGroup.Width = 280;
+        ActionGroup.UpdateLayout();
+        Require(first.ActualWidth + middle.ActualWidth + last.ActualWidth <= 281,
+            "Constrained group overflowed its available width.");
+        ActionGroup.ClearValue(FrameworkElement.WidthProperty);
+        ActionGroup.UpdateLayout();
     }
 
     private static async Task VerifyButtonStatesAsync(Button button, BleeckerColorScheme scheme, bool disabled = false)

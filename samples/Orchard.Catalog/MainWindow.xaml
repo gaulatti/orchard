@@ -2,6 +2,7 @@
     x:Class="Orchard.Catalog.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard"
     Title="orchard · Windows component catalog">
     <Grid x:Name="CatalogRoot" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
@@ -41,6 +42,15 @@
                         <Button x:Name="DisabledAction" Content="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerPrimaryButtonStyle}" />
                     </StackPanel>
                     <TextBlock x:Name="ActionResult" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite" />
+                    <orchard:BleeckerButtonGroup x:Name="ActionGroup" HorizontalAlignment="Left" AutomationProperties.Name="View actions">
+                        <Button Content="Overview" Style="{StaticResource BleeckerSecondaryButtonStyle}" Click="OnPrimaryAction" />
+                        <Button Content="Details" Style="{StaticResource BleeckerSecondaryButtonStyle}" Click="OnPrimaryAction" />
+                        <Button Content="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                    </orchard:BleeckerButtonGroup>
+                    <orchard:BleeckerButtonGroup Orientation="Vertical" HorizontalAlignment="Left" AutomationProperties.Name="Editorial actions">
+                        <Button Content="Review" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                        <Button Content="Archive" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                    </orchard:BleeckerButtonGroup>
                 </StackPanel>
                 <StackPanel Spacing="12">
                     <TextBlock Text="Inputs" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />

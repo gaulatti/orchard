@@ -7,5 +7,7 @@
     "BleeckerTextBoxStyle": "MainWindow.xaml",
     "BleeckerComboBoxStyle": "MainWindow.xaml"
   },
-  "controls": {}
+  "controls": {
+    "BleeckerButtonGroup": "MainWindow.xaml"
+  }
 }

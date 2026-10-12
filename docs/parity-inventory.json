@@ -369,14 +369,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerButtonGroup.cs"],
+      "catalogFixtures": ["samples/Orchard.Catalog/MainWindow.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/MainWindow.xaml.cs: VerifyButtonGroup"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Verify child removal and binding restoration, empty and invalid children",
+        "Add long-label, non-Latin, and interactive state fixtures",
+        "Verify physical keyboard/pointer, Narrator, contrast, text/display scaling and ARM64 runtime"
       ]
     },
     {
