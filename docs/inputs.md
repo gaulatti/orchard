@@ -22,7 +22,7 @@ validate consumer data or yet expose a complete validation accessibility API.
 Use a separate label and description composition. Password masking and native
 HTML input-type adaptations are not provided by this text-editor preview.
 
-The template owns background, border, focus ring and placeholder colors; it
+The template owns background, border, focus ring, shadow and placeholder colors; it
 omits the Windows underline and clear button. The focus palette includes the
 pinned dark error input's blue border/ring. Windows contrast resources provide
 paired system colors, but actual contrast acceptance remains outstanding.
@@ -30,7 +30,7 @@ Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 
 Remaining work includes exact glyph/baseline and scaling comparison, reference
-hover/disabled precedence, error semantics, shadows, motion/reduced motion,
+hover/disabled precedence, error semantics, shadow raster comparison, motion/reduced motion,
 live theme and brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
@@ -59,3 +59,18 @@ also changes each size with adornments removed and restored, and checks that
 presentation changes retain native text selection.
 These checks pass in both themes at `artifacts/smoke-input-states`; the retained
 captures include the disabled invalid example. x64 publish and ARM64 build pass.
+
+The shadow preview uses the pinned rest `0 1px 2px rgba(26,55,77,.025)` and
+enabled hover `0 3px 10px -8px rgba(26,55,77,.25)` values. A Composition
+DropShadow uses a rounded alpha mask; hover contracts that mask by 8px per side.
+The mask source does not paint an extra background layer. The shadow follows
+editor geometry, rebuilds on corner-radius changes and clears on unload.
+Windows contrast mode suppresses decorative shadows. Reference blur/raster
+equivalence, contrast switching and the 190ms shadow transition remain
+unaccepted; exact parameter values alone do not establish visual parity.
+
+`artifacts/smoke-input-shadow` passes rest shadow parameters, editor resizing
+and unload/reload cleanup in both themes. x64 publish, ARM64 build and 13
+unit/coverage tests pass. The live light-theme hover capture is retained at
+`artifacts/input-light-hover-shadow.jpg`; it is a rendering checkpoint, not
+an exact blur comparison or motion acceptance.

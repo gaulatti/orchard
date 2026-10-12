@@ -6,13 +6,14 @@ namespace Orchard;
 public enum BleeckerInputSize { Small, Medium, Large }
 
 /// <summary>A single-line Bleecker text editor with decorative consumer-owned adornments.</summary>
-public sealed class BleeckerInput : TextBox
+public sealed partial class BleeckerInput : TextBox
 {
     private bool pointerOver;
 
     public BleeckerInput()
     {
         DefaultStyleKey = typeof(BleeckerInput);
+        InitializeShadow();
         PointerEntered += (_, _) => { pointerOver = true; UpdateAppearance(); };
         PointerExited += (_, _) => { pointerOver = false; UpdateAppearance(); };
         GotFocus += (_, _) => UpdateAppearance();
@@ -36,6 +37,7 @@ public sealed class BleeckerInput : TextBox
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
+        ApplyShadowTemplate();
         UpdateGeometry();
         UpdateAppearance();
     }
@@ -60,5 +62,6 @@ public sealed class BleeckerInput : TextBox
         var state = !IsEnabled ? "InputDisabled" : FocusState != FocusState.Unfocused ? "InputFocused" : pointerOver ? "InputHovered" : "InputNormal";
         if (IsError) state += "Error";
         VisualStateManager.GoToState(this, state, false);
+        UpdateShadow();
     }
 }

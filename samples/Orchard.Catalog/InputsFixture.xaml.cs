@@ -2,6 +2,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Composition;
 
 namespace Orchard.Catalog;
 
@@ -39,7 +41,52 @@ public sealed partial class InputsFixture : UserControl
         ReadOnlyInput.Focus(FocusState.Keyboard);
         VerifyDynamicGeometry();
         VerifyDisabledError(scheme);
+        await VerifyShadowLifecycleAsync();
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
+    }
+
+    private async Task VerifyShadowLifecycleAsync()
+    {
+        var panel = (StackPanel)Content;
+        var input = new BleeckerInput { Width = 240, InputSize = BleeckerInputSize.Small, Text = "Shadow lifecycle" };
+        panel.Children.Add(input);
+        UpdateLayout();
+        await AwaitAsync(() => input.IsLoaded && Shadow(input) is not null, "Input shadow was not attached.");
+        CheckRestShadow(input, 240, 36);
+        input.Width = 180;
+        input.InputSize = BleeckerInputSize.Large;
+        UpdateLayout();
+        await AwaitAsync(() => Shadow(input)?.Size == new System.Numerics.Vector2(180, 44), "Input shadow did not resize with the editor.");
+        CheckRestShadow(input, 180, 44);
+        var shadowHost = Find<Grid>(input, "InputShadowHost");
+        panel.Children.Remove(input);
+        await AwaitAsync(() => !input.IsLoaded && ElementCompositionPreview.GetElementChildVisual(shadowHost) is null, "Unloaded input retained its shadow visual.");
+        panel.Children.Add(input);
+        UpdateLayout();
+        await AwaitAsync(() => input.IsLoaded && Shadow(input) is not null, "Reloaded input did not restore its shadow.");
+        CheckRestShadow(input, 180, 44);
+        panel.Children.Remove(input);
+        UpdateLayout();
+
+        static SpriteVisual? Shadow(BleeckerInput control) =>
+            ElementCompositionPreview.GetElementChildVisual(Find<Grid>(control, "InputShadowHost")) as SpriteVisual;
+        static void CheckRestShadow(BleeckerInput control, float width, float height)
+        {
+            var sprite = Shadow(control)!;
+            var shadow = (DropShadow)sprite.Shadow;
+            Require(sprite.Size == new System.Numerics.Vector2(width, height) && sprite.Offset == System.Numerics.Vector3.Zero &&
+                shadow.BlurRadius == 2 && shadow.Offset == new System.Numerics.Vector3(0, 1, 0) &&
+                Math.Abs(shadow.Opacity - .025) < .000001 && shadow.Mask is not null &&
+                shadow.Color.R == 26 && shadow.Color.G == 55 && shadow.Color.B == 77,
+                "Input rest shadow differs from the pinned reference.");
+        }
+    }
+
+    private async Task AwaitAsync(Func<bool> condition, string message)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); await Task.Delay(16); }
+        Require(condition(), message);
     }
 
     private void VerifyDisabledError(BleeckerColorScheme scheme)
