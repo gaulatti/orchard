@@ -221,6 +221,29 @@ sample measures roughly 73px natively versus 91px in the Windows browser
 reference. Candidate-font comparisons are diagnostic only; no inferred font
 mapping has been added. Full Input acceptance remains open.
 
+The subsequent equal-input comparison (`artifacts/input-japanese-equal-inputs.jpg`
+and `input-japanese-equal-comparison.json`) corrects the earlier comparison of
+inputs against plain spans. In identical 13px input boxes, the browser's Segoe UI
+fallback path matches the reference with mean squared grayscale pixel error
+0.051, versus approximately 962 for Microsoft YaHei UI and 971 for Yu Gothic.
+Per-glyph inspection indicates different sources for kanji and kana; this is
+rendering evidence, not an authoritative identification of the actual font faces.
+The reference document language is `en` and the native input language is `en-US`.
+
+`InputsFixture.FontFallback.cs` retains diagnostic candidate chains without
+changing production typography. The focused runtime run at
+`artifacts/smoke-input-fallback-probe` measures widths 73/79/84px for the default
+and appended Segoe UI chains at small/medium/large. Appending Microsoft YaHei UI
+and Yu Gothic yields 91/98/105px, but its glyph shapes differ from the reference.
+Matching advance width therefore does not establish fallback parity. These
+captures and measurements are observations, not acceptance gates. The fixture
+restores the original font and text after the probe.
+The finalized probe passes the focused Input runtime suite at
+`artifacts/smoke-input-fallback-final`; x64 publish and ARM64 compilation pass.
+No production component or package font mapping changed in this diagnostic
+checkpoint. The preceding direction correction passed both GitHub CI jobs in
+run `38254665170`.
+
 Verification: focused Input and full catalog runtime suites pass at
 `artifacts/smoke-input-direction-final` and
 `artifacts/smoke-input-direction-integration`; all 13 tests, token drift check,
