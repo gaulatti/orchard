@@ -9,7 +9,7 @@
             <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
             <StackPanel Spacing="8">
                 <orchard:BleeckerButton Content="Primary" AutomationProperties.Name="Primary" />
-                <orchard:BleeckerButton Variant="Secondary" Content="Secondary" />
+                <orchard:BleeckerButton x:Name="NamedAction" Variant="Secondary" Content="Secondary" />
                 <orchard:BleeckerButton Variant="Outline" Content="Outline" />
                 <orchard:BleeckerButton Variant="Subtle" Content="Subtle" />
             </StackPanel>

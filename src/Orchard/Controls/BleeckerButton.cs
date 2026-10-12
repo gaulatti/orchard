@@ -20,7 +20,13 @@ public sealed class BleeckerButton : ContentControl
     private ResourceDictionary? palette;
     private bool pointerOver;
 
-    public BleeckerButton() => DefaultStyleKey = typeof(BleeckerButton);
+    public BleeckerButton()
+    {
+        DefaultStyleKey = typeof(BleeckerButton);
+        RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateAccessibleName());
+        RegisterPropertyChangedCallback(AutomationProperties.NameProperty, (_, _) => UpdateAccessibleName());
+        RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty, (_, _) => UpdateAccessibleName());
+    }
 
     public static readonly DependencyProperty VariantProperty = DependencyProperty.Register(
         nameof(Variant), typeof(BleeckerButtonVariant), typeof(BleeckerButton),
@@ -69,11 +75,23 @@ public sealed class BleeckerButton : ContentControl
         action.PointerExited += OnPointerExited;
         action.IsEnabledChanged += OnActionEnabledChanged;
         action.Loaded += OnActionLoaded;
+        UpdateAccessibleName();
         ApplyVariant();
     }
 
     private static void OnVariantChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args) => ((BleeckerButton)owner).ApplyVariant();
     private static void OnPresentationChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args) => ((BleeckerButton)owner).ApplyPresentation();
+
+    private void UpdateAccessibleName()
+    {
+        if (action is null) return;
+        var explicitName = AutomationProperties.GetName(this);
+        var label = AutomationProperties.GetLabeledBy(this);
+        AutomationProperties.SetLabeledBy(action, label);
+        // The internal Grid is implementation detail, not the action's label.
+        AutomationProperties.SetName(action, !string.IsNullOrEmpty(explicitName) ? explicitName
+            : label is not null ? "" : Content as string ?? "");
+    }
 
     private void ApplyVariant()
     {

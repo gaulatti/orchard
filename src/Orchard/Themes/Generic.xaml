@@ -39,7 +39,6 @@
                     <Button x:Name="PART_Action" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                             CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}"
                             Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}"
-                            AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}"
                             AutomationProperties.HelpText="{TemplateBinding AutomationProperties.HelpText}">
                         <Grid>
                             <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>

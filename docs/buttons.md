@@ -22,6 +22,8 @@ For custom icon content, supply an accessible name. For long text, use a wrappin
 
 ## Verification
 
+String content supplies the native action's accessible name and stays synchronized with content bindings. `AutomationProperties.Name` overrides that default; `AutomationProperties.LabeledBy` can supply an external label. Set an explicit localized name or label for complex/icon content. These properties are forwarded to the inner action without replacing consumer bindings on the wrapper. Naming behavior is checked through the real UI Automation peer; Narrator acceptance remains separate.
+
 Button text selects `BleeckerPrimaryMediumFontFamily` and weight 500 explicitly. The package includes the real Encode Sans Medium face; no locally installed font is required. Explicit font properties on consumer-owned content retain their normal WinUI precedence.
 
 The catalog registers all variants/sizes, disabled/loading controls, full-width and multilingual wrapping fixtures. Runtime checks cover native command invocation and parameters, loading rejection, restoration of consumer-enabled state without replacing the binding, per-variant rendered colors in both themes, and connected-group integration. `CanExecuteChanged` is verified in both directions, including loading and size changes while execution is forbidden. A replacement template is instantiated and its native action is invoked to verify exactly one command and Click event, then the original template is restored. The independent package consumer instantiates the custom control, loads its template and per-variant resources, and invokes its Click event.

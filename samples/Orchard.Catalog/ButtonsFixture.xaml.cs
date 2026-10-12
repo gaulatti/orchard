@@ -26,6 +26,30 @@ public sealed partial class ButtonsFixture : UserControl
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme)
     {
+        NamedAction.ApplyTemplate();
+        var namedNative = Find<Button>(NamedAction)!;
+        var namedPeer = new ButtonAutomationPeer(namedNative);
+        Require(namedPeer.GetName() == "Secondary", "Text content did not supply the native accessible name.");
+        var resultBeforeNameCheck = ButtonResult.Text;
+        NamedAction.SetBinding(ContentControl.ContentProperty, new Microsoft.UI.Xaml.Data.Binding
+        {
+            Source = ButtonResult, Path = new PropertyPath("Text")
+        });
+        ButtonResult.Text = "Review translated story";
+        Require(namedPeer.GetName() == "Review translated story", "Bound content updates did not reach the accessible name.");
+        AutomationProperties.SetName(NamedAction, "Review story details");
+        ButtonResult.Text = "Updated visible label";
+        Require(namedPeer.GetName() == "Review story details", "Visible text replaced an explicit accessible name.");
+        Require(NamedAction.GetBindingExpression(ContentControl.ContentProperty) is not null, "Naming replaced the consumer content binding.");
+        AutomationProperties.SetName(NamedAction, "");
+        Require(namedPeer.GetName() == "Updated visible label", "Clearing an explicit name did not restore the visible label.");
+        NamedAction.ClearValue(ContentControl.ContentProperty);
+        NamedAction.Content = "Secondary";
+        AutomationProperties.SetLabeledBy(NamedAction, ButtonResult);
+        Require(namedPeer.GetName() == "Updated visible label", "External labeling did not reach the native action.");
+        AutomationProperties.SetLabeledBy(NamedAction, null);
+        Require(namedPeer.GetName() == "Secondary", "Removing an external label did not restore content naming.");
+        ButtonResult.Text = resultBeforeNameCheck;
         LoadingAction.ApplyTemplate();
         var native = Find<Button>(LoadingAction) ?? throw new InvalidOperationException("BleeckerButton has no native action.");
         var peer = new ButtonAutomationPeer(native);

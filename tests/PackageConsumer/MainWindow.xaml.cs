@@ -40,6 +40,7 @@ public sealed partial class MainWindow : Window
                 PackageAction.ApplyTemplate();
                 var native = VisualTreeHelper.GetChild(PackageAction, 0) as Button;
                 Require(native is not null && native.ActualWidth > 0, "Packaged component template did not load.");
+                Require(new ButtonAutomationPeer(native!).GetName() == "Package component", "Packaged text action lost its accessible name.");
                 Require(native!.FontWeight.Weight == 500 && native.FontFamily.Source.Contains("EncodeSans-Medium.ttf#Encode Sans"),
                     "Packaged component did not resolve the bundled medium font.");
                 Require(PackageIcon.ActualWidth == 40 && PackageIcon.ActualHeight == 40, "Packaged icon control did not lay out.");
