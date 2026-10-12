@@ -34,6 +34,37 @@
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />
     </Style>
+    <Style x:Key="BleeckerToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource DefaultToggleButtonStyle}">
+        <Setter Property="Background" Value="{ThemeResource ToggleButtonBackground}" />
+        <Setter Property="Foreground" Value="{ThemeResource ToggleButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource ToggleButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinHeight" Value="36" />
+        <Setter Property="Padding" Value="12,6" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="BleeckerSmallToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource BleeckerToggleStyle}">
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Padding" Value="10,4" />
+    </Style>
+    <Style x:Key="BleeckerLargeToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource BleeckerToggleStyle}">
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Padding" Value="16,6" />
+    </Style>
+    <Style x:Key="BleeckerOutlineToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource BleeckerToggleStyle}">
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style x:Key="BleeckerSmallOutlineToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource BleeckerSmallToggleStyle}">
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style x:Key="BleeckerLargeOutlineToggleStyle" TargetType="ToggleButton" BasedOn="{StaticResource BleeckerLargeToggleStyle}">
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
     <Style x:Key="BleeckerTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
         <Setter Property="FontFamily" Value="{StaticResource BleeckerSecondaryFontFamily}" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerUiCornerRadius}" />

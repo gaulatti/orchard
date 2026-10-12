@@ -87,7 +87,7 @@ Every interactive entry additionally requires hover, pressed, focus, selection a
 | sonner | Pending | Pending | Full pinned contract |
 | switch | Pending | Pending | Full pinned contract |
 | textarea | Pending | Pending | Full pinned contract |
-| toggle | Pending | Pending | Full pinned contract |
+| toggle | Six native `ToggleButton` styles | Registered size/variant fixtures; x64 automation/state checks; desktop pointer and Space/Tab; light/dark captures | In progress: Narrator, contrast, scaling, reduced motion, binding/command regressions, ARM64 runtime; see [usage](toggles.md) |
 | toggle-group | Pending | Pending | Full pinned contract |
 | tooltip | Pending | Pending | Full pinned contract |
 | feed-item | Pending | Pending | Full pinned contract |

@@ -80,6 +80,12 @@ public sealed partial class MainWindow : Window
             await VerifyButtonStatesAsync(PrimaryAction, scheme);
             await VerifyButtonStatesAsync(DisabledAction, scheme, disabled: true);
             VerifyButtonGroup();
+            await Toggles.VerifyAsync(scheme);
+            Toggles.StartBringIntoView();
+            await Task.Delay(350);
+            await CaptureAsync(Path.Combine(folder, $"toggles-{theme.ToString().ToLowerInvariant()}.png"));
+            CatalogScroll.ChangeView(null, 0, null, disableAnimation: true);
+            await Task.Delay(100);
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing font: {font}");
@@ -98,7 +104,10 @@ public sealed partial class MainWindow : Window
         await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(
             new { passed = true, actionCount, systemAppearance = true,
                 buttonStates = new[] { "Normal", "PointerOver", "Pressed", "Disabled" },
-                buttonProperties = new[] { "Background", "Foreground", "BorderBrush", "Opacity" }, captures }, new JsonSerializerOptions { WriteIndented = true }));
+                buttonProperties = new[] { "Background", "Foreground", "BorderBrush", "Opacity" },
+                toggles = new { automationOnOff = true, consumerStatePropagation = true, variants = new[] { "default", "outline" },
+                    states = new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Checked", "CheckedPointerOver", "CheckedPressed", "CheckedDisabled" } },
+                captures }, new JsonSerializerOptions { WriteIndented = true }));
     }
 
     private static void Require(bool condition, string message)

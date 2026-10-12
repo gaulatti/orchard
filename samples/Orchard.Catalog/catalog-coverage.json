@@ -5,7 +5,13 @@
     "BleeckerPrimaryButtonStyle": "MainWindow.xaml",
     "BleeckerSecondaryButtonStyle": "MainWindow.xaml",
     "BleeckerTextBoxStyle": "MainWindow.xaml",
-    "BleeckerComboBoxStyle": "MainWindow.xaml"
+    "BleeckerComboBoxStyle": "MainWindow.xaml",
+    "BleeckerToggleStyle": "TogglesFixture.xaml",
+    "BleeckerSmallToggleStyle": "TogglesFixture.xaml",
+    "BleeckerLargeToggleStyle": "TogglesFixture.xaml",
+    "BleeckerOutlineToggleStyle": "TogglesFixture.xaml",
+    "BleeckerSmallOutlineToggleStyle": "TogglesFixture.xaml",
+    "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
     "BleeckerButtonGroup": "MainWindow.xaml"

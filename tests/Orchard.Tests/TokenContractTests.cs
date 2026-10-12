@@ -91,6 +91,7 @@ public sealed class TokenContractTests
         var tokens = XDocument.Load(Fixture("Tokens.g.xaml"));
         var keys = tokens.Descendants().Select(element => (string?)element.Attribute(X + "Key")).Where(key => key is not null).ToHashSet();
         var styles = File.ReadAllText(Fixture("Orchard.xaml"));
+        keys.UnionWith(XDocument.Parse(styles).Descendants().Select(element => (string?)element.Attribute(X + "Key")).Where(key => key is not null));
         foreach (Match reference in Regex.Matches(styles, @"\{(?:StaticResource|ThemeResource) (Bleecker\w+)\}"))
             Assert.IsTrue(keys.Contains(reference.Groups[1].Value), $"Missing resource {reference.Groups[1].Value}");
         var dictionary = XDocument.Parse(styles);

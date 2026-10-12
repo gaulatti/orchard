@@ -1,0 +1,28 @@
+<UserControl
+    x:Class="Orchard.Catalog.TogglesFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Toggles" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Independent on/off actions. Tab to focus; Space to toggle."
+                   Style="{StaticResource BleeckerBodyStyle}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <ToggleButton Content="Small" Style="{StaticResource BleeckerSmallToggleStyle}" />
+            <ToggleButton x:Name="DefaultToggle" Content="Follow updates" Style="{StaticResource BleeckerToggleStyle}" />
+            <ToggleButton Content="Large" IsChecked="True" Style="{StaticResource BleeckerLargeToggleStyle}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <ToggleButton Content="Small outline" Style="{StaticResource BleeckerSmallOutlineToggleStyle}" />
+            <ToggleButton x:Name="OutlineToggle" Content="Pin to workspace" IsChecked="True" Style="{StaticResource BleeckerOutlineToggleStyle}" />
+            <ToggleButton Content="Large outline" Style="{StaticResource BleeckerLargeOutlineToggleStyle}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <ToggleButton x:Name="DisabledToggle" Content="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerToggleStyle}" />
+            <ToggleButton Content="Selected, unavailable" IsChecked="True" IsEnabled="False" Style="{StaticResource BleeckerOutlineToggleStyle}" />
+        </StackPanel>
+        <ToggleButton MaxWidth="260" Style="{StaticResource BleeckerOutlineToggleStyle}" AutomationProperties.Name="Follow international coverage">
+            <TextBlock Text="Follow international coverage · 東京 · São Paulo · القاهرة" TextWrapping="Wrap" />
+        </ToggleButton>
+        <TextBlock x:Name="ToggleResult" Text="Follow updates: off" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite" />
+    </StackPanel>
+</UserControl>

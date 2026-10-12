@@ -53,6 +53,29 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
       xaml += `            <SolidColorBrush x:Key="${name}${state}" Color="${color}" Opacity="${theme === 'HighContrast' ? '1' : opacity}" />\n`;
     }
   }
+  // Native ToggleButton owns input, focus and automation. Cover all of its
+  // template states, including the optional Windows indeterminate state.
+  for (const selection of ['', 'Checked', 'Indeterminate']) {
+    for (const interaction of ['', 'PointerOver', 'Pressed', 'Disabled']) {
+      const selected = selection !== '';
+      const disabled = interaction === 'Disabled';
+      for (const property of ['Background', 'Foreground', 'BorderBrush']) {
+        const key = selected ? 'primary' : property === 'Foreground'
+          ? interaction === 'PointerOver' || interaction === 'Pressed' ? 'textPrimary' : 'textSecondary'
+          : 'sand';
+        let opacity = property === 'Background'
+          ? selected ? (theme === 'Default' ? 0.15 : 0.1) : interaction === '' || disabled ? 0 : 0.1
+          : property === 'BorderBrush' && !selected ? 0.4 : 1;
+        if (disabled) opacity *= 0.5;
+        if (interaction === 'Pressed' && property === 'Background') opacity += 0.06;
+        const systemColor = property === 'Background'
+          ? selected ? 'SystemColorHighlightColor' : 'SystemColorWindowColor'
+          : disabled ? 'SystemColorGrayTextColor' : selected ? 'SystemColorHighlightTextColor' : 'SystemColorWindowTextColor';
+        const color = theme === 'HighContrast' ? `{ThemeResource ${systemColor}}` : argb(colors[key]);
+        xaml += `            <SolidColorBrush x:Key="ToggleButton${property}${selection}${interaction}" Color="${color}" Opacity="${theme === 'HighContrast' ? 1 : opacity}" />\n`;
+      }
+    }
+  }
   xaml += '        </ResourceDictionary>\n';
 }
 xaml += '    </ResourceDictionary.ThemeDictionaries>\n';
