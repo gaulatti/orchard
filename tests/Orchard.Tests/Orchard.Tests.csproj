@@ -8,12 +8,14 @@
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../src/Orchard/Tokens/BleeckerTokens.g.cs" Link="BleeckerTokens.g.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerPointerTransit.cs" Link="BleeckerPointerTransit.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerRoundedPointerHit.cs" Link="BleeckerRoundedPointerHit.cs" />
         <Compile Include="../../src/Orchard/Text/BleeckerTextCasing.cs" Link="BleeckerTextCasing.cs" />
         <Compile Include="../../src/Orchard/Colors/BleeckerColorMix.cs" Link="BleeckerColorMix.cs" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssTransition.cs" Link="BleeckerCssTransition.cs" />
         <EmbeddedResource Include="../../src/Orchard/Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />
         <None Include="../../tokens/bleecker.tokens.json" Link="Fixtures/bleecker.tokens.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SwitchTransitions.json" Link="Fixtures/SwitchTransitions.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CheckboxRoundedHit.json" Link="Fixtures/CheckboxRoundedHit.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Medium.ttf" Link="Fixtures/EncodeSans-Medium.ttf" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Themes/Tokens.g.xaml" Link="Fixtures/Tokens.g.xaml" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Themes/Orchard.xaml" Link="Fixtures/Orchard.xaml" CopyToOutputDirectory="PreserveNewest" />

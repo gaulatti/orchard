@@ -347,11 +347,26 @@ foreground before RTL input. Desktop diagnostics now capture the actual
 foreground process/class/package alongside the owned screen point. Physical
 input still fails if foreground ownership is lost; no other process is targeted.
 
-The pinned browser's rounded box also excludes its extreme corner points from
-the input hit target (`artifacts/checkbox-reference-corner-hit-Light.json`).
-Matching that corner hit region remains open; the current native observer uses
-rectangular box bounds. Border-radius hit testing must not be accepted solely
-from center-point cursor checks.
+The pinned browser's 20×20 rounded box excludes its four extreme integer corner
+pixels from the input hit target. `tests/Reference/CheckboxRoundedHit.json`
+records all 400 integer points plus 16 edge/fractional samples for disabled
+off/on in Light and Dark, measured with `document.elementFromPoint` against the
+actual pinned Checkbox at an integer position. The component is not restyled.
+The native observer now intersects the pointer sample with PART_Box's actual
+corner radii. It uses a 1×1 DIP sample, matching the browser's
+[rounded hit quad](https://raw.githubusercontent.com/chromium/chromium/b428a2ab5f47801213a6973f9911b7c858300306/third_party/blink/renderer/core/layout/hit_test_location.cc)
+and [point rectangle](https://raw.githubusercontent.com/chromium/chromium/b428a2ab5f47801213a6973f9911b7c858300306/third_party/blink/renderer/core/layout/hit_test_location.h).
+A dimensionless circle test would incorrectly exclude the adjacent corner
+pixels that Bleecker includes. Root hit testing still checks clipping,
+visibility and occlusion. Input's full control bounds are unchanged by this fix.
+
+The regression compares all 1,600 captured integer points and 64 edge/fractional
+samples with the library geometry. The physical catalog fixture adds all four
+corner and four adjacent samples for each disabled state in both appearances,
+requiring exact screen coordinates, actual border/opacity and native cursor
+handles. These 16 extra phases bring the interaction matrix to 57 acceptance
+phases per appearance (diagnostic snapshots are not acceptance phases).
+Hosted native verification is required before accepting the rounded boundary.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

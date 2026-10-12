@@ -1,0 +1,531 @@
+{
+  "referenceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "producer": "src/components/checkbox.tsx",
+  "method": "document.elementFromPoint over actual source input at integer placement; no input restyling",
+  "captures": [
+    {
+      "devicePixelRatio": 1,
+      "rows": [
+        {
+          "height": 20,
+          "id": "disabled-off",
+          "mask": [
+            "01111111111111111110",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "01111111111111111110"
+          ],
+          "points": [
+            {
+              "cursor": "auto",
+              "input": false,
+              "x": -1,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": -0.5,
+              "y": 10
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 0,
+              "y": 1
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 19,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 18,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19.5,
+              "y": 19.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 20,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 10,
+              "y": -0.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 10,
+              "y": 20
+            }
+          ],
+          "radius": "4px",
+          "width": 20,
+          "x": 32,
+          "y": 340
+        },
+        {
+          "height": 20,
+          "id": "disabled-on",
+          "mask": [
+            "01111111111111111110",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "01111111111111111110"
+          ],
+          "points": [
+            {
+              "cursor": "auto",
+              "input": false,
+              "x": -1,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": -0.5,
+              "y": 10
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 0,
+              "y": 1
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 19,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 18,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19.5,
+              "y": 19.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 20,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 10,
+              "y": -0.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 10,
+              "y": 20
+            }
+          ],
+          "radius": "4px",
+          "width": 20,
+          "x": 32,
+          "y": 430
+        }
+      ],
+      "theme": "Light"
+    },
+    {
+      "devicePixelRatio": 1,
+      "rows": [
+        {
+          "height": 20,
+          "id": "disabled-off",
+          "mask": [
+            "01111111111111111110",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "01111111111111111110"
+          ],
+          "points": [
+            {
+              "cursor": "auto",
+              "input": false,
+              "x": -1,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": -0.5,
+              "y": 10
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 0,
+              "y": 1
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 19,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 18,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19.5,
+              "y": 19.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 20,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 10,
+              "y": -0.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 10,
+              "y": 20
+            }
+          ],
+          "radius": "4px",
+          "width": 20,
+          "x": 32,
+          "y": 340
+        },
+        {
+          "height": 20,
+          "id": "disabled-on",
+          "mask": [
+            "01111111111111111110",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "11111111111111111111",
+            "01111111111111111110"
+          ],
+          "points": [
+            {
+              "cursor": "auto",
+              "input": false,
+              "x": -1,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": -0.5,
+              "y": 10
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 0,
+              "y": 1
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 0
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 19,
+              "y": 1
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 0,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 1,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19,
+              "y": 19
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 18,
+              "y": 19
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 19.5,
+              "y": 19.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 20,
+              "y": 10
+            },
+            {
+              "cursor": "not-allowed",
+              "input": true,
+              "x": 10,
+              "y": -0.5
+            },
+            {
+              "cursor": "default",
+              "input": false,
+              "x": 10,
+              "y": 20
+            }
+          ],
+          "radius": "4px",
+          "width": 20,
+          "x": 32,
+          "y": 430
+        }
+      ],
+      "theme": "Dark"
+    }
+  ]
+}

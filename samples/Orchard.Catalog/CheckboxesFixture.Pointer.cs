@@ -39,6 +39,12 @@ public sealed partial class CheckboxesFixture
                 await input.MoveAsync(Find<Border>(control, "PART_Box"));
                 await Check(control, "disabled-box", true, 32648);
                 await MainWindow.CaptureElementAsync(control, Path.Combine(folder, $"checkbox-{control.Name}-box-hover-{scheme}.png"));
+                foreach (var (x, y, hover) in new[] { (0, 0, false), (1, 0, true), (19, 0, false), (19, 1, true),
+                    (0, 19, false), (1, 19, true), (19, 19, false), (18, 19, true) })
+                {
+                    await input.MoveAsync(Find<Border>(control, "PART_Box"), localPoint: new Point(x, y));
+                    await Check(control, $"rounded-box-{x}-{y}", hover, hover ? 32648 : 32512);
+                }
                 await input.MoveAsync(Find<TextBlock>(control, "PART_Label"));
                 await Check(control, "disabled-label", false, 32512);
                 await input.MoveAsync(Find<TextBlock>(control, "PART_Description"));

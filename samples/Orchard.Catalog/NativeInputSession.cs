@@ -57,14 +57,18 @@ internal sealed class NativeInputSession : IDisposable
         await Task.Delay(100);
     }
 
-    internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true)
+    internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true, Point? localPoint = null)
     {
         if (requireForeground) Require(GetForegroundWindow() == Window, "Physical pointer input lost the catalog foreground window.");
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
         await Task.Delay(100);
         var bounds = ScreenBounds(target);
         Require(bounds.Width > 0 && bounds.Height > 0, "Physical pointer target has no bounds.");
-        var x = (int)(bounds.X + bounds.Width / 2); var y = (int)(bounds.Y + bounds.Height / 2);
+        if (localPoint is Point local) Require(local.X >= 0 && local.Y >= 0 && local.X < target.ActualWidth && local.Y < target.ActualHeight,
+            "Physical pointer offset exceeds its target bounds.");
+        var scale = root.RasterizationScale;
+        var x = (int)(bounds.X + (localPoint?.X * scale ?? bounds.Width / 2));
+        var y = (int)(bounds.Y + (localPoint?.Y * scale ?? bounds.Height / 2));
         if (!NativeScreenCapture.OwnsScreenPoint(Window, x, y))
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"{prefix}-hit-target.json"),
@@ -86,11 +90,12 @@ internal sealed class NativeInputSession : IDisposable
         } } }]);
         await Task.Delay(30);
         var positioned = GetCursorPos(out var actual);
-        pointerMoves.Add(new { target = target.Name, bounds, requested = new { x, y },
+        pointerMoves.Add(new { target = target.Name, bounds, localPoint, requested = new { x, y },
             positioned, actual = new { actual.X, actual.Y },
             hit = NativeScreenCapture.DescribePoint(Window, actual.X, actual.Y) });
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
+        if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
     }
 
     internal void PointerButton(bool down, bool requireForeground = true)
