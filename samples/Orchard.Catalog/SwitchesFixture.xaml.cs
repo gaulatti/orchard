@@ -107,7 +107,15 @@ public sealed partial class SwitchesFixture : UserControl
             VerifyPresentation(Off, scheme);
         }
         await VerifyLifecycleAsync(scheme);
-        await VerifyLiveAppearanceAsync(scheme);
+        var appearanceVerified = false;
+        try { await VerifyLiveAppearanceAsync(scheme); appearanceVerified = true; }
+        finally
+        {
+            await File.WriteAllTextAsync(Path.Combine(folder, $"switch-appearance-{scheme}.json"),
+                JsonSerializer.Serialize(new { passed = appearanceVerified,
+                    animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled, appearanceSamples },
+                    new JsonSerializerOptions { WriteIndented = true }));
+        }
         await InspectFontFallbackAsync(scheme, folder);
         try { await VerifyMotionAsync(scheme); }
         finally
@@ -292,7 +300,8 @@ public sealed partial class SwitchesFixture : UserControl
                 var fill = Find<Border>(On, "PART_Track").Background;
                 var color = Hex(fill);
                 var x = ((TranslateTransform)Find<Grid>(On, "SwitchKnob").RenderTransform).X;
-                appearanceSamples.Add(new { elapsed = timer.Elapsed.TotalMilliseconds, color, alpha = fill.Opacity, x });
+                appearanceSamples.Add(new { elapsed = timer.Elapsed.TotalMilliseconds, color, alpha = fill.Opacity,
+                    offAlpha = Find<Border>(Off, "PART_Track").Background.Opacity, x });
                 sawIntermediate |= color != initial && color != target;
                 Require(x == 16, "Appearance change restarted the settled checked thumb.");
                 await Task.Delay(1);
@@ -300,6 +309,8 @@ public sealed partial class SwitchesFixture : UserControl
             Require(!animated || sawIntermediate, "Animated appearance change skipped every intermediate track color.");
             await WaitAsync(() => PaletteSettled(alternate),
                 "Checked switch did not observe a live appearance change.");
+            appearanceSamples.Add(new { phase = "settled", elapsed = timer.Elapsed.TotalMilliseconds,
+                color = Hex(Find<Border>(On, "PART_Track").Background), offAlpha = Find<Border>(Off, "PART_Track").Background.Opacity });
             foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, alternate);
             Require(On.IsOn && !Off.IsOn && DisabledOn.IsOn && !DisabledOff.IsOn, "Appearance change altered consumer switch state.");
         }
@@ -310,7 +321,9 @@ public sealed partial class SwitchesFixture : UserControl
 
         bool PaletteSettled(BleeckerColorScheme palette) =>
             Hex(Find<Border>(On, "PART_Track").Background) == (palette == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5") &&
-            Math.Abs(Find<Border>(Off, "PART_Track").Background.Opacity - (palette == BleeckerColorScheme.Light ? .25 : .15)) < 1e-9;
+            // Brush.Opacity stores the XAML resource's native float endpoint.
+            // .15 is observed as .15000000596046448 in the runtime reports.
+            Math.Abs(Find<Border>(Off, "PART_Track").Background.Opacity - (float)(palette == BleeckerColorScheme.Light ? .25 : .15)) < 1e-9;
     }
 
     private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)

@@ -107,7 +107,11 @@ disabled rejection, UIA activation/focus, consumer state in both directions,
 two-way binding, live labels, explicit names, hover/press state retention,
 template replacement, unload/reload and intermediate/reversed motion. Motion
 and appearance samples are retained separately before physical input, so an
-inactive hosted desktop does not erase animation evidence. It emits
+inactive hosted desktop does not erase animation evidence. The fixture emits
+`switch-appearance-{Light,Dark}.json` even when appearance verification fails.
+Endpoint checks compare against XAML's float opacity: the dark .15 resource is
+reported as .15000000596046448; comparing it against an unrounded double with
+1e-9 tolerance would falsely reject a settled palette. It also emits
 `switch-measurements-{Light,Dark}.json` and corresponding native captures.
 The independent NuGet consumer also instantiates and toggles the control.
 The x64 catalog and isolated consumer at 7001e3e passed the registered light/dark
