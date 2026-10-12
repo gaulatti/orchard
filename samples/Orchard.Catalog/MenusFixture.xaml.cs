@@ -3,6 +3,8 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml.Hosting;
 
 namespace Orchard.Catalog;
 
@@ -18,8 +20,11 @@ public sealed partial class MenusFixture : UserControl
         Menu.ShowAt(Trigger);
         await Task.Delay(200);
         var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
+        Require(Menu.IsConstrainedToRootBounds, "Branded menu escaped the application viewport.");
         Require(presenter.Padding.Left == 6 && presenter.CornerRadius.TopLeft == 7 && presenter.MinWidth == 176 && !presenter.IsDefaultShadowEnabled, "Menu presenter retained Windows geometry or shadow.");
         Require(presenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Menu presenter retained Windows typography.");
+        VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(presenter, 0));
+        VerifyShadow(ShadowPreview);
         foreach (var item in Menu.Items.OfType<MenuFlyoutItem>())
             Require(item.FontSize == 14 && item.CornerRadius.TopLeft == 7 && item.Padding.Top == 6 && item.ActualHeight == 32, $"Menu item geometry mismatch: {item.Text} {item.ActualHeight}.");
         var root = (Grid)VisualTreeHelper.GetChild(Action, 0);
@@ -46,18 +51,17 @@ public sealed partial class MenusFixture : UserControl
         Require(childPresenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf") && childPresenter.Padding.Left == 6, "Submenu popup retained Windows appearance.");
         Require(childPresenter.MinWidth == 144 && childPresenter.ActualWidth == 144 && presenter.MinWidth == 176,
             $"Root/submenu geometry mismatch: root={presenter.MinWidth}, child={childPresenter.MinWidth}/{childPresenter.ActualWidth}.");
+        VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(childPresenter, 0));
         await MainWindow.CaptureElementAsync(childPresenter, Path.Combine(folder, $"submenu-{scheme.ToString().ToLowerInvariant()}.png"));
         expansion.Collapse();
         await Task.Delay(100);
         var checkPeer = new ToggleMenuFlyoutItemAutomationPeer(Checkbox);
-        ((IToggleProvider)checkPeer.GetPattern(PatternInterface.Toggle)).Toggle();
-        await Task.Delay(200);
+        await InvokeAndWaitForCloseAsync(() => ((IToggleProvider)checkPeer.GetPattern(PatternInterface.Toggle)).Toggle());
         Require(!Checkbox.IsChecked, "Native checkbox menu action did not toggle.");
         Checkbox.IsChecked = true;
         if (!Menu.IsOpen) { Menu.ShowAt(Trigger); await Task.Delay(150); }
         var before = actions;
-        ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke();
-        await Task.Delay(100);
+        await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke());
         Require(actions == before + 1 && !Menu.IsOpen, "Native menu invocation did not execute and dismiss.");
         var originalStyle = Menu.MenuFlyoutPresenterStyle;
         var consumerStyle = new Style(typeof(MenuFlyoutPresenter)) { BasedOn = originalStyle };
@@ -76,6 +80,36 @@ public sealed partial class MenusFixture : UserControl
         Require(presenter.MinWidth == 176, "Restored default root menu lost its width.");
         Menu.Hide();
         await Task.Delay(150);
+    }
+    private async Task InvokeAndWaitForCloseAsync(System.Action invoke)
+    {
+        var closed = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        void OnClosed(object? sender, object args) => closed.TrySetResult();
+        Menu.Closed += OnClosed;
+        try
+        {
+            invoke();
+            await closed.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        }
+        finally { Menu.Closed -= OnClosed; }
+    }
+    private static void VerifyShadow(BleeckerOverlaySurface surface)
+    {
+        Require(!surface.IsTabStop && surface.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Overlay surface inherited Windows typography or keyboard focus.");
+        var root = (Grid)VisualTreeHelper.GetChild(surface, 0);
+        var layers = (ContainerVisual)ElementCompositionPreview.GetElementChildVisual((Grid)root.Children[1]);
+        var sprites = layers.Children.OfType<SpriteVisual>().ToArray();
+        Require(sprites.Length == 2, "Overlay did not render two shadow layers.");
+        foreach (var sprite in sprites)
+        {
+            var shadow = (DropShadow)sprite.Shadow;
+            var far = shadow.BlurRadius == 64;
+            Require((far || shadow.BlurRadius == 14) && shadow.Offset.Y == (far ? 24 : 4) &&
+                Math.Abs(shadow.Opacity - (far ? .28 : .06)) < .001 && shadow.Color.R == 26 && shadow.Color.G == 55 && shadow.Color.B == 77,
+                "Overlay shadow differs from the canonical recipe.");
+            Require(Math.Abs(sprite.Size.X - (surface.ActualWidth - (far ? 40 : 0))) < .01,
+                "Overlay shadow lost its negative spread.");
+        }
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
 }

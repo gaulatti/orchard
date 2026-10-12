@@ -3,6 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
     <StackPanel Spacing="16">
         <TextBlock Text="Dropdown menus" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <orchard:BleeckerOverlaySurface x:Name="ShadowPreview" Width="224" Padding="14" HorizontalAlignment="Left" Margin="0,0,0,32">
+            <TextBlock Text="Overlay surface preview" Style="{StaticResource BleeckerBodyStyle}" />
+        </orchard:BleeckerOverlaySurface>
         <Button x:Name="Trigger" Content="Display options" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
             <Button.Flyout>
                 <orchard:BleeckerDropdownMenu x:Name="Menu">

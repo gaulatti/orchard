@@ -116,9 +116,11 @@ for (const name of ['fontFamilies', 'fontWeights']) cs += dictionary(pascal(name
 for (const name of ['spacing', 'radii', 'durations', 'letterSpacing']) cs += dictionary(pascal(name), tokens[name], 'double', value => value.toString());
 cs += dictionary('LightColors', tokens.themes.light, 'string', value => JSON.stringify(argb(value)));
 cs += dictionary('DarkColors', tokens.themes.dark, 'string', value => JSON.stringify(argb(value)));
-const raisedLayers = [...tokens.shadows.raised.matchAll(/(-?\d+) (-?\d+)px (\d+)px(?: (-?\d+)px)? rgb\((\d+) (\d+) (\d+) \/ ([.\d]+)\)/g)];
-if (raisedLayers.length !== 2) throw new Error('The raised shadow recipe must contain two recognized layers.');
-cs += `    internal static IReadOnlyList<(float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)> RaisedShadows { get; } =\n        Array.AsReadOnly(new (float, float, float, float, float, byte, byte, byte)[]\n        {\n${raisedLayers.map(m => `            (${m[1]}f, ${m[2]}f, ${m[3]}f, ${m[4] ?? 0}f, ${m[8]}f, ${m[5]}, ${m[6]}, ${m[7]}),`).join('\n')}\n        });\n`;
+for (const [shadowName, recipe] of [['raised', tokens.shadows.raised], ['overlay', tokens.shadows.overlay]]) {
+const shadowLayers = [...recipe.matchAll(/(-?\d+) (-?\d+)px (\d+)px(?: (-?\d+)px)? rgb\((\d+) (\d+) (\d+) \/ ([.\d]+)\)/g)];
+if (shadowLayers.length !== 2) throw new Error('Shadow recipes must contain two recognized layers.');
+cs += `    internal static IReadOnlyList<(float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)> ${pascal(shadowName)}Shadows { get; } =\n        Array.AsReadOnly(new (float, float, float, float, float, byte, byte, byte)[]\n        {\n${shadowLayers.map(m => `            (${m[1]}f, ${m[2]}f, ${m[3]}f, ${m[4] ?? 0}f, ${m[8]}f, ${m[5]}, ${m[6]}, ${m[7]}),`).join('\n')}\n        });\n`;
+}
 cs += `    public static FrozenDictionary<string, string> Colors(BleeckerColorScheme scheme) => scheme switch\n    {\n        BleeckerColorScheme.Light => LightColors,\n        BleeckerColorScheme.Dark => DarkColors,\n        _ => throw new ArgumentOutOfRangeException(nameof(scheme), scheme, "Unknown color scheme.")\n    };\n}\n`;
 const outputs = { 'tokens/bleecker.tokens.json': JSON.stringify(tokens, null, 2) + '\n',
   'src/Orchard/Themes/Tokens.g.xaml': xaml, 'src/Orchard/Tokens/BleeckerTokens.g.cs': cs };

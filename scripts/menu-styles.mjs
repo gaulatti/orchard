@@ -11,10 +11,10 @@ export function menuStyles() {
         <Setter Property="BorderBrush" Value="{ThemeResource BleeckerMenuBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="MenuFlyoutPresenter">
-            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+            <local:BleeckerOverlaySurface Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" AutomationProperties.AccessibilityView="Raw">
                 <ScrollViewer x:Name="MenuFlyoutPresenterScrollViewer" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled"
                     VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" IsTabStop="False" AutomationProperties.AccessibilityView="Raw"><ItemsPresenter Margin="{TemplateBinding Padding}" /></ScrollViewer>
-            </Border>
+            </local:BleeckerOverlaySurface>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
     <Style x:Key="BleeckerMenuSeparatorStyle" TargetType="MenuFlyoutSeparator">

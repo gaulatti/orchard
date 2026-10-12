@@ -152,6 +152,12 @@ public static class BleeckerTokens
             (0f, 2f, 5f, 0f, 0.045f, 26, 55, 77),
             (0f, 18f, 42f, -22f, 0.24f, 26, 55, 77),
         });
+    internal static IReadOnlyList<(float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)> OverlayShadows { get; } =
+        Array.AsReadOnly(new (float, float, float, float, float, byte, byte, byte)[]
+        {
+            (0f, 24f, 64f, -20f, 0.28f, 26, 55, 77),
+            (0f, 4f, 14f, 0f, 0.06f, 26, 55, 77),
+        });
     public static FrozenDictionary<string, string> Colors(BleeckerColorScheme scheme) => scheme switch
     {
         BleeckerColorScheme.Light => LightColors,

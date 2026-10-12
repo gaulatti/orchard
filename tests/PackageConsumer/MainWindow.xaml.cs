@@ -3,6 +3,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Orchard;
 using Windows.Graphics;
@@ -38,6 +40,10 @@ public sealed partial class MainWindow : Window
                 var menuPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
                 Require(menuPresenter.Padding.Left == 6 && menuPresenter.CornerRadius.TopLeft == 7 &&
                     menuPresenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Packaged menu lost its branded presenter.");
+                var menuSurface = (BleeckerOverlaySurface)VisualTreeHelper.GetChild(menuPresenter, 0);
+                var menuSurfaceRoot = (Grid)VisualTreeHelper.GetChild(menuSurface, 0);
+                Require(ElementCompositionPreview.GetElementChildVisual((Grid)menuSurfaceRoot.Children[1]) is ContainerVisual menuShadows && menuShadows.Children.Count == 2,
+                    "Packaged menu did not render its overlay shadow layers.");
                 PackageMenu.Hide();
                 await Task.Delay(150);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");

@@ -25,6 +25,9 @@ public sealed class BleeckerDropdownMenu : MenuFlyout
         rootPresenterStyle.Setters.Add(new Setter(FrameworkElement.MinWidthProperty, 176d));
         MenuFlyoutPresenterStyle = defaultPresenterStyle;
         AreOpenCloseAnimationsEnabled = false;
+        // The reference overlay stays within its application viewport. Rendering
+        // in the XAML root also avoids a separate popup window clipping its blur.
+        ShouldConstrainToRootBounds = true;
         Opening += (_, _) => ApplyRootStyle();
     }
 

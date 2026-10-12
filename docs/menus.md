@@ -6,6 +6,10 @@ The generated `Menus.g.xaml` dictionary is merged by Orchard's resource entry po
 
 This is an unfinished foundation, not accepted DropdownMenu parity. The pinned Bleecker recipe supplies Encode Sans Regular 14px/20px item typography, 8px horizontal and 6px vertical padding, 7px corners, 6px popup padding, a 1px border, the light/dark palette and Lucide selection/chevron paths. Windows' default presenter shadow is disabled. Native invocation, dismissal and selection behavior remain active.
 
+The presenter uses `BleeckerOverlaySurface`, a consumer-content surface with the canonical two-layer overlay shadow: `(0,24,64,-20)` at .28 opacity and `(0,4,14,0)` at .06, both RGB `(26,55,77)`. These values are generated from the pinned tokens. It uses the shared rounded-mask geometry also used by cards, updates on resizing/corner changes, clears composition visuals on unload, and suppresses the shadow in Windows contrast mode. Its default font is Encode Sans Regular, and it is not a keyboard stop.
+
+`BleeckerDropdownMenu` defaults to `ShouldConstrainToRootBounds=true`, keeping menus within the application viewport like the browser reference. This also lets the custom blur render beyond the menu edge; a separate native popup window can clip it. A desktop light-theme capture is retained at `artifacts/menu-shadow-root-light.jpg`. Consumers that opt back into windowed popup behavior must verify clipping for their host. Exact blur rasterization, edge placement, transparent consumer backgrounds and live contrast switching remain unaccepted.
+
 The item styles enable `BleeckerMenuFocus.IsEnabled`, which forwards native keyboard focus to the template's `Focused`/`Unfocused` states. WinUI menu items do not drive these states automatically. The focused row uses the same Bleecker tint as hover, without adding the default Windows outline. Disabling the attached behavior detaches its event handlers and clears that template state.
 
 The focus regression checks actual keyboard focus and removal of the previous row's highlight in both themes (`artifacts/smoke-menu-focus-complete`). Physical arrow-key testing also verifies the light highlight on Settings (`artifacts/menu-keyboard-light.jpg`). Dark focus intentionally retains the reference's subtle sand tint. Focus uses its own layer because native common-state updates otherwise clear the highlight. Broader input, accessibility and template-replacement checks remain open. The growing catalog suite has a two-minute timeout; separator resize checks explicitly finish layout before reading dimensions.
@@ -14,7 +18,7 @@ The focus regression checks actual keyboard focus and removal of the previous ro
 
 Remaining requirements:
 
-- Reference overlay shadows, 220ms entry, exit animation and 190ms item transitions are not implemented. Catalog open/close animations are disabled rather than using Windows motion.
+- Exact overlay shadow rasterization, 220ms entry, exit animation and 190ms item transitions remain open. Catalog open/close animations are disabled rather than using Windows motion.
 - Labels, inset rows, rich content/icons, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented.
 - Shortcut spacing, text baselines, overflow/scrolling, placement offset and all pointer/keyboard/focus states need rendered comparison.
 - Verify radio selection persistence when values change while the popup is closed, theme changes while open, nested dismissal, focus restoration and modal ownership.

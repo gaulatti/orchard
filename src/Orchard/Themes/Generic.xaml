@@ -6,6 +6,24 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="local:BleeckerOverlaySurface">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="16" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" /><Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="{ThemeResource BleeckerMenuBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource BleeckerMenuBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="{StaticResource BleeckerUiCornerRadius}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerOverlaySurface">
+            <Grid>
+                <Canvas IsHitTestVisible="False"><Path x:Name="PART_NearMask" Fill="{TemplateBinding Background}" /><Path x:Name="PART_FarMask" Fill="{TemplateBinding Background}" /></Canvas>
+                <Grid x:Name="PART_ShadowHost" IsHitTestVisible="False" />
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerStatusBadge">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Left" />
