@@ -40,6 +40,14 @@
                             <Setter Target="InputPalette.Opacity" Value="0.6" /><Setter Target="InputPalette.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
                             <Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" />
                         </VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputDisabledHovered"><VisualState.Setters>
+                            <Setter Target="InputPalette.Opacity" Value="0.6" /><Setter Target="InputPalette.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
+                            <Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" />
+                        </VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputDisabledHoveredError"><VisualState.Setters>
+                            <Setter Target="InputPalette.Opacity" Value="0.6" /><Setter Target="InputPalette.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
+                            <Setter Target="InputPalette.BorderBrush" Value="{ThemeResource BleeckerInputHoverBrush}" />
+                        </VisualState.Setters></VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>

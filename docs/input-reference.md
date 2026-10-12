@@ -64,21 +64,30 @@ input opacity applied separately. The dark disabled rule wins over the ordinary
 opaque deep-sea background. Disabled error retains terracotta at rest. Pointer
 hover still changes both disabled cases to the ordinary hover border and shadow
 in both themes, while focus remains false and the cursor is `not-allowed`.
-Orchard's dark disabled background is corrected; disabled hover and cursor
-behavior remain open implementation gaps.
+Orchard's disabled background, hover border/shadow and system cursor now follow
+this observed behavior. WinUI routes disabled TextBox pointer events to enclosing
+ScrollViewer chrome and omits disabled editors from host-coordinate hit tests.
+The implementation observes root events and the current physical pointer,
+checks bounds, ancestor clipping, scroll viewports and sibling occlusion, and
+refreshes stationary-pointer geometry on rendering. Native cursor restoration
+uses WinUI's current selected system cursor. Observation detaches when the input
+is enabled or unloaded.
 
-The x64 disabled-pointer investigation found that WinUI routes the pointer to
-the enclosing ScrollViewer chrome, and omits disabled TextBox elements from
-`FindElementsInHostCoordinates`, including its `includeAllElements` overload.
-Setting `ProtectedCursor` to `UniversalNo` alone leaves the native arrow cursor.
-An unpublished bounds/chrome observer and native cursor prototype produces the
-dark disabled hover border while retaining disabled focus semantics and .6
-opacity. Direct cursor-handle checks distinguish the actual system cursor from
-the capture tool's pointer marker. Moving between disabled inputs exposed a
-cursor ownership ordering bug; the revised prototype passes that transition.
-Stationary-pointer scrolling/resizing, clipping/occlusion, enable/disable,
-unload/reload, cursor restoration and light-theme regression remain required
-before this work can be published. These findings do not close acceptance.
+The catalog pointer regression passes 52 transitions across plain/invalid and
+light/dark appearances at scale 1. It verifies actual native cursor handles and
+rendered template borders while the physical pointer stays stationary, including
+enable/disable, opaque sibling occlusion, layout movement, rectangular clipping,
+scrolling, unload and remount. Evidence:
+`artifacts/input-pointer-scroll-result.json`. The regression caught stale cursor
+restoration and clip removal that does not produce a layout event. A separate
+physical keyboard restore/maximize check confirms hover clears and returns when
+the window moves the editor away from and back beneath the pointer;
+`artifacts/input-stationary-pointer-resize.jpg` retains that checkpoint.
+
+The focused light/dark suite passes at `artifacts/smoke-input-pointer-render` and
+the full reduced-motion catalog suite at
+`artifacts/smoke-input-pointer-integration`. Custom resource cursors, other display
+scales and observer performance remain unverified. Full Input acceptance is open.
 
 ## Behavior and native boundary
 

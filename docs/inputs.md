@@ -29,8 +29,8 @@ paired system colors, but actual contrast acceptance remains outstanding.
 Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 
-Remaining work includes exact glyph/baseline and scaling comparison, disabled
-hover/cursor behavior, error semantics, shadow raster comparison and motion,
+Remaining work includes exact glyph/baseline and scaling comparison, custom
+cursor restoration, error semantics, shadow raster comparison and motion,
 live brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
@@ -64,7 +64,7 @@ These checks pass in both themes at `artifacts/smoke-input-states`; the retained
 captures include the disabled invalid example. x64 publish and ARM64 build pass.
 
 The shadow preview uses the pinned rest `0 1px 2px rgba(26,55,77,.025)` and
-enabled hover `0 3px 10px -8px rgba(26,55,77,.25)` values. A Composition
+hover `0 3px 10px -8px rgba(26,55,77,.25)` values. A Composition
 DropShadow uses a rounded alpha mask; hover contracts that mask by 8px per side.
 The mask source does not paint an extra background layer. The shadow follows
 editor geometry, rebuilds on corner-radius changes and clears on unload.
@@ -130,6 +130,37 @@ result; repeatable performance budgets and exact motion equivalence remain open.
 Disabled-background correction passes the focused light/dark runtime suite at
 `artifacts/smoke-input-disabled-background`, including plain/invalid disabled
 states, re-enabling/disabling and live theme restoration. The captured dark
-fixture was visually inspected. All 13 tests and x64 publish pass. Disabled
-hover still needs its reference border/shadow behavior and not-allowed cursor;
-the background correction does not close the full disabled-state contract.
+fixture was visually inspected. All 13 tests and x64 publish pass. The pointer
+checkpoint below extends this background correction; the complete disabled-state
+contract remains subject to the outstanding visual and accessibility checks.
+
+## Disabled pointer preview and regression fixture
+
+Plain and invalid disabled inputs use the reference hover border and shadow,
+retain .6 editor opacity, refuse focus, and select the not-allowed system cursor.
+The control observes the root pointer because WinUI routes disabled TextBox
+input to enclosing scroll chrome. A rendering observer refreshes stationary
+pointer geometry, including clipping, scrolling and remounts. It detaches on
+enable or unload. Native cursor restoration uses WinUI's current selected system
+cursor rather than a cursor saved before entering the input.
+
+Open Input in the catalog and choose **Verify disabled pointer lifecycle**.
+Move the pointer over **Unavailable invalid input** and leave it still. The
+fixture runs plain and invalid states in both appearances, checking native
+cursor handles, actual template borders, disabled focus refusal, enabling,
+occlusion, movement, clipping, scrolling and remounts. It restores the original appearance
+and fixture state after success or failure. The result is written to
+`%TEMP%/orchard-input-pointer-result.json`; it is a separate physical-pointer
+check, not part of the unattended smoke command.
+
+All 52 transitions pass at 100% display scale in
+`artifacts/input-pointer-scroll-result.json`. The focused Input suite passes
+at `artifacts/smoke-input-pointer-render`, and the full reduced-motion catalog
+suite passes at `artifacts/smoke-input-pointer-integration`. Custom resource
+cursor restoration, scaling and observer performance remain open. These results
+do not establish full Input parity or ARM64 runtime support.
+
+The independent x64 package consumer passes at
+`artifacts/package-consumer-input-pointer`, verifying packaged resources, fonts,
+both themes and a native action. Its package SHA-256 is
+`8a5547a015bc4e3c21647e4ce575d1127d24c1b4d4f82fa03265dfd8a7408c39`.

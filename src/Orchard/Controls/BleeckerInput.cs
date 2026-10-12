@@ -17,11 +17,10 @@ public sealed partial class BleeckerInput : TextBox
         DefaultStyleKey = typeof(BleeckerInput);
         InitializeShadow();
         InitializeMotion();
-        PointerEntered += (_, _) => { pointerOver = true; UpdateAppearance(); };
-        PointerExited += (_, _) => { pointerOver = false; UpdateAppearance(); };
+        InitializePointer();
         GotFocus += (_, _) => UpdateAppearance();
         LostFocus += (_, _) => UpdateAppearance();
-        RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => UpdateAppearance());
+        RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { UpdatePointerObservation(); UpdateAppearance(); });
         RegisterPropertyChangedCallback(FocusStateProperty, (_, _) => UpdateAppearance());
         Loaded += (_, _) => { UpdateGeometry(); UpdateAppearance(false); };
     }
@@ -64,7 +63,7 @@ public sealed partial class BleeckerInput : TextBox
 
     private void UpdateAppearance(bool animate = true)
     {
-        var state = !IsEnabled ? "InputDisabled" : FocusState != FocusState.Unfocused ? "InputFocused" : pointerOver ? "InputHovered" : "InputNormal";
+        var state = !IsEnabled ? pointerOver ? "InputDisabledHovered" : "InputDisabled" : FocusState != FocusState.Unfocused ? "InputFocused" : pointerOver ? "InputHovered" : "InputNormal";
         if (IsError) state += "Error";
         var changed = appearanceState != state;
         appearanceState = state;

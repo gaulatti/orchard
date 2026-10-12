@@ -11,8 +11,13 @@
   </orchard:BleeckerInput>
   <orchard:BleeckerInput x:Name="ErrorInput" Width="320" IsError="True" Text="broken-stream-url" AutomationProperties.Name="Invalid stream" />
   <orchard:BleeckerInput x:Name="DisabledInput" Width="320" IsEnabled="False" Text="Unavailable input" />
-  <orchard:BleeckerInput x:Name="DisabledErrorInput" Width="320" IsEnabled="False" IsError="True" Text="Unavailable invalid input" />
+  <Grid x:Name="DisabledPointerHost" Width="320" Height="40">
+   <orchard:BleeckerInput x:Name="DisabledErrorInput" Width="320" IsEnabled="False" IsError="True" Text="Unavailable invalid input" />
+   <Border x:Name="PointerOccluder" Background="{ThemeResource BleeckerBackgroundBrush}" Visibility="Collapsed" />
+  </Grid>
   <orchard:BleeckerInput x:Name="ReadOnlyInput" Width="320" IsReadOnly="True" Text="Read-only coverage" AutomationProperties.Name="Read-only coverage" />
   <orchard:BleeckerInput Width="160" Text="東京 · São Paulo · القاهرة · long coverage value" AutomationProperties.Name="Constrained multilingual input" />
+  <orchard:BleeckerButton x:Name="PointerCheckButton" Content="Verify disabled pointer lifecycle" Click="OnVerifyPointerLifecycle" />
+  <TextBlock x:Name="PointerCheckStatus" Text="Pointer check: not run" TextWrapping="Wrap" MaxWidth="440" />
  </StackPanel>
 </UserControl>

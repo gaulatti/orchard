@@ -48,7 +48,7 @@ public sealed partial class BleeckerInput
         ClearShadow();
         if (!IsLoaded || shadowAccessibility.HighContrast || shadowHost.ActualWidth <= 0 || shadowHost.ActualHeight <= 0) return;
         // Pinned input.tsx: rest 0 1px 2px / .025; hover 0 3px 10px -8px / .25.
-        var hover = pointerOver && IsEnabled;
+        var hover = pointerOver;
         var inset = hover ? 8f : 0f;
         var width = Math.Max(0, shadowHost.ActualWidth - inset * 2);
         var height = Math.Max(0, shadowHost.ActualHeight - inset * 2);
