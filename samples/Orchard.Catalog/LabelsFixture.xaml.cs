@@ -37,7 +37,89 @@ public sealed partial class LabelsFixture : UserControl
         AutomationProperties.SetName(EmailInput, "Consumer override");
         Require(FrameworkElementAutomationPeer.CreatePeerForElement(EmailInput).GetName() == "Consumer override", "Label replaced an explicit consumer accessibility name.");
         EmailInput.ClearValue(AutomationProperties.NameProperty);
+        await VerifyContentAsync();
+        await VerifyAssociationLifecycleAsync();
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"labels-{scheme}.png"));
+    }
+
+    private async Task VerifyContentAsync()
+    {
+        var template = (DataTemplate)Resources["LabelContentTemplate"];
+        var root = (Grid)VisualTreeHelper.GetChild(TemplateLabel, 0);
+        var plain = (TextBlock)root.FindName("PART_Text");
+        var presenter = (ContentPresenter)root.FindName("PART_Content");
+        await AwaitAsync(() => Descendants<TextBlock>(presenter).Any(text => text.Text == "Consumer template label"), "Label did not render consumer template content.");
+        TemplateLabel.Content = "Updated template label";
+        await AwaitAsync(() => Descendants<TextBlock>(presenter).Any(text => text.Text == "Updated template label"), "Label template did not receive a content update.");
+        TemplateLabel.ContentTemplate = null;
+        await AwaitAsync(() => plain.Visibility == Visibility.Visible && plain.Text == "Updated template label" && presenter.Visibility == Visibility.Collapsed, "Label did not restore its plain text presenter.");
+        TemplateLabel.ContentTemplateSelector = new LabelTemplateSelector(template);
+        await AwaitAsync(() => Descendants<TextBlock>(presenter).Any(text => text.Text == "Updated template label"), "Label ignored its consumer template selector.");
+        TemplateLabel.ContentTemplateSelector = null;
+        var richText = new TextBlock { Text = "Live rich content" };
+        TemplateLabel.Content = richText;
+        await AwaitAsync(() => ReferenceEquals(presenter.Content, richText) && richText.ActualHeight > 0 && plain.Visibility == Visibility.Collapsed, "Label did not render a consumer UIElement.");
+        TemplateLabel.Content = "Consumer template label";
+        TemplateLabel.ContentTemplate = template;
+        await AwaitAsync(() => VisualTreeHelper.GetParent(richText) is null && Descendants<TextBlock>(presenter).Any(text => text.Text == "Consumer template label"), "Label retained obsolete rich content or failed to restore its template.");
+    }
+
+    private async Task VerifyAssociationLifecycleAsync()
+    {
+        var host = new StackPanel();
+        var first = new TextBox();
+        var second = new TextBox();
+        var prior = new TextBlock { Text = "Prior label" };
+        var consumer = new TextBlock { Text = "Consumer replacement" };
+        var label = new BleeckerLabel { Content = "Temporary label", Target = first };
+        AutomationProperties.SetLabeledBy(first, prior);
+        host.Children.Add(prior);
+        host.Children.Add(consumer);
+        host.Children.Add(first);
+        host.Children.Add(second);
+        host.Children.Add(label);
+        FixtureRoot.Children.Add(host);
+        try
+        {
+            UpdateLayout();
+            await AwaitAsync(() => label.IsLoaded && ReferenceEquals(AutomationProperties.GetLabeledBy(first), label), "Loaded label did not establish association.");
+            label.Target = second;
+            Require(ReferenceEquals(AutomationProperties.GetLabeledBy(first), prior) && ReferenceEquals(AutomationProperties.GetLabeledBy(second), label), "Changing label target did not restore and transfer association.");
+            AutomationProperties.SetLabeledBy(second, consumer);
+            label.Target = null;
+            Require(ReferenceEquals(AutomationProperties.GetLabeledBy(second), consumer), "Detaching label overwrote a newer consumer association.");
+            label.Target = first;
+            host.Children.Remove(label);
+            await AwaitAsync(() => !label.IsLoaded && ReferenceEquals(AutomationProperties.GetLabeledBy(first), prior), "Unloaded label retained association.");
+            host.Children.Add(label);
+            UpdateLayout();
+            await AwaitAsync(() => label.IsLoaded && ReferenceEquals(AutomationProperties.GetLabeledBy(first), label), "Reloaded label did not restore association.");
+            var inputPeer = FrameworkElementAutomationPeer.CreatePeerForElement(first);
+            Require(inputPeer.GetLabeledBy()?.GetName() == "Temporary label", "Input automation peer did not expose its label relationship.");
+        }
+        finally { label.Target = null; FixtureRoot.Children.Remove(host); }
+    }
+
+    private sealed class LabelTemplateSelector(DataTemplate template) : DataTemplateSelector
+    {
+        protected override DataTemplate SelectTemplateCore(object item, DependencyObject container) => template;
+    }
+
+    private static IEnumerable<T> Descendants<T>(DependencyObject parent) where T : DependencyObject
+    {
+        for (var index = 0; index < VisualTreeHelper.GetChildrenCount(parent); index++)
+        {
+            var child = VisualTreeHelper.GetChild(parent, index);
+            if (child is T match) yield return match;
+            foreach (var descendant in Descendants<T>(child)) yield return descendant;
+        }
+    }
+
+    private async Task AwaitAsync(Func<bool> condition, string message)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); await Task.Delay(16); }
+        Require(condition(), message);
     }
 
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

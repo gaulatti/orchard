@@ -2397,7 +2397,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
-        "Verify physical label activation, nested actions, target replacement and unload behavior",
+        "Verify the full physical label activation and nested-action matrix",
         "Verify contrast, Narrator, scaling, ARM64 runtime and full reference parity"
       ]
     },

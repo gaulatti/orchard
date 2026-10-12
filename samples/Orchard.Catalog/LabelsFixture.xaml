@@ -5,9 +5,11 @@
             <ResourceDictionary x:Key="Default"><Style x:Key="LabelErrorStyle" TargetType="orchard:BleeckerLabel"><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /></Style></ResourceDictionary>
             <ResourceDictionary x:Key="Light"><Style x:Key="LabelErrorStyle" TargetType="orchard:BleeckerLabel"><Setter Property="Foreground" Value="{ThemeResource BleeckerTerracottaBrush}" /></Style></ResourceDictionary>
             <ResourceDictionary x:Key="HighContrast"><Style x:Key="LabelErrorStyle" TargetType="orchard:BleeckerLabel"><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /></Style></ResourceDictionary>
-        </ResourceDictionary.ThemeDictionaries></ResourceDictionary>
+        </ResourceDictionary.ThemeDictionaries>
+            <DataTemplate x:Key="LabelContentTemplate"><TextBlock Text="{Binding}" LineHeight="13" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" /></DataTemplate>
+        </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel Spacing="16" Margin="0,0,0,40">
+    <StackPanel x:Name="FixtureRoot" Spacing="16" Margin="0,0,0,40">
         <TextBlock Text="Labels" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <StackPanel Width="384" HorizontalAlignment="Left" Spacing="6">
             <orchard:BleeckerLabel x:Name="EmailLabel" Content="Email Address" Target="{Binding ElementName=EmailInput}" />
@@ -18,6 +20,7 @@
         <orchard:BleeckerLabel x:Name="EmptyLabel" Content="" />
         <orchard:BleeckerLabel x:Name="LongLabel" Width="140" HorizontalAlignment="Left" Content="A longer coverage label wraps within its consumer-owned width" />
         <orchard:BleeckerLabel Content="東京 · São Paulo · القاهرة" />
+        <orchard:BleeckerLabel x:Name="TemplateLabel" Content="Consumer template label" ContentTemplate="{StaticResource LabelContentTemplate}" />
         <orchard:BleeckerLabel x:Name="RichLabel" AutomationProperties.Name="Coverage with help" Target="{Binding ElementName=RichInput}">
             <StackPanel Orientation="Horizontal" Spacing="6">
                 <TextBlock Text="Coverage" LineHeight="13" LineStackingStrategy="BlockLineHeight" />

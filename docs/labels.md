@@ -33,7 +33,7 @@ consumer styling: terracotta in light appearance and primary text in dark. See
 
 This is an in-progress component. Exact glyph/baseline matching, empty and rich
 content comparison, the full pointer and nested-action matrix,
-relationship restoration on unload/replacement, live appearance, contrast,
+live appearance, contrast,
 Narrator, text/display scaling and ARM64 runtime remain unaccepted. Catalog
 coverage includes plain, disabled, empty, wrapped, non-Latin and rich labels;
 the package consumer exercises the public typography and association contract.
@@ -41,3 +41,5 @@ the package consumer exercises the public typography and association contract.
 Verification: artifacts/smoke-label-geometry passes both themes, including the 13px line box, disabled opacity within one-millionth numeric precision, wrapping, accessible name changes, association removal and explicit consumer-name precedence. Light/dark captures were inspected. Physical dark-theme label click focused the input and accepted typed text (artifacts/label-pointer-focus.jpg); one Tab moved directly to the nested Help button without stopping on intervening labels (artifacts/label-tab-order.jpg). The complete physical matrix remains open. All 13 tests and x64/ARM64 builds pass; ARM64 runtime remains unavailable.
 
 The independent x64 NuGet consumer passes at artifacts/package-consumer-label-preview, including the public label font, size, accessible name and association.
+
+Content and lifecycle regression passes in both themes at artifacts/smoke-label-lifecycle: DataTemplate updates, returning to plain text, template selection, UIElement replacement and visual detachment, Target transfer, preservation of a newer consumer association, unload/reload restoration, and the native input peer's labeled-by relationship. The dark template capture was inspected. These checks exercise the existing library; no product implementation change was required.
