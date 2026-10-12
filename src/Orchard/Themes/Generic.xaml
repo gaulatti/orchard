@@ -4,6 +4,7 @@
     xmlns:local="using:Orchard">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Inputs.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Keyboard.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -80,6 +81,35 @@
                 <ContentPresenter x:Name="StartAdornment" Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="EndAdornment" Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="DescriptionPresenter" Grid.Row="2" Content="{TemplateBinding Description}" AutomationProperties.AccessibilityView="Raw" x:Load="False" />
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerKbd">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Height" Value="20" /><Setter Property="MinWidth" Value="20" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerKeyboardFontFamily}" />
+        <Setter Property="FontSize" Value="11" /><Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{ThemeResource KbdForeground}" />
+        <Setter Property="Background" Value="{ThemeResource KbdBackground}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource KbdBorder}" />
+        <Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Padding" Value="6,0" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerKbd">
+            <Grid>
+                <Grid x:Name="PART_Single">
+                    <Canvas IsHitTestVisible="False"><Path x:Name="PART_Shadow" Fill="{ThemeResource KbdShadow}" /></Canvas>
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                            Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </Grid>
+                <StackPanel x:Name="PART_Combination" Orientation="Horizontal" Spacing="2" VerticalAlignment="Center" />
+                <TextBlock x:Name="PART_SeparatorPalette" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTextSecondaryBrush}"
+                    FontFamily="{StaticResource BleeckerPrimaryFontFamily}" />
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>

@@ -35,6 +35,9 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                Require(PackageKeyboard.ActualHeight == 20 && PackageKeyboard.FontSize == 11 && !PackageKeyboard.IsTabStop &&
+                    FrameworkElementAutomationPeer.CreatePeerForElement(PackageKeyboard).GetName() == "Esc",
+                    "Packaged keyboard display lost its template, typography or accessible content.");
                 Require(Input.ActualHeight == 40 && Input.FontSize == 14 && Input.FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(Input).GetAutomationControlType() == AutomationControlType.Edit,
                     "Packaged input lost its geometry, font or native editor.");

@@ -1,0 +1,20 @@
+<UserControl x:Class="Orchard.Catalog.KeyboardFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16" Margin="0,0,0,40">
+        <TextBlock Text="Keyboard shortcuts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <orchard:BleeckerKbd x:Name="Single" Content="K" />
+        <orchard:BleeckerKbd x:Name="Combo" Content="Esc" />
+        <orchard:BleeckerKbd x:Name="ThreeKeys" />
+        <orchard:BleeckerKbd x:Name="Empty" Content="" />
+        <orchard:BleeckerKbd Content="東京 · ⇧ · ⌘" />
+        <orchard:BleeckerKbd Content="A long consumer-owned key name" />
+        <orchard:BleeckerKbd Content="Disabled display" IsEnabled="False" />
+        <orchard:BleeckerKbd FlowDirection="RightToLeft" Content="مفتاح" />
+        <orchard:BleeckerKbd x:Name="Rich" AutomationProperties.Name="Shift"><TextBlock Text="⇧" /></orchard:BleeckerKbd>
+        <StackPanel Orientation="Horizontal" Spacing="6">
+            <TextBlock Text="Press" Style="{StaticResource BleeckerBodyStyle}" />
+            <orchard:BleeckerKbd Content="Esc" />
+            <TextBlock Text="to close" Style="{StaticResource BleeckerBodyStyle}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

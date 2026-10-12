@@ -140,6 +140,8 @@ public sealed partial class MainWindow : Window
             await Labels.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Inputs);
             await Inputs.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Keyboard);
+            await Keyboard.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(StatusBadges);
             StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(350);

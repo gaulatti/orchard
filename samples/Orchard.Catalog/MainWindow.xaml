@@ -84,6 +84,7 @@
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />
                 <local:InputsFixture x:Name="Inputs" />
+                <local:KeyboardFixture x:Name="Keyboard" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

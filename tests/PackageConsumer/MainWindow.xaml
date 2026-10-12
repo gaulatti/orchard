@@ -66,6 +66,7 @@
                     <orchard:BleeckerToggleGroupItem x:Name="PackageGridItem" Value="grid" Content="Grid" />
                 </orchard:BleeckerToggleGroup>
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerKbd x:Name="PackageKeyboard" Content="Esc" />
             </StackPanel>
             </orchard:BleeckerCard>
         </NavigationView>
