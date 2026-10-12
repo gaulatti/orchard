@@ -27,6 +27,7 @@ public sealed class BleeckerTooltip : ContentControl
     private FrameworkElement? target;
     private readonly DispatcherQueueTimer hoverTimer;
     private DateTimeOffset lastClosed = DateTimeOffset.MinValue;
+    private TooltipPoint[]? transitArea;
     public event EventHandler? Opened;
     public event EventHandler? Closed;
 
@@ -45,7 +46,9 @@ public sealed class BleeckerTooltip : ContentControl
         hoverTimer = DispatcherQueue.CreateTimer();
         hoverTimer.IsRepeating = false;
         hoverTimer.Tick += (_, _) => { if (target?.IsLoaded == true && target is not Control { IsEnabled: false }) IsOpen = true; };
-        PointerExited += (_, _) => IsOpen = false;
+        PointerEntered += (_, _) => transitArea = null;
+        PointerExited += OnContentExited;
+        AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerMoved), true);
     }
 
     private void Connect(FrameworkElement? value)
@@ -75,11 +78,40 @@ public sealed class BleeckerTooltip : ContentControl
 
     private void OnTargetEntered(object sender, PointerRoutedEventArgs args)
     {
+        transitArea = null;
+        if (IsOpen) return;
         if (target is Control { IsEnabled: false }) return;
         if (DateTimeOffset.UtcNow - lastClosed <= TimeSpan.FromMilliseconds(150) || DelayDuration == 0) IsOpen = true;
         else { hoverTimer.Interval = TimeSpan.FromMilliseconds(DelayDuration); hoverTimer.Start(); }
     }
-    private void OnTargetExited(object sender, PointerRoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
+    private void OnTargetExited(object sender, PointerRoutedEventArgs args)
+    {
+        hoverTimer.Stop();
+        if (target is not null && surface is not null) BeginTransit(args, target, surface);
+    }
+    private void OnContentExited(object sender, PointerRoutedEventArgs args)
+    {
+        if (target is not null && surface is not null) BeginTransit(args, surface, target);
+    }
+
+    private Rect Bounds(FrameworkElement element) => element.TransformToVisual(inputRoot).TransformBounds(new Rect(0, 0, element.ActualWidth, element.ActualHeight));
+    private void BeginTransit(PointerRoutedEventArgs args, FrameworkElement leaving, FrameworkElement destination)
+    {
+        if (!IsOpen || inputRoot is null) return;
+        var point = args.GetCurrentPoint(inputRoot).Position;
+        var from = Bounds(leaving);
+        if (point.X > from.Left && point.X < from.Right && point.Y > from.Top && point.Y < from.Bottom) return; // Ignore exits from a child while still inside its owner.
+        var to = Bounds(destination);
+        transitArea = BleeckerPointerTransit.Create(new TooltipPoint(point.X, point.Y),
+            new TooltipBounds(from.Left, from.Top, from.Right, from.Bottom), new TooltipBounds(to.Left, to.Top, to.Right, to.Bottom));
+    }
+    private void OnPointerMoved(object sender, PointerRoutedEventArgs args)
+    {
+        if (!IsOpen || transitArea is null || inputRoot is null || target is null || surface is null) return;
+        var point = args.GetCurrentPoint(inputRoot).Position;
+        if (Bounds(target).Contains(point) || Bounds(surface).Contains(point)) transitArea = null;
+        else if (!BleeckerPointerTransit.Contains(transitArea, new TooltipPoint(point.X, point.Y))) IsOpen = false;
+    }
     private void OnTargetPressed(object sender, PointerRoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
     private void OnTargetFocused(object sender, RoutedEventArgs args)
     {
@@ -112,6 +144,7 @@ public sealed class BleeckerTooltip : ContentControl
         inputRoot = XamlRoot.Content;
         inputRoot.AddHandler(KeyDownEvent, new KeyEventHandler(OnRootKeyDown), true);
         inputRoot.AddHandler(PointerPressedEvent, new PointerEventHandler(OnTargetPressed), true);
+        inputRoot.AddHandler(PointerMovedEvent, new PointerEventHandler(OnPointerMoved), true);
         LayoutUpdated += OnLayoutUpdated;
         popup.IsOpen = true;
         ApplyTemplate();
@@ -132,10 +165,12 @@ public sealed class BleeckerTooltip : ContentControl
     {
         inputRoot?.RemoveHandler(KeyDownEvent, new KeyEventHandler(OnRootKeyDown));
         inputRoot?.RemoveHandler(PointerPressedEvent, new PointerEventHandler(OnTargetPressed));
+        inputRoot?.RemoveHandler(PointerMovedEvent, new PointerEventHandler(OnPointerMoved));
         inputRoot = null;
         LayoutUpdated -= OnLayoutUpdated;
         popup = null;
         positionedGeometry = null;
+        transitArea = null;
     }
 
     private void OnLayoutUpdated(object? sender, object args) => UpdatePlacement();
