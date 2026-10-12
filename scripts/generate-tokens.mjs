@@ -45,6 +45,8 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     ['Border', theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : argb(theme === 'Default' ? '#ffffff' : colors.sand), theme === 'Default' ? .15 : .35],
     ['Hover', theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors.sand), theme === 'Default' ? .15 : .1]])
     xaml += `            <SolidColorBrush x:Key="BleeckerMenu${name}Brush" Color="${color}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  for (const [name, color, system] of [['Background', theme === 'Default' ? colors.sand : colors.deepSea, 'SystemColorWindowColor'], ['Foreground', theme === 'Default' ? colors.textPrimary : '#ffffff', 'SystemColorWindowTextColor']])
+    xaml += `            <SolidColorBrush x:Key="BleeckerTooltip${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(color)}" />\n`;
   // Pinned separator.tsx: bg-black/5 dark:bg-white/10; no interaction styling.
   xaml += `            <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(theme === 'Default' ? colors.textPrimary : colors.deepSea)}" />\n`;
   for (const [name, color, system] of [['Background', colors.terracotta, 'SystemColorHighlightColor'], ['Foreground', '#ffffff', 'SystemColorHighlightTextColor']])

@@ -70,6 +70,7 @@
                 <local:StatusBadgesFixture x:Name="StatusBadges" />
                 <local:MenusFixture x:Name="Menus" />
                 <local:NotificationsFixture x:Name="Notifications" />
+                <local:TooltipsFixture x:Name="Tooltips" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>

@@ -1,0 +1,24 @@
+<UserControl x:Class="Orchard.Catalog.TooltipsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16">
+        <TextBlock Text="Tooltips" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <StackPanel Orientation="Horizontal" Spacing="32" Margin="110,60,110,60">
+            <Button x:Name="TopTrigger" Content="Top" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                <ToolTipService.ToolTip><orchard:BleeckerTooltip x:Name="TopTip" Content="Top tooltip" Placement="Top" /></ToolTipService.ToolTip>
+            </Button>
+            <Button x:Name="BottomTrigger" Content="Bottom" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                <ToolTipService.ToolTip><orchard:BleeckerTooltip x:Name="BottomTip" Content="Bottom tooltip" Placement="Bottom" /></ToolTipService.ToolTip>
+            </Button>
+            <Button x:Name="LeftTrigger" Content="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                <ToolTipService.ToolTip><orchard:BleeckerTooltip x:Name="LeftTip" Content="Left tooltip" Placement="Left" /></ToolTipService.ToolTip>
+            </Button>
+            <Button x:Name="RightTrigger" Content="Right" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                <ToolTipService.ToolTip><orchard:BleeckerTooltip x:Name="RightTip" Content="Right tooltip" Placement="Right" /></ToolTipService.ToolTip>
+            </Button>
+            <Button x:Name="LongTrigger" Content="Long text" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                <ToolTipService.ToolTip><orchard:BleeckerTooltip x:Name="LongTip" Content="Regional coverage update: 東京 · São Paulo · القاهرة. Review this fictional newsroom update before continuing." /></ToolTipService.ToolTip>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -55,7 +55,10 @@
                     </orchard:BleeckerDropdownMenu></Button.Flyout>
                 </Button>
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
-                <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon" ToolTipService.ToolTip="Save with icon"><ContentControl x:Name="SaveVector" Style="{StaticResource SaveIcon}" /></orchard:BleeckerIconButton>
+                <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon">
+                    <ToolTipService.ToolTip><orchard:BleeckerTooltip x:Name="PackageTooltip" Content="Save with icon" /></ToolTipService.ToolTip>
+                    <ContentControl x:Name="SaveVector" Style="{StaticResource SaveIcon}" />
+                </orchard:BleeckerIconButton>
                 <orchard:BleeckerToggleGroup x:Name="PackageGroup" SelectedValue="list" AutomationProperties.Name="Package view">
                     <orchard:BleeckerToggleGroupItem Value="list" Content="List" />
                     <orchard:BleeckerToggleGroupItem x:Name="PackageGridItem" Value="grid" Content="Grid" />

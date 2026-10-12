@@ -1,6 +1,7 @@
 # Tooltip reference and acceptance
 
-This is a reference audit, not an implemented or accepted Windows component.
+This is a reference audit, not Windows acceptance. An in-progress
+[Windows preview](tooltips.md) now exists.
 The fixed source is Bleecker `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/tooltip.tsx` and `stories/components/Tooltip.stories.tsx`.
 Measurements below were taken from that checkout's rendered AllSides story on
@@ -66,4 +67,4 @@ open-content appearance changes, text/display scaling, reduced and normal
 motion, UI Automation/Narrator, and actual x64/ARM64 execution. Apply the
 goal's explicit Windows contrast-color adaptation with paired readable colors.
 Do not mark this inventory entry complete from a styled preview or a successful
-build. The full component remains pending.
+build. The full component remains in progress.

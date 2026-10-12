@@ -73,6 +73,17 @@ public sealed partial class MainWindow : Window
                     "Packaged notification collection did not reach the popup.");
                 notificationTrigger.Flyout.Hide();
                 await Task.Delay(150);
+                PackageTooltip.IsOpen = true;
+                await Task.Delay(150);
+                var tooltipRoot = (Grid)VisualTreeHelper.GetChild(PackageTooltip, 0);
+                var tooltipSurface = (BleeckerOverlaySurface)tooltipRoot.Children[0];
+                Require(tooltipSurface.ActualWidth > 0 && tooltipSurface.ActualWidth <= 224 &&
+                    tooltipSurface.Padding.Left == 12 && PackageTooltip.FontSize == 12 &&
+                    PackageTooltip.FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
+                    FrameworkElementAutomationPeer.CreatePeerForElement(PackageTooltip).GetAutomationControlType() == AutomationControlType.ToolTip,
+                    "Packaged tooltip lost its template, font, geometry or native role.");
+                PackageTooltip.IsOpen = false;
+                await Task.Delay(80);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
                 Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 20 && PackageCard.ActualWidth > 0,
                     "Packaged card did not load its geometry and content template.");

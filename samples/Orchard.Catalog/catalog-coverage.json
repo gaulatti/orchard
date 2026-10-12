@@ -23,6 +23,7 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerTooltip": "TooltipsFixture.xaml",
     "BleeckerNotificationBadge": "NotificationsFixture.xaml",
     "BleeckerNotificationItem": "NotificationsFixture.xaml",
     "BleeckerMenuContentItem": "MenusFixture.xaml",
