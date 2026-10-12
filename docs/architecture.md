@@ -50,6 +50,15 @@ the baseline font, geometry, and surface. Full input/flyout state customization,
 menus, tables, rich editors, notifications, navigation, and newsroom-specific
 components are subsequent component work.
 
+Primary and secondary button styles explicitly bind Background, Foreground and
+BorderBrush to the generated theme resources. Inheriting these setters from the
+SDK style can resolve the normal-state brushes in the SDK dictionary scope and
+retain Windows accent colors. The native templates and their state machines remain
+inherited; the published runtime regression checks the actual content presenter’s
+normal, hover, pressed and disabled color/opacity in light and dark appearances.
+These checks exercise visual states programmatically; physical input, Narrator and
+Windows contrast verification remain separate acceptance requirements.
+
 Use `ThemeResource` for color consumers and `StaticResource` for typography and
 geometry. Load `XamlControlsResources` before Orchard resources. Font files
 are copied to `Orchard/Assets/Fonts` in the consuming app output.

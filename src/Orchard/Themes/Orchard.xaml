@@ -19,11 +19,17 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="BleeckerSecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+        <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
+        <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />
     </Style>
     <Style x:Key="BleeckerPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
+        <Setter Property="Background" Value="{ThemeResource AccentButtonBackground}" />
+        <Setter Property="Foreground" Value="{ThemeResource AccentButtonForeground}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource AccentButtonBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="Padding" Value="16,10" />

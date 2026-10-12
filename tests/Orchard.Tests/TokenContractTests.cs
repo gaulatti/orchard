@@ -99,6 +99,22 @@ public sealed class TokenContractTests
     }
 
     [TestMethod]
+    public void ButtonStylesExplicitlyBindColorsAtTheConsumerScope()
+    {
+        var xaml = XDocument.Load(Fixture("Orchard.xaml"));
+        foreach (var (name, prefix) in new[] { ("Primary", "AccentButton"), ("Secondary", "Button") })
+        {
+            var style = xaml.Descendants(Xaml + "Style").Single(element => (string?)element.Attribute(X + "Key") == $"Bleecker{name}ButtonStyle");
+            foreach (var property in new[] { "Background", "Foreground", "BorderBrush" })
+            {
+                var setter = style.Elements(Xaml + "Setter").Single(element => (string?)element.Attribute("Property") == property);
+                Assert.AreEqual($"{{ThemeResource {prefix}{property}}}", (string?)setter.Attribute("Value"),
+                    "Inherited WinUI setters resolve in the SDK dictionary scope and may retain the system accent.");
+            }
+        }
+    }
+
+    [TestMethod]
     public void CoreTextAndPrimaryActionsHaveAccessibleContrastInBothThemes()
     {
         foreach (var scheme in Enum.GetValues<BleeckerColorScheme>())

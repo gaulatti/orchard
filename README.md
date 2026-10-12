@@ -15,7 +15,7 @@ styles. It is not the Windows newsroom application or complete component parity.
    development** workload, following [Microsoft’s setup guide](https://learn.microsoft.com/en-us/windows/apps/get-started/start-here).
 2. Install **.NET SDK 10.0.401**. `global.json` deliberately requires this exact
    version; a different installed feature band does not substitute for it.
-3. Clone `git@github.com:gaulatti/orchard.git` and open **`Orchard.sln`**.
+3. Clone `https://github.com/gaulatti/orchard.git` and open **`Orchard.sln`**.
 4. Select **Debug / x64** on an Intel/AMD machine, or **Debug / ARM64** on a
    Windows ARM machine.
 5. Set **Orchard.Catalog** as the startup project and press **F5**.
@@ -74,6 +74,8 @@ colors so an open page reacts to theme changes.
 
 See [architecture and verification](docs/architecture.md) for boundaries,
 accepted scaffold behavior, and the remaining component work.
+The [fixed parity inventory](docs/parity.md) records reference commits and
+tracks the complete Windows component scope; pending entries are not implemented.
 
 ## Design tokens and fonts
 

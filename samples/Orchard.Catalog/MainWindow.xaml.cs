@@ -77,6 +77,8 @@ public sealed partial class MainWindow : Window
             Require(PrimaryAction.Background is SolidColorBrush brush &&
                 ColorHex(brush.Color) == BleeckerTokens.Colors(scheme)["primary"],
                 $"Primary action does not use the Bleecker theme: requested={theme}, actual={CatalogRoot.ActualTheme}, background={DescribeBrush(PrimaryAction.Background)}, expected={BleeckerTokens.Colors(scheme)["primary"]}.");
+            await VerifyButtonStatesAsync(PrimaryAction, scheme);
+            await VerifyButtonStatesAsync(DisabledAction, scheme, disabled: true);
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing font: {font}");
@@ -93,12 +95,44 @@ public sealed partial class MainWindow : Window
         ThemeSelector.SelectedIndex = 0;
         Require(CatalogRoot.RequestedTheme == ElementTheme.Default, "System appearance did not reset.");
         await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(
-            new { passed = true, actionCount, systemAppearance = true, captures }, new JsonSerializerOptions { WriteIndented = true }));
+            new { passed = true, actionCount, systemAppearance = true,
+                buttonStates = new[] { "Normal", "PointerOver", "Pressed", "Disabled" },
+                buttonProperties = new[] { "Background", "Foreground", "BorderBrush", "Opacity" }, captures }, new JsonSerializerOptions { WriteIndented = true }));
     }
 
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private static async Task VerifyButtonStatesAsync(Button button, BleeckerColorScheme scheme, bool disabled = false)
+    {
+        button.ApplyTemplate();
+        var presenter = FindPresenter(button) ?? throw new InvalidOperationException("Button template has no content presenter.");
+        foreach (var state in disabled ? new[] { "Disabled" } : new[] { "Normal", "PointerOver", "Pressed", "Normal" })
+        {
+            Require(VisualStateManager.GoToState(button, state, false), $"Missing native button state: {state}.");
+            await Task.Delay(120);
+            foreach (var (property, actual) in new[] { ("Background", presenter.Background), ("Foreground", presenter.Foreground), ("BorderBrush", presenter.BorderBrush) })
+            {
+                var token = property == "Foreground" ? "primaryForeground" : "primary";
+                var expected = BleeckerTokens.Colors(scheme)[token];
+                var opacity = state switch { "Disabled" => 0.4, "Pressed" => 0.8, "PointerOver" => 0.9, _ => 1.0 };
+                Require(actual is SolidColorBrush solid && ColorHex(solid.Color) == expected && Math.Abs(solid.Opacity - opacity) < 0.001,
+                    $"{scheme} {state} {property}: rendered={DescribeBrush(actual)}, expected={expected} at opacity {opacity}.");
+            }
+        }
+    }
+
+    private static ContentPresenter? FindPresenter(DependencyObject parent)
+    {
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+        {
+            var child = VisualTreeHelper.GetChild(parent, i);
+            if (child is ContentPresenter presenter) return presenter;
+            if (FindPresenter(child) is { } nested) return nested;
+        }
+        return null;
     }
 
     private static string ColorHex(Windows.UI.Color color) => $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
