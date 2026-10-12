@@ -121,8 +121,10 @@ selected process architecture and requires an ARM64 OS for ARM64 runtime work.
 The separate `arm64-build` job retains cross-compilation coverage on x64.
 GitHub documents the runner and free public-repository availability in its
 [hosted-runner reference](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
-The first native ARM64 runtime result is pending; workflow configuration alone
-does not establish runtime acceptance.
+The first native ARM64 runtime run and the repeat with fractional Progress
+geometry passed the catalog and independent consumer. Reports prove native
+process/OS architecture; see [runtime evidence](runtime-evidence.md) for the
+retained captures, hashes and remaining platform acceptance.
 
 Reproduce on Windows:
 

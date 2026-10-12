@@ -336,7 +336,7 @@
       "remainingGaps": [
         "Verify loading focus behavior",
         "Complete keyboard/pointer wrapper checks and scaling",
-        "Verify Narrator, actual contrast, reduced motion and ARM64 runtime"
+        "Verify Narrator, actual contrast, reduced motion and remaining ARM64 state acceptance"
       ]
     },
     {
@@ -376,7 +376,7 @@
       "remainingGaps": [
         "Verify child removal and binding restoration, empty and invalid children",
         "Add long-label, non-Latin, and interactive state fixtures",
-        "Verify physical keyboard/pointer, Narrator, contrast, text/display scaling and ARM64 runtime"
+        "Verify physical keyboard/pointer, Narrator, contrast, text/display scaling and remaining ARM64 state acceptance"
       ]
     },
     {
@@ -417,7 +417,7 @@
       "remainingGaps": [
         "Exact shadow rasterization, overflow clipping and surface motion",
         "Consumer overrides, contrast, accessibility and scaling",
-        "ARM64 runtime and complete rendered parity"
+        "Remaining ARM64 state acceptance and complete rendered parity"
       ]
     },
     {
@@ -1723,7 +1723,7 @@
           "Complete rich-row compositions and indeterminate states; constrained label content and Narrator behavior",
         "Exact overlay shadow rasterization and edge placement, entry/exit and item transition motion",
         "All physical pointer/keyboard/focus states and closed-menu selection persistence",
-        "Contrast foregrounds, Narrator, scaling, constrained content and ARM64 runtime",
+        "Contrast foregrounds, Narrator, scaling, constrained content and remaining ARM64 state acceptance",
         "See docs/menus.md for detailed acceptance limitations"
       ]
     },
@@ -1812,7 +1812,7 @@
       "remainingGaps": [
         "Reference motion, exact shadow and edge placement",
         "Full pointer/keyboard/disabled, focus restoration, long content and constrained viewport matrix",
-        "Live themes, contrast colors, Narrator, text/display scaling and actual ARM64 runtime"
+        "Live themes, contrast colors, Narrator, text/display scaling and remaining ARM64 state acceptance"
       ]
     },
     {
@@ -2244,7 +2244,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Reconcile Unicode and rich-content casing; finish rendered reference comparison in docs/eyebrows.md",
-        "Verify template, RTL, accessibility, contrast, isolated scaling and ARM64 runtime",
+        "Verify template, RTL, accessibility, contrast, isolated scaling and remaining ARM64 state acceptance",
         "Verify runtime, accessibility and visuals"
       ]
     },
@@ -2362,7 +2362,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Complete rendered comparison, lifecycle and acceptance checks in docs/keyboard.md",
-        "Verify isolated scaling, contrast, Narrator and ARM64 runtime",
+        "Verify isolated scaling, contrast, Narrator and remaining ARM64 state acceptance",
         "Verify runtime, accessibility and visuals"
       ]
     },
@@ -2398,7 +2398,7 @@
       "remainingGaps": [
         "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
         "Verify the full physical label activation and nested-action matrix",
-        "Verify contrast, Narrator, scaling, ARM64 runtime and full reference parity"
+        "Verify contrast, Narrator, scaling, remaining ARM64 state acceptance and full reference parity"
       ]
     },
     {
@@ -2607,7 +2607,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Finish rendered comparison, enabled/interrupted motion and lifecycle checks in docs/progress.md",
-        "Verify edge maxima/nonfinite values, native UIA, isolated scaling, contrast and ARM64 runtime",
+        "Verify edge maxima/nonfinite values, native UIA, isolated scaling, contrast and remaining ARM64 state acceptance",
         "Verify runtime, accessibility and visuals"
       ]
     },
@@ -2806,7 +2806,7 @@
       "remainingGaps": [
         "Actual Windows contrast settings and Narrator",
         "Fractional display scaling and physical keyboard traversal",
-        "ARM64 runtime and complete rendered parity"
+        "Remaining ARM64 state acceptance and complete rendered parity"
       ]
     },
     {
@@ -3058,7 +3058,7 @@
       "remainingGaps": [
         "Add command and two-way binding regressions",
         "Verify increased text/display scale and reduced motion",
-        "Verify Narrator, actual Windows contrast themes and ARM64 runtime"
+        "Verify Narrator, actual Windows contrast themes and remaining ARM64 state acceptance"
       ]
     },
     {
@@ -3112,7 +3112,7 @@
         "Verify rendered Bleecker parity across every variant, size, theme and interaction state, including typography, spacing, dimensions, colors, borders, radii, icons and motion",
         "Verify broader keyboard/RTL and error-state fixtures",
         "Verify Narrator, actual Windows contrast, display/text scaling and reduced motion",
-        "Verify ARM64 runtime on ARM64 hardware; current host is Intel x64"
+        "Verify remaining ARM64 state acceptance on ARM64 hardware; current host is Intel x64"
       ]
     },
     {
@@ -3154,7 +3154,7 @@
         "Verify collision corners, very small viewports and exact shadow rasterization",
           "Verify rendered entry/exit motion curves and hover/skip timing",
           "Verify full physical pointer transit matrix, modal ownership, explicit nested theme overrides and richer consumer templates",
-        "Verify rendered reference parity, actual Windows contrast, Narrator, display/text scaling and ARM64 runtime"
+        "Verify rendered reference parity, actual Windows contrast, Narrator, display/text scaling and remaining ARM64 state acceptance"
       ]
     },
     {
@@ -3353,7 +3353,7 @@
       "remainingGaps": [
         "Verify exact rendered 190ms color and scale curves against the pinned reference",
         "Verify physical input and rendered reference parity across themes and states",
-        "Verify contrast, Narrator, scaling, ARM64 runtime and inherited Tooltip gaps"
+        "Verify contrast, Narrator, scaling, remaining ARM64 state acceptance and inherited Tooltip gaps"
       ]
     },
     {
@@ -3435,7 +3435,7 @@
       "remainingGaps": [
         "Verify physical keyboard/pointer and tooltip interaction",
         "Verify scaling and reduced motion",
-        "Verify Narrator, actual Windows contrast and ARM64 runtime"
+        "Verify Narrator, actual Windows contrast and remaining ARM64 state acceptance"
       ]
     },
     {
@@ -3475,7 +3475,7 @@
       "remainingGaps": [
         "Normal animation and live preference switching",
         "Actual contrast settings, Narrator, scaling and constrained composition",
-        "ARM64 runtime and complete visual acceptance"
+        "Remaining ARM64 state acceptance and complete visual acceptance"
       ]
     },
     {
@@ -3912,7 +3912,7 @@
       "remainingGaps": [
         "Full baseline, gamut and extreme-label layout comparison",
         "Actual contrast, Narrator, scaling and physical keyboard traversal",
-        "ARM64 runtime and complete rendered parity"
+        "Remaining ARM64 state acceptance and complete rendered parity"
       ]
     },
     {
@@ -4624,6 +4624,20 @@
       "sha256": "1feea91528f96a09679d67e381a9d0a79a58fa9ce8a6e0bc29d36c5edb4f24fa"
     }
   ],
+  "nativeRuntimeBaseline": {
+    "commit": "5412997a3dfd15c76a06367b51480ab6a91b8e7c",
+    "workflowRun": 38268516314,
+    "platforms": ["x64", "ARM64"],
+    "status": "passed",
+    "evidence": "docs/runtime-evidence.md",
+    "scope": "Registered catalog fixtures and independent package consumer at 100% display/text scale; all remaining component acceptance gaps still apply",
+    "componentIds": [
+      "button", "button-group", "card", "dropdown-menu", "notification-badge",
+      "eyebrow", "input", "kbd", "label", "progress", "separator", "toggle",
+      "toggle-group", "tooltip", "field-help-tooltip", "icon-button",
+      "loading-spinner", "status-badge"
+    ]
+  },
   "compositions": [
     {
       "id": "monitoring-workspace",

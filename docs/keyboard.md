@@ -36,9 +36,15 @@ Per-theme JSON records native keycap dimensions, child positions, font and
 palette values for comparison with the browser. The independent package
 consumer includes a keycap.
 
+The registered fixture and independent consumer now pass on native ARM64 as
+well as x64. The reports prove ARM64 process and OS architecture; see
+[runtime evidence](runtime-evidence.md). Full state and visual acceptance remains
+open on both platforms.
+
 Acceptance is still open: Consolas matches the browser reference's measured
 widths for the audited Latin keys and command symbol; native glyph comparison
 and other fallback content remain unverified. Rendered
 shadow corners, baseline and inline alignment, rich/template edge cases,
 contrast, Narrator, isolated scaling, constrained width
-and ARM64 runtime still need verification. The component is not marked complete.
+and the remaining ARM64 state checks still need verification. The component is
+not marked complete.

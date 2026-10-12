@@ -17,7 +17,7 @@ Every interactive entry additionally requires hover, pressed, focus, selection a
 
 Visual acceptance requires comparison with the rendered pinned Bleecker reference across every variant, size, theme and interaction state. Match typography, spacing, dimensions, colors, borders, radii, icons and motion. Native Windows semantics may be retained, but Windows defaults must not override the branded appearance. Token assertions and successful native-control interaction alone do not establish visual parity. Existing components remain in progress until this comparison is verified, including focus, loading and animated transitions.
 
-The available development host is Intel x64. ARM64 compilation is verified separately. A native `windows-11-arm` GitHub Actions job now runs the catalog and independent package consumer and checks their process/OS architecture; its first runtime result is pending. No local ARM64 machine is available for manual Narrator/contrast acceptance.
+The available development host is Intel x64. ARM64 compilation is verified separately. The native `windows-11-arm` GitHub Actions job has passed the registered catalog fixtures and independent package consumer, with ARM64 process/OS checks. See [runtime evidence](runtime-evidence.md). The remaining ARM64 gaps concern the full visual, input, accessibility and scaling acceptance matrix. No local ARM64 machine is available for manual Narrator/contrast acceptance.
 
 The visual audit tracks unresolved Windows defaults in current previews. Icon-button fixtures now use pinned Lucide vectors instead of SymbolIcon glyphs; other preview surfaces still require audit. The button loading indicator now uses the reference Lucide arc. Focus rings use Bleecker brushes and geometry, and the link uses the reference hover-only underline. The remaining focus matrix, state motion, shadows and typography still require full rendered comparison. These are tracked acceptance gaps, not approved visual substitutions. See [rendered comparison evidence](visual-audit.md).
 
@@ -27,9 +27,9 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | bauhaus-background | Pending | Pending | Full pinned contract |
 | activity-item | Pending | Pending | Full pinned contract |
 | attention-surface | Pending | Pending | Full pinned contract |
-| button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, Narrator, contrast, scaling, motion, ARM64 runtime; see [usage](buttons.md) |
-| button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, Narrator, contrast, scaling, ARM64 runtime; see [usage](button-group.md) |
-| card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, contrast/accessibility/scaling, ARM64 runtime; see [usage](cards.md) |
+| button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, Narrator, contrast, scaling, motion, remaining ARM64 state checks; see [usage](buttons.md) |
+| button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, Narrator, contrast, scaling, remaining ARM64 state checks; see [usage](button-group.md) |
+| card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, contrast/accessibility/scaling, remaining ARM64 state checks; see [usage](cards.md) |
 | chart | Pending | Pending | Full pinned contract |
 | chart-theme | Pending | Pending | Full pinned contract |
 | line-chart | Pending | Pending | Full pinned contract |
@@ -62,9 +62,9 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | date-range-picker | Pending | Pending | Full pinned contract |
 | filter-chip | Pending | Pending | Full pinned contract |
 | search-input | Pending | Pending | Full pinned contract |
-| dropdown-menu | `BleeckerDropdownMenu`, native item styles and focus behavior | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: rich rows, shadow/motion, full physical input, contrast/scaling/Narrator and ARM64 runtime; see [menu gaps](menus.md) |
+| dropdown-menu | `BleeckerDropdownMenu`, native item styles and focus behavior | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: rich rows, shadow/motion, full physical input, contrast/scaling/Narrator and remaining ARM64 state checks; see [menu gaps](menus.md) |
 | metric | Pending | Pending | Full pinned contract |
-| notification-badge | `BleeckerNotificationBadge` and consumer-owned notification items | Registered populated/empty/count/long-content fixtures; x64 light/dark popup geometry, command/collection updates, live appearance and physical keyboard checks; independent package consumer | In progress: full state/input matrix, shadow/motion, contrast/Narrator/scaling and ARM64 runtime; see [evidence and gaps](notifications.md) |
+| notification-badge | `BleeckerNotificationBadge` and consumer-owned notification items | Registered populated/empty/count/long-content fixtures; x64 light/dark popup geometry, command/collection updates, live appearance and physical keyboard checks; independent package consumer | In progress: full state/input matrix, shadow/motion, contrast/Narrator/scaling and remaining ARM64 state checks; see [evidence and gaps](notifications.md) |
 | accordion | Pending | Pending | Full pinned contract |
 | alert | Pending | Pending | Full pinned contract |
 | alert-dialog | Pending | Pending | Full pinned contract |
@@ -77,7 +77,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | empty | Pending | Pending | Full pinned contract |
 | eyebrow | `BleeckerEyebrow`: three tones and optional rule | Registered Eyebrows fixture and independent consumer; runtime verification pending | In progress: [usage and gaps](eyebrows.md); Unicode/rich casing, exact rendering, accessibility, isolated scaling and ARM64 runtime |
 | hover-card | Pending | Pending | Full pinned contract |
-| input | `BleeckerInput`: three sizes, adornments, validation and native editing | Registered light/dark fixtures; native editing, motion, typography, 24 reading-direction and 72 physical-adornment cases; independent consumer | In progress: [reference comparison](input-reference.md), fallback typography, scaling (225% Japanese viewport failure), contrast/Narrator, full motion parity and ARM64 runtime; see [usage](inputs.md) |
+| input | `BleeckerInput`: three sizes, adornments, validation and native editing | Registered light/dark fixtures; native editing, motion, typography, 24 reading-direction and 72 physical-adornment cases; independent consumer | In progress: [reference comparison](input-reference.md), fallback typography, scaling (225% Japanese viewport failure), contrast/Narrator, full motion parity and remaining ARM64 state checks; see [usage](inputs.md) |
 | kbd | `BleeckerKbd`: single content and observable key combinations | Registered Keyboard shortcuts fixture and independent consumer; runtime verification pending | In progress: [usage and gaps](keyboard.md), [pinned contract](kbd-reference.md); exact rendering, lifecycle, accessibility, scaling and ARM64 runtime |
 | label | `BleeckerLabel`, explicit typography and input association | Default, error styling, disabled, empty, wrapped, non-Latin and rich content | In progress: [preview](labels.md), physical input, exact rendering, contrast/Narrator/scaling and ARM64; [reference](label-reference.md) |
 | menubar | Pending | Pending | Full pinned contract |
@@ -95,17 +95,17 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | sonner | Pending | Pending | Full pinned contract |
 | switch | Pending | Pending | Full pinned contract |
 | textarea | Pending | Pending | Full pinned contract |
-| toggle | Six native `ToggleButton` styles | Registered size/variant fixtures; x64 automation/state checks; desktop pointer and Space/Tab; light/dark captures | In progress: Narrator, contrast, scaling, reduced motion, binding/command regressions, ARM64 runtime; see [usage](toggles.md) |
-| toggle-group | `BleeckerToggleGroup` and native toggle items; optional single/multiple selection | Registered binding, collection, disabled and constrained fixtures; x64 UIA and physical input; package consumer; ARM64 build | In progress: Narrator, contrast, scaling, motion, broader RTL/error fixtures and ARM64 runtime; see [usage](toggle-groups.md) |
-| tooltip | `BleeckerTooltip` and `BleeckerTooltipService`, app-constrained popup | Four directions, four collision flips, 7px clearance, wrapping and light/dark body/font/palette/role checks; bidirectional transit geometry and dark/top pointer transit; [reference audit](tooltip-reference.md) | In progress: full physical transit matrix, motion/timing, modal/corner cases, theme/scaling/contrast/Narrator and ARM64 runtime; see [gaps](tooltips.md) |
+| toggle | Six native `ToggleButton` styles | Registered size/variant fixtures; x64 automation/state checks; desktop pointer and Space/Tab; light/dark captures | In progress: Narrator, contrast, scaling, reduced motion, binding/command regressions, remaining ARM64 state checks; see [usage](toggles.md) |
+| toggle-group | `BleeckerToggleGroup` and native toggle items; optional single/multiple selection | Registered binding, collection, disabled and constrained fixtures; x64 UIA and physical input; package consumer; ARM64 build | In progress: Narrator, contrast, scaling, motion, broader RTL/error fixtures and remaining ARM64 state checks; see [usage](toggle-groups.md) |
+| tooltip | `BleeckerTooltip` and `BleeckerTooltipService`, app-constrained popup | Four directions, four collision flips, 7px clearance, wrapping and light/dark body/font/palette/role checks; bidirectional transit geometry and dark/top pointer transit; [reference audit](tooltip-reference.md) | In progress: full physical transit matrix, motion/timing, modal/corner cases, theme/scaling/contrast/Narrator and remaining ARM64 state checks; see [gaps](tooltips.md) |
 | feed-item | Pending | Pending | Full pinned contract |
 | field | Pending | Pending | Full pinned contract |
 | header-select | Pending | Pending | Full pinned contract |
 | hero-carousel | Pending | Pending | Full pinned contract |
 | field-help-tooltip | `BleeckerFieldHelpTooltip`, native button with explicit vector template | Inline label and empty text, branded state values, keyboard help, accessible name and live text | In progress: exact motion comparison, physical input, rendered parity, contrast/Narrator/scaling and ARM64; see [usage](field-help-tooltips.md) |
 | icon-badge | Pending | Pending | Full pinned contract |
-| icon-button | `BleeckerIconButton`: three variants and three sizes | Nine registered combinations; x64 dimensions, names/roles, command and state checks; light/dark captures; package fixture; ARM64 build | In progress: physical input, tooltip, Narrator, contrast, scaling, motion and ARM64 runtime; see [usage](icon-buttons.md) |
-| loading-spinner | `BleeckerLoadingSpinner`: three sizes, themed three-quarter ring | Registered fixture; x64 geometry, theme, UIA, reduced-motion and lifecycle checks; independent package consumer | In progress: normal/live motion, contrast, Narrator, scaling/composition, ARM64 runtime; see [usage](loading-spinner.md) |
+| icon-button | `BleeckerIconButton`: three variants and three sizes | Nine registered combinations; x64 dimensions, names/roles, command and state checks; light/dark captures; package fixture; ARM64 build | In progress: physical input, tooltip, Narrator, contrast, scaling, motion and remaining ARM64 state checks; see [usage](icon-buttons.md) |
+| loading-spinner | `BleeckerLoadingSpinner`: three sizes, themed three-quarter ring | Registered fixture; x64 geometry, theme, UIA, reduced-motion and lifecycle checks; independent package consumer | In progress: normal/live motion, contrast, Narrator, scaling/composition, remaining ARM64 state checks; see [usage](loading-spinner.md) |
 | media-library | Pending | Pending | Full pinned contract |
 | modal | Pending | Pending | Full pinned contract |
 | nav-menu | Pending | Pending | Full pinned contract |
@@ -145,7 +145,7 @@ Monitoring: suite-selector slot, sidebar, live columns, attention cards, search,
 
 - Foundation: published and Visual Studio startup, fonts/resources, light/dark/system/Windows contrast, open flyouts, token drift, text/display scaling and reduced motion.
 - Every public visual control/style must have registered catalog coverage and appropriate boundary regression checks.
-- x64 and ARM64 builds and runtime evidence are separate requirements. ARM64 support remains unverified until exercised on ARM hardware.
+- x64 and ARM64 builds and runtime evidence are separate requirements. The registered fixture/runtime baseline passes on both architectures; full platform acceptance remains open as described in [runtime evidence](runtime-evidence.md).
 - Accessibility requires UI Automation plus Narrator and OS contrast verification; performance budgets must be set before large-data implementation and measured with hardware/OS/workload evidence.
 - Independent package consumer, versioned NuGet and runnable catalog, matching documentation, remote main and required CI are still required.
 

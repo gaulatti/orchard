@@ -73,10 +73,14 @@ fill was reported as 174px, while the rendered browser measured 174.1875px
 (CSS layout-unit quantization). The default style now disables layout rounding
 within Progress, preserving fractional fill dimensions. The regression requires
 the rendered width to agree with the calculated percentage within 0.001px.
-This fractional-width correction is pending runtime verification.
+This fractional-width correction passed x64 and native ARM64 catalog/consumer
+CI at `5412997`, run `38268516314`. The ARM64 fill measures
+174.199996948px, and the captured pill bodies pass in all 12 combinations and
+both themes. See [runtime evidence](runtime-evidence.md).
 
 Acceptance remains open: rendered native/browser comparison, exact pill edges
 and typography, enabled/interrupted motion, live appearance and unload/reload,
 invalid or zero maxima/nonfinite values, out-of-range native UIA
-conformance, contrast/Narrator, isolated scaling and ARM64 runtime. Do not change
+conformance, contrast/Narrator, isolated scaling and the remaining ARM64 state
+checks. Do not change
 the developer's desktop-wide settings to perform scaling checks.

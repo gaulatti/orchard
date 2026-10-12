@@ -49,8 +49,10 @@ Use `./scripts/run-catalog.ps1 -Platform ARM64` on Windows ARM. GitHub Actions
 exercises the x64 catalog and independent package consumer on `windows-2025`,
 and the ARM64 versions on the native `windows-11-arm` runner. Runtime reports
 record process and OS architecture; the gates reject architecture mismatches.
-A separate x64 job retains ARM64 cross-compilation coverage. Native ARM64
-runtime verification is newly configured and remains pending its first result.
+A separate x64 job retains ARM64 cross-compilation coverage. The catalog and
+independent consumer have passed on both architectures; see
+[native runtime evidence](docs/runtime-evidence.md) for scope and remaining
+platform acceptance.
 
 ## Repository layout
 

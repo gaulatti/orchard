@@ -40,6 +40,10 @@ the table; non-ASCII mappings load once. Unit and native display regressions cov
 expansions, accents, uncased scripts and emoji. The independent package consumer
 exercises sharp-s expansion through the embedded resource.
 
+The registered fixture and independent consumer, including the embedded casing
+table, pass on native ARM64 as well as x64. See
+[runtime evidence](runtime-evidence.md) for architecture reports and scope.
+
 The rendered pinned Bleecker audit confirms the same five regression outputs:
 `STRASSE`, `FFI · FFL`, Greek iota plus diaeresis/acute, Armenian `ԵՒ`, and
 `CAFÉ · 東京 · 👩🏽‍💻`. Every browser row has a 16px line box. Measured code points
@@ -53,7 +57,8 @@ still require reconciliation. Consumer rich content/templates retain their
 text and must currently supply uppercase content themselves. This does not yet
 match the reference's inherited CSS text transform. Exact native/browser glyph
 and tracking comparison, inline/baseline behavior, template/RTL edge cases,
-contrast, Narrator, isolated scaling and ARM64 runtime remain unverified. HTML
+contrast, Narrator, isolated scaling and the remaining ARM64 state checks remain
+unverified. HTML
 `div`/`p`/`span` selection has no direct native equivalent; composed layout and
 semantics still require acceptance evidence. No desktop-wide settings should
 be changed for scaling verification.
