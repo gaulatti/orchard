@@ -11,13 +11,22 @@ internal static class NativeScreenCapture
     {
         var input = OpenInputDesktop(0, false, 1); // DESKTOP_READOBJECTS
         var inputError = input == IntPtr.Zero ? Marshal.GetLastWin32Error() : 0;
-        try { return new { thread = Name(GetThreadDesktop(GetCurrentThreadId())), input = input == IntPtr.Zero ? null : Name(input), inputError }; }
+        try { return new { station = Name(GetProcessWindowStation()), thread = Name(GetThreadDesktop(GetCurrentThreadId())),
+            input = input == IntPtr.Zero ? null : Name(input), inputError,
+            activeConsoleSession = WTSGetActiveConsoleSessionId(), connectionState = ConnectionState() }; }
         finally { if (input != IntPtr.Zero) CloseDesktop(input); }
 
         static string? Name(IntPtr desktop)
         {
             var name = new System.Text.StringBuilder(256);
             return GetUserObjectInformation(desktop, 2, name, 512, out _) ? name.ToString() : null;
+        }
+        static int? ConnectionState()
+        {
+            using var process = System.Diagnostics.Process.GetCurrentProcess();
+            if (!WTSQuerySessionInformation(IntPtr.Zero, process.SessionId, 8, out var data, out var length)) return null;
+            try { return length >= 4 ? Marshal.ReadInt32(data) : null; }
+            finally { WTSFreeMemory(data); }
         }
     }
 
@@ -31,6 +40,25 @@ internal static class NativeScreenCapture
 
     internal static bool OwnsScreenPoint(IntPtr window, int x, int y) =>
         GetAncestor(WindowFromPoint(new ScreenPoint(x, y)), 2) == window;
+
+    internal static object DescribePoint(IntPtr window, int x, int y)
+    {
+        var hit = WindowFromPoint(new ScreenPoint(x, y));
+        var root = GetAncestor(hit, 2);
+        var foreground = GetForegroundWindow();
+        return new { x, y, own = Describe(window), hit = Describe(hit), root = Describe(root), foreground = Describe(foreground) };
+
+        static object Describe(IntPtr target)
+        {
+            var name = new System.Text.StringBuilder(256);
+            GetClassName(target, name, name.Capacity);
+            GetWindowThreadProcessId(target, out var process);
+            var session = process != 0 && ProcessIdToSessionId(process, out var sessionId) ? (uint?)sessionId : null;
+            var status = DwmGetWindowAttribute(target, 14, out var cloaked, 4); // DWMWA_CLOAKED
+            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, session,
+                visible = IsWindowVisible(target), cloaked = status >= 0 ? (uint?)cloaked : null };
+        }
+    }
 
     internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
     {
@@ -98,6 +126,14 @@ internal static class NativeScreenCapture
     }
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
     [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
+    [DllImport("kernel32.dll")] private static extern uint WTSGetActiveConsoleSessionId();
+    [DllImport("kernel32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ProcessIdToSessionId(uint process, out uint session);
+    [DllImport("wtsapi32.dll", EntryPoint = "WTSQuerySessionInformationW", ExactSpelling = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool WTSQuerySessionInformation(IntPtr server, int session, int information, out IntPtr value, out uint length);
+    [DllImport("wtsapi32.dll")] private static extern void WTSFreeMemory(IntPtr memory);
+    [DllImport("user32.dll")] private static extern IntPtr GetProcessWindowStation();
+    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool IsWindowVisible(IntPtr window);
+    [DllImport("user32.dll", EntryPoint = "GetClassNameW", CharSet = CharSet.Unicode, ExactSpelling = true)] private static extern int GetClassName(IntPtr window, System.Text.StringBuilder name, int length);
+    [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint process);
     [DllImport("user32.dll")] private static extern IntPtr GetThreadDesktop(uint thread);
     [DllImport("user32.dll", SetLastError = true)] private static extern IntPtr OpenInputDesktop(uint flags, [MarshalAs(UnmanagedType.Bool)] bool inherit, uint access);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool CloseDesktop(IntPtr desktop);
@@ -118,4 +154,5 @@ internal static class NativeScreenCapture
     [DllImport("gdi32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool BitBlt(IntPtr destination, int x, int y, int width, int height, IntPtr source, int sourceX, int sourceY, uint operation);
     [DllImport("gdi32.dll")] private static extern int GetDIBits(IntPtr dc, IntPtr bitmap, uint start, uint lines, [Out] byte[] pixels, ref BitmapInfo info, uint usage);
     [DllImport("dwmapi.dll")] private static extern int DwmFlush();
+    [DllImport("dwmapi.dll")] private static extern int DwmGetWindowAttribute(IntPtr window, uint attribute, out uint value, uint length);
 }

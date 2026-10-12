@@ -122,7 +122,18 @@ Cleanup removes the temporary topmost state
 and restores the pointer. Its HWND comes from XamlRoot.ContentIslandEnvironment
 AppWindowId and is checked against the process ID; Process.MainWindowHandle is
 only retained as a diagnostic. The check retains foreground, session and input
-desktop diagnostics even when activation fails. Painted template parts have no automation peer, so
+desktop diagnostics even when activation fails.
+An occluded target also retains HWND class, process/session, visibility and DWM
+cloaking diagnostics, without other windows' titles or content. Window-station,
+console-session and WTS connection state distinguish an inactive session from
+a geometry error. The fixture emits isolated Japanese label captures for the
+bundled font and explicit candidate font lists, restoring the original after
+the probe; these are diagnostics, not accepted library fallback mappings.
+The isolated browser font audit reproduces the canonical 125.296875px Latin
+and 111.453125px Japanese labels with the source's Google Encode Sans 500 face
+loaded. Segoe UI and Arial also produce the Japanese width through their own
+fallback; matching the width does not identify the CJK glyph family.
+Painted template parts have no automation peer, so
 pointer targets transform their visual bounds to XamlRoot.Content, apply the
 display scale, then add the HWND client origin obtained through ClientToScreen.
 In-process peer bounds in this SDK projection were client-relative and did not

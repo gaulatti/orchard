@@ -107,6 +107,7 @@ public sealed partial class SwitchesFixture : UserControl
         }
         await VerifyLifecycleAsync(scheme);
         await VerifyLiveAppearanceAsync(scheme);
+        await InspectFontFallbackAsync(scheme, folder);
         // Physical input is restricted to the dedicated hosted CI desktop.
         // Ordinary local catalog verification does not take over the user's input.
         if (Environment.GetEnvironmentVariable("CI") == "true")
@@ -353,8 +354,12 @@ public sealed partial class SwitchesFixture : UserControl
             Require(bounds.Width > 0 && bounds.Height > 0, "Physical switch target has no screen bounds.");
             var x = (int)(bounds.X + bounds.Width / 2);
             var y = (int)(bounds.Y + bounds.Height / 2);
-            Require(NativeScreenCapture.OwnsScreenPoint(window, x, y),
-                $"Physical switch target does not belong to its own window: target={target.Name}, point={x},{y}, client={NativeScreenCapture.ClientBounds(window)}.");
+            if (!NativeScreenCapture.OwnsScreenPoint(window, x, y))
+            {
+                await File.WriteAllTextAsync(Path.Combine(folder, $"switch-hit-target-{scheme}.json"),
+                    JsonSerializer.Serialize(NativeScreenCapture.DescribePoint(window, x, y), new JsonSerializerOptions { WriteIndented = true }));
+                throw new InvalidOperationException($"Physical switch target does not belong to its own window: target={target.Name}, point={x},{y}, client={NativeScreenCapture.ClientBounds(window)}.");
+            }
             Require(SetCursorPos(x, y), "Could not position CI pointer.");
             await Task.Delay(30);
             Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0002 } } },
@@ -395,6 +400,29 @@ public sealed partial class SwitchesFixture : UserControl
     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out CursorPoint point);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetCursorPos(int x, int y);
+
+    private async Task InspectFontFallbackAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var original = NonLatin.FontFamily;
+        var results = new List<object>();
+        // Evidence probes only; these do not change the library's font contract.
+        var candidates = new[] { "", ", Segoe UI", ", Arial", ", Microsoft YaHei UI", ", MS Gothic" };
+        try
+        {
+            for (var index = 0; index < candidates.Length; index++)
+            {
+                NonLatin.FontFamily = new FontFamily(original.Source + candidates[index]);
+                UpdateLayout();
+                await Task.Delay(50);
+                var label = Find<TextBlock>(NonLatin, "PART_Label");
+                results.Add(new { font = label.FontFamily.Source, label.Language, label.ActualWidth, label.ActualHeight, label.BaselineOffset });
+                await MainWindow.CaptureElementAsync(NonLatin, Path.Combine(folder, $"switch-font-fallback-{index}-{scheme}.png"));
+            }
+            await File.WriteAllTextAsync(Path.Combine(folder, $"switch-font-fallback-{scheme}.json"),
+                JsonSerializer.Serialize(results, new JsonSerializerOptions { WriteIndented = true }));
+        }
+        finally { NonLatin.FontFamily = original; UpdateLayout(); }
+    }
 
     private Task SettleAsync(BleeckerSwitch control, bool on) => WaitAsync(() =>
         Math.Abs(((TranslateTransform)Find<Grid>(control, "SwitchKnob").RenderTransform).X - (on ? 16 : 0)) < .000001 &&
