@@ -38,7 +38,7 @@ public sealed partial class BleeckerInput
     }
 
     private void OnInputMotionPreferenceChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) =>
-        DispatcherQueue.TryEnqueue(() => RequestMotion(false));
+        DispatcherQueue.TryEnqueue(() => { RequestMotion(false); UpdateShadow(); });
 
     private void RequestMotion(bool animate)
     {

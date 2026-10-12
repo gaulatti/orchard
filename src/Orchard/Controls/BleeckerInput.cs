@@ -71,6 +71,6 @@ public sealed partial class BleeckerInput : TextBox
         try { VisualStateManager.GoToState(this, state, false); }
         finally { applyingAppearance = false; }
         if (changed || !animate) RequestMotion(animate);
-        UpdateShadow();
+        UpdateShadow(animate);
     }
 }

@@ -107,6 +107,13 @@ public sealed partial class InputsFixture : UserControl
         UpdateLayout();
         await AwaitAsync(() => Shadow(input)?.Size == new System.Numerics.Vector2(180, 44), "Input shadow did not resize with the editor.");
         CheckRestShadow(input, 180, 44);
+        input.Width = 0;
+        UpdateLayout();
+        await AwaitAsync(() => Shadow(input)?.IsVisible == false, "Zero-width input retained its shadow.");
+        input.Width = 180;
+        UpdateLayout();
+        await AwaitAsync(() => Shadow(input)?.IsVisible == true, "Resized input did not restore its shadow.");
+        CheckRestShadow(input, 180, 44);
         var shadowHost = Find<Grid>(input, "InputShadowHost");
         panel.Children.Remove(input);
         await AwaitAsync(() => !input.IsLoaded && ElementCompositionPreview.GetElementChildVisual(shadowHost) is null, "Unloaded input retained its shadow visual.");
@@ -118,7 +125,7 @@ public sealed partial class InputsFixture : UserControl
         UpdateLayout();
 
         static SpriteVisual? Shadow(BleeckerInput control) =>
-            ElementCompositionPreview.GetElementChildVisual(Find<Grid>(control, "InputShadowHost")) as SpriteVisual;
+            ReadInputShadow(control);
         static void CheckRestShadow(BleeckerInput control, float width, float height)
         {
             var sprite = Shadow(control)!;
@@ -129,6 +136,15 @@ public sealed partial class InputsFixture : UserControl
                 shadow.Color.R == 26 && shadow.Color.G == 55 && shadow.Color.B == 77,
                 "Input rest shadow differs from the pinned reference.");
         }
+    }
+
+    private static SpriteVisual? ReadInputShadow(BleeckerInput control)
+    {
+        var output = ElementCompositionPreview.GetElementChildVisual(Find<Grid>(control, "InputShadowHost")) as SpriteVisual;
+        if (output is null) return null;
+        var mask = (CompositionMaskBrush)output.Brush;
+        var surface = (CompositionVisualSurface)((CompositionSurfaceBrush)mask.Source).Surface;
+        return ((ContainerVisual)surface.SourceVisual).Children.OfType<SpriteVisual>().Single();
     }
 
     private async Task AwaitAsync(Func<bool> condition, string message, Func<string>? details = null)

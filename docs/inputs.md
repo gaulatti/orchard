@@ -30,7 +30,7 @@ Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 
 Remaining work includes exact glyph/baseline and scaling comparison, custom
-cursor restoration, error semantics, shadow raster comparison and motion,
+cursor restoration, error semantics, shadow raster and motion comparison,
 live brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
@@ -164,3 +164,51 @@ The independent x64 package consumer passes at
 `artifacts/package-consumer-input-pointer`, verifying packaged resources, fonts,
 both themes and a native action. Its package SHA-256 is
 `8a5547a015bc4e3c21647e4ce575d1127d24c1b4d4f82fa03265dfd8a7408c39`.
+
+## Shadow motion and exterior clipping checkpoint
+
+The shadow retains one source visual and interpolates blur, offset, negative
+spread and opacity together over the 190ms premium curve. Interrupted returns
+sample the current transition and shorten its duration according to the
+[CSS reversal rules](https://www.w3.org/TR/css-transitions-1/#reversing).
+For these two endpoints and the non-overshooting curve, the shortening factor
+is the distance to the new endpoint. Reduced motion applies the destination
+immediately. Zero-width geometry hides the shadow; restoring width restores it.
+
+A CompositionVisualSurface renders the shadow through an even-odd alpha mask
+that excludes the rounded border box. This prevents shadow tint from leaking
+through translucent disabled backgrounds. The mask follows size and corner
+radius and uses the existing composition APIs without a graphics dependency.
+The before/after captures are `artifacts/input-shadow-interior-leak.jpg` and
+`artifacts/input-shadow-exterior-light.jpg`. An amplified red diagnostic shadow
+in `artifacts/input-shadow-amplified-clip.jpg` confirms that exterior output
+remains visible while the interior is excluded. Those diagnostic color/blur
+values were restored before the final build; that capture is not brand parity
+evidence. JPEG pixel samples are diagnostic, not exact raster acceptance.
+
+The physical-pointer fixture checks source identity, coordinated interpolation,
+intermediate frames, destination parameters, shortened returns and repeated
+reversal direction. It measures reversal timing after the native cursor confirms
+that hover was applied, allowing 50ms for frame presentation and sampling.
+At least one timing budget must be below 180ms to distinguish shortening from
+a full 190ms restart. All 60 enabled-motion stages pass at 100% display scale in
+`artifacts/input-shadow-final-pointer-result.json`; three of four timing samples
+meet that discriminating budget, with observed returns of 92–122ms. All four
+cases pass repeated reversals. The earlier clipped implementation also passes
+52 reduced-motion pointer stages at
+`artifacts/input-shadow-exterior-pointer-result.json` and the focused suite at
+`artifacts/smoke-input-shadow-exterior`.
+
+Exact native/browser blur and antialias comparison, scaling, Windows contrast,
+Narrator, observer performance and ARM64 runtime remain unverified. This
+checkpoint does not establish complete Input parity.
+
+The final full enabled-motion catalog suite passes at
+`artifacts/smoke-input-shadow-final-full`; the focused reduced-motion Input
+suite passes at `artifacts/smoke-input-shadow-final-reduced`. Windows Animation
+effects were restored to their original Off setting. All 13 unit/coverage tests,
+the token drift check using Node 24, x64 publish and ARM64 compilation pass.
+The independent x64 consumer passes at
+`artifacts/package-consumer-input-shadow-final`, including packaged resources,
+fonts, both themes and a native action. Package SHA-256:
+`e68523aedf7a509cc0a31efa38c781fd4ed9169d980e094eedbcf6db59543b7e`.
