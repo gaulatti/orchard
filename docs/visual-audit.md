@@ -40,4 +40,6 @@ Card reference `components-card--surface-hierarchy` confirms 24px default paddin
 
 Card edge checks now verify actual pixels inside an oversized child, beyond the card's right edge, and outside its rounded corner in both themes. Consumer background bindings survive variant changes. Changing asymmetric corners also rebuilds each shadow-mask arc; this fixes a reproduced stale-mask failure. Broader transformed/scaled clipping and exact blur comparison remain open.
 
+Card variants now preserve consumer Style bindings and setters. The visible consumer-style fixture retains 20px corners and a 2px border while cycling all five palette variants; changing the bound style source still updates its appearance. The standard variant fixtures retain their original recipes in both themes. This fixes variant changes discarding the application style; broader custom-template lifecycle acceptance remains open.
+
 Open comparison work includes shaping, line heights and text baselines, exact underline offset, the remaining focus matrix, shadows, disabled group opacity/compositing, remaining icons and loading/motion cases, and a complete rendered variant/size/theme/state matrix. Native-template behavior alone cannot close these gaps.

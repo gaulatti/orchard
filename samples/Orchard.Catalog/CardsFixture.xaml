@@ -2,6 +2,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:orchard="using:Orchard">
+    <UserControl.Resources>
+        <Style x:Key="ConsumerCardStyle" TargetType="orchard:BleeckerCard">
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+    </UserControl.Resources>
     <StackPanel Spacing="16">
         <TextBlock Text="Cards" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <TextBlock Text="Five surface levels · four padding sizes · consumer-owned content" Style="{StaticResource BleeckerBodyStyle}" />
@@ -37,6 +43,9 @@
         </Grid>
         <orchard:BleeckerCard Variant="Elevated" CornerRadius="20,8,4,16" PaddingSize="Small" Width="160" Height="80" VerticalAlignment="Center">
             <TextBlock Text="Asymmetric corners" TextWrapping="Wrap" />
+        </orchard:BleeckerCard>
+        <orchard:BleeckerCard x:Name="StyledCard" Style="{StaticResource ConsumerCardStyle}" Variant="Subtle" PaddingSize="Small" Width="180" VerticalAlignment="Center">
+            <TextBlock Text="Consumer style, Bleecker surface" TextWrapping="Wrap" />
         </orchard:BleeckerCard>
         </StackPanel>
     </StackPanel>

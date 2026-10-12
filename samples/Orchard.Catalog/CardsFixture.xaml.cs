@@ -61,6 +61,26 @@ public sealed partial class CardsFixture : UserControl
         Require(SurfaceCard.GetBindingExpression(Control.BackgroundProperty) is not null && Hex((SolidColorBrush)SurfaceCard.Background) == "#FF6495ED", "Changing variant replaced a consumer background binding.");
         SurfaceCard.ClearValue(Control.BackgroundProperty);
         SurfaceCard.Variant = BleeckerCardVariant.Surface;
+        var consumerStyle = StyledCard.Style;
+        var styleSource = new BleeckerCard { Style = consumerStyle };
+        StyledCard.SetBinding(FrameworkElement.StyleProperty, new Binding { Source = styleSource, Path = new PropertyPath("Style") });
+        foreach (var variant in Enum.GetValues<BleeckerCardVariant>())
+        {
+            StyledCard.Variant = variant;
+            await Task.Delay(80);
+            Require(StyledCard.GetBindingExpression(FrameworkElement.StyleProperty) is not null && ReferenceEquals(StyledCard.Style, consumerStyle), "Changing card variant replaced the consumer style binding.");
+            Require(StyledCard.CornerRadius.TopLeft == 20 && StyledCard.BorderThickness.Left == 2, "Changing card variant discarded consumer style setters.");
+            var expected = variant == BleeckerCardVariant.Transparent ? 0 : variant == BleeckerCardVariant.Subtle ? scheme == BleeckerColorScheme.Dark ? .035 : .45 : 1;
+            Require(Math.Abs(((SolidColorBrush)StyledCard.Background).Opacity - expected) < .001, "Consumer styling prevented the card variant from updating.");
+        }
+        var replacementStyle = new Style { TargetType = typeof(BleeckerCard) };
+        replacementStyle.Setters.Add(new Setter(Control.CornerRadiusProperty, new CornerRadius(16)));
+        styleSource.Style = replacementStyle;
+        await Task.Delay(80);
+        Require(StyledCard.CornerRadius.TopLeft == 16, "Consumer style source stopped propagating after variant changes.");
+        StyledCard.ClearValue(FrameworkElement.StyleProperty);
+        StyledCard.Style = consumerStyle;
+        StyledCard.Variant = BleeckerCardVariant.Subtle;
         var elevated = Variants.Children.OfType<BleeckerCard>().Single(card => card.Variant == BleeckerCardVariant.Elevated);
         elevated.CornerRadius = new CornerRadius(20, 8, 4, 16);
         await Task.Delay(80);

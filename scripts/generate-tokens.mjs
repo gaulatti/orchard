@@ -185,7 +185,7 @@ for (const variant of ['Surface', 'Outlined', 'Elevated', 'Subtle', 'Transparent
       card += `            <SolidColorBrush x:Key="Card${name}" Color="${color}" Opacity="${opacity}" />\n`;
     card += `        </ResourceDictionary>\n`;
   }
-  card += `    </ResourceDictionary.ThemeDictionaries>\n    <Style TargetType="local:BleeckerCard">\n        <Setter Property="Background" Value="{ThemeResource CardBackground}" />\n        <Setter Property="BorderBrush" Value="{ThemeResource CardBorderBrush}" />\n    </Style>\n</ResourceDictionary>\n`;
+  card += `    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n`;
   outputs[`src/Orchard/Themes/Cards/${variant}.g.xaml`] = card;
 }
 for (const [path, content] of Object.entries(outputs)) {

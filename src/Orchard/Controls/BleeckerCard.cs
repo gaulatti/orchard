@@ -52,10 +52,25 @@ public sealed class BleeckerCard : ContentControl
     private void ApplyVariant()
     {
         if (!Enum.IsDefined(Variant)) throw new ArgumentOutOfRangeException(nameof(Variant));
-        if (palette is not null) Resources.MergedDictionaries.Remove(palette);
-        palette = new ResourceDictionary { Source = new Uri($"ms-appx:///Orchard/Themes/Cards/{Variant}.g.xaml") };
-        Resources.MergedDictionaries.Add(palette);
-        Style = (Style)palette[typeof(BleeckerCard)];
+        var next = new ResourceDictionary { Source = new Uri($"ms-appx:///Orchard/Themes/Cards/{Variant}.g.xaml") };
+        if (palette is null)
+        {
+            palette = next;
+            Resources.MergedDictionaries.Add(palette);
+        }
+        else
+        {
+            // Keep the resolved brushes stable: replacing a dictionary does not
+            // invalidate existing ThemeResource expressions in WinUI styles.
+            foreach (var theme in new[] { "Light", "Default" })
+            foreach (var key in new[] { "CardBackground", "CardBorderBrush" })
+            {
+                var current = (SolidColorBrush)((ResourceDictionary)palette.ThemeDictionaries[theme])[key];
+                var replacement = (SolidColorBrush)((ResourceDictionary)next.ThemeDictionaries[theme])[key];
+                current.Color = replacement.Color;
+                current.Opacity = replacement.Opacity;
+            }
+        }
         UpdateShadow();
     }
     private void ApplyPadding() => Padding = new Thickness(PaddingSize switch

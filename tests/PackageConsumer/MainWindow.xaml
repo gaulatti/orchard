@@ -5,6 +5,9 @@
     Title="Orchard package consumer">
     <Grid x:Name="Root" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <Grid.Resources>
+            <Style x:Key="ConsumerCardStyle" TargetType="orchard:BleeckerCard">
+                <Setter Property="CornerRadius" Value="20,8,4,16" />
+            </Style>
             <!-- Consumer-owned Lucide 0.563.0 Save geometry; see the package's Lucide notice. -->
             <Style x:Key="SaveIcon" TargetType="ContentControl">
                 <Setter Property="IsTabStop" Value="False" />
@@ -21,7 +24,7 @@
                 <NavigationViewItem Content="Overview" Icon="Home" IsSelected="True" />
                 <NavigationViewItem Content="Library" Icon="Library" />
             </NavigationView.MenuItems>
-            <orchard:BleeckerCard x:Name="PackageCard" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated" CornerRadius="20,8,4,16">
+            <orchard:BleeckerCard x:Name="PackageCard" Style="{StaticResource ConsumerCardStyle}" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated">
             <StackPanel Spacing="16">
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />
