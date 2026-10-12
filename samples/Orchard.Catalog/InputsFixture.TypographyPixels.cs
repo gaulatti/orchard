@@ -11,10 +11,12 @@ public sealed partial class InputsFixture
     private async Task VerifyTypographyPixelsAsync(BleeckerInput input, string state, string folder, BleeckerColorScheme scheme)
     {
         var path = Path.Combine(folder, $"input-typography-alignment-{input.InputSize}-{state}-{scheme}.json");
-        if (Math.Abs(XamlRoot.RasterizationScale - 1) > .0001)
+        var textScale = new Windows.UI.ViewManagement.UISettings().TextScaleFactor;
+        if (Math.Abs(XamlRoot.RasterizationScale - 1) > .0001 || Math.Abs(textScale - 1) > .0001)
         {
             File.WriteAllText(path, JsonSerializer.Serialize(new { verified = false,
-                reason = "The retained browser profile covers 100% display scale only.", scale = XamlRoot.RasterizationScale }));
+                reason = "The retained browser profile covers 100% display and text scale only.",
+                scale = XamlRoot.RasterizationScale, textScale }));
             return;
         }
         using var stream = typeof(InputsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.InputTypography.json")!;

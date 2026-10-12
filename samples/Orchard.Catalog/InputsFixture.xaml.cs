@@ -50,6 +50,7 @@ public sealed partial class InputsFixture : UserControl
         await VerifyReadingDirectionAsync(scheme, folder);
         await VerifyAdornmentDirectionAsync(scheme, folder);
         await InspectFontFallbackAsync(scheme, folder);
+        await VerifyFontSettingsAsync(scheme, folder);
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
     }
 
@@ -183,6 +184,22 @@ public sealed partial class InputsFixture : UserControl
 
     private async Task VerifyMotionAsync(BleeckerColorScheme scheme, string folder)
     {
+        // This checks the non-hover transition. A stationary desktop pointer can
+        // otherwise select the reference's disabled-hover border instead.
+        var hitTestVisible = MediumInput.IsHitTestVisible;
+        MediumInput.IsHitTestVisible = false;
+        try
+        {
+            var rest = scheme == BleeckerColorScheme.Dark ? "#26FFFFFF" : "#66E6D5B8";
+            await AwaitAsync(() => Hex(Find<Border>(MediumInput, "BorderElement").BorderBrush) == rest,
+                "Input did not leave hover before the non-hover motion check.");
+            await VerifyNonHoverMotionAsync(scheme, folder);
+        }
+        finally { MediumInput.IsHitTestVisible = hitTestVisible; }
+    }
+
+    private async Task VerifyNonHoverMotionAsync(BleeckerColorScheme scheme, string folder)
+    {
         var border = Find<Border>(MediumInput, "BorderElement");
         var editor = Find<Grid>(MediumInput, "Editor");
         var before = Hex(border.BorderBrush);
@@ -212,7 +229,8 @@ public sealed partial class InputsFixture : UserControl
         await System.IO.File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"input-motion-{scheme}.json"),
             System.Text.Json.JsonSerializer.Serialize(new { enabled, samples = samples.Select(sample => new { sample.Milliseconds, sample.Color, sample.Opacity }) },
                 new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
-        Require(Hex(border.BorderBrush) == expected && Math.Abs(editor.Opacity - .6) < .000001, "Input motion did not reach the disabled-error appearance.");
+        Require(Hex(border.BorderBrush) == expected && Math.Abs(editor.Opacity - .6) < .000001,
+            $"Input motion did not reach the disabled-error appearance: border={Hex(border.BorderBrush)}, expected={expected}, opacity={editor.Opacity}.");
         Require(Hex(otherBorder.BorderBrush) == otherColor && !ReferenceEquals(border.BorderBrush, otherBorder.BorderBrush), "Input motion changed another editor's brush.");
         if (enabled)
         {

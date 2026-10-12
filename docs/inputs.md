@@ -4,6 +4,19 @@
 consumer-owned text and decorative StartIcon/EndIcon content. It is an incomplete
 preview against the [pinned reference](input-reference.md), not accepted parity.
 
+The font-settings fixture checks that italic style, condensed stretch and a
+disabled text-scale preference reach the editor, placeholder and baseline metrics
+element, then restores consumer values. The existing template passes those
+inheritance checks at 100% text size. Typography diagnostics now record Windows
+text scale separately from display scale; the retained browser pixel profile is
+accepted only when both are 100%.
+
+Scaling remains an open gap: `artifacts/smoke-input-text-225` fails the Japanese
+Small input viewport-height assertion at 225% text size, and the catalog sidebar
+clips enlarged labels. Windows text size was restored to 100%. Further scaling
+verification must use an isolated test environment rather than changing the
+developer's desktop-wide settings.
+
 Text and placeholders use `FlowDirection` with start alignment by default,
 matching Bleecker's LTR/RTL input alignment rather than inferring alignment from
 the entered script. The Input fixture verifies 24 rendered alignment cases

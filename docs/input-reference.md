@@ -146,6 +146,12 @@ input opacity applied separately. The dark disabled rule wins over the ordinary
 opaque deep-sea background. Disabled error retains terracotta at rest. Pointer
 hover still changes both disabled cases to the ordinary hover border and shadow
 in both themes, while focus remains false and the cursor is `not-allowed`.
+The programmatic non-hover motion fixture temporarily removes its editor from
+hit testing and verifies the rest border before sampling the transition. CI run
+38256705947 had a stationary pointer over that editor: its retained motion trace
+shows the correct hover border `#B3E6D5B8` and disabled opacity throughout, while
+the fixture incorrectly expected the non-hover error border. The separate
+physical-pointer fixture remains responsible for hover transitions.
 Orchard's disabled background, hover border/shadow and system cursor now follow
 this observed behavior. WinUI routes disabled TextBox pointer events to enclosing
 ScrollViewer chrome and omits disabled editors from host-coordinate hit tests.

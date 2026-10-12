@@ -41,6 +41,7 @@ public sealed partial class InputsFixture
                 measurements.Add(new
                 {
                     size = input.InputSize.ToString(), scale = XamlRoot.RasterizationScale,
+                    textScale = new Windows.UI.ViewManagement.UISettings().TextScaleFactor,
                     fontSize = input.FontSize, width = input.ActualWidth, height = input.ActualHeight,
                     caret = new { caret.X, caret.Y, caret.Height }, trailingEdge = last.X,
                     editor = new { editorOrigin.X, editorOrigin.Y, editor.ActualHeight },
