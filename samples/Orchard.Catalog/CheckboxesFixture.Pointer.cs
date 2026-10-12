@@ -66,6 +66,14 @@ public sealed partial class CheckboxesFixture
             await input.MoveAsync(Find<Border>(DisabledOff, "PART_Box"));
             anchor = PointerPosition();
             await Check(DisabledOff, "remounted-in-host", true, 32648, anchor);
+            for (var round = 0; round < 3; round++)
+            {
+                host.Children.Remove(DisabledOff);
+                Rows.Children.Insert(index, DisabledOff);
+                Rows.Children.Remove(DisabledOff);
+                host.Children.Insert(0, DisabledOff); UpdateLayout();
+                await Check(DisabledOff, $"rapid-remount-{round}", true, 32648, anchor);
+            }
             overlay.Visibility = Visibility.Visible; UpdateLayout();
             await Check(DisabledOff, "occluded", false, 32512, anchor);
             overlay.Visibility = Visibility.Collapsed; UpdateLayout();
@@ -131,6 +139,18 @@ public sealed partial class CheckboxesFixture
             await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)),
                 "Stationary disabling did not restore the editor's blocked cursor.");
             samples.Add(new { phase = "input-disabled-under-pointer", cursor = CurrentCheckboxCursor().ToInt64() });
+            var editorAnchor = PointerPosition();
+            for (var round = 0; round < 3; round++)
+            {
+                Rows.Children.Remove(editor); Rows.Children.Insert(index, editor); UpdateLayout();
+                await WaitAsync(() => editor.IsLoaded && CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) &&
+                    Hex(Find<Border>(editor, "BorderElement").BorderBrush) == (scheme == BleeckerColorScheme.Dark ? "#40FFFFFF" : "#B3E6D5B8"),
+                    $"Rapid Input remount {round} lost its disabled hover border/cursor.");
+                var point = PointerPosition();
+                Require(point.X == editorAnchor.X && point.Y == editorAnchor.Y, "Pointer moved during rapid Input remount.");
+                samples.Add(new { phase = "input-rapid-remount", round, cursor = CurrentCheckboxCursor().ToInt64(),
+                    border = Hex(Find<Border>(editor, "BorderElement").BorderBrush) });
+            }
             await input.MoveAsync(CheckboxHeading);
             await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),
                 "Leaving both disabled controls retained an override cursor.");
@@ -210,6 +230,7 @@ public sealed partial class CheckboxesFixture
         // Internal fields are diagnostics only; acceptance uses rendered output
         // and physical cursor handles rather than the implementation's booleans.
         return new { control.IsLoaded, control.IsHitTestVisible, screen.X, screen.Y, rootPosition = position,
+            templateAssigned = control.Template is not null, boundBoxIsNull = typeof(BleeckerCheckbox).GetField("box", flags)?.GetValue(control) is null,
             boxBounds = input.ScreenBounds(Find<Border>(control, "PART_Box")), registered = observer is not null,
             implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),
             ancestors, hits = hits.Select(Describe).ToArray() };

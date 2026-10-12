@@ -114,9 +114,11 @@ internal sealed class NativeInputSession : IDisposable
     {
         try
         {
+            var positioned = GetCursorPos(out var point);
             File.WriteAllText(Path.Combine(folder, $"{prefix}-desktop.json"),
                 JsonSerializer.Serialize(new { window = Window.ToInt64(), foregroundWindow = GetForegroundWindow().ToInt64(),
-                    sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(), pointerMoves },
+                    sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(),
+                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
         finally

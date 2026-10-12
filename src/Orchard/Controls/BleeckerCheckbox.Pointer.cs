@@ -13,8 +13,8 @@ public sealed partial class BleeckerCheckbox
         disabledPointer = new(this, () => box, SetPointerOver);
         PointerEntered += (_, _) => { if (IsEnabled) SetPointerOver(true); };
         PointerExited += (_, _) => { if (IsEnabled) SetPointerOver(false); };
-        Loaded += (_, _) => UpdatePointerObservation();
-        Unloaded += (_, _) => { disabledPointer.Detach(); pointerOver = false; };
+        Loaded += (_, _) => { UpdatePointerObservation(); disabledPointer.ReconcileLifecycle(); };
+        Unloaded += (_, _) => { disabledPointer.Detach(); pointerOver = false; disabledPointer.ReconcileLifecycle(); };
     }
 
     private void SetPointerOver(bool value)

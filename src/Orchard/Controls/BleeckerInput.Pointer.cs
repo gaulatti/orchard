@@ -13,8 +13,8 @@ public sealed partial class BleeckerInput
         disabledPointer = new(this, () => this, SetPointerOver);
         PointerEntered += (_, _) => SetPointerOver(true);
         PointerExited += (_, _) => SetPointerOver(false);
-        Loaded += (_, _) => UpdatePointerObservation();
-        Unloaded += (_, _) => { disabledPointer.Detach(); pointerOver = false; };
+        Loaded += (_, _) => { UpdatePointerObservation(); disabledPointer.ReconcileLifecycle(); };
+        Unloaded += (_, _) => { disabledPointer.Detach(); pointerOver = false; disabledPointer.ReconcileLifecycle(); };
     }
 
     private void SetPointerOver(bool value)

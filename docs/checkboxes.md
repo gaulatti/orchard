@@ -324,7 +324,19 @@ downloaded and hash-verified (SHA-256
 Failure reports now retain native hit elements, ancestor visibility/hit testing/
 clipping, current geometry and tracker registration. Tracker fields are read
 only as diagnostics; acceptance still uses physical cursor handles and actual
-rendered output. The x64 remount failure remains unresolved.
+rendered output. At `b63424d`, the x64 report shows the control and relevant
+ancestors loaded, visible and hit-testable, with Rows as the hit target, but no
+pointer registration. The observer now coalesces a dispatcher reconciliation
+after Loaded/Unloaded notifications, reattaching according to current IsLoaded,
+IsEnabled, XAML root and template-part availability. Genuine unload and template
+detachment still release immediately. The physical matrix adds three rapid
+remove/add cycles for both Checkbox and Input, retaining a stationary pointer
+and checking actual cursor/hover output. This correction needs a new native run.
+
+The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
+foreground before RTL input. Desktop diagnostics now capture the actual
+foreground process/class/package alongside the owned screen point. Physical
+input still fails if foreground ownership is lost; no other process is targeted.
 
 The pinned browser's rounded box also excludes its extreme corner points from
 the input hit target (`artifacts/checkbox-reference-corner-hit-Light.json`).

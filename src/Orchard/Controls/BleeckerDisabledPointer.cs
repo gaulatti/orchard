@@ -15,18 +15,29 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
 {
     private static readonly ConditionalWeakTable<UIElement, RootObserver> roots = new();
     private RootObserver? observer;
+    private bool lifecycleUpdateQueued;
     internal bool IsOver { get; private set; }
     internal bool OwnsCursor => BleeckerPointerCursor.IsOwner(this);
 
     internal void Update()
     {
-        var root = owner.IsLoaded && !owner.IsEnabled ? owner.XamlRoot?.Content : null;
+        var root = owner.IsLoaded && !owner.IsEnabled && bounds() is not null ? owner.XamlRoot?.Content : null;
         if (ReferenceEquals(root, observer?.Root)) { observer?.Refresh(); return; }
         // Enabling retains the hover fact until native enabled input takes over.
         Detach(clearHover: root is not null || !owner.IsEnabled);
         if (root is null) return;
         observer = roots.GetValue(root, value => new RootObserver(value));
         observer.Add(this);
+    }
+
+    internal void ReconcileLifecycle()
+    {
+        if (lifecycleUpdateQueued) return;
+        lifecycleUpdateQueued = true;
+        // A rapid remove/add can deliver Unloaded after the element is already
+        // loaded in its new parent. Reconcile the authoritative current state
+        // once the queued lifecycle notifications have completed.
+        if (!owner.DispatcherQueue.TryEnqueue(() => { lifecycleUpdateQueued = false; Update(); })) lifecycleUpdateQueued = false;
     }
 
     internal void Detach(bool clearHover = true)

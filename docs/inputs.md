@@ -173,7 +173,9 @@ pointer geometry, including clipping, scrolling and remounts. Its registration
 detaches on enable or unload. Input and Checkbox share one observer per XAML
 root and one native cursor override owner. The observer stops when its last
 disabled control detaches; pointer queries and hit testing are shared across
-registered controls. Native cursor restoration uses WinUI's current selected system
+registered controls. A coalesced dispatcher callback reconciles the control's
+current loaded state after rapid reparenting notifications; true unload releases
+immediately. Native cursor restoration uses WinUI's current selected system
 cursor rather than a cursor saved before entering the input.
 
 Open Input in the catalog and choose **Verify disabled pointer lifecycle**.
