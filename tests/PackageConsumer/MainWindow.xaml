@@ -21,7 +21,8 @@
                 <NavigationViewItem Content="Overview" Icon="Home" IsSelected="True" />
                 <NavigationViewItem Content="Library" Icon="Library" />
             </NavigationView.MenuItems>
-            <StackPanel Margin="32" Spacing="16" MaxWidth="640">
+            <orchard:BleeckerCard x:Name="PackageCard" Margin="32" MaxWidth="640" PaddingSize="Small">
+            <StackPanel Spacing="16">
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />
                     <orchard:BleeckerLoadingSpinner x:Name="PackageSpinner" Size="Small" AutomationProperties.Name="Preparing local preview" />
@@ -43,6 +44,7 @@
                 </orchard:BleeckerToggleGroup>
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
             </StackPanel>
+            </orchard:BleeckerCard>
         </NavigationView>
     </Grid>
 </Window>

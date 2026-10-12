@@ -146,6 +146,12 @@ public static class BleeckerTokens
             ["accent"] = "#FF1A2332",
             ["accentForeground"] = "#FFF0F4F8",
         }.ToFrozenDictionary(StringComparer.Ordinal);
+    internal static IReadOnlyList<(float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)> RaisedShadows { get; } =
+        Array.AsReadOnly(new (float, float, float, float, float, byte, byte, byte)[]
+        {
+            (0f, 2f, 5f, 0f, 0.045f, 26, 55, 77),
+            (0f, 18f, 42f, -22f, 0.24f, 26, 55, 77),
+        });
     public static FrozenDictionary<string, string> Colors(BleeckerColorScheme scheme) => scheme switch
     {
         BleeckerColorScheme.Light => LightColors,

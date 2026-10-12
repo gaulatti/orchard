@@ -1,0 +1,32 @@
+<UserControl x:Class="Orchard.Catalog.CardsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16">
+        <TextBlock Text="Cards" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Five surface levels · four padding sizes · consumer-owned content" Style="{StaticResource BleeckerBodyStyle}" />
+        <Grid x:Name="Variants" ColumnSpacing="16" Margin="0,0,0,24">
+            <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /></Grid.ColumnDefinitions>
+            <orchard:BleeckerCard x:Name="SurfaceCard"><TextBlock Text="Surface" TextWrapping="Wrap" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="1" Variant="Outlined"><TextBlock Text="Outlined" TextWrapping="Wrap" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="2" Variant="Elevated"><TextBlock Text="Elevated" TextWrapping="Wrap" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="3" Variant="Subtle"><TextBlock Text="Subtle" TextWrapping="Wrap" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="4" Variant="Transparent"><TextBlock Text="Transparent" TextWrapping="Wrap" /></orchard:BleeckerCard>
+        </Grid>
+        <Grid x:Name="Paddings" ColumnSpacing="16">
+            <Grid.ColumnDefinitions><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /><ColumnDefinition /></Grid.ColumnDefinitions>
+            <orchard:BleeckerCard PaddingSize="None"><TextBlock Text="None" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="1" PaddingSize="Small"><TextBlock Text="Small" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="2"><TextBlock Text="Medium" /></orchard:BleeckerCard>
+            <orchard:BleeckerCard Grid.Column="3" PaddingSize="Large"><TextBlock Text="Large" /></orchard:BleeckerCard>
+        </Grid>
+        <orchard:BleeckerCard x:Name="Composition" Width="320" HorizontalAlignment="Left">
+            <StackPanel Spacing="16">
+                <TextBlock Text="Local coverage · 東京 · São Paulo · القاهرة" TextWrapping="Wrap" Style="{StaticResource BleeckerHeadingStyle}" FontSize="20" />
+                <TextBlock Text="A consumer-owned card with wrapping text and an independent action." TextWrapping="Wrap" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerButton x:Name="CardAction" Content="Open workspace" Click="OnOpen" />
+                <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
+            </StackPanel>
+        </orchard:BleeckerCard>
+    </StackPanel>
+</UserControl>

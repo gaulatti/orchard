@@ -410,14 +410,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerCard.cs", "src/Orchard/Themes/Cards/"],
+      "catalogFixtures": ["samples/Orchard.Catalog/CardsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/CardsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact shadow rasterization, overflow clipping and surface motion",
+        "Consumer overrides, contrast, accessibility and scaling",
+        "ARM64 runtime and complete rendered parity"
       ]
     },
     {

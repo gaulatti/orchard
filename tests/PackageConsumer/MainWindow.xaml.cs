@@ -34,6 +34,8 @@ public sealed partial class MainWindow : Window
                 await Task.Delay(250);
                 Root.UpdateLayout();
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
+                Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 12 && PackageCard.ActualWidth > 0,
+                    "Packaged card did not load its geometry and content template.");
                 Require(PackageSpinner.ActualWidth == 16 && PackageSpinner.ActualHeight == 16 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSpinner).GetAutomationControlType() == AutomationControlType.ProgressBar,
                     "Packaged loading spinner lost its geometry or progress role.");

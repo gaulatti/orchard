@@ -27,7 +27,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | attention-surface | Pending | Pending | Full pinned contract |
 | button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, Narrator, contrast, scaling, motion, ARM64 runtime; see [usage](buttons.md) |
 | button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, Narrator, contrast, scaling, ARM64 runtime; see [usage](button-group.md) |
-| card | Pending | Pending | Full pinned contract |
+| card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, contrast/accessibility/scaling, ARM64 runtime; see [usage](cards.md) |
 | chart | Pending | Pending | Full pinned contract |
 | chart-theme | Pending | Pending | Full pinned contract |
 | line-chart | Pending | Pending | Full pinned contract |

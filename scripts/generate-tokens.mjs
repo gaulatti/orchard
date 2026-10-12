@@ -108,6 +108,9 @@ for (const name of ['fontFamilies', 'fontWeights']) cs += dictionary(pascal(name
 for (const name of ['spacing', 'radii', 'durations', 'letterSpacing']) cs += dictionary(pascal(name), tokens[name], 'double', value => value.toString());
 cs += dictionary('LightColors', tokens.themes.light, 'string', value => JSON.stringify(argb(value)));
 cs += dictionary('DarkColors', tokens.themes.dark, 'string', value => JSON.stringify(argb(value)));
+const raisedLayers = [...tokens.shadows.raised.matchAll(/(-?\d+) (-?\d+)px (\d+)px(?: (-?\d+)px)? rgb\((\d+) (\d+) (\d+) \/ ([.\d]+)\)/g)];
+if (raisedLayers.length !== 2) throw new Error('The raised shadow recipe must contain two recognized layers.');
+cs += `    internal static IReadOnlyList<(float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)> RaisedShadows { get; } =\n        Array.AsReadOnly(new (float, float, float, float, float, byte, byte, byte)[]\n        {\n${raisedLayers.map(m => `            (${m[1]}f, ${m[2]}f, ${m[3]}f, ${m[4] ?? 0}f, ${m[8]}f, ${m[5]}, ${m[6]}, ${m[7]}),`).join('\n')}\n        });\n`;
 cs += `    public static FrozenDictionary<string, string> Colors(BleeckerColorScheme scheme) => scheme switch\n    {\n        BleeckerColorScheme.Light => LightColors,\n        BleeckerColorScheme.Dark => DarkColors,\n        _ => throw new ArgumentOutOfRangeException(nameof(scheme), scheme, "Unknown color scheme.")\n    };\n}\n`;
 const outputs = { 'tokens/bleecker.tokens.json': JSON.stringify(tokens, null, 2) + '\n',
   'src/Orchard/Themes/Tokens.g.xaml': xaml, 'src/Orchard/Tokens/BleeckerTokens.g.cs': cs };
@@ -167,6 +170,23 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
     </Style>
 </ResourceDictionary>\n`;
   outputs[`src/Orchard/Themes/Buttons/${variant}.g.xaml`] = button;
+}
+for (const variant of ['Surface', 'Outlined', 'Elevated', 'Subtle', 'Transparent']) {
+  let card = `<!-- Generated from the pinned Bleecker card recipe; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+  for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+    const dark = theme === 'Default', contrast = theme === 'HighContrast';
+    const subtle = variant === 'Subtle', transparent = variant === 'Transparent';
+    const borderAlpha = dark ? { Surface: .09, Outlined: .15, Elevated: .1, Subtle: .07, Transparent: 0 }[variant]
+      : { Surface: .3, Outlined: .4, Elevated: .25, Subtle: .2, Transparent: 0 }[variant];
+    card += `        <ResourceDictionary x:Key="${theme}">\n`;
+    for (const [name, color, opacity] of [
+      ['Background', contrast ? '{ThemeResource SystemColorWindowColor}' : argb(dark ? subtle ? '#ffffff' : colors.deepSea : subtle ? colors.lightSand : '#ffffff'), contrast ? 1 : transparent ? 0 : subtle ? dark ? .035 : .45 : 1],
+      ['BorderBrush', contrast ? '{ThemeResource SystemColorWindowTextColor}' : argb(dark ? '#ffffff' : colors.sand), contrast ? 1 : borderAlpha]])
+      card += `            <SolidColorBrush x:Key="Card${name}" Color="${color}" Opacity="${opacity}" />\n`;
+    card += `        </ResourceDictionary>\n`;
+  }
+  card += `    </ResourceDictionary.ThemeDictionaries>\n    <Style TargetType="local:BleeckerCard">\n        <Setter Property="Background" Value="{ThemeResource CardBackground}" />\n        <Setter Property="BorderBrush" Value="{ThemeResource CardBorderBrush}" />\n    </Style>\n</ResourceDictionary>\n`;
+  outputs[`src/Orchard/Themes/Cards/${variant}.g.xaml`] = card;
 }
 for (const [path, content] of Object.entries(outputs)) {
   const url = new URL(path, root);

@@ -3,7 +3,7 @@
 Native Windows components and Bleecker theme resources for C# / WinUI 3.
 The current 0.1.0 foundation provides typography, light/dark/contrast palettes,
 button and icon-button components, connected button groups, toggle styles and
-initial input styles. Full component parity is in progress.
+groups, loading spinners, cards and initial input styles. Full component parity is in progress.
 
 Target .NET 10 and Windows SDK 10.0.26100.0. Use Windows App SDK 2.5.1.
 Add the package from the directory containing the downloaded `.nupkg` or your

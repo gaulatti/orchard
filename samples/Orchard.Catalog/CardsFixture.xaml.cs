@@ -1,0 +1,56 @@
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Composition;
+
+namespace Orchard.Catalog;
+
+public sealed partial class CardsFixture : UserControl
+{
+    public CardsFixture() => InitializeComponent();
+    private int clicks;
+    private void OnOpen(object sender, RoutedEventArgs args) => Result.Text = $"Workspace opened: {++clicks}";
+
+    internal async Task VerifyAsync(BleeckerColorScheme scheme)
+    {
+        foreach (var card in Variants.Children.OfType<BleeckerCard>())
+        {
+            Require(card.CornerRadius.TopLeft == 12 && card.Padding.Left == 24 && card.BorderThickness.Left == 1, "Card geometry differs from Bleecker.");
+            Require(card.FontSize == 16 && card.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Card inherited Windows typography instead of the reference defaults.");
+            var dark = scheme == BleeckerColorScheme.Dark;
+            var background = (SolidColorBrush)card.Background;
+            var border = (SolidColorBrush)card.BorderBrush;
+            var subtle = card.Variant == BleeckerCardVariant.Subtle;
+            var transparent = card.Variant == BleeckerCardVariant.Transparent;
+            var color = dark ? subtle ? "#FFFFFFFF" : BleeckerTokens.Colors(scheme)["deepSea"] : subtle ? BleeckerTokens.Colors(scheme)["lightSand"] : "#FFFFFFFF";
+            Require(Hex(background) == color && Math.Abs(background.Opacity - (transparent ? 0 : subtle ? dark ? .035 : .45 : 1)) < .001, "Card background recipe mismatch.");
+            var alpha = card.Variant switch { BleeckerCardVariant.Surface => dark ? .09 : .3, BleeckerCardVariant.Outlined => dark ? .15 : .4, BleeckerCardVariant.Elevated => dark ? .1 : .25, BleeckerCardVariant.Subtle => dark ? .07 : .2, _ => 0 };
+            Require(Hex(border) == (dark ? "#FFFFFFFF" : BleeckerTokens.Colors(scheme)["sand"]) && Math.Abs(border.Opacity - alpha) < .001, "Card border recipe mismatch.");
+            var root = (Grid)VisualTreeHelper.GetChild(card, 0);
+            var host = (Grid)root.Children[1];
+            var layers = ElementCompositionPreview.GetElementChildVisual(host) as ContainerVisual;
+            Require(card.Variant == BleeckerCardVariant.Elevated ? layers?.Children.Count == 2 : layers is null, "Card elevation layers do not follow variant.");
+        }
+        foreach (var card in Paddings.Children.OfType<BleeckerCard>())
+            Require(card.Padding.Left == (card.PaddingSize switch { BleeckerCardPadding.None => 0, BleeckerCardPadding.Small => 16, BleeckerCardPadding.Medium => 24, _ => 32 }), "Card padding mismatch.");
+        var original = Composition.ActualHeight;
+        Composition.Width = 240;
+        await Task.Delay(100);
+        Require(Composition.ActualHeight > original, "Card content did not wrap at constrained width.");
+        Composition.Width = 320;
+        var before = clicks;
+        var action = (Button)VisualTreeHelper.GetChild(CardAction, 0);
+        ((IInvokeProvider)new ButtonAutomationPeer(action).GetPattern(PatternInterface.Invoke)).Invoke();
+        await Task.Delay(100);
+        Require(clicks == before + 1, "Card intercepted its consumer action.");
+        SurfaceCard.Variant = BleeckerCardVariant.Subtle;
+        await Task.Delay(100);
+        Require(Math.Abs(((SolidColorBrush)SurfaceCard.Background).Opacity - (scheme == BleeckerColorScheme.Dark ? .035 : .45)) < .001, "Live card variant did not refresh resources.");
+        SurfaceCard.Variant = BleeckerCardVariant.Surface;
+    }
+    private static string Hex(SolidColorBrush brush) => $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}";
+    private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
+}

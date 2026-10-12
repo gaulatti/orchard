@@ -2,6 +2,30 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Orchard">
+    <Style TargetType="local:BleeckerCard">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerCardCornerRadius}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerCard">
+            <Grid>
+                <Canvas IsHitTestVisible="False">
+                    <Rectangle x:Name="PART_NearMask" Fill="{TemplateBinding Background}" />
+                    <Rectangle x:Name="PART_FarMask" Fill="{TemplateBinding Background}" />
+                </Canvas>
+                <Grid x:Name="PART_ShadowHost" IsHitTestVisible="False" />
+                <Border x:Name="PART_Surface" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerLoadingSpinner">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Center" />
