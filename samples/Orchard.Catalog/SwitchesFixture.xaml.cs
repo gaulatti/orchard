@@ -162,7 +162,6 @@ public sealed partial class SwitchesFixture : UserControl
         var track = Find<Border>(control, "PART_Track");
         var thumb = Find<Microsoft.UI.Xaml.Shapes.Ellipse>(control, "PART_Thumb");
         var label = Find<TextBlock>(control, "PART_Label");
-        var root = Find<Grid>(control, "PART_Root");
         var pointerInput = Find<Microsoft.UI.Xaml.Controls.Primitives.Thumb>(control, "SwitchThumb");
         Require(!pointerInput.IsTabStop && pointerInput.ActualWidth == control.ActualWidth && pointerInput.ActualHeight == control.ActualHeight,
             "Native switch pointer input does not cover its track and label exactly once.");
@@ -171,12 +170,8 @@ public sealed partial class SwitchesFixture : UserControl
             thumb.ActualWidth == 16 && thumb.ActualHeight == 16 &&
             Math.Abs(point.X - (control.IsOn ? 18 : 2)) < .001 && Math.Abs(point.Y - 2) < .001,
             $"Switch geometry differs from its 36x20 reference: {control.Name}, track={track.ActualWidth}x{track.ActualHeight}, thumb={thumb.ActualWidth}x{thumb.ActualHeight} at {point}.");
-        var offColor = scheme == BleeckerColorScheme.Light ? "#FFE6D5B8" : "#FFFFFFFF";
-        var onColor = scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5";
-        var offOpacity = scheme == BleeckerColorScheme.Light ? .25 : .15;
-        Require(Hex(track.Background) == (control.IsOn ? onColor : offColor) && Math.Abs(track.Background.Opacity - (control.IsOn ? 1 : offOpacity)) < .000001 &&
-            Math.Abs(track.BorderBrush.Opacity - (control.IsOn ? 0 : scheme == BleeckerColorScheme.Light ? .35 : .10)) < .000001 &&
-            Hex(thumb.Fill) == "#FFFFFFFF" && root.Opacity == (control.IsEnabled ? 1 : .5), $"Switch palette/disabled opacity differs for {control.Name}.");
+        var palette = ReadPalette(control);
+        Require(PaletteSettled(palette, scheme), $"Switch palette/disabled opacity differs: {JsonSerializer.Serialize(palette)}.");
         Require(control.FontSize == 14 && label.FontWeight.Weight == 500 && label.LineHeight == 20 && label.Margin.Left == 12 &&
             control.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && !Find<ToggleSwitch>(control, "PART_Switch").UseSystemFocusVisuals,
             "Switch acquired Windows typography, focus styling or label spacing.");
@@ -284,6 +279,8 @@ public sealed partial class SwitchesFixture : UserControl
     private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme)
     {
         var host = (FrameworkElement)XamlRoot.Content;
+        var controls = Rows.Children.OfType<BleeckerSwitch>().ToArray();
+        var consumerStates = controls.Select(control => control.IsOn).ToArray();
         var originalTheme = host.RequestedTheme;
         var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
         appearanceSamples.Clear();
@@ -295,7 +292,7 @@ public sealed partial class SwitchesFixture : UserControl
             var timer = Stopwatch.StartNew();
             host.RequestedTheme = alternate == BleeckerColorScheme.Light ? ElementTheme.Light : ElementTheme.Dark;
             var sawIntermediate = false;
-            while (timer.ElapsedMilliseconds < 300 && !PaletteSettled(alternate))
+            while (timer.ElapsedMilliseconds < 300 && !controls.All(control => PaletteSettled(ReadPalette(control), alternate)))
             {
                 var fill = Find<Border>(On, "PART_Track").Background;
                 var color = Hex(fill);
@@ -307,23 +304,48 @@ public sealed partial class SwitchesFixture : UserControl
                 await Task.Delay(1);
             }
             Require(!animated || sawIntermediate, "Animated appearance change skipped every intermediate track color.");
-            await WaitAsync(() => PaletteSettled(alternate),
-                "Checked switch did not observe a live appearance change.");
+            await WaitAsync(() => controls.All(control => PaletteSettled(ReadPalette(control), alternate)),
+                "Switch rows did not all reach their live appearance endpoints.");
             appearanceSamples.Add(new { phase = "settled", elapsed = timer.Elapsed.TotalMilliseconds,
                 color = Hex(Find<Border>(On, "PART_Track").Background), offAlpha = Find<Border>(Off, "PART_Track").Background.Opacity });
-            foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, alternate);
-            Require(On.IsOn && !Off.IsOn && DisabledOn.IsOn && !DisabledOff.IsOn, "Appearance change altered consumer switch state.");
+            foreach (var control in controls) VerifyPresentation(control, alternate);
+            Require(controls.Select(control => control.IsOn).SequenceEqual(consumerStates), "Appearance change altered consumer switch state.");
         }
-        finally { host.RequestedTheme = originalTheme; }
-        await WaitAsync(() => PaletteSettled(scheme),
-            "Checked switch did not restore its original appearance.");
-        foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
+        finally
+        {
+            appearanceSamples.Add(new { phase = "alternate-end", rows = controls.Select(ReadPalette).ToArray() });
+            host.RequestedTheme = originalTheme;
+        }
+        try
+        {
+            await WaitAsync(() => controls.All(control => PaletteSettled(ReadPalette(control), scheme)),
+                "Switch rows did not all restore their original appearance endpoints.");
+            foreach (var control in controls) VerifyPresentation(control, scheme);
+            Require(controls.Select(control => control.IsOn).SequenceEqual(consumerStates), "Restoring appearance altered consumer switch state.");
+        }
+        finally { appearanceSamples.Add(new { phase = "restored-end", rows = controls.Select(ReadPalette).ToArray() }); }
+    }
 
-        bool PaletteSettled(BleeckerColorScheme palette) =>
-            Hex(Find<Border>(On, "PART_Track").Background) == (palette == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5") &&
-            // Brush.Opacity stores the XAML resource's native float endpoint.
-            // .15 is observed as .15000000596046448 in the runtime reports.
-            Math.Abs(Find<Border>(Off, "PART_Track").Background.Opacity - (float)(palette == BleeckerColorScheme.Light ? .25 : .15)) < 1e-9;
+    private sealed record PaletteSnapshot(string Name, bool IsOn, bool IsEnabled, string Fill, double FillOpacity,
+        string Stroke, double StrokeOpacity, string Thumb, double Opacity);
+
+    private static PaletteSnapshot ReadPalette(BleeckerSwitch control)
+    {
+        var track = Find<Border>(control, "PART_Track");
+        return new(control.Name, control.IsOn, control.IsEnabled, Hex(track.Background), track.Background.Opacity,
+            Hex(track.BorderBrush), track.BorderBrush.Opacity, Hex(Find<Microsoft.UI.Xaml.Shapes.Ellipse>(control, "PART_Thumb").Fill),
+            Find<Grid>(control, "PART_Root").Opacity);
+    }
+
+    private static bool PaletteSettled(PaletteSnapshot row, BleeckerColorScheme scheme)
+    {
+        var light = scheme == BleeckerColorScheme.Light;
+        var fill = row.IsOn ? light ? "#FF2C5784" : "#FF5BA3F5" : light ? "#FFE6D5B8" : "#FFFFFFFF";
+        // Brush.Opacity stores the XAML resource's native float endpoint.
+        // Each row owns its clocks; one settled row does not settle its siblings.
+        return row.Fill == fill && (row.IsOn || row.Stroke == fill) && Math.Abs(row.FillOpacity - (float)(row.IsOn ? 1 : light ? .25 : .15)) < 1e-9 &&
+            Math.Abs(row.StrokeOpacity - (float)(row.IsOn ? 0 : light ? .35 : .10)) < 1e-9 &&
+            row.Thumb == "#FFFFFFFF" && row.Opacity == (row.IsEnabled ? 1 : .5);
     }
 
     private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)

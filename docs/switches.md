@@ -111,7 +111,12 @@ inactive hosted desktop does not erase animation evidence. The fixture emits
 `switch-appearance-{Light,Dark}.json` even when appearance verification fails.
 Endpoint checks compare against XAML's float opacity: the dark .15 resource is
 reported as .15000000596046448; comparing it against an unrounded double with
-1e-9 tolerance would falsely reject a settled palette. It also emits
+1e-9 tolerance would falsely reject a settled palette. Every fixture row must
+reach its own fill and border endpoints before the live appearance check
+verifies presentation; the clocks of a single on/off pair cannot establish
+settlement for disabled and edge-case rows. The appearance report retains all
+rows at the alternate and restored endpoints, including when a check fails.
+It also emits
 `switch-measurements-{Light,Dark}.json` and corresponding native captures.
 The independent NuGet consumer also instantiates and toggles the control.
 The x64 catalog and isolated consumer at 7001e3e passed the registered light/dark

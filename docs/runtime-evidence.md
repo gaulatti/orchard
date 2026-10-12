@@ -77,6 +77,18 @@ Microsoft YaHei UI or MS Gothic produces 112px, which still differs from the
 font mappings. Motion raster parity, fallback glyphs and the other acceptance
 gaps remain open.
 
+The Switch follow-up at `19c1cb25a3ec00a828f77659cd7357773574eded`
+([run 38293032359](https://github.com/gaulatti/orchard/actions/runs/38293032359))
+passed x64 runtime and independent consumption, and ARM64 cross-build. The
+native ARM64 check instead stopped at live appearance: the on/off pair had
+settled while DisabledOff had not yet met its palette assertion. It did not
+reach the application-identity diagnostic or physical input. Artifact
+`11766798546`, SHA-256
+`2e997121a289bfda2b3f1df4ca34a63296080a38a46492935d7f806d38c2e007`,
+was downloaded and hash-verified under `artifacts/ci-switch-19c1cb2-arm64`.
+The next fixture waits for every row's fill and border endpoints and retains
+all row values on failure. This run does not replace the shared baseline below.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)
