@@ -76,9 +76,19 @@ public sealed partial class KeyboardFixture : UserControl
         {
             Combo.Keys = collection;
             Require(collection.Subscribers == 1, "Loaded keyboard display did not subscribe exactly once.");
-            panel.Children.Remove(Combo);
-            await AwaitAsync(() => !Combo.IsLoaded, "Keyboard display did not unload.");
-            Require(collection.Subscribers == 0, "Unloaded keyboard display retained its collection subscription.");
+            var unloaded = false;
+            void OnUnloaded(object sender, RoutedEventArgs args) => unloaded = true;
+            Combo.Unloaded += OnUnloaded;
+            try
+            {
+                panel.Children.Remove(Combo);
+                // IsLoaded can clear before the queued Unloaded notification.
+                // Observe the lifecycle event before checking its cleanup.
+                await AwaitAsync(() => unloaded, "Keyboard display did not raise Unloaded.");
+                Require(!Combo.IsLoaded && collection.Subscribers == 0,
+                    "Unloaded keyboard display retained its collection subscription.");
+            }
+            finally { Combo.Unloaded -= OnUnloaded; }
             collection.Add("Shift");
             panel.Children.Insert(position, Combo);
             UpdateLayout();

@@ -30,6 +30,8 @@ Unicode, long, disabled, RTL and rich content. Runtime checks exercise collectio
 mutation/replacement, precedence, accessibility roles/names, theme foregrounds
 and baseline geometry. A counted collection observer verifies detach on unload
 and replacement, one subscription on reload, and changes made while unloaded.
+Cleanup is checked after the actual `Unloaded` notification, rather than
+immediately after removing the control from its parent.
 Per-theme JSON records native keycap dimensions, child positions, font and
 palette values for comparison with the browser. The independent package
 consumer includes a keycap.
