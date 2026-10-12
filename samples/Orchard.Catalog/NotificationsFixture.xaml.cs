@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 
 namespace Orchard.Catalog;
@@ -50,6 +51,8 @@ public sealed partial class NotificationsFixture : UserControl
         var mark = (Button)header.Children[1];
         var items = (ItemsControl)stack.Children[3];
         var rows = Descendants<Button>(items).ToArray();
+        Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), mark),
+            "Notification popup did not initially focus the header action.");
         Require(presenter.ActualWidth == 320 && presenter.ActualHeight == 262 && header.ActualHeight == 39 && rows.Length == 3,
             $"Notification popup/header/list geometry mismatch: {presenter.ActualWidth}/{header.ActualHeight}/{rows.Length}.");
         Require(rows.Select(row => row.ActualHeight).SequenceEqual(new double[] { 72, 72, 56 }),
@@ -59,6 +62,20 @@ public sealed partial class NotificationsFixture : UserControl
         Require(new ButtonAutomationPeer(rows[0]).GetName() == "New order Order #1234 received 2m ago",
             "Notification action omitted its description or timestamp from accessibility.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-{scheme.ToString().ToLowerInvariant()}.png"));
+        Require(mark.Focus(FocusState.Keyboard), "Notification header did not accept keyboard focus.");
+        Require(rows[0].Focus(FocusState.Keyboard), "Notification row did not accept keyboard focus.");
+        Require(Descendants<Border>(rows[0]).Single(border => border.Name == "FocusHighlight").Opacity == 1,
+            "Keyboard-focused notification lost its branded highlight.");
+        var firstCommand = (ActionCommand)Badge.Items[0].Command!;
+        firstCommand.Enabled = false;
+        await Task.Delay(100);
+        Require(!rows[0].IsEnabled, "Notification ignored consumer CanExecuteChanged.");
+        Require(!rows[0].Focus(FocusState.Keyboard), "A disabled notification accepted keyboard focus.");
+        firstCommand.Enabled = true;
+        await Task.Delay(100);
+        Require(rows[0].IsEnabled, "Notification did not restore consumer command availability.");
+        rows[0].Focus(FocusState.Keyboard);
+        await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-focus-{scheme.ToString().ToLowerInvariant()}.png"));
         var beforeMarked = marked;
         ((IInvokeProvider)new ButtonAutomationPeer(mark).GetPattern(PatternInterface.Invoke)).Invoke();
         await Task.Delay(100);
@@ -122,8 +139,14 @@ public sealed partial class NotificationsFixture : UserControl
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
     private sealed class ActionCommand(Action<object?> action) : ICommand
     {
-        public event EventHandler? CanExecuteChanged { add { } remove { } }
-        public bool CanExecute(object? parameter) => true;
+        private bool enabled = true;
+        public bool Enabled
+        {
+            get => enabled;
+            set { enabled = value; CanExecuteChanged?.Invoke(this, EventArgs.Empty); }
+        }
+        public event EventHandler? CanExecuteChanged;
+        public bool CanExecute(object? parameter) => enabled;
         public void Execute(object? parameter) => action(parameter);
     }
 }

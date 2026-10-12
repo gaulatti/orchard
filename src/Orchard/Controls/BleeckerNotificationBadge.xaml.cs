@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
 
 namespace Orchard;
@@ -25,6 +26,11 @@ public sealed partial class BleeckerNotificationBadge : UserControl
     {
         Items = [];
         InitializeComponent();
+        Popup.Opened += (_, _) =>
+        {
+            if (FocusManager.FindFirstFocusableElement(Popup.Content) is Control first)
+                first.Focus(FocusState.Programmatic);
+        };
         Loaded += (_, _) => { Items.CollectionChanged += OnItemsChanged; ObserveItems(); UpdateState(); };
         Unloaded += (_, _) => { Items.CollectionChanged -= OnItemsChanged; StopObserving(); Popup.Hide(); };
         UpdateState();

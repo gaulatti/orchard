@@ -99,6 +99,26 @@ public sealed class TokenContractTests
     }
 
     [TestMethod]
+    public void NotificationCountUsesPairedContrastColorsThroughItsTemplate()
+    {
+        var template = XDocument.Load(Fixture("Library/Controls/BleeckerNotificationBadge.xaml"));
+        var tokens = XDocument.Load(Fixture("Tokens.g.xaml"));
+        var contrast = tokens.Descendants(Xaml + "ResourceDictionary")
+            .Single(element => (string?)element.Attribute(X + "Key") == "HighContrast");
+        foreach (var (part, property, key, systemColor) in new[]
+        {
+            ("CountBadge", "Background", "BleeckerNotificationCountBackgroundBrush", "SystemColorHighlightColor"),
+            ("CountText", "Foreground", "BleeckerNotificationCountForegroundBrush", "SystemColorHighlightTextColor")
+        })
+        {
+            var element = template.Descendants().Single(element => (string?)element.Attribute(X + "Name") == part);
+            Assert.AreEqual($"{{ThemeResource {key}}}", (string?)element.Attribute(property));
+            var brush = contrast.Elements().Single(element => (string?)element.Attribute(X + "Key") == key);
+            Assert.AreEqual($"{{ThemeResource {systemColor}}}", (string?)brush.Attribute("Color"));
+        }
+    }
+
+    [TestMethod]
     public void ConsumerStylesResolveTheirBleeckerResources()
     {
         var tokens = XDocument.Load(Fixture("Tokens.g.xaml"));

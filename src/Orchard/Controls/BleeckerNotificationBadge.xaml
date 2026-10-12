@@ -17,6 +17,7 @@
             <local:BleeckerIconButton.Flyout>
                 <Flyout x:Name="Popup" Placement="BottomEdgeAlignedRight" AreOpenCloseAnimationsEnabled="False" ShouldConstrainToRootBounds="True">
                     <Flyout.FlyoutPresenterStyle><Style TargetType="FlyoutPresenter">
+                        <Setter Property="IsTabStop" Value="False" /><Setter Property="TabNavigation" Value="Cycle" />
                         <Setter Property="Width" Value="320" /><Setter Property="MinWidth" Value="320" /><Setter Property="MinHeight" Value="0" />
                         <Setter Property="Padding" Value="6" /><Setter Property="CornerRadius" Value="7" />
                         <Setter Property="IsDefaultShadowEnabled" Value="False" />
@@ -95,8 +96,8 @@
                 </Flyout>
             </local:BleeckerIconButton.Flyout>
         </local:BleeckerIconButton>
-        <Border x:Name="CountBadge" Height="16" MinWidth="16" Padding="4,0" CornerRadius="8" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{ThemeResource BleeckerTerracottaBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw">
-            <TextBlock x:Name="CountText" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="10" LineHeight="15" LineStackingStrategy="BlockLineHeight" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Border x:Name="CountBadge" Height="16" MinWidth="16" Padding="4,0" CornerRadius="8" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{ThemeResource BleeckerNotificationCountBackgroundBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw">
+            <TextBlock x:Name="CountText" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="10" LineHeight="15" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerNotificationCountForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Border>
     </Grid>
 </UserControl>
