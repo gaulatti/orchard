@@ -7,16 +7,27 @@ namespace Orchard.Catalog;
 // visuals that RenderTargetBitmap omits, including the switch thumb shadow.
 internal static class NativeScreenCapture
 {
+    internal static Rect ClientBounds(IntPtr window)
+    {
+        var origin = new ScreenPoint(0, 0);
+        if (!GetClientRect(window, out var client) || !ClientToScreen(window, ref origin))
+            throw new InvalidOperationException("Could not locate the catalog client on screen.");
+        return new Rect(origin.X, origin.Y, client.Right - client.Left, client.Bottom - client.Top);
+    }
+
     internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
     {
         if (Environment.GetEnvironmentVariable("CI") != "true" || GetForegroundWindow() != window)
             throw new InvalidOperationException("Composed capture requires the hosted catalog's foreground window.");
-        var origin = new ScreenPoint(0, 0);
-        if (!GetClientRect(window, out var client) || !ClientToScreen(window, ref origin))
-            throw new InvalidOperationException("Could not locate the catalog client on screen.");
-        var width = client.Right - client.Left;
-        var height = client.Bottom - client.Top;
+        var client = ClientBounds(window);
+        var origin = new ScreenPoint((int)client.X, (int)client.Y);
+        var width = (int)client.Width;
+        var height = (int)client.Height;
         if (width <= 0 || height <= 0) throw new InvalidOperationException("Catalog client has no screen area.");
+        var monitor = new MonitorInfo { Size = (uint)Marshal.SizeOf<MonitorInfo>() };
+        if (!GetMonitorInfo(MonitorFromWindow(window, 2), ref monitor) || client.Left < monitor.Bounds.Left || client.Top < monitor.Bounds.Top ||
+            client.Right > monitor.Bounds.Right || client.Bottom > monitor.Bounds.Bottom)
+            throw new InvalidOperationException("Catalog client exceeds its physical monitor bounds.");
         foreach (var point in new[] { new ScreenPoint(origin.X + 1, origin.Y + 1),
             new ScreenPoint(origin.X + width - 2, origin.Y + height - 2), new ScreenPoint(origin.X + width / 2, origin.Y + height / 2) })
             if (GetAncestor(WindowFromPoint(point), 2) != window)
@@ -61,6 +72,7 @@ internal static class NativeScreenCapture
 
     [StructLayout(LayoutKind.Sequential)] private readonly struct ScreenPoint(int x, int y) { public readonly int X = x, Y = y; }
     [StructLayout(LayoutKind.Sequential)] private struct ScreenRect { public int Left, Top, Right, Bottom; }
+    [StructLayout(LayoutKind.Sequential)] private struct MonitorInfo { public uint Size; public ScreenRect Bounds, Work; public uint Flags; }
     [StructLayout(LayoutKind.Sequential)] private struct BitmapInfo
     {
         public uint Size; public int Width, Height; public ushort Planes, BitCount;
@@ -72,6 +84,8 @@ internal static class NativeScreenCapture
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ClientToScreen(IntPtr window, ref ScreenPoint point);
     [DllImport("user32.dll")] private static extern IntPtr WindowFromPoint(ScreenPoint point);
     [DllImport("user32.dll")] private static extern IntPtr GetAncestor(IntPtr window, uint flags);
+    [DllImport("user32.dll")] private static extern IntPtr MonitorFromWindow(IntPtr window, uint flags);
+    [DllImport("user32.dll", EntryPoint = "GetMonitorInfoW")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetMonitorInfo(IntPtr monitor, ref MonitorInfo info);
     [DllImport("user32.dll")] private static extern IntPtr GetDC(IntPtr window);
     [DllImport("user32.dll")] private static extern int ReleaseDC(IntPtr window, IntPtr dc);
     [DllImport("gdi32.dll")] private static extern IntPtr CreateCompatibleDC(IntPtr dc);

@@ -271,7 +271,7 @@ public sealed partial class SwitchesFixture : UserControl
             // The smoke process starts hidden. Expose only its own hosted-CI
             // window, then activate it through real pointer input if Windows
             // refuses a programmatic foreground request.
-            ShowWindow(window, 9); // SW_RESTORE
+            ShowWindow(window, 3); // SW_SHOWMAXIMIZED: keep the client inside the hosted monitor.
             Require(SetWindowPos(window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the CI catalog window.");
             SetForegroundWindow(window);
             await Task.Delay(100);
@@ -284,7 +284,7 @@ public sealed partial class SwitchesFixture : UserControl
             await File.WriteAllTextAsync(Path.Combine(folder, $"switch-window-bounds-{scheme}.json"),
                 JsonSerializer.Serialize(new { client = screenRect, displayScale = XamlRoot.RasterizationScale,
                     rows = Rows.Children.OfType<BleeckerSwitch>().Select(control => new { control.Name,
-                        screen = FrameworkElementAutomationPeer.CreatePeerForElement(Find<ToggleSwitch>(control, "PART_Switch")).GetBoundingRectangle() }) },
+                        screen = ScreenBounds(control) }) },
                     new JsonSerializerOptions { WriteIndented = true }));
             physicalInputSteps.Add("Composed client pixels captured with native thumb shadows");
             var native = Find<ToggleSwitch>(Off, "PART_Switch");
@@ -329,22 +329,22 @@ public sealed partial class SwitchesFixture : UserControl
         async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
         {
             if (requireForeground) Require(GetForegroundWindow() == window, "Physical input lost its foreground window.");
-            // Painted template parts such as Border do not own automation
-            // peers. Anchor their visual bounds to the real native input's
-            // screen rectangle and convert DIPs through this XamlRoot's scale.
-            DependencyObject? ancestor = target;
-            while (ancestor is not null && ancestor is not ToggleSwitch) ancestor = VisualTreeHelper.GetParent(ancestor);
-            Require(ancestor is ToggleSwitch, "Physical switch target has no native input ancestor.");
-            var input = (ToggleSwitch)ancestor!;
-            var screen = FrameworkElementAutomationPeer.CreatePeerForElement(input).GetBoundingRectangle();
-            var local = target.TransformToVisual(input).TransformBounds(new Rect(0, 0, target.ActualWidth, target.ActualHeight));
-            var scale = XamlRoot.RasterizationScale;
-            var bounds = new Rect(screen.X + local.X * scale, screen.Y + local.Y * scale, local.Width * scale, local.Height * scale);
+            var bounds = ScreenBounds(target);
             Require(bounds.Width > 0 && bounds.Height > 0, "Physical switch target has no screen bounds.");
             Require(SetCursorPos((int)(bounds.X + bounds.Width / 2), (int)(bounds.Y + bounds.Height / 2)), "Could not position CI pointer.");
             Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0002 } } },
                   new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0004 } } }]);
             await Task.Delay(100);
+        }
+        Rect ScreenBounds(FrameworkElement target)
+        {
+            // In-process peer bounds in this WinUI projection are client
+            // relative. Use the visual transform and actual HWND client origin
+            // rather than treating those peer bounds as desktop coordinates.
+            var client = NativeScreenCapture.ClientBounds(window);
+            var local = target.TransformToVisual(XamlRoot.Content).TransformBounds(new Rect(0, 0, target.ActualWidth, target.ActualHeight));
+            var scale = XamlRoot.RasterizationScale;
+            return new Rect(client.X + local.X * scale, client.Y + local.Y * scale, local.Width * scale, local.Height * scale);
         }
         void SendKey(ushort key) => Send([new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key } } },
             new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key, Flags = 2 } } }]);

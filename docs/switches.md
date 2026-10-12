@@ -101,16 +101,20 @@ The dedicated hosted CI desktop additionally sends actual Space/Tab and pointer
 input to its own foreground catalog window, verifying label/track activation,
 disabled rejection and RTL activation. Local smoke checks omit physical input
 and explicitly record that omission, preserving the developer's foreground app.
-The hosted check restores its own initially hidden window and temporarily makes
+The hosted check maximizes its own initially hidden window and temporarily makes
 it topmost. If Windows refuses a foreground request, a real click activates that
 window before keyboard checks begin. Cleanup removes the temporary topmost state
 and restores the pointer. Painted template parts have no automation peer, so
-pointer targets use their visual bounds relative to the native input's screen
-rectangle and the XamlRoot display scale. Partial physical steps are retained
+pointer targets transform their visual bounds to XamlRoot.Content, apply the
+display scale, then add the HWND client origin obtained through ClientToScreen.
+In-process peer bounds in this SDK projection were client-relative and did not
+include the desktop offset; they cannot be used directly for pointer placement.
+Partial physical steps are retained
 even when a later check fails.
 Hosted CI also emits `switch-window-{Light,Dark}.png` from the composed client
 pixels, with screen bounds in a companion JSON file. The capture requires its
-own foreground window, checks that the client is visible and unoccluded, and
+own foreground window, checks that the entire client fits its physical monitor
+and is visible and unoccluded, and
 flushes desktop composition before copying screen pixels. This includes the
 composition thumb shadow omitted by XAML RenderTargetBitmap captures. These
 screenshots support visual inspection; capturing alone does not establish parity.
