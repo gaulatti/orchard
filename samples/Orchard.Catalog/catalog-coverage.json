@@ -1,5 +1,11 @@
 {
   "styles": {
+    "BleeckerMenuPresenterStyle": "MenusFixture.xaml",
+    "BleeckerMenuSeparatorStyle": "MenusFixture.xaml",
+    "BleeckerMenuItemStyle": "MenusFixture.xaml",
+    "BleeckerMenuCheckboxStyle": "MenusFixture.xaml",
+    "BleeckerMenuRadioStyle": "MenusFixture.xaml",
+    "BleeckerMenuSubmenuStyle": "MenusFixture.xaml",
     "BleeckerHeadingStyle": "MainWindow.xaml",
     "BleeckerBodyStyle": "MainWindow.xaml",
     "BleeckerPrimaryButtonStyle": "MainWindow.xaml",

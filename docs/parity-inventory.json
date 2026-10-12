@@ -1697,14 +1697,27 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "BleeckerMenuPresenterStyle",
+        "BleeckerMenuItemStyle",
+        "BleeckerMenuCheckboxStyle",
+        "BleeckerMenuRadioStyle",
+        "BleeckerMenuSubmenuStyle",
+        "BleeckerMenuSeparatorStyle"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/MenusFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/MenusFixture.xaml.cs: VerifyAsync"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Submenu 144px minimum, rich rows/labels/icons/inset and indeterminate states",
+        "Overlay shadow, entry/exit and item transition motion",
+        "All physical pointer/keyboard/focus states and closed-menu selection persistence",
+        "Contrast foregrounds, Narrator, scaling, constrained content and ARM64 runtime",
+        "See docs/menus.md for detailed acceptance limitations"
       ]
     },
     {

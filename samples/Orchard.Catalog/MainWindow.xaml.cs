@@ -88,7 +88,8 @@ public sealed partial class MainWindow : Window
             await Cards.VerifyAsync(scheme);
             await Separators.VerifyAsync(scheme);
             await StatusBadges.VerifyAsync(scheme);
-            CatalogScroll.ChangeView(null, CatalogScroll.ScrollableHeight, null, disableAnimation: true);
+            await Menus.VerifyAsync(scheme, folder);
+            StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"status-badges-{theme.ToString().ToLowerInvariant()}.png"));
             Separators.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
@@ -211,10 +212,11 @@ public sealed partial class MainWindow : Window
 
     private static string DescribeBrush(Brush? brush) => brush is SolidColorBrush solid ? ColorHex(solid.Color) : brush?.GetType().FullName ?? "null";
 
-    private async Task<SizeInt32> CaptureAsync(string path)
+    private Task<SizeInt32> CaptureAsync(string path) => CaptureElementAsync(CatalogRoot, path);
+    internal static async Task<SizeInt32> CaptureElementAsync(UIElement visual, string path)
     {
         var bitmap = new RenderTargetBitmap();
-        await bitmap.RenderAsync(CatalogRoot);
+        await bitmap.RenderAsync(visual);
         Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "The catalog did not render.");
         var pixels = await bitmap.GetPixelsAsync();
         var bytes = new byte[checked((int)pixels.Length)];

@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import * as source from '../tokens/bleecker.source.ts';
+import { menuStyles } from './menu-styles.mjs';
 
 const root = new URL('../', import.meta.url);
 const check = process.argv.includes('--check');
@@ -39,6 +40,11 @@ let xaml = `<!-- Generated from Bleecker ${lock.commit}; do not edit. -->\n<Reso
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
 for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
   xaml += `        <ResourceDictionary x:Key="${theme}">\n`;
+  for (const [name, color, alpha] of [
+    ['Background', theme === 'HighContrast' ? '{ThemeResource SystemColorWindowColor}' : argb(theme === 'Default' ? colors.deepSea : colors.card), 1],
+    ['Border', theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : argb(theme === 'Default' ? '#ffffff' : colors.sand), theme === 'Default' ? .15 : .35],
+    ['Hover', theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors.sand), theme === 'Default' ? .15 : .1]])
+    xaml += `            <SolidColorBrush x:Key="BleeckerMenu${name}Brush" Color="${color}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
   // Pinned separator.tsx: bg-black/5 dark:bg-white/10; no interaction styling.
   xaml += `            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .05}" />\n`;
   for (const [key, value] of Object.entries(colors)) {
@@ -215,6 +221,7 @@ for (const variant of ['Default', 'Live', 'Offline', 'Warning', 'Info']) {
   }
   outputs[`src/Orchard/Themes/StatusBadges/${variant}.g.xaml`] = badge + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 }
+outputs['src/Orchard/Themes/Menus.g.xaml'] = menuStyles();
 for (const [path, content] of Object.entries(outputs)) {
   const url = new URL(path, root);
   if (check) {

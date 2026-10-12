@@ -33,6 +33,13 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                PackageMenu.ShowAt(MenuTrigger);
+                await Task.Delay(200);
+                var menuPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
+                Require(menuPresenter.Padding.Left == 6 && menuPresenter.CornerRadius.TopLeft == 7 &&
+                    menuPresenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Packaged menu lost its branded presenter.");
+                PackageMenu.Hide();
+                await Task.Delay(150);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
                 Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 20 && PackageCard.ActualWidth > 0,
                     "Packaged card did not load its geometry and content template.");

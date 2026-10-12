@@ -23,7 +23,8 @@ public sealed class CatalogCoverageTests
         foreach (var registration in registrations.EnumerateObject())
         {
             var fixture = XDocument.Load(Path.Combine(catalog, registration.Value.GetString()!));
-            Assert.IsTrue(fixture.Descendants().Attributes("Style").Any(attribute => attribute.Value == $"{{StaticResource {registration.Name}}}"),
+            Assert.IsTrue(fixture.Descendants().Attributes().Any(attribute =>
+                (attribute.Name.LocalName == "Style" || attribute.Name.LocalName == "MenuFlyoutPresenterStyle") && attribute.Value == $"{{StaticResource {registration.Name}}}"),
                 $"Registered fixture does not render {registration.Name}.");
         }
     }

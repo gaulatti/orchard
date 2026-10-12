@@ -2,6 +2,8 @@
 
 The source commits below freeze this goal. Upstream updates require explicit scope review.
 
+Visual acceptance requires every component to match its Bleecker reference across every variant, size, theme and applicable interaction state. Compare typography, spacing, dimensions, colors, borders, radii, icons and motion against the rendered reference. Windows control defaults must not override the branded appearance, including nested popups and disabled/focus states. Preserve the explicitly required Windows contrast-color adaptation. A mismatch is an open acceptance gap, never an approved platform substitution.
+
 | Reference | Commit |
 | --- | --- |
 | gaulatti/bleecker | a86059013cd59684ce452849278ea81e734f2066 |
@@ -60,7 +62,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | date-range-picker | Pending | Pending | Full pinned contract |
 | filter-chip | Pending | Pending | Full pinned contract |
 | search-input | Pending | Pending | Full pinned contract |
-| dropdown-menu | Pending | Pending | Full pinned contract |
+| dropdown-menu | Six native menu styles | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: submenu width, rich rows, shadow/motion, physical input, contrast/scaling/Narrator and ARM64 runtime; see [menu gaps](menus.md) |
 | metric | Pending | Pending | Full pinned contract |
 | notification-badge | Pending | Pending | Full pinned contract |
 | accordion | Pending | Pending | Full pinned contract |

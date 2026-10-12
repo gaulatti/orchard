@@ -40,7 +40,13 @@
                     <ComboBoxItem Content="Culture" />
                 </ComboBox>
                 <Button x:Name="Action" Content="Save locally" Click="OnSave" Style="{StaticResource BleeckerPrimaryButtonStyle}" />
-                <Button Content="Secondary action" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                <Button x:Name="MenuTrigger" Content="Display options" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                    <Button.Flyout><MenuFlyout x:Name="PackageMenu" AreOpenCloseAnimationsEnabled="False" MenuFlyoutPresenterStyle="{StaticResource BleeckerMenuPresenterStyle}">
+                        <MenuFlyoutItem Text="Profile" Style="{StaticResource BleeckerMenuItemStyle}" />
+                        <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />
+                        <ToggleMenuFlyoutItem Text="Revenue" IsChecked="True" Style="{StaticResource BleeckerMenuCheckboxStyle}" />
+                    </MenuFlyout></Button.Flyout>
+                </Button>
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
                 <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon" ToolTipService.ToolTip="Save with icon"><ContentControl x:Name="SaveVector" Style="{StaticResource SaveIcon}" /></orchard:BleeckerIconButton>
                 <orchard:BleeckerToggleGroup x:Name="PackageGroup" SelectedValue="list" AutomationProperties.Name="Package view">

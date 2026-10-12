@@ -68,6 +68,7 @@
                 <local:CardsFixture x:Name="Cards" />
                 <local:SeparatorsFixture x:Name="Separators" />
                 <local:StatusBadgesFixture x:Name="StatusBadges" />
+                <local:MenusFixture x:Name="Menus" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>
