@@ -98,8 +98,8 @@ remain supported and are applied immediately rather than color-interpolated.
 
 Reduced motion settles immediately. Live theme changes, motion-preference
 changes and unload stop active transitions and apply their destination values.
-The shadow transition remains separate unfinished work; this implementation
-does not establish complete Input motion parity.
+The shadow transition is covered by the later shadow checkpoint below.
+Neither checkpoint establishes complete Input motion parity.
 
 For focused diagnostics, run `scripts/smoke-catalog.ps1 -Component input` with
 the usual executable/output arguments. This mounts the same Input fixture alone
