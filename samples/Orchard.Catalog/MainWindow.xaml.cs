@@ -19,6 +19,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        InitializeNavigation();
         AppWindow.Resize(new SizeInt32(1100, 900));
     }
 
@@ -51,7 +52,8 @@ public sealed partial class MainWindow : Window
         Directory.CreateDirectory(folder);
         try
         {
-            if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
+            if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
+            else if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
             else await RunSmokeAsync(folder);
             Environment.Exit(0);
         }
@@ -64,10 +66,22 @@ public sealed partial class MainWindow : Window
     }
 
     // Catalog-only runtime check. The reusable library has no command-line or automation dependencies.
+    private async Task RunTooltipSmokeAsync(string folder)
+    {
+        foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+        {
+            await SelectFixtureAsync(Foundation);
+            CatalogRoot.RequestedTheme = theme;
+            await SelectFixtureAsync(Tooltips);
+            await Tooltips.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+            await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "tooltips" }));
+    }
+
     private async Task RunInputSmokeAsync(string folder)
     {
-        ((StackPanel)CatalogScroll.Content).Children.Remove(Inputs);
-        CatalogScroll.Content = new StackPanel { Margin = new Thickness(32), Children = { Inputs } };
+        await SelectFixtureAsync(Inputs);
         foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
         {
             CatalogRoot.RequestedTheme = theme;
@@ -81,9 +95,11 @@ public sealed partial class MainWindow : Window
 
     private async Task RunSmokeAsync(string folder)
     {
+        await VerifyNavigationAsync();
         var captures = new List<object>();
         foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
         {
+            await SelectFixtureAsync(Foundation);
             ThemeSelector.SelectedIndex = theme == ElementTheme.Light ? 1 : 2;
             await Task.Delay(500);
             CatalogRoot.UpdateLayout();
@@ -96,44 +112,67 @@ public sealed partial class MainWindow : Window
             await VerifyButtonStatesAsync(PrimaryAction, scheme);
             await VerifyButtonStatesAsync(DisabledAction, scheme, disabled: true);
             VerifyButtonGroup();
+            await SelectFixtureAsync(Toggles);
             await Toggles.VerifyAsync(scheme);
+            await SelectFixtureAsync(Buttons);
             await Buttons.VerifyAsync(scheme);
+            await SelectFixtureAsync(IconButtons);
             await IconButtons.VerifyAsync(scheme);
+            await SelectFixtureAsync(ToggleGroups);
             await ToggleGroups.VerifyAsync();
+            await SelectFixtureAsync(LoadingSpinners);
             await LoadingSpinners.VerifyAsync(scheme);
+            await SelectFixtureAsync(Cards);
             await Cards.VerifyAsync(scheme);
+            await SelectFixtureAsync(Separators);
             await Separators.VerifyAsync(scheme);
+            await SelectFixtureAsync(StatusBadges);
             await StatusBadges.VerifyAsync(scheme);
+            await SelectFixtureAsync(Menus);
             await Menus.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Notifications);
             await Notifications.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Tooltips);
             await Tooltips.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(FieldHelp);
             await FieldHelp.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Labels);
             await Labels.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Inputs);
             await Inputs.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(StatusBadges);
             StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"status-badges-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(Separators);
             Separators.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(100);
             await CaptureAsync(Path.Combine(folder, $"separators-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(Cards);
             Cards.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(100);
             await CaptureAsync(Path.Combine(folder, $"cards-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(LoadingSpinners);
             LoadingSpinners.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(100);
             await CaptureAsync(Path.Combine(folder, $"loading-spinners-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(ToggleGroups);
             ToggleGroups.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"toggle-groups-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(IconButtons);
             IconButtons.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"icon-buttons-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(Buttons);
             Buttons.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"buttons-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(Toggles);
             Toggles.StartBringIntoView();
             await Task.Delay(350);
             await CaptureAsync(Path.Combine(folder, $"toggles-{theme.ToString().ToLowerInvariant()}.png"));
+            await SelectFixtureAsync(Foundation);
             CatalogScroll.ChangeView(null, 0, null, disableAnimation: true);
             await Task.Delay(100);
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");

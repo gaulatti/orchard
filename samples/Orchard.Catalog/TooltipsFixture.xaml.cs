@@ -112,14 +112,12 @@ public sealed partial class TooltipsFixture : UserControl
         try
         {
             root.RequestedTheme = changed == BleeckerColorScheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
-            await Task.Delay(250);
-            VerifyPalette(changed);
+            await AwaitVerificationAsync(() => VerifyPalette(changed));
             Require(tip.IsOpen && surface.ActualWidth == width && surface.ActualHeight == height, "Live appearance changed tooltip visibility or geometry.");
             await MainWindow.CaptureElementAsync(tip, System.IO.Path.Combine(folder, $"tooltip-live-{tip.Name}-{changed}.png"));
         }
         finally { root.RequestedTheme = original; }
-        await Task.Delay(250);
-        VerifyPalette(scheme);
+        await AwaitVerificationAsync(() => VerifyPalette(scheme));
 
         void VerifyPalette(BleeckerColorScheme expected)
         {
@@ -127,7 +125,7 @@ public sealed partial class TooltipsFixture : UserControl
             Require(ColorHex((SolidColorBrush)surface.Background).Equals(colors[expected == BleeckerColorScheme.Dark ? "sand" : "deepSea"], StringComparison.OrdinalIgnoreCase)
                 && ColorHex((SolidColorBrush)text.Foreground).Equals(expected == BleeckerColorScheme.Dark ? colors["textPrimary"] : "#FFFFFFFF", StringComparison.OrdinalIgnoreCase)
                 && ((SolidColorBrush)arrow.Fill).Color == ((SolidColorBrush)surface.Background).Color,
-                $"Open tooltip retained its previous appearance: expected={expected}, actual={tip.ActualTheme}, background={ColorHex((SolidColorBrush)surface.Background)}, foreground={ColorHex((SolidColorBrush)text.Foreground)}.");
+                $"Open tooltip retained its previous appearance: name={tip.Name}, expected={expected}, actual={tip.ActualTheme}, owner={tip.PlacementTarget?.ActualTheme}, root={root.RequestedTheme}/{root.ActualTheme}, background={ColorHex((SolidColorBrush)surface.Background)}, foreground={ColorHex((SolidColorBrush)text.Foreground)}.");
         }
     }
 

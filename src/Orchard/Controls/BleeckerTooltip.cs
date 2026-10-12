@@ -186,7 +186,15 @@ public sealed partial class BleeckerTooltip : ContentControl
         transitArea = null;
     }
 
-    private void OnLayoutUpdated(object? sender, object args) => UpdatePlacement();
+    private void OnLayoutUpdated(object? sender, object args)
+    {
+        // Reattached owners can change ActualTheme without delivering its event.
+        // Keep the floating visual tree synchronized during its existing layout
+        // observation, without replacing the tooltip's consumer theme override.
+        if (popup is not null && target is not null && popup.RequestedTheme != target.ActualTheme)
+            popup.RequestedTheme = target.ActualTheme;
+        UpdatePlacement();
+    }
 
     private void UpdatePlacement()
     {

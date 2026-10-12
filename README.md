@@ -9,6 +9,11 @@ tokens, light/dark themes, high contrast resource mappings, button and icon-butt
 variants, connected button groups, toggle styles and initial input styles.
 Full component parity and platform acceptance remain in progress.
 
+The catalog has a searchable component list. Selecting a component mounts its
+fixture and unloads the previous one while preserving its local example state.
+Appearance selection remains available across pages. See
+[catalog navigation](docs/catalog-navigation.md) for verification and limits.
+
 ## Open in Visual Studio
 
 1. On Windows, install **Visual Studio 2026** with the **WinUI application

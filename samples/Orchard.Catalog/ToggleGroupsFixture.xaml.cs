@@ -38,8 +38,10 @@ public sealed partial class ToggleGroupsFixture : UserControl
         var gridSelection = (ISelectionItemProvider)gridPeer.GetPattern(PatternInterface.SelectionItem);
         Require(!selection.CanSelectMultiple && !selection.IsSelectionRequired, "Single group exposed incorrect selection cardinality.");
         gridSelection.Select();
+        var bindingElapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (SelectionValueInput.Text != "grid" && bindingElapsed.Elapsed < TimeSpan.FromSeconds(1)) await Task.Delay(16);
         Require(SingleGroup.SelectedValue == "grid" && SelectionValueInput.Text == "grid" && GridItem.IsChecked == true && ListItem.IsChecked == false,
-            "Single selection failed to clear the previous item.");
+            $"Single selection failed to reach the consumer and clear the previous item: value={SingleGroup.SelectedValue}; text={SelectionValueInput.Text}; grid={GridItem.IsChecked}; list={ListItem.IsChecked}.");
         ((IToggleProvider)gridPeer.GetPattern(PatternInterface.Toggle)).Toggle();
         await Task.Delay(80);
         Require(string.IsNullOrEmpty(SingleGroup.SelectedValue) && selection.GetSelection().Length == 0, "Activating the selected single item did not clear selection.");

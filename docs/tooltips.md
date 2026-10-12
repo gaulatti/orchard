@@ -14,7 +14,7 @@ This replaces the earlier preview's native `ToolTipService.ToolTip` API. Migrate
 
 Content and ContentTemplate remain consumer-owned. The template uses Encode Sans 12px/19.5px, 12/8px padding, a 224px maximum body width, a 6px corner and no border. Top/bottom arrows are 10×5px; left/right arrows occupy 5×10px. The arrow matches the surface. Light and dark colors follow the [measured reference](tooltip-reference.md); Windows contrast uses paired window/window-text colors. The shared overlay supplies the shadow recipe without the earlier separate tooltip window clipping its blur.
 
-The popup takes its inherited theme from PlacementTarget.ActualTheme when opened and follows the owner's ActualThemeChanged event. This keeps an already-open surface, arrow and text synchronized with application appearance changes. The Tooltip's own RequestedTheme is left available for an explicit consumer override. The catalog includes a consumer ContentTemplate fixture; bound text retains the inherited font and foreground, wraps, and updates when Content changes. Supply AutomationProperties.Name for structured content that is not represented by a plain string.
+The popup takes its inherited theme from PlacementTarget.ActualTheme when opened and follows the owner's ActualThemeChanged event. Its existing open-layout observation also synchronizes that value: on the pinned runtime, a detached and reattached owner can change ActualTheme without delivering the event. This keeps an already-open surface, arrow and text synchronized with application appearance changes. The Tooltip's own RequestedTheme is left available for an explicit consumer override. The catalog includes a consumer ContentTemplate fixture; bound text retains the inherited font and foreground, wraps, and updates when Content changes. Supply AutomationProperties.Name for structured content that is not represented by a plain string.
 
 Placement accepts Top, Bottom, Left or Right. ActualPlacement reports the resolved side. The calculation uses a 7px arrow-tip clearance and 10px viewport padding, flips to the opposite side when it has more space and the preferred side cannot fit, and shifts the body within the viewport. The arrow tracks its owner's center and hides if the shifted body cannot point at it. Geometry changes trigger remeasurement; unchanged geometry does not repeatedly invalidate layout.
 
@@ -35,5 +35,16 @@ This is still in progress. The complete physical transit matrix, rendered normal
 Motion checkpoint evidence: reduced-motion smoke at artifacts/smoke-tooltip-motion; final enabled-motion smoke at artifacts/smoke-tooltip-motion-duration; final isolated package consumer at artifacts/package-consumer-tooltip-motion. The catalog checks immediate entry, different reduced/normal dismissal lifetimes, interrupted exit/reopening and eventual popup removal. All pass; 13 unit tests and the final ARM64 build also pass. These checks do not yet measure the physical delayed-hover animation frame by frame.
 
 Live-appearance checkpoint: artifacts/smoke-tooltip-live-fixed passes both directions for all six fixtures, including restoration of the original palette. The independent consumer at artifacts/package-consumer-tooltip-live also passes live theme changes and restoration. All 13 unit tests and x64/ARM64 builds pass.
+
+Reload regression: `artifacts/smoke-navigation-tooltip-layout` passes light/dark
+theme switching and restoration after navigating away from and back to the
+tooltip fixture. Run the focused check with `scripts/smoke-catalog.ps1 -Component
+tooltips` against a published catalog. Palette assertions await the observable
+result with a one-second bound; the check does not assume a fixed frame delay.
+The full catalog passes with animations disabled and enabled at
+`artifacts/smoke-navigation-fixed` and `artifacts/smoke-navigation-motion`.
+The independent x64 consumer passes at `artifacts/package-consumer-navigation`
+using package SHA-256
+`3b2ab31d6c0549034d3c1455bad2cc6f58b452f0a17a17b9386350a97a05bcef`.
 
 Activation verification passes in artifacts/smoke-tooltip-activation-ready for a native button, BleeckerButton's inner native action, and field help, including retained focus and delivery of the consumer click handler. The isolated package consumer passes at artifacts/package-consumer-tooltip-activation. Physical dark-theme Enter and Space dismiss field help without losing its focus ring (artifacts/field-help-enter-dismissed.jpg). x64/ARM64 builds and 13 unit tests pass. Other input/theme/accessibility matrix gaps remain open.

@@ -6,9 +6,9 @@
     xmlns:local="using:Orchard.Catalog"
     Title="orchard · Windows component catalog">
     <Grid x:Name="CatalogRoot" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
-        <ScrollViewer x:Name="CatalogScroll" HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
-            <StackPanel MaxWidth="960" HorizontalAlignment="Stretch" Margin="32" Spacing="24">
-                <Grid ColumnSpacing="24">
+        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="224" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                <Grid Grid.ColumnSpan="2" ColumnSpacing="24" Margin="24">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
@@ -24,6 +24,15 @@
                         <ComboBoxItem Content="Dark" />
                     </ComboBox>
                 </Grid>
+        <Grid Grid.Row="1" Margin="16,0,16,16" RowSpacing="12">
+            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+            <orchard:BleeckerInput x:Name="ComponentSearch" PlaceholderText="Find a component" AutomationProperties.Name="Find a component" TextChanged="OnComponentSearchChanged" />
+            <TextBlock x:Name="NavigationStatus" Grid.Row="1" Style="{StaticResource BleeckerBodyStyle}" FontSize="13" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" />
+            <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled"><StackPanel x:Name="ComponentNavigation" Spacing="4" /></ScrollViewer>
+        </Grid>
+        <ScrollViewer x:Name="CatalogScroll" Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+            <StackPanel x:Name="FixtureHost" MaxWidth="960" HorizontalAlignment="Stretch" Margin="24,0,24,24" Spacing="24">
+                <StackPanel x:Name="Foundation" Spacing="24">
                 <Border Background="{ThemeResource BleeckerMutedBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}"
                         BorderThickness="1" CornerRadius="{StaticResource BleeckerCardCornerRadius}" Padding="24">
                     <StackPanel Spacing="12">
@@ -60,6 +69,7 @@
                     <TextBox Header="Summary" PlaceholderText="Write a short summary" AcceptsReturn="True"
                              TextWrapping="Wrap" MinHeight="100" Style="{StaticResource BleeckerTextBoxStyle}" />
                 </StackPanel>
+                </StackPanel>
                 <local:TogglesFixture x:Name="Toggles" />
                 <local:ButtonsFixture x:Name="Buttons" />
                 <local:IconButtonsFixture x:Name="IconButtons" />
@@ -74,8 +84,6 @@
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />
                 <local:InputsFixture x:Name="Inputs" />
-                <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
-                           Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

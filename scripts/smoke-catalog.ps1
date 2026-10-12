@@ -1,13 +1,13 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'input')][string]$Component = 'all'
+    [ValidateSet('all', 'input', 'tooltips')][string]$Component = 'all'
 )
 $ErrorActionPreference = 'Stop'
 $executablePath = (Resolve-Path $Executable).Path
 $outputPath = [System.IO.Path]::GetFullPath($Output)
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
-$componentArgument = if ($Component -eq 'input') { ' --smoke-input' } else { '' }
+$componentArgument = if ($Component -eq 'all') { '' } else { " --smoke-$Component" }
 $process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument" -PassThru -WindowStyle Hidden
 if (-not $process.WaitForExit(180000)) {
     $process.Kill()
