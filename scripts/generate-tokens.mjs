@@ -190,6 +190,31 @@ for (const variant of ['Surface', 'Outlined', 'Elevated', 'Subtle', 'Transparent
   card += `    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n`;
   outputs[`src/Orchard/Themes/Cards/${variant}.g.xaml`] = card;
 }
+// Tailwind 4.2.2 theme.css, pinned by the Bleecker component reference.
+// OKLCH -> linear sRGB -> encoded 8-bit sRGB for WinUI Color brushes.
+const emerald = (lightness, chroma, hue) => {
+  const a = chroma * Math.cos(hue * Math.PI / 180), b = chroma * Math.sin(hue * Math.PI / 180);
+  const l = (lightness + .3963377774 * a + .2158037573 * b) ** 3;
+  const m = (lightness - .1055613458 * a - .0638541728 * b) ** 3;
+  const s = (lightness - .0894841775 * a - 1.291485548 * b) ** 3;
+  return '#' + [4.0767416621*l-3.3077115913*m+.2309699292*s, -1.2684380046*l+2.6097574011*m-.3413193965*s, -.0041960863*l-.7034186147*m+1.707614701*s]
+    .map(v => Math.round(Math.max(0, Math.min(1, v <= .0031308 ? 12.92*v : 1.055*v**(1/2.4)-.055))*255).toString(16).padStart(2,'0')).join('');
+};
+const emeraldColors = { 300: emerald(.845,.143,164.978), 400: emerald(.765,.177,163.223), 500: emerald(.696,.17,162.48), 600: emerald(.596,.145,163.225), 700: emerald(.508,.118,165.612) };
+for (const variant of ['Default', 'Live', 'Offline', 'Warning', 'Info']) {
+  let badge = `<!-- Generated from pinned status-badge.tsx and Tailwind 4.2.2; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+  for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+    const dark = theme === 'Default', contrast = theme === 'HighContrast';
+    const tint = variant === 'Live' ? emeraldColors[dark ? 400 : 600] : variant === 'Offline' ? colors.terracotta : variant === 'Warning' ? colors.desert : variant === 'Info' ? dark ? colors.accentBlue : colors.sea : colors.sand;
+    const text = variant === 'Live' ? emeraldColors[dark ? 300 : 700] : variant === 'Offline' ? dark ? colors.terracotta : '#874641' : variant === 'Warning' ? colors.accentText : variant === 'Info' ? tint : colors.textSecondary;
+    const dot = variant === 'Live' ? emeraldColors[500] : variant === 'Default' ? colors.textSecondary : tint;
+    badge += `        <ResourceDictionary x:Key="${theme}">\n`;
+    for (const [name, color, opacity] of [['Background', tint, variant === 'Default' && !dark ? .2 : variant === 'Live' && !dark ? .08 : .1], ['Border', tint, variant === 'Default' && !dark ? .3 : .2], ['Foreground', text, 1], ['Dot', dot, 1]])
+      badge += `            <SolidColorBrush x:Key="StatusBadge${name}" Color="${contrast ? `{ThemeResource SystemColor${name === 'Background' ? 'Window' : 'WindowText'}Color}` : argb(color)}" Opacity="${contrast ? 1 : opacity}" />\n`;
+    badge += '        </ResourceDictionary>\n';
+  }
+  outputs[`src/Orchard/Themes/StatusBadges/${variant}.g.xaml`] = badge + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
+}
 for (const [path, content] of Object.entries(outputs)) {
   const url = new URL(path, root);
   if (check) {

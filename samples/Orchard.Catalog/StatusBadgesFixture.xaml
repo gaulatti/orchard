@@ -1,0 +1,17 @@
+<UserControl x:Class="Orchard.Catalog.StatusBadgesFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16">
+        <TextBlock Text="Status badges" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <StackPanel x:Name="Variants" Spacing="12">
+            <orchard:BleeckerStatusBadge Label="LIVE" Variant="Live" Description="Real-time updates active" />
+            <orchard:BleeckerStatusBadge Label="OFFLINE" Variant="Offline" Description="Last update: 12:34:56" />
+            <orchard:BleeckerStatusBadge Label="DEGRADED" Variant="Warning" Description="Partial connectivity" />
+            <orchard:BleeckerStatusBadge Label="EVENTS" Variant="Info" />
+            <orchard:BleeckerStatusBadge Label="UNKNOWN" />
+        </StackPanel>
+        <orchard:BleeckerStatusBadge x:Name="Changing" Label="LOCAL" Description="Consumer-owned status" Variant="Info" />
+        <orchard:BleeckerStatusBadge x:Name="Constrained" Label="東京" Description="São Paulo · القاهرة · local coverage continues without a network dependency" Width="240" />
+    </StackPanel>
+</UserControl>

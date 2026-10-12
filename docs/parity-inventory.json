@@ -3875,14 +3875,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerStatusBadge.cs", "src/Orchard/Themes/StatusBadges/"],
+      "catalogFixtures": ["samples/Orchard.Catalog/StatusBadgesFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/StatusBadgesFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Full baseline, gamut and extreme-label layout comparison",
+        "Actual contrast, Narrator, scaling and physical keyboard traversal",
+        "ARM64 runtime and complete rendered parity"
       ]
     },
     {

@@ -1,0 +1,23 @@
+<!-- Generated from pinned status-badge.tsx and Tailwind 4.2.2; do not edit. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="StatusBadgeBackground" Color="#FFA65D57" Opacity="0.1" />
+            <SolidColorBrush x:Key="StatusBadgeBorder" Color="#FFA65D57" Opacity="0.2" />
+            <SolidColorBrush x:Key="StatusBadgeForeground" Color="#FF874641" Opacity="1" />
+            <SolidColorBrush x:Key="StatusBadgeDot" Color="#FFA65D57" Opacity="1" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="StatusBadgeBackground" Color="#FFD47B75" Opacity="0.1" />
+            <SolidColorBrush x:Key="StatusBadgeBorder" Color="#FFD47B75" Opacity="0.2" />
+            <SolidColorBrush x:Key="StatusBadgeForeground" Color="#FFD47B75" Opacity="1" />
+            <SolidColorBrush x:Key="StatusBadgeDot" Color="#FFD47B75" Opacity="1" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="StatusBadgeBackground" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="StatusBadgeBorder" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="StatusBadgeForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="StatusBadgeDot" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

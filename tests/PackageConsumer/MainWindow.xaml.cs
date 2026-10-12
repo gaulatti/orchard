@@ -39,6 +39,8 @@ public sealed partial class MainWindow : Window
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
+                Require(PackageStatus.ActualHeight == 24 && FrameworkElementAutomationPeer.CreatePeerForElement(PackageStatus).GetName() == "LOCAL",
+                    "Packaged status badge lost its template or accessible name.");
                 var cardRoot = (Grid)VisualTreeHelper.GetChild(PackageCard, 0);
                 var cardMask = (Microsoft.UI.Xaml.Shapes.Path)((Canvas)cardRoot.Children[0]).Children[0];
                 Require(((PathGeometry)cardMask.Data).Figures.Single().Segments.OfType<ArcSegment>().Select(arc => arc.Size.Width).SequenceEqual(new double[] { 8, 4, 16, 20 }),

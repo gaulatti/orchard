@@ -67,6 +67,7 @@
                 <local:LoadingSpinnersFixture x:Name="LoadingSpinners" />
                 <local:CardsFixture x:Name="Cards" />
                 <local:SeparatorsFixture x:Name="Separators" />
+                <local:StatusBadgesFixture x:Name="StatusBadges" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>
