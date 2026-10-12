@@ -12,6 +12,7 @@ public sealed partial class ButtonsFixture : UserControl
 {
     private int invocations;
     private readonly PreviewCommand previewCommand;
+    internal bool SpinnerAnimationsEnabled { get; private set; }
 
     public ButtonsFixture()
     {
@@ -65,12 +66,24 @@ public sealed partial class ButtonsFixture : UserControl
         await Task.Delay(80);
         Require(!native.IsEnabled && Find<ProgressRing>(LoadingAction)?.IsActive == true && AutomationProperties.GetItemStatus(native) == "Loading",
             "Loading must expose busy status, show progress and disable activation.");
+        var spinner = FindNamed<Microsoft.UI.Xaml.Shapes.Path>(LoadingAction, "PART_SpinnerPath")
+            ?? throw new InvalidOperationException("Loading button did not render the reference spinner path.");
+        Require(spinner.StrokeThickness == 2 && spinner.StrokeStartLineCap == PenLineCap.Round && spinner.StrokeEndLineCap == PenLineCap.Round,
+            "Loading spinner lost the reference stroke treatment.");
+        var rotation = (RotateTransform)spinner.RenderTransform;
+        var firstAngle = rotation.Angle;
+        await Task.Delay(180);
+        SpinnerAnimationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
+        if (SpinnerAnimationsEnabled)
+            Require(Math.Abs(rotation.Angle - firstAngle) > 1, "Loading spinner did not rotate while system animations are enabled.");
+        else Require(rotation.Angle == 0, "Loading spinner ignored reduced motion.");
         try { invoke.Invoke(); throw new InvalidOperationException("Loading action accepted invocation."); }
         catch (ElementNotEnabledException) { }
         catch (System.Runtime.InteropServices.COMException error) when (error.HResult == unchecked((int)0x80040200)) { } // UIA_E_ELEMENTNOTENABLED
         ConsumerEnabled.IsOn = false;
         LoadingSwitch.IsOn = false;
         await Task.Delay(80);
+        Require(rotation.Angle == 0, "Loading completion did not stop and reset the spinner animation.");
         Require(!native.IsEnabled && !LoadingAction.IsEnabled, "Loading completion discarded the consumer's disabled state.");
         Require(LoadingAction.GetBindingExpression(Control.IsEnabledProperty) is not null, "Consumer IsEnabled binding was replaced.");
         ConsumerEnabled.IsOn = true;

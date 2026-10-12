@@ -47,7 +47,11 @@ public sealed partial class MainWindow : Window
                 Require(PackageGroup.ActualWidth > 0 && PackageGridItem.ActualHeight >= 36, "Packaged toggle group template did not lay out.");
                 var componentColor = ((SolidColorBrush)native!.Background).Color;
                 Require($"#{componentColor.A:X2}{componentColor.R:X2}{componentColor.G:X2}{componentColor.B:X2}" == BleeckerTokens.Colors(scheme)["primary"], "Packaged per-variant resources did not load.");
+                PackageAction.IsLoading = true;
+                await Task.Delay(100);
+                Require(HasReferenceSpinner(PackageAction), "Packaged loading action lost its reference vector template.");
                 await CaptureAsync(theme);
+                PackageAction.IsLoading = false;
             }
             Input.Text = "Package interaction verified";
             ((IInvokeProvider)new ButtonAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke();
@@ -74,6 +78,17 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private static bool HasReferenceSpinner(DependencyObject owner)
+    {
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(owner); i++)
+        {
+            var child = VisualTreeHelper.GetChild(owner, i);
+            if (child is Microsoft.UI.Xaml.Shapes.Path { Name: "PART_SpinnerPath" }) return true;
+            if (HasReferenceSpinner(child)) return true;
+        }
+        return false;
     }
 
     private async Task CaptureAsync(ElementTheme theme)

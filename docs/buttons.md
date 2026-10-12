@@ -22,6 +22,10 @@ For custom icon content, supply an accessible name. For long text, use a wrappin
 
 ## Verification
 
+The built-in loading template renders Bleecker's Lucide `LoaderCircle` arc at 16px with rounded strokes and an 8px content gap. It rotates linearly once per second while loading and stops/reset when loading ends or the wrapper unloads. Its stroke follows the rendered action text color. Lucide's ISC/MIT notices ship in `licenses/LICENSE-Lucide.txt`.
+
+Windows `UISettings.AnimationsEnabled` controls motion. With animation disabled, the arc stays visible at rest while the action retains its busy status. Windows 10 version 19041 and later notify the control of live setting changes. On the declared older minimum, the setting is sampled when loading/presentation changes; live changes during an uninterrupted loading operation remain an acceptance limitation. Consumer replacement templates own their progress visuals. The standalone Bleecker `LoadingSpinner` is a separate inventory entry and is not implemented by this button-specific arc.
+
 String content supplies the native action's accessible name and stays synchronized with content bindings. `AutomationProperties.Name` overrides that default; `AutomationProperties.LabeledBy` can supply an external label. Set an explicit localized name or label for complex/icon content. These properties are forwarded to the inner action without replacing consumer bindings on the wrapper. Naming behavior is checked through the real UI Automation peer; Narrator acceptance remains separate.
 
 Button text selects `BleeckerPrimaryMediumFontFamily` and weight 500 explicitly. The package includes the real Encode Sans Medium face; no locally installed font is required. Explicit font properties on consumer-owned content retain their normal WinUI precedence.

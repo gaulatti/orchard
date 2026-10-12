@@ -116,6 +116,8 @@ public sealed partial class MainWindow : Window
         await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(
             new { passed = true, actionCount, systemAppearance = true,
                 buttonStates = new[] { "Normal", "PointerOver", "Pressed", "Disabled" },
+                buttonSpinner = new { referenceVector = true, animationsEnabled = Buttons.SpinnerAnimationsEnabled,
+                    rotationObserved = Buttons.SpinnerAnimationsEnabled, reducedMotionStaticObserved = !Buttons.SpinnerAnimationsEnabled, stopAndReset = true },
                 buttonProperties = new[] { "Background", "Foreground", "BorderBrush", "Opacity" },
                 toggles = new { automationOnOff = true, consumerStatePropagation = true, variants = new[] { "default", "outline" },
                     states = new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Checked", "CheckedPointerOver", "CheckedPressed", "CheckedDisabled" } },

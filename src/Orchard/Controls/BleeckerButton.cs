@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation;
+using Windows.UI.ViewManagement;
 
 namespace Orchard;
 
@@ -19,6 +21,9 @@ public sealed class BleeckerButton : ContentControl
     private Border? linkUnderline;
     private ResourceDictionary? palette;
     private bool pointerOver;
+    private readonly UISettings uiSettings = new();
+    private Storyboard? spinnerAnimation;
+    private RotateTransform? spinnerRotation;
 
     public BleeckerButton()
     {
@@ -26,6 +31,18 @@ public sealed class BleeckerButton : ContentControl
         RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateAccessibleName());
         RegisterPropertyChangedCallback(AutomationProperties.NameProperty, (_, _) => UpdateAccessibleName());
         RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty, (_, _) => UpdateAccessibleName());
+        Loaded += (_, _) =>
+        {
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041))
+                uiSettings.AnimationsEnabledChanged += OnAnimationsChanged;
+            UpdateSpinnerMotion();
+        };
+        Unloaded += (_, _) =>
+        {
+            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041))
+                uiSettings.AnimationsEnabledChanged -= OnAnimationsChanged;
+            StopSpinnerMotion();
+        };
     }
 
     public static readonly DependencyProperty VariantProperty = DependencyProperty.Register(
@@ -54,6 +71,7 @@ public sealed class BleeckerButton : ContentControl
 
     protected override void OnApplyTemplate()
     {
+        StopSpinnerMotion();
         if (action is not null)
         {
             action.Click -= OnClick;
@@ -125,18 +143,56 @@ public sealed class BleeckerButton : ContentControl
         action.IsEnabled = !IsLoading;
         progress.Visibility = IsLoading ? Visibility.Visible : Visibility.Collapsed;
         progress.IsActive = IsLoading;
+        UpdateSpinnerMotion();
         UpdateLinkUnderline();
         AutomationProperties.SetItemStatus(action, IsLoading ? LoadingText : "");
     }
 
     private void OnPointerEntered(object sender, PointerRoutedEventArgs args) { pointerOver = true; UpdateLinkUnderline(); }
-    private void OnActionLoaded(object sender, RoutedEventArgs args) => BindLinkUnderline();
+    private void OnActionLoaded(object sender, RoutedEventArgs args) { BindLinkUnderline(); UpdateSpinnerMotion(); }
+    private void OnAnimationsChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) =>
+        DispatcherQueue.TryEnqueue(UpdateSpinnerMotion);
+    private void StopSpinnerMotion()
+    {
+        spinnerAnimation?.Stop();
+        spinnerAnimation = null;
+        if (spinnerRotation is not null) spinnerRotation.Angle = 0;
+        spinnerRotation = null;
+    }
+    private void UpdateSpinnerMotion()
+    {
+        if (!IsLoaded || !IsLoading || !uiSettings.AnimationsEnabled) { StopSpinnerMotion(); return; }
+        if (spinnerAnimation is not null || progress is null) return;
+        progress.ApplyTemplate();
+        spinnerRotation = FindSpinnerPath(progress)?.RenderTransform as RotateTransform;
+        // Consumer templates retain ownership of their own progress presentation.
+        if (spinnerRotation is null) return;
+        var rotation = new DoubleAnimation { From = 0, To = 360, Duration = TimeSpan.FromSeconds(1), RepeatBehavior = RepeatBehavior.Forever };
+        Storyboard.SetTarget(rotation, spinnerRotation);
+        Storyboard.SetTargetProperty(rotation, "Angle");
+        spinnerAnimation = new Storyboard();
+        spinnerAnimation.Children.Add(rotation);
+        spinnerAnimation.Begin();
+    }
+    private static Microsoft.UI.Xaml.Shapes.Path? FindSpinnerPath(DependencyObject root)
+    {
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
+        {
+            var child = VisualTreeHelper.GetChild(root, i);
+            if (child is Microsoft.UI.Xaml.Shapes.Path path && path.Name == "PART_SpinnerPath") return path;
+            if (FindSpinnerPath(child) is { } nested) return nested;
+        }
+        return null;
+    }
     private void BindLinkUnderline()
     {
-        if (action is null || linkUnderline is null) return;
+        if (action is null) return;
         action.ApplyTemplate();
         if (FindPresenter(action) is { } presenter)
-            linkUnderline.SetBinding(Border.BackgroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
+        {
+            linkUnderline?.SetBinding(Border.BackgroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
+            progress?.SetBinding(Control.ForegroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
+        }
     }
     private static ContentPresenter? FindPresenter(DependencyObject root)
     {

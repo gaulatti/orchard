@@ -38,5 +38,6 @@
         <None Include="buildTransitive/Gaulatti.Orchard.targets" Pack="true" PackagePath="buildTransitive/" />
         <None Include="../../docs/package-readme.md" Pack="true" PackagePath="README.md" />
         <None Include="../../tokens/LICENSE-Bleecker.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-Lucide.txt" Pack="true" PackagePath="licenses/" />
     </ItemGroup>
 </Project>
