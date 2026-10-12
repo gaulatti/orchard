@@ -2970,14 +2970,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerSwitch.cs", "src/Orchard/Themes/Switch.xaml", "src/Orchard/Themes/Generic.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/SwitchesFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/SwitchesFixture.xaml.cs: VerifyAsync", "tests/Orchard.Tests/SwitchMotionTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Collect x64 and native ARM64 runtime evidence for registered checks",
+        "Complete native/browser typography, pill, shadow and animation raster comparison",
+        "Verify actual keyboard/pointer/drag, focus visibility, live system appearance, contrast/Narrator and isolated scaling"
       ]
     },
     {

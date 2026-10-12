@@ -86,6 +86,60 @@
             </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
+    <Style TargetType="local:BleeckerSwitch">
+        <Setter Property="IsTabStop" Value="False" /><Setter Property="UseSystemFocusVisuals" Value="False" />
+        <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" /><Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" />
+        <Setter Property="FontSize" Value="14" /><Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSwitch">
+            <ToggleSwitch x:Name="PART_Switch" Header="{TemplateBinding Label}"
+                FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                Foreground="{TemplateBinding Foreground}" IsEnabled="{TemplateBinding IsEnabled}">
+                <ToggleSwitch.Style><Style TargetType="ToggleSwitch">
+                    <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="Padding" Value="0" />
+                    <Setter Property="UseSystemFocusVisuals" Value="False" /><Setter Property="UseLayoutRounding" Value="False" />
+                    <Setter Property="ManipulationMode" Value="System,TranslateX" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ToggleSwitch">
+            <Grid x:Name="PART_Root" Background="Transparent">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"><VisualState.Setters><Setter Target="PART_Root.Opacity" Value="1" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="PART_Root.Opacity" Value="1" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="PART_Root.Opacity" Value="1" /></VisualState.Setters></VisualState>
+                        <VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="PART_Root.Opacity" Value="0.5" /></VisualState.Setters></VisualState>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="ToggleStates"><VisualState x:Name="On" /><VisualState x:Name="Off" /><VisualState x:Name="Dragging" /></VisualStateGroup>
+                    <VisualStateGroup x:Name="FocusStates"><VisualState x:Name="Focused" /><VisualState x:Name="PointerFocused" /><VisualState x:Name="Unfocused" /></VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="36" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                <Grid x:Name="SwitchAreaGrid" Width="36" Height="20" VerticalAlignment="Center" FlowDirection="LeftToRight">
+                    <Rectangle x:Name="SwitchKnobBounds" Width="36" Height="20" Opacity="0" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
+                    <Border x:Name="PART_Track" Width="36" Height="20" CornerRadius="10" BorderThickness="1" />
+                    <Grid x:Name="SwitchKnob" Width="20" Height="20" HorizontalAlignment="Left">
+                        <Grid.RenderTransform><TranslateTransform x:Name="KnobTranslateTransform" /></Grid.RenderTransform>
+                        <Grid x:Name="PART_ShadowHost" Width="16" Height="16" IsHitTestVisible="False"><Ellipse x:Name="PART_ShadowMask" Fill="Black" Width="16" Height="16" /></Grid>
+                        <Border x:Name="PART_Thumb" Width="16" Height="16" CornerRadius="8" IsHitTestVisible="False" />
+                    </Grid>
+                </Grid>
+                <TextBlock x:Name="PART_Label" Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" Text="{TemplateBinding Header}"
+                    FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                    Foreground="{TemplateBinding Foreground}" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords"
+                    AutomationProperties.AccessibilityView="Raw" />
+                <TextBlock x:Name="PART_OffFill" Visibility="Collapsed" Foreground="{ThemeResource SwitchOffFill}" />
+                <TextBlock x:Name="PART_OnFill" Visibility="Collapsed" Foreground="{ThemeResource SwitchOnFill}" />
+                <TextBlock x:Name="PART_OffStroke" Visibility="Collapsed" Foreground="{ThemeResource SwitchOffStroke}" />
+                <TextBlock x:Name="PART_OnStroke" Visibility="Collapsed" Foreground="{ThemeResource SwitchOnStroke}" />
+                <TextBlock x:Name="PART_OffThumb" Visibility="Collapsed" Foreground="{ThemeResource SwitchOffThumb}" />
+                <TextBlock x:Name="PART_OnThumb" Visibility="Collapsed" Foreground="{ThemeResource SwitchOnThumb}" />
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+                </Style></ToggleSwitch.Style>
+            </ToggleSwitch>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerProgress">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="UseLayoutRounding" Value="False" />

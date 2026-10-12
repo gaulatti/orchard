@@ -37,7 +37,7 @@ Actual keyboard input verifies mixed-case search followed by Tab/Enter
 activation (`artifacts/navigation-keyboard-input.jpg`). An unmatched query keeps
 Input visible and shows the explicit message (`artifacts/navigation-no-results.jpg`).
 Clearing search restores the list, and pointer activation returns to Foundation.
-The current unit/coverage suite passes all 19 tests, and x64 publish and ARM64
+The baseline unit/coverage suite passes all 19 tests, and x64 publish and ARM64
 compilation pass. The full navigation/catalog fixture checks now also pass on
 native ARM64; see [runtime evidence](runtime-evidence.md) for architecture
 reports and the remaining platform acceptance.
@@ -45,3 +45,8 @@ reports and the remaining platform acceptance.
 Text-size/density controls, the remaining unimplemented inventory and full
 keyboard/Narrator/responsive acceptance are still required. Catalog navigation
 does not make any component's visual or interaction acceptance complete.
+
+The Switches page adds off/on, both disabled states, a named unlabeled switch,
+long/Japanese/RTL labels and a consumer-owned two-way Boolean binding. Its
+registered runtime checks and remaining acceptance are documented in
+[switches](switches.md).

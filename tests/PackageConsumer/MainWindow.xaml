@@ -69,6 +69,7 @@
                 <orchard:BleeckerKbd x:Name="PackageKeyboard" Content="Esc" />
                 <orchard:BleeckerEyebrow x:Name="PackageEyebrow" Content="Straße" Rule="True" />
                 <orchard:BleeckerProgress x:Name="PackageProgress" Value="65" ShowLabel="True" AutomationProperties.Name="Package progress" />
+                <orchard:BleeckerSwitch x:Name="PackageSwitch" Label="Package notifications" />
             </StackPanel>
             </orchard:BleeckerCard>
         </NavigationView>

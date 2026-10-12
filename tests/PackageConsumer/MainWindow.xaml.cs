@@ -35,6 +35,15 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                var switchPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageSwitch);
+                var switchToggle = (IToggleProvider)switchPeer.GetPattern(PatternInterface.Toggle);
+                Require(PackageSwitch.FontSize == 14 && PackageSwitch.FontFamily.Source.Contains("EncodeSans-Medium.ttf") &&
+                    switchPeer.GetName() == "Package notifications" && switchPeer.GetAutomationControlType() == AutomationControlType.CheckBox,
+                    "Packaged switch lost its native semantics, label or bundled font.");
+                switchToggle.Toggle();
+                Require(PackageSwitch.IsOn && switchToggle.ToggleState == ToggleState.On, "Packaged native switch did not update consumer state.");
+                PackageSwitch.IsOn = false;
+                Require(switchToggle.ToggleState == ToggleState.Off, "Packaged consumer state did not reach the native switch.");
                 var packagedRange = (IRangeValueProvider)FrameworkElementAutomationPeer.CreatePeerForElement(PackageProgress).GetPattern(PatternInterface.RangeValue);
                 Require(packagedRange.IsReadOnly && packagedRange.Value == 65 && packagedRange.Maximum == 100 && PackageProgress.FontSize == 12,
                     "Packaged progress lost its resources or native range semantics.");

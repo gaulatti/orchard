@@ -1,0 +1,16 @@
+<UserControl x:Class="Orchard.Catalog.SwitchesFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
+        <TextBlock Text="Switch" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <orchard:BleeckerSwitch x:Name="Off" Label="Enable notifications" />
+        <orchard:BleeckerSwitch x:Name="On" Label="Dark mode" IsOn="True" />
+        <orchard:BleeckerSwitch x:Name="DisabledOff" Label="Off (disabled)" IsEnabled="False" />
+        <orchard:BleeckerSwitch x:Name="DisabledOn" Label="On (disabled)" IsOn="True" IsEnabled="False" />
+        <orchard:BleeckerSwitch x:Name="WithoutLabel" AutomationProperties.Name="Toggle feature" />
+        <orchard:BleeckerSwitch x:Name="LongLabel" Width="200" Label="Keep notifications enabled while reviewing the editorial queue" />
+        <orchard:BleeckerSwitch x:Name="NonLatin" Label="通知を有効にする" />
+        <orchard:BleeckerSwitch x:Name="Rtl" Label="تمكين الإشعارات" FlowDirection="RightToLeft" IsOn="True" />
+        <orchard:BleeckerSwitch x:Name="Bound" Label="Consumer state" IsOn="{Binding Enabled, Mode=TwoWay}" />
+        <TextBlock x:Name="BindingStatus" Text="{Binding Enabled}" Style="{StaticResource BleeckerBodyStyle}" />
+    </StackPanel>
+</UserControl>

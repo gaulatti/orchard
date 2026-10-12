@@ -1,0 +1,213 @@
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Media;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Text.Json;
+using Windows.Foundation;
+
+namespace Orchard.Catalog;
+
+public sealed partial class SwitchesFixture : UserControl
+{
+    private readonly ConsumerState state = new();
+    private readonly List<object> motionSamples = [];
+
+    public SwitchesFixture() { InitializeComponent(); DataContext = state; }
+
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    {
+        UpdateLayout();
+        await Task.Delay(100);
+        await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"switch-initial-{scheme}.png"));
+        foreach (var control in Rows.Children.OfType<BleeckerSwitch>()) VerifyPresentation(control, scheme);
+        var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Off);
+        var toggle = (IToggleProvider)peer.GetPattern(PatternInterface.Toggle);
+        Require(peer.GetAutomationControlType() == AutomationControlType.CheckBox && peer.GetName() == Off.Label &&
+            toggle.ToggleState == ToggleState.Off && peer.IsKeyboardFocusable(), "Switch lost native toggle semantics or its label.");
+        var count = 0;
+        void OnToggled(object sender, RoutedEventArgs args) => count++;
+        Off.Toggled += OnToggled;
+        try
+        {
+            toggle.Toggle();
+            await SettleAsync(Off, true);
+            Require(Off.IsOn && toggle.ToggleState == ToggleState.On && count == 1, "Native UIA toggle did not reach consumer state exactly once.");
+            Off.IsOn = false;
+            await SettleAsync(Off, false);
+            Require(toggle.ToggleState == ToggleState.Off && count == 2, "Consumer state did not reach the native switch exactly once.");
+            peer.SetFocus();
+            Require(Find<ToggleSwitch>(Off, "PART_Switch").FocusState != FocusState.Unfocused && peer.HasKeyboardFocus(),
+                "Switch UIA focus did not reach the native input.");
+            Off.Label = "Updated label";
+            Require(peer.GetName() == "Updated label" && Find<TextBlock>(Off, "PART_Label").Text == "Updated label", "Switch label update lost presentation or its accessible name.");
+            AutomationProperties.SetName(Off, "Explicit name");
+            Require(peer.GetName() == "Explicit name" && FrameworkElementAutomationPeer.CreatePeerForElement(Find<ToggleSwitch>(Off, "PART_Switch")).GetName() == "Explicit name",
+                "Switch explicit accessible name did not reach its focused native input.");
+        }
+        finally { Off.Toggled -= OnToggled; Off.Label = "Enable notifications"; AutomationProperties.SetName(Off, ""); Off.IsOn = false; }
+        foreach (var control in new[] { DisabledOff, DisabledOn })
+        {
+            var before = control.IsOn;
+            var rejected = false;
+            try { ((IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(control).GetPattern(PatternInterface.Toggle)).Toggle(); }
+            catch (ElementNotEnabledException) { rejected = true; }
+            Require(rejected && control.IsOn == before && !Find<ToggleSwitch>(control, "PART_Switch").Focus(FocusState.Keyboard),
+                "Disabled switch accepted native activation or keyboard focus.");
+        }
+        Require(FrameworkElementAutomationPeer.CreatePeerForElement(WithoutLabel).GetName() == "Toggle feature" && WithoutLabel.ActualWidth == 36,
+            "Unlabeled switch lost its accessible name or retained label spacing.");
+        var boundToggle = (IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(Bound).GetPattern(PatternInterface.Toggle);
+        state.Enabled = false;
+        boundToggle.Toggle();
+        await SettleAsync(Bound, true);
+        Require(state.Enabled && BindingStatus.Text == "True", "Native switch did not update the consumer's two-way binding.");
+        state.Enabled = false;
+        await SettleAsync(Bound, false);
+        Require(!Bound.IsOn && boundToggle.ToggleState == ToggleState.Off && BindingStatus.Text == "False", "Consumer binding did not update the native switch.");
+        foreach (var name in new[] { "PointerOver", "Pressed", "Normal" })
+        {
+            Require(VisualStateManager.GoToState(Find<ToggleSwitch>(Off, "PART_Switch"), name, false), $"Missing switch state {name}.");
+            VerifyPresentation(Off, scheme);
+        }
+        await VerifyLifecycleAsync(scheme);
+        await VerifyMotionAsync();
+        var measurements = Rows.Children.OfType<BleeckerSwitch>().Select(control =>
+        {
+            var track = Find<Border>(control, "PART_Track");
+            var thumb = Find<Border>(control, "PART_Thumb");
+            var label = Find<TextBlock>(control, "PART_Label");
+            var thumbOrigin = thumb.TransformToVisual(track).TransformPoint(new Point());
+            return new { control.Name, control.IsOn, control.IsEnabled, control.Label, control.ActualWidth, control.ActualHeight,
+                track = new { track.ActualWidth, track.ActualHeight, color = Hex(track.Background), opacity = track.Background.Opacity,
+                    stroke = Hex(track.BorderBrush), strokeOpacity = track.BorderBrush.Opacity, radius = track.CornerRadius.TopLeft },
+                thumb = new { thumb.ActualWidth, thumb.ActualHeight, x = thumbOrigin.X, y = thumbOrigin.Y, color = Hex(thumb.Background) },
+                label = new { label.ActualWidth, label.ActualHeight, label.FontSize, label.LineHeight, label.BaselineOffset,
+                    font = label.FontFamily.Source, weight = label.FontWeight.Weight, color = Hex(label.Foreground), label.Visibility } };
+        });
+        await File.WriteAllTextAsync(Path.Combine(folder, $"switch-measurements-{scheme}.json"),
+            JsonSerializer.Serialize(new { scheme, displayScale = XamlRoot.RasterizationScale,
+                textScale = new Windows.UI.ViewManagement.UISettings().TextScaleFactor,
+                animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled, measurements, motionSamples },
+                new JsonSerializerOptions { WriteIndented = true }));
+        await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"switch-{scheme}.png"));
+    }
+
+    private void VerifyPresentation(BleeckerSwitch control, BleeckerColorScheme scheme)
+    {
+        var track = Find<Border>(control, "PART_Track");
+        var thumb = Find<Border>(control, "PART_Thumb");
+        var label = Find<TextBlock>(control, "PART_Label");
+        var root = Find<Grid>(control, "PART_Root");
+        var point = thumb.TransformToVisual(track).TransformPoint(new Point());
+        Require(track.ActualWidth == 36 && track.ActualHeight == 20 && track.CornerRadius.TopLeft == 10 && track.BorderThickness == new Thickness(1) &&
+            thumb.ActualWidth == 16 && thumb.ActualHeight == 16 && thumb.CornerRadius.TopLeft == 8 &&
+            Math.Abs(point.X - (control.IsOn ? 18 : 2)) < .001 && Math.Abs(point.Y - 2) < .001,
+            $"Switch geometry differs from its 36x20 reference: {control.Name}, track={track.ActualWidth}x{track.ActualHeight}, thumb={thumb.ActualWidth}x{thumb.ActualHeight} at {point}.");
+        var offColor = scheme == BleeckerColorScheme.Light ? "#FFE6D5B8" : "#FFFFFFFF";
+        var onColor = scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5";
+        var offOpacity = scheme == BleeckerColorScheme.Light ? .25 : .15;
+        Require(Hex(track.Background) == (control.IsOn ? onColor : offColor) && Math.Abs(track.Background.Opacity - (control.IsOn ? 1 : offOpacity)) < .000001 &&
+            Math.Abs(track.BorderBrush.Opacity - (control.IsOn ? 0 : scheme == BleeckerColorScheme.Light ? .35 : .10)) < .000001 &&
+            Hex(thumb.Background) == "#FFFFFFFF" && root.Opacity == (control.IsEnabled ? 1 : .5), $"Switch palette/disabled opacity differs for {control.Name}.");
+        Require(control.FontSize == 14 && label.FontWeight.Weight == 500 && label.LineHeight == 20 && label.Margin.Left == 12 &&
+            control.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && !Find<ToggleSwitch>(control, "PART_Switch").UseSystemFocusVisuals,
+            "Switch acquired Windows typography, focus styling or label spacing.");
+        if (!string.IsNullOrEmpty(control.Label))
+        {
+            var labelBounds = label.TransformToVisual(this).TransformBounds(new Rect(0, 0, label.ActualWidth, label.ActualHeight));
+            var trackBounds = track.TransformToVisual(this).TransformBounds(new Rect(0, 0, track.ActualWidth, track.ActualHeight));
+            var gap = control.FlowDirection == FlowDirection.RightToLeft ? trackBounds.Left - labelBounds.Right : labelBounds.Left - trackBounds.Right;
+            Require(Math.Abs(gap - 12) < .01, $"Switch label gap differs: {control.Name}, gap={gap:R}.");
+        }
+        if (control.Name == "LongLabel") Require(control.ActualHeight == 80, $"Long switch label differs from its four 20px reference lines: {control.ActualHeight:R}.");
+    }
+
+    private async Task VerifyLifecycleAsync(BleeckerColorScheme scheme)
+    {
+        var originalTemplate = Off.Template;
+        var oldNative = Find<ToggleSwitch>(Off, "PART_Switch");
+        Off.Template = null; Off.ApplyTemplate();
+        Off.Template = originalTemplate; Off.ApplyTemplate(); UpdateLayout();
+        Require(!ReferenceEquals(oldNative, Find<ToggleSwitch>(Off, "PART_Switch")), "Switch did not replace its native template.");
+        oldNative.IsOn = true;
+        Require(!Off.IsOn, "Detached native switch still changed consumer state.");
+        VerifyPresentation(Off, scheme);
+        Rows.Children.Remove(Off);
+        await WaitAsync(() => !Off.IsLoaded, "Switch did not unload.");
+        Require(ElementCompositionPreview.GetElementChildVisual(Find<Grid>(Off, "PART_ShadowHost")) is null, "Unloaded switch retained its composition shadow.");
+        Off.IsOn = true;
+        Rows.Children.Insert(1, Off);
+        await WaitAsync(() => Off.IsLoaded, "Switch did not reload.");
+        UpdateLayout();
+        await SettleAsync(Off, true);
+        VerifyPresentation(Off, scheme);
+        Require(ElementCompositionPreview.GetElementChildVisual(Find<Grid>(Off, "PART_ShadowHost")) is SpriteVisual { Shadow: DropShadow },
+            "Reloaded switch did not restore its shadow.");
+        Off.IsOn = false;
+        await SettleAsync(Off, false);
+    }
+
+    private async Task VerifyMotionAsync()
+    {
+        motionSamples.Clear();
+        var animations = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
+        Off.IsOn = true;
+        var timer = Stopwatch.StartNew();
+        var sawIntermediate = false;
+        while (timer.ElapsedMilliseconds < 300)
+        {
+            var x = ((TranslateTransform)Find<Grid>(Off, "SwitchKnob").RenderTransform).X;
+            motionSamples.Add(new { elapsed = timer.Elapsed.TotalMilliseconds, x });
+            sawIntermediate |= x > .01 && x < 15.99;
+            if (x >= 16) break;
+            await Task.Delay(1);
+        }
+        Require(!animations || sawIntermediate, "Enabled switch motion skipped every intermediate thumb frame.");
+        Require(animations || ((TranslateTransform)Find<Grid>(Off, "SwitchKnob").RenderTransform).X == 16, "Reduced-motion switch did not settle immediately.");
+        await SettleAsync(Off, true);
+        Off.IsOn = false;
+        if (animations)
+        {
+            await WaitAsync(() => { var x = ((TranslateTransform)Find<Grid>(Off, "SwitchKnob").RenderTransform).X; return x > .01 && x < 15.99; }, "Switch reversal did not start from an intermediate frame.");
+            Off.IsOn = true;
+            await SettleAsync(Off, true);
+        }
+        Off.IsOn = false;
+        await SettleAsync(Off, false);
+    }
+
+    private Task SettleAsync(BleeckerSwitch control, bool on) => WaitAsync(() =>
+        Math.Abs(((TranslateTransform)Find<Grid>(control, "SwitchKnob").RenderTransform).X - (on ? 16 : 0)) < .000001 &&
+        Math.Abs(Find<Border>(control, "PART_Track").Background.Opacity - (on ? 1 : control.ActualTheme == ElementTheme.Light ? .25 : .15)) < .000001,
+        "Switch did not settle to its binary destination.");
+    private async Task WaitAsync(Func<bool> condition, string message)
+    {
+        var timer = Stopwatch.StartNew();
+        while (!condition() && timer.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(1); }
+        Require(condition(), message);
+    }
+    private static string Hex(Brush brush) { var c = ((SolidColorBrush)brush).Color; return $"#{c.A:X2}{c.R:X2}{c.G:X2}{c.B:X2}"; }
+    private static T Find<T>(DependencyObject parent, string name) where T : FrameworkElement
+    {
+        if (parent is T match && match.Name == name) return match;
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+        {
+            try { return Find<T>(VisualTreeHelper.GetChild(parent, i), name); }
+            catch (InvalidOperationException) { }
+        }
+        throw new InvalidOperationException($"Missing switch template part {name}.");
+    }
+    private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
+    private sealed class ConsumerState : INotifyPropertyChanged
+    {
+        private bool enabled;
+        public bool Enabled { get => enabled; set { if (enabled == value) return; enabled = value; PropertyChanged?.Invoke(this, new(nameof(Enabled))); } }
+        public event PropertyChangedEventHandler? PropertyChanged;
+    }
+}

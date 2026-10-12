@@ -23,6 +23,7 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerSwitch": "SwitchesFixture.xaml",
     "BleeckerProgress": "ProgressFixture.xaml",
     "BleeckerEyebrow": "EyebrowsFixture.xaml",
     "BleeckerKbd": "KeyboardFixture.xaml",

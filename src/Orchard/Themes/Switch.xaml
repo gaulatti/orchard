@@ -1,0 +1,26 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="SwitchOffFill" Color="#E6D5B8" Opacity="0.25" />
+            <SolidColorBrush x:Key="SwitchOnFill" Color="#2C5784" />
+            <SolidColorBrush x:Key="SwitchOffStroke" Color="#E6D5B8" Opacity="0.35" />
+            <SolidColorBrush x:Key="SwitchOnStroke" Color="Transparent" />
+            <SolidColorBrush x:Key="SwitchOffThumb" Color="White" /><SolidColorBrush x:Key="SwitchOnThumb" Color="White" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="SwitchOffFill" Color="White" Opacity="0.15" />
+            <SolidColorBrush x:Key="SwitchOnFill" Color="#5BA3F5" />
+            <SolidColorBrush x:Key="SwitchOffStroke" Color="White" Opacity="0.10" />
+            <SolidColorBrush x:Key="SwitchOnStroke" Color="Transparent" />
+            <SolidColorBrush x:Key="SwitchOffThumb" Color="White" /><SolidColorBrush x:Key="SwitchOnThumb" Color="White" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="SwitchOffFill" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="SwitchOnFill" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="SwitchOffStroke" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="SwitchOnStroke" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="SwitchOffThumb" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="SwitchOnThumb" Color="{ThemeResource SystemColorHighlightTextColor}" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>
