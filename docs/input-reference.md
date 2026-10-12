@@ -193,6 +193,46 @@ its own inventory contract. Header/description composition must stay explicit.
 
 ## Acceptance criteria
 
+### Reading direction checkpoint
+
+The pinned Bleecker input forwards `dir` to the native HTML input. The local
+reference Direction story confirms that Arabic entered text and placeholders
+align left for `dir=ltr` and right for `dir=rtl`; the browser reports start
+alignment. The retained capture is `artifacts/input-direction-reference-dark.jpg`.
+Orchard previously inferred reading direction from Arabic content and aligned
+default LTR entered text on the right. Its branded style now sets
+`TextReadingOrder=UseFlowDirection` and `TextAlignment=Start`; the placeholder
+binds both properties. Explicit consumer values remain dependency-property
+overrides. This does not establish RTL adornment parity: Bleecker positions its
+icons at physical left/right independently of the input's `dir`.
+
+The fixture checks visible glyph centroids for entered text and placeholders
+in both directions, all three sizes and both themes. All 24 cases pass at 100%
+display scale in `artifacts/smoke-input-direction-final`. The bitmap check
+locates each isolated opaque input box, since RTL overflow shifts the
+RenderTargetBitmap origin; it asserts the expected box width before measuring
+interior glyphs. Retained images permit inspection of that measurement.
+
+Japanese, Arabic, Hindi, combining-accent and emoji samples additionally verify
+full-value selection and line containment, with filled/placeholder captures.
+Those checks do not prove glyph completeness, shaping, grapheme navigation or
+fallback-font parity. Japanese remains visibly narrower in Orchard: the small
+sample measures roughly 73px natively versus 91px in the Windows browser
+reference. Candidate-font comparisons are diagnostic only; no inferred font
+mapping has been added. Full Input acceptance remains open.
+
+Verification: focused Input and full catalog runtime suites pass at
+`artifacts/smoke-input-direction-final` and
+`artifacts/smoke-input-direction-integration`; all 13 tests, token drift check,
+x64 publish and ARM64 compilation pass. The isolated x64 package consumer passes
+at `artifacts/package-consumer-input-direction`, including resources, fonts,
+themes and a native action. Package SHA-256:
+`6d01abdcbd01246598b466033b38a1d65b484c75cf354f158434698ed5847055`.
+ARM64 runtime remains unverified. This native-only change has no backend metrics
+impact. The public wiki remote remains unavailable; documentation lives here.
+
+### Remaining acceptance
+
 - Register all three sizes, empty/populated, both adornments independently and
   together, valid/error, read-only/disabled, keyboard/pointer focus and hover.
 - Match rendered geometry, glyph baseline, placeholder, alpha colors, border,

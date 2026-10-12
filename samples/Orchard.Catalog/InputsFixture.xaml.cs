@@ -46,6 +46,8 @@ public sealed partial class InputsFixture : UserControl
         await VerifyShadowLifecycleAsync();
         await VerifyTypographyAsync(scheme, folder);
         await VerifyTypographySizeChangesAsync(scheme, folder);
+        await VerifyScriptTypographyAsync(scheme, folder);
+        await VerifyReadingDirectionAsync(scheme, folder);
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
     }
 

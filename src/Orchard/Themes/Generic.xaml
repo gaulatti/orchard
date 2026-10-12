@@ -17,6 +17,8 @@
         <Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="7" />
         <Setter Property="MinWidth" Value="0" /><Setter Property="UseSystemFocusVisuals" Value="False" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="TextReadingOrder" Value="UseFlowDirection" />
+        <Setter Property="TextAlignment" Value="Start" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerInput">
             <Grid>
                 <VisualStateManager.VisualStateGroups>
@@ -70,7 +72,8 @@
                         VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" IsTabStop="False" ZoomMode="Disabled" AutomationProperties.AccessibilityView="Raw" />
                     <TextBlock x:Name="PlaceholderTextContentPresenter" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
                         FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
-                        Text="{TemplateBinding PlaceholderText}" Foreground="{TemplateBinding PlaceholderForeground}" VerticalAlignment="Center" IsHitTestVisible="False" />
+                        Text="{TemplateBinding PlaceholderText}" TextReadingOrder="{TemplateBinding TextReadingOrder}" TextAlignment="{TemplateBinding TextAlignment}"
+                        Foreground="{TemplateBinding PlaceholderForeground}" VerticalAlignment="Center" IsHitTestVisible="False" />
                 </Grid>
                 <ContentPresenter x:Name="StartAdornment" Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="EndAdornment" Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
