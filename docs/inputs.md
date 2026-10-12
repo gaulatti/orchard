@@ -31,7 +31,7 @@ on their previous preview until the applicable input/textarea contracts pass.
 
 Remaining work includes exact glyph/baseline and scaling comparison, reference
 hover/disabled precedence, error semantics, shadows, motion/reduced motion,
-adornment updates, live theme and brush updates, broader editing/clipboard
+live theme and brush updates, broader editing/clipboard
 regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
 adorned, error, disabled, read-only and constrained multilingual examples.
@@ -51,3 +51,11 @@ input changes its terracotta rest border to blue, captured in
 keyboard, clipboard, validation or accessibility contract. Native TextBox value
 patterns require an external UI Automation client; the managed peer pattern
 cast is not an equivalent test.
+
+The disabled/error combination retains its terracotta border while the editor
+is dimmed to .6 opacity. Decorative adornments remain outside the dimmed editor.
+The registered fixture includes this combination. Runtime regression coverage
+also changes each size with adornments removed and restored, and checks that
+presentation changes retain native text selection.
+These checks pass in both themes at `artifacts/smoke-input-states`; the retained
+captures include the disabled invalid example. x64 publish and ARM64 build pass.

@@ -36,6 +36,10 @@
                         <VisualState x:Name="InputDisabled"><VisualState.Setters>
                             <Setter Target="Editor.Opacity" Value="0.6" /><Setter Target="BorderElement.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
                         </VisualState.Setters></VisualState>
+                        <VisualState x:Name="InputDisabledError"><VisualState.Setters>
+                            <Setter Target="Editor.Opacity" Value="0.6" /><Setter Target="BorderElement.Background" Value="{ThemeResource BleeckerInputDisabledBrush}" />
+                            <Setter Target="BorderElement.BorderBrush" Value="{ThemeResource BleeckerInputErrorBrush}" />
+                        </VisualState.Setters></VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
                 <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
@@ -51,8 +55,8 @@
                         FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" CharacterSpacing="{TemplateBinding CharacterSpacing}"
                         Text="{TemplateBinding PlaceholderText}" Foreground="{TemplateBinding PlaceholderForeground}" VerticalAlignment="Center" IsHitTestVisible="False" />
                 </Grid>
-                <ContentPresenter Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
-                <ContentPresenter Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
+                <ContentPresenter x:Name="StartAdornment" Grid.Row="1" Content="{TemplateBinding StartIcon}" Margin="12,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
+                <ContentPresenter x:Name="EndAdornment" Grid.Row="1" Content="{TemplateBinding EndIcon}" Margin="0,0,12,0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
                 <ContentPresenter x:Name="DescriptionPresenter" Grid.Row="2" Content="{TemplateBinding Description}" AutomationProperties.AccessibilityView="Raw" x:Load="False" />
             </Grid>
         </ControlTemplate></Setter.Value></Setter>

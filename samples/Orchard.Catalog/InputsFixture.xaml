@@ -11,6 +11,7 @@
   </orchard:BleeckerInput>
   <orchard:BleeckerInput x:Name="ErrorInput" Width="320" IsError="True" Text="broken-stream-url" AutomationProperties.Name="Invalid stream" />
   <orchard:BleeckerInput x:Name="DisabledInput" Width="320" IsEnabled="False" Text="Unavailable input" />
+  <orchard:BleeckerInput x:Name="DisabledErrorInput" Width="320" IsEnabled="False" IsError="True" Text="Unavailable invalid input" />
   <orchard:BleeckerInput x:Name="ReadOnlyInput" Width="320" IsReadOnly="True" Text="Read-only coverage" AutomationProperties.Name="Read-only coverage" />
   <orchard:BleeckerInput Width="160" Text="東京 · São Paulo · القاهرة · long coverage value" AutomationProperties.Name="Constrained multilingual input" />
  </StackPanel>

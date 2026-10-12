@@ -58,7 +58,7 @@ public sealed class BleeckerInput : TextBox
     private void UpdateAppearance()
     {
         var state = !IsEnabled ? "InputDisabled" : FocusState != FocusState.Unfocused ? "InputFocused" : pointerOver ? "InputHovered" : "InputNormal";
-        if (IsError && IsEnabled) state += "Error";
+        if (IsError) state += "Error";
         VisualStateManager.GoToState(this, state, false);
     }
 }

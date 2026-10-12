@@ -37,7 +37,67 @@ public sealed partial class InputsFixture : UserControl
         string ColorHex() { var color = ((SolidColorBrush)border.BorderBrush).Color; return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}"; }
         MediumInput.Text = "";
         ReadOnlyInput.Focus(FocusState.Keyboard);
+        VerifyDynamicGeometry();
+        VerifyDisabledError(scheme);
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
+    }
+
+    private void VerifyDisabledError(BleeckerColorScheme scheme)
+    {
+        var editor = Find<Grid>(DisabledErrorInput, "Editor");
+        var border = Find<Border>(DisabledErrorInput, "BorderElement");
+        Require(Math.Abs(editor.Opacity - .6) < .000001, "Disabled error input lost its opacity.");
+        Require(Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Disabled error input lost its error border.");
+        DisabledErrorInput.IsError = false;
+        Require(Hex(border.BorderBrush) != BleeckerTokens.Colors(scheme)["terracotta"] && Math.Abs(editor.Opacity - .6) < .000001,
+            "Clearing disabled validation retained the error border or removed disabled opacity.");
+        DisabledErrorInput.IsError = true;
+        DisabledErrorInput.IsEnabled = true;
+        Require(editor.Opacity == 1 && Hex(border.BorderBrush) == BleeckerTokens.Colors(scheme)["terracotta"], "Enabling an invalid editor lost its validation state.");
+        DisabledErrorInput.IsEnabled = false;
+    }
+
+    private void VerifyDynamicGeometry()
+    {
+        var start = IconsInput.StartIcon;
+        var end = IconsInput.EndIcon;
+        var startPresenter = Find<ContentPresenter>(IconsInput, "StartAdornment");
+        var endPresenter = Find<ContentPresenter>(IconsInput, "EndAdornment");
+        IconsInput.Text = "Retained selection";
+        IconsInput.Select(0, 8);
+        foreach (var (size, height, inset, font) in new[] {
+            (BleeckerInputSize.Small, 36d, 12d, 13d),
+            (BleeckerInputSize.Medium, 40d, 14d, 14d),
+            (BleeckerInputSize.Large, 44d, 16d, 15d) })
+        {
+            IconsInput.InputSize = size;
+            IconsInput.StartIcon = null;
+            IconsInput.EndIcon = null;
+            UpdateLayout();
+            Require(IconsInput.ActualHeight == height && IconsInput.FontSize == font && IconsInput.Padding == new Thickness(inset, 0, inset, 0),
+                "Changing size or removing adornments retained old geometry.");
+            Require(startPresenter.Content is null && endPresenter.Content is null, "Removed adornment remained presented.");
+            IconsInput.StartIcon = start;
+            UpdateLayout();
+            Require(IconsInput.Padding == new Thickness(40, 0, inset, 0) && ReferenceEquals(startPresenter.Content, start), "Start adornment failed to restore.");
+            IconsInput.EndIcon = end;
+            UpdateLayout();
+            Require(IconsInput.Padding == new Thickness(40, 0, 40, 0) && ReferenceEquals(endPresenter.Content, end), "End adornment failed to restore.");
+            Require(IconsInput.SelectedText == "Retained", "Presentation changes destroyed native selection.");
+        }
+        IconsInput.IsEnabled = false;
+        Require(startPresenter.Opacity == 1 && endPresenter.Opacity == 1 && !startPresenter.IsHitTestVisible && !endPresenter.IsHitTestVisible,
+            "Decorative adornments acquired disabled opacity or pointer behavior.");
+        IconsInput.IsEnabled = true;
+        IconsInput.InputSize = BleeckerInputSize.Medium;
+        IconsInput.Text = "";
+        UpdateLayout();
+    }
+
+    private static string Hex(Brush brush)
+    {
+        var color = ((SolidColorBrush)brush).Color;
+        return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
     }
 
     private static T Find<T>(DependencyObject root, string name) where T : FrameworkElement
