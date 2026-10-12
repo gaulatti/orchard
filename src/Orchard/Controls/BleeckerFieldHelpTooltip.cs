@@ -6,13 +6,14 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 namespace Orchard;
 
 /// <summary>A compact, keyboard-accessible information trigger. Empty help text removes the trigger.</summary>
-public sealed class BleeckerFieldHelpTooltip : Button
+public sealed partial class BleeckerFieldHelpTooltip : Button
 {
     private readonly BleeckerTooltip tooltip = new() { Placement = PlacementMode.Bottom };
 
     public BleeckerFieldHelpTooltip()
     {
         DefaultStyleKey = typeof(BleeckerFieldHelpTooltip);
+        InitializeMotion();
         UpdateText();
     }
 

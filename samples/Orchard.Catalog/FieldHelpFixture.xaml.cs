@@ -22,16 +22,52 @@ public sealed partial class FieldHelpFixture : UserControl
         var glyph = (Viewbox)root.FindName("InfoGlyph");
         var circle = (Ellipse)root.FindName("InfoCircle");
         Require(glyph.ActualWidth == 14 && glyph.ActualHeight == 14 && circle.Width == 22 && circle.StrokeThickness == 2, "Lucide info geometry differs.");
+        var motionEvidence = new List<object>();
+        var animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
         foreach (var state in new[] { "Normal", "PointerOver", "Pressed", "Disabled" })
         {
-            Require(VisualStateManager.GoToState(Help, state, false), $"Missing field help state {state}.");
-            var expected = BleeckerTokens.Colors(scheme)[state is "PointerOver" or "Pressed" ? "textPrimary" : "textSecondary"];
+            var samples = new List<(double Milliseconds, Windows.UI.Color Color, double Scale)>();
+            var before = ((SolidColorBrush)circle.Stroke).Color;
+            var elapsed = System.Diagnostics.Stopwatch.StartNew();
+            var ready = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+            var started = false;
+            void Sample(object? sender, object args)
+            {
+                if (!started) { ready.TrySetResult(); return; }
+                samples.Add((elapsed.Elapsed.TotalMilliseconds, ((SolidColorBrush)circle.Stroke).Color, ((ScaleTransform)root.RenderTransform).ScaleX));
+            }
+            CompositionTarget.Rendering += Sample;
+            try
+            {
+                await ready.Task.WaitAsync(TimeSpan.FromSeconds(2));
+                elapsed.Restart();
+                started = true;
+                Require(VisualStateManager.GoToState(Help, state, true), $"Missing field help state {state}.");
+                await Task.Delay(300);
+            }
+            finally { CompositionTarget.Rendering -= Sample; }
+            var expected = BleeckerTokens.Colors(scheme)[state == "PointerOver" || (state == "Pressed" && Help.IsPointerOver) ? "textPrimary" : "textSecondary"];
             var color = ((SolidColorBrush)circle.Stroke).Color;
             Require($"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}" == expected, "Field help state uses an incorrect icon color.");
             var scale = (ScaleTransform)root.RenderTransform;
             var expectedScale = state == "Pressed" ? .9 : 1;
             Require(Math.Abs(scale.ScaleX - expectedScale) < .000001 && Math.Abs(scale.ScaleY - expectedScale) < .000001,
                 $"Field help scale differs: {state}/{scale.ScaleX}/{scale.ScaleY}.");
+            if (animationsEnabled && state == "PointerOver")
+                Require(samples.Any(sample => sample.Color != before && sample.Color != color), $"Enabled field help color transition produced no intermediate frame: before={before}, after={color}, frames={string.Join(';', samples.Select(sample => $"{sample.Milliseconds:F0}:{sample.Color}/{sample.Scale}"))}.");
+            if (animationsEnabled && state == "Pressed")
+                Require(samples.Any(sample => sample.Scale > .900001 && sample.Scale < .999999), $"Enabled field help scale transition produced no intermediate frame: {string.Join(';', samples.Select(sample => $"{sample.Milliseconds:F0}:{sample.Scale}"))}.");
+            if (before == color)
+                Require(samples.All(sample => sample.Color == color), "An unchanged field help color drifted during scale motion.");
+            motionEvidence.Add(new { state, animationsEnabled, samples = samples.Select(sample => new { sample.Milliseconds, color = $"#{sample.Color.A:X2}{sample.Color.R:X2}{sample.Color.G:X2}{sample.Color.B:X2}", sample.Scale }) });
+        }
+        await System.IO.File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"field-help-motion-{scheme}.json"), System.Text.Json.JsonSerializer.Serialize(motionEvidence));
+        // RenderTargetBitmap capture can stall the next compositor frame. Collect all
+        // transition samples before requesting static state captures.
+        foreach (var state in new[] { "Normal", "PointerOver", "Pressed", "Disabled" })
+        {
+            VisualStateManager.GoToState(Help, state, true);
+            await Task.Delay(250);
             await MainWindow.CaptureElementAsync(Help, System.IO.Path.Combine(folder, $"field-help-{state}-{scheme}.png"));
         }
         VisualStateManager.GoToState(Help, "Normal", false);
