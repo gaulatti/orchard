@@ -85,6 +85,7 @@
                 <local:LabelsFixture x:Name="Labels" />
                 <local:InputsFixture x:Name="Inputs" />
                 <local:KeyboardFixture x:Name="Keyboard" />
+                <local:EyebrowsFixture x:Name="Eyebrows" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

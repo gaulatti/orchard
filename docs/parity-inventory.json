@@ -2238,13 +2238,13 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerEyebrow.cs", "src/Orchard/Themes/Eyebrow.xaml", "src/Orchard/Themes/Generic.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/EyebrowsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/EyebrowsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
+        "Reconcile Unicode and rich-content casing; finish rendered reference comparison in docs/eyebrows.md",
+        "Verify template, RTL, accessibility, contrast, isolated scaling and ARM64 runtime",
         "Verify runtime, accessibility and visuals"
       ]
     },

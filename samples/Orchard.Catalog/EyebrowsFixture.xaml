@@ -1,0 +1,18 @@
+<UserControl x:Class="Orchard.Catalog.EyebrowsFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="16" Margin="0,0,0,40">
+        <TextBlock Text="Eyebrows" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <orchard:BleeckerEyebrow x:Name="Accent" Content="Private client services" />
+        <orchard:BleeckerEyebrow x:Name="Muted" Content="The autumn edit" Tone="Muted" Rule="True" />
+        <Border Background="{ThemeResource BleeckerDeepSeaBrush}" Padding="32,24" HorizontalAlignment="Left">
+            <orchard:BleeckerEyebrow x:Name="Inverse" Content="Residence secure" Tone="Inverse" />
+        </Border>
+        <orchard:BleeckerEyebrow x:Name="Empty" Content="" />
+        <orchard:BleeckerEyebrow x:Name="Wrapped" Content="A longer section label wraps within the available content width" Width="180" Rule="True" />
+        <orchard:BleeckerEyebrow Content="東京 · São Paulo · القاهرة" />
+        <orchard:BleeckerEyebrow x:Name="Disabled" Content="Disabled section" IsEnabled="False" />
+        <orchard:BleeckerEyebrow x:Name="Rich" AutomationProperties.Name="Coverage">
+            <TextBlock Text="COVERAGE" LineHeight="16" LineStackingStrategy="BlockLineHeight" />
+        </orchard:BleeckerEyebrow>
+    </StackPanel>
+</UserControl>

@@ -142,6 +142,8 @@ public sealed partial class MainWindow : Window
             await Inputs.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Keyboard);
             await Keyboard.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Eyebrows);
+            await Eyebrows.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(StatusBadges);
             StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(350);

@@ -35,6 +35,8 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                Require(PackageEyebrow.ActualHeight == 16 && PackageEyebrow.FontSize == 11 && !PackageEyebrow.IsTabStop &&
+                    PackageEyebrow.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf"), "Packaged eyebrow lost its resources or geometry.");
                 Require(PackageKeyboard.ActualHeight == 20 && PackageKeyboard.FontSize == 11 && !PackageKeyboard.IsTabStop &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageKeyboard).GetName() == "Esc",
                     "Packaged keyboard display lost its template, typography or accessible content.");
