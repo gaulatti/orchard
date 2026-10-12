@@ -450,13 +450,22 @@ public sealed partial class CheckboxesFixture : UserControl
             NonLatin.Description = null;
             foreach (var script in scripts)
             foreach (var weight in weights)
-            foreach (var candidate in new[] { "original", "yu-gothic" })
+            foreach (var candidate in ScriptFontCandidates(script.Name))
             {
                 var source = FindFontResource(Application.Current.Resources, weight.Key);
                 var text = new TextBlock
                 {
                     Text = script.Text, Language = script.Language, FlowDirection = FlowDirection.LeftToRight,
-                    FontFamily = candidate == "original" ? source : new FontFamily(source.Source + ", Yu Gothic"),
+                    FontFamily = candidate switch
+                    {
+                        "original" => source,
+                        "yu-gothic" => new FontFamily(source.Source + ", Yu Gothic"),
+                        "yu-gothic-direct" => new FontFamily("Yu Gothic"),
+                        "segoe-ui-direct" => new FontFamily("Segoe UI"),
+                        "arial-direct" => new FontFamily("Arial"),
+                        "tahoma-direct" => new FontFamily("Tahoma"),
+                        _ => throw new InvalidOperationException($"Unknown font evidence candidate {candidate}.")
+                    },
                     FontWeight = new Windows.UI.Text.FontWeight { Weight = weight.Value },
                     FontSize = 14, TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false
                 };
@@ -496,6 +505,19 @@ public sealed partial class CheckboxesFixture : UserControl
             catch (KeyNotFoundException) { }
         }
         throw new KeyNotFoundException(key);
+    }
+
+    private static IEnumerable<string> ScriptFontCandidates(string name)
+    {
+        yield return "original";
+        yield return "yu-gothic";
+        if (name == "japanese") yield return "yu-gothic-direct";
+        if (name == "arabic")
+        {
+            yield return "segoe-ui-direct";
+            yield return "arial-direct";
+            yield return "tahoma-direct";
+        }
     }
 
     private async Task VerifyMotionAsync()

@@ -12,6 +12,7 @@ internal sealed class NativeInputSession : IDisposable
     private readonly XamlRoot root;
     private readonly CursorPoint originalPointer;
     private readonly string folder, prefix;
+    private readonly List<object> pointerMoves = [];
     private bool pointerButtonDown;
     internal IntPtr Window { get; }
 
@@ -70,8 +71,26 @@ internal sealed class NativeInputSession : IDisposable
                 JsonSerializer.Serialize(NativeScreenCapture.DescribePoint(Window, x, y), new JsonSerializerOptions { WriteIndented = true }));
             throw new InvalidOperationException($"Physical target {target.Name} at {x},{y} does not belong to the catalog.");
         }
-        Require(SetCursorPos(x, y), "Could not position the fixture pointer.");
+        var virtualX = GetSystemMetrics(76); var virtualY = GetSystemMetrics(77);
+        var virtualWidth = GetSystemMetrics(78); var virtualHeight = GetSystemMetrics(79);
+        Require(virtualWidth > 1 && virtualHeight > 1 && x >= virtualX && y >= virtualY &&
+            x < virtualX + virtualWidth && y < virtualY + virtualHeight, "Physical target exceeds the virtual desktop.");
+        // Send a mouse movement event through the same input path as button and
+        // keyboard actions. Absolute virtual-desktop coordinates avoid pointer
+        // acceleration and preserve the user's mouse settings.
+        Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput
+        {
+            X = (int)Math.Round((x - virtualX) * 65535d / (virtualWidth - 1)),
+            Y = (int)Math.Round((y - virtualY) * 65535d / (virtualHeight - 1)),
+            Flags = 0x0001 | 0x8000 | 0x4000 // MOVE | ABSOLUTE | VIRTUALDESK
+        } } }]);
         await Task.Delay(30);
+        var positioned = GetCursorPos(out var actual);
+        pointerMoves.Add(new { target = target.Name, bounds, requested = new { x, y },
+            positioned, actual = new { actual.X, actual.Y },
+            hit = NativeScreenCapture.DescribePoint(Window, actual.X, actual.Y) });
+        Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) &&
+            NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
     }
 
     internal void PointerButton(bool down, bool requireForeground = true)
@@ -97,7 +116,7 @@ internal sealed class NativeInputSession : IDisposable
         {
             File.WriteAllText(Path.Combine(folder, $"{prefix}-desktop.json"),
                 JsonSerializer.Serialize(new { window = Window.ToInt64(), foregroundWindow = GetForegroundWindow().ToInt64(),
-                    sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop() },
+                    sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(), pointerMoves },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
         finally
@@ -135,6 +154,7 @@ internal sealed class NativeInputSession : IDisposable
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindow(IntPtr window, int command);
     [DllImport("user32.dll", SetLastError = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetWindowPos(IntPtr window, IntPtr insertAfter, int x, int y, int width, int height, uint flags);
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] private static extern int GetSystemMetrics(int index);
     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out CursorPoint point);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetCursorPos(int x, int y);

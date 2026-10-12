@@ -203,6 +203,11 @@ its medium appearance remains lighter. A global Yu Gothic addition would not
 resolve the complete contract. The eight-case comparison is retained at
 `artifacts/checkbox-script-weights-comparison-Light.png`; these are open font
 gaps, and the shared font resources remain unchanged.
+Additional evidence cases compare direct Yu Gothic for Japanese and direct
+Segoe UI, Arial and Tahoma for Arabic. They distinguish explicit family
+selection from native fallback under the bundled primary face; these probes
+do not choose or change a library fallback policy. The matrix now contains
+48 cases per appearance, with the same consumer-state restoration.
 
 The physical-input fixture uses a catalog-only NativeInputSession. It resolves
 the catalog's HWND and verifies its process before acquiring foreground input;
@@ -226,6 +231,13 @@ Hover/press/exit acceptance now uses real pointer movement and held-button
 input, including the source's hover border while pressed, with native captures.
 The session releases any held pointer button during failure cleanup. The
 shared x64/ARM64 baseline remains unchanged until the whole run passes.
+At `81884bf`, both native runtime jobs fail at the first physical hover check,
+before reaching the focus pixel gate. The retained x64 report shows Off remains
+unchecked with the normal border and the catalog owns foreground input.
+Pointer movement now uses SendInput with absolute virtual-desktop coordinates,
+matching the physical button/keyboard input path. Every movement records the
+requested and actual position and owned-window hit, and rejects a missed target.
+This change requires a new native run; the rendered focus fix remains unverified.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
