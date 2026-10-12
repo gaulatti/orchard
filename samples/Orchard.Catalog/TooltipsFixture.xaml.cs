@@ -50,12 +50,10 @@ public sealed partial class TooltipsFixture : UserControl
                     var original = tip.Content;
                     var longHeight = surface.ActualHeight;
                     tip.Content = "Short update";
-                    await Task.Delay(80);
-                    Require(surface.ActualHeight < longHeight, "Tooltip did not remeasure a live content change.");
+                    await AwaitVerificationAsync(() => Require(surface.ActualHeight < longHeight, "Tooltip did not remeasure a live content change."));
                     Require(Descendants<TextBlock>(surface).First().Text == "Short update", "Tooltip template did not receive updated consumer content.");
                     tip.Content = original;
-                    await Task.Delay(80);
-                    Require(surface.ActualHeight == longHeight, "Tooltip did not restore its wrapped content height.");
+                    await AwaitVerificationAsync(() => Require(surface.ActualHeight == longHeight, "Tooltip did not restore its wrapped content height."));
                 }
             }
             finally { tip.IsOpen = false; }
@@ -87,7 +85,8 @@ public sealed partial class TooltipsFixture : UserControl
         host.Children.Add(button);
         try
         {
-            await Task.Delay(100);
+            host.UpdateLayout();
+            await AwaitVerificationAsync(() => Require(Descendants<Button>(button).Any(), "Wrapped tooltip trigger template did not load."));
             var action = Descendants<Button>(button).Single();
             Require(action.Focus(FocusState.Keyboard), "Wrapped tooltip trigger could not focus.");
             await Task.Delay(100);
@@ -148,8 +147,7 @@ public sealed partial class TooltipsFixture : UserControl
         Require(TopTip.IsOpen && VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Count(item => ReferenceEquals(item.Child, TopTip)) == 1,
             "An interrupted exit removed the reopened tooltip or leaked a popup.");
         TopTip.IsOpen = false;
-        await Task.Delay(250);
-        Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), $"Completed tooltip exit retained its popup: open={TopTip.IsOpen}, opacity={root.Opacity}.");
+        await AwaitVerificationAsync(() => Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), $"Completed tooltip exit retained its popup: open={TopTip.IsOpen}, opacity={root.Opacity}."));
     }
 
     private async Task VerifyCollisionsAsync(BleeckerColorScheme scheme, string folder)
@@ -212,4 +210,13 @@ public sealed partial class TooltipsFixture : UserControl
         }
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
+    private static async Task AwaitVerificationAsync(Action verify)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (true)
+        {
+            try { verify(); return; }
+            catch (InvalidOperationException) when (elapsed.Elapsed < TimeSpan.FromSeconds(1)) { await Task.Delay(16); }
+        }
+    }
 }

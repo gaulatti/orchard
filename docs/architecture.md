@@ -118,6 +118,11 @@ dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Plat
 ./scripts/smoke-catalog.ps1
 ```
 
+The full catalog process has a three-minute timeout. Run motion sampling without
+concurrent compilation; an overloaded UI thread can miss an entire short
+transition. Field-help checks retain intermediate-frame assertions and write
+per-frame color/scale evidence before requesting static captures.
+
 The `orchard-windows-x64` workflow artifact contains the runnable output,
 test reports, and native renders. The smoke check exercises automation
 providers, not physical mouse/keyboard interaction. Font asset presence and
