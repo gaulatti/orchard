@@ -41,6 +41,18 @@ public sealed partial class FieldHelpFixture : UserControl
         Require(tooltip.IsOpen && tooltip.Placement == PlacementMode.Bottom && Equals(tooltip.Content, Help.Text), "Field help did not open bottom help on keyboard focus.");
         Require(((Ellipse)root.FindName("HelpFocus")).Opacity == 1, "Field help keyboard focus ring is absent.");
         await MainWindow.CaptureElementAsync(tooltip, System.IO.Path.Combine(folder, $"field-help-content-{scheme}.png"));
+        var activations = 0;
+        RoutedEventHandler onClick = (_, _) => activations++;
+        Help.Click += onClick;
+        try
+        {
+            ((Microsoft.UI.Xaml.Automation.Provider.IInvokeProvider)peer.GetPattern(PatternInterface.Invoke)).Invoke();
+            await Task.Delay(50);
+            Require(!tooltip.IsOpen && activations == 1 && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Help),
+                "Field help activation did not dismiss while preserving consumer activation and focus.");
+        }
+        finally { Help.Click -= onClick; }
+        tooltip.IsOpen = true;
         var original = Help.Text;
         Help.Text = "Updated help";
         Require(Equals(tooltip.Content, Help.Text) && peer.GetName() == Help.Text, "Changed help did not reach content and accessibility.");

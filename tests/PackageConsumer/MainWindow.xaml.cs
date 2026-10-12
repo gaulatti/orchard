@@ -94,6 +94,10 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Require(((SolidColorBrush)tooltipSurface.Background).Color == tooltipColor, "Packaged tooltip did not restore its original appearance.");
+                var tooltipOwnerPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageTooltip.PlacementTarget!);
+                ((IInvokeProvider)tooltipOwnerPeer.GetPattern(PatternInterface.Invoke)).Invoke();
+                await Task.Delay(50);
+                Require(!PackageTooltip.IsOpen, "Packaged tooltip did not dismiss after native activation.");
                 PackageTooltip.IsOpen = false;
                 await Task.Delay(80);
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");

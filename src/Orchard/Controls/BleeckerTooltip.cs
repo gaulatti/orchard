@@ -61,6 +61,8 @@ public sealed partial class BleeckerTooltip : ContentControl
             target.PointerEntered -= OnTargetEntered;
             target.PointerExited -= OnTargetExited;
             target.PointerPressed -= OnTargetPressed;
+            if (target is ButtonBase oldButton) oldButton.Click -= OnTargetActivated;
+            if (target is BleeckerButton oldWrappedButton) oldWrappedButton.Click -= OnTargetActivated;
             target.GotFocus -= OnTargetFocused;
             target.LostFocus -= OnTargetBlurred;
             target.Unloaded -= OnTargetUnloaded;
@@ -72,6 +74,8 @@ public sealed partial class BleeckerTooltip : ContentControl
         target.PointerEntered += OnTargetEntered;
         target.PointerExited += OnTargetExited;
         target.PointerPressed += OnTargetPressed;
+        if (target is ButtonBase button) button.Click += OnTargetActivated;
+        if (target is BleeckerButton wrappedButton) wrappedButton.Click += OnTargetActivated;
         target.GotFocus += OnTargetFocused;
         target.LostFocus += OnTargetBlurred;
         target.Unloaded += OnTargetUnloaded;
@@ -116,6 +120,7 @@ public sealed partial class BleeckerTooltip : ContentControl
         else if (!BleeckerPointerTransit.Contains(transitArea, new TooltipPoint(point.X, point.Y))) IsOpen = false;
     }
     private void OnTargetPressed(object sender, PointerRoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
+    private void OnTargetActivated(object sender, RoutedEventArgs args) { hoverTimer.Stop(); IsOpen = false; }
     private void OnTargetFocused(object sender, RoutedEventArgs args)
     {
         if (target?.XamlRoot is not null && Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(target.XamlRoot) is Control { FocusState: FocusState.Keyboard })

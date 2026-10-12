@@ -16,4 +16,4 @@ This component is in progress. The 190ms color/scale transitions, physical keybo
 
 The x64 published catalog run at artifacts/smoke-field-help-verified passes both themes, including all four state values, keyboard-triggered help, naming, live text, collapse and restoration. State captures and dark tooltip content were inspected. Scale assertions allow only one-millionth numeric precision on each axis around the exact reference targets. All 13 unit tests and x64/ARM64 builds pass; ARM64 runtime remains unavailable.
 
-The independent x64 package consumer passes at artifacts/package-consumer-field-help. Keyboard activation dismissal and the distinction between keyboard-pressed and pointer-pressed icon colors still require an explicit reference/runtime check.
+The independent x64 package consumer passes at artifacts/package-consumer-field-help. Physical dark-theme Tab entry followed by Enter or Space now dismisses help and retains the focus ring, matching the pinned reference's Enter behavior. See artifacts/field-help-enter-dismissed.jpg. The distinction between keyboard-pressed and pointer-pressed icon colors still requires an explicit reference/runtime check.

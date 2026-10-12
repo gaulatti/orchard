@@ -66,8 +66,41 @@ public sealed partial class TooltipsFixture : UserControl
         BottomTip.IsOpen = true;
         Require(!TopTip.IsOpen && BottomTip.IsOpen, "Opening another tooltip did not dismiss the previous one.");
         Require(Microsoft.UI.Xaml.Automation.AutomationProperties.GetDescribedBy(BottomTrigger).Contains(BottomTip), "Tooltip owner lost its accessible description relationship.");
+        Require(BottomTrigger.Focus(FocusState.Keyboard), "Tooltip trigger did not accept keyboard focus.");
+        await Task.Delay(100);
+        var triggerPeer = FrameworkElementAutomationPeer.CreatePeerForElement(BottomTrigger);
+        ((Microsoft.UI.Xaml.Automation.Provider.IInvokeProvider)triggerPeer.GetPattern(PatternInterface.Invoke)).Invoke();
+        await Task.Delay(50);
+        Require(!BottomTip.IsOpen && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), BottomTrigger),
+            $"Native trigger activation failed: open={BottomTip.IsOpen}, focus={(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name}.");
         BottomTip.IsOpen = false;
         await VerifyMotionLifecycleAsync();
+        await VerifyWrappedActivationAsync();
+    }
+
+    private async Task VerifyWrappedActivationAsync()
+    {
+        var host = (Grid)XamlRoot.Content;
+        var button = new BleeckerButton { Content = "Wrapped activation", HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+        var tooltip = new BleeckerTooltip { Content = "Wrapped button help" };
+        BleeckerTooltipService.SetToolTip(button, tooltip);
+        host.Children.Add(button);
+        try
+        {
+            await Task.Delay(100);
+            var action = Descendants<Button>(button).Single();
+            Require(action.Focus(FocusState.Keyboard), "Wrapped tooltip trigger could not focus.");
+            await Task.Delay(100);
+            Require(tooltip.IsOpen, "Wrapped button focus did not open its tooltip.");
+            ((Microsoft.UI.Xaml.Automation.Provider.IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(action).GetPattern(PatternInterface.Invoke)).Invoke();
+            await Task.Delay(50);
+            Require(!tooltip.IsOpen, "Wrapped button activation left its tooltip open.");
+        }
+        finally
+        {
+            BleeckerTooltipService.SetToolTip(button, null);
+            host.Children.Remove(button);
+        }
     }
 
     private async Task VerifyLiveAppearanceAsync(BleeckerTooltip tip, BleeckerOverlaySurface surface, TextBlock text, Polygon arrow, BleeckerColorScheme scheme, string folder)
