@@ -1,0 +1,4624 @@
+{
+  "schemaVersion": 1,
+  "referencePins": [
+    {
+      "repository": "gaulatti/bleecker",
+      "commit": "a86059013cd59684ce452849278ea81e734f2066"
+    },
+    {
+      "repository": "gaulatti/sabella",
+      "commit": "f5ac479bfceaa7eab23c1716ac47420ac53dae25"
+    },
+    {
+      "repository": "gaulatti/thompson",
+      "commit": "30a76c849e2486ba26b15b0c0c569fbde8c0606c"
+    },
+    {
+      "repository": "gaulatti/newsroom",
+      "commit": "82cca98c4d3dfd1d65509f8d8c46e8fece0ead70"
+    }
+  ],
+  "sharedContractValues": {
+    "themeModes": [
+      "light",
+      "dark",
+      "system"
+    ],
+    "buttonVariants": [
+      "primary",
+      "secondary",
+      "outline",
+      "subtle",
+      "ghost",
+      "link",
+      "destructive"
+    ],
+    "buttonSizes": [
+      "xs",
+      "sm",
+      "md",
+      "lg"
+    ],
+    "controlSizes": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "statusBadgeVariants": [
+      "live",
+      "offline",
+      "warning",
+      "info",
+      "default"
+    ],
+    "cardPaddings": [
+      "none",
+      "sm",
+      "md",
+      "lg"
+    ],
+    "cardVariants": [
+      "surface",
+      "outlined",
+      "elevated",
+      "subtle",
+      "transparent"
+    ],
+    "progressSizes": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "progressVariants": [
+      "default",
+      "success",
+      "warning",
+      "destructive"
+    ],
+    "iconButtonSizes": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "iconButtonVariants": [
+      "default",
+      "subtle",
+      "ghost"
+    ],
+    "toggleSizes": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "toggleVariants": [
+      "default",
+      "outline"
+    ],
+    "alertTypes": [
+      "success",
+      "error",
+      "info",
+      "warning"
+    ],
+    "metricFormats": [
+      "number",
+      "currency",
+      "percent",
+      "compact"
+    ],
+    "avatarSizes": [
+      "xs",
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ],
+    "loadingSizes": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "iconBadgeSizes": [
+      "md",
+      "lg"
+    ],
+    "iconBadgeVariants": [
+      "primary",
+      "subtle",
+      "outlined"
+    ],
+    "selectionOrientations": [
+      "vertical",
+      "horizontal"
+    ]
+  },
+  "components": [
+    {
+      "id": "brand-lockup",
+      "source": "src/components/brand-lockup",
+      "sha256": "8b2319f72c31ffb0c5e775484ed3b59d2ceeb59a4e73a779c805053585d601e6",
+      "publicSymbols": [
+        "BrandLockupProps",
+        "BrandLockup"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'sm' | 'lg'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "bauhaus-background",
+      "source": "src/components/bauhaus-background",
+      "sha256": "648c0cdb37639b40ac6c67ecbad04b692d1400358b8b3bed9fad12e5baa1489c",
+      "publicSymbols": [
+        "BauhausBackgroundType",
+        "BauhausBackgroundProps",
+        "BauhausBackground"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'circles' | 'lines' | 'squares'",
+        "'nazca' | 'autostrada' | 'pompeii' | 'monitor'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "activity-item",
+      "source": "src/components/activity-item",
+      "sha256": "69fe700423f71b440d505428187b957df880d68e52ae6af634545744f7af74aa",
+      "publicSymbols": [
+        "ActivityItemProps",
+        "ActivityItem"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "attention-surface",
+      "source": "src/components/attention-surface",
+      "sha256": "59fb7ff2bb5459facc410a6fd204d5e977639ce093113b23d8fff8d86e7a8321",
+      "publicSymbols": [
+        "AttentionSurfaceElement",
+        "AttentionSurfaceDensity",
+        "AttentionSurfaceProps",
+        "AttentionSurface"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'article' | 'button' | 'div' | 'li' | 'section'",
+        "'compact' | 'comfortable'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "button",
+      "source": "src/components/button",
+      "sha256": "119925584b3ec53c790fb0b762631894cf70eed12d488d5e9ae6743b7a67f929",
+      "publicSymbols": [
+        "ButtonProps",
+        "Button"
+      ],
+      "contractTypes": [
+        "ButtonSize",
+        "ButtonVariant"
+      ],
+      "literalOptions": [
+        "'button' | 'a'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "button-group",
+      "source": "src/components/button-group",
+      "sha256": "f4a21c77bf545ddc0096dc7e7dc5d6fcdb892b381d651668501cbbab412d5306",
+      "publicSymbols": [
+        "ButtonGroupProps",
+        "ButtonGroup"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'horizontal' | 'vertical'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "card",
+      "source": "src/components/card",
+      "sha256": "575e649f26ac0fd94835e15ed161dab687060659bbb2c77b6892afeb11e10675",
+      "publicSymbols": [
+        "CardProps",
+        "Card"
+      ],
+      "contractTypes": [
+        "CardPadding",
+        "CardVariant"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "chart",
+      "source": "src/components/chart",
+      "sha256": "eacc1a099bf0957734ddbffcae03f28a4a087f7c3ba676812ba42094d3d21ece",
+      "publicSymbols": [
+        "Chart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "chart-theme",
+      "source": "src/components/chart-theme",
+      "sha256": "94e006606feb77fc8163d05812e83668b04916dcdbb818a8aa8dc0d49e08e750",
+      "publicSymbols": [
+        "chartTheme",
+        "pickColor",
+        "ChartSeries"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "line-chart",
+      "source": "src/components/line-chart",
+      "sha256": "673539e9a2c5a264fbfb6c35f09e7d956d2dbde9670f3ae6cf1888e752ec403a",
+      "publicSymbols": [
+        "LineChartProps",
+        "LineChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "bar-chart",
+      "source": "src/components/bar-chart",
+      "sha256": "dcd8c302e50d0b8255207a57603999a5498cf4361034021d71aab96cd6f65235",
+      "publicSymbols": [
+        "BarChartProps",
+        "BarChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'horizontal' | 'vertical'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "area-chart",
+      "source": "src/components/area-chart",
+      "sha256": "885d1f48264dd0b2f55a0fde90c554bd12fa983dee7c2c50b7f794faf8b6fdce",
+      "publicSymbols": [
+        "AreaChartProps",
+        "AreaChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "pie-chart",
+      "source": "src/components/pie-chart",
+      "sha256": "985309bd4131c154f88fcca7f03839519da66192e49bd940b92e3307a9ddf0ac",
+      "publicSymbols": [
+        "PieChartDatum",
+        "PieChartProps",
+        "PieChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "donut-chart",
+      "source": "src/components/donut-chart",
+      "sha256": "dc5a9151b7501563651ba025c82da3b0b976e12fcc5fef0a50720aa6f00874f8",
+      "publicSymbols": [
+        "DonutChartProps",
+        "DonutChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "sparkline",
+      "source": "src/components/sparkline",
+      "sha256": "7e143cfb557045bfad591be820c28b3bcb29e77469261f51723317f4ffef0ed5",
+      "publicSymbols": [
+        "SparklineProps",
+        "Sparkline"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "scatter-chart",
+      "source": "src/components/scatter-chart",
+      "sha256": "84972e61d3849694bb5d69367e296b806b886747b1e24af1f252601dc86f7e00",
+      "publicSymbols": [
+        "ScatterSeries",
+        "ScatterChartProps",
+        "ScatterChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "radar-chart",
+      "source": "src/components/radar-chart",
+      "sha256": "62d3df8715257cc90e3230b196de68744252b7aaa381240531d186444faaf969",
+      "publicSymbols": [
+        "RadarSeries",
+        "RadarChartProps",
+        "RadarChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "radial-bar-chart",
+      "source": "src/components/radial-bar-chart",
+      "sha256": "609a43f3e779452bb9ed5777178592c9f86936132f6bcd817a50bd01239e213a",
+      "publicSymbols": [
+        "RadialBarChartDatum",
+        "RadialBarChartProps",
+        "RadialBarChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "funnel-chart",
+      "source": "src/components/funnel-chart",
+      "sha256": "eff2a2992f0e3fa08bf78beec46bd4291dc58013fa6cbe3c58cc46c5200384af",
+      "publicSymbols": [
+        "FunnelChartDatum",
+        "FunnelChartProps",
+        "FunnelChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "sankey-chart",
+      "source": "src/components/sankey-chart",
+      "sha256": "026b636fa2441ac68933be304bc25689be66efc8f6b669b524cc580c78af578e",
+      "publicSymbols": [
+        "SankeyNode",
+        "SankeyLink",
+        "SankeyChartProps",
+        "SankeyChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "sunburst-chart",
+      "source": "src/components/sunburst-chart",
+      "sha256": "8bd60a556edd2feac675c9f473ac1895639948936e8cc42607cf3b3c45a2aa3a",
+      "publicSymbols": [
+        "SunburstNode",
+        "SunburstChartProps",
+        "SunburstChart"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "stat-card",
+      "source": "src/components/stat-card",
+      "sha256": "7085e7d88f1109a0d1ca93885fc0de01aa735fd7ca973de1bdb63cac333ffb06",
+      "publicSymbols": [
+        "StatTrendDirection",
+        "StatCardProps",
+        "StatCard"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'up' | 'down' | 'neutral'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "dashboard-grid",
+      "source": "src/components/dashboard-grid",
+      "sha256": "69e25939e26e9fdc1973b6fdfff2924ff3ecd3ab909810a62cefed2fc628dd16",
+      "publicSymbols": [
+        "DashboardGridProps",
+        "DashboardGrid",
+        "DashboardSpanProps",
+        "DashboardSpan"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "dashboard-section",
+      "source": "src/components/dashboard-section",
+      "sha256": "f8af75ecc48d211202e4aa0022e81195259fc934777c28a180ea7f325bce7fe6",
+      "publicSymbols": [
+        "DashboardSectionProps",
+        "DashboardSection"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "page-header",
+      "source": "src/components/page-header",
+      "sha256": "7f15ebbd49fe21db59a95c21be64a69c1bd28a2a92b8216ca01befe4ac9013d0",
+      "publicSymbols": [
+        "PageHeaderProps",
+        "PageHeader"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "sidebar",
+      "source": "src/components/sidebar",
+      "sha256": "2c06422943eedda2232a04c087b8f8562f614829f2b77229ecc7941488894856",
+      "publicSymbols": [
+        "SidebarItem",
+        "SidebarProps",
+        "Sidebar"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "data-table-toolbar",
+      "source": "src/components/data-table-toolbar",
+      "sha256": "a2beb795287fd027857d9f4d12df9d0e76406b0fa0703a9fcf20aaa23064a0ef",
+      "publicSymbols": [
+        "DataTableToolbarProps",
+        "DataTableToolbar"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "data-table-filters",
+      "source": "src/components/data-table-filters",
+      "sha256": "83a7e5de0d5b0a63d42591e3d45b230243d0ee97d9797a2f9b6b87d4369334bb",
+      "publicSymbols": [
+        "DataTableSelectFilterProps",
+        "DataTableSelectFilter",
+        "DataTableFacetedFilterProps"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "data-table-column-toggle",
+      "source": "src/components/data-table-column-toggle",
+      "sha256": "9082ca90691d40083e9bb4b94f687daa56a8e3a064e356ab5dd9afa67ed89df7",
+      "publicSymbols": [
+        "DataTableColumnToggleProps",
+        "DataTableColumnToggle"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "data-table-pagination",
+      "source": "src/components/data-table-pagination",
+      "sha256": "385a8ae19a8b052be43ae29e7c43b3662ac35ccf892f20c4ef1fc0b893d10897",
+      "publicSymbols": [
+        "DataTablePaginationProps",
+        "DataTablePagination"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "skeleton",
+      "source": "src/components/skeleton",
+      "sha256": "acc108ca2c34011adfaf1792d7f758c87e0dce9dfd65a3642ca55e7f7bd0837b",
+      "publicSymbols": [
+        "SkeletonProps",
+        "Skeleton",
+        "SkeletonCardProps",
+        "SkeletonCard",
+        "SkeletonTableProps",
+        "SkeletonTable"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "stepper",
+      "source": "src/components/stepper",
+      "sha256": "a0cea6e7cc8fcc541d0089682d64ed8589fc4983a482095785477cb01d646c29",
+      "publicSymbols": [
+        "StepStatus",
+        "Step",
+        "StepperProps",
+        "Stepper"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'horizontal' | 'vertical'",
+        "'pending' | 'active' | 'completed' | 'error'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "timeline",
+      "source": "src/components/timeline",
+      "sha256": "d070c4100c562241a3cc14585c7ddc30fa4be5bd0c96bb5b9ad7303734333f61",
+      "publicSymbols": [
+        "TimelineStatus",
+        "TimelineItem",
+        "TimelineProps",
+        "Timeline"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'completed' | 'active' | 'pending' | 'error'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "data-list",
+      "source": "src/components/data-list",
+      "sha256": "23da195177b59a57fb1031ba4c8fdd900f7484febc4d73d13b96770cc55bde5a",
+      "publicSymbols": [
+        "DataListItem",
+        "DataListProps",
+        "DataList"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "error-state",
+      "source": "src/components/error-state",
+      "sha256": "b1c0e51f0d36ef3e29443393b983f8bf05caaf47d1d666fcf6202092902e033d",
+      "publicSymbols": [
+        "ErrorStateProps",
+        "ErrorState"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "loading-overlay",
+      "source": "src/components/loading-overlay",
+      "sha256": "9b4721d0cb08b99284bf0b59dc16ba2448cf8b065a926882f37b1099cea033da",
+      "publicSymbols": [
+        "LoadingOverlayProps",
+        "LoadingOverlay"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "date-range-picker",
+      "source": "src/components/date-range-picker",
+      "sha256": "3757594c4ecd17bba365b4ce582e4c60d40d8972df2e2149931ac2b965dd48f9",
+      "publicSymbols": [
+        "DateRange",
+        "DateRangePickerProps",
+        "DateRangePicker"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "filter-chip",
+      "source": "src/components/filter-chip",
+      "sha256": "e80e6fc2932baffa9c0471c5d1ff58d27593f6538070d7128a21ea6a84967525",
+      "publicSymbols": [
+        "FilterChipProps",
+        "FilterChip",
+        "FilterGroupProps",
+        "FilterGroup"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "search-input",
+      "source": "src/components/search-input",
+      "sha256": "0a9e5eafdbafdeffdb2e60859ecd5cd1eea4af3598eac712e03f5a6d01a2a038",
+      "publicSymbols": [
+        "SearchInputProps",
+        "SearchInput"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'startIcon' | 'endIcon' | 'type'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "dropdown-menu",
+      "source": "src/components/dropdown-menu",
+      "sha256": "36b67f45da3d0981fad9273bf263d118bbdd515f34515923158a935cedb42aa0",
+      "publicSymbols": [],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "metric",
+      "source": "src/components/metric",
+      "sha256": "2aeb702dc6a115a9b24ff62842d564a9fcd92f1069925b3e07929532daca47c7",
+      "publicSymbols": [
+        "MetricProps",
+        "Metric"
+      ],
+      "contractTypes": [
+        "MetricFormat"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "notification-badge",
+      "source": "src/components/notification-badge",
+      "sha256": "b14f15fafd0c02b1e711772b3a03a9aa065cbdcab2b41cfbead4b2ee6ee00010",
+      "publicSymbols": [
+        "NotificationItem",
+        "NotificationBadgeProps",
+        "NotificationBadge"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "accordion",
+      "source": "src/components/accordion",
+      "sha256": "5160176bd8dd07041af0c5dee9c6647fef47d132bac95384128a78822a6e0cc0",
+      "publicSymbols": [
+        "AccordionItem",
+        "AccordionProps",
+        "Accordion"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "alert",
+      "source": "src/components/alert",
+      "sha256": "03f13d8e268535cd89c08ea44ee46d99177acfc0c6a372ad6cec0f9f4a1a336e",
+      "publicSymbols": [
+        "AlertProps",
+        "Alert",
+        "showAlert",
+        "AlertContainer"
+      ],
+      "contractTypes": [
+        "AlertType"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "alert-dialog",
+      "source": "src/components/alert-dialog",
+      "sha256": "5a7a05a0306b59817b11e7831ed7d446d1739e2c02362f40d491bfff1297fcaf",
+      "publicSymbols": [
+        "AlertDialogProps",
+        "AlertDialog"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'default' | 'destructive'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "avatar",
+      "source": "src/components/avatar",
+      "sha256": "e5cd2428aeddba94d2fca122ab21edf6e8e6238223c529cd2529266248fa2eb7",
+      "publicSymbols": [
+        "AvatarProps",
+        "Avatar",
+        "AvatarGroupProps",
+        "AvatarGroup"
+      ],
+      "contractTypes": [
+        "AvatarSize"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "breadcrumb",
+      "source": "src/components/breadcrumb",
+      "sha256": "46f67eb20c2038b3d9920555b528b39c02b3fa6e8ec271e1f99fcd1b91ee55c0",
+      "publicSymbols": [
+        "BreadcrumbItem",
+        "BreadcrumbProps",
+        "Breadcrumb"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "context-menu",
+      "source": "src/components/context-menu",
+      "sha256": "303f20b6e203e09bba9cc46f7b226e1b74d22ad1c2ab1dd650b0f425693ee562",
+      "publicSymbols": [],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "date-picker",
+      "source": "src/components/date-picker",
+      "sha256": "479daea966f3e6432b2527be53ab87f2ec16cda55da7ed9945f6387338e8a6df",
+      "publicSymbols": [
+        "CalendarProps",
+        "Calendar",
+        "DatePickerProps",
+        "DatePicker"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "dialog-close-button",
+      "source": "src/components/dialog-close-button",
+      "sha256": "a1614f004198702d1325af4dac2e2ab18fe6cf227574df2b1caf22a2e341c7e8",
+      "publicSymbols": [
+        "DialogCloseButtonProps",
+        "DialogCloseButton"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "drawer",
+      "source": "src/components/drawer",
+      "sha256": "9f86c9ea5106c4a34bc64e7d28876afb6133d7e5aa59ab74e6f954965fe9683b",
+      "publicSymbols": [
+        "DrawerProps",
+        "Drawer"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "empty",
+      "source": "src/components/empty",
+      "sha256": "d11e150b9241e508fa81b769e645469db54838bb96530f640ee2cea978f85209",
+      "publicSymbols": [
+        "EmptyProps",
+        "Empty"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "eyebrow",
+      "source": "src/components/eyebrow",
+      "sha256": "fb6321e921962bfd1d9519a12ea939b62625d881e665002dec3481cf9f5ea4e8",
+      "publicSymbols": [
+        "EyebrowTone",
+        "EyebrowProps",
+        "Eyebrow"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'accent' | 'muted' | 'inverse'",
+        "'div' | 'p' | 'span'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "hover-card",
+      "source": "src/components/hover-card",
+      "sha256": "f8af0dfd5c71926359b269f15d8782bd97fbd3fd18579346f59b28a9bfd0fcb6",
+      "publicSymbols": [
+        "HoverCardProps",
+        "HoverCard"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'top' | 'bottom'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "input",
+      "source": "src/components/input",
+      "sha256": "01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192",
+      "publicSymbols": [
+        "InputProps",
+        "Input"
+      ],
+      "contractTypes": [
+        "ControlSize"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "kbd",
+      "source": "src/components/kbd",
+      "sha256": "f457b8c0190a6dd30ccfc1c5ba9490dae75402e226b5591a9124c79e85a6160c",
+      "publicSymbols": [
+        "KbdProps",
+        "Kbd"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "label",
+      "source": "src/components/label",
+      "sha256": "d3e029333182d8d9fd6170fb37e47de522b594e928671232dba05937b3276dfe",
+      "publicSymbols": [],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "menubar",
+      "source": "src/components/menubar",
+      "sha256": "372c40d54f5cf711426d2042b3a1f00d71221f157ab16643d8f42f8883cc2122",
+      "publicSymbols": [
+        "MenubarItemBase",
+        "MenubarActionItem",
+        "MenubarCheckboxItem",
+        "MenubarRadioItem",
+        "MenubarRadioGroup",
+        "MenubarSeparator",
+        "MenubarSubMenu",
+        "MenubarMenuItem",
+        "MenubarMenu",
+        "MenubarProps",
+        "Menubar"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "navigation-menu",
+      "source": "src/components/navigation-menu",
+      "sha256": "937a1ff45c8a4058247968189c39a22bc444f1168c06b0b4b64200325e5a6d71",
+      "publicSymbols": [
+        "NavigationMenuLink",
+        "NavigationMenuGroup",
+        "NavigationMenuEntry",
+        "NavigationMenuProps",
+        "NavigationMenu"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "otp-input",
+      "source": "src/components/otp-input",
+      "sha256": "12283c33202e13c2c540a04ada77ba8a3cc08b2e32b7fef7e319aa9d8149e009",
+      "publicSymbols": [
+        "OtpInputProps",
+        "OtpInput"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "popover",
+      "source": "src/components/popover",
+      "sha256": "045511fc776cb635818eb786f8c7c722de2f167bc1934493617c1ed5ae222c6d",
+      "publicSymbols": [
+        "PopoverSide",
+        "PopoverAlign",
+        "PopoverProps",
+        "Popover"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'start' | 'center' | 'end'",
+        "'top' | 'bottom' | 'left' | 'right'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "progress",
+      "source": "src/components/progress",
+      "sha256": "f7b64d7259aabbfe21eece35eefbdf981c4a050ee8e7eda349f491210e20f103",
+      "publicSymbols": [
+        "ProgressProps",
+        "Progress"
+      ],
+      "contractTypes": [
+        "ProgressSize",
+        "ProgressVariant"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "progress-stack",
+      "source": "src/components/progress-stack",
+      "sha256": "101df66952162d978a45935604e468e7b465e8a57afdf873a48e0867a46b6254",
+      "publicSymbols": [
+        "ProgressStackItem",
+        "ProgressStackProps",
+        "ProgressStack"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "radio-group",
+      "source": "src/components/radio-group",
+      "sha256": "1af7eb200200683a11a1cae62291f462a711f89bf0a7bfaf67d9f7d2f1fb33fb",
+      "publicSymbols": [
+        "RadioOption",
+        "RadioGroupProps",
+        "RadioGroup"
+      ],
+      "contractTypes": [
+        "SelectionOrientation"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "checkbox",
+      "source": "src/components/checkbox",
+      "sha256": "7a0b6d9bdf8aa071a75092cf0813c1e611fae056d917cdda6c7b67316ffb8f30",
+      "publicSymbols": [
+        "CheckboxProps",
+        "Checkbox"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "scroll-area",
+      "source": "src/components/scroll-area",
+      "sha256": "20c254f224ec44aa8e965674435f40e7f5fc05ce4bdd8abe3c4dc443df5cd78f",
+      "publicSymbols": [
+        "ScrollAreaProps",
+        "ScrollArea"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'vertical' | 'horizontal' | 'both'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "separator",
+      "source": "src/components/separator",
+      "sha256": "c6fb193ba83ae952419e55819543f153c267af3a70d06c95dee3eda8a1b2155d",
+      "publicSymbols": [
+        "SeparatorProps",
+        "Separator"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'horizontal' | 'vertical'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "sheet",
+      "source": "src/components/sheet",
+      "sha256": "2ee3b6f1d2f315dab3055e7a1332cdc771accad32827763617b4c06669975bca",
+      "publicSymbols": [
+        "SheetSide",
+        "SheetProps",
+        "Sheet"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'left' | 'right' | 'top' | 'bottom'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "slider",
+      "source": "src/components/slider",
+      "sha256": "b5ab4cb0ed7af06317843f42934f640a90da62eed20c0fc59a166e071faf6b6a",
+      "publicSymbols": [
+        "SliderProps",
+        "Slider"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'type' | 'onChange'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "sonner",
+      "source": "src/components/sonner",
+      "sha256": "9abd2f6c1f907708e499170c6368e20f8400afb0c0c5dc07f60fb4635289154d",
+      "publicSymbols": [
+        "SonnerVariant",
+        "SonnerPosition",
+        "SonnerActionVariant",
+        "SonnerAction",
+        "SonnerToast",
+        "toast",
+        "SonnerProps",
+        "Sonner"
+      ],
+      "contractTypes": [
+        "ButtonVariant"
+      ],
+      "literalOptions": [
+        "'default' | 'success' | 'error' | 'warning' | 'info'",
+        "'id' | 'title' | 'variant'",
+        "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "switch",
+      "source": "src/components/switch",
+      "sha256": "fef5462601f57383097a272f3fc5fb522e7fc29e6e84ba5720ef45a48dcb430c",
+      "publicSymbols": [
+        "SwitchProps",
+        "Switch"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'type' | 'onChange'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "textarea",
+      "source": "src/components/textarea",
+      "sha256": "b523ba0962a02492a5e5954957eede4e1ad683ee7ce7ac21c04097325eb82082",
+      "publicSymbols": [
+        "TextareaProps",
+        "Textarea"
+      ],
+      "contractTypes": [
+        "ControlSize"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "toggle",
+      "source": "src/components/toggle",
+      "sha256": "4eb8f17983c95894d85acc33f7da437f3b63f2036854fab67d4e968e5cf11d55",
+      "publicSymbols": [
+        "ToggleProps",
+        "Toggle"
+      ],
+      "contractTypes": [
+        "ToggleSize",
+        "ToggleVariant"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "toggle-group",
+      "source": "src/components/toggle-group",
+      "sha256": "461435efe96948a3cbb453bcbf9674b3c4fd107a34e67613efe95912d15da755",
+      "publicSymbols": [
+        "ToggleGroupType",
+        "ToggleGroupProps",
+        "ToggleGroupItemProps",
+        "ToggleGroup",
+        "ToggleGroupItem"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'pressed' | 'onPressedChange'",
+        "'single' | 'multiple'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "tooltip",
+      "source": "src/components/tooltip",
+      "sha256": "31006ce0674960ac4feb5ca94581a6dbfb88b507478007f952623398460f789b",
+      "publicSymbols": [
+        "TooltipSide",
+        "TooltipProps",
+        "Tooltip"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'top' | 'bottom' | 'left' | 'right'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "feed-item",
+      "source": "src/components/feed-item",
+      "sha256": "ff6b85b5ae82e3b7b50a873bdfb080be557ca0d464a6e2a0f36e8e4db77256a0",
+      "publicSymbols": [
+        "FeedItemProps",
+        "FeedItem"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "field",
+      "source": "src/components/field",
+      "sha256": "552df290321007582f3605c1bc4538ad5664ed267dee1bd22cb45bac203ec11f",
+      "publicSymbols": [
+        "FieldProps",
+        "Field"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'false' | 'true'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "header-select",
+      "source": "src/components/header-select",
+      "sha256": "848685cb40ba19fdcf8991b0332f98f447b8bd2af6e7febcfc7c27e9517d8f2e",
+      "publicSymbols": [
+        "HeaderSelectOption",
+        "HeaderSelectProps",
+        "HeaderSelect"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "hero-carousel",
+      "source": "src/components/hero-carousel",
+      "sha256": "2338fc09fd0f22f36fe9f2ead221b18b7596b5555581c2c97eba03e5c3191012",
+      "publicSymbols": [
+        "HeroCarouselItemKind",
+        "HeroCarouselItem",
+        "HeroCarouselRenderLinkProps",
+        "HeroCarouselRenderLink",
+        "HeroCarouselProps",
+        "HeroCarousel"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'post' | 'project'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "field-help-tooltip",
+      "source": "src/components/field-help-tooltip",
+      "sha256": "6381239ff13d3c168e1053faccf5fa607480c538c9f7a238e7b704ec818f71c5",
+      "publicSymbols": [
+        "FieldHelpTooltipProps",
+        "FieldHelpTooltip"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "icon-badge",
+      "source": "src/components/icon-badge",
+      "sha256": "45701e66553a6c9b57e79dc0ec339adf6c6583abf75432fced09261bc7fefd0a",
+      "publicSymbols": [
+        "IconBadgeProps",
+        "IconBadge"
+      ],
+      "contractTypes": [
+        "IconBadgeSize",
+        "IconBadgeVariant"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "icon-button",
+      "source": "src/components/icon-button",
+      "sha256": "e736238d8e00884638fb1e633365ab7a8859d5edc9a3ec49175422f5176971ff",
+      "publicSymbols": [
+        "IconButtonProps",
+        "IconButton"
+      ],
+      "contractTypes": [
+        "IconButtonSize",
+        "IconButtonVariant"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "loading-spinner",
+      "source": "src/components/loading-spinner",
+      "sha256": "ba2a2a759b663ccece53d2d38963ece1e0e58565b4beaa4c7e36d8ad9a450125",
+      "publicSymbols": [
+        "LoadingSpinnerProps",
+        "LoadingSpinner"
+      ],
+      "contractTypes": [
+        "LoadingSize"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "media-library",
+      "source": "src/components/media-library",
+      "sha256": "eac6b2e0474d8970539f6f23fff22cc515df39fb496dd7bed8beeb646e420232",
+      "publicSymbols": [
+        "MediaLibraryItem",
+        "MediaLibraryProps",
+        "MediaLibrary"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "modal",
+      "source": "src/components/modal",
+      "sha256": "c15e1fbc28838ce7a665a4b6cdbcf5fc9190160dad791c178f02eacce92763f8",
+      "publicSymbols": [
+        "ModalProps",
+        "Modal"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "nav-menu",
+      "source": "src/components/nav-menu",
+      "sha256": "1a9b3d9c7c7d43c52d23080c37af477211d37ed457f1c6a8eb2a18269b2f8cc5",
+      "publicSymbols": [
+        "NavItem",
+        "RenderLinkProps",
+        "RenderLink",
+        "NavMenuProps",
+        "renderDefaultLink",
+        "NavMenu"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'horizontal' | 'vertical'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "pagination",
+      "source": "src/components/pagination",
+      "sha256": "9111a975e78d31dcd8e3c68b588110547b45ee31facad43b81f84bb9e7318834",
+      "publicSymbols": [
+        "PaginationProps",
+        "Pagination"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "collection-filters",
+      "source": "src/components/collection-filters",
+      "sha256": "9b220e110dde6293e081ff555c6b69c9a0e34fee352e5b46888646b418774d69",
+      "publicSymbols": [
+        "CollectionFilterOption",
+        "CollectionSortOption",
+        "CollectionFiltersProps",
+        "CollectionFilters"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'select' | 'boolean' | 'date'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "command-spotlight",
+      "source": "src/components/command-spotlight",
+      "sha256": "21ec854ef2a06e975e42ec1cbd058e2ed6f67a4e8c1b46bfebc2316b3bc4209e",
+      "publicSymbols": [
+        "CommandSpotlightAction",
+        "CommandSpotlightProps",
+        "CommandSpotlight"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "select",
+      "source": "src/components/select",
+      "sha256": "874ad668945afb6f045d881447a275f73b9dc84ffbf56f4beed02a83f8d3fecd",
+      "publicSymbols": [
+        "SelectOption",
+        "SelectProps",
+        "Select"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'sm' | 'md' | 'lg'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "file-input",
+      "source": "src/components/file-input",
+      "sha256": "987ba3a36f5419069e7c3471e309d26501b15f45e8706bb529ee9b63020892ad",
+      "publicSymbols": [
+        "FileInputProps",
+        "FileInput"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'sm' | 'md' | 'lg'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "section-header",
+      "source": "src/components/section-header",
+      "sha256": "df2e51474c906760bf20e369256590872f07a13a4e29dca60ee5235bbee638bf",
+      "publicSymbols": [
+        "SectionHeaderProps",
+        "SectionHeader"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "panel",
+      "source": "src/components/panel",
+      "sha256": "a4a37fedfd21f848895d73837397de962f0dc28596927ef9479c3d4d6f06af38",
+      "publicSymbols": [
+        "PanelProps",
+        "Panel"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "status-badge",
+      "source": "src/components/status-badge",
+      "sha256": "6601da228639e85afd45197ea850e4ca404daef85c89391f3ab3ff146ea285c9",
+      "publicSymbols": [
+        "StatusBadgeProps",
+        "StatusBadge"
+      ],
+      "contractTypes": [
+        "StatusBadgeVariant"
+      ],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "table",
+      "source": "src/components/table",
+      "sha256": "e5d875c7a22e2e2e71e44de76510c43f3adcee146b6808daf59ae355dd4c4863",
+      "publicSymbols": [
+        "SortState",
+        "SortableTableHeaderProps",
+        "SortableTableHeader",
+        "TableProps",
+        "Table",
+        "TableHeader",
+        "TableBody",
+        "TableFooter",
+        "TableRow",
+        "TableHead",
+        "TableCell",
+        "TableCaption",
+        "ColumnDef",
+        "DataTableProps",
+        "DataTable"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'asc' | 'desc'",
+        "'left' | 'right'",
+        "'left' | 'right' | 'center'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "data-table",
+      "source": "src/components/data-table",
+      "sha256": "ce89d5ca6947d745110b69ef870bee2350060200af42c21a7b475d520772ecdb",
+      "publicSymbols": [
+        "DataTable"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "tabs",
+      "source": "src/components/tabs",
+      "sha256": "812294042eecf36f03ccfe890bac6f1542a6573c1fd8c24b42e963bb560c6827",
+      "publicSymbols": [
+        "TabItem",
+        "TabRenderLink",
+        "TabsProps",
+        "Tabs"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'sm' | 'md' | 'lg'",
+        "'underline' | 'segmented' | 'enclosed'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "theme-toggle",
+      "source": "src/components/theme-toggle",
+      "sha256": "57e3f4181d2b50fc0aa7dcd56205ef62e94955d4067d5e20c58254c34bd638d9",
+      "publicSymbols": [
+        "ThemeToggleProps",
+        "ThemeToggle"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "app-shell",
+      "source": "src/layout/app-shell",
+      "sha256": "21cbb676b184bcad28ffb5577b19a1ccc34d18ab420221b08cf936a23919c3e1",
+      "publicSymbols": [
+        "AppShellProps",
+        "AppShell"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "admin-shell",
+      "source": "src/layout/admin-shell",
+      "sha256": "535f760672696f04aa108eb79bf537055358641f121ae24dde0a0c98cb29c864",
+      "publicSymbols": [
+        "AdminShellProps",
+        "AdminShell"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "auth-shell",
+      "source": "src/layout/auth-shell",
+      "sha256": "b5bc05e24a2e42a054605aa51f6d8a9794f4d86ba72e1dd4baac7584a3c1f41c",
+      "publicSymbols": [
+        "AuthShellLayout",
+        "AuthShellSide",
+        "AuthShellProps",
+        "AuthShell"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'centered' | 'split'",
+        "'start' | 'end'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "detail-layout",
+      "source": "src/layout/detail-layout",
+      "sha256": "98be08a0c16be98b8846f43afb4edca93e143d4f5857cf77511c92e2874c836d",
+      "publicSymbols": [
+        "DetailLayoutRatio",
+        "DetailLayoutSide",
+        "DetailLayoutProps",
+        "DetailLayout"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'balanced' | 'primary'",
+        "'start' | 'end'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "footer",
+      "source": "src/layout/footer",
+      "sha256": "77756e4546713842cf511b7521fe1a5b61f39d378797d37a4b77511486f7d082",
+      "publicSymbols": [
+        "FooterSection",
+        "FooterProps",
+        "Footer"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "feed-column",
+      "source": "src/layout/feed-column",
+      "sha256": "981a086c1bbf1ccd1f98399cef9bd097992e4e50f2dcd27beae354beac0ac2a3",
+      "publicSymbols": [
+        "FeedColumnProps",
+        "FeedColumn"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "feed-grid",
+      "source": "src/layout/feed-grid",
+      "sha256": "a905ad5186b6579312b1cd233ae1df60bcbdb85147df7d451f53cabd3789d48d",
+      "publicSymbols": [
+        "FeedGridProps",
+        "FeedGrid"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "header",
+      "source": "src/layout/header",
+      "sha256": "e6d0c2969a7f042e13cf3261043c74dc8ae9c7caf9c7225db9271ea3d28bd009",
+      "publicSymbols": [
+        "HeaderProps",
+        "Header"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'fixed' | 'sticky' | 'static'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "page-frame",
+      "source": "src/layout/page-frame",
+      "sha256": "dacc54a6df068a390544945b15e38cc5d094cc164ef809311d4712a45acf823b",
+      "publicSymbols": [
+        "PageFrameElement",
+        "PageFrameGutter",
+        "PageFrameVerticalSpacing",
+        "PageFrameWidth",
+        "PageFrameProps",
+        "PageFrame"
+      ],
+      "contractTypes": [],
+      "literalOptions": [
+        "'article' | 'div' | 'main' | 'section'",
+        "'none' | 'compact' | 'comfortable' | 'spacious'",
+        "'reading' | 'content' | 'wide' | 'full'"
+      ],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "panel-layout",
+      "source": "src/layout/panel-layout",
+      "sha256": "fb7bb7fa4505a3572509d87e3004191e7be8167163abd158850a7f07885c024a",
+      "publicSymbols": [
+        "PanelColumnProps",
+        "PanelColumn",
+        "PanelLayoutProps",
+        "PanelLayout"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "empty",
+        "error",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "applicable keyboard/pointer/focus/selection semantics",
+        "accessible names/roles/values",
+        "catalog variants and edge cases",
+        "Windows runtime and visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement full pinned contract with native Windows conventions",
+        "Register variants and applicable interactive states",
+        "Verify runtime, accessibility and visuals"
+      ]
+    },
+    {
+      "id": "brand-mark",
+      "source": "sabella/Sources/Sabella/Navigation.swift",
+      "publicSymbols": [
+        "BleeckerBrandMark"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "focused",
+        "selected",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "Windows keyboard/pointer/accessibility semantics",
+        "registered catalog and regression/runtime/visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement and verify pinned desktop contract"
+      ],
+      "sha256": "14cec81653ac61cfc7b0287b512047af6c90f98eadb63a9bc31b24db04f04f2e"
+    },
+    {
+      "id": "secure-field",
+      "source": "sabella/Sources/Sabella/Controls.swift",
+      "publicSymbols": [
+        "BleeckerSecureField"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "focused",
+        "selected",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "Windows keyboard/pointer/accessibility semantics",
+        "registered catalog and regression/runtime/visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement and verify pinned desktop contract"
+      ],
+      "sha256": "e344bd2f5b9aa88f5c37abb27e70db2e487262fdcfd73d76c59c4e493467057d"
+    },
+    {
+      "id": "segmented-control",
+      "source": "sabella/Sources/Sabella/Buttons.swift",
+      "publicSymbols": [
+        "BleeckerSegmentedControl"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "focused",
+        "selected",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "Windows keyboard/pointer/accessibility semantics",
+        "registered catalog and regression/runtime/visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement and verify pinned desktop contract"
+      ],
+      "sha256": "5a75a79ed533c33b7d1a5753c1aeb74a31695950f3f8bb26a00938f5cc09182b"
+    },
+    {
+      "id": "app-tab-bar",
+      "source": "sabella/Sources/Sabella/Mobile.swift",
+      "publicSymbols": [
+        "BleeckerAppTabBar"
+      ],
+      "contractTypes": [],
+      "literalOptions": [],
+      "requiredStates": [
+        "normal",
+        "disabled",
+        "focused",
+        "selected",
+        "light",
+        "dark",
+        "contrast",
+        "text-scaling",
+        "constrained-width"
+      ],
+      "acceptance": [
+        "consumer-owned data/content/commands",
+        "Windows keyboard/pointer/accessibility semantics",
+        "registered catalog and regression/runtime/visual evidence"
+      ],
+      "windowsImplementation": [],
+      "catalogFixtures": [],
+      "regressionTests": [],
+      "status": "pending",
+      "remainingGaps": [
+        "Implement and verify pinned desktop contract"
+      ],
+      "sha256": "1feea91528f96a09679d67e381a9d0a79a58fa9ce8a6e0bc29d36c5edb4f24fa"
+    }
+  ],
+  "compositions": [
+    {
+      "id": "monitoring-workspace",
+      "status": "pending",
+      "source": "newsroom/Sources/Newsroom/ContentView.swift",
+      "requirements": [
+        "suite-selector slot",
+        "sidebar hit targets",
+        "live columns",
+        "attention cards",
+        "search",
+        "stable selection",
+        "processing review",
+        "fictional local data"
+      ]
+    },
+    {
+      "id": "editorial-workspace",
+      "status": "pending",
+      "source": "newsroom/docs/ariston.md",
+      "requirements": [
+        "filters",
+        "sortable/selectable rows",
+        "page editing",
+        "media/category/author selection",
+        "inline confirmation",
+        "fictional local data"
+      ]
+    }
+  ],
+  "excludedExports": [
+    "mobile/tv platform-only Sabella controls",
+    "web runtime providers and DOM utilities",
+    "login networking and product auth",
+    "CMS document schemas"
+  ],
+  "completionRule": "All required entries implemented with registered fixtures and verified regression/runtime/visual evidence; pending entries cannot count as complete."
+}
