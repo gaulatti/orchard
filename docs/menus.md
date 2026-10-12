@@ -4,6 +4,10 @@ The generated `Menus.g.xaml` dictionary is merged by Orchard's resource entry po
 
 This is an unfinished foundation, not accepted DropdownMenu parity. The pinned Bleecker recipe supplies Encode Sans Regular 14px/20px item typography, 8px horizontal and 6px vertical padding, 7px corners, 6px popup padding, a 1px border, the light/dark palette and Lucide selection/chevron paths. Windows' default presenter shadow is disabled. Native invocation, dismissal and selection behavior remain active.
 
+The item styles enable `BleeckerMenuFocus.IsEnabled`, which forwards native keyboard focus to the template's `Focused`/`Unfocused` states. WinUI menu items do not drive these states automatically. The focused row uses the same Bleecker tint as hover, without adding the default Windows outline. Disabling the attached behavior detaches its event handlers and clears that template state.
+
+The focus regression checks actual keyboard focus and removal of the previous row's highlight in both themes (`artifacts/smoke-menu-focus-complete`). Physical arrow-key testing also verifies the light highlight on Settings (`artifacts/menu-keyboard-light.jpg`). Dark focus intentionally retains the reference's subtle sand tint. Focus uses its own layer because native common-state updates otherwise clear the highlight. Broader input, accessibility and template-replacement checks remain open. The growing catalog suite has a two-minute timeout; separator resize checks explicitly finish layout before reading dimensions.
+
 `MenusFixture` is registered in catalog coverage. Published x64 checks open real root and nested popups in both themes, inspect geometry and font selection, exercise checkbox and radio state, invoke a command and verify dismissal. Captures are retained as `menu-light/dark.png` and `submenu-light/dark.png`. Radio-group checks run while the items are loaded; native checkbox activation dismisses the popup asynchronously, so the harness waits before reopening it. Passing these checks does not establish the remaining visual and interaction contracts.
 
 Remaining requirements:

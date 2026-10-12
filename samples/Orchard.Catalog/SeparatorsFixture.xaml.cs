@@ -32,11 +32,13 @@ public sealed partial class SeparatorsFixture : UserControl
         Constrained.Width = 137;
         Changing.Orientation = Orientation.Vertical;
         await Task.Delay(80);
+        UpdateLayout();
         Require(Horizontal.ActualWidth == 137 && Horizontal.ActualHeight == 1, "Constrained separator did not resize.");
         Require(Changing.ActualWidth == 1 && Changing.ActualHeight == 48, "Live vertical orientation did not remeasure.");
         Changing.Orientation = Orientation.Horizontal;
         Constrained.Width = 320;
         await Task.Delay(80);
+        UpdateLayout();
         Require(Changing.ActualWidth == 240 && Changing.ActualHeight == 1, "Live horizontal orientation did not restore geometry.");
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

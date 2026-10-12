@@ -1,12 +1,12 @@
 <UserControl x:Class="Orchard.Catalog.MenusFixture"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
     <StackPanel Spacing="16">
         <TextBlock Text="Dropdown menus" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <Button x:Name="Trigger" Content="Display options" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
             <Button.Flyout>
                 <MenuFlyout x:Name="Menu" MenuFlyoutPresenterStyle="{StaticResource BleeckerMenuPresenterStyle}" AreOpenCloseAnimationsEnabled="False">
-                    <MenuFlyoutItem x:Name="Action" Text="Profile" Click="OnAction" Style="{StaticResource BleeckerMenuItemStyle}" />
+                    <MenuFlyoutItem x:Name="Action" Text="Profile" Click="OnAction" orchard:BleeckerMenuFocus.IsEnabled="True" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutItem Text="Settings" KeyboardAcceleratorTextOverride="Ctrl+S" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutItem Text="Unavailable" IsEnabled="False" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <MenuFlyoutSeparator Style="{StaticResource BleeckerMenuSeparatorStyle}" />

@@ -26,7 +26,15 @@ public sealed partial class MenusFixture : UserControl
         VisualStateManager.GoToState(Action, "PointerOver", false);
         Require(root.Background is SolidColorBrush hover && Math.Abs(hover.Opacity - (scheme == BleeckerColorScheme.Dark ? .15 : .1)) < .001, "Menu hover did not use Bleecker's tint.");
         VisualStateManager.GoToState(Action, "Normal", false);
+        Action.Focus(FocusState.Keyboard);
+        await Task.Delay(100);
+        var focusHighlight = (Border)root.Children[0];
+        Require(focusHighlight.Opacity == 1 && ((Border)focusHighlight.Child).Background is SolidColorBrush focus && Math.Abs(focus.Opacity - (scheme == BleeckerColorScheme.Dark ? .15 : .1)) < .001,
+            $"Keyboard focus did not visibly highlight the menu row: {Action.FocusState}, states={string.Join(',', VisualStateManager.GetVisualStateGroups(root).Select(group => group.CurrentState?.Name))}.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"menu-{scheme.ToString().ToLowerInvariant()}.png"));
+        Compact.Focus(FocusState.Keyboard);
+        await Task.Delay(100);
+        Require(focusHighlight.Opacity == 0, "Menu focus highlight remained on the previous row.");
         Compact.IsChecked = true;
         Require(!Comfortable.IsChecked && Compact.IsChecked, "Native radio group retained multiple selections.");
         Comfortable.IsChecked = true;
