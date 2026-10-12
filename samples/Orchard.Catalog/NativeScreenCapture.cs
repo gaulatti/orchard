@@ -86,7 +86,19 @@ internal static class NativeScreenCapture
         // Minimize only the identified first-login window on the isolated runner.
         // Leave welcome choices, process lifetime and arbitrary apps alone.
         var requested = ShowWindowAsync(window, 6); // SW_MINIMIZE
-        return new { window = window.ToInt64(), process, application, owner.SessionId, minimizeRequested = requested };
+        object? backdrop = null;
+        var backdropWindow = FindWindow("UserOOBEWindowClass", null);
+        if (backdropWindow != IntPtr.Zero)
+        {
+            GetWindowThreadProcessId(backdropWindow, out var backdropProcess);
+            using var backdropOwner = System.Diagnostics.Process.GetProcessById((int)backdropProcess);
+            if (!string.Equals(backdropOwner.ProcessName, "explorer", StringComparison.OrdinalIgnoreCase) || backdropOwner.SessionId != current.SessionId)
+                throw new InvalidOperationException("Hosted welcome backdrop does not match its observed explorer/session boundary.");
+            var backdropRequested = ShowWindowAsync(backdropWindow, 6);
+            backdrop = new { window = backdropWindow.ToInt64(), process = backdropProcess,
+                executable = backdropOwner.ProcessName, windowClass = "UserOOBEWindowClass", backdropOwner.SessionId, minimizeRequested = backdropRequested };
+        }
+        return new { window = window.ToInt64(), process, application, owner.SessionId, minimizeRequested = requested, backdrop };
     }
 
     private sealed record ApplicationInfo(string? id, int status);
@@ -173,6 +185,7 @@ internal static class NativeScreenCapture
     }
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindowAsync(IntPtr window, int command);
+    [DllImport("user32.dll", EntryPoint = "FindWindowW", CharSet = CharSet.Unicode, ExactSpelling = true)] private static extern IntPtr FindWindow(string windowClass, string? title);
     [DllImport("kernel32.dll")] private static extern uint GetCurrentThreadId();
     [DllImport("kernel32.dll", SetLastError = true)] private static extern IntPtr OpenProcess(uint access, [MarshalAs(UnmanagedType.Bool)] bool inherit, uint process);
     [DllImport("kernel32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool CloseHandle(IntPtr handle);

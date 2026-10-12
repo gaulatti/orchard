@@ -103,6 +103,19 @@ The next hosted check requests normal minimization of that exact foreground
 application and keeps all foreground, occlusion and ownership gates active.
 It does not change the developer's desktop or accept welcome preferences.
 
+At `3a26b98caceabf12e0c07e459f49025a6b225bd4`,
+[run 38295643362](https://github.com/gaulatti/orchard/actions/runs/38295643362)
+passed x64 runtime/consumer and ARM64 cross-build. The native ARM64 welcome
+report records a successful minimization request for the identified app, but
+the pointer target belongs to a topmost, visible, uncloaked explorer window
+with class `UserOOBEWindowClass` in session 2. The physical gate correctly fails;
+the request does not prove that foreground was acquired. Artifact `11768162672`,
+SHA-256 `c3bc0e94baaaf4ea5b909180b251ed80008bab8242f70e353586b2dcb21b326e`,
+was downloaded and hash-verified under `artifacts/ci-switch-3a26b98-arm64`.
+The next preparation also requests normal minimization of that exact welcome
+backdrop, gated by the app identity, explorer process name and matching session.
+Dark-started checks, physical input and ARM64 consumption remain unverified.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

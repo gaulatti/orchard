@@ -159,6 +159,11 @@ in `switch-hosted-welcome-{Light,Dark}.json`. The foreground and target-ownershi
 gates still prove whether that request exposed the catalog; the request itself
 is not success. This code refuses to run outside CI. It makes no welcome
 choices, changes no Windows preferences and does not terminate that process.
+The next observed blocker is the same-session explorer window with class
+`UserOOBEWindowClass`, exposed at the target after the welcome-app request.
+Preparation also requests normal minimization of that exact class, only after
+the CloudExperienceHost identity matched and after checking explorer/session
+ownership. Its metadata and request are retained in the welcome report.
 Window-station,
 console-session and WTS connection state distinguish an inactive session from
 a geometry error. The fixture emits isolated Japanese label captures for the
