@@ -45,6 +45,10 @@ public sealed partial class MainWindow : Window
                 Require(ElementCompositionPreview.GetElementChildVisual((Grid)menuSurfaceRoot.Children[1]) is ContainerVisual menuShadows && menuShadows.Children.Count == 2,
                     "Packaged menu did not render its overlay shadow layers.");
                 var labelPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageLabel);
+                var presentedLabel = FrameworkElementAutomationPeer.CreatePeerForElement(menuPresenter).GetChildren()
+                    .SingleOrDefault(peer => peer.GetName() == "Account");
+                Require(presentedLabel is not null && presentedLabel.GetAutomationControlType() == AutomationControlType.Text &&
+                    presentedLabel.GetPattern(PatternInterface.Invoke) is null, "Packaged presenter omitted or made the label actionable.");
                 Require(PackageLabel.ActualHeight == 27 && PackageLabel.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") &&
                     labelPeer.IsControlElement() && labelPeer.IsContentElement() && labelPeer.GetName() == "Account" &&
                     labelPeer.GetAutomationControlType() == AutomationControlType.Text,

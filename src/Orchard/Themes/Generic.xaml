@@ -7,6 +7,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="local:BleeckerMenuLabel">
+        <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="IsTabStop" Value="False" /><Setter Property="AllowFocusOnInteraction" Value="False" />
         <Setter Property="MinHeight" Value="0" /><Setter Property="Padding" Value="8,6" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimarySemiboldFontFamily}" />

@@ -6,9 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 namespace Orchard;
 
 /// <summary>A non-actionable section label within a Bleecker menu.</summary>
-/// <remarks>Preview: native menu presenters omit separator-derived items from their
-/// automation child tree. See docs/menus.md for the remaining accessibility boundary.</remarks>
-public sealed class BleeckerMenuLabel : MenuFlyoutSeparator
+public sealed class BleeckerMenuLabel : MenuFlyoutItem
 {
     private TextBlock? text;
     private FrameworkElement? inset;
@@ -17,16 +15,13 @@ public sealed class BleeckerMenuLabel : MenuFlyoutSeparator
     {
         DefaultStyleKey = typeof(BleeckerMenuLabel);
         RegisterPropertyChangedCallback(LanguageProperty, (_, _) => UpdateText());
+        RegisterPropertyChangedCallback(TextProperty, (_, _) => UpdateText());
     }
 
-    public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
-        nameof(Text), typeof(string), typeof(BleeckerMenuLabel),
-        new PropertyMetadata(string.Empty, (owner, _) => ((BleeckerMenuLabel)owner).UpdateText()));
     public static readonly DependencyProperty InsetProperty = DependencyProperty.Register(
         nameof(Inset), typeof(bool), typeof(BleeckerMenuLabel),
         new PropertyMetadata(false, (owner, _) => ((BleeckerMenuLabel)owner).UpdateInset()));
 
-    public string Text { get => (string)GetValue(TextProperty); set => SetValue(TextProperty, value); }
     public bool Inset { get => (bool)GetValue(InsetProperty); set => SetValue(InsetProperty, value); }
 
     protected override void OnApplyTemplate()

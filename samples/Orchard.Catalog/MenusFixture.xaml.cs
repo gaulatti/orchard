@@ -25,8 +25,8 @@ public sealed partial class MenusFixture : UserControl
         Require(presenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Menu presenter retained Windows typography.");
         VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(presenter, 0));
         VerifyShadow(ShadowPreview);
-        VerifyLabels();
-        foreach (var item in Menu.Items.OfType<MenuFlyoutItem>())
+        VerifyLabels(presenter);
+        foreach (var item in Menu.Items.OfType<MenuFlyoutItem>().Where(item => item is not BleeckerMenuLabel))
             Require(item.FontSize == 14 && item.CornerRadius.TopLeft == 7 && item.Padding.Top == 6 && item.ActualHeight == 32, $"Menu item geometry mismatch: {item.Text} {item.ActualHeight}.");
         var root = (Grid)VisualTreeHelper.GetChild(Action, 0);
         VisualStateManager.GoToState(Action, "PointerOver", false);
@@ -53,6 +53,10 @@ public sealed partial class MenusFixture : UserControl
         Require(childPresenter.MinWidth == 144 && childPresenter.ActualWidth == 144 && presenter.MinWidth == 176,
             $"Root/submenu geometry mismatch: root={presenter.MinWidth}, child={childPresenter.MinWidth}/{childPresenter.ActualWidth}.");
         VerifyShadow((BleeckerOverlaySurface)VisualTreeHelper.GetChild(childPresenter, 0));
+        var nestedLabel = FrameworkElementAutomationPeer.CreatePeerForElement(childPresenter).GetChildren()
+            .SingleOrDefault(peer => peer.GetName() == "More actions");
+        Require(nestedLabel is not null && nestedLabel.GetAutomationControlType() == AutomationControlType.Text &&
+            nestedLabel.GetPattern(PatternInterface.Invoke) is null, "Submenu omitted or made its label actionable.");
         await MainWindow.CaptureElementAsync(childPresenter, Path.Combine(folder, $"submenu-{scheme.ToString().ToLowerInvariant()}.png"));
         expansion.Collapse();
         await Task.Delay(100);
@@ -82,8 +86,9 @@ public sealed partial class MenusFixture : UserControl
         Menu.Hide();
         await Task.Delay(150);
     }
-    private void VerifyLabels()
+    private void VerifyLabels(MenuFlyoutPresenter presenter)
     {
+        var children = FrameworkElementAutomationPeer.CreatePeerForElement(presenter).GetChildren();
         foreach (var label in Menu.Items.OfType<BleeckerMenuLabel>())
         {
             var layout = (Grid)VisualTreeHelper.GetChild(label, 0);
@@ -92,11 +97,15 @@ public sealed partial class MenusFixture : UserControl
                 label.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") && text.LineHeight == 15,
                 $"Menu label typography/geometry mismatch: {label.Text}, height={label.ActualHeight}.");
             Require(text.TransformToVisual(label).TransformPoint(default).X == (label.Inset ? 32 : 8), "Menu label inset mismatch.");
-            Require(!label.IsTabStop && !label.Focus(FocusState.Keyboard), "Menu section label became a keyboard action.");
+            Require(!label.IsHitTestVisible && !label.IsTabStop && !label.Focus(FocusState.Keyboard), "Menu section label became an action.");
             var peer = FrameworkElementAutomationPeer.CreatePeerForElement(label);
             Require(peer.IsControlElement() && peer.IsContentElement() && peer.GetAutomationControlType() == AutomationControlType.Text && peer.GetName() == label.Text &&
                 peer.GetPattern(PatternInterface.Invoke) is null && peer.GetPattern(PatternInterface.Toggle) is null,
                 "Menu section label lost its text-only accessibility contract.");
+            var child = children.SingleOrDefault(candidate => candidate.GetName() == label.Text);
+            Require(child is not null && child.GetAutomationControlType() == AutomationControlType.Text &&
+                child.GetPattern(PatternInterface.Invoke) is null && child.GetPattern(PatternInterface.Toggle) is null,
+                $"Presenter omitted the text-only label: {label.Text}; children={string.Join(',', children.Select(candidate => candidate.GetName()))}.");
         }
         var sectionLayout = (Grid)VisualTreeHelper.GetChild(SectionLabel, 0);
         var sectionText = (TextBlock)sectionLayout.Children[1];

@@ -1716,7 +1716,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-          "Rich rows/icons/inset action rows and indeterminate states; constrained label content and presenter accessibility-tree inclusion",
+          "Rich rows/icons/inset action rows and indeterminate states; constrained label content and Narrator behavior",
         "Exact overlay shadow rasterization and edge placement, entry/exit and item transition motion",
         "All physical pointer/keyboard/focus states and closed-menu selection persistence",
         "Contrast foregrounds, Narrator, scaling, constrained content and ARM64 runtime",

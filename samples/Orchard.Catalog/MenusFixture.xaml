@@ -19,6 +19,7 @@
                     <RadioMenuFlyoutItem x:Name="Compact" Text="Compact" GroupName="CatalogDensity" Style="{StaticResource BleeckerMenuRadioStyle}" />
                     <RadioMenuFlyoutItem x:Name="Comfortable" Text="Comfortable" GroupName="CatalogDensity" IsChecked="True" Style="{StaticResource BleeckerMenuRadioStyle}" />
                     <MenuFlyoutSubItem x:Name="Submenu" Text="More options" Style="{StaticResource BleeckerMenuSubmenuStyle}">
+                        <orchard:BleeckerMenuLabel Text="More actions" />
                         <MenuFlyoutItem Text="Archive" Style="{StaticResource BleeckerMenuItemStyle}" />
                     </MenuFlyoutSubItem>
                 </orchard:BleeckerDropdownMenu>
