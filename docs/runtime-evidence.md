@@ -130,6 +130,26 @@ and 23 unit tests passed. A locally packed isolated x64 consumer build passed
 without runtime launch; package SHA-256 is
 `09fd119f4665472b3a9349ed44b5cad46a272da17b903e6f5a90f4f870ee21f6`.
 
+At `a4720b2b25f669141835a8c2e46c4cf7453f9aa4`,
+[run 38299428078](https://github.com/gaulatti/orchard/actions/runs/38299428078)
+passed both architecture builds and all 23 unit tests. Both native jobs
+passed Checkbox's initial geometry, UIA role/name/value and exactly-once events,
+disabled rejection, binding in both directions, content updates, focus modality
+and unchecked visual states. Both then failed while clearing Template, before
+motion, live appearance, Switch or independent runtime consumption. The x64
+report retains the original XAML parsing exception and seven verified steps.
+Artifact `11770053223`, SHA-256
+`8274634f4728b7e884e8f2dd02904c64e1181c9bc36aa381f8f2f54ea20d33d2`,
+was downloaded and hash-verified under `artifacts/ci-checkbox-a4720b2-x64`.
+Its initial capture confirms the corrected RTL checkmark and exposes the
+37px rich-content row. The actual pinned browser matrix measures that row
+165.109375×42px and confirms dark deep-sea #182533, dark sea #5BA3F5 for
+hover/focus, and the dark focus offset. Those reference reports/captures are
+retained under `artifacts/checkbox-reference-matrix-{Light,Dark}` and
+`artifacts/checkbox-reference-focus-Dark`. The follow-up fixes those contracts
+and adds native boundary checks; it does not establish their runtime acceptance
+until the hosted checks return. The shared baseline remains unchanged.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

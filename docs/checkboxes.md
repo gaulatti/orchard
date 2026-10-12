@@ -29,14 +29,18 @@ The check remains left-to-right inside an RTL row; only row layout follows the
 reading direction. Inheriting RTL into the vector would mirror its geometry.
 Label and
 description use Encode Sans at 14px/20px, medium and regular respectively.
+Rich presenters inherit the same 20px block line height into consumer text;
+explicit consumer text properties continue to take precedence.
 Text starts 12px after the box. Description has a 2px top margin, including
 when there is no label. Both strings wrap beside a top-aligned box; empty
 content collapses the text column. Intrinsic measurement preserves the larger
 unwrapped label/description width before constrained wrapping.
 
 Light unchecked uses white and sand at 60% border opacity; checked uses sea.
-Dark unchecked uses deep-sea and white at 20%; checked uses accent blue.
-Unchecked hover uses sea at 50%. Keyboard focus uses a 2px sea/20 ring and a
+Dark unchecked uses the dark deep-sea token (#182533) and white at 20%; checked
+uses accent blue. All brush values are generated from the locked token source.
+Unchecked hover uses the active theme's sea at 50% (dark #5BA3F5).
+Keyboard focus uses a 2px active-sea/20 ring and a
 2px white/deep-sea offset; pointer focus omits the ring. The complete native
 template removes Windows default typography, minimum sizes, glyph and chrome.
 Disabled changes only the input chrome to 50% opacity. The checkmark and text
@@ -79,6 +83,22 @@ The x64 capture also exposed inherited RTL mirroring. The follow-up keeps the
 direction. Native default text measures 291.700043×42px against 291.71875×42px
 in the browser. The failed fixture does not prove the subsequent behavior
 checks; exact rendered comparison remains open.
+
+At `a4720b2`, both architectures passed initial geometry, native UIA
+role/name/value and exactly-once events, disabled rejection, two-way binding,
+content updates, focus modality and unchecked visual states. Clearing Template
+still failed in the native base application path. An empty template now clears
+Orchard presentation before invoking any base template work; nonempty templates
+retain the normal native application path. Per-control checkpoints distinguish
+clearing from restoration. The same run exposed a 37px rich-content row, while
+the actual pinned browser component measures 165.109375×42px. Rich presenters
+now provide the source's line height, with that geometry checked at runtime.
+The light/dark source matrix is retained under
+`artifacts/checkbox-reference-matrix-{Light,Dark}.{jpg,json}`. These follow-up
+changes still require native verification. That matrix also confirms that dark
+deep-sea, hover and focus must use dark token values, rather than the light
+brand constants. Runtime checks now verify the source's dark fill and focus
+palette as well as geometry.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

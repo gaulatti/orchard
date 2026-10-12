@@ -32,6 +32,9 @@ public sealed partial class CheckboxesFixture : UserControl
             Require(Default.ActualHeight == 42 && Math.Abs(Default.ActualWidth - 291.71875) < .1,
                 $"Checkbox default differs from the reference 291.71875x42: {Default.ActualWidth:R}x{Default.ActualHeight:R}.");
             Require(Bare.ActualWidth == 20 && Bare.ActualHeight == 20 && DescriptionOnly.ActualHeight == 22, "Bare or description-only checkbox retained the wrong spacing.");
+            Require(Rich.ActualHeight == 42 && Math.Abs(Rich.ActualWidth - 165.109375) < .1 &&
+                Rich.Content is TextBlock { LineHeight: 20 } && Rich.Description is TextBlock { LineHeight: 20 },
+                $"Rich checkbox lost the reference's 20px line height: {JsonSerializer.Serialize(Measure(Rich))}.");
             Require(Long.ActualHeight > 42 && Find<TextBlock>(Long, "PART_Label").ActualHeight > 20,
                 "Constrained checkbox text did not wrap on first display.");
             verifiedSteps.Add("Initial row geometry, palette, opacity separation and wrapping");
@@ -97,8 +100,18 @@ public sealed partial class CheckboxesFixture : UserControl
             foreach (var control in new[] { Off, Rich })
             {
                 var template = control.Template;
-                try { control.Template = null; control.ApplyTemplate(); }
+                var checkedValue = control.IsChecked;
+                var labelValue = control.Content;
+                var descriptionValue = control.Description;
+                try
+                {
+                    control.Template = null; control.ApplyTemplate();
+                    Require(control.IsChecked == checkedValue && ReferenceEquals(control.Content, labelValue) &&
+                        ReferenceEquals(control.Description, descriptionValue), "Clearing the checkbox template changed consumer state or content.");
+                    verifiedSteps.Add($"{control.Name} cleared its template with retained state and content");
+                }
                 finally { control.Template = template; control.ApplyTemplate(); }
+                verifiedSteps.Add($"{control.Name} restored its template");
             }
             UpdateLayout();
             await SettleAsync(Off); VerifyPresentation(Off, scheme);
@@ -162,7 +175,12 @@ public sealed partial class CheckboxesFixture : UserControl
         var box = Find<Border>(control, "PART_Box"); var glyph = Find<Viewbox>(control, "PART_Glyph");
         var label = Find<TextBlock>(control, "PART_Label"); var description = Find<TextBlock>(control, "PART_Description");
         var checkedState = control.IsChecked == true;
-        var expected = checkedState ? scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5" : scheme == BleeckerColorScheme.Light ? "#FFFFFFFF" : "#FF1A374D";
+        var expected = checkedState ? scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5" : scheme == BleeckerColorScheme.Light ? "#FFFFFFFF" : "#FF182533";
+        var sea = scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5";
+        Require(Hex(Find<Border>(control, "PART_FocusRing").BorderBrush) == sea &&
+            Math.Abs(Find<Border>(control, "PART_FocusRing").BorderBrush.Opacity - (float).2) < 1e-9 &&
+            Hex(Find<Border>(control, "PART_FocusOffset").Background) == (scheme == BleeckerColorScheme.Light ? "#FFFFFFFF" : "#FF182533"),
+            "Checkbox focus colors differ from the active Bleecker theme.");
         Require(box.ActualWidth == 20 && box.ActualHeight == 20 && box.CornerRadius == new CornerRadius(4) && box.BorderThickness == new Thickness(1) &&
             glyph.ActualWidth == 14 && glyph.ActualHeight == 14 && glyph.Opacity == (checkedState ? 1 : 0) && glyph.FlowDirection == FlowDirection.LeftToRight,
             $"Checkbox geometry/glyph differs: {JsonSerializer.Serialize(Measure(control))}.");
@@ -184,9 +202,14 @@ public sealed partial class CheckboxesFixture : UserControl
             glyph = new { glyph.ActualWidth, glyph.ActualHeight, glyph.Opacity, direction = glyph.FlowDirection.ToString(),
                 bounds = glyph.TransformToVisual(control).TransformBounds(new Rect(0, 0, glyph.ActualWidth, glyph.ActualHeight)) },
             inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
+            richLabel = MeasureRichContent(control.Content), richDescription = MeasureRichContent(control.Description),
             label = new { label.Text, label.ActualWidth, label.ActualHeight, label.BaselineOffset },
             description = new { description.Text, description.ActualWidth, description.ActualHeight, description.BaselineOffset } };
     }
+    private static object? MeasureRichContent(object? content) => content is TextBlock text
+        ? new { text.Text, text.ActualWidth, text.ActualHeight, text.LineHeight,
+            strategy = text.LineStackingStrategy.ToString(), family = text.FontFamily.Source, weight = text.FontWeight.Weight }
+        : null;
     private object MeasureForReport(BleeckerCheckbox control)
     {
         try { return Measure(control); }
@@ -196,7 +219,7 @@ public sealed partial class CheckboxesFixture : UserControl
     private Task SettleAsync(BleeckerCheckbox control) => WaitAsync(() =>
         Find<Viewbox>(control, "PART_Glyph").Opacity == (control.IsChecked == true ? 1 : 0) &&
         Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5) &&
-        Hex(Find<Border>(control, "PART_Box").Background) == (control.IsChecked == true ? control.ActualTheme == ElementTheme.Light ? "#FF2C5784" : "#FF5BA3F5" : control.ActualTheme == ElementTheme.Light ? "#FFFFFFFF" : "#FF1A374D") &&
+        Hex(Find<Border>(control, "PART_Box").Background) == (control.IsChecked == true ? control.ActualTheme == ElementTheme.Light ? "#FF2C5784" : "#FF5BA3F5" : control.ActualTheme == ElementTheme.Light ? "#FFFFFFFF" : "#FF182533") &&
         Math.Abs(Find<Border>(control, "PART_Box").BorderBrush.Opacity - (float)(control.IsChecked == true ? 1 :
             VisualStateManager.GetVisualStateGroups(Find<Grid>(control, "PART_Root")).Single(group => group.Name == "CombinedStates").CurrentState?.Name.EndsWith("PointerOver", StringComparison.Ordinal) == true ? .5 : control.ActualTheme == ElementTheme.Light ? .6 : .2)) < 1e-9,
         $"Checkbox {control.Name} did not settle to its native state.");

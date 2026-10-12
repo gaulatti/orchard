@@ -70,7 +70,6 @@ public sealed class BleeckerCheckbox : CheckBox
         if (states is not null) states.CurrentStateChanged -= OnStateChanged;
         if (richLabel is not null) richLabel.Content = null;
         if (richDescription is not null) richDescription.Content = null;
-        base.OnApplyTemplate();
         if (Template is null)
         {
             box = focusRing = focusOffset = null;
@@ -79,6 +78,7 @@ public sealed class BleeckerCheckbox : CheckBox
             probes = []; states = null; visualState = "";
             return;
         }
+        base.OnApplyTemplate();
         box = Part<Border>("PART_Box"); inputChrome = Part<Grid>("PART_InputChrome"); glyph = Part<Viewbox>("PART_Glyph");
         focusRing = Part<Border>("PART_FocusRing"); focusOffset = Part<Border>("PART_FocusOffset");
         textColumn = Part<Grid>("PART_TextColumn"); label = Part<TextBlock>("PART_Label"); description = Part<TextBlock>("PART_Description");

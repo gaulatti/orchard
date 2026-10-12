@@ -1,31 +1,32 @@
+<!-- Generated from the pinned checkbox.tsx contract and Bleecker token snapshot 0bd7032e42d4c346c6e2201ad2feff96e635f73f; do not edit. -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
-            <SolidColorBrush x:Key="CheckboxOffFill" Color="White" />
-            <SolidColorBrush x:Key="CheckboxOnFill" Color="#2C5784" />
-            <SolidColorBrush x:Key="CheckboxOffStroke" Color="#E6D5B8" Opacity="0.60" />
-            <SolidColorBrush x:Key="CheckboxHoverStroke" Color="#2C5784" Opacity="0.50" />
-            <SolidColorBrush x:Key="CheckboxOnStroke" Color="#2C5784" />
-            <SolidColorBrush x:Key="CheckboxFocusStroke" Color="#2C5784" Opacity="0.20" />
-            <SolidColorBrush x:Key="CheckboxGlyph" Color="White" />
+            <SolidColorBrush x:Key="CheckboxOffFill" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOnFill" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOffStroke" Color="#FFE6D5B8" Opacity="0.6" />
+            <SolidColorBrush x:Key="CheckboxHoverStroke" Color="#FF2C5784" Opacity="0.5" />
+            <SolidColorBrush x:Key="CheckboxOnStroke" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxFocusStroke" Color="#FF2C5784" Opacity="0.2" />
+            <SolidColorBrush x:Key="CheckboxGlyph" Color="#FFFFFFFF" Opacity="1" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="Default">
-            <SolidColorBrush x:Key="CheckboxOffFill" Color="#1A374D" />
-            <SolidColorBrush x:Key="CheckboxOnFill" Color="#5BA3F5" />
-            <SolidColorBrush x:Key="CheckboxOffStroke" Color="White" Opacity="0.20" />
-            <SolidColorBrush x:Key="CheckboxHoverStroke" Color="#2C5784" Opacity="0.50" />
-            <SolidColorBrush x:Key="CheckboxOnStroke" Color="#5BA3F5" />
-            <SolidColorBrush x:Key="CheckboxFocusStroke" Color="#2C5784" Opacity="0.20" />
-            <SolidColorBrush x:Key="CheckboxGlyph" Color="White" />
+            <SolidColorBrush x:Key="CheckboxOffFill" Color="#FF182533" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOnFill" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOffStroke" Color="#FFFFFFFF" Opacity="0.2" />
+            <SolidColorBrush x:Key="CheckboxHoverStroke" Color="#FF5BA3F5" Opacity="0.5" />
+            <SolidColorBrush x:Key="CheckboxOnStroke" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxFocusStroke" Color="#FF5BA3F5" Opacity="0.2" />
+            <SolidColorBrush x:Key="CheckboxGlyph" Color="#FFFFFFFF" Opacity="1" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
-            <SolidColorBrush x:Key="CheckboxOffFill" Color="{ThemeResource SystemColorWindowColor}" />
-            <SolidColorBrush x:Key="CheckboxOnFill" Color="{ThemeResource SystemColorHighlightColor}" />
-            <SolidColorBrush x:Key="CheckboxOffStroke" Color="{ThemeResource SystemColorWindowTextColor}" />
-            <SolidColorBrush x:Key="CheckboxHoverStroke" Color="{ThemeResource SystemColorHighlightColor}" />
-            <SolidColorBrush x:Key="CheckboxOnStroke" Color="{ThemeResource SystemColorHighlightColor}" />
-            <SolidColorBrush x:Key="CheckboxFocusStroke" Color="{ThemeResource SystemColorWindowTextColor}" />
-            <SolidColorBrush x:Key="CheckboxGlyph" Color="{ThemeResource SystemColorHighlightTextColor}" />
+            <SolidColorBrush x:Key="CheckboxOffFill" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOnFill" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOffStroke" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxHoverStroke" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxOnStroke" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxFocusStroke" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="CheckboxGlyph" Color="{ThemeResource SystemColorHighlightTextColor}" Opacity="1" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

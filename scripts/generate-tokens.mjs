@@ -229,6 +229,22 @@ for (const variant of ['Default', 'Live', 'Offline', 'Warning', 'Info']) {
   outputs[`src/Orchard/Themes/StatusBadges/${variant}.g.xaml`] = badge + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 }
 outputs['src/Orchard/Themes/Menus.g.xaml'] = menuStyles();
+let checkbox = `<!-- Generated from the pinned checkbox.tsx contract and Bleecker token snapshot ${lock.commit}; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+  const dark = theme === 'Default', contrast = theme === 'HighContrast';
+  checkbox += `        <ResourceDictionary x:Key="${theme}">\n`;
+  for (const [name, color, opacity, system] of [
+    ['OffFill', dark ? colors.deepSea : '#ffffff', 1, 'Window'],
+    ['OnFill', dark ? colors.accentBlue : colors.sea, 1, 'Highlight'],
+    ['OffStroke', dark ? '#ffffff' : colors.sand, dark ? .2 : .6, 'WindowText'],
+    ['HoverStroke', colors.sea, .5, 'Highlight'],
+    ['OnStroke', dark ? colors.accentBlue : colors.sea, 1, 'Highlight'],
+    ['FocusStroke', colors.sea, .2, 'WindowText'],
+    ['Glyph', '#ffffff', 1, 'HighlightText']])
+    checkbox += `            <SolidColorBrush x:Key="Checkbox${name}" Color="${contrast ? `{ThemeResource SystemColor${system}Color}` : argb(color)}" Opacity="${contrast ? 1 : opacity}" />\n`;
+  checkbox += '        </ResourceDictionary>\n';
+}
+outputs['src/Orchard/Themes/Checkbox.xaml'] = checkbox + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 for (const [path, content] of Object.entries(outputs)) {
   const url = new URL(path, root);
   if (check) {
