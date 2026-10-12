@@ -1,0 +1,11 @@
+{
+  "styles": {
+    "BleeckerHeadingStyle": "MainWindow.xaml",
+    "BleeckerBodyStyle": "MainWindow.xaml",
+    "BleeckerPrimaryButtonStyle": "MainWindow.xaml",
+    "BleeckerSecondaryButtonStyle": "MainWindow.xaml",
+    "BleeckerTextBoxStyle": "MainWindow.xaml",
+    "BleeckerComboBoxStyle": "MainWindow.xaml"
+  },
+  "controls": {}
+}

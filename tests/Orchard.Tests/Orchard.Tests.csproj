@@ -10,5 +10,9 @@
         <None Include="../../tokens/bleecker.tokens.json" Link="Fixtures/bleecker.tokens.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Themes/Tokens.g.xaml" Link="Fixtures/Tokens.g.xaml" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Themes/Orchard.xaml" Link="Fixtures/Orchard.xaml" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../src/Orchard/**/*.xaml" Exclude="../../src/Orchard/bin/**;../../src/Orchard/obj/**" Link="Fixtures/Library/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../src/Orchard/**/*.cs" Exclude="../../src/Orchard/bin/**;../../src/Orchard/obj/**" Link="Fixtures/Library/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/catalog-coverage.json" Link="Fixtures/Catalog/catalog-coverage.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/**/*.xaml" Exclude="../../samples/Orchard.Catalog/bin/**;../../samples/Orchard.Catalog/obj/**" Link="Fixtures/Catalog/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>

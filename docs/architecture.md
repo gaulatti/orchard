@@ -94,6 +94,13 @@ catalog’s resource paths aligned with the unpackaged runtime lookup contract.
 
 ## Verification
 
+`samples/Orchard.Catalog/catalog-coverage.json` registers library styles and
+public controls against catalog XAML fixtures. Contract tests discover styles
+and public class declarations from library sources, compare the registration
+sets, and require each registered fixture to actually reference/instantiate its
+component. Registration proves fixture presence; it does not establish variant,
+interaction or visual acceptance. Those remain tracked in the parity inventory.
+
 The GitHub workflow builds on `windows-2025`, runs MSTest contracts, publishes
 the complete self-contained x64 catalog, and launches it with
 `--smoke-output`. The catalog checks theme colors, font selection and presence,
