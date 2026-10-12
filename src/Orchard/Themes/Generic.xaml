@@ -16,13 +16,13 @@
         <Setter Property="BorderBrush" Value="{ThemeResource StatusBadgeBorder}" />
         <Setter Property="Foreground" Value="{ThemeResource StatusBadgeForeground}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerStatusBadge">
-            <Grid>
+            <Grid x:Name="PART_Layout">
                 <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                 <Border x:Name="PART_Badge" MinHeight="24" Padding="10,2" CornerRadius="6" BorderThickness="1" VerticalAlignment="Center"
                         Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                    <Grid ColumnSpacing="6"><Grid.ColumnDefinitions><ColumnDefinition Width="6" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
-                        <Ellipse Width="6" Height="6" Fill="{ThemeResource StatusBadgeDot}" VerticalAlignment="Center" />
-                        <TextBlock Grid.Column="1" Text="{TemplateBinding Label}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}"
+                    <Grid x:Name="PART_BadgeContent" ColumnSpacing="6"><Grid.ColumnDefinitions><ColumnDefinition Width="6" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                        <Ellipse x:Name="PART_Dot" Width="6" Height="6" Fill="{ThemeResource StatusBadgeDot}" VerticalAlignment="Center" />
+                        <TextBlock x:Name="PART_Label" Grid.Column="1" Text="{TemplateBinding Label}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}"
                                    FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" LineHeight="16.5" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" VerticalAlignment="Center" />
                     </Grid>
                 </Border>

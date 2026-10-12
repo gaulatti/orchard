@@ -12,6 +12,20 @@ public sealed partial class StatusBadgesFixture : UserControl
     public StatusBadgesFixture() => InitializeComponent();
     internal async Task VerifyAsync(BleeckerColorScheme scheme)
     {
+        var longRoot = (Grid)VisualTreeHelper.GetChild(LongLabel, 0);
+        var longSurface = (Border)longRoot.Children[0];
+        var longDescription = (TextBlock)longRoot.Children[1];
+        var descriptionSlot = Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(longDescription).Width - longDescription.Margin.Left - longDescription.Margin.Right;
+        var longDot = (Ellipse)((Grid)longSurface.Child).Children[0];
+        Require(Math.Abs(longDot.Width - 3.6875) < .2 && longDot.Height == 6, "Constrained status dot did not follow reference flex shrinking.");
+        Require(longSurface.ActualHeight == 39 && Math.Abs(longSurface.ActualWidth - 190.203125) < 3 && Math.Abs(descriptionSlot - 121.796875) < 3,
+            $"Long status label did not share constrained width with its description: badge={longSurface.ActualWidth}x{longSurface.ActualHeight}, description={longDescription.ActualWidth}x{longDescription.ActualHeight}, root={longRoot.ActualWidth}, column={longRoot.ColumnDefinitions[0].Width}.");
+        LongLabel.Width = 640;
+        await Task.Delay(80);
+        Require(longSurface.ActualHeight == 24 && longDescription.ActualHeight <= 17, "Widening status content did not restore single-line layout.");
+        LongLabel.Width = 320;
+        await Task.Delay(80);
+        Require(longSurface.ActualHeight > 24 && longDescription.ActualHeight > 17, "Narrowing status content did not restore wrapping.");
         foreach (var badge in Variants.Children.OfType<BleeckerStatusBadge>())
         {
             var root = (Grid)VisualTreeHelper.GetChild(badge, 0);
@@ -36,6 +50,9 @@ public sealed partial class StatusBadgesFixture : UserControl
         var originalHeight = Constrained.ActualHeight;
         Constrained.Width = 160;
         await Task.Delay(80);
+        var constrainedSurface = (Border)((Grid)VisualTreeHelper.GetChild(Constrained, 0)).Children[0];
+        var constrainedLabel = (TextBlock)((Grid)constrainedSurface.Child).Children[1];
+        Require(constrainedLabel.ActualWidth >= 11, "International status label was squeezed below a readable glyph width.");
         Require(Constrained.ActualHeight > originalHeight, "Constrained status description did not wrap.");
         Constrained.Width = 240;
         var source = new TextBlock { Text = "UPDATED" };
