@@ -124,18 +124,22 @@ input to its own foreground catalog window, verifying label/track activation,
 disabled rejection and RTL activation. Local smoke checks omit physical input
 and explicitly record that omission, preserving the developer's foreground app.
 The hosted check maximizes its own initially hidden window and temporarily makes
-it topmost. If Windows refuses a foreground request, a real click activates that
-window before keyboard checks begin. Each click first proves the target point
-belongs to the catalog's own top-level HWND. If it still lacks foreground input,
-a transient Alt press/release precedes one more foreground request, using
+it topmost. If Windows refuses a foreground request, a transient Alt press/release
+precedes one more foreground request, using
 Windows' documented foreground-lock release behavior. This does not change
-global foreground-lock settings or attach another thread's input queue.
+global foreground-lock settings or attach another thread's input queue. A real
+click is attempted only if that request also fails and the point belongs to the
+catalog's own top-level HWND. Alt runs before the click: the ARM64 host has an
+active console session, but another CoreWindow covers the catalog's intended
+target. Requiring ownership before that activation attempt prevented it from
+ever running. Every subsequent click keeps the same ownership requirement.
 Cleanup removes the temporary topmost state
 and restores the pointer. Its HWND comes from XamlRoot.ContentIslandEnvironment
 AppWindowId and is checked against the process ID; Process.MainWindowHandle is
 only retained as a diagnostic. The check retains foreground, session and input
 desktop diagnostics even when activation fails.
-An occluded target also retains HWND class, process/session, visibility and DWM
+An occluded target also retains HWND class, executable basename, process/session,
+topmost status, visibility and DWM
 cloaking diagnostics, without other windows' titles or content. Window-station,
 console-session and WTS connection state distinguish an inactive session from
 a geometry error. The fixture emits isolated Japanese label captures for the

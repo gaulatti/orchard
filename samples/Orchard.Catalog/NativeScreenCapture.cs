@@ -55,7 +55,16 @@ internal static class NativeScreenCapture
             GetWindowThreadProcessId(target, out var process);
             var session = process != 0 && ProcessIdToSessionId(process, out var sessionId) ? (uint?)sessionId : null;
             var status = DwmGetWindowAttribute(target, 14, out var cloaked, 4); // DWMWA_CLOAKED
-            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, session,
+            string? executable = null, processReadError = null;
+            if (process != 0)
+            {
+                try { using var owner = System.Diagnostics.Process.GetProcessById((int)process); executable = owner.ProcessName; }
+                catch (ArgumentException) { processReadError = "exited"; }
+                catch (InvalidOperationException) { processReadError = "exited"; }
+                catch (System.ComponentModel.Win32Exception error) { processReadError = $"win32-{error.NativeErrorCode}"; }
+            }
+            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, executable, processReadError, session,
+                topmost = (GetWindowLongPtr(target, -20).ToInt64() & 8) != 0,
                 visible = IsWindowVisible(target), cloaked = status >= 0 ? (uint?)cloaked : null };
         }
     }
@@ -134,6 +143,7 @@ internal static class NativeScreenCapture
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool IsWindowVisible(IntPtr window);
     [DllImport("user32.dll", EntryPoint = "GetClassNameW", CharSet = CharSet.Unicode, ExactSpelling = true)] private static extern int GetClassName(IntPtr window, System.Text.StringBuilder name, int length);
     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint process);
+    [DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW", ExactSpelling = true)] private static extern IntPtr GetWindowLongPtr(IntPtr window, int index);
     [DllImport("user32.dll")] private static extern IntPtr GetThreadDesktop(uint thread);
     [DllImport("user32.dll", SetLastError = true)] private static extern IntPtr OpenInputDesktop(uint flags, [MarshalAs(UnmanagedType.Bool)] bool inherit, uint access);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool CloseDesktop(IntPtr desktop);

@@ -327,13 +327,12 @@ public sealed partial class SwitchesFixture : UserControl
         try
         {
             // The smoke process starts hidden. Expose only its own hosted-CI
-            // window, then activate it through real pointer input if Windows
-            // refuses a programmatic foreground request.
+            // window, then retry after Alt before attempting a pointer click.
+            // An occluding CoreWindow can otherwise prevent that retry entirely.
             ShowWindow(window, 3); // SW_SHOWMAXIMIZED: keep the client inside the hosted monitor.
             Require(SetWindowPos(window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the CI catalog window.");
             foregroundRequested = SetForegroundWindow(window);
             await Task.Delay(100);
-            if (GetForegroundWindow() != window) await ClickAsync(Find<Border>(Off, "PART_Track"), false);
             if (GetForegroundWindow() != window)
             {
                 // Windows clears the foreground lock in response to Alt.
@@ -342,7 +341,9 @@ public sealed partial class SwitchesFixture : UserControl
                 SendKey(0x12);
                 await Task.Delay(100);
                 foregroundRequested = SetForegroundWindow(window);
+                await Task.Delay(100);
             }
+            if (GetForegroundWindow() != window) await ClickAsync(Find<Border>(Off, "PART_Track"), false);
             await WaitAsync(() => GetForegroundWindow() == window,
                 $"Physical switch check did not own the foreground window: own={window}, heuristic={process.MainWindowHandle}, foreground={GetForegroundWindow()}, session={process.SessionId}, requested={foregroundRequested}.");
             physicalInputSteps.Add("Own catalog window acquired foreground input");
