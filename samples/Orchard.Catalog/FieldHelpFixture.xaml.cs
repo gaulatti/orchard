@@ -88,6 +88,7 @@ public sealed partial class FieldHelpFixture : UserControl
                 "Field help activation did not dismiss while preserving consumer activation and focus.");
         }
         finally { Help.Click -= onClick; }
+        await VerifyLiveBrushAsync(circle);
         tooltip.IsOpen = true;
         var original = Help.Text;
         Help.Text = "Updated help";
@@ -96,6 +97,47 @@ public sealed partial class FieldHelpFixture : UserControl
         Require(Help.Visibility == Visibility.Collapsed && !tooltip.IsOpen, "Empty help left its trigger or popup active.");
         Help.Text = original;
         Require(Help.Visibility == Visibility.Visible, "Restored help did not restore its trigger.");
+    }
+
+    private async Task VerifyLiveBrushAsync(Ellipse circle)
+    {
+        var normal = new SolidColorBrush(Microsoft.UI.Colors.DarkBlue);
+        var hover = new SolidColorBrush(Microsoft.UI.Colors.DarkRed);
+        try
+        {
+            Help.Foreground = normal;
+            Help.PointerOverForeground = hover;
+            VisualStateManager.GoToState(Help, "Normal", false);
+            await AwaitColorAsync(normal.Color);
+            normal.Color = Microsoft.UI.Colors.DarkGreen;
+            Require(((SolidColorBrush)circle.Stroke).Color == normal.Color, "Field help ignored an in-place normal brush update.");
+            VisualStateManager.GoToState(Help, "PointerOver", false);
+            await AwaitColorAsync(hover.Color);
+            hover.Color = Microsoft.UI.Colors.DarkOrange;
+            Require(((SolidColorBrush)circle.Stroke).Color == hover.Color, "Field help ignored an in-place hover brush update.");
+            normal.Color = Microsoft.UI.Colors.Purple;
+            Require(((SolidColorBrush)circle.Stroke).Color == hover.Color, "An inactive field help brush changed the visible icon.");
+            var replacement = new SolidColorBrush(Microsoft.UI.Colors.Teal);
+            Help.PointerOverForeground = replacement;
+            hover.Color = Microsoft.UI.Colors.Black;
+            Require(((SolidColorBrush)circle.Stroke).Color == replacement.Color, "Field help retained a replaced brush subscription.");
+            replacement.Color = Microsoft.UI.Colors.Navy;
+            Require(((SolidColorBrush)circle.Stroke).Color == replacement.Color, "Field help did not observe the replacement brush.");
+        }
+        finally
+        {
+            Help.ClearValue(BleeckerFieldHelpTooltip.ForegroundProperty);
+            Help.ClearValue(BleeckerFieldHelpTooltip.PointerOverForegroundProperty);
+            VisualStateManager.GoToState(Help, "Normal", false);
+        }
+
+        async Task AwaitColorAsync(Windows.UI.Color expected)
+        {
+            var elapsed = System.Diagnostics.Stopwatch.StartNew();
+            while (((SolidColorBrush)circle.Stroke).Color != expected && elapsed.Elapsed < TimeSpan.FromSeconds(1))
+                await Task.Delay(16);
+            Require(((SolidColorBrush)circle.Stroke).Color == expected, "Field help did not enter the requested palette state.");
+        }
     }
 
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

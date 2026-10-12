@@ -14,6 +14,8 @@ public sealed partial class BleeckerFieldHelpTooltip
     private ScaleTransform? scale;
     private SolidColorBrush? ink;
     private Storyboard? motion;
+    private SolidColorBrush? observedColor;
+    private long colorSubscription;
 
     public static readonly DependencyProperty PointerOverForegroundProperty = DependencyProperty.Register(nameof(PointerOverForeground), typeof(SolidColorBrush), typeof(BleeckerFieldHelpTooltip),
         new PropertyMetadata(null, (owner, _) => ((BleeckerFieldHelpTooltip)owner).UpdateMotion(false)));
@@ -33,6 +35,7 @@ public sealed partial class BleeckerFieldHelpTooltip
         {
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) motionSettings.AnimationsEnabledChanged -= OnMotionPreferenceChanged;
             UpdateMotion(false);
+            ObserveColor(null);
         };
     }
 
@@ -55,6 +58,15 @@ public sealed partial class BleeckerFieldHelpTooltip
     private void OnCommonStateChanged(object sender, VisualStateChangedEventArgs args) => UpdateMotion(true);
     private void OnMotionPreferenceChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(() => UpdateMotion(false));
 
+    private void ObserveColor(SolidColorBrush? brush)
+    {
+        if (ReferenceEquals(observedColor, brush)) return;
+        observedColor?.UnregisterPropertyChangedCallback(SolidColorBrush.ColorProperty, colorSubscription);
+        observedColor = brush;
+        if (brush is not null)
+            colorSubscription = brush.RegisterPropertyChangedCallback(SolidColorBrush.ColorProperty, (_, _) => UpdateMotion(false));
+    }
+
     private void UpdateMotion(bool animate)
     {
         if (ink is null || scale is null) return;
@@ -62,6 +74,7 @@ public sealed partial class BleeckerFieldHelpTooltip
         var hover = state == "PointerOver" || (state == "Pressed" && IsPointerOver);
         var destination = (hover ? PointerOverForeground : Foreground) as SolidColorBrush
             ?? throw new InvalidOperationException("Field help requires solid foreground and pointer-over foreground brushes.");
+        ObserveColor(IsLoaded ? destination : null);
         var color = ink.Color;
         var size = scale.ScaleX;
         motion?.Stop();

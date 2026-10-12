@@ -23,3 +23,7 @@ Enabled-motion verification passes in artifacts/smoke-field-help-motion-idle for
 Tooltip layout and exit-cleanup checks await exact conditions with a bounded one-second deadline; these checks do not establish precise animation timing. The growing full catalog suite has a three-minute process limit. Earlier runs recorded missed frames under load and one exceeded the previous two-minute limit; the successful enabled-motion run was performed without concurrent compilation. Exact rendered curve comparison, live contrast-color refresh and rapid reversal behavior remain unverified.
 
 Reduced-motion verification passes at artifacts/smoke-field-help-motion-reduced-final in both themes. Windows Animation effects is restored to its original Off setting. The wrapped-button activation fixture explicitly completes layout and awaits its template before inspecting the native trigger.
+
+The animated icon observes Color changes on its active source brush, including in-place consumer palette updates. Changing state or replacing a brush updates that subscription; unloading removes it. The runtime fixture checks normal and hover updates, inactive-brush isolation and replacement. Actual Windows contrast switching remains a separate acceptance requirement.
+
+The live-brush regression passes in both themes at artifacts/smoke-field-help-brush-ready, with Windows animations disabled. It waits for each requested state before mutating the active brush. This proves in-place source-color propagation; it does not replace an actual Windows contrast-mode or animated reversal check.
