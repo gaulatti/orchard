@@ -229,6 +229,11 @@ been removed. DefaultStyleResourceUri is now set during construction to
 Orchard's Generic.xaml, using the pinned SDK property documented by
 [Microsoft](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control.defaultstyleresourceuri?view=windows-app-sdk-2.0).
 The same null application/layout/state/content/restoration gates remain active.
+The checkbox fixture now captures an additional six-script, three-weight
+font comparison with explicit language tags, before its template lifecycle
+checks. The original and Yu Gothic candidates use actual bundled font
+resources. Reports and captures restore the consumer content and language;
+the shared library font stack is unchanged pending comparison.
 
 ## Shared x64 and ARM64 baseline
 

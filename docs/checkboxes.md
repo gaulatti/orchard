@@ -172,6 +172,14 @@ At `ec16816`, the x64 original label is 99.538086px; the Yu Gothic probe is
 Meiryo probe retain 99.538086px. The native/source comparison is
 retained at `artifacts/checkbox-cjk-comparison-Light.png`; the original stack
 remains unchanged while broader script/weight/platform verification continues.
+The native fixture also records Japanese, simplified/traditional Chinese,
+Korean, Arabic and Latin consumer text at weights 400/500/600, with explicit
+content languages. It compares the canonical font resources against the
+Yu Gothic candidate and restores content, description and language afterward.
+These reports (`checkbox-script-weights-{Light,Dark}.json`) and per-case native
+captures are diagnostic evidence; they do not establish font parity or change
+the library's font resources. The corresponding pinned browser measurements
+and render are retained at `artifacts/checkbox-reference-script-weights-Light.{json,jpg}`.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

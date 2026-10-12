@@ -152,6 +152,7 @@ public sealed partial class CheckboxesFixture : UserControl
             }
             verifiedSteps.Add("Unchecked hover, pressed and normal border states");
             await InspectFontFallbackAsync(scheme, folder);
+            await InspectScriptWeightsAsync(scheme, folder);
             foreach (var control in new[] { Off, Rich })
             {
                 var template = control.Template;
@@ -257,6 +258,80 @@ public sealed partial class CheckboxesFixture : UserControl
         }
         finally { NonLatin.FontFamily = original; UpdateLayout(); }
         Require(ReferenceEquals(NonLatin.FontFamily, original), "Font evidence probe did not restore consumer typography.");
+    }
+
+    private async Task InspectScriptWeightsAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var originalContent = NonLatin.Content;
+        var originalDescription = NonLatin.Description;
+        var originalLanguage = NonLatin.Language;
+        var probes = new List<object>();
+        var scripts = new[]
+        {
+            (Name: "japanese", Language: "ja-JP", Text: "通知を有効にする"),
+            (Name: "simplified-chinese", Language: "zh-CN", Text: "启用通知"),
+            (Name: "traditional-chinese", Language: "zh-TW", Text: "啟用通知"),
+            (Name: "korean", Language: "ko-KR", Text: "알림 활성화"),
+            (Name: "arabic", Language: "ar", Text: "تمكين الإشعارات"),
+            (Name: "latin", Language: "en-US", Text: "Consumer label")
+        };
+        var weights = new[]
+        {
+            (Value: (ushort)400, Key: "BleeckerPrimaryFontFamily"),
+            (Value: (ushort)500, Key: "BleeckerPrimaryMediumFontFamily"),
+            (Value: (ushort)600, Key: "BleeckerPrimarySemiboldFontFamily")
+        };
+        try
+        {
+            NonLatin.Description = null;
+            foreach (var script in scripts)
+            foreach (var weight in weights)
+            foreach (var candidate in new[] { "original", "yu-gothic" })
+            {
+                var source = FindFontResource(Application.Current.Resources, weight.Key);
+                var text = new TextBlock
+                {
+                    Text = script.Text, Language = script.Language, FlowDirection = FlowDirection.LeftToRight,
+                    FontFamily = candidate == "original" ? source : new FontFamily(source.Source + ", Yu Gothic"),
+                    FontWeight = new Windows.UI.Text.FontWeight { Weight = weight.Value },
+                    FontSize = 14, TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false
+                };
+                NonLatin.Language = script.Language;
+                NonLatin.Content = text;
+                UpdateLayout(); await Task.Delay(50); UpdateLayout();
+                Require(text.LineHeight == 20 && text.ActualHeight == 20 && double.IsFinite(text.ActualWidth),
+                    "Script evidence probe did not receive the branded text layout.");
+                probes.Add(new { name = script.Name, language = text.Language, weight = weight.Value, candidate,
+                    text = text.Text, font = text.FontFamily.Source, text.FontSize, text.LineHeight,
+                    text.ActualWidth, text.ActualHeight, text.BaselineOffset, rowWidth = NonLatin.ActualWidth });
+                await MainWindow.CaptureElementAsync(NonLatin,
+                    Path.Combine(folder, $"checkbox-script-{script.Name}-{weight.Value}-{candidate}-{scheme}.png"));
+            }
+            await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-script-weights-{scheme}.json"),
+                JsonSerializer.Serialize(new { referenceCommit = "a86059013cd59684ce452849278ea81e734f2066",
+                    evidenceOnly = true, probes }, new JsonSerializerOptions { WriteIndented = true }));
+        }
+        finally
+        {
+            NonLatin.Content = originalContent;
+            NonLatin.Description = originalDescription;
+            NonLatin.Language = originalLanguage;
+            UpdateLayout();
+        }
+        Require(ReferenceEquals(NonLatin.Content, originalContent) && ReferenceEquals(NonLatin.Description, originalDescription) &&
+            NonLatin.Language == originalLanguage, "Script evidence probe did not restore consumer content and language.");
+    }
+
+    private static FontFamily FindFontResource(ResourceDictionary dictionary, string key)
+    {
+        if (dictionary.TryGetValue(key, out var value)) return value as FontFamily
+            ?? throw new InvalidOperationException($"Resource {key} is not a font family.");
+        foreach (var merged in dictionary.MergedDictionaries.Reverse())
+        {
+            try { return FindFontResource(merged, key); }
+            catch (KeyNotFoundException) { }
+        }
+        throw new KeyNotFoundException(key);
     }
 
     private async Task VerifyMotionAsync()
