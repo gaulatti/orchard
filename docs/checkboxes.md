@@ -24,7 +24,10 @@ explicit name. Rich content retains its consumer-owned elements.
 
 There is one source size and no variants. The box is 20×20px, with a 1px border,
 4px radius and the reference white 14×14 SVG check. The SVG's 14×10 viewBox is
-centered within that footprint, preserving its round 2-unit stroke. Label and
+centered within an explicit square viewport, preserving its round 2-unit stroke.
+The check remains left-to-right inside an RTL row; only row layout follows the
+reading direction. Inheriting RTL into the vector would mirror its geometry.
+Label and
 description use Encode Sans at 14px/20px, medium and regular respectively.
 Text starts 12px after the box. Description has a 2px top margin, including
 when there is no label. Both strings wrap beside a top-aligned box; empty
@@ -64,6 +67,13 @@ states, template replacement, live appearance with retained state, intermediate
 glyph motion and reversals. Reports and captures are retained as
 `checkbox-measurements-{Light,Dark}.json` and `checkbox-{Light,Dark}.png`, including
 on failure. The independent package consumer instantiates and toggles it.
+
+The first x64/ARM64 run at `79f1053` stopped at its glyph geometry assertion.
+The x64 capture also exposed inherited RTL mirroring. The follow-up keeps the
+14×10 content inside an explicit 14×14 viewport and fixes the vector's reading
+direction. Native default text measures 291.700043×42px against 291.71875×42px
+in the browser. The failed fixture does not prove the subsequent behavior
+checks; exact rendered comparison remains open.
 
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix

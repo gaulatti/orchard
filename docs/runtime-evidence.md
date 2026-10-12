@@ -116,6 +116,20 @@ The next preparation also requests normal minimization of that exact welcome
 backdrop, gated by the app identity, explorer process name and matching session.
 Dark-started checks, physical input and ARM64 consumption remain unverified.
 
+The first Checkbox runtime at `79f10535647973b89da1e29cd2853f0d0f24d10b`
+([run 38297199784](https://github.com/gaulatti/orchard/actions/runs/38297199784))
+failed its initial glyph geometry check on x64 and ARM64; ARM64 cross-build
+passed. The x64 report/capture was downloaded and hash-verified from artifact
+`11768994195`, SHA-256
+`b655bea08cd5cff8d33c53f5fc4cc01d56eaa7cf5715dbd569ea13fce1f8b49c`,
+under `artifacts/ci-checkbox-79f1053-x64`. Default text measures
+291.700043×42px, and the image exposes RTL checkmark mirroring. The follow-up
+adds an explicit square SVG viewport and preserves its left-to-right geometry.
+Remaining behavior checks were not reached. Both local architecture builds
+and 23 unit tests passed. A locally packed isolated x64 consumer build passed
+without runtime launch; package SHA-256 is
+`09fd119f4665472b3a9349ed44b5cad46a272da17b903e6f5a90f4f870ee21f6`.
+
 ## Shared x64 and ARM64 baseline
 
 The first native ARM64 run was [38267617259](https://github.com/gaulatti/orchard/actions/runs/38267617259)

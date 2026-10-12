@@ -143,7 +143,8 @@ public sealed partial class CheckboxesFixture : UserControl
         var checkedState = control.IsChecked == true;
         var expected = checkedState ? scheme == BleeckerColorScheme.Light ? "#FF2C5784" : "#FF5BA3F5" : scheme == BleeckerColorScheme.Light ? "#FFFFFFFF" : "#FF1A374D";
         Require(box.ActualWidth == 20 && box.ActualHeight == 20 && box.CornerRadius == new CornerRadius(4) && box.BorderThickness == new Thickness(1) &&
-            glyph.ActualWidth == 14 && glyph.ActualHeight == 14 && glyph.Opacity == (checkedState ? 1 : 0), $"Checkbox geometry/glyph differs for {control.Name}.");
+            glyph.ActualWidth == 14 && glyph.ActualHeight == 14 && glyph.Opacity == (checkedState ? 1 : 0) && glyph.FlowDirection == FlowDirection.LeftToRight,
+            $"Checkbox geometry/glyph differs: {JsonSerializer.Serialize(Measure(control))}.");
         Require(Hex(box.Background) == expected && box.Background.Opacity == 1 &&
             Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5) &&
             Find<Grid>(control, "PART_TextColumn").Opacity == 1 && Find<Grid>(control, "PART_Root").Opacity == 1,
@@ -156,9 +157,12 @@ public sealed partial class CheckboxesFixture : UserControl
     private object Measure(BleeckerCheckbox control)
     {
         var box = Find<Border>(control, "PART_Box"); var label = Find<TextBlock>(control, "PART_Label"); var description = Find<TextBlock>(control, "PART_Description");
+        var glyph = Find<Viewbox>(control, "PART_Glyph");
         return new { control.Name, control.IsChecked, control.IsEnabled, control.ActualWidth, control.ActualHeight,
             box = new { box.ActualWidth, box.ActualHeight, fill = Hex(box.Background), opacity = box.Background.Opacity, stroke = Hex(box.BorderBrush), strokeOpacity = box.BorderBrush.Opacity },
-            glyphOpacity = Find<Viewbox>(control, "PART_Glyph").Opacity, inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
+            glyph = new { glyph.ActualWidth, glyph.ActualHeight, glyph.Opacity, direction = glyph.FlowDirection.ToString(),
+                bounds = glyph.TransformToVisual(control).TransformBounds(new Rect(0, 0, glyph.ActualWidth, glyph.ActualHeight)) },
+            inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
             label = new { label.Text, label.ActualWidth, label.ActualHeight, label.BaselineOffset },
             description = new { description.Text, description.ActualWidth, description.ActualHeight, description.BaselineOffset } };
     }

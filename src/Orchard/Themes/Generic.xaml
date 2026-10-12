@@ -112,11 +112,13 @@
                         <Border x:Name="PART_FocusOffset" Width="24" Height="24" CornerRadius="6" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <Border x:Name="PART_Box" Width="20" Height="20" CornerRadius="4" BorderThickness="1" BackgroundSizing="OuterBorderEdge" />
                     </Grid>
-                    <Viewbox x:Name="PART_Glyph" Width="14" Height="14" Stretch="Uniform" IsHitTestVisible="False">
-                        <Canvas Width="14" Height="10">
+                    <Viewbox x:Name="PART_Glyph" Width="14" Height="14" Stretch="Uniform" FlowDirection="LeftToRight" IsHitTestVisible="False">
+                        <Grid Width="14" Height="14">
+                        <Canvas Width="14" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Path x:Name="PART_Check" Data="M1 5L4.5 8.5L13 1" Stroke="{ThemeResource CheckboxGlyph}" StrokeThickness="2"
                                 StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
                         </Canvas>
+                        </Grid>
                     </Viewbox>
                 </Grid>
                 <Grid x:Name="PART_TextColumn" Grid.Column="1" Margin="12,0,0,0">

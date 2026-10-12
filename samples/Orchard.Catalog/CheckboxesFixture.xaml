@@ -1,6 +1,6 @@
 <UserControl x:Class="Orchard.Catalog.CheckboxesFixture"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
-    <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
+    <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
         <TextBlock Text="Checkbox" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <orchard:BleeckerCheckbox x:Name="Default" Content="Enable notifications" Description="Send alerts when a device starts playback." IsChecked="True" />
         <orchard:BleeckerCheckbox x:Name="Off" Content="Unchecked option" />
