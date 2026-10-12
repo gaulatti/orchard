@@ -20,6 +20,47 @@ audit fixture additionally measures Small at 13px/19.5px and Large at
 15px/22.5px. All three render the listed heights/padding, 1px borders and 7px
 radii. Native text baseline/line-box equivalence remains unverified.
 
+### Typography comparison at 100% display scale
+
+The October 12 native/browser audit uses identical `Harbor update` text in all
+three sizes. Dark captures are `artifacts/input-baseline-reference-dark.jpg`
+and `artifacts/input-baseline-native-dark.jpg`. Foreground ink begins at
+14/16/18px and ends at 95/104/112px from the left border in both renderers.
+These bounds include glyph side bearings; they are not padding measurements.
+
+Comparing integer vertical translations over the interior text pixels gives
+the lowest squared error with no translation for Small/Large, but with native
+Medium sampled one pixel upward. Equivalently, the native Medium text needs
+to move down to align with the reference. A second `Agjpqy 0123456789` sample
+confirms the same direction. The measurements are retained in
+`artifacts/input-baseline-dark-alignment.json` and
+`artifacts/input-baseline-medium-corpus-alignment.json`. This is diagnostic
+alignment evidence, not exact raster acceptance: JPEG compression and the
+renderers' antialiasing remain different.
+
+Placeholder text is a separate issue. The identical-text filled/placeholder
+captures from `artifacts/smoke-input-typography` show the native placeholder
+one pixel below entered text at all three sizes. Against the browser placeholder,
+Small/Large are one pixel low and Medium aligns without translation. See
+`artifacts/input-placeholder-dark-alignment.json`. The element captures reproduce
+the filled-text offsets from the actual-window captures, but do not establish
+shadow or border compositing parity.
+
+The focused Input smoke now emits `input-typography-{theme}.json`, plus filled
+and placeholder captures for both themes. It records the native character-edge
+rectangle, editor origin/height and placeholder origin/height/baseline using
+the pinned WinUI APIs, and checks that the line fits its viewport. It restores
+the fixture's original text and placeholders afterward. These checks expose
+geometry and clipping; they deliberately do not assert that an uncorrected
+baseline matches Bleecker. Baseline correction, actual-window placeholder
+confirmation, light-theme raster comparison and other display/text scales
+remain required before typography acceptance.
+
+The diagnostics checkpoint passes the focused light/dark runtime suite at
+`artifacts/smoke-input-typography-verified`, all 13 unit/coverage tests, x64
+publish and ARM64 compilation. This change is confined to catalog verification
+and documentation; it does not change the library or packaged control behavior.
+
 Start/end adornments are consumer-owned decorative content, centered vertically,
 12px from their corresponding outer edge. Each occupied side gets a 40px text
 inset. WithIcons renders 16px Search and User icons; that size belongs to the
