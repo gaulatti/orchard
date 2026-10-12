@@ -24,7 +24,7 @@ public sealed class BleeckerSwitch : Control
     private Border? track;
     private Microsoft.UI.Xaml.Shapes.Ellipse? thumb;
     private TextBlock? label;
-    private readonly TextBlock intrinsicLabel = new() { TextWrapping = TextWrapping.NoWrap };
+    private readonly TextBlock intrinsicLabel = new() { TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false };
     private Grid? shadowHost;
     private TranslateTransform? translation;
     private TextBlock[] probes = [];
@@ -139,6 +139,8 @@ public sealed class BleeckerSwitch : Control
         intrinsicLabel.FontStretch = label.FontStretch;
         intrinsicLabel.CharacterSpacing = label.CharacterSpacing;
         intrinsicLabel.IsTextScaleFactorEnabled = label.IsTextScaleFactorEnabled;
+        intrinsicLabel.Language = label.Language;
+        intrinsicLabel.FlowDirection = label.FlowDirection;
         intrinsicLabel.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
         var preferredWidth = 36 + (string.IsNullOrEmpty(Label) ? 0 : 12 + intrinsicLabel.DesiredSize.Width);
         var width = Math.Min(availableSize.Width, preferredWidth);

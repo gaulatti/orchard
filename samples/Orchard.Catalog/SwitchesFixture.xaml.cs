@@ -109,7 +109,15 @@ public sealed partial class SwitchesFixture : UserControl
         await VerifyLiveAppearanceAsync(scheme);
         // Physical input is restricted to the dedicated hosted CI desktop.
         // Ordinary local catalog verification does not take over the user's input.
-        if (Environment.GetEnvironmentVariable("CI") == "true") await VerifyPhysicalInputAsync();
+        if (Environment.GetEnvironmentVariable("CI") == "true")
+        {
+            try { await VerifyPhysicalInputAsync(); }
+            finally
+            {
+                await File.WriteAllTextAsync(Path.Combine(folder, $"switch-physical-input-{scheme}.json"),
+                    JsonSerializer.Serialize(physicalInputSteps, new JsonSerializerOptions { WriteIndented = true }));
+            }
+        }
         await VerifyMotionAsync();
         var measurements = Rows.Children.OfType<BleeckerSwitch>().Select(control =>
         {
@@ -160,9 +168,12 @@ public sealed partial class SwitchesFixture : UserControl
             var gap = control.FlowDirection == FlowDirection.RightToLeft ? trackBounds.Left - labelBounds.Right : labelBounds.Left - trackBounds.Right;
             Require(Math.Abs(gap - 12) < .01, $"Switch label gap differs: {control.Name}, gap={gap:R}.");
         }
-        if (control.Name == "LongLabel") Require(control.ActualHeight == 80, $"Long switch label differs from its four 20px reference lines: {control.ActualHeight:R}.");
+        if (control.Name == "LongLabel") Require(control.ActualHeight == 80 && Math.Abs(label.ActualWidth - 152) < .01,
+            $"Long switch label differs from its 152px-wide, four 20px reference lines: label={label.ActualWidth:R}x{label.ActualHeight:R}.");
         if (control.Name == "Off") Require(control.ActualHeight == 20 && label.DesiredSize.Height == 20 && label.ActualWidth > 120,
             $"First-display switch label wrapped or clipped despite available width: control={control.ActualWidth:R}x{control.ActualHeight:R}, label={label.ActualWidth:R}x{label.ActualHeight:R}, desired={label.DesiredSize}.");
+        if (control.Name == "Off") Require(Math.Abs(control.ActualWidth - 173.296875) < .05,
+            $"Natural switch row width differs from the browser reference: {control.ActualWidth:R}.");
     }
 
     private async Task VerifyLifecycleAsync(BleeckerColorScheme scheme)
@@ -253,11 +264,19 @@ public sealed partial class SwitchesFixture : UserControl
         process.Refresh();
         var window = process.MainWindowHandle;
         Require(window != IntPtr.Zero, "Physical switch check could not identify its own window.");
-        SetForegroundWindow(window);
-        await WaitAsync(() => GetForegroundWindow() == window, "Physical switch check did not own the foreground window.");
         Require(GetCursorPos(out var originalPointer), "Physical switch check could not read its pointer position.");
         try
         {
+            // The smoke process starts hidden. Expose only its own hosted-CI
+            // window, then activate it through real pointer input if Windows
+            // refuses a programmatic foreground request.
+            ShowWindow(window, 9); // SW_RESTORE
+            Require(SetWindowPos(window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the CI catalog window.");
+            SetForegroundWindow(window);
+            await Task.Delay(100);
+            if (GetForegroundWindow() != window) await ClickAsync(Find<Border>(Off, "PART_Track"), false);
+            await WaitAsync(() => GetForegroundWindow() == window, "Physical switch check did not own the foreground window.");
+            physicalInputSteps.Add("Own catalog window acquired foreground input");
             Off.IsOn = false;
             await SettleAsync(Off, false);
             var native = Find<ToggleSwitch>(Off, "PART_Switch");
@@ -291,13 +310,28 @@ public sealed partial class SwitchesFixture : UserControl
             await WaitAsync(() => Rtl.IsOn, "Physical RTL label click did not toggle on.");
             physicalInputSteps.Add("RTL track and label both activated the native input");
         }
-        finally { Off.IsOn = false; Rtl.IsOn = true; SetCursorPos(originalPointer.X, originalPointer.Y); }
+        finally
+        {
+            Off.IsOn = false; Rtl.IsOn = true;
+            SetWindowPos(window, new IntPtr(-2), 0, 0, 0, 0, 0x0013); // Remove temporary topmost status.
+            SetCursorPos(originalPointer.X, originalPointer.Y);
+        }
         await SettleAsync(Off, false);
 
-        async Task ClickAsync(FrameworkElement target)
+        async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
         {
-            Require(GetForegroundWindow() == window, "Physical input lost its foreground window.");
-            var bounds = FrameworkElementAutomationPeer.CreatePeerForElement(target).GetBoundingRectangle();
+            if (requireForeground) Require(GetForegroundWindow() == window, "Physical input lost its foreground window.");
+            // Painted template parts such as Border do not own automation
+            // peers. Anchor their visual bounds to the real native input's
+            // screen rectangle and convert DIPs through this XamlRoot's scale.
+            DependencyObject? ancestor = target;
+            while (ancestor is not null && ancestor is not ToggleSwitch) ancestor = VisualTreeHelper.GetParent(ancestor);
+            Require(ancestor is ToggleSwitch, "Physical switch target has no native input ancestor.");
+            var input = (ToggleSwitch)ancestor!;
+            var screen = FrameworkElementAutomationPeer.CreatePeerForElement(input).GetBoundingRectangle();
+            var local = target.TransformToVisual(input).TransformBounds(new Rect(0, 0, target.ActualWidth, target.ActualHeight));
+            var scale = XamlRoot.RasterizationScale;
+            var bounds = new Rect(screen.X + local.X * scale, screen.Y + local.Y * scale, local.Width * scale, local.Height * scale);
             Require(bounds.Width > 0 && bounds.Height > 0, "Physical switch target has no screen bounds.");
             Require(SetCursorPos((int)(bounds.X + bounds.Width / 2), (int)(bounds.Y + bounds.Height / 2)), "Could not position CI pointer.");
             Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0002 } } },
@@ -322,6 +356,8 @@ public sealed partial class SwitchesFixture : UserControl
     private struct CursorPoint { public int X, Y; }
     [DllImport("user32.dll", SetLastError = true)] private static extern uint SendInput(uint count, NativeInput[] inputs, int size);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetForegroundWindow(IntPtr window);
+    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindow(IntPtr window, int command);
+    [DllImport("user32.dll", SetLastError = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetWindowPos(IntPtr window, IntPtr insertAfter, int x, int y, int width, int height, uint flags);
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out CursorPoint point);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetCursorPos(int x, int y);

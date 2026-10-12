@@ -126,7 +126,7 @@
                         <Ellipse x:Name="PART_Thumb" Width="16" Height="16" IsHitTestVisible="False" />
                     </Grid>
                 </Grid>
-                <TextBlock x:Name="PART_Label" Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" Text="{TemplateBinding Header}"
+                <TextBlock x:Name="PART_Label" Grid.Column="1" Margin="12,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{TemplateBinding Header}"
                     FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
                     Foreground="{TemplateBinding Foreground}" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords"
                     AutomationProperties.AccessibilityView="Raw" />

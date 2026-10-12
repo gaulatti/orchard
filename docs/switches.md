@@ -37,8 +37,11 @@ font/scaling properties to determine its preferred width, then constrains the ro
 to available space before the final wrapped measure. This follows source
 inline-flex sizing and prevents the star column from shrinking an ordinary
 label to its longest word and clipping it during first arrangement. The native
-input stretches to the wrapper's allocation. The runtime fixture checks the
-initial single-line label and the four-line 200px label separately.
+input and visible label stretch to their allocated widths. The unwrapped
+measurement disables layout rounding too, avoiding whole-pixel inflation of the
+natural row width. The runtime fixture checks the initial single-line row
+against its 173.296875px browser measurement with 0.05px text-shaping tolerance,
+and the four-line 200px row retains a 152px label allocation.
 
 The source's hidden checkbox has no visible focus treatment, so the template does not add a
 Windows stock focus ring. Keyboard focus visibility remains an acceptance gap.
@@ -93,6 +96,13 @@ The dedicated hosted CI desktop additionally sends actual Space/Tab and pointer
 input to its own foreground catalog window, verifying label/track activation,
 disabled rejection and RTL activation. Local smoke checks omit physical input
 and explicitly record that omission, preserving the developer's foreground app.
+The hosted check restores its own initially hidden window and temporarily makes
+it topmost. If Windows refuses a foreground request, a real click activates that
+window before keyboard checks begin. Cleanup removes the temporary topmost state
+and restores the pointer. Painted template parts have no automation peer, so
+pointer targets use their visual bounds relative to the native input's screen
+rectangle and the XamlRoot display scale. Partial physical steps are retained
+even when a later check fails.
 The disabled-activation regression accepts the native UIA ElementNotEnabled
 HRESULT `0x80040200`, which this SDK projection exposes as COMException, while
 also requiring the consumer Boolean to remain unchanged.
