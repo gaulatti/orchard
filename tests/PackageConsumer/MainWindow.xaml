@@ -38,6 +38,7 @@
                 <TextBlock Text="Fictional local content. Resources and fonts come from the NuGet package."
                            Style="{StaticResource BleeckerBodyStyle}" />
                 <TextBox x:Name="Input" Header="Title" Text="Harbor update" Style="{StaticResource BleeckerTextBoxStyle}" />
+                <orchard:BleeckerFieldHelpTooltip x:Name="PackageHelp" Text="Use a concise title for this fictional item." HorizontalAlignment="Left" />
                 <ComboBox Header="Category" SelectedIndex="0" Style="{StaticResource BleeckerComboBoxStyle}">
                     <ComboBoxItem Content="Local" />
                     <ComboBoxItem Content="Culture" />

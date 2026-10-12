@@ -102,7 +102,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | field | Pending | Pending | Full pinned contract |
 | header-select | Pending | Pending | Full pinned contract |
 | hero-carousel | Pending | Pending | Full pinned contract |
-| field-help-tooltip | Pending | Pending | Full pinned contract |
+| field-help-tooltip | `BleeckerFieldHelpTooltip`, native button with explicit vector template | Inline label and empty text, branded state values, keyboard help, accessible name and live text | In progress: control motion, physical input, rendered parity, contrast/Narrator/scaling and ARM64; see [usage](field-help-tooltips.md) |
 | icon-badge | Pending | Pending | Full pinned contract |
 | icon-button | `BleeckerIconButton`: three variants and three sizes | Nine registered combinations; x64 dimensions, names/roles, command and state checks; light/dark captures; package fixture; ARM64 build | In progress: physical input, tooltip, Narrator, contrast, scaling, motion and ARM64 runtime; see [usage](icon-buttons.md) |
 | loading-spinner | `BleeckerLoadingSpinner`: three sizes, themed three-quarter ring | Registered fixture; x64 geometry, theme, UIA, reduced-motion and lifecycle checks; independent package consumer | In progress: normal/live motion, contrast, Narrator, scaling/composition, ARM64 runtime; see [usage](loading-spinner.md) |

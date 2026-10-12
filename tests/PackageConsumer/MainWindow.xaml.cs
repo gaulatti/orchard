@@ -35,6 +35,10 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                Require(PackageHelp.ActualWidth == 16 && PackageHelp.ActualHeight == 16 &&
+                    FrameworkElementAutomationPeer.CreatePeerForElement(PackageHelp).GetName() == PackageHelp.Text &&
+                    BleeckerTooltipService.GetToolTip(PackageHelp)?.Placement == Microsoft.UI.Xaml.Controls.Primitives.PlacementMode.Bottom,
+                    "Packaged field help lost its size, accessible name or bottom tooltip.");
                 PackageMenu.ShowAt(MenuTrigger);
                 await Task.Delay(200);
                 var menuPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();

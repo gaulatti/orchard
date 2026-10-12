@@ -3346,14 +3346,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerFieldHelpTooltip.cs", "src/Orchard/Themes/Generic.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/FieldHelpFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/FieldHelpFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Implement 190ms premium color and scale transitions",
+        "Verify physical input and rendered reference parity across themes and states",
+        "Verify contrast, Narrator, scaling, ARM64 runtime and inherited Tooltip gaps"
       ]
     },
     {

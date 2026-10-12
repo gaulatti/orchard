@@ -71,6 +71,7 @@
                 <local:MenusFixture x:Name="Menus" />
                 <local:NotificationsFixture x:Name="Notifications" />
                 <local:TooltipsFixture x:Name="Tooltips" />
+                <local:FieldHelpFixture x:Name="FieldHelp" />
                 <TextBlock Text="Foundation preview · typography, themes, actions, and inputs"
                            Style="{StaticResource BleeckerBodyStyle}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
             </StackPanel>

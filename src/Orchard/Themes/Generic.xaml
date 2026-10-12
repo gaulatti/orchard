@@ -6,6 +6,46 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="local:BleeckerFieldHelpTooltip">
+        <Setter Property="Width" Value="16" /><Setter Property="Height" Value="16" />
+        <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" />
+        <Setter Property="Padding" Value="0" /><Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" /><Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}" />
+        <Setter Property="UseSystemFocusVisuals" Value="False" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerFieldHelpTooltip">
+            <Grid x:Name="HelpRoot" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform><ScaleTransform x:Name="HelpScale" /></Grid.RenderTransform>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="PointerOver"><VisualState.Setters>
+                            <Setter Target="InfoCircle.Stroke" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+                            <Setter Target="InfoMark.Stroke" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+                        </VisualState.Setters></VisualState>
+                        <VisualState x:Name="Pressed"><VisualState.Setters>
+                            <Setter Target="HelpScale.ScaleX" Value="0.9" /><Setter Target="HelpScale.ScaleY" Value="0.9" />
+                            <Setter Target="InfoCircle.Stroke" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+                            <Setter Target="InfoMark.Stroke" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+                        </VisualState.Setters></VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="FocusStates">
+                        <VisualState x:Name="Unfocused" /><VisualState x:Name="PointerFocused" />
+                        <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="HelpFocus.Opacity" Value="1" /></VisualState.Setters></VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Ellipse x:Name="HelpFocus" Width="20" Height="20" Margin="-2" Stroke="{ThemeResource BleeckerAccentBlueBrush}" StrokeThickness="2" Opacity="0" IsHitTestVisible="False" />
+                <!-- Lucide Info, 24-unit source scaled to the reference 14px footprint. -->
+                <Viewbox x:Name="InfoGlyph" Width="14" Height="14" IsHitTestVisible="False">
+                    <Canvas Width="24" Height="24">
+                        <Ellipse x:Name="InfoCircle" Canvas.Left="1" Canvas.Top="1" Width="22" Height="22" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" />
+                        <Path x:Name="InfoMark" Data="M12,16 L12,12 M12,8 L12.01,8" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                    </Canvas>
+                </Viewbox>
+            </Grid>
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
     <Style TargetType="local:BleeckerTooltip">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
