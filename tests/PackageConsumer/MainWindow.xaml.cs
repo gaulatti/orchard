@@ -143,6 +143,14 @@ public sealed partial class MainWindow : Window
                 Require(PackageSkeleton.ActualHeight == 16 && PackageSkeleton.ActualWidth == 160 && PackageSkeletonCard.ActualHeight == 88 &&
                     PackageSkeletonTable.ActualHeight == 32 && !FrameworkElementAutomationPeer.CreatePeerForElement(PackageSkeleton).IsControlElement(),
                     "Packaged Skeleton controls lost their independent templates, geometry or decorative semantics.");
+                var avatarRoot = (FrameworkElement)VisualTreeHelper.GetChild(PackageAvatar, 0);
+                Require(PackageAvatar.ActualWidth == 40 && PackageAvatar.ActualHeight == 40 && PackageAvatar.FontFamily.Source.Contains("EncodeSans-Medium.ttf") &&
+                    ((TextBlock)avatarRoot.FindName("PART_Initials")).Text == "SSSS" &&
+                    FrameworkElementAutomationPeer.CreatePeerForElement(PackageAvatar).GetName() == "SSSS",
+                    "Packaged Avatar lost its template, font, Unicode mappings or semantics.");
+                Require(PackageAvatarGroup.ActualHeight == 40 && PackageAvatarGroup.Avatars.Count == 3 &&
+                    ((Panel)((Grid)VisualTreeHelper.GetChild(PackageAvatarGroup, 0)).Children.Single()).Children.Count == 3,
+                    "Packaged AvatarGroup lost its data model or overflow composition.");
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");

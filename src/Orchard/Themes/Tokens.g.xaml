@@ -15,6 +15,10 @@
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FF000000" Opacity="0.05" />
             <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="#FFE6D5B8" Opacity="0.2" />
             <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="#FF000000" Opacity="0.08" />
+            <SolidColorBrush x:Key="BleeckerAvatarBackgroundBrush" Color="#FFF9F6F2" />
+            <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FF595959" />
+            <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="#FF000000" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF1A374D" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -131,6 +135,10 @@
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="#FFFFFFFF" Opacity="0.08" />
+            <SolidColorBrush x:Key="BleeckerAvatarBackgroundBrush" Color="#FF182533" />
+            <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FFF0F4F8" />
+            <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FF182533" />
+            <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -247,6 +255,10 @@
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAvatarBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="{ThemeResource SystemColorWindowTextColor}" />

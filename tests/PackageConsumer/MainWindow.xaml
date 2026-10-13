@@ -30,6 +30,16 @@
                 <orchard:BleeckerSkeleton x:Name="PackageSkeleton" Width="160" Height="16" HorizontalAlignment="Left" />
                 <orchard:BleeckerSkeletonCard x:Name="PackageSkeletonCard" Width="320" Rows="0" HorizontalAlignment="Left" />
                 <orchard:BleeckerSkeletonTable x:Name="PackageSkeletonTable" Width="320" Rows="0" Columns="2" HorizontalAlignment="Left" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <orchard:BleeckerAvatar x:Name="PackageAvatar" Fallback="ßeta ßeta" />
+                    <orchard:BleeckerAvatarGroup x:Name="PackageAvatarGroup" Max="2" Width="160">
+                        <orchard:BleeckerAvatarGroup.Avatars>
+                            <orchard:BleeckerAvatarData Fallback="Alice Harbor" />
+                            <orchard:BleeckerAvatarData Fallback="Bob Reed" />
+                            <orchard:BleeckerAvatarData Fallback="Charlie Vale" />
+                        </orchard:BleeckerAvatarGroup.Avatars>
+                    </orchard:BleeckerAvatarGroup>
+                </StackPanel>
                 <orchard:BleeckerSeparator x:Name="PackageSeparator" Decorative="False" AutomationProperties.Name="Preview boundary" />
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />

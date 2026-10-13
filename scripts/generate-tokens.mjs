@@ -55,6 +55,10 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
   // Pinned skeleton.tsx: sand/20, dark:white/10; SkeletonCard uses the border ring.
   xaml += `            <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .2}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : .08}" />\n`;
+  // Pinned avatar.tsx: circular lightSand/deepSea surface and distinct group rings.
+  for (const [name, value, system] of [['AvatarBackground', theme === 'Default' ? colors.deepSea : colors.lightSand, 'SystemColorWindowColor'], ['AvatarForeground', theme === 'Default' ? colors.textPrimary : colors.textSecondary, 'SystemColorWindowTextColor'], ['AvatarGroupRing', theme === 'Default' ? colors.deepSea : '#ffffff', 'SystemColorWindowTextColor']])
+    xaml += `            <SolidColorBrush x:Key="Bleecker${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(value)}" />\n`;
+  xaml += `            <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : .1}" />\n`;
   for (const [key, value] of Object.entries(colors)) {
     const color = theme === 'HighContrast' ? `{ThemeResource ${highContrastColor(key)}}` : argb(value);
     xaml += `            <SolidColorBrush x:Key="Bleecker${pascal(key)}Brush" Color="${color}" />\n`;

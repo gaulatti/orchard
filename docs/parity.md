@@ -68,7 +68,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | accordion | Pending | Pending | Full pinned contract |
 | alert | Pending | Pending | Full pinned contract |
 | alert-dialog | Pending | Pending | Full pinned contract |
-| avatar | Pending | Pending | Full pinned contract |
+| avatar | `BleeckerAvatar`, `BleeckerAvatarGroup`, `BleeckerAvatarData`: five sizes, images/initials/silhouettes and consumer collections | Registered Avatars fixture; source Light/Dark audit; local x64 build; native and independent package checks pending | In progress: native/browser raster parity, contrast/Narrator/scaling, constrained widths and overrides; see [contract and usage](avatar-reference.md) |
 | breadcrumb | Pending | Pending | Full pinned contract |
 | context-menu | Pending | Pending | Full pinned contract |
 | date-picker | Pending | Pending | Full pinned contract |

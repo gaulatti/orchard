@@ -4,6 +4,9 @@ The catalog fixtures and independent NuGet consumer at commit `71a7fb8` passed
 on both x64 and native ARM64, including Skeleton's rendered pixels, live consumer
 opacity and ancestor visibility, and the stronger global visible-cursor gate.
 That runtime baseline covers 21 in-progress inventory entries; 91 remain pending.
+Avatar is newly in progress, bringing the current inventory to 22 in progress
+and 90 pending. Its native and independent package-consumer checks are pending;
+it is outside that 21-entry runtime baseline.
 The earlier `7024b9e` and `5412997` checkpoints covered 20 and 18 entries.
 The Input cursor failure observed at `61d13aa` did not recur, but its cause
 remains unresolved. Further implementation changes require their own native checks.
