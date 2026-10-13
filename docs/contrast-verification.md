@@ -1,5 +1,50 @@
 # Windows contrast verification
 
+Run `38431196521` at `f074df3` passes the live color assertion on x64 and reaches
+popup/focus verification. Its trace records a native window deactivation while
+the logical help trigger retains keyboard focus. The x64 archive `11830797900`
+has verified SHA-256
+`c3e7566147f73f6841750b0cd606935d12ac73d707cfa419e58e9b9ae0c950f5`;
+selected evidence is at `artifacts/ci-contrast-f074df3-x64`.
+
+The test now records the native foreground process at focus events. Only a
+proven foreign-process foreground transition while contrast is enabled and the
+same help owner remains focused permits keyboard re-entry. That branch first
+requires normal tooltip dismissal, restores only the catalog's foreground via
+the existing guarded input session, and uses actual Tab to reopen the same help
+control. It then verifies the live popup palette and keyboard focus. An
+unexplained closure, an Orchard-owned popup taking foreground, or focus moving
+to another XAML element still fails. This branch is pending hosted verification;
+it does not establish open-popup retention across an uninterrupted transition.
+
+The `f4fd80a` failure image also exposes a rendering defect: its primary action
+label has 154 solid white ink pixels and a dark backing in the sampled label
+rectangle, while its mapped HighlightText brush is `#FF263B50` on Highlight
+`#FF8EE3F0`. Generated button styles and the foundation button/text styles now
+set `HighContrastAdjustment=None`, following the
+[Windows guidance](https://learn.microsoft.com/en-us/windows/apps/design/accessibility/high-contrast-themes)
+for already-correct system-aware brushes. Windows semantic theme resources stay
+authoritative. Native verification of the repaired paint remains required.
+
+The baseline now enters contextual help through physical Tab from breadcrumb
+expansion, proving both actual focus and keyboard modality. Programmatically
+requesting Keyboard focus after a mouse move did not establish the user's last
+input device. The ordinary Light/Dark suite verifies this same entry and actual
+Escape dismissal with retained keyboard focus, without changing Windows mode.
+The existing popup/focus retention assertion is unchanged.
+Independent package verification runs after either native-smoke outcome, even
+when contrast fails; those failures still fail the required job.
+
+The same run's ARM64 phase retains its popup and keyboard focus, then fails the
+immediate painted-background assertion. Archive `11831991299` has verified
+SHA-256 `e68701887295ed6b9c6ad93798de282689e6d7c939628cc4da6170ab49d818eb`.
+The failure page has the current Highlight fill, so the earlier pixel's value
+and exact expected color need direct observation. Paint checks now retain each
+actual/expected background sample and glyph-match count, observe live Windows
+colors after each raster read, and await exact pixel settlement within eight
+seconds. The original ink mask, dimensions, opaque pixels and exact colors
+remain required; this settling check makes no motion-duration claim.
+
 Run `38428299357` at `f4fd80a` enters real contrast mode and restores the original
 mode/palette. Its x64 color assertion fails although the retained failure
 snapshot's colors match the then-current Win32 colors. The test had captured its
@@ -60,8 +105,10 @@ Windows' colors. Glyph sampling reuses solid ink positions from the pre-change
 transparent text render, so a matching border or background cannot masquerade
 as correctly painted foreground. Raster dimensions must remain unchanged.
 Physical breadcrumb hover must pair Highlight with HighlightText. The
-popup must stay open with keyboard focus during the transition, and the original
-root/text palette must return afterward.
+popup must stay open with keyboard focus while the catalog owns foreground;
+native deactivation follows the existing focus-loss dismissal contract and
+requires verified keyboard re-entry as described above. The original root/text
+palette must return afterward.
 
 Reports retain before, active/failure and restored state in
 `contrast-measurements.json`; PNGs retain the three page phases, active tooltip
@@ -69,7 +116,9 @@ and composed window. Mode restoration failures fail verification. Local refusal
 has been verified with `highContrast=false`; native mode-transition verification
 is pending. The ordinary complete x64 catalog still passes both themes/system
 appearance under `artifacts/smoke-contrast-ordinary`; both architecture builds
-have zero warnings and all 26 unit tests pass. Build/resource checks alone do
+have zero warnings and all 26 unit tests pass. The ordinary complete x64 suite
+also passes at `artifacts/smoke-contrast-physical-all`, including the shared
+physical Tab/Escape entry in both themes with the repaired styles. Build/resource checks alone do
 not establish a contrast pass.
 
 This initial check covers the runner's configured contrast scheme and these

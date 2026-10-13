@@ -20,6 +20,11 @@ Placement accepts Top, Bottom, Left or Right. ActualPlacement reports the resolv
 
 Keyboard focus opens immediately. Escape, focus loss, pointer press and activation of a native ButtonBase or BleeckerButton dismiss without moving focus. Activation handlers leave the normal click/command path intact and detach when the tooltip owner changes. Hover uses DelayDuration (400ms by default) and a 150ms same-tooltip skip window. Only one tooltip is open per XAML root. The control exposes the tooltip automation role and open/close events, and the service links it through the owner's DescribedBy relationship. Removing the service detaches its owner handlers and description relationship.
 
+Native window deactivation also delivers focus loss and dismisses help, even
+when WinUI retains its logical focused element for later activation. The hosted
+Windows contrast fixture distinguishes that native lifecycle from a popup
+closing while its owner retains foreground; see [contrast verification](contrast-verification.md).
+
 The catalog checks all four directions in the viewport center and all four opposite-side collision flips in both themes. Checks measure 7px clearance, assert the popup is constrained, and verify body geometry, fonts, colors, arrows, role, wrapping, live content remeasurement, single-open behavior and the description link. Physical dark-theme Tab entry and Escape dismissal preserve trigger focus; the desktop capture is `artifacts/tooltip-owned-keyboard.jpg`.
 
 The final full catalog run is `artifacts/smoke-tooltip-owned-verified`; the isolated package consumer is `artifacts/package-consumer-tooltip-owned`. Both pass. An earlier full run stopped at the notification fixture's short-text remeasurement check; the final run passes that same check without changing the notification implementation. ARM64 compilation also passes.

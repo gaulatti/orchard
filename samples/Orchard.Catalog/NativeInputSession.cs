@@ -101,6 +101,22 @@ internal sealed class NativeInputSession : IDisposable
     }
 
     internal bool OwnsForeground => GetForegroundWindow() == Window;
+    internal bool HasForeignForeground
+    {
+        get
+        {
+            var foreground = GetForegroundWindow();
+            if (foreground == IntPtr.Zero) return false;
+            GetWindowThreadProcessId(foreground, out var processId);
+            return processId != 0 && processId != Environment.ProcessId;
+        }
+    }
+
+    internal object DescribeCurrentPoint()
+    {
+        Require(GetCursorPos(out var point), "Could not inspect the current native pointer point.");
+        return NativeScreenCapture.DescribePoint(Window, point.X, point.Y);
+    }
 
     internal async Task RequireForegroundAsync()
     {

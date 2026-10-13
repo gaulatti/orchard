@@ -46,6 +46,7 @@ jobs:
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component contrast -Output artifacts/contrast -ExpectedArchitecture X64
       - name: Pack library and verify independent consumption
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: |
           dotnet pack src/Orchard/Orchard.csproj -c Release -p:Platform=x64 --no-restore -o artifacts/packages
           if ($LASTEXITCODE -ne 0) { throw 'Library pack failed.' }
@@ -122,6 +123,7 @@ jobs:
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component contrast -Output artifacts/contrast -ExpectedArchitecture Arm64
       - name: Pack library and verify native ARM64 consumption
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: |
           dotnet pack src/Orchard/Orchard.csproj -c Release -p:Platform=ARM64 --no-restore -o artifacts/packages
           if ($LASTEXITCODE -ne 0) { throw 'Library pack failed.' }

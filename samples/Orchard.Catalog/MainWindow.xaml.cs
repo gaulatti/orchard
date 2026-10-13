@@ -185,6 +185,8 @@ public sealed partial class MainWindow : Window
             await Checkboxes.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Switches);
             await Switches.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Contrast);
+            await Contrast.VerifyKeyboardEntryAsync(folder, scheme);
             await SelectFixtureAsync(StatusBadges);
             StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
             await Task.Delay(350);

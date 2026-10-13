@@ -12,30 +12,65 @@ namespace Orchard.Catalog;
 public sealed partial class ContrastFixture : UserControl
 {
     public ContrastFixture() => InitializeComponent();
+    internal async Task VerifyKeyboardEntryAsync(string folder, BleeckerColorScheme scheme)
+    {
+        using var input = new NativeInputSession(XamlRoot, folder, $"contrast-entry-{scheme}");
+        await input.AcquireAsync(Heading);
+        await input.MoveAsync(Heading);
+        var tooltip = await OpenHelpAsync(input);
+        try
+        {
+            await MainWindow.CaptureElementAsync(tooltip, System.IO.Path.Combine(folder, $"contrast-entry-popup-{scheme}.png"));
+            input.Key(0x1B);
+            await AwaitAsync(() => !tooltip.IsOpen, "Physical Escape did not dismiss contextual help.");
+            Require(ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Help) &&
+                Help.FocusState == FocusState.Keyboard, "Dismissing contextual help lost keyboard focus.");
+        }
+        finally { tooltip.IsOpen = false; }
+    }
+
+    private async Task<BleeckerTooltip> OpenHelpAsync(NativeInputSession input)
+    {
+        Primary.ApplyTemplate(); Editor.ApplyTemplate(); Path.ApplyTemplate();
+        var tooltip = AutomationProperties.GetDescribedBy(Help).OfType<BleeckerTooltip>().Single();
+        var expansion = Descendants<Button>(Path).Single();
+        Require(expansion.Focus(FocusState.Programmatic), "Breadcrumb expansion refused the keyboard entry anchor.");
+        input.Key(0x09); // Actual Tab establishes keyboard modality before the OS transition.
+        await AwaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Help) &&
+            Help.FocusState == FocusState.Keyboard, "Physical Tab did not enter contextual help with keyboard focus.");
+        await AwaitAsync(() => tooltip.IsOpen && tooltip.IsLoaded, "Contextual help did not open before the baseline capture.");
+        return tooltip;
+    }
+
     internal async Task VerifyAsync(Grid root, string folder)
     {
         using var contrast = new NativeContrastSession(folder);
         using var input = new NativeInputSession(XamlRoot, folder, "contrast");
         await input.AcquireAsync(Heading);
         await input.MoveAsync(Heading);
-        Primary.ApplyTemplate(); Editor.ApplyTemplate(); Path.ApplyTemplate();
+        var tooltip = await OpenHelpAsync(input);
         Button Action() => Descendants<Button>(Primary).Single();
         ContentPresenter Presenter() => Descendants<ContentPresenter>(Action()).First();
-        var tooltip = AutomationProperties.GetDescribedBy(Help).OfType<BleeckerTooltip>().Single();
         var accessibility = new AccessibilitySettings();
-        Require(Help.Focus(FocusState.Keyboard), "Contextual help refused keyboard focus.");
-        await AwaitAsync(() => tooltip.IsOpen && tooltip.IsLoaded, "Contextual help did not open before the baseline capture.");
+        var expansion = Descendants<Button>(Path).Single();
         var before = Snapshot();
         var originalBackground = Hex(root.Background);
         var originalHeading = Hex(Heading.Foreground);
         var samples = new List<object> { new { phase = "before", state = before } };
         var focusEvents = new List<object>();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        var externalDeactivation = false;
         void RecordFocus(string kind) => focusEvents.Add(new { kind, elapsedMilliseconds = elapsed.Elapsed.TotalMilliseconds,
             Help.FocusState, tooltip.IsOpen, focused = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name,
-            foreground = input.OwnsForeground, os = NativeContrastSession.Read().Enabled, cursor = NativeInputSession.DescribeCursor() });
+            foreground = input.OwnsForeground, foreignForeground = input.HasForeignForeground,
+            os = NativeContrastSession.Read().Enabled, cursor = NativeInputSession.DescribeCursor(), native = input.DescribeCurrentPoint() });
         void GotFocus(object sender, RoutedEventArgs args) => RecordFocus("got");
-        void LostFocus(object sender, RoutedEventArgs args) => RecordFocus("lost");
+        void LostFocus(object sender, RoutedEventArgs args)
+        {
+            if (input.HasForeignForeground && NativeContrastSession.Read().Enabled &&
+                ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Help)) externalDeactivation = true;
+            RecordFocus("lost");
+        }
         void Closed(object? sender, EventArgs args) => RecordFocus("tooltip-closed");
         void Pressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs args) => RecordFocus("pointer-pressed");
         Help.GotFocus += GotFocus; Help.LostFocus += LostFocus;
@@ -54,18 +89,25 @@ public sealed partial class ContrastFixture : UserControl
                 Matches(Editor.Background, NativeContrastSession.Color(5)) && Matches(Editor.Foreground, NativeContrastSession.Color(8)) &&
                 Matches(tooltip.Background, NativeContrastSession.Color(5)) && Matches(tooltip.Foreground, NativeContrastSession.Color(8)),
                 "Live controls did not adopt Windows semantic colors.");
-            var foreground = NativeContrastSession.Color(8);
-            var highlight = NativeContrastSession.Color(13); var selectedText = NativeContrastSession.Color(14);
-            Require(tooltip.IsOpen && Help.FocusState == FocusState.Keyboard, "Contrast switching closed contextual help or lost its focus.");
+            if (externalDeactivation)
+            {
+                Require(!tooltip.IsOpen, "Contextual help did not dismiss on native window deactivation.");
+                samples.Add(new { phase = "native-deactivation", state = Snapshot() });
+                await input.RequireForegroundAsync();
+                Require(ReferenceEquals(tooltip, await OpenHelpAsync(input)), "Keyboard re-entry replaced the contextual-help control.");
+                await AwaitAsync(() => Matches(tooltip.Background, NativeContrastSession.Color(5)) &&
+                    Matches(tooltip.Foreground, NativeContrastSession.Color(8)), "Re-entered contextual help did not retain Windows colors.");
+            }
+            Require(input.OwnsForeground && tooltip.IsOpen && Help.FocusState == FocusState.Keyboard,
+                "Contrast switching closed contextual help or lost its focus while the catalog owned foreground.");
             var action = Action();
-            await VerifyPaintAsync(action, highlight);
-            await VerifyInkAsync(Heading, foreground, headingInk);
-            await VerifyInkAsync(Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), selectedText, labelInk);
-            var expansion = Descendants<Button>(Path).Single();
+            await VerifyPaintAsync(action, folder);
+            await VerifyInkAsync(Heading, 8, headingInk, folder, "heading");
+            await VerifyInkAsync(Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), 14, labelInk, folder, "action-label");
             await input.MoveAsync(expansion);
             var chrome = Descendants<Border>(expansion).Single(item => item.Name == "PART_Chrome");
             var icon = Descendants<Microsoft.UI.Xaml.Shapes.Path>(expansion).Single(item => item.Name == "PART_Icon");
-            await AwaitAsync(() => Matches(chrome.Background, highlight) && Matches(icon.Stroke, selectedText),
+            await AwaitAsync(() => Matches(chrome.Background, NativeContrastSession.Color(13)) && Matches(icon.Stroke, NativeContrastSession.Color(14)),
                 "Hovered breadcrumb did not pair Windows Highlight and HighlightText.");
             samples.Add(new { phase = "contrast", state = Snapshot() });
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-active.png"));
@@ -105,6 +147,7 @@ public sealed partial class ContrastFixture : UserControl
             inputBackground = Hex(Editor.Background), inputForeground = Hex(Editor.Foreground),
             tooltipBackground = Hex(tooltip.Background), tooltipForeground = Hex(tooltip.Foreground), tooltip.IsOpen, Help.FocusState,
             focused = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name,
+            foreground = input.OwnsForeground, foreignForeground = input.HasForeignForeground,
             cursor = NativeInputSession.DescribeCursor(), helpBounds = input.ScreenBounds(Help), headingBounds = input.ScreenBounds(Heading) };
     }
     private sealed record InkSample(int Width, int Height, int[] Pixels);
@@ -120,31 +163,51 @@ public sealed partial class ContrastFixture : UserControl
         Require(ink.Length > 0, "Initial label has no solid glyph pixels to establish its ink mask.");
         return new InkSample(bitmap.PixelWidth, bitmap.PixelHeight, ink);
     }
-    private static async Task VerifyInkAsync(TextBlock text, Color expected, InkSample sample)
+    private static async Task VerifyInkAsync(TextBlock text, int systemColor, InkSample sample, string folder, string name)
     {
-        var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(text);
-        Require(bitmap.PixelWidth == sample.Width && bitmap.PixelHeight == sample.Height, "Contrast transition changed label raster dimensions.");
-        var buffer = await bitmap.GetPixelsAsync();
-        var pixels = new byte[checked((int)buffer.Length)];
-        using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
-        var matching = sample.Pixels.Count(index => pixels[index * 4] == expected.B && pixels[index * 4 + 1] == expected.G &&
-            pixels[index * 4 + 2] == expected.R && pixels[index * 4 + 3] == 255);
+        var observations = new List<object>();
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        var matching = 0;
+        do
+        {
+            var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(text);
+            Require(bitmap.PixelWidth == sample.Width && bitmap.PixelHeight == sample.Height, "Contrast transition changed label raster dimensions.");
+            var buffer = await bitmap.GetPixelsAsync();
+            var pixels = new byte[checked((int)buffer.Length)];
+            using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+            var expected = NativeContrastSession.Color(systemColor);
+            matching = sample.Pixels.Count(index => pixels[index * 4] == expected.B && pixels[index * 4 + 1] == expected.G &&
+                pixels[index * 4 + 2] == expected.R && pixels[index * 4 + 3] == 255);
+            observations.Add(new { elapsedMilliseconds = elapsed.Elapsed.TotalMilliseconds, expected = ColorHex(expected), matching, total = sample.Pixels.Length });
+            if (matching == sample.Pixels.Length) break;
+            await Task.Delay(32);
+        } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"contrast-ink-{name}.json"), JsonSerializer.Serialize(observations));
         Require(matching == sample.Pixels.Length, $"Only {matching}/{sample.Pixels.Length} established glyph pixels adopted the Windows foreground.");
     }
-    private static async Task VerifyPaintAsync(Button action, Color background)
+    private static async Task VerifyPaintAsync(Button action, string folder)
     {
-        var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(action);
-        var buffer = await bitmap.GetPixelsAsync();
-        var pixels = new byte[checked((int)buffer.Length)];
-        using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
-        var scale = bitmap.PixelWidth / action.ActualWidth;
-        var x = bitmap.PixelWidth / 2; var y = (int)(3 * scale);
-        Require(Pixel(x, y, background), "Contrast action's painted background differs from Windows Highlight.");
-        bool Pixel(int px, int py, Color color)
+        var observations = new List<object>();
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        var matching = false;
+        do
         {
-            var offset = (py * bitmap.PixelWidth + px) * 4;
-            return pixels[offset] == color.B && pixels[offset + 1] == color.G && pixels[offset + 2] == color.R && pixels[offset + 3] == 255;
-        }
+            var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(action);
+            var buffer = await bitmap.GetPixelsAsync();
+            var pixels = new byte[checked((int)buffer.Length)];
+            using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+            var scale = bitmap.PixelWidth / action.ActualWidth;
+            var x = bitmap.PixelWidth / 2; var y = (int)(3 * scale);
+            var offset = (y * bitmap.PixelWidth + x) * 4;
+            var actual = Color.FromArgb(pixels[offset + 3], pixels[offset + 2], pixels[offset + 1], pixels[offset]);
+            var expected = NativeContrastSession.Color(13);
+            matching = actual == expected;
+            observations.Add(new { elapsedMilliseconds = elapsed.Elapsed.TotalMilliseconds, x, y, expected = ColorHex(expected), actual = ColorHex(actual), matching });
+            if (matching) break;
+            await Task.Delay(32);
+        } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-painted-background.json"), JsonSerializer.Serialize(observations));
+        Require(matching, "Contrast action's painted background differs from Windows Highlight.");
     }
     private static IEnumerable<T> Descendants<T>(DependencyObject owner) where T : DependencyObject
     {
@@ -162,7 +225,8 @@ public sealed partial class ContrastFixture : UserControl
         Require(condition(), message);
     }
     private static bool Matches(Brush brush, Color color) => brush is SolidColorBrush solid && solid.Color == color && solid.Opacity == 1;
-    private static string? Hex(Brush? brush) => brush is SolidColorBrush solid ? $"#{solid.Color.A:X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush?.GetType().Name;
+    private static string ColorHex(Color color) => $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
+    private static string? Hex(Brush? brush) => brush is SolidColorBrush solid ? ColorHex(solid.Color) : brush?.GetType().Name;
     private static double? BrushOpacity(Brush? brush) => brush?.Opacity;
     private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
 }

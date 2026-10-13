@@ -8,6 +8,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="BleeckerHeadingStyle" TargetType="TextBlock">
+        <Setter Property="HighContrastAdjustment" Value="None" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimarySemiboldFontFamily}" />
         <Setter Property="FontSize" Value="32" />
         <Setter Property="FontWeight" Value="SemiBold" />
@@ -15,12 +16,14 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="BleeckerBodyStyle" TargetType="TextBlock">
+        <Setter Property="HighContrastAdjustment" Value="None" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerSecondaryFontFamily}" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="BleeckerSecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+        <Setter Property="HighContrastAdjustment" Value="None" />
         <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
         <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
@@ -36,6 +39,7 @@
         <Setter Property="FocusVisualMargin" Value="-4" />
     </Style>
     <Style x:Key="BleeckerPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
+        <Setter Property="HighContrastAdjustment" Value="None" />
         <Setter Property="Background" Value="{ThemeResource AccentButtonBackground}" />
         <Setter Property="Foreground" Value="{ThemeResource AccentButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource AccentButtonBorderBrush}" />

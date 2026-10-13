@@ -55,8 +55,12 @@ Light maps to Bleecker’s light palette. WinUI’s `Default` theme dictionary
 contains Bleecker’s dark palette. High contrast maps semantic resources to
 Windows accessibility colors, including highlight and highlight text for
 primary actions. Brand colors must not override the user’s high contrast
-palette. High contrast resource completeness is tested; OS-level high contrast
-switching still needs a Windows accessibility session.
+palette. Generated button styles and the foundation heading/body/button styles
+disable WinUI's automatic text recoloring with `HighContrastAdjustment=None`
+because their resources already supply system-aware pairs. This prevents a
+primary-action label's mapped HighlightText foreground from being replaced by
+white text on a dark backing. Resource completeness is tested; the live native
+transition and paint verification is tracked in [contrast verification](contrast-verification.md).
 
 Initial explicit styles retain WinUI’s native control templates, keyboard
 behavior, focus handling, automation peers, and button state machines. Button
