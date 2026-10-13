@@ -184,7 +184,8 @@ public sealed partial class AvatarsFixture : UserControl
             Color(avatar.Foreground) == (scheme == BleeckerColorScheme.Dark ? "#FFF0F4F8" : "#FF595959"), "Avatar lost its circular branded surface.");
         Require(ring.BorderThickness == new Thickness(grouped ? 2 : 1) && ring.Margin == new Thickness(overflow ? -2 : 0) &&
             Color(ring.BorderBrush) == (grouped ? scheme == BleeckerColorScheme.Dark ? "#FF182533" : "#FFFFFFFF" : scheme == BleeckerColorScheme.Dark ? "#FFFFFFFF" : "#FF000000") &&
-            ((SolidColorBrush)ring.BorderBrush).Opacity == (grouped ? 1 : .1), "Avatar used an incorrect ring width, placement or color.");
+            Math.Abs(((SolidColorBrush)ring.BorderBrush).Opacity - (grouped ? 1 : .1)) < .000001,
+            $"Avatar ring differs: size={avatar.AvatarSize}, grouped={grouped}, overflow={overflow}, thickness={ring.BorderThickness}, margin={ring.Margin}, color={Color(ring.BorderBrush)}, opacity={((SolidColorBrush)ring.BorderBrush).Opacity:R}.");
         var clip = ElementCompositionPreview.GetElementVisual(Part<Grid>(avatar, "PART_Content")).Clip;
         Require(overflow ? clip is null : clip is RectangleClip rectangle && rectangle.Right == edge && rectangle.Bottom == edge &&
             rectangle.TopLeftRadius == new System.Numerics.Vector2(edge / 2f), "Avatar overflow clipping differs from the source.");

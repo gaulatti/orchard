@@ -61,6 +61,13 @@ The mount validation now runs on the next dispatcher turn after Loaded so WinUI
 can complete binding evaluation. It still requires actual consumer data and does
 not substitute a collection. Fresh native verification remains required.
 
+Run `38343424439` at `0eda50a` passes startup on both architectures and reaches
+Avatar's own fixture. Deferred mount validation resolves the initialization
+boundary in that run. The first ring check then fails; the assertion now uses a
+one-millionth opacity tolerance and reports actual size, ring thickness, margin,
+color and opacity. This preserves the branded ring gate and distinguishes
+numeric representation from an appearance mismatch. Native verification is pending.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes
