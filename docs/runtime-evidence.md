@@ -23,6 +23,13 @@ resource-reference regression test checks catalog Bleecker keys against declared
 library/catalog resources. The corrected local build and all 26 tests pass;
 native verification of the correction is pending.
 
+Run `38339035639` at `4ae9b66` passes both builds, all 26 tests and the ARM64
+consumer build. Native startup gets past resource lookup but fails assigning
+`BleeckerAvatarGroup.Avatars` on both architectures. Avatar still has no native
+runtime acceptance. Smoke startup reports now retain bounded managed Avatar
+setter/metadata exceptions beneath generic XAML parse errors to identify the
+collection assignment boundary.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes
