@@ -1,18 +1,43 @@
 # Native Windows runtime evidence
 
-The catalog fixtures and independent NuGet consumer at commit `71a7fb8` passed
-on both x64 and native ARM64, including Skeleton's rendered pixels, live consumer
-opacity and ancestor visibility, and the stronger global visible-cursor gate.
-That runtime baseline covers 21 in-progress inventory entries; 91 remain pending.
-Avatar is newly in progress, bringing the current inventory to 22 in progress
-and 90 pending. Its native and independent package-consumer checks are pending;
-it is outside that 21-entry runtime baseline.
+The catalog fixtures and independent NuGet consumer at commit `2f265e3` passed
+on both x64 and native ARM64, including Avatar's consumer images, collection
+bindings, lifecycle and retained overflow elevation. The same run replays
+Skeleton's rendered pixels, live consumer opacity and ancestor visibility, and
+the stronger global visible-cursor gate. This runtime baseline covers 22
+in-progress inventory entries; 90 remain pending.
 The earlier `7024b9e` and `5412997` checkpoints covered 20 and 18 entries.
 The Input cursor failure observed at `61d13aa` did not recur, but its cause
 remains unresolved. Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
 
 ## Avatar startup boundary
+
+### Passing Avatar checkpoint
+
+Run `38344790556`, commit `2f265e355f5eb34f7b317fcc794959688463ab2b`, passes
+all three jobs, both complete catalogs and both independent package consumers.
+Both runtime archives were downloaded and their SHA-256 digests verified:
+
+| Architecture | Artifact | Archive SHA-256 | Independent consumer package SHA-256 |
+| --- | --- | --- | --- |
+| x64 | `11787634602` | `9b974e4d235ee5ae2c76ceefe54656338cf5478533ecdbe7e690e9cefda101c6` | `4421c3c3f3f5370122180b19607c053c475d429ce4f2f34d5c176e0801094c29` |
+| ARM64 | `11787644833` | `a8c4a5a1d49d63dc0b0c502d798d45038e1e3eff5a5f737af63b9b2a73405d05` | `979d6c9598c12e958a464fc77e75999409778754cfdab3bf8ded1b4fd0a7baed` |
+
+Each architecture/theme retains ten element images, two composited window images,
+ten size/ink samples and 40 checked image/corner pixels. Consumer image cropping,
+sticky failure, Unicode code units, shared collection replacement, item changes,
+index identity, negative Max and detached template replacement pass. The retained
+overflow circle keeps both shadow layers after collection additions. The clean
+package consumer loads the independent Avatar/Group/Data templates, fonts and
+Unicode mappings in both appearances. x64 runs Windows 26100; ARM64 runs 26200.
+
+The inspected source/native composition images show the same tested geometry,
+but remain qualitative JPEG/PNG comparisons. Typography/rasterization, exact
+shadow output, contrast/Narrator and display/text scaling still require complete
+acceptance; no inventory entry is marked complete.
+
+### Earlier failures and fixes
 
 Run `38338501970`, commit `2571db7a43363f72999fa2f8f99f492fea6ce7f2`, passes
 both solution builds, 25 tests and the independent ARM64 consumer build, but

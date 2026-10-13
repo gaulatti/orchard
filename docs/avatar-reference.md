@@ -113,13 +113,15 @@ Avatar, AvatarGroup and AvatarData, including the expanding-uppercase example.
 
 The initial local x64 solution and isolated package-consumer builds pass with
 no warnings; all 26 contract tests and token drift checks pass. Native x64/ARM64
-catalog and clean package-consumer checks for this addition are pending.
-The first native run at `2571db7` fails startup on both architectures because
-the fixture used an undeclared label style. The fixture now uses the established
-body style, and the catalog resource-reference test rejects unknown Bleecker keys.
-Subsequent native startup reports show the collection's strict type check rejecting
-XAML assignment. The declared content-property syntax and binding replacement
-check require a fresh native run before their behavior can be accepted.
+catalog and clean package-consumer checks pass at `2f265e3` in both themes.
+Each architecture/theme records ten size/ink samples, 40 verified image/corner
+pixels, ten element images and two actual window composites. Collection replacement,
+item/reorder/count changes, retained overflow elevation and detached retemplating
+pass. See [checked runtime evidence](runtime-evidence.md).
+The catalog resource-reference test rejects unknown Bleecker keys. Native checks
+also verify collection resolution after load, rejected direct null input, shared
+binding updates and retained overflow identity/elevation. Earlier startup and
+update failures are recorded in the runtime evidence page.
 Exact native/browser raster parity, contrast/Narrator, display/text scaling,
 constrained widths and consumer style/geometry overrides remain acceptance gaps.
 Neither a successful build nor nonblank screenshots establishes visual acceptance.

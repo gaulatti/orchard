@@ -1982,7 +1982,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Native x64/ARM64 catalog and clean package-consumer checks for Avatar are pending",
+        "Full visual/input/accessibility/scaling acceptance remains open; scoped native x64/ARM64 catalog and package checks pass at 2f265e3",
         "Exact native/browser raster comparison across all five sizes and both themes",
         "Narrator, real Windows contrast, display/text scaling and constrained-width acceptance",
         "Consumer geometry/style overrides and complete lifecycle acceptance",
@@ -4650,8 +4650,8 @@
     }
   ],
   "nativeRuntimeBaseline": {
-    "commit": "71a7fb8c0757df34c7dd563b776378a95933f0fe",
-    "workflowRun": 38334259867,
+    "commit": "2f265e355f5eb34f7b317fcc794959688463ab2b",
+    "workflowRun": 38344790556,
     "platforms": ["x64", "ARM64"],
     "status": "passed",
     "evidence": "docs/runtime-evidence.md",
@@ -4660,7 +4660,7 @@
       "button", "button-group", "card", "dropdown-menu", "notification-badge",
       "eyebrow", "input", "kbd", "label", "progress", "separator", "toggle",
       "toggle-group", "tooltip", "field-help-tooltip", "icon-button",
-      "loading-spinner", "status-badge", "checkbox", "switch", "skeleton"
+      "loading-spinner", "status-badge", "checkbox", "switch", "skeleton", "avatar"
     ]
   },
   "compositions": [
