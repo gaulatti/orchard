@@ -490,3 +490,36 @@ The full x64 catalog passes both appearances at
 at `artifacts/package-consumer-cursor-producer-transition`, with package 0.1.0
 SHA-256 `ef22610d347f5eaee0f34d3b33c82708a4434ecd7cd0b40a9c96a035a7fba4ba`.
 The separate enabled-hover/palette defect remains open.
+
+The smaller-window reproduction uses the explicit verifier option
+`-ClientSize 1024,697`, which sets this test window's client area in physical
+pixels. With the existing implementation it reproduces the hosted defect:
+the pointer is on Heading and outside Medium, WinUI's CommonStates is Normal,
+but Orchard's pointer flag is true and InputStates is InputHovered.
+The failing report is at `artifacts/smoke-input-client-1024`.
+
+Input now observes enabled as well as disabled geometry through the shared
+root observer. Its hover source is the current owned point, rounded editor
+bounds, visibility, clipping and actual hit ancestry. Enabled descendants,
+including TextBox's nested ScrollViewer, belong to the editor; a sibling
+overlay occludes it. The observer blocks the cursor only for a disabled owner.
+The independent PointerEntered/PointerExited flag writers are removed from
+Input, so layout/remount changes cannot leave those writers out of sync.
+Checkbox retains its existing disabled-only registration.
+
+The live-theme regression now exercises actual enabled hover entry/exit and
+stationary sibling-overlay show/hide, verifies that the pointer does not move,
+and then runs the original focus/selection/theme palette assertions. The
+focused 1024×697 check passes both appearances at
+`artifacts/smoke-input-geometric-overlay-1024`. Larger-window integration and
+hosted verification remain required for this candidate.
+
+The full maximized x64 catalog passes both appearances at
+`artifacts/smoke-input-geometric-all`, including shared Checkbox/Input ownership,
+rounded boundaries, stationary hit testing, scrolling and reattachment. Both
+architecture builds have zero warnings; all 27 unit/resource tests pass.
+The default maximized and explicit 1024×697 tests use the same runtime path.
+
+A new isolated x64 consumer passes both appearances at
+`artifacts/package-consumer-input-geometric`, using package 0.1.0 with SHA-256
+`be56f853db8d8107b54981c1e6eaa78543e219e9148bb1c7ad19919bb70febb3`.

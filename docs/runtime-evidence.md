@@ -56,6 +56,19 @@ ARM64 focused Input owns its Small/invalid top-right `(3,0)` target and
 publishes UniversalNo but displays Arrow. These required gates remain red.
 The passing ordinary suite does not replace the failed focused boundaries.
 
+Run `38480092499` at `5ad9d0b` passes both live contrast checks, including
+Activity Item's semantic hover/restoration, and both independent consumers.
+x64's ordinary full catalog passes. Both focused Input jobs expose the stale
+enabled hover flag with native CommonStates Normal and an external pointer.
+The local explicit 1024×697 viewport reproduces it, allowing a geometry-based
+Input correction and stationary-overlay regression to be exercised before CI.
+The ARM64 ordinary suite also fails its Dark Bauhaus motion check: measured
+counter-rotation 6.8230476° versus 5.4163998° from a 300.9109ms wall-clock span.
+This mismatch remains open; its existing tolerance is not widened.
+The ARM64 artifact `11855619263` was checked against SHA-256
+`2a191a2b648bd2b6721bebe73abea7f63f4e67f3a6f44b0e1fa9648269c895a0`,
+with selected reports at `artifacts/ci-5ad9d0b-arm64-evidence`.
+
 ## Live Windows contrast checkpoint
 
 Run [38434880055](https://github.com/gaulatti/orchard/actions/runs/38434880055)

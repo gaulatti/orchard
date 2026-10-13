@@ -60,6 +60,27 @@ public sealed partial class InputsFixture : UserControl
         using var input = new NativeInputSession(XamlRoot, folder, $"input-theme-{scheme}");
         await input.AcquireAsync(Heading);
         await input.MoveAsync(Heading);
+        var mediumBorder = Find<Border>(MediumInput, "BorderElement");
+        var hoverBorder = scheme == BleeckerColorScheme.Light ? "#B3E6D5B8" : "#40FFFFFF";
+        var restBorder = scheme == BleeckerColorScheme.Light ? "#66E6D5B8" : "#26FFFFFF";
+        await input.MoveAsync(MediumInput);
+        await AwaitAsync(() => Hex(mediumBorder.BorderBrush) == hoverBorder, "Enabled Input did not enter its physical hover palette.");
+        using var stationary = System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(NativeInputSession.DescribeCursor()));
+        var stationaryPoint = stationary.RootElement.GetProperty("position");
+        try
+        {
+            EnabledPointerOccluder.Visibility = Visibility.Visible; UpdateLayout();
+            await AwaitAsync(() => Hex(mediumBorder.BorderBrush) == restBorder, "A stationary overlay did not clear enabled Input hover.");
+            EnabledPointerOccluder.Visibility = Visibility.Collapsed; UpdateLayout();
+            await AwaitAsync(() => Hex(mediumBorder.BorderBrush) == hoverBorder, "Removing a stationary overlay did not restore enabled Input hover.");
+            using var current = System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(NativeInputSession.DescribeCursor()));
+            var currentPoint = current.RootElement.GetProperty("position");
+            Require(stationaryPoint.GetProperty("X").GetInt32() == currentPoint.GetProperty("X").GetInt32() &&
+                stationaryPoint.GetProperty("Y").GetInt32() == currentPoint.GetProperty("Y").GetInt32(), "The enabled hover overlay check moved its stationary pointer.");
+        }
+        finally { EnabledPointerOccluder.Visibility = Visibility.Collapsed; }
+        await input.MoveAsync(Heading);
+        await AwaitAsync(() => Hex(mediumBorder.BorderBrush) == restBorder, "Enabled Input did not leave its physical hover palette.");
         var host = (FrameworkElement)XamlRoot.Content;
         var originalTheme = host.RequestedTheme;
         var originalText = ErrorInput.Text;

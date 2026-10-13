@@ -3,7 +3,10 @@
  <StackPanel Spacing="12" Margin="0,0,0,40" MaxWidth="480" HorizontalAlignment="Left">
   <TextBlock x:Name="Heading" Text="Input · editing preview" Style="{StaticResource BleeckerHeadingStyle}" />
   <orchard:BleeckerInput x:Name="SmallInput" Width="320" InputSize="Small" PlaceholderText="Small input" AutomationProperties.Name="Small input" />
-  <orchard:BleeckerInput x:Name="MediumInput" Width="320" PlaceholderText="Search channels..." AutomationProperties.Name="Search channels" />
+  <Grid Width="320">
+   <orchard:BleeckerInput x:Name="MediumInput" Width="320" PlaceholderText="Search channels..." AutomationProperties.Name="Search channels" />
+   <Border x:Name="EnabledPointerOccluder" Background="{ThemeResource BleeckerBackgroundBrush}" Visibility="Collapsed" />
+  </Grid>
   <orchard:BleeckerInput x:Name="LargeInput" Width="320" InputSize="Large" Text="Harbor update" AutomationProperties.Name="Large input" />
   <orchard:BleeckerInput x:Name="IconsInput" Width="320" PlaceholderText="Search or assign..." AutomationProperties.Name="Decorated input">
    <orchard:BleeckerInput.StartIcon><Viewbox Width="16" Height="16"><Canvas Width="24" Height="24"><Ellipse Canvas.Left="3" Canvas.Top="3" Width="16" Height="16" Stroke="{ThemeResource BleeckerTextSecondaryBrush}" StrokeThickness="2" /><Path Data="M21,21 L16.65,16.65" Stroke="{ThemeResource BleeckerTextSecondaryBrush}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" /></Canvas></Viewbox></orchard:BleeckerInput.StartIcon>

@@ -10,8 +10,8 @@ using Windows.Foundation;
 
 namespace Orchard;
 
-/// <summary>Observes disabled control geometry without enabling native input.</summary>
-internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkElement?> bounds, Action<bool> changed)
+/// <summary>Observes Input hover and disabled cursor geometry without enabling disabled input.</summary>
+internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkElement?> bounds, Action<bool> changed, bool observeEnabled = false)
 {
     private static readonly ConditionalWeakTable<UIElement, RootObserver> roots = new();
     private RootObserver? observer;
@@ -21,7 +21,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
 
     internal void Update()
     {
-        var root = owner.IsLoaded && !owner.IsEnabled && bounds() is not null ? owner.XamlRoot?.Content : null;
+        var root = owner.IsLoaded && (observeEnabled || !owner.IsEnabled) && bounds() is not null ? owner.XamlRoot?.Content : null;
         if (ReferenceEquals(root, observer?.Root)) { observer?.Refresh(); return; }
         // Enabling retains the hover fact until native enabled input takes over.
         Detach(clearHover: root is not null || !owner.IsEnabled);
@@ -51,13 +51,13 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     private void SetOver(bool value, bool mouse, UIElement? root)
     {
         if (IsOver != value) { IsOver = value; changed(value); }
-        if (value && mouse && root is not null) BleeckerPointerCursor.Block(this, root);
+        if (value && mouse && !owner.IsEnabled && root is not null) BleeckerPointerCursor.Block(this, root);
         else if (root is not null) BleeckerPointerCursor.Release(this);
     }
 
     private bool Contains(Point position, UIElement root)
     {
-        if (!owner.IsLoaded || owner.IsEnabled || bounds() is not FrameworkElement target) return false;
+        if (!owner.IsLoaded || (!observeEnabled && owner.IsEnabled) || bounds() is not FrameworkElement target) return false;
         var point = root.TransformToVisual(target).TransformPoint(position);
         if (target is Border or Control)
         {
@@ -98,6 +98,11 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
         }
         if (source is null) return false;
         if (ancestors.Contains(source)) return true;
+        // Enabled TextBox content includes a nested ScrollViewer. Its hit is
+        // still owned by the editor; unrelated control branches remain excluded.
+        if (observeEnabled && owner.IsEnabled)
+            for (var item = source; item is not null; item = VisualTreeHelper.GetParent(item))
+                if (ReferenceEquals(item, owner)) return true;
         for (var item = source; item is not null; item = VisualTreeHelper.GetParent(item))
         {
             if (ReferenceEquals(item, owner)) return true;
@@ -183,7 +188,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
             var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(xamlRoot.ContentIslandEnvironment.AppWindowId);
             if (!GetCursorPos(out var screen) || GetAncestor(WindowFromPoint(screen), 2) != window || !ScreenToClient(window, ref screen)) { Clear(); return; }
             var position = new Point(screen.X / xamlRoot.RasterizationScale, screen.Y / xamlRoot.RasterizationScale);
-            // All disabled controls share one native pointer query and one hit
+            // All observed controls share one native pointer query and one hit
             // test per observation, including stationary-pointer layout changes.
             var source = snapshot.Any(client => client.Contains(position, root))
                 ? VisualTreeHelper.FindElementsInHostCoordinates(position, root).FirstOrDefault() : null;

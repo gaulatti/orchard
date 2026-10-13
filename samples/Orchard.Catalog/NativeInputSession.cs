@@ -33,7 +33,23 @@ internal sealed class NativeInputSession : IDisposable
         if (welcome is not null)
             await File.WriteAllTextAsync(Path.Combine(folder, $"{prefix}-hosted-welcome.json"),
                 JsonSerializer.Serialize(welcome, new JsonSerializerOptions { WriteIndented = true }));
-        ShowWindow(Window, 3);
+        var arguments = Environment.GetCommandLineArgs();
+        var sizeIndex = Array.IndexOf(arguments, "--smoke-client-size");
+        if (sizeIndex < 0) ShowWindow(Window, 3);
+        else
+        {
+            Require(sizeIndex + 2 < arguments.Length && int.TryParse(arguments[sizeIndex + 1], out _) &&
+                int.TryParse(arguments[sizeIndex + 2], out _), "Smoke client size requires explicit integer width and height.");
+            var width = int.Parse(arguments[sizeIndex + 1]); var height = int.Parse(arguments[sizeIndex + 2]);
+            Require(width > 0 && height > 0, "Smoke client width and height must be positive.");
+            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(root.ContentIslandEnvironment.AppWindowId);
+            Require(appWindow.Presenter is Microsoft.UI.Windowing.OverlappedPresenter, "Smoke client sizing requires an overlapped catalog window.");
+            ((Microsoft.UI.Windowing.OverlappedPresenter)appWindow.Presenter).Restore(false);
+            appWindow.ResizeClient(new Windows.Graphics.SizeInt32(width, height));
+            await Task.Delay(100);
+            Require(appWindow.ClientSize.Width == width && appWindow.ClientSize.Height == height,
+                "Catalog did not adopt the explicitly requested client size.");
+        }
         Require(SetWindowPos(Window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the catalog for physical input.");
         SetForegroundWindow(Window); await Task.Delay(100);
         if (GetForegroundWindow() != Window)

@@ -2,7 +2,8 @@ param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
     [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'alerts', 'brand', 'bauhaus', 'switches', 'activity')][string]$Component = 'all',
-    [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture
+    [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture,
+    [ValidateCount(2,2)][int[]]$ClientSize
 )
 $ErrorActionPreference = 'Stop'
 $executablePath = (Resolve-Path $Executable).Path
@@ -11,7 +12,12 @@ New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
 $resultPath = Join-Path $outputPath 'result.json'
 if (Test-Path -LiteralPath $resultPath) { Remove-Item -LiteralPath $resultPath }
 $componentArgument = if ($Component -eq 'all') { '' } else { " --smoke-$Component" }
-$process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument" -PassThru -WindowStyle Hidden
+$sizeArgument = ''
+if ($ClientSize) {
+    if ($ClientSize[0] -le 0 -or $ClientSize[1] -le 0) { throw 'ClientSize width and height must be positive.' }
+    $sizeArgument = " --smoke-client-size $($ClientSize[0]) $($ClientSize[1])"
+}
+$process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument$sizeArgument" -PassThru -WindowStyle Hidden
 if (-not $process.WaitForExit(360000)) {
     $process.Kill()
     throw 'Catalog runtime check timed out.'

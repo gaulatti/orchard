@@ -58,6 +58,14 @@ Text-size/density controls, the remaining unimplemented inventory and full
 keyboard/Narrator/responsive acceptance are still required. Catalog navigation
 does not make any component's visual or interaction acceptance complete.
 
+For an explicit constrained-window runtime check, pass `-ClientSize width,height`
+to `scripts/smoke-catalog.ps1`, for example `-Component input -ClientSize 1024,697`.
+Both dimensions must be positive integers. The verifier restores and resizes
+only its own overlapped catalog window and requires the resulting client area
+to match the supplied physical-pixel dimensions. Omitting this option retains
+the existing maximized verifier. It does not change Windows display or text
+scale. Capture ownership and monitor-bound checks still apply.
+
 The **Windows contrast** page is a registered cross-component verification
 fixture. Normal navigation displays the semantic-color specimens; only its
 guarded CI smoke entry point changes the isolated runner's actual mode. See
