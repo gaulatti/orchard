@@ -457,3 +457,36 @@ requires hosted verification; the initial correction is not a demonstrated fix.
 
 The focused x64 check with post-focus placement passes both appearances at
 `artifacts/smoke-input-theme-focused-point`; its hosted result remains pending.
+
+At `64a2b27`, run `38477265194` disproves the queued-scroll explanation for
+the x64 palette failure: the final pointer `(416,158)` is on Heading's
+`(248,138,336.11206,40)` rectangle and outside Medium's
+`(257,238,320,40)` rectangle, while Medium still paints the hovered border.
+The next diagnostic adds the control's pointer flag, requested appearance,
+palette border and actual VSM groups to distinguish stale hover state from
+palette/motion state. The resting color assertion remains unchanged; moving
+the pointer again is not considered a fix for this observed product defect.
+
+The verified ARM64 archive for `64a2b27` is `11856081210`, SHA-256
+`bc422f0ce5dcbd80257ad70115b9fc34f234c17dd29a8035674f98e7ed220aea`.
+Its focused Small/invalid top-right `(3,0)` failure shows 47 refresh/block
+calls and 46 republish attempts between 267.451ms and 1027.7992ms, while the
+global cursor remains Arrow and the SDK retains an owned UniversalNo object.
+The source's retained producer is Arrow and no restore occurs during the wait.
+This rules out missing refreshes for that sample and demonstrates that the
+object-identity republish is ineffective there.
+
+The publisher now sends its exact retained producer selection before sending
+the blocked cursor when it observes this owned visible-cursor mismatch. Two
+UniversalNo objects describe the same native system cursor; the intermediate
+producer selection supplies an actual SDK value transition. It preserves the
+producer's resource cursor or null selection and adds no inferred restore
+shape. The cache explanation is an inference; successful global output and
+all native restore/lifecycle checks remain the required verification.
+
+Both architecture builds and all 27 unit/resource tests pass for this candidate.
+The full x64 catalog passes both appearances at
+`artifacts/smoke-cursor-producer-transition-all`; a new isolated consumer passes
+at `artifacts/package-consumer-cursor-producer-transition`, with package 0.1.0
+SHA-256 `ef22610d347f5eaee0f34d3b33c82708a4434ecd7cd0b40a9c96a035a7fba4ba`.
+The separate enabled-hover/palette defect remains open.

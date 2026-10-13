@@ -529,3 +529,14 @@ Shared cursor diagnostics now record per-root refresh/publication counts and
 the retained/restored producer cursor alongside disabled Checkbox failures.
 They use the same catalog-only observer as Input. The native displayed-cursor
 assertion is unchanged; publisher state and diagnostics cannot satisfy it.
+
+The failed `64a2b27` ARM64 Input trace proves that refresh/publication continues
+while an owned UniversalNo SDK value globally displays Arrow: 47 refresh/block
+calls and 46 republish attempts in the recorded wait. Input and Checkbox share
+this publisher. On that mismatch it now sends the exact retained producer
+cursor before sending UniversalNo, giving the SDK a value transition instead
+of changing only the identity of equal system-cursor values. No restore table
+is introduced; custom resource/null producer selections remain authoritative.
+The complete x64 catalog passes both appearances at
+`artifacts/smoke-cursor-producer-transition-all`. Hosted verification is still
+required to establish whether this resolves the observed native mismatch.

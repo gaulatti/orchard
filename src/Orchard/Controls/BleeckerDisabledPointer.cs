@@ -255,15 +255,17 @@ internal static class BleeckerPointerCursor
             source = current;
             publishedBlocked ??= blocked;
             // Native hit-test updates can replace the visible cursor while the
-            // source retains our object. Reassigning that same object does not
-            // always republish it. Change object identity only when Windows
-            // actually displays another cursor over our owned input target.
+            // source retains our object. Distinct system-cursor objects still
+            // describe the same native handle. Republish through the retained
+            // producer selection, then the blocked cursor, so the SDK receives
+            // an actual value transition when its published value is stale.
             var visible = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
             lastReadWasBlocked=IsBlocked(cursor);
             if (ReadCursor(ref visible) && (visible.Flags & 1) != 0 &&
                 visible.Cursor != LoadSystemCursor(IntPtr.Zero, new IntPtr(32648)) && IsBlocked(cursor))
             {
                 republishCalls++;
+                current.Cursor = selected;
                 publishedBlocked = ReferenceEquals(publishedBlocked, blocked) ? republishedBlocked : blocked;
             }
             lastVisibleHandle=visible.Cursor.ToInt64();
