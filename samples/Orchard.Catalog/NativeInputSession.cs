@@ -14,6 +14,7 @@ internal sealed class NativeInputSession : IDisposable
     private readonly string folder, prefix;
     private readonly List<object> pointerMoves = [];
     private bool pointerButtonDown;
+    private bool hostedForegroundRecoveryAttempted;
     internal IntPtr Window { get; }
 
     internal NativeInputSession(XamlRoot root, string folder, string prefix)
@@ -59,6 +60,7 @@ internal sealed class NativeInputSession : IDisposable
 
     internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true, Point? localPoint = null)
     {
+        if (requireForeground && GetForegroundWindow() != Window) await RestoreHostedForegroundAsync();
         if (requireForeground) Require(GetForegroundWindow() == Window, "Physical pointer input lost the catalog foreground window.");
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
         await Task.Delay(100);
@@ -96,6 +98,27 @@ internal sealed class NativeInputSession : IDisposable
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
+    }
+
+    private async Task RestoreHostedForegroundAsync()
+    {
+        // A hosted runner can open a background setup console during a suite.
+        // Recover only our still-visible surface, before any button is held.
+        // An Orchard-owned popup/window remains an application test failure.
+        if (Environment.GetEnvironmentVariable("CI") != "true" || hostedForegroundRecoveryAttempted || pointerButtonDown) return;
+        var foreground = GetForegroundWindow();
+        if (foreground == IntPtr.Zero || foreground == Window) return;
+        GetWindowThreadProcessId(foreground, out var processId);
+        if (processId == 0 || processId == Environment.ProcessId || !GetCursorPos(out var point) ||
+            !NativeScreenCapture.OwnsScreenPoint(Window, point.X, point.Y)) return;
+        hostedForegroundRecoveryAttempted = true;
+        var before = NativeScreenCapture.DescribePoint(Window, point.X, point.Y);
+        var requested = SetForegroundWindow(Window);
+        await Task.Delay(100);
+        await File.WriteAllTextAsync(Path.Combine(folder, $"{prefix}-foreground-recovery.json"),
+            JsonSerializer.Serialize(new { requested, restored = GetForegroundWindow() == Window, before,
+                after = NativeScreenCapture.DescribePoint(Window, point.X, point.Y) },
+                new JsonSerializerOptions { WriteIndented = true }));
     }
 
     internal void PointerButton(bool down, bool requireForeground = true)

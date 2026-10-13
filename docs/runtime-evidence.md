@@ -15,6 +15,18 @@ handle assertions. Rendered hover borders/opacity are independent observations.
 
 ## Rendered Checkbox names and resting Input validation
 
+At `9c5699b`, native ARM64 passes all 57 Checkbox disabled-pointer phases in
+Light and Dark, then loses foreground to a background WSL console before its
+next Dark click. Its archive `11779778593` has SHA-256
+`dbc4ed9ab90e3a9d276044bbb3897e5a07e9ccc8509c34aca64ec67902b8a3fc`
+and was downloaded and verified. x64 passes the 16 new rounded-corner samples
+in Light, then reproduces the Input thread-cursor failure. Its verified archive
+`11780455227` has SHA-256
+`c887b2411136103e751435370f489443cb94b46d1799d9b700307276328344ff`.
+The newer `f8c67a8` ARM64 catalog/consumer passes, but x64 still fails that
+cursor check. The global cursor observation remains required for visible-cursor
+acceptance; these runs do not establish full parity.
+
 The newer `bf910af` pointer candidate in
 [run 38322267056](https://github.com/gaulatti/orchard/actions/runs/38322267056)
 builds and passes 23 tests on both architectures. Both native catalogs pass

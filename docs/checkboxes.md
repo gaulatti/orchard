@@ -365,6 +365,16 @@ foreground before RTL input. Desktop diagnostics now capture the actual
 foreground process/class/package alongside the owned screen point. Physical
 input still fails if foreground ownership is lost; no other process is targeted.
 
+The later `9c5699b` ARM64 reports pass all 57 disabled-pointer phases in both
+appearances, including rounded corners. Its subsequent Dark click fails after
+foreground moves to a `wsl` process / `ConsoleWindowClass`; the pointer still
+hits Orchard's own topmost window. The hosted fixture now permits one
+SetForegroundWindow call to its own catalog before a movement, only with CI
+enabled, no held button, an external foreground process and an owned current
+screen point. It records the attempted recovery and before/after window
+descriptors. It does not reactivate over an Orchard popup, target the external
+console, send recovery keys, or relax the foreground/window hit checks.
+
 The pinned browser's 20×20 rounded box excludes its four extreme integer corner
 pixels from the input hit target. `tests/Reference/CheckboxRoundedHit.json`
 records all 400 integer points plus 16 edge/fractional samples for disabled
