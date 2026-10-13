@@ -76,7 +76,8 @@ notification collection pattern. Populate it with direct AvatarData children or
 bind a consumer-owned observable collection.
 An ElementName binding may be unresolved while XAML builds its namescope. The
 control permits that null placeholder only for an unmounted bound target;
-loading still requires a non-null collection. A programmatic null assignment
+the next dispatcher turn after load still requires a non-null collection, after
+WinUI completes binding evaluation. A programmatic null assignment
 is rejected before replacing consumer data. No empty collection substitutes for
 an unresolved or invalid binding.
 

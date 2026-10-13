@@ -23,7 +23,13 @@ public sealed class BleeckerAvatarGroup : Control
     {
         DefaultStyleKey = typeof(BleeckerAvatarGroup);
         Avatars = new ObservableCollection<BleeckerAvatarData>();
-        Loaded += (_, _) => { StartObserving(); Synchronize(); };
+        Loaded += (_, _) => DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
+        {
+            // ElementName bindings finish evaluation after Loaded callbacks.
+            // Validate only after that lifecycle boundary, and never substitute data.
+            if (!IsLoaded) return;
+            StartObserving(); Synchronize();
+        });
         Unloaded += (_, _) => StopObserving();
     }
     public static readonly DependencyProperty AvatarsProperty = DependencyProperty.Register(nameof(Avatars), typeof(object), typeof(BleeckerAvatarGroup),

@@ -54,6 +54,13 @@ data replaces the missing source. Smoke diagnostics now retain the binding's
 element/path/source type and bounded WinUI binding errors so the next run can
 identify the unresolved collection boundary.
 
+Run `38342620751` at `3a55430` confirms an unnamed group's ElementName source
+is still null at its Loaded callback (`DefaultGroup`, path `Avatars`). Both native
+catalogs fail required-data validation; compilation and consumer builds pass.
+The mount validation now runs on the next dispatcher turn after Loaded so WinUI
+can complete binding evaluation. It still requires actual consumer data and does
+not substitute a collection. Fresh native verification remains required.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes
