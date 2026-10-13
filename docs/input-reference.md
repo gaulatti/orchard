@@ -160,6 +160,10 @@ checks bounds, ancestor clipping, scroll viewports and sibling occlusion, and
 refreshes stationary-pointer geometry on rendering. Native cursor restoration
 uses WinUI's current selected system cursor. Observation detaches when the input
 is enabled or unloaded.
+While the disabled geometry owns the pointer, each shared observation republishes
+UniversalNo through the SDK. It does not skip publication because the getter
+retains the same cursor object: that state can coexist with a displayed Arrow.
+Native global-cursor acceptance remains required before this correction is accepted.
 
 The catalog pointer regression passes 52 transitions across plain/invalid and
 light/dark appearances at scale 1. It verifies actual native cursor handles and

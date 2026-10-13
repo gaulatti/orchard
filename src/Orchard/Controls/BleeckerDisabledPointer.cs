@@ -243,7 +243,10 @@ internal static class BleeckerPointerCursor
             // active. Our own object is not a new producer selection.
             if (source is null || !ReferenceEquals(cursor, blocked)) selected = cursor;
             source = current;
-            if (!ReferenceEquals(cursor, blocked)) current.Cursor = blocked;
+            // A retained publisher object is not evidence that Windows still
+            // displays it after native cursor processing. Publish while owned,
+            // including stationary-pointer observations after native updates.
+            current.Cursor = blocked;
         }
 
         internal void Restore()

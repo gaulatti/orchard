@@ -13,6 +13,14 @@ No component has full visual, input, accessibility and scaling acceptance.
 
 ## Avatar startup boundary
 
+Run `38364251212` at `c7df5e5` reproduces the ARM64 cursor mismatch while
+Orchard owns foreground: Light Small disabled invalid Input, bottom-left (3,0),
+publishes UniversalNo and owns the rounded hit but globally displays Arrow.
+The foreground guard therefore does not resolve the product publication problem.
+The publisher now writes its owned cursor on each shared observation rather than
+skipping the SDK setter when the getter retains the same object. No Win32 cursor
+write or test-side cursor override is added. A passing native run is still required.
+
 Run `38359503487` at `d280c79` passes the x64 catalog and independent consumer,
 but fails ARM64's Light Medium disabled Input at included corner (3,0).
 Its checked artifact `11794259493` has SHA-256
