@@ -119,7 +119,7 @@ public sealed partial class BreadcrumbsFixture : UserControl
                     hit = NativeScreenCapture.DescribePoint(input.Window, (int)(input.ScreenBounds(expand).X + 12), (int)(input.ScreenBounds(expand).Y + 12)) };
             }
             Require(expand.ActualWidth == 24 && expand.ActualHeight == 24 && expand.CornerRadius == new CornerRadius(6), "Ellipsis native defaults replaced source dimensions.");
-            input.PointerButton(true);
+            await input.PressPointerAsync();
             try
             {
                 await AwaitAsync(() => expand.IsPressed && Math.Abs(Find<FrameworkElement>(expand, "PART_Surface").RenderTransform is ScaleTransform scale ? scale.ScaleX - .9 : 1) < .000001,

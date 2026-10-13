@@ -63,9 +63,16 @@ internal sealed class NativeInputSession : IDisposable
     internal async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
     {
         await MoveAsync(target, requireForeground);
-        PointerButton(true, requireForeground);
+        if (requireForeground) await PressPointerAsync();
+        else PointerButton(true, false);
         PointerButton(false, requireForeground);
         await Task.Delay(100);
+    }
+
+    internal async Task PressPointerAsync()
+    {
+        await RequireForegroundAsync();
+        PointerButton(true);
     }
 
     internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true, Point? localPoint = null)

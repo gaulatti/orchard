@@ -502,6 +502,19 @@ The SDK's
 describes the displayed cursor over its input target; a retained property alone
 does not satisfy the regression.
 
+The later `46a7ae2` x64 stress run fails at the second repeated hit-test release.
+Its hover is false and native producer selection is Arrow, but Windows displays
+AppStarting while Orchard retains foreground. The verified archive
+`11842080658` has SHA-256
+`680c037e52d7218b28a1ed749a2e31a6d7a6f93e6591284cc221d48f31af335b`.
+Release now changes the publisher object before assigning the exact current
+WinUI selection, so a same-object restoration does not leave a stale visible
+cursor. It retains custom resource selections and the unchanged stationary
+cursor assertions. Native verification of this additional boundary is pending.
+The complete local x64 run at `artifacts/smoke-brand-all` passes both appearances
+with all 85 pointer observations, including the 24 repeat transitions and shared
+Input cursor ownership. Hosted verification remains required.
+
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
 (including the disabled input's cursor), consumer rich-content edge cases,

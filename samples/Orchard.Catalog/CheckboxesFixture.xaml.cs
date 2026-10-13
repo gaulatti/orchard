@@ -312,7 +312,7 @@ public sealed partial class CheckboxesFixture : UserControl
             await WaitAsync(() => Off.IsChecked == false && Math.Abs(Find<Border>(Off, "PART_Box").BorderBrush.Opacity - .5) < 1e-9,
                 "Physical unchecked hover did not reach the source border.");
             await MainWindow.CaptureElementAsync(Off, Path.Combine(folder, $"checkbox-hover-{scheme}.png"));
-            input.PointerButton(true);
+            await input.PressPointerAsync();
             try
             {
                 await WaitAsync(() => Off.IsChecked == false &&

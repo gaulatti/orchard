@@ -137,6 +137,17 @@ The full local suite stopped later at Input's rounded-pointer movement check
 (`artifacts/smoke-breadcrumb-resume-focus/result.json`), after Breadcrumb's Light
 phase passed. The focused result does not clear that separate full-suite failure.
 
+The `46a7ae2` hosted ARM64 run loses foreground after its hover observation and
+before pointer down. The input fixture now revalidates foreground immediately
+before starting a press, using the existing single hosted recovery guard only
+when no button is held and the current point belongs to Orchard. Breadcrumb,
+Checkbox, Alert and normal clicks share that entry path. Held-button release,
+target ownership and foreground assertions remain unchanged. Fresh native
+verification is pending; a rejected pointer action is not a component pass.
+The complete local x64 catalog passes both appearances at
+`artifacts/smoke-brand-all`, including the held/cancelled Breadcrumb and Alert
+presses and Checkbox physical input. This does not substitute for ARM64 runtime.
+
 For focused local verification, publish the catalog and run
 `./scripts/smoke-catalog.ps1 -Executable <published>/Orchard.Catalog.exe -Component breadcrumb -Output artifacts/smoke-breadcrumb`.
 This runs both themes and retains pressed, reloaded and composed captures. The

@@ -97,7 +97,7 @@ public sealed partial class AlertsFixture : UserControl
                     Require(wash.Color == Windows.UI.Color.FromArgb(255, scheme == BleeckerColorScheme.Dark ? (byte)255 : (byte)0,
                         scheme == BleeckerColorScheme.Dark ? (byte)255 : (byte)0, scheme == BleeckerColorScheme.Dark ? (byte)255 : (byte)0),
                         "Alert close hover changed the reference wash RGB.");
-                    input.PointerButton(true);
+                    await input.PressPointerAsync();
                     await AwaitAsync(() => close.IsPressed && Math.Abs(closeScale.ScaleX - .9) < .000001 && Specimen.IsOpen,
                         "Held alert close did not reach the reference pressed scale.");
                     await MainWindow.CaptureElementAsync(close, System.IO.Path.Combine(folder, $"alert-close-held-{scheme}.png"));

@@ -264,7 +264,14 @@ internal static class BleeckerPointerCursor
             if (source is not null && root.XamlRoot is not null)
             {
                 var cursor = source.Cursor;
-                if (!IsBlocked(cursor)) selected = cursor;
+                if (!IsBlocked(cursor))
+                {
+                    selected = cursor;
+                    // WinUI can publish its restored selection before Windows
+                    // displays it. Change the publisher object before returning
+                    // that exact producer selection, including resource cursors.
+                    source.Cursor = ReferenceEquals(publishedBlocked, blocked) ? republishedBlocked : blocked;
+                }
                 source.Cursor = selected;
             }
             source = null; selected = null;
