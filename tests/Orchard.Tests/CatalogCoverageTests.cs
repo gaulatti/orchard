@@ -8,6 +8,21 @@ namespace Orchard.Tests;
 public sealed class CatalogCoverageTests
 {
     [TestMethod]
+    public void CatalogBleeckerResourceReferencesHaveDeclaredKeys()
+    {
+        var (library, catalog) = FixturePaths();
+        XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
+        var files = Directory.GetFiles(library, "*.xaml", SearchOption.AllDirectories)
+            .Concat(Directory.GetFiles(catalog, "*.xaml", SearchOption.AllDirectories)).ToArray();
+        var declared = files.SelectMany(path => XDocument.Load(path).Descendants().Attributes(x + "Key"))
+            .Select(attribute => attribute.Value).ToHashSet(StringComparer.Ordinal);
+        foreach (var path in Directory.GetFiles(catalog, "*.xaml", SearchOption.AllDirectories))
+            foreach (Match reference in Regex.Matches(File.ReadAllText(path), @"\{(?:StaticResource|ThemeResource)\s+(Bleecker\w+)\s*\}"))
+                Assert.IsTrue(declared.Contains(reference.Groups[1].Value),
+                    $"{Path.GetFileName(path)} uses undeclared resource {reference.Groups[1].Value}; the published catalog cannot start.");
+    }
+
+    [TestMethod]
     public void EveryPublicStyleHasARegisteredRenderedFixture()
     {
         var (library, catalog) = FixturePaths();

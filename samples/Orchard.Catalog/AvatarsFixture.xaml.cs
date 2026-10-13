@@ -129,7 +129,7 @@ public sealed partial class AvatarsFixture : UserControl
         // The 120x60 three-band source is cropped to its centered 60x60 square.
         // Sampling away from band boundaries and the inset ring proves cover
         // cropping and actual consumer pixels, rather than merely a brush flag.
-        foreach (var (fraction, red, green, blue) in new[] { (.1, 166, 93, 87), (.5, 230, 213, 184), (.9, 26, 55, 77) })
+        foreach (var (fraction, red, green, blue) in new[] { (1d / width, 166, 93, 87), (.1, 166, 93, 87), (.5, 230, 213, 184), (.9, 26, 55, 77) })
         {
             var x = (int)Math.Floor(width * fraction); var y = height / 2; var offset = (y * width + x) * 4;
             Require(pixels[offset] == blue && pixels[offset + 1] == green && pixels[offset + 2] == red && pixels[offset + 3] == 255,

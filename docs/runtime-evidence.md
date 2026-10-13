@@ -12,6 +12,17 @@ The Input cursor failure observed at `61d13aa` did not recur, but its cause
 remains unresolved. Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
 
+## Avatar startup boundary
+
+Run `38338501970`, commit `2571db7a43363f72999fa2f8f99f492fea6ce7f2`, passes
+both solution builds, 25 tests and the independent ARM64 consumer build, but
+both native catalogs fail XAML startup: AvatarsFixture references undeclared
+`BleeckerLabelStyle`. Neither reaches Avatar runtime verification or the native
+package consumer. The fixture now uses the existing body style and the new
+resource-reference regression test checks catalog Bleecker keys against declared
+library/catalog resources. The corrected local build and all 26 tests pass;
+native verification of the correction is pending.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes

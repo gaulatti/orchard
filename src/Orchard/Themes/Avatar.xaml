@@ -11,6 +11,8 @@
     <Canvas Opacity="0" IsHitTestVisible="False"><Path x:Name="PART_NearMask" Fill="White" /><Path x:Name="PART_FarMask" Fill="White" /></Canvas>
     <Grid x:Name="PART_ShadowHost" IsHitTestVisible="False" />
     <Border x:Name="PART_Surface" Background="{TemplateBinding Background}" />
+    <!-- CSS inset shadows paint above the surface and below child content. -->
+    <Border x:Name="PART_Ring" IsHitTestVisible="False" />
     <Border x:Name="PART_Photo" IsHitTestVisible="False" />
     <Grid x:Name="PART_Content">
     <Image x:Name="PART_ImageLoader" Opacity="0" Stretch="UniformToFill" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" />
@@ -19,7 +21,6 @@
      <Canvas Width="24" Height="24"><Path Fill="{TemplateBinding Foreground}" Data="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" /></Canvas>
     </Viewbox>
     </Grid>
-    <Border x:Name="PART_Ring" IsHitTestVisible="False" />
     <TextBlock x:Name="PART_GroupRing" Foreground="{ThemeResource BleeckerAvatarGroupRingBrush}" Visibility="Collapsed" AutomationProperties.AccessibilityView="Raw" />
    </Grid>
   </ControlTemplate></Setter.Value></Setter>

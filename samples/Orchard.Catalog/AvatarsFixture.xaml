@@ -2,7 +2,7 @@
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
  <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
   <TextBlock Text="Avatars" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
-  <TextBlock Text="Initials · all sizes" Style="{StaticResource BleeckerLabelStyle}" />
+  <TextBlock Text="Initials · all sizes" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="Sizes" Orientation="Horizontal" Spacing="16">
    <orchard:BleeckerAvatar x:Name="ExtraSmall" AvatarSize="ExtraSmall" Fallback="Jane Doe" VerticalAlignment="Bottom" />
    <orchard:BleeckerAvatar x:Name="Small" AvatarSize="Small" Fallback="Jane Doe" VerticalAlignment="Bottom" />
@@ -10,22 +10,22 @@
    <orchard:BleeckerAvatar x:Name="Large" AvatarSize="Large" Fallback="Jane Doe" VerticalAlignment="Bottom" />
    <orchard:BleeckerAvatar x:Name="ExtraLarge" AvatarSize="ExtraLarge" Fallback="Jane Doe" VerticalAlignment="Bottom" />
   </StackPanel>
-  <TextBlock Text="Decorative silhouette · all sizes" Style="{StaticResource BleeckerLabelStyle}" />
+  <TextBlock Text="Decorative silhouette · all sizes" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="EmptySizes" Orientation="Horizontal" Spacing="16">
    <orchard:BleeckerAvatar AvatarSize="ExtraSmall" VerticalAlignment="Bottom" /><orchard:BleeckerAvatar AvatarSize="Small" VerticalAlignment="Bottom" />
    <orchard:BleeckerAvatar VerticalAlignment="Bottom" /><orchard:BleeckerAvatar AvatarSize="Large" VerticalAlignment="Bottom" /><orchard:BleeckerAvatar AvatarSize="ExtraLarge" VerticalAlignment="Bottom" />
   </StackPanel>
-  <TextBlock Text="Consumer-owned fictional image and failed image" Style="{StaticResource BleeckerLabelStyle}" />
+  <TextBlock Text="Consumer-owned fictional image and failed image" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="Images" Orientation="Horizontal" Spacing="16">
    <orchard:BleeckerAvatar x:Name="Photo" AvatarSize="ExtraLarge" Alt="Fictional color blocks" />
    <orchard:BleeckerAvatar x:Name="FailedImage" Fallback="Jane Doe" Alt="Unavailable fictional image" />
   </StackPanel>
-  <TextBlock Text="Whitespace, expanding uppercase, Japanese and UTF-16 initials" Style="{StaticResource BleeckerLabelStyle}" />
+  <TextBlock Text="Whitespace, expanding uppercase, Japanese and UTF-16 initials" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="Unicode" Orientation="Horizontal" Spacing="16">
    <orchard:BleeckerAvatar Fallback="  jane   doe  " /><orchard:BleeckerAvatar Fallback="straße groß" /><orchard:BleeckerAvatar Fallback="ßeta ßeta" />
    <orchard:BleeckerAvatar Fallback="東京 港" /><orchard:BleeckerAvatar Fallback="😀 Harbor" />
   </StackPanel>
-  <TextBlock Text="Groups · all sizes, consumer collection and overflow" Style="{StaticResource BleeckerLabelStyle}" />
+  <TextBlock Text="Groups · all sizes, consumer collection and overflow" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="Groups" Spacing="12">
    <orchard:BleeckerAvatarGroup x:Name="DefaultGroup" Width="320">
     <orchard:BleeckerAvatarGroup.Avatars>

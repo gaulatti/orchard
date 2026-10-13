@@ -24,7 +24,11 @@ in Light and white at 10% in Dark. The empty fallback uses the exact filled
 person SVG at 60% of both dimensions. Neither avatar nor overflow adds motion,
 interaction styling, focus stops or disabled dimming.
 
-Images fill the circle with centered cover cropping. Their alt text is
+Images fill the circle with centered cover cropping.
+The inset ring paints beneath child content, following
+[CSS shadow layering](https://www.w3.org/TR/css-backgrounds-3/#shadow-layers);
+an opaque image covers that ring instead of acquiring a tinted outline.
+Image alt text is
 `alt ?? fallback ?? ''`; explicitly empty alt remains decorative. Failed images
 show the initials or silhouette. The producer latches image failure for the
 component's lifetime: replacing the source does not retry, while remounting
@@ -99,8 +103,11 @@ ten element images, two composited window images and
 Avatar, AvatarGroup and AvatarData, including the expanding-uppercase example.
 
 The initial local x64 solution and isolated package-consumer builds pass with
-no warnings; all 25 contract tests and token drift checks pass. Native x64/ARM64
+no warnings; all 26 contract tests and token drift checks pass. Native x64/ARM64
 catalog and clean package-consumer checks for this addition are pending.
+The first native run at `2571db7` fails startup on both architectures because
+the fixture used an undeclared label style. The fixture now uses the established
+body style, and the catalog resource-reference test rejects unknown Bleecker keys.
 Exact native/browser raster parity, contrast/Narrator, display/text scaling,
 constrained widths and consumer style/geometry overrides remain acceptance gaps.
 Neither a successful build nor nonblank screenshots establishes visual acceptance.
