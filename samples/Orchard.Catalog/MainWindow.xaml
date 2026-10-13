@@ -76,6 +76,7 @@
                 <local:ToggleGroupsFixture x:Name="ToggleGroups" />
                 <local:LoadingSpinnersFixture x:Name="LoadingSpinners" />
                 <local:CardsFixture x:Name="Cards" />
+                <local:SkeletonsFixture x:Name="Skeletons" />
                 <local:SeparatorsFixture x:Name="Separators" />
                 <local:StatusBadgesFixture x:Name="StatusBadges" />
                 <local:MenusFixture x:Name="Menus" />

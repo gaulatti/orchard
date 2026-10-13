@@ -126,6 +126,8 @@ public sealed partial class MainWindow : Window
             await LoadingSpinners.VerifyAsync(scheme);
             await SelectFixtureAsync(Cards);
             await Cards.VerifyAsync(scheme);
+            await SelectFixtureAsync(Skeletons);
+            await Skeletons.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Separators);
             await Separators.VerifyAsync(scheme);
             await SelectFixtureAsync(StatusBadges);

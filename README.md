@@ -10,6 +10,8 @@ variants, connected button groups, toggle styles, a native switch preview and
 initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
+The [Skeleton preview](docs/skeleton-reference.md) supplies decorative shapes,
+loading cards and tables with the pinned Bleecker dimensions and pulse recipe.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

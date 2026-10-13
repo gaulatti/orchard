@@ -52,6 +52,9 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
   for (const [name, color, system] of [['Background', colors.terracotta, 'SystemColorHighlightColor'], ['Foreground', '#ffffff', 'SystemColorHighlightTextColor']])
     xaml += `            <SolidColorBrush x:Key="BleeckerNotificationCount${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(color)}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .05}" />\n`;
+  // Pinned skeleton.tsx: sand/20, dark:white/10; SkeletonCard uses the border ring.
+  xaml += `            <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .2}" />\n`;
+  xaml += `            <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : .08}" />\n`;
   for (const [key, value] of Object.entries(colors)) {
     const color = theme === 'HighContrast' ? `{ThemeResource ${highContrastColor(key)}}` : argb(value);
     xaml += `            <SolidColorBrush x:Key="Bleecker${pascal(key)}Brush" Color="${color}" />\n`;

@@ -140,6 +140,9 @@ public sealed partial class MainWindow : Window
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
                 Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 20 && PackageCard.ActualWidth > 0,
                     "Packaged card did not load its geometry and content template.");
+                Require(PackageSkeleton.ActualHeight == 16 && PackageSkeleton.ActualWidth == 160 && PackageSkeletonCard.ActualHeight == 88 &&
+                    PackageSkeletonTable.ActualHeight == 32 && !FrameworkElementAutomationPeer.CreatePeerForElement(PackageSkeleton).IsControlElement(),
+                    "Packaged Skeleton controls lost their independent templates, geometry or decorative semantics.");
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");

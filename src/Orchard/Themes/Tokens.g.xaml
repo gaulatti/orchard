@@ -13,6 +13,8 @@
             <SolidColorBrush x:Key="BleeckerNotificationCountBackgroundBrush" Color="#FFA65D57" />
             <SolidColorBrush x:Key="BleeckerNotificationCountForegroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FF000000" Opacity="0.05" />
+            <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="#FFE6D5B8" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="#FF000000" Opacity="0.08" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF1A374D" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -127,6 +129,8 @@
             <SolidColorBrush x:Key="BleeckerNotificationCountBackgroundBrush" Color="#FFD47B75" />
             <SolidColorBrush x:Key="BleeckerNotificationCountForegroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="#FFFFFFFF" Opacity="0.08" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -241,6 +245,8 @@
             <SolidColorBrush x:Key="BleeckerNotificationCountBackgroundBrush" Color="{ThemeResource SystemColorHighlightColor}" />
             <SolidColorBrush x:Key="BleeckerNotificationCountForegroundBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="{ThemeResource SystemColorWindowTextColor}" />

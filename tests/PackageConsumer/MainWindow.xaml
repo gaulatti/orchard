@@ -27,6 +27,9 @@
             <orchard:BleeckerCard x:Name="PackageCard" Style="{StaticResource ConsumerCardStyle}" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated">
             <StackPanel Spacing="16">
                 <orchard:BleeckerStatusBadge x:Name="PackageStatus" Label="LOCAL" Variant="Info" Description="Independent package preview" />
+                <orchard:BleeckerSkeleton x:Name="PackageSkeleton" Width="160" Height="16" HorizontalAlignment="Left" />
+                <orchard:BleeckerSkeletonCard x:Name="PackageSkeletonCard" Width="320" Rows="0" HorizontalAlignment="Left" />
+                <orchard:BleeckerSkeletonTable x:Name="PackageSkeletonTable" Width="320" Rows="0" Columns="2" HorizontalAlignment="Left" />
                 <orchard:BleeckerSeparator x:Name="PackageSeparator" Decorative="False" AutomationProperties.Name="Preview boundary" />
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />
