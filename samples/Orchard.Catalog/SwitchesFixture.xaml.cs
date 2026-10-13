@@ -361,7 +361,8 @@ public sealed partial class SwitchesFixture : UserControl
         Require(GetCursorPos(out var originalPointer), "Physical switch check could not read its pointer position.");
         try
         {
-            var welcome = NativeScreenCapture.MinimizeHostedWelcome(window);
+            var welcome = Environment.GetEnvironmentVariable("CI") == "true"
+                ? NativeScreenCapture.MinimizeHostedWelcome(window) : null;
             if (welcome is not null)
             {
                 await File.WriteAllTextAsync(Path.Combine(folder, $"switch-hosted-welcome-{scheme}.json"),

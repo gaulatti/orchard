@@ -121,8 +121,9 @@ internal static class NativeScreenCapture
 
     internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
     {
-        if (Environment.GetEnvironmentVariable("CI") != "true" || GetForegroundWindow() != window)
-            throw new InvalidOperationException("Composed capture requires the hosted catalog's foreground window.");
+        GetWindowThreadProcessId(window, out var process);
+        if (process != Environment.ProcessId || GetForegroundWindow() != window)
+            throw new InvalidOperationException("Composed capture requires the catalog's own foreground window.");
         var client = ClientBounds(window);
         var origin = new ScreenPoint((int)client.X, (int)client.Y);
         var width = (int)client.Width;

@@ -119,7 +119,26 @@ public sealed partial class BreadcrumbsFixture : UserControl
                     hit = NativeScreenCapture.DescribePoint(input.Window, (int)(input.ScreenBounds(expand).X + 12), (int)(input.ScreenBounds(expand).Y + 12)) };
             }
             Require(expand.ActualWidth == 24 && expand.ActualHeight == 24 && expand.CornerRadius == new CornerRadius(6), "Ellipsis native defaults replaced source dimensions.");
-            expand.Focus(FocusState.Keyboard); input.Key(0x0D);
+            input.PointerButton(true);
+            try
+            {
+                await AwaitAsync(() => expand.IsPressed && Math.Abs(Find<FrameworkElement>(expand, "PART_Surface").RenderTransform is ScaleTransform scale ? scale.ScaleX - .9 : 1) < .000001,
+                    "Held ellipsis press did not settle at the reference scale.");
+                Require(Children(interaction).Count == 5, "Pointer down expanded the path before activation.");
+                await MainWindow.CaptureElementAsync(interaction, Path.Combine(folder, $"breadcrumb-pressed-{scheme}.png"));
+                // Release outside the action: native cancellation must restore
+                // the palette/scale without consuming the expansion latch.
+                await input.MoveAsync((FrameworkElement)Rows.Children[0]);
+            }
+            finally { input.PointerButton(false); }
+            await AwaitAsync(() => !expand.IsPressed && Find<FrameworkElement>(expand, "PART_Surface").RenderTransform is ScaleTransform restored &&
+                Math.Abs(restored.ScaleX - 1) < .000001 && Find<Border>(expand, "PART_Chrome").Background is SolidColorBrush rest && rest.Color.A == 0,
+                "Cancelled ellipsis press retained pressed chrome or scale.");
+            Require(Children(interaction).Count == 5, "Cancelled pointer press expanded the path.");
+            await input.MoveAsync(expand);
+            Require(expand.Focus(FocusState.Keyboard), "Visible ellipsis refused keyboard focus after pointer cancellation.");
+            await AwaitAsync(() => expand.FocusState == FocusState.Keyboard, "Ellipsis did not acquire keyboard focus.");
+            input.Key(0x0D);
             await AwaitAsync(() => Children(interaction).Count == 9 && Children(interaction).OfType<Button>().Count() == 0, "Keyboard expansion did not expose the entire path.");
             await AwaitAsync(() => Children(interaction).OfType<HyperlinkButton>().Skip(1).First().FocusState == FocusState.Keyboard, "Expansion did not restore keyboard focus to the revealed path.");
         }
@@ -147,6 +166,19 @@ public sealed partial class BreadcrumbsFixture : UserControl
         Require(VisualTreeHelper.GetChildrenCount(Collapsed) == 0, "Cleared breadcrumb retained template content.");
         Collapsed.Template = template; Collapsed.ApplyTemplate(); UpdateLayout();
         Require(Children(Collapsed).Count == 9, "Template restoration lost expanded state.");
+        var rowIndex = Rows.Children.IndexOf(Collapsed);
+        Rows.Children.Remove(Collapsed);
+        await AwaitAsync(() => !Collapsed.IsLoaded, "Breadcrumb did not unload.");
+        var detachedLabel = collection[^1].Label;
+        collection[^1].Label = "Changed while detached";
+        Rows.Children.Insert(rowIndex, Collapsed);
+        await AwaitAsync(() => Collapsed.IsLoaded && Children(Collapsed)[^1] is TextBlock remounted && remounted.Text == "Changed while detached",
+            "Reload did not rehydrate consumer data.");
+        Require(Children(Collapsed).Count == 9 && !Children(Collapsed).OfType<Button>().Any(), "Reload reset the expansion latch.");
+        collection[^1].Label = detachedLabel;
+        await AwaitAsync(() => ((TextBlock)Children(Collapsed)[^1]).Text == detachedLabel, "Reload did not restore item observation.");
+        UpdateLayout();
+        await MainWindow.CaptureElementAsync(Collapsed, Path.Combine(folder, $"breadcrumb-reloaded-{scheme}.png"));
         var client = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"breadcrumb-window-{scheme}.png"));
         await File.WriteAllTextAsync(Path.Combine(folder, $"breadcrumb-measurements-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, scheme, scale = XamlRoot.RasterizationScale, measurements, client }, new JsonSerializerOptions { WriteIndented = true }));
     }

@@ -94,7 +94,33 @@ its expected 20% brush is #331A2332. Light remains #1AE6D5B8. The product's
 generated brushes already consume the correct theme tokens. The fixture now
 asserts those exact source values, and retains target/painted palettes, native
 common state, bounds, foreground ownership and preceding measurements. A full
-native Breadcrumb pass on both architectures is still required.
+native Breadcrumb pass on both architectures is recorded below.
+
+Run [38370125528](https://github.com/gaulatti/orchard/actions/runs/38370125528)
+at `2d7fdc9` passes the x64 and native ARM64 catalogs and independent package
+consumers, including physical ellipsis hover, keyboard expansion/focus,
+fractional path geometry and the shared global visible-cursor gates. This
+establishes the registered runtime checks, not full visual acceptance.
+
+The fixture now additionally holds a real pointer press until the ellipsis
+settles at scale .9, captures it, then releases outside the action and requires
+scale 1, transparent chrome and the unchanged collapse latch. It also removes
+and remounts an expanded path, mutates consumer data while detached and verifies
+rehydration, restored item observation and retained expansion. These additional
+checks pass locally on x64 in both themes with Windows animations disabled,
+retained under `artifacts/smoke-breadcrumb-focused`. The reloaded and pressed
+captures were inspected. Enabled motion and a fresh ARM64 runtime run remain
+required; local x64 and ARM64 builds have zero warnings and all 26 unit tests pass.
+
+The full local suite stopped later at Input's rounded-pointer movement check
+(`artifacts/smoke-breadcrumb-resume-focus/result.json`), after Breadcrumb's Light
+phase passed. The focused result does not clear that separate full-suite failure.
+
+For focused local verification, publish the catalog and run
+`./scripts/smoke-catalog.ps1 -Executable <published>/Orchard.Catalog.exe -Component breadcrumb -Output artifacts/smoke-breadcrumb`.
+This runs both themes and retains pressed, reloaded and composed captures. The
+default `all` command still runs every fixture; a focused pass does not establish
+full-suite acceptance.
 
 The default native links use HyperlinkButton Click/Command rather than
 NavigateUri so application routes and relative hrefs stay consumer-owned, as

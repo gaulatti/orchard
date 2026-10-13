@@ -8,6 +8,16 @@ cursor lifecycle checks. Per-state settling deadlines and architecture gates
 remain unchanged. A deadline expiry terminates that owned test process and fails
 verification; it does not count as runtime acceptance.
 
+The shared native-input session and Switch fixture invoke hosted welcome-window
+preparation only when `CI=true`. Local runs acquire the catalog's own window
+without invoking that CI-only operation. The preparation helper still rejects
+non-CI callers; this keeps its foreign-window mutation restricted to isolated
+hosted runners. All foreground, hit-target and actual-input checks remain active
+locally.
+Composed captures likewise work locally, but require the foreground window to
+belong to the running catalog process, remain entirely on its monitor and pass
+the existing occlusion checks. They cannot capture another application's window.
+
 Orchard is the Windows implementation of Gaulatti’s Bleecker design language.
 It uses WinUI 3 and .NET, not an embedded browser. Sabella is the Apple library;
 Linux has a separate future implementation. Shared branding and design tokens

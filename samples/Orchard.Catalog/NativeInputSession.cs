@@ -28,7 +28,8 @@ internal sealed class NativeInputSession : IDisposable
 
     internal async Task AcquireAsync(FrameworkElement foregroundTarget)
     {
-        var welcome = NativeScreenCapture.MinimizeHostedWelcome(Window);
+        var welcome = Environment.GetEnvironmentVariable("CI") == "true"
+            ? NativeScreenCapture.MinimizeHostedWelcome(Window) : null;
         if (welcome is not null)
             await File.WriteAllTextAsync(Path.Combine(folder, $"{prefix}-hosted-welcome.json"),
                 JsonSerializer.Serialize(welcome, new JsonSerializerOptions { WriteIndented = true }));
