@@ -1,0 +1,36 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "8b2319f72c31ffb0c5e775484ed3b59d2ceeb59a4e73a779c805053585d601e6",
+  "scope": "Isolated source opacity property: 220ms and Tailwind 4.2.1 default easing; CSS timeline samples, not full component raster acceptance",
+  "browserVersion": "155.0.4283.45",
+  "samples": [
+    {
+      "name": "enter80",
+      "time": 80,
+      "opacity": 0.953329,
+      "duration": 220,
+      "progress": 0.5332856243659491
+    },
+    {
+      "name": "exit40",
+      "time": 40,
+      "opacity": 0.92789,
+      "duration": 117.32283736050879,
+      "progress": 0.47701824460472525
+    },
+    {
+      "name": "reenter25",
+      "time": 25,
+      "opacity": 0.933246,
+      "duration": 158.64229656924678,
+      "progress": 0.07427860585723992
+    },
+    {
+      "name": "reenter-end",
+      "time": 158.64229656924678,
+      "opacity": 1,
+      "duration": 158.64229656924678,
+      "progress": null
+    }
+  ]
+}

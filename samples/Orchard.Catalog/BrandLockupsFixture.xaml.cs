@@ -91,6 +91,7 @@ public sealed partial class BrandLockupsFixture : UserControl
         CustomLink.BrandName = "Custom link"; CustomLink.Href = "/custom-renderer";
         Require(LongName.ActualHeight>32 && Find<TextBlock>(LongName, "PART_Name").ActualHeight>28, "Constrained non-Latin brand name did not wrap.");
         await VerifyPixelsAsync(input, scheme, folder);
+        await VerifyMotionAsync(input,scheme,folder);
         await input.MoveAsync(native);
         await AwaitAsync(() => Descendants<Grid>(SmallNamed).Single(item => item.Name=="PART_Logo").Opacity==1, "Brand pointer hover did not reach full logo opacity.");
         await input.PressPointerAsync();
@@ -182,6 +183,45 @@ public sealed partial class BrandLockupsFixture : UserControl
             inverted=helperType.GetField("invert",reflection)?.GetValue(visibleHost),contrast=helperType.GetField("contrast",reflection)?.GetValue(visibleHost),
             spriteVisible=sprite?.IsVisible,spriteOpacity=sprite?.Opacity,imageTheme=image.ActualTheme,sourceType=image.Source?.GetType().FullName,image.Visibility }));
         Require(matching,$"Brand composed image inversion/alpha did not settle: {JsonSerializer.Serialize(observations.TakeLast(4))}.");
+    }
+    private async Task VerifyMotionAsync(NativeInputSession input,BleeckerColorScheme scheme,string folder)
+    {
+        var logo=Find<Grid>(SmallNamed,"PART_Logo");var native=Find<HyperlinkButton>(SmallNamed);
+        await input.MoveAsync(Heading);
+        await AwaitAsync(()=>Math.Abs(logo.Opacity-.9)<1e-6,"Brand hover exit did not settle before motion sampling.");
+        var frames=new List<(string Phase,double Milliseconds,double Opacity)>();
+        var clock=Stopwatch.StartNew();var phase="rest";var start=clock.Elapsed.TotalMilliseconds;
+        void Enter(object sender,Microsoft.UI.Xaml.Input.PointerRoutedEventArgs args){if(phase=="enter")return;phase="enter";start=clock.Elapsed.TotalMilliseconds;}
+        void Exit(object sender,Microsoft.UI.Xaml.Input.PointerRoutedEventArgs args)
+        {
+            var point=args.GetCurrentPoint(SmallNamed).Position;
+            if(new Rect(0,0,SmallNamed.ActualWidth,SmallNamed.ActualHeight).Contains(point))return;
+            phase="exit";start=clock.Elapsed.TotalMilliseconds;
+        }
+        void Frame(object? sender,object args){if(phase!="rest")frames.Add((phase,clock.Elapsed.TotalMilliseconds-start,logo.Opacity));}
+        SmallNamed.PointerEntered+=Enter;SmallNamed.PointerExited+=Exit;CompositionTarget.Rendering+=Frame;
+        var enabled=new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;var passed=false;
+        try
+        {
+            await input.MoveAsync(native);
+            await AwaitAsync(()=>logo.Opacity==1,"Brand entry motion did not reach full opacity.");
+            await input.MoveAsync(Heading);
+            await AwaitAsync(()=>Math.Abs(logo.Opacity-.9)<1e-6,"Brand exit motion did not return to resting opacity.");
+            Require(frames.All(frame=>frame.Opacity>=.9-1e-6&&frame.Opacity<=1),"Brand opacity motion exceeded the source range.");
+            if(enabled)
+            {
+                Require(frames.Any(frame=>frame.Phase=="enter"&&frame.Opacity>.9+1e-5&&frame.Opacity<1-1e-5)&&
+                    frames.Any(frame=>frame.Phase=="exit"&&frame.Opacity>.9+1e-5&&frame.Opacity<1-1e-5),"Enabled brand motion did not expose intermediate enter and exit opacity.");
+            }
+            else Require(frames.All(frame=>Math.Abs(frame.Opacity-(frame.Phase=="enter"?1:.9))<1e-6),"Reduced-motion brand hover retained intermediate opacity.");
+            passed=true;
+        }
+        finally
+        {
+            SmallNamed.PointerEntered-=Enter;SmallNamed.PointerExited-=Exit;CompositionTarget.Rendering-=Frame;
+            await File.WriteAllTextAsync(Path.Combine(folder,$"brand-motion-{scheme}.json"),JsonSerializer.Serialize(new{passed,enabled,
+                frames=frames.Select(frame=>new{frame.Phase,frame.Milliseconds,frame.Opacity})}));
+        }
     }
     private async Task AwaitAsync(Func<bool> predicate,string error){var timer=Stopwatch.StartNew();while(!predicate()&&timer.Elapsed<TimeSpan.FromSeconds(3)){UpdateLayout();await Task.Delay(16);}Require(predicate(),error);}
     private static T Find<T>(DependencyObject root,string? name=null) where T:FrameworkElement=>Descendants<T>(root).First(item=>name is null||item.Name==name);

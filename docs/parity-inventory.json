@@ -177,12 +177,14 @@
         "tests/Orchard.Tests/CatalogCoverageTests.cs",
         "samples/Orchard.Catalog/BrandLockupsFixture.xaml.cs",
         "samples/Orchard.Catalog/ContrastFixture.xaml.cs",
+        "tests/Orchard.Tests/BrandMotionTests.cs",
+        "tests/Reference/BrandOpacityTransitions.json",
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Rendered pinned browser/native comparison, including errors and consumer overrides",
-        "Measured hover timing and CSS reversal shortening with enabled/reduced motion",
+        "Measured composed hover timing and interrupted physical reversal with enabled/reduced motion",
         "Native ARM64 runtime, independent package consumption and contrast verification of the new control",
         "Display/text scaling, all contrast schemes, focus pixels, animated/custom images and Narrator"
       ]

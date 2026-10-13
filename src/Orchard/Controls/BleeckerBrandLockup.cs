@@ -5,7 +5,6 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
@@ -30,7 +29,9 @@ public sealed class BleeckerBrandLockup : Control
     private HyperlinkButton? link;
     private BleeckerBrandLinkContext? context;
     private DataTemplate? renderedTemplate;
-    private Storyboard? opacityMotion;
+    private readonly System.Diagnostics.Stopwatch clock = System.Diagnostics.Stopwatch.StartNew();
+    private readonly BleeckerCssTransition<double> opacityMotion = new((from, to, progress) => from + (to - from) * progress, BleeckerCssEasing.Default);
+    private bool opacityRendering;
     private ICommand? observedCommand;
     private bool hovering;
 
@@ -101,7 +102,7 @@ public sealed class BleeckerBrandLockup : Control
     }
     private void DetachTemplate()
     {
-        opacityMotion?.Stop(); opacityMotion = null;
+        opacityRendering = false;
         StopObservingPalette(); separatorPalette = contrastPalette = null;
         if (context is not null) context.Content = null;
         if (link is not null) link.Content = null;
@@ -175,6 +176,12 @@ public sealed class BleeckerBrandLockup : Control
         // notification callback has run. Reconcile its authoritative value at
         // presentation; stable frames do not rebuild or republish the effects.
         if (renderedTheme != ActualTheme) UpdateAppearance();
+        if (opacityRendering && logo is not null)
+        {
+            var time = clock.Elapsed.TotalMilliseconds;
+            logo.Opacity = opacityMotion.ValueAt(time);
+            opacityRendering = opacityMotion.IsRunning(time);
+        }
     }
     private void ObservePalette()
     {
@@ -197,14 +204,11 @@ public sealed class BleeckerBrandLockup : Control
     {
         if (logo is null) return;
         var target = accessibility.HighContrast || hovering && CanInvoke() ? 1 : .9;
-        var current = logo.Opacity; opacityMotion?.Stop(); opacityMotion = null; logo.Opacity = current;
-        if (!animate || !IsLoaded || !settings.AnimationsEnabled || accessibility.HighContrast) { logo.Opacity = target; return; }
-        var duration = TimeSpan.FromMilliseconds(BleeckerTokens.Durations["surface"]);
-        var keyframes = new DoubleAnimationUsingKeyFrames { Duration = duration };
-        keyframes.KeyFrames.Add(new SplineDoubleKeyFrame { KeyTime = KeyTime.FromTimeSpan(duration), Value = target,
-            KeySpline = new KeySpline { ControlPoint1 = new(.4, 0), ControlPoint2 = new(.2, 1) } });
-        opacityMotion = new Storyboard(); Storyboard.SetTarget(keyframes, logo); Storyboard.SetTargetProperty(keyframes, "Opacity");
-        opacityMotion.Children.Add(keyframes); opacityMotion.Begin();
+        var time = clock.Elapsed.TotalMilliseconds;
+        opacityMotion.Retarget(target, time, BleeckerTokens.Durations["surface"],
+            animate && IsLoaded && settings.AnimationsEnabled && !accessibility.HighContrast);
+        logo.Opacity = opacityMotion.ValueAt(time);
+        opacityRendering = opacityMotion.IsRunning(time);
     }
     internal bool CanInvoke() => IsEnabled && (Command?.CanExecute(CommandParameter) ?? true);
     internal void Invoke()

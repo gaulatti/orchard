@@ -69,8 +69,20 @@ surface, brushes and factories follow the mounted control lifecycle.
 
 The hover uses the source's 220ms duration and Tailwind's default
 [`cubic-bezier(0.4, 0, 0.2, 1)`](https://github.com/tailwindlabs/tailwindcss/blob/v4.2.1/packages/tailwindcss/theme.css)
-curve. Windows reduced motion uses immediate endpoints. Exact measured timing
-and CSS reversal shortening still require acceptance work.
+curve. Windows reduced motion uses immediate endpoints. The opacity clock now
+uses CSS reversal shortening while preserving the existing premium defaults of
+other controls. An isolated browser audit of this source property (Edge
+155.0.4283.45) freezes entry at 80ms, exit at 40ms after reversal, and re-entry at
+25ms after another reversal in `tests/Reference/BrandOpacityTransitions.json`.
+It observes .953329 entry opacity, a 117.322837ms shortened exit and a
+158.642297ms shortened re-entry. `BrandMotionTests` compares opacity and effect
+durations with these browser results and reduced-motion settlement; the existing
+Switch browser-timeline tests still pass. This is a property-boundary regression,
+not a full source-component raster comparison. The native catalog retains actual
+rendering-frame opacity for physical enter/exit, requiring intermediate values
+when Windows animations are enabled and immediate endpoints when disabled.
+Exact composed motion timing and interrupted physical reversal acceptance remain
+open.
 
 ## Verification and remaining acceptance
 
@@ -112,6 +124,36 @@ No source project reference or sibling checkout satisfies that check.
 
 The Windows contrast fixture now also includes a custom RGBA logo and requires
 real composed opaque WindowText and transparent Window pixels after the actual
-hosted mode change. Hosted verification of that new boundary remains pending.
+hosted mode change. The following hosted checkpoint verifies that boundary.
+
+Run `38458612519` at `883b0c9` passes the complete native ARM64 catalog, live
+contrast transition and independent consumer. Both appearances pass the
+registered BrandLockup geometry, RGBA, native action, live theme, RTL and
+lifecycle checks. The actual contrast capture samples exact opaque WindowText
+`#FFFFFFFF` and transparent Window `#FF202020` pixels. Runtime archive
+`11844828753` was downloaded and verified against SHA-256
+`cd8ab5b527f214e76e532dd8e6b620b8d9999b4ddc4a4424c069e209613acf49`;
+selected reports and captures are under `artifacts/ci-883b0c9-arm64-evidence`.
+The ARM64 independent consumer package SHA-256 is
+`5a9ca18b1d3fc2b7ef18633b5cd7eb8f90f8e26cfecf8d6cd3c2c428033eb7fc`.
+The x64 job passes contrast and independent consumption but fails Input's
+rounded-pointer cursor matrix. That failure prevents a green overall run and
+does not establish full x64 catalog acceptance for this checkpoint. This hosted
+evidence precedes the new opacity reversal clock; its fresh native acceptance
+is still required.
+
+The new clock passes the focused x64 fixture at `artifacts/smoke-brand-motion`
+and complete catalog at `artifacts/smoke-brand-motion-all-diagnostics`, in both
+appearances with Windows animations disabled and display/text scale 1. Its
+physical enter/exit reports retain 10/11 frames in the focused Light/Dark runs,
+with no intermediate opacity under reduced motion. All 27 unit tests pass,
+including the frozen browser reversal regression and unchanged premium tests.
+The first full run stopped at Input's reading-direction opaque-span assertion;
+an isolated full Input run and the repeated complete catalog pass. The fixture
+now retains the exact second raster and box/span diagnostics if it recurs.
+This sequence does not establish a root cause or silently remove that gate.
+Both architecture builds have zero warnings. The fresh isolated x64 package
+consumer passes at `artifacts/package-consumer-brand-motion`, package SHA-256
+`7326a3e5ab098fc2db3822c992923f0c83683fb1101e14c5dba349cc71eff5a0`.
 
 The public wiki remote is unavailable; the contract is maintained here.
