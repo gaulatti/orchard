@@ -62,6 +62,9 @@ The Switches page adds off/on, both disabled states, a named unlabeled switch,
 long/Japanese/RTL labels and a consumer-owned two-way Boolean binding. Its
 registered runtime checks and remaining acceptance are documented in
 [switches](switches.md).
+The focused `scripts/smoke-catalog.ps1 -Component switches` route explicitly
+exercises real keyboard/pointer input through the shared owned-window session
+in both appearances, without requiring the CI environment flag.
 
 The **Brand lockups** page adds logo-only and named lockups in both sizes,
 consumer-owned RGBA artwork, a typed link template, command availability,

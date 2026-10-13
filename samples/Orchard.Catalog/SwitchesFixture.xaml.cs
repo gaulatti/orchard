@@ -24,7 +24,7 @@ public sealed partial class SwitchesFixture : UserControl
 
     public SwitchesFixture() { InitializeComponent(); DataContext = state; }
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, bool physicalInput = false)
     {
         UpdateLayout();
         await Task.Delay(100);
@@ -124,9 +124,9 @@ public sealed partial class SwitchesFixture : UserControl
                 JsonSerializer.Serialize(new { animationsEnabled = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
                     motionSamples, appearanceSamples }, new JsonSerializerOptions { WriteIndented = true }));
         }
-        // Physical input is restricted to the dedicated hosted CI desktop.
-        // Ordinary local catalog verification does not take over the user's input.
-        if (Environment.GetEnvironmentVariable("CI") == "true")
+        // Full local runs retain their existing scope. The focused Switch mode
+        // explicitly exercises this same owned-window path without spoofing CI.
+        if (physicalInput || Environment.GetEnvironmentVariable("CI") == "true")
         {
             try { await VerifyPhysicalInputAsync(scheme, folder); }
             finally
@@ -351,150 +351,55 @@ public sealed partial class SwitchesFixture : UserControl
     private async Task VerifyPhysicalInputAsync(BleeckerColorScheme scheme, string folder)
     {
         physicalInputSteps.Clear();
-        using var process = Process.GetCurrentProcess();
-        process.Refresh();
-        var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);
-        Require(window != IntPtr.Zero, "Physical switch check could not identify its own window.");
-        GetWindowThreadProcessId(window, out var windowProcess);
-        Require(windowProcess == process.Id, "Physical switch check resolved a window outside its own process.");
-        var foregroundRequested = false;
-        Require(GetCursorPos(out var originalPointer), "Physical switch check could not read its pointer position.");
+        using var input = new NativeInputSession(XamlRoot, folder, $"switch-{scheme}");
+        await input.AcquireAsync(SwitchHeading);
+        await input.MoveAsync(SwitchHeading);
+        physicalInputSteps.Add("Own catalog window acquired foreground input");
         try
         {
-            var welcome = Environment.GetEnvironmentVariable("CI") == "true"
-                ? NativeScreenCapture.MinimizeHostedWelcome(window) : null;
-            if (welcome is not null)
-            {
-                await File.WriteAllTextAsync(Path.Combine(folder, $"switch-hosted-welcome-{scheme}.json"),
-                    JsonSerializer.Serialize(welcome, new JsonSerializerOptions { WriteIndented = true }));
-                await Task.Delay(100);
-            }
-            // The smoke process starts hidden. Expose only its own hosted-CI
-            // window, then retry after Alt before attempting a pointer click.
-            // An occluding CoreWindow can otherwise prevent that retry entirely.
-            ShowWindow(window, 3); // SW_SHOWMAXIMIZED: keep the client inside the hosted monitor.
-            Require(SetWindowPos(window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the CI catalog window.");
-            foregroundRequested = SetForegroundWindow(window);
-            await Task.Delay(100);
-            if (GetForegroundWindow() != window)
-            {
-                // Windows clears the foreground lock in response to Alt.
-                // Use a transient key on this isolated CI desktop; no global
-                // foreground-lock setting or input-queue attachment is changed.
-                SendKey(0x12);
-                await Task.Delay(100);
-                foregroundRequested = SetForegroundWindow(window);
-                await Task.Delay(100);
-            }
-            if (GetForegroundWindow() != window) await ClickAsync(Find<Border>(Off, "PART_Track"), false);
-            await WaitAsync(() => GetForegroundWindow() == window,
-                $"Physical switch check did not own the foreground window: own={window}, heuristic={process.MainWindowHandle}, foreground={GetForegroundWindow()}, session={process.SessionId}, requested={foregroundRequested}.");
-            physicalInputSteps.Add("Own catalog window acquired foreground input");
             Off.IsOn = false;
             await SettleAsync(Off, false);
-            var screenRect = await NativeScreenCapture.CaptureClientAsync(window, Path.Combine(folder, $"switch-window-{scheme}.png"));
+            await input.RequireForegroundAsync();
+            var screenRect = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"switch-window-{scheme}.png"));
             await File.WriteAllTextAsync(Path.Combine(folder, $"switch-window-bounds-{scheme}.json"),
                 JsonSerializer.Serialize(new { client = screenRect, displayScale = XamlRoot.RasterizationScale,
-                    rows = Rows.Children.OfType<BleeckerSwitch>().Select(control => new { control.Name,
-                        screen = ScreenBounds(control) }) },
+                    rows = Rows.Children.OfType<BleeckerSwitch>().Select(control => new { control.Name, screen = input.ScreenBounds(control) }) },
                     new JsonSerializerOptions { WriteIndented = true }));
             physicalInputSteps.Add("Composed client pixels captured with native thumb shadows");
             var native = Find<ToggleSwitch>(Off, "PART_Switch");
             Require(native.Focus(FocusState.Keyboard), "Native switch could not receive keyboard focus.");
-            SendKey(0x20); // Space
+            await input.RequireForegroundAsync(); input.Key(0x20);
             await WaitAsync(() => Off.IsOn, "Physical Space did not toggle the focused switch.");
             physicalInputSteps.Add("Space toggled the focused native input");
-            SendKey(0x09); // Tab
+            await input.RequireForegroundAsync(); input.Key(0x09);
             await WaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Find<ToggleSwitch>(On, "PART_Switch")),
                 "Physical Tab did not reach the next switch.");
-            SendKey(0x09);
+            await input.RequireForegroundAsync(); input.Key(0x09);
             await WaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Find<ToggleSwitch>(WithoutLabel, "PART_Switch")),
                 "Physical Tab did not skip both disabled switches.");
             physicalInputSteps.Add("Tab advanced once per switch and skipped disabled inputs");
-            await ClickAsync(Find<Border>(Off, "PART_Track"));
+            await input.ClickAsync(Find<Border>(Off, "PART_Track"));
             await WaitAsync(() => !Off.IsOn, "Physical track click did not toggle the switch off.");
             physicalInputSteps.Add("Track click toggled off");
-            await ClickAsync(Find<TextBlock>(Off, "PART_Label"));
+            await input.ClickAsync(Find<TextBlock>(Off, "PART_Label"));
             await WaitAsync(() => Off.IsOn, "Physical label click did not activate its switch.");
             physicalInputSteps.Add("Label click toggled on");
             foreach (var control in new[] { DisabledOff, DisabledOn })
             {
                 var before = control.IsOn;
-                await ClickAsync(Find<Border>(control, "PART_Track"));
+                await input.ClickAsync(Find<Border>(control, "PART_Track"));
                 Require(control.IsOn == before, "Physical click changed a disabled switch.");
             }
             physicalInputSteps.Add("Disabled off/on rejected physical activation");
-            await ClickAsync(Find<Border>(Rtl, "PART_Track"));
+            await input.ClickAsync(Find<Border>(Rtl, "PART_Track"));
             await WaitAsync(() => !Rtl.IsOn, "Physical RTL track click did not toggle off.");
-            await ClickAsync(Find<TextBlock>(Rtl, "PART_Label"));
+            await input.ClickAsync(Find<TextBlock>(Rtl, "PART_Label"));
             await WaitAsync(() => Rtl.IsOn, "Physical RTL label click did not toggle on.");
             physicalInputSteps.Add("RTL track and label both activated the native input");
         }
-        finally
-        {
-            await File.WriteAllTextAsync(Path.Combine(folder, $"switch-desktop-{scheme}.json"),
-                JsonSerializer.Serialize(new { window = window.ToInt64(), heuristicWindow = process.MainWindowHandle.ToInt64(),
-                    foregroundWindow = GetForegroundWindow().ToInt64(), process.SessionId, foregroundRequested,
-                    desktop = NativeScreenCapture.DescribeDesktop() }, new JsonSerializerOptions { WriteIndented = true }));
-            Off.IsOn = false; Rtl.IsOn = true;
-            SetWindowPos(window, new IntPtr(-2), 0, 0, 0, 0, 0x0013); // Remove temporary topmost status.
-            SetCursorPos(originalPointer.X, originalPointer.Y);
-        }
+        finally { Off.IsOn = false; Rtl.IsOn = true; }
         await SettleAsync(Off, false);
-
-        async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
-        {
-            if (requireForeground) Require(GetForegroundWindow() == window, "Physical input lost its foreground window.");
-            var bounds = ScreenBounds(target);
-            Require(bounds.Width > 0 && bounds.Height > 0, "Physical switch target has no screen bounds.");
-            var x = (int)(bounds.X + bounds.Width / 2);
-            var y = (int)(bounds.Y + bounds.Height / 2);
-            if (!NativeScreenCapture.OwnsScreenPoint(window, x, y))
-            {
-                await File.WriteAllTextAsync(Path.Combine(folder, $"switch-hit-target-{scheme}.json"),
-                    JsonSerializer.Serialize(NativeScreenCapture.DescribePoint(window, x, y), new JsonSerializerOptions { WriteIndented = true }));
-                throw new InvalidOperationException($"Physical switch target does not belong to its own window: target={target.Name}, point={x},{y}, client={NativeScreenCapture.ClientBounds(window)}.");
-            }
-            Require(SetCursorPos(x, y), "Could not position CI pointer.");
-            await Task.Delay(30);
-            Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0002 } } },
-                  new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput { Flags = 0x0004 } } }]);
-            await Task.Delay(100);
-        }
-        Rect ScreenBounds(FrameworkElement target)
-        {
-            // In-process peer bounds in this WinUI projection are client
-            // relative. Use the visual transform and actual HWND client origin
-            // rather than treating those peer bounds as desktop coordinates.
-            var client = NativeScreenCapture.ClientBounds(window);
-            var local = target.TransformToVisual(XamlRoot.Content).TransformBounds(new Rect(0, 0, target.ActualWidth, target.ActualHeight));
-            var scale = XamlRoot.RasterizationScale;
-            return new Rect(client.X + local.X * scale, client.Y + local.Y * scale, local.Width * scale, local.Height * scale);
-        }
-        void SendKey(ushort key) => Send([new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key } } },
-            new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key, Flags = 2 } } }]);
-        void Send(NativeInput[] inputs) => Require(SendInput((uint)inputs.Length, inputs, Marshal.SizeOf<NativeInput>()) == inputs.Length,
-            "Windows rejected physical CI input.");
     }
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct NativeInput { public uint Type; public InputData Data; }
-    [StructLayout(LayoutKind.Explicit)]
-    private struct InputData { [FieldOffset(0)] public MouseInput Mouse; [FieldOffset(0)] public KeyboardInput Keyboard; }
-    [StructLayout(LayoutKind.Sequential)]
-    private struct MouseInput { public int X, Y; public uint MouseData, Flags, Time; public IntPtr Extra; }
-    [StructLayout(LayoutKind.Sequential)]
-    private struct KeyboardInput { public ushort Key, Scan; public uint Flags, Time; public IntPtr Extra; }
-    [StructLayout(LayoutKind.Sequential)]
-    private struct CursorPoint { public int X, Y; }
-    [DllImport("user32.dll", SetLastError = true)] private static extern uint SendInput(uint count, NativeInput[] inputs, int size);
-    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetForegroundWindow(IntPtr window);
-    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindow(IntPtr window, int command);
-    [DllImport("user32.dll", SetLastError = true)] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetWindowPos(IntPtr window, IntPtr insertAfter, int x, int y, int width, int height, uint flags);
-    [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
-    [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
-    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out CursorPoint point);
-    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetCursorPos(int x, int y);
 
     private async Task InspectFontFallbackAsync(BleeckerColorScheme scheme, string folder)
     {

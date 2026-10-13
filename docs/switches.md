@@ -128,25 +128,34 @@ The mounted fixture also switches appearance in place and verifies the off/on,
 disabled and edge-case palette while retaining every consumer Boolean value.
 Unload verification waits for the actual Unloaded event before checking that the
 composition shadow has detached; IsLoaded can become false before event cleanup.
-The dedicated hosted CI desktop additionally sends actual Space/Tab and pointer
-input to its own foreground catalog window, verifying label/track activation,
-disabled rejection and RTL activation. Local smoke checks omit physical input
-and explicitly record that omission, preserving the developer's foreground app.
-The hosted check maximizes its own initially hidden window and temporarily makes
-it topmost. If Windows refuses a foreground request, a transient Alt press/release
-precedes one more foreground request, using
-Windows' documented foreground-lock release behavior. This does not change
-global foreground-lock settings or attach another thread's input queue. A real
-click is attempted only if that request also fails and the point belongs to the
-catalog's own top-level HWND. Alt runs before the click: the ARM64 host has an
-active console session, but another CoreWindow covers the catalog's intended
-target. Requiring ownership before that activation attempt prevented it from
-ever running. Every subsequent click keeps the same ownership requirement.
-Cleanup removes the temporary topmost state
-and restores the pointer. Its HWND comes from XamlRoot.ContentIslandEnvironment
-AppWindowId and is checked against the process ID; Process.MainWindowHandle is
-only retained as a diagnostic. The check retains foreground, session and input
-desktop diagnostics even when activation fails.
+Hosted CI sends actual Space/Tab and pointer input to its own foreground catalog
+window, verifying label/track activation, disabled rejection and RTL activation.
+Ordinary local full-suite runs retain their existing omission of this Switch
+physical phase. The focused `scripts/smoke-catalog.ps1 -Component switches`
+explicitly includes it through the same owned-window path, without spoofing CI
+or changing desktop preferences.
+
+The physical phase now uses the catalog's shared `NativeInputSession` instead of
+duplicating cursor movement, input injection, foreground acquisition and cleanup.
+That session verifies the XAML-root HWND and process, temporarily maximizes and
+makes only the catalog topmost, checks target ownership, and restores the pointer
+and topmost state. Keyboard actions and captures require foreground immediately
+beforehand. Pointer movement and held press/release use the shared guards.
+On hosted CI only, the existing single recovery can re-acquire the still-visible
+catalog after a foreign foreground change, with an owned current point and no
+held pointer button. It refuses Orchard-owned popup/window failures. This does
+not weaken activation or visible-state assertions.
+
+Run `38470614305` at `289a8ba` passes ARM64's corrected Bauhaus fixture but later
+fails during Dark Switch track activation because another HWND owns foreground.
+Its retained desktop report confirms the mismatch. The old Switch helper lacked
+the shared bounded recovery and checked only before its pointer delay; this
+refactor puts it on the same path as the other catalog fixtures.
+The focused local x64 check passes at `artifacts/smoke-switch-shared-input`
+with animations off and display/text scale 1. Both appearances retain all
+eight physical acceptance steps, including actual Space/Tab, label/track,
+disabled and RTL activation. The composed captures retain the thumb shadows.
+All 27 unit/resource tests pass; both architecture builds have zero warnings.
 An occluded target also retains HWND class, executable basename, process/session,
 topmost status, visibility and DWM
 cloaking diagnostics, plus the owning application's AUMID, without other windows'
@@ -155,7 +164,7 @@ The native ARM64 diagnostic identifies its covering window as
 `Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy!App`. Hosted preparation
 requests normal minimization only when the foreground AUMID exactly matches
 that welcome app and its session matches the catalog. It records the request
-in `switch-hosted-welcome-{Light,Dark}.json`. The foreground and target-ownership
+in `switch-{Light,Dark}-hosted-welcome.json`. The foreground and target-ownership
 gates still prove whether that request exposed the catalog; the request itself
 is not success. This code refuses to run outside CI. It makes no welcome
 choices, changes no Windows preferences and does not terminate that process.
