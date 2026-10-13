@@ -52,7 +52,7 @@ public sealed partial class InputsFixture
                         var opacity = (double)(float).6;
                         cursorTrace.Clear();
                         var dispatch = System.Diagnostics.Stopwatch.StartNew();
-                        await AwaitAsync(() =>
+                        await AwaitOwnedAsync(() =>
                         {
                             var visible = NativeInputSession.CurrentVisibleCursor();
                             if (visible != expected) cursorTrace.Add(new { milliseconds = dispatch.Elapsed.TotalMilliseconds,
@@ -80,7 +80,7 @@ public sealed partial class InputsFixture
                 control.IsError = originals[Array.IndexOf(controls, control)].IsError;
             }
             await input.MoveAsync((FrameworkElement)((StackPanel)Content).Children[0]);
-            await AwaitAsync(() => NativeInputSession.CurrentVisibleCursor() == SystemCursor(IntPtr.Zero, new IntPtr(32512)),
+            await AwaitOwnedAsync(() => NativeInputSession.CurrentVisibleCursor() == SystemCursor(IntPtr.Zero, new IntPtr(32512)),
                 "Leaving all rounded disabled inputs retained the override cursor.");
             passed = true;
         }
@@ -101,6 +101,23 @@ public sealed partial class InputsFixture
             await File.WriteAllTextAsync(Path.Combine(folder, $"input-rounded-pointer-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, cursorTrace, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
+        }
+
+        async Task AwaitOwnedAsync(Func<bool> condition, string message, Func<string>? details = null)
+        {
+            var elapsed = System.Diagnostics.Stopwatch.StartNew();
+            while (true)
+            {
+                // The runner's setup console can take foreground after a move
+                // has already completed. Reuse the session's single bounded
+                // recovery, then keep the original displayed-cursor gate.
+                await input.RequireForegroundAsync();
+                if (condition() && input.OwnsForeground) return;
+                if (elapsed.Elapsed >= TimeSpan.FromSeconds(1)) break;
+                UpdateLayout(); await Task.Delay(16);
+            }
+            await input.RequireForegroundAsync();
+            Require(condition() && input.OwnsForeground, $"{message} {details?.Invoke()}");
         }
     }
 

@@ -13,6 +13,26 @@ No component has full visual, input, accessibility and scaling acceptance.
 
 ## Avatar startup boundary
 
+Run `38359503487` at `d280c79` passes the x64 catalog and independent consumer,
+but fails ARM64's Light Medium disabled Input at included corner (3,0).
+Its checked artifact `11794259493` has SHA-256
+`d2fa7519acfbe29e311c528f7eeccfe6fa516c4f540d58c31a0b221d7d0f7b8c`.
+The final physical move records Orchard in foreground. During the one-second
+cursor wait, a same-session WSL ConsoleWindowClass takes foreground while the
+pointer remains over Orchard's DesktopChildSiteBridge. The 41 mismatch samples
+show global Arrow, UI-thread Wait, and published UniversalNo; all three values
+are now independently identified. Handle 65561 is AppStarting on this runner.
+This proves foreground ownership was lost during the wait; it does not prove
+a product cursor defect or establish that every earlier failure has this cause.
+
+Rounded Input cursor waits now check foreground ownership before and after their
+conditions and reuse NativeInputSession's existing single recovery for foreign
+runner windows over the still-owned target. Recovery only reactivates Orchard;
+it does not move the pointer, set a cursor, retry the fixture or change any
+expected value. A second foreground loss or unsuccessful recovery still fails.
+The global displayed-cursor, border, opacity and focus criteria remain required.
+This harness correction requires a fresh passing native run on each architecture.
+
 The subsequent docs-only run `38349885199` at `54a370e` passes the ARM64
 catalog and independent consumer, but x64 fails Small disabled invalid Input's
 excluded (0,0) corner in Light with visible handle 65561 and published Arrow.

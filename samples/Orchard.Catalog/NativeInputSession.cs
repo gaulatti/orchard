@@ -60,8 +60,7 @@ internal sealed class NativeInputSession : IDisposable
 
     internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true, Point? localPoint = null)
     {
-        if (requireForeground && GetForegroundWindow() != Window) await RestoreHostedForegroundAsync();
-        if (requireForeground) Require(GetForegroundWindow() == Window, "Physical pointer input lost the catalog foreground window.");
+        if (requireForeground) await RequireForegroundAsync();
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
         await Task.Delay(100);
         var bounds = ScreenBounds(target);
@@ -98,6 +97,14 @@ internal sealed class NativeInputSession : IDisposable
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
+    }
+
+    internal bool OwnsForeground => GetForegroundWindow() == Window;
+
+    internal async Task RequireForegroundAsync()
+    {
+        if (!OwnsForeground) await RestoreHostedForegroundAsync();
+        Require(OwnsForeground, "Physical input lost the catalog foreground window.");
     }
 
     private async Task RestoreHostedForegroundAsync()
