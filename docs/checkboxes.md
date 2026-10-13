@@ -468,6 +468,31 @@ handles. These 16 extra phases bring the interaction matrix to 57 acceptance
 phases per appearance (diagnostic snapshots are not acceptance phases).
 Hosted native verification is required before accepting the rounded boundary.
 
+The `770546f` ARM64 report identifies a stationary hit-testing restoration
+failure with the catalog still owning both foreground and pointer. Hover
+geometry, .5 border opacity and the published UniversalNo object were correct,
+but GetCursorInfo displayed Arrow for 89 observations over 2 seconds. The
+verified runtime archive `11837402947` has SHA-256
+`1f43addebc5ba7fc588b2a7fd7d19c35ed0d79d77b1c883997b5e5dbadc0fa79`.
+The root override now alternates two retained UniversalNo objects when its
+owned target displays another cursor despite retaining an override object.
+This changes the publisher identity instead of trusting a same-object
+assignment. Both objects remain override-owned; release still restores the
+last actual WinUI selection, including custom resource cursors. The physical
+fixture repeats the stationary hit-testing disable/restore pair twelve times
+per appearance and retains exact visible cursor, border and pointer assertions.
+The complete local x64 catalog passes at `artifacts/smoke-cursor-republish`,
+with animations disabled and display/text scale 1. Both appearances retain
+85 pointer observations, including all 24 new stationary transitions, and the
+shared Input ownership checks pass. All 26 unit tests, token generation,
+the ARM64 build and a fresh x64 package consumer pass. The latter uses package
+SHA-256 `bb10c334ff95334fdc09e4c151b84795d4d037192ac7dc73008c694110dfa9b9`
+at `artifacts/package-consumer-cursor-republish`. Native ARM64
+evidence remains required for this correction. The SDK's
+[Cursor contract](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputpointersource.cursor?view=windows-app-sdk-2.0)
+describes the displayed cursor over its input target; a retained property alone
+does not satisfy the regression.
+
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
 (including the disabled input's cursor), consumer rich-content edge cases,

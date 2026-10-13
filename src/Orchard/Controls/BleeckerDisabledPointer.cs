@@ -232,8 +232,10 @@ internal static class BleeckerPointerCursor
     private sealed class RootCursor(UIElement root)
     {
         private readonly InputSystemCursor blocked = InputSystemCursor.Create(InputSystemCursorShape.UniversalNo);
+        private readonly InputSystemCursor republishedBlocked = InputSystemCursor.Create(InputSystemCursorShape.UniversalNo);
         private InputPointerSource? source;
         private InputCursor? selected;
+        private InputSystemCursor? publishedBlocked;
 
         internal void Block()
         {
@@ -241,23 +243,42 @@ internal static class BleeckerPointerCursor
             var cursor = current.Cursor;
             // Preserve cursor values published by WinUI while our override is
             // active. Our own object is not a new producer selection.
-            if (source is null || !ReferenceEquals(cursor, blocked)) selected = cursor;
+            if (source is null || !IsBlocked(cursor)) selected = cursor;
             source = current;
-            // A retained publisher object is not evidence that Windows still
-            // displays it after native cursor processing. Publish while owned,
-            // including stationary-pointer observations after native updates.
-            current.Cursor = blocked;
+            publishedBlocked ??= blocked;
+            // Native hit-test updates can replace the visible cursor while the
+            // source retains our object. Reassigning that same object does not
+            // always republish it. Change object identity only when Windows
+            // actually displays another cursor over our owned input target.
+            var visible = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
+            if (ReadCursor(ref visible) && (visible.Flags & 1) != 0 &&
+                visible.Cursor != LoadSystemCursor(IntPtr.Zero, new IntPtr(32648)) && IsBlocked(cursor))
+                publishedBlocked = ReferenceEquals(publishedBlocked, blocked) ? republishedBlocked : blocked;
+            current.Cursor = publishedBlocked;
         }
+
+        private bool IsBlocked(InputCursor? cursor) => ReferenceEquals(cursor, blocked) || ReferenceEquals(cursor, republishedBlocked);
 
         internal void Restore()
         {
             if (source is not null && root.XamlRoot is not null)
             {
                 var cursor = source.Cursor;
-                if (!ReferenceEquals(cursor, blocked)) selected = cursor;
+                if (!IsBlocked(cursor)) selected = cursor;
                 source.Cursor = selected;
             }
             source = null; selected = null;
         }
     }
+
+    [StructLayout(LayoutKind.Sequential)] private struct CursorPoint { public int X; public int Y; }
+    [StructLayout(LayoutKind.Sequential)] private struct CursorInformation
+    {
+        public uint Size, Flags;
+        public IntPtr Cursor;
+        public CursorPoint Position;
+    }
+    [DllImport("user32.dll", EntryPoint = "GetCursorInfo")]
+    [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadCursor(ref CursorInformation info);
+    [DllImport("user32.dll", EntryPoint = "LoadCursorW")] private static extern IntPtr LoadSystemCursor(IntPtr instance, IntPtr name);
 }

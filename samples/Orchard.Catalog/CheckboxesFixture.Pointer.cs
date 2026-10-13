@@ -112,6 +112,13 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff, "hit-testing-disabled", false, 32512, anchor);
             DisabledOff.IsHitTestVisible = true; UpdateLayout();
             await Check(DisabledOff, "hit-testing-restored", true, 32648, anchor);
+            for (var round = 0; round < 12; round++)
+            {
+                DisabledOff.IsHitTestVisible = false; UpdateLayout();
+                await Check(DisabledOff, $"hit-testing-repeat-disabled-{round}", false, 32512, anchor);
+                DisabledOff.IsHitTestVisible = true; UpdateLayout();
+                await Check(DisabledOff, $"hit-testing-repeat-restored-{round}", true, 32648, anchor);
+            }
             DisabledOff.Visibility = Visibility.Collapsed; UpdateLayout();
             await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),
                 "Hidden checkbox retained its blocked cursor.");
