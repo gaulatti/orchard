@@ -132,5 +132,22 @@ The final premium implementation also passes a fresh independent consumer at
 `f16a7b49368c5428032382fa733ebe99d2b465c79ad64ce6ef83ef4df38f634c`.
 The x64 publish and final ARM64 build have zero warnings.
 
+Hosted run [38443310910](https://github.com/gaulatti/orchard/actions/runs/38443310910)
+at `770546f` passes the entire x64 catalog, real Windows contrast transition
+and independent consumer. Native ARM64 reaches and passes Alert's registered
+geometry, palette, input and lifecycle checks in **both** appearances, with
+animations enabled and display/text scale 1. The retained default lifetime
+measurements are 5238.6942ms (Light) and 5224.3687ms (Dark). Its later Dark
+Checkbox cursor check fails, so the overall ARM64 catalog is not green.
+The separate ARM64 contrast and independent consumer steps pass; the consumer
+package SHA-256 is
+`b3e6d4a5df01896fb9c09b02244deac9958b6ce86b3691bc0031f58b27c46051`.
+Runtime archive `11837402947` was downloaded and verified against SHA-256
+`1f43addebc5ba7fc588b2a7fd7d19c35ed0d79d77b1c883997b5e5dbadc0fa79`;
+selected Alert reports and captures are retained under
+`artifacts/ci-770546f-arm64-evidence`. The composed Dark success capture was
+inspected. Enabled endpoints and lifecycle do not establish measured motion
+curves, complete raster parity, contrast/scaling or Narrator acceptance.
+
 The public wiki remote is unavailable; this contract is maintained in the
 repository.
