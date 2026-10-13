@@ -147,7 +147,7 @@ public sealed partial class NotificationsFixture : UserControl
         var colors = BleeckerTokens.Colors(scheme);
         var surface = Descendants<BleeckerOverlaySurface>(presenter).Single();
         Require(BrushColor(surface.Background) == colors[scheme == BleeckerColorScheme.Dark ? "deepSea" : "card"],
-            "Open notification surface retained its previous theme.");
+            $"Open notification surface retained its previous theme: requested={scheme}, actual={surface.ActualTheme}, explicit={surface.RequestedTheme}, presenter={presenter.ActualTheme}/{presenter.RequestedTheme}, background={BrushColor(surface.Background)}, expected={colors[scheme == BleeckerColorScheme.Dark ? "deepSea" : "card"]}.");
         var text = Descendants<TextBlock>(row).Where(block => block.Visibility == Visibility.Visible && block.ActualHeight > 0).ToArray();
         Require(BrushColor(text[0].Foreground) == colors["textPrimary"] && BrushColor(text[1].Foreground) == colors["textSecondary"],
             $"Open notification text palette mismatch: {BrushColor(text[0].Foreground)}/{BrushColor(text[1].Foreground)} for {scheme}.");

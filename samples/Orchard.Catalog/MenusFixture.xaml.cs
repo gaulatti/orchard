@@ -17,6 +17,10 @@ public sealed partial class MenusFixture : UserControl
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
         await Task.Delay(100);
+        using var input = new NativeInputSession(XamlRoot, folder, $"menus-{scheme}");
+        var heading = (FrameworkElement)((StackPanel)Content).Children[0];
+        await input.AcquireAsync(heading);
+        await input.MoveAsync(heading);
         Menu.ShowAt(Trigger);
         await Task.Delay(200);
         var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
@@ -35,8 +39,11 @@ public sealed partial class MenusFixture : UserControl
         VisualStateManager.GoToState(Action, "PointerOver", false);
         Require(root.Background is SolidColorBrush hover && Math.Abs(hover.Opacity - (scheme == BleeckerColorScheme.Dark ? .15 : .1)) < .001, "Menu hover did not use Bleecker's tint.");
         VisualStateManager.GoToState(Action, "Normal", false);
-        Action.Focus(FocusState.Keyboard);
-        await Task.Delay(100);
+        Require(Action.Focus(FocusState.Keyboard), "Menu action refused keyboard focus.");
+        var focusWait = System.Diagnostics.Stopwatch.StartNew();
+        while (Action.FocusState != FocusState.Keyboard && focusWait.Elapsed < TimeSpan.FromSeconds(2)) await Task.Delay(16);
+        Require(Action.FocusState == FocusState.Keyboard && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Action),
+            $"Menu keyboard focus did not arrive: state={Action.FocusState}, open={Menu.IsOpen}, foreground={input.OwnsForeground}, focused={Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name}.");
         var focusHighlight = (Border)root.Children[0];
         Require(focusHighlight.Opacity == 1 && ((Border)focusHighlight.Child).Background is SolidColorBrush focus && Math.Abs(focus.Opacity - (scheme == BleeckerColorScheme.Dark ? .15 : .1)) < .001,
             $"Keyboard focus did not visibly highlight the menu row: {Action.FocusState}, states={string.Join(',', VisualStateManager.GetVisualStateGroups(root).Select(group => group.CurrentState?.Name))}.");

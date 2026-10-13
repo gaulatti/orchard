@@ -19,6 +19,22 @@ The item styles enable `BleeckerMenuFocus.IsEnabled`, which forwards native keyb
 
 The focus regression checks actual keyboard focus and removal of the previous row's highlight in both themes (`artifacts/smoke-menu-focus-complete`). Physical arrow-key testing also verifies the light highlight on Settings (`artifacts/menu-keyboard-light.jpg`). Dark focus intentionally retains the reference's subtle sand tint. Focus uses its own layer because native common-state updates otherwise clear the highlight. Broader input, accessibility and template-replacement checks remain open. The growing catalog suite has a three-minute process timeout; separator resize checks explicitly finish layout before reading dimensions.
 
+At `6382185`, run `38441309158`, the hosted x64 focus assertion reports the row
+Unfocused before the visual-state check. The fixture now acquires its own native
+foreground and parks the pointer on its heading before opening the menu. It
+requires the focus call to succeed, then awaits actual Keyboard focus and the
+authoritative focused element within two seconds. Failure retains the menu's
+open state and foreground/focus diagnostics; a fixed delay is not focus evidence.
+The highlight/tint requirements are unchanged. This correction remains pending
+native verification; no library focus behavior was changed.
+
+The corrected full local x64 suite passes in
+`artifacts/smoke-alerts-menu-focus-all`, including both menu focus/tint checks,
+open notification appearance transitions and the final Alert preview. Hosted
+ARM64 at `6382185` separately fails an existing notification surface theme
+assertion; its retained diagnostic now includes requested/actual theme and
+actual/expected color to isolate that boundary before changing library behavior.
+
 `MenusFixture` is registered in catalog coverage. Published x64 checks open real root and nested popups in both themes, inspect geometry and font selection, exercise checkbox and radio state, invoke a command and verify dismissal. Captures are retained as `menu-light/dark.png` and `submenu-light/dark.png`. Radio-group checks run while the items are loaded; native checkbox activation dismisses the popup asynchronously, so the harness waits before reopening it. Passing these checks does not establish the remaining visual and interaction contracts.
 
 `BleeckerMenuLabel Text="Visible fields"` supplies a non-actionable section heading: Encode Sans Semibold 10px/15px, 0.09em tracking, uppercase display, secondary foreground and 8/6px padding (27px single-line height). `Inset="True"` adds 24px before the text, producing the reference's 32px left inset without replacing consumer padding or its style. Casing follows `Language`, updates live and preserves the original `Text` as the accessible name. Explicit automation names remain consumer-owned. The control uses a native menu-item host with hit testing and keyboard focus disabled. Its custom peer exposes text with no invoke/toggle pattern. This avoids WinUI filtering separator-derived items out of the presenter child tree. Both the catalog and isolated package consumer verify the label through the presenter, and external Windows UI Automation inspection confirms both section labels appear as text. The catalog also checks nested-label tree inclusion, live casing and consumer padding. Physical label clicks leave the menu open and execute no action. Final light/dark root and nested captures are retained in `artifacts/smoke-menu-label-tree-nested`. Narrator and the broader accessibility matrix remain unverified.
