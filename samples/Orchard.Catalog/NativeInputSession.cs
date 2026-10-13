@@ -101,6 +101,7 @@ internal sealed class NativeInputSession : IDisposable
     }
 
     internal bool OwnsForeground => GetForegroundWindow() == Window;
+    internal bool OwnsCurrentPoint => GetCursorPos(out var point) && NativeScreenCapture.OwnsScreenPoint(Window, point.X, point.Y);
     internal bool HasForeignForeground
     {
         get

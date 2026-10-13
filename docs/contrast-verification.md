@@ -1,5 +1,21 @@
 # Windows contrast verification
 
+Run `38433098660` at `868fff5` passes the full registered catalog and independent
+consumers on both architectures. The ARM64 contrast phase also passes actual
+mode switching, exact action/heading paint, open popup keyboard focus,
+breadcrumb hover and restoration. Its archive is `11832133524`, SHA-256
+`28d95f21bd5577000399be9d48e5bd3be3dd96408a7c084cde3828994d35e31d`.
+
+The x64 contrast phase stops at guarded foreground recovery. Its retained trace
+identifies Windows' `sethc` / `CoverWindowClass` transition cover owning both
+foreground and the parked pointer point. Recovery correctly refuses while that
+point is obstructed. The fixture now waits up to eight seconds for the catalog's
+foreground or pointer target to become owned before its existing single guarded
+recovery attempt. It does not move the pointer, dismiss the system cover or
+relax ownership. The x64 archive `11832183204` has verified SHA-256
+`296ff67ef1ac1e019225364458d543bc87114befb326c6b1ddcb2b53864c759d`.
+Its contrast acceptance remains open.
+
 Run `38431196521` at `f074df3` passes the live color assertion on x64 and reaches
 popup/focus verification. Its trace records a native window deactivation while
 the logical help trigger retains keyboard focus. The x64 archive `11830797900`

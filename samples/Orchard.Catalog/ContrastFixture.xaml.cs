@@ -93,6 +93,8 @@ public sealed partial class ContrastFixture : UserControl
             {
                 Require(!tooltip.IsOpen, "Contextual help did not dismiss on native window deactivation.");
                 samples.Add(new { phase = "native-deactivation", state = Snapshot() });
+                await AwaitAsync(() => input.OwnsForeground || input.OwnsCurrentPoint,
+                    "Windows contrast transition did not release the catalog's owned pointer target.");
                 await input.RequireForegroundAsync();
                 Require(ReferenceEquals(tooltip, await OpenHelpAsync(input)), "Keyboard re-entry replaced the contextual-help control.");
                 await AwaitAsync(() => Matches(tooltip.Background, NativeContrastSession.Color(5)) &&
