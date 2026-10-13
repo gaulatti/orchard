@@ -39,6 +39,26 @@ acceptance; no inventory entry is marked complete.
 
 ### Earlier failures and fixes
 
+The measurement-only run `38347993940` at `953e847` passes Avatar in both
+themes on x64 and ARM64, then fails the previously tracked Input cursor gate in
+Dark. x64 Small disabled Input's excluded (0,0) corner publishes Arrow while
+the visible cursor is 65561 instead of 65539. ARM64's included (3,0) corner
+publishes UniversalNo while the visible cursor remains Arrow (65539 instead of
+65559). Styling and tracker ownership match their expected states. This is a
+recurrence of the unresolved global cursor problem, not an accepted cursor fix.
+The complete passing baseline remains `2f265e3`; this run does not reach native
+package-consumer verification.
+
+Both failed-run archives were downloaded and SHA-256 verified: x64 artifact
+`11789768781`, digest `dad25c3b257bbc8fc6fb69e1cf204f45f6b438bddd57f21f1e952bb423ca1178`;
+ARM64 artifact `11788814143`, digest
+`1e9eacd90a8a0b3b83782521b73ed6a02e24a90b8b70903529c8fdc6896d702b`.
+Avatar's retained text boxes have source/native width differences of
+-.001875/-.011624/-.005750/-.015499/-.009624 logical pixels from xs through xl,
+identical on both architectures and in both themes. All line-box heights match
+15/16/20/24/28. These measurements establish advance and line-box agreement
+within browser layout quantization; glyph baselines and rasterization remain open.
+
 Run `38338501970`, commit `2571db7a43363f72999fa2f8f99f492fea6ce7f2`, passes
 both solution builds, 25 tests and the independent ARM64 consumer build, but
 both native catalogs fail XAML startup: AvatarsFixture references undeclared

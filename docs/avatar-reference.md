@@ -118,8 +118,11 @@ Each architecture/theme records ten size/ink samples, 40 verified image/corner
 pixels, ten element images and two actual window composites. Collection replacement,
 item/reorder/count changes, retained overflow elevation and detached retemplating
 pass. See [checked runtime evidence](runtime-evidence.md).
-The fixture now also records initials' text-box width/height, line height and origin
-for comparison with the rendered source; that new measurement requires a fresh run.
+The fixture also records initials' text-box width/height, line height and origin.
+At `953e847`, source/native JD advances differ by at most .015499 logical pixels
+in all five sizes; line-box heights match exactly. Both architectures and themes
+agree. That run passes Avatar, then fails the earlier Input cursor phase and
+does not reach the independent consumer; the complete baseline remains `2f265e3`.
 The catalog resource-reference test rejects unknown Bleecker keys. Native checks
 also verify collection resolution after load, rejected direct null input, shared
 binding updates and retained overflow identity/elevation. Earlier startup and
