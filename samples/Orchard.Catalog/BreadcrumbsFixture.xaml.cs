@@ -56,6 +56,11 @@ public sealed partial class BreadcrumbsFixture : UserControl
         }
         Require(Children(DefaultPath).Count == 9 && DefaultPath.ActualHeight == 20 && Narrow.ActualHeight == 72,
             "Default/narrow wrapping no longer matches the source line and gap geometry.");
+        var sourceWidths = new[] { 36.984375, 43.453125, 42.171875, 37.890625 };
+        var defaultLinks = Children(DefaultPath).OfType<HyperlinkButton>().ToArray();
+        for (var index = 0; index < sourceWidths.Length; index++)
+            Require(Math.Abs(defaultLinks[index].ActualWidth - sourceWidths[index]) <= 1d / 64,
+                $"Link {index} width {defaultLinks[index].ActualWidth:R} differs from pinned source {sourceWidths[index]:R} beyond layout quantization.");
         Require(Children(CollapsedTwo).Count == 5 && Children(CollapsedTwo).OfType<HyperlinkButton>().Count() == 1 && CollapsedTwo.ActualHeight == 24,
             "Collapse threshold incorrectly retained extra trailing links.");
         Require(Children(Threshold).Count == 5 && Children(Threshold).OfType<Button>().Count() == 0 && Children(Negative).Count == 9,

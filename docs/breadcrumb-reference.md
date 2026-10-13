@@ -29,6 +29,11 @@ they do not establish native acceptance.
 - Each link, separator, ellipsis and current item wraps independently, with
   6px horizontal and vertical gaps and center alignment within each row.
   A five-item 140px path is 72px tall at source scale 1. Empty content is 0 tall.
+- Breadcrumb disables WinUI layout rounding within its own subtree. The initial
+  native link widths 37/44/43/38 accumulated a 1.5px current-item displacement;
+  source widths are 36.984375/43.453125/42.171875/37.890625. The native fixture now
+  requires agreement within the browser's 1/64px layout quantum. Glyph raster
+  comparison remains a separate acceptance check.
 - Chevron and ellipsis are the source Lucide vectors at 14px. The ellipsis
   button is 24px square with a 6px radius; hover uses sand at 10%/20% opacity,
   pressed scale is .9, and control motion uses the premium .22,1,.36,1 curve.
