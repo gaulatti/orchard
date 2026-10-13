@@ -81,6 +81,7 @@ public sealed partial class AvatarsFixture : UserControl
             "A replacement consumer collection did not reach every bound group.");
         DefaultGroup.Avatars = sourceCollection; await SettleAsync();
         var retained = GroupAvatars(DefaultGroup)[0];
+        var retainedOverflow = GroupAvatars(DefaultGroup)[^1];
         var originalFallback = sourceCollection[0].Fallback;
         sourceCollection[0].Fallback = "ßeta ßeta";
         Require(ReferenceEquals(retained, GroupAvatars(DefaultGroup)[0]) && Part<TextBlock>(retained, "PART_Initials").Text == "SSSS",
@@ -92,6 +93,8 @@ public sealed partial class AvatarsFixture : UserControl
         sourceCollection.Move(5, 0);
         var item = new BleeckerAvatarData { Fallback = "Grace Vale" };
         sourceCollection.Add(item); await SettleAsync();
+        Require(ReferenceEquals(retainedOverflow, GroupAvatars(DefaultGroup)[^1]) && retainedOverflow.IsLoaded,
+            "An overflow count update replaced or detached the retained overflow component.");
         VerifyGroup(DefaultGroup, scheme);
         Require(Part<TextBlock>(GroupAvatars(DefaultGroup)[^1], "PART_Initials").Text == "+3", "Collection addition did not reach overflow.");
         sourceCollection.Remove(item);

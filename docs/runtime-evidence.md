@@ -68,6 +68,15 @@ one-millionth opacity tolerance and reports actual size, ring thickness, margin,
 color and opacity. This preserves the branded ring gate and distinguishes
 numeric representation from an appearance mismatch. Native verification is pending.
 
+Run `38344071421` at `96e6599` passes the ring checks on both architectures and
+reaches live AvatarGroup collection updates. Both then fail the retained overflow
+shadow check after adding an item. Synchronize was detaching/reinserting overflow
+on every update. It now keeps that child in place while overflow stays positive,
+inserts newly visible avatars before it, and removes it only when overflow ends.
+The regression requires retained overflow identity, loaded state and both shadow
+layers after the count update. The corrected local build and 26 tests pass;
+native verification of the lifecycle fix remains pending.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes

@@ -52,6 +52,8 @@ with Max 4/0/-2/9 produce 4 avatars plus `+2`, only `+6`, 4 avatars plus `+8`,
 and all 6 avatars respectively. An empty group has zero content height.
 React's index keys retain each component's identity and failure latch at its
 position when the consumer changes or reorders the collection.
+The retained overflow circle also updates in place while overflow remains
+positive. Routine data/count changes do not detach it or clear its elevation.
 
 ## Native API and integration
 

@@ -120,16 +120,20 @@ public sealed class BleeckerAvatarGroup : Control
         // React uses index keys. Keep the same native component at each retained
         // position, including its image-error latch when consumer data changes.
         while (positions.Count > count) { panel.Children.Remove(positions[^1]); positions.RemoveAt(positions.Count - 1); }
-        panel.Children.Remove(overflow);
+        if (excess <= 0) panel.Children.Remove(overflow);
         for (var index = 0; index < count; index++)
         {
-            if (index == positions.Count) { var added = new BleeckerAvatar(); added.SetGroupPresentation(false); positions.Add(added); panel.Children.Add(added); }
+            if (index == positions.Count) { var added = new BleeckerAvatar(); added.SetGroupPresentation(false); positions.Add(added); panel.Children.Insert(index, added); }
             var item = avatars[index] ?? throw new ArgumentException("Avatar entries must not be null.");
             var avatar = positions[index];
             avatar.AvatarSize = AvatarSize; avatar.Source = item.Source; avatar.Alt = item.Alt; avatar.Fallback = item.Fallback;
-            if (!panel.Children.Contains(avatar)) panel.Children.Add(avatar);
+            if (!panel.Children.Contains(avatar)) panel.Children.Insert(index, avatar);
         }
-        if (excess > 0) { overflow.AvatarSize = AvatarSize; overflow.SetGroupPresentation(true, excess); panel.Children.Add(overflow); }
+        if (excess > 0)
+        {
+            overflow.AvatarSize = AvatarSize; overflow.SetGroupPresentation(true, excess);
+            if (!panel.Children.Contains(overflow)) panel.Children.Add(overflow);
+        }
         panel.InvalidateMeasure();
     }
     protected override AutomationPeer OnCreateAutomationPeer() => new BleeckerAvatarGroupAutomationPeer(this);
