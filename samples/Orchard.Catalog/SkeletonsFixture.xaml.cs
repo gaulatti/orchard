@@ -3,6 +3,7 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -80,22 +81,47 @@ public sealed partial class SkeletonsFixture : UserControl
         var watch = System.Diagnostics.Stopwatch.StartNew();
         for (var sample = 0; sample < 21; sample++)
         {
-            levels.Add(surfaceBefore.Opacity);
-            motion.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, opacity = surfaceBefore.Opacity });
+            levels.Add(Rectangle.Opacity);
+            motion.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, opacity = Rectangle.Opacity });
             await Task.Delay(110);
         }
         Require(animations ? levels.Max() - levels.Min() > .35 && levels.All(level => level >= .5 && level <= 1) : levels.All(level => level == 1),
             "Skeleton pulse did not follow the Windows animation preference.");
-        Rectangle.Opacity = .75;
+        Rectangle.SetBinding(OpacityProperty, new Binding { Source = OpacitySource, Path = new PropertyPath(nameof(Opacity)) });
+        var boundMotion = new List<object>();
+        foreach (var baseOpacity in new[] { .75, .25 })
+        {
+            OpacitySource.Opacity = baseOpacity;
+            await SettleAsync();
+            var observed = new List<double>();
+            for (var sample = 0; sample < 21; sample++) { observed.Add(Rectangle.Opacity); await Task.Delay(110); }
+            Require(Convert.ToDouble(Rectangle.GetAnimationBaseValue(OpacityProperty)) == baseOpacity && Rectangle.GetBindingExpression(OpacityProperty) is not null,
+                "Skeleton pulse replaced its consumer opacity binding.");
+            Require(animations ? observed.Min() >= Math.Min(baseOpacity, .5) && observed.Max() <= Math.Max(baseOpacity, .5) &&
+                observed.Max() - observed.Min() > .17 : observed.All(value => value == baseOpacity),
+                "Bound opacity pulse differs from the reference's consumer endpoint and 50% keyframe.");
+            boundMotion.Add(new { baseOpacity, minimum = observed.Min(), maximum = observed.Max(), bindingPreserved = true });
+        }
+        OpacitySource.Opacity = .75;
+        Shapes.Visibility = Visibility.Collapsed;
+        await SettleAsync();
+        Require(Rectangle.Opacity == .75 && Circle.Opacity == 1 && Capsule.Opacity == 1,
+            "Skeleton descendants retained animation under a hidden ancestor.");
+        Shapes.Visibility = Visibility.Visible;
         Rectangle.Visibility = Visibility.Collapsed;
         await SettleAsync();
-        Require(surfaceBefore.Opacity == 1 && Rectangle.Opacity == .75, "Hidden pulse did not reset or replaced consumer opacity.");
+        Require(surfaceBefore.Opacity == 1 && Rectangle.Opacity == .75 && Rectangle.GetBindingExpression(OpacityProperty) is not null,
+            "Hidden pulse did not restore consumer opacity or replaced its binding.");
         Rectangle.Visibility = Visibility.Visible;
         Shapes.Children.Remove(Rectangle);
         await SettleAsync();
-        Require(!Rectangle.IsLoaded && surfaceBefore.Opacity == 1, "Unloaded skeleton retained its pulse.");
+        Require(!Rectangle.IsLoaded && surfaceBefore.Opacity == 1 && Rectangle.Opacity == .75, "Unloaded skeleton retained its pulse.");
+        OpacitySource.Opacity = .25;
+        await SettleAsync();
+        Require(Rectangle.Opacity == .25 && Rectangle.GetBindingExpression(OpacityProperty) is not null,
+            "Unloaded Skeleton lost consumer binding propagation.");
+        Rectangle.ClearValue(OpacityProperty);
         Shapes.Children.Insert(0, Rectangle);
-        Rectangle.Opacity = 1;
         await SettleAsync();
         var shapeTemplate = Rectangle.Template;
         Shapes.Children.Remove(Rectangle);
@@ -153,7 +179,7 @@ public sealed partial class SkeletonsFixture : UserControl
         finally
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"skeleton-measurements-{scheme}.json"),
-                JsonSerializer.Serialize(new { passed, checksPassed = true, stage, error, scheme, animationsEnabled = animations, motion,
+                JsonSerializer.Serialize(new { passed, checksPassed = true, stage, error, scheme, animationsEnabled = animations, motion, boundMotion,
                     decorative = true, boundCounts = true, negativeCountsPreserved = true, samples, paintSamples, elementCaptures, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
@@ -203,7 +229,7 @@ public sealed partial class SkeletonsFixture : UserControl
     {
         var surface = Surface(shape); var brush = Brush(surface.Background);
         Require(brush.color == (scheme == BleeckerColorScheme.Dark ? "#FFFFFFFF" : BleeckerTokens.Colors(scheme)["sand"]) &&
-            Math.Abs(brush.opacity - (scheme == BleeckerColorScheme.Dark ? .1 : .2)) < .000001 && shape.Opacity == 1,
+            Math.Abs(brush.opacity - (scheme == BleeckerColorScheme.Dark ? .1 : .2)) < .000001 && Convert.ToDouble(shape.GetAnimationBaseValue(OpacityProperty)) == 1,
             "Skeleton rendered a Windows default or incorrect background alpha.");
         if (!shape.Circle)
             Require(surface.CornerRadius == new CornerRadius(shape.ActualHeight == 12 ? 6 : 7),

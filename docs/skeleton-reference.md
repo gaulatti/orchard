@@ -60,9 +60,20 @@ region. Skeleton shapes do not add focus stops or disabled dimming.
 The default templates consume centrally generated theme brushes and canonical
 7px/12px radii. High contrast uses an opaque system window-text shape and system
 window surface/ring. Card shadows use the pinned two-layer small recipe and are
-removed in high contrast. Each shape owns its pulse on the template surface,
-preserving consumer opacity. Motion stops and resets to opacity 1 when hidden,
-unloaded or retemplated; Windows reduced motion rests at opacity 1.
+removed in high contrast. Each shape animates its own opacity temporarily,
+preserving the underlying consumer value or binding. The omitted CSS 0%/100%
+keyframes use that underlying opacity, while the explicit 50% keyframe is .5.
+For example, a consumer opacity of .25 pulses between .25 and .5; multiplying
+an internal pulse by .25 would produce a different result. Live base-value
+changes rebuild the native pulse with the new consumer endpoint and retain its
+playback time. Motion stops
+on hide (including an ancestor), unload or retemplating and restores the consumer opacity; reduced
+motion retains that value (1 by default). Native fixtures check live .75/.25
+bindings, animated ranges, ancestor hide/show, restoration and updates while unloaded.
+This follows the producer's
+[implicit CSS endpoint rule](https://www.w3.org/TR/css-animations-1/#keyframes)
+using WinUI's
+[animation base value](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.dependencyobject.getanimationbasevalue?view=windows-app-sdk-2.0).
 
 The catalog's Skeletons page registers every export and the nine reference
 cases. Its native check exercises equal-column allocation, card proportions,

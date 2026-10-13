@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
@@ -13,6 +14,9 @@ public sealed class BleeckerSkeleton : Control
     private readonly UISettings settings = new();
     private Border? surface;
     private Storyboard? pulse;
+    private double pulseBaseOpacity = 1;
+    private readonly List<(FrameworkElement Owner, long Token)> ancestors = [];
+    private bool observesSettings;
 
     public BleeckerSkeleton()
     {
@@ -20,14 +24,30 @@ public sealed class BleeckerSkeleton : Control
         SizeChanged += (_, _) => UpdateCorners();
         RegisterPropertyChangedCallback(CornerRadiusProperty, (_, _) => UpdateCorners());
         RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => UpdateMotion());
+        RegisterPropertyChangedCallback(OpacityProperty, (_, _) =>
+        {
+            var baseOpacity = Convert.ToDouble(GetAnimationBaseValue(OpacityProperty));
+            if (pulseBaseOpacity == baseOpacity) return;
+            var time = pulse?.GetCurrentTime();
+            pulseBaseOpacity = baseOpacity;
+            StopMotion(); UpdateMotion();
+            if (time is TimeSpan current) pulse?.Seek(current);
+        });
         Loaded += (_, _) =>
         {
-            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged += OnAnimationsChanged;
+            ObserveAncestors();
+            if (!observesSettings && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041))
+            {
+                settings.AnimationsEnabledChanged += OnAnimationsChanged;
+                observesSettings = true;
+            }
             UpdateMotion();
         };
         Unloaded += (_, _) =>
         {
-            if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged -= OnAnimationsChanged;
+            ClearAncestors();
+            if (observesSettings && OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged -= OnAnimationsChanged;
+            observesSettings = false;
             StopMotion();
         };
     }
@@ -59,24 +79,40 @@ public sealed class BleeckerSkeleton : Control
         static double Ratio(double size, double radii) => radii == 0 ? 1 : size / radii;
     }
     private void OnAnimationsChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(UpdateMotion);
+    private void ObserveAncestors()
+    {
+        ClearAncestors();
+        for (var parent = VisualTreeHelper.GetParent(this); parent is not null; parent = VisualTreeHelper.GetParent(parent))
+            if (parent is FrameworkElement element)
+                ancestors.Add((element, element.RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => UpdateMotion())));
+    }
+    private void ClearAncestors()
+    {
+        foreach (var (owner, token) in ancestors) owner.UnregisterPropertyChangedCallback(VisibilityProperty, token);
+        ancestors.Clear();
+    }
     private void StopMotion()
     {
-        pulse?.Stop();
+        var active = pulse;
         pulse = null;
-        if (surface is not null) surface.Opacity = 1;
+        active?.Stop();
     }
     private void UpdateMotion()
     {
-        if (!IsLoaded || Visibility != Visibility.Visible || !settings.AnimationsEnabled) { StopMotion(); return; }
+        if (!IsLoaded || Visibility != Visibility.Visible || ancestors.Any(entry => entry.Owner.Visibility != Visibility.Visible) ||
+            !settings.AnimationsEnabled) { StopMotion(); return; }
         if (pulse is not null || surface is null) return;
         // Tailwind 4.2.2 animate-pulse: 2s cubic-bezier(.4,0,.6,1), 50% opacity .5.
-        // Animate template-owned opacity, preserving consumer opacity and bindings.
+        // CSS synthesizes its missing 0%/100% frames from the consumer's
+        // underlying opacity. Animation overrides that property temporarily;
+        // stopping restores its value or binding without a local SetValue.
+        pulseBaseOpacity = Convert.ToDouble(GetAnimationBaseValue(OpacityProperty));
         var animation = new DoubleAnimationUsingKeyFrames { Duration = TimeSpan.FromSeconds(2), RepeatBehavior = RepeatBehavior.Forever };
-        animation.KeyFrames.Add(new DiscreteDoubleKeyFrame { KeyTime = TimeSpan.Zero, Value = 1 });
-        foreach (var (seconds, opacity) in new[] { (1, .5), (2, 1d) })
+        animation.KeyFrames.Add(new DiscreteDoubleKeyFrame { KeyTime = TimeSpan.Zero, Value = pulseBaseOpacity });
+        foreach (var (seconds, opacity) in new[] { (1, .5), (2, pulseBaseOpacity) })
             animation.KeyFrames.Add(new SplineDoubleKeyFrame { KeyTime = TimeSpan.FromSeconds(seconds), Value = opacity,
                 KeySpline = new KeySpline { ControlPoint1 = new Point(.4, 0), ControlPoint2 = new Point(.6, 1) } });
-        Storyboard.SetTarget(animation, surface);
+        Storyboard.SetTarget(animation, this);
         Storyboard.SetTargetProperty(animation, "Opacity");
         pulse = new Storyboard();
         pulse.Children.Add(animation);
