@@ -83,6 +83,7 @@ public sealed partial class AlertsFixture : UserControl
                     closePeer, closeScreen, expectedX, expectedY, message = text.Text, icon = Hex(status.Stroke), border = Hex(surface.BorderBrush), borderOpacity = surface.BorderBrush.Opacity });
                 await MainWindow.CaptureElementAsync(surface, System.IO.Path.Combine(folder, $"alert-{scheme}-{type}.png"));
                 var windowCapture = System.IO.Path.Combine(folder, $"alert-window-{scheme}-{type}.png");
+                await input.RequireForegroundAsync();
                 await NativeScreenCapture.CaptureClientAsync(input.Window, windowCapture);
                 await VerifyCapturedPositionAsync(surface, windowCapture);
                 var expectedCallbacks = callbacks + 1;
@@ -217,8 +218,15 @@ public sealed partial class AlertsFixture : UserControl
             samples.Add(new { phase = "failure", error = error.Message, popup.HorizontalOffset, popup.VerticalOffset,
                 client = NativeScreenCapture.ClientBounds(input.Window), closePeer = new ButtonAutomationPeer(close).GetBoundingRectangle(),
                 closeScreen = input.ScreenBounds(close), ownerOrigin = Specimen.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point(0, 0)) });
-            if (popup.IsOpen) await MainWindow.CaptureElementAsync(surface, System.IO.Path.Combine(folder, $"alert-failure-{scheme}.png"));
-            await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"alert-window-failure-{scheme}.png"));
+            try
+            {
+                if (popup.IsOpen) await MainWindow.CaptureElementAsync(surface, System.IO.Path.Combine(folder, $"alert-failure-{scheme}.png"));
+                await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"alert-window-failure-{scheme}.png"));
+            }
+            catch(Exception captureError)
+            {
+                samples.Add(new{phase="failure-capture",error=captureError.Message,foreground=input.OwnsForeground});
+            }
             throw;
         }
         finally

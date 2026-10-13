@@ -39,7 +39,11 @@ jobs:
           if (-not (Test-Path artifacts/catalog/resources.pri)) {
             throw 'Published catalog is missing its application resource index.'
           }
+      - name: Verify Bauhaus blend and motion boundaries
+        id: bauhaus_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component bauhaus -Output artifacts/bauhaus -ExpectedArchitecture X64
       - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.bauhaus_smoke.outcome == 'success' || steps.bauhaus_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -116,7 +120,11 @@ jobs:
           if (-not (Test-Path artifacts/catalog/resources.pri)) {
             throw 'Published ARM64 catalog is missing its application resource index.'
           }
+      - name: Verify native ARM64 Bauhaus blend and motion boundaries
+        id: bauhaus_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component bauhaus -Output artifacts/bauhaus -ExpectedArchitecture Arm64
       - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.bauhaus_smoke.outcome == 'success' || steps.bauhaus_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

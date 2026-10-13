@@ -116,6 +116,32 @@ Its Bauhaus check verifies packaged template geometry, consumer source identity
 and decorative semantics. Keep the pinned Win2D 1.4.0 native runtime files in
 the complete application output. No source project reference satisfies this test.
 
+Run `38465239245` at `c8a830c` passes the actual ARM64 Windows contrast
+transition and independent consumer. Its native capture samples both opaque
+and transparent Bauhaus regions as exact Window `#FF202020` pixels after
+394.8ms. Archive `11849310010` was downloaded and verified against SHA-256
+`156d95cbc3979ce2dbe6e5579796e29a7643cb4e79bd0d9ecf8bcc5c8f69f088`;
+selected evidence is at `artifacts/ci-c8a830c-arm64-evidence`.
+The ordinary ARM64 suite fails before Bauhaus because a WSL setup console takes
+foreground during Alert's Info capture. That keeps the overall run red and
+leaves ordinary ARM64 geometry/pixel/motion acceptance unverified.
+
+The same run passes the full x64 catalog, live contrast and independent
+consumer. All six Bauhaus pixel reports match all 32 samples, including live
+bitmap mutation and the consumer background override in both appearances.
+The x64 runner has animations disabled: its 12/13 Dark/Light motion samples
+remain at zero. This proves reduced motion, not enabled rotation.
+Its actual contrast samples are exact Window pixels after 98.6ms.
+Archive `11848508435` was verified against SHA-256
+`6a504bb1b3b1952b08d2f9f5420cd0077f14a23d34962f61fe3ca8f9895d0cc3`;
+selected reports/captures are at `artifacts/ci-c8a830c-x64-evidence`.
+The independent x64 consumer's package SHA-256 is
+`ad578f7b1f5905d805ce4a897581220448f71226f8c80a19e8df501b63cdbf70`.
+
+CI now runs the focused Bauhaus fixture before the full catalog on each native
+architecture. A focused failure still fails the job; the full catalog,
+contrast and independent consumer checks continue and keep their own gates.
+
 Enabled rotation timing, all geometric border/antialias pixels,
-additional image decoders/animated sources, actual contrast,
-Narrator, display/text scaling and native ARM64 verification remain open.
+additional image decoders/animated sources, all contrast themes/states,
+Narrator, display/text scaling and ordinary native ARM64 verification remain open.

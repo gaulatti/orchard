@@ -1,5 +1,16 @@
 # Alert reference and acceptance
 
+Run `38465239245` at `c8a830c` fails its ARM64 Light/Info screen capture after
+the runner's WSL console takes foreground. The retained desktop report shows
+the pointer still over the catalog's own visible, topmost window. Capture now
+uses the existing single hosted foreground guard immediately beforehand; it
+does not recover an Orchard-owned popup/window or a held pointer action.
+Diagnostic capture errors are recorded separately and preserve the original
+failure. The hosted boundary still requires fresh acceptance.
+The focused x64 Alert check passes both appearances at
+`artifacts/smoke-alert-capture-guard` with animations off and scale 1.
+Both architecture builds have zero warnings.
+
 The frozen Bleecker alert is a transient notification overlay. Its source is
 [`alert.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/alert.tsx)
 at `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
