@@ -30,6 +30,16 @@ runtime acceptance. Smoke startup reports now retain bounded managed Avatar
 setter/metadata exceptions beneath generic XAML parse errors to identify the
 collection assignment boundary.
 
+Run `38339805040` at `401a63d` confirms the original managed error in both
+startup reports: the AvatarGroup dependency-property callback rejects the value
+XAML assigns as an observable collection. The catalog still does not launch.
+The group now declares Avatars as its XAML content property and the catalog and
+consumer populate it with direct AvatarData children, using the existing
+notification collection pattern. A new native check replaces the consumer
+collection and requires every bound group to receive the same instance. Fallback
+checks also require actual initials/silhouette ink. The corrected local build,
+26 tests and token drift check pass; these new native checks remain pending.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes

@@ -58,10 +58,8 @@ position when the consumer changes or reorders the collection.
 ```xml
 <orchard:BleeckerAvatar AvatarSize="Medium" Fallback="Jane Doe" />
 <orchard:BleeckerAvatarGroup Max="4" AvatarSize="Small">
-    <orchard:BleeckerAvatarGroup.Avatars>
-        <orchard:BleeckerAvatarData Fallback="Alice Harbor" />
-        <orchard:BleeckerAvatarData Fallback="Bob Reed" />
-    </orchard:BleeckerAvatarGroup.Avatars>
+    <orchard:BleeckerAvatarData Fallback="Alice Harbor" />
+    <orchard:BleeckerAvatarData Fallback="Bob Reed" />
 </orchard:BleeckerAvatarGroup>
 ```
 
@@ -73,6 +71,9 @@ and `Alt` are nullable strings. Group `Avatars` is a non-null consumer-owned
 Source/Fallback/Alt properties. Collection, item and binding changes update the
 visible composition. Max preserves its supplied integer value. The group's
 default collection is independently owned by that instance.
+AvatarGroup declares Avatars as its XAML content property, following the existing
+notification collection pattern. Populate it with direct AvatarData children or
+bind a consumer-owned observable collection.
 
 The default templates consume centrally generated theme brushes, bundled fonts
 and the pinned SVG geometry. Rounded content clipping uses the Windows App SDK
@@ -96,7 +97,7 @@ The registered Avatars catalog page covers every export, all five sizes,
 silhouettes, consumer images, image failure, Unicode initials, all group sizes,
 overflow, zero/negative Max and empty collections. Native checks exercise live
 size/item/collection changes, index identity, detached template replacement,
-UIA names/roles, exact geometry and branded brushes, circular clipping, both
+UIA names/roles, exact geometry and branded brushes, actual fallback ink, circular clipping, both
 overflow shadow layers, centered image pixels and transparent corners. It retains
 ten element images, two composited window images and
 `avatar-measurements-{Light,Dark}.json`. The clean package consumer instantiates
@@ -108,6 +109,9 @@ catalog and clean package-consumer checks for this addition are pending.
 The first native run at `2571db7` fails startup on both architectures because
 the fixture used an undeclared label style. The fixture now uses the established
 body style, and the catalog resource-reference test rejects unknown Bleecker keys.
+Subsequent native startup reports show the collection's strict type check rejecting
+XAML assignment. The declared content-property syntax and binding replacement
+check require a fresh native run before their behavior can be accepted.
 Exact native/browser raster parity, contrast/Narrator, display/text scaling,
 constrained widths and consumer style/geometry overrides remain acceptance gaps.
 Neither a successful build nor nonblank screenshots establishes visual acceptance.

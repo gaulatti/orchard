@@ -33,11 +33,9 @@
                 <StackPanel Orientation="Horizontal" Spacing="16">
                     <orchard:BleeckerAvatar x:Name="PackageAvatar" Fallback="ßeta ßeta" />
                     <orchard:BleeckerAvatarGroup x:Name="PackageAvatarGroup" Max="2" Width="160">
-                        <orchard:BleeckerAvatarGroup.Avatars>
                             <orchard:BleeckerAvatarData Fallback="Alice Harbor" />
                             <orchard:BleeckerAvatarData Fallback="Bob Reed" />
                             <orchard:BleeckerAvatarData Fallback="Charlie Vale" />
-                        </orchard:BleeckerAvatarGroup.Avatars>
                     </orchard:BleeckerAvatarGroup>
                 </StackPanel>
                 <orchard:BleeckerSeparator x:Name="PackageSeparator" Decorative="False" AutomationProperties.Name="Preview boundary" />

@@ -3,11 +3,13 @@ using System.Collections.Specialized;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Markup;
 using Windows.Foundation;
 
 namespace Orchard;
 
 /// <summary>Overlapping consumer-owned avatars and the pinned overflow count.</summary>
+[ContentProperty(Name = nameof(Avatars))]
 public sealed class BleeckerAvatarGroup : Control
 {
     private AvatarPanel? panel;
@@ -27,7 +29,8 @@ public sealed class BleeckerAvatarGroup : Control
     public static readonly DependencyProperty AvatarsProperty = DependencyProperty.Register(nameof(Avatars), typeof(object), typeof(BleeckerAvatarGroup),
         new PropertyMetadata(null, (owner, args) =>
         {
-            if (args.NewValue is not ObservableCollection<BleeckerAvatarData>) throw new ArgumentException("Avatars requires a non-null ObservableCollection<BleeckerAvatarData>.");
+            if (args.NewValue is not ObservableCollection<BleeckerAvatarData>)
+                throw new ArgumentException($"Avatars requires a non-null ObservableCollection<BleeckerAvatarData>; received {args.NewValue?.GetType().FullName ?? "<null>"}.");
             var group = (BleeckerAvatarGroup)owner;
             group.StopObserving(args.OldValue as ObservableCollection<BleeckerAvatarData>);
             if (group.IsLoaded) group.StartObserving();

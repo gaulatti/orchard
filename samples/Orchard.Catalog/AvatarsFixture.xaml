@@ -28,10 +28,8 @@
   <TextBlock Text="Groups · all sizes, consumer collection and overflow" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="Groups" Spacing="12">
    <orchard:BleeckerAvatarGroup x:Name="DefaultGroup" Width="320">
-    <orchard:BleeckerAvatarGroup.Avatars>
      <orchard:BleeckerAvatarData Fallback="Alice Harbor" /><orchard:BleeckerAvatarData Fallback="Bob Reed" /><orchard:BleeckerAvatarData Fallback="Charlie Vale" />
      <orchard:BleeckerAvatarData Fallback="Dana Moss" /><orchard:BleeckerAvatarData Fallback="Evan Park" /><orchard:BleeckerAvatarData Fallback="Fran Lake" />
-    </orchard:BleeckerAvatarGroup.Avatars>
    </orchard:BleeckerAvatarGroup>
    <orchard:BleeckerAvatarGroup AvatarSize="ExtraSmall" Width="320" Avatars="{Binding Avatars, ElementName=DefaultGroup}" />
    <orchard:BleeckerAvatarGroup AvatarSize="Small" Width="320" Avatars="{Binding Avatars, ElementName=DefaultGroup}" />

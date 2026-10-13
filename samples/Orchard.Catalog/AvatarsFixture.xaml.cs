@@ -27,7 +27,7 @@ public sealed partial class AvatarsFixture : UserControl
             Require(!avatar.IsTabStop && !peer.IsControlElement() && peer.IsContentElement() == (avatar.Fallback is not null) &&
                 peer.GetPattern(PatternInterface.Invoke) is null, "Avatar acquired an action, focus stop or decorative content semantics.");
             samples.Add(new { avatar.AvatarSize, avatar.ActualWidth, avatar.ActualHeight, avatar.FontSize,
-                initials = Part<TextBlock>(avatar, "PART_Initials").Text });
+                initials = Part<TextBlock>(avatar, "PART_Initials").Text, inkPixels = await VerifyInkPixelsAsync(avatar) });
         }
         var expected = new[] { "JD", "SG", "SSSS", "東港", "\uD83DH" };
         var unicode = Unicode.Children.OfType<BleeckerAvatar>().ToArray();
@@ -72,6 +72,11 @@ public sealed partial class AvatarsFixture : UserControl
 
         foreach (var group in Groups.Children.OfType<BleeckerAvatarGroup>()) VerifyGroup(group, scheme);
         var sourceCollection = DefaultGroup.Avatars;
+        var replacement = new System.Collections.ObjectModel.ObservableCollection<BleeckerAvatarData>(sourceCollection);
+        DefaultGroup.Avatars = replacement; await SettleAsync();
+        Require(Groups.Children.OfType<BleeckerAvatarGroup>().Where(group => group != EmptyGroup).All(group => ReferenceEquals(group.Avatars, replacement)),
+            "A replacement consumer collection did not reach every bound group.");
+        DefaultGroup.Avatars = sourceCollection; await SettleAsync();
         var retained = GroupAvatars(DefaultGroup)[0];
         var originalFallback = sourceCollection[0].Fallback;
         sourceCollection[0].Fallback = "ßeta ßeta";
@@ -117,6 +122,27 @@ public sealed partial class AvatarsFixture : UserControl
                 Part<TextBlock>(avatar, "PART_Initials").Text.Select(unit => (int)unit).ToArray()), imageErrorLatched = true,
                 boundCollection = true, indexIdentity = true, negativeMaxPreserved = true, lifecycle = true, pixelSamples, windows },
                 new JsonSerializerOptions { WriteIndented = true }));
+    }
+    private static async Task<int> VerifyInkPixelsAsync(BleeckerAvatar owner)
+    {
+        var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(owner);
+        Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "Avatar fallback did not render.");
+        var buffer = await bitmap.GetPixelsAsync(); var pixels = new byte[checked((int)buffer.Length)];
+        using (var reader = DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+        var background = ((SolidColorBrush)owner.Background).Color;
+        var foreground = ((SolidColorBrush)owner.Foreground).Color;
+        var ink = 0;
+        // The middle square is clear of the circle edge and ring. It must
+        // contain real text/silhouette ink directed toward the branded color.
+        for (var y = bitmap.PixelHeight / 4; y < bitmap.PixelHeight * 3 / 4; y++)
+        for (var x = bitmap.PixelWidth / 4; x < bitmap.PixelWidth * 3 / 4; x++)
+        {
+            var offset = (y * bitmap.PixelWidth + x) * 4;
+            if (pixels[offset + 3] == 255 && Math.Abs(pixels[offset + 2] - background.R) > 20 &&
+                Math.Sign(pixels[offset + 2] - background.R) == Math.Sign(foreground.R - background.R)) ink++;
+        }
+        Require(ink > 0, "Avatar's initials or silhouette were clipped away or failed to paint.");
+        return ink;
     }
     private static async Task CaptureImagePixelsAsync(BleeckerAvatar owner, string path, List<object> samples)
     {
