@@ -1,5 +1,21 @@
 # Checkbox
 
+Run `38417349460` at `e0fe381` passes x64 catalog/consumer but fails ARM64's Light
+stationary `unclipped` phase before the constrained scroll phase. Its report has
+the expected hover border/opacity but global Arrow rather than UniversalNo; the
+final desktop report retains Orchard foreground. Archive `11824749401`, SHA-256
+`c684bcd017dfcafb68b52ccbf1179fb082f06f390402576faa01479315a82659`, was verified
+and extracted to `artifacts/ci-checkbox-e0fe381-arm64`. This does not identify the
+cause or establish native acceptance of the new fixture setup.
+
+Checkbox phase waits now verify foreground ownership throughout their existing
+two-second deadline and use the input session's existing one-time recovery for
+foreign hosted-runner windows over the owned target. The test never moves the
+stationary pointer or writes its cursor to satisfy an expectation. Failure
+reports retain the global/thread cursor timeline, published cursor shape,
+publisher ownership and native foreground/hit details. Native verification of
+these additional diagnostics remains pending.
+
 The stationary-pointer scroll regression uses a 500px maximum catalog viewport
 while exercising scroll-away/back, so tall monitors cannot remove the required
 25px scroll range. It reacquires the checkbox and records its pointer anchor after

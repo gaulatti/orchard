@@ -201,11 +201,20 @@ public sealed partial class CheckboxesFixture
             async Task Check(BleeckerCheckbox control, string phase, bool hover, int cursor, PointerPoint? stationary = null)
             {
                 var alpha = (float)(control.IsChecked == true ? 1 : hover ? .5 : scheme == BleeckerColorScheme.Light ? .6 : .2);
+                var cursorTrace = new List<object>();
+                var started = System.Diagnostics.Stopwatch.StartNew();
                 try
                 {
-                    await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor)) &&
+                    await WaitOwnedAsync(() =>
+                    {
+                        var visible = CurrentCheckboxCursor();
+                        var expected = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor));
+                        if (visible != expected) cursorTrace.Add(new { milliseconds = started.Elapsed.TotalMilliseconds, input.OwnsForeground,
+                            cursor = NativeInputSession.DescribeCursor() });
+                        return visible == expected &&
                         Math.Abs(Find<Border>(control, "PART_Box").BorderBrush.Opacity - alpha) < 1e-9 &&
-                        Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5),
+                        Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5);
+                    },
                         $"Disabled pointer phase {phase} did not reach its expected border, opacity and cursor.");
                 }
                 catch
@@ -216,6 +225,7 @@ public sealed partial class CheckboxesFixture
                         inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity,
                         cursor = CurrentCheckboxCursor().ToInt64(), expectedCursor = cursor,
                         globalCursor = DescribeGlobalCursor(),
+                        cursorTrace,
                         expectedCursorHandle = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor)).ToInt64(),
                         pointer = DescribeDisabledPointer(input, control) });
                     throw;
@@ -237,6 +247,20 @@ public sealed partial class CheckboxesFixture
                     inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity, cursor = CurrentCheckboxCursor().ToInt64(),
                     globalCursor = DescribeGlobalCursor(),
                     expectedCursor = cursor, position.X, position.Y });
+            }
+
+            async Task WaitOwnedAsync(Func<bool> condition, string message)
+            {
+                var elapsed = System.Diagnostics.Stopwatch.StartNew();
+                while (true)
+                {
+                    await input.RequireForegroundAsync();
+                    if (condition() && input.OwnsForeground) return;
+                    if (elapsed.Elapsed >= TimeSpan.FromSeconds(2)) break;
+                    UpdateLayout(); await Task.Delay(16);
+                }
+                await input.RequireForegroundAsync();
+                Require(condition() && input.OwnsForeground, message);
             }
         }
         finally
@@ -309,12 +333,17 @@ public sealed partial class CheckboxesFixture
         var flags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
         var tracker = typeof(BleeckerCheckbox).GetField("disabledPointer", flags)?.GetValue(control);
         var observer = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker);
+        var island = ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(XamlRoot.ContentIslandEnvironment));
+        var published = InputPointerSource.GetForIsland(island).Cursor;
         // Internal fields are diagnostics only; acceptance uses rendered output
         // and physical cursor handles rather than the implementation's booleans.
         return new { control.IsLoaded, control.IsHitTestVisible, screen.X, screen.Y, rootPosition = position,
             templateAssigned = control.Template is not null, boundBoxIsNull = typeof(BleeckerCheckbox).GetField("box", flags)?.GetValue(control) is null,
             boxBounds = input.ScreenBounds(Find<Border>(control, "PART_Box")), registered = observer is not null,
             implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),
+            ownsCursor = tracker?.GetType().GetProperty("OwnsCursor", flags)?.GetValue(tracker), input.OwnsForeground,
+            publishedCursor = published is InputSystemCursor system ? system.CursorShape.ToString() : published?.GetType().Name,
+            nativePoint = NativeScreenCapture.DescribePoint(input.Window, screen.X, screen.Y),
             ancestors, hits = hits.Select(Describe).ToArray() };
 
         object Describe(DependencyObject item)
