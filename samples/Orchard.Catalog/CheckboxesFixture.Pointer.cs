@@ -345,6 +345,7 @@ public sealed partial class CheckboxesFixture
         // Internal fields are diagnostics only; acceptance uses rendered output
         // and physical cursor handles rather than the implementation's booleans.
         return new { control.IsLoaded, control.IsHitTestVisible, screen.X, screen.Y, rootPosition = position,
+            publication=NativeCursorDiagnostics.Describe(control),
             templateAssigned = control.Template is not null, boundBoxIsNull = typeof(BleeckerCheckbox).GetField("box", flags)?.GetValue(control) is null,
             boxBounds = input.ScreenBounds(Find<Border>(control, "PART_Box")), registered = observer is not null,
             implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),

@@ -80,7 +80,7 @@ public sealed partial class InputsFixture
                         {
                             var visible = NativeInputSession.CurrentVisibleCursor();
                             if (visible != expected) cursorTrace.Add(new { milliseconds = dispatch.Elapsed.TotalMilliseconds,
-                                cursor = NativeInputSession.DescribeCursor() });
+                                cursor = NativeInputSession.DescribeCursor(), publication=NativeCursorDiagnostics.Describe(control) });
                             return visible == expected && Hex(Find<Border>(control, "BorderElement").BorderBrush) == border &&
                                 editor.Opacity == opacity && control.FocusState == FocusState.Unfocused;
                         },
@@ -161,6 +161,7 @@ public sealed partial class InputsFixture
         // still requires the actual global displayed cursor and rendered state.
         return new { control.Name, control.IsEnabled, control.IsLoaded, positioned, screen.X, screen.Y,
             nativeCursor = NativeInputSession.DescribeCursor(),
+            publication=NativeCursorDiagnostics.Describe(control),
             nativeWindow = NativeScreenCapture.DescribePoint(window, screen.X, screen.Y),
             rootPosition = position, selectedCursor = (cursor as InputSystemCursor)?.CursorShape.ToString() ?? cursor?.GetType().Name,
             registered = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker) is not null,

@@ -122,6 +122,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
         private readonly List<BleeckerDisabledPointer> clients = [];
         private BleeckerDisabledPointer[] snapshot = [];
         private bool refreshQueued;
+        private long refreshCalls;
         internal UIElement Root => root;
 
         internal void Add(BleeckerDisabledPointer client)
@@ -177,6 +178,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
 
         internal void Refresh()
         {
+            refreshCalls++;
             if (root.XamlRoot is not XamlRoot xamlRoot) { Clear(); return; }
             var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(xamlRoot.ContentIslandEnvironment.AppWindowId);
             if (!GetCursorPos(out var screen) || GetAncestor(WindowFromPoint(screen), 2) != window || !ScreenToClient(window, ref screen)) { Clear(); return; }
@@ -236,9 +238,15 @@ internal static class BleeckerPointerCursor
         private InputPointerSource? source;
         private InputCursor? selected;
         private InputSystemCursor? publishedBlocked;
+        private long blockCalls, republishCalls, restoreCalls;
+        private bool lastReadWasBlocked;
+        private long lastVisibleHandle;
+        private string? lastRestoredType;
+        private InputSystemCursorShape? lastRestoredShape;
 
         internal void Block()
         {
+            blockCalls++;
             var current = Source(root);
             var cursor = current.Cursor;
             // Preserve cursor values published by WinUI while our override is
@@ -251,9 +259,14 @@ internal static class BleeckerPointerCursor
             // always republish it. Change object identity only when Windows
             // actually displays another cursor over our owned input target.
             var visible = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
+            lastReadWasBlocked=IsBlocked(cursor);
             if (ReadCursor(ref visible) && (visible.Flags & 1) != 0 &&
                 visible.Cursor != LoadSystemCursor(IntPtr.Zero, new IntPtr(32648)) && IsBlocked(cursor))
+            {
+                republishCalls++;
                 publishedBlocked = ReferenceEquals(publishedBlocked, blocked) ? republishedBlocked : blocked;
+            }
+            lastVisibleHandle=visible.Cursor.ToInt64();
             current.Cursor = publishedBlocked;
         }
 
@@ -261,6 +274,7 @@ internal static class BleeckerPointerCursor
 
         internal void Restore()
         {
+            restoreCalls++;
             if (source is not null && root.XamlRoot is not null)
             {
                 var cursor = source.Cursor;
@@ -272,6 +286,8 @@ internal static class BleeckerPointerCursor
                     // that exact producer selection, including resource cursors.
                     source.Cursor = ReferenceEquals(publishedBlocked, blocked) ? republishedBlocked : blocked;
                 }
+                lastRestoredType=selected?.GetType().Name;
+                lastRestoredShape=(selected as InputSystemCursor)?.CursorShape;
                 source.Cursor = selected;
             }
             source = null; selected = null;

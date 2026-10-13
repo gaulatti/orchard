@@ -524,3 +524,8 @@ Error styling is consumer-owned: the pinned source defines no built-in invalid
 variant. Local desktop text, display and animation preferences must remain
 unchanged. The repository wiki remote is unavailable, so this contract is
 documented here.
+
+Shared cursor diagnostics now record per-root refresh/publication counts and
+the retained/restored producer cursor alongside disabled Checkbox failures.
+They use the same catalog-only observer as Input. The native displayed-cursor
+assertion is unchanged; publisher state and diagnostics cannot satisfy it.

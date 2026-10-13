@@ -392,3 +392,34 @@ opacity, owned native point and foreground. The full ARM64 suite has already
 passed Alert and Bauhaus before this failure; the focused Bauhaus fixture,
 live contrast and independent consumer also pass. This remains a cursor
 publication defect, without an accepted substitute or widened timeout.
+
+The rounded-pointer failure trace now also records shared observer refresh,
+block, republish and restore counts; whether the last publisher read was
+Orchard's override; its last observed native handle; and the retained/restored
+SDK cursor type and system shape. These bounded private counters observe the
+existing path without changing cursor selection. The catalog reads the state
+for the control's own XAML root, including after override release, so it can
+distinguish a missing refresh from repeated unsuccessful publication. The
+visible global cursor and owned foreground/point still determine acceptance.
+
+The focused local x64 Input run passes both appearances at
+`artifacts/smoke-input-cursor-diagnostics`. In its final Light hover sample,
+the observer has 1889 refreshes, 556 block calls, 17 republications and 23
+restores; the retained producer is Arrow and the displayed cursor is the
+expected UniversalNo. This verifies the diagnostics' native execution and
+shows that republication also occurs in a passing local run. It does not
+establish the cause of the hosted failure. Both builds have zero warnings and
+all 27 unit/resource tests pass.
+The complete catalog also passes both appearances at
+`artifacts/smoke-cursor-diagnostics-all`, including the shared Checkbox/Input
+owner, hover, release and reattachment paths. This remains diagnostic evidence,
+not a claim that the hosted publication failure is fixed.
+A fresh isolated x64 consumer passes at
+`artifacts/package-consumer-cursor-diagnostics`, package SHA-256
+`49cc71e969011340fc89dc6cca64fcbeae9718545cdba208a228d3a394044184`.
+
+At `289a8ba`, run `38470614305` passes x64's focused Bauhaus full-raster and
+live contrast checks but fails Input's Large/valid bottom-left `2,0` corner.
+The displayed cursor is AppStarting while the publisher reports Arrow and
+the hover, border, opacity, owned point and foreground match the reference.
+Fresh diagnostics are still required for that hosted observation.
