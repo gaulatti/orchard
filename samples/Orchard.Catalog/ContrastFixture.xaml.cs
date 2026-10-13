@@ -29,6 +29,18 @@ public sealed partial class ContrastFixture : UserControl
         var originalBackground = Hex(root.Background);
         var originalHeading = Hex(Heading.Foreground);
         var samples = new List<object> { new { phase = "before", state = before } };
+        var focusEvents = new List<object>();
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        void RecordFocus(string kind) => focusEvents.Add(new { kind, elapsedMilliseconds = elapsed.Elapsed.TotalMilliseconds,
+            Help.FocusState, tooltip.IsOpen, focused = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name,
+            foreground = input.OwnsForeground, os = NativeContrastSession.Read().Enabled, cursor = NativeInputSession.DescribeCursor() });
+        void GotFocus(object sender, RoutedEventArgs args) => RecordFocus("got");
+        void LostFocus(object sender, RoutedEventArgs args) => RecordFocus("lost");
+        void Closed(object? sender, EventArgs args) => RecordFocus("tooltip-closed");
+        void Pressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs args) => RecordFocus("pointer-pressed");
+        Help.GotFocus += GotFocus; Help.LostFocus += LostFocus;
+        tooltip.Closed += Closed;
+        Help.AddHandler(PointerPressedEvent, new Microsoft.UI.Xaml.Input.PointerEventHandler(Pressed), true);
         var headingInk = await ReadInkAsync(Heading);
         var labelInk = await ReadInkAsync(Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"));
         var passed = false;
@@ -37,13 +49,13 @@ public sealed partial class ContrastFixture : UserControl
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-before.png"));
             contrast.Enable();
             await AwaitAsync(() => accessibility.HighContrast && NativeContrastSession.Read().Enabled, "Windows did not enter actual contrast mode.");
-            var window = NativeContrastSession.Color(5); var foreground = NativeContrastSession.Color(8);
-            var highlight = NativeContrastSession.Color(13); var selectedText = NativeContrastSession.Color(14);
-            await AwaitAsync(() => Matches(root.Background, window) && Matches(Heading.Foreground, foreground) &&
-                Matches(Presenter().Background, highlight) && Matches(Presenter().Foreground, selectedText) &&
-                Matches(Editor.Background, window) && Matches(Editor.Foreground, foreground) &&
-                Matches(tooltip.Background, window) && Matches(tooltip.Foreground, foreground),
+            await AwaitAsync(() => Matches(root.Background, NativeContrastSession.Color(5)) && Matches(Heading.Foreground, NativeContrastSession.Color(8)) &&
+                Matches(Presenter().Background, NativeContrastSession.Color(13)) && Matches(Presenter().Foreground, NativeContrastSession.Color(14)) &&
+                Matches(Editor.Background, NativeContrastSession.Color(5)) && Matches(Editor.Foreground, NativeContrastSession.Color(8)) &&
+                Matches(tooltip.Background, NativeContrastSession.Color(5)) && Matches(tooltip.Foreground, NativeContrastSession.Color(8)),
                 "Live controls did not adopt Windows semantic colors.");
+            var foreground = NativeContrastSession.Color(8);
+            var highlight = NativeContrastSession.Color(13); var selectedText = NativeContrastSession.Color(14);
             Require(tooltip.IsOpen && Help.FocusState == FocusState.Keyboard, "Contrast switching closed contextual help or lost its focus.");
             var action = Action();
             await VerifyPaintAsync(action, highlight);
@@ -74,18 +86,26 @@ public sealed partial class ContrastFixture : UserControl
                 Hex(root.Background) == originalBackground && Hex(Heading.Foreground) == originalHeading,
                 "Windows mode or the original live palette did not restore.");
             tooltip.IsOpen = false;
+            Help.GotFocus -= GotFocus; Help.LostFocus -= LostFocus;
+            tooltip.Closed -= Closed;
+            Help.RemoveHandler(PointerPressedEvent, new Microsoft.UI.Xaml.Input.PointerEventHandler(Pressed));
             samples.Add(new { phase = "restored", state = Snapshot() });
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-restored.png"));
             await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-measurements.json"),
-                JsonSerializer.Serialize(new { passed, original = contrast.Original, samples }, new JsonSerializerOptions { WriteIndented = true }));
+                JsonSerializer.Serialize(new { passed, original = contrast.Original, samples, focusEvents }, new JsonSerializerOptions { WriteIndented = true }));
         }
 
         object Snapshot() => new { os = NativeContrastSession.Read(), accessibility.HighContrast, rootBackground = Hex(root.Background),
+            opacity = new { root = BrushOpacity(root.Background), heading = BrushOpacity(Heading.Foreground), primaryBackground = BrushOpacity(Presenter().Background),
+                primaryForeground = BrushOpacity(Presenter().Foreground), inputBackground = BrushOpacity(Editor.Background), inputForeground = BrushOpacity(Editor.Foreground),
+                tooltipBackground = BrushOpacity(tooltip.Background), tooltipForeground = BrushOpacity(tooltip.Foreground) },
             systemWindow = Hex(new SolidColorBrush(NativeContrastSession.Color(5))), systemText = Hex(new SolidColorBrush(NativeContrastSession.Color(8))),
             systemHighlight = Hex(new SolidColorBrush(NativeContrastSession.Color(13))), systemHighlightText = Hex(new SolidColorBrush(NativeContrastSession.Color(14))),
             heading = Hex(Heading.Foreground), primaryBackground = Hex(Presenter().Background), primaryForeground = Hex(Presenter().Foreground),
             inputBackground = Hex(Editor.Background), inputForeground = Hex(Editor.Foreground),
-            tooltipBackground = Hex(tooltip.Background), tooltipForeground = Hex(tooltip.Foreground), tooltip.IsOpen, Help.FocusState };
+            tooltipBackground = Hex(tooltip.Background), tooltipForeground = Hex(tooltip.Foreground), tooltip.IsOpen, Help.FocusState,
+            focused = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name,
+            cursor = NativeInputSession.DescribeCursor(), helpBounds = input.ScreenBounds(Help), headingBounds = input.ScreenBounds(Heading) };
     }
     private sealed record InkSample(int Width, int Height, int[] Pixels);
     private static async Task<InkSample> ReadInkAsync(TextBlock text)
@@ -143,5 +163,6 @@ public sealed partial class ContrastFixture : UserControl
     }
     private static bool Matches(Brush brush, Color color) => brush is SolidColorBrush solid && solid.Color == color && solid.Opacity == 1;
     private static string? Hex(Brush? brush) => brush is SolidColorBrush solid ? $"#{solid.Color.A:X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush?.GetType().Name;
+    private static double? BrushOpacity(Brush? brush) => brush?.Opacity;
     private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
 }

@@ -1,5 +1,19 @@
 # Windows contrast verification
 
+Run `38428299357` at `f4fd80a` enters real contrast mode and restores the original
+mode/palette. Its x64 color assertion fails although the retained failure
+snapshot's colors match the then-current Win32 colors. The test had captured its
+expected colors immediately after the mode flag changed; stale expectations
+during asynchronous scheme application are a suspected cause, not yet proven.
+Expected colors now come from the live Windows
+producer on each observation; reports also retain brush opacity. The x64 archive
+`11828899827` has verified SHA-256
+`30e626b5b809b9647047c7b8806b3622083597ef5fb9fe2832ccc6e7157cde69` and selected
+contrast evidence is retained at `artifacts/ci-contrast-f4fd80a-x64`. Popup/focus,
+pixel and full transition acceptance remain open.
+Focus events and brush opacity are retained to distinguish an actual popup
+lifecycle/focus change from a palette-settling failure.
+
 At `4c5ed02`, x64 reaches the managed fixture after the repeated-getter regression,
 then its initial snapshot fails because the unopened tooltip has unset brushes.
 The baseline now opens the help popup first and diagnostics preserve null brush
