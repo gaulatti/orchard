@@ -157,3 +157,12 @@ consumer passes at `artifacts/package-consumer-brand-motion`, package SHA-256
 `7326a3e5ab098fc2db3822c992923f0c83683fb1101e14c5dba349cc71eff5a0`.
 
 The public wiki remote is unavailable; the contract is maintained here.
+
+Run `38461347470` at `77eb85a` passes the x64 native catalog, live contrast
+transition and independent package consumer after the opacity-clock change.
+The ARM64 job passes its build, unit tests, live contrast and independent
+consumer, but its ordinary catalog stops at Input's disabled rounded-pointer
+cursor assertion (visible Arrow while the publisher retained UniversalNo).
+That keeps the required CI run red. It does not negate the earlier Brand
+checks, and does not establish a fix for the cursor boundary or complete
+component acceptance.

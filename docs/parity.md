@@ -24,7 +24,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | Component contract | Windows implementation | Catalog / regression / runtime evidence | Remaining gap |
 | --- | --- | --- | --- |
 | brand-lockup | `BleeckerBrandLockup`, typed consumer link context and live native image effects | Registered size/name, custom RGBA/link, disabled/command and non-Latin fixtures; focused x64 initial checks | In progress: [source contract and API](brand-lockup-reference.md); rendered parity, live/lifecycle/RTL, motion/reversal, error/override, package, contrast/Narrator/scaling and ARM64 acceptance |
-| bauhaus-background | Pending | Pending | Full pinned contract |
+| bauhaus-background | `BleeckerBauhausBackground`: four variants and live native image effects | Registered RGBA, square/tall and missing-image fixtures; x64 blend-pixel, source, geometry, motion-preference and UIA checks | In progress: [source contract and API](bauhaus-background-reference.md); full raster/motion, mutations, contrast/Narrator/scaling, packaging and ARM64 acceptance |
 | activity-item | Pending | Pending | Full pinned contract |
 | attention-surface | Pending | Pending | Full pinned contract |
 | button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, Narrator, contrast, scaling, motion, remaining ARM64 state checks; see [usage](buttons.md) |

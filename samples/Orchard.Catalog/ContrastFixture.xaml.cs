@@ -18,6 +18,7 @@ public sealed partial class ContrastFixture : UserControl
         var image = new WriteableBitmap(4, 1);
         using (var pixels = image.PixelBuffer.AsStream()) pixels.Write(new byte[] { 0,0,0,255, 110,70,30,255, 55,35,15,128, 0,0,0,0 });
         image.Invalidate(); Brand.LogoSource = image;
+        Bauhaus.ImageSource=image;
     }
     internal async Task VerifyKeyboardEntryAsync(string folder, BleeckerColorScheme scheme)
     {
@@ -238,6 +239,7 @@ public sealed partial class ContrastFixture : UserControl
         var image = Descendants<Image>(Brand).Single();
         var visibleHost = Descendants<Grid>(Brand).Single(item => item.Name == "PART_Logo");
         var origin = visibleHost.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+        var bauhausOrigin=Bauhaus.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
         var observations = new List<object>();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         var matched = false;
@@ -263,11 +265,20 @@ public sealed partial class ContrastFixture : UserControl
                 matched &= actual == expected;
                 observations.Add(new { milliseconds = elapsed.Elapsed.TotalMilliseconds, x, y, system, actual = ColorHex(actual), expected = ColorHex(expected), matched = actual == expected });
             }
+            foreach(var fraction in new[]{.125,.875})
+            {
+                var x=(int)Math.Round((bauhausOrigin.X+Bauhaus.ActualWidth*fraction)*XamlRoot.RasterizationScale);
+                var y=(int)Math.Round((bauhausOrigin.Y+Bauhaus.ActualHeight/2)*XamlRoot.RasterizationScale);
+                Require(x>=0&&y>=0&&x<decoder.PixelWidth&&y<decoder.PixelHeight,"Contrast background pixel exceeds the native capture.");
+                var offset=(y*(int)decoder.PixelWidth+x)*4;var actual=Color.FromArgb(pixels[offset+3],pixels[offset+2],pixels[offset+1],pixels[offset]);var expected=NativeContrastSession.Color(5);
+                matched&=actual==expected;
+                observations.Add(new{component="bauhaus",milliseconds=elapsed.Elapsed.TotalMilliseconds,x,y,actual=ColorHex(actual),expected=ColorHex(expected),matched=actual==expected});
+            }
             if (matched) break;
             await Task.Delay(32);
         } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-brand-pixels.json"), JsonSerializer.Serialize(observations));
-        Require(matched, "Contrast brand did not tint opaque pixels with WindowText while preserving transparent Window pixels.");
+        Require(matched, "Contrast decorative imagery did not preserve brand alpha/WindowText and a flat Window background for Bauhaus.");
     }
     private async Task AwaitRecoveryTargetAsync(NativeInputSession input, string folder)
     {

@@ -1,0 +1,330 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "648c0cdb37639b40ac6c67ecbad04b692d1400358b8b3bed9fad12e5baa1489c",
+  "browserVersion": "155.0.4283.45",
+  "scope": "Frozen component structure and expanded CSS utilities at rotation zero; RGBA image over #284c68 parent backdrop, 288x96, physical scale 1; consumer background #506030",
+  "samples": [
+    {
+      "type": "Nazca",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Nazca",
+      "x": 108,
+      "y": 12,
+      "red": 61,
+      "green": 67,
+      "blue": 68
+    },
+    {
+      "type": "Nazca",
+      "x": 180,
+      "y": 12,
+      "red": 69,
+      "green": 70,
+      "blue": 66
+    },
+    {
+      "type": "Nazca",
+      "x": 252,
+      "y": 12,
+      "red": 74,
+      "green": 73,
+      "blue": 63
+    },
+    {
+      "type": "Nazca",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Nazca",
+      "x": 108,
+      "y": 84,
+      "red": 50,
+      "green": 52,
+      "blue": 47
+    },
+    {
+      "type": "Nazca",
+      "x": 180,
+      "y": 84,
+      "red": 57,
+      "green": 54,
+      "blue": 46
+    },
+    {
+      "type": "Nazca",
+      "x": 252,
+      "y": 84,
+      "red": 61,
+      "green": 56,
+      "blue": 44
+    },
+    {
+      "type": "Autostrada",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Autostrada",
+      "x": 108,
+      "y": 12,
+      "red": 27,
+      "green": 37,
+      "blue": 75
+    },
+    {
+      "type": "Autostrada",
+      "x": 180,
+      "y": 12,
+      "red": 32,
+      "green": 39,
+      "blue": 72
+    },
+    {
+      "type": "Autostrada",
+      "x": 252,
+      "y": 12,
+      "red": 36,
+      "green": 41,
+      "blue": 69
+    },
+    {
+      "type": "Autostrada",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Autostrada",
+      "x": 108,
+      "y": 84,
+      "red": 21,
+      "green": 27,
+      "blue": 53
+    },
+    {
+      "type": "Autostrada",
+      "x": 180,
+      "y": 84,
+      "red": 24,
+      "green": 28,
+      "blue": 51
+    },
+    {
+      "type": "Autostrada",
+      "x": 252,
+      "y": 84,
+      "red": 27,
+      "green": 29,
+      "blue": 50
+    },
+    {
+      "type": "Pompeii",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Pompeii",
+      "x": 108,
+      "y": 12,
+      "red": 61,
+      "green": 67,
+      "blue": 68
+    },
+    {
+      "type": "Pompeii",
+      "x": 180,
+      "y": 12,
+      "red": 69,
+      "green": 70,
+      "blue": 66
+    },
+    {
+      "type": "Pompeii",
+      "x": 252,
+      "y": 12,
+      "red": 74,
+      "green": 73,
+      "blue": 63
+    },
+    {
+      "type": "Pompeii",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Pompeii",
+      "x": 108,
+      "y": 84,
+      "red": 50,
+      "green": 52,
+      "blue": 47
+    },
+    {
+      "type": "Pompeii",
+      "x": 180,
+      "y": 84,
+      "red": 57,
+      "green": 54,
+      "blue": 46
+    },
+    {
+      "type": "Pompeii",
+      "x": 252,
+      "y": 84,
+      "red": 61,
+      "green": 56,
+      "blue": 44
+    },
+    {
+      "type": "Monitor",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Monitor",
+      "x": 108,
+      "y": 12,
+      "red": 27,
+      "green": 37,
+      "blue": 75
+    },
+    {
+      "type": "Monitor",
+      "x": 180,
+      "y": 12,
+      "red": 32,
+      "green": 39,
+      "blue": 72
+    },
+    {
+      "type": "Monitor",
+      "x": 252,
+      "y": 12,
+      "red": 36,
+      "green": 41,
+      "blue": 69
+    },
+    {
+      "type": "Monitor",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Monitor",
+      "x": 108,
+      "y": 84,
+      "red": 21,
+      "green": 27,
+      "blue": 53
+    },
+    {
+      "type": "Monitor",
+      "x": 180,
+      "y": 84,
+      "red": 24,
+      "green": 28,
+      "blue": 51
+    },
+    {
+      "type": "Monitor",
+      "x": 252,
+      "y": 84,
+      "red": 27,
+      "green": 29,
+      "blue": 50
+    }
+  ],
+  "consumerBackgroundSamples": [
+    {
+      "type": "Nazca",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Nazca",
+      "x": 108,
+      "y": 12,
+      "red": 61,
+      "green": 67,
+      "blue": 68
+    },
+    {
+      "type": "Nazca",
+      "x": 180,
+      "y": 12,
+      "red": 92,
+      "green": 80,
+      "blue": 44
+    },
+    {
+      "type": "Nazca",
+      "x": 252,
+      "y": 12,
+      "red": 115,
+      "green": 92,
+      "blue": 23
+    },
+    {
+      "type": "Nazca",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Nazca",
+      "x": 108,
+      "y": 84,
+      "red": 50,
+      "green": 52,
+      "blue": 47
+    },
+    {
+      "type": "Nazca",
+      "x": 180,
+      "y": 84,
+      "red": 78,
+      "green": 61,
+      "blue": 31
+    },
+    {
+      "type": "Nazca",
+      "x": 252,
+      "y": 84,
+      "red": 98,
+      "green": 71,
+      "blue": 17
+    }
+  ]
+}

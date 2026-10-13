@@ -24,6 +24,8 @@
     <ItemGroup>
         <Manifest Include="$(ApplicationManifest)" />
         <EmbeddedResource Include="Reference/InputTypography.json" />
+        <EmbeddedResource Include="Reference/BauhausPixels.json" />
+        <EmbeddedResource Include="Reference/BauhausNarrow.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

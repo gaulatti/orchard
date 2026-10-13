@@ -20,6 +20,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        PackageBauhaus.ImageSource = new WriteableBitmap(4, 4);
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
@@ -160,6 +161,7 @@ public sealed partial class MainWindow : Window
                 await VerifyCustomBreadcrumbFocusAsync();
                 await VerifyAlertAsync();
                 await VerifyBrandAsync();
+                VerifyBauhaus();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -339,6 +341,17 @@ public sealed partial class MainWindow : Window
                 foreach (var nested in BrandDescendants<T>(child)) yield return nested;
             }
         }
+    }
+
+    private void VerifyBauhaus()
+    {
+        PackageBauhaus.ApplyTemplate();Root.UpdateLayout();
+        var root=(FrameworkElement)VisualTreeHelper.GetChild(PackageBauhaus,0);
+        var image=(Image)root.FindName("PART_Image");var pattern=(Canvas)root.FindName("PART_Pattern");
+        Require(ReferenceEquals(image.Source,PackageBauhaus.ImageSource)&&pattern.Children.Count==9&&PackageBauhaus.ActualWidth==192&&PackageBauhaus.ActualHeight==96,
+            "Independent package lost Bauhaus source or geometry.");
+        var peer=FrameworkElementAutomationPeer.CreatePeerForElement(PackageBauhaus);
+        Require(!peer.IsControlElement()&&!peer.IsContentElement()&&!PackageBauhaus.IsHitTestVisible,"Packaged background lost decorative semantics.");
     }
 
     private static bool HasReferenceSpinner(DependencyObject owner)

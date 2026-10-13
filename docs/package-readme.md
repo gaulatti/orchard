@@ -39,6 +39,8 @@ variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlertContainer.ShowAlert` publishes to containers in an explicit XAML root.
 `BleeckerBrandLockup` preserves consumer-owned routes and commands, supports both
 sizes, optional names, custom image sources and typed consumer link templates.
+`BleeckerBauhausBackground` provides four decorative image/pattern variants;
+the consumer owns its image resources, including the default hero image.
 `BleeckerButtonGroup` connects native or Orchard buttons. See the repository's
 [component documentation](https://github.com/gaulatti/orchard/blob/main/docs/parity.md)
 for examples and the acceptance status of each component.

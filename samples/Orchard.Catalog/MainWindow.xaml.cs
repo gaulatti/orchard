@@ -59,6 +59,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-breadcrumb")) await RunBreadcrumbSmokeAsync(folder);
             else if (args.Contains("--smoke-alerts")) await RunAlertSmokeAsync(folder);
             else if (args.Contains("--smoke-brand")) await RunBrandSmokeAsync(folder);
+            else if (args.Contains("--smoke-bauhaus")) await RunBauhausSmokeAsync(folder);
             else if (args.Contains("--smoke-contrast"))
             {
                 CatalogRoot.RequestedTheme = ElementTheme.Dark;
@@ -78,6 +79,17 @@ public sealed partial class MainWindow : Window
     }
 
     // Catalog-only runtime check. The reusable library has no command-line or automation dependencies.
+    private async Task RunBauhausSmokeAsync(string folder)
+    {
+        foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+        {
+            await SelectFixtureAsync(Foundation);CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(BauhausBackgrounds);
+            await BauhausBackgrounds.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder);
+            await CaptureAsync(Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="bauhaus",environment=RuntimeEnvironment()}));
+    }
+
     private async Task RunBrandSmokeAsync(string folder)
     {
         foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -198,6 +210,8 @@ public sealed partial class MainWindow : Window
             await Alerts.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(BrandLockups);
             await BrandLockups.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(BauhausBackgrounds);
+            await BauhausBackgrounds.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Tooltips);
             await Tooltips.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(FieldHelp);

@@ -1,0 +1,23 @@
+<UserControl x:Class="Orchard.Catalog.BauhausBackgroundsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Bauhaus backgrounds" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Decorative image, multiply shade and soft-light geometry. The consumer owns image resources." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <Grid x:Name="Samples" HorizontalAlignment="Left" ColumnSpacing="16" RowSpacing="16" Background="#FF284C68">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="288" /><ColumnDefinition Width="288" /></Grid.ColumnDefinitions>
+   <Grid.RowDefinitions><RowDefinition Height="96" /><RowDefinition Height="96" /></Grid.RowDefinitions>
+   <orchard:BleeckerBauhausBackground x:Name="Nazca" Type="Nazca" />
+   <orchard:BleeckerBauhausBackground x:Name="Autostrada" Type="Autostrada" Grid.Column="1" />
+   <orchard:BleeckerBauhausBackground x:Name="Pompeii" Type="Pompeii" Grid.Row="1" />
+   <orchard:BleeckerBauhausBackground x:Name="Monitor" Type="Monitor" Grid.Row="1" Grid.Column="1" />
+  </Grid>
+  <TextBlock Text="Square and tall geometry" Style="{StaticResource BleeckerBodyStyle}" />
+  <StackPanel Orientation="Horizontal" Spacing="16">
+   <Border Background="#FF284C68"><orchard:BleeckerBauhausBackground x:Name="Square" Type="Nazca" Width="96" Height="96" /></Border>
+   <Border Background="#FF284C68"><orchard:BleeckerBauhausBackground x:Name="Tall" Type="Pompeii" Width="72" Height="144" /></Border>
+   <Border Background="#FF284C68"><orchard:BleeckerBauhausBackground x:Name="Unavailable" Type="Autostrada" Width="192" Height="96" /></Border>
+   <Border Background="#FF284C68"><orchard:BleeckerBauhausBackground x:Name="Narrow" Type="Pompeii" Width="40" Height="32" /></Border>
+  </StackPanel>
+  <TextBlock x:Name="Outcome" Text="Waiting for the application-owned default image." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+ </StackPanel>
+</UserControl>

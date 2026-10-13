@@ -1,0 +1,17 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerBauhausBackground">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="IsHitTestVisible" Value="False" /><Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="AutomationProperties.AccessibilityView" Value="Raw" /><Setter Property="UseLayoutRounding" Value="False" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerBauhausBackground">
+   <Grid x:Name="PART_Root" FlowDirection="LeftToRight" Background="{TemplateBinding Background}">
+    <TextBlock x:Name="PART_Bronze" Foreground="{ThemeResource BleeckerAccentBronzeBrush}" Visibility="Collapsed" />
+    <TextBlock x:Name="PART_Oxblood" Foreground="{ThemeResource BleeckerAccentOxbloodBrush}" Visibility="Collapsed" />
+    <TextBlock x:Name="PART_ContrastBackground" Foreground="{ThemeResource BleeckerBackgroundBrush}" Visibility="Collapsed" />
+    <Grid x:Name="PART_ImageHost"><Image x:Name="PART_Image" Stretch="UniformToFill" /></Grid>
+    <Grid x:Name="PART_ShadeHost"><Grid x:Name="PART_ShadeSurface"><Border><Border.Background><LinearGradientBrush Opacity="0.3" StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#00000000" Offset="0" /><GradientStop Color="#FF000000" Offset="1" /></LinearGradientBrush></Border.Background></Border></Grid></Grid>
+    <Grid x:Name="PART_PatternHost"><Grid x:Name="PART_PatternSurface"><Canvas x:Name="PART_Pattern" /></Grid></Grid>
+    <Border x:Name="PART_Output" />
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

@@ -14,6 +14,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Alert.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Brand.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Bauhaus.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>

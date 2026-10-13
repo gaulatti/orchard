@@ -193,3 +193,10 @@ additional open overlays, Narrator and scaling remain acceptance gaps. The
 [Windows contrast guidance](https://learn.microsoft.com/en-us/windows/apps/design/accessibility/high-contrast-themes)
 defines system color pairing; the wiki remote is unavailable, so this contract
 is maintained in the repository.
+
+The fixture now includes Bauhaus decorative imagery before the primary action,
+without changing the Breadcrumb-to-Help keyboard entry path. It requires both
+opaque and transparent image regions to become exact Window pixels in the
+actual composed capture; Brand continues to require WindowText/alpha behavior.
+These samples are retained in `contrast-brand-pixels.json` with a `bauhaus`
+component marker. Fresh hosted acceptance for this addition is required.

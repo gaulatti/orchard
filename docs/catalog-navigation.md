@@ -68,3 +68,8 @@ consumer-owned RGBA artwork, a typed link template, command availability,
 disabled, constrained international text and a failed source. Its focused
 runtime path is `scripts/smoke-catalog.ps1 -Component brand`; it also participates
 in the full catalog. See [the contract and current evidence](brand-lockup-reference.md).
+
+The **Bauhaus backgrounds** page follows Brand lockups. It shows four variants,
+RGBA image blending, square/tall layouts and the missing application-owned hero
+image. Its focused runtime path is `scripts/smoke-catalog.ps1 -Component bauhaus`;
+see [the contract and current evidence](bauhaus-background-reference.md).

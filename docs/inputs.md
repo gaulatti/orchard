@@ -376,3 +376,11 @@ AppStarting cursor while the producer reports Arrow and the border/opacity,
 foreground and hit target are correct. The exact displayed-cursor gate remains
 required; the failure is not accepted as normal Arrow behavior or silently
 ignored. Both architecture contrast checks and independent consumers pass.
+
+Run `38461347470` at `77eb85a` passes the complete x64 catalog but fails the
+ARM64 Large/invalid corner check at bottom-right `3,0`. Windows displays Arrow
+while the island publisher reports UniversalNo; foreground and the screen point
+remain owned by the catalog, and hover/border/opacity are correct. This is an
+unresolved publication boundary, distinct from the earlier AppStarting result.
+Both live contrast checks and independent consumers pass. The displayed-cursor
+assertion stays unchanged.
