@@ -69,11 +69,15 @@ test per observation, then applies each control's own bounds, visibility, ancest
 clipping and occlusion. Checkbox supplies its rounded 20px box and uses the
 browser's 1×1 pointer sample; Input currently supplies its control bounds.
 Each control detaches on enable/unload, and Checkbox also detaches on
-template replacement. One thread-local native cursor owner prevents competing
-controls from restoring stale overrides; release immediately reapplies WinUI's
-current cursor and reconciles once after input dispatch while that root still
-owns the screen point and no newer disabled control owns the override. System
-cursor restoration does not change the root input source's cursor property.
+template replacement. One thread-local cursor owner prevents competing controls
+from restoring stale overrides. The displayed override belongs to the root's
+InputPointerSource, rather than the UI thread's Win32 cursor cache. Each root
+retains cursor objects published by WinUI while excluding its own override
+object, so release can restore the latest producer selection, including resource
+cursors. Stationary enabling selects the control's explicit cursor. Routed
+pointer observations coalesce one queued refresh after native cursor dispatch;
+layout/render observations continue to handle stationary geometry changes.
+Physical cursor gates require GetCursorInfo's visible global cursor handle.
 
 The catalog keeps `EnableMsixTooling=true` and explicitly enables
 `AppxGeneratePriEnabled` for the SDK’s application resource-index build

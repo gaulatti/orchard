@@ -51,8 +51,8 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     private void SetOver(bool value, bool mouse, UIElement? root)
     {
         if (IsOver != value) { IsOver = value; changed(value); }
-        if (value && mouse) BleeckerPointerCursor.Block(this);
-        else if (root is not null) BleeckerPointerCursor.Release(this, root);
+        if (value && mouse && root is not null) BleeckerPointerCursor.Block(this, root);
+        else if (root is not null) BleeckerPointerCursor.Release(this);
     }
 
     private bool Contains(Point position, UIElement root)
@@ -121,6 +121,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     {
         private readonly List<BleeckerDisabledPointer> clients = [];
         private BleeckerDisabledPointer[] snapshot = [];
+        private bool refreshQueued;
         internal UIElement Root => root;
 
         internal void Add(BleeckerDisabledPointer client)
@@ -141,7 +142,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
 
         internal void Remove(BleeckerDisabledPointer client)
         {
-            BleeckerPointerCursor.Release(client, root);
+            BleeckerPointerCursor.Release(client);
             clients.Remove(client);
             snapshot = clients.ToArray();
             if (clients.Count != 0) return;
@@ -154,8 +155,14 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
         }
 
         private void OnLayout(object? sender, object args) => Refresh();
-        private void OnMoved(object sender, PointerRoutedEventArgs args) => Apply(args.GetCurrentPoint(root).Position,
-            args.OriginalSource as DependencyObject, args.Pointer.PointerDeviceType == PointerDeviceType.Mouse);
+        private void OnMoved(object sender, PointerRoutedEventArgs args)
+        {
+            Apply(args.GetCurrentPoint(root).Position, args.OriginalSource as DependencyObject,
+                args.Pointer.PointerDeviceType == PointerDeviceType.Mouse);
+            if (refreshQueued) return;
+            refreshQueued = true;
+            if (!root.DispatcherQueue.TryEnqueue(() => { refreshQueued = false; if (clients.Count != 0) Refresh(); })) refreshQueued = false;
+        }
         private void OnExited(object sender, PointerRoutedEventArgs args)
         {
             if (ReferenceEquals(args.OriginalSource, root)) Clear();
@@ -192,68 +199,62 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
 /// <summary>One native override owner across all Orchard disabled controls.</summary>
 internal static class BleeckerPointerCursor
 {
+    private static readonly ConditionalWeakTable<UIElement, RootCursor> roots = new();
     [ThreadStatic] private static object? owner;
+    [ThreadStatic] private static RootCursor? active;
     internal static bool IsOwner(object candidate) => ReferenceEquals(owner, candidate);
-    internal static void Block(object candidate) { SetSystem(InputSystemCursorShape.UniversalNo); owner = candidate; }
-    internal static void Release(object candidate, UIElement root)
+    internal static void Block(object candidate, UIElement root)
+    {
+        var selection = roots.GetValue(root, value => new RootCursor(value));
+        if (!ReferenceEquals(active, selection)) active?.Restore();
+        active = selection; owner = candidate;
+        selection.Block();
+    }
+    internal static void Release(object candidate)
     {
         if (!IsOwner(candidate)) return;
         owner = null;
-        if (GetCursor() != LoadCursorW(IntPtr.Zero, new IntPtr(32648))) return;
-        Restore(root);
-        // A routed PointerMoved can reach this observer before WinUI publishes
-        // the destination's cursor. Restore again after that dispatch, using
-        // the current selection and only while our root still owns the point.
-        root.DispatcherQueue.TryEnqueue(() =>
-        {
-            if (owner is not null || root.XamlRoot is not XamlRoot xamlRoot) return;
-            var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(xamlRoot.ContentIslandEnvironment.AppWindowId);
-            if (GetCursorPos(out var point) && GetAncestor(WindowFromPoint(point), 2) == window) Restore(root);
-        });
+        active?.Restore(); active = null;
     }
 
-    private static void Restore(UIElement root)
+    internal static void Select(UIElement control, InputCursor cursor)
     {
-        if (root.XamlRoot is not XamlRoot xamlRoot) return;
-        var island = ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(xamlRoot.ContentIslandEnvironment));
-        var source = InputPointerSource.GetForIsland(island);
-        var cursor = source.Cursor;
-        // Restore WinUI's current selection, including custom resource cursors.
-        // A cursor remembered on entry becomes stale under stationary movement.
-        if (cursor is null) SetCursor(IntPtr.Zero);
-        else if (cursor is InputSystemCursor system) SetSystem(system.CursorShape);
-        else { source.Cursor = null; source.Cursor = cursor; }
+        if (control.XamlRoot?.Content is UIElement root) Source(root).Cursor = cursor;
     }
 
-    internal static void SetSystem(InputSystemCursorShape shape)
+    private static InputPointerSource Source(UIElement root)
     {
-        var resource = shape switch
-        {
-            InputSystemCursorShape.Arrow => 32512,
-            InputSystemCursorShape.IBeam => 32513,
-            InputSystemCursorShape.Wait => 32514,
-            InputSystemCursorShape.Cross => 32515,
-            InputSystemCursorShape.UpArrow => 32516,
-            InputSystemCursorShape.SizeNorthwestSoutheast => 32642,
-            InputSystemCursorShape.SizeNortheastSouthwest => 32643,
-            InputSystemCursorShape.SizeWestEast => 32644,
-            InputSystemCursorShape.SizeNorthSouth => 32645,
-            InputSystemCursorShape.SizeAll => 32646,
-            InputSystemCursorShape.UniversalNo => 32648,
-            InputSystemCursorShape.Hand => 32649,
-            InputSystemCursorShape.AppStarting => 32650,
-            InputSystemCursorShape.Help => 32651,
-            InputSystemCursorShape.Pin => 32671,
-            InputSystemCursorShape.Person => 32672,
-            _ => throw new ArgumentOutOfRangeException(nameof(shape))
-        };
-        SetCursor(LoadCursorW(IntPtr.Zero, new IntPtr(resource)));
+        var environment = root.XamlRoot.ContentIslandEnvironment;
+        var island = ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(environment));
+        return InputPointerSource.GetForIsland(island);
     }
-    [StructLayout(LayoutKind.Sequential)] private struct NativePoint { public int X; public int Y; }
-    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorPos(out NativePoint point);
-    [DllImport("user32.dll")] private static extern IntPtr WindowFromPoint(NativePoint point);
-    [DllImport("user32.dll")] private static extern IntPtr GetAncestor(IntPtr window, uint flags);
-    [DllImport("user32.dll")] private static extern IntPtr GetCursor();
-    [DllImport("user32.dll")] private static extern IntPtr SetCursor(IntPtr cursor);
-    [DllImport("user32.dll")] private static extern IntPtr LoadCursorW(IntPtr instance, IntPtr name);
+
+    private sealed class RootCursor(UIElement root)
+    {
+        private readonly InputSystemCursor blocked = InputSystemCursor.Create(InputSystemCursorShape.UniversalNo);
+        private InputPointerSource? source;
+        private InputCursor? selected;
+
+        internal void Block()
+        {
+            var current = Source(root);
+            var cursor = current.Cursor;
+            // Preserve cursor values published by WinUI while our override is
+            // active. Our own object is not a new producer selection.
+            if (source is null || !ReferenceEquals(cursor, blocked)) selected = cursor;
+            source = current;
+            if (!ReferenceEquals(cursor, blocked)) current.Cursor = blocked;
+        }
+
+        internal void Restore()
+        {
+            if (source is not null && root.XamlRoot is not null)
+            {
+                var cursor = source.Cursor;
+                if (!ReferenceEquals(cursor, blocked)) selected = cursor;
+                source.Cursor = selected;
+            }
+            source = null; selected = null;
+        }
+    }
 }

@@ -342,9 +342,9 @@ the actual native cursor, the Input's ProtectedCursor, the root input source's
 cursor, current hit elements and observer state at that transition. Acceptance
 still compares the physical cursor handle with the system I-beam handle.
 The `8b8be3c` ARM64 capture shows the entered Input loaded/enabled, with
-ProtectedCursor and InputPointerSource.Cursor both IBeam, but the native cursor
-still Arrow. The Checkbox observer is registered and no longer hovered. The
-shared release now restores immediately, then queues one reconciliation after
+ProtectedCursor and InputPointerSource.Cursor both IBeam, but the UI thread's
+GetCursor handle still Arrow. The observer is registered and no longer hovered.
+The `f8c67a8` candidate restored immediately, then queued a reconciliation after
 the current pointer dispatch. That reconciliation reads WinUI's current cursor,
 requires no newer disabled owner and checks the root still owns the native
 screen point. System cursor restoration no longer changes InputPointerSource's
@@ -357,8 +357,20 @@ every Checkbox boundary sample and Input transition. Microsoft's
 distinguishes the calling thread's cursor from
 [global cursor information](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getcursorinfo).
 Earlier handle checks use GetCursor and cannot by themselves prove the visible
-desktop cursor. Global observation is initially diagnostic; the existing gate
-is retained until those observations establish the actual failure boundary.
+desktop cursor. At `706ee10`, the global observation establishes that the enabled
+Input displays IBeam correctly, but the disabled Checkbox displays Arrow while
+the UI thread reports UniversalNo. The verified ARM64 archive `11780820812` has
+SHA-256 `6f75a65e7a63d3981ed16ad35774da3037a377d316998ae28764bb8f061337a8`.
+The shared override now sets InputPointerSource.Cursor for the root's native
+input target, retaining the last cursor object actually published by WinUI and
+updating it when WinUI publishes a new selection. Its own UniversalNo object
+does not become a producer selection. Release restores that object through the
+same API, preserving resource cursors without a hardcoded system-ID table.
+The root also coalesces one refresh after pointer dispatch. Stationary enabling
+selects the control's explicit Arrow/IBeam cursor. Both physical fixtures now
+require GetCursorInfo's displayed global handle and showing flag. Thread cache
+and source properties cannot satisfy the acceptance gate. New native evidence
+is required; earlier thread-only cursor assertions do not prove visible parity.
 
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual

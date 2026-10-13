@@ -29,6 +29,6 @@ public sealed partial class BleeckerInput
         var enabledUnderPointer = IsEnabled && pointerOver && disabledPointer!.OwnsCursor;
         ProtectedCursor = IsEnabled ? textCursor : disabledCursor;
         disabledPointer!.Update();
-        if (enabledUnderPointer) BleeckerPointerCursor.SetSystem(InputSystemCursorShape.IBeam);
+        if (enabledUnderPointer) BleeckerPointerCursor.Select(this, textCursor);
     }
 }

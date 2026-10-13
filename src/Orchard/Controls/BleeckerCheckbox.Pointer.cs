@@ -28,6 +28,6 @@ public sealed partial class BleeckerCheckbox
     {
         var enabledUnderPointer = IsEnabled && pointerOver && disabledPointer!.OwnsCursor;
         disabledPointer!.Update();
-        if (enabledUnderPointer) BleeckerPointerCursor.SetSystem(InputSystemCursorShape.Arrow);
+        if (enabledUnderPointer) BleeckerPointerCursor.Select(this, arrowCursor);
     }
 }

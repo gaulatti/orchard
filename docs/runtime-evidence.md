@@ -13,6 +13,17 @@ Input transition diagnostics now retain both, including global visibility and
 screen position. No visible-cursor acceptance follows from earlier thread-only
 handle assertions. Rendered hover borders/opacity are independent observations.
 
+At `706ee10`, ARM64's global cursor report proves the enabled Input displays
+IBeam while its UI thread reports Arrow. It also proves the disabled Checkbox
+still displays Arrow while its UI thread reports UniversalNo. Archive
+`11780820812` was downloaded and verified, SHA-256
+`6f75a65e7a63d3981ed16ad35774da3037a377d316998ae28764bb8f061337a8`.
+The current candidate replaces the thread-only override with the root's
+InputPointerSource cursor and strengthens both fixtures to require the visible
+global handle. This is a new acceptance boundary, not a pass inferred from
+earlier cursor properties. The prior `ae3e44f` run passes all three jobs under
+the earlier gate; new runtime checks must prove the displayed override.
+
 ## Rendered Checkbox names and resting Input validation
 
 At `9c5699b`, native ARM64 passes all 57 Checkbox disabled-pointer phases in

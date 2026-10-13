@@ -138,6 +138,13 @@ internal sealed class NativeInputSession : IDisposable
         return new Rect(client.X + local.X * scale, client.Y + local.Y * scale, local.Width * scale, local.Height * scale);
     }
 
+    internal static IntPtr CurrentVisibleCursor()
+    {
+        var info = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
+        Require(GetCursorInfo(ref info), "Could not read the global Windows cursor.");
+        return (info.Flags & 1) != 0 ? info.Cursor : IntPtr.Zero;
+    }
+
     public void Dispose()
     {
         try
@@ -166,6 +173,14 @@ internal sealed class NativeInputSession : IDisposable
             }
         }
     }
+
+    [StructLayout(LayoutKind.Sequential)] private struct CursorInformation
+    {
+        public uint Size, Flags;
+        public IntPtr Cursor;
+        public CursorPoint Position;
+    }
+    [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorInfo(ref CursorInformation info);
 
     private static void SendKeyCore(ushort key) => Send(
         [new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key } } },

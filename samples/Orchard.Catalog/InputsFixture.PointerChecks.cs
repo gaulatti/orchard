@@ -215,8 +215,7 @@ public sealed partial class InputsFixture
     [DllImport("user32.dll", EntryPoint = "GetCursorPos")]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static extern bool ReadPointer(out PointerCheckPoint point);
-    [DllImport("user32.dll", EntryPoint = "GetCursor")]
-    private static extern IntPtr CurrentCursor();
+    private static IntPtr CurrentCursor() => NativeInputSession.CurrentVisibleCursor();
     [DllImport("user32.dll", EntryPoint = "LoadCursorW")]
     private static extern IntPtr SystemCursor(IntPtr instance, IntPtr name);
 }

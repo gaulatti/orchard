@@ -60,8 +60,8 @@ public sealed partial class CheckboxesFixture
             DisabledOff.IsEnabled = false;
             await Check(DisabledOff, "disabled-under-pointer", true, 32648, anchor);
             DisabledOff.Template = null;
-            Require(CurrentCheckboxCursor() != CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)),
-                "Template detachment retained the disabled box cursor.");
+            await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),
+                "Template detachment did not restore the visible arrow cursor.");
             samples.Add(new { phase = "template-detached", cursor = CurrentCheckboxCursor().ToInt64() });
             DisabledOff.Template = template;
             DisabledOff.ApplyTemplate(); UpdateLayout();
@@ -246,6 +246,7 @@ public sealed partial class CheckboxesFixture
             (screen.Y - client.Y) / editor.XamlRoot.RasterizationScale);
         return new { editor.IsEnabled, editor.IsLoaded, focus = editor.FocusState.ToString(),
             native = CurrentCheckboxCursor().ToInt64(), expectedText = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32513)).ToInt64(),
+            threadCursor = CurrentThreadCheckboxCursor().ToInt64(),
             globalCursor = DescribeGlobalCursor(),
             protectedCursor = Cursor(protectedCursor), sourceCursor = Cursor(sourceCursor),
             registered = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker) is not null,
@@ -308,6 +309,7 @@ public sealed partial class CheckboxesFixture
     [DllImport("user32.dll", EntryPoint = "GetCursorInfo", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadGlobalCursor(ref CursorInformation info);
     [DllImport("user32.dll", EntryPoint = "GetCursorPos")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadCheckboxPointer(out PointerPoint point);
-    [DllImport("user32.dll", EntryPoint = "GetCursor")] private static extern IntPtr CurrentCheckboxCursor();
+    private static IntPtr CurrentCheckboxCursor() => NativeInputSession.CurrentVisibleCursor();
+    [DllImport("user32.dll", EntryPoint = "GetCursor")] private static extern IntPtr CurrentThreadCheckboxCursor();
     [DllImport("user32.dll", EntryPoint = "LoadCursorW")] private static extern IntPtr CheckboxSystemCursor(IntPtr instance, IntPtr name);
 }

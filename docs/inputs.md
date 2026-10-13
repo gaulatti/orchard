@@ -271,13 +271,19 @@ This fixture correction does not change product styling or shorten its waits.
 
 The Checkbox physical fixture also exercises a shared Input: disabled Input to
 disabled Checkbox, enabling the Input while the pointer remains on Checkbox,
-then moving into the enabled editor. At `8b8be3c`, the ARM64 report shows both
-the editor's ProtectedCursor and the root InputPointerSource cursor as IBeam,
-while the actual native cursor remains Arrow. The shared disabled-cursor release
-now reconciles once after the current input dispatch, reading the current WinUI
-selection and checking native screen-point ownership. It skips that callback
-when another disabled control owns the override. System cursor restoration uses
-the native cursor handle without resetting the input source's cursor property.
-Immediate release on unload/template detachment is preserved. The existing
-physical fixture still requires the actual system I-beam handle; property
-values alone cannot pass it. New x64 and ARM64 runtime verification is required.
+then moving into the enabled editor. The earlier `8b8be3c` assertion compares
+the UI thread's GetCursor handle with IBeam and fails, despite both WinUI cursor
+properties selecting IBeam. At `706ee10`, GetCursorInfo confirms the displayed
+cursor is IBeam; that earlier transition failure is a thread-cache observation.
+The same global report exposes a real disabled-cursor defect: the displayed
+Checkbox cursor stays Arrow despite the UI thread reporting UniversalNo.
+
+The shared override now sets the root InputPointerSource cursor. It retains
+cursor objects published by WinUI during the override and excludes its own
+UniversalNo object, then restores the latest producer selection on release.
+Stationary enabling explicitly selects the enabled control's cursor. The
+observer coalesces a refresh after routed pointer dispatch as well as observing
+layout/render changes. Both Input and Checkbox physical checks now require the
+visible global cursor from GetCursorInfo; hidden/suppressed cursors cannot pass.
+Property values and the UI-thread cache remain diagnostics only. Native x64
+and ARM64 runtime verification is required for this correction.
