@@ -43,8 +43,14 @@ public sealed partial class InputsFixture
                     var middle = (int)Math.Round((bounds.Top + bounds.Height / 2) * scale);
                     var opaque = Enumerable.Range(0, bitmap.PixelWidth)
                         .Where(x => pixels[(middle * bitmap.PixelWidth + x) * 4 + 3] == 255).ToArray();
-                    Require(opaque.Length > 0 && Math.Abs(opaque.Last() - opaque.First() + 1 - input.ActualWidth * scale) <= 2,
-                        "Reading-direction capture does not contain the expected isolated opaque input box.");
+                    var isolated = opaque.Length > 0 && Math.Abs(opaque.Last() - opaque.First() + 1 - input.ActualWidth * scale) <= 2;
+                    if (!isolated)
+                    {
+                        await MainWindow.SavePngAsync(Path.Combine(folder,$"input-direction-analysis-{direction}-{filled}-{scheme}.png"),pixels,bitmap.PixelWidth,bitmap.PixelHeight);
+                        throw new InvalidOperationException($"Reading-direction capture does not contain the expected isolated opaque input box: {JsonSerializer.Serialize(new {
+                            input.Name,input.InputSize,input.IsEnabled,input.FocusState,bounds,middle,scale,bitmap.PixelWidth,bitmap.PixelHeight,
+                            opaqueCount=opaque.Length,first=opaque.Length>0?(int?)opaque.First():null,last=opaque.Length>0?(int?)opaque.Last():null,expectedWidth=input.ActualWidth*scale })}.");
+                    }
                     var bitmapLeft = opaque.First() / scale;
                     var background = ((SolidColorBrush)Find<Border>(input, "BorderElement").Background).Color;
                     var brush = (SolidColorBrush)(filled ? input.Foreground : input.PlaceholderForeground);

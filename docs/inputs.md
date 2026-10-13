@@ -359,3 +359,20 @@ element PNG previews. The comparison is retained in
 `artifacts/input-composited-7024b9e-comparison.json`; archive/package digests are
 recorded in [runtime evidence](runtime-evidence.md). Browser/native parity,
 enabled corner interaction, contrast/Narrator and scaling remain open.
+
+The local `artifacts/smoke-brand-motion-all` run stops at the reading-direction
+opaque-span assertion. Its isolated element preview alone cannot identify the
+second raster's origin or span. The fixture now saves that exact raster and
+reports control name/size/enabled/focus, transformed bounds, row, scale,
+bitmap dimensions and opaque first/last/count on failure. The unchanged
+assertion passes in the subsequent full Input check
+`artifacts/smoke-motion-input-diagnostics` and repeated complete catalog
+`artifacts/smoke-brand-motion-all-diagnostics`, both appearances. This is an
+unresolved intermittent observation, not evidence of a repaired product defect.
+
+Hosted run `38458612519` at `883b0c9` passes the complete native ARM64 catalog
+and independent consumer. Its x64 Input corner check fails with a visible
+AppStarting cursor while the producer reports Arrow and the border/opacity,
+foreground and hit target are correct. The exact displayed-cursor gate remains
+required; the failure is not accepted as normal Arrow behavior or silently
+ignored. Both architecture contrast checks and independent consumers pass.
