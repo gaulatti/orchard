@@ -4,6 +4,7 @@
   <TextBlock Text="Inspect Windows semantic colors using Accessibility → Contrast themes. CI verifies live transitions on its isolated desktop." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
   <orchard:BleeckerBrandLockup x:Name="Brand" Href="/contrast-fixture" LogoAlt="Contrast image alpha" />
   <orchard:BleeckerBauhausBackground x:Name="Bauhaus" Type="Monitor" Width="192" Height="24" HorizontalAlignment="Left" />
+  <orchard:BleeckerActivityItem x:Name="Activity" Init="Alice Harbor" Title="Fictional contrast activity" Time="Consumer supplied time" Width="320" HorizontalAlignment="Left" />
   <orchard:BleeckerButton x:Name="Primary" Content="Contrast action" HorizontalAlignment="Left" />
   <orchard:BleeckerInput x:Name="Editor" Text="Fictional coverage title" AutomationProperties.Name="Coverage title" Width="320" HorizontalAlignment="Left" />
   <orchard:BleeckerBreadcrumb x:Name="Path" CollapsedAfter="1" Width="320" HorizontalAlignment="Left">

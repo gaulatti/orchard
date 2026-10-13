@@ -114,6 +114,17 @@ public sealed partial class ContrastFixture : UserControl
             await VerifyInkAsync(Heading, 8, headingInk, folder, "heading");
             await VerifyInkAsync(Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), 14, labelInk, folder, "action-label");
             await VerifyBrandPaintAsync(input, folder);
+            var activitySurface = Descendants<Border>(Activity).Single(item => item.Name == "PART_Surface");
+            var activityTitle = Descendants<TextBlock>(Activity).Single(item => item.Name == "PART_Title");
+            var activityTime = Descendants<TextBlock>(Activity).Single(item => item.Name == "PART_Time");
+            await input.MoveAsync(Activity);
+            await AwaitAsync(() => Matches(activitySurface.Background, NativeContrastSession.Color(13)) &&
+                Matches(activityTitle.Foreground, NativeContrastSession.Color(14)) && Matches(activityTime.Foreground, NativeContrastSession.Color(14)),
+                "Hovered activity did not pair Windows Highlight and HighlightText.");
+            await input.MoveAsync(Heading);
+            await AwaitAsync(() => BrushOpacity(activitySurface.Background) == 0 &&
+                Matches(activityTitle.Foreground, NativeContrastSession.Color(8)) && Matches(activityTime.Foreground, NativeContrastSession.Color(8)),
+                "Activity hover exit did not restore Windows text and transparency.");
             await input.MoveAsync(expansion);
             var chrome = Descendants<Border>(expansion).Single(item => item.Name == "PART_Chrome");
             var icon = Descendants<Microsoft.UI.Xaml.Shapes.Path>(expansion).Single(item => item.Name == "PART_Icon");

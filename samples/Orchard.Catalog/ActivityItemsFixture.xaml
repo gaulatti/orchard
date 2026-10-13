@@ -1,0 +1,14 @@
+<UserControl x:Class="Orchard.Catalog.ActivityItemsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Activity items" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned initials, title and time. The row has hover styling and no built-in activation action." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <Button x:Name="KeyboardStart" Content="Before activity rows" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+  <StackPanel x:Name="Rows" Width="400" HorizontalAlignment="Left">
+   <orchard:BleeckerActivityItem x:Name="Normal" Init="Alice Harbor" Title="Fictional coverage note updated" Time="5 minutes ago" />
+   <orchard:BleeckerActivityItem x:Name="Empty" Init="" Title="" Time="" />
+   <orchard:BleeckerActivityItem x:Name="Long" Init="東京 編集室" Title="東京の架空編集室 · العربية · café — a long fictional activity title that wraps at the consumer's chosen width" Time="Consumer supplied time — not parsed or reformatted" />
+   <orchard:BleeckerActivityItem x:Name="Rtl" Init="ريم هلال" Title="العربية · a fictional RTL update" Time="قبل خمس دقائق" FlowDirection="RightToLeft" />
+  </StackPanel>
+  <Button x:Name="KeyboardEnd" Content="After activity rows" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+ </StackPanel>
+</UserControl>

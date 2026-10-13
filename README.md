@@ -14,6 +14,8 @@ The [Skeleton preview](docs/skeleton-reference.md) supplies decorative shapes,
 loading cards and tables with the pinned Bleecker dimensions and pulse recipe.
 The [Avatar preview](docs/avatar-reference.md) supplies consumer images, initials,
 silhouettes and overlapping groups with overflow counts in all five sizes.
+The [Activity Item preview](docs/activity-item-reference.md) supplies exact
+consumer-owned title/time strings, an Avatar and source hover styling.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

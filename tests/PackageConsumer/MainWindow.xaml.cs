@@ -162,6 +162,7 @@ public sealed partial class MainWindow : Window
                 await VerifyAlertAsync();
                 await VerifyBrandAsync();
                 VerifyBauhaus();
+                VerifyActivity();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -341,6 +342,28 @@ public sealed partial class MainWindow : Window
                 foreach (var nested in BrandDescendants<T>(child)) yield return nested;
             }
         }
+    }
+
+    private void VerifyActivity()
+    {
+        PackageActivity.ApplyTemplate(); Root.UpdateLayout();
+        var surface = (Border)VisualTreeHelper.GetChild(PackageActivity, 0);
+        var grid = (Grid)surface.Child;
+        var avatar = grid.Children.OfType<BleeckerAvatar>().Single();
+        var text = grid.Children.OfType<Grid>().Single().Children.OfType<TextBlock>().ToArray();
+        var peer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageActivity);
+        Require(avatar.AvatarSize == BleeckerAvatarSize.Small && avatar.ActualWidth == 32 && avatar.Fallback == PackageActivity.Init &&
+            text[0].Text == PackageActivity.Title && text[1].Text == PackageActivity.Time &&
+            text[0].FontFamily.Source.Contains("EncodeSans-Medium.ttf") && text[1].FontFamily.Source.Contains("LibreFranklin-Regular.ttf") &&
+            surface.Padding == new Thickness(16) && surface.BorderThickness == new Thickness(0, 0, 0, 1),
+            "Independent package lost activity strings, fonts, avatar or template geometry.");
+        Require(peer.GetAutomationControlType() == AutomationControlType.Group && !peer.IsKeyboardFocusable() &&
+            peer.GetPattern(PatternInterface.Invoke) is null && !PackageActivity.IsTabStop,
+            "Independent package fabricated an activity action.");
+        var original = PackageActivity.Title; PackageActivity.Title = ""; Root.UpdateLayout();
+        Require(text[0].Visibility == Visibility.Collapsed && text[1].Text == PackageActivity.Time,
+            "Packaged activity did not preserve an empty consumer paragraph.");
+        PackageActivity.Title = original;
     }
 
     private void VerifyBauhaus()

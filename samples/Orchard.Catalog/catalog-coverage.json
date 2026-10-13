@@ -25,6 +25,7 @@
   "controls": {
     "BleeckerBrandLockup": "BrandLockupsFixture.xaml",
     "BleeckerBauhausBackground": "BauhausBackgroundsFixture.xaml",
+    "BleeckerActivityItem": "ActivityItemsFixture.xaml",
     "BleeckerBrandLinkContext": "BrandLockupsFixture.xaml",
     "BleeckerAlert": "AlertsFixture.xaml",
     "BleeckerAlertContainer": "AlertsFixture.xaml",

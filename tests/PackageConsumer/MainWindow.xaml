@@ -55,6 +55,7 @@
                            Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerBrandLockup x:Name="PackageBrand" Href="/consumer?keep=%2F#section" BrandName="Consumer studio" />
                 <orchard:BleeckerBauhausBackground x:Name="PackageBauhaus" Type="Pompeii" Width="192" Height="96" />
+                <orchard:BleeckerActivityItem x:Name="PackageActivity" Init="Alice Harbor" Title="Consumer-owned activity" Time="opaque time / 07:03" />
                 <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
                 <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
                 <orchard:BleeckerFieldHelpTooltip x:Name="PackageHelp" Text="Use a concise title for this fictional item." HorizontalAlignment="Left" />

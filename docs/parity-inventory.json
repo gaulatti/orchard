@@ -259,14 +259,15 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerActivityItem.cs", "src/Orchard/Themes/Activity.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/ActivityItemsFixture.xaml", "samples/Orchard.Catalog/ActivityItemsFixture.xaml.cs"],
+      "regressionTests": ["samples/Orchard.Catalog/Reference/ActivityLayout.json", "samples/Orchard.Catalog/ActivityItemsFixture.xaml.cs", "samples/Orchard.Catalog/ContrastFixture.xaml.cs", "tests/Orchard.Tests/CatalogCoverageTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Full browser/native text and Avatar raster, constrained widths and consumer override matrix",
+        "Precise motion timing and interrupted physical reversal",
+        "All contrast schemes, Narrator and display/text scaling acceptance",
+        "Native ARM64 runtime and independent package consumption evidence"
       ]
     },
     {

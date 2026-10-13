@@ -24,6 +24,11 @@ Alerts is registered after Notifications. It exercises standalone and shared
 window-owned notifications, four types, duration/message controls and close
 callbacks. Navigating away unloads its owned popups and subscriptions.
 
+Activity Item is registered after Bauhaus. Its normal, empty, multilingual and
+RTL examples retain consumer strings and have no built-in activation action.
+The focused `-Component activity` mode uses this same navigation path in both
+appearances and checks physical hover, Tab behavior and lifecycle restoration.
+
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise
 search, native button activation, no-result messaging, clearing search, retained

@@ -46,8 +46,12 @@ jobs:
         id: input_smoke
         if: ${{ !cancelled() && (steps.bauhaus_smoke.outcome == 'success' || steps.bauhaus_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component input -Output artifacts/input -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify Activity Item content and native input
+        id: activity_smoke
         if: ${{ !cancelled() && (steps.input_smoke.outcome == 'success' || steps.input_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component activity -Output artifacts/activity -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.activity_smoke.outcome == 'success' || steps.activity_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -131,8 +135,12 @@ jobs:
         id: input_smoke
         if: ${{ !cancelled() && (steps.bauhaus_smoke.outcome == 'success' || steps.bauhaus_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component input -Output artifacts/input -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 Activity Item content and input
+        id: activity_smoke
         if: ${{ !cancelled() && (steps.input_smoke.outcome == 'success' || steps.input_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component activity -Output artifacts/activity -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.activity_smoke.outcome == 'success' || steps.activity_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

@@ -1,0 +1,172 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "69fe700423f71b440d505428187b957df880d68e52ae6af634545744f7af74aa",
+  "browserVersion": "155.0.4283.45",
+  "dependencies": {
+    "tailwindcss": "4.2.2",
+    "react": "19.2.4",
+    "tailwind-merge": "3.5.0",
+    "@tailwindcss/cli": "4.2.2",
+    "react-dom": "19.2.4",
+    "typescript": "5.9.3",
+    "clsx": "2.1.1"
+  },
+  "schemes": [
+    {
+      "scheme": "Light",
+      "measurements": [
+        {
+          "name": "Normal",
+          "width": 400,
+          "height": 75.5,
+          "titleHeight": 20,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 42,
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "Empty",
+          "width": 400,
+          "height": 65,
+          "titleHeight": 0,
+          "timeHeight": 0,
+          "titleTop": 16,
+          "timeTop": 22,
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "Long",
+          "width": 400,
+          "height": 115.5,
+          "titleHeight": 60,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 82,
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "Rtl",
+          "width": 400,
+          "height": 75.5,
+          "titleHeight": 20,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 42,
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "EmptyTitle",
+          "width": 400,
+          "height": 65,
+          "titleHeight": 0,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 22,
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "EmptyTime",
+          "width": 400,
+          "height": 65,
+          "titleHeight": 20,
+          "timeHeight": 0,
+          "titleTop": 16,
+          "timeTop": 42,
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        }
+      ],
+      "hover": "oklab(0.974335 0.00160992 0.00603193 / 0.35)"
+    },
+    {
+      "scheme": "Dark",
+      "measurements": [
+        {
+          "name": "Normal",
+          "width": 400,
+          "height": 75.5,
+          "titleHeight": 20,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 42,
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "Empty",
+          "width": 400,
+          "height": 65,
+          "titleHeight": 0,
+          "timeHeight": 0,
+          "titleTop": 16,
+          "timeTop": 22,
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "Long",
+          "width": 400,
+          "height": 115.5,
+          "titleHeight": 60,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 82,
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "Rtl",
+          "width": 400,
+          "height": 75.5,
+          "titleHeight": 20,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 42,
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "EmptyTitle",
+          "width": 400,
+          "height": 65,
+          "titleHeight": 0,
+          "timeHeight": 16.5,
+          "titleTop": 16,
+          "timeTop": 22,
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        },
+        {
+          "name": "EmptyTime",
+          "width": 400,
+          "height": 65,
+          "titleHeight": 20,
+          "timeHeight": 0,
+          "titleTop": 16,
+          "timeTop": 42,
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "hover": "rgba(0, 0, 0, 0)",
+          "gap": "14px"
+        }
+      ],
+      "hover": "oklab(0.999994 0.0000455678 0.0000200868 / 0.03)"
+    }
+  ]
+}
