@@ -5,6 +5,11 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Windows.Foundation;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.ViewManagement;
 
 namespace Orchard.Catalog;
@@ -108,17 +113,19 @@ public sealed partial class SkeletonsFixture : UserControl
 
         var windowCaptures = new List<object>();
         var elementCaptures = new List<string>();
+        var paintSamples = new List<object>();
         var passed = false;
         var stage = "element-captures";
         string? error = null;
         try
         {
-            foreach (var (owner, name) in new (UIElement, string)[] { (Shapes, "shapes"), (DefaultCard, "card"), (ZeroCard, "card-zero"),
+            foreach (var (owner, name) in new (FrameworkElement, string)[] { (Shapes, "shapes"), (DefaultCard, "card"), (ZeroCard, "card-zero"),
                 (TallCard, "card-six"), (DefaultTable, "table"), (HeaderTable, "table-header") })
             {
                 stage = name;
                 var capture = $"skeleton-{name}-{scheme}.png";
-                await MainWindow.CaptureElementAsync(owner, Path.Combine(folder, capture));
+                if (owner is BleeckerSkeletonCard) await MainWindow.CaptureElementAsync(owner, Path.Combine(folder, capture));
+                else await CaptureMonochromeAsync(owner, Path.Combine(folder, capture), animations, paintSamples);
                 elementCaptures.Add(capture);
             }
             // The zero-column producer is wholly transparent. Preserve that
@@ -134,7 +141,10 @@ public sealed partial class SkeletonsFixture : UserControl
                 await native.MoveAsync(target);
                 var capture = $"skeleton-window-{name}-{scheme}.png";
                 var client = await NativeScreenCapture.CaptureClientAsync(native.Window, Path.Combine(folder, capture));
-                windowCaptures.Add(new { capture, client, target = native.ScreenBounds(target) });
+                var bounds = native.ScreenBounds(target);
+                var emptyPixelsVerified = target == EmptyColumns
+                    ? await VerifyEmptyPixelsAsync(Path.Combine(folder, capture), client, bounds, scheme) : (int?)null;
+                windowCaptures.Add(new { capture, client, target = bounds, emptyPixelsVerified });
             }
             passed = true;
             stage = "complete";
@@ -144,7 +154,7 @@ public sealed partial class SkeletonsFixture : UserControl
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"skeleton-measurements-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, checksPassed = true, stage, error, scheme, animationsEnabled = animations, motion,
-                    decorative = true, boundCounts = true, negativeCountsPreserved = true, samples, elementCaptures, windowCaptures },
+                    decorative = true, boundCounts = true, negativeCountsPreserved = true, samples, paintSamples, elementCaptures, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
     }
@@ -200,6 +210,63 @@ public sealed partial class SkeletonsFixture : UserControl
                 "Skeleton painted overlapping 7px corners without CSS normalization.");
     }
     private async Task SettleAsync() { UpdateLayout(); await Task.Delay(80); UpdateLayout(); }
+    private static async Task CaptureMonochromeAsync(FrameworkElement owner, string path, bool animations, List<object> samples)
+    {
+        var bitmap = new RenderTargetBitmap();
+        await bitmap.RenderAsync(owner);
+        Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "Skeleton shapes did not render.");
+        var buffer = await bitmap.GetPixelsAsync();
+        var pixels = new byte[checked((int)buffer.Length)];
+        using (var reader = DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+        var shapes = Descendants<BleeckerSkeleton>(owner).ToArray();
+        Require(shapes.Length > 0, "Monochrome capture requires actual loading shapes.");
+        foreach (var shape in shapes)
+        {
+            var center = shape.TransformToVisual(owner).TransformPoint(new Point(shape.ActualWidth / 2, shape.ActualHeight / 2));
+            var x = (int)Math.Floor(center.X * owner.XamlRoot.RasterizationScale);
+            var y = (int)Math.Floor(center.Y * owner.XamlRoot.RasterizationScale);
+            Require(x >= 0 && y >= 0 && x < bitmap.PixelWidth && y < bitmap.PixelHeight,
+                "A Skeleton shape was outside its captured raster.");
+            var index = (y * bitmap.PixelWidth + x) * 4;
+            var brush = (SolidColorBrush)Surface(shape).Background;
+            var alpha = pixels[index + 3];
+            var baseAlpha = brush.Color.A * brush.Opacity;
+            Require(alpha >= Math.Round(baseAlpha * (animations ? .5 : 1)) - 1 && alpha <= Math.Round(baseAlpha) + 1,
+                "Rendered Skeleton alpha differs from its branded brush and pulse range.");
+            // Alpha and premultiplied color channels quantize independently;
+            // their combined half-unit rounding error is at most one byte.
+            Require(Math.Abs(pixels[index] - brush.Color.B * alpha / 255d) <= 1 &&
+                Math.Abs(pixels[index + 1] - brush.Color.G * alpha / 255d) <= 1 &&
+                Math.Abs(pixels[index + 2] - brush.Color.R * alpha / 255d) <= 1 && alpha > 0,
+                "Rendered Skeleton pixels do not use the branded color.");
+            samples.Add(new { capture = Path.GetFileName(path), shape.Name, x, y, alpha,
+                blue = pixels[index], green = pixels[index + 1], red = pixels[index + 2], brush = Brush(brush) });
+        }
+        await MainWindow.SavePngAsync(path, pixels, bitmap.PixelWidth, bitmap.PixelHeight);
+    }
+    private static async Task<int> VerifyEmptyPixelsAsync(string path, Rect client, Rect target, BleeckerColorScheme scheme)
+    {
+        var file = await StorageFile.GetFileFromPathAsync(path);
+        using var stream = await file.OpenReadAsync();
+        var decoder = await BitmapDecoder.CreateAsync(stream);
+        var provider = await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, new BitmapTransform(),
+            ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage);
+        var pixels = provider.DetachPixelData();
+        var x = (int)Math.Round(target.X - client.X); var y = (int)Math.Round(target.Y - client.Y);
+        var width = (int)Math.Round(target.Width); var height = (int)Math.Round(target.Height);
+        Require(width > 0 && height > 0 && x >= 0 && y >= 0 && x + width <= decoder.PixelWidth && y + height <= decoder.PixelHeight,
+            "Empty-column table was outside its composited capture.");
+        var color = Convert.ToUInt32(BleeckerTokens.Colors(scheme)["background"].TrimStart('#'), 16);
+        var red = (byte)(color >> 16); var green = (byte)(color >> 8); var blue = (byte)color;
+        for (var row = y; row < y + height; row++)
+        for (var column = x; column < x + width; column++)
+        {
+            var index = checked((int)((row * decoder.PixelWidth + column) * 4));
+            Require(pixels[index] == blue && pixels[index + 1] == green && pixels[index + 2] == red && pixels[index + 3] == 255,
+                "Zero-column SkeletonTable painted content instead of retaining transparent layout gaps.");
+        }
+        return width * height;
+    }
     private static Border Surface(BleeckerSkeleton owner) => (Border)VisualTreeHelper.GetChild(owner, 0);
     private static (string color, double opacity) Brush(Brush brush)
     {

@@ -84,6 +84,21 @@ window image. The global nonblank-image gate remains unchanged for rendered
 controls. Capture-stage failure reports retain the completed checks and images.
 Dark and package runtime verification were not reached in that run.
 
+At `e353488`, ARM64 completes Light and reaches the Dark table capture after all
+geometry, binding, semantics and lifecycle checks. The sampled normal pulse
+ranges from 0.5015 to 0.9994 opacity. The generic catalog image heuristic requires
+more than eight distinct RGB byte values; a valid low-opacity white table can
+have fewer values after premultiplication. The dedicated shapes/table capture
+now checks every shape's actual center pixel against the branded brush, positive
+alpha and normal/reduced pulse range. Independent alpha/color quantization allows
+at most one byte of premultiplication rounding error. Cards retain the original
+complex-image gate; the entirely transparent zero-column case retains its
+composited capture and empty-layout assertions. Rendered sample values are
+retained in the report's `paintSamples` list. This requires new native execution.
+The empty-table capture also checks every pixel of its allocated region against
+the pinned canvas color, requiring opaque composited pixels and no painted
+content. The report records the number of verified empty pixels.
+
 The aligned reference harness places all nine cases at integer coordinates on
 the pinned `--surface-canvas` background, retaining metadata and images under
 `artifacts/skeleton-aligned-reference-{Light,Dark}`. Browser screenshots are JPEG
