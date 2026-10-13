@@ -1,0 +1,417 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "648c0cdb37639b40ac6c67ecbad04b692d1400358b8b3bed9fad12e5baa1489c",
+  "sourceHashes": {
+    "source-package-lock.json": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+    "src/utils/cn.ts": "74e8fe9d0d680c442ed6adb13e7d119d6c210c19ae6c114313b2a72552be0883",
+    "src/styles/global.css": "fa7278f1107d946977c474002a09047be1e83858631f93b056435a3bbf038d96",
+    "src/styles/tokens.generated.css": "74468d6dd3516687e3f8b96aef47e10bdcce206e31edc912abe985c45b83bf3e"
+  },
+  "browserVersion": "155.0.4283.45",
+  "dependencies": {
+    "tailwindcss": "4.2.2",
+    "react": "19.2.4",
+    "tailwind-merge": "3.5.0",
+    "@tailwindcss/cli": "4.2.2",
+    "react-dom": "19.2.4",
+    "typescript": "5.9.3",
+    "clsx": "2.1.1"
+  },
+  "scope": "Actual frozen React component, cn helper, generated tokens and global CSS compiled with source-locked direct and transitive versions; live CSS timelines paused at zero; 288x96 RGBA over #284c68",
+  "geometry": [
+    {
+      "type": "Nazca",
+      "width": 288,
+      "height": 96,
+      "layers": [
+        {
+          "class": "absolute inset-0",
+          "background": "none",
+          "blend": "normal"
+        },
+        {
+          "class": "absolute inset-0 mix-blend-soft-light bg-accent-bronze",
+          "background": "none",
+          "blend": "soft-light"
+        }
+      ],
+      "shapes": [
+        {
+          "x": 72,
+          "y": 24,
+          "width": 144,
+          "height": 48,
+          "animation": "20s"
+        },
+        {
+          "x": 96,
+          "y": 32,
+          "width": 96,
+          "height": 32,
+          "animation": "20s"
+        }
+      ]
+    },
+    {
+      "type": "Autostrada",
+      "width": 288,
+      "height": 96,
+      "layers": [
+        {
+          "class": "absolute inset-0",
+          "background": "none",
+          "blend": "normal"
+        },
+        {
+          "class": "absolute inset-0 mix-blend-soft-light bg-accent-oxblood",
+          "background": "none",
+          "blend": "soft-light"
+        }
+      ],
+      "shapes": []
+    },
+    {
+      "type": "Pompeii",
+      "width": 288,
+      "height": 96,
+      "layers": [
+        {
+          "class": "absolute inset-0",
+          "background": "none",
+          "blend": "normal"
+        },
+        {
+          "class": "absolute inset-0 mix-blend-soft-light bg-accent-bronze",
+          "background": "none",
+          "blend": "soft-light"
+        }
+      ],
+      "shapes": []
+    },
+    {
+      "type": "Monitor",
+      "width": 288,
+      "height": 96,
+      "layers": [
+        {
+          "class": "absolute inset-0",
+          "background": "none",
+          "blend": "normal"
+        },
+        {
+          "class": "absolute inset-0 mix-blend-soft-light bg-accent-oxblood",
+          "background": "none",
+          "blend": "soft-light"
+        }
+      ],
+      "shapes": [
+        {
+          "x": 72,
+          "y": 24,
+          "width": 144,
+          "height": 48,
+          "animation": "20s"
+        },
+        {
+          "x": 96,
+          "y": 32,
+          "width": 96,
+          "height": 32,
+          "animation": "20s"
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "type": "Nazca",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Nazca",
+      "x": 108,
+      "y": 12,
+      "red": 61,
+      "green": 67,
+      "blue": 68
+    },
+    {
+      "type": "Nazca",
+      "x": 180,
+      "y": 12,
+      "red": 69,
+      "green": 70,
+      "blue": 66
+    },
+    {
+      "type": "Nazca",
+      "x": 252,
+      "y": 12,
+      "red": 74,
+      "green": 73,
+      "blue": 63
+    },
+    {
+      "type": "Nazca",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Nazca",
+      "x": 108,
+      "y": 84,
+      "red": 50,
+      "green": 52,
+      "blue": 47
+    },
+    {
+      "type": "Nazca",
+      "x": 180,
+      "y": 84,
+      "red": 57,
+      "green": 54,
+      "blue": 46
+    },
+    {
+      "type": "Nazca",
+      "x": 252,
+      "y": 84,
+      "red": 61,
+      "green": 56,
+      "blue": 44
+    },
+    {
+      "type": "Autostrada",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Autostrada",
+      "x": 108,
+      "y": 12,
+      "red": 27,
+      "green": 37,
+      "blue": 75
+    },
+    {
+      "type": "Autostrada",
+      "x": 180,
+      "y": 12,
+      "red": 32,
+      "green": 39,
+      "blue": 72
+    },
+    {
+      "type": "Autostrada",
+      "x": 252,
+      "y": 12,
+      "red": 36,
+      "green": 41,
+      "blue": 69
+    },
+    {
+      "type": "Autostrada",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Autostrada",
+      "x": 108,
+      "y": 84,
+      "red": 21,
+      "green": 27,
+      "blue": 53
+    },
+    {
+      "type": "Autostrada",
+      "x": 180,
+      "y": 84,
+      "red": 24,
+      "green": 28,
+      "blue": 51
+    },
+    {
+      "type": "Autostrada",
+      "x": 252,
+      "y": 84,
+      "red": 27,
+      "green": 29,
+      "blue": 50
+    },
+    {
+      "type": "Pompeii",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Pompeii",
+      "x": 108,
+      "y": 12,
+      "red": 61,
+      "green": 67,
+      "blue": 68
+    },
+    {
+      "type": "Pompeii",
+      "x": 180,
+      "y": 12,
+      "red": 69,
+      "green": 70,
+      "blue": 66
+    },
+    {
+      "type": "Pompeii",
+      "x": 252,
+      "y": 12,
+      "red": 74,
+      "green": 73,
+      "blue": 63
+    },
+    {
+      "type": "Pompeii",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Pompeii",
+      "x": 108,
+      "y": 84,
+      "red": 50,
+      "green": 52,
+      "blue": 47
+    },
+    {
+      "type": "Pompeii",
+      "x": 180,
+      "y": 84,
+      "red": 57,
+      "green": 54,
+      "blue": 46
+    },
+    {
+      "type": "Pompeii",
+      "x": 252,
+      "y": 84,
+      "red": 61,
+      "green": 56,
+      "blue": 44
+    },
+    {
+      "type": "Monitor",
+      "x": 36,
+      "y": 12,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Monitor",
+      "x": 108,
+      "y": 12,
+      "red": 27,
+      "green": 37,
+      "blue": 75
+    },
+    {
+      "type": "Monitor",
+      "x": 180,
+      "y": 12,
+      "red": 32,
+      "green": 39,
+      "blue": 72
+    },
+    {
+      "type": "Monitor",
+      "x": 252,
+      "y": 12,
+      "red": 36,
+      "green": 41,
+      "blue": 69
+    },
+    {
+      "type": "Monitor",
+      "x": 36,
+      "y": 84,
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "type": "Monitor",
+      "x": 108,
+      "y": 84,
+      "red": 21,
+      "green": 27,
+      "blue": 53
+    },
+    {
+      "type": "Monitor",
+      "x": 180,
+      "y": 84,
+      "red": 24,
+      "green": 28,
+      "blue": 51
+    },
+    {
+      "type": "Monitor",
+      "x": 252,
+      "y": 84,
+      "red": 27,
+      "green": 29,
+      "blue": 50
+    }
+  ],
+  "curveSamples": [
+    {
+      "type": "Nazca",
+      "x": 87,
+      "y": 26,
+      "red": 81,
+      "green": 128,
+      "blue": 160
+    },
+    {
+      "type": "Nazca",
+      "x": 91,
+      "y": 33,
+      "red": 58,
+      "green": 63,
+      "blue": 61
+    },
+    {
+      "type": "Monitor",
+      "x": 87,
+      "y": 26,
+      "red": 81,
+      "green": 128,
+      "blue": 160
+    },
+    {
+      "type": "Monitor",
+      "x": 91,
+      "y": 33,
+      "red": 25,
+      "green": 34,
+      "blue": 67
+    }
+  ]
+}

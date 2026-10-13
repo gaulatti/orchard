@@ -223,7 +223,7 @@
       ],
       "windowsImplementation": ["src/Orchard/Controls/BleeckerBauhausBackground.cs", "src/Orchard/Themes/Bauhaus.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/BauhausBackgroundsFixture.xaml", "samples/Orchard.Catalog/BauhausBackgroundsFixture.xaml.cs"],
-      "regressionTests": ["samples/Orchard.Catalog/Reference/BauhausPixels.json", "samples/Orchard.Catalog/Reference/BauhausNarrow.json", "samples/Orchard.Catalog/BauhausBackgroundsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["samples/Orchard.Catalog/Reference/BauhausPixels.json", "samples/Orchard.Catalog/Reference/BauhausNarrow.json", "samples/Orchard.Catalog/Reference/BauhausRaster.json", "samples/Orchard.Catalog/Reference/BauhausAutostrada.png", "samples/Orchard.Catalog/Reference/BauhausPompeii.png", "samples/Orchard.Catalog/BauhausBackgroundsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Full geometric raster, additional image decoders/animated sources and motion acceptance; see docs/bauhaus-background-reference.md",

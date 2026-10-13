@@ -48,7 +48,7 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         Require(Find<Canvas>(Nazca, "PART_Pattern").Children.Count == 2 && Find<Canvas>(Autostrada, "PART_Pattern").Children.Count == 6 && Find<Canvas>(Pompeii, "PART_Pattern").Children.Count == 9, "Variant shape counts differ.");
         VerifyNarrowGeometry();
         var outer = (Border)Find<Canvas>(Nazca, "PART_Pattern").Children[0];
-        Require(outer.ActualWidth == 144 && outer.ActualHeight == 48 && outer.CornerRadius.TopLeft == 24 && outer.BorderThickness.Left == 8, "Wide circle geometry differs from CSS full rounding.");
+        Require(outer.ActualWidth == 144 && outer.ActualHeight == 48 && outer.CornerRadius.TopLeft + outer.BorderThickness.Left / 2 == 24 && outer.BorderThickness.Left == 8, "Wide circle outer geometry differs from CSS full rounding.");
         var squares = Find<Canvas>(Pompeii, "PART_Pattern").Children.Cast<Border>().ToArray();
         Require(Math.Abs(squares[0].ActualWidth - 224d / 3) < .01 && Math.Abs(squares[0].ActualHeight - 32d / 3) < .01 && Canvas.GetLeft(squares[0]) == 16 && Canvas.GetTop(squares[8]) == 16 + 2 * (32d / 3 + 16), "Pompeii grid padding/gaps differ.");
         var frames = new List<(double Milliseconds, double Outer, double Inner)>(); var elapsed = Stopwatch.StartNew();
@@ -120,8 +120,40 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         }
         await File.WriteAllTextAsync(Path.Combine(folder, $"bauhaus-pixels-{scheme}{suffix}.json"), JsonSerializer.Serialize(new { scale, client, samples }, new JsonSerializerOptions { WriteIndented = true }));
         Require(matching, "Bauhaus composition differs from the pinned browser blend pixels; see the retained capture and pixel report.");
+        if(!mutated&&!consumerBackground)await VerifyRectangularRastersAsync(bytes,decoder.PixelWidth,scheme,folder);
         }
         finally{foreach(var timeline in timelines)timeline.Resume();}
+    }
+    private async Task VerifyRectangularRastersAsync(byte[] native,uint nativeWidth,BleeckerColorScheme scheme,string folder)
+    {
+        Require(XamlRoot.RasterizationScale==1,"The full Bauhaus raster reference currently requires display scale 1; scaling acceptance remains open.");
+        using var curveStream=typeof(BauhausBackgroundsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.BauhausRaster.json")??throw new InvalidOperationException("Missing frozen curve pixel reference.");
+        using var curves=JsonDocument.Parse(curveStream);
+        var reports=new List<object>();var passed=true;
+        foreach(var control in new[]{Autostrada,Pompeii})
+        {
+            using var reference=typeof(BauhausBackgroundsFixture).Assembly.GetManifestResourceStream($"Orchard.Catalog.Reference.Bauhaus{control.Type}.png")??throw new InvalidOperationException("Missing full frozen browser raster.");
+            using var stream=new InMemoryRandomAccessStream();using(var reader=new MemoryStream()){reference.CopyTo(reader);await stream.WriteAsync(reader.ToArray().AsBuffer());}stream.Seek(0);
+            var decoder=await BitmapDecoder.CreateAsync(stream);var expected=(await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8,BitmapAlphaMode.Straight,new BitmapTransform(),ExifOrientationMode.IgnoreExifOrientation,ColorManagementMode.DoNotColorManage)).DetachPixelData();
+            var origin=control.TransformToVisual(XamlRoot.Content).TransformPoint(new Point());var left=(int)Math.Round(origin.X+.5);var top=(int)Math.Round(origin.Y+.5);
+            Require(left>=0&&top>=0&&left+decoder.PixelWidth<=nativeWidth&&top+decoder.PixelHeight<=native.Length/4/nativeWidth,"Bauhaus full raster exceeds the owned client capture.");
+            var maximum=0;var differences=0;
+            for(var y=0;y<(int)decoder.PixelHeight;y++)for(var x=0;x<(int)decoder.PixelWidth;x++)
+            {
+                var source=(y*(int)decoder.PixelWidth+x)*4;var target=((top+y)*(int)nativeWidth+left+x)*4;
+                for(var channel=0;channel<3;channel++){var delta=Math.Abs(native[target+channel]-expected[source+channel]);maximum=Math.Max(maximum,delta);if(delta>3)differences++;}
+            }
+            passed&=differences==0;reports.Add(new{type=control.Type.ToString(),left,top,width=decoder.PixelWidth,height=decoder.PixelHeight,maximumRgbDifference=maximum,channelsOverThree=differences});
+        }
+        foreach(var sample in curves.RootElement.GetProperty("curveSamples").EnumerateArray())
+        {
+            var type=sample.GetProperty("type").GetString();var control=type=="Nazca"?Nazca:Monitor;var origin=control.TransformToVisual(XamlRoot.Content).TransformPoint(new Point());
+            var x=sample.GetProperty("x").GetInt32();var y=sample.GetProperty("y").GetInt32();var left=(int)Math.Round(origin.X+.5);var top=(int)Math.Round(origin.Y+.5);var offset=((top+y)*(int)nativeWidth+left+x)*4;
+            var expected=new[]{sample.GetProperty("blue").GetInt32(),sample.GetProperty("green").GetInt32(),sample.GetProperty("red").GetInt32()};var actual=new[]{(int)native[offset],native[offset+1],native[offset+2]};
+            var maximum=actual.Zip(expected).Max(pair=>Math.Abs(pair.First-pair.Second));passed&=maximum<=3;reports.Add(new{type,x,y,maximumRgbDifference=maximum,expectedBgr=expected,actualBgr=actual});
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder,$"bauhaus-full-raster-{scheme}.json"),JsonSerializer.Serialize(new{passed,reports},new JsonSerializerOptions{WriteIndented=true}));
+        Require(passed,"Bauhaus rectangular borders differ from the actual frozen React/Tailwind raster; see the full raster report.");
     }
     private void VerifyNarrowGeometry()
     {

@@ -27,6 +27,13 @@ At narrow widths, CSS border boxes retain minimum sizes (16/8px circles,
 The component clips the resulting overflow. Native geometry preserves this
 behavior rather than shrinking the borders or expanding the grid gaps.
 
+WinUI's `Border.CornerRadius` is a stroke-center radius. The
+[pinned SDK geometry implementation](https://github.com/microsoft/microsoft-ui-xaml/blob/ba3a8d59e6de4e2b86ca4f61c78bc26ccf129afd/src/dxaml/xcp/core/core/elements/geometry.cpp)
+adds half the border thickness for the outer contour. The native adapter
+subtracts that half-thickness to preserve CSS's outer rounded box. Rectangular
+shape boxes retain fractional grid layout, while their painted border edges
+snap to the device grid, matching the actual browser raster.
+
 `imageUrl ?? defaultImageUrl` is authoritative: an empty supplied URL is not a
 request for the default. The default is the application's `/hero/pompeii.avif`;
 the frozen Bleecker tree contains no corresponding image asset. Do not fabricate
@@ -142,6 +149,57 @@ CI now runs the focused Bauhaus fixture before the full catalog on each native
 architecture. A focused failure still fails the job; the full catalog,
 contrast and independent consumer checks continue and keep their own gates.
 
-Enabled rotation timing, all geometric border/antialias pixels,
-additional image decoders/animated sources, all contrast themes/states,
-Narrator, display/text scaling and ordinary native ARM64 verification remain open.
+Run `38467123988` at `05a2109` passes the focused native ARM64 Bauhaus fixture
+with animations enabled. Its Light/Dark counter-rotation changes are
+5.9909°/5.6938° over approximately 306ms, within the fixture's 1° presentation
+tolerance of the 20-second linear source cycle. Both directions advance equally
+and oppositely. Geometry, RGBA, source mutation, consumer background and
+zero-timeline pixel checks pass in both appearances. Actual contrast and the
+independent ARM64 consumer also pass. The full ARM64 catalog gets past Alert
+then fails the Small/valid disabled-input cursor at bottom-right `3,0`.
+The global cursor is Arrow while the publisher retains UniversalNo.
+Archive `11849412343` was verified against SHA-256
+`01dca2a6e08f49cc8f1d59399545d444b934c68717f6a47392a4d17bac0e6e02`;
+selected reports are at `artifacts/ci-05a2109-arm64-evidence`.
+The x64 job passes the full catalog, contrast and independent consumer.
+These hosted checks precede the border-radius and raster-edge corrections.
+
+## Full raster regression
+
+The actual frozen React component, `cn` helper, generated tokens and global
+CSS are now rendered together, using the source lock's React 19.2.4,
+Tailwind/CLI 4.2.2, clsx 2.1.1 and tailwind-merge 3.5.0. TypeScript 5.9.3
+transpiles the unchanged component for server rendering. Edge 155.0.4283.45
+renders the resulting markup and CSS with animation timelines paused at zero.
+This replaces inferred utilities as the authority for the full-image comparison.
+
+`Reference/BauhausRaster.json` records those versions, geometry and curve
+regression pixels. The `BauhausAutostrada.png` and `BauhausPompeii.png`
+references cover every pixel of each 288×96 specimen. The native fixture
+compares actual composed screen pixels using the element's measured origin;
+it does not shift the crop to find a passing alignment. Both full rectangular
+rasters must differ by no more than three RGB levels. Higher display scales
+explicitly fail this reference check until their raster coverage is added.
+
+Before correction, rounded contours differ by up to 95 RGB levels and the
+square borders by up to 53. The corrected square raster differs by at most
+three levels across all 27,648 pixels, and Autostrada by at most two.
+Curved contours now have the intended geometry; residual edge antialiasing
+differences reach 15/16 levels and remain an open acceptance gap. Fixed curve
+points detect the prior contour error without declaring full curved raster
+acceptance. Comparison artifacts are at `artifacts/bauhaus-raster-comparison.*`.
+
+The focused x64 run at `artifacts/smoke-bauhaus-raster-regression` passes both
+appearances: all Autostrada/Pompeii raster channels stay within 2/3 levels,
+and all four contour regression points within one. The complete catalog also
+passes at `artifacts/smoke-bauhaus-raster-all`, with animations off and display/
+text scale 1. All 27 unit/resource tests pass. The full-image check is exercised
+again after retemplating, so a successful initial composition alone cannot pass.
+Both final architecture builds have zero warnings. A fresh isolated x64
+consumer passes both appearances at `artifacts/package-consumer-bauhaus-raster`,
+using the 0.1.0 package with SHA-256
+`79a15fbce81b6990b514a35830352d8980e02096abdb757af162a692f8909002`.
+
+Full curved antialiasing, other sizes, additional image decoders/animated
+sources, all contrast themes/states, Narrator and display/text scaling remain
+open. The complete required catalog still needs a green native ARM64 run.

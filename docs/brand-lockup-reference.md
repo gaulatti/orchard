@@ -68,12 +68,15 @@ the original image from painting beneath half-alpha filtered pixels. Source,
 surface, brushes and factories follow the mounted control lifecycle.
 
 The hover uses the source's 220ms duration and Tailwind's default
-[`cubic-bezier(0.4, 0, 0.2, 1)`](https://github.com/tailwindlabs/tailwindcss/blob/v4.2.1/packages/tailwindcss/theme.css)
+[`cubic-bezier(0.4, 0, 0.2, 1)`](https://github.com/tailwindlabs/tailwindcss/blob/v4.2.2/packages/tailwindcss/theme.css)
 curve. Windows reduced motion uses immediate endpoints. The opacity clock now
 uses CSS reversal shortening while preserving the existing premium defaults of
 other controls. An isolated browser audit of this source property (Edge
 155.0.4283.45) freezes entry at 80ms, exit at 40ms after reversal, and re-entry at
 25ms after another reversal in `tests/Reference/BrandOpacityTransitions.json`.
+The source package declares `^4.2.1`, but its frozen lock resolves Tailwind
+4.2.2. The earlier version annotation was corrected; that locked version has
+the same default easing and does not change the retained timeline samples.
 It observes .953329 entry opacity, a 117.322837ms shortened exit and a
 158.642297ms shortened re-entry. `BrandMotionTests` compares opacity and effect
 durations with these browser results and reduced-motion settlement; the existing

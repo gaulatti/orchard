@@ -384,3 +384,11 @@ remain owned by the catalog, and hover/border/opacity are correct. This is an
 unresolved publication boundary, distinct from the earlier AppStarting result.
 Both live contrast checks and independent consumers pass. The displayed-cursor
 assertion stays unchanged.
+
+Run `38467123988` at `05a2109` passes the x64 full catalog but fails the
+ARM64 Small/valid bottom-right `3,0` corner. It reproduces the same displayed
+Arrow versus published UniversalNo condition with the correct hover, border,
+opacity, owned native point and foreground. The full ARM64 suite has already
+passed Alert and Bauhaus before this failure; the focused Bauhaus fixture,
+live contrast and independent consumer also pass. This remains a cursor
+publication defect, without an accepted substitute or widened timeout.

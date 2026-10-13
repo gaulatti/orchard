@@ -26,6 +26,9 @@
         <EmbeddedResource Include="Reference/InputTypography.json" />
         <EmbeddedResource Include="Reference/BauhausPixels.json" />
         <EmbeddedResource Include="Reference/BauhausNarrow.json" />
+        <EmbeddedResource Include="Reference/BauhausRaster.json" />
+        <EmbeddedResource Include="Reference/BauhausAutostrada.png" />
+        <EmbeddedResource Include="Reference/BauhausPompeii.png" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

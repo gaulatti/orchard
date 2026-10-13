@@ -106,12 +106,16 @@ public sealed class BleeckerBauhausBackground : Control
                 RenderTransformOrigin = new Point(.5, .5)
             });
         }
-        else for (var index = 0; index < (Type == BleeckerBauhausType.Autostrada ? 6 : 9); index++) pattern.Children.Add(new Border
+        else for (var index = 0; index < (Type == BleeckerBauhausType.Autostrada ? 6 : 9); index++)
         {
-            Name = $"PART_Shape{index}",
-            BorderBrush = new SolidColorBrush(Microsoft.UI.Colors.White) { Opacity = .85 },
-            BorderThickness = Type == BleeckerBauhausType.Autostrada ? new Thickness(2, 0, 0, 0) : new Thickness(2)
-        });
+            var paint = new Canvas();
+            paint.Children.Add(new Border
+            {
+                BorderBrush = new SolidColorBrush(Microsoft.UI.Colors.White) { Opacity = .85 },
+                BorderThickness = Type == BleeckerBauhausType.Autostrada ? new Thickness(2, 0, 0, 0) : new Thickness(2)
+            });
+            pattern.Children.Add(new Border { Name = $"PART_Shape{index}", Child = paint });
+        }
         UpdateLayoutState(); UpdateAppearance(); StartRotation();
     }
     private void UpdateLayoutState()
@@ -126,7 +130,9 @@ public sealed class BleeckerBauhausBackground : Control
             {
                 var factor = index == 0 ? .5 : 1d / 3; var minimum = index == 0 ? 16 : 8;
                 w = Math.Max(minimum, width * factor); h = Math.Max(minimum, height * factor); x = index == 0 ? width / 4 : width / 3; y = index == 0 ? height / 4 : height / 3;
-                shape.CornerRadius = new CornerRadius(Math.Min(w, h) / 2);
+                // WinUI's Border radius describes the stroke centerline. Its
+                // outer radius adds half the border; CSS rounds the outer box.
+                shape.CornerRadius = new CornerRadius(Math.Max(0, Math.Min(w, h) / 2 - shape.BorderThickness.Left / 2));
             }
             else if (Type == BleeckerBauhausType.Autostrada) { w = Math.Max(2, width / 6); h = height; x = index * width / 6; y = 0; }
             else
@@ -137,6 +143,15 @@ public sealed class BleeckerBauhausBackground : Control
                 w = Math.Max(4, column); h = Math.Max(4, row); x = 16 + (index % 3) * (column + 16); y = 16 + (index / 3) * (row + 16);
             }
             shape.Width = w; shape.Height = h; Canvas.SetLeft(shape, x); Canvas.SetTop(shape, y);
+            if(shape.Child is Canvas paint && XamlRoot is XamlRoot xamlRoot)
+            {
+                // CSS paints rectangular border edges at device-pixel bounds
+                // while retaining fractional grid boxes for layout.
+                var scale=xamlRoot.RasterizationScale;
+                double Snap(double edge)=>Math.Round(edge*scale,MidpointRounding.AwayFromZero)/scale;
+                var border=(Border)paint.Children[0];border.Width=Snap(x+w)-Snap(x);border.Height=Snap(y+h)-Snap(y);
+                Canvas.SetLeft(border,Snap(x)-x);Canvas.SetTop(border,Snap(y)-y);
+            }
         }
         UpdateEffect();
     }

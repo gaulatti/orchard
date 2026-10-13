@@ -1,7 +1,7 @@
 {
   "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
   "sourceSha256": "8b2319f72c31ffb0c5e775484ed3b59d2ceeb59a4e73a779c805053585d601e6",
-  "scope": "Isolated source opacity property: 220ms and Tailwind 4.2.1 default easing; CSS timeline samples, not full component raster acceptance",
+  "scope": "Isolated source opacity property: 220ms and source-locked Tailwind 4.2.2 default easing; CSS timeline samples, not full component raster acceptance",
   "browserVersion": "155.0.4283.45",
   "samples": [
     {
