@@ -91,7 +91,7 @@ public sealed partial class BreadcrumbsFixture : UserControl
             var hoverPassed = false;
             try
             {
-                await AwaitAsync(() => Hex(Find<Border>(expand, "PART_Chrome").Background) == (scheme == BleeckerColorScheme.Dark ? "#33E6D5B8" : "#1AE6D5B8"),
+                await AwaitAsync(() => Hex(Find<Border>(expand, "PART_Chrome").Background) == (scheme == BleeckerColorScheme.Dark ? "#331A2332" : "#1AE6D5B8"),
                     "Ellipsis hover palette did not settle.", () => JsonSerializer.Serialize(HoverDetails()));
                 hoverPassed = true;
             }

@@ -75,11 +75,17 @@ ten paths and per-theme physical hover/keyboard expansion, collection replacemen
 item updates, unchanged-key reuse and template-restoration regressions. The clean
 package consumer includes a four-item collapsed path.
 
-The initial x64 run `38362755594` at `2d6ff12` reaches the new physical ellipsis
-hover phase after startup, path geometry/typography, custom separator accessibility
-and command checks, then fails its hover-palette assertion. No native Breadcrumb
-pass is claimed. Hover reports now retain both the target and painted palettes,
-native common state, bounds, foreground ownership and all preceding measurements.
+The initial x64 run `38362755594` at `2d6ff12` passes the complete Light
+Breadcrumb phase, then fails its Dark hover-palette assertion. The checked archive
+`11795722319`, SHA-256 `120aa97534d35d848fe2b2776c6cb07fbd131a66fc8f95d6b8c970d1c9174666`,
+contains the passing Light report/window capture and all pre-hover Dark images.
+The fixture expected Light sand in Dark. The actual pinned source's computed
+`--color-sand` is #1A2332 in Dark, with the explicit dark:hover:bg-sand/20 rule;
+its expected 20% brush is #331A2332. Light remains #1AE6D5B8. The product's
+generated brushes already consume the correct theme tokens. The fixture now
+asserts those exact source values, and retains target/painted palettes, native
+common state, bounds, foreground ownership and preceding measurements. A full
+native Breadcrumb pass on both architectures is still required.
 
 The default native links use HyperlinkButton Click/Command rather than
 NavigateUri so application routes and relative hrefs stay consumer-owned, as
