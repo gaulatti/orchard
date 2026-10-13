@@ -85,10 +85,11 @@ rectangles and `skeleton-measurements-{Light,Dark}.json`. The clean NuGet consum
 instantiates all three controls. The complete catalog and both independent
 consumers pass at `291fee5`; each architecture/theme retains 29 branded center
 pixel samples and verifies 12,800 opaque canvas pixels in the transparent table
-region. The newer `61d13aa` control-level pulse passes the x64 reduced-motion,
-live consumer binding and ancestor visibility checks. ARM64 fails an earlier
-Input cursor phase before reaching Skeleton, so its normal-motion consumer
-endpoint checks remain open. See [checked runtime evidence](runtime-evidence.md).
+region. The control-level pulse's live consumer endpoints and ancestor visibility
+checks pass in both themes on x64 and ARM64 at `71a7fb8`, including normal-motion
+.75/.25 bindings and restoration while hidden/unloaded. The earlier `61d13aa`
+ARM64 run failed an Input cursor phase before reaching Skeleton; that issue did
+not recur and its cause remains unresolved. See [checked runtime evidence](runtime-evidence.md).
 The source audit and successful compilation do not establish visual acceptance.
 Exact native/browser raster parity, full pulse timing, contrast/Narrator and
 display/text scaling remain acceptance gaps.

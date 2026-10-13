@@ -1,16 +1,41 @@
 # Native Windows runtime evidence
 
-The catalog fixtures and independent NuGet consumer at commit `291fee5` passed
-on both x64 and native ARM64, including Skeleton's rendered-pixel checks and
-the stronger global visible-cursor gate. That runtime baseline covers 21
-in-progress inventory entries; 91 remain pending. The earlier `7024b9e` and
-`5412997` checkpoints covered 20 and 18 entries. The newer `61d13aa` consumer
-opacity/ancestor-visibility change passes x64, but ARM64 fails an earlier Input
-cursor phase before reaching Skeleton. Further implementation changes require
-their own native checks.
+The catalog fixtures and independent NuGet consumer at commit `71a7fb8` passed
+on both x64 and native ARM64, including Skeleton's rendered pixels, live consumer
+opacity and ancestor visibility, and the stronger global visible-cursor gate.
+That runtime baseline covers 21 in-progress inventory entries; 91 remain pending.
+The earlier `7024b9e` and `5412997` checkpoints covered 20 and 18 entries.
+The Input cursor failure observed at `61d13aa` did not recur, but its cause
+remains unresolved. Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
 
 ## Skeleton runtime checkpoint
+
+Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes
+all three jobs, both complete catalogs and both clean package consumers.
+The checked runtime archives and consumer packages are:
+
+| Architecture | Artifact | Archive SHA-256 | Independent consumer package SHA-256 |
+| --- | --- | --- | --- |
+| x64 | `11784128612` | `7f8228abbfa72e3ee9388ded32a994c06ccdcce08db1b1f9e1b10de74063d858` | `0e94e67bf4ddc8d54d5a728fbbd0aaa787c270ad56de8aa5e60fea7c1b9e298b` |
+| ARM64 | `11784223774` | `75d06f960e5a12f31253db57205a0c3f85f9b0bff4b6a9d59d2db64363a786b5` | `eeb69dd424e6defaf8dddea89f61db1d5481a8a68392ea41c6a22ac68f984949` |
+
+Both Skeleton themes preserve the consumer opacity binding and pass ancestor
+hide/show, unloading, updates while unloaded and detached template replacement.
+With normal motion on ARM64, the .75 endpoint ranges approximately .5002–.7496
+in Light and .5004–.7497 in Dark. The .25 endpoint ranges .2503–.4997 and
+.2515–.4987. Reduced-motion x64 remains at the exact supplied endpoint. Both
+retain six element/four window captures, 29 branded center-pixel checks and
+12,800 verified empty canvas pixels per theme. This proves the tested endpoint
+ranges and lifecycle, not exact normal pulse timing or full visual acceptance.
+
+ARM64 now displays Arrow at Medium Input's excluded (2,0) corner in both valid
+and invalid states. The island publishes Arrow, the disabled tracker has no
+cursor ownership/hover, and the hit path is the surrounding Grid/Border/scroll
+container. This passed observation does not identify or fix the earlier
+intermittent cursor failure. The stronger gate and failure diagnostics remain.
+
+### Earlier checkpoints
 
 Run `38332404342`, commit `291fee51ea52290c04bcfd058f7c4ac1a2e350cb`, passes
 all three jobs, the complete catalog and both independent package consumers.
@@ -36,7 +61,8 @@ the consumer package has SHA-256
 `1722e369589a962a98b188c57ec9a96dddcd92df883582352786eef1733a487c`.
 Both x64 themes retain live .75/.25 bindings and static reduced-motion endpoints,
 and pass ancestor hide/show, unload, binding updates and template replacement.
-Normal-motion consumer endpoint verification remains open on ARM64.
+That run did not reach normal-motion consumer endpoint verification on ARM64;
+the later checkpoint above supplies it.
 
 ARM64's checked failure archive `11784001632` has SHA-256
 `b68d6c25cc3215925f82f4b8e84aa8b98ba8865d1dc38136c8c7d07a43ad4731`.

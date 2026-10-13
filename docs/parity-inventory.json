@@ -1348,7 +1348,6 @@
       "regressionTests": ["samples/Orchard.Catalog/SkeletonsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "ARM64 verification of live consumer opacity endpoints and ancestor visibility after 61d13aa",
         "Exact native/browser raster parity and full normal pulse timing",
         "Contrast, Narrator, display/text scaling and final visual acceptance"
       ]
@@ -4639,8 +4638,8 @@
     }
   ],
   "nativeRuntimeBaseline": {
-    "commit": "291fee51ea52290c04bcfd058f7c4ac1a2e350cb",
-    "workflowRun": 38332404342,
+    "commit": "71a7fb8c0757df34c7dd563b776378a95933f0fe",
+    "workflowRun": 38334259867,
     "platforms": ["x64", "ARM64"],
     "status": "passed",
     "evidence": "docs/runtime-evidence.md",
