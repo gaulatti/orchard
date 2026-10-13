@@ -423,3 +423,9 @@ live contrast checks but fails Input's Large/valid bottom-left `2,0` corner.
 The displayed cursor is AppStarting while the publisher reports Arrow and
 the hover, border, opacity, owned point and foreground match the reference.
 Fresh diagnostics are still required for that hosted observation.
+
+CI runs the focused Input fixture after Bauhaus and before the complete catalog
+on both native architectures. Its exact displayed-cursor and publication trace
+can therefore run independently of later overlay/lifecycle failures. A failure
+still fails the job, and the complete catalog, contrast and independent
+consumer continue with their existing gates. No assertion or timeout changed.

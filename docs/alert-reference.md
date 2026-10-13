@@ -10,6 +10,11 @@ failure. The hosted boundary still requires fresh acceptance.
 The focused x64 Alert check passes both appearances at
 `artifacts/smoke-alert-capture-guard` with animations off and scale 1.
 Both architecture builds have zero warnings.
+The later ARM64 diagnostics run `38472394198` at `88488c7` loses foreground
+while the Success close button is held, before its move-away cancellation.
+The retained desktop report identifies a WSL console over a still-owned catalog
+point. There is no recovery attempt because the button is held. The refusal
+remains intentional; the held-press criterion is not accepted as passed.
 
 The frozen Bleecker alert is a transient notification overlay. Its source is
 [`alert.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/alert.tsx)
