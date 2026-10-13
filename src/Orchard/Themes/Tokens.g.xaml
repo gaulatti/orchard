@@ -16,6 +16,7 @@
             <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="#FFE6D5B8" Opacity="0.2" />
             <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="#FF000000" Opacity="0.08" />
             <SolidColorBrush x:Key="BleeckerBreadcrumbHoverBrush" Color="#FFE6D5B8" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerBreadcrumbHoverForegroundBrush" Color="#FF2D2D2D" />
             <SolidColorBrush x:Key="BleeckerAvatarBackgroundBrush" Color="#FFF9F6F2" />
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FF595959" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FFFFFFFF" />
@@ -137,6 +138,7 @@
             <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="#FFFFFFFF" Opacity="0.08" />
             <SolidColorBrush x:Key="BleeckerBreadcrumbHoverBrush" Color="#FF1A2332" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerBreadcrumbHoverForegroundBrush" Color="#FFF0F4F8" />
             <SolidColorBrush x:Key="BleeckerAvatarBackgroundBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FFF0F4F8" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FF182533" />
@@ -258,6 +260,7 @@
             <SolidColorBrush x:Key="BleeckerSkeletonBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerSkeletonCardBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerBreadcrumbHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerBreadcrumbHoverForegroundBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" />

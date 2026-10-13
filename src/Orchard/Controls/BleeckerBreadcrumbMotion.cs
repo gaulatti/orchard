@@ -32,11 +32,13 @@ internal sealed class BleeckerBreadcrumbMotion
         action.Loaded += (_, _) =>
         {
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged += OnPreferenceChanged;
+            settings.ColorValuesChanged += OnColorsChanged;
             ApplyTemplate();
         };
         action.Unloaded += (_, _) =>
         {
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged -= OnPreferenceChanged;
+            settings.ColorValuesChanged -= OnColorsChanged;
             ClearTemplate();
         };
         action.RegisterPropertyChangedCallback(Control.TemplateProperty, (_, _) =>
@@ -47,6 +49,7 @@ internal sealed class BleeckerBreadcrumbMotion
         action.ActualThemeChanged += (_, _) => Request(false);
     }
     private void OnPreferenceChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => action.DispatcherQueue.TryEnqueue(() => Request(false));
+    private void OnColorsChanged(UISettings sender, object args) => action.DispatcherQueue.TryEnqueue(() => Request(false));
     private void ClearTemplate()
     {
         version++; motion?.Stop(); motion = null;

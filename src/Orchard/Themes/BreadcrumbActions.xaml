@@ -33,10 +33,10 @@
     <VisualStateManager.VisualStateGroups><VisualStateGroup x:Name="CommonStates">
      <VisualState x:Name="Normal" /><VisualState x:Name="Disabled" />
      <VisualState x:Name="PointerOver"><VisualState.Setters>
-      <Setter Target="PART_Palette.BorderBrush" Value="{ThemeResource BleeckerTextPrimaryBrush}" /><Setter Target="PART_Palette.Background" Value="{ThemeResource BleeckerBreadcrumbHoverBrush}" />
+      <Setter Target="PART_Palette.BorderBrush" Value="{ThemeResource BleeckerBreadcrumbHoverForegroundBrush}" /><Setter Target="PART_Palette.Background" Value="{ThemeResource BleeckerBreadcrumbHoverBrush}" />
      </VisualState.Setters></VisualState>
      <VisualState x:Name="Pressed"><VisualState.Setters>
-      <Setter Target="PART_Palette.BorderBrush" Value="{ThemeResource BleeckerTextPrimaryBrush}" /><Setter Target="PART_Palette.Background" Value="{ThemeResource BleeckerBreadcrumbHoverBrush}" />
+      <Setter Target="PART_Palette.BorderBrush" Value="{ThemeResource BleeckerBreadcrumbHoverForegroundBrush}" /><Setter Target="PART_Palette.Background" Value="{ThemeResource BleeckerBreadcrumbHoverBrush}" />
      </VisualState.Setters></VisualState>
     </VisualStateGroup></VisualStateManager.VisualStateGroups>
     <Border x:Name="PART_Palette" BorderBrush="{TemplateBinding Foreground}" Background="Transparent" Visibility="Collapsed" />

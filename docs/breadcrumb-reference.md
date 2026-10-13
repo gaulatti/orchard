@@ -53,6 +53,9 @@ each position. `CollapsedAfter` follows the source threshold and lifetime latch.
 Separator accessibility excludes its entire subtree, matching source aria-hidden.
 Internal action styles are loaded separately and assigned only to default
 links/ellipsis, so their native templates do not override consumer template controls.
+Contrast-mode ellipsis hover pairs Windows Highlight with HighlightText, and
+system color changes repaint its live palette. Manual contrast-theme acceptance
+is still pending.
 Default links and the expansion button use the existing branded Windows focus
 ring. Keyboard expansion restores focus to the first revealed default link; this
 keeps Windows keyboard navigation within the newly exposed path. Complete focus
@@ -71,6 +74,12 @@ Handle `ItemInvoked` or supply item commands to navigate. The catalog includes
 ten paths and per-theme physical hover/keyboard expansion, collection replacement,
 item updates, unchanged-key reuse and template-restoration regressions. The clean
 package consumer includes a four-item collapsed path.
+
+The initial x64 run `38362755594` at `2d6ff12` reaches the new physical ellipsis
+hover phase after startup, path geometry/typography, custom separator accessibility
+and command checks, then fails its hover-palette assertion. No native Breadcrumb
+pass is claimed. Hover reports now retain both the target and painted palettes,
+native common state, bounds, foreground ownership and all preceding measurements.
 
 The default native links use HyperlinkButton Click/Command rather than
 NavigateUri so application routes and relative hrefs stay consumer-owned, as

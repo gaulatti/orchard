@@ -88,7 +88,30 @@ public sealed partial class BreadcrumbsFixture : UserControl
         try
         {
             await input.MoveAsync(expand);
-            await AwaitAsync(() => Hex(Find<Border>(expand, "PART_Chrome").Background) == (scheme == BleeckerColorScheme.Dark ? "#33E6D5B8" : "#1AE6D5B8"), "Ellipsis hover palette did not settle.");
+            var hoverPassed = false;
+            try
+            {
+                await AwaitAsync(() => Hex(Find<Border>(expand, "PART_Chrome").Background) == (scheme == BleeckerColorScheme.Dark ? "#33E6D5B8" : "#1AE6D5B8"),
+                    "Ellipsis hover palette did not settle.", () => JsonSerializer.Serialize(HoverDetails()));
+                hoverPassed = true;
+            }
+            finally
+            {
+                await File.WriteAllTextAsync(Path.Combine(folder, $"breadcrumb-hover-{scheme}.json"), JsonSerializer.Serialize(new { passed = hoverPassed,
+                    scheme, details = HoverDetails(), measurements }, new JsonSerializerOptions { WriteIndented = true }));
+                await MainWindow.CaptureElementAsync(interaction, Path.Combine(folder, $"breadcrumb-hover-{scheme}.png"));
+            }
+            object HoverDetails()
+            {
+                var nativeRoot = (FrameworkElement)VisualTreeHelper.GetChild(expand, 0);
+                var palette = Find<Border>(expand, "PART_Palette");
+                return new { expand.IsEnabled, expand.IsLoaded, expand.FocusState, expand.IsPressed,
+                    paletteBackground = Hex(palette.Background), paletteForeground = Hex(palette.BorderBrush),
+                    paintedBackground = Hex(Find<Border>(expand, "PART_Chrome").Background),
+                    states = VisualStateManager.GetVisualStateGroups(nativeRoot).Select(group => new { group.Name, current = group.CurrentState?.Name }).ToArray(),
+                    input.OwnsForeground, bounds = input.ScreenBounds(expand), pathBounds = input.ScreenBounds(interaction),
+                    hit = NativeScreenCapture.DescribePoint(input.Window, (int)(input.ScreenBounds(expand).X + 12), (int)(input.ScreenBounds(expand).Y + 12)) };
+            }
             Require(expand.ActualWidth == 24 && expand.ActualHeight == 24 && expand.CornerRadius == new CornerRadius(6), "Ellipsis native defaults replaced source dimensions.");
             expand.Focus(FocusState.Keyboard); input.Key(0x0D);
             await AwaitAsync(() => Children(interaction).Count == 9 && Children(interaction).OfType<Button>().Count() == 0, "Keyboard expansion did not expose the entire path.");
@@ -132,11 +155,11 @@ public sealed partial class BreadcrumbsFixture : UserControl
         throw new KeyNotFoundException(name);
     }
     private static string Hex(Brush brush) => brush is SolidColorBrush solid ? $"#{(byte)Math.Round(solid.Color.A * solid.Opacity):X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush.GetType().Name;
-    private async Task AwaitAsync(Func<bool> condition, string message)
+    private async Task AwaitAsync(Func<bool> condition, string message, Func<string>? details = null)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); }
-        Require(condition(), message);
+        Require(condition(), $"{message} {details?.Invoke()}");
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
     private sealed class FixtureCommand(Action<object?> execute) : ICommand
