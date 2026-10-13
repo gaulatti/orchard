@@ -1,5 +1,27 @@
 # Windows contrast verification
 
+Run `38451360536` at `98e44ca` passes the complete x64 catalog and independent
+consumer, but its contrast check observes a transient zero foreground while
+Windows replaces its `sethc` cover. The retained events show the original cover
+at 428ms and the catalog regaining focus at 932ms; recovery was attempted before
+the native transition settled and its unchanged ownership guard refused.
+There is no foreground-recovery request in this failure's archive. The x64
+archive `11841860615` has verified SHA-256
+`38a9e41b6960c44a87a57fdf3a63451fc9bc915613226530e2360cbfa1117ea5`.
+The fixture now requires an owned stationary pointer target and a known
+foreground continuously for 250ms, within its existing eight-second deadline,
+before entering the existing single guarded recovery path. It records changes
+in point/foreground ownership in `contrast-recovery-target.json`. A zero
+foreground or obstructed point resets settlement. The input-session guard,
+normal popup dismissal, real keyboard re-entry, colors, pixels and cleanup
+remain required. The x64 and ARM64 builds have zero warnings, all 26 unit tests
+pass, and the local mode-changing entry point still refuses at the hosted-runner
+guard (`artifacts/contrast-settlement-local-refusal`, reported contrast false).
+Fresh hosted transition evidence is pending. The same run's ARM64 job passes
+its ordinary catalog, contrast and independent consumer; runtime archive
+`11840514044` has verified SHA-256
+`1976e27fcc04053757363e8df7a1243a3e06a35aed6c3946d4446713c34aff3f`.
+
 Checkpoint `b6ca38d`, run `38434880055`, passes all three required jobs, including
 both complete ordinary native catalogs, both live contrast transitions and both
 independent package consumers. The x64 archive `11832577609` has verified SHA-256

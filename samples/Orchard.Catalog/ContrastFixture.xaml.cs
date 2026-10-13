@@ -93,8 +93,7 @@ public sealed partial class ContrastFixture : UserControl
             {
                 Require(!tooltip.IsOpen, "Contextual help did not dismiss on native window deactivation.");
                 samples.Add(new { phase = "native-deactivation", state = Snapshot() });
-                await AwaitAsync(() => input.OwnsForeground || input.OwnsCurrentPoint,
-                    "Windows contrast transition did not release the catalog's owned pointer target.");
+                await AwaitRecoveryTargetAsync(input, folder);
                 await input.RequireForegroundAsync();
                 Require(ReferenceEquals(tooltip, await OpenHelpAsync(input)), "Keyboard re-entry replaced the contextual-help control.");
                 await AwaitAsync(() => Matches(tooltip.Background, NativeContrastSession.Color(5)) &&
@@ -225,6 +224,37 @@ public sealed partial class ContrastFixture : UserControl
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(8)) { UpdateLayout(); await Task.Delay(32); }
         Require(condition(), message);
+    }
+    private async Task AwaitRecoveryTargetAsync(NativeInputSession input, string folder)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        TimeSpan? readySince = null;
+        var observations = new List<object>();
+        (bool Point, bool Foreground, bool Foreign)? previous = null;
+        var ready = false;
+        do
+        {
+            var state = (Point: input.OwnsCurrentPoint, Foreground: input.OwnsForeground, Foreign: input.HasForeignForeground);
+            if (state != previous)
+            {
+                observations.Add(new { milliseconds = elapsed.Elapsed.TotalMilliseconds, state.Point, state.Foreground, state.Foreign,
+                    native = input.DescribeCurrentPoint() });
+                previous = state;
+            }
+            // The system cover can briefly expose our point while foreground
+            // is zero, or return focus between cover updates. Require an owned
+            // point and a known foreground for a continuous settling interval
+            // before entering the existing single guarded recovery path.
+            if (state.Point && (state.Foreground || state.Foreign)) readySince ??= elapsed.Elapsed;
+            else readySince = null;
+            ready = readySince is TimeSpan since && elapsed.Elapsed - since >= TimeSpan.FromMilliseconds(250);
+            if (ready) break;
+            UpdateLayout(); await Task.Delay(32);
+        } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-recovery-target.json"),
+            JsonSerializer.Serialize(new { ready, elapsedMilliseconds = elapsed.Elapsed.TotalMilliseconds, observations }));
+        Require(ready && input.OwnsCurrentPoint && (input.OwnsForeground || input.HasForeignForeground),
+            "Windows contrast transition did not settle on the catalog's owned pointer target and a known foreground.");
     }
     private static bool Matches(Brush brush, Color color) => brush is SolidColorBrush solid && solid.Color == color && solid.Opacity == 1;
     private static string ColorHex(Color color) => $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";

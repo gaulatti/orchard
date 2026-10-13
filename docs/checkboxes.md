@@ -487,8 +487,17 @@ with animations disabled and display/text scale 1. Both appearances retain
 shared Input ownership checks pass. All 26 unit tests, token generation,
 the ARM64 build and a fresh x64 package consumer pass. The latter uses package
 SHA-256 `bb10c334ff95334fdc09e4c151b84795d4d037192ac7dc73008c694110dfa9b9`
-at `artifacts/package-consumer-cursor-republish`. Native ARM64
-evidence remains required for this correction. The SDK's
+at `artifacts/package-consumer-cursor-republish`. Hosted run `38451360536`
+at `98e44ca` passes both complete native ordinary catalogs and independent
+consumers. Each architecture/appearance retains 85 observations, including
+all 24 repeated stationary transitions. The downloaded ARM64 runtime archive
+`11840514044` has verified SHA-256
+`1976e27fcc04053757363e8df7a1243a3e06a35aed6c3946d4446713c34aff3f`;
+the x64 archive `11841860615` has verified SHA-256
+`38a9e41b6960c44a87a57fdf3a63451fc9bc915613226530e2360cbfa1117ea5`.
+ARM64 also passes its contrast transition; the x64 job fails a separate
+system-cover settlement check described in [contrast verification](contrast-verification.md).
+The SDK's
 [Cursor contract](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputpointersource.cursor?view=windows-app-sdk-2.0)
 describes the displayed cursor over its input target; a retained property alone
 does not satisfy the regression.
