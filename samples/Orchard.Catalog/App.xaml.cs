@@ -7,6 +7,7 @@ public partial class App : Application
     private Window? _window;
     private static readonly List<string> ResourceErrors = [];
     private static readonly List<object> AvatarStartupErrors = [];
+    private static readonly List<string> BindingErrors = [];
 
     public App()
     {
@@ -16,6 +17,11 @@ public partial class App : Application
             System.Diagnostics.Trace.Listeners.Add(new System.Diagnostics.ConsoleTraceListener());
             DebugSettings.IsXamlResourceReferenceTracingEnabled = true;
             DebugSettings.XamlResourceReferenceFailed += (_, args) => ResourceErrors.Add(args.Message);
+            DebugSettings.IsBindingTracingEnabled = true;
+            DebugSettings.BindingFailed += (_, args) =>
+            {
+                if (BindingErrors.Count < 16) BindingErrors.Add(args.Message);
+            };
             // XAML can replace a managed setter error with a generic parse
             // failure. Retain the original control/metadata error in smoke mode.
             AppDomain.CurrentDomain.FirstChanceException += (_, args) =>
@@ -72,7 +78,8 @@ public partial class App : Application
         Directory.CreateDirectory(folder);
         File.WriteAllText(Path.Combine(folder, "result.json"), System.Text.Json.JsonSerializer.Serialize(
             new { passed = false, stage = "startup", error = error.ToString(), resourceErrors = ResourceErrors,
-                avatarStartupErrors = AvatarStartupErrors, resources = DescribeResources(Resources) }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+                avatarStartupErrors = AvatarStartupErrors, bindingErrors = BindingErrors,
+                resources = DescribeResources(Resources) }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         Environment.Exit(1);
     }
 }

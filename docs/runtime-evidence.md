@@ -48,6 +48,12 @@ collection replaces a missing binding. The native regression also requires a
 rejected direct null assignment to leave consumer data intact. A fresh native
 run is required to verify this binding-initialization boundary.
 
+Run `38341800804` at `b842608` gets past XAML parsing, then fails required-data
+validation when an AvatarGroup loads with an unresolved collection. No empty
+data replaces the missing source. Smoke diagnostics now retain the binding's
+element/path/source type and bounded WinUI binding errors so the next run can
+identify the unresolved collection boundary.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes

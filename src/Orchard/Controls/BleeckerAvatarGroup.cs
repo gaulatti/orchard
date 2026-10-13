@@ -47,8 +47,13 @@ public sealed class BleeckerAvatarGroup : Control
     public ObservableCollection<BleeckerAvatarData> Avatars
     {
         get => GetValue(AvatarsProperty) as ObservableCollection<BleeckerAvatarData>
-            ?? throw new InvalidOperationException("Avatars must resolve to a non-null ObservableCollection<BleeckerAvatarData> before the group is loaded.");
+            ?? throw UnresolvedCollection();
         set => SetValue(AvatarsProperty, value ?? throw new ArgumentNullException(nameof(value)));
+    }
+    private InvalidOperationException UnresolvedCollection()
+    {
+        var binding = GetBindingExpression(AvatarsProperty);
+        return new InvalidOperationException($"Avatars must resolve to a non-null ObservableCollection<BleeckerAvatarData> before the group is loaded; name={Name}, element={binding?.ParentBinding.ElementName}, path={binding?.ParentBinding.Path?.Path}, sourceType={binding?.DataItem?.GetType().FullName ?? "<null>"}.");
     }
     public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(nameof(Max), typeof(int), typeof(BleeckerAvatarGroup),
         new PropertyMetadata(4, OnChanged));
