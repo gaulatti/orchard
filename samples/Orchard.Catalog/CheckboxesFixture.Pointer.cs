@@ -20,6 +20,8 @@ public sealed partial class CheckboxesFixture
         var hitTestVisible = DisabledOff.IsHitTestVisible;
         var visibility = DisabledOff.Visibility;
         var template = DisabledOff.Template;
+        var originalWidth = DisabledOff.Width;
+        var originalHeight = DisabledOff.Height;
         var index = Rows.Children.IndexOf(DisabledOff);
         var host = new Grid { Height = DisabledOff.ActualHeight };
         var overlay = new Border { Width = 20, Height = 20, HorizontalAlignment = HorizontalAlignment.Left,
@@ -59,11 +61,17 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff, "enabled-under-pointer", true, 32512, anchor);
             DisabledOff.IsEnabled = false;
             await Check(DisabledOff, "disabled-under-pointer", true, 32648, anchor);
+            // Hold the slot so removal does not move the next disabled box
+            // under the stationary pointer and legitimately select its cursor.
+            DisabledOff.Width = DisabledOff.ActualWidth; DisabledOff.Height = DisabledOff.ActualHeight;
             DisabledOff.Template = null;
             await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),
                 "Template detachment did not restore the visible arrow cursor.");
+            Require(VisualTreeHelper.GetChildrenCount(DisabledOff) == 0,
+                "Explicit template removal synthesized unbranded native chrome.");
             samples.Add(new { phase = "template-detached", cursor = CurrentCheckboxCursor().ToInt64() });
             DisabledOff.Template = template;
+            DisabledOff.Width = originalWidth; DisabledOff.Height = originalHeight;
             DisabledOff.ApplyTemplate(); UpdateLayout();
             await Check(DisabledOff, "template-restored", true, 32648, anchor);
 
@@ -225,6 +233,7 @@ public sealed partial class CheckboxesFixture
             Rows.Children.Remove(host);
             if (!Rows.Children.Contains(DisabledOff)) Rows.Children.Insert(Math.Min(index, Rows.Children.Count), DisabledOff);
             DisabledOff.Template = template; DisabledOff.IsEnabled = enabled; DisabledOff.FlowDirection = direction;
+            DisabledOff.Width = originalWidth; DisabledOff.Height = originalHeight;
             DisabledOff.IsHitTestVisible = hitTestVisible; DisabledOff.Visibility = visibility;
             UpdateLayout();
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-disabled-pointer-{scheme}.json"),

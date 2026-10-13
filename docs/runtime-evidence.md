@@ -26,6 +26,16 @@ the earlier gate; new runtime checks must prove the displayed override.
 
 ## Rendered Checkbox names and resting Input validation
 
+The `1113935` x64 report is the first evidence here that disabled Checkbox
+UniversalNo actually displays: GetCursorInfo succeeds with showing flag 1 and
+the expected global handle for off/on, rounded corners and stationary
+enable/disable. The run then fails on template removal during layout. Its
+verified archive `11780458372` has SHA-256
+`31bf5c107dfdd0502c7b56cc5d9f609339bd07e060053df2307807f30003b85c`.
+This proves those Light transitions, not the remaining lifecycle/themes or a
+complete native runtime baseline. The explicit local-null template correction
+requires a further native run.
+
 At `9c5699b`, native ARM64 passes all 57 Checkbox disabled-pointer phases in
 Light and Dark, then loses foreground to a background WSL console before its
 next Dark click. Its archive `11779778593` has SHA-256

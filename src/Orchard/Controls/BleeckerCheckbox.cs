@@ -81,7 +81,9 @@ public sealed partial class BleeckerCheckbox : CheckBox
     private void ApplyBleeckerTemplate()
     {
         DetachTemplate();
-        if (Template is null) return;
+        // WinUI can expose the style template while an explicit local null is
+        // being laid out. The caller's null still means no template chrome.
+        if (Template is null || ReadLocalValue(TemplateProperty) is null) return;
         base.OnApplyTemplate();
         box = Part<Border>("PART_Box"); inputChrome = Part<Grid>("PART_InputChrome"); glyph = Part<Viewbox>("PART_Glyph");
         focusRing = Part<Border>("PART_FocusRing"); focusOffset = Part<Border>("PART_FocusOffset");

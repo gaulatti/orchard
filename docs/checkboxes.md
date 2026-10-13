@@ -372,6 +372,19 @@ require GetCursorInfo's displayed global handle and showing flag. Thread cache
 and source properties cannot satisfy the acceptance gate. New native evidence
 is required; earlier thread-only cursor assertions do not prove visible parity.
 
+At `1113935`, the x64 Light run passes visible global cursor checks for disabled
+off/on box, all rounded boundary samples, label/description exit and stationary
+enable/disable. Its next template-removal layout exposes a missing PART_Box
+exception. Template application now also respects an explicit local null when
+WinUI exposes a style template during removal; a supplied non-null template
+still must provide every required part. The fixture holds the removed row's
+width/height while awaiting the visible Arrow, so another disabled row cannot
+move under the pointer and legitimately select UniversalNo. It also rejects
+synthesized native chrome in that explicit no-template state, then restores
+geometry/template and verifies hover with the stationary pointer. The verified
+x64 archive `11780458372` has SHA-256
+`31bf5c107dfdd0502c7b56cc5d9f609339bd07e060053df2307807f30003b85c`.
+
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual
 foreground process/class/package alongside the owned screen point. Physical
