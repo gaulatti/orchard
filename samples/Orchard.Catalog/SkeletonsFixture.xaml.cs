@@ -101,22 +101,47 @@ public sealed partial class SkeletonsFixture : UserControl
         Require(!ReferenceEquals(Surface(Rectangle), oldSurface) && Surface(Rectangle).CornerRadius == new CornerRadius(7),
             "Restored skeleton template did not replace its old surface or recover geometry.");
 
-        foreach (var (owner, name) in new (UIElement, string)[] { (Shapes, "shapes"), (DefaultCard, "card"), (ZeroCard, "card-zero"),
-            (TallCard, "card-six"), (DefaultTable, "table"), (HeaderTable, "table-header"), (EmptyColumns, "table-empty-columns") })
-            await MainWindow.CaptureElementAsync(owner, Path.Combine(folder, $"skeleton-{name}-{scheme}.png"));
-        using var native = new NativeInputSession(XamlRoot, folder, $"skeleton-{scheme}");
-        await native.AcquireAsync(Rectangle);
         var windowCaptures = new List<object>();
-        foreach (var (target, name) in new (FrameworkElement, string)[] { (Shapes, "shapes"), (DefaultCard, "card"), (DefaultTable, "table") })
+        var elementCaptures = new List<string>();
+        var passed = false;
+        var stage = "element-captures";
+        string? error = null;
+        try
         {
-            await native.MoveAsync(target);
-            var capture = $"skeleton-window-{name}-{scheme}.png";
-            var client = await NativeScreenCapture.CaptureClientAsync(native.Window, Path.Combine(folder, capture));
-            windowCaptures.Add(new { capture, client, target = native.ScreenBounds(target) });
+            foreach (var (owner, name) in new (UIElement, string)[] { (Shapes, "shapes"), (DefaultCard, "card"), (ZeroCard, "card-zero"),
+                (TallCard, "card-six"), (DefaultTable, "table"), (HeaderTable, "table-header") })
+            {
+                stage = name;
+                var capture = $"skeleton-{name}-{scheme}.png";
+                await MainWindow.CaptureElementAsync(owner, Path.Combine(folder, capture));
+                elementCaptures.Add(capture);
+            }
+            // The zero-column producer is wholly transparent. Preserve that
+            // contract and capture its allocated region through the compositor;
+            // RenderTargetBitmap has no visual content to render for this case.
+            using var native = new NativeInputSession(XamlRoot, folder, $"skeleton-{scheme}");
+            stage = "acquire-composited-captures";
+            await native.AcquireAsync(Rectangle);
+            foreach (var (target, name) in new (FrameworkElement, string)[] { (Shapes, "shapes"), (DefaultCard, "card"),
+                (DefaultTable, "table"), (EmptyColumns, "table-empty-columns") })
+            {
+                stage = $"window-{name}";
+                await native.MoveAsync(target);
+                var capture = $"skeleton-window-{name}-{scheme}.png";
+                var client = await NativeScreenCapture.CaptureClientAsync(native.Window, Path.Combine(folder, capture));
+                windowCaptures.Add(new { capture, client, target = native.ScreenBounds(target) });
+            }
+            passed = true;
+            stage = "complete";
         }
-        await File.WriteAllTextAsync(Path.Combine(folder, $"skeleton-measurements-{scheme}.json"),
-            JsonSerializer.Serialize(new { passed = true, scheme, animationsEnabled = animations, motion,
-                decorative = true, boundCounts = true, negativeCountsPreserved = true, samples, windowCaptures }, new JsonSerializerOptions { WriteIndented = true }));
+        catch (Exception failure) { error = failure.ToString(); throw; }
+        finally
+        {
+            await File.WriteAllTextAsync(Path.Combine(folder, $"skeleton-measurements-{scheme}.json"),
+                JsonSerializer.Serialize(new { passed, checksPassed = true, stage, error, scheme, animationsEnabled = animations, motion,
+                    decorative = true, boundCounts = true, negativeCountsPreserved = true, samples, elementCaptures, windowCaptures },
+                    new JsonSerializerOptions { WriteIndented = true }));
+        }
     }
     private void VerifyCard(BleeckerSkeletonCard card, BleeckerColorScheme scheme)
     {

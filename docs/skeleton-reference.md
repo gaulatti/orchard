@@ -63,12 +63,21 @@ The catalog's Skeletons page registers every export and the nine reference
 cases. Its native check exercises equal-column allocation, card proportions,
 200px constrained widths, bound count updates, negative counts, capsule resize,
 decorative peers, pulse activity/reset and detached template replacement.
-It retains seven element captures, three composited window captures with target
+It retains six element captures, four composited window captures with target
 rectangles and `skeleton-measurements-{Light,Dark}.json`. The clean NuGet consumer
 instantiates all three controls. Hosted x64/ARM64 execution remains required;
 the source audit and successful compilation do not establish visual acceptance.
 Exact native/browser raster parity, full pulse timing, contrast/Narrator and
 display/text scaling remain acceptance gaps.
+
+At `4de3160`, both native jobs reach the capture boundary after the Light
+geometry, consumer-count, decorative-peer, motion and template-lifecycle checks.
+Six element images are retained, then `RenderTargetBitmap` reports no rendered
+pixels for the entirely transparent zero-column table. The fixture now preserves
+that source behavior and captures its allocated 320×40 region in a composited
+window image. The global nonblank-image gate remains unchanged for rendered
+controls. Capture-stage failure reports retain the completed checks and images.
+Dark and package runtime verification were not reached in that run.
 
 The implementation keeps Windows App SDK 2.5.1, documented under Microsoft's
 [2.0 release family](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/release-notes/windows-app-sdk-2-0).
