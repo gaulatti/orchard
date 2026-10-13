@@ -1,9 +1,11 @@
 # Native Windows runtime evidence
 
-The catalog fixtures and independent NuGet consumer at commit `ebfb6ac` passed
-on both x64 and native ARM64. That runtime baseline covers 20 in-progress
-inventory entries; 92 entries remain pending. The earlier `5412997` checkpoint
-covered 18 entries. Further implementation changes require their own native checks.
+The catalog fixtures and independent NuGet consumer at commit `7024b9e` passed
+on both x64 and native ARM64, including the stronger global visible-cursor gate.
+That runtime baseline covers 20 in-progress inventory entries. The newly added
+Skeleton preview awaits its own native run; the inventory has 21 in-progress
+entries and 91 pending. The earlier `5412997` checkpoint covered 18 entries.
+Further implementation changes require their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
 
 Cursor evidence from earlier physical fixtures uses the UI thread's GetCursor
@@ -18,11 +20,35 @@ IBeam while its UI thread reports Arrow. It also proves the disabled Checkbox
 still displays Arrow while its UI thread reports UniversalNo. Archive
 `11780820812` was downloaded and verified, SHA-256
 `6f75a65e7a63d3981ed16ad35774da3037a377d316998ae28764bb8f061337a8`.
-The current candidate replaces the thread-only override with the root's
+The implementation replaces the thread-only override with the root's
 InputPointerSource cursor and strengthens both fixtures to require the visible
 global handle. This is a new acceptance boundary, not a pass inferred from
 earlier cursor properties. The prior `ae3e44f` run passes all three jobs under
-the earlier gate; new runtime checks must prove the displayed override.
+the earlier gate; the `7024b9e` run proves the displayed override in both themes.
+
+Run `38329932509`, commit `7024b9e95fefd2e4c74fd8901fb44c02e8938db8`, passes
+all three jobs. Both native suites pass 96 Input rounded-pointer phases per
+theme and retain twelve composited Input captures per theme. Checkbox reports
+contain 60 observations per theme, including immediate detachment diagnostics
+and native acceptance phases for rounded bounds, shared cursor ownership,
+stationary changes, visibility, clipping, scrolling and remounting. The immediate
+null-template diagnostic still sees UniversalNo; the unmounted observation
+then sees Arrow, and the restored branded template sees UniversalNo again.
+
+Both downloaded runtime archives were SHA-256 checked:
+
+| Architecture | Artifact | Archive SHA-256 | Independent consumer package SHA-256 |
+| --- | --- | --- | --- |
+| x64 | `11781299898` | `f427496140adafd1afcb028e1c90ebbb089531c51c593c7e1dfd8d163bf79c2b` | `b50ea8b2ee3a91d1cdb6ab7350fa2924a6cd93ac990a7e51f71cd8e6ffbd2157` |
+| ARM64 | `11781594621` | `fc8d50703f9161ee36252efbcc5010bb469a370abd7f942a390e99ec99a9d275` | `61333557bfef216dd8e422739736ab99da56e85aa1624568c64d0d0ec1ce97c1` |
+
+x64 records OS build 26100 with animations disabled; ARM64 records build 26200
+with animations enabled. Both have 100% display/text scale. All 25 unit/resource
+checks pass. Twelve paired composited Input crops (each size, both themes,
+valid rest and invalid hover) have identical RGB bytes across architectures;
+the comparison is retained in `artifacts/input-composited-7024b9e-comparison.json`.
+This establishes that sampled architecture boundary, while native/browser
+parity and the remaining visual/accessibility/scaling matrix stay open.
 
 ## Rendered Checkbox names and resting Input validation
 

@@ -337,3 +337,14 @@ x64 `11781357506`, SHA-256
 `ed2feee247a7266232743aa0ef96ca2a91a032c98e7b7bc454eaaf028dc356d8`;
 ARM64 `11781267570`, SHA-256
 `acaa7cda4f49d7e1e79a095d617716e114e0c17f0cc32c8350c985aeebb42bb7`.
+
+At `7024b9e`, the complete hosted catalog and independent consumer pass on x64
+and native ARM64. Both themes pass all 96 rounded-pointer samples, with twelve
+composited window captures and target/client bounds per theme. The twelve paired
+valid-rest/invalid-hover crops across all sizes and themes have identical RGB
+bytes between architectures at 100% display/text scale. These composited pixels
+do not show the apparent blue shadow-channel artifact from isolated low-alpha
+element PNG previews. The comparison is retained in
+`artifacts/input-composited-7024b9e-comparison.json`; archive/package digests are
+recorded in [runtime evidence](runtime-evidence.md). Browser/native parity,
+enabled corner interaction, contrast/Narrator and scaling remain open.

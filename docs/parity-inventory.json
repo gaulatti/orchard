@@ -4639,8 +4639,8 @@
     }
   ],
   "nativeRuntimeBaseline": {
-    "commit": "5412997a3dfd15c76a06367b51480ab6a91b8e7c",
-    "workflowRun": 38268516314,
+    "commit": "7024b9e95fefd2e4c74fd8901fb44c02e8938db8",
+    "workflowRun": 38329932509,
     "platforms": ["x64", "ARM64"],
     "status": "passed",
     "evidence": "docs/runtime-evidence.md",
@@ -4649,7 +4649,7 @@
       "button", "button-group", "card", "dropdown-menu", "notification-badge",
       "eyebrow", "input", "kbd", "label", "progress", "separator", "toggle",
       "toggle-group", "tooltip", "field-help-tooltip", "icon-button",
-      "loading-spinner", "status-badge"
+      "loading-spinner", "status-badge", "checkbox", "switch"
     ]
   },
   "compositions": [

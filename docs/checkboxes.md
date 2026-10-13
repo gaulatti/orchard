@@ -398,6 +398,16 @@ This uses the supported detached retemplating lifecycle without introducing
 default content or rewriting consumer template values. Other lifecycle phases
 continue to verify clipping, hide/show, scrolling and rapid reparenting.
 
+The complete hosted suite at `7024b9e` passes on both x64 and native ARM64 in
+Light and Dark, as does the independent NuGet consumer. Each Checkbox report
+retains 60 observations including diagnostic snapshots. Template detachment's
+immediate diagnostic still sees UniversalNo; the unmounted input-dispatch
+observation sees Arrow, and restored box hover sees UniversalNo. Rounded corners,
+stationary enable/disable, occlusion/clipping, hit-testing, hide/show, unload,
+scrolling, RTL and shared Input ownership all pass the global visible-cursor gate.
+See [checked runtime archives](runtime-evidence.md). Full Checkbox visual,
+contrast/Narrator and scaling acceptance remains open.
+
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual
 foreground process/class/package alongside the owned screen point. Physical
