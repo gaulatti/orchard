@@ -23,6 +23,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 42,
+          "titleBaseline": 31,
+          "timeBaseline": 54,
+          "titleColor": "rgb(45, 45, 45)",
+          "timeColor": "rgb(89, 89, 89)",
           "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -35,6 +39,10 @@
           "timeHeight": 0,
           "titleTop": 16,
           "timeTop": 22,
+          "titleBaseline": null,
+          "timeBaseline": null,
+          "titleColor": "rgb(45, 45, 45)",
+          "timeColor": "rgb(89, 89, 89)",
           "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -47,6 +55,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 82,
+          "titleBaseline": 31,
+          "timeBaseline": 94,
+          "titleColor": "rgb(45, 45, 45)",
+          "timeColor": "rgb(89, 89, 89)",
           "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -59,6 +71,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 42,
+          "titleBaseline": 31,
+          "timeBaseline": 54,
+          "titleColor": "rgb(45, 45, 45)",
+          "timeColor": "rgb(89, 89, 89)",
           "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -71,6 +87,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 22,
+          "titleBaseline": null,
+          "timeBaseline": 34,
+          "titleColor": "rgb(45, 45, 45)",
+          "timeColor": "rgb(89, 89, 89)",
           "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -83,12 +103,40 @@
           "timeHeight": 0,
           "titleTop": 16,
           "timeTop": 42,
+          "titleBaseline": 31,
+          "timeBaseline": null,
+          "titleColor": "rgb(45, 45, 45)",
+          "timeColor": "rgb(89, 89, 89)",
           "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
         }
       ],
-      "hover": "oklab(0.974335 0.00160992 0.00603193 / 0.35)"
+      "hover": "oklab(0.974335 0.00160992 0.00603193 / 0.35)",
+      "ink": [
+        {
+          "name": "title",
+          "left": 62,
+          "top": 16,
+          "right": 350,
+          "bottom": 36,
+          "threshold": 170,
+          "lightInk": false,
+          "first": 20,
+          "last": 33
+        },
+        {
+          "name": "time",
+          "left": 62,
+          "top": 42,
+          "right": 350,
+          "bottom": 60,
+          "threshold": 170,
+          "lightInk": false,
+          "first": 46,
+          "last": 55
+        }
+      ]
     },
     {
       "scheme": "Dark",
@@ -101,6 +149,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 42,
+          "titleBaseline": 31,
+          "timeBaseline": 54,
+          "titleColor": "rgb(240, 244, 248)",
+          "timeColor": "rgb(184, 197, 214)",
           "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -113,6 +165,10 @@
           "timeHeight": 0,
           "titleTop": 16,
           "timeTop": 22,
+          "titleBaseline": null,
+          "timeBaseline": null,
+          "titleColor": "rgb(240, 244, 248)",
+          "timeColor": "rgb(184, 197, 214)",
           "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -125,6 +181,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 82,
+          "titleBaseline": 31,
+          "timeBaseline": 94,
+          "titleColor": "rgb(240, 244, 248)",
+          "timeColor": "rgb(184, 197, 214)",
           "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -137,6 +197,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 42,
+          "titleBaseline": 31,
+          "timeBaseline": 54,
+          "titleColor": "rgb(240, 244, 248)",
+          "timeColor": "rgb(184, 197, 214)",
           "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -149,6 +213,10 @@
           "timeHeight": 16.5,
           "titleTop": 16,
           "timeTop": 22,
+          "titleBaseline": null,
+          "timeBaseline": 34,
+          "titleColor": "rgb(240, 244, 248)",
+          "timeColor": "rgb(184, 197, 214)",
           "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
@@ -161,12 +229,40 @@
           "timeHeight": 0,
           "titleTop": 16,
           "timeTop": 42,
+          "titleBaseline": 31,
+          "timeBaseline": null,
+          "titleColor": "rgb(240, 244, 248)",
+          "timeColor": "rgb(184, 197, 214)",
           "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
           "hover": "rgba(0, 0, 0, 0)",
           "gap": "14px"
         }
       ],
-      "hover": "oklab(0.999994 0.0000455678 0.0000200868 / 0.03)"
+      "hover": "oklab(0.999994 0.0000455678 0.0000200868 / 0.03)",
+      "ink": [
+        {
+          "name": "title",
+          "left": 62,
+          "top": 16,
+          "right": 350,
+          "bottom": 36,
+          "threshold": 150,
+          "lightInk": true,
+          "first": 20,
+          "last": 33
+        },
+        {
+          "name": "time",
+          "left": 62,
+          "top": 42,
+          "right": 350,
+          "bottom": 60,
+          "threshold": 150,
+          "lightInk": true,
+          "first": 46,
+          "last": 55
+        }
+      ]
     }
   ]
 }

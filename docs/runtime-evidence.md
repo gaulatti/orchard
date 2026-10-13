@@ -69,6 +69,16 @@ The ARM64 artifact `11855619263` was checked against SHA-256
 `2a191a2b648bd2b6721bebe73abea7f63f4e67f3a6f44b0e1fa9648269c895a0`,
 with selected reports at `artifacts/ci-5ad9d0b-arm64-evidence`.
 
+Run `38482502505` at `28f3efe` passes the x64 job, including focused Input,
+the complete catalog, contrast and package consumption. The geometry-based
+Input hover correction gets through ARM64's live-theme assertions too, but
+ARM64's focused Large/valid bottom-right `(0,3)` target still globally displays
+Arrow despite an owned UniversalNo publisher and matching hover/opacity.
+Its ordinary catalog fails Checkbox's `hit-testing-repeat-restored-6` boundary.
+The retained-producer value transition is therefore not a demonstrated remedy
+for the ARM64 cursor defect. Both contrast checks, ARM64 consumer and
+cross-build pass. The strong displayed-cursor assertions remain required.
+
 ## Live Windows contrast checkpoint
 
 Run [38434880055](https://github.com/gaulatti/orchard/actions/runs/38434880055)

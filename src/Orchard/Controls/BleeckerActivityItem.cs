@@ -20,6 +20,9 @@ public sealed class BleeckerActivityItem : Control
     private Border? surface;
     private BleeckerAvatar? avatar;
     private TextBlock? title, time, hover, hoverText, timeText;
+    private TextBlock? titleMetrics, timeMetrics;
+    private Grid? titleParagraph, timeParagraph;
+    private TranslateTransform? titleShift, timeShift;
     private bool over, running;
     private ElementTheme? renderedTheme;
     private bool? renderedContrast;
@@ -70,6 +73,9 @@ public sealed class BleeckerActivityItem : Control
         DetachTemplate(); base.OnApplyTemplate(); if (Template is null) return;
         surface = Part<Border>("PART_Surface"); avatar = Part<BleeckerAvatar>("PART_Avatar"); title = Part<TextBlock>("PART_Title"); time = Part<TextBlock>("PART_Time");
         hover = Part<TextBlock>("PART_Hover"); hoverText = Part<TextBlock>("PART_HoverText"); timeText = Part<TextBlock>("PART_TimeText"); surface.Background = paint;
+        titleMetrics = Part<TextBlock>("PART_TitleMetrics"); timeMetrics = Part<TextBlock>("PART_TimeMetrics");
+        titleParagraph = Part<Grid>("PART_TitleParagraph"); timeParagraph = Part<Grid>("PART_TimeParagraph");
+        title.RenderTransform = titleShift = new TranslateTransform(); time.RenderTransform = timeShift = new TranslateTransform();
         ObservePalette(); UpdateContent(); UpdateAppearance(false);
     }
     private T Part<T>(string name) where T : FrameworkElement => GetTemplateChild(name) as T ?? throw new InvalidOperationException($"ActivityItem requires {name}.");
@@ -103,8 +109,26 @@ public sealed class BleeckerActivityItem : Control
     }
     private void OnFrame(object? sender, object args)
     {
+        UpdateTypography();
         if (renderedTheme != ActualTheme || renderedContrast != accessibility.HighContrast) UpdateAppearance(true);
         if (running) { var milliseconds = clock.Elapsed.TotalMilliseconds; Paint(milliseconds); running = motion.IsRunning(milliseconds); }
+    }
+    private void UpdateTypography()
+    {
+        if (XamlRoot is null || title is null || time is null || titleMetrics is null || timeMetrics is null || titleParagraph is null || timeParagraph is null || titleShift is null || timeShift is null) return;
+        Align(title, titleMetrics, titleParagraph, titleShift); Align(time, timeMetrics, timeParagraph, timeShift);
+        void Align(TextBlock text, TextBlock metrics, Grid paragraph, TranslateTransform shift)
+        {
+            if (text.Visibility != Visibility.Visible || metrics.ActualHeight <= 0) { shift.Y = 0; return; }
+            var scale = XamlRoot.RasterizationScale;
+            var origin = paragraph.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point()).Y;
+            var lineHeight = text.LineHeight * (text.IsTextScaleFactorEnabled ? settings.TextScaleFactor : 1);
+            // CSS centers the natural font line box in the requested line height.
+            // Place that measured baseline on the actual display's device grid.
+            var target = Math.Round((origin + (lineHeight - metrics.ActualHeight) / 2 + metrics.BaselineOffset) * scale) / scale;
+            var offset = target - origin - text.BaselineOffset;
+            if (Math.Abs(shift.Y - offset) > .000001) shift.Y = offset;
+        }
     }
     private void ObservePalette()
     {
@@ -121,12 +145,20 @@ public sealed class BleeckerActivityItem : Control
     private void StopObserving() { foreach (var observer in observers) observer.Owner.UnregisterPropertyChangedCallback(observer.Property, observer.Token); observers.Clear(); }
     private void OnColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => UpdateAppearance(true));
     private void OnAnimationsChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(() => UpdateAppearance(false));
-    private void DetachTemplate() { StopObserving(); surface = null; avatar = null; title = time = hover = hoverText = timeText = null; running = false; }
+    private void DetachTemplate() { StopObserving(); surface = null; avatar = null; title = time = hover = hoverText = timeText = titleMetrics = timeMetrics = null; titleParagraph = timeParagraph = null; titleShift = timeShift = null; running = false; }
     protected override AutomationPeer OnCreateAutomationPeer() => new ActivityPeer(this);
     private sealed class ActivityPeer(BleeckerActivityItem owner) : FrameworkElementAutomationPeer(owner)
     {
         protected override string GetClassNameCore() => nameof(BleeckerActivityItem);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsKeyboardFocusableCore() => false;
+        protected override System.Collections.Generic.IList<AutomationPeer> GetChildrenCore()
+        {
+            var peers = base.GetChildrenCore();
+            if (peers is null) return peers!;
+            var titleProbe = owner.titleMetrics is null ? null : FromElement(owner.titleMetrics);
+            var timeProbe = owner.timeMetrics is null ? null : FromElement(owner.timeMetrics);
+            return peers.Where(peer => !ReferenceEquals(peer, titleProbe) && !ReferenceEquals(peer, timeProbe)).ToList();
+        }
     }
 }

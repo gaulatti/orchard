@@ -350,7 +350,8 @@ public sealed partial class MainWindow : Window
         var surface = (Border)VisualTreeHelper.GetChild(PackageActivity, 0);
         var grid = (Grid)surface.Child;
         var avatar = grid.Children.OfType<BleeckerAvatar>().Single();
-        var text = grid.Children.OfType<Grid>().Single().Children.OfType<TextBlock>().ToArray();
+        var textColumn = grid.Children.OfType<Grid>().Single();
+        var text = textColumn.Children.OfType<Grid>().SelectMany(paragraph => paragraph.Children.OfType<TextBlock>()).ToArray();
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageActivity);
         Require(avatar.AvatarSize == BleeckerAvatarSize.Small && avatar.ActualWidth == 32 && avatar.Fallback == PackageActivity.Init &&
             text[0].Text == PackageActivity.Title && text[1].Text == PackageActivity.Time &&

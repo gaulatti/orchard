@@ -35,18 +35,25 @@ public sealed partial class ActivityItemsFixture : UserControl
                 Math.Abs(title.ActualHeight - expected.GetProperty("titleHeight").GetDouble()) < .02 &&
                 Math.Abs(time.ActualHeight - expected.GetProperty("timeHeight").GetDouble()) < .02,
                 $"Native {control.Name} paragraph/row layout differs from the frozen browser.");
-            if (title.Visibility == Visibility.Visible) Require(Math.Abs(title.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y - expected.GetProperty("titleTop").GetDouble()) < .02, "Activity title offset differs from the browser.");
-            if (time.Visibility == Visibility.Visible) Require(Math.Abs(time.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y - expected.GetProperty("timeTop").GetDouble()) < .02, "Activity time offset differs from the browser.");
+            if (title.Visibility == Visibility.Visible) Require(Math.Abs(Find<Grid>(control,"PART_TitleParagraph").TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y - expected.GetProperty("titleTop").GetDouble()) < .02, "Activity title paragraph offset differs from the browser.");
+            if (time.Visibility == Visibility.Visible) Require(Math.Abs(Find<Grid>(control,"PART_TimeParagraph").TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y - expected.GetProperty("timeTop").GetDouble()) < .02, "Activity time paragraph offset differs from the browser.");
+            if (ReferenceEquals(control, Normal))
+            {
+                Require(Math.Abs(title.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y + title.BaselineOffset - expected.GetProperty("titleBaseline").GetDouble()) < .001,
+                    "Activity title baseline differs from the frozen browser.");
+                Require(Math.Abs(time.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y + time.BaselineOffset - expected.GetProperty("timeBaseline").GetDouble()) < .001,
+                    "Activity time baseline differs from the frozen browser.");
+            }
             measurements.Add(new { control.Name, control.ActualWidth, control.ActualHeight, titleHeight = title.ActualHeight, timeHeight = time.ActualHeight });
         }
         Require(Find<TextBlock>(Long, "PART_Title").ActualHeight > 20, "Long activity text did not wrap.");
         await File.WriteAllTextAsync(Path.Combine(folder, $"activity-measurements-{scheme}.json"), JsonSerializer.Serialize(measurements, new JsonSerializerOptions { WriteIndented = true }));
         Require(Empty.ActualHeight == 65 && Find<TextBlock>(Empty, "PART_Title").ActualHeight == 0 && Find<TextBlock>(Empty, "PART_Time").ActualHeight == 0, $"Empty activity paragraphs differ: row={Empty.ActualHeight:R}, title={Find<TextBlock>(Empty, "PART_Title").ActualHeight:R}, time={Find<TextBlock>(Empty, "PART_Time").ActualHeight:R}.");
         var names = FrameworkElementAutomationPeer.CreatePeerForElement(Normal).GetChildren().Select(peer => peer.GetName()).ToArray();
-        Require(names.Contains(Normal.Title) && names.Contains(Normal.Time), "Activity's accessible container omitted its exact title/time content.");
+        Require(names.Contains(Normal.Title) && names.Contains(Normal.Time) && !names.Contains("Mg"), "Activity's accessible container omitted content or exposed font metrics: " + JsonSerializer.Serialize(names));
         var sourceTitle = Normal.Title; var sourceTime = Normal.Time;
         Normal.Title = ""; UpdateLayout();
-        Require(Normal.ActualHeight == 65 && Find<TextBlock>(Normal, "PART_Time").TransformToVisual(Normal).TransformPoint(new Windows.Foundation.Point()).Y == 22,
+        Require(Normal.ActualHeight == 65 && Find<Grid>(Normal, "PART_TimeParagraph").TransformToVisual(Normal).TransformPoint(new Windows.Foundation.Point()).Y == 22,
             "Empty title lost the source paragraph gap or time offset.");
         Normal.Title = sourceTitle; Normal.Time = ""; UpdateLayout();
         Require(Normal.ActualHeight == 65 && Find<TextBlock>(Normal, "PART_Title").ActualHeight == 20, "Empty time retained a fabricated line box.");
@@ -70,6 +77,8 @@ public sealed partial class ActivityItemsFixture : UserControl
             title = new { bounds = input.ScreenBounds(capturedTitle), capturedTitle.BaselineOffset, color = Hex((SolidColorBrush)capturedTitle.Foreground) },
             time = new { bounds = input.ScreenBounds(capturedTime), capturedTime.BaselineOffset, color = Hex((SolidColorBrush)capturedTime.Foreground) }
         }, new JsonSerializerOptions { WriteIndented = true }));
+        await VerifyInkRowsAsync(Path.Combine(folder, $"activity-window-{scheme}.png"), capturedClient, input.ScreenBounds(Normal),
+            reference.RootElement.GetProperty("schemes").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString()).GetProperty("ink"), scheme, folder);
         await input.MoveAsync(Heading); await AwaitAsync(() => ((SolidColorBrush)surface.Background).Opacity == 0, "Activity hover exit did not return to transparency.");
         await VerifyMotionAsync(input, scheme, folder);
         var initialTitle = Normal.Title; var initialTime = Normal.Time; var initialInit = Normal.Init;
@@ -94,7 +103,64 @@ public sealed partial class ActivityItemsFixture : UserControl
         }
         finally { owner.RequestedTheme = ownerTheme; }
         await AwaitAsync(() => Normal.ActualTheme == (scheme == BleeckerColorScheme.Light ? ElementTheme.Light : ElementTheme.Dark), "Activity did not restore its owner theme.");
+        await RecordTypographyStrategiesAsync(scheme, folder);
         await File.WriteAllTextAsync(Path.Combine(folder, $"activity-measurements-{scheme}.json"), JsonSerializer.Serialize(measurements, new JsonSerializerOptions { WriteIndented = true }));
+    }
+    private static async Task VerifyInkRowsAsync(string path, Windows.Foundation.Rect client, Windows.Foundation.Rect row, JsonElement references, BleeckerColorScheme scheme, string folder)
+    {
+        using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+        using (var writer = new Windows.Storage.Streams.DataWriter(stream)) { writer.WriteBytes(await File.ReadAllBytesAsync(path)); await writer.StoreAsync(); writer.DetachStream(); }
+        stream.Seek(0);
+        var decoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
+        var pixels = (await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8, Windows.Graphics.Imaging.BitmapAlphaMode.Straight,
+            new Windows.Graphics.Imaging.BitmapTransform(), Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
+        var left = checked((int)(row.X - client.X)); var top = checked((int)(row.Y - client.Y));
+        var samples = new List<object>(); var passed = true;
+        foreach (var expected in references.EnumerateArray())
+        {
+            int? first = null, last = null;
+            for (var y = expected.GetProperty("top").GetInt32(); y < expected.GetProperty("bottom").GetInt32(); y++)
+                for (var x = expected.GetProperty("left").GetInt32(); x < expected.GetProperty("right").GetInt32(); x++)
+                {
+                    var offset = checked(((top + y) * (int)decoder.PixelWidth + left + x) * 4);
+                    var average = (pixels[offset] + pixels[offset + 1] + pixels[offset + 2]) / 3d;
+                    var threshold = expected.GetProperty("threshold").GetDouble();
+                    if (expected.GetProperty("lightInk").GetBoolean() ? average > threshold : average < threshold) { first = first is null ? y : Math.Min(first.Value, y); last = last is null ? y : Math.Max(last.Value, y); }
+                }
+            var matches = first == expected.GetProperty("first").GetInt32() && last == expected.GetProperty("last").GetInt32(); passed &= matches;
+            samples.Add(new { name = expected.GetProperty("name").GetString(), first, last, matches });
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, $"activity-ink-{scheme}.json"), JsonSerializer.Serialize(new { passed, samples }, new JsonSerializerOptions { WriteIndented = true }));
+        Require(passed, "Composed Activity Item glyph rows differ from the frozen browser.");
+    }
+    private async Task RecordTypographyStrategiesAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var host = new StackPanel { Width = 322, Opacity = 0, IsHitTestVisible = false };
+        var probes = new List<(string Kind, TextBlock Text)>();
+        foreach (var (kind, original) in new[] { ("title", Find<TextBlock>(Normal, "PART_Title")), ("time", Find<TextBlock>(Normal, "PART_Time")) })
+            foreach (var strategy in Enum.GetValues<LineStackingStrategy>())
+                foreach (var bounds in Enum.GetValues<TextLineBounds>())
+                {
+                    var probe = new TextBlock { Text = original.Text, FontFamily = original.FontFamily, FontWeight = original.FontWeight,
+                        FontSize = original.FontSize, LineHeight = original.LineHeight, LineStackingStrategy = strategy, TextLineBounds = bounds,
+                        TextWrapping = TextWrapping.Wrap, UseLayoutRounding = false };
+                    probes.Add((kind, probe)); host.Children.Add(probe);
+                }
+        foreach (var (kind, original) in new[] { ("title-natural", Find<TextBlock>(Normal, "PART_Title")), ("time-natural", Find<TextBlock>(Normal, "PART_Time")) })
+        {
+            var probe = new TextBlock { Text = original.Text, FontFamily = original.FontFamily, FontWeight = original.FontWeight,
+                FontSize = original.FontSize, TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false };
+            probes.Add((kind, probe)); host.Children.Add(probe);
+        }
+        var parent = (Panel)Content; parent.Children.Add(host);
+        try
+        {
+            UpdateLayout(); await Task.Delay(100);
+            await File.WriteAllTextAsync(Path.Combine(folder, $"activity-typography-strategies-{scheme}.json"), JsonSerializer.Serialize(
+                probes.Select(probe => new { probe.Kind, strategy = probe.Text.LineStackingStrategy.ToString(), bounds = probe.Text.TextLineBounds.ToString(),
+                    probe.Text.ActualHeight, probe.Text.BaselineOffset }), new JsonSerializerOptions { WriteIndented = true }));
+        }
+        finally { parent.Children.Remove(host); }
     }
     private async Task VerifyMotionAsync(NativeInputSession input, BleeckerColorScheme scheme, string folder)
     {

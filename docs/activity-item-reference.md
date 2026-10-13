@@ -125,3 +125,41 @@ consumption. Its contrast fixture reaches the same ambiguous selector failure.
 This verifies the registered runtime, endpoint/motion-preference and consumer
 checks on both native architectures; it does not close the baseline, complete
 motion, contrast, Narrator or scaling gaps.
+
+The baseline correction now centers the natural font line box in the declared
+line height and aligns the resulting baseline to the current display's pixel
+grid, using live WinUI font metrics. It introduces no fixed vertical offset.
+Separate paragraph hosts preserve the source 20/16.5-DIP line boxes and 6-DIP
+gap while the text drawing transform corrects the baseline. Zero-size,
+transparent metric probes contribute no layout or pointer target; the Group
+peer explicitly excludes their peers while retaining the real Avatar/title/time
+children. Template replacement clears both the probes and drawing transforms.
+
+The regenerated frozen browser reference includes measured baselines and
+normal-row ink extents. Focused x64 at
+`artifacts/smoke-activity-baseline-regression` passes both appearances: native
+title/time baselines are 31/54 row-relative DIPs, title ink rows are 20–33 and
+time ink rows 46–55, matching the actual browser capture. The regression parses
+the composed native PNG using its measured client/row origin and compares ink
+extents using the same browser-reference threshold and region. This checks
+vertical placement, not complete antialiasing or whole-glyph raster identity.
+Wrapping/paragraph geometry and actual pointer/Tab/lifecycle/UIA checks remain
+required and pass in this focused candidate. Native ARM64, scaling and the
+remaining complete visual/interaction matrix still require verification.
+
+Custom templates must retain the named `PART_TitleParagraph` and
+`PART_TimeParagraph` Grid hosts plus the `PART_TitleMetrics` and
+`PART_TimeMetrics` TextBlocks, alongside the existing content/palette parts.
+The metrics use the corresponding text font/size and a natural line height;
+they must remain measured while contributing no visible layout or accessible
+content. Missing parts fail template application explicitly. The independent
+consumer checks the nested paragraph structure and exact title/time strings.
+
+The complete x64 catalog passes both appearances at
+`artifacts/smoke-activity-baseline-all`; the final stable-origin focused check
+passes at `artifacts/smoke-activity-stable-baseline`. Both architecture builds
+have zero warnings and all 27 unit/resource tests pass.
+
+The fresh independent consumer passes both appearances at
+`artifacts/package-consumer-activity-baseline`, using package 0.1.0 with SHA-256
+`a24c2d4579c97977a21c5e8f271b005c929b6095f5b24181d57680de88c258c4`.

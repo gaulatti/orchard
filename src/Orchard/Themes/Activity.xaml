@@ -10,12 +10,16 @@
      <local:BleeckerAvatar x:Name="PART_Avatar" AvatarSize="Small" VerticalAlignment="Top" />
      <Grid Grid.Column="1" MinWidth="0" VerticalAlignment="Top">
       <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="6" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
-      <TextBlock x:Name="PART_Title" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontWeight="Medium" FontSize="13" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" />
-      <TextBlock x:Name="PART_Time" Grid.Row="2" FontFamily="{StaticResource BleeckerSecondaryFontFamily}" FontWeight="Normal" FontSize="11" LineHeight="16.5" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
+      <Grid x:Name="PART_TitleParagraph"><TextBlock x:Name="PART_Title" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontWeight="Medium" FontSize="13" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" /></Grid>
+      <Grid x:Name="PART_TimeParagraph" Grid.Row="2"><TextBlock x:Name="PART_Time" FontFamily="{StaticResource BleeckerSecondaryFontFamily}" FontWeight="Normal" FontSize="11" LineHeight="16.5" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" /></Grid>
      </Grid>
      <TextBlock x:Name="PART_Hover" Foreground="{ThemeResource BleeckerActivityHoverBrush}" Visibility="Collapsed" />
      <TextBlock x:Name="PART_HoverText" Foreground="{ThemeResource BleeckerActivityHoverForegroundBrush}" Visibility="Collapsed" />
      <TextBlock x:Name="PART_TimeText" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" Visibility="Collapsed" />
+     <Canvas Width="0" Height="0" Opacity="0" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw">
+      <TextBlock x:Name="PART_TitleMetrics" Text="Mg" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontWeight="Medium" FontSize="13" UseLayoutRounding="False" AutomationProperties.AccessibilityView="Raw" />
+      <TextBlock x:Name="PART_TimeMetrics" Text="Mg" FontFamily="{StaticResource BleeckerSecondaryFontFamily}" FontSize="11" UseLayoutRounding="False" AutomationProperties.AccessibilityView="Raw" />
+     </Canvas>
     </Grid>
    </Border>
   </ControlTemplate></Setter.Value></Setter>
