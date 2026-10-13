@@ -214,3 +214,18 @@ global cursor, raster tolerances and all motion assertions remain unchanged.
 
 The guarded focused x64 fixture passes both appearances at
 `artifacts/smoke-bauhaus-foreground-guard`, with animations disabled and scale 1.
+
+At `5ad9d0b`, run `38480092499` passes focused native Bauhaus on both
+architectures but fails Dark motion in the full ARM64 suite. Over a
+300.9109ms wall-clock span, the sampled outer/inner counter-rotation is
+6.8230476°, against 5.4163998° expected from the 20-second cycle. The next
+report records `Storyboard.GetCurrentTime()` alongside each wall-clock sample
+and actual transform angle. The API is present in the pinned WinUI 2.3.9
+metadata shipped by Windows App SDK 2.5.1 and reports the animation clock.
+This is diagnostic evidence only: the wall-clock assertion, native preference
+check and existing one-degree limit remain unchanged.
+
+The diagnostic fixture builds for x64 and ARM64 and passes focused x64 at
+`artifacts/smoke-bauhaus-animation-clock`. With local animations disabled,
+the report records a null animation clock and zero angles in every frame.
+The enabled ARM64 clock comparison remains pending the next hosted run.
