@@ -1348,7 +1348,7 @@
       "regressionTests": ["samples/Orchard.Catalog/SkeletonsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Hosted x64/ARM64 fixture and independent package runtime verification",
+        "ARM64 verification of live consumer opacity endpoints and ancestor visibility after 61d13aa",
         "Exact native/browser raster parity and full normal pulse timing",
         "Contrast, Narrator, display/text scaling and final visual acceptance"
       ]
@@ -4639,8 +4639,8 @@
     }
   ],
   "nativeRuntimeBaseline": {
-    "commit": "7024b9e95fefd2e4c74fd8901fb44c02e8938db8",
-    "workflowRun": 38329932509,
+    "commit": "291fee51ea52290c04bcfd058f7c4ac1a2e350cb",
+    "workflowRun": 38332404342,
     "platforms": ["x64", "ARM64"],
     "status": "passed",
     "evidence": "docs/runtime-evidence.md",
@@ -4649,7 +4649,7 @@
       "button", "button-group", "card", "dropdown-menu", "notification-badge",
       "eyebrow", "input", "kbd", "label", "progress", "separator", "toggle",
       "toggle-group", "tooltip", "field-help-tooltip", "icon-button",
-      "loading-spinner", "status-badge", "checkbox", "switch"
+      "loading-spinner", "status-badge", "checkbox", "switch", "skeleton"
     ]
   },
   "compositions": [

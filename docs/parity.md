@@ -53,7 +53,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | data-table-filters | Pending | Pending | Full pinned contract |
 | data-table-column-toggle | Pending | Pending | Full pinned contract |
 | data-table-pagination | Pending | Pending | Full pinned contract |
-| skeleton | `BleeckerSkeleton`, `BleeckerSkeletonCard`, `BleeckerSkeletonTable`: shapes, count-driven card/table compositions | Registered nine-case fixture; native geometry, bound counts, motion/lifecycle and clean package checks awaiting hosted execution | In progress: native/browser raster parity, exact pulse timing, contrast/Narrator/scaling; see [contract and usage](skeleton-reference.md) |
+| skeleton | `BleeckerSkeleton`, `BleeckerSkeletonCard`, `BleeckerSkeletonTable`: shapes, count-driven card/table compositions | Registered nine-case fixture; x64/ARM64 geometry, count bindings, rendered/empty pixels, lifecycle and clean consumer passed at `291fee5`; newer consumer-opacity checks pass x64 and await ARM64 | In progress: native/browser raster parity, exact pulse timing, contrast/Narrator/scaling; see [contract and usage](skeleton-reference.md) |
 | stepper | Pending | Pending | Full pinned contract |
 | timeline | Pending | Pending | Full pinned contract |
 | data-list | Pending | Pending | Full pinned contract |

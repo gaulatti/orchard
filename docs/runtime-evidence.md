@@ -1,12 +1,53 @@
 # Native Windows runtime evidence
 
-The catalog fixtures and independent NuGet consumer at commit `7024b9e` passed
-on both x64 and native ARM64, including the stronger global visible-cursor gate.
-That runtime baseline covers 20 in-progress inventory entries. The newly added
-Skeleton preview awaits its own native run; the inventory has 21 in-progress
-entries and 91 pending. The earlier `5412997` checkpoint covered 18 entries.
-Further implementation changes require their own native checks.
+The catalog fixtures and independent NuGet consumer at commit `291fee5` passed
+on both x64 and native ARM64, including Skeleton's rendered-pixel checks and
+the stronger global visible-cursor gate. That runtime baseline covers 21
+in-progress inventory entries; 91 remain pending. The earlier `7024b9e` and
+`5412997` checkpoints covered 20 and 18 entries. The newer `61d13aa` consumer
+opacity/ancestor-visibility change passes x64, but ARM64 fails an earlier Input
+cursor phase before reaching Skeleton. Further implementation changes require
+their own native checks.
 No component has full visual, input, accessibility and scaling acceptance.
+
+## Skeleton runtime checkpoint
+
+Run `38332404342`, commit `291fee51ea52290c04bcfd058f7c4ac1a2e350cb`, passes
+all three jobs, the complete catalog and both independent package consumers.
+For each architecture and theme, Skeleton retains six element images and four
+composited window images, verifies 29 actual branded shape-center pixels, and
+checks all 12,800 pixels of the transparent zero-column table's allocated region
+against the pinned canvas. Geometry, count bindings, negative count values,
+decorative peers, constrained widths and lifecycle checks pass. x64 has reduced
+motion; ARM64 has normal motion. Both use 100% display/text scale.
+
+Both runtime archives were downloaded and SHA-256 verified:
+
+| Architecture | Artifact | Archive SHA-256 | Independent consumer package SHA-256 |
+| --- | --- | --- | --- |
+| x64 | `11783359207` | `0eb3658ccfbe6fdfdaf85961835bc9dac6bfe67c3bdd02462dd3def76b9e47da` | `8e3b31ecf84552dd504766f1d61f99171819a4e9b522f8c44e9b0aab4c8d3535` |
+| ARM64 | `11784125403` | `34dbc80b93f4b097d61d9717ce164aa339b925c622a51037db336b71d590ed4d` | `1d6d98c7c555483c48f1f9bb0d9cdb82440fb188d5ff61f2b5736b6a764a01e3` |
+
+This checkpoint predates the control-level pulse and consumer opacity endpoints
+in `61d13aa`. Its run `38333238719` passes x64 catalog/consumer and ARM64 build.
+The checked x64 archive `11783653162` has SHA-256
+`9b2f7af325ad04c7a089e07f0d8053af321ba6b5f9a10d3d905b6d1b2f89f10f`;
+the consumer package has SHA-256
+`1722e369589a962a98b188c57ec9a96dddcd92df883582352786eef1733a487c`.
+Both x64 themes retain live .75/.25 bindings and static reduced-motion endpoints,
+and pass ancestor hide/show, unload, binding updates and template replacement.
+Normal-motion consumer endpoint verification remains open on ARM64.
+
+ARM64's checked failure archive `11784001632` has SHA-256
+`b68d6c25cc3215925f82f4b8e84aa8b98ba8865d1dc38136c8c7d07a43ad4731`.
+Its Medium Input at excluded top-left point (2,0) displays cursor handle 65561
+instead of expected Arrow 65539. The rendered border, 60% opacity, unfocused
+state and exact owned pointer position match. It fails before Skeleton and the
+package consumer. Rounded Input reports now retain the island's selected cursor,
+tracker ownership/hover and visual hit path to distinguish a publisher error
+from an override error. Those diagnostics do not replace the displayed-cursor
+acceptance gate. Exact browser raster parity, full pulse timing, Narrator,
+Windows contrast and scaling remain open.
 
 Cursor evidence from earlier physical fixtures uses the UI thread's GetCursor
 handle. That does not independently establish the global displayed cursor;

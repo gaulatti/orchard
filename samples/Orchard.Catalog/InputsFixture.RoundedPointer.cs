@@ -1,6 +1,9 @@
 using System.Text.Json;
+using Microsoft.UI.Content;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 
 namespace Orchard.Catalog;
@@ -14,6 +17,8 @@ public sealed partial class InputsFixture
         var windowCaptures = new List<object>();
         var passed = false;
         string? error = null;
+        BleeckerInput? activeControl = null;
+        object? failedCursor = null;
         var controls = new[] { SmallInput, MediumInput, LargeInput };
         var originals = controls.Select(control => (control.IsEnabled, control.IsError)).ToArray();
         try
@@ -22,6 +27,7 @@ public sealed partial class InputsFixture
             ReadOnlyInput.Focus(FocusState.Keyboard);
             foreach (var control in controls)
             {
+                activeControl = control;
                 control.IsEnabled = false;
                 UpdateLayout();
                 Require(control.CornerRadius == new CornerRadius(7), "Input pointer fixture lost the pinned rounded geometry.");
@@ -47,10 +53,11 @@ public sealed partial class InputsFixture
                             Hex(Find<Border>(control, "BorderElement").BorderBrush) == border &&
                             editor.Opacity == opacity && control.FocusState == FocusState.Unfocused,
                             $"{control.InputSize}, invalid={invalid}, {corner} {local.X},{local.Y}: rounded hover/cursor mismatch.",
-                            () => $"cursor={NativeInputSession.CurrentVisibleCursor()}, expected={expected}; border={Hex(Find<Border>(control, "BorderElement").BorderBrush)}, expected={border}; opacity={editor.Opacity:R}, expected={opacity:R}; focus={control.FocusState}");
+                            () => $"cursor={NativeInputSession.CurrentVisibleCursor()}, expected={expected}; border={Hex(Find<Border>(control, "BorderElement").BorderBrush)}, expected={border}; opacity={editor.Opacity:R}, expected={opacity:R}; focus={control.FocusState}; publisher={JsonSerializer.Serialize(DescribeRoundedCursor(control))}");
                         samples.Add(new { size = control.InputSize.ToString(), invalid, corner, point, local.Hover,
                             cursor = NativeInputSession.CurrentVisibleCursor().ToInt64(), border, editor.Opacity,
-                            focus = control.FocusState.ToString(), width = control.ActualWidth, height = control.ActualHeight });
+                            focus = control.FocusState.ToString(), width = control.ActualWidth, height = control.ActualHeight,
+                            publisher = DescribeRoundedCursor(control) });
                         if (corner == "top-left" && local.Y == 0 && local.X is 0 or 3)
                         {
                             await MainWindow.CaptureElementAsync(control, Path.Combine(folder,
@@ -69,7 +76,12 @@ public sealed partial class InputsFixture
                 "Leaving all rounded disabled inputs retained the override cursor.");
             passed = true;
         }
-        catch (Exception exception) { error = exception.ToString(); throw; }
+        catch (Exception exception)
+        {
+            error = exception.ToString();
+            if (activeControl is not null) failedCursor = DescribeRoundedCursor(activeControl);
+            throw;
+        }
         finally
         {
             for (var index = 0; index < controls.Length; index++)
@@ -79,8 +91,29 @@ public sealed partial class InputsFixture
             }
             UpdateLayout();
             await File.WriteAllTextAsync(Path.Combine(folder, $"input-rounded-pointer-{scheme}.json"),
-                JsonSerializer.Serialize(new { passed, scheme, error, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
+                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
+    }
+
+    private object DescribeRoundedCursor(BleeckerInput control)
+    {
+        var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public;
+        var tracker = typeof(BleeckerInput).GetField("disabledPointer", flags)?.GetValue(control);
+        var island = ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(XamlRoot.ContentIslandEnvironment));
+        var cursor = InputPointerSource.GetForIsland(island).Cursor;
+        var positioned = ReadPointer(out var screen);
+        var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);
+        var client = NativeScreenCapture.ClientBounds(window);
+        var position = new Point((screen.X - client.X) / XamlRoot.RasterizationScale, (screen.Y - client.Y) / XamlRoot.RasterizationScale);
+        // Publisher and tracker state explain a failure; the acceptance gate
+        // still requires the actual global displayed cursor and rendered state.
+        return new { control.Name, control.IsEnabled, control.IsLoaded, positioned, screen.X, screen.Y,
+            rootPosition = position, selectedCursor = (cursor as InputSystemCursor)?.CursorShape.ToString() ?? cursor?.GetType().Name,
+            registered = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker) is not null,
+            implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),
+            ownsCursor = tracker?.GetType().GetProperty("OwnsCursor", flags)?.GetValue(tracker),
+            hits = VisualTreeHelper.FindElementsInHostCoordinates(position, XamlRoot.Content).Take(8)
+                .Select(item => new { type = item.GetType().FullName, name = (item as FrameworkElement)?.Name }).ToArray() };
     }
 }

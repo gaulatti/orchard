@@ -43,9 +43,10 @@ The actual source was inspected in both appearances without component restyling.
 Local reference evidence is retained in `artifacts/skeleton-reference-contract.json` and
 `artifacts/skeleton-reference-{Light,Dark}.jpg`; the source harness is
 `artifacts/font-audit/skeleton.html`. These captures use the existing local
-reduced-motion preference. Normal pulse raster timing, Windows contrast,
-native lifecycle, consumer count changes, package consumption and all Windows
-visual/accessibility/scaling checks remain unverified. The public wiki remote
+reduced-motion preference. Normal pulse raster timing, Windows contrast and full
+Windows visual/accessibility/scaling checks remain unverified. The native runtime
+checkpoint below covers lifecycle, consumer counts and package consumption.
+The public wiki remote
 is unavailable; the contract is recorded in this repository.
 
 Use `BleeckerSkeleton` with standard WinUI `Width` and `Height`, and set `Circle`
@@ -81,8 +82,14 @@ cases. Its native check exercises equal-column allocation, card proportions,
 decorative peers, pulse activity/reset and detached template replacement.
 It retains six element captures, four composited window captures with target
 rectangles and `skeleton-measurements-{Light,Dark}.json`. The clean NuGet consumer
-instantiates all three controls. Hosted x64/ARM64 execution remains required;
-the source audit and successful compilation do not establish visual acceptance.
+instantiates all three controls. The complete catalog and both independent
+consumers pass at `291fee5`; each architecture/theme retains 29 branded center
+pixel samples and verifies 12,800 opaque canvas pixels in the transparent table
+region. The newer `61d13aa` control-level pulse passes the x64 reduced-motion,
+live consumer binding and ancestor visibility checks. ARM64 fails an earlier
+Input cursor phase before reaching Skeleton, so its normal-motion consumer
+endpoint checks remain open. See [checked runtime evidence](runtime-evidence.md).
+The source audit and successful compilation do not establish visual acceptance.
 Exact native/browser raster parity, full pulse timing, contrast/Narrator and
 display/text scaling remain acceptance gaps.
 
@@ -105,7 +112,8 @@ alpha and normal/reduced pulse range. Independent alpha/color quantization allow
 at most one byte of premultiplication rounding error. Cards retain the original
 complex-image gate; the entirely transparent zero-column case retains its
 composited capture and empty-layout assertions. Rendered sample values are
-retained in the report's `paintSamples` list. This requires new native execution.
+retained in the report's `paintSamples` list. Both architectures pass this
+capture boundary at `291fee5`.
 The empty-table capture also checks every pixel of its allocated region against
 the pinned canvas color, requiring opaque composited pixels and no painted
 content. The report records the number of verified empty pixels.
