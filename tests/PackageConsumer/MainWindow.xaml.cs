@@ -159,6 +159,7 @@ public sealed partial class MainWindow : Window
                     "Packaged Breadcrumb lost its independent templates, font or consumer path.");
                 await VerifyCustomBreadcrumbFocusAsync();
                 await VerifyAlertAsync();
+                await VerifyBrandAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -300,6 +301,43 @@ public sealed partial class MainWindow : Window
             var template = (FrameworkElement)VisualTreeHelper.GetChild(alert, 0);
             return template.FindName("PART_Popup") is Microsoft.UI.Xaml.Controls.Primitives.Popup { IsOpen: true } &&
                 template.FindName("PART_MotionRoot") is FrameworkElement { Opacity: 1 };
+        }
+    }
+
+    private async Task VerifyBrandAsync()
+    {
+        Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Images", "gaulatti-logo.svg")), "Package omitted the pinned logo asset.");
+        PackageBrand.ApplyTemplate(); Root.UpdateLayout();
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        var image = BrandDescendants<Image>(PackageBrand).Single();
+        while (image.ActualWidth <= 0)
+        {
+            Require(watch.Elapsed < TimeSpan.FromSeconds(3), "Packaged brand logo did not load.");
+            Root.UpdateLayout(); await Task.Delay(16);
+        }
+        var text = BrandDescendants<TextBlock>(PackageBrand).Single(item => item.Name == "PART_Name");
+        var native = BrandDescendants<HyperlinkButton>(PackageBrand).Single();
+        var peer = FrameworkElementAutomationPeer.CreatePeerForElement(native);
+        Require(Math.Abs(image.ActualHeight - 32) < .01 && Math.Abs(image.ActualWidth - 32 * 1000 / 1289.11) < .05 &&
+            text.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") && peer.GetName() == "gaulatti Consumer studio" &&
+            peer.GetAutomationControlType() == AutomationControlType.Hyperlink && native.NavigateUri is null,
+            "Packaged brand lost its source asset, typography, native semantics or consumer route ownership.");
+        var count = 0; string? href = null;
+        void OnInvoked(object? sender, string route) { count++; href = route; }
+        PackageBrand.Invoked += OnInvoked;
+        try
+        {
+            ((IInvokeProvider)peer.GetPattern(PatternInterface.Invoke)).Invoke();
+            Require(count == 1 && href == "/consumer?keep=%2F#section", "Packaged brand invocation changed or duplicated the consumer route.");
+        }
+        finally { PackageBrand.Invoked -= OnInvoked; }
+        static IEnumerable<T> BrandDescendants<T>(DependencyObject root) where T : DependencyObject
+        {
+            for (var index = 0; index < VisualTreeHelper.GetChildrenCount(root); index++)
+            {
+                var child = VisualTreeHelper.GetChild(root, index); if (child is T match) yield return match;
+                foreach (var nested in BrandDescendants<T>(child)) yield return nested;
+            }
         }
     }
 

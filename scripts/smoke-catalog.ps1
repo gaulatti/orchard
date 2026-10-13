@@ -1,7 +1,7 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'alerts')][string]$Component = 'all',
+    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'alerts', 'brand')][string]$Component = 'all',
     [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture
 )
 $ErrorActionPreference = 'Stop'

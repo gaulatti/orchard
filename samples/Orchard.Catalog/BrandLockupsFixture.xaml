@@ -1,0 +1,31 @@
+<UserControl x:Class="Orchard.Catalog.BrandLockupsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <DataTemplate x:Key="ConsumerBrandLink" x:DataType="orchard:BleeckerBrandLinkContext">
+   <HyperlinkButton x:Name="ConsumerLink" Content="{x:Bind Content, Mode=OneWay}" Command="{x:Bind Command}"
+    CommandParameter="{x:Bind CommandParameter, Mode=OneWay}" AutomationProperties.Name="{x:Bind Label, Mode=OneWay}"
+    AutomationProperties.HelpText="{x:Bind Href, Mode=OneWay}" />
+  </DataTemplate>
+ </UserControl.Resources>
+ <StackPanel x:Name="Rows" Spacing="20" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Brand lockups" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned routes and commands, a packaged logo, and optional names." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <Button x:Name="KeyboardStart" Content="Keyboard entry" Style="{StaticResource BleeckerSecondaryButtonStyle}" HorizontalAlignment="Left" />
+  <StackPanel Orientation="Horizontal" Spacing="40">
+   <orchard:BleeckerBrandLockup x:Name="SmallLogo" Href="/" />
+   <orchard:BleeckerBrandLockup x:Name="LargeLogo" Href="/studio" Size="Large" />
+   <orchard:BleeckerBrandLockup x:Name="SmallNamed" Href="/studio?view=a%20b#anchor" BrandName="Fictional studio" />
+   <orchard:BleeckerBrandLockup x:Name="LargeNamed" Href="orchard:fictional-route" BrandName="Fictional studio" Size="Large" />
+  </StackPanel>
+  <TextBlock Text="Consumer image · opaque, half-alpha and transparent pixels" Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerBrandLockup x:Name="CustomImage" Href="/consumer-image" Size="Large" LogoAlt="Fictional color blocks" />
+  <StackPanel Orientation="Horizontal" Spacing="24">
+   <orchard:BleeckerBrandLockup x:Name="EmptyName" Href="/empty-name" BrandName="" />
+   <orchard:BleeckerBrandLockup x:Name="Disabled" Href="/unavailable" BrandName="Unavailable" IsEnabled="False" />
+   <orchard:BleeckerBrandLockup x:Name="CustomLink" Href="/custom-renderer" LogoAlt="Consumer mark" BrandName="Custom link" LinkTemplate="{StaticResource ConsumerBrandLink}" />
+  </StackPanel>
+  <orchard:BleeckerBrandLockup x:Name="LongName" Width="220" Href="/international" BrandName="東京の架空編集室 · العربية · café · a long fictional studio name" />
+  <orchard:BleeckerBrandLockup x:Name="FailedImage" Href="/missing-image" LogoAlt="Unavailable consumer logo" />
+  <TextBlock x:Name="Outcome" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" />
+ </StackPanel>
+</UserControl>

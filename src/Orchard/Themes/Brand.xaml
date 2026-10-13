@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerBrandLockup">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="AutomationProperties.AccessibilityView" Value="Raw" />
+  <Setter Property="HorizontalAlignment" Value="Left" /><Setter Property="VerticalAlignment" Value="Center" />
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimarySemiboldFontFamily}" /><Setter Property="FontWeight" Value="SemiBold" />
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /><Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="UseLayoutRounding" Value="False" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerBrandLockup"><Grid><TextBlock x:Name="PART_SeparatorPalette" Foreground="{ThemeResource BleeckerBrandSeparatorBrush}" Visibility="Collapsed" /><TextBlock x:Name="PART_ContrastPalette" Foreground="{ThemeResource BleeckerTextPrimaryBrush}" Visibility="Collapsed" /><Grid x:Name="PART_LinkHost" /></Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

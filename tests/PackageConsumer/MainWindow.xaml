@@ -53,6 +53,7 @@
                 </StackPanel>
                 <TextBlock Text="Fictional local content. Resources and fonts come from the NuGet package."
                            Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerBrandLockup x:Name="PackageBrand" Href="/consumer?keep=%2F#section" BrandName="Consumer studio" />
                 <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
                 <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
                 <orchard:BleeckerFieldHelpTooltip x:Name="PackageHelp" Text="Use a concise title for this fictional item." HorizontalAlignment="Left" />

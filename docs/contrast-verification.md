@@ -1,5 +1,18 @@
 # Windows contrast verification
 
+Run `38452957927` at `46a7ae2` passes the stable-recovery contrast check and
+independent package consumption on both native architectures. Its ordinary
+catalogs fail at separate cursor/input boundaries; the entire run is not green.
+The x64 archive `11842080658` was verified against SHA-256
+`680c037e52d7218b28a1ed749a2e31a6d7a6f93e6591284cc221d48f31af335b`.
+
+The new BrandLockup specimen uses an actual four-pixel RGBA source. Its hosted
+check requires the opaque area to paint Windows WindowText and the transparent
+area to retain Window, sampled from the composed native window after the real
+mode switch. Reports are `contrast-brand-pixels.json` and
+`contrast-brand-window.png`. That extension is pending hosted verification;
+the original text, action, input, popup, keyboard and restoration gates remain.
+
 Run `38451360536` at `98e44ca` passes the complete x64 catalog and independent
 consumer, but its contrast check observes a transient zero foreground while
 Windows replaces its `sethc` cover. The retained events show the original cover

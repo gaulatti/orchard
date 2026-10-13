@@ -62,3 +62,9 @@ The Switches page adds off/on, both disabled states, a named unlabeled switch,
 long/Japanese/RTL labels and a consumer-owned two-way Boolean binding. Its
 registered runtime checks and remaining acceptance are documented in
 [switches](switches.md).
+
+The **Brand lockups** page adds logo-only and named lockups in both sizes,
+consumer-owned RGBA artwork, a typed link template, command availability,
+disabled, constrained international text and a failed source. Its focused
+runtime path is `scripts/smoke-catalog.ps1 -Component brand`; it also participates
+in the full catalog. See [the contract and current evidence](brand-lockup-reference.md).

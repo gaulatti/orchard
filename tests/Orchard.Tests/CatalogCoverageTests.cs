@@ -60,6 +60,21 @@ public sealed class CatalogCoverageTests
         foreach (var registration in registrations.EnumerateObject())
         {
             var fixture = XDocument.Load(Path.Combine(catalog, registration.Value.GetString()!));
+            // The brand renderer receives its framework-created context in a
+            // typed template. Its internal constructor is deliberately not a
+            // second consumer factory. Require all four source-contract bindings
+            // in that rendered fixture instead of inventing a XAML instance.
+            if (registration.Name == "BleeckerBrandLinkContext")
+            {
+                XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
+                var template = fixture.Descendants().Single(element => element.Name.LocalName == "DataTemplate" &&
+                    ((string?)element.Attribute(x + "DataType"))?.EndsWith(":" + registration.Name, StringComparison.Ordinal) == true);
+                foreach (var field in new[] { "Href", "Label", "Content", "Command" })
+                    Assert.IsTrue(template.Descendants().Attributes().Any(attribute => attribute.Value == "{x:Bind " + field + "}" ||
+                        attribute.Value.StartsWith("{x:Bind " + field + ",", StringComparison.Ordinal)),
+                        $"Brand renderer fixture does not bind context {field}.");
+                continue;
+            }
             Assert.IsTrue(fixture.Descendants().Any(element => element.Name.LocalName == registration.Name ||
                 (element.Name.LocalName.StartsWith(registration.Name + ".", StringComparison.Ordinal) && element.HasElements) ||
                 element.Attributes().Any(attribute => attribute.Name.LocalName.StartsWith(registration.Name + ".", StringComparison.Ordinal))),

@@ -18,6 +18,7 @@
         <EmbeddedResource Include="Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Graphics.Win2D" />
     </ItemGroup>
     <ItemGroup>
         <!-- Loose font files use the same URI paths for source and package consumers.
@@ -37,6 +38,14 @@
             <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         </None>
         <None Include="buildTransitive/Gaulatti.Orchard.targets" Pack="true" PackagePath="buildTransitive/" />
+        <Content Remove="Assets/Images/*" />
+        <None Remove="Assets/Images/*" />
+        <None Include="Assets/Images/*.svg" Pack="true" PackagePath="assets/images/%(Filename)%(Extension)">
+            <Link>Orchard/Assets/Images/%(Filename)%(Extension)</Link>
+            <TargetPath>Orchard/Assets/Images/%(Filename)%(Extension)</TargetPath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </None>
         <None Include="../../docs/package-readme.md" Pack="true" PackagePath="README.md" />
         <None Include="../../tokens/LICENSE-Bleecker.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Pack="true" PackagePath="licenses/" />

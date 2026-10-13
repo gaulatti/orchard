@@ -19,7 +19,7 @@ try {
     foreach ($required in @('buildTransitive/Gaulatti.Orchard.targets', 'README.md', 'licenses/LICENSE-Bleecker.txt', 'licenses/LICENSE-Lucide.txt', 'licenses/LICENSE-Radix.txt',
         'assets/fonts/EncodeSans-Regular.ttf', 'assets/fonts/EncodeSans-Medium.ttf', 'assets/fonts/EncodeSans-SemiBold.ttf',
         'assets/fonts/LibreFranklin-Regular.ttf', 'assets/fonts/LibreFranklin-SemiBold.ttf',
-        'assets/fonts/OFL-EncodeSans.txt', 'assets/fonts/OFL-LibreFranklin.txt')) {
+        'assets/fonts/OFL-EncodeSans.txt', 'assets/fonts/OFL-LibreFranklin.txt', 'assets/images/gaulatti-logo.svg')) {
         if ($required -notin $entries) { throw "Missing package entry: $required" }
     }
     if (@($entries | Where-Object { $_ -match '\.ttf$' }).Count -ne 5) { throw 'Package must contain each bundled font exactly once.' }

@@ -6,12 +6,19 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.UI;
 using Windows.UI.ViewManagement;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Orchard.Catalog;
 
 public sealed partial class ContrastFixture : UserControl
 {
-    public ContrastFixture() => InitializeComponent();
+    public ContrastFixture()
+    {
+        InitializeComponent();
+        var image = new WriteableBitmap(4, 1);
+        using (var pixels = image.PixelBuffer.AsStream()) pixels.Write(new byte[] { 0,0,0,255, 110,70,30,255, 55,35,15,128, 0,0,0,0 });
+        image.Invalidate(); Brand.LogoSource = image;
+    }
     internal async Task VerifyKeyboardEntryAsync(string folder, BleeckerColorScheme scheme)
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"contrast-entry-{scheme}");
@@ -105,6 +112,7 @@ public sealed partial class ContrastFixture : UserControl
             await VerifyPaintAsync(action, folder);
             await VerifyInkAsync(Heading, 8, headingInk, folder, "heading");
             await VerifyInkAsync(Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), 14, labelInk, folder, "action-label");
+            await VerifyBrandPaintAsync(input, folder);
             await input.MoveAsync(expansion);
             var chrome = Descendants<Border>(expansion).Single(item => item.Name == "PART_Chrome");
             var icon = Descendants<Microsoft.UI.Xaml.Shapes.Path>(expansion).Single(item => item.Name == "PART_Icon");
@@ -224,6 +232,42 @@ public sealed partial class ContrastFixture : UserControl
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(8)) { UpdateLayout(); await Task.Delay(32); }
         Require(condition(), message);
+    }
+    private async Task VerifyBrandPaintAsync(NativeInputSession input, string folder)
+    {
+        var image = Descendants<Image>(Brand).Single();
+        var visibleHost = Descendants<Grid>(Brand).Single(item => item.Name == "PART_Logo");
+        var origin = visibleHost.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+        var observations = new List<object>();
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        var matched = false;
+        do
+        {
+            var path = System.IO.Path.Combine(folder, "contrast-brand-window.png");
+            await NativeScreenCapture.CaptureClientAsync(input.Window, path);
+            using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+            await stream.WriteAsync((await File.ReadAllBytesAsync(path)).AsBuffer()); stream.Seek(0);
+            var decoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
+            var pixels = (await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,
+                Windows.Graphics.Imaging.BitmapAlphaMode.Straight, new Windows.Graphics.Imaging.BitmapTransform(),
+                Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
+            matched = true;
+            foreach (var (fraction, system) in new[] { (.125, 8), (.875, 5) })
+            {
+                var x = (int)Math.Round((origin.X + image.ActualWidth * fraction) * XamlRoot.RasterizationScale);
+                var y = (int)Math.Round((origin.Y + image.ActualHeight / 2) * XamlRoot.RasterizationScale);
+                Require(x >= 0 && y >= 0 && x < decoder.PixelWidth && y < decoder.PixelHeight, "Contrast brand pixel exceeds the native capture.");
+                var offset = (y * (int)decoder.PixelWidth + x) * 4;
+                var actual = Color.FromArgb(pixels[offset + 3], pixels[offset + 2], pixels[offset + 1], pixels[offset]);
+                var expected = NativeContrastSession.Color(system);
+                matched &= actual == expected;
+                observations.Add(new { milliseconds = elapsed.Elapsed.TotalMilliseconds, x, y, system, actual = ColorHex(actual), expected = ColorHex(expected), matched = actual == expected });
+            }
+            if (matched) break;
+            await Task.Delay(32);
+        } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-brand-pixels.json"), JsonSerializer.Serialize(observations));
+        Require(matched, "Contrast brand did not tint opaque pixels with WindowText while preserving transparent Window pixels.");
     }
     private async Task AwaitRecoveryTargetAsync(NativeInputSession input, string folder)
     {

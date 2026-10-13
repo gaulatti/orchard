@@ -8,4 +8,13 @@
             <Pack>false</Pack>
         </None>
     </ItemGroup>
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)../assets/images/*">
+            <Link>Orchard/Assets/Images/%(Filename)%(Extension)</Link>
+            <TargetPath>Orchard/Assets/Images/%(Filename)%(Extension)</TargetPath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <Pack>false</Pack>
+        </None>
+    </ItemGroup>
 </Project>

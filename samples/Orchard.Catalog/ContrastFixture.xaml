@@ -2,6 +2,7 @@
  <StackPanel Spacing="20" Margin="0,0,0,40">
   <TextBlock x:Name="Heading" Text="Windows contrast" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
   <TextBlock Text="Inspect Windows semantic colors using Accessibility → Contrast themes. CI verifies live transitions on its isolated desktop." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <orchard:BleeckerBrandLockup x:Name="Brand" Href="/contrast-fixture" LogoAlt="Contrast image alpha" />
   <orchard:BleeckerButton x:Name="Primary" Content="Contrast action" HorizontalAlignment="Left" />
   <orchard:BleeckerInput x:Name="Editor" Text="Fictional coverage title" AutomationProperties.Name="Coverage title" Width="320" HorizontalAlignment="Left" />
   <orchard:BleeckerBreadcrumb x:Name="Path" CollapsedAfter="1" Width="320" HorizontalAlignment="Left">

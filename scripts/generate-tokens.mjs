@@ -62,6 +62,7 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     xaml += `            <SolidColorBrush x:Key="Bleecker${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(value)}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : .1}" />\n`;
   // Pinned alert.tsx: independent portals, type borders/icons and close wash.
+  xaml += `            <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .18 : .55}" />\n`;
   const alertDark = theme === 'Default', alertContrast = theme === 'HighContrast';
   xaml += `            <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="${alertContrast ? '{ThemeResource SystemColorWindowColor}' : argb(alertDark ? colors.deepSea : '#ffffff')}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="${alertContrast ? '{ThemeResource SystemColorHighlightColor}' : alertDark ? '#FFFFFFFF' : '#FF000000'}" Opacity="${alertContrast ? 1 : alertDark ? .1 : .05}" />\n`;

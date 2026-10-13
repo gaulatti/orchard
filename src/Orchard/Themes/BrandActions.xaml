@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <Style TargetType="HyperlinkButton">
+  <Setter Property="Padding" Value="0" /><Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" />
+  <Setter Property="HorizontalContentAlignment" Value="Left" /><Setter Property="VerticalContentAlignment" Value="Center" />
+  <Setter Property="UseLayoutRounding" Value="False" /><Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="UseSystemFocusVisuals" Value="True" /><Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerRingBrush}" />
+  <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerBackgroundBrush}" />
+  <Setter Property="FocusVisualMargin" Value="-3" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="HyperlinkButton">
+   <Grid Background="Transparent"><ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" /></Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

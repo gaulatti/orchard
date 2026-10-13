@@ -21,6 +21,7 @@
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FF595959" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="#FF000000" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="#FFE6D5B8" Opacity="0.55" />
             <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="#FF000000" Opacity="0.05" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="#FF2D2D2D" />
@@ -154,6 +155,7 @@
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FFF0F4F8" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="#FFFFFFFF" Opacity="0.18" />
             <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="#FFF0F4F8" />
@@ -287,6 +289,7 @@
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />

@@ -23,7 +23,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 
 | Component contract | Windows implementation | Catalog / regression / runtime evidence | Remaining gap |
 | --- | --- | --- | --- |
-| brand-lockup | Pending | Pending | Full pinned contract |
+| brand-lockup | `BleeckerBrandLockup`, typed consumer link context and live native image effects | Registered size/name, custom RGBA/link, disabled/command and non-Latin fixtures; focused x64 initial checks | In progress: [source contract and API](brand-lockup-reference.md); rendered parity, live/lifecycle/RTL, motion/reversal, error/override, package, contrast/Narrator/scaling and ARM64 acceptance |
 | bauhaus-background | Pending | Pending | Full pinned contract |
 | activity-item | Pending | Pending | Full pinned contract |
 | attention-surface | Pending | Pending | Full pinned contract |

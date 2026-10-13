@@ -23,6 +23,8 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerBrandLockup": "BrandLockupsFixture.xaml",
+    "BleeckerBrandLinkContext": "BrandLockupsFixture.xaml",
     "BleeckerAlert": "AlertsFixture.xaml",
     "BleeckerAlertContainer": "AlertsFixture.xaml",
     "BleeckerCheckbox": "CheckboxesFixture.xaml",
