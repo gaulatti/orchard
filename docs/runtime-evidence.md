@@ -13,6 +13,16 @@ No component has full visual, input, accessibility and scaling acceptance.
 
 ## Avatar startup boundary
 
+The subsequent docs-only run `38349885199` at `54a370e` passes the ARM64
+catalog and independent consumer, but x64 fails Small disabled invalid Input's
+excluded (0,0) corner in Light with visible handle 65561 and published Arrow.
+The recurrence now spans both themes. Rounded-pointer reports additionally retain
+the active sample's one-second mismatch timeline, thread/global cursor handles,
+showing flags, system-shape handle mappings and native hit/foreground windows.
+These diagnostics distinguish a foreign cursor, a thread selection and a displayed
+cursor; acceptance still requires the actual global cursor without retries or
+fixture-driven cursor writes. No product cursor correction is claimed yet.
+
 ### Passing Avatar checkpoint
 
 Run `38344790556`, commit `2f265e355f5eb34f7b317fcc794959688463ab2b`, passes

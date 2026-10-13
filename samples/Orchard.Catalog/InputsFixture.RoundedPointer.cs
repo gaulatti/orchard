@@ -19,6 +19,7 @@ public sealed partial class InputsFixture
         string? error = null;
         BleeckerInput? activeControl = null;
         object? failedCursor = null;
+        var cursorTrace = new List<object>();
         var controls = new[] { SmallInput, MediumInput, LargeInput };
         var originals = controls.Select(control => (control.IsEnabled, control.IsError)).ToArray();
         try
@@ -49,9 +50,16 @@ public sealed partial class InputsFixture
                         // UIElement opacity is stored as a native float. Await
                         // its exact 60% destination together with the border.
                         var opacity = (double)(float).6;
-                        await AwaitAsync(() => NativeInputSession.CurrentVisibleCursor() == expected &&
-                            Hex(Find<Border>(control, "BorderElement").BorderBrush) == border &&
-                            editor.Opacity == opacity && control.FocusState == FocusState.Unfocused,
+                        cursorTrace.Clear();
+                        var dispatch = System.Diagnostics.Stopwatch.StartNew();
+                        await AwaitAsync(() =>
+                        {
+                            var visible = NativeInputSession.CurrentVisibleCursor();
+                            if (visible != expected) cursorTrace.Add(new { milliseconds = dispatch.Elapsed.TotalMilliseconds,
+                                cursor = NativeInputSession.DescribeCursor() });
+                            return visible == expected && Hex(Find<Border>(control, "BorderElement").BorderBrush) == border &&
+                                editor.Opacity == opacity && control.FocusState == FocusState.Unfocused;
+                        },
                             $"{control.InputSize}, invalid={invalid}, {corner} {local.X},{local.Y}: rounded hover/cursor mismatch.",
                             () => $"cursor={NativeInputSession.CurrentVisibleCursor()}, expected={expected}; border={Hex(Find<Border>(control, "BorderElement").BorderBrush)}, expected={border}; opacity={editor.Opacity:R}, expected={opacity:R}; focus={control.FocusState}; publisher={JsonSerializer.Serialize(DescribeRoundedCursor(control))}");
                         samples.Add(new { size = control.InputSize.ToString(), invalid, corner, point, local.Hover,
@@ -91,7 +99,7 @@ public sealed partial class InputsFixture
             }
             UpdateLayout();
             await File.WriteAllTextAsync(Path.Combine(folder, $"input-rounded-pointer-{scheme}.json"),
-                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
+                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, cursorTrace, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
     }
@@ -109,6 +117,8 @@ public sealed partial class InputsFixture
         // Publisher and tracker state explain a failure; the acceptance gate
         // still requires the actual global displayed cursor and rendered state.
         return new { control.Name, control.IsEnabled, control.IsLoaded, positioned, screen.X, screen.Y,
+            nativeCursor = NativeInputSession.DescribeCursor(),
+            nativeWindow = NativeScreenCapture.DescribePoint(window, screen.X, screen.Y),
             rootPosition = position, selectedCursor = (cursor as InputSystemCursor)?.CursorShape.ToString() ?? cursor?.GetType().Name,
             registered = tracker?.GetType().GetField("observer", flags)?.GetValue(tracker) is not null,
             implementationHover = tracker?.GetType().GetProperty("IsOver", flags)?.GetValue(tracker),

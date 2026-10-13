@@ -145,6 +145,19 @@ internal sealed class NativeInputSession : IDisposable
         return (info.Flags & 1) != 0 ? info.Cursor : IntPtr.Zero;
     }
 
+    internal static object DescribeCursor()
+    {
+        var info = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
+        Require(GetCursorInfo(ref info), "Could not inspect the global Windows cursor.");
+        var thread = GetCursor();
+        return new { global = info.Cursor.ToInt64(), info.Flags, thread = thread.ToInt64(),
+            position = new { info.Position.X, info.Position.Y },
+            systemShapes = new[] { (Name: "Arrow", Id: 32512), (Name: "IBeam", Id: 32513),
+                (Name: "Wait", Id: 32514), (Name: "UniversalNo", Id: 32648),
+                (Name: "Hand", Id: 32649), (Name: "AppStarting", Id: 32650) }
+                .Select(shape => new { shape.Name, handle = LoadCursor(IntPtr.Zero, new IntPtr(shape.Id)).ToInt64() }).ToArray() };
+    }
+
     public void Dispose()
     {
         try
@@ -181,6 +194,8 @@ internal sealed class NativeInputSession : IDisposable
         public CursorPoint Position;
     }
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool GetCursorInfo(ref CursorInformation info);
+    [DllImport("user32.dll")] private static extern IntPtr GetCursor();
+    [DllImport("user32.dll", EntryPoint = "LoadCursorW")] private static extern IntPtr LoadCursor(IntPtr instance, IntPtr name);
 
     private static void SendKeyCore(ushort key) => Send(
         [new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key } } },
