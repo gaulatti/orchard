@@ -429,3 +429,17 @@ on both native architectures. Its exact displayed-cursor and publication trace
 can therefore run independently of later overlay/lifecycle failures. A failure
 still fails the job, and the complete catalog, contrast and independent
 consumer continue with their existing gates. No assertion or timeout changed.
+
+Run `38473604856` at `c8018ba` exposes a separate focused-fixture setup issue:
+the Light live-theme check measured sand/70% (`#B3E6D5B8`), the correct hovered
+border, while requiring the resting sand/40% border. The full catalog, contrast
+and independent x64 consumer passed. The live-theme fixture now acquires the
+shared native input session and moves the real pointer to its heading before
+focusing the invalid editor and changing appearances. It retains every color,
+focus, selection and geometry assertion. `input-theme-{Light,Dark}-desktop.json`
+records ownership and the physical movement; production Input behavior is
+unchanged.
+
+The focused x64 fixture passes both appearances at
+`artifacts/smoke-input-theme-heading` with display/text scale 1 and animations
+disabled, preserving the exact palette and native cursor checks.

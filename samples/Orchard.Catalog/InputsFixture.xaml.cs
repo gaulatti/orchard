@@ -41,7 +41,7 @@ public sealed partial class InputsFixture : UserControl
         ReadOnlyInput.Focus(FocusState.Keyboard);
         VerifyDynamicGeometry();
         await VerifyDisabledErrorAsync(scheme, folder);
-        await VerifyLiveThemesAsync(scheme);
+        await VerifyLiveThemesAsync(scheme, folder);
         await VerifyMotionAsync(scheme, folder);
         await VerifyShadowLifecycleAsync();
         await VerifyTypographyAsync(scheme, folder);
@@ -55,8 +55,11 @@ public sealed partial class InputsFixture : UserControl
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
     }
 
-    private async Task VerifyLiveThemesAsync(BleeckerColorScheme scheme)
+    private async Task VerifyLiveThemesAsync(BleeckerColorScheme scheme, string folder)
     {
+        using var input = new NativeInputSession(XamlRoot, folder, $"input-theme-{scheme}");
+        await input.AcquireAsync(Heading);
+        await input.MoveAsync(Heading);
         var host = (FrameworkElement)XamlRoot.Content;
         var originalTheme = host.RequestedTheme;
         var originalText = ErrorInput.Text;
