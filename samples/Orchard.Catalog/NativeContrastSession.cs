@@ -13,24 +13,38 @@ internal sealed class NativeContrastSession : IDisposable
     }
     internal State Original { get; }
     private bool restored;
+    private readonly string stages;
 
-    internal NativeContrastSession()
+    internal NativeContrastSession(string folder)
     {
+        stages = Path.Combine(folder, "contrast-native-stages.jsonl");
         if (Environment.GetEnvironmentVariable("CI") != "true" ||
             Environment.GetEnvironmentVariable("GITHUB_ACTIONS") != "true" ||
             Environment.GetEnvironmentVariable("RUNNER_ENVIRONMENT") != "github-hosted")
             throw new InvalidOperationException("Windows contrast mutation requires an isolated GitHub-hosted CI runner.");
+        Trace("get-original-before");
         Original = Read();
+        Trace("get-original-after");
         if (Original.Enabled || (Original.Flags & 2) == 0)
             throw new InvalidOperationException("Contrast transition verification requires contrast available and initially disabled.");
+        for (var index = 0; index < 32; index++)
+            if (Read() != Original) throw new InvalidOperationException("Windows contrast state changed during the repeated-getter regression.");
+        Trace("repeated-getter-verified");
     }
 
-    internal void Enable() => Write(Original with { Flags = Original.Flags | 1 });
+    internal void Enable()
+    {
+        Trace("enable-before");
+        Write(Original with { Flags = Original.Flags | 1 });
+        Trace("enable-after");
+    }
     internal void Restore()
     {
         if (restored) return;
+        Trace("restore-before");
         Write(Original);
         restored = true;
+        Trace("restore-after");
     }
     public void Dispose() => Restore();
 
@@ -38,8 +52,10 @@ internal sealed class NativeContrastSession : IDisposable
     {
         var value = new HighContrast { Size = (uint)Marshal.SizeOf<HighContrast>() };
         if (!SystemParametersInfo(0x42, value.Size, ref value, 0)) throw new Win32Exception(Marshal.GetLastWin32Error());
-        try { return new State(value.Flags, value.Scheme == IntPtr.Zero ? null : Marshal.PtrToStringUni(value.Scheme)); }
-        finally { if (value.Scheme != IntPtr.Zero) LocalFree(value.Scheme); }
+        // SPI_GETHIGHCONTRASTW returns a reused system buffer on the tested
+        // Windows builds. Copy it immediately; freeing it corrupts user32's
+        // retained allocation on the next query/theme operation.
+        return new State(value.Flags, value.Scheme == IntPtr.Zero ? null : Marshal.PtrToStringUni(value.Scheme));
     }
     private static void Write(State state)
     {
@@ -60,6 +76,7 @@ internal sealed class NativeContrastSession : IDisposable
     [StructLayout(LayoutKind.Sequential)] private struct HighContrast { public uint Size, Flags; public IntPtr Scheme; }
     [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SystemParametersInfo(uint action, uint size, ref HighContrast value, uint flags);
-    [DllImport("kernel32.dll")] private static extern IntPtr LocalFree(IntPtr value);
+    private void Trace(string phase) => File.AppendAllText(stages,
+        System.Text.Json.JsonSerializer.Serialize(new { phase }) + Environment.NewLine);
     [DllImport("user32.dll")] private static extern uint GetSysColor(int index);
 }

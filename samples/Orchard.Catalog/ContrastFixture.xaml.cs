@@ -14,7 +14,7 @@ public sealed partial class ContrastFixture : UserControl
     public ContrastFixture() => InitializeComponent();
     internal async Task VerifyAsync(Grid root, string folder)
     {
-        using var contrast = new NativeContrastSession();
+        using var contrast = new NativeContrastSession(folder);
         using var input = new NativeInputSession(XamlRoot, folder, "contrast");
         await input.AcquireAsync(Heading);
         await input.MoveAsync(Heading);

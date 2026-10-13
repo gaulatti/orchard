@@ -1,5 +1,18 @@
 # Windows contrast verification
 
+The initial x64 phase at `4901392`, run `38422767730`, terminates with native
+heap corruption (`0xC0000374`) before a managed report or page capture. Its
+archive `11828535874` has verified SHA-256
+`b88d3e10f2d39a1b8884412cf5f1eb23b6107b0ac0ba658f17e0d3d48a270399`.
+Read-only local probes show two `SPI_GETHIGHCONTRASTW` calls returning the same
+scheme pointer. The helper now copies that reused system buffer without freeing
+it; setter input remains a separately allocated/freed caller buffer. The native
+entry point repeats the read 32 times before enabling the mode and requires the
+same flags/scheme, covering the original repeated-getter corruption boundary. Native
+checkpoints before/after the initial read, enable and restore are retained in
+`contrast-native-stages.jsonl`. The corrected transition still needs native
+verification; no contrast acceptance is claimed from the failed process.
+
 The registered **Windows contrast** catalog page combines a primary action,
 editable input, collapsed breadcrumb and contextual-help popup. Its automated
 entry point is `scripts/smoke-catalog.ps1 -Component contrast`; both native CI
