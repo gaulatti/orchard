@@ -1,6 +1,6 @@
 <UserControl x:Class="Orchard.Catalog.BreadcrumbsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
  <UserControl.Resources>
-  <DataTemplate x:Key="CustomLink"><Button Content="{Binding Label}" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></DataTemplate>
+  <DataTemplate x:Key="CustomLink"><Button x:Name="ConsumerLink" Content="{Binding Label}" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></DataTemplate>
   <DataTemplate x:Key="CustomSeparator"><TextBlock Text="/" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" /></DataTemplate>
  </UserControl.Resources>
  <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">

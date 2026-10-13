@@ -5,6 +5,7 @@
     Title="Orchard package consumer">
     <Grid x:Name="Root" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <Grid.Resources>
+            <DataTemplate x:Key="ConsumerBreadcrumbLink"><Button Content="{Binding Label}" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></DataTemplate>
             <Style x:Key="ConsumerCardStyle" TargetType="orchard:BleeckerCard">
                 <Setter Property="CornerRadius" Value="20,8,4,16" />
             </Style>

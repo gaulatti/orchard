@@ -143,6 +143,54 @@ public sealed partial class BreadcrumbsFixture : UserControl
             await AwaitAsync(() => Children(interaction).OfType<HyperlinkButton>().Skip(1).First().FocusState == FocusState.Keyboard, "Expansion did not restore keyboard focus to the revealed path.");
         }
         finally { Rows.Children.Remove(interaction); }
+        var customInteraction = new BleeckerBreadcrumb { Items = DefaultPath.Items, CollapsedAfter = 1, Width = 320,
+            HorizontalAlignment = HorizontalAlignment.Left, LinkTemplate = Custom.LinkTemplate, SeparatorTemplate = Custom.SeparatorTemplate };
+        Rows.Children.Add(customInteraction);
+        try
+        {
+            await AwaitAsync(() => customInteraction.IsLoaded, "Custom interaction path did not mount.");
+            customInteraction.ApplyTemplate(); UpdateLayout();
+            var customExpand = Children(customInteraction).OfType<Button>().Single();
+            await input.MoveAsync(customExpand);
+            Require(customExpand.Focus(FocusState.Keyboard), "Custom path expansion refused keyboard focus.");
+            input.Key(0x0D);
+            await AwaitAsync(() => Children(customInteraction).Count == 9, "Custom renderer path did not expand.");
+            var customHosts = Children(customInteraction).OfType<ContentPresenter>().ToArray();
+            var revealed = Find<Button>(customHosts[1], "ConsumerLink");
+            await AwaitAsync(() => revealed.FocusState == FocusState.Keyboard, "Expansion did not restore focus into the consumer link template.");
+            Require(ReferenceEquals(customHosts[1].Content, DefaultPath.Items[1]), "Custom focus restoration replaced the consumer item.");
+            input.Key(0x09);
+            await AwaitAsync(() => Find<Button>(customHosts[2], "ConsumerLink").FocusState == FocusState.Keyboard,
+                "Tab did not continue through the custom revealed path.");
+            await MainWindow.CaptureElementAsync(customInteraction, Path.Combine(folder, $"breadcrumb-custom-focus-{scheme}.png"));
+            await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"breadcrumb-custom-focus-window-{scheme}.png"));
+        }
+        finally { Rows.Children.Remove(customInteraction); }
+        var unavailableItems = new ObservableCollection<BleeckerBreadcrumbItem>(DefaultPath.Items.Select(item =>
+            new BleeckerBreadcrumbItem { Label = item.Label, Href = item.Href, External = item.External }));
+        unavailableItems[1].Command = new FixtureCommand(_ => throw new InvalidOperationException("Unavailable link was invoked."), false);
+        foreach (var useCustom in new[] { false, true })
+        {
+            var disabledPath = new BleeckerBreadcrumb { Items = unavailableItems, CollapsedAfter = 1, Width = 320,
+                HorizontalAlignment = HorizontalAlignment.Left, LinkTemplate = useCustom ? Custom.LinkTemplate : null };
+            Rows.Children.Add(disabledPath);
+            try
+            {
+                await AwaitAsync(() => disabledPath.IsLoaded, "Unavailable-link path did not mount.");
+                disabledPath.ApplyTemplate(); UpdateLayout();
+                var expansion = Children(disabledPath).OfType<Button>().Single();
+                await input.MoveAsync(expansion);
+                Require(expansion.Focus(FocusState.Keyboard), "Unavailable-link expansion refused keyboard focus.");
+                input.Key(0x0D);
+                await AwaitAsync(() => Children(disabledPath).Count == 9, "Unavailable-link path did not expand.");
+                var links = useCustom
+                    ? Children(disabledPath).OfType<ContentPresenter>().Select(host => (Control)Find<Button>(host, "ConsumerLink")).ToArray()
+                    : Children(disabledPath).OfType<HyperlinkButton>().Cast<Control>().ToArray();
+                Require(!links[1].IsEnabled, "Consumer CanExecute(false) did not disable the first revealed link.");
+                await AwaitAsync(() => links[2].FocusState == FocusState.Keyboard, "Keyboard restoration did not skip an unavailable revealed link.");
+            }
+            finally { Rows.Children.Remove(disabledPath); }
+        }
         var persistentExpand = Children(Collapsed).OfType<Button>().SingleOrDefault();
         if (persistentExpand is not null)
         {
@@ -200,10 +248,10 @@ public sealed partial class BreadcrumbsFixture : UserControl
         Require(condition(), $"{message} {details?.Invoke()}");
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
-    private sealed class FixtureCommand(Action<object?> execute) : ICommand
+    private sealed class FixtureCommand(Action<object?> execute, bool canExecute = true) : ICommand
     {
         public event EventHandler? CanExecuteChanged { add { } remove { } }
-        public bool CanExecute(object? parameter) => true;
+        public bool CanExecute(object? parameter) => canExecute;
         public void Execute(object? parameter) => execute(parameter);
     }
 }

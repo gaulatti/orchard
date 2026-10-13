@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Input;
 using Windows.Foundation;
 
 namespace Orchard;
@@ -33,8 +34,19 @@ public sealed class BleeckerBreadcrumb : Control
         {
             var restoreFocus = expand.FocusState == FocusState.Keyboard;
             expanded = true; Render();
-            if (restoreFocus) DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,
-                () => entries.Select(entry => entry.Element).OfType<HyperlinkButton>().Skip(1).FirstOrDefault()?.Focus(FocusState.Keyboard));
+            if (restoreFocus) DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, async () =>
+            {
+                if (!IsLoaded) return;
+                UpdateLayout();
+                foreach (var entry in entries.Skip(1).Where(entry => !entry.Current))
+                {
+                    var target = entry.Element is Control { IsEnabled: true, IsTabStop: true, Visibility: Visibility.Visible } control
+                        ? control : FocusManager.FindFirstFocusableElement(entry.Element);
+                    if (target is null) continue;
+                    await FocusManager.TryFocusAsync(target, FocusState.Keyboard);
+                    break;
+                }
+            });
         };
         AutomationProperties.SetName(expand, "Show full path");
         BleeckerBreadcrumbMotion.Attach(expand);

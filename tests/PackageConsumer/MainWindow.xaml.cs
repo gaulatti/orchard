@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -156,6 +157,7 @@ public sealed partial class MainWindow : Window
                     breadcrumbPanel.Children.OfType<HyperlinkButton>().Single().FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
                     ((TextBlock)breadcrumbPanel.Children.Last()).Text == "Harbor",
                     "Packaged Breadcrumb lost its independent templates, font or consumer path.");
+                await VerifyCustomBreadcrumbFocusAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -218,6 +220,35 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private async Task VerifyCustomBreadcrumbFocusAsync()
+    {
+        var path = new BleeckerBreadcrumb { Items = PackageBreadcrumb.Items, CollapsedAfter = 1, Width = 320,
+            HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center,
+            LinkTemplate = (DataTemplate)Root.Resources["ConsumerBreadcrumbLink"] };
+        Root.Children.Add(path);
+        try
+        {
+            await Task.Delay(100); path.ApplyTemplate(); Root.UpdateLayout();
+            var panel = ((Grid)VisualTreeHelper.GetChild(path, 0)).Children.OfType<Panel>().Single();
+            var expansion = panel.Children.OfType<Button>().Single();
+            Require(expansion.Focus(FocusState.Keyboard), "Packaged custom path expansion refused focus.");
+            ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(expansion).GetPattern(PatternInterface.Invoke)).Invoke();
+            var elapsed = System.Diagnostics.Stopwatch.StartNew();
+            while (panel.Children.Count != 7 && elapsed.Elapsed < TimeSpan.FromSeconds(2)) await Task.Delay(16);
+            Require(panel.Children.Count == 7, "Packaged custom path did not expand.");
+            var host = panel.Children.OfType<ContentPresenter>().Skip(1).First();
+            while (FocusManager.GetFocusedElement(Root.XamlRoot) is not Button { FocusState: FocusState.Keyboard, DataContext: BleeckerBreadcrumbItem item } ||
+                !ReferenceEquals(item, PackageBreadcrumb.Items[1]))
+            {
+                Require(elapsed.Elapsed < TimeSpan.FromSeconds(2), "Packaged custom renderer did not receive keyboard focus.");
+                Root.UpdateLayout(); await Task.Delay(16);
+            }
+            Require(ReferenceEquals(host.Content, PackageBreadcrumb.Items[1]),
+                "Packaged custom renderer did not receive restored focus with its original consumer item.");
+        }
+        finally { Root.Children.Remove(path); }
     }
 
     private static bool HasReferenceSpinner(DependencyObject owner)

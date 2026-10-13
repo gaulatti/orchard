@@ -66,9 +66,27 @@ Contrast-mode ellipsis hover pairs Windows Highlight with HighlightText, and
 system color changes repaint its live palette. Manual contrast-theme acceptance
 is still pending.
 Default links and the expansion button use the existing branded Windows focus
-ring. Keyboard expansion restores focus to the first revealed default link; this
-keeps Windows keyboard navigation within the newly exposed path. Complete focus
-visual comparison and custom-template focus restoration remain open checks.
+ring. Keyboard expansion restores focus to the first focusable revealed link,
+including a consumer link template's native focusable descendant. Disabled or
+non-focusable renderers do not receive focus, and the current-page text is not a
+target. Native [focus discovery](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.focusmanager.findfirstfocusableelement?view=windows-app-sdk-2.0)
+preserves the consumer's tab order and focusability. The custom renderer fixture
+expands with real Enter, verifies the original item/focused Button and continues
+with real Tab to the next revealed consumer link. Full focus visual, Narrator and
+scaling acceptance remains open; these new checks require fresh native runs.
+Both default and custom renderer regressions also disable the first revealed
+item through consumer `CanExecute(false)` and require focus on the next available
+link. No command is invoked merely to restore focus.
+
+Local x64 checks pass in both themes under
+`artifacts/smoke-breadcrumb-custom-disabled`; the composed Dark capture shows
+the consumer's visible focus ring. The complete ordinary catalog passes at
+`artifacts/smoke-focus-contrast-all`. The independent NuGet consumer also passes
+both themes and custom-template restoration, using package SHA-256
+`4a7f261e03a1e0675123ff646ee97885798ccb73bda1813269f038f498c9ce0f`, with evidence
+at `artifacts/package-consumer-custom-focus-ready`. Both architecture builds have
+zero warnings and all 26 unit tests pass. Fresh ARM64 runtime acceptance remains
+required for this change.
 
 ```xml
 <orchard:BleeckerBreadcrumb CollapsedAfter="2">
