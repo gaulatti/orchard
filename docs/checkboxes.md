@@ -375,14 +375,16 @@ is required; earlier thread-only cursor assertions do not prove visible parity.
 At `1113935`, the x64 Light run passes visible global cursor checks for disabled
 off/on box, all rounded boundary samples, label/description exit and stationary
 enable/disable. Its next template-removal layout exposes a missing PART_Box
-exception. Template application now also respects an explicit local null when
-WinUI exposes a style template during removal; a supplied non-null template
-still must provide every required part. The fixture holds the removed row's
-width/height while awaiting the visible Arrow, so another disabled row cannot
-move under the pointer and legitimately select UniversalNo. It also rejects
-synthesized native chrome in that explicit no-template state, then restores
-geometry/template and verifies hover with the stationary pointer. The verified
-x64 archive `11780458372` has SHA-256
+exception. The new cursor fixture waited through layout with a null template,
+contrary to the documented ContentControl lifecycle above. At `019f28c`, a
+local-null guard does not prevent native default-content creation and the same
+layout fails. That ineffective guard has been removed. The physical fixture
+now checks immediate detachment, visible Arrow and absence of default visuals,
+then restores the valid template before layout and verifies stationary hover.
+Collapsed/Visible and unload/reload phases continue to exercise normal layout.
+The verified `019f28c` x64 archive `11781885568` has SHA-256
+`adb0862bd31fc9da759cfc7b00c1c84c5080d1c653e900fc1bbbfabb47b5a0bb`.
+The earlier x64 archive `11780458372` has SHA-256
 `31bf5c107dfdd0502c7b56cc5d9f609339bd07e060053df2307807f30003b85c`.
 
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog

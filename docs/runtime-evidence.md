@@ -33,8 +33,14 @@ enable/disable. The run then fails on template removal during layout. Its
 verified archive `11780458372` has SHA-256
 `31bf5c107dfdd0502c7b56cc5d9f609339bd07e060053df2307807f30003b85c`.
 This proves those Light transitions, not the remaining lifecycle/themes or a
-complete native runtime baseline. The explicit local-null template correction
-requires a further native run.
+complete native runtime baseline. At `019f28c`, both architectures still fail
+the fixture's unsupported null-template layout. Its verified x64 archive
+`11781885568` has SHA-256
+`adb0862bd31fc9da759cfc7b00c1c84c5080d1c653e900fc1bbbfabb47b5a0bb`.
+The ineffective local-null guard is removed; the fixture now verifies immediate
+visible-cursor release and restores the branded template before normal layout,
+as required by the existing ContentControl contract. A further native run is
+required.
 
 At `9c5699b`, native ARM64 passes all 57 Checkbox disabled-pointer phases in
 Light and Dark, then loses foreground to a background WSL console before its
