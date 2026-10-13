@@ -90,5 +90,7 @@
             </StackPanel>
             </orchard:BleeckerCard>
         </NavigationView>
+        <orchard:BleeckerAlert x:Name="PackageAlert" Message="Independent fictional notice" Type="Success" Duration="0" IsOpen="False" />
+        <orchard:BleeckerAlertContainer x:Name="PackageAlertHost" />
     </Grid>
 </Window>

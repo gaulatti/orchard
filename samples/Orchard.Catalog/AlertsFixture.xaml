@@ -1,0 +1,15 @@
+<UserControl x:Class="Orchard.Catalog.AlertsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Alerts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Transient notifications use a window-owned overlay. Messages, duration and close callbacks belong to the consumer." Style="{StaticResource BleeckerBodyStyle}" />
+  <TextBox x:Name="MessageBox" Text="Fictional coverage note saved." AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="600" HorizontalAlignment="Left" MinHeight="80" Style="{StaticResource BleeckerTextBoxStyle}" AutomationProperties.Name="Alert message" />
+  <StackPanel Orientation="Horizontal" Spacing="12"><TextBlock Text="Duration in milliseconds; zero keeps the alert open" Style="{StaticResource BleeckerBodyStyle}" VerticalAlignment="Center" /><orchard:BleeckerInput x:Name="DurationBox" Width="100" Text="0" AutomationProperties.Name="Alert duration" /></StackPanel>
+  <StackPanel Orientation="Horizontal" Spacing="8">
+   <orchard:BleeckerButton Content="Success" Tag="Success" Click="ShowAlert" /><orchard:BleeckerButton Content="Error" Tag="Error" Click="ShowAlert" /><orchard:BleeckerButton Content="Warning" Tag="Warning" Click="ShowAlert" /><orchard:BleeckerButton Content="Info" Tag="Info" Click="ShowAlert" />
+  </StackPanel>
+  <StackPanel Orientation="Horizontal" Spacing="8"><orchard:BleeckerButton Content="Publish shared info" Click="PublishInfo" Variant="Secondary" /><orchard:BleeckerButton Content="Publish shared warning" Click="PublishWarning" Variant="Secondary" /><orchard:BleeckerButton Content="Close standalone alert" Click="CloseStandalone" Variant="Ghost" /></StackPanel>
+  <TextBlock x:Name="Outcome" Text="No alert opened." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerAlert x:Name="Specimen" IsOpen="False" />
+  <orchard:BleeckerAlertContainer x:Name="Host" />
+ </StackPanel>
+</UserControl>

@@ -23,6 +23,8 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerAlert": "AlertsFixture.xaml",
+    "BleeckerAlertContainer": "AlertsFixture.xaml",
     "BleeckerCheckbox": "CheckboxesFixture.xaml",
     "BleeckerSwitch": "SwitchesFixture.xaml",
     "BleeckerProgress": "ProgressFixture.xaml",

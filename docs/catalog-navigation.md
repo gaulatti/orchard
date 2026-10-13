@@ -20,6 +20,10 @@ parity gaps still apply.
 Breadcrumb is registered after Avatars, with source threshold boundaries,
 independent wrapping, custom content, keyboard expansion and consumer updates.
 
+Alerts is registered after Notifications. It exercises standalone and shared
+window-owned notifications, four types, duration/message controls and close
+callbacks. Navigating away unloads its owned popups and subscriptions.
+
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise
 search, native button activation, no-result messaging, clearing search, retained

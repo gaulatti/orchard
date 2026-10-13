@@ -8,6 +8,11 @@ This is an unfinished foundation, not accepted DropdownMenu parity. The pinned B
 
 The presenter uses `BleeckerOverlaySurface`, a consumer-content surface with the canonical two-layer overlay shadow: `(0,24,64,-20)` at .28 opacity and `(0,4,14,0)` at .06, both RGB `(26,55,77)`. These values are generated from the pinned tokens. It uses the shared rounded-mask geometry also used by cards, updates on resizing/corner changes, clears composition visuals on unload, and suppresses the shadow in Windows contrast mode. Its default font is Encode Sans Regular, and it is not a keyboard stop.
 
+The surface background fills the rounded border box beneath its outline. This
+matches CSS background clipping and prevents the overlay shadow from tinting a
+translucent border differently on its upper and lower edges. Content padding,
+border geometry, shadow layers and native input remain unchanged.
+
 `BleeckerDropdownMenu` defaults to `ShouldConstrainToRootBounds=true`, keeping menus within the application viewport like the browser reference. This also lets the custom blur render beyond the menu edge; a separate native popup window can clip it. A desktop light-theme capture is retained at `artifacts/menu-shadow-root-light.jpg`. Consumers that opt back into windowed popup behavior must verify clipping for their host. Exact blur rasterization, edge placement, transparent consumer backgrounds and live contrast switching remain unaccepted.
 
 The item styles enable `BleeckerMenuFocus.IsEnabled`, which forwards native keyboard focus to the template's `Focused`/`Unfocused` states. WinUI menu items do not drive these states automatically. The focused row uses the same Bleecker tint as hover, without adding the default Windows outline. Disabling the attached behavior detaches its event handlers and clears that template state.

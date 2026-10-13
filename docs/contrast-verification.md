@@ -1,5 +1,20 @@
 # Windows contrast verification
 
+Checkpoint `b6ca38d`, run `38434880055`, passes all three required jobs, including
+both complete ordinary native catalogs, both live contrast transitions and both
+independent package consumers. The x64 archive `11832577609` has verified SHA-256
+`7423ec09fd1fd82b3db47106f42daae4f16c8bf96647fa66daec16197bbc0580`, with selected
+contrast evidence at `artifacts/ci-contrast-b6ca38d-x64`. Its real system cover
+deactivates the window, normal dismissal occurs, and guarded keyboard re-entry
+passes after the cover releases the owned target. All 154 established action
+ink pixels use Windows HighlightText, and the painted background equals Highlight.
+ARM64 runtime archive `11833011887` has published digest
+`4afe18d8d9f2a83cd40a00ba3093c96d72e9decb3ed7960e88c116ac444c18f0`.
+
+This accepts the representative transition regression. All four contrast
+schemes, all components/states, scaling and Narrator remain open; this is not
+complete library accessibility acceptance.
+
 Run `38433098660` at `868fff5` passes the full registered catalog and independent
 consumers on both architectures. The ARM64 contrast phase also passes actual
 mode switching, exact action/heading paint, open popup keyboard focus,

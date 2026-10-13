@@ -158,6 +158,7 @@ public sealed partial class MainWindow : Window
                     ((TextBlock)breadcrumbPanel.Children.Last()).Text == "Harbor",
                     "Packaged Breadcrumb lost its independent templates, font or consumer path.");
                 await VerifyCustomBreadcrumbFocusAsync();
+                await VerifyAlertAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -249,6 +250,57 @@ public sealed partial class MainWindow : Window
                 "Packaged custom renderer did not receive restored focus with its original consumer item.");
         }
         finally { Root.Children.Remove(path); }
+    }
+
+    private async Task VerifyAlertAsync()
+    {
+        var closed = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        void OnClosed(object? sender, EventArgs args) => closed.TrySetResult();
+        PackageAlert.Closed += OnClosed;
+        try
+        {
+            PackageAlert.IsOpen = true;
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            while (!Presented(PackageAlert))
+            {
+                Require(watch.Elapsed < TimeSpan.FromSeconds(3), "Packaged alert did not present its native overlay.");
+                Root.UpdateLayout(); await Task.Delay(16);
+            }
+            var template = (FrameworkElement)VisualTreeHelper.GetChild(PackageAlert, 0);
+            var surface = (BleeckerOverlaySurface)template.FindName("PART_Surface");
+            var text = (TextBlock)template.FindName("PART_Message");
+            var close = (Button)template.FindName("PART_Close");
+            Require(surface.ActualWidth == Math.Min(448, Root.XamlRoot.Size.Width - 32) && text.Text == PackageAlert.Message &&
+                text.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && new ButtonAutomationPeer(close).GetName() == "Close alert",
+                "Packaged alert lost its resources, geometry, font or accessible close action.");
+            ((IInvokeProvider)new ButtonAutomationPeer(close).GetPattern(PatternInterface.Invoke)).Invoke();
+            await closed.Task.WaitAsync(TimeSpan.FromSeconds(3));
+            Require(!((Microsoft.UI.Xaml.Controls.Primitives.Popup)template.FindName("PART_Popup")).IsOpen, "Packaged close callback left its native popup open.");
+            BleeckerAlertContainer.ShowAlert(Root.XamlRoot, "Independent shared fictional notice", BleeckerAlertType.Warning);
+            watch.Restart();
+            while (PackageAlertHost.Children.Count != 1 || !Presented((BleeckerAlert)PackageAlertHost.Children[0]))
+            {
+                Require(watch.Elapsed < TimeSpan.FromSeconds(3), "Packaged shared alert did not reach its native popup.");
+                Root.UpdateLayout(); await Task.Delay(16);
+            }
+            var shared = (BleeckerAlert)PackageAlertHost.Children[0];
+            Require(shared.Message == "Independent shared fictional notice" && shared.Type == BleeckerAlertType.Warning, "Packaged shared stream changed consumer data.");
+            shared.Close(); watch.Restart();
+            while (PackageAlertHost.Children.Count != 0)
+            {
+                Require(watch.Elapsed < TimeSpan.FromSeconds(3), "Packaged shared close did not remove its message.");
+                await Task.Delay(16);
+            }
+        }
+        finally { PackageAlert.Closed -= OnClosed; PackageAlert.Close(); }
+
+        static bool Presented(BleeckerAlert alert)
+        {
+            if (!alert.IsLoaded || VisualTreeHelper.GetChildrenCount(alert) == 0) return false;
+            var template = (FrameworkElement)VisualTreeHelper.GetChild(alert, 0);
+            return template.FindName("PART_Popup") is Microsoft.UI.Xaml.Controls.Primitives.Popup { IsOpen: true } &&
+                template.FindName("PART_MotionRoot") is FrameworkElement { Opacity: 1 };
+        }
     }
 
     private static bool HasReferenceSpinner(DependencyObject owner)

@@ -1,5 +1,19 @@
 # Native Windows runtime evidence
 
+## Live Windows contrast checkpoint
+
+Run [38434880055](https://github.com/gaulatti/orchard/actions/runs/38434880055)
+at `b6ca38d` passes all three required jobs, both ordinary native catalogs and
+both independent package consumers. Real contrast switching/restoration passes
+on x64 and ARM64. Rendered primary-action background and all 154 established
+label ink pixels match Windows Highlight/HighlightText. The x64 system transition
+cover causes ordinary window deactivation; the fixture waits for its owned
+target to be released, then verifies real keyboard re-entry into the same help
+control. See [contrast evidence and limits](contrast-verification.md).
+
+This is a representative live transition regression. Full four-scheme contrast,
+every component/state, Narrator and scaling remain unaccepted.
+
 ## Breadcrumb press and lifecycle checkpoint
 
 Run [38414003860](https://github.com/gaulatti/orchard/actions/runs/38414003860)

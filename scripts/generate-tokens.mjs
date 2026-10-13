@@ -61,6 +61,19 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
   for (const [name, value, system] of [['AvatarBackground', theme === 'Default' ? colors.deepSea : colors.lightSand, 'SystemColorWindowColor'], ['AvatarForeground', theme === 'Default' ? colors.textPrimary : colors.textSecondary, 'SystemColorWindowTextColor'], ['AvatarGroupRing', theme === 'Default' ? colors.deepSea : '#ffffff', 'SystemColorWindowTextColor']])
     xaml += `            <SolidColorBrush x:Key="Bleecker${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(value)}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : .1}" />\n`;
+  // Pinned alert.tsx: independent portals, type borders/icons and close wash.
+  const alertDark = theme === 'Default', alertContrast = theme === 'HighContrast';
+  xaml += `            <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="${alertContrast ? '{ThemeResource SystemColorWindowColor}' : argb(alertDark ? colors.deepSea : '#ffffff')}" />\n`;
+  xaml += `            <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="${alertContrast ? '{ThemeResource SystemColorHighlightColor}' : alertDark ? '#FFFFFFFF' : '#FF000000'}" Opacity="${alertContrast ? 1 : alertDark ? .1 : .05}" />\n`;
+  xaml += `            <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="${alertContrast ? '{ThemeResource SystemColorHighlightTextColor}' : argb(colors.textPrimary)}" />\n`;
+  for (const [name, border, opacity, icon] of [
+    ['Success', alertDark ? 'accentBlue' : 'sea', .25, alertDark ? 'accentBlue' : 'sea'],
+    ['Error', 'terracotta', alertDark ? .3 : .25, 'terracotta'],
+    ['Warning', 'sunset', alertDark ? .2 : .3, alertDark ? 'accentGold' : 'sunset'],
+    ['Info', 'desert', .25, alertDark ? 'accentGold' : 'desert']]) {
+    xaml += `            <SolidColorBrush x:Key="BleeckerAlert${name}BorderBrush" Color="${alertContrast ? '{ThemeResource SystemColorWindowTextColor}' : argb(colors[border])}" Opacity="${alertContrast ? 1 : opacity}" />\n`;
+    xaml += `            <SolidColorBrush x:Key="BleeckerAlert${name}IconBrush" Color="${alertContrast ? '{ThemeResource SystemColorWindowTextColor}' : argb(colors[icon])}" />\n`;
+  }
   for (const [key, value] of Object.entries(colors)) {
     const color = theme === 'HighContrast' ? `{ThemeResource ${highContrastColor(key)}}` : argb(value);
     xaml += `            <SolidColorBrush x:Key="Bleecker${pascal(key)}Brush" Color="${color}" />\n`;

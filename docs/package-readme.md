@@ -3,7 +3,7 @@
 Native Windows components and Bleecker theme resources for C# / WinUI 3.
 The current 0.1.0 foundation provides typography, light/dark/contrast palettes,
 button and icon-button components, connected button groups, toggle styles and
-groups, loading spinners, cards and initial input styles. Full component parity is in progress.
+groups, loading spinners, cards, transient alerts and initial input styles. Full component parity is in progress.
 
 Target .NET 10 and Windows SDK 10.0.26100.0. Use Windows App SDK 2.5.1.
 Add the package from the directory containing the downloaded `.nupkg` or your
@@ -32,6 +32,8 @@ Bleecker token attribution is included in `licenses/LICENSE-Bleecker.txt`.
 Custom actions use the `using:Orchard` XAML namespace. `BleeckerButton` supports
 variants, sizes, commands and loading. `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
+`BleeckerAlert` provides typed window-owned messages, duration and close callbacks;
+`BleeckerAlertContainer.ShowAlert` publishes to containers in an explicit XAML root.
 `BleeckerButtonGroup` connects native or Orchard buttons. See the repository's
 [component documentation](https://github.com/gaulatti/orchard/blob/main/docs/parity.md)
 for examples and the acceptance status of each component.

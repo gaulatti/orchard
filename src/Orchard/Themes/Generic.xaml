@@ -12,6 +12,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Skeleton.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Avatar.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Alert.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -382,7 +383,11 @@
             <Grid>
                 <Canvas IsHitTestVisible="False"><Path x:Name="PART_NearMask" Fill="{TemplateBinding Background}" /><Path x:Name="PART_FarMask" Fill="{TemplateBinding Background}" /></Canvas>
                 <Grid x:Name="PART_ShadowHost" IsHitTestVisible="False" />
-                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                <!-- CSS paints the surface through its border box. A WinUI
+                     Border paints its background inside the border, allowing
+                     shadow to tint a translucent outline without this layer. -->
+                <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" AutomationProperties.AccessibilityView="Raw" />
+                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
                     <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                 </Border>
             </Grid>

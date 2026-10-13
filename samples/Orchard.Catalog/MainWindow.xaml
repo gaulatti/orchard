@@ -83,6 +83,7 @@
                 <local:StatusBadgesFixture x:Name="StatusBadges" />
                 <local:MenusFixture x:Name="Menus" />
                 <local:NotificationsFixture x:Name="Notifications" />
+                <local:AlertsFixture x:Name="Alerts" />
                 <local:TooltipsFixture x:Name="Tooltips" />
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />

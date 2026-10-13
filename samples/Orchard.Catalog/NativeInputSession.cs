@@ -51,6 +51,15 @@ internal sealed class NativeInputSession : IDisposable
         SendKeyCore(key);
     }
 
+    internal void ShiftKey(ushort key)
+    {
+        Require(OwnsForeground, "Shift keyboard input lost the catalog foreground window.");
+        Send([new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = 0x10 } } },
+            new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key } } },
+            new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = key, Flags = 2 } } },
+            new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = 0x10, Flags = 2 } } }]);
+    }
+
     internal async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
     {
         await MoveAsync(target, requireForeground);

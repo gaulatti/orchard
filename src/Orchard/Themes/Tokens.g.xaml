@@ -21,6 +21,17 @@
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FF595959" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="#FF000000" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="#FF000000" Opacity="0.05" />
+            <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="#FF2D2D2D" />
+            <SolidColorBrush x:Key="BleeckerAlertSuccessBorderBrush" Color="#FF2C5784" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerAlertSuccessIconBrush" Color="#FF2C5784" />
+            <SolidColorBrush x:Key="BleeckerAlertErrorBorderBrush" Color="#FFA65D57" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerAlertErrorIconBrush" Color="#FFA65D57" />
+            <SolidColorBrush x:Key="BleeckerAlertWarningBorderBrush" Color="#FFFF9677" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerAlertWarningIconBrush" Color="#FFFF9677" />
+            <SolidColorBrush x:Key="BleeckerAlertInfoBorderBrush" Color="#FFC1814D" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerAlertInfoIconBrush" Color="#FFC1814D" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF1A374D" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -143,6 +154,17 @@
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="#FFF0F4F8" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="#FF182533" />
+            <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="#FFF0F4F8" />
+            <SolidColorBrush x:Key="BleeckerAlertSuccessBorderBrush" Color="#FF5BA3F5" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerAlertSuccessIconBrush" Color="#FF5BA3F5" />
+            <SolidColorBrush x:Key="BleeckerAlertErrorBorderBrush" Color="#FFD47B75" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerAlertErrorIconBrush" Color="#FFD47B75" />
+            <SolidColorBrush x:Key="BleeckerAlertWarningBorderBrush" Color="#FFFF9677" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerAlertWarningIconBrush" Color="#FFD4AF37" />
+            <SolidColorBrush x:Key="BleeckerAlertInfoBorderBrush" Color="#FFE0AC69" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerAlertInfoIconBrush" Color="#FFD4AF37" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="#FF694F5D" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="#FF76323F" />
@@ -265,6 +287,17 @@
             <SolidColorBrush x:Key="BleeckerAvatarForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarGroupRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAvatarRingBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
+            <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAlertCloseHoverTextBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAlertSuccessBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAlertSuccessIconBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAlertErrorBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAlertErrorIconBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAlertWarningBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAlertWarningIconBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAlertInfoBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAlertInfoIconBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerDuskBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerDeepSeaBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="BleeckerAccentOxbloodBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
