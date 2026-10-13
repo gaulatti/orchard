@@ -38,14 +38,18 @@ public sealed partial class InputsFixture
                         var border = local.Hover ? scheme == BleeckerColorScheme.Dark ? "#40FFFFFF" : "#B3E6D5B8"
                             : invalid ? scheme == BleeckerColorScheme.Dark ? "#FFD47B75" : "#FFA65D57"
                             : scheme == BleeckerColorScheme.Dark ? "#26FFFFFF" : "#66E6D5B8";
+                        var editor = Find<Grid>(control, "Editor");
+                        // UIElement opacity is stored as a native float. Await
+                        // its exact 60% destination together with the border.
+                        var opacity = (double)(float).6;
                         await AwaitAsync(() => NativeInputSession.CurrentVisibleCursor() == expected &&
-                            Hex(Find<Border>(control, "BorderElement").BorderBrush) == border,
+                            Hex(Find<Border>(control, "BorderElement").BorderBrush) == border &&
+                            editor.Opacity == opacity && control.FocusState == FocusState.Unfocused,
                             $"{control.InputSize}, invalid={invalid}, {corner} {local.X},{local.Y}: rounded hover/cursor mismatch.",
-                            () => $"cursor={NativeInputSession.CurrentVisibleCursor()}, expected={expected}; border={Hex(Find<Border>(control, "BorderElement").BorderBrush)}, expected={border}");
-                        Require(Find<Grid>(control, "Editor").Opacity == .6 && control.FocusState == FocusState.Unfocused,
-                            "Rounded disabled hover changed editor opacity or acquired focus.");
+                            () => $"cursor={NativeInputSession.CurrentVisibleCursor()}, expected={expected}; border={Hex(Find<Border>(control, "BorderElement").BorderBrush)}, expected={border}; opacity={editor.Opacity:R}, expected={opacity:R}; focus={control.FocusState}");
                         samples.Add(new { size = control.InputSize.ToString(), invalid, corner, point, local.Hover,
-                            cursor = NativeInputSession.CurrentVisibleCursor().ToInt64(), border, width = control.ActualWidth, height = control.ActualHeight });
+                            cursor = NativeInputSession.CurrentVisibleCursor().ToInt64(), border, editor.Opacity,
+                            focus = control.FocusState.ToString(), width = control.ActualWidth, height = control.ActualHeight });
                         if (corner == "top-left" && local.Y == 0 && local.X is 0 or 3)
                             await MainWindow.CaptureElementAsync(control, Path.Combine(folder,
                                 $"input-rounded-{scheme}-{control.InputSize}-{(invalid ? "invalid" : "valid")}-{(local.Hover ? "hover" : "rest")}.png"));

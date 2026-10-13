@@ -310,3 +310,14 @@ rendered border, disabled opacity and absence of focus. It retains
 size/validation combination, plus native desktop/point diagnostics.
 Native x64/ARM64 verification and display/text scaling remain required before
 accepting this boundary.
+
+At `130d653`, x64 reaches the first rounded sample's expected visible cursor and
+border, then fails the new fixture's double-literal opacity assertion. Its
+retained validation report records native 60% opacity as
+`0.6000000238418579`. The fixture now awaits the exact float-represented 60%
+destination with cursor, border and unfocused state; it records actual opacity
+and focus on each accepted sample and in failure details. The checked archive
+`11782215973` has SHA-256
+`af529700868802695814960ac4ea383c8afc5b90c4ae6a014f5619b105e44203`.
+This fixture correction requires new native evidence; the product styling and
+per-state acceptance values are unchanged.
