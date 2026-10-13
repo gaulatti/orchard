@@ -443,3 +443,17 @@ unchanged.
 The focused x64 fixture passes both appearances at
 `artifacts/smoke-input-theme-heading` with display/text scale 1 and animations
 disabled, preserving the exact palette and native cursor checks.
+
+Run `38475433445` at `764f5b2` still encounters the hovered border in x64's
+focused palette check. The verified archive `11853753529` has SHA-256
+`61d52cf12a60c91a81d213399243c6c80381e994768e9b40146abba03c27bb6c`.
+Its recorded initial movement reaches Heading at `(416,158)` with owned
+foreground, but it precedes invalid-editor focus and does not record the final
+control bounds. Focus may queue bring-into-view layout after changing focus
+state. The fixture now moves to Heading again after focus; palette failure
+details include the current Heading/Medium bounds and global pointer/cursor
+snapshot. All original assertions remain required. This hypothesis still
+requires hosted verification; the initial correction is not a demonstrated fix.
+
+The focused x64 check with post-focus placement passes both appearances at
+`artifacts/smoke-input-theme-focused-point`; its hosted result remains pending.

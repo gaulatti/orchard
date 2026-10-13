@@ -203,3 +203,14 @@ using the 0.1.0 package with SHA-256
 Full curved antialiasing, other sizes, additional image decoders/animated
 sources, all contrast themes/states, Narrator and display/text scaling remain
 open. The complete required catalog still needs a green native ARM64 run.
+
+Run `38475433445` at `764f5b2` passes focused ARM64 Bauhaus and Input, then the
+full catalog loses foreground immediately before a composed Bauhaus capture.
+The capture correctly refuses an unowned foreground. The fixture now requires
+the shared session's foreground guard after its timeline-alignment await and
+immediately before capture. This uses the existing bounded recovery for a
+foreign process with an owned point and no held button; the capture ownership,
+global cursor, raster tolerances and all motion assertions remain unchanged.
+
+The guarded focused x64 fixture passes both appearances at
+`artifacts/smoke-bauhaus-foreground-guard`, with animations disabled and scale 1.

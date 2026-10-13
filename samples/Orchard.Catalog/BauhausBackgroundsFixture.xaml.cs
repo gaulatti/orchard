@@ -97,6 +97,7 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         await Task.Delay(80);
         foreach(var control in new[]{Nazca,Monitor})
             Require(Find<Canvas>(control,"PART_Pattern").Children.Cast<Border>().All(shape=>Math.Abs(((RotateTransform)shape.RenderTransform).Angle)<.001),"Bauhaus raster reference timeline did not align to zero.");
+        await input.RequireForegroundAsync();
         var suffix = mutated ? "-mutated" : consumerBackground?"-consumer-background":""; var path = Path.Combine(folder, $"bauhaus-window-{scheme}{suffix}.png"); var client = await NativeScreenCapture.CaptureClientAsync(input.Window, path);
         using var stream = new InMemoryRandomAccessStream(); using (var writer = new DataWriter(stream)) { writer.WriteBytes(await File.ReadAllBytesAsync(path)); await writer.StoreAsync(); writer.DetachStream(); }
         stream.Seek(0);

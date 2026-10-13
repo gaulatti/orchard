@@ -67,6 +67,9 @@ public sealed partial class InputsFixture : UserControl
         ErrorInput.Select(0, 6);
         Require(ErrorInput.Focus(FocusState.Keyboard), "Could not focus invalid input before changing appearance.");
         await AwaitAsync(() => ErrorInput.FocusState != FocusState.Unfocused, "Invalid input did not acquire focus.");
+        // Focus can queue scrolling after its state changes. Move after that
+        // layout work so the resting palette assertion owns a resting point.
+        await input.MoveAsync(Heading);
         var width = ErrorInput.ActualWidth;
         var height = ErrorInput.ActualHeight;
         var paletteDetails = "";
@@ -92,7 +95,7 @@ public sealed partial class InputsFixture : UserControl
             var disabledError = Find<Border>(DisabledErrorInput, "BorderElement");
             var placeholder = Find<TextBlock>(MediumInput, "PlaceholderTextContentPresenter");
             var adornment = Find<ContentPresenter>(IconsInput, "StartAdornment");
-            paletteDetails = $"expected={expected}; theme={MediumInput.ActualTheme}; background={Hex(normal.Background)}; border={Hex(normal.BorderBrush)}; text={Hex(MediumInput.Foreground)}; placeholder={Hex(placeholder.Foreground)}; error={Hex(error.BorderBrush)}; ring={Hex(ring.BorderBrush)}/{ring.Opacity}; disabled={Hex(disabledError.BorderBrush)}/{Hex(disabledError.Background)}; icon={Hex(adornment.Foreground)}";
+            paletteDetails = $"expected={expected}; theme={MediumInput.ActualTheme}; background={Hex(normal.Background)}; border={Hex(normal.BorderBrush)}; text={Hex(MediumInput.Foreground)}; placeholder={Hex(placeholder.Foreground)}; error={Hex(error.BorderBrush)}; ring={Hex(ring.BorderBrush)}/{ring.Opacity}; disabled={Hex(disabledError.BorderBrush)}/{Hex(disabledError.Background)}; icon={Hex(adornment.Foreground)}; heading={input.ScreenBounds(Heading)}; medium={input.ScreenBounds(MediumInput)}; cursor={System.Text.Json.JsonSerializer.Serialize(NativeInputSession.DescribeCursor())}";
             return Hex(normal.Background) == (dark ? "#FF182533" : "#FFFFFFFF") &&
                 Hex(normal.BorderBrush) == (dark ? "#26FFFFFF" : "#66E6D5B8") &&
                 Hex(MediumInput.Foreground) == colors["textPrimary"] &&

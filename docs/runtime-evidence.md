@@ -1,5 +1,45 @@
 # Native Windows runtime evidence
 
+## Recent native input checkpoint
+
+Run [38472918618](https://github.com/gaulatti/orchard/actions/runs/38472918618)
+at `6a48813` passes all three required jobs, the complete x64/ARM64 catalog,
+live contrast and independent consumers. The registered inventory still has
+26 in-progress components and no fully accepted component at that checkpoint.
+
+Run [38473604856](https://github.com/gaulatti/orchard/actions/runs/38473604856)
+at `c8018ba` adds a focused Input run ahead of the full catalog. ARM64's focused
+Input and Bauhaus checks pass with animations enabled. x64's focused Input
+live-theme check encounters the correct hovered sand/70% border while requiring
+the resting border; the full x64 catalog, contrast and consumer pass. The
+fixture correction at `764f5b2` positions the physical pointer on the heading
+before this palette assertion; production behavior is unchanged.
+
+The same candidate's full ARM64 catalog fails Checkbox's Dark stationary
+`hit-testing-repeat-restored-5` phase. Foreground and the screen point are owned,
+hover/border/opacity match, and the SDK cursor is UniversalNo, but the global
+visible cursor remains Arrow throughout the two-second trace. The final
+publisher sample records 8,481 refreshes, 2,940 block calls, 285 republish calls
+and 129 restores, retained producer Arrow and an active blocked owner. These
+cumulative counts do not establish the root cause or prove when republishing
+occurred during that failure. The exact visible-cursor gate remains required.
+ARM64 contrast and the independent consumer still pass.
+
+The ARM64 archive `11852889880` was verified against SHA-256
+`403f6760f4226dfcc9a76d288a2a62628ed0b2b792c43512ef76c8618d3507eb`.
+Selected reports are retained at `artifacts/ci-c8018ba-arm64-evidence`.
+This failed candidate does not replace the passing checkpoint.
+
+Run `38475433445` at `764f5b2` passes both architectures' focused Bauhaus,
+ARM64 focused Input, live contrast and independent consumers. x64's focused
+palette check still fails with the hovered border after moving to Heading
+before invalid-editor focus. The recorded initial point is owned, but final
+control bounds are absent, so this does not prove a resting point after the
+focus-induced layout. The next fixture checks move again after focus and add
+those diagnostics. Full x64 passes; full ARM64 loses foreground before a
+Bauhaus composed capture, whose strict guard refuses it. The next capture
+requires the shared foreground session immediately beforehand.
+
 ## Live Windows contrast checkpoint
 
 Run [38434880055](https://github.com/gaulatti/orchard/actions/runs/38434880055)
