@@ -23,6 +23,8 @@ public sealed partial class ContrastFixture : UserControl
         ContentPresenter Presenter() => Descendants<ContentPresenter>(Action()).First();
         var tooltip = AutomationProperties.GetDescribedBy(Help).OfType<BleeckerTooltip>().Single();
         var accessibility = new AccessibilitySettings();
+        Require(Help.Focus(FocusState.Keyboard), "Contextual help refused keyboard focus.");
+        await AwaitAsync(() => tooltip.IsOpen && tooltip.IsLoaded, "Contextual help did not open before the baseline capture.");
         var before = Snapshot();
         var originalBackground = Hex(root.Background);
         var originalHeading = Hex(Heading.Foreground);
@@ -32,8 +34,6 @@ public sealed partial class ContrastFixture : UserControl
         var passed = false;
         try
         {
-            Require(Help.Focus(FocusState.Keyboard), "Contextual help refused keyboard focus.");
-            await AwaitAsync(() => tooltip.IsOpen && tooltip.IsLoaded, "Contextual help did not open before the mode transition.");
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-before.png"));
             contrast.Enable();
             await AwaitAsync(() => accessibility.HighContrast && NativeContrastSession.Read().Enabled, "Windows did not enter actual contrast mode.");
@@ -142,6 +142,6 @@ public sealed partial class ContrastFixture : UserControl
         Require(condition(), message);
     }
     private static bool Matches(Brush brush, Color color) => brush is SolidColorBrush solid && solid.Color == color && solid.Opacity == 1;
-    private static string Hex(Brush brush) => brush is SolidColorBrush solid ? $"#{solid.Color.A:X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush.GetType().Name;
+    private static string? Hex(Brush? brush) => brush is SolidColorBrush solid ? $"#{solid.Color.A:X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush?.GetType().Name;
     private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
 }

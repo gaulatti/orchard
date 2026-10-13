@@ -1,5 +1,10 @@
 # Windows contrast verification
 
+At `4c5ed02`, x64 reaches the managed fixture after the repeated-getter regression,
+then its initial snapshot fails because the unopened tooltip has unset brushes.
+The baseline now opens the help popup first and diagnostics preserve null brush
+values rather than substituting a palette. Transition acceptance remains pending.
+
 The initial x64 phase at `4901392`, run `38422767730`, terminates with native
 heap corruption (`0xC0000374`) before a managed report or page capture. Its
 archive `11828535874` has verified SHA-256
