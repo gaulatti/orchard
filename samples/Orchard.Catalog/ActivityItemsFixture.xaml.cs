@@ -62,7 +62,14 @@ public sealed partial class ActivityItemsFixture : UserControl
         var tapped = 0; void Tap(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs args) => tapped++;
         Rows.Tapped += Tap; try { await input.ClickAsync(Normal); Require(tapped == 1, "Activity intercepted or duplicated consumer ancestor pointer activation."); } finally { Rows.Tapped -= Tap; }
         await input.RequireForegroundAsync();
-        await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"activity-window-{scheme}.png"));
+        var capturedClient = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"activity-window-{scheme}.png"));
+        var capturedTitle = Find<TextBlock>(Normal, "PART_Title"); var capturedTime = Find<TextBlock>(Normal, "PART_Time");
+        await File.WriteAllTextAsync(Path.Combine(folder, $"activity-capture-{scheme}.json"), JsonSerializer.Serialize(new
+        {
+            client = capturedClient, row = input.ScreenBounds(Normal),
+            title = new { bounds = input.ScreenBounds(capturedTitle), capturedTitle.BaselineOffset, color = Hex((SolidColorBrush)capturedTitle.Foreground) },
+            time = new { bounds = input.ScreenBounds(capturedTime), capturedTime.BaselineOffset, color = Hex((SolidColorBrush)capturedTime.Foreground) }
+        }, new JsonSerializerOptions { WriteIndented = true }));
         await input.MoveAsync(Heading); await AwaitAsync(() => ((SolidColorBrush)surface.Background).Opacity == 0, "Activity hover exit did not return to transparency.");
         await VerifyMotionAsync(input, scheme, folder);
         var initialTitle = Normal.Title; var initialTime = Normal.Time; var initialInit = Normal.Init;

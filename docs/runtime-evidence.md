@@ -40,6 +40,22 @@ those diagnostics. Full x64 passes; full ARM64 loses foreground before a
 Bauhaus composed capture, whose strict guard refuses it. The next capture
 requires the shared foreground session immediately beforehand.
 
+Checkbox cursor mismatch polls now record the bounded publisher diagnostics
+beside each global cursor sample. A failure can show changes in refresh,
+block, republish and restore counts during its own wait, rather than relying
+on a final cumulative total. This is catalog-only observation; it changes no
+cursor publication behavior, ownership condition, expected handle or timeout.
+
+Run `38477265194` at `64a2b27` passes both ordinary full catalogs, focused
+Activity Item and independent consumers, plus ARM64 cross-build. Activity Item
+records disabled animations on x64 and enabled animations on native ARM64.
+Both jobs fail the new contrast selector's duplicate `PART_Surface` name
+(the row and its nested Avatar); its correction selects the row's direct root.
+x64 focused Input still paints hover with a demonstrably external pointer;
+ARM64 focused Input owns its Small/invalid top-right `(3,0)` target and
+publishes UniversalNo but displays Arrow. These required gates remain red.
+The passing ordinary suite does not replace the failed focused boundaries.
+
 ## Live Windows contrast checkpoint
 
 Run [38434880055](https://github.com/gaulatti/orchard/actions/runs/38434880055)

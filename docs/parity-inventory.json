@@ -267,7 +267,7 @@
         "Full browser/native text and Avatar raster, constrained widths and consumer override matrix",
         "Precise motion timing and interrupted physical reversal",
         "All contrast schemes, Narrator and display/text scaling acceptance",
-        "Native ARM64 runtime and independent package consumption evidence"
+        "Complete x64/ARM64 visual, input and accessibility matrix beyond the passing initial runtime/consumer checks"
       ]
     },
     {

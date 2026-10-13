@@ -98,3 +98,30 @@ passes at `artifacts/package-consumer-activity`, using package 0.1.0 with SHA-25
 `a4456e0e5a4b736f61f3bd87520fadd3e14ec7eae8caddc5cd9cdcfbeb8af770`.
 This brings the registered inventory to 27 in-progress entries and 85 pending;
 none has full acceptance.
+
+The next focused capture at `artifacts/smoke-activity-capture-origins` records
+the actual client origin, row/text screen rectangles, native baseline offsets
+and colors in `activity-capture-{Light,Dark}.json`. At scale 1, the title/time
+line boxes still begin at row offsets 16/42, while their native baseline
+offsets are 16.4799995/13.1509905. Their row-relative baselines are therefore
+32.4799995/55.1509905. Inline zero-size baseline probes in the unchanged frozen
+browser component measure 31/54. The measured-origin Latin ink comparison
+finds native title rows 21–34 and time rows 47–56, against browser 20–33 and
+46–55. Colors match. This is an open text-placement defect, not an accepted
+platform substitution; a correction must preserve line-box layout and prove
+the actual rendered baseline, including wrapping and scaling.
+
+The first hosted x64 candidate at `64a2b27` passes focused Activity Item,
+the full catalog and independent consumption. Contrast verification initially
+fails because both Activity Item and its nested Avatar name a border
+`PART_Surface`; selecting all descendants with `Single` is ambiguous. The
+fixture now selects Activity Item's direct template root and requires its
+expected name before checking colors. Actual contrast acceptance remains
+pending that corrected hosted check.
+
+The ARM64 candidate in that same run also passes focused Activity Item with
+animations enabled, the complete ordinary catalog and independent package
+consumption. Its contrast fixture reaches the same ambiguous selector failure.
+This verifies the registered runtime, endpoint/motion-preference and consumer
+checks on both native architectures; it does not close the baseline, complete
+motion, contrast, Narrator or scaling gaps.

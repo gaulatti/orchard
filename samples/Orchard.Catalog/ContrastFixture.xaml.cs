@@ -114,7 +114,8 @@ public sealed partial class ContrastFixture : UserControl
             await VerifyInkAsync(Heading, 8, headingInk, folder, "heading");
             await VerifyInkAsync(Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), 14, labelInk, folder, "action-label");
             await VerifyBrandPaintAsync(input, folder);
-            var activitySurface = Descendants<Border>(Activity).Single(item => item.Name == "PART_Surface");
+            var activitySurface = (Border)VisualTreeHelper.GetChild(Activity, 0);
+            Require(activitySurface.Name == "PART_Surface", "Activity contrast verification requires its own template surface.");
             var activityTitle = Descendants<TextBlock>(Activity).Single(item => item.Name == "PART_Title");
             var activityTime = Descendants<TextBlock>(Activity).Single(item => item.Name == "PART_Time");
             await input.MoveAsync(Activity);

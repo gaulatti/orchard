@@ -217,7 +217,7 @@ public sealed partial class CheckboxesFixture
                         var visible = CurrentCheckboxCursor();
                         var expected = CheckboxSystemCursor(IntPtr.Zero, new IntPtr(cursor));
                         if (visible != expected) cursorTrace.Add(new { milliseconds = started.Elapsed.TotalMilliseconds, input.OwnsForeground,
-                            cursor = NativeInputSession.DescribeCursor() });
+                            cursor = NativeInputSession.DescribeCursor(), publication = NativeCursorDiagnostics.Describe(control) });
                         return visible == expected &&
                         Math.Abs(Find<Border>(control, "PART_Box").BorderBrush.Opacity - alpha) < 1e-9 &&
                         Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5);

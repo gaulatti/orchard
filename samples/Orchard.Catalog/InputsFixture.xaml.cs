@@ -95,7 +95,11 @@ public sealed partial class InputsFixture : UserControl
             var disabledError = Find<Border>(DisabledErrorInput, "BorderElement");
             var placeholder = Find<TextBlock>(MediumInput, "PlaceholderTextContentPresenter");
             var adornment = Find<ContentPresenter>(IconsInput, "StartAdornment");
-            paletteDetails = $"expected={expected}; theme={MediumInput.ActualTheme}; background={Hex(normal.Background)}; border={Hex(normal.BorderBrush)}; text={Hex(MediumInput.Foreground)}; placeholder={Hex(placeholder.Foreground)}; error={Hex(error.BorderBrush)}; ring={Hex(ring.BorderBrush)}/{ring.Opacity}; disabled={Hex(disabledError.BorderBrush)}/{Hex(disabledError.Background)}; icon={Hex(adornment.Foreground)}; heading={input.ScreenBounds(Heading)}; medium={input.ScreenBounds(MediumInput)}; cursor={System.Text.Json.JsonSerializer.Serialize(NativeInputSession.DescribeCursor())}";
+            var pointerState = typeof(BleeckerInput).GetField("pointerOver", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(MediumInput);
+            var appearanceState = typeof(BleeckerInput).GetField("appearanceState", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(MediumInput);
+            var mediumStates = VisualStateManager.GetVisualStateGroups((FrameworkElement)VisualTreeHelper.GetChild(MediumInput, 0))
+                .Select(group => new { group.Name, state = group.CurrentState?.Name });
+            paletteDetails = $"expected={expected}; theme={MediumInput.ActualTheme}; background={Hex(normal.Background)}; border={Hex(normal.BorderBrush)}; text={Hex(MediumInput.Foreground)}; placeholder={Hex(placeholder.Foreground)}; error={Hex(error.BorderBrush)}; ring={Hex(ring.BorderBrush)}/{ring.Opacity}; disabled={Hex(disabledError.BorderBrush)}/{Hex(disabledError.Background)}; icon={Hex(adornment.Foreground)}; heading={input.ScreenBounds(Heading)}; medium={input.ScreenBounds(MediumInput)}; pointerOver={pointerState}; appearance={appearanceState}; paletteBorder={Hex(Find<Border>(MediumInput, "InputPalette").BorderBrush)}; states={System.Text.Json.JsonSerializer.Serialize(mediumStates)}; cursor={System.Text.Json.JsonSerializer.Serialize(NativeInputSession.DescribeCursor())}";
             return Hex(normal.Background) == (dark ? "#FF182533" : "#FFFFFFFF") &&
                 Hex(normal.BorderBrush) == (dark ? "#26FFFFFF" : "#66E6D5B8") &&
                 Hex(MediumInput.Foreground) == colors["textPrimary"] &&
