@@ -17,6 +17,9 @@ content consume Orchard's fonts, colors and controls. The sidebar uses existing
 Bleecker button previews and the Input preview; their outstanding component
 parity gaps still apply.
 
+Breadcrumb is registered after Avatars, with source threshold boundaries,
+independent wrapping, custom content, keyboard expansion and consumer updates.
+
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise
 search, native button activation, no-result messaging, clearing search, retained

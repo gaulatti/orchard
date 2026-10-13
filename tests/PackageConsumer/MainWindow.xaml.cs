@@ -151,6 +151,11 @@ public sealed partial class MainWindow : Window
                 Require(PackageAvatarGroup.ActualHeight == 40 && PackageAvatarGroup.Avatars.Count == 3 &&
                     ((Panel)((Grid)VisualTreeHelper.GetChild(PackageAvatarGroup, 0)).Children.Single()).Children.Count == 3,
                     "Packaged AvatarGroup lost its data model or overflow composition.");
+                var breadcrumbPanel = ((Grid)VisualTreeHelper.GetChild(PackageBreadcrumb, 0)).Children.OfType<Panel>().Single();
+                Require(PackageBreadcrumb.Items.Count == 4 && breadcrumbPanel.Children.Count == 5 && PackageBreadcrumb.ActualHeight == 24 &&
+                    breadcrumbPanel.Children.OfType<HyperlinkButton>().Single().FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
+                    ((TextBlock)breadcrumbPanel.Children.Last()).Text == "Harbor",
+                    "Packaged Breadcrumb lost its independent templates, font or consumer path.");
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");

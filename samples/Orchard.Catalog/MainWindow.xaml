@@ -78,6 +78,7 @@
                 <local:CardsFixture x:Name="Cards" />
                 <local:SkeletonsFixture x:Name="Skeletons" />
                 <local:AvatarsFixture x:Name="Avatars" />
+                <local:BreadcrumbsFixture x:Name="Breadcrumbs" />
                 <local:SeparatorsFixture x:Name="Separators" />
                 <local:StatusBadgesFixture x:Name="StatusBadges" />
                 <local:MenusFixture x:Name="Menus" />

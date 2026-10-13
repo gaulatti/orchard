@@ -130,6 +130,8 @@ public sealed partial class MainWindow : Window
             await Skeletons.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Avatars);
             await Avatars.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Breadcrumbs);
+            await Breadcrumbs.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Separators);
             await Separators.VerifyAsync(scheme);
             await SelectFixtureAsync(StatusBadges);

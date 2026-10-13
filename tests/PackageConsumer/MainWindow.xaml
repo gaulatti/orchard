@@ -38,6 +38,10 @@
                             <orchard:BleeckerAvatarData Fallback="Charlie Vale" />
                     </orchard:BleeckerAvatarGroup>
                 </StackPanel>
+                <orchard:BleeckerBreadcrumb x:Name="PackageBreadcrumb" Width="320" CollapsedAfter="1" HorizontalAlignment="Left">
+                    <orchard:BleeckerBreadcrumbItem Label="Home" Href="/home" /><orchard:BleeckerBreadcrumbItem Label="Library" Href="/library" />
+                    <orchard:BleeckerBreadcrumbItem Label="Drafts" Href="/drafts" /><orchard:BleeckerBreadcrumbItem Label="Harbor" Href="/harbor" />
+                </orchard:BleeckerBreadcrumb>
                 <orchard:BleeckerSeparator x:Name="PackageSeparator" Decorative="False" AutomationProperties.Name="Preview boundary" />
                 <StackPanel Orientation="Horizontal" Spacing="12">
                     <TextBlock x:Name="Heading" Text="Independent package consumer" Style="{StaticResource BleeckerHeadingStyle}" />

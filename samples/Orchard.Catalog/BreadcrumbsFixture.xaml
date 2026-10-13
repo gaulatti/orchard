@@ -1,0 +1,32 @@
+<UserControl x:Class="Orchard.Catalog.BreadcrumbsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <DataTemplate x:Key="CustomLink"><Button Content="{Binding Label}" Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></DataTemplate>
+  <DataTemplate x:Key="CustomSeparator"><TextBlock Text="/" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" /></DataTemplate>
+ </UserControl.Resources>
+ <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Breadcrumbs" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer path · default and narrow wrapping" Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerBreadcrumb x:Name="DefaultPath" Width="320" HorizontalAlignment="Left">
+   <orchard:BleeckerBreadcrumbItem Label="Home" Href="/home" /><orchard:BleeckerBreadcrumbItem Label="Library" Href="/library" External="True" />
+   <orchard:BleeckerBreadcrumbItem Label="Stories" Href="/stories" /><orchard:BleeckerBreadcrumbItem Label="Drafts" Href="/drafts" /><orchard:BleeckerBreadcrumbItem Label="Harbor" Href="/harbor" />
+  </orchard:BleeckerBreadcrumb>
+  <orchard:BleeckerBreadcrumb x:Name="Narrow" Width="140" HorizontalAlignment="Left" Items="{Binding Items, ElementName=DefaultPath}" />
+  <TextBlock Text="Inline collapse · thresholds 1 and 2, expansion stays latched" Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerBreadcrumb x:Name="Collapsed" Width="320" HorizontalAlignment="Left" CollapsedAfter="1" Items="{Binding Items, ElementName=DefaultPath}" />
+  <orchard:BleeckerBreadcrumb x:Name="CollapsedTwo" Width="320" HorizontalAlignment="Left" CollapsedAfter="2" Items="{Binding Items, ElementName=DefaultPath}" />
+  <orchard:BleeckerBreadcrumb x:Name="Negative" Width="320" HorizontalAlignment="Left" CollapsedAfter="-1" Items="{Binding Items, ElementName=DefaultPath}" />
+  <TextBlock Text="Empty, single, threshold boundary, Unicode and long current text" Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerBreadcrumb x:Name="Empty" />
+  <orchard:BleeckerBreadcrumb x:Name="Single"><orchard:BleeckerBreadcrumbItem Label="Home" Href="/home" /></orchard:BleeckerBreadcrumb>
+  <orchard:BleeckerBreadcrumb x:Name="Threshold" CollapsedAfter="2">
+   <orchard:BleeckerBreadcrumbItem Label="Home" Href="/home" /><orchard:BleeckerBreadcrumbItem Label="Library" Href="/library" /><orchard:BleeckerBreadcrumbItem Label="Stories" Href="/stories" />
+  </orchard:BleeckerBreadcrumb>
+  <orchard:BleeckerBreadcrumb x:Name="Unicode" Width="180" HorizontalAlignment="Left">
+   <orchard:BleeckerBreadcrumbItem Label="東京 港" Href="/tokyo" /><orchard:BleeckerBreadcrumbItem Label="Straße Groß" Href="/street" />
+   <orchard:BleeckerBreadcrumbItem Label="A long current location that wraps on display" Href="/long" />
+  </orchard:BleeckerBreadcrumb>
+  <TextBlock Text="Custom consumer link and separator templates" Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerBreadcrumb x:Name="Custom" Width="320" HorizontalAlignment="Left" Items="{Binding Items, ElementName=DefaultPath}" LinkTemplate="{StaticResource CustomLink}" SeparatorTemplate="{StaticResource CustomSeparator}" />
+  <TextBlock x:Name="Invocation" Text="No consumer path invoked" Style="{StaticResource BleeckerBodyStyle}" />
+ </StackPanel>
+</UserControl>

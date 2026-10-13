@@ -11,6 +11,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Checkbox.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Skeleton.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Avatar.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>

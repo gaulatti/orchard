@@ -49,6 +49,8 @@
     "BleeckerAvatar": "AvatarsFixture.xaml",
     "BleeckerAvatarGroup": "AvatarsFixture.xaml",
     "BleeckerAvatarData": "AvatarsFixture.xaml",
+    "BleeckerBreadcrumb": "BreadcrumbsFixture.xaml",
+    "BleeckerBreadcrumbItem": "BreadcrumbsFixture.xaml",
     "BleeckerLoadingSpinner": "LoadingSpinnersFixture.xaml",
     "BleeckerButtonGroup": "MainWindow.xaml",
     "BleeckerButton": "ButtonsFixture.xaml",
