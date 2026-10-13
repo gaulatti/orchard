@@ -49,7 +49,14 @@ public sealed class BleeckerSkeleton : Control
 
     private void UpdateCorners()
     {
-        if (surface is not null) surface.CornerRadius = Circle ? new CornerRadius(Math.Min(ActualWidth, ActualHeight) / 2) : CornerRadius;
+        if (surface is null) return;
+        var corners = Circle ? new CornerRadius(Math.Min(ActualWidth, ActualHeight) / 2) : CornerRadius;
+        // CSS scales every radius together when adjacent corners overlap.
+        // A 12px-high default shape therefore has circular 6px ends.
+        var scale = Math.Min(1, Math.Min(Math.Min(Ratio(ActualWidth, corners.TopLeft + corners.TopRight), Ratio(ActualWidth, corners.BottomLeft + corners.BottomRight)),
+            Math.Min(Ratio(ActualHeight, corners.TopLeft + corners.BottomLeft), Ratio(ActualHeight, corners.TopRight + corners.BottomRight))));
+        surface.CornerRadius = new CornerRadius(corners.TopLeft * scale, corners.TopRight * scale, corners.BottomRight * scale, corners.BottomLeft * scale);
+        static double Ratio(double size, double radii) => radii == 0 ? 1 : size / radii;
     }
     private void OnAnimationsChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(UpdateMotion);
     private void StopMotion()

@@ -13,6 +13,11 @@ at 20% in Light and white at 10% in Dark. The normal pulse repeats every 2s
 with cubic-bezier(.4,0,.6,1), moving opacity 1 → .5 → 1, with the low endpoint
 at 1s. Bleecker's published global reduced-motion rule changes animation to
 one 0.01ms iteration; the inspected reduced-motion reference rests at opacity 1.
+[CSS normalizes overlapping corners](https://www.w3.org/TR/css-backgrounds-3/#corner-overlap)
+by scaling all radii together. A 12px-high
+shape paints 6px circular corners; an 8px-high shape paints 4px corners. The
+native template normalizes its painted radius without changing the consumer's
+`CornerRadius` value. The fixture checks both thin shapes and composed body rows.
 
 `SkeletonCard` defaults to three body rows. It has a 12px radius, 24px padding,
 opaque card background and an outer 1px ring: black at 8% in Light, white at
@@ -78,6 +83,13 @@ that source behavior and captures its allocated 320×40 region in a composited
 window image. The global nonblank-image gate remains unchanged for rendered
 controls. Capture-stage failure reports retain the completed checks and images.
 Dark and package runtime verification were not reached in that run.
+
+The aligned reference harness places all nine cases at integer coordinates on
+the pinned `--surface-canvas` background, retaining metadata and images under
+`artifacts/skeleton-aligned-reference-{Light,Dark}`. Browser screenshots are JPEG
+encoded and retained with `.jpg` filenames. Their compression creates pixel
+differences and these images support qualitative composition inspection only;
+they do not establish exact raster parity. Native captures remain lossless PNG.
 
 The implementation keeps Windows App SDK 2.5.1, documented under Microsoft's
 [2.0 release family](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/release-notes/windows-app-sdk-2-0).

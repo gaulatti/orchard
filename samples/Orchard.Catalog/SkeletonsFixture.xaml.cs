@@ -61,6 +61,11 @@ public sealed partial class SkeletonsFixture : UserControl
         Capsule.Circle = false;
         Require(Surface(Capsule).CornerRadius == new CornerRadius(7), "Live circle property did not restore rectangular corners.");
         Capsule.Circle = true; Capsule.Height = 40;
+        Rectangle.Height = 8;
+        await SettleAsync();
+        Require(Surface(Rectangle).CornerRadius == new CornerRadius(4) && Rectangle.CornerRadius == new CornerRadius(7),
+            "Thin Skeleton did not normalize its painted corners or rewrote consumer radius.");
+        Rectangle.Height = 16;
         await SettleAsync();
 
         var animations = new UISettings().AnimationsEnabled;
@@ -190,6 +195,9 @@ public sealed partial class SkeletonsFixture : UserControl
         Require(brush.color == (scheme == BleeckerColorScheme.Dark ? "#FFFFFFFF" : BleeckerTokens.Colors(scheme)["sand"]) &&
             Math.Abs(brush.opacity - (scheme == BleeckerColorScheme.Dark ? .1 : .2)) < .000001 && shape.Opacity == 1,
             "Skeleton rendered a Windows default or incorrect background alpha.");
+        if (!shape.Circle)
+            Require(surface.CornerRadius == new CornerRadius(shape.ActualHeight == 12 ? 6 : 7),
+                "Skeleton painted overlapping 7px corners without CSS normalization.");
     }
     private async Task SettleAsync() { UpdateLayout(); await Task.Delay(80); UpdateLayout(); }
     private static Border Surface(BleeckerSkeleton owner) => (Border)VisualTreeHelper.GetChild(owner, 0);
