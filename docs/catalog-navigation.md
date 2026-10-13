@@ -49,6 +49,11 @@ Text-size/density controls, the remaining unimplemented inventory and full
 keyboard/Narrator/responsive acceptance are still required. Catalog navigation
 does not make any component's visual or interaction acceptance complete.
 
+The **Windows contrast** page is a registered cross-component verification
+fixture. Normal navigation displays the semantic-color specimens; only its
+guarded CI smoke entry point changes the isolated runner's actual mode. See
+[contrast verification](contrast-verification.md) for scope and remaining gaps.
+
 The Switches page adds off/on, both disabled states, a named unlabeled switch,
 long/Japanese/RTL labels and a consumer-owned two-way Boolean binding. Its
 registered runtime checks and remaining acceptance are documented in

@@ -19,7 +19,7 @@ public sealed partial class MainWindow
             ("Icon buttons", IconButtons), ("Toggle groups", ToggleGroups),
             ("Loading spinners", LoadingSpinners), ("Cards", Cards), ("Skeletons", Skeletons), ("Avatars", Avatars), ("Breadcrumbs", Breadcrumbs), ("Separators", Separators),
             ("Status badges", StatusBadges), ("Menus", Menus), ("Notifications", Notifications),
-            ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes)
+            ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes), ("Windows contrast", Contrast)
         ]);
         var declared = FixtureHost.Children.OfType<FrameworkElement>().ToArray();
         Require(declared.Length == components.Count && components.Select(entry => entry.Fixture).Distinct().Count() == declared.Length &&

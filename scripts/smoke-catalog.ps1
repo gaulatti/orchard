@@ -1,7 +1,7 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb')][string]$Component = 'all',
+    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast')][string]$Component = 'all',
     [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture
 )
 $ErrorActionPreference = 'Stop'
@@ -26,7 +26,13 @@ if ($ExpectedArchitecture -and ($report.environment.processArchitecture -ne $Exp
     $report.environment.osArchitecture -ne $ExpectedArchitecture)) {
     throw "Catalog requires $ExpectedArchitecture process and OS; reported process=$($report.environment.processArchitecture), OS=$($report.environment.osArchitecture)."
 }
-foreach ($theme in @('light', 'dark')) {
-    if (-not (Test-Path "$outputPath/catalog-$theme.png")) { throw "Missing $theme render." }
+if ($Component -eq 'contrast') {
+    foreach ($phase in @('before', 'active', 'restored')) {
+        if (-not (Test-Path "$outputPath/contrast-$phase.png")) { throw "Missing contrast $phase render." }
+    }
+} else {
+    foreach ($theme in @('light', 'dark')) {
+        if (-not (Test-Path "$outputPath/catalog-$theme.png")) { throw "Missing $theme render." }
+    }
 }
 Get-Content "$outputPath/result.json"

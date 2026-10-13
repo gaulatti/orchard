@@ -1,0 +1,12 @@
+<UserControl x:Class="Orchard.Catalog.ContrastFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Windows contrast" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Inspect Windows semantic colors using Accessibility → Contrast themes. CI verifies live transitions on its isolated desktop." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <orchard:BleeckerButton x:Name="Primary" Content="Contrast action" HorizontalAlignment="Left" />
+  <orchard:BleeckerInput x:Name="Editor" Text="Fictional coverage title" AutomationProperties.Name="Coverage title" Width="320" HorizontalAlignment="Left" />
+  <orchard:BleeckerBreadcrumb x:Name="Path" CollapsedAfter="1" Width="320" HorizontalAlignment="Left">
+   <orchard:BleeckerBreadcrumbItem Label="Home" Href="/home" /><orchard:BleeckerBreadcrumbItem Label="Library" Href="/library" /><orchard:BleeckerBreadcrumbItem Label="Stories" Href="/stories" /><orchard:BleeckerBreadcrumbItem Label="Harbor" Href="/harbor" />
+  </orchard:BleeckerBreadcrumb>
+  <StackPanel Orientation="Horizontal" Spacing="8"><TextBlock Text="Open contextual help" Style="{StaticResource BleeckerBodyStyle}" /><orchard:BleeckerFieldHelpTooltip x:Name="Help" Text="This open help surface must follow Windows contrast colors without restarting." /></StackPanel>
+ </StackPanel>
+</UserControl>

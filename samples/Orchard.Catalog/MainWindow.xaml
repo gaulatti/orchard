@@ -92,6 +92,7 @@
                 <local:ProgressFixture x:Name="Progress" />
                 <local:SwitchesFixture x:Name="Switches" />
                 <local:CheckboxesFixture x:Name="Checkboxes" />
+                <local:ContrastFixture x:Name="Contrast" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

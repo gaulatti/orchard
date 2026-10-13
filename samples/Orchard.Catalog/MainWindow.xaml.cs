@@ -57,6 +57,13 @@ public sealed partial class MainWindow : Window
             if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
             else if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
             else if (args.Contains("--smoke-breadcrumb")) await RunBreadcrumbSmokeAsync(folder);
+            else if (args.Contains("--smoke-contrast"))
+            {
+                CatalogRoot.RequestedTheme = ElementTheme.Dark;
+                await SelectFixtureAsync(Contrast);
+                await Contrast.VerifyAsync(CatalogRoot, folder);
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "contrast", environment = RuntimeEnvironment() }));
+            }
             else await RunSmokeAsync(folder);
             Environment.Exit(0);
         }
@@ -251,7 +258,8 @@ public sealed partial class MainWindow : Window
             framework = RuntimeInformation.FrameworkDescription,
             displayScale = CatalogRoot.XamlRoot?.RasterizationScale,
             textScale = settings.TextScaleFactor,
-            animationsEnabled = settings.AnimationsEnabled
+            animationsEnabled = settings.AnimationsEnabled,
+            highContrast = new AccessibilitySettings().HighContrast
         };
     }
 
