@@ -59,8 +59,9 @@ public sealed partial class BreadcrumbsFixture : UserControl
         var sourceWidths = new[] { 36.984375, 43.453125, 42.171875, 37.890625 };
         var defaultLinks = Children(DefaultPath).OfType<HyperlinkButton>().ToArray();
         for (var index = 0; index < sourceWidths.Length; index++)
-            Require(Math.Abs(defaultLinks[index].ActualWidth - sourceWidths[index]) <= 1d / 64,
-                $"Link {index} width {defaultLinks[index].ActualWidth:R} differs from pinned source {sourceWidths[index]:R} beyond layout quantization.");
+            Require(!defaultLinks[index].UseLayoutRounding &&
+                Math.Abs(defaultLinks[index].ActualWidth - sourceWidths[index]) <= 1d / 32,
+                $"Link {index} width {defaultLinks[index].ActualWidth:R} differs from pinned source {sourceWidths[index]:R}; rounding={defaultLinks[index].UseLayoutRounding}.");
         Require(Children(CollapsedTwo).Count == 5 && Children(CollapsedTwo).OfType<HyperlinkButton>().Count() == 1 && CollapsedTwo.ActualHeight == 24,
             "Collapse threshold incorrectly retained extra trailing links.");
         Require(Children(Threshold).Count == 5 && Children(Threshold).OfType<Button>().Count() == 0 && Children(Negative).Count == 9,

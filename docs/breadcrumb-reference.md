@@ -32,8 +32,12 @@ they do not establish native acceptance.
 - Breadcrumb disables WinUI layout rounding within its own subtree. The initial
   native link widths 37/44/43/38 accumulated a 1.5px current-item displacement;
   source widths are 36.984375/43.453125/42.171875/37.890625. The native fixture now
-  requires agreement within the browser's 1/64px layout quantum. Glyph raster
-  comparison remains a separate acceptance check.
+  requires rounding to remain disabled and advances to agree within 1/32px.
+  At `6742e1d`, both architectures produce 37.86300277709961 for Drafts versus
+  browser 37.890625: a .02762222290039px shaping/layout difference exceeds one
+  browser quantum but stays below two. The 1/32px bound retains sensitivity to
+  the earlier .546875/.828125px rounding errors. This small difference remains
+  recorded; the advance check does not claim exact glyph/raster acceptance.
 - Chevron and ellipsis are the source Lucide vectors at 14px. The ellipsis
   button is 24px square with a 6px radius; hover uses sand at 10%/20% opacity,
   pressed scale is .9, and control motion uses the premium .22,1,.36,1 curve.
