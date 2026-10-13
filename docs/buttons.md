@@ -1,5 +1,12 @@
 # BleeckerButton
 
+Before the runtime variant/state matrix, the catalog acquires its own foreground
+window and moves the actual pointer to the fixture heading. This establishes the
+non-hover precondition for the initial link-underline assertion even when the
+restored pointer overlaps the action after a fixture/theme change. Native input
+ownership remains checked and the prior pointer position is restored when the
+matrix finishes. Actual hovered states remain separate acceptance checks.
+
 `BleeckerButton` wraps a native WinUI `Button` and preserves native commands, pointer/keyboard activation, focus visuals and automation. Import Orchard's resource dictionary before using it.
 
 ```xml

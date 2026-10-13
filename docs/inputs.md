@@ -1,5 +1,16 @@
 # Input editing preview
 
+The rounded-pointer runtime matrix translates each specimen by less than one
+physical pixel to an integer screen origin before issuing the pinned one-pixel
+corner samples. This addresses the local catalog's fractional centered column:
+at x=1672.5, truncating the requested local (0,0) to x=1672 misses the input
+before a cursor assertion can run. Reports retain original/aligned bounds and
+the translation, require unchanged dimensions, and restore the original local
+transform value (or clear it when originally unset) on success or failure.
+Cursor, border, opacity and focus expectations remain unchanged. Fractional
+layout, display scaling and full native/browser raster acceptance remain open;
+this specimen setup is not evidence for those requirements.
+
 `BleeckerInput` derives from WinUI TextBox and supplies a branded template with
 consumer-owned text and decorative StartIcon/EndIcon content. It is an incomplete
 preview against the [pinned reference](input-reference.md), not accepted parity.

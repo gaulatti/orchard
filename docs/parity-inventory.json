@@ -2032,7 +2032,6 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify additional Breadcrumb held/cancelled press and unload/reload checks on x64/ARM64; baseline catalog and independent consumers passed at 2d7fdc9",
         "Complete source/native typography, vectors, focus and enabled-motion raster acceptance",
         "Verify contrast, text/display scaling and Narrator",
         "See docs/breadcrumb-reference.md for the pinned source and Windows contract"

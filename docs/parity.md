@@ -69,7 +69,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | alert | Pending | Pending | Full pinned contract |
 | alert-dialog | Pending | Pending | Full pinned contract |
 | avatar | `BleeckerAvatar`, `BleeckerAvatarGroup`, `BleeckerAvatarData`: five sizes, images/initials/silhouettes and consumer collections | Registered Avatars fixture; source Light/Dark audit; x64/ARM64 geometry, rendered pixels, collection/lifecycle and independent package checks pass at `2f265e3` | In progress: native/browser raster parity, contrast/Narrator/scaling, constrained widths and overrides; see [contract and usage](avatar-reference.md) |
-| breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | Registered wrapping, threshold, template, collection and command fixtures; independent consumer fixture | In progress: native x64/ARM64 checks, complete visuals/motion, focus, scaling, contrast and Narrator; see [reference/API](breadcrumb-reference.md) |
+| breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | x64/ARM64 wrapping, threshold, template/collection, held/cancelled press, keyboard expansion/focus and unload/reload checks; independent consumers pass at `7c4c272` | In progress: complete visuals/motion, remaining focus, scaling, contrast and Narrator; see [reference/API](breadcrumb-reference.md) |
 | context-menu | Pending | Pending | Full pinned contract |
 | date-picker | Pending | Pending | Full pinned contract |
 | dialog-close-button | Pending | Pending | Full pinned contract |

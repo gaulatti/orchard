@@ -131,7 +131,13 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(Toggles);
             await Toggles.VerifyAsync(scheme);
             await SelectFixtureAsync(Buttons);
-            await Buttons.VerifyAsync(scheme);
+            using (var buttonInput = new NativeInputSession(CatalogRoot.XamlRoot, folder, $"buttons-rest-{scheme}"))
+            {
+                var heading = (FrameworkElement)((StackPanel)Buttons.Content).Children[0];
+                await buttonInput.AcquireAsync(heading);
+                await buttonInput.MoveAsync(heading);
+                await Buttons.VerifyAsync(scheme);
+            }
             await SelectFixtureAsync(IconButtons);
             await IconButtons.VerifyAsync(scheme);
             await SelectFixtureAsync(ToggleGroups);

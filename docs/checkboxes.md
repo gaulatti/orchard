@@ -1,5 +1,13 @@
 # Checkbox
 
+The stationary-pointer scroll regression uses a 500px maximum catalog viewport
+while exercising scroll-away/back, so tall monitors cannot remove the required
+25px scroll range. It reacquires the checkbox and records its pointer anchor after
+constraining the viewport, then keeps that pointer stationary for both scroll
+assertions. Cleanup restores the prior local MaxHeight value and original scroll
+offset on success or failure. This affects the smoke fixture only; ordinary
+catalog sizing and the library's layout are unchanged.
+
 `BleeckerCheckbox` is an in-progress implementation of Bleecker's
 [`Checkbox`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/checkbox.tsx)
 at the fixed reference commit. It inherits the pinned WinUI CheckBox rather

@@ -27,7 +27,9 @@ public sealed partial class CheckboxesFixture
             VerticalAlignment = VerticalAlignment.Top, Background = new SolidColorBrush(Microsoft.UI.Colors.Black), Visibility = Visibility.Collapsed };
         var editor = new BleeckerInput { Name = "CheckboxPointerEditor", Width = 240, Text = "Shared cursor ownership", IsEnabled = false };
         ScrollViewer? viewport = null;
+        object? originalViewportMaxHeight = null;
         var scrollOffset = 0d;
+        var originalScrollOffset = 0d;
         try
         {
             await input.MoveAsync(Find<TextBlock>(Off, "PART_Label"));
@@ -125,6 +127,15 @@ public sealed partial class CheckboxesFixture
             for (DependencyObject? ancestor = host; ancestor is not null; ancestor = VisualTreeHelper.GetParent(ancestor))
                 if (ancestor is ScrollViewer scroll) { viewport = scroll; break; }
             Require(viewport is not null, "Disabled pointer fixture has no scroll viewport.");
+            originalViewportMaxHeight = viewport!.ReadLocalValue(FrameworkElement.MaxHeightProperty);
+            originalScrollOffset = viewport.VerticalOffset;
+            // Fix the test viewport so a tall developer monitor still exercises
+            // the same stationary-pointer scroll-away/back boundary as CI.
+            viewport.MaxHeight = 500;
+            UpdateLayout();
+            await input.MoveAsync(Find<Border>(DisabledOff, "PART_Box"));
+            await Check(DisabledOff, "scroll-viewport-ready", true, 32648);
+            anchor = PointerPosition();
             scrollOffset = viewport!.VerticalOffset;
             Require(scrollOffset + 25 <= viewport.ScrollableHeight, "Disabled pointer fixture has insufficient scroll range.");
             viewport.ChangeView(null, scrollOffset + 25, null, true);
@@ -230,7 +241,11 @@ public sealed partial class CheckboxesFixture
         }
         finally
         {
-            if (viewport is not null) viewport.ChangeView(null, scrollOffset, null, true);
+            if (viewport is not null && originalViewportMaxHeight is not null)
+            {
+                if (originalViewportMaxHeight == DependencyProperty.UnsetValue) viewport.ClearValue(FrameworkElement.MaxHeightProperty);
+                else viewport.SetValue(FrameworkElement.MaxHeightProperty, originalViewportMaxHeight);
+            }
             Rows.Children.Remove(editor);
             host.Children.Remove(DisabledOff);
             Rows.Children.Remove(host);
@@ -239,6 +254,7 @@ public sealed partial class CheckboxesFixture
             DisabledOff.Template = template; DisabledOff.IsEnabled = enabled; DisabledOff.FlowDirection = direction;
             DisabledOff.IsHitTestVisible = hitTestVisible; DisabledOff.Visibility = visibility;
             UpdateLayout();
+            if (viewport is not null) viewport.ChangeView(null, originalScrollOffset, null, true);
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-disabled-pointer-{scheme}.json"),
                 JsonSerializer.Serialize(new { passed, scheme, displayScale = XamlRoot.RasterizationScale, samples }, new JsonSerializerOptions { WriteIndented = true }));
         }

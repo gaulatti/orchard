@@ -109,8 +109,11 @@ and remounts an expanded path, mutates consumer data while detached and verifies
 rehydration, restored item observation and retained expansion. These additional
 checks pass locally on x64 in both themes with Windows animations disabled,
 retained under `artifacts/smoke-breadcrumb-focused`. The reloaded and pressed
-captures were inspected. Enabled motion and a fresh ARM64 runtime run remain
-required; local x64 and ARM64 builds have zero warnings and all 26 unit tests pass.
+captures were inspected. Run `38414003860` at `7c4c272` additionally passes the
+full native catalogs and independent consumers on both architectures. ARM64's
+report verifies animations enabled; x64 verifies reduced motion. The pressed and
+reloaded ARM64 captures were inspected. Full curve/raster motion parity remains
+open. Local x64 and ARM64 builds have zero warnings and all 26 unit tests pass.
 
 The full local suite stopped later at Input's rounded-pointer movement check
 (`artifacts/smoke-breadcrumb-resume-focus/result.json`), after Breadcrumb's Light

@@ -15,13 +15,14 @@ public sealed partial class InputsFixture
         using var input = new NativeInputSession(XamlRoot, folder, $"input-rounded-{scheme}");
         var samples = new List<object>();
         var windowCaptures = new List<object>();
+        var alignments = new List<object>();
         var passed = false;
         string? error = null;
         BleeckerInput? activeControl = null;
         object? failedCursor = null;
         var cursorTrace = new List<object>();
         var controls = new[] { SmallInput, MediumInput, LargeInput };
-        var originals = controls.Select(control => (control.IsEnabled, control.IsError)).ToArray();
+        var originals = controls.Select(control => (control.IsEnabled, control.IsError, Transform: control.ReadLocalValue(UIElement.RenderTransformProperty))).ToArray();
         try
         {
             await input.AcquireAsync((FrameworkElement)((StackPanel)Content).Children[0]);
@@ -29,6 +30,29 @@ public sealed partial class InputsFixture
             foreach (var control in controls)
             {
                 activeControl = control;
+                control.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
+                await Task.Delay(100);
+                var before = input.ScreenBounds(control);
+                // The fixed browser samples use a one-pixel pointer square at
+                // an integer origin. A .5px centered catalog column otherwise
+                // makes the physical (0,0) sample fall outside the control.
+                // Translate only this specimen; preserve its size and restore
+                // its original transform after the boundary matrix.
+                var shift = new TranslateTransform
+                {
+                    X = (Math.Ceiling(before.X) - before.X) / XamlRoot.RasterizationScale,
+                    Y = (Math.Ceiling(before.Y) - before.Y) / XamlRoot.RasterizationScale
+                };
+                var alignedTransform = new TransformGroup();
+                if (control.RenderTransform is Transform previous) alignedTransform.Children.Add(previous);
+                alignedTransform.Children.Add(shift);
+                control.RenderTransform = alignedTransform;
+                UpdateLayout();
+                var aligned = input.ScreenBounds(control);
+                Require(Math.Abs(aligned.X - Math.Round(aligned.X)) < .0001 && Math.Abs(aligned.Y - Math.Round(aligned.Y)) < .0001 &&
+                    Math.Abs(aligned.Width - before.Width) < .0001 && Math.Abs(aligned.Height - before.Height) < .0001,
+                    "Pointer specimen did not retain its dimensions at a physical pixel origin.");
+                alignments.Add(new { control.Name, before, aligned, shift.X, shift.Y });
                 control.IsEnabled = false;
                 UpdateLayout();
                 Require(control.CornerRadius == new CornerRadius(7), "Input pointer fixture lost the pinned rounded geometry.");
@@ -96,10 +120,12 @@ public sealed partial class InputsFixture
             {
                 controls[index].IsEnabled = originals[index].IsEnabled;
                 controls[index].IsError = originals[index].IsError;
+                if (originals[index].Transform == DependencyProperty.UnsetValue) controls[index].ClearValue(UIElement.RenderTransformProperty);
+                else controls[index].SetValue(UIElement.RenderTransformProperty, originals[index].Transform);
             }
             UpdateLayout();
             await File.WriteAllTextAsync(Path.Combine(folder, $"input-rounded-pointer-{scheme}.json"),
-                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, cursorTrace, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
+                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, cursorTrace, scale = XamlRoot.RasterizationScale, alignments, samples, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
 

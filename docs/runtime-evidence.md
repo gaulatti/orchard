@@ -1,5 +1,46 @@
 # Native Windows runtime evidence
 
+## Breadcrumb press and lifecycle checkpoint
+
+Run [38414003860](https://github.com/gaulatti/orchard/actions/runs/38414003860)
+at `7c4c272` passes all three jobs: x64 build/catalog/package consumer, ARM64
+cross-build/consumer build, and native ARM64 catalog/package consumer. All 26
+unit tests pass. The registered baseline now covers 23 in-progress inventory
+entries; 89 remain pending and none has full acceptance.
+
+The downloaded reports verify X64/X64 and Arm64/Arm64 process/OS architectures.
+Both use .NET 10.0.12 and display/text scale 1. x64 runs Windows 10.0.26100 with
+animations disabled; ARM64 runs Windows 10.0.26200 with animations enabled.
+Breadcrumb's actual held press, cancelled release, keyboard expansion/focus and
+expanded unload/reload checks pass in both themes. The ARM64 pressed/reloaded
+captures were inspected. This proves their registered endpoint/lifecycle checks,
+not full raster, animation-curve, contrast, Narrator or scaling acceptance.
+
+| Candidate evidence | SHA-256 |
+| --- | --- |
+| x64 runtime archive `11823338685` | `dfc9ead7a667020eede0d7b24afb1c2660303f5fbb0dbdfcd1dd675ba7995265` |
+| ARM64 runtime archive `11824046064` | `4f5f863205d7c37cb01e0e7aacb757cd94d19e5599f7336ea59c89b368ab4965` |
+| x64 consumer package 0.1.0 | `92188c41bc1f92b2d87296ee43bc7b7c684525deff6a0eb7405423233b2e3016` |
+| ARM64 consumer package 0.1.0 | `ed55dedc49dbc737b5084fc5859f974699d039835b37bdf189d22ea10e2df907` |
+
+Archive digests were verified before extraction; selected reports/captures are
+retained at `artifacts/ci-checkbox-7c4c272-{x64,arm64}`. Subsequent fixture changes
+need their own native evidence.
+
+## Local physical-input preconditions
+
+The subsequent local catalog setup fixes fractional Input sample origins, gives
+Checkbox's stationary scroll test a 500px maximum viewport, and places the
+pointer on the Button fixture heading before asserting its non-hover state.
+The complete x64 catalog passes both themes and system appearance under
+`artifacts/smoke-all-local-preconditions`, with a 3440×1369 client, display/text
+scale 1 and animations disabled. Each theme passes all 96 Input rounded-pointer
+samples and Checkbox's stationary scroll-away/back checks. Local x64/ARM64 builds
+have zero warnings; all 26 unit tests pass. These setup changes require their own
+fresh CI runtime/consumer results before replacing the checkpoint above.
+
+## Earlier Avatar baseline
+
 The catalog fixtures and independent NuGet consumer at commit `2f265e3` passed
 on both x64 and native ARM64, including Avatar's consumer images, collection
 bindings, lifecycle and retained overflow elevation. The same run replays
