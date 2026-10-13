@@ -72,6 +72,9 @@ public sealed partial class AvatarsFixture : UserControl
 
         foreach (var group in Groups.Children.OfType<BleeckerAvatarGroup>()) VerifyGroup(group, scheme);
         var sourceCollection = DefaultGroup.Avatars;
+        try { DefaultGroup.Avatars = null!; throw new InvalidOperationException("AvatarGroup accepted a null consumer collection."); }
+        catch (ArgumentNullException) { }
+        Require(ReferenceEquals(DefaultGroup.Avatars, sourceCollection), "Rejected null input replaced the consumer collection.");
         var replacement = new System.Collections.ObjectModel.ObservableCollection<BleeckerAvatarData>(sourceCollection);
         DefaultGroup.Avatars = replacement; await SettleAsync();
         Require(Groups.Children.OfType<BleeckerAvatarGroup>().Where(group => group != EmptyGroup).All(group => ReferenceEquals(group.Avatars, replacement)),

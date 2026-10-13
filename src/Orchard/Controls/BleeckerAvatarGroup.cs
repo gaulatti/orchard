@@ -29,14 +29,27 @@ public sealed class BleeckerAvatarGroup : Control
     public static readonly DependencyProperty AvatarsProperty = DependencyProperty.Register(nameof(Avatars), typeof(object), typeof(BleeckerAvatarGroup),
         new PropertyMetadata(null, (owner, args) =>
         {
-            if (args.NewValue is not ObservableCollection<BleeckerAvatarData>)
-                throw new ArgumentException($"Avatars requires a non-null ObservableCollection<BleeckerAvatarData>; received {args.NewValue?.GetType().FullName ?? "<null>"}.");
             var group = (BleeckerAvatarGroup)owner;
+            // ElementName bindings can supply null before the XAML namescope
+            // resolves. This is an unmounted binding placeholder, not data.
+            if (args.NewValue is null && !group.IsLoaded && group.GetBindingExpression(AvatarsProperty) is not null)
+            {
+                group.StopObserving(args.OldValue as ObservableCollection<BleeckerAvatarData>);
+                group.Synchronize();
+                return;
+            }
+            if (args.NewValue is not ObservableCollection<BleeckerAvatarData>)
+                throw new ArgumentException($"Avatars requires a non-null ObservableCollection<BleeckerAvatarData>; received {args.NewValue?.GetType().FullName ?? "<null>"}, loaded={group.IsLoaded}, binding={group.GetBindingExpression(AvatarsProperty) is not null}.");
             group.StopObserving(args.OldValue as ObservableCollection<BleeckerAvatarData>);
             if (group.IsLoaded) group.StartObserving();
             group.Synchronize();
         }));
-    public ObservableCollection<BleeckerAvatarData> Avatars { get => (ObservableCollection<BleeckerAvatarData>)GetValue(AvatarsProperty); set => SetValue(AvatarsProperty, value); }
+    public ObservableCollection<BleeckerAvatarData> Avatars
+    {
+        get => GetValue(AvatarsProperty) as ObservableCollection<BleeckerAvatarData>
+            ?? throw new InvalidOperationException("Avatars must resolve to a non-null ObservableCollection<BleeckerAvatarData> before the group is loaded.");
+        set => SetValue(AvatarsProperty, value ?? throw new ArgumentNullException(nameof(value)));
+    }
     public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(nameof(Max), typeof(int), typeof(BleeckerAvatarGroup),
         new PropertyMetadata(4, OnChanged));
     public int Max { get => (int)GetValue(MaxProperty); set => SetValue(MaxProperty, value); }
@@ -84,8 +97,15 @@ public sealed class BleeckerAvatarGroup : Control
     {
         _ = BleeckerAvatar.Metrics(AvatarSize);
         if (panel is null) return;
-        var count = Max >= 0 ? Math.Min(Avatars.Count, Max) : (int)Math.Max(0, (long)Avatars.Count + Max);
-        var excess = (long)Avatars.Count - Max;
+        var avatars = GetValue(AvatarsProperty) as ObservableCollection<BleeckerAvatarData>;
+        if (avatars is null)
+        {
+            if (IsLoaded) _ = Avatars; // Required-data validation, without empty-data substitution.
+            panel.Children.Clear();
+            return;
+        }
+        var count = Max >= 0 ? Math.Min(avatars.Count, Max) : (int)Math.Max(0, (long)avatars.Count + Max);
+        var excess = (long)avatars.Count - Max;
         // React uses index keys. Keep the same native component at each retained
         // position, including its image-error latch when consumer data changes.
         while (positions.Count > count) { panel.Children.Remove(positions[^1]); positions.RemoveAt(positions.Count - 1); }
@@ -93,7 +113,7 @@ public sealed class BleeckerAvatarGroup : Control
         for (var index = 0; index < count; index++)
         {
             if (index == positions.Count) { var added = new BleeckerAvatar(); added.SetGroupPresentation(false); positions.Add(added); panel.Children.Add(added); }
-            var item = Avatars[index] ?? throw new ArgumentException("Avatar entries must not be null.");
+            var item = avatars[index] ?? throw new ArgumentException("Avatar entries must not be null.");
             var avatar = positions[index];
             avatar.AvatarSize = AvatarSize; avatar.Source = item.Source; avatar.Alt = item.Alt; avatar.Fallback = item.Fallback;
             if (!panel.Children.Contains(avatar)) panel.Children.Add(avatar);

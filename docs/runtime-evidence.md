@@ -40,6 +40,14 @@ collection and requires every bound group to receive the same instance. Fallback
 checks also require actual initials/silhouette ink. The corrected local build,
 26 tests and token drift check pass; these new native checks remain pending.
 
+Run `38340953532` at `059fe94` identifies the rejected startup value as null,
+with the catalog still failing before mounting fixtures. The control now permits
+an unresolved null binding only while unmounted and validates the required
+collection at load; direct null assignment remains an immediate error. No default
+collection replaces a missing binding. The native regression also requires a
+rejected direct null assignment to leave consumer data intact. A fresh native
+run is required to verify this binding-initialization boundary.
+
 ## Skeleton runtime checkpoint
 
 Run `38334259867`, commit `71a7fb8c0757df34c7dd563b776378a95933f0fe`, passes

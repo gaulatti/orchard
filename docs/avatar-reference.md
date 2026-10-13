@@ -74,6 +74,11 @@ default collection is independently owned by that instance.
 AvatarGroup declares Avatars as its XAML content property, following the existing
 notification collection pattern. Populate it with direct AvatarData children or
 bind a consumer-owned observable collection.
+An ElementName binding may be unresolved while XAML builds its namescope. The
+control permits that null placeholder only for an unmounted bound target;
+loading still requires a non-null collection. A programmatic null assignment
+is rejected before replacing consumer data. No empty collection substitutes for
+an unresolved or invalid binding.
 
 The default templates consume centrally generated theme brushes, bundled fonts
 and the pinned SVG geometry. Rounded content clipping uses the Windows App SDK
