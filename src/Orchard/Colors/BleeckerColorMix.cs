@@ -16,6 +16,11 @@ internal static class BleeckerColorMix
         var lab = ToLab(color.R, color.G, color.B);
         return (lab[0] * color.Alpha, lab[1] * color.Alpha, lab[2] * color.Alpha, color.Alpha);
     }
+    internal static (double L, double A, double B, double Alpha) Premultiply(double red, double green, double blue, double alpha)
+    {
+        var lab = ToLab(red, green, blue);
+        return (lab[0] * alpha, lab[1] * alpha, lab[2] * alpha, alpha);
+    }
     internal static (double L, double A, double B, double Alpha) MixPremultiplied(
         (double L, double A, double B, double Alpha) from, (double L, double A, double B, double Alpha) to, double progress) =>
         (from.L + (to.L - from.L) * progress, from.A + (to.A - from.A) * progress,
@@ -49,6 +54,10 @@ internal static class BleeckerColorMix
 
     private static double[] ToLab(byte red, byte green, byte blue)
     {
+        return ToLab(red / 255d, green / 255d, blue / 255d);
+    }
+    private static double[] ToLab(double red, double green, double blue)
+    {
         var r = Linear(red); var g = Linear(green); var b = Linear(blue);
         var l = Math.Cbrt(.4122214708 * r + .5363325363 * g + .0514459929 * b);
         var m = Math.Cbrt(.2119034982 * r + .6806995451 * g + .1073969566 * b);
@@ -58,9 +67,8 @@ internal static class BleeckerColorMix
             .0259040371 * l + .7827717662 * m - .8086757660 * s];
     }
 
-    private static double Linear(byte channel)
+    private static double Linear(double value)
     {
-        var value = channel / 255d;
         return value <= .04045 ? value / 12.92 : Math.Pow((value + .055) / 1.055, 2.4);
     }
     private static byte Encode(double value)
