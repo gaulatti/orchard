@@ -2,6 +2,12 @@
 
 ## Platform ownership
 
+The catalog smoke process has a six-minute overall deadline for the registered
+Light/Dark suite, including the expanded physical Input corner matrix and shared
+cursor lifecycle checks. Per-state settling deadlines and architecture gates
+remain unchanged. A deadline expiry terminates that owned test process and fails
+verification; it does not count as runtime acceptance.
+
 Orchard is the Windows implementation of Gaulatti’s Bleecker design language.
 It uses WinUI 3 and .NET, not an embedded browser. Sabella is the Apple library;
 Linux has a separate future implementation. Shared branding and design tokens

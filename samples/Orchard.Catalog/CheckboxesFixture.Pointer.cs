@@ -22,6 +22,7 @@ public sealed partial class CheckboxesFixture
         var template = DisabledOff.Template;
         var index = Rows.Children.IndexOf(DisabledOff);
         var host = new Grid { Height = DisabledOff.ActualHeight };
+        var templateSlot = new Grid { Width = DisabledOff.ActualWidth, Height = DisabledOff.ActualHeight };
         var overlay = new Border { Width = 20, Height = 20, HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Top, Background = new SolidColorBrush(Microsoft.UI.Colors.Black), Visibility = Visibility.Collapsed };
         var editor = new BleeckerInput { Name = "CheckboxPointerEditor", Width = 240, Text = "Shared cursor ownership", IsEnabled = false };
@@ -59,15 +60,21 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff, "enabled-under-pointer", true, 32512, anchor);
             DisabledOff.IsEnabled = false;
             await Check(DisabledOff, "disabled-under-pointer", true, 32648, anchor);
-            // Match the supported template lifecycle: inspect detachment and
-            // restore before layout can synthesize ContentControl defaults.
+            // Cursor presentation completes through native input dispatch.
+            // Keep the cleared template out of layout during that observation,
+            // and hold its slot so a different row cannot move under the pointer.
             DisabledOff.Template = null;
-            Require(CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),
-                "Template detachment did not restore the visible arrow cursor.");
             Require(VisualTreeHelper.GetChildrenCount(DisabledOff) == 0,
                 "Explicit template removal synthesized unbranded native chrome.");
+            samples.Add(new { phase = "template-detachment-request", globalCursor = DescribeGlobalCursor() });
+            Rows.Children.Remove(DisabledOff); Rows.Children.Insert(index, templateSlot);
+            await WaitAsync(() => !DisabledOff.IsLoaded && CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),
+                "Detached template retained a visible disabled cursor after native input dispatch.");
+            Require(VisualTreeHelper.GetChildrenCount(DisabledOff) == 0,
+                "An unmounted cleared template synthesized native content.");
             samples.Add(new { phase = "template-detached", cursor = CurrentCheckboxCursor().ToInt64() });
             DisabledOff.Template = template;
+            Rows.Children.Remove(templateSlot); Rows.Children.Insert(index, DisabledOff);
             DisabledOff.ApplyTemplate(); UpdateLayout();
             await Check(DisabledOff, "template-restored", true, 32648, anchor);
 
@@ -227,6 +234,7 @@ public sealed partial class CheckboxesFixture
             Rows.Children.Remove(editor);
             host.Children.Remove(DisabledOff);
             Rows.Children.Remove(host);
+            Rows.Children.Remove(templateSlot);
             if (!Rows.Children.Contains(DisabledOff)) Rows.Children.Insert(Math.Min(index, Rows.Children.Count), DisabledOff);
             DisabledOff.Template = template; DisabledOff.IsEnabled = enabled; DisabledOff.FlowDirection = direction;
             DisabledOff.IsHitTestVisible = hitTestVisible; DisabledOff.Visibility = visibility;

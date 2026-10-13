@@ -12,7 +12,7 @@ $resultPath = Join-Path $outputPath 'result.json'
 if (Test-Path -LiteralPath $resultPath) { Remove-Item -LiteralPath $resultPath }
 $componentArgument = if ($Component -eq 'all') { '' } else { " --smoke-$Component" }
 $process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument" -PassThru -WindowStyle Hidden
-if (-not $process.WaitForExit(180000)) {
+if (-not $process.WaitForExit(360000)) {
     $process.Kill()
     throw 'Catalog runtime check timed out.'
 }

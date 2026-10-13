@@ -26,6 +26,17 @@ the earlier gate; new runtime checks must prove the displayed override.
 
 ## Rendered Checkbox names and resting Input validation
 
+At `76c09db`, both x64 and native ARM64 pass all 96 Light Input corner samples
+and retain all twelve rest/hover captures. The reports assert the displayed
+cursor, rendered border, exact native 60% opacity and unfocused state. Both later
+fail Checkbox's immediate cursor observation after template clearing, before
+Dark Input or independent consumer verification. Checked archives: x64
+`11781357506`, SHA-256
+`ed2feee247a7266232743aa0ef96ca2a91a032c98e7b7bc454eaaf028dc356d8`;
+ARM64 `11781267570`, SHA-256
+`acaa7cda4f49d7e1e79a095d617716e114e0c17f0cc32c8350c985aeebb42bb7`.
+This adds Light Input boundary evidence without replacing the full-suite baseline.
+
 The `1113935` x64 report is the first evidence here that disabled Checkbox
 UniversalNo actually displays: GetCursorInfo succeeds with showing flag 1 and
 the expected global handle for off/on, rounded corners and stationary

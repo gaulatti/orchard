@@ -387,6 +387,17 @@ The verified `019f28c` x64 archive `11781885568` has SHA-256
 The earlier x64 archive `11780458372` has SHA-256
 `31bf5c107dfdd0502c7b56cc5d9f609339bd07e060053df2307807f30003b85c`.
 
+At `76c09db`, both architectures pass Light Input's full rounded matrix, then
+fail the synchronous visible-cursor check immediately after null assignment.
+The fixture now retains that immediate global observation as a diagnostic,
+unmounts the cleared control while holding its layout slot, and awaits the
+visible Arrow through native input dispatch. The cleared control must remain
+without visual children. Its valid branded template is restored before remount
+and normal layout, then stationary box hover must again display UniversalNo.
+This uses the supported detached retemplating lifecycle without introducing
+default content or rewriting consumer template values. Other lifecycle phases
+continue to verify clipping, hide/show, scrolling and rapid reparenting.
+
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual
 foreground process/class/package alongside the owned screen point. Physical

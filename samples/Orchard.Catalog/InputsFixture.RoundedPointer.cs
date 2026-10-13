@@ -11,6 +11,7 @@ public sealed partial class InputsFixture
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"input-rounded-{scheme}");
         var samples = new List<object>();
+        var windowCaptures = new List<object>();
         var passed = false;
         string? error = null;
         var controls = new[] { SmallInput, MediumInput, LargeInput };
@@ -51,8 +52,13 @@ public sealed partial class InputsFixture
                             cursor = NativeInputSession.CurrentVisibleCursor().ToInt64(), border, editor.Opacity,
                             focus = control.FocusState.ToString(), width = control.ActualWidth, height = control.ActualHeight });
                         if (corner == "top-left" && local.Y == 0 && local.X is 0 or 3)
+                        {
                             await MainWindow.CaptureElementAsync(control, Path.Combine(folder,
                                 $"input-rounded-{scheme}-{control.InputSize}-{(invalid ? "invalid" : "valid")}-{(local.Hover ? "hover" : "rest")}.png"));
+                            var capture = $"input-rounded-window-{scheme}-{control.InputSize}-{(invalid ? "invalid" : "valid")}-{(local.Hover ? "hover" : "rest")}.png";
+                            var client = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, capture));
+                            windowCaptures.Add(new { capture, client, target = input.ScreenBounds(control), point, local.Hover });
+                        }
                     }
                 }
                 control.IsEnabled = originals[Array.IndexOf(controls, control)].IsEnabled;
@@ -73,7 +79,7 @@ public sealed partial class InputsFixture
             }
             UpdateLayout();
             await File.WriteAllTextAsync(Path.Combine(folder, $"input-rounded-pointer-{scheme}.json"),
-                JsonSerializer.Serialize(new { passed, scheme, error, scale = XamlRoot.RasterizationScale, samples },
+                JsonSerializer.Serialize(new { passed, scheme, error, scale = XamlRoot.RasterizationScale, samples, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
     }

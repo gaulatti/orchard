@@ -308,6 +308,10 @@ all three sizes and both validation states, requiring the global visible cursor,
 rendered border, disabled opacity and absence of focus. It retains
 `input-rounded-pointer-{Light,Dark}.json`, rest/hover element captures for every
 size/validation combination, plus native desktop/point diagnostics.
+Each rest/hover case also retains an owned, composited window capture and its
+client/target rectangles. These captures show the actual background composition;
+transparent element PNGs can magnify low-alpha channel quantization when viewed
+in isolation. Window occlusion checks remain active during capture.
 Native x64/ARM64 verification and display/text scaling remain required before
 accepting this boundary.
 
@@ -321,3 +325,15 @@ and focus on each accepted sample and in failure details. The checked archive
 `af529700868802695814960ac4ea383c8afc5b90c4ae6a014f5619b105e44203`.
 This fixture correction requires new native evidence; the product styling and
 per-state acceptance values are unchanged.
+
+At `76c09db`, both native architectures pass all 96 rounded-pointer samples in
+Light: three sizes, both validation states, all corners and included neighbors,
+visible global cursors, rendered borders, exact native 60% opacity and no focus.
+The native rest/hover images are retained for all six size/validation cases.
+Both suites later fail Checkbox's immediate template-detachment cursor check,
+before reaching Dark Input or their independent consumers. This is Light
+boundary evidence, not complete Input or suite acceptance. Checked archives:
+x64 `11781357506`, SHA-256
+`ed2feee247a7266232743aa0ef96ca2a91a032c98e7b7bc454eaaf028dc356d8`;
+ARM64 `11781267570`, SHA-256
+`acaa7cda4f49d7e1e79a095d617716e114e0c17f0cc32c8350c985aeebb42bb7`.
