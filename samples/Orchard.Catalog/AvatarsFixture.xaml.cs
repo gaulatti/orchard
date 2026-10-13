@@ -27,7 +27,12 @@ public sealed partial class AvatarsFixture : UserControl
             Require(!avatar.IsTabStop && !peer.IsControlElement() && peer.IsContentElement() == (avatar.Fallback is not null) &&
                 peer.GetPattern(PatternInterface.Invoke) is null, "Avatar acquired an action, focus stop or decorative content semantics.");
             samples.Add(new { avatar.AvatarSize, avatar.ActualWidth, avatar.ActualHeight, avatar.FontSize,
-                initials = Part<TextBlock>(avatar, "PART_Initials").Text, inkPixels = await VerifyInkPixelsAsync(avatar) });
+                initials = Part<TextBlock>(avatar, "PART_Initials").Text,
+                textWidth = Part<TextBlock>(avatar, "PART_Initials").ActualWidth,
+                textHeight = Part<TextBlock>(avatar, "PART_Initials").ActualHeight,
+                lineHeight = Part<TextBlock>(avatar, "PART_Initials").LineHeight,
+                textOrigin = Part<TextBlock>(avatar, "PART_Initials").TransformToVisual(avatar).TransformPoint(new Point()),
+                inkPixels = await VerifyInkPixelsAsync(avatar) });
         }
         var expected = new[] { "JD", "SG", "SSSS", "東港", "\uD83DH" };
         var unicode = Unicode.Children.OfType<BleeckerAvatar>().ToArray();

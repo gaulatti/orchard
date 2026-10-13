@@ -118,6 +118,8 @@ Each architecture/theme records ten size/ink samples, 40 verified image/corner
 pixels, ten element images and two actual window composites. Collection replacement,
 item/reorder/count changes, retained overflow elevation and detached retemplating
 pass. See [checked runtime evidence](runtime-evidence.md).
+The fixture now also records initials' text-box width/height, line height and origin
+for comparison with the rendered source; that new measurement requires a fresh run.
 The catalog resource-reference test rejects unknown Bleecker keys. Native checks
 also verify collection resolution after load, rejected direct null input, shared
 binding updates and retained overflow identity/elevation. Earlier startup and
