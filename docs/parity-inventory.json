@@ -2320,7 +2320,7 @@
       ],
       "windowsImplementation": ["src/Orchard/Controls/BleeckerInput.cs", "src/Orchard/Themes/Inputs.xaml", "src/Orchard/Themes/Generic.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/InputsFixture.xaml"],
-      "regressionTests": ["samples/Orchard.Catalog/InputsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["samples/Orchard.Catalog/InputsFixture.xaml.cs", "samples/Orchard.Catalog/InputsFixture.RoundedPointer.cs", "tests/Orchard.Tests/InputRoundedHitTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Finish appearance, shadows, motion and input-type contracts documented in docs/inputs.md",

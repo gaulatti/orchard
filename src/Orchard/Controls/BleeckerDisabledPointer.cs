@@ -59,9 +59,9 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     {
         if (!owner.IsLoaded || owner.IsEnabled || bounds() is not FrameworkElement target) return false;
         var point = root.TransformToVisual(target).TransformPoint(position);
-        if (target is Border border)
+        if (target is Border or Control)
         {
-            var radius = border.CornerRadius;
+            var radius = target is Border border ? border.CornerRadius : ((Control)target).CornerRadius;
             return BleeckerRoundedPointerHit.Contains(target.ActualWidth, target.ActualHeight,
                 radius.TopLeft, radius.TopRight, radius.BottomRight, radius.BottomLeft, point.X, point.Y);
         }

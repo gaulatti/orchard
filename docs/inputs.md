@@ -287,3 +287,26 @@ layout/render changes. Both Input and Checkbox physical checks now require the
 visible global cursor from GetCursorInfo; hidden/suppressed cursors cannot pass.
 Property values and the UI-thread cache remain diagnostics only. Native x64
 and ARM64 runtime verification is required for this correction.
+
+### Rounded disabled pointer boundary
+
+The pinned browser Input uses a 7px rounded border as its hit region. Its three
+sizes (36/40/44px high), valid/invalid states and Light/Dark appearances exclude
+the outer three pixels at either end of the top/bottom edge. Those corner pixels
+retain the surrounding cursor and resting border; the next pixel enters
+disabled hover and selects the not-allowed cursor. Orchard's disabled observer
+now intersects the pointer sample with the control's actual CornerRadius, rather
+than treating the full editor as a rectangle. Clipping, occlusion, viewport and
+cursor ownership checks still apply.
+
+`tests/Reference/InputRoundedHit.json` records the actual unmodified Input from
+Bleecker commit `a86059013cd59684ce452849278ea81e734f2066`: 96,000 integer
+points and 240 fractional/edge observations over both appearances. The regression
+compares the shared native geometry with every recorded hit result. The registered
+Inputs fixture now physically samples each corner and its included neighbor for
+all three sizes and both validation states, requiring the global visible cursor,
+rendered border, disabled opacity and absence of focus. It retains
+`input-rounded-pointer-{Light,Dark}.json`, rest/hover element captures for every
+size/validation combination, plus native desktop/point diagnostics.
+Native x64/ARM64 verification and display/text scaling remain required before
+accepting this boundary.

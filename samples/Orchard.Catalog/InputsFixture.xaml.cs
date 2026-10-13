@@ -51,6 +51,7 @@ public sealed partial class InputsFixture : UserControl
         await VerifyAdornmentDirectionAsync(scheme, folder);
         await InspectFontFallbackAsync(scheme, folder);
         await VerifyFontSettingsAsync(scheme, folder);
+        await VerifyRoundedDisabledPointerAsync(scheme, folder);
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
     }
 
