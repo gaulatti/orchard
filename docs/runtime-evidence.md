@@ -2,6 +2,24 @@
 
 ## Recent native input checkpoint
 
+Run [38485003280](https://github.com/gaulatti/orchard/actions/runs/38485003280)
+at `1cf7c76` passes x64's complete job and the ARM64 cross-build. Native ARM64
+passes focused Bauhaus, Input, Activity Item, live contrast and independent
+package consumption. Activity's native title/time ink extents match the frozen
+browser in both appearances at display/text scale 1 with animations enabled.
+The ordinary ARM64 catalog fails Field Help's in-place hover-brush assertion;
+this candidate does not establish a passing shared checkpoint or resolve the
+intermittent cursor/motion gaps. The independent ARM64 package has SHA-256
+`6fca1df2ea6fc2efef266ef735b0cacdaf2bc9edeada8912582a2a3edc9a8f1d`.
+
+ARM64 artifact `11859541782` was verified against SHA-256
+`d7b9d79de708622f3fcb4b98e2ae3ac8e59a2d69664223788d20efdf01b75e9e`.
+Selected reports are retained at `artifacts/ci-1cf7c76-arm64-evidence`.
+Field Help's fixture now awaits the actual owned animation clock's release and
+active source subscription before asserting a settled in-place brush mutation.
+It records clock/source/state diagnostics and owns foreground input throughout;
+fresh enabled-motion ARM64 verification of that correction is required.
+
 Run [38472918618](https://github.com/gaulatti/orchard/actions/runs/38472918618)
 at `6a48813` passes all three required jobs, the complete x64/ARM64 catalog,
 live contrast and independent consumers. The registered inventory still has

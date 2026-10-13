@@ -1,7 +1,7 @@
 <UserControl x:Class="Orchard.Catalog.FieldHelpFixture"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
     <StackPanel Spacing="16" Margin="0,0,0,80">
-        <TextBlock Text="Field help" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock x:Name="Heading" Text="Field help" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <StackPanel Orientation="Horizontal" Spacing="6">
             <TextBlock Text="Coverage title" Style="{StaticResource BleeckerBodyStyle}" VerticalAlignment="Center" />
             <orchard:BleeckerFieldHelpTooltip x:Name="Help" Text="Use a concise title for this fictional coverage item." VerticalAlignment="Center" />

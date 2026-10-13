@@ -163,3 +163,12 @@ have zero warnings and all 27 unit/resource tests pass.
 The fresh independent consumer passes both appearances at
 `artifacts/package-consumer-activity-baseline`, using package 0.1.0 with SHA-256
 `a24c2d4579c97977a21c5e8f271b005c929b6095f5b24181d57680de88c258c4`.
+
+Native ARM64 at `1cf7c76`, run `38485003280`, passes the focused row fixture
+in both appearances with animations enabled and display/text scale 1. Its
+composed-image ink checks match title rows 20–33 and time rows 46–55, and its
+actual pointer/Tab, lifecycle, UIA and motion endpoint/intermediate checks pass.
+The same run passes live contrast and independent native package consumption.
+The ordinary ARM64 suite fails an unrelated Field Help brush assertion. These
+results verify the row's registered ARM64 checks, leaving complete glyph raster,
+motion/reversal, overrides, scaling, Narrator and full acceptance open.

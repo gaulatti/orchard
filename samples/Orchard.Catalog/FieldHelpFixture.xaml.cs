@@ -15,6 +15,8 @@ public sealed partial class FieldHelpFixture : UserControl
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
         await Task.Delay(150);
+        using var input = new NativeInputSession(XamlRoot, folder, $"field-help-{scheme}");
+        await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
         Require(Help.ActualWidth == 16 && Help.ActualHeight == 16 && EmptyHelp.Visibility == Visibility.Collapsed, "Field help trigger or empty-text geometry differs.");
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Help);
         Require(peer.GetAutomationControlType() == AutomationControlType.Button && peer.GetName() == Help.Text, "Field help lost its button role or help-text name.");
@@ -88,7 +90,7 @@ public sealed partial class FieldHelpFixture : UserControl
                 "Field help activation did not dismiss while preserving consumer activation and focus.");
         }
         finally { Help.Click -= onClick; }
-        await VerifyLiveBrushAsync(circle);
+        await VerifyLiveBrushAsync(circle, root, scheme, folder);
         tooltip.IsOpen = true;
         var original = Help.Text;
         Help.Text = "Updated help";
@@ -99,44 +101,80 @@ public sealed partial class FieldHelpFixture : UserControl
         Require(Help.Visibility == Visibility.Visible, "Restored help did not restore its trigger.");
     }
 
-    private async Task VerifyLiveBrushAsync(Ellipse circle)
+    private async Task VerifyLiveBrushAsync(Ellipse circle, Grid root, BleeckerColorScheme scheme, string folder)
     {
         var normal = new SolidColorBrush(Microsoft.UI.Colors.DarkBlue);
         var hover = new SolidColorBrush(Microsoft.UI.Colors.DarkRed);
+        var trace = new List<object>();
+        var motionField = typeof(BleeckerFieldHelpTooltip).GetField("motion", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+        var sourceField = typeof(BleeckerFieldHelpTooltip).GetField("observedColor", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+        var states = VisualStateManager.GetVisualStateGroups(root).Single(group => group.Name == "CommonStates");
         try
         {
             Help.Foreground = normal;
             Help.PointerOverForeground = hover;
             VisualStateManager.GoToState(Help, "Normal", false);
-            await AwaitColorAsync(normal.Color);
+            await AwaitSettledAsync("Normal", normal);
             normal.Color = Microsoft.UI.Colors.DarkGreen;
+            Record("normal-mutated");
             Require(((SolidColorBrush)circle.Stroke).Color == normal.Color, "Field help ignored an in-place normal brush update.");
             VisualStateManager.GoToState(Help, "PointerOver", false);
-            await AwaitColorAsync(hover.Color);
+            await AwaitSettledAsync("PointerOver", hover);
             hover.Color = Microsoft.UI.Colors.DarkOrange;
+            Record("hover-mutated");
             Require(((SolidColorBrush)circle.Stroke).Color == hover.Color, "Field help ignored an in-place hover brush update.");
             normal.Color = Microsoft.UI.Colors.Purple;
+            Record("inactive-mutated");
             Require(((SolidColorBrush)circle.Stroke).Color == hover.Color, "An inactive field help brush changed the visible icon.");
             var replacement = new SolidColorBrush(Microsoft.UI.Colors.Teal);
             Help.PointerOverForeground = replacement;
             hover.Color = Microsoft.UI.Colors.Black;
+            Record("hover-replaced");
             Require(((SolidColorBrush)circle.Stroke).Color == replacement.Color, "Field help retained a replaced brush subscription.");
             replacement.Color = Microsoft.UI.Colors.Navy;
+            Record("replacement-mutated");
             Require(((SolidColorBrush)circle.Stroke).Color == replacement.Color, "Field help did not observe the replacement brush.");
         }
         finally
         {
+            Record("cleanup");
+            await System.IO.File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"field-help-brush-{scheme}.json"), System.Text.Json.JsonSerializer.Serialize(trace));
             Help.ClearValue(BleeckerFieldHelpTooltip.ForegroundProperty);
             Help.ClearValue(BleeckerFieldHelpTooltip.PointerOverForegroundProperty);
             VisualStateManager.GoToState(Help, "Normal", false);
         }
 
-        async Task AwaitColorAsync(Windows.UI.Color expected)
+        async Task AwaitSettledAsync(string state, SolidColorBrush expected)
         {
             var elapsed = System.Diagnostics.Stopwatch.StartNew();
-            while (((SolidColorBrush)circle.Stroke).Color != expected && elapsed.Elapsed < TimeSpan.FromSeconds(1))
+            // An interpolated byte can equal its target before the storyboard
+            // releases the effective Color value. Mutate a settled source only
+            // after the actual clock and source subscription reach that state.
+            bool Settled() => states.CurrentState?.Name == state && motionField.GetValue(Help) is null
+                && ReferenceEquals(sourceField.GetValue(Help), expected) && ((SolidColorBrush)circle.Stroke).Color == expected.Color;
+            Record($"await-{state}-start");
+            while (!Settled() && elapsed.Elapsed < TimeSpan.FromSeconds(1))
                 await Task.Delay(16);
-            Require(((SolidColorBrush)circle.Stroke).Color == expected, "Field help did not enter the requested palette state.");
+            if (Settled())
+            {
+                var frame = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+                void OnFrame(object? sender, object args) => frame.TrySetResult();
+                CompositionTarget.Rendering += OnFrame;
+                try { await frame.Task.WaitAsync(TimeSpan.FromSeconds(1)); }
+                finally { CompositionTarget.Rendering -= OnFrame; }
+            }
+            Record($"await-{state}-end");
+            Require(Settled(), "Field help did not settle its requested palette state and animation clock.");
+        }
+        void Record(string phase)
+        {
+            var motion = motionField.GetValue(Help) as Microsoft.UI.Xaml.Media.Animation.Storyboard;
+            var source = sourceField.GetValue(Help) as SolidColorBrush;
+            trace.Add(new { phase, state = states.CurrentState?.Name, Help.IsPointerOver,
+                rendered = ((SolidColorBrush)circle.Stroke).Color.ToString(), source = source?.Color.ToString(),
+                observed = ReferenceEquals(source, normal) ? "normal" : ReferenceEquals(source, hover) ? "hover" : "other",
+                clock = motion is null ? "none" : motion.GetCurrentState().ToString(),
+                milliseconds = motion?.GetCurrentTime().TotalMilliseconds });
         }
     }
 

@@ -27,3 +27,21 @@ Reduced-motion verification passes at artifacts/smoke-field-help-motion-reduced-
 The animated icon observes Color changes on its active source brush, including in-place consumer palette updates. Changing state or replacing a brush updates that subscription; unloading removes it. The runtime fixture checks normal and hover updates, inactive-brush isolation and replacement. Actual Windows contrast switching remains a separate acceptance requirement.
 
 The live-brush regression passes in both themes at artifacts/smoke-field-help-brush-ready, with Windows animations disabled. It waits for each requested state before mutating the active brush. This proves in-place source-color propagation; it does not replace an actual Windows contrast-mode or animated reversal check.
+
+Native ARM64 run `38485003280` at `1cf7c76` fails the immediate hover-brush
+mutation assertion with animations enabled. Waiting for byte color equality
+alone does not prove that the owned storyboard has released its effective
+Color value: rounding can reach the destination before the clock completes.
+The fixture now awaits the requested state, exact color, active source-brush
+subscription and absence of the owned storyboard, then observes a rendering
+frame before mutating that settled source. Immediate propagation, inactive
+brush isolation and replacement assertions remain exact. Clock, source and
+state snapshots are saved in `field-help-brush-{Light,Dark}.json`, including
+on failure. A shared native input session keeps the catalog foreground and
+the real pointer on its static heading. This is a verification-precondition
+correction; enabled-motion ARM64 acceptance still requires a fresh passing run.
+The complete local x64 catalog passes both appearances at
+`artifacts/smoke-field-help-settled-clock`, with animation effects off and
+display/text scale 1. Its exact immediate brush-mutation checks pass and its
+clock/source traces confirm the settled preconditions. No Windows preference
+was changed for this run.
