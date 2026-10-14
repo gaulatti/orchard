@@ -274,22 +274,35 @@ public sealed partial class CheckboxesFixture
             editor.IsEnabled = false;
             var disablingTrace = new List<object>();
             var disablingWatch = System.Diagnostics.Stopwatch.StartNew();
+            var stableFrames = 0;
+            var disabledPublication = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+            void ObserveDisabledPublication(object? sender, object args)
+            {
+                var visible = CurrentCheckboxCursor();
+                var publishing = NativeCursorDiagnostics.Flag(editor, "republishQueued");
+                var ready = visible == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) && input.OwnsForeground &&
+                    NativeCursorDiagnostics.OwnsCursor(editor) && !publishing;
+                stableFrames = ready ? stableFrames + 1 : 0;
+                disablingTrace.Add(new { milliseconds = disablingWatch.Elapsed.TotalMilliseconds, visible = visible.ToInt64(),
+                    input.OwnsForeground, publishing, stableFrames, cursor = DescribeEditorCursor(input, editor), publication = NativeCursorDiagnostics.Describe(editor) });
+                if (stableFrames >= 2) disabledPublication.TrySetResult();
+            }
+            CompositionTarget.Rendering += ObserveDisabledPublication;
             try
             {
-                await WaitAsync(() =>
-                {
-                    var ready = CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648));
-                    if (!ready) disablingTrace.Add(new { milliseconds = disablingWatch.Elapsed.TotalMilliseconds,
-                        input.OwnsForeground, cursor = DescribeEditorCursor(input, editor), publication = NativeCursorDiagnostics.Describe(editor) });
-                    return ready;
-                }, "Stationary disabling did not restore the editor's blocked cursor.");
+                // The generic poll reads twice after its first match. During
+                // native publication that can reject a sub-millisecond No /
+                // I-beam transition without using its remaining deadline.
+                // Require two rendered, settled observations of the real No.
+                await disabledPublication.Task.WaitAsync(TimeSpan.FromSeconds(2));
             }
             catch
             {
                 samples.Add(new { phase = "input-disabled-under-pointer-failed", disablingTrace });
                 throw;
             }
-            samples.Add(new { phase = "input-disabled-under-pointer", cursor = CurrentCheckboxCursor().ToInt64() });
+            finally { CompositionTarget.Rendering -= ObserveDisabledPublication; }
+            samples.Add(new { phase = "input-disabled-under-pointer", cursor = CurrentCheckboxCursor().ToInt64(), disablingTrace });
             var editorAnchor = PointerPosition();
             for (var round = 0; round < 3; round++)
             {

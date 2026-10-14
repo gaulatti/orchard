@@ -1466,3 +1466,22 @@ The next complete Light/Dark run at
 `artifacts/smoke-sparkline-full-diagnostic` passes with the unchanged six-minute
 deadline. The stationary transition passes in both themes. No cursor product
 change was made, so the first failure remains an open intermittent issue.
+
+The later Stat Card full run at `artifacts/smoke-stat-card-full-contract`
+reproduces that transition and retains the new diagnostic trace. Its two failed
+poll reads occur at 0.1985ms and 0.8934ms, with the actual cursor changing from
+I-beam to UniversalNo and foreground/ownership intact. The generic wait exits
+after its first matching read, then immediately asserts a second read; it can
+therefore fail during this transition without using the remaining two-second
+deadline. The stationary-disable gate now requires two consecutive Rendering
+observations of actual UniversalNo, the owned foreground, the correct cursor
+owner and no pending publication. Its deadline remains two seconds. It retains
+all observations on success and failure. No product cursor code, handles,
+publication phases or input paths change. The complete Light/Dark catalog now
+passes at `artifacts/smoke-stat-card-full-settled` with the six-minute deadline
+unchanged. Light records settled UniversalNo at 12.5538ms and 28.6331ms; Dark at
+35.7968ms and 52.153ms, each with owned foreground and no pending publication.
+The reports retain all four Dark samples and both Light samples. This verifies
+the corrected local observation boundary; native ARM64 retesting and the
+separate exterior Input/AppStarting failure remain deferred during the Actions
+pause.
