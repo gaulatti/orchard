@@ -204,3 +204,35 @@ gradient-to-solid background change also retains all 124 positions at
 `artifacts/smoke-attention-background-baselines`. None needs a mask offset.
 These diagnostics rule out those changes alone as the hosted one-pixel cause;
 they do not replace actual Windows contrast verification or establish a fix.
+
+The expanded native ancestor diagnostics exposed a separate width defect:
+the compact contrast specimen's owner is 320px wide, while its inner native
+Button and painted border are only 148.735992px wide. The initial source-layout
+regression measured the owner alone. WinUI's Button has a Left alignment
+default ([alignment contract](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.frameworkelement.horizontalalignment?view=windows-app-sdk-2.0));
+the template must explicitly stretch its owned action to the consumer-sized
+surface. Regression coverage now requires the painted surface and actual
+native action to fill the wrapper and verifies physical activation at the far
+edge, beyond the old content-sized action. This is a distinct geometry/input
+boundary; the contrast glyph-mask and complete raster gates remain required.
+
+The new regression fails against the old native template at
+`artifacts/smoke-attention-sizing-before-fix`: the comfortable button paints
+225.232025px inside its 320px wrapper. The template now explicitly sets
+HorizontalAlignment and VerticalAlignment to Stretch on its owned native
+Button. The corrected focused x64 run passes both appearances at
+`artifacts/smoke-attention-sizing-fixed`, including all 86 frozen layout cases,
+native action and border dimensions, live widths 416/230/320 and a physical
+far-edge click with the original consumer command/parameter. x64 and ARM64
+builds have zero warnings, and all 32 unit/resource regressions pass. Windows
+animations remain off and display/text scale remains 1 on the local host.
+This fixes the measured sizing/action defect; it does not establish complete
+Attention visual or platform acceptance.
+
+The fresh independent x64 NuGet consumer passes the corrected native action
+and painted bounds in both appearances at
+`artifacts/package-consumer-attention-sizing-fixed`. Package 0.1.0 SHA-256 is
+`c268545330db09d4771a87c3299313a00114e919fa015c29290483bdb57cd5f8`.
+The complete local x64 catalog passes Light and Dark with the sizing correction
+at `artifacts/smoke-attention-sizing-all`. Fresh native ARM64 and hosted contrast
+checks remain required; the correction does not relax either gate.

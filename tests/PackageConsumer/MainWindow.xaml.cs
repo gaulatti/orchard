@@ -428,6 +428,7 @@ public sealed partial class MainWindow : Window
         var surface=(Border)root.FindName("PART_Surface");
         var actionRoot=(FrameworkElement)VisualTreeHelper.GetChild(PackageAttentionAction,0);
         var action=(Button)actionRoot.FindName("PART_Action");
+        var actionSurface=(Border)actionRoot.FindName("PART_Surface");
         Require(PackageAttention.Background is ImageBrush {ImageSource:WriteableBitmap bitmap} && bitmap.PixelWidth==320 && bitmap.PixelHeight==120 &&
             surface.Padding==new Thickness(20) && surface.BorderThickness==new Thickness(1) && PackageAttention.CornerRadius==new CornerRadius(11),
             "Packaged Attention Surface lost its gradient, geometry or default resources.");
@@ -436,6 +437,9 @@ public sealed partial class MainWindow : Window
             "Packaged non-button surface invented action semantics.");
         Require(new ButtonAutomationPeer(action).GetName()=="Independent surface action" && action.Visibility==Visibility.Visible && action.IsEnabled,
             "Packaged attention action lost its real button or consumer accessible name.");
+        Require(action.ActualWidth==PackageAttentionAction.ActualWidth && action.ActualHeight==PackageAttentionAction.ActualHeight &&
+            actionSurface.ActualWidth==PackageAttentionAction.ActualWidth && actionSurface.ActualHeight==PackageAttentionAction.ActualHeight,
+            "Packaged attention paint or native action shrank inside the consumer-sized surface.");
         Result.Text="Ready";
         ((IInvokeProvider)new ButtonAutomationPeer(action).GetPattern(PatternInterface.Invoke)).Invoke();
         Require(Result.Text==$"Saved: {Input.Text}","Packaged attention native activation did not reach the consumer Click handler.");

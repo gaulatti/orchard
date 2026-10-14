@@ -16,7 +16,7 @@
     <Grid x:Name="PART_ShadowHost" IsHitTestVisible="False" />
     <Border x:Name="PART_Background" IsHitTestVisible="False" />
     <Grid x:Name="PART_Host">
-     <Button x:Name="PART_Action" Style="{StaticResource BleeckerAttentionActionStyle}" Visibility="Collapsed" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" />
+     <Button x:Name="PART_Action" Style="{StaticResource BleeckerAttentionActionStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" />
      <Border x:Name="PART_Surface" BackgroundSizing="OuterBorderEdge">
       <Grid>
        <ContentPresenter x:Name="PART_Content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />

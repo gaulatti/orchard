@@ -53,17 +53,42 @@ public sealed partial class AttentionSurfacesFixture : UserControl
                 $"Attention source geometry differs for {name}: {control.ActualWidth}x{control.ActualHeight}, expected {expected.GetProperty("width")}x{expected.GetProperty("height")}.");
             Require(control.Element==BleeckerAttentionElement.Button ? action.Visibility==Visibility.Visible && ReferenceEquals(action.Content,surface)
                 : action.Visibility==Visibility.Collapsed && action.Content is null,"Attention element did not retain its actual button/non-button structure.");
+            Require(Math.Abs(surface.ActualWidth-control.ActualWidth)<.000001 && Math.Abs(surface.ActualHeight-control.ActualHeight)<.000001,
+                $"Attention {name} painted surface is {surface.ActualWidth}x{surface.ActualHeight}, but the consumer chose {control.ActualWidth}x{control.ActualHeight}.");
+            if(control.Element==BleeckerAttentionElement.Button)
+                Require(Math.Abs(action.ActualWidth-control.ActualWidth)<.000001 && Math.Abs(action.ActualHeight-control.ActualHeight)<.000001,
+                    $"Attention {name} native action does not fill the consumer's surface.");
             Require(!control.IsTabStop,"Attention surface invented a wrapper keyboard stop.");
             if(name!="override") Require(ReferenceEquals(control.Background,control.Resources["BleeckerAttentionBackgroundBrush"]) && control.Background is ImageBrush {ImageSource:not null},
                 $"Attention {name} did not resolve its instance-owned gradient through the native style.");
             Require(!PeerTree(FrameworkElementAutomationPeer.CreatePeerForElement(control)).Any(peer=>peer.GetName()=="Mg"),"Attention exposed its private font metric probe.");
-            measurements.Add(new{name,control.ActualWidth,control.ActualHeight,padding=surface.Padding.ToString(),surface.CornerRadius,text=text.Text,
+            measurements.Add(new{name,control.ActualWidth,control.ActualHeight,surfaceWidth=surface.ActualWidth,surfaceHeight=surface.ActualHeight,
+                actionWidth=action.ActualWidth,actionHeight=action.ActualHeight,padding=surface.Padding.ToString(),surface.CornerRadius,text=text.Text,
                 kind=FrameworkElementAutomationPeer.CreatePeerForElement(control).GetAutomationControlType().ToString(),background=control.Background?.GetType().Name});
         }
         await File.WriteAllTextAsync(Path.Combine(folder,$"attention-measurements-{scheme}.json"),JsonSerializer.Serialize(measurements,new JsonSerializerOptions{WriteIndented=true}));
         var native = NativeAction(Action); var before = command.Count;
+        var sizing=new List<object>();var originalWidth=Action.Width;
+        try
+        {
+            foreach(var width in new[]{416d,230d,originalWidth})
+            {
+                Action.Width=width;UpdateLayout();
+                await AwaitAsync(()=>native.ActualWidth==Action.ActualWidth && Surface(Action).ActualWidth==Action.ActualWidth,
+                    "Attention's native action or paint did not follow a live consumer width change.");
+                sizing.Add(new{ownerWidth=Action.ActualWidth,actionWidth=native.ActualWidth,surfaceWidth=Surface(Action).ActualWidth});
+            }
+        }
+        finally{Action.Width=originalWidth;UpdateLayout();}
+        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-consumer-sizing-{scheme}.json"),JsonSerializer.Serialize(sizing));
         ((IInvokeProvider)new ButtonAutomationPeer(native).GetPattern(PatternInterface.Invoke)).Invoke();
         Require(command.Count==before+1 && Equals(command.Last,"consumer"),"Attention native action did not route the consumer command and parameter.");
+        before=command.Count;
+        await input.MoveAsync(Action,localPoint:new Windows.Foundation.Point(Action.ActualWidth-8,Action.ActualHeight/2));
+        await input.PressPointerAsync();
+        try{await Task.Delay(30);}finally{input.PointerButton(false);}
+        await AwaitAsync(()=>command.Count==before+1,"Clicking the far edge of the consumer-sized attention surface did not activate its native action.");
+        Require(Equals(command.Last,"consumer"),"The far-edge attention click changed the consumer's command parameter.");
         var passive = NativeAction(PassiveAction); before = command.Count;
         ((IInvokeProvider)new ButtonAutomationPeer(passive).GetPattern(PatternInterface.Invoke)).Invoke();
         Require(command.Count==before+1 && Equals(command.Last,"passive"),"Interactive=false removed native button activation.");
