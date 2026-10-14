@@ -136,8 +136,20 @@ beyond the lead column and zero leaked text pixels outside the Card. Both
 architecture solution builds pass with zero warnings. All 43 unit regressions
 and the pinned token check pass at `artifacts/tests-stat-content`. The complete
 Light/Dark catalog passes at `artifacts/smoke-stat-content-full` with the
-six-minute deadline unchanged. Native ARM64 runtime and fresh package evidence
-for this follow-up remain separate.
+six-minute deadline unchanged. Native ARM64 runtime remains deferred.
+
+Fresh package 0.1.0 from clean fix commit
+`e6e65bab01ceb79da184bc2ea6b1b591768c2e69` has SHA-256
+`73e47e343bf334bc88b0ce6dbef18b82502fe60635280ee4aa3032de4a959f70`.
+The isolated x64 consumer passes both themes at
+`artifacts/package-consumer-stat-content`, including raw zero/Boolean footer
+behavior, zero icon chrome and template-owned false data. The ARM64 consumer
+cross-build passes at `artifacts/package-consumer-stat-content-arm64`, with
+runtimeVerified false. Both temporary caches are removed. The separately
+published x64 catalog passes all 80 source cases and desktop clipping gates at
+`artifacts/smoke-stat-content-published`; runnable output is
+`artifacts/catalog-stat-content`. Glyph/raster, full content/override/motion,
+contrast, Narrator, scaling and native ARM64 acceptance remain open.
 
 Fresh NuGet 0.1.0 from clean implementation commit
 `b3de3487e3cdfa9cffb0e2fc06bce5acbf767b27` has SHA-256
