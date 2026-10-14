@@ -1,5 +1,28 @@
 # Input editing preview
 
+Run [38556522194](https://github.com/gaulatti/orchard/actions/runs/38556522194)
+at `7d11f1b` does not establish ARM64 cursor recovery. The failing Dark
+Medium/top-right sample reports Arrow while its publisher has queued 86
+recoveries, completed 85, canceled none and has one recovery pending. Source
+and root still report the same accessible dispatcher; paint, opacity and
+ownership are correct. The deferred assignments therefore execute but do not
+resolve this observed native mismatch. The current scheduling explanation
+remains unproven, and the unchanged displayed-cursor gate remains required.
+
+The same run fails the new Error State real-contrast check on both architectures:
+only 242 of 243 established glyph pixels adopt WindowText. The existing broader
+contrast suite and fresh independent consumers pass on both architectures.
+The full x64 catalog passes; the full ARM64 catalog instead fails native menu
+radio exclusivity. These are separate retained failures, not evidence that the
+component inventory or the cursor feature is complete. No glyph masks, pixel
+counts, timing bounds or radio-selection assertions are relaxed.
+
+Local C: reaches zero available bytes during the following audit. Scoped
+lossless compression preserves evidence but recovers no usable space. Local
+builds, repairs and fresh restores require storage recovery; hosted evidence
+can still be inspected. The local checkout remains at `7d11f1b` until it can
+fetch this documentation commit. The goal remains active.
+
 The next cursor candidate separates the stale-value recovery assignments into
 two dispatcher callbacks. The current same-callback producer/UniversalNo
 transition still fails on ARM64 despite continued publication, correct paint,
