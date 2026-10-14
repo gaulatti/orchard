@@ -10,6 +10,15 @@ pixel tolerance or deadline is introduced. The independently restored package
 consumer also verifies text origins and consumer paint across fractional
 scrolling. This is a locally verified renderer correction; the existing real
 Windows contrast mode gate remains required on both hosted architectures.
+Run `38525069103` at `90fdad6` verifies the Attention correction in the actual
+Windows contrast transition on both architectures. The native ARM64 archive
+is retained at `artifacts/ci-90fdad6-arm64.zip`, verified against SHA-256
+`b64aa2440069e72df248511b24bb1dbfd9b925331d70852d3039f62564b92f56`.
+Selected evidence at `artifacts/ci-90fdad6-arm64-evidence` records 124/124 glyph
+pixels matching Windows foreground in 79.49ms and zero unmatched positions.
+Before/after text origins are Y=429/392, both whole pixels. Both contrast jobs
+then fail the Breadcrumb hover Highlight/HighlightText assertion; the overall
+mode-changing gate remains failed.
 
 Run `38452957927` at `46a7ae2` passes the stable-recovery contrast check and
 independent package consumption on both native architectures. Its ordinary

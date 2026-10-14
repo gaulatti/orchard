@@ -267,6 +267,13 @@ builds have zero warnings and all 38 regressions pass. Windows animations remain
 off, display/text scale remains 1 and contrast remains off on the local host.
 This renderer change has no backend or metrics surface; actual hosted contrast,
 native ARM64 raster and the remaining component acceptance gaps stay open.
+Run `38525069103` at `90fdad6` now passes the actual contrast glyph check on
+both native architectures. The verified ARM64 artifact records 124/124 matching
+positions, zero unmatched pixels, and whole-pixel before/after text origins
+Y=429/392. Both focused Attention suites pass, including seven-transition
+scroll masks; the ARM64 host has animations enabled. The complete contrast
+jobs fail later at Breadcrumb's paired hover colors. This closes the measured
+Attention glyph defect, not the full component's acceptance gaps or required CI.
 
 The expanded native ancestor diagnostics exposed a separate width defect:
 the compact contrast specimen's owner is 320px wide, while its inner native
