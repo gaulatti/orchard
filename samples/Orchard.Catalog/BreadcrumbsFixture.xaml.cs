@@ -156,8 +156,10 @@ public sealed partial class BreadcrumbsFixture : UserControl
             input.Key(0x0D);
             await AwaitAsync(() => Children(customInteraction).Count == 9, "Custom renderer path did not expand.");
             var customHosts = Children(customInteraction).OfType<ContentPresenter>().ToArray();
-            var revealed = Find<Button>(customHosts[1], "ConsumerLink");
-            await AwaitAsync(() => revealed.FocusState == FocusState.Keyboard, "Expansion did not restore focus into the consumer link template.");
+            await AwaitAsync(() => customHosts.Length==4 &&
+                customHosts.All(host=>TryFind<Button>(host,"ConsumerLink") is {IsLoaded:true}) &&
+                TryFind<Button>(customHosts[1],"ConsumerLink") is {FocusState:FocusState.Keyboard},
+                "Expansion did not materialize the consumer link templates and restore keyboard focus.");
             Require(ReferenceEquals(customHosts[1].Content, DefaultPath.Items[1]), "Custom focus restoration replaced the consumer item.");
             input.Key(0x09);
             await AwaitAsync(() => Find<Button>(customHosts[2], "ConsumerLink").FocusState == FocusState.Keyboard,

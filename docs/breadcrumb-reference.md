@@ -171,3 +171,18 @@ the readiness change. Native ARM64 passes Light Breadcrumb checks before its
 later notification failure; that run does not reach Dark Breadcrumbs.
 The repository wiki remote is unavailable; this in-repository document is the
 current contract. Orchard has no backend or metrics surface affected by this change.
+
+Run `38506082985` at `c7fdad4` exposes the same materialization boundary in the
+enabled custom-link expansion branch on native ARM64: the nine presenter/separator
+children exist before the named `ConsumerLink` visual can be found. That branch
+now combines actual loaded-template readiness with keyboard-focus restoration
+inside its existing two-second deadline, using the existing nonthrowing tree
+lookup. The four original consumer hosts, item identity and subsequent physical
+Tab assertions remain required. The reusable Breadcrumb implementation and
+focus behavior are unchanged; fresh focused and hosted checks are required.
+
+The focused local x64 check passes both themes at
+`artifacts/smoke-breadcrumb-enabled-template-focus`, retaining keyboard
+expansion, original consumer items and physical Tab traversal. Both architecture
+builds have zero warnings; all 32 regressions and token generation pass. The
+expanded template-readiness predicate still requires fresh native ARM64 CI.
