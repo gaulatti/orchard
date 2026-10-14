@@ -1,5 +1,14 @@
 # Windows contrast verification
 
+Run [38533153948](https://github.com/gaulatti/orchard/actions/runs/38533153948)
+at `45c011d` passes all three required jobs: both builds, 38 regressions, both
+complete native catalogs, both real Windows contrast transitions and both
+independent consumers. The Right-placement fixture correction therefore
+passes the unchanged Breadcrumb Highlight/HighlightText, popup/focus, painted
+ink and restoration gates on x64 and ARM64. The intermittent cursor defect,
+full component inventory, all contrast schemes, scaling and Narrator remain
+open; this passing run is a representative transition checkpoint.
+
 The Breadcrumb hover failure has a native local reproduction at a 1024x745
 client viewport without changing Windows settings. In
 `artifacts/smoke-contrast-entry-occlusion-before`, the open help tooltip flips

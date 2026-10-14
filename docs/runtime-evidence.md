@@ -1,5 +1,21 @@
 # Native Windows runtime evidence
 
+Run [38545127689](https://github.com/gaulatti/orchard/actions/runs/38545127689)
+at `a236ab7` verifies the Switch metadata correction with a passing x64 job and
+ARM64 build. The native ARM64 job fails Input cursor restoration and a Checkbox
+disabled-pointer phase, while its real Windows contrast transition and fresh
+package consumer pass. Main is therefore not fully green at this checkpoint.
+These failures remain open and are not evidence that the cursor issue is fixed.
+
+Run [38533153948](https://github.com/gaulatti/orchard/actions/runs/38533153948)
+at `45c011d` passes all required jobs, including both complete native catalogs,
+both real Windows contrast transitions and both independent consumers. ARM64
+retains enabled animations; x64 reports animations disabled. The tooltip
+placement correction now has hosted runtime evidence. No intermittent cursor
+cause is established by this passing run, and no complete component acceptance
+is claimed. Error State implementation and the Switch metadata correction
+described in their component docs are subsequent changes.
+
 The contrast fixture now places its open contextual help to the right so
 small viewports do not flip it over Breadcrumb's pointer target. The original
 fixture reproduces the hosted failure locally at a 1024x745 client size in
