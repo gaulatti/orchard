@@ -334,6 +334,7 @@ public sealed partial class MainWindow : Window
                 Math.Abs(geometry.Figures.Single().StartPoint.X-60)<.001&&Math.Abs(geometry.Figures.Single().StartPoint.Y-157.8125)<.001,
                 "Packaged chart lost its template, source scale or exact literal data key.");
             var peer=FrameworkElementAutomationPeer.CreatePeerForElement(chart);
+            await AcquireConsumerInputAsync();
             Require(peer.GetName()=="Independent package chart"&&chart.IsTabStop&&chart.Focus(FocusState.Keyboard),"Packaged chart lost its consumer accessible name or keyboard entry.");
             var tooltip=(Border)template.FindName("PART_Tooltip");var tooltipItems=(StackPanel)template.FindName("PART_TooltipItems");var tooltipContainer=(Grid)template.FindName("PART_TooltipContainer");
             await AwaitAsync(()=>tooltip.Visibility==Visibility.Visible&&tooltipItems.Children.OfType<TextBlock>().FirstOrDefault()?.Text=="Harbor","Packaged initial focus did not inspect the first category.");
@@ -390,6 +391,35 @@ public sealed partial class MainWindow : Window
     [StructLayout(LayoutKind.Sequential)]private struct ConsumerMouse{internal int X,Y;internal uint Data,Flags,Time;internal UIntPtr ExtraInfo;}
     [DllImport("user32.dll")]private static extern uint SendInput(uint count,[In]ConsumerInput[] inputs,int size);
     [DllImport("user32.dll")]private static extern IntPtr GetForegroundWindow();
+
+    private async Task AcquireConsumerInputAsync()
+    {
+        var own = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        GetWindowThreadProcessId(own, out var process);
+        Require(own != IntPtr.Zero && process == Environment.ProcessId && IsWindowVisible(own),
+            "Independent input requires its own visible native window.");
+        var before = DescribeWindow(GetForegroundWindow());
+        Activate();
+        var requested = SetForegroundWindow(own);
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        while (GetForegroundWindow() != own && watch.Elapsed < TimeSpan.FromSeconds(2)) await Task.Delay(16);
+        var args = Environment.GetCommandLineArgs(); var index = Array.IndexOf(args, "--verify-output");
+        if (index >= 0)
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(args[index+1])!, $"consumer-input-{Root.RequestedTheme}.json"),
+                System.Text.Json.JsonSerializer.Serialize(new { requested, milliseconds = watch.Elapsed.TotalMilliseconds,
+                    own = DescribeWindow(own), before, after = DescribeWindow(GetForegroundWindow()), acquired = GetForegroundWindow() == own }));
+        Require(GetForegroundWindow() == own, "Independent consumer did not acquire its own foreground window for native input.");
+        static object DescribeWindow(IntPtr handle)
+        {
+            GetWindowThreadProcessId(handle, out var processId);
+            var className = new System.Text.StringBuilder(256); GetClassName(handle, className, className.Capacity);
+            return new { handle = handle.ToInt64(), processId, windowClass = className.ToString(), visible = IsWindowVisible(handle) };
+        }
+    }
+    [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]private static extern bool SetForegroundWindow(IntPtr window);
+    [DllImport("user32.dll")]private static extern uint GetWindowThreadProcessId(IntPtr window,out uint processId);
+    [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]private static extern bool IsWindowVisible(IntPtr window);
+    [DllImport("user32.dll",CharSet=CharSet.Unicode)]private static extern int GetClassName(IntPtr window,System.Text.StringBuilder className,int maxCount);
 
     private async Task VerifyChartThemeAsync(ElementTheme originalTheme)
     {

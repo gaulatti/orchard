@@ -1,5 +1,27 @@
 # Native Windows runtime evidence
 
+The independent consumer's physical chart input now performs one explicit
+activation of its own visible process-owned window before keyboard focus.
+It calls Window.Activate and SetForegroundWindow once, then requires the
+actual foreground HWND to match within two seconds. Each subsequent native
+key retains its immediate foreground guard; no later loss is recovered or
+ignored. `consumer-input-{theme}.json` records before/after HWNDs, process IDs,
+window classes, visibility, activation result and elapsed time without window
+titles or content. Microsoft's [windowing guidance](https://learn.microsoft.com/en-us/windows/apps/develop/ui/windowing-overview)
+states that Window.Activate does not force a background app into foreground;
+[SetForegroundWindow](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setforegroundwindow)
+is subject to Windows foreground restrictions, which this fixture preserves.
+
+The fresh isolated x64 consumer passes both themes at
+`artifacts/package-consumer-foreground-owned`, including real keys and owned
+activation records. The fresh independent ARM64 consumer compiles/publishes
+at `artifacts/package-consumer-foreground-arm64`; its result explicitly leaves
+native runtime unverified on this x64 host. Both use unchanged package SHA-256
+`becbbfa4b759f068a7c582d0f7521473ba6227ca1fcf1dd0344442ce39bebc22`.
+All 38 regressions pass at `artifacts/tests-consumer-foreground`. This changes
+consumer verification only; no library or backend/metrics behavior changes.
+Actual hosted ARM64 foreground acquisition remains unverified.
+
 Run [38527036318](https://github.com/gaulatti/orchard/actions/runs/38527036318)
 at `00734d0` passes both builds, 38 regressions, both focused notification
 presenter/lifecycle suites, both focused Attention suites, the full x64 catalog
