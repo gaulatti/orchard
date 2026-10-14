@@ -1,0 +1,27 @@
+<UserControl x:Class="Orchard.Catalog.AttentionSurfacesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <Style x:Key="ConsumerAttentionStyle" TargetType="orchard:BleeckerAttentionSurface">
+   <Setter Property="Background" Value="#FFFABADE" /><Setter Property="BorderBrush" Value="#FF112233" /><Setter Property="CornerRadius" Value="19" /><Setter Property="Padding" Value="7" />
+  </Style>
+ </UserControl.Resources>
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Attention surfaces" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Category hue and urgency are consumer-owned. Button semantics and visual interactivity are independent." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <Button x:Name="Before" Content="Before surfaces" Style="{StaticResource BleeckerSecondaryButtonStyle}" HorizontalAlignment="Left" />
+  <StackPanel x:Name="Matrix" Spacing="12" />
+  <orchard:BleeckerAttentionSurface x:Name="Action" Element="Button" Hue="210" Intensity="5" Width="320" HorizontalAlignment="Left" Content="Fictional attention surface" />
+  <orchard:BleeckerAttentionSurface x:Name="PassiveAction" Element="Button" Interactive="False" Hue="210" Intensity="5" Width="320" HorizontalAlignment="Left" Content="Fictional attention surface" />
+  <orchard:BleeckerAttentionSurface x:Name="DisabledAction" Element="Button" IsEnabled="False" Hue="210" Intensity="5" Width="320" HorizontalAlignment="Left" Content="Disabled consumer action" />
+  <orchard:BleeckerAttentionSurface x:Name="InteractiveArticle" Interactive="True" Hue="210" Intensity="5" Width="320" HorizontalAlignment="Left" Content="Fictional attention surface" />
+  <orchard:BleeckerAttentionSurface x:Name="Empty" Hue="210" Intensity="0" Width="320" HorizontalAlignment="Left" Content="" />
+  <orchard:BleeckerAttentionSurface x:Name="Long" Hue="48" Intensity="8" Width="320" HorizontalAlignment="Left" Content="東京の架空編集室 · العربية · café — a long fictional consumer-owned message that wraps at the chosen width" />
+  <orchard:BleeckerAttentionSurface x:Name="Styled" Hue="210" Intensity="5" Width="320" HorizontalAlignment="Left" Style="{StaticResource ConsumerAttentionStyle}" Content="Consumer style wins" />
+  <orchard:BleeckerAttentionSurface x:Name="Slot" Hue="170" Intensity="2" Width="320" HorizontalAlignment="Left">
+   <Button x:Name="ChildAction" Content="Consumer-owned child action" Style="{StaticResource BleeckerSecondaryButtonStyle}" HorizontalAlignment="Left" />
+  </orchard:BleeckerAttentionSurface>
+  <StackPanel x:Name="Gradients" Spacing="12" />
+  <Button x:Name="ActionStyle" Content="Native action style" Style="{StaticResource BleeckerAttentionActionStyle}" HorizontalAlignment="Left" />
+  <Button x:Name="After" Content="After surfaces" Style="{StaticResource BleeckerSecondaryButtonStyle}" HorizontalAlignment="Left" />
+  <TextBlock x:Name="Outcome" Style="{StaticResource BleeckerBodyStyle}" />
+ </StackPanel>
+</UserControl>

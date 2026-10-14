@@ -87,6 +87,7 @@
                 <local:BrandLockupsFixture x:Name="BrandLockups" />
                 <local:BauhausBackgroundsFixture x:Name="BauhausBackgrounds" />
                 <local:ActivityItemsFixture x:Name="ActivityItems" />
+                <local:AttentionSurfacesFixture x:Name="AttentionSurfaces" />
                 <local:TooltipsFixture x:Name="Tooltips" />
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />

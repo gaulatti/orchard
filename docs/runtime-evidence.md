@@ -2,6 +2,26 @@
 
 ## Recent native input checkpoint
 
+Run [38486835832](https://github.com/gaulatti/orchard/actions/runs/38486835832)
+at `387e6f4` passes x64's full job and the ARM64 cross-build. Native ARM64's
+first attempt passes focused Bauhaus/Input/Activity, live contrast and the
+independent consumer. The full suite stops in Dark Alert's cancelled held
+press: a runner-owned `wsl` ConsoleWindowClass takes foreground while the
+catalog still owns the screen point. Its strict guard refuses the release;
+no input gate is relaxed. Light Field Help's settled brush mutation checks pass
+with animations enabled. The archive was verified against SHA-256
+`b7c30941946fbfb928ada21b5821d7b8470ad586ac748fddd7151b2711127350`,
+with selected reports at `artifacts/ci-387e6f4-arm64-evidence`.
+
+The same failed ARM64 job was retried on a fresh host with unchanged source.
+Attempt 2 reproduces the actual cursor defect: focused Small/valid bottom-right
+`(3,0)` owns its target and UniversalNo publisher but globally displays Arrow,
+with 55 republish calls, 164 block calls and 3 restores at the final snapshot.
+The full suite also fails Dark Checkbox's `hit-testing-repeat-restored-6`.
+Activity, Bauhaus, contrast and native package consumption pass. These failures
+remain required acceptance gaps; the retry does not establish a passing shared
+checkpoint or complete enabled-motion Field Help acceptance in both themes.
+
 Run [38485003280](https://github.com/gaulatti/orchard/actions/runs/38485003280)
 at `1cf7c76` passes x64's complete job and the ARM64 cross-build. Native ARM64
 passes focused Bauhaus, Input, Activity Item, live contrast and independent

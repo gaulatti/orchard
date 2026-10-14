@@ -30,6 +30,7 @@
         <EmbeddedResource Include="Reference/BauhausAutostrada.png" />
         <EmbeddedResource Include="Reference/BauhausPompeii.png" />
         <EmbeddedResource Include="Reference/ActivityLayout.json" />
+        <EmbeddedResource Include="Reference/AttentionLayout.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

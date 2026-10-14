@@ -24,6 +24,7 @@
             <SolidColorBrush x:Key="BleeckerActivityBorderBrush" Color="#FFE6D5B8" Opacity="0.2" />
             <SolidColorBrush x:Key="BleeckerActivityHoverBrush" Color="#FFF9F6F2" Opacity="0.35" />
             <SolidColorBrush x:Key="BleeckerActivityHoverForegroundBrush" Color="#FF2D2D2D" />
+            <SolidColorBrush x:Key="BleeckerAttentionFocusBrush" Color="#FF2C5784" Opacity="0.3" />
             <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="#FFE6D5B8" Opacity="0.55" />
             <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="#FF000000" Opacity="0.05" />
@@ -161,6 +162,7 @@
             <SolidColorBrush x:Key="BleeckerActivityBorderBrush" Color="#FFFFFFFF" Opacity="0.07" />
             <SolidColorBrush x:Key="BleeckerActivityHoverBrush" Color="#FFFFFFFF" Opacity="0.03" />
             <SolidColorBrush x:Key="BleeckerActivityHoverForegroundBrush" Color="#FFF0F4F8" />
+            <SolidColorBrush x:Key="BleeckerAttentionFocusBrush" Color="#FF5BA3F5" Opacity="0.3" />
             <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="#FFFFFFFF" Opacity="0.18" />
             <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="#FF182533" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="#FFFFFFFF" Opacity="0.1" />
@@ -298,6 +300,7 @@
             <SolidColorBrush x:Key="BleeckerActivityBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerActivityHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerActivityHoverForegroundBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAttentionFocusBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
             <SolidColorBrush x:Key="BleeckerAlertCloseHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />

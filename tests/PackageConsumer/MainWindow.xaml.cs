@@ -163,6 +163,7 @@ public sealed partial class MainWindow : Window
                 await VerifyBrandAsync();
                 VerifyBauhaus();
                 VerifyActivity();
+                VerifyAttention();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -344,6 +345,30 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private void VerifyAttention()
+    {
+        PackageAttention.ApplyTemplate();PackageAttentionAction.ApplyTemplate();Root.UpdateLayout();
+        var root=(FrameworkElement)VisualTreeHelper.GetChild(PackageAttention,0);
+        var surface=(Border)root.FindName("PART_Surface");
+        var actionRoot=(FrameworkElement)VisualTreeHelper.GetChild(PackageAttentionAction,0);
+        var action=(Button)actionRoot.FindName("PART_Action");
+        Require(PackageAttention.Background is ImageBrush {ImageSource:WriteableBitmap bitmap} && bitmap.PixelWidth==320 && bitmap.PixelHeight==120 &&
+            surface.Padding==new Thickness(20) && surface.BorderThickness==new Thickness(1) && PackageAttention.CornerRadius==new CornerRadius(11),
+            "Packaged Attention Surface lost its gradient, geometry or default resources.");
+        Require(FrameworkElementAutomationPeer.CreatePeerForElement(PackageAttention).GetAutomationControlType()==AutomationControlType.Group &&
+            FrameworkElementAutomationPeer.CreatePeerForElement(PackageAttention).GetPattern(PatternInterface.Invoke) is null && !PackageAttention.IsTabStop,
+            "Packaged non-button surface invented action semantics.");
+        Require(new ButtonAutomationPeer(action).GetName()=="Independent surface action" && action.Visibility==Visibility.Visible && action.IsEnabled,
+            "Packaged attention action lost its real button or consumer accessible name.");
+        Result.Text="Ready";
+        ((IInvokeProvider)new ButtonAutomationPeer(action).GetPattern(PatternInterface.Invoke)).Invoke();
+        Require(Result.Text==$"Saved: {Input.Text}","Packaged attention native activation did not reach the consumer Click handler.");
+        var prior=PackageAttention.Background;
+        PackageAttention.Hue=-721;PackageAttention.Intensity=11;Root.UpdateLayout();
+        Require(ReferenceEquals(prior,PackageAttention.Background) && prior is ImageBrush {ImageSource:not null},
+            "Packaged attention recipe mutation replaced its instance brush or lost its renderer.");
+        PackageAttention.Hue=210;PackageAttention.Intensity=5;
+    }
     private void VerifyActivity()
     {
         PackageActivity.ApplyTemplate(); Root.UpdateLayout();

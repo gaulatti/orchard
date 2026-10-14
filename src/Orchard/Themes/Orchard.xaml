@@ -5,6 +5,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Tokens.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Menus.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AttentionAction.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="BleeckerHeadingStyle" TargetType="TextBlock">

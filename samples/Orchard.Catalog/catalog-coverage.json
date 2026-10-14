@@ -1,5 +1,6 @@
 {
   "styles": {
+    "BleeckerAttentionActionStyle": "AttentionSurfacesFixture.xaml",
     "BleeckerMenuContentItemStyle": "MenusFixture.xaml",
     "BleeckerMenuInsetItemStyle": "MenusFixture.xaml",
     "BleeckerMenuInsetSubmenuStyle": "MenusFixture.xaml",
@@ -23,6 +24,7 @@
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
   "controls": {
+    "BleeckerAttentionSurface": "AttentionSurfacesFixture.xaml",
     "BleeckerBrandLockup": "BrandLockupsFixture.xaml",
     "BleeckerBauhausBackground": "BauhausBackgroundsFixture.xaml",
     "BleeckerActivityItem": "ActivityItemsFixture.xaml",

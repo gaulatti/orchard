@@ -66,6 +66,8 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
   xaml += `            <SolidColorBrush x:Key="BleeckerActivityBorderBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .07 : .2}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerActivityHoverBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.lightSand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .03 : .35}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerActivityHoverForegroundBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightTextColor}' : argb(colors.textPrimary)}" />\n`;
+  // Frozen attention-surface.tsx: sea/30 focus ring in either appearance.
+  xaml += `            <SolidColorBrush x:Key="BleeckerAttentionFocusBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors.sea)}" Opacity="${theme === 'HighContrast' ? 1 : .3}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerBrandSeparatorBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .18 : .55}" />\n`;
   const alertDark = theme === 'Default', alertContrast = theme === 'HighContrast';
   xaml += `            <SolidColorBrush x:Key="BleeckerAlertBackgroundBrush" Color="${alertContrast ? '{ThemeResource SystemColorWindowColor}' : argb(alertDark ? colors.deepSea : '#ffffff')}" />\n`;

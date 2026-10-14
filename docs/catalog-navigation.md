@@ -89,3 +89,11 @@ The **Bauhaus backgrounds** page follows Brand lockups. It shows four variants,
 RGBA image blending, square/tall layouts and the missing application-owned hero
 image. Its focused runtime path is `scripts/smoke-catalog.ps1 -Component bauhaus`;
 see [the contract and current evidence](bauhaus-background-reference.md).
+
+The **Attention surfaces** page follows Activity items. It registers all source
+elements and densities, independent visual interactivity, disabled/empty/long
+content, consumer styles and child actions, and wide/tall/square gradients.
+`scripts/smoke-catalog.ps1 -Component attention` exercises its initial native
+boundaries and records composed gradient samples. Those samples report observed
+differences; they do not establish complete visual acceptance. See
+[the source contract and current evidence](attention-surface-reference.md).
