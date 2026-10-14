@@ -67,6 +67,22 @@ diagnostics for a recurrence. See [runtime evidence](runtime-evidence.md).
 Final x64 and ARM64 solution builds pass with zero warnings. ARM64 compilation
 on this Intel host is a cross-build and does not establish native runtime.
 
+Fresh package 0.1.0 from clean implementation commit
+`c6c9c52dac019889f8deae5b9e88e53634173e3d` has SHA-256
+`defc7ab89f4223a771370a2377b4bff958c89ae31111dc467dc81d3a3f2513fa`.
+The isolated x64 consumer passes both themes at
+`artifacts/package-consumer-sparkline-corrected`, including compact geometry,
+data identity, naming, physical Right navigation and collection replacement.
+Each theme starts an actual fresh lifecycle: refocus alone intentionally leaves
+retained inspection hidden. The first consumer fixture incorrectly assumed
+otherwise; correcting its lifecycle/input setup required no library change.
+The same corrected consumer cross-builds for ARM64 at
+`artifacts/package-consumer-sparkline-arm64-corrected`; runtimeVerified remains
+false. Both consumers remove their GUID-scoped temporary directories, including
+the initial failing x64 run. The separately published x64 catalog passes all 36
+focused cases at `artifacts/smoke-sparkline-published`. Native ARM64/hosted
+validation is deferred while push-triggered Actions remain paused.
+
 This work also exposed a shared all-negative domain bug. The earlier reference
 generator incorrectly clamped the maximum to zero. Four independently rendered
 normal Line Chart axes in `tests/Reference/NegativeChartDomains.json` establish

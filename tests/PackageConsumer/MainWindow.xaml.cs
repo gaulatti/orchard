@@ -295,6 +295,11 @@ public sealed partial class MainWindow : Window
 
     private async Task VerifySparklineAsync()
     {
+        // Each theme starts a fresh lifecycle, just like the independent Line
+        // Chart fixture. Refocus alone intentionally retains hidden inspection.
+        var parent=(Panel)VisualTreeHelper.GetParent(PackageSparkline);var position=parent.Children.IndexOf(PackageSparkline);
+        parent.Children.Remove(PackageSparkline);await AwaitAsync(()=>!PackageSparkline.IsLoaded,"Packaged Sparkline did not unmount.");
+        parent.Children.Insert(position,PackageSparkline);await AwaitAsync(()=>PackageSparkline.IsLoaded,"Packaged Sparkline did not remount.");
         PackageSparkline.ApplyTemplate();Root.UpdateLayout();
         var chart=BrandDescendants<BleeckerLineChart>(PackageSparkline).Single();var plot=BrandDescendants<Canvas>(chart).Single(x=>x.Name=="PART_Plot");
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not render.");
@@ -302,8 +307,12 @@ public sealed partial class MainWindow : Window
         Require(ReferenceEquals(chart.Data,PackageSparkline.Data)&&Math.Abs(geometry.Figures[0].StartPoint.X-2)<.001&&Math.Abs(geometry.Figures[0].StartPoint.Y-29)<.001&&path.Fill is null&&path.StrokeThickness==2,
             "Packaged Sparkline lost compact geometry, source ShowArea behavior or consumer data identity.");
         Require(AutomationProperties.GetName(chart)=="Independent compact series"&&!PackageSparkline.IsTabStop&&chart.IsTabStop,"Packaged Sparkline lost its inspection boundary.");
-        Require(chart.Focus(FocusState.Keyboard),"Could not focus packaged Sparkline.");
+        await AcquireConsumerInputAsync();Require(chart.Focus(FocusState.Keyboard),"Could not focus packaged Sparkline.");
         await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 10","Packaged Sparkline did not inspect its first raw value.");
+        Require(GetForegroundWindow()==WinRT.Interop.WindowNative.GetWindowHandle(this),"Packaged Sparkline lost its native foreground.");
+        var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
+        Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Packaged Sparkline Right did not enter native input.");
+        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Packaged Sparkline did not inspect the next raw value through physical Right.");
         var original=PackageSparkline.Data;PackageSparkline.Data=new();
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0,"Packaged Sparkline retained an empty curve.");
         PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
