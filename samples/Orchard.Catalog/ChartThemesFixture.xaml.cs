@@ -19,6 +19,9 @@ public sealed partial class ChartThemesFixture : UserControl
     private readonly Line gridLine, axisLine;
     private readonly TextBlock tick, tooltipLabel, tooltipItem;
     private readonly Border tooltipSurface;
+    private readonly List<SeriesRow> seriesRows=[];
+    private readonly List<(BleeckerChartSeries Owner,DependencyProperty Property,long Token)> seriesSubscriptions=[];
+    private sealed record SeriesRow(BleeckerChartSeries Model,Rectangle Automatic,Rectangle Explicit,Grid Surface,TextBlock Key,TextBlock Name,int Index);
 
     public ChartThemesFixture()
     {
@@ -45,6 +48,45 @@ public sealed partial class ChartThemesFixture : UserControl
         StyleHost.Children.Add(sample);
         gridLine=(Line)sample.FindName("GridLine"); axisLine=(Line)sample.FindName("AxisLine"); tick=(TextBlock)sample.FindName("Tick");
         tooltipSurface=(Border)sample.FindName("TooltipSurface"); tooltipLabel=(TextBlock)sample.FindName("TooltipLabel"); tooltipItem=(TextBlock)sample.FindName("TooltipItem");
+        foreach(var key in new[]{"AutomaticSeries","ExplicitSeries","TransparentSeries"})
+            AddSeries((BleeckerChartSeries)Resources[key],seriesRows.Count);
+        Loaded+=(_,_)=>ObserveSeries();Unloaded+=(_,_)=>StopObservingSeries();
+    }
+
+    private void AddSeries(BleeckerChartSeries model,int index)
+    {
+        var key=BleeckerChartTheme.PickColor(index)!;
+        var surface=(Grid)XamlReader.Load($"<Grid xmlns=\"{Namespace}\" Width=\"52\" Height=\"24\" Background=\"{{ThemeResource BleeckerBackgroundBrush}}\" />");
+        var automatic=(Rectangle)XamlReader.Load($"<Rectangle xmlns=\"{Namespace}\" Fill=\"{{ThemeResource {key}}}\" />");
+        var explicitPaint=new Rectangle();surface.Children.Add(automatic);surface.Children.Add(explicitPaint);
+        var name=(TextBlock)XamlReader.Load($"<TextBlock xmlns=\"{Namespace}\" FontFamily=\"{{StaticResource BleeckerPrimaryFontFamily}}\" Foreground=\"{{ThemeResource BleeckerTextPrimaryBrush}}\" FontSize=\"12\" />");
+        var dataKey=(TextBlock)XamlReader.Load($"<TextBlock xmlns=\"{Namespace}\" FontFamily=\"{{StaticResource BleeckerPrimaryFontFamily}}\" Foreground=\"{{ThemeResource BleeckerTextSecondaryBrush}}\" FontSize=\"12\" />");
+        var label=new StackPanel();label.Children.Add(name);label.Children.Add(dataKey);
+        var row=new StackPanel{Orientation=Orientation.Horizontal,Spacing=12};row.Children.Add(surface);row.Children.Add(label);SeriesHost.Children.Add(row);
+        seriesRows.Add(new(model,automatic,explicitPaint,surface,dataKey,name,index));UpdateSeries();
+    }
+    private void UpdateSeries()
+    {
+        foreach(var row in seriesRows)
+        {
+            row.Key.Text=row.Model.Key;row.Name.Text=row.Model.Name;
+            row.Explicit.Fill=row.Model.Color;
+            row.Automatic.Visibility=row.Model.Color is null?Visibility.Visible:Visibility.Collapsed;
+            row.Explicit.Visibility=row.Model.Color is null?Visibility.Collapsed:Visibility.Visible;
+        }
+    }
+    private void ObserveSeries()
+    {
+        StopObservingSeries();
+        foreach(var row in seriesRows)
+            foreach(var property in new[]{BleeckerChartSeries.KeyProperty,BleeckerChartSeries.NameProperty,BleeckerChartSeries.ColorProperty})
+                seriesSubscriptions.Add((row.Model,property,row.Model.RegisterPropertyChangedCallback(property,(_,_)=>UpdateSeries())));
+        UpdateSeries();
+    }
+    private void StopObservingSeries()
+    {
+        foreach(var subscription in seriesSubscriptions)subscription.Owner.UnregisterPropertyChangedCallback(subscription.Property,subscription.Token);
+        seriesSubscriptions.Clear();
     }
 
     private static void AddSwatch(Grid host,List<(string Key,Rectangle Swatch)> entries,string key,string label,int columns)
@@ -75,6 +117,7 @@ public sealed partial class ChartThemesFixture : UserControl
                     scoped.All(entry=>Matches(entry.Swatch.Fill,entry.Key=="BleeckerSeaBrush"?Hex(brandSea):Expected(mode,entry.Key))),
                     "Chart resource references did not retain live root appearance or the local brand scope.");
                 VerifyStyles(mode);
+                VerifySeries(mode);
                 samples.Add(new{mode,roles=roles.Select(entry=>new{entry.Key,color=Hex(entry.Swatch.Fill)}),palette=palette.Select(entry=>Hex(entry.Swatch.Fill)),
                     scoped=scoped.Select(entry=>Hex(entry.Swatch.Fill))});
             }
@@ -94,9 +137,80 @@ public sealed partial class ChartThemesFixture : UserControl
             }
             finally{brandSea.Color=originalColor;}
             paint.Add(new{phase="restored",pixels=await CapturePaintAsync(input,folder,scheme,"restored")});
+            await VerifySeriesUpdatesAsync(input,scheme,folder);
             await File.WriteAllTextAsync(Path.Combine(folder,$"chart-theme-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,samples,paint}));
         }
         finally{root.RequestedTheme=originalTheme;}
+    }
+    private void VerifySeries(BleeckerColorScheme scheme)
+    {
+        foreach(var row in seriesRows)
+        {
+            Require(row.Key.Text==row.Model.Key&&row.Name.Text==row.Model.Name,"Chart series changed consumer-owned key or name strings.");
+            if(row.Model.Color is null)
+                Require(row.Automatic.Visibility==Visibility.Visible&&row.Explicit.Visibility==Visibility.Collapsed&&
+                    Matches(row.Automatic.Fill,Expected(scheme,BleeckerChartTheme.PickColor(row.Index)!)),"Automatic chart series lost its live palette reference.");
+            else Require(row.Automatic.Visibility==Visibility.Collapsed&&row.Explicit.Visibility==Visibility.Visible&&ReferenceEquals(row.Explicit.Fill,row.Model.Color),
+                "Explicit chart series paint lost precedence or brush ownership.");
+        }
+    }
+    private async Task VerifySeriesUpdatesAsync(NativeInputSession input,BleeckerColorScheme scheme,string folder)
+    {
+        var row=seriesRows[1];var key=row.Model.Key;var name=row.Model.Name;var color=row.Model.Color;
+        var samples=new List<object>();
+        try
+        {
+            row.Model.Key="opaque/consumer.key[0]";row.Model.Name="東京 · العربية · consumer name";
+            VerifySeries(scheme);
+            var mutable=(SolidColorBrush)color!;var original=mutable.Color;
+            try
+            {
+                await CaptureSeriesAsync("explicit",mutable.Color);
+                mutable.Color=Windows.UI.Color.FromArgb(255,145,55,95);
+                Require(ReferenceEquals(row.Explicit.Fill,mutable),"Consumer brush mutation replaced the series producer.");
+                await CaptureSeriesAsync("mutated",mutable.Color);
+            }
+            finally{mutable.Color=original;}
+            row.Model.Color=new SolidColorBrush(Microsoft.UI.Colors.Transparent);VerifySeries(scheme);
+            await CaptureSeriesAsync("transparent",((SolidColorBrush)row.Surface.Background).Color);
+            row.Model.Color=null;VerifySeries(scheme);
+            await CaptureSeriesAsync("automatic",((SolidColorBrush)row.Automatic.Fill).Color);
+            var gradient=new LinearGradientBrush();gradient.GradientStops.Add(new GradientStop{Color=Microsoft.UI.Colors.Red,Offset=0});
+            gradient.GradientStops.Add(new GradientStop{Color=Microsoft.UI.Colors.Blue,Offset=1});
+            row.Model.Color=gradient;VerifySeries(scheme);
+            Require(ReferenceEquals(row.Explicit.Fill,gradient),"A nonsolid explicit series brush was replaced by a palette color.");
+            row.Model.Key="";row.Model.Name="";VerifySeries(scheme);
+            Require(row.Key.Text==""&&row.Name.Text=="","Explicit empty consumer series strings were rewritten.");
+            var missing=new BleeckerChartSeries();var rejectedKey=false;var rejectedName=false;
+            try{_=missing.Key;}catch(InvalidOperationException){rejectedKey=true;}
+            try{_=missing.Name;}catch(InvalidOperationException){rejectedName=true;}
+            Require(rejectedKey&&rejectedName,"Missing required chart series strings were replaced by default values.");
+        }
+        finally{row.Model.Key=key;row.Model.Name=name;row.Model.Color=color;UpdateSeries();}
+        await File.WriteAllTextAsync(Path.Combine(folder,$"chart-series-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,samples}));
+
+        async Task CaptureSeriesAsync(string phase,Windows.UI.Color expected)
+        {
+            await input.MoveAsync(row.Surface);await input.RequireForegroundAsync();
+            var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
+            void Frame(object? sender,object args){if(++frames==2)presented.TrySetResult();}
+            CompositionTarget.Rendering+=Frame;
+            try{await presented.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
+            var bounds=input.ScreenBounds(row.Surface);var path=Path.Combine(folder,$"chart-series-{scheme}-{phase}-window.png");
+            var client=await NativeScreenCapture.CaptureClientAsync(input.Window,path);
+            Require(bounds==input.ScreenBounds(row.Surface),"Series specimen moved during composed capture encoding.");
+            using var stream=File.OpenRead(path);using var random=stream.AsRandomAccessStream();
+            var decoder=await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(random);
+            var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,
+                new Windows.Graphics.Imaging.BitmapTransform(),Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,
+                Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
+            var x=(int)Math.Floor(bounds.X+bounds.Width/2-client.X);var y=(int)Math.Floor(bounds.Y+bounds.Height/2-client.Y);
+            Require(x>=0&&y>=0&&x<decoder.PixelWidth&&y<decoder.PixelHeight,"Series specimen is outside the owned composed client.");
+            var offset=checked((int)((y*decoder.PixelWidth+x)*4));
+            Require(pixels[offset]==expected.B&&pixels[offset+1]==expected.G&&pixels[offset+2]==expected.R&&pixels[offset+3]==255,
+                $"Series {phase} did not render its authoritative paint; an explicit transparent color must not show the palette.");
+            samples.Add(new{phase,key=row.Model.Key,name=row.Model.Name,x,y,expected=new[]{(int)expected.R,(int)expected.G,(int)expected.B}});
+        }
     }
     private async Task<List<object>> CapturePaintAsync(NativeInputSession input,string folder,BleeckerColorScheme scheme,string phase)
     {

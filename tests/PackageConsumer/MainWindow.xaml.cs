@@ -247,11 +247,19 @@ public sealed partial class MainWindow : Window
 
     private async Task VerifyChartThemeAsync(ElementTheme originalTheme)
     {
+        var series=new BleeckerChartSeries{Key="consumer.key[0]",Name="東京 · consumer series",Color=new SolidColorBrush(Windows.UI.Color.FromArgb(255,25,115,145))};
+        var seriesPaint=new Microsoft.UI.Xaml.Shapes.Rectangle{Width=32,Height=24};
+        seriesPaint.SetBinding(Microsoft.UI.Xaml.Shapes.Shape.FillProperty,new Microsoft.UI.Xaml.Data.Binding{Source=series,Path=new PropertyPath(nameof(BleeckerChartSeries.Color)),Mode=Microsoft.UI.Xaml.Data.BindingMode.OneWay});
+        var seriesLabel=new TextBlock();
+        seriesLabel.SetBinding(TextBlock.TextProperty,new Microsoft.UI.Xaml.Data.Binding{Source=series,Path=new PropertyPath(nameof(BleeckerChartSeries.Name)),Mode=Microsoft.UI.Xaml.Data.BindingMode.OneWay});
         var host=new Grid{HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Margin=new Thickness(32)};
         var brandScope=new StackPanel{Orientation=Orientation.Horizontal,Spacing=4};
         var regular=new StackPanel{Orientation=Orientation.Horizontal,Spacing=4};
         host.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});host.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});
         Grid.SetRow(brandScope,1);host.Children.Add(regular);host.Children.Add(brandScope);
+        host.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});
+        var seriesRow=new StackPanel{Orientation=Orientation.Horizontal,Spacing=8};seriesRow.Children.Add(seriesPaint);seriesRow.Children.Add(seriesLabel);
+        Grid.SetRow(seriesRow,2);host.Children.Add(seriesRow);
         var brand=new SolidColorBrush(Windows.UI.Color.FromArgb(255,25,115,145));brandScope.Resources["BleeckerSeaBrush"]=brand;
         var regularSwatches=new List<Microsoft.UI.Xaml.Shapes.Rectangle>();var brandSwatches=new List<Microsoft.UI.Xaml.Shapes.Rectangle>();
         foreach(var key in BleeckerChartTheme.Palette)
@@ -294,6 +302,23 @@ public sealed partial class MainWindow : Window
             brand.Color=Windows.UI.Color.FromArgb(255,145,55,95);
             Require(ReferenceEquals(brandSwatches[0].Fill,brand)&&Hex(regularSwatches[0].Fill)!=Hex(brand),
                 "Packaged chart brand brush mutation lost ownership or escaped its scope.");
+            var sourceBrush=series.Color;
+            Require(ReferenceEquals(seriesPaint.Fill,sourceBrush)&&seriesLabel.Text==series.Name&&series.Key=="consumer.key[0]",
+                "Packaged chart series lost consumer strings or native brush binding.");
+            series.Name="Updated · العربية";
+            var seriesWatch=System.Diagnostics.Stopwatch.StartNew();
+            while(seriesLabel.Text!=series.Name&&seriesWatch.Elapsed<TimeSpan.FromSeconds(2))await Task.Delay(16);
+            Require(seriesLabel.Text==series.Name,"Packaged chart series name mutation did not reach its mounted consumer.");
+            var transparent=new SolidColorBrush(Microsoft.UI.Colors.Transparent);series.Color=transparent;
+            seriesWatch.Restart();while(!ReferenceEquals(seriesPaint.Fill,transparent)&&seriesWatch.Elapsed<TimeSpan.FromSeconds(2))await Task.Delay(16);
+            Require(ReferenceEquals(seriesPaint.Fill,transparent),"Packaged chart series replaced explicit transparent paint.");
+            series.Color=null;seriesWatch.Restart();while(seriesPaint.Fill is not null&&seriesWatch.Elapsed<TimeSpan.FromSeconds(2))await Task.Delay(16);
+            Require(seriesPaint.Fill is null,"Packaged chart series did not expose the absent-color state to its consumer.");
+            series.Key="";series.Name="";
+            Require(series.Key==""&&series.Name=="","Packaged chart series rewrote explicit empty strings.");
+            var missing=new BleeckerChartSeries();var rejected=false;
+            try{_=missing.Key;}catch(InvalidOperationException){rejected=true;}
+            Require(rejected,"Packaged chart series silently supplied a missing required key.");
         }
         finally{Root.Children.Remove(host);Root.RequestedTheme=originalTheme;}
         static string? Hex(Brush? brush)

@@ -1,4 +1,9 @@
-<UserControl x:Class="Orchard.Catalog.ChartThemesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<UserControl x:Class="Orchard.Catalog.ChartThemesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <orchard:BleeckerChartSeries x:Key="AutomaticSeries" Key="coverage.total" Name="Consumer-owned total" />
+  <orchard:BleeckerChartSeries x:Key="ExplicitSeries" Key="coverage.selected" Name="Explicit consumer color"><orchard:BleeckerChartSeries.Color><SolidColorBrush Color="#197391" /></orchard:BleeckerChartSeries.Color></orchard:BleeckerChartSeries>
+  <orchard:BleeckerChartSeries x:Key="TransparentSeries" Key="coverage.hidden" Name="Explicit transparent paint"><orchard:BleeckerChartSeries.Color><SolidColorBrush Color="Transparent" /></orchard:BleeckerChartSeries.Color></orchard:BleeckerChartSeries>
+ </UserControl.Resources>
  <StackPanel Spacing="16" Margin="0,0,0,24">
   <TextBlock Text="Chart theme" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
   <TextBlock Text="Named roles, automatic series palette and scoped brand colors follow the active appearance." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
@@ -10,5 +15,7 @@
   <Grid x:Name="BrandScope"><Grid x:Name="ScopedPalette" ColumnSpacing="8" /></Grid>
   <TextBlock Text="Axis, grid and tooltip surface defaults" Style="{StaticResource BleeckerBodyStyle}" FontWeight="SemiBold" />
   <Grid x:Name="StyleHost" />
+  <TextBlock Text="Consumer series · explicit paint takes precedence" Style="{StaticResource BleeckerBodyStyle}" FontWeight="SemiBold" />
+  <StackPanel x:Name="SeriesHost" Spacing="8" />
  </StackPanel>
 </UserControl>

@@ -107,9 +107,53 @@ to a palette color.
 The independent package consumer exercises the public style types, source
 palette selection and real scoped XAML brush references across both root
 appearances. Fresh native reports are required before claiming those checks
-passed. `ChartSeries`, the actual chart renderers, tooltip effects, Windows
+passed. The actual chart renderers, tooltip effects, Windows
 contrast/Narrator/scaling and the complete chart acceptance matrices remain
 unimplemented or unverified.
+
+`BleeckerChartSeries` supplies the native series model. `Key` and `Name` are
+consumer-owned strings and must be assigned before consumption; reading an
+unset value fails explicitly. Empty strings are retained. The optional `Color`
+is a native `Brush`: null selects the automatic scoped palette in a chart
+consumer, while any explicit brush—including transparent paint—takes
+precedence. The model retains brush identity and exposes dependency properties
+plus standard `INotifyPropertyChanged` notifications for ordinary live native
+bindings. The fresh independent consumer exposed that dependency properties
+alone read the initial managed object but did not update the mounted name
+binding. The regression requires the real native binding to adopt subsequent
+names and color changes, including transparent and null values.
+The model does not interpret data keys, trim names,
+resolve a global palette, clone brushes, fetch data or add application actions.
+
+The registered Chart Theme fixture now instantiates automatic, explicit and
+transparent series in XAML. Its native swatches consume keys/names and select
+automatic versus explicit paint exclusively. Runtime checks cover exact
+strings, live key/name/color changes, missing required values, explicit empty
+strings, brush mutation, transparent precedence, clearing color back to the
+live palette and retaining a nonsolid brush. Owned-screen captures require
+exact pixels for explicit, mutated, transparent and automatic states. The
+independent NuGet consumer also exercises the public model through real
+mounted native bindings. These remain series-model/specimen checks; actual
+Line/Bar/Area and other chart consumers are still required for acceptance.
+
+The focused x64 series fixture passes both themes at
+`artifacts/smoke-chart-series-native`, with exact composed pixels for explicit,
+mutated, transparent and automatic paint. The first fresh consumer's mounted
+name-binding regression fails against the dependency-property-only candidate
+at `artifacts/package-consumer-chart-series`. After adding standard property
+notifications, a second fresh isolated consumer passes both themes at
+`artifacts/package-consumer-chart-series-binding`. Its package 0.1.0 SHA-256 is
+`c22fe9259f80cf649b55fb3a7f6e85680a75dd59735aca19e3aae85e8afc85bd`.
+Both architecture builds have zero warnings, all 32 regressions pass and token
+generation matches the pin. Full catalog, native ARM64 series, contrast,
+scaling and Narrator acceptance remain required.
+
+The complete local x64 catalog passes both themes with the notification-enabled
+model and all series paint regressions at
+`artifacts/smoke-chart-series-binding-all`. This run retains disabled system
+animations and display/text scale 1. The first model candidate's failure is
+preserved; it is not counted as package acceptance. Fresh hosted native ARM64
+series evidence and every actual chart consumer remain open requirements.
 
 The focused local x64 run passes both appearances at
 `artifacts/smoke-chart-theme-native`, with Windows animations off and display/

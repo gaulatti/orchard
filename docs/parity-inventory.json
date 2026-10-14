@@ -504,12 +504,12 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": ["src/Orchard/Charts/BleeckerChartTheme.cs"],
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerChartTheme.cs", "src/Orchard/Charts/BleeckerChartSeries.cs"],
       "catalogFixtures": ["samples/Orchard.Catalog/ChartThemesFixture.xaml"],
       "regressionTests": ["tests/Orchard.Tests/ChartThemeTests.cs", "tests/Reference/ChartTheme.json", "tests/Orchard.Tests/CatalogCoverageTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Implement ChartSeries and trace explicit series colors through actual native chart consumers",
+        "Consume ChartSeries key/name/optional paint in the actual native chart renderers",
         "Verify live scoped resources and consumer overrides through actual chart renderers",
         "Register variants and applicable interactive states",
         "Verify runtime, accessibility and visuals"
