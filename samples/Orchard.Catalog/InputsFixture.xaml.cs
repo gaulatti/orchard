@@ -17,6 +17,17 @@ public sealed partial class InputsFixture : UserControl
         await Task.Delay(150);
         UpdateLayout();
         Require(SmallInput.ActualHeight == 36 && MediumInput.ActualHeight == 40 && LargeInput.ActualHeight == 44, "Input size heights differ from the reference.");
+        Require(new[]{SmallInput,MediumInput,LargeInput,IconsInput,ErrorInput,DisabledInput,DisabledErrorInput,ReadOnlyInput}
+            .All(control=>Find<Border>(control,"BorderElement").BackgroundSizing==BackgroundSizing.OuterBorderEdge),
+            "Input backgrounds do not extend beneath their source translucent borders.");
+        SmallInput.BackgroundSizing=BackgroundSizing.InnerBorderEdge;
+        UpdateLayout();
+        Require(Find<Border>(SmallInput,"BorderElement").BackgroundSizing==BackgroundSizing.InnerBorderEdge,
+            "Input ignored the consumer's native background sizing.");
+        SmallInput.ClearValue(Control.BackgroundSizingProperty);
+        UpdateLayout();
+        Require(Find<Border>(SmallInput,"BorderElement").BackgroundSizing==BackgroundSizing.OuterBorderEdge,
+            "Input did not restore its source border-box fill.");
         Require(MediumInput.FontFamily.Source.Contains("EncodeSans") && MediumInput.FontSize == 14, "Input lost branded typography.");
         Require(IconsInput.Padding.Left == 40 && IconsInput.Padding.Right == 40, "Adornments overlap the text inset.");
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(MediumInput);

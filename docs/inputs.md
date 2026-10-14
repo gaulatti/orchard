@@ -1,5 +1,54 @@
 # Input editing preview
 
+The pinned browser Input paints its background through the complete border
+box. Its source SHA-256 is
+`01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192`.
+The frozen React 19.2.4/Tailwind 4.2.2 runtime confirms computed
+`background-clip: border-box` for normal, invalid, disabled and disabled-invalid
+states in both themes at `artifacts/input-border-box-browser/reference.json`.
+This also matches the [CSS background painting contract](https://www.w3.org/TR/css-backgrounds-3/#background-clip).
+
+The old native BorderElement used WinUI's InnerBorderEdge default, leaving its
+translucent border without the Input background underneath. In the failed
+complete local capture at `artifacts/smoke-error-title-full`, pixel x327 on the
+Small input's middle row has alpha 254 instead of the focused capture's 255;
+the unchanged strict opaque-span check consequently measures 317px for the
+320px control. Both saved and directly analyzed frames reproduce that edge.
+
+The Input style now defaults the existing native BackgroundSizing property to
+OuterBorderEdge and passes it through TemplateBinding to BorderElement.
+This paints the provided background beneath the source border without changing
+brush values, border width, rounded geometry, alpha thresholds, glyph masks or
+timing tolerances. Consumers can select InnerBorderEdge through the native
+property, then clear it to restore the source default. The native fixture checks
+all eight catalog Inputs and the live override/restoration; the independent
+package consumer checks the same public boundary. See the
+[WinUI background-sizing contract](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control.backgroundsizing?view=windows-app-sdk-2.0).
+
+This native-only change has no backend or metrics impact. The wiki remains
+unavailable, so the contract is maintained in this repository.
+
+The focused native x64 suite passes both themes at
+`artifacts/smoke-input-border-box`. The full local x64 catalog then passes both
+themes at `artifacts/smoke-input-border-box-full` with every existing assertion
+retained. Its formerly failing Small input now has an exact 320px opaque span
+from x9 through x328 on the middle row; both x327 and x328 have alpha 255.
+Native captures include entered/placeholder Arabic in both reading directions,
+all sizes, disabled/error styling, pointer lifecycle, motion and theme checks.
+Both solution builds pass without warnings, all 38 regressions pass at
+`artifacts/tests-input-border-box`, and token generation matches the source.
+The updated fresh package consumer and native ARM64 paint/contrast checks
+remain required in hosted CI; local fresh restore remains constrained by disk.
+
+Run [38551291475](https://github.com/gaulatti/orchard/actions/runs/38551291475)
+at `c6f0c75` closes the preceding Error State title/contrast and after-chart
+checks on both architectures, including fresh independent consumption. Its
+x64 job and ARM64 build pass. The native ARM64 job still fails rounded disabled
+Input cursor publication with Arrow displayed despite UniversalNo selected.
+Its diagnostic confirms source/root thread access and the same dispatcher on
+ARM64 too. The cursor defect therefore remains open; it is not explained by a
+simple dispatcher mismatch, and no cursor correction is claimed here.
+
 Run `38545127689` at `a236ab7` still fails the actual ARM64 cursor boundary.
 The verified runtime archive `11884776670` has SHA-256
 `2319baa17e66cce4ba77f22a8c3969b330af939d48554af349fdb614d75ece5f`.

@@ -72,6 +72,13 @@ public sealed partial class MainWindow : Window
                 Require(Input.ActualHeight == 40 && Input.FontSize == 14 && Input.FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(Input).GetAutomationControlType() == AutomationControlType.Edit,
                     "Packaged input lost its geometry, font or native editor.");
+                var inputBorder=(Border)((FrameworkElement)VisualTreeHelper.GetChild(Input,0)).FindName("BorderElement");
+                Require(inputBorder.BackgroundSizing==BackgroundSizing.OuterBorderEdge,
+                    "Packaged input background does not cover its source border box.");
+                Input.BackgroundSizing=BackgroundSizing.InnerBorderEdge;Root.UpdateLayout();
+                Require(inputBorder.BackgroundSizing==BackgroundSizing.InnerBorderEdge,"Packaged input ignored native consumer sizing.");
+                Input.ClearValue(Control.BackgroundSizingProperty);Root.UpdateLayout();
+                Require(inputBorder.BackgroundSizing==BackgroundSizing.OuterBorderEdge,"Packaged input did not restore border-box sizing.");
                 Require(PackageFieldLabel.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && PackageFieldLabel.FontSize == 13 &&
                     !PackageFieldLabel.IsTabStop && ReferenceEquals(Microsoft.UI.Xaml.Automation.AutomationProperties.GetLabeledBy(Input), PackageFieldLabel) &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageFieldLabel).GetName() == "Title", "Packaged field label lost typography or input association.");
