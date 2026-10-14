@@ -35,6 +35,7 @@
     "BleeckerDashboardSpan": "DashboardGridsFixture.xaml",
     "BleeckerLineChart": "LineChartsFixture.xaml",
     "BleeckerBarChart": "BarChartsFixture.xaml",
+    "BleeckerAreaChart": "AreaChartsFixture.xaml",
     "BleeckerSparkline": "SparklinesFixture.xaml",
     "BleeckerStatCard": "StatCardsFixture.xaml",
     "BleeckerStatTrend": "StatCardsFixture.xaml",

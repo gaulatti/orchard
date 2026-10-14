@@ -23,7 +23,7 @@ public sealed partial class BleeckerLineChart
     private bool VerticalBars => barLayout == BleeckerBarChartLayout.Vertical;
     internal void UseBarProfile(BleeckerBarChartLayout layout, Func<object?, string>? formatter)
     {
-        barMode = true; sparklineMode = false; barLayout = layout; barYAxisFormatter = formatter; QueueRender();
+        barMode = true; sparklineMode = areaMode = false; barLayout = layout; barYAxisFormatter = formatter; QueueRender();
     }
     private double Band => Data.Count == 0 ? 0 : (VerticalBars ? bottom - top : right - left) / Data.Count;
     private double Category(int index) => (VerticalBars ? top : left) + Band * (index + .5);

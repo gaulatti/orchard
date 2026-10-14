@@ -5,6 +5,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Tokens.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SparklinePalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/BarChartPalette.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AreaChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCardPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Menus.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />

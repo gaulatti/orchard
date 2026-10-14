@@ -25,6 +25,8 @@ public sealed partial class MainWindow : Window
         foreach(var value in new[]{10d,30d,20d,40d})PackageSparkline.Data.Add(new Dictionary<string,object?>{{"v",value}});
         PackageBarChart.Data.Add(new Dictionary<string,object?>{{"label","A"},{"v",10d}});
         PackageBarChart.Data.Add(new Dictionary<string,object?>{{"label","B"},{"v",20d}});
+        PackageAreaChart.Data.Add(new Dictionary<string,object?>{{"label","A"},{"v",10d}});
+        PackageAreaChart.Data.Add(new Dictionary<string,object?>{{"label","B"},{"v",20d}});
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
@@ -202,6 +204,7 @@ public sealed partial class MainWindow : Window
                 VerifyDashboardGrid();
                 await VerifySparklineAsync();
                 await VerifyBarChartAsync();
+                await VerifyAreaChartAsync();
                 await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
@@ -320,6 +323,33 @@ public sealed partial class MainWindow : Window
         var original=PackageSparkline.Data;PackageSparkline.Data=new();
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0,"Packaged Sparkline retained an empty curve.");
         PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
+    }
+
+    private async Task VerifyAreaChartAsync()
+    {
+        PackageAreaChart.Stacked = false;
+        PackageAreaChart.Data[1] = new Dictionary<string, object?> { ["label"] = "B", ["v"] = 20d };
+        var parent = (Panel)VisualTreeHelper.GetParent(PackageAreaChart); var position = parent.Children.IndexOf(PackageAreaChart);
+        parent.Children.Remove(PackageAreaChart); await AwaitAsync(() => !PackageAreaChart.IsLoaded, "Packaged Area Chart did not unmount.");
+        parent.Children.Insert(position, PackageAreaChart); await AwaitAsync(() => PackageAreaChart.IsLoaded, "Packaged Area Chart did not remount.");
+        PackageAreaChart.ApplyTemplate(); Root.UpdateLayout();
+        var chart = BrandDescendants<BleeckerLineChart>(PackageAreaChart).Single(); var plot = BrandDescendants<Canvas>(chart).Single(canvas => canvas.Name == "PART_Plot");
+        Microsoft.UI.Xaml.Shapes.Path[] Paths() => plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().ToArray();
+        await AwaitAsync(() => Paths().Length == 2, "Packaged Area Chart did not render its area and boundary.");
+        var area = (PathGeometry)Paths()[0].Data; var first = area.Figures[0].StartPoint;
+        Require(Math.Abs(first.X - 60) < .001 && Math.Abs(first.Y - 87.5) < .001 && area.Figures[0].IsFilled && area.Figures[0].IsClosed && Paths()[0].Opacity == .2 && Paths()[1].StrokeThickness == 2,
+            "Packaged Area Chart lost its source fill/boundary geometry.");
+        Require(ReferenceEquals(chart.Data, PackageAreaChart.Data) && ReferenceEquals(chart.Series, PackageAreaChart.Series) && !PackageAreaChart.IsTabStop && chart.IsTabStop && AutomationProperties.GetName(chart) == "Independent areas" && FrameworkElementAutomationPeer.CreatePeerForElement(chart).GetClassName() == nameof(BleeckerAreaChart), "Packaged Area Chart lost consumer identity or its native inspection boundary.");
+        await AcquireConsumerInputAsync(); Require(chart.Focus(FocusState.Keyboard), "Could not focus packaged Area Chart.");
+        await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "A;  : 10", "Packaged Area Chart did not inspect its first category.");
+        var keys = new[] { new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = 0x27 } } }, new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = 0x27, Flags = 2 } } } };
+        Require(SendInput(2, keys, Marshal.SizeOf<ConsumerInput>()) == 2, "Packaged Area Chart key did not enter native input.");
+        await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 20", "Packaged Area Chart did not inspect through native Right.");
+        var second = new BleeckerChartSeries { Key = "v", Name = "Second" }; PackageAreaChart.Series.Add(second); PackageAreaChart.Stacked = true;
+        await AwaitAsync(() => Paths().Length == 4 && ((PathGeometry)Paths()[3].Data).Figures[0].StartPoint.Y < ((PathGeometry)Paths()[1].Data).Figures[0].StartPoint.Y, "Packaged Area Chart did not accumulate live consumer series.");
+        PackageAreaChart.Series.Remove(second);
+        PackageAreaChart.Data[1] = new Dictionary<string, object?> { ["label"] = "B", ["v"] = 30d };
+        await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 30", "Packaged Area Chart ignored replacement records.");
     }
 
     private async Task VerifyBarChartAsync()

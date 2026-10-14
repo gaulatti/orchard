@@ -52,14 +52,19 @@ Chart Theme and supplies observable consumer records, monotone curves and
 keyboard inspection. Focused `-Component line-chart` verification compares
 22 frozen light/dark specimens and tests live consumer changes. Complete chart
 rendering, tooltip motion and full raster/platform acceptance remain inventory gaps.
-Bar charts follows Line Charts and precedes Sparklines. Focused `-Component
+Bar charts follows Line Charts and precedes Area charts. Focused `-Component
 bar-chart` compares 68 Light/Dark source cases in both orientations, including
 signed paths, palette, grids/ticks, category wrapping baselines, cursor bands and
 physical inspection. It also checks live records/series/layout, collection
 replacement, native Tab/Enter/pointer behavior, remount and template restoration.
 See [the source contract and acceptance gaps](bar-chart-reference.md).
 
-Sparklines follows Bar charts. Focused `-Component sparkline` checks 36 frozen
+Area charts follows Bar charts. Focused `-Component area-chart` compares 80
+Light/Dark source cases in overlapping and stacked modes, including curves,
+ranges, single dots, signed stacks, grid/ticks, legend and native inspection.
+See [the source contract and acceptance gaps](area-chart-reference.md).
+
+Sparklines follows Area charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.

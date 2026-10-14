@@ -31,11 +31,11 @@ public sealed partial class BleeckerLineChart : Control
     private readonly BleeckerChartInteraction interaction=new();
     private bool queued;
     private bool sparklineMode;
-    internal void UseSparklineProfile(){sparklineMode=true;barMode=false;QueueRender();}
+    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=false;QueueRender();}
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
-    private double RenderWidth => barMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
-    private double RenderHeight => barMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
+    private double RenderWidth => barMode || areaMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
+    private double RenderHeight => barMode || areaMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
 
     public BleeckerLineChart()
     {
@@ -116,6 +116,7 @@ public sealed partial class BleeckerLineChart : Control
         if (!sparklineMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
         foreach (var item in Series) { _ = item.Key; _ = item.Name; }
         if (barMode) { RenderBars(); return; }
+        if (areaMode) { RenderAreas(); return; }
         plot.Clip = null; plot.Children.Clear(); legend.Children.Clear(); rendered.Clear();
         var legendHeight = RenderLegend();
         left = 60 + (string.IsNullOrEmpty(YAxisLabel) ? 0 : 20); right = ActualWidth - 20; top = 10;
@@ -228,6 +229,7 @@ public sealed partial class BleeckerLineChart : Control
     private void ShowActive(int index, double? pointerY = null)
     {
         if (barMode) { ShowBarActive(index, pointerY); return; }
+        if (areaMode) { ShowAreaActive(index, pointerY); return; }
         if (active is null || tooltip is null || tooltipItems is null || tooltipContainer is null || index < 0 || index >= Data.Count) return;
         active.Children.Clear(); tooltipItems.Children.Clear();
         var category = sparklineMode?"":BleeckerChartData.Label(BleeckerChartData.Read(Data[index], XAxisKey!));
@@ -286,7 +288,7 @@ public sealed partial class BleeckerLineChart : Control
     protected override AutomationPeer OnCreateAutomationPeer() => new ChartPeer(this);
     private sealed class ChartPeer(BleeckerLineChart owner) : FrameworkElementAutomationPeer(owner)
     {
-        protected override string GetClassNameCore() => owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
+        protected override string GetClassNameCore() => owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsControlElementCore() => true;
         protected override bool IsContentElementCore() => true;

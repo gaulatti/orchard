@@ -92,3 +92,8 @@ for examples and the acceptance status of each component.
 The application owns data, commands, navigation and network access. Catalog and
 test code are not part of the library. Keep the complete unpackaged output
 directory together when distributing an application.
+
+`BleeckerAreaChart` consumes observable records and series for overlapping or
+stacked monotone areas, with optional numeric tick/tooltip formatters, a shared
+palette and one native category inspection stop. See the Area Chart source
+contract in the repository documentation for current acceptance limits.

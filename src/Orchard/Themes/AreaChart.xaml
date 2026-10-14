@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerAreaChart">
+  <Setter Property="Height" Value="300" /><Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" />
+  <Setter Property="UseLayoutRounding" Value="False" /><Setter Property="IsTabStop" Value="False" />
+  <Setter Property="HighContrastAdjustment" Value="None" /><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerAreaChart"><local:BleeckerLineChart x:Name="PART_Chart" /></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

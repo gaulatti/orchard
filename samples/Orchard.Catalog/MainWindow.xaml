@@ -91,6 +91,7 @@
                 <local:ChartThemesFixture x:Name="ChartThemes" />
                 <local:LineChartsFixture x:Name="LineCharts" />
                 <local:BarChartsFixture x:Name="BarCharts" />
+                <local:AreaChartsFixture x:Name="AreaCharts" />
                 <local:SparklinesFixture x:Name="Sparklines" />
                 <local:StatCardsFixture x:Name="StatCards" />
                 <local:ErrorStatesFixture x:Name="ErrorStates" />
