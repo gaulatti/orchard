@@ -150,3 +150,8 @@ content, consumer styles and child actions, and wide/tall/square gradients.
 boundaries and records composed gradient samples. Those samples report observed
 differences; they do not establish complete visual acceptance. See
 [the source contract and current evidence](attention-surface-reference.md).
+
+Focused `-Component checkboxes` runs the Checkbox page's normal fixture in
+both themes, including shared disabled Checkbox/Input ownership and rapid
+stationary Input remounts. It retains native border/cursor expectations and
+records the standard catalog captures. See [Input verification](inputs.md).

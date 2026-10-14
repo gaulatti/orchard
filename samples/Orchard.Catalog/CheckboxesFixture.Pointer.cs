@@ -307,13 +307,25 @@ public sealed partial class CheckboxesFixture
             for (var round = 0; round < 3; round++)
             {
                 Rows.Children.Remove(editor); Rows.Children.Insert(index, editor); UpdateLayout();
-                await WaitAsync(() => editor.IsLoaded && CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) &&
-                    Hex(Find<Border>(editor, "BorderElement").BorderBrush) == (scheme == BleeckerColorScheme.Dark ? "#40FFFFFF" : "#B3E6D5B8"),
-                    $"Rapid Input remount {round} lost its disabled hover border/cursor.");
+                var remountWatch = System.Diagnostics.Stopwatch.StartNew(); var remountTrace = new List<object>();
+                var remountSettled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); var remountFrames = 0;
+                void ObserveRemount(object? sender, object args)
+                {
+                    var cursor = CurrentCheckboxCursor(); var border = Hex(Find<Border>(editor, "BorderElement").BorderBrush);
+                    var publishing = NativeCursorDiagnostics.Flag(editor, "republishQueued");
+                    var ready = editor.IsLoaded && input.OwnsForeground && NativeCursorDiagnostics.OwnsCursor(editor) && !publishing && cursor == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) && border == (scheme == BleeckerColorScheme.Dark ? "#40FFFFFF" : "#B3E6D5B8");
+                    remountFrames = ready ? remountFrames + 1 : 0;
+                    remountTrace.Add(new { milliseconds = remountWatch.Elapsed.TotalMilliseconds, ready, editor.IsLoaded, input.OwnsForeground, publishing, remountFrames, cursor = cursor.ToInt64(), border });
+                    if (remountFrames >= 2) remountSettled.TrySetResult();
+                }
+                CompositionTarget.Rendering += ObserveRemount;
+                try { await remountSettled.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+                catch { samples.Add(new { phase = "input-rapid-remount-failed", round, remountTrace, cursor = DescribeEditorCursor(input, editor), publication = NativeCursorDiagnostics.Describe(editor) }); throw; }
+                finally { CompositionTarget.Rendering -= ObserveRemount; }
                 var point = PointerPosition();
                 Require(point.X == editorAnchor.X && point.Y == editorAnchor.Y, "Pointer moved during rapid Input remount.");
                 samples.Add(new { phase = "input-rapid-remount", round, cursor = CurrentCheckboxCursor().ToInt64(),
-                    border = Hex(Find<Border>(editor, "BorderElement").BorderBrush) });
+                    border = Hex(Find<Border>(editor, "BorderElement").BorderBrush), remountTrace });
             }
             await input.MoveAsync(CheckboxHeading);
             await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32512)),

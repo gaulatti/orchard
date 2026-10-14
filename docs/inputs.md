@@ -816,3 +816,23 @@ The default maximized and explicit 1024×697 tests use the same runtime path.
 A new isolated x64 consumer passes both appearances at
 `artifacts/package-consumer-input-geometric`, using package 0.1.0 with SHA-256
 `be56f853db8d8107b54981c1e6eaa78543e219e9148bb1c7ad19919bb70febb3`.
+
+Rapid remount verification also runs through the shared Checkbox/Input pointer
+ownership fixture. Use `scripts/smoke-catalog.ps1 -Component checkboxes` for that
+fixture in both themes. The mode uses the existing Foundation/theme/fixture
+selection preparation and records the normal catalog captures.
+
+`artifacts/smoke-area-chart-observer-full` passed its chart checks but rejected
+Dark Input rapid remount round 1's exact disabled hover border/cursor condition.
+That original assertion did not retain its individual reads, so its failure
+cannot be classified as a producer defect or an observation race. The focused
+diagnostic's original condition passed both themes; its first command wrapper
+then rejected missing catalog captures, which the focused route now supplies.
+
+The remount gate now requires two rendered, settled observations, matching the
+preceding disabled-under-pointer gate. It retains the exact UniversalNo handle,
+theme border, stationary coordinates and two-second deadline, and additionally
+checks owned foreground/cursor with no queued publication. Per-frame success
+and failure evidence is retained. This changes verification timing rather than
+Input or cursor production; it does not establish the cause of the original
+unrecorded failure. Final runtime evidence is recorded after verification.
