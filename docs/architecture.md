@@ -1,5 +1,14 @@
 # Architecture and verification
 
+## Temporary Actions trigger pause
+
+Automatic push runs are temporarily disabled at the user's request to conserve
+Actions capacity during parity implementation. Pull-request validation and
+manual `workflow_dispatch` remain available. Pushing to `main` does not provide
+new hosted verification evidence while this pause is active. Continue local
+validation and report native ARM64/hosted gaps explicitly. To restore automatic
+push validation, add `push: { branches: [main] }` under the workflow's `on` map.
+
 ## Platform ownership
 
 The catalog smoke process has a six-minute overall deadline for the registered

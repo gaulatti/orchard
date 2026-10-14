@@ -1,7 +1,6 @@
 name: Windows validation
 on:
-  push:
-    branches: [main]
+  # Push runs are temporarily paused during the parity implementation work.
   pull_request:
   workflow_dispatch:
 
