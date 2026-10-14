@@ -1,5 +1,17 @@
 # Native Windows runtime evidence
 
+Run [38597371241](https://github.com/gaulatti/orchard/actions/runs/38597371241)
+at `17b0e1b` passes the complete x64 job, ARM64 cross-build, both focused native
+Section Header checks, contrast and both fresh consumers. Native ARM64 fails
+focused Input at a rounded exterior point (actual AppStarting, expected Arrow,
+publisher inactive) and the full catalog's forced Checkbox transaction setup
+(owner inactive). The two failures are distinct from a pending blocked cursor.
+Verified ARM64 archive `11910643289` SHA-256:
+`9945d1d0e4085c061eead3b062dbe1e19586727689f3a0c49c5015ac64f0a7f8`.
+That run remains red. Push-triggered Actions are now temporarily disabled at
+the user's request; local checks and unverified hosted gaps must be reported
+separately during the pause.
+
 Run [38593563145](https://github.com/gaulatti/orchard/actions/runs/38593563145)
 at `9303b06` passes the entire native ARM64 job, with an ARM64 process/OS,
 display/text scale 1 and actual animations enabled. Both new producer-phase

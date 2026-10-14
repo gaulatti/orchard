@@ -112,6 +112,7 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff, "hit-testing-disabled", false, 32512, anchor);
             DisabledOff.IsHitTestVisible = true; UpdateLayout();
             await Check(DisabledOff, "hit-testing-restored", true, 32648, anchor);
+            await ReadyToPublishAsync();
             var canceledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
             var completedBefore=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
             NativeCursorDiagnostics.QueueOwnedRepublish(DisabledOff);
@@ -136,8 +137,7 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff,"queued-publication-canceled",false,32512,anchor);
             DisabledOff.IsHitTestVisible=true;UpdateLayout();
             await Check(DisabledOff,"queued-publication-owner-restored",true,32648,anchor);
-            await WaitOwnedAsync(()=>!NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued"),
-                "Restored owner retained an unfinished cursor publication.");
+            await ReadyToPublishAsync();
             var frameCanceledBefore = NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
             var frameDeliveredBefore = NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
             var producerCanceled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -171,7 +171,7 @@ public sealed partial class CheckboxesFixture
             }
             DisabledOff.IsHitTestVisible = true; UpdateLayout();
             await Check(DisabledOff,"producer-frame-owner-restored",true,32648,anchor);
-            await WaitOwnedAsync(()=>!NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued"), "Producer-frame owner did not settle after restoration.");
+            await ReadyToPublishAsync();
             var settledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"acknowledgedPublicationCalls");
             var deliveredBefore=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
             var settledCanceledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
@@ -295,6 +295,9 @@ public sealed partial class CheckboxesFixture
 
             async Task Check(BleeckerCheckbox control, string phase, bool hover, int cursor, PointerPoint? stationary = null)
             {
+                // A rejected focus request can still dispatch native input and
+                // pointer cancellation. Observe the cursor after that operation.
+                if (!control.IsEnabled) Require(!control.Focus(FocusState.Keyboard), $"Disabled pointer phase {phase} accepted keyboard focus.");
                 var alpha = (float)(control.IsChecked == true ? 1 : hover ? .5 : scheme == BleeckerColorScheme.Light ? .6 : .2);
                 var cursorTrace = new List<object>();
                 var started = System.Diagnostics.Stopwatch.StartNew();
@@ -307,6 +310,7 @@ public sealed partial class CheckboxesFixture
                         if (visible != expected) cursorTrace.Add(new { milliseconds = started.Elapsed.TotalMilliseconds, input.OwnsForeground,
                             cursor = NativeInputSession.DescribeCursor(), publication = NativeCursorDiagnostics.Describe(control) });
                         return visible == expected &&
+                        NativeCursorDiagnostics.OwnsCursor(control) == (!control.IsEnabled && hover) &&
                         Math.Abs(Find<Border>(control, "PART_Box").BorderBrush.Opacity - alpha) < 1e-9 &&
                         Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5);
                     },
@@ -336,13 +340,17 @@ public sealed partial class CheckboxesFixture
                     ? BleeckerTokens.Colors(scheme)[scheme == BleeckerColorScheme.Light ? "sea" : "accentBlue"]
                     : scheme == BleeckerColorScheme.Light ? "#FFE6D5B8" : "#FFFFFFFF";
                 Require(Hex(brush) == expectedColor, $"Disabled pointer phase {phase} selected the wrong theme color.");
-                if (!control.IsEnabled) Require(!control.Focus(FocusState.Keyboard), $"Disabled pointer phase {phase} accepted keyboard focus.");
                 samples.Add(new { phase, control.Name, control.IsEnabled, control.IsChecked, hover,
                     direction = control.FlowDirection.ToString(), border = Hex(brush), brush.Opacity,
                     inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity, cursor = CurrentCheckboxCursor().ToInt64(),
                     globalCursor = DescribeGlobalCursor(),
                     expectedCursor = cursor, position.X, position.Y });
             }
+
+            Task ReadyToPublishAsync() => WaitOwnedAsync(() => NativeCursorDiagnostics.OwnsCursor(DisabledOff) &&
+                !NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued") &&
+                CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32648)),
+                "Cursor transaction preparation lost its actual owner, visible cursor or settled publication.");
 
             async Task WaitOwnedAsync(Func<bool> condition, string message)
             {

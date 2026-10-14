@@ -1,5 +1,18 @@
 # Input editing preview
 
+At `17b0e1b`, run `38597371241` passes the entire x64 job and ARM64 cross-build.
+Native ARM64 passes Section Header, contrast and the independent consumer, but
+focused Input fails Small/invalid/top-left 0,0 outside the rounded shape:
+Windows displays AppStarting 65561 instead of Arrow 65539. Orchard's hover and
+ownership are false, its publisher is inactive, and its retained restoration
+shape is Arrow. This differs from a pending UniversalNo publication. The full
+ARM64 catalog separately loses ownership between the restored-owner check and
+the fixture's next forced transaction. Archive `11910643289` is verified with
+SHA-256 `9945d1d0e4085c061eead3b062dbe1e19586727689f3a0c49c5015ac64f0a7f8`.
+AppStarting is not accepted as Arrow, and both failures remain open pending
+their respective runtime corrections. Automatic push validation is temporarily
+disabled at the user's request; later pushes do not imply hosted acceptance.
+
 The publisher separates SDK publication into rendering phases. After the
 queued owner/epoch check, it retains the exact producer selection for two
 rendering callbacks, then publishes UniversalNo and waits for an actual visible

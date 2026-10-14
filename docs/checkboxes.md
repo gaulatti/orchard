@@ -1,5 +1,16 @@
 # Checkbox
 
+Run `38597371241` at `17b0e1b` fails the full ARM64 forced-publication setup:
+the restored-owner check finishes, then `QueueOwnedRepublish` correctly refuses
+an inactive owner. Its report records Arrow after that check's rejected focus
+probe. The fixture now performs the focus probe before settling its cursor and
+requires real ownership as well as visible UniversalNo and no pending delivery
+before scheduling a transaction. The two-second deadline and exact cursor
+expectations are unchanged. The full local x64 Light/Dark catalog passes with
+this stronger owner/focus ordering at `artifacts/smoke-checkbox-focus-settlement`;
+all 42 regressions pass. Native ARM64 verification of this correction remains
+open while automatic push runs are paused.
+
 The shared cursor publisher now keeps the retained SDK producer selected for
 two rendering callbacks before publishing UniversalNo. Its acknowledgement
 still requires the actual visible Windows cursor. The full local x64 Light/Dark

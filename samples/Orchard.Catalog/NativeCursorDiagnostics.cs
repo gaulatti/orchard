@@ -40,14 +40,18 @@ internal static class NativeCursorDiagnostics
     }
     internal static void QueueOwnedRepublish(FrameworkElement control)
     {
-        var tracker=control.GetType().GetField("disabledPointer",Instance)!.GetValue(control)!;
-        if(!(bool)tracker.GetType().GetProperty("OwnsCursor",Instance)!.GetValue(tracker)!)
+        if(!OwnsCursor(control))
             throw new InvalidOperationException("Only an actual native cursor owner can exercise queued cancellation.");
         var selection=Selection(control);
         if((bool)selection.GetType().GetField("republishQueued",Instance)!.GetValue(selection)!)
             throw new InvalidOperationException("A native publication is already pending.");
         var source=selection.GetType().GetField("source",Instance)!.GetValue(selection)!;
         selection.GetType().GetMethod("QueueRepublish",Instance)!.Invoke(selection,[source]);
+    }
+    internal static bool OwnsCursor(FrameworkElement control)
+    {
+        var tracker=control.GetType().GetField("disabledPointer",Instance)!.GetValue(control)!;
+        return (bool)tracker.GetType().GetProperty("OwnsCursor",Instance)!.GetValue(tracker)!;
     }
     internal static object Describe(FrameworkElement control)
     {
