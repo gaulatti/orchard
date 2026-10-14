@@ -1,5 +1,15 @@
 # Input editing preview
 
+Native ARM64 at `d68a732`, run `38584983610`, passes both complete Input
+matrices, both native acknowledgement snapshots, queued cancellation, full
+catalog lifecycle checks and the independent consumer. Its actual preference
+is animations enabled. The verified archive SHA-256 is
+`77cf99ad89ee36a8db75b97406ac6893c247f773a288617333cf8782ac5d2b5b`.
+Each forced transaction has one delivery/acknowledgement, visible handle 65559
+and no pending observer; the Dark trace handles two SDK producer replacements.
+This is runtime evidence for the cursor correction, not acceptance of the
+remaining Input visual, accessibility and scaling matrix.
+
 The publisher now acknowledges a deferred selection only after two or more
 rendering callbacks and a successful `GetCursorInfo` read showing a visible
 UniversalNo cursor. Every settlement observation revalidates the current owner

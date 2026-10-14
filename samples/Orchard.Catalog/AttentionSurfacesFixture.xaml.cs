@@ -155,6 +155,11 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         // The heading is the fixture's first row in the catalog content.
         // Set that authoritative viewport explicitly before returning the pointer.
         viewport.ChangeView(null, 0, null, disableAnimation: true);
+        await AwaitAsync(() =>
+        {
+            var origin = Heading.TransformToVisual(viewport).TransformPoint(new Windows.Foundation.Point());
+            return viewport.VerticalOffset == 0 && origin.Y >= 0 && origin.Y + Heading.ActualHeight <= viewport.ViewportHeight;
+        }, "Attention heading geometry did not reach the requested catalog viewport.");
         await input.MoveAsync(Heading);
     }
     private ScrollViewer CatalogViewport()

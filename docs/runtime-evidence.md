@@ -1,5 +1,26 @@
 # Native Windows runtime evidence
 
+Run [38584983610](https://github.com/gaulatti/orchard/actions/runs/38584983610)
+at `d68a732` passes the entire native ARM64 job with animations enabled. Both
+focused and full Input matrices retain 96 passing samples per theme. Each
+forced cursor transaction records one delivery, one acknowledgement, actual
+visible UniversalNo 65559, and no pending observer. Cancellation records one
+cancellation and zero deliveries. The Dark shared publisher records two SDK
+producer replacements. The native package consumer and cleanup pass.
+Verified ARM64 archive SHA-256:
+`77cf99ad89ee36a8db75b97406ac6893c247f773a288617333cf8782ac5d2b5b`.
+
+x64 passes its focused checks, contrast and package consumption, but its full
+Dark Attention sequence sees heading geometry still translated by -2706.75px
+after the viewport offset reports zero. The verified x64 archive SHA-256 is
+`4c4006c456123962da018b90f7b4b240a5a5c550cbcac473f3769a8f3f3cda49`.
+The geometry wait now uses the existing Attention settling bound before input;
+this follow-up still requires hosted validation. Overall CI is not green yet.
+The follow-up passes the focused Attention fixture, both solution builds, all
+42 regressions and the complete local x64 Light/Dark sequence at
+`artifacts/smoke-attention-geometry-full`. It changes catalog preparation only;
+the library and previously verified package remain unchanged.
+
 The next local runtime candidate passes both solution builds, all 42 regressions,
 the focused 192-sample Input matrix, focused Attention viewport returns, and
 the complete x64 Light/Dark catalog at `artifacts/smoke-runtime-settlement-full`.

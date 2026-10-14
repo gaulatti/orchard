@@ -10,6 +10,11 @@ The public wiki remote remains unavailable; this contract is maintained here.
 
 The native fixture returns to its first-row heading by explicitly setting the
 registered catalog viewport to vertical offset zero before physical movement.
+It then waits for the heading's actual visual transform to enter that viewport,
+using the fixture's existing two-second settling bound. In run `38584983610`,
+the offset already reported zero while `TransformToVisual` still retained the
+old 2706.75px translation. An offset value alone does not prove geometry has
+reached the requested view.
 Run `38578657500` retained an off-screen heading at 350,-1950 after the previous
 bring-into-view request. The viewport regression traverses the distant consumer
 child action, then returns to the actual heading with pointer and keyboard
