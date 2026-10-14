@@ -108,3 +108,8 @@ The complete local x64 catalog also passes both themes at
 open/close cycles and the other mounted controls. Local animations are disabled,
 display/text scale is 1 and contrast is off. The public wiki remains unavailable;
 this contract and the runtime evidence are maintained in the repository.
+Run `38527036318` at `00734d0` passes the new focused presenter/lifecycle check
+on x64 and native ARM64. This verifies the registered ownership and readiness
+checks on both hosts; it does not establish the complete notification acceptance
+matrix. Separate cursor, Breadcrumb contrast and package foreground failures
+keep the required workflow red.
