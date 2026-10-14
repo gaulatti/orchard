@@ -67,6 +67,18 @@ The full local Light/Dark catalog also passes at
 Both solution architecture builds pass with zero warnings; local ARM64 evidence
 is a cross-build. All 42 regression tests and the pinned token check pass.
 
+Fresh package 0.1.0 from clean implementation commit
+`d6d688dd7c3e1eff9a2daff7ddb0175a9f9a0b67` has SHA-256
+`6dc5222d32c1de03906c39ca5db1788d5cf0852859a43f7ce87b624476802f3a`.
+The isolated x64 consumer passes both themes at
+`artifacts/package-consumer-dashboard-section`, checking bundled typography,
+real level-two heading semantics, empty-header/body collapse and live content.
+The isolated ARM64 consumer cross-build passes at
+`artifacts/package-consumer-dashboard-section-arm64`, with native runtime
+verification explicitly false. Both consumers remove their own temporary
+caches. The separately published x64 catalog passes the focused runtime gate
+at `artifacts/smoke-dashboard-section-published`.
+
 Complete glyph/baseline raster and whitespace-run comparison, flex minimum-content constraints,
 the complete consumer override matrix, actual contrast schemes, Narrator,
 display/text scaling and native ARM64 validation remain open. The inventory
