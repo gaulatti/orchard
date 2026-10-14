@@ -25,6 +25,15 @@ and theme paint. Direction must be supplied before consumption; missing and
 unknown directions fail explicitly. An explicit Trend suppresses Description, even if its text is
 empty. Removing Trend restores a nonempty Description.
 
+Raw Icon and Footer scalars follow the pinned conditional-rendering contract.
+Null, false and an empty string create no slot. True creates an empty icon box
+or footer wrapper. Numeric zero renders a plain `0` without the icon chrome or
+footer border/padding. Other scalar content uses the normal wrapper. Text
+collapses ASCII whitespace; a whitespace-only footer retains its empty wrapper.
+Footer text uses 16/24px typography and wraps normally. Floating values use
+canonical exponent formatting. An explicit IconTemplate or FooterTemplate owns
+its data, including zero and false; that data is not coerced into raw slot text.
+
 The surface reuses the default Card recipe: 24px padding, 1px border and 12px
 corners, with 20px between the main header, optional history and footer. Header
 content has an 8px vertical gap. Title uses Encode Sans Semibold 11/16.5px with
@@ -102,6 +111,33 @@ The implementation uses the repository's pinned Windows App SDK
 existing Card surface recipe and existing Sparkline renderer. A consumer value
 template receives its original data without invoking that object's ToString;
 the native fixture supplies a value whose ToString throws to verify the boundary.
+
+## Scalar content and intrinsic text follow-up
+
+`tests/Reference/StatCardContent.json` adds 36 Light/Dark captures from the same
+unchanged source and dependencies. SHA-256:
+`4870542c84f54dbf389f6f2b788d1feb66ff8d31f62c8a5cc0f2bf145ce297a3`.
+They cover long unbreakable/mixed title, description and value content, raw
+zero/number/string/Boolean/whitespace slots, wrapping footer text and exponent
+values. Import with `scripts/derive-stat-card-content-reference.mjs`.
+
+The first native run reproduces ten mismatches: mixed-value height 134.5px
+instead of 164.5px; scalar footer heights and wrapping; zero icon width; Boolean
+icon text; and exponent casing. Measuring wrapped text at its original column
+width before arranging its overflowing paint fixes the mixed-value reflow.
+The same layout now lets long titles and descriptions paint beyond their column
+without escaping the Card surface. New desktop pixel gates prove both the
+visible overflow and absence of exterior leakage. The icon-zero allocation uses
+the captured 1/64px intrinsic boundary without widening the comparison tolerance.
+Focused checks pass in both themes at `artifacts/smoke-stat-content-desktop`:
+80 source specimens plus template-owned zero/false, floating/decimal scalar and
+existing input/lifecycle regressions. Desktop checks confirm visible long text
+beyond the lead column and zero leaked text pixels outside the Card. Both
+architecture solution builds pass with zero warnings. All 43 unit regressions
+and the pinned token check pass at `artifacts/tests-stat-content`. The complete
+Light/Dark catalog passes at `artifacts/smoke-stat-content-full` with the
+six-minute deadline unchanged. Native ARM64 runtime and fresh package evidence
+for this follow-up remain separate.
 
 Fresh NuGet 0.1.0 from clean implementation commit
 `b3de3487e3cdfa9cffb0e2fc06bce5acbf767b27` has SHA-256

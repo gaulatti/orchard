@@ -7,6 +7,7 @@
     <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+12%" Direction="Up" Label="this week" /></orchard:BleeckerStatCard.Trend>
    </orchard:BleeckerStatCard>
    <orchard:BleeckerStatCard Title="Pending review" Value="24" Description="Consumer-owned local summary." />
+   <orchard:BleeckerStatCard x:Name="ScalarSlots" Title="Local checks" Value="0" Description="Consumer scalar content is retained." />
   </orchard:BleeckerDashboardGrid>
  </StackPanel>
 </UserControl>

@@ -45,6 +45,8 @@ the pinned source's unfilled Line output. Complete parity remains in progress.
 `BleeckerStatCard` composes Title, Value/ValueTemplate, an observable
 `BleeckerStatTrend`, optional Icon/Footer content and consumer Sparkline history.
 A Trend suppresses Description. Full visual/platform acceptance remains open.
+Raw zero Icon/Footer content renders without chrome; Boolean content and
+whitespace follow the pinned source. Custom templates retain their own data.
 The packaged brand SVG is copied to `Orchard/Assets/Images`. Brand filtering uses
 the pinned transitive Win2D 1.4.0 dependency; keep its native runtime files with
 the complete build/publish output.

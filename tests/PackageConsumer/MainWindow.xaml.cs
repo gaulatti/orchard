@@ -337,6 +337,17 @@ public sealed partial class MainWindow : Window
         var spark=BrandDescendants<BleeckerSparkline>(PackageStatCard).Single();Require(ReferenceEquals(spark.Data,data)&&spark.Height==48&&spark.ShowArea,"Packaged Stat Card replaced consumer history or changed its compact profile.");
         PackageStatCard.SparklineDataKey="";await AwaitAsync(()=>!BrandDescendants<BleeckerSparkline>(PackageStatCard).Any(),"Packaged Stat Card retained empty-key history.");
         PackageStatCard.SparklineData=null;
+        PackageStatCard.Footer=0d;Root.UpdateLayout();
+        Require(BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_FooterScalar").Text=="0"&&
+            BrandDescendants<Border>(PackageStatCard).Single(border=>border.Name=="PART_Footer").Visibility==Visibility.Collapsed&&Math.Abs(PackageStatCard.ActualHeight-176.5)<.001,"Packaged Stat Card changed zero footer content or its source allocation.");
+        PackageStatCard.Footer=true;Root.UpdateLayout();
+        Require(BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_FooterText").Text==""&&Math.Abs(PackageStatCard.ActualHeight-169.5)<.001,"Packaged Stat Card rendered Boolean footer text.");
+        PackageStatCard.Footer="Consumer footer wraps over several words.";Root.UpdateLayout();
+        Require(BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_FooterText").LineHeight==24,"Packaged Stat Card lost scalar footer typography.");
+        PackageStatCard.Icon=0d;Root.UpdateLayout();Require(BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_IconScalar").Text=="0"&&BrandDescendants<Border>(PackageStatCard).Single(border=>border.Name=="PART_Icon").Visibility==Visibility.Collapsed,"Packaged Stat Card put zero into an icon box.");
+        PackageStatCard.FooterTemplate=(DataTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Independent footer template\" Tag=\"{Binding}\" Height=\"24\" /></DataTemplate>");PackageStatCard.Footer=false;
+        await AwaitAsync(()=>BrandDescendants<TextBlock>(PackageStatCard).Any(text=>text.Text=="Independent footer template"&&Equals(text.Tag,false)),"Packaged Stat Card discarded template-owned false data.");
+        PackageStatCard.Footer=null;PackageStatCard.FooterTemplate=null;PackageStatCard.Icon=null;
     }
 
     private void VerifyDashboardGrid()

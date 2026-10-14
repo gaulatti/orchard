@@ -14,7 +14,7 @@ namespace Orchard.Catalog;
 
 public sealed partial class StatCardsFixture:UserControl
 {
-    public StatCardsFixture(){InitializeComponent();Specimen.SparklineData=Data(10,30,20,40);}
+    public StatCardsFixture(){InitializeComponent();Specimen.SparklineData=Data(10,30,20,40);ScalarSlots.Footer=0d;}
     private static ObservableCollection<IReadOnlyDictionary<string,object?>> Data(params double[] values)=>new(values.Select(value=>(IReadOnlyDictionary<string,object?>)new Dictionary<string,object?>{{"v",value}}));
     internal async Task VerifyAsync(BleeckerColorScheme scheme,string folder)
     {
@@ -72,6 +72,7 @@ public sealed partial class StatCardsFixture:UserControl
                 if(id is "full" or "default" or "narrow" or "rtl" or "long")await MainWindow.CaptureElementAsync(card,System.IO.Path.Combine(folder,$"stat-card-{id}-{scheme}.png"));
                 if(id=="narrow")await VerifyComposedOverflowAsync(input,card,folder,scheme);
             }
+            await VerifyContentAsync(host,input,folder,scheme);
             await MutationAsync(host,input,folder,scheme);
         }
         finally{root.Children.Remove(host);}
@@ -116,6 +117,14 @@ public sealed partial class StatCardsFixture:UserControl
         await AwaitAsync(()=>Descendants<TextBlock>(Part<ContentPresenter>(card,"PART_RichValue")).Any(text=>text.Text=="Template-owned value"),"Stat Card did not apply a consumer value template.");
         var template=card.Template;card.Template=(ControlTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<ControlTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><Grid /></ControlTemplate>");card.ApplyTemplate();UpdateLayout();card.Template=template;card.ApplyTemplate();UpdateLayout();
         await AwaitAsync(()=>Descendants<TextBlock>(Part<ContentPresenter>(card,"PART_RichValue")).Any(text=>text.Text=="Template-owned value"),"Stat Card did not restore its consumer template after template replacement.");
+        card.Value=.1f;card.ValueTemplate=null;UpdateLayout();Require(Part<TextBlock>(card,"PART_Value").Text=="0.1","Stat Card widened a floating scalar's display precision.");
+        card.Footer=0.000m;UpdateLayout();Require(Part<TextBlock>(card,"PART_FooterScalar").Text=="0"&&Part<Border>(card,"PART_Footer").Visibility==Visibility.Collapsed,"Stat Card changed scaled decimal zero content.");
+        card.FooterTemplate=(DataTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Template footer\" Tag=\"{Binding}\" Height=\"24\" /></DataTemplate>");card.Footer=false;
+        await AwaitAsync(()=>Descendants<TextBlock>(Part<ContentPresenter>(card,"PART_RichFooter")).Any(text=>text.Text=="Template footer"&&Equals(text.Tag,false)),"Stat Card discarded false data owned by a footer template.");
+        Require(Part<Border>(card,"PART_Footer").Visibility==Visibility.Visible&&Part<TextBlock>(card,"PART_FooterScalar").Visibility==Visibility.Collapsed,"Stat Card treated template-owned data as a raw scalar.");
+        card.IconTemplate=(DataTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><Border Width=\"12\" Height=\"12\" Tag=\"{Binding}\" /></DataTemplate>");card.Icon=0d;
+        await AwaitAsync(()=>Descendants<Border>(Part<ContentPresenter>(card,"PART_RichIcon")).Any(border=>Equals(border.Tag,0d)),"Stat Card discarded zero data owned by an icon template.");
+        Require(Part<Border>(card,"PART_Icon").Visibility==Visibility.Visible&&Part<TextBlock>(card,"PART_IconScalar").Visibility==Visibility.Collapsed,"Stat Card replaced its consumer icon template with scalar text.");
     }
     private sealed class OpaqueValue{public override string ToString()=>throw new InvalidOperationException("A consumer template owns this value's rendering.");}
     private async Task VerifyComposedOverflowAsync(NativeInputSession input,BleeckerStatCard card,string folder,BleeckerColorScheme scheme)

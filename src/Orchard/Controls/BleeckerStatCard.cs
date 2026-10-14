@@ -13,8 +13,8 @@ namespace Orchard;
 /// <summary>A consumer-owned statistic, trend and optional compact history.</summary>
 public sealed class BleeckerStatCard : Control
 {
-    private TextBlock? title,value,description,trendValue,trendLabel;
-    private ContentPresenter? richValue;
+    private TextBlock? title,value,description,trendValue,trendLabel,iconText,footerText,iconScalar,footerScalar;
+    private ContentPresenter? richValue,richIcon,richFooter;
     private Grid? header,sparklineHost,trendHost;
     private Border? icon,footer;
     private Panel? trend;
@@ -57,14 +57,21 @@ public sealed class BleeckerStatCard : Control
     protected override void OnApplyTemplate()
     {
         if(richValue is not null)richValue.Content=null;
+        if(richIcon is not null)richIcon.Content=null;if(richFooter is not null)richFooter.Content=null;
         sparklineHost?.Children.Clear();trend=null;trendHost=null;
         base.OnApplyTemplate();
         title=GetTemplateChild("PART_Title") as TextBlock;value=GetTemplateChild("PART_Value") as TextBlock;richValue=GetTemplateChild("PART_RichValue") as ContentPresenter;
+        iconText=GetTemplateChild("PART_IconText") as TextBlock;footerText=GetTemplateChild("PART_FooterText") as TextBlock;
+        iconScalar=GetTemplateChild("PART_IconScalar") as TextBlock;footerScalar=GetTemplateChild("PART_FooterScalar") as TextBlock;
+        if(GetTemplateChild("PART_IconScalarHost") is Grid scalarHost&&iconScalar is not null){scalarHost.Children.Clear();var panel=new IntrinsicTextPanel();panel.Children.Add(iconScalar);scalarHost.Children.Add(panel);}
+        richIcon=GetTemplateChild("PART_RichIcon") as ContentPresenter;richFooter=GetTemplateChild("PART_RichFooter") as ContentPresenter;
         if(GetTemplateChild("PART_ValueHost") is Grid valueHost)
         {
             valueHost.Children.Clear();var panel=new ValuePanel();if(value is not null)panel.Children.Add(value);if(richValue is not null)panel.Children.Add(richValue);valueHost.Children.Add(panel);
         }
         description=GetTemplateChild("PART_Description") as TextBlock;header=GetTemplateChild("PART_Header") as Grid;
+        foreach(var (name,text) in new[]{("PART_TitleHost",title),("PART_DescriptionHost",description)})
+            if(GetTemplateChild(name) is Grid textHost&&text is not null){textHost.Children.Clear();var panel=new ValuePanel();panel.Children.Add(text);textHost.Children.Add(panel);}
         icon=GetTemplateChild("PART_Icon") as Border;footer=GetTemplateChild("PART_Footer") as Border;sparklineHost=GetTemplateChild("PART_SparklineHost") as Grid;sparkline=null;
         trendValue=GetTemplateChild("PART_TrendValue") as TextBlock;trendLabel=GetTemplateChild("PART_TrendLabel") as TextBlock;trendIcon=GetTemplateChild("PART_TrendIcon") as Viewbox;
         if(GetTemplateChild("PART_TrendHost") is Grid host)
@@ -79,18 +86,22 @@ public sealed class BleeckerStatCard : Control
     private void StopObserving(){if(observedTrend is not null)observedTrend.Changed-=TrendChanged;observedTrend=null;}
     private void TrendChanged(object? sender,EventArgs args)=>UpdatePresentation();
     private static string Text(string? text)=>Spaces.Replace(text??""," ").Trim(' ').Replace("\f","");
-    private static bool Present(object? content)=>content is not null&&content is not false&&content is not string{Length:0};
+    private static bool Number(object? content)=>content is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal;
+    private static bool FalsyNumber(object? content)=>Number(content)&&(Convert.ToDouble(content,CultureInfo.InvariantCulture) is double number&&(number==0||double.IsNaN(number)));
+    private static bool Present(object? content)=>content is not null&&content is not false&&content is not string{Length:0}&&!FalsyNumber(content);
+    private static string ScalarText(object? content)=>content switch{null or bool=>"",double number=>BleeckerChartScale.TickLabel(number),float number=>BleeckerChartScale.TickLabel(double.Parse(number.ToString("R",CultureInfo.InvariantCulture),CultureInfo.InvariantCulture)),decimal number when number==0=>"0",_=>Text(Convert.ToString(content,CultureInfo.InvariantCulture))};
     private static void SetText(TextBlock? target,string text){if(target is null)return;target.Text=text;if(text.Length==0)target.Height=0;else target.ClearValue(HeightProperty);}
     private void UpdatePresentation()
     {
         if(!ReferenceEquals(observedTrend,IsLoaded?Trend:null)){StopObserving();if(IsLoaded&&Trend is not null){observedTrend=Trend;observedTrend.Changed+=TrendChanged;}}
         SetText(title,BleeckerTextCasing.Uppercase(Text(Title)));
         var plain=ValueTemplate is null&&Value is not UIElement;
-        SetText(value,plain&&Value is not bool?Text(Convert.ToString(Value,CultureInfo.InvariantCulture)):"");
+        SetText(value,plain?ScalarText(Value):"");
         if(value is not null)value.Visibility=plain?Visibility.Visible:Visibility.Collapsed;
         if(richValue is not null){richValue.Content=plain?null:Value;richValue.Visibility=plain?Visibility.Collapsed:Visibility.Visible;}
         var hasTrend=Trend is not null;var hasDescription=!hasTrend&&!string.IsNullOrEmpty(Description);
         SetText(description,Text(Description));if(description is not null)description.Visibility=hasDescription?Visibility.Visible:Visibility.Collapsed;
+        if(GetTemplateChild("PART_DescriptionHost") is Grid descriptionHost)descriptionHost.Visibility=hasDescription?Visibility.Visible:Visibility.Collapsed;
         if(trend is not null)trend.Visibility=hasTrend?Visibility.Visible:Visibility.Collapsed;
         if(trendHost is not null)trendHost.Visibility=hasTrend?Visibility.Visible:Visibility.Collapsed;
         if(trendValue is not null)SetText(trendValue,Text(Trend?.Value));
@@ -103,9 +114,9 @@ public sealed class BleeckerStatCard : Control
             trendIcon.Child=vector;
             trendValue?.SetBinding(TextBlock.ForegroundProperty,new Microsoft.UI.Xaml.Data.Binding{Source=((Microsoft.UI.Xaml.Shapes.Path)vector.Children[0]),Path=new PropertyPath("Stroke")});
         }
-        if(icon is not null)icon.Visibility=Present(Icon)?Visibility.Visible:Visibility.Collapsed;
-        if(header is not null)header.ColumnSpacing=Present(Icon)?24:0;
-        if(footer is not null)footer.Visibility=Present(Footer)?Visibility.Visible:Visibility.Collapsed;
+        UpdateSlot(Icon,IconTemplate,icon,iconText,richIcon,iconScalar);
+        UpdateSlot(Footer,FooterTemplate,footer,footerText,richFooter,footerScalar);
+        if(header is not null)header.ColumnSpacing=IconTemplate is not null||Present(Icon)||FalsyNumber(Icon)?24:0;
         if(sparklineHost is not null)
         {
             var show=SparklineData is not null&&!string.IsNullOrEmpty(SparklineDataKey);
@@ -119,6 +130,15 @@ public sealed class BleeckerStatCard : Control
             sparklineHost.Visibility=show?Visibility.Visible:Visibility.Collapsed;
         }
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
+    }
+    private static void UpdateSlot(object? content,DataTemplate? template,Border? wrapper,TextBlock? text,ContentPresenter? rich,TextBlock? scalar)
+    {
+        var plain=template is null&&(content is null or string or bool||Number(content));
+        var anonymous=template is null&&FalsyNumber(content);
+        if(wrapper is not null)wrapper.Visibility=template is not null||Present(content)?Visibility.Visible:Visibility.Collapsed;
+        SetText(text,plain?ScalarText(content):"");if(text is not null)text.Visibility=plain?Visibility.Visible:Visibility.Collapsed;
+        if(rich is not null){rich.Content=plain?null:content;rich.Visibility=plain?Visibility.Collapsed:Visibility.Visible;}
+        SetText(scalar,anonymous?ScalarText(content):"");if(scalar is not null)scalar.Visibility=anonymous?Visibility.Visible:Visibility.Collapsed;
     }
     protected override AutomationPeer OnCreateAutomationPeer()=>new StatPeer(this);
     private sealed class StatPeer(BleeckerStatCard owner):FrameworkElementAutomationPeer(owner)
@@ -157,27 +177,37 @@ public sealed class BleeckerStatCard : Control
         }
         internal static double Minimum(TextBlock source)
         {
-            var probe=new TextBlock{UseLayoutRounding=false,FontFamily=source.FontFamily,FontSize=source.FontSize,FontWeight=source.FontWeight,CharacterSpacing=source.CharacterSpacing};var width=0d;
+            var probe=new TextBlock{UseLayoutRounding=false,FontFamily=source.FontFamily,FontSize=source.FontSize,FontWeight=source.FontWeight,FontStyle=source.FontStyle,FontStretch=source.FontStretch,CharacterSpacing=source.CharacterSpacing,FlowDirection=source.FlowDirection,TextReadingOrder=source.TextReadingOrder,IsTextScaleFactorEnabled=source.IsTextScaleFactorEnabled};var width=0d;
             foreach(var word in source.Text.Split(' ',StringSplitOptions.RemoveEmptyEntries)){probe.Text=word;probe.Measure(new Size(double.PositiveInfinity,double.PositiveInfinity));width=Math.Max(width,probe.DesiredSize.Width);}
             return Math.Ceiling(width*64)/64;
         }
     }
     private sealed class ValuePanel:Panel
     {
+        private readonly Dictionary<UIElement,double> minima=[];
         protected override Size MeasureOverride(Size available)
         {
-            var height=0d;var width=0d;
+            var height=0d;var width=0d;minima.Clear();
             foreach(var child in Children.Where(child=>child.Visibility==Visibility.Visible))
             {
                 var minimum=child is TextBlock text?TrendPanel.Minimum(text):child is ContentPresenter{Content:FrameworkElement content}&&double.IsFinite(content.Width)?content.Width:0;
-                child.Measure(new Size(Math.Max(available.Width,minimum),double.PositiveInfinity));height=Math.Max(height,child.DesiredSize.Height);width=Math.Max(width,child.DesiredSize.Width);
+                minima[child]=minimum;child.Measure(new Size(available.Width,double.PositiveInfinity));height=Math.Max(height,child.DesiredSize.Height);width=Math.Max(width,child.DesiredSize.Width);
             }
             return new Size(Math.Min(available.Width,width),height);
         }
         protected override Size ArrangeOverride(Size finalSize)
         {
-            foreach(var child in Children.Where(child=>child.Visibility==Visibility.Visible))child.Arrange(new Rect(0,0,Math.Max(finalSize.Width,child.DesiredSize.Width),child.DesiredSize.Height));
+            foreach(var child in Children.Where(child=>child.Visibility==Visibility.Visible))child.Arrange(new Rect(0,0,Math.Max(finalSize.Width,Math.Max(child.DesiredSize.Width,minima.GetValueOrDefault(child))),child.DesiredSize.Height));
             return finalSize;
         }
+    }
+    private sealed class IntrinsicTextPanel:Panel
+    {
+        protected override Size MeasureOverride(Size available)
+        {
+            var child=Children[0];child.Measure(new Size(double.PositiveInfinity,double.PositiveInfinity));
+            return new Size(Math.Ceiling(child.DesiredSize.Width*64)/64,child.DesiredSize.Height);
+        }
+        protected override Size ArrangeOverride(Size finalSize){Children[0].Arrange(new Rect(0,0,finalSize.Width,finalSize.Height));return finalSize;}
     }
 }

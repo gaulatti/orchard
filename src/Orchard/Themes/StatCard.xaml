@@ -9,7 +9,7 @@
      <Grid x:Name="PART_Header" ColumnSpacing="24">
       <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
       <StackPanel x:Name="PART_Lead" Spacing="8" MinWidth="0">
-       <TextBlock x:Name="PART_Title" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="11" LineHeight="16.5" LineStackingStrategy="BlockLineHeight" CharacterSpacing="90" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+       <Grid x:Name="PART_TitleHost"><TextBlock x:Name="PART_Title" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="11" LineHeight="16.5" LineStackingStrategy="BlockLineHeight" CharacterSpacing="90" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" /></Grid>
        <Grid x:Name="PART_ValueHost">
         <TextBlock x:Name="PART_Value" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="30" LineHeight="30" LineStackingStrategy="BlockLineHeight" CharacterSpacing="-20" Foreground="{TemplateBinding Foreground}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
         <ContentPresenter x:Name="PART_RichValue" ContentTemplate="{TemplateBinding ValueTemplate}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="30" CharacterSpacing="-20" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Stretch" />
@@ -19,16 +19,24 @@
         <TextBlock x:Name="PART_TrendValue" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontWeight="Medium" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
         <TextBlock x:Name="PART_TrendLabel" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
        </Grid>
-       <TextBlock x:Name="PART_Description" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+       <Grid x:Name="PART_DescriptionHost"><TextBlock x:Name="PART_Description" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" /></Grid>
       </StackPanel>
       <Border x:Name="PART_Icon" Grid.Column="1" Width="40" Height="40" VerticalAlignment="Top" CornerRadius="9" BorderThickness="1" Background="{ThemeResource BleeckerStatIconBackgroundBrush}" BorderBrush="{ThemeResource BleeckerStatIconBorderBrush}">
-       <ContentPresenter Content="{TemplateBinding Icon}" ContentTemplate="{TemplateBinding IconTemplate}" Foreground="{ThemeResource BleeckerStatIconForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+       <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock x:Name="PART_IconText" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerStatIconForegroundBrush}" TextReadingOrder="UseFlowDirection" />
+        <ContentPresenter x:Name="PART_RichIcon" ContentTemplate="{TemplateBinding IconTemplate}" Foreground="{ThemeResource BleeckerStatIconForegroundBrush}" />
+       </Grid>
       </Border>
+      <Grid x:Name="PART_IconScalarHost" Grid.Column="1" VerticalAlignment="Top"><TextBlock x:Name="PART_IconScalar" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" Foreground="{TemplateBinding Foreground}" TextReadingOrder="UseFlowDirection" /></Grid>
      </Grid>
      <Grid x:Name="PART_SparklineHost" Height="48" Margin="-4,0" />
      <Border x:Name="PART_Footer" BorderThickness="0,1,0,0" BorderBrush="{ThemeResource BleeckerStatFooterBorderBrush}" Padding="0,16,0,0">
-      <ContentPresenter Content="{TemplateBinding Footer}" ContentTemplate="{TemplateBinding FooterTemplate}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" FontSize="16" HorizontalContentAlignment="Stretch" />
+      <Grid>
+       <TextBlock x:Name="PART_FooterText" FontFamily="{TemplateBinding FontFamily}" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" Foreground="{TemplateBinding Foreground}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+       <ContentPresenter x:Name="PART_RichFooter" ContentTemplate="{TemplateBinding FooterTemplate}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" FontSize="16" HorizontalContentAlignment="Stretch" />
+      </Grid>
      </Border>
+     <TextBlock x:Name="PART_FooterScalar" FontFamily="{TemplateBinding FontFamily}" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" Foreground="{TemplateBinding Foreground}" TextReadingOrder="UseFlowDirection" />
     </StackPanel>
    </local:BleeckerCard>
   </ControlTemplate></Setter.Value></Setter>
