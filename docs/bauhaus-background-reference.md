@@ -229,3 +229,14 @@ The diagnostic fixture builds for x64 and ARM64 and passes focused x64 at
 `artifacts/smoke-bauhaus-animation-clock`. With local animations disabled,
 the report records a null animation clock and zero angles in every frame.
 The enabled ARM64 clock comparison remains pending the next hosted run.
+
+Native ARM64 at `dc7815c`, run `38491762987`, records a failed full-suite Light
+span: wall time 318.7628ms versus 379.0937ms of storyboard time. The transforms
+advance 6.8236866 degrees, matching the storyboard's 18 degrees/second but
+exceeding the wall-clock expectation 5.7376602 by the existing one-degree bound.
+The animation samples now come from CompositionTarget.Rendering, starting their
+wall timer with the first actual render frame. The wall-clock speed and native
+reduced-motion assertions remain required and unchanged. Focused local x64
+passes both appearances at `artifacts/smoke-bauhaus-render-frame-sampling` with
+animations off. Enabled ARM64 verification of the sampling change remains
+pending; this observation does not close the real-time motion acceptance gap.

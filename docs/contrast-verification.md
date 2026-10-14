@@ -200,3 +200,15 @@ opaque and transparent image regions to become exact Window pixels in the
 actual composed capture; Brand continues to require WindowText/alpha behavior.
 These samples are retained in `contrast-brand-pixels.json` with a `bauhaus`
 component marker. Fresh hosted acceptance for this addition is required.
+
+Attention Surface is now included before the primary action, preserving the
+Breadcrumb-to-Help keyboard entry order. Its check requires exact system Window
+background and WindowText border/text, removal of the gradient from the rendered
+surface, zero hover lift and no native shadow during actual contrast mode.
+The label comparison reuses solid glyph positions captured before the mode
+change, so already-correct pixels cannot define their own acceptance mask.
+Restoration must return the exact producer image brush and original border/text
+colors. Snapshots retain those values and the active image/shadow/lift state;
+`contrast-attention-active.png` retains the rendered specimen. Hosted verification
+of this new boundary is pending. The guarded local route refuses before changing
+Windows mode at `artifacts/smoke-attention-contrast-local-refusal`.

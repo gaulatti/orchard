@@ -183,6 +183,10 @@ public sealed partial class BreadcrumbsFixture : UserControl
                 Require(expansion.Focus(FocusState.Keyboard), "Unavailable-link expansion refused keyboard focus.");
                 input.Key(0x0D);
                 await AwaitAsync(() => Children(disabledPath).Count == 9, "Unavailable-link path did not expand.");
+                if(useCustom)
+                    await AwaitAsync(()=>Children(disabledPath).OfType<ContentPresenter>().Count()==4 &&
+                        Children(disabledPath).OfType<ContentPresenter>().All(host=>TryFind<Button>(host,"ConsumerLink") is {IsLoaded:true}),
+                        "Unavailable consumer link templates did not materialize after expansion.");
                 var links = useCustom
                     ? Children(disabledPath).OfType<ContentPresenter>().Select(host => (Control)Find<Button>(host, "ConsumerLink")).ToArray()
                     : Children(disabledPath).OfType<HyperlinkButton>().Cast<Control>().ToArray();
@@ -233,12 +237,16 @@ public sealed partial class BreadcrumbsFixture : UserControl
     private static IList<UIElement> Children(BleeckerBreadcrumb control) => Find<Panel>(control, "PART_Items").Children.OfType<Panel>().Single().Children;
     private static T Find<T>(DependencyObject root, string name) where T : FrameworkElement
     {
+        return TryFind<T>(root,name) ?? throw new KeyNotFoundException(name);
+    }
+    private static T? TryFind<T>(DependencyObject root,string name) where T:FrameworkElement
+    {
         if (root is T current && current.Name == name) return current;
         for (var index = 0; index < VisualTreeHelper.GetChildrenCount(root); index++)
         {
-            try { return Find<T>(VisualTreeHelper.GetChild(root, index), name); } catch (KeyNotFoundException) { }
+            if(TryFind<T>(VisualTreeHelper.GetChild(root,index),name) is T found)return found;
         }
-        throw new KeyNotFoundException(name);
+        return null;
     }
     private static string Hex(Brush brush) => brush is SolidColorBrush solid ? $"#{(byte)Math.Round(solid.Color.A * solid.Opacity):X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush.GetType().Name;
     private async Task AwaitAsync(Func<bool> condition, string message, Func<string>? details = null)

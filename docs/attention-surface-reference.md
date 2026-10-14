@@ -140,3 +140,18 @@ semantics, actual native button/Click activation and live recipe changes at
 `f9ae063786b8b14b4368c0f4002062ba584a4c0017ca25021b3bcfb550d0ade2`.
 Native ARM64 runtime of Attention, exact motion/reversal, full raster,
 contrast/Narrator/scaling and the remaining contract boundaries stay open.
+
+The native command-availability regression now changes the consumer command's
+CanExecute result and raises its real CanExecuteChanged event. Both actual inner
+buttons must become disabled, refuse unavailable Invoke without executing,
+and become enabled again when the command becomes available. The focused x64
+check passes both appearances at `artifacts/smoke-attention-command-availability`.
+The cross-component live contrast fixture also includes Attention's system
+paint, unchanged pre-transition glyph mask, lift/shadow suppression and producer
+image restoration; fresh hosted verification is pending. See
+[contrast verification](contrast-verification.md).
+
+The combined native x64 catalog also passes Light and Dark with these checks at
+`artifacts/smoke-attention-contrast-breadcrumb-all`. That run uses display/text
+scale 1 and disabled system animations; it does not supply enabled-motion,
+contrast-transition, ARM64 or Narrator acceptance evidence.

@@ -67,6 +67,16 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         var passive = NativeAction(PassiveAction); before = command.Count;
         ((IInvokeProvider)new ButtonAutomationPeer(passive).GetPattern(PatternInterface.Invoke)).Invoke();
         Require(command.Count==before+1 && Equals(command.Last,"passive"),"Interactive=false removed native button activation.");
+        command.SetAvailable(false);
+        await AwaitAsync(()=>!native.IsEnabled&&!passive.IsEnabled,"Attention native actions did not follow consumer command availability.");
+        var unavailableCount=command.Count;
+        var refused=false;
+        try { ((IInvokeProvider)new ButtonAutomationPeer(native).GetPattern(PatternInterface.Invoke)).Invoke(); }
+        catch(System.Runtime.InteropServices.COMException){refused=true;}
+        catch(InvalidOperationException){refused=true;}
+        Require(command.Count==unavailableCount,"An unavailable attention action executed its consumer command.");
+        command.SetAvailable(true);
+        await AwaitAsync(()=>native.IsEnabled&&passive.IsEnabled,"Attention native actions did not recover consumer command availability.");
         Require(FrameworkElementAutomationPeer.CreatePeerForElement(InteractiveArticle).GetPattern(PatternInterface.Invoke) is null,
             "A visual interactive override invented non-button Invoke semantics.");
         var originalBackground = Styled.Background; var originalBorder = Styled.BorderBrush;
@@ -110,7 +120,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         Require(ReferenceEquals(Slot.Content,content)&&ReferenceEquals(VisualTreeHelper.GetParent(ChildAction),((FrameworkElement)VisualTreeHelper.GetChild(Slot,0)).FindName("PART_Content")),
             "Attention template replacement changed or retained the old parent of consumer content.");
         await CaptureGradientPixelsAsync(input,source,scheme,folder);
-        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-actions-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,command.Count,command.Last,inherited}));
+        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-actions-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,command.Count,command.Last,inherited,unavailableInvokeRefused=refused}));
     }
     private async Task CaptureGradientPixelsAsync(NativeInputSession input,JsonElement source,BleeckerColorScheme scheme,string folder)
     {
@@ -163,8 +173,10 @@ public sealed partial class AttentionSurfacesFixture : UserControl
     private sealed class CounterCommand : System.Windows.Input.ICommand
     {
         internal int Count; internal object? Last;
-        public bool CanExecute(object? parameter)=>true;
+        private bool available=true;
+        internal void SetAvailable(bool value){available=value;CanExecuteChanged?.Invoke(this,EventArgs.Empty);}
+        public bool CanExecute(object? parameter)=>available;
         public void Execute(object? parameter){Count++;Last=parameter;}
-        public event EventHandler? CanExecuteChanged { add{} remove{} }
+        public event EventHandler? CanExecuteChanged;
     }
 }

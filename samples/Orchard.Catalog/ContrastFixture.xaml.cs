@@ -61,9 +61,16 @@ public sealed partial class ContrastFixture : UserControl
         ContentPresenter Presenter() => Descendants<ContentPresenter>(Action()).First();
         var accessibility = new AccessibilitySettings();
         var expansion = Descendants<Button>(Path).Single();
-        var before = Snapshot();
         var originalBackground = Hex(root.Background);
         var originalHeading = Hex(Heading.Foreground);
+        var attentionRoot=(FrameworkElement)VisualTreeHelper.GetChild(Attention,0);
+        var attentionBackground=(Border)attentionRoot.FindName("PART_Background");
+        var attentionSurface=(Border)attentionRoot.FindName("PART_Surface");
+        var attentionText=(TextBlock)attentionRoot.FindName("PART_String");
+        var attentionShadow=(Grid)attentionRoot.FindName("PART_ShadowHost");
+        var attentionImage=attentionSurface.Background;
+        var attentionBorder=Hex(attentionSurface.BorderBrush);var attentionForeground=Hex(attentionText.Foreground);
+        var before = Snapshot();
         var samples = new List<object> { new { phase = "before", state = before } };
         var focusEvents = new List<object>();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
@@ -86,6 +93,7 @@ public sealed partial class ContrastFixture : UserControl
         Help.AddHandler(PointerPressedEvent, new Microsoft.UI.Xaml.Input.PointerEventHandler(Pressed), true);
         var headingInk = await ReadInkAsync(Heading);
         var labelInk = await ReadInkAsync(Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"));
+        var attentionInk = await ReadInkAsync(attentionText);
         var passed = false;
         try
         {
@@ -126,6 +134,14 @@ public sealed partial class ContrastFixture : UserControl
             await AwaitAsync(() => BrushOpacity(activitySurface.Background) == 0 &&
                 Matches(activityTitle.Foreground, NativeContrastSession.Color(8)) && Matches(activityTime.Foreground, NativeContrastSession.Color(8)),
                 "Activity hover exit did not restore Windows text and transparency.");
+            await input.MoveAsync(Attention);
+            await AwaitAsync(()=>Matches(attentionBackground.Background,NativeContrastSession.Color(5)) &&
+                Matches(attentionSurface.BorderBrush,NativeContrastSession.Color(8)) && Matches(attentionText.Foreground,NativeContrastSession.Color(8)) &&
+                attentionSurface.Background is null && ((TranslateTransform)attentionRoot.RenderTransform).Y==0 &&
+                Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementChildVisual(attentionShadow) is null,
+                "Attention did not adopt Windows semantic paint or suppress gradient, lift and shadow in actual contrast mode.");
+            await VerifyInkAsync(attentionText,8,attentionInk,folder,"attention-label");
+            await MainWindow.CaptureElementAsync(Attention,System.IO.Path.Combine(folder,"contrast-attention-active.png"));
             await input.MoveAsync(expansion);
             var chrome = Descendants<Border>(expansion).Single(item => item.Name == "PART_Chrome");
             var icon = Descendants<Microsoft.UI.Xaml.Shapes.Path>(expansion).Single(item => item.Name == "PART_Icon");
@@ -149,6 +165,8 @@ public sealed partial class ContrastFixture : UserControl
             await AwaitAsync(() => !accessibility.HighContrast && !NativeContrastSession.Read().Enabled &&
                 Hex(root.Background) == originalBackground && Hex(Heading.Foreground) == originalHeading,
                 "Windows mode or the original live palette did not restore.");
+            await AwaitAsync(()=>ReferenceEquals(attentionSurface.Background,attentionImage) && Hex(attentionSurface.BorderBrush)==attentionBorder &&
+                Hex(attentionText.Foreground)==attentionForeground,"Attention did not restore its exact producer image, border and foreground after contrast mode.");
             tooltip.IsOpen = false;
             Help.GotFocus -= GotFocus; Help.LostFocus -= LostFocus;
             tooltip.Closed -= Closed;
@@ -160,6 +178,9 @@ public sealed partial class ContrastFixture : UserControl
         }
 
         object Snapshot() => new { os = NativeContrastSession.Read(), accessibility.HighContrast, rootBackground = Hex(root.Background),
+            attention=new{background=Hex(attentionBackground.Background),border=Hex(attentionSurface.BorderBrush),foreground=Hex(attentionText.Foreground),
+                image=attentionSurface.Background?.GetType().Name,lift=((TranslateTransform)attentionRoot.RenderTransform).Y,
+                shadow=Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementChildVisual(attentionShadow)?.GetType().Name},
             opacity = new { root = BrushOpacity(root.Background), heading = BrushOpacity(Heading.Foreground), primaryBackground = BrushOpacity(Presenter().Background),
                 primaryForeground = BrushOpacity(Presenter().Foreground), inputBackground = BrushOpacity(Editor.Background), inputForeground = BrushOpacity(Editor.Foreground),
                 tooltipBackground = BrushOpacity(tooltip.Background), tooltipForeground = BrushOpacity(tooltip.Foreground) },

@@ -54,12 +54,17 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         var rotationField = typeof(BleeckerBauhausBackground).GetField("rotation", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
             ?? throw new InvalidOperationException("Missing Bauhaus animation clock for fixture diagnostics.");
         var timeline = rotationField.GetValue(Nazca) as Storyboard;
-        var frames = new List<(double Milliseconds, double? AnimationMilliseconds, double Outer, double Inner)>(); var elapsed = Stopwatch.StartNew();
-        while (elapsed.ElapsedMilliseconds < 320)
+        var frames = new List<(double Milliseconds, double? AnimationMilliseconds, double Outer, double Inner)>(); var elapsed = new Stopwatch();
+        var sampled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        void Sample(object? sender,object args)
         {
+            if(!elapsed.IsRunning)elapsed.Start();
             frames.Add((elapsed.Elapsed.TotalMilliseconds, timeline?.GetCurrentTime().TotalMilliseconds, ((RotateTransform)outer.RenderTransform).Angle, ((RotateTransform)((Border)Find<Canvas>(Nazca, "PART_Pattern").Children[1]).RenderTransform).Angle));
-            await Task.Delay(20);
+            if(elapsed.Elapsed.TotalMilliseconds>=320)sampled.TrySetResult();
         }
+        CompositionTarget.Rendering+=Sample;
+        try { await sampled.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { CompositionTarget.Rendering-=Sample; }
         var enabled = new UISettings().AnimationsEnabled;
         var first = frames.First(); var last = frames.Last(); var expectedDelta = 18 * (last.Milliseconds - first.Milliseconds) / 1000;
         var outerDelta = (last.Outer - first.Outer + 360) % 360; var innerDelta = (first.Inner - last.Inner + 360) % 360;

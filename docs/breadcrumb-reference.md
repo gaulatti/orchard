@@ -158,5 +158,13 @@ The default native links use HyperlinkButton Click/Command rather than
 NavigateUri so application routes and relative hrefs stay consumer-owned, as
 described in Microsoft's [HyperlinkButton guidance](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.hyperlinkbutton?view=windows-app-sdk-2.0).
 No browser, networking or application navigation is launched by Orchard.
+
+At `dc7815c`, x64 run `38491762987` reaches the expanded unavailable custom
+path before its ContentPresenters have materialized their ConsumerLink buttons.
+The fixture now waits for all four actual loaded template buttons before reading
+their availability and keyboard focus. Expansion count, exact consumer item,
+CanExecute(false) and restored-focus assertions remain unchanged; no product
+behavior or timeout is relaxed. Focused local verification passes both themes at
+`artifacts/smoke-breadcrumb-consumer-materialization`.
 The repository wiki remote is unavailable; this in-repository document is the
 current contract. Orchard has no backend or metrics surface affected by this change.
