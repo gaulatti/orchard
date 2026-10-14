@@ -45,6 +45,7 @@ public sealed partial class LineChartsFixture : UserControl
         await AwaitAsync(() => Math.Abs(popup.ActualHeight - 110) < .001, "Tooltip item padding and line height did not cross the source layout boundary.");
         Require(Math.Abs(container.Margin.Top - 35) < .001 && Math.Abs(container.Margin.Left - 256.6666667) < .001, "Keyboard tooltip lost the frozen chart-height coordinate or edge placement.");
         VerifyEffects(root);
+        await AwaitPresentationAsync();
         Require(((Canvas)root.FindName("PART_Active")).Children.OfType<Ellipse>().Count() == 2, "Active chart category did not show both source dots.");
         await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"line-chart-{scheme}-keyboard.png"));
         await VerifyShadowPixelsAsync(scheme, folder);
@@ -86,6 +87,13 @@ public sealed partial class LineChartsFixture : UserControl
         Require(visual.Shadow is DropShadow effect && effect.BlurRadius == 32 && effect.Offset.Y == 8 && Math.Abs(effect.Opacity - .08) < 1e-6 && effect.Mask is not null && shadow.Clip is CompositionGeometricClip, "Tooltip shadow did not consume its source metadata or exclude the border box.");
         var backdrop = ElementCompositionPreview.GetElementChildVisual((Grid)root.FindName("PART_TooltipBackdrop")) as SpriteVisual;
         Require(backdrop?.Brush is CompositionEffectBrush brush && brush.Properties.TryGetScalar("chartBackdrop.BlurAmount", out var amount) == CompositionGetValueStatus.Succeeded && amount == 8 && backdrop.Clip is CompositionGeometricClip, "Tooltip backdrop did not consume its scoped Gaussian blur or rounded clipping.");
+    }
+    private static async Task AwaitPresentationAsync()
+    {
+        var completion=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
+        void Frame(object? sender,object args){if(++frames==2)completion.TrySetResult();}
+        CompositionTarget.Rendering+=Frame;
+        try{await completion.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
     }
     private async Task VerifyShadowPixelsAsync(BleeckerColorScheme scheme, string folder)
     {

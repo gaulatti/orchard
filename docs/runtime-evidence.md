@@ -1,5 +1,27 @@
 # Native Windows runtime evidence
 
+The next renderer candidates place Attention's baseline in layout and give the
+chart shadow a Composition-owned vector mask. Both solution builds, 37
+regressions, focused Attention glyph transitions, focused chart/effect pixel
+checks, the complete local x64 catalog and a fresh independent x64 package
+consumer pass. Evidence is retained at `artifacts/tests-render-corrections`,
+`artifacts/smoke-attention-layout-glyphs`, `artifacts/smoke-line-tooltip-vector-mask`,
+`artifacts/smoke-render-corrections-all` and
+`artifacts/package-consumer-render-corrections`. Local scale is 1, animations
+are disabled and contrast is off. The hosted contrast and unpainted-shadow
+corrections remain unverified; no required gate or inventory entry is accepted.
+
+Run [38517156846](https://github.com/gaulatti/orchard/actions/runs/38517156846)
+at `e0db53c` passes both builds and package consumers but fails the focused
+tooltip shadow profile on both hosted architectures. The native ARM64 artifact
+is retained with verified SHA-256
+`918ad22f258bdfe3a3dfa1c587711efdfa747ad49f35e664ca0735a10156422b` at
+`artifacts/ci-e0db53c-arm64.zip`; its focused and full chart shadow samples all
+remain background-colored. Both contrast jobs still fail Attention at 46/124.
+ARM64 also fails Input's Large/valid bottom-right `(3,0)` with global Arrow
+instead of UniversalNo, and a notification mark-all popup check. These remain
+open required gates.
+
 The tooltip checkpoint passes both updated solution builds without warnings,
 37 regressions, 22 chart and 26 tooltip source specimens, sampled real
 blur/shadow profiles in both themes, a fresh independent x64 package consumer

@@ -140,8 +140,9 @@ The capture moves the pointer outside the chart before keyboard inspection to
 keep the previous specimen's hover from contaminating the next one.
 
 The chart owns a rounded, clipped Composition shadow and Win2D Gaussian
-backdrop effect. Its opaque mask stays in a private translated host and is
-arranged before obtaining the alpha surface. Effects are cleared when closed,
+backdrop effect. Its rounded vector mask is now owned by Composition and sampled
+through a `CompositionVisualSurface`, independent of XAML mask visibility and
+offscreen layout. Effects are cleared when closed,
 unloaded or retemplated, and suppressed under Windows contrast. The shadow is
 excluded from the border box, preserving translucent consumer card paint.
 Implementation uses the pinned Windows App SDK 2.5.1 and Win2D 1.4.0 APIs;
@@ -160,6 +161,16 @@ levels of the frozen browser producer; the first shadow implementation failed
 this check because it painted no visible shadow. These are sampled effect
 profiles, not complete tooltip/font raster acceptance. Native/source tooltip
 widths and captures remain recorded for review.
+Run `38517156846` exposed an unpainted shadow on both hosted architectures,
+despite local success. The vector-mask candidate passes the unchanged local
+pixel checks at `artifacts/smoke-line-tooltip-vector-mask`. The fixture waits for
+two actual rendering frames before its first composed sample, with the same
+two-second presentation deadline used by the contrast mask fixture. Hosted
+verification of this correction remains required.
+Both updated solution builds, the complete local x64 catalog at
+`artifacts/smoke-render-corrections-all` and a fresh x64 package consumer at
+`artifacts/package-consumer-render-corrections` pass. The current package has
+SHA-256 `e3925e5319e063b89417207db4b555f00bebe5943cffadd287f09c9460ec832a`.
 Both updated solution builds pass without warnings. The newly restored and
 published x64 consumer passes actual tooltip keyboard input, native dimensions,
 shadow/backdrop graphs and cleanup in Light/Dark at

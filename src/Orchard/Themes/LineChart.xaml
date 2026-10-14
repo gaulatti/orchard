@@ -11,7 +11,6 @@
     <Canvas x:Name="PART_Active" IsHitTestVisible="False" />
     <Canvas IsHitTestVisible="False">
     <Grid x:Name="PART_TooltipContainer" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False" UseLayoutRounding="False">
-     <Canvas x:Name="PART_TooltipMaskHost"><Path x:Name="PART_TooltipMask" Fill="White" /></Canvas>
      <Grid x:Name="PART_TooltipShadow" />
      <Grid x:Name="PART_TooltipBackdrop" />
      <Border x:Name="PART_Tooltip" Visibility="Collapsed" Padding="10" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}" BorderThickness="1" CornerRadius="12" UseLayoutRounding="False">
