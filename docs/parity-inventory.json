@@ -1825,6 +1825,7 @@
       ],
       "regressionTests": [
         "NotificationsFixture.VerifyAsync",
+        "samples/Orchard.Catalog/NotificationPopupTrace.cs",
         "PackageConsumer.MainWindow.OnLoaded"
       ],
       "status": "in-progress",

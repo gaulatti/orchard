@@ -1,5 +1,30 @@
 # Native Windows runtime evidence
 
+Run [38525069103](https://github.com/gaulatti/orchard/actions/runs/38525069103)
+at `90fdad6` passes both builds, 38 regressions, both focused Attention and
+notification suites and the complete x64 catalog. Both actual contrast jobs
+now pass Attention's established glyph mask and fail later at Breadcrumb's
+hover Highlight/HighlightText pairing. The retained native ARM64 artifact at
+`artifacts/ci-90fdad6-arm64.zip` has verified SHA-256
+`b64aa2440069e72df248511b24bb1dbfd9b925331d70852d3039f62564b92f56`.
+Selected evidence at `artifacts/ci-90fdad6-arm64-evidence` records 124/124
+Attention glyph pixels, zero unmatched pixels, and whole origins Y=429/392.
+ARM64's complete catalog still fails Input's Small/valid bottom-right `(3,0)`
+global Arrow/UniversalNo mismatch. Its package consumer fails foreground
+ownership during actual Line Chart input; the new Attention scrolling check
+has already passed. The x64 package consumer passes. These are separate open
+gates, and no component or overall CI is accepted as complete.
+
+The catalog now resolves notification presenters through the owned popup
+content, shares Opened/readiness within the existing five-second deadline,
+and records lifecycle/foreground events without cancelling or reopening.
+The focused native x64 suite passes both themes at
+`artifacts/smoke-notifications-owned-presenter`; the complete local x64 catalog
+passes both themes at `artifacts/smoke-notifications-owned-all`. Both solution
+builds are clean and all 38 regressions pass at
+`artifacts/tests-notification-presenter`. This checkpoint changes catalog
+verification only; hosted recurrence remains unverified until the new run.
+
 The Attention viewport regression reproduces the hosted 46/124 glyph mismatch
 locally when scrolling by 36.5px, with Windows contrast off. Quantizing native
 ascent before the baseline margin calculation passes the unchanged mask across

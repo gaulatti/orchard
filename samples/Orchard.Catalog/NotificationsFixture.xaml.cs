@@ -48,14 +48,17 @@ public sealed partial class NotificationsFixture : UserControl
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
         await Task.Delay(100);
         var trigger = Descendants<BleeckerIconButton>(Badge).Single();
+        using var input = new NativeInputSession(XamlRoot, folder, $"notifications-{scheme}");
+        using var trace = new NotificationPopupTrace(XamlRoot, input, folder, scheme,
+            ("unread", Badge), ("empty", Empty), ("long", LongContent));
+        await input.AcquireAsync(trigger);
         var counter = (Border)Badge.FindName("CountBadge");
         Require(trigger.ActualWidth == 40 && trigger.ActualHeight == 40 && counter.ActualHeight == 16 && counter.ActualWidth == 16,
             "Notification trigger/count geometry differs from the reference.");
         Require(((TextBlock)Overflow.FindName("CountText")).Text == "99+" && ((Border)Empty.FindName("CountBadge")).Visibility == Visibility.Collapsed,
             "Notification count cap or empty visibility failed.");
         var popup = (Flyout)trigger.Flyout;
-        await OpenAsync(trigger, popup);
-        var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(item => item.Child).OfType<FlyoutPresenter>().Single();
+        var presenter = await OpenAsync(trigger, popup, input);
         var stack = (StackPanel)popup.Content;
         var header = (Grid)stack.Children[0];
         var mark = (Button)header.Children[1];
@@ -131,6 +134,7 @@ public sealed partial class NotificationsFixture : UserControl
         rows[0].Focus(FocusState.Keyboard);
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-focus-{scheme.ToString().ToLowerInvariant()}.png"));
         var beforeMarked = marked;
+        await input.RequireForegroundAsync();
         ((IInvokeProvider)new ButtonAutomationPeer(mark).GetPattern(PatternInterface.Invoke)).Invoke();
         await Task.Delay(100);
         Require(marked == beforeMarked + 1 && popup.IsOpen && Badge.Count == 0 && Badge.Items.All(item => !item.IsUnread) && mark.Visibility == Visibility.Collapsed,
@@ -143,6 +147,7 @@ public sealed partial class NotificationsFixture : UserControl
         popup.Closed += OnClosed;
         try
         {
+            await input.RequireForegroundAsync();
             ((IInvokeProvider)new ButtonAutomationPeer(rows[0]).GetPattern(PatternInterface.Invoke)).Invoke();
             await closed.Task.WaitAsync(TimeSpan.FromSeconds(5));
             Require(selected == beforeSelected + 1 && !popup.IsOpen && Result.Text.StartsWith("Selected notification 1:", StringComparison.Ordinal),
@@ -151,11 +156,10 @@ public sealed partial class NotificationsFixture : UserControl
         finally { popup.Closed -= OnClosed; }
         var emptyTrigger = Descendants<BleeckerIconButton>(Empty).Single();
         var emptyPopup = (Flyout)emptyTrigger.Flyout;
-        await OpenAsync(emptyTrigger, emptyPopup);
+        presenter = await OpenAsync(emptyTrigger, emptyPopup, input);
         var emptyStack = (StackPanel)emptyPopup.Content;
         Require(((TextBlock)emptyStack.Children[2]).Visibility == Visibility.Visible &&
             ((Button)((Grid)emptyStack.Children[0]).Children[1]).Visibility == Visibility.Collapsed, "Empty notification state is incorrect.");
-        presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(item => item.Child).OfType<FlyoutPresenter>().Single();
         Require(presenter.RequestedTheme==emptyTrigger.ActualTheme,"A separately opened notification popup retained another owner's theme.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-empty-{scheme.ToString().ToLowerInvariant()}.png"));
         Empty.Items = [new BleeckerNotificationItem { Id = "live", Title = "Live collection update", IsUnread = true }];
@@ -168,7 +172,7 @@ public sealed partial class NotificationsFixture : UserControl
             "Clearing items changed the independent count or failed to restore the empty state.");
         emptyPopup.Hide();
         await Task.Delay(150);
-        await VerifyLongContentAsync(scheme, folder);
+        await VerifyLongContentAsync(scheme, folder, input);
     }
 
     private void VerifyPalette(FlyoutPresenter presenter, Button row, Border counter, BleeckerColorScheme scheme)
@@ -190,12 +194,11 @@ public sealed partial class NotificationsFixture : UserControl
         return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
     }
 
-    private async Task VerifyLongContentAsync(BleeckerColorScheme scheme, string folder)
+    private async Task VerifyLongContentAsync(BleeckerColorScheme scheme, string folder, NativeInputSession input)
     {
         var trigger = (BleeckerIconButton)LongContent.FindName("Trigger");
         var popup = (Flyout)trigger.Flyout;
-        await OpenAsync(trigger, popup);
-        var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(item => item.Child).OfType<FlyoutPresenter>().Single();
+        var presenter = await OpenAsync(trigger, popup, input);
         var row = Descendants<Button>((ItemsControl)((StackPanel)popup.Content).Children[3]).Single();
         Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), row), "A notification without a header action did not focus its first row.");
         var tallHeight = row.ActualHeight;
@@ -221,16 +224,25 @@ public sealed partial class NotificationsFixture : UserControl
         popup.Hide();
         await Task.Delay(150);
     }
-    private static async Task OpenAsync(Button trigger, Flyout popup)
+    private static async Task<FlyoutPresenter> OpenAsync(Button trigger, Flyout popup, NativeInputSession input)
     {
         var opened = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(5));
         void OnOpened(object? sender, object args) => opened.TrySetResult();
         popup.Opened += OnOpened;
         try
         {
+            await input.RequireForegroundAsync();
             ((IInvokeProvider)new ButtonAutomationPeer(trigger).GetPattern(PatternInterface.Invoke)).Invoke();
-            await opened.Task.WaitAsync(TimeSpan.FromSeconds(5));
-            await Task.Delay(100);
+            await opened.Task.WaitAsync(deadline.Token);
+            while (true)
+            {
+                Require(popup.IsOpen, "Notification popup closed before its owned presenter was ready; inspect the popup lifecycle trace.");
+                for (DependencyObject? element = popup.Content; element is not null; element = VisualTreeHelper.GetParent(element))
+                    if (element is FlyoutPresenter presenter && presenter.IsLoaded && presenter.ActualWidth > 0 && presenter.ActualHeight > 0)
+                        return presenter;
+                await Task.Delay(16, deadline.Token);
+            }
         }
         finally { popup.Opened -= OnOpened; }
     }

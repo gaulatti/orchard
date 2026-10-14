@@ -23,7 +23,7 @@ On x64 in dark appearance, physical input verifies one Tab from the header to th
 
 The long-content fixture adds mixed Japanese, Portuguese and Arabic description text under a wrapping English title. The popup now sets its maximum width to 320px as well as its width/minimum: WinUI otherwise expanded it for this content. Runtime checks inspect visible text bounds, restore short and long text while open, and verify first-row focus when no header action is present. The appearance regression changes the catalog root between light and dark while the same popup remains open, checking surface, title/description, dot and count colors in both directions. Captures are retained under `artifacts/smoke-notifications-content-final`. These cases do not establish every script's line-breaking behavior or scaled/constrained-viewport acceptance.
 
-This is an implementation checkpoint, not complete visual acceptance. Remaining work includes exact shadow rasterization and placement, reference motion, the full pointer/keyboard/disabled and focus-restoration matrix, long/non-Latin content, constrained viewport and text/display scaling, live appearance changes, actual Windows contrast settings and row highlight foregrounds, Narrator and actual ARM64 runtime. The host is Intel x64 and no ARM64 device is available.
+This is an implementation checkpoint, not complete visual acceptance. Remaining work includes exact shadow rasterization and placement, reference motion, the full pointer/keyboard/disabled and focus-restoration matrix, long/non-Latin content, constrained viewport and text/display scaling, live appearance changes, actual Windows contrast settings and row highlight foregrounds, Narrator and the full ARM64 acceptance matrix. The local host is Intel x64; native ARM64 execution is available through the hosted Windows runner.
 
 Catalog readiness checks for live palette changes and long/short text remeasurement now retry the same exact assertions every 16ms for at most one second. This replaces fixed 100/150ms sleeps that intermittently inspected an earlier frame; assertion failures still surface at the deadline. The application behavior and expected colors/heights are unchanged. The combined catalog run at artifacts/smoke-tooltip-activation-ready passes these checks.
 
@@ -81,3 +81,30 @@ enabled. This verifies the scoped live-theme correction; the component's full
 visual, accessibility, scaling and interaction matrix remains in progress.
 The overall required CI run is still failed on cursor and contrast glyph gates,
 as recorded in [runtime evidence](runtime-evidence.md).
+
+The catalog opening check now resolves each notification's FlyoutPresenter
+through that popup's own content ancestry, matching the control's ownership
+boundary. It no longer selects a presenter from an aggregate of all open
+popups after a fixed 100ms sleep. Opened and owned-presenter readiness share
+the existing five-second deadline; early dismissal fails explicitly. Geometry,
+focus, count, commands, palette, text bounds and empty-state assertions retain
+their expected values.
+
+The fixture acquires its own foreground window and checks foreground ownership
+before invoking actions. `NotificationPopupTrace` records opening/opened/closing/
+closed and owner loaded/unloaded events, current count/unread state, focus type,
+content ancestry and foreground ownership. It observes events without cancelling
+close or reopening a dismissed popup. Evidence is saved on both successful and
+failed runs as `notifications-{scheme}-lifecycle.json`.
+
+The focused local x64 check passes both themes at
+`artifacts/smoke-notifications-owned-presenter`. Both solution builds are clean
+and all 38 regressions pass at `artifacts/tests-notification-presenter`.
+This checkpoint changes catalog verification only; the NuGet library and
+documented consumer behavior are unchanged. No backend or metrics surface is
+affected. Hosted ARM64 recurrence and full component acceptance remain open.
+The complete local x64 catalog also passes both themes at
+`artifacts/smoke-notifications-owned-all`, including all three owned popup
+open/close cycles and the other mounted controls. Local animations are disabled,
+display/text scale is 1 and contrast is off. The public wiki remains unavailable;
+this contract and the runtime evidence are maintained in the repository.
