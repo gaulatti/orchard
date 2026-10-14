@@ -272,8 +272,23 @@ public sealed partial class CheckboxesFixture
             }
             samples.Add(new { phase = "checkbox-to-input", cursor = CurrentCheckboxCursor().ToInt64() });
             editor.IsEnabled = false;
-            await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)),
-                "Stationary disabling did not restore the editor's blocked cursor.");
+            var disablingTrace = new List<object>();
+            var disablingWatch = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                await WaitAsync(() =>
+                {
+                    var ready = CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648));
+                    if (!ready) disablingTrace.Add(new { milliseconds = disablingWatch.Elapsed.TotalMilliseconds,
+                        input.OwnsForeground, cursor = DescribeEditorCursor(input, editor), publication = NativeCursorDiagnostics.Describe(editor) });
+                    return ready;
+                }, "Stationary disabling did not restore the editor's blocked cursor.");
+            }
+            catch
+            {
+                samples.Add(new { phase = "input-disabled-under-pointer-failed", disablingTrace });
+                throw;
+            }
             samples.Add(new { phase = "input-disabled-under-pointer", cursor = CurrentCheckboxCursor().ToInt64() });
             var editorAnchor = PointerPosition();
             for (var round = 0; round < 3; round++)

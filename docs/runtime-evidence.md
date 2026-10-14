@@ -1449,3 +1449,20 @@ the two substantial catalog compositions and the remaining components still
 require acceptance evidence. The local development host remains Intel x64;
 these checks ran on GitHub's ARM64 host without changing the developer's desktop
 settings.
+
+## Sparkline checkpoint: stationary Input cursor investigation
+
+The local x64 full run at `artifacts/smoke-sparkline-full` passes the chart
+fixtures, then fails the Light Checkbox sequence while disabling its shared
+Input under a stationary pointer. The expected UniversalNo cursor is not
+observed within the unchanged deadline. The preceding recording observes the
+enabled editor's actual I-beam. This is a separate open runtime failure; focused
+Sparkline and normal Line Chart checks pass. The fixture now records foreground,
+hit testing, native cursor and publisher state at this transition on failure,
+without changing expected handles, input routing or deadlines. Push-triggered
+Actions remain paused at the user's request.
+
+The next complete Light/Dark run at
+`artifacts/smoke-sparkline-full-diagnostic` passes with the unchanged six-minute
+deadline. The stationary transition passes in both themes. No cursor product
+change was made, so the first failure remains an open intermittent issue.
