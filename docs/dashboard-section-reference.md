@@ -110,6 +110,20 @@ verification explicitly false. Both consumers remove their own temporary
 caches. The separately published x64 catalog passes the focused runtime gate
 at `artifacts/smoke-dashboard-section-published`.
 
+The constrained-layout/whitespace correction is independently verified with a
+fresh 0.1.0 package from clean commit
+`ccb228b63d966d157f7a3f03520de91cc6ded44e`, SHA-256
+`42d3eca0da8d827a7bccbafbded272825a71ddcc8885ca9ea029d7a963b62cde`.
+The x64 consumer passes both themes at
+`artifacts/package-consumer-dashboard-section-constraints`, including real font
+measurement, display whitespace and the fixed 80px action at x=200 in a 280px
+section. The ARM64 consumer cross-build passes at
+`artifacts/package-consumer-dashboard-section-constraints-arm64` and explicitly
+does not claim native runtime verification. Both isolated caches are removed.
+The published x64 catalog passes all 50 focused cases at
+`artifacts/smoke-dashboard-section-constraints-published`. Hosted/native ARM64
+validation remains deferred while automatic push Actions are paused.
+
 Complete glyph/baseline raster comparison, wrappable-action minimum-content constraints,
 the complete consumer override matrix, actual contrast schemes, Narrator,
 display/text scaling and native ARM64 validation remain open. The inventory
