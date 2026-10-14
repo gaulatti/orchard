@@ -253,12 +253,13 @@ internal static class BleeckerPointerCursor
         private bool republishQueued;
         private bool awaitingPublicationFrames;
         private int publicationFrames;
-        private long acknowledgementVersion, acknowledgedPublicationCalls;
+        private long acknowledgementVersion, acknowledgedPublicationCalls, producerReplacementCalls;
         private bool lastReadWasBlocked;
         private long lastVisibleHandle;
         private string? lastRestoredType;
         private InputSystemCursorShape? lastRestoredShape;
         private CursorPublicationSnapshot? lastInitialPublication, lastProducerPublication, lastDeferredPublication, lastRestoration;
+        private CursorPublicationSnapshot? lastSettlementObservation, lastAcknowledgement;
 
         internal void Block()
         {
@@ -266,7 +267,20 @@ internal static class BleeckerPointerCursor
             // Keep the intermediate producer selection visible to the SDK
             // until its queued counterpart runs. Rendering/layout refreshes
             // must not collapse both assignments back into this dispatch.
-            if (republishQueued) return;
+            if (republishQueued)
+            {
+                // A native hit-test can replace the SDK selection while its
+                // previous publication is still pending. Preserve that exact
+                // producer value and reassert the same owned override directly.
+                if (awaitingPublicationFrames && source is not null && !IsBlocked(source.Cursor))
+                {
+                    selected = source.Cursor;
+                    source.Cursor = publishedBlocked;
+                    producerReplacementCalls++;
+                    lastDeferredPublication = ObservePublication();
+                }
+                return;
+            }
             var current = Source(root);
             var cursor = current.Cursor;
             // Preserve cursor values published by WinUI while our override is
@@ -334,13 +348,23 @@ internal static class BleeckerPointerCursor
         private void OnPublicationFrame(object? sender, object args)
         {
             if (++publicationFrames < 2) return;
-            DetachPublicationFrames();
             BleeckerDisabledPointer.RefreshRoot(root);
-            if (acknowledgementVersion==publicationVersion)
+            if (acknowledgementVersion!=publicationVersion || !ReferenceEquals(active,this) || owner is null ||
+                source is null || root.XamlRoot?.Content!=root)
             {
-                republishQueued=false;
-                acknowledgedPublicationCalls++;
+                DetachPublicationFrames();
+                return;
             }
+            lastSettlementObservation = ObservePublication();
+            // Rendering callbacks can be delivered while the SDK selection is
+            // still waiting to become the displayed Windows cursor. Keep the
+            // same publication pending so refresh cannot reset it to the producer.
+            if (!lastSettlementObservation.ReadSucceeded || (lastSettlementObservation.Flags & 1) == 0 ||
+                lastSettlementObservation.VisibleHandle != LoadSystemCursor(IntPtr.Zero, new IntPtr(32648)).ToInt64()) return;
+            lastAcknowledgement = lastSettlementObservation;
+            DetachPublicationFrames();
+            republishQueued=false;
+            acknowledgedPublicationCalls++;
         }
 
         private void DetachPublicationFrames()

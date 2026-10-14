@@ -149,6 +149,7 @@ public sealed partial class CheckboxesFixture
                     NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls")==settledCanceledBefore&&
                     !NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued")&&
                     !NativeCursorDiagnostics.Flag(DisabledOff,"awaitingPublicationFrames")&&
+                    NativeCursorDiagnostics.AcknowledgedCursor(DisabledOff)==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32648))&&
                     CurrentCheckboxCursor()==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32648)),
                     "Owned cursor publication did not settle once without being reset before display.");
             }

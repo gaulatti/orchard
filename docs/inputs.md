@@ -1,5 +1,30 @@
 # Input editing preview
 
+The publisher now acknowledges a deferred selection only after two or more
+rendering callbacks and a successful `GetCursorInfo` read showing a visible
+UniversalNo cursor. Every settlement observation revalidates the current owner
+and publication epoch first. Until Windows displays that cursor, the same
+publication stays pending instead of being reset to its retained producer.
+If the SDK replaces its selection during that pending transaction, the
+publisher retains the new producer value and reasserts its owned override.
+Waiting alone failed a local Small invalid top-right 3,0 case after 62 frames;
+the SDK had already selected Arrow while the transaction was pending.
+The native snapshot at acknowledgement is recorded and required by the
+stationary Checkbox regression. Source ownership, exact producer restoration,
+queued cancellation and the existing displayed-cursor deadlines are preserved.
+This is a candidate correction for the ARM64 Arrow failure at `faab41e`;
+hosted evidence is still required.
+The revised local focused matrix passes all 192 Light/Dark samples at
+`artifacts/smoke-cursor-live-producer-input`; its Dark trace records one handled
+producer replacement. The earlier waiting-only candidate remains rejected at
+`artifacts/smoke-cursor-acknowledgement-input`. No displayed-cursor expectation
+or per-state deadline was changed.
+The complete local Light/Dark catalog also passes at
+`artifacts/smoke-runtime-settlement-full`, including both actual acknowledgement
+snapshots, one completed/acknowledged forced transaction per theme, no pending
+observer, and the unchanged queued cancellation, scrolling and lifecycle checks.
+Its shared publisher records handled producer replacements in both themes.
+
 Run [38567209211](https://github.com/gaulatti/orchard/actions/runs/38567209211)
 at `64f4f25` passes all required jobs, both complete native catalogs, both real
 contrast suites and all independent consumers. The verified native ARM64
@@ -24,7 +49,7 @@ expected handle or alter publication, ownership, cancellation or acceptance.
 The local 1024x745 x64 matrix passes all 192 Light/Dark samples in
 `artifacts/smoke-cursor-publication-observation-input-sized`. In 39 samples,
 Windows still displays Arrow immediately after the deferred blocked assignment
-and displays UniversalNo later at the same point. The publisher now keeps that
+and displays UniversalNo later at the same point. At `64f4f25`, the publisher kept that
 deferred transaction pending for two rendering ticks, allowing a complete frame
 before another refresh can start recovery through the intermediate producer.
 Restore detaches the pending frame observer and invalidates its epoch. This is
