@@ -1,5 +1,16 @@
 # Native Windows runtime evidence
 
+Run [38502493745](https://github.com/gaulatti/orchard/actions/runs/38502493745)
+at `4fde530` passes both builds, all 31 unit/resource regressions, the focused
+Bauhaus/Input/Activity/Attention/Notifications checks on both native
+architectures, and the full x64 catalog. The full ARM64 catalog fails the
+disabled-checkbox `hit-testing-repeat-restored-6` pointer phase: native paint
+and SDK publication match, but GetCursorInfo still reports Arrow after 147
+republish calls. Both live contrast checks fail Attention's established glyph
+mask at 46/124. Stable capture poses rule out movement during PNG encoding;
+the one-pixel positioning defect remains open. These failures prevent a
+passing-current-CI claim or component acceptance.
+
 Run [38498921210](https://github.com/gaulatti/orchard/actions/runs/38498921210)
 at `3f4c0e7` passes both builds, the full x64 catalog and both independent native
 package consumers. Focused Notifications passes on x64 and ARM64, including the

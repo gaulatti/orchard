@@ -279,3 +279,14 @@ reports a stable before/after pose. All 31 unit/resource tests pass. This
 checkpoint changes catalog verification and diagnostics only; the library's
 typography and rendering remain unchanged. Actual hosted contrast adoption
 remains unverified until the fresh run completes.
+
+Run `38502493745` at `4fde530` completes with the same 46/124 Attention failure
+on both architectures. Its native ARM64 artifact has verified SHA-256
+`d43d0c6bf5637bfa7e76f490b0f83344099abaefa37e5dc87271b5e8fa1f28ff`.
+Every recorded pre/post-encoding label pose is stable. Before/after logical
+origins are 429.223999 and 392.223999; local text transforms are -1.276001 and
+-1.776001. The capture-timing correction therefore does not resolve the
+positioning failure. No pixel offset or relaxed acceptance is introduced.
+Snapshots additionally retain the natural metrics, baseline offset and each
+owned ancestor's position, rounding and transform to distinguish the next
+renderer investigation from an assumed capture race.

@@ -264,8 +264,23 @@ public sealed partial class ContrastFixture : UserControl
     private static object InkGeometry(TextBlock text)
     {
         var origin=text.TransformToVisual(text.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+        var ancestors=new List<object>();
+        for(DependencyObject? current=text;current is FrameworkElement element;current=VisualTreeHelper.GetParent(current))
+        {
+            var position=element.TransformToVisual(text.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+            ancestors.Add(new{element.Name,type=element.GetType().Name,position,element.ActualWidth,element.ActualHeight,
+                element.UseLayoutRounding,transformY=(element.RenderTransform as TranslateTransform)?.Y});
+            if(element is BleeckerAttentionSurface)
+            {
+                var template=(FrameworkElement)VisualTreeHelper.GetChild(element,0);
+                var metrics=(TextBlock)template.FindName("PART_StringMetrics");
+                ancestors.Add(new{metrics.Name,metrics.ActualHeight,metrics.BaselineOffset,metrics.UseLayoutRounding});
+                break;
+            }
+        }
         return new{origin.X,origin.Y,text.ActualWidth,text.ActualHeight,text.LineHeight,text.FontSize,fontWeight=text.FontWeight.Weight,
             text.ActualTheme,rasterScale=text.XamlRoot.RasterizationScale,textScale=new UISettings().TextScaleFactor,
+            text.BaselineOffset,text.UseLayoutRounding,ancestors,
             transformY=(text.RenderTransform as TranslateTransform)?.Y,foreground=Hex(text.Foreground)};
     }
     private static async Task SaveInkRasterAsync(int width,int height,byte[] pixels,string path)
