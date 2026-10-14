@@ -225,5 +225,13 @@ routed key acknowledgement it passes both themes at
 `artifacts/smoke-error-state-chart-key-release`. NativeInputSession records the
 key counts and retained target in its desktop evidence. Product keyboard
 semantics, cursor gates and pixel/timing tolerances are unchanged.
+
+Run `38547741448` passes both complete native catalogs at `55d9391`, while the
+focused ARM64 after-chart run loses foreground during an earlier tooltip key.
+Its verified archive shows a foreign `wsl` console with the pointer still on
+the catalog. Every chart key now uses KeyAsync, which checks the existing
+guarded hosted recovery before injection and requires exactly one routed
+down/up to its focused chart or blur-probe target. No keys are injected into
+foreign windows, and application-owned popup failures remain failures.
 Orchard has no backend/metrics surface affected by this work. The public wiki
 remote is unavailable; this in-repository contract is authoritative for the task.

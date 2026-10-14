@@ -34,7 +34,7 @@
        <ContentPresenter x:Name="PART_Icon" Content="{TemplateBinding Icon}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTerracottaBrush}" />
       </Grid>
       <StackPanel x:Name="PART_Text" Spacing="4">
-       <TextBlock x:Name="PART_Title" Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="16" CharacterSpacing="-20" LineHeight="24" LineStackingStrategy="BlockLineHeight" TextAlignment="Center" TextWrapping="Wrap" HighContrastAdjustment="None" />
+       <TextBlock x:Name="PART_Title" Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="16" CharacterSpacing="-20" LineHeight="24" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" HighContrastAdjustment="None" />
        <TextBlock x:Name="PART_Description" Text="{TemplateBinding Description}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" MaxWidth="320" HorizontalAlignment="Center" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextAlignment="Center" TextWrapping="Wrap" HighContrastAdjustment="None" />
       </StackPanel>
       <local:BleeckerButton x:Name="PART_Retry" Variant="Secondary" Size="Small" HorizontalAlignment="Center" Command="{TemplateBinding RetryCommand}" CommandParameter="{TemplateBinding RetryCommandParameter}" Visibility="Collapsed">

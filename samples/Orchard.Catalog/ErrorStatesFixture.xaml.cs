@@ -64,6 +64,13 @@ public sealed partial class ErrorStatesFixture : UserControl
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Retrying);
         Require(peer.GetAutomationControlType() == AutomationControlType.Group && !peer.IsKeyboardFocusable() &&
             peer.GetName() == Retrying.Title && peer.GetHelpText() == Retrying.Description, "Error State lost its accessible summary contract.");
+        var title=Part<TextBlock>(Default,"PART_Title");
+        var titleOrigin=title.TransformToVisual(Default).TransformPoint(new Windows.Foundation.Point());
+        Require(Math.Abs(titleOrigin.X-(Default.ActualWidth-title.ActualWidth)/2)<.001,
+            "Error State title's native bounds do not follow its centered painted glyphs.");
+        await input.MoveAsync(Default);
+        await ContrastFixture.ReadInkAsync(input,title,folder,$"error-title-{scheme}");
+        await ContrastFixture.ReadInkAsync(input,Part<TextBlock>(Default,"PART_Description"),folder,$"error-description-{scheme}");
         var retry = Part<BleeckerButton>(Retrying,"PART_Retry"); retry.ApplyTemplate();
         var native = Part<Button>(retry,"PART_Action");
         native.ApplyTemplate();

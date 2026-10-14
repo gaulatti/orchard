@@ -1,5 +1,49 @@
 # Error State
 
+Run [38547741448](https://github.com/gaulatti/orchard/actions/runs/38547741448)
+at `55d9391` passes both standalone Error State suites, both complete catalogs,
+both existing real-contrast suites and both independent consumers. Its new
+Error State contrast checks fail before enabling contrast: the title's
+reported native bounds begin at x281 while its centered painted text occupies
+x483–653. The strict crop therefore contains no title glyphs. The verified x64
+archive `11885827358` has SHA-256
+`b373d683e9adc6f47f3c9aee762c2249e49aa16f06090586425698262f32c2b9`.
+
+The template now centers the title element itself, aligning its native pose
+with the painted text rather than a wider parent layout slot. Both normal
+themes also verify the title's centered native bounds and establish title and
+description ink with the unchanged strict composed-screen helper. The focused
+x64 suite passes these checks and all fourteen frozen layout specimens at
+`artifacts/smoke-error-state-title-bounds`. No crop offsets, glyph masks, pixel
+tolerances or contrast assertions are changed. Actual contrast recovery still
+requires a new hosted run.
+
+The same run's ARM64 after-chart check fails earlier in Line Chart when a
+foreign `wsl` ConsoleWindowClass window takes foreground; its pointer remains
+on the owned catalog. The verified ARM64 archive `11886286177` has SHA-256
+`6dcba94b70559f5494070f873aa314d72569353f0617664a02044a7c39bcd4dc`.
+All chart keys now use the existing guarded hosted foreground recovery and
+exact routed down/up acknowledgement. The helper still refuses application
+popups, unowned pointer locations and recovery while a pointer button is held.
+
+The updated x64/ARM64 builds and all 38 regressions pass at
+`artifacts/tests-error-title-bounds`. The final local cross-fixture suite passes
+both themes at `artifacts/smoke-error-title-chart-final`, with all fourteen
+layout specimens, strict normal-mode title/description ink and 29 acknowledged
+chart keys per theme. The fresh package is produced in
+`artifacts/packages-error-title-bounds`, but its local consumer restore fails
+when the drive fills during NuGet memory-mapped extraction. It is not a
+passing consumer result. Its exact new cache and failure record are preserved;
+the storage-only verifier wrapper changes directory compression, not package,
+restore, licensing, runtime or architecture checks. Fresh hosted consumption
+and real-contrast verification remain required for this candidate.
+
+The complete local run at `artifacts/smoke-error-title-full` passes the new
+Error State checks in Light, then fails the unchanged Input reading-direction
+boundary with the same 317px opaque span for a 320px Small input. The earlier
+focused Input pass and hosted full-catalog passes do not close this local
+sequence failure. It remains separate from the title-pose correction.
+
 `BleeckerErrorState` implements the pinned Bleecker
 [`ErrorState`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/error-state.tsx)
 contract as a native Windows error summary. It supplies no data-loading,

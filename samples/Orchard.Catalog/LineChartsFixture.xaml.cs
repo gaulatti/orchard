@@ -42,7 +42,7 @@ public sealed partial class LineChartsFixture : UserControl
         var popup = (Border)root.FindName("PART_Tooltip"); var items = (StackPanel)root.FindName("PART_TooltipItems");
         Require(Chart.Focus(FocusState.Keyboard), "Native chart refused keyboard focus.");
         await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Harbor", "Initial keyboard focus did not inspect the first consumer category.");
-        input.Key(0x27);
+        await input.KeyAsync(0x27,Chart);
         await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().First().Text == "Reed", "Arrow navigation did not inspect the second consumer category.");
         var container = (Grid)root.FindName("PART_TooltipContainer");
         await AwaitAsync(() => Math.Abs(popup.ActualHeight - 110) < .001, "Tooltip item padding and line height did not cross the source layout boundary.");
@@ -56,7 +56,7 @@ public sealed partial class LineChartsFixture : UserControl
         var bounds = input.ScreenBounds(Chart); var actualPointerY = ((int)(bounds.Y + 50 * XamlRoot.RasterizationScale) - bounds.Y) / XamlRoot.RasterizationScale;
         await AwaitAsync(() => Math.Abs(container.Margin.Top - (actualPointerY + 10)) < .001, "Pointer tooltip did not track the physical pointer coordinate.");
         await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"line-chart-{scheme}-pointer.png"));
-        await input.MoveAsync(Before); Chart.Focus(FocusState.Keyboard); input.Key(0x0D);
+        await input.MoveAsync(Before); Chart.Focus(FocusState.Keyboard); await input.KeyAsync(0x0D,Chart);
         await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().First().Text == "Reed", "Keyboard inspection did not restore after pointer exit.");
         Chart.TooltipFormatter = value => $"amount {value}"; Chart.YAxisTickFormatter = value => $"${value}";
         await AwaitAsync(() => items.Children.OfType<TextBlock>().Any(item => item.Text.Contains("amount 220")), "Consumer tooltip formatter did not reach the native overlay.");
@@ -182,7 +182,7 @@ public sealed partial class LineChartsFixture : UserControl
             var root = (FrameworkElement)VisualTreeHelper.GetChild(probe, 0); var popup = (Border)root.FindName("PART_Tooltip");
             var items = (StackPanel)root.FindName("PART_TooltipItems");
             await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Harbor", "Blur probe initial focus did not select its first source category.");
-            input.Key(0x27);
+            await input.KeyAsync(0x27,probe);
             await AwaitAsync(() => popup.Visibility == Visibility.Visible && popup.ActualHeight == 110 && items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Reed", "Blur probe did not produce its source tooltip dimensions and category."); VerifyEffects(root);
             await AwaitPresentationAsync(root); var capturePath = System.IO.Path.Combine(folder, $"line-tooltip-{scheme}-blur.png"); await NativeScreenCapture.CaptureClientAsync(input.Window, capturePath);
             using var file = File.OpenRead(capturePath); using var random = file.AsRandomAccessStream(); var decoder = await BitmapDecoder.CreateAsync(random);
@@ -220,7 +220,7 @@ public sealed partial class LineChartsFixture : UserControl
             items = (StackPanel)root.FindName("PART_TooltipItems"); active = (Canvas)root.FindName("PART_Active");
             UpdateLayout(); Require(Chart.Focus(FocusState.Keyboard), $"{id}: tooltip keyboard entry failed.");
             await AwaitAsync(() => Chart.FocusState == FocusState.Keyboard && (Chart.Data.Count == 0 || items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == Convert.ToString(Chart.Data[0][Chart.XAxisKey!], CultureInfo.InvariantCulture)), $"{id}: initial focus did not cross the native entry boundary.");
-            input.Key(0x27);
+            await input.KeyAsync(0x27,Chart);
             var expected = specimen.GetProperty("keyboard"); var visible = expected.GetProperty("visible").GetBoolean();
             await AwaitAsync(() => popup.Visibility == (visible ? Visibility.Visible : Visibility.Collapsed) && (Chart.Data.Count == 0 || items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == expected.GetProperty("label").GetString()) && active.Children.OfType<Line>().Any() == expected.GetProperty("cursor").GetBoolean(), $"{id}: source/native tooltip visibility, category or cursor differs.");
             if (visible)

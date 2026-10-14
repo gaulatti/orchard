@@ -70,6 +70,7 @@ internal sealed class NativeInputSession : IDisposable
 
     internal async Task KeyAsync(ushort key, FrameworkElement target)
     {
+        await RequireForegroundAsync();
         Require(ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(root), target),
             "Physical keyboard target does not own XAML focus.");
         var released = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
