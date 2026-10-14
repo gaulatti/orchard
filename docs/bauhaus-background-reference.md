@@ -240,3 +240,10 @@ reduced-motion assertions remain required and unchanged. Focused local x64
 passes both appearances at `artifacts/smoke-bauhaus-render-frame-sampling` with
 animations off. Enabled ARM64 verification of the sampling change remains
 pending; this observation does not close the real-time motion acceptance gap.
+
+The fresh focused native ARM64 run `38494432792` passes both appearances with
+animations enabled. Light measures 6.5227375 degrees against 5.8510152 expected,
+and Dark 5.9910774 against 5.9880096, both within the unchanged one-degree bound.
+The full ARM64 suite stops earlier at Notifications, so it does not exercise the
+integrated Bauhaus path. Full curved raster, exact visible motion and the rest
+of the acceptance matrix remain open.

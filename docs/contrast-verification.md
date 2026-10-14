@@ -212,3 +212,16 @@ colors. Snapshots retain those values and the active image/shadow/lift state;
 `contrast-attention-active.png` retains the rendered specimen. Hosted verification
 of this new boundary is pending. The guarded local route refuses before changing
 Windows mode at `artifacts/smoke-attention-contrast-local-refusal`.
+
+Hosted run `38494432792` at `384b54b` fails Attention's unchanged glyph gate
+identically on x64 and ARM64: 38/46 established pixels match exact Windows
+foreground throughout the eight-second observation. Semantic paint and
+gradient/lift/shadow suppression pass first; restoration returns the original
+producer image, border and text. This is an open rendered-ink gap.
+
+The fixture now saves the exact baseline and final glyph rasters from their
+measured pixel buffers, plus the unchanged mask, each mismatched pixel's RGBA,
+and before/after origin, dimensions, font, transform and scale values. Files use
+`contrast-ink-<name>-before.png`, `-after.png` and `-details.json`. These diagnose
+paint, layout and rasterization differences without deriving a replacement mask
+from the post-transition result or relaxing the exact color/opacity assertion.

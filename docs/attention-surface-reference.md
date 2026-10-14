@@ -155,3 +155,36 @@ The combined native x64 catalog also passes Light and Dark with these checks at
 `artifacts/smoke-attention-contrast-breadcrumb-all`. That run uses display/text
 scale 1 and disabled system animations; it does not supply enabled-motion,
 contrast-transition, ARM64 or Narrator acceptance evidence.
+
+The capture report now retains each gradient specimen's exact client rectangle
+and native surface radius, allowing whole-image comparisons without inferring
+coordinates from colors. At `artifacts/smoke-attention-complete-raster`, all 18
+native/browser images have identical dimensions. Full interior comparisons are
+within one RGB level except Light intensity 10, which reaches two; straight
+border samples reach two. Rounded-corner differences reach 62 in Light and 44
+in Dark. The comparisons are retained at `artifacts/attention-raster-comparison`.
+These are diagnostic differences, not accepted raster tolerances.
+
+A temporary fixture-only radius-10 probe is retained at
+`artifacts/smoke-attention-radius-diagnostic` and
+`artifacts/attention-radius-diagnostic-comparison`. It reduces some Light corner
+differences but leaves large differences in both themes and slightly worsens
+Dark intensity 10. The probe was removed; the library's public radius and native
+stroke-centerline conversion are unchanged. Matching the full curved contour
+remains an open acceptance gate.
+
+Run `38494432792` passes the full x64 catalog in both themes and the independent
+native ARM64 consumer's initial Attention contract. Its full ARM64 catalog stops
+at Notifications before Attention, and the live contrast glyph check fails on
+both architectures. CI now includes a focused Attention step on each native
+architecture before the full catalog, preserving the full catalog and contrast
+requirements. See [runtime evidence](runtime-evidence.md) for the exact failures
+and package hash; no inventory entry is promoted to accepted by this checkpoint.
+
+The diagnostic checkpoint builds for x64 and ARM64 with zero warnings and passes
+the focused local x64 fixture in both themes at
+`artifacts/smoke-attention-hosted-diagnostics`. All 28 unit/resource tests and the
+pinned token-generation check pass. The library has no behavior change in this
+checkpoint; the new contrast diagnostics and focused native ARM64 CI step still
+require their fresh hosted run. This native library has no backend metrics
+surface, and its unavailable public wiki is documented in-repository.

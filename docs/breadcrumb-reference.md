@@ -166,5 +166,8 @@ their availability and keyboard focus. Expansion count, exact consumer item,
 CanExecute(false) and restored-focus assertions remain unchanged; no product
 behavior or timeout is relaxed. Focused local verification passes both themes at
 `artifacts/smoke-breadcrumb-consumer-materialization`.
+Fresh hosted run `38494432792` passes the full x64 catalog in both themes with
+the readiness change. Native ARM64 passes Light Breadcrumb checks before its
+later notification failure; that run does not reach Dark Breadcrumbs.
 The repository wiki remote is unavailable; this in-repository document is the
 current contract. Orchard has no backend or metrics surface affected by this change.

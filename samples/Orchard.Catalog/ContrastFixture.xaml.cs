@@ -91,9 +91,9 @@ public sealed partial class ContrastFixture : UserControl
         Help.GotFocus += GotFocus; Help.LostFocus += LostFocus;
         tooltip.Closed += Closed;
         Help.AddHandler(PointerPressedEvent, new Microsoft.UI.Xaml.Input.PointerEventHandler(Pressed), true);
-        var headingInk = await ReadInkAsync(Heading);
-        var labelInk = await ReadInkAsync(Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"));
-        var attentionInk = await ReadInkAsync(attentionText);
+        var headingInk = await ReadInkAsync(Heading,folder,"heading");
+        var labelInk = await ReadInkAsync(Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"),folder,"action-label");
+        var attentionInk = await ReadInkAsync(attentionText,folder,"attention-label");
         var passed = false;
         try
         {
@@ -193,8 +193,8 @@ public sealed partial class ContrastFixture : UserControl
             foreground = input.OwnsForeground, foreignForeground = input.HasForeignForeground,
             cursor = NativeInputSession.DescribeCursor(), helpBounds = input.ScreenBounds(Help), headingBounds = input.ScreenBounds(Heading) };
     }
-    private sealed record InkSample(int Width, int Height, int[] Pixels);
-    private static async Task<InkSample> ReadInkAsync(TextBlock text)
+    private sealed record InkSample(int Width, int Height, int[] Pixels, object Geometry);
+    private static async Task<InkSample> ReadInkAsync(TextBlock text,string folder,string name)
     {
         var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(text);
         var buffer = await bitmap.GetPixelsAsync();
@@ -204,13 +204,15 @@ public sealed partial class ContrastFixture : UserControl
         var ink = Enumerable.Range(0, bitmap.PixelWidth * bitmap.PixelHeight).Where(index =>
             pixels[index * 4] == color.B && pixels[index * 4 + 1] == color.G && pixels[index * 4 + 2] == color.R && pixels[index * 4 + 3] == 255).ToArray();
         Require(ink.Length > 0, "Initial label has no solid glyph pixels to establish its ink mask.");
-        return new InkSample(bitmap.PixelWidth, bitmap.PixelHeight, ink);
+        await SaveInkRasterAsync(bitmap,pixels,System.IO.Path.Combine(folder,$"contrast-ink-{name}-before.png"));
+        return new InkSample(bitmap.PixelWidth, bitmap.PixelHeight, ink,InkGeometry(text));
     }
     private static async Task VerifyInkAsync(TextBlock text, int systemColor, InkSample sample, string folder, string name)
     {
         var observations = new List<object>();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         var matching = 0;
+        byte[]? lastPixels=null; RenderTargetBitmap? lastBitmap=null;
         do
         {
             var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(text);
@@ -218,6 +220,7 @@ public sealed partial class ContrastFixture : UserControl
             var buffer = await bitmap.GetPixelsAsync();
             var pixels = new byte[checked((int)buffer.Length)];
             using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+            lastPixels=pixels;lastBitmap=bitmap;
             var expected = NativeContrastSession.Color(systemColor);
             matching = sample.Pixels.Count(index => pixels[index * 4] == expected.B && pixels[index * 4 + 1] == expected.G &&
                 pixels[index * 4 + 2] == expected.R && pixels[index * 4 + 3] == 255);
@@ -226,7 +229,30 @@ public sealed partial class ContrastFixture : UserControl
             await Task.Delay(32);
         } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"contrast-ink-{name}.json"), JsonSerializer.Serialize(observations));
+        var finalExpected=NativeContrastSession.Color(systemColor);
+        var unmatched=sample.Pixels.Where(index=>lastPixels![index*4]!=finalExpected.B || lastPixels[index*4+1]!=finalExpected.G ||
+            lastPixels[index*4+2]!=finalExpected.R || lastPixels[index*4+3]!=255).Select(index=>new{x=index%sample.Width,y=index/sample.Width,
+                actual=new[]{(int)lastPixels![index*4+2],(int)lastPixels[index*4+1],(int)lastPixels[index*4],(int)lastPixels[index*4+3]}}).ToArray();
+        await SaveInkRasterAsync(lastBitmap!,lastPixels!,System.IO.Path.Combine(folder,$"contrast-ink-{name}-after.png"));
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"contrast-ink-{name}-details.json"),JsonSerializer.Serialize(new{
+            before=sample.Geometry,after=InkGeometry(text),width=sample.Width,height=sample.Height,expected=ColorHex(finalExpected),sample.Pixels,unmatched}));
         Require(matching == sample.Pixels.Length, $"Only {matching}/{sample.Pixels.Length} established glyph pixels adopted the Windows foreground.");
+    }
+    private static object InkGeometry(TextBlock text)
+    {
+        var origin=text.TransformToVisual(text.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+        return new{origin.X,origin.Y,text.ActualWidth,text.ActualHeight,text.LineHeight,text.FontSize,fontWeight=text.FontWeight.Weight,
+            text.ActualTheme,rasterScale=text.XamlRoot.RasterizationScale,textScale=new UISettings().TextScaleFactor,
+            transformY=(text.RenderTransform as TranslateTransform)?.Y,foreground=Hex(text.Foreground)};
+    }
+    private static async Task SaveInkRasterAsync(RenderTargetBitmap bitmap,byte[] pixels,string path)
+    {
+        using var stream=File.Open(path,FileMode.Create,FileAccess.ReadWrite);
+        using var random=stream.AsRandomAccessStream();
+        var encoder=await Windows.Graphics.Imaging.BitmapEncoder.CreateAsync(Windows.Graphics.Imaging.BitmapEncoder.PngEncoderId,random);
+        encoder.SetPixelData(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Premultiplied,
+            (uint)bitmap.PixelWidth,(uint)bitmap.PixelHeight,96,96,pixels);
+        await encoder.FlushAsync();
     }
     private static async Task VerifyPaintAsync(Button action, string folder)
     {

@@ -26,3 +26,10 @@ The long-content fixture adds mixed Japanese, Portuguese and Arabic description 
 This is an implementation checkpoint, not complete visual acceptance. Remaining work includes exact shadow rasterization and placement, reference motion, the full pointer/keyboard/disabled and focus-restoration matrix, long/non-Latin content, constrained viewport and text/display scaling, live appearance changes, actual Windows contrast settings and row highlight foregrounds, Narrator and actual ARM64 runtime. The host is Intel x64 and no ARM64 device is available.
 
 Catalog readiness checks for live palette changes and long/short text remeasurement now retry the same exact assertions every 16ms for at most one second. This replaces fixed 100/150ms sleeps that intermittently inspected an earlier frame; assertion failures still surface at the deadline. The application behavior and expected colors/heights are unchanged. The combined catalog run at artifacts/smoke-tooltip-activation-ready passes these checks.
+
+Native ARM64 run `38494432792` at `384b54b` fails the open popup's Dark-to-Light
+palette change: requested Light, actual/presenter Dark, explicit Default, and
+surface `#FF182533` instead of `#FFFFFFFF`. The exact readiness assertion remains
+required; a passing local or earlier hosted run does not close this recurrence.
+The verified archive and shared checkpoint are recorded in
+[runtime evidence](runtime-evidence.md).

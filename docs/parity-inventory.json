@@ -305,13 +305,13 @@
       ],
       "windowsImplementation": ["src/Orchard/Controls/BleeckerAttentionSurface.cs", "src/Orchard/Controls/BleeckerAttentionSurface.Rendering.cs", "src/Orchard/Colors/BleeckerAttentionGradient.cs", "src/Orchard/Themes/Attention.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/AttentionSurfacesFixture.xaml", "samples/Orchard.Catalog/AttentionSurfacesFixture.xaml.cs"],
-      "regressionTests": ["tests/Orchard.Tests/AttentionColorTests.cs", "tests/Reference/AttentionColors.json", "samples/Orchard.Catalog/Reference/AttentionLayout.json", "samples/Orchard.Catalog/AttentionSurfacesFixture.xaml.cs", "tests/Orchard.Tests/CatalogCoverageTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["tests/Orchard.Tests/AttentionColorTests.cs", "tests/Reference/AttentionColors.json", "samples/Orchard.Catalog/Reference/AttentionLayout.json", "samples/Orchard.Catalog/AttentionSurfacesFixture.xaml.cs", "samples/Orchard.Catalog/ContrastFixture.xaml.cs", "tests/Orchard.Tests/CatalogCoverageTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Full native/browser gradient, border, radius, shadow and glyph raster parity",
         "Exact motion, interrupted reversals, all consumer overrides and lifecycle/constraint boundaries",
         "Native contrast, Narrator and display/text scaling acceptance",
-        "Complete independent-consumer contract beyond initial x64 checks and native ARM64 runtime of the new component"
+        "Complete independent-consumer contract beyond initial x64/ARM64 checks and the full native ARM64 visual/input/accessibility matrix"
       ]
     },
     {

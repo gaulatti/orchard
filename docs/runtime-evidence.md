@@ -1,5 +1,39 @@
 # Native Windows runtime evidence
 
+## Attention verification checkpoint
+
+Run [38494432792](https://github.com/gaulatti/orchard/actions/runs/38494432792)
+at `384b54b` passes both architecture builds, all 28 unit/resource tests,
+the x64 full catalog and both independent native package consumers. The ARM64
+cross-build consumer also passes. Focused Bauhaus passes on native ARM64 with
+animations enabled: Light measures 6.5227375 degrees against 5.8510152 expected,
+and Dark 5.9910774 against 5.9880096. Both retain the existing one-degree bound;
+this does not close the full visual/motion matrix.
+
+Native ARM64 remains failed. Focused Input's Small/valid bottom-right `(0,0)`
+release has correct resting paint, no hover/owner, and Arrow in the SDK producer,
+but GetCursorInfo displays AppStarting while the catalog owns foreground and
+the screen point. The full suite fails an open notification popup's Dark-to-Light
+change: the requested theme is Light while the presenter and surface remain
+Dark. These are required failures, not accepted platform substitutions.
+
+The new Attention contrast check fails identically on x64 and ARM64: 38 of 46
+pre-transition established glyph pixels become exact Windows foreground pixels.
+The native surface/background, border/text brushes, gradient removal and
+lift/shadow suppression pass before that glyph assertion. The original mode and
+producer image/border/foreground restore. The next diagnostic fixture retains
+exact before/after label rasters, point-level mismatches and layout/font/scale
+metadata without changing the ink mask, expected color or timeout. Attention
+also receives a focused native CI step so earlier full-suite failures cannot
+prevent its architecture-specific layout/action/lifecycle checks from running.
+
+ARM64 evidence archive `11862903921` is verified against SHA-256
+`2ed438477f376e55549396f84ca42bbd2603a4b442f57cd269418b6780b9ef61`;
+selected reports are at `artifacts/ci-384b54b-arm64-evidence`. Its passing native
+consumer uses package 0.1.0 SHA-256
+`574bf839d955dbd3d390e35088e727c86f4b4b6ce207cdc4d0473205cd5b66bd`.
+The complete required CI checkpoint remains red.
+
 ## Recent native input checkpoint
 
 Run [38486835832](https://github.com/gaulatti/orchard/actions/runs/38486835832)

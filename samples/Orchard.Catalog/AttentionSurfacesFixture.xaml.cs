@@ -125,7 +125,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
     private async Task CaptureGradientPixelsAsync(NativeInputSession input,JsonElement source,BleeckerColorScheme scheme,string folder)
     {
         Require(XamlRoot.RasterizationScale==1,"The frozen Attention pixel reference requires display scale 1; scaled acceptance uses separate evidence.");
-        var samples=new List<object>(); var maximum=0;
+        var samples=new List<object>(); var captures=new List<object>(); var maximum=0;
         foreach(var reference in source.GetProperty("samples").EnumerateArray())
         {
             var name=reference.GetProperty("id").GetString()!; if(!name.StartsWith("gradient-",StringComparison.Ordinal))continue;
@@ -138,6 +138,8 @@ public sealed partial class AttentionSurfacesFixture : UserControl
             var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,
                 new Windows.Graphics.Imaging.BitmapTransform(),Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
             var client=NativeScreenCapture.ClientBounds(input.Window);var bounds=input.ScreenBounds(control);
+            captures.Add(new{name,file=Path.GetFileName(file),radius=Surface(control).CornerRadius.TopLeft,x=(int)Math.Round(bounds.X-client.X),y=(int)Math.Round(bounds.Y-client.Y),
+                width=(int)Math.Round(bounds.Width),height=(int)Math.Round(bounds.Height)});
             foreach(var point in reference.GetProperty("pixels").EnumerateArray())
             {
                 var x=(int)Math.Round(bounds.X-client.X)+point.GetProperty("x").GetInt32();
@@ -152,7 +154,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         }
         // Retain observed differences without declaring them accepted. Full
         // border, radius, gradient and shadow raster parity remains open.
-        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-pixels-{scheme}.json"),JsonSerializer.Serialize(new{maximum,samples},new JsonSerializerOptions{WriteIndented=true}));
+        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-pixels-{scheme}.json"),JsonSerializer.Serialize(new{maximum,captures,samples},new JsonSerializerOptions{WriteIndented=true}));
         Require(maximum<=1,$"Attention interior source samples exceed the single-channel BGRA encoding precision bound: {maximum}.");
     }
     private static Button NativeAction(BleeckerAttentionSurface owner)=>(Button)((FrameworkElement)VisualTreeHelper.GetChild(owner,0)).FindName("PART_Action");
