@@ -50,7 +50,25 @@ public sealed partial class SparklinesFixture:UserControl
                 }
                 if(id is "default" or "area" or "explicit" or "gaps" or "negative" or "narrow")await MainWindow.CaptureElementAsync(host,System.IO.Path.Combine(folder,$"sparkline-{id}-{scheme}.png"));
                 Require(chart.Focus(FocusState.Keyboard),"Could not focus Sparkline inspection.");await VerifyInspectionAsync(chart,item.GetProperty("focus"),id+" focus");
-                input.Key(0x27);await VerifyInspectionAsync(chart,item.GetProperty("right"),id+" right");
+                try
+                {
+                    await input.KeyAsync(0x27,chart);
+                    await VerifyInspectionAsync(chart,item.GetProperty("right"),id+" right");
+                }
+                catch
+                {
+                    var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+                    var state=typeof(BleeckerLineChart).GetField("interaction",flags)!.GetValue(chart)!;
+                    await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-input-failure-{id}-{scheme}.json"),JsonSerializer.Serialize(new
+                    {
+                        id,chart.IsLoaded,chart.FocusState,input.OwnsForeground,help=AutomationProperties.GetHelpText(chart),data=chart.Data,
+                        focus=(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.GetType().FullName,
+                        items=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(text=>text.Text),
+                        interaction=state.GetType().GetFields(flags).ToDictionary(field=>field.Name,field=>field.GetValue(state)),
+                        sparklineMode=typeof(BleeckerLineChart).GetField("sparklineMode",flags)!.GetValue(chart)
+                    }));
+                    throw;
+                }
                 reports.Add(new{id,height=spark.ActualHeight,width=spark.ActualWidth,curves=paths.Length,showArea=spark.ShowArea,tooltip=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(x=>x.Text).ToArray()});
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-{scheme}.json"),JsonSerializer.Serialize(reports,new JsonSerializerOptions{WriteIndented=true}));
             }

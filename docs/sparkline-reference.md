@@ -95,3 +95,12 @@ extreme numeric/data shapes, disabled/error contracts, actual contrast settings,
 Narrator, display/text scaling and native ARM64 acceptance remain open. This
 entry remains in progress. The public wiki remote is unavailable, so this
 contract is maintained in the repository.
+
+The Bar Chart integration's first full x64 sequence stops at Sparkline's negative
+specimen after its Right key (`artifacts/smoke-bar-chart-full`). That run records
+no per-key delivery information, so the exact cause remains unproven. The fixture
+now requires exactly one native press/release at the actual focused chart and
+retains data, loaded/focus state, tooltip items, private interaction channels and
+profile state on failure. It sends no additional key and changes no expected
+output or two-second settling deadline. Focused Light/Dark checks pass at
+`artifacts/smoke-sparkline-bar-key-ack`. Full-sequence confirmation remains pending.
