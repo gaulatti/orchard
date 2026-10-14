@@ -248,3 +248,11 @@ both themes at `artifacts/smoke-notifications-theme-composed-ink-all`. This prov
 the owned-screen capture, cropping and ink-mask path runs without changing
 local Windows settings. It does not prove live contrast adoption; that requires
 the fresh isolated hosted transition check.
+
+Hosted run `38498921210` at `3f4c0e7` fails the composed Attention check at
+46/124 positions on both architectures. The verified native ARM64 before/final
+images show that all 124 pre-established positions match exact Windows
+foreground at a one-pixel downward offset. That diagnostic offset is not used
+to align the mask or relax acceptance. The label's logical origin retains its
+fractional phase and its local transform changes by half a pixel; the physical
+glyph/crop/baseline relationship remains an open positioning boundary.

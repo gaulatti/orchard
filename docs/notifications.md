@@ -72,3 +72,12 @@ no repository project reference or parent repository configuration. Native ARM64
 verification of the fix remains pending; CI now runs Notifications directly on
 both architectures before the full catalog. No backend or metrics surface is
 affected by this native theme synchronization.
+
+Fresh hosted run `38498921210` at `3f4c0e7` passes the focused notification
+regression on x64 and native ARM64, including repeated inherited changes, local
+owner overrides and focus/width preservation. The independent consumers pass
+the new surface/text assertions on both architectures. ARM64 has animations
+enabled. This verifies the scoped live-theme correction; the component's full
+visual, accessibility, scaling and interaction matrix remains in progress.
+The overall required CI run is still failed on cursor and contrast glyph gates,
+as recorded in [runtime evidence](runtime-evidence.md).

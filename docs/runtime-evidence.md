@@ -1,5 +1,31 @@
 # Native Windows runtime evidence
 
+Run [38498921210](https://github.com/gaulatti/orchard/actions/runs/38498921210)
+at `3f4c0e7` passes both builds, the full x64 catalog and both independent native
+package consumers. Focused Notifications passes on x64 and ARM64, including the
+new inherited/local owner-theme assertions; ARM64 uses enabled animations.
+Focused Bauhaus/Activity/Attention also pass on both architectures.
+
+The required checkpoint remains red. ARM64 Input's Large/invalid top-left
+`(3,0)` has matching hover paint/opacity and an owned UniversalNo publisher, but
+the visible cursor is Arrow after 77 republish calls. Its full suite fails the
+disabled Checkbox `shown` phase. Both live contrast jobs fail the composed
+Attention glyph check at 46/124 exact foreground positions.
+
+The native composed Attention image confirms a one-pixel vertical displacement:
+all 124 established positions match exact Windows foreground at offset (0,1).
+This offset is diagnostic only; the pre-transition mask is not shifted to make
+the gate pass. Font, dimensions and scale are unchanged, and the label's local
+transform changes by half a pixel. The display/crop/baseline positioning path
+must be traced and verified before the contrast gate can be accepted.
+
+ARM64 archive `11865550209` is verified against SHA-256
+`18efbd5173ef21f8a465833a13a3cac64d6d01d92db5179df0e05db86e86811e`;
+selected reports, notification captures and contrast images are at
+`artifacts/ci-3f4c0e7-arm64-evidence`. Its passing native consumer uses package
+0.1.0 SHA-256
+`e2504fb85d0b0e56e624224a63f0453bbb87eba74fdace783121c8bdf449954d`.
+
 Run [38496131766](https://github.com/gaulatti/orchard/actions/runs/38496131766)
 at `0b60f37` passes both builds, 28 unit/resource tests, the full x64 catalog,
 both native package consumers, and focused Bauhaus/Input/Activity/Attention on
