@@ -99,6 +99,7 @@ public sealed partial class BreadcrumbsFixture : UserControl
             {
                 await AwaitAsync(() => Hex(Find<Border>(expand, "PART_Chrome").Background) == (scheme == BleeckerColorScheme.Dark ? "#331A2332" : "#1AE6D5B8"),
                     "Ellipsis hover palette did not settle.", () => JsonSerializer.Serialize(HoverDetails()));
+                await VerifyMutablePaletteAsync(expand, scheme, folder);
                 hoverPassed = true;
             }
             finally
@@ -249,6 +250,38 @@ public sealed partial class BreadcrumbsFixture : UserControl
             if(TryFind<T>(VisualTreeHelper.GetChild(root,index),name) is T found)return found;
         }
         return null;
+    }
+    private async Task VerifyMutablePaletteAsync(Button action, BleeckerColorScheme scheme, string folder)
+    {
+        var palette = Find<Border>(action, "PART_Palette");
+        var background = (SolidColorBrush)palette.Background; var foreground = (SolidColorBrush)palette.BorderBrush;
+        var originalBackground = background.Color; var originalBackgroundOpacity = background.Opacity;
+        var originalForeground = foreground.Color; var originalForegroundOpacity = foreground.Opacity;
+        var expectedBackground = Hex(background); var expectedForeground = Hex(foreground);
+        var passed = false;
+        try
+        {
+            background.Color = Windows.UI.Color.FromArgb(255, 142, 227, 240); background.Opacity = 1;
+            foreground.Color = Windows.UI.Color.FromArgb(255, 38, 59, 80); foreground.Opacity = 1;
+            Require(ReferenceEquals(palette.Background, background) && ReferenceEquals(palette.BorderBrush, foreground), "Mutable palette unexpectedly replaced its producer brushes.");
+            await AwaitAsync(() => Hex(Find<Border>(action, "PART_Chrome").Background) == "#FF8EE3F0" &&
+                Hex(Find<Microsoft.UI.Xaml.Shapes.Path>(action, "PART_Icon").Stroke) == "#FF263B50",
+                "In-place palette color/opacity changes did not reach breadcrumb chrome and icon.");
+            foreground.Opacity = .5; background.Opacity = .5;
+            await AwaitAsync(() => Hex(Find<Border>(action, "PART_Chrome").Background) == "#808EE3F0" &&
+                Hex(Find<Microsoft.UI.Xaml.Shapes.Path>(action, "PART_Icon").Stroke) == "#80263B50",
+                "In-place palette opacity changes did not reach breadcrumb paint.");
+            passed = true;
+        }
+        finally
+        {
+            background.Color = originalBackground; background.Opacity = originalBackgroundOpacity;
+            foreground.Color = originalForeground; foreground.Opacity = originalForegroundOpacity;
+            await File.WriteAllTextAsync(Path.Combine(folder, $"breadcrumb-mutable-palette-{scheme}.json"), JsonSerializer.Serialize(new { passed }));
+        }
+        await AwaitAsync(() => Hex(Find<Border>(action, "PART_Chrome").Background) == expectedBackground &&
+            Hex(Find<Microsoft.UI.Xaml.Shapes.Path>(action, "PART_Icon").Stroke) == expectedForeground,
+            "Restored palette values did not reach breadcrumb paint.");
     }
     private static string Hex(Brush brush) => brush is SolidColorBrush solid ? $"#{(byte)Math.Round(solid.Color.A * solid.Opacity):X2}{solid.Color.R:X2}{solid.Color.G:X2}{solid.Color.B:X2}" : brush.GetType().Name;
     private async Task AwaitAsync(Func<bool> condition, string message, Func<string>? details = null)

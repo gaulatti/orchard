@@ -1,5 +1,35 @@
 # Native Windows runtime evidence
 
+Run [38527036318](https://github.com/gaulatti/orchard/actions/runs/38527036318)
+at `00734d0` passes both builds, 38 regressions, both focused notification
+presenter/lifecycle suites, both focused Attention suites, the full x64 catalog
+and the x64 package consumer. Both actual contrast jobs retain the subsequent
+Breadcrumb Highlight/HighlightText hover failure. ARM64's full catalog fails
+Checkbox's disabled-pointer `moved-back` phase. Its independent consumer again
+loses foreground during actual Line Chart keyboard input. These remain open
+required gates; neither overall CI nor the component inventory is complete.
+
+The next Breadcrumb correction observes in-place Color/Opacity changes on the
+actual palette brush producers. The old renderer fails the real hovered
+ellipsis mutation at `artifacts/smoke-breadcrumb-mutable-before`; the correction
+passes both themes at `artifacts/smoke-breadcrumb-mutable-fixed`, including
+opaque, half-alpha and restored source colors. Both builds are clean and all
+38 regressions pass at `artifacts/tests-breadcrumb-mutable`. Hosted contrast
+correction remains unverified. New contrast diagnostics record palette values,
+rendered values, visual states and native pointer ownership without changing
+the semantic-color assertion or deadline.
+The new package's fresh isolated x64 consumer passes both themes at
+`artifacts/package-consumer-breadcrumb-mutable`, including public foreground
+brush mutation and disabled-state preservation, for package SHA-256
+`becbbfa4b759f068a7c582d0f7521473ba6227ca1fcf1dd0344442ce39bebc22`.
+Build/restore and native execution were separated to avoid measuring UI during
+lossless compression of earlier task-owned artifacts. The restored package
+hash was rechecked before native launch.
+The complete local x64 catalog passes both themes at
+`artifacts/smoke-breadcrumb-mutable-all`. Local scale is 1, animations are
+disabled and contrast is off. This verifies the mounted mutation correction
+and existing interactions, not the hosted semantic hover-color gate.
+
 Run [38525069103](https://github.com/gaulatti/orchard/actions/runs/38525069103)
 at `90fdad6` passes both builds, 38 regressions, both focused Attention and
 notification suites and the complete x64 catalog. Both actual contrast jobs

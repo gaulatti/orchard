@@ -175,6 +175,7 @@ public sealed partial class MainWindow : Window
                     breadcrumbPanel.Children.OfType<HyperlinkButton>().Single().FontFamily.Source.Contains("EncodeSans-Regular.ttf") &&
                     ((TextBlock)breadcrumbPanel.Children.Last()).Text == "Harbor",
                     "Packaged Breadcrumb lost its independent templates, font or consumer path.");
+                await VerifyMutableBreadcrumbAsync(breadcrumbPanel.Children.OfType<HyperlinkButton>().Single());
                 await VerifyCustomBreadcrumbFocusAsync();
                 await VerifyAlertAsync();
                 await VerifyBrandAsync();
@@ -246,6 +247,36 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private async Task VerifyMutableBreadcrumbAsync(HyperlinkButton link)
+    {
+        var originalPaint = link.ReadLocalValue(Control.ForegroundProperty); var originalEnabled = link.IsEnabled;
+        var producer = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 142, 227, 240));
+        try
+        {
+            // Disabled is a normal consumer state; it removes pointer hover as
+            // a competing palette producer without changing native input paths.
+            link.IsEnabled = false; link.Foreground = producer; link.ApplyTemplate(); Root.UpdateLayout();
+            var text = (TextBlock)((FrameworkElement)VisualTreeHelper.GetChild(link, 0)).FindName("PART_Text");
+            await PaintAsync(producer.Color);
+            producer.Color = Windows.UI.Color.FromArgb(255, 38, 59, 80); await PaintAsync(producer.Color);
+            producer.Opacity = .5; await PaintAsync(Windows.UI.Color.FromArgb(128, 38, 59, 80));
+            Require(!link.IsEnabled, "Packaged brush updates enabled a disabled consumer link.");
+            async Task PaintAsync(Windows.UI.Color expected)
+            {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                bool Matches() => text.Foreground is SolidColorBrush actual && actual.Color == expected && actual.Opacity == 1;
+                while (!Matches() && watch.Elapsed < TimeSpan.FromSeconds(2)) { Root.UpdateLayout(); await Task.Delay(16); }
+                Require(Matches(), "Packaged Breadcrumb did not observe its consumer-owned brush color/opacity.");
+            }
+        }
+        finally
+        {
+            if (originalPaint == DependencyProperty.UnsetValue) link.ClearValue(Control.ForegroundProperty);
+            else link.SetValue(Control.ForegroundProperty, originalPaint);
+            link.IsEnabled = originalEnabled;
+        }
     }
 
     private async Task VerifyAttentionScrollAsync()

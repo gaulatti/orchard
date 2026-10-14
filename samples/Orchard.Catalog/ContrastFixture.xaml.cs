@@ -147,8 +147,26 @@ public sealed partial class ContrastFixture : UserControl
             await input.MoveAsync(expansion);
             var chrome = Descendants<Border>(expansion).Single(item => item.Name == "PART_Chrome");
             var icon = Descendants<Microsoft.UI.Xaml.Shapes.Path>(expansion).Single(item => item.Name == "PART_Icon");
-            await AwaitAsync(() => Matches(chrome.Background, NativeContrastSession.Color(13)) && Matches(icon.Stroke, NativeContrastSession.Color(14)),
-                "Hovered breadcrumb did not pair Windows Highlight and HighlightText.");
+            try
+            {
+                await AwaitAsync(() => Matches(chrome.Background, NativeContrastSession.Color(13)) && Matches(icon.Stroke, NativeContrastSession.Color(14)),
+                    "Hovered breadcrumb did not pair Windows Highlight and HighlightText.");
+            }
+            finally
+            {
+                var actionRoot = (FrameworkElement)VisualTreeHelper.GetChild(expansion, 0);
+                var palette = (Border)actionRoot.FindName("PART_Palette");
+                await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-breadcrumb-hover.json"), JsonSerializer.Serialize(new
+                {
+                    expansion.IsLoaded, expansion.IsEnabled, expansion.IsPressed, expansion.FocusState,
+                    expectedBackground = ColorHex(NativeContrastSession.Color(13)), expectedForeground = ColorHex(NativeContrastSession.Color(14)),
+                    paletteBackground = Hex(palette.Background), paletteForeground = Hex(palette.BorderBrush),
+                    paletteBackgroundOpacity = BrushOpacity(palette.Background), paletteForegroundOpacity = BrushOpacity(palette.BorderBrush),
+                    paintedBackground = Hex(chrome.Background), paintedForeground = Hex(icon.Stroke),
+                    states = VisualStateManager.GetVisualStateGroups(actionRoot).Select(group => new { group.Name, current = group.CurrentState?.Name }),
+                    foreground = input.OwnsForeground, native = input.DescribeCurrentPoint()
+                }));
+            }
             samples.Add(new { phase = "contrast", state = Snapshot() });
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-active.png"));
             await MainWindow.CaptureElementAsync(tooltip, System.IO.Path.Combine(folder, "contrast-popup-active.png"));

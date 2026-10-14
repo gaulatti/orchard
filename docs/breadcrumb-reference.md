@@ -186,3 +186,43 @@ The focused local x64 check passes both themes at
 expansion, original consumer items and physical Tab traversal. Both architecture
 builds have zero warnings; all 32 regressions and token generation pass. The
 expanded template-readiness predicate still requires fresh native ARM64 CI.
+
+The cloned Breadcrumb paint now observes Color and Opacity on its currently
+resolved SolidColorBrush producers, as well as palette brush replacement.
+Replacing a palette brush rebinds those observers; template cleanup and unload
+remove them. The existing source color/scale transitions and reduced-motion
+behavior are retained.
+
+`VerifyMutablePaletteAsync` first proves a local failure against the old
+renderer at `artifacts/smoke-breadcrumb-mutable-before`. While a real pointer
+hovers the ellipsis, the same foreground/background brush objects change color
+and opacity without replacement. Both the rendered chrome and icon must adopt
+each value, then return to the original source colors after restoration. The
+corrected focused x64 run passes both themes at
+`artifacts/smoke-breadcrumb-mutable-fixed`, alongside physical press cancellation,
+keyboard expansion, focus restoration and consumer template checks. The exact
+color assertions and two-second readiness deadline are unchanged. Both builds
+are clean and all 38 regressions pass at `artifacts/tests-breadcrumb-mutable`.
+
+The hosted contrast check additionally records palette values/opacities,
+rendered chrome/icon colors, native CommonStates, and current pointer/window
+ownership in `contrast-breadcrumb-hover.json`, on both success and failure.
+The same Windows Highlight/HighlightText assertion remains required; the local
+producer-mutation proof does not replace the actual mode-changing gate.
+The fresh independent x64 consumer passes both themes at
+`artifacts/package-consumer-breadcrumb-mutable` for package SHA-256
+`becbbfa4b759f068a7c582d0f7521473ba6227ca1fcf1dd0344442ce39bebc22`.
+Its public HyperlinkButton Foreground producer changes Color and Opacity on
+the same brush; the mounted text must adopt the values while the disabled
+consumer link remains unavailable. Foreground and availability are restored.
+Restore/publish ran separately from native execution while older task artifacts
+were losslessly compressed; the restored package hash was rechecked before
+launching that originally fresh consumer. No repository project reference or
+parent configuration participates. No backend or metrics surface is affected
+by this native brush-observation correction.
+The complete local x64 catalog passes both themes at
+`artifacts/smoke-breadcrumb-mutable-all`, including color/opacity restoration,
+physical Breadcrumb interactions, other mounted controls and the seven-state
+Attention glyph regression. Local animations are disabled, display/text scale
+is 1 and contrast is off. Actual hosted contrast remains unverified; the full
+Breadcrumb acceptance gaps remain open.

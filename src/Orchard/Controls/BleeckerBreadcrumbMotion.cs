@@ -22,6 +22,7 @@ internal sealed class BleeckerBreadcrumbMotion
     private Path? icon;
     private ScaleTransform? scale;
     private readonly List<(DependencyObject Owner, DependencyProperty Property, long Token)> subscriptions = [];
+    private readonly List<(DependencyObject Owner, DependencyProperty Property, long Token)> paintSubscriptions = [];
     private Storyboard? motion;
     private int version;
 
@@ -54,6 +55,7 @@ internal sealed class BleeckerBreadcrumbMotion
     {
         version++; motion?.Stop(); motion = null;
         foreach (var (owner, property, token) in subscriptions) owner.UnregisterPropertyChangedCallback(property, token);
+        StopObservingPaint();
         subscriptions.Clear(); palette = null; chrome = null; text = null; icon = null; scale = null;
     }
     private void ApplyTemplate()
@@ -68,12 +70,26 @@ internal sealed class BleeckerBreadcrumbMotion
         scale = root.FindName("PART_Scale") as ScaleTransform;
         if (palette is null) throw new InvalidOperationException("Breadcrumb action template requires PART_Palette.");
         Observe(palette, Border.BackgroundProperty); Observe(palette, Border.BorderBrushProperty);
+        ObservePaint();
         Paint(false);
     }
     private void Observe(DependencyObject owner, DependencyProperty property)
     {
-        var token = owner.RegisterPropertyChangedCallback(property, (_, _) => Request(true));
+        var token = owner.RegisterPropertyChangedCallback(property, (_, _) => { ObservePaint(); Request(true); });
         subscriptions.Add((owner, property, token));
+    }
+    private void ObservePaint()
+    {
+        StopObservingPaint();
+        if (palette is null) return;
+        foreach (var brush in new[] { palette.Background, palette.BorderBrush }.OfType<SolidColorBrush>().Distinct())
+            foreach (var property in new[] { SolidColorBrush.ColorProperty, Brush.OpacityProperty })
+                paintSubscriptions.Add((brush, property, brush.RegisterPropertyChangedCallback(property, (_, _) => Request(true))));
+    }
+    private void StopObservingPaint()
+    {
+        foreach (var (owner, property, token) in paintSubscriptions) owner.UnregisterPropertyChangedCallback(property, token);
+        paintSubscriptions.Clear();
     }
     private void Request(bool animate)
     {
