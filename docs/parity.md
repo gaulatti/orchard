@@ -47,7 +47,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | stat-card | Pending | Pending | Full pinned contract |
 | dashboard-grid | Pending | Pending | Full pinned contract |
 | dashboard-section | Pending | Pending | Full pinned contract |
-| page-header | Pending | Pending | Full pinned contract |
+| page-header | Pending native implementation | Frozen sixteen-case browser reference | [Pinned source contract](page-header-reference.md); native component, catalog/consumer fixtures and full platform acceptance remain pending |
 | sidebar | Pending | Pending | Full pinned contract |
 | data-table-toolbar | Pending | Pending | Full pinned contract |
 | data-table-filters | Pending | Pending | Full pinned contract |
@@ -57,7 +57,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | stepper | Pending | Pending | Full pinned contract |
 | timeline | Pending | Pending | Full pinned contract |
 | data-list | Pending | Pending | Full pinned contract |
-| error-state | Pending | Pending | Full pinned contract |
+| error-state | `BleeckerErrorState`: consumer-owned summaries, icon content and optional retry commands | Registered normal/empty/long/RTL and native retry fixtures; x64/ARM64 runtime, contrast and independent consumers pass at `64f4f25` | In progress: complete glyph/icon raster comparison, scaling, Narrator, contrast schemes and lifecycle/template matrix; see [contract and evidence](error-states.md) |
 | loading-overlay | Pending | Pending | Full pinned contract |
 | date-range-picker | Pending | Pending | Full pinned contract |
 | filter-chip | Pending | Pending | Full pinned contract |

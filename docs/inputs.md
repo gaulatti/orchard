@@ -1,5 +1,17 @@
 # Input editing preview
 
+Run [38567209211](https://github.com/gaulatti/orchard/actions/runs/38567209211)
+at `64f4f25` passes all required jobs, both complete native catalogs, both real
+contrast suites and all independent consumers. The verified native ARM64
+archive has SHA-256
+`f8ba882068d43a9d56740c71a3c0cf3998565ddb643abd3b7cdd08e0108fec51`.
+Both themes retain 96 passing Input samples. Each controlled Checkbox
+publication completes and acknowledges exactly once, records two rendering
+ticks, and displays UniversalNo with no pending observer. Each ownership
+cancellation increments only its cancellation count and displays Arrow.
+This establishes hosted evidence for the frame-settlement correction; it does
+not accept the remaining Input accessibility, scaling, motion and visual matrix.
+
 Cursor diagnostics now retain bounded native snapshots immediately after the
 initial blocked assignment, intermediate producer assignment, deferred blocked
 assignment and producer restoration. Each records whether `GetCursorInfo`

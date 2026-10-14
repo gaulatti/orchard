@@ -1,5 +1,16 @@
 # Native Windows runtime evidence
 
+Run [38567209211](https://github.com/gaulatti/orchard/actions/runs/38567209211)
+at `64f4f25` passes every required job: both complete catalogs, both live Windows
+contrast suites and all independent consumers. Native ARM64 retains enabled
+animations and verifies the new cursor settlement/cancellation boundary in
+both themes. Its verified archive SHA-256 is
+`f8ba882068d43a9d56740c71a3c0cf3998565ddb643abd3b7cdd08e0108fec51`.
+The previous intermittent glyph and motion failures remain unexplained; this
+passing checkpoint does not close their full acceptance matrix. The subsequent
+frame-timestamp diagnostics have their own pending hosted run. Inventory
+completion is still unproven: 31 entries are in progress and 81 are pending.
+
 Run [38558580437](https://github.com/gaulatti/orchard/actions/runs/38558580437)
 at `7920215` passes the full x64 job, ARM64 build and both independent package
 consumers. Both focused Input suites and Error State contrast checks pass.
