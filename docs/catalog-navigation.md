@@ -24,6 +24,11 @@ frozen source layouts, real heading peers, live bindings, remount/template
 replacement and physical forward/reverse Tab traversal. Complete text raster,
 contrast, scaling and Narrator acceptance remains open.
 
+Dashboard Sections follows Section Headers. Focused `-Component dashboard-section`
+checks the frozen source's 639/640px viewport boundary, trailing/bottom action
+placement, optional content, RTL/multilingual text, live updates, template
+replacement and physical Tab/Space traversal through consumer children.
+
 Breadcrumb is registered after Avatars, with source threshold boundaries,
 independent wrapping, custom content, keyboard expansion and consumer updates.
 

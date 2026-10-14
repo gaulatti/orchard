@@ -23,6 +23,8 @@ records/series with native monotone curves, axes, a legend and category
 inspection; complete chart/platform acceptance remains in progress.
 The [Section Header preview](docs/section-header-reference.md) supplies a
 level-two heading, optional eyebrow and consumer-owned summary.
+The [Dashboard Section preview](docs/dashboard-section-reference.md) groups
+consumer content beneath an optional responsive heading and action.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

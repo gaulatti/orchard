@@ -44,7 +44,11 @@ the pinned transitive Win2D 1.4.0 dependency; keep its native runtime files with
 the complete build/publish output.
 
 Custom actions use the `using:Orchard` XAML namespace. `BleeckerButton` supports
-variants, sizes, commands and loading. `BleeckerIconButton` supports three
+variants, sizes, commands and loading. `BleeckerDashboardSection` groups consumer
+`Content` beneath optional `Title`, `Description` and `Action` values; its header
+stacks below a 640px window viewport and aligns its action to the bottom above
+that breakpoint. Full visual/platform acceptance remains in progress.
+`BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;
 `BleeckerAlertContainer.ShowAlert` publishes to containers in an explicit XAML root.

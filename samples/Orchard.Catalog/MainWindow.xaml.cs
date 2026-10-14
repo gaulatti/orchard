@@ -66,6 +66,16 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);
+            else if (args.Contains("--smoke-dashboard-section"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DashboardSections);
+                    await DashboardSections.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "dashboard-section", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-section-header"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -345,6 +355,8 @@ public sealed partial class MainWindow : Window
             await PageHeaders.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(SectionHeaders);
             await SectionHeaders.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(DashboardSections);
+            await DashboardSections.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Tooltips);
             await Tooltips.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(FieldHelp);

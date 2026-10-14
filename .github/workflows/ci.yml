@@ -85,8 +85,12 @@ jobs:
         id: section_header_smoke
         if: ${{ !cancelled() && (steps.page_header_smoke.outcome == 'success' || steps.page_header_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component section-header -Output artifacts/section-header -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify Dashboard Section responsive layout and child input
         if: ${{ !cancelled() && (steps.section_header_smoke.outcome == 'success' || steps.section_header_smoke.outcome == 'failure') }}
+        id: dashboard_section_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component dashboard-section -Output artifacts/dashboard-section -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.dashboard_section_smoke.outcome == 'success' || steps.dashboard_section_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -214,8 +218,12 @@ jobs:
         id: section_header_smoke
         if: ${{ !cancelled() && (steps.page_header_smoke.outcome == 'success' || steps.page_header_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component section-header -Output artifacts/section-header -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 Dashboard Section layout and child input
         if: ${{ !cancelled() && (steps.section_header_smoke.outcome == 'success' || steps.section_header_smoke.outcome == 'failure') }}
+        id: dashboard_section_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component dashboard-section -Output artifacts/dashboard-section -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.dashboard_section_smoke.outcome == 'success' || steps.dashboard_section_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

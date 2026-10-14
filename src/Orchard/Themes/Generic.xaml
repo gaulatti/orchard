@@ -21,6 +21,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/ErrorState.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/PageHeader.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SectionHeader.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/DashboardSection.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
     </ResourceDictionary.MergedDictionaries>

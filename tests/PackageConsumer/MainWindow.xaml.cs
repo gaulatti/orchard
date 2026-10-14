@@ -195,6 +195,7 @@ public sealed partial class MainWindow : Window
                 await VerifyErrorStateAsync();
                 await VerifyPageHeaderAsync();
                 VerifySectionHeader();
+                VerifyDashboardSection();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -287,6 +288,26 @@ public sealed partial class MainWindow : Window
             else link.SetValue(Control.ForegroundProperty, originalPaint);
             link.IsEnabled = originalEnabled;
         }
+    }
+
+    private void VerifyDashboardSection()
+    {
+        PackageDashboardSection.ApplyTemplate(); Root.UpdateLayout();
+        var root=(FrameworkElement)VisualTreeHelper.GetChild(PackageDashboardSection,0);
+        var title=(TextBlock)root.FindName("PART_Title");
+        var description=(TextBlock)root.FindName("PART_Description");
+        Require(title.FontFamily.Source.Contains("EncodeSans-Medium.ttf") && title.FontSize==18 && title.LineHeight==28 &&
+            description.FontFamily.Source.Contains("LibreFranklin-Regular.ttf") && description.LineHeight==20 &&
+            FrameworkElementAutomationPeer.CreatePeerForElement(title).GetHeadingLevel()==AutomationHeadingLevel.Level2 &&
+            !PackageDashboardSection.IsTabStop,"Packaged Dashboard Section lost typography or heading semantics.");
+        var content=PackageDashboardSection.Content; var action=PackageDashboardSection.Action;
+        PackageDashboardSection.Title=null; PackageDashboardSection.Description=null; PackageDashboardSection.Action=null;Root.UpdateLayout();
+        Require(PackageDashboardSection.ActualHeight==64,"Packaged Dashboard Section retained an empty header gap.");
+        PackageDashboardSection.Content=null;Root.UpdateLayout();Require(PackageDashboardSection.ActualHeight==0,"Packaged Dashboard Section did not become empty.");
+        PackageDashboardSection.Title="Updated independent dashboard";PackageDashboardSection.Description="Consumer-owned dashboard summary";
+        PackageDashboardSection.Content=content;PackageDashboardSection.Action=action;Root.UpdateLayout();
+        Require(title.Text==PackageDashboardSection.Title&&ReferenceEquals(((ContentPresenter)root.FindName("PART_Content")).Content,content),
+            "Packaged Dashboard Section lost live content.");
     }
 
     private void VerifySectionHeader()

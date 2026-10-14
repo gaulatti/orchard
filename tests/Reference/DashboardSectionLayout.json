@@ -1,0 +1,2153 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "f8af75ecc48d211202e4aa0022e81195259fc934777c28a180ea7f325bce7fe6",
+  "react": "19.2.4",
+  "cases": [
+    {
+      "id": "full",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 233.640625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 233.640625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 740,
+          "y": 40,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "title",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": "Monitoring"
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 112,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 87.0625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": null,
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 68,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "description",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "description": "Consumer-owned section summary."
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 108,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "Consumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 24,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "Consumer-owned section summary."
+        },
+        "title": null,
+        "description": {
+          "x": 20,
+          "y": 24,
+          "width": 233.640625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 64,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "action",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 116,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "title": null,
+        "description": null,
+        "action": {
+          "x": 740,
+          "y": 20,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 72,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "content",
+      "viewport": 1000,
+      "width": 800,
+      "props": {},
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "header": null,
+        "title": null,
+        "description": null,
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "empty",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "content": false
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 0,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "header": null,
+        "title": null,
+        "description": null,
+        "action": null,
+        "content": null
+      }
+    },
+    {
+      "id": "header",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": "Monitoring",
+        "content": false
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 87.0625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": null,
+        "action": null,
+        "content": null
+      }
+    },
+    {
+      "id": "stacked",
+      "viewport": 639,
+      "width": 599,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 176,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 92,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 599,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 20,
+          "y": 80,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 132,
+          "width": 599,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "breakpoint",
+      "viewport": 640,
+      "width": 600,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 233.640625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 233.640625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 540,
+          "y": 40,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 600,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "stacked-rtl",
+      "viewport": 639,
+      "width": 599,
+      "rtl": true,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 176,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 92,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 599,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 539,
+          "y": 80,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 132,
+          "width": 599,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "stacked-action",
+      "viewport": 639,
+      "width": 599,
+      "props": {
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 124,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 40,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "title": null,
+        "description": null,
+        "action": {
+          "x": 20,
+          "y": 28,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 80,
+          "width": 599,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "constrained",
+      "viewport": 1000,
+      "width": 280,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned summary wraps in this constrained section."
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 156,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned summary wraps in this constrained section."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 72,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned summary wraps in this constrained section."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 280,
+          "height": 40,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned summary wraps in this constrained section."
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 112,
+          "width": 280,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "rtl",
+      "viewport": 1000,
+      "width": 600,
+      "rtl": true,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 385.4375,
+          "y": 20,
+          "width": 234.5625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 385.4375,
+          "y": 52,
+          "width": 234.5625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 20,
+          "y": 40,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 600,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "unicode",
+      "viewport": 1000,
+      "width": 600,
+      "props": {
+        "title": "日本語 · العربية · Éditorial",
+        "description": "日本語とالعربيةの consumer-owned summary."
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "日本語 · العربية · Éditorial日本語とالعربيةの consumer-owned summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "日本語 · العربية · Éditorial日本語とالعربيةの consumer-owned summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 291.78125,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": "日本語 · العربية · Éditorial"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 291.78125,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": "日本語とالعربيةの consumer-owned summary."
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 600,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "whitespace",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": " ",
+        "description": " "
+      },
+      "scheme": "Light",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 88,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "  "
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 4,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": "  "
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 0,
+          "height": 0,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(45, 45, 45)",
+          "text": " "
+        },
+        "description": {
+          "x": 20,
+          "y": 24,
+          "width": 0,
+          "height": 0,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(89, 89, 89)",
+          "text": " "
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 44,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(45, 45, 45)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "full",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 233.640625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 233.640625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 740,
+          "y": 40,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "title",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": "Monitoring"
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 112,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 87.0625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": null,
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 68,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "description",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "description": "Consumer-owned section summary."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 108,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "Consumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 24,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "Consumer-owned section summary."
+        },
+        "title": null,
+        "description": {
+          "x": 20,
+          "y": 24,
+          "width": 233.640625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 64,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "action",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 116,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "title": null,
+        "description": null,
+        "action": {
+          "x": 740,
+          "y": 20,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 72,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "content",
+      "viewport": 1000,
+      "width": 800,
+      "props": {},
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "header": null,
+        "title": null,
+        "description": null,
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "empty",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "content": false
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 0,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "header": null,
+        "title": null,
+        "description": null,
+        "action": null,
+        "content": null
+      }
+    },
+    {
+      "id": "header",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": "Monitoring",
+        "content": false
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 87.0625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": null,
+        "action": null,
+        "content": null
+      }
+    },
+    {
+      "id": "stacked",
+      "viewport": 639,
+      "width": 599,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 176,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 92,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 599,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 20,
+          "y": 80,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 132,
+          "width": 599,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "breakpoint",
+      "viewport": 640,
+      "width": 600,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 233.640625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 233.640625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 540,
+          "y": 40,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 600,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "stacked-rtl",
+      "viewport": 639,
+      "width": 599,
+      "rtl": true,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 176,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 92,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 599,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 539,
+          "y": 80,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 132,
+          "width": 599,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "stacked-action",
+      "viewport": 639,
+      "width": 599,
+      "props": {
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 124,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 599,
+          "height": 40,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "title": null,
+        "description": null,
+        "action": {
+          "x": 20,
+          "y": 28,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 80,
+          "width": 599,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "constrained",
+      "viewport": 1000,
+      "width": 280,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned summary wraps in this constrained section."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 156,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned summary wraps in this constrained section."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 72,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned summary wraps in this constrained section."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 280,
+          "height": 40,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned summary wraps in this constrained section."
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 112,
+          "width": 280,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "rtl",
+      "viewport": 1000,
+      "width": 600,
+      "rtl": true,
+      "props": {
+        "title": "Monitoring",
+        "description": "Consumer-owned section summary.",
+        "action": true
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "MonitoringConsumer-owned section summary."
+        },
+        "title": {
+          "x": 385.4375,
+          "y": 20,
+          "width": 234.5625,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "Monitoring"
+        },
+        "description": {
+          "x": 385.4375,
+          "y": 52,
+          "width": 234.5625,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "Consumer-owned section summary."
+        },
+        "action": {
+          "x": 20,
+          "y": 40,
+          "width": 80,
+          "height": 32,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        },
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 600,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "unicode",
+      "viewport": 1000,
+      "width": 600,
+      "props": {
+        "title": "日本語 · العربية · Éditorial",
+        "description": "日本語とالعربيةの consumer-owned summary."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 136,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "日本語 · العربية · Éditorial日本語とالعربيةの consumer-owned summary."
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 52,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "日本語 · العربية · Éditorial日本語とالعربيةの consumer-owned summary."
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 291.78125,
+          "height": 28,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": "日本語 · العربية · Éditorial"
+        },
+        "description": {
+          "x": 20,
+          "y": 52,
+          "width": 291.78125,
+          "height": 20,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": "日本語とالعربيةの consumer-owned summary."
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 92,
+          "width": 600,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "whitespace",
+      "viewport": 1000,
+      "width": 800,
+      "props": {
+        "title": " ",
+        "description": " "
+      },
+      "scheme": "Dark",
+      "layout": {
+        "section": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 88,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "  "
+        },
+        "header": {
+          "x": 20,
+          "y": 20,
+          "width": 800,
+          "height": 4,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": "  "
+        },
+        "title": {
+          "x": 20,
+          "y": 20,
+          "width": 0,
+          "height": 0,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "28px",
+          "letterSpacing": "-0.36px",
+          "color": "rgb(240, 244, 248)",
+          "text": " "
+        },
+        "description": {
+          "x": 20,
+          "y": 24,
+          "width": 0,
+          "height": 0,
+          "font": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "rgb(184, 197, 214)",
+          "text": " "
+        },
+        "action": null,
+        "content": {
+          "x": 20,
+          "y": 44,
+          "width": 800,
+          "height": 64,
+          "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "rgb(240, 244, 248)",
+          "text": ""
+        }
+      }
+    }
+  ]
+}

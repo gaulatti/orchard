@@ -30,6 +30,7 @@
     "BleeckerErrorState": "ErrorStatesFixture.xaml",
     "BleeckerPageHeader": "PageHeadersFixture.xaml",
     "BleeckerSectionHeader": "SectionHeadersFixture.xaml",
+    "BleeckerDashboardSection": "DashboardSectionsFixture.xaml",
     "BleeckerLineChart": "LineChartsFixture.xaml",
     "BleeckerChartSeries": "ChartThemesFixture.xaml",
     "BleeckerAttentionSurface": "AttentionSurfacesFixture.xaml",

@@ -1091,14 +1091,23 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerDashboardSection.cs",
+        "src/Orchard/Themes/DashboardSection.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/DashboardSectionsFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/DashboardSectionsFixture.xaml.cs",
+        "tests/Reference/DashboardSectionLayout.json",
+        "tests/PackageConsumer/MainWindow.xaml.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact glyph baselines and full raster comparison",
+        "Flex minimum-content and complete consumer override matrix",
+        "Contrast schemes, Narrator, scaling and complete x64/ARM64 visual acceptance"
       ]
     },
     {

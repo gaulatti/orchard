@@ -1,0 +1,12 @@
+<UserControl x:Class="Orchard.Catalog.DashboardSectionsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Dashboard sections" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <orchard:BleeckerDashboardSection x:Name="Specimen" Title="Monitoring" Description="Consumer-owned section summary.">
+   <orchard:BleeckerDashboardSection.Action><orchard:BleeckerButton Content="Refresh" Size="Small" /></orchard:BleeckerDashboardSection.Action>
+   <Border Height="64" Background="{ThemeResource BleeckerMutedBrush}" Padding="16"><TextBlock Text="Consumer-owned monitoring content" Style="{StaticResource BleeckerBodyStyle}" /></Border>
+  </orchard:BleeckerDashboardSection>
+  <orchard:BleeckerDashboardSection Title="Editorial" Description="Fictional stories awaiting review."><orchard:BleeckerButton Content="Open review" HorizontalAlignment="Left" /></orchard:BleeckerDashboardSection>
+  <orchard:BleeckerDashboardSection Title="日本語 · العربية · Éditorial" Description="日本語とالعربيةの consumer-owned summary." />
+  <orchard:BleeckerDashboardSection Title="Monitoring" FlowDirection="RightToLeft"><TextBlock Text="Consumer-owned right-to-left content" Style="{StaticResource BleeckerBodyStyle}" /></orchard:BleeckerDashboardSection>
+ </StackPanel>
+</UserControl>
