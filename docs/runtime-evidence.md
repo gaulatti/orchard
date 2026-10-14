@@ -1,5 +1,35 @@
 # Native Windows runtime evidence
 
+The Attention viewport regression reproduces the hosted 46/124 glyph mismatch
+locally when scrolling by 36.5px, with Windows contrast off. Quantizing native
+ascent before the baseline margin calculation passes the unchanged mask across
+seven transitions in both themes at `artifacts/smoke-attention-scroll-native-ascent`.
+Evidence for the original failed probe is at `artifacts/smoke-attention-scroll-before`;
+the ineffective visual-snapping probe is at `artifacts/smoke-attention-scroll-snapped`.
+Both solution builds are clean and all 38 regressions pass at
+`artifacts/tests-attention-scroll`. Hosted contrast correction is still unverified.
+The independent x64 package consumer passes both themes at
+`artifacts/package-consumer-attention-scroll`, including its new consumer-owned
+ScrollViewer check, for package SHA-256
+`c95c07878b02225b91711050b08068743083d81e5900c49c9e3a0a58e58f757f`.
+Its repaired Loaded-boundary fixture was republished in the originally fresh
+isolated consumer while retaining the hash-verified package/cache.
+The complete local x64 catalog passes both themes at
+`artifacts/smoke-attention-scroll-all`, including all seven Attention glyph
+transitions. Local scale is 1, animations are disabled and contrast is off;
+this is not evidence of passing the hosted mode-changing gate.
+
+Run [38522487971](https://github.com/gaulatti/orchard/actions/runs/38522487971)
+at `69cdc87` passes both builds, 38 regressions, the focused Line Chart interaction
+on both native architectures, the full x64 catalog and both independent package
+consumers. The ARM64 focused chart now passes the zero-data tooltip edge check
+as well as the effects and source interaction sequence. Both contrast jobs
+retain the 46/124 Attention failure. ARM64 also fails Input's Medium/valid
+top-right `(3,0)` and the full catalog's Large/invalid top-left `(3,0)` cursor
+publication with global Arrow rather than UniversalNo. Its focused notification
+fixture throws `Sequence contains no elements` while inspecting the popup.
+These remain open required gates; no inventory component becomes accepted.
+
 The retained Line Chart interaction checkpoint passes all 38 regressions,
 both solution builds without warnings, and focused native x64 inspection in
 Light/Dark at `artifacts/smoke-line-interaction-native`. The fixture exercises

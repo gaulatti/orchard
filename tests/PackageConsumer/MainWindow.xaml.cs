@@ -181,6 +181,7 @@ public sealed partial class MainWindow : Window
                 VerifyBauhaus();
                 VerifyActivity();
                 VerifyAttention();
+                await VerifyAttentionScrollAsync();
                 await VerifyChartThemeAsync(theme);
                 await VerifyLineChartAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
@@ -245,6 +246,41 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private async Task VerifyAttentionScrollAsync()
+    {
+        var surface = new BleeckerAttentionSurface { Width = 320, Element = BleeckerAttentionElement.Button,
+            Density = BleeckerAttentionDensity.Compact, Hue = 48, Intensity = 8, Content = "Contrast surface" };
+        var content = new StackPanel(); content.Children.Add(new Border { Height = 40 });
+        content.Children.Add(surface); content.Children.Add(new Border { Height = 300 });
+        var viewport = new ScrollViewer { Width = 360, Height = 180, Content = content, Margin = new Thickness(32),
+            HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top,
+            HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled };
+        Root.Children.Add(viewport);
+        try
+        {
+            var mounted = System.Diagnostics.Stopwatch.StartNew();
+            while (!surface.IsLoaded && mounted.Elapsed < TimeSpan.FromSeconds(2)) { Root.UpdateLayout(); await Task.Delay(16); }
+            Require(surface.IsLoaded, "Independent Attention viewport did not mount its consumer surface.");
+            surface.ApplyTemplate(); Root.UpdateLayout();
+            var text = (TextBlock)((FrameworkElement)VisualTreeHelper.GetChild(surface, 0)).FindName("PART_String");
+            foreach (var offset in new[] { .5, 37, .5 })
+            {
+                var paint = new SolidColorBrush(offset == 37 ? Microsoft.UI.Colors.White : Windows.UI.Color.FromArgb(255, 240, 244, 248));
+                surface.Foreground = paint; viewport.ChangeView(null, offset, null, true);
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                bool Matches()
+                {
+                    var origin = text.TransformToVisual(Root).TransformPoint(new Windows.Foundation.Point()).Y * Root.XamlRoot.RasterizationScale;
+                    return Math.Abs(viewport.VerticalOffset-offset) < .001 && text.ActualHeight == 24 &&
+                        ReferenceEquals(text.Foreground, paint) && Math.Abs(origin-Math.Round(origin)) < .001;
+                }
+                while (!Matches() && watch.Elapsed < TimeSpan.FromSeconds(2)) { Root.UpdateLayout(); await Task.Delay(16); }
+                Require(Matches(), "Packaged Attention text lost its device-grid origin or consumer paint during fractional scrolling.");
+            }
+        }
+        finally { Root.Children.Remove(viewport); }
     }
 
     private async Task VerifyLineChartAsync()

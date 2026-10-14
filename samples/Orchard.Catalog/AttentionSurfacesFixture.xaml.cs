@@ -158,18 +158,28 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         var originalDensity=Action.Density;var originalContent=Action.Content;
         var samples=new List<object>();
         int[]? establishedInk=null;var establishedWidth=0;var establishedHeight=0;
+        ScrollViewer? scroll = null;
+        for (DependencyObject? current = Action; current is not null; current = VisualTreeHelper.GetParent(current))
+            if (current is ScrollViewer viewer) { scroll = viewer; break; }
+        Require(scroll is not null, "Attention's fractional scroll probe requires the catalog viewport.");
+        double? originalScrollOffset = null;
         try
         {
             Action.Density=BleeckerAttentionDensity.Compact;Action.Content="Contrast surface";
             await input.MoveAsync(PassiveAction);
             await AwaitAsync(()=>Lift(Action)==0,"Fractional baseline probe did not reach resting lift.");
-            foreach(var probe in new[]{(Margin:.5,White:false,Solid:false),(Margin:0d,White:true,Solid:true),(Margin:.5,White:true,Solid:true),
-                (Margin:0d,White:false,Solid:false),(Margin:.5,White:false,Solid:false)})
+            originalScrollOffset = scroll!.VerticalOffset;
+            foreach(var probe in new[]{(Margin:.5,White:false,Solid:false,ScrollDelta:0d),(Margin:0d,White:true,Solid:true,ScrollDelta:0d),(Margin:.5,White:true,Solid:true,ScrollDelta:0d),
+                (Margin:0d,White:false,Solid:false,ScrollDelta:0d),(Margin:.5,White:false,Solid:false,ScrollDelta:0d),
+                (Margin:.5,White:true,Solid:true,ScrollDelta:36.5),(Margin:.5,White:false,Solid:false,ScrollDelta:0d)})
             {
                 var margin=probe.Margin;var color=probe.White?Microsoft.UI.Colors.White:Windows.UI.Color.FromArgb(255,240,244,248);
                 Action.Foreground=new SolidColorBrush(color);
                 Action.Background=probe.Solid?new SolidColorBrush(Windows.UI.Color.FromArgb(255,32,32,32)):gradientBackground;
                 Action.Margin=new Thickness(0,margin,0,0);UpdateLayout();
+                var scrollTarget = originalScrollOffset.Value + probe.ScrollDelta;
+                scroll.ChangeView(null, scrollTarget, null, true);
+                await AwaitAsync(() => Math.Abs(scroll.VerticalOffset-scrollTarget) < .001, "Attention fractional scroll did not settle at its native target.");
                 var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
                 void Frame(object? sender,object args){if(++frames==2)presented.TrySetResult();}
                 CompositionTarget.Rendering+=Frame;
@@ -192,12 +202,28 @@ public sealed partial class AttentionSurfacesFixture : UserControl
                     var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,transform,Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
                     bool IsInk(int index)=>pixels[index*4]==color.B&&pixels[index*4+1]==color.G&&pixels[index*4+2]==color.R&&pixels[index*4+3]==255;
                     if(establishedInk is null){establishedWidth=cropWidth;establishedHeight=cropHeight;establishedInk=Enumerable.Range(0,cropWidth*cropHeight).Where(IsInk).ToArray();Require(establishedInk.Length>0,"Attention baseline has no established solid glyph pixels.");}
-                    else Require(cropWidth==establishedWidth&&cropHeight==establishedHeight&&establishedInk.All(IsInk),"Attention glyph positions changed across the owned fractional/color/background transition.");
+                    else
+                    {
+                        var matching = establishedInk.Count(IsInk);
+                        Require(cropWidth==establishedWidth&&cropHeight==establishedHeight&&matching==establishedInk.Length,
+                            $"Attention glyph positions changed across fractional/color/background/scroll transitions: {matching}/{establishedInk.Length}, scroll delta {probe.ScrollDelta}.");
+                    }
                 }
-                samples.Add(new{margin,file,solidBackground=probe.Solid,foreground=new[]{(int)color.R,(int)color.G,(int)color.B},x=(int)Math.Floor(bounds.X-client.X),y=(int)Math.Floor(bounds.Y-client.Y),
+                samples.Add(new{margin,file,probe.ScrollDelta,scrollOffset=scroll.VerticalOffset,solidBackground=probe.Solid,foreground=new[]{(int)color.R,(int)color.G,(int)color.B},x=(int)Math.Floor(bounds.X-client.X),y=(int)Math.Floor(bounds.Y-client.Y),
                     width=(int)Math.Ceiling(bounds.Width),height=(int)Math.Ceiling(bounds.Height),ownerY=ownerBounds.Y-client.Y,
                     textOrigin,paragraphOrigin,text.BaselineOffset,text.ActualHeight,text.LineHeight,metricsHeight=metrics.ActualHeight,
                     metricsBaseline=metrics.BaselineOffset,textMargin=text.Margin,transformY=((TranslateTransform)text.RenderTransform).Y});
+                if (samples.Count == 1)
+                {
+                    // Public visual inspection can introduce composition boundaries.
+                    // The established glyph mask must survive that native operation,
+                    // just as it must survive the contrast fixture's diagnostics.
+                    for (DependencyObject? current = text; current is FrameworkElement element; current = VisualTreeHelper.GetParent(current))
+                    {
+                        _ = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(element);
+                        if (ReferenceEquals(element, Action)) break;
+                    }
+                }
             }
         }
         finally
@@ -206,6 +232,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
             if(originalForeground==DependencyProperty.UnsetValue)Action.ClearValue(ForegroundProperty);else Action.SetValue(ForegroundProperty,originalForeground);
             if(originalBackground==DependencyProperty.UnsetValue)Action.ClearValue(BackgroundProperty);else Action.SetValue(BackgroundProperty,originalBackground);
             Action.Density=originalDensity;Action.Content=originalContent;
+            if (originalScrollOffset is double offset) scroll!.ChangeView(null, offset, null, true);
         }
         await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baselines-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,establishedInkPixels=establishedInk?.Length,samples}));
     }

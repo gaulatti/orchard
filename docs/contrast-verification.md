@@ -1,5 +1,16 @@
 # Windows contrast verification
 
+The latest Attention renderer candidate has a local reproduction of the hosted
+glyph defect without changing Windows settings. A 36.5px fractional viewport
+scroll fails the initial glyph mask at 46/124. Quantizing native text ascent
+before calculating the baseline margin passes all 124 positions across seven
+scroll/color/background transitions in each theme at
+`artifacts/smoke-attention-scroll-native-ascent`. No mask offset, crop change,
+pixel tolerance or deadline is introduced. The independently restored package
+consumer also verifies text origins and consumer paint across fractional
+scrolling. This is a locally verified renderer correction; the existing real
+Windows contrast mode gate remains required on both hosted architectures.
+
 Run `38452957927` at `46a7ae2` passes the stable-recovery contrast check and
 independent package consumption on both native architectures. Its ordinary
 catalogs fail at separate cursor/input boundaries; the entire run is not green.

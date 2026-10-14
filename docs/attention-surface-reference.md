@@ -229,6 +229,45 @@ The complete local x64 catalog passes at `artifacts/smoke-render-corrections-all
 including all 124 glyph positions in each of the five controlled transitions
 in both themes. Local contrast is off, so actual hosted contrast remains open.
 
+The fractional viewport boundary now reproduces the hosted defect locally.
+The original five-state margin/color/background matrix and public visual
+inspection pass, but adding a 36.5px ScrollViewer offset fails the established
+glyph mask at `artifacts/smoke-attention-scroll-before`. A visual pixel-snapping
+candidate also fails at exactly 46/124, matching the hosted result.
+
+The current correction quantizes the native TextBlock ascent on the device grid
+before calculating its layout margin. The source-centered target baseline is
+unchanged; text origins now land on whole device pixels across fractional
+viewport translations. The focused x64 run at
+`artifacts/smoke-attention-scroll-native-ascent` passes all 124 established glyph
+pixels across seven transitions in each theme, including the 36.5px scroll and
+its reversal. It retains the original glyph mask, crop dimensions, exact color
+comparison and deadlines. The consumer's margin, content, density, foreground,
+background and scroll position are restored. Actual hosted contrast remains a
+required separate gate.
+
+The [WinUI glyph-realization implementation](https://github.com/microsoft/microsoft-ui-xaml/blob/main/dxaml/xcp/core/native/text/Common/D2DTextDrawingContext.cpp)
+rounds the run baseline during realization. This source explains the diagnostic
+hypothesis; the native regression against the repository's pinned SDK is the
+evidence for this correction. The failed visual-snapping candidate is removed.
+The independently restored/published x64 consumer passes in both themes at
+`artifacts/package-consumer-attention-scroll` for package SHA-256
+`c95c07878b02225b91711050b08068743083d81e5900c49c9e3a0a58e58f757f`.
+Its new fixture waits for its ScrollViewer child to load before applying the
+template, then checks consumer paint and whole-device-pixel text origins at
+offsets 0.5/37/0.5. The initial fixture called ApplyTemplate before that child
+was attached and failed; the repaired fixture was republished in the originally
+fresh isolated project, retaining the same hash-verified package and cache.
+This consumer check verifies the package's public rendering path; the catalog
+glyph mask and real hosted contrast transition remain the physical pixel gates.
+The complete local x64 catalog passes both themes at
+`artifacts/smoke-attention-scroll-all`, including all seven-transition masks,
+the frozen Attention layout matrix and other mounted controls. Both solution
+builds have zero warnings and all 38 regressions pass. Windows animations remain
+off, display/text scale remains 1 and contrast remains off on the local host.
+This renderer change has no backend or metrics surface; actual hosted contrast,
+native ARM64 raster and the remaining component acceptance gaps stay open.
+
 The expanded native ancestor diagnostics exposed a separate width defect:
 the compact contrast specimen's owner is 320px wide, while its inner native
 Button and painted border are only 148.735992px wide. The initial source-layout

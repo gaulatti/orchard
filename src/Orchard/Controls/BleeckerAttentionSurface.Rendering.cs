@@ -141,7 +141,11 @@ public sealed partial class BleeckerAttentionSurface
         origin -= lift?.Y ?? 0;
         var lineHeight = text.LineHeight * (text.IsTextScaleFactorEnabled ? settings.TextScaleFactor : 1);
         var target = Math.Round((origin+(lineHeight-metrics.ActualHeight)/2+metrics.BaselineOffset)*scale)/scale;
-        var offset = target-origin-text.BaselineOffset;
+        // Native glyph runs quantize their ascent before the viewport transform.
+        // Use that device-pixel ascent so the final text origin also lands on the
+        // device grid when a ScrollViewer changes its fractional offset.
+        var nativeAscent = Math.Round(text.BaselineOffset * scale) / scale;
+        var offset = target-origin-nativeAscent;
         // Preserve the paragraph's measured height while positioning the native
         // text in layout, before glyph rasterization and its pixel snapping.
         baseline.Y=0;
