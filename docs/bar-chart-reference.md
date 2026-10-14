@@ -94,17 +94,31 @@ physical Tab/Shift+Tab/Enter/arrows, disabled inheritance, remount and template
 restoration, replacement collections, range tooltip content and invalid enums.
 The Tab regression checks the actual focus destination because its key release
 naturally belongs to the new focus target. Arrow/Enter delivery retains the
-normal exactly-one-press/release checks. Package and broader shared-renderer
-verification remain pending at this checkpoint.
+normal exactly-one-press/release checks. These checks run in focused and full
+catalog modes.
 Both x64 and ARM64 solution builds pass with zero warnings. All 43 unit tests
 and the pinned token-generation check pass at `artifacts/tests-bar-chart`.
 The full Light/Dark catalog passes at `artifacts/smoke-bar-chart-full-restored`,
 with the six-minute deadline unchanged. This covers the existing Line Chart,
 Sparkline, Stat Card, tooltip, input and cursor checks alongside the new Bar Chart
-matrix. Fresh isolated-package and published-output checks are the next gate.
+matrix. The package and published-output results follow below.
 The focused `bar-chart-sequence` route also runs Sparkline and Stat Card after
 Bar Chart in each theme. It exposed and now verifies the native input-session
 restoration correction described in [Sparkline evidence](sparkline-reference.md).
+
+Fresh NuGet 0.1.0 from clean implementation commit
+`8e2ee80b2ca83ddf4e0a291833c2cf3c6d102329` has SHA-256
+`71e0ccc1a22c4f4d1e0a17b09c4293d14a7afe39a6a0adb365f4561f1cdeae47`.
+The isolated x64 consumer passes both themes at
+`artifacts/package-consumer-bar-chart`, including grouped geometry, original
+collection identity, native inspection, live orientation and replacement records.
+The isolated ARM64 consumer cross-build passes at
+`artifacts/package-consumer-bar-chart-arm64`; runtimeVerified remains false.
+Both GUID-scoped temporary caches are removed. The separately published x64
+catalog passes the Bar Chart → Sparkline → Stat Card sequence in both themes at
+`artifacts/smoke-bar-chart-published-sequence`. Runnable output is
+`artifacts/catalog-bar-chart`; the package is
+`artifacts/packages-bar-chart/Gaulatti.Orchard.0.1.0.nupkg`.
 
 This component remains in progress. Complete raster/glyph/legend/tooltip effects,
 normal/interrupted motion, full formatter/content/key/override/RTL matrix,

@@ -103,7 +103,8 @@ now requires exactly one native press/release at the actual focused chart and
 retains data, loaded/focus state, tooltip items, private interaction channels and
 profile state on failure. It sends no additional key and changes no expected
 output or two-second settling deadline. Focused Light/Dark checks pass at
-`artifacts/smoke-sparkline-bar-key-ack`. Full-sequence confirmation remains pending.
+`artifacts/smoke-sparkline-bar-key-ack`. The sequence investigation and final
+confirmation follow below.
 
 The shorter Bar Chart → Sparkline → Stat Card sequence reproduces a pointer
 channel override before any Sparkline arrow. At
