@@ -31,6 +31,8 @@
     "BleeckerPageHeader": "PageHeadersFixture.xaml",
     "BleeckerSectionHeader": "SectionHeadersFixture.xaml",
     "BleeckerDashboardSection": "DashboardSectionsFixture.xaml",
+    "BleeckerDashboardGrid": "DashboardGridsFixture.xaml",
+    "BleeckerDashboardSpan": "DashboardGridsFixture.xaml",
     "BleeckerLineChart": "LineChartsFixture.xaml",
     "BleeckerChartSeries": "ChartThemesFixture.xaml",
     "BleeckerAttentionSurface": "AttentionSurfacesFixture.xaml",

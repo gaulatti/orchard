@@ -48,6 +48,9 @@ variants, sizes, commands and loading. `BleeckerDashboardSection` groups consume
 `Content` beneath optional `Title`, `Description` and `Action` values; its header
 stacks below a 640px window viewport and aligns its action to the bottom above
 that breakpoint. Full visual/platform acceptance remains in progress.
+`BleeckerDashboardGrid` accepts consumer children, Columns 1–6 or automatic (0),
+and responsive `BleeckerDashboardSpan` wrappers (One–Four or Full). The 24px gap
+uses the shared group token; window viewport breakpoints follow the source.
 `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;

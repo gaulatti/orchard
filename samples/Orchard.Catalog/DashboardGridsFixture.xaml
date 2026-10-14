@@ -1,0 +1,18 @@
+<UserControl x:Class="Orchard.Catalog.DashboardGridsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Dashboard grids" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <orchard:BleeckerDashboardSection Title="Monitoring" Description="Fictional local queue data; no service connection.">
+   <orchard:BleeckerDashboardGrid x:Name="Specimen" Columns="3">
+    <orchard:BleeckerDashboardSpan><orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Ready for review" Style="{StaticResource BleeckerBodyStyle}" /><TextBlock Text="18" Style="{StaticResource BleeckerHeadingStyle}" /></StackPanel></orchard:BleeckerCard></orchard:BleeckerDashboardSpan>
+    <orchard:BleeckerDashboardSpan><orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Review progress" Style="{StaticResource BleeckerBodyStyle}" /><orchard:BleeckerProgress Value="65" ShowLabel="True" AutomationProperties.Name="Fictional review progress" /></StackPanel></orchard:BleeckerCard></orchard:BleeckerDashboardSpan>
+    <orchard:BleeckerDashboardSpan><orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Awaiting assignment" Style="{StaticResource BleeckerBodyStyle}" /><TextBlock Text="4" Style="{StaticResource BleeckerHeadingStyle}" /></StackPanel></orchard:BleeckerCard></orchard:BleeckerDashboardSpan>
+   </orchard:BleeckerDashboardGrid>
+  </orchard:BleeckerDashboardSection>
+  <orchard:BleeckerDashboardSection Title="Editorial" Description="Consumer-owned content and actions in responsive spans.">
+   <orchard:BleeckerDashboardGrid Columns="3">
+    <orchard:BleeckerDashboardSpan Span="Two"><orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="A fictional city opens a new reading room" Style="{StaticResource BleeckerHeadingStyle}" FontSize="22" /><TextBlock Text="An example review card with native text reflow and an independent command surface." Style="{StaticResource BleeckerBodyStyle}" /><orchard:BleeckerButton Content="Open review" HorizontalAlignment="Left" Click="OnReview" /></StackPanel></orchard:BleeckerCard></orchard:BleeckerDashboardSpan>
+    <orchard:BleeckerDashboardSpan><orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Workspace notes" Style="{StaticResource BleeckerHeadingStyle}" FontSize="22" /><TextBlock x:Name="ReviewStatus" Text="No review opened" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite" /></StackPanel></orchard:BleeckerCard></orchard:BleeckerDashboardSpan>
+   </orchard:BleeckerDashboardGrid>
+  </orchard:BleeckerDashboardSection>
+ </StackPanel>
+</UserControl>

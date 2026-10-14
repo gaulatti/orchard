@@ -28,6 +28,9 @@ Dashboard Sections follows Section Headers. Focused `-Component dashboard-sectio
 checks the frozen source's 639/640px viewport boundary, trailing/bottom action
 placement, optional content, RTL/multilingual text, live updates, template
 replacement and physical Tab/Space traversal through consumer children.
+Dashboard Grids follows Dashboard Sections, with monitoring/editorial examples
+and focused `-Component dashboard-grid` coverage of responsive tracks, spans,
+implicit columns, live child changes and native keyboard traversal.
 
 Breadcrumb is registered after Avatars, with source threshold boundaries,
 independent wrapping, custom content, keyboard expansion and consumer updates.

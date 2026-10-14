@@ -84,6 +84,11 @@
                     <orchard:BleeckerDashboardSection.Action><Border Width="80" Height="32" /></orchard:BleeckerDashboardSection.Action>
                     <Border Height="64" />
                 </orchard:BleeckerDashboardSection>
+                <orchard:BleeckerDashboardGrid x:Name="PackageDashboardGrid" Columns="2" Width="600" HorizontalAlignment="Left">
+                    <orchard:BleeckerDashboardSpan><Border Height="32" /></orchard:BleeckerDashboardSpan>
+                    <orchard:BleeckerDashboardSpan><Border Height="48" /></orchard:BleeckerDashboardSpan>
+                    <orchard:BleeckerDashboardSpan Span="Full"><Border Height="40" /></orchard:BleeckerDashboardSpan>
+                </orchard:BleeckerDashboardGrid>
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
                 <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon">
                     <orchard:BleeckerTooltipService.ToolTip><orchard:BleeckerTooltip x:Name="PackageTooltip" Content="Save with icon" /></orchard:BleeckerTooltipService.ToolTip>

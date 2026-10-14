@@ -196,6 +196,7 @@ public sealed partial class MainWindow : Window
                 await VerifyPageHeaderAsync();
                 VerifySectionHeader();
                 VerifyDashboardSection();
+                VerifyDashboardGrid();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -288,6 +289,19 @@ public sealed partial class MainWindow : Window
             else link.SetValue(Control.ForegroundProperty, originalPaint);
             link.IsEnabled = originalEnabled;
         }
+    }
+
+    private void VerifyDashboardGrid()
+    {
+        Root.UpdateLayout();
+        Require(Root.XamlRoot.Size.Width>=640,"Packaged Dashboard Grid requires the documented desktop viewport.");
+        var first=(BleeckerDashboardSpan)PackageDashboardGrid.Children[0];var second=(BleeckerDashboardSpan)PackageDashboardGrid.Children[1];var full=(BleeckerDashboardSpan)PackageDashboardGrid.Children[2];
+        Require(Math.Abs(first.ActualWidth-288)<.001&&Math.Abs(second.TransformToVisual(PackageDashboardGrid).TransformPoint(new Windows.Foundation.Point()).X-312)<.001&&
+            Math.Abs(full.ActualWidth-600)<.001&&Math.Abs(PackageDashboardGrid.ActualHeight-112)<.001&&!first.IsTabStop&&!PackageDashboardGrid.IsTabStop,
+            "Packaged Dashboard Grid lost its responsive tracks, span or passive semantics.");
+        var content=first.Content;first.Span=BleeckerDashboardSpanSize.Full;Root.UpdateLayout();
+        Require(Math.Abs(first.ActualWidth-600)<.001&&ReferenceEquals(first.Content,content),"Packaged Dashboard Grid lost live span changes or child identity.");
+        first.Span=BleeckerDashboardSpanSize.One;Root.UpdateLayout();
     }
 
     private void VerifyDashboardSection()

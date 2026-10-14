@@ -40,6 +40,7 @@
         <EmbeddedResource Include="../../tests/Reference/PageHeaderLayout.json" LogicalName="Orchard.Catalog.Reference.PageHeaderLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/SectionHeaderLayout.json" LogicalName="Orchard.Catalog.Reference.SectionHeaderLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/DashboardSectionLayout.json" LogicalName="Orchard.Catalog.Reference.DashboardSectionLayout.json" />
+        <EmbeddedResource Include="../../tests/Reference/DashboardGridLayout.json" LogicalName="Orchard.Catalog.Reference.DashboardGridLayout.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

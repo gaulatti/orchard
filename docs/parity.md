@@ -45,7 +45,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | sankey-chart | Pending | Pending | Full pinned contract |
 | sunburst-chart | Pending | Pending | Full pinned contract |
 | stat-card | Pending | Pending | Full pinned contract |
-| dashboard-grid | Pending | Pending | Full pinned contract |
+| dashboard-grid | `BleeckerDashboardGrid` and `BleeckerDashboardSpan`: viewport columns, responsive/full spans and consumer children | Registered 96-case frozen layout, mutation/keyboard fixture and independent consumer; monitoring/editorial compositions | In progress: [source contract and evidence](dashboard-grid-reference.md); full intrinsic/override matrix, raster, contrast/Narrator/scaling and platform acceptance |
 | dashboard-section | `BleeckerDashboardSection`: consumer content, optional title/description/action and viewport-responsive header | Registered 50-case frozen layout, binding/lifecycle/keyboard fixture and independent consumer | In progress: [source contract and evidence](dashboard-section-reference.md); exact raster, minimum-content/override matrix, contrast/Narrator/scaling and full platform acceptance |
 | page-header | `BleeckerPageHeader`: consumer title, description, breadcrumbs, wrapping actions and Back commands/routes | Registered sixteen-case viewport/RTL and content/lifecycle/keyboard fixture; independent package consumer | In progress: [source contract and API](page-header-reference.md); exact text balancing/raster, minimum-content constraints, contrast/Narrator/scaling and full platform acceptance |
 | sidebar | Pending | Pending | Full pinned contract |

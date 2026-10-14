@@ -25,6 +25,8 @@ The [Section Header preview](docs/section-header-reference.md) supplies a
 level-two heading, optional eyebrow and consumer-owned summary.
 The [Dashboard Section preview](docs/dashboard-section-reference.md) groups
 consumer content beneath an optional responsive heading and action.
+The [Dashboard Grid preview](docs/dashboard-grid-reference.md) supplies responsive
+columns and spans, with fictional monitoring and editorial catalog compositions.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

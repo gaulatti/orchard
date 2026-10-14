@@ -94,6 +94,7 @@
                 <local:PageHeadersFixture x:Name="PageHeaders" />
                 <local:SectionHeadersFixture x:Name="SectionHeaders" />
                 <local:DashboardSectionsFixture x:Name="DashboardSections" />
+                <local:DashboardGridsFixture x:Name="DashboardGrids" />
                 <local:TooltipsFixture x:Name="Tooltips" />
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />
