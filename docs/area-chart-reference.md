@@ -82,6 +82,32 @@ path resolved its brush before inheriting the chart theme. Fill/stroke/dot theme
 references now stay on the rendered elements; captured colors and explicit
 consumer brush identity both pass.
 
+Independent package verification exposed two further boundaries. The native
+opacity getter returns the exact float representation `0.20000000298023224`;
+the consumer compares `(double)(float).2` while retaining its geometry, fill,
+closure and stroke assertions. The original decimal equality rejected an
+otherwise correct `(60,87.5)` filled/closed boundary.
+
+More significantly, the original package intermittently stopped observing
+live data after a quick remount. The unchanged binary's native control run at
+`artifacts/package-consumer-chart-observer-control` records `Loaded` followed
+by the previous `Unloaded`, with `IsLoaded` still true in that delayed callback.
+The attached renderer and original collection still match, focus and keyboard
+index remain correct, and no pointer events intervene, but `observedData` is
+null and the tooltip retains `B : 20` after the consumer changes B to 30.
+This establishes a lifecycle defect rather than a pointer or value-formatting
+failure. A temporary diagnostic build altered the timing and passed; those
+passes alone do not establish the repair.
+
+The shared renderer now resets inspection and reconnects observations/effects
+on the current `Loaded`, and skips stale unload cleanup while it is connected
+again. This applies to Line Chart, Bar Chart, Sparkline and Stat Card history
+as well as Area Chart. The native Area Chart fixture proves both real detached
+observer cleanup and live path changes after rapid reparenting at
+`artifacts/smoke-area-chart-observer`, in both themes. Temporary product tracing
+was removed. Package failures retain actual data/observer, focus/input and
+lifecycle diagnostics.
+
 This component remains **in progress**. Full area/glyph/legend/tooltip raster
 and effect equivalence, normal/interrupted motion, the complete content/key/
 formatter/override/RTL matrix, actual contrast, Narrator, display/text scaling,

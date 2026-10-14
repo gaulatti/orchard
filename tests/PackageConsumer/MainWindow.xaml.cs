@@ -337,8 +337,9 @@ public sealed partial class MainWindow : Window
         Microsoft.UI.Xaml.Shapes.Path[] Paths() => plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().ToArray();
         await AwaitAsync(() => Paths().Length == 2, "Packaged Area Chart did not render its area and boundary.");
         var area = (PathGeometry)Paths()[0].Data; var first = area.Figures[0].StartPoint;
-        Require(Math.Abs(first.X - 60) < .001 && Math.Abs(first.Y - 87.5) < .001 && area.Figures[0].IsFilled && area.Figures[0].IsClosed && Paths()[0].Opacity == .2 && Paths()[1].StrokeThickness == 2,
-            "Packaged Area Chart lost its source fill/boundary geometry.");
+        // The native Opacity getter returns 0.2 rounded to float precision.
+        Require(Math.Abs(first.X - 60) < .001 && Math.Abs(first.Y - 87.5) < .001 && area.Figures[0].IsFilled && area.Figures[0].IsClosed && Paths()[0].Opacity == (double)(float).2 && Paths()[1].StrokeThickness == 2,
+            $"Packaged Area Chart lost its source fill/boundary geometry: start=({first.X:R},{first.Y:R}), filled={area.Figures[0].IsFilled}, closed={area.Figures[0].IsClosed}, opacity={Paths()[0].Opacity:R}, stroke={Paths()[1].StrokeThickness:R}.");
         Require(ReferenceEquals(chart.Data, PackageAreaChart.Data) && ReferenceEquals(chart.Series, PackageAreaChart.Series) && !PackageAreaChart.IsTabStop && chart.IsTabStop && AutomationProperties.GetName(chart) == "Independent areas" && FrameworkElementAutomationPeer.CreatePeerForElement(chart).GetClassName() == nameof(BleeckerAreaChart), "Packaged Area Chart lost consumer identity or its native inspection boundary.");
         await AcquireConsumerInputAsync(); Require(chart.Focus(FocusState.Keyboard), "Could not focus packaged Area Chart.");
         await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "A;  : 10", "Packaged Area Chart did not inspect its first category.");
@@ -349,11 +350,32 @@ public sealed partial class MainWindow : Window
         await AwaitAsync(() => Paths().Length == 4 && ((PathGeometry)Paths()[3].Data).Figures[0].StartPoint.Y < ((PathGeometry)Paths()[1].Data).Figures[0].StartPoint.Y, "Packaged Area Chart did not accumulate live consumer series.");
         PackageAreaChart.Series.Remove(second);
         PackageAreaChart.Data[1] = new Dictionary<string, object?> { ["label"] = "B", ["v"] = 30d };
-        await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 30", "Packaged Area Chart ignored replacement records.");
+        try { await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 30", "Packaged Area Chart ignored replacement records."); }
+        catch (Exception error) { throw new InvalidOperationException(error.Message + " " + ChartObservation(chart), error); }
+    }
+
+    private static string ChartObservation(BleeckerLineChart chart)
+    {
+        object? Field(string name) => typeof(BleeckerLineChart).GetField(name, System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)?.GetValue(chart);
+        return System.Text.Json.JsonSerializer.Serialize(new { chart.IsLoaded, help = AutomationProperties.GetHelpText(chart), data = chart.Data, observedData = Field("observedData") });
     }
 
     private async Task VerifyBarChartAsync()
     {
+        var lifecycle = new List<object>();
+        object Snapshot(BleeckerLineChart item, string kind) {
+            var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+            var observed = typeof(BleeckerLineChart).GetField("observedData", flags)!.GetValue(item);
+            return new { kind, item.IsLoaded, sameData = ReferenceEquals(item.Data, PackageBarChart.Data), observedNull = observed is null, observedSame = ReferenceEquals(observed, item.Data) };
+        }
+        void Trace(BleeckerLineChart item) {
+            lifecycle.Add(Snapshot(item, "attach"));
+            item.Loaded += (_, _) => lifecycle.Add(Snapshot(item, "loaded"));
+            item.Unloaded += (_, _) => lifecycle.Add(Snapshot(item, "unloaded"));
+            item.RegisterPropertyChangedCallback(BleeckerLineChart.DataProperty, (_, _) => lifecycle.Add(Snapshot(item, "data")));
+            item.RegisterPropertyChangedCallback(BleeckerLineChart.SeriesProperty, (_, _) => lifecycle.Add(Snapshot(item, "series")));
+        }
+        var prior = BrandDescendants<BleeckerLineChart>(PackageBarChart).FirstOrDefault(); if (prior is not null) Trace(prior);
         PackageBarChart.Layout=BleeckerBarChartLayout.Horizontal;
         PackageBarChart.Data[1]=new Dictionary<string,object?>{{"label","B"},{"v",20d}};
         var parent=(Panel)VisualTreeHelper.GetParent(PackageBarChart);var position=parent.Children.IndexOf(PackageBarChart);
@@ -361,6 +383,10 @@ public sealed partial class MainWindow : Window
         parent.Children.Insert(position,PackageBarChart);await AwaitAsync(()=>PackageBarChart.IsLoaded,"Packaged Bar Chart did not remount.");
         PackageBarChart.ApplyTemplate();Root.UpdateLayout();
         var chart=BrandDescendants<BleeckerLineChart>(PackageBarChart).Single();var plot=BrandDescendants<Canvas>(chart).Single(canvas=>canvas.Name=="PART_Plot");
+        if (!ReferenceEquals(chart, prior)) Trace(chart);
+        var pointerTrace = new List<object>();
+        chart.PointerMoved += (_, e) => { var p = e.GetCurrentPoint(chart).Position; pointerTrace.Add(new { kind = "move", p.X, p.Y }); };
+        chart.PointerExited += (_, _) => pointerTrace.Add(new { kind = "exit" });
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==2,"Packaged Bar Chart did not render its consumer records.");
         var first=((PathGeometry)plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().First().Data).Figures[0].StartPoint;
         Require(Math.Abs(first.X-72)<.001&&Math.Abs(first.Y-91.5)<.001&&ReferenceEquals(chart.Data,PackageBarChart.Data)&&ReferenceEquals(chart.Series,PackageBarChart.Series),"Packaged Bar Chart lost source geometry or original consumer collections.");
@@ -373,8 +399,19 @@ public sealed partial class MainWindow : Window
         PackageBarChart.Layout=BleeckerBarChartLayout.Vertical;
         await AwaitAsync(()=>((PathGeometry)plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().First().Data).Figures[0].StartPoint.X==60,"Packaged Bar Chart ignored a live orientation change.");
         PackageBarChart.Data[1]=new Dictionary<string,object?>{{"label","B"},{"v",30d}};
-        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="B;  : 30","Packaged Bar Chart ignored live replacement records.");
+        try { await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="B;  : 30","Packaged Bar Chart ignored live replacement records."); }
+        catch (Exception error)
+        {
+            var interaction = typeof(BleeckerLineChart).GetField("interaction", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(chart)!;
+            var state = interaction.GetType().GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).ToDictionary(field => field.Name, field => field.GetValue(interaction));
+            GetCursorPos(out var pointer); var origin = chart.TransformToVisual(Root).TransformPoint(new Windows.Foundation.Point());
+            object? Field(string name) => typeof(BleeckerLineChart).GetField(name, System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(chart);
+            throw new InvalidOperationException(error.Message + " " + ChartObservation(chart) + " " + System.Text.Json.JsonSerializer.Serialize(new { help = AutomationProperties.GetHelpText(chart), focus = ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), chart), foreground = GetForegroundWindow().ToInt64(), nativeX = pointer.X, nativeY = pointer.Y, origin.X, origin.Y, chart.ActualWidth, chart.ActualHeight, chart.IsLoaded, wrapperLoaded = PackageBarChart.IsLoaded, sameData = ReferenceEquals(chart.Data, PackageBarChart.Data), observedData = ReferenceEquals(Field("observedData"), chart.Data), observedNull = Field("observedData") is null, queued = Field("queued"), current = BrandDescendants<BleeckerLineChart>(PackageBarChart).Select(item => ReferenceEquals(item, chart)).ToArray(), data = chart.Data, ownerData = PackageBarChart.Data, state, pointerTrace, lifecycle }), error);
+        }
     }
+
+    [DllImport("user32.dll")] private static extern bool GetCursorPos(out ConsumerCursorPoint point);
+    [StructLayout(LayoutKind.Sequential)] private struct ConsumerCursorPoint { public int X, Y; }
 
     private async Task VerifyStatCardAsync()
     {

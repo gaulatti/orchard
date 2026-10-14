@@ -1,5 +1,12 @@
 # Line Chart frozen contract and acceptance
 
+The shared chart renderer now preserves its current observers/effects when a
+previous `Unloaded` arrives after a quick remount's `Loaded`. The current load
+resets inspection and reconnects the live consumer data and tooltip effects.
+[The Area Chart evidence](area-chart-reference.md) records the actual event
+order, the independent consumer's stale value and the native detach/reparent
+regression checks. This also covers Bar Chart, Sparkline and Stat Card history.
+
 Run `38578657500` fails the ARM64 full sequence's `explicit-transparent`
 category-indicator assertion after the tooltip checks. The focused chart
 passes that same run. A rejected indicator now retains its count before/after

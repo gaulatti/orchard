@@ -1,5 +1,11 @@
 # Bar Chart source contract and evidence
 
+Independent package mutation checks subsequently exposed a shared chart
+remount defect: a delayed `Unloaded` ran after the new `Loaded` while the
+renderer was connected, detaching the original collection's observers. See
+[the lifecycle diagnosis and repair](area-chart-reference.md). The repair
+preserves data, geometry, pointer behavior and verification deadlines.
+
 `BleeckerBarChart` implements the pinned [Bleecker Bar Chart](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/bar-chart.tsx).
 Source SHA-256: `dcd8c302e50d0b8255207a57603999a5498cf4361034021d71aab96cd6f65235`.
 The capture uses the frozen React 19.2.4 / Recharts 3.8.1 dependency lock and the

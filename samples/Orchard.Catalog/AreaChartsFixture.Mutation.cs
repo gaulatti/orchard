@@ -68,8 +68,17 @@ public sealed partial class AreaChartsFixture
         chart.ShowLegend = true;
         await AwaitAsync(() => Part<Canvas>(inner, "PART_Legend").Children.Count == 1, "Area Chart ignored legend visibility.");
         chart.IsEnabled = false; UpdateLayout(); Require(!inner.IsEnabled, "Disabled Area Chart retained an enabled inspection child."); chart.IsEnabled = true;
-        stack.Children.Remove(chart); await AwaitAsync(() => !chart.IsLoaded, "Area Chart did not unmount."); row.Set("v", 18d);
+        stack.Children.Remove(chart); await AwaitAsync(() => !chart.IsLoaded, "Area Chart did not unmount.");
+        await FrameAsync(); await FrameAsync();
+        var observedField = typeof(BleeckerLineChart).GetField("observedData", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+        Require(!inner.IsLoaded && observedField.GetValue(inner) is null, "Detached Area Chart retained data observers.");
+        row.Set("v", 18d);
         stack.Children.Insert(1, chart); await AwaitAsync(() => chart.IsLoaded && Areas().Length == 2, "Area Chart did not remount changed records.");
+        stack.Children.Remove(chart); stack.Children.Insert(1, chart);
+        await FrameAsync(); await FrameAsync();
+        var priorY = StartY(1);
+        row.Set("v", 19d);
+        await AwaitAsync(() => StartY(1) < priorY && ReferenceEquals(observedField.GetValue(inner), rows), "A delayed unload detached the remounted Area Chart's live records.");
         var original = chart.Template;
         chart.Template = (ControlTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'><Grid /></ControlTemplate>"); chart.ApplyTemplate(); UpdateLayout();
         await AwaitAsync(() => !inner.IsLoaded, "Detached Area Chart renderer remained mounted.");

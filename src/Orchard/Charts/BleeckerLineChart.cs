@@ -41,7 +41,7 @@ public sealed partial class BleeckerLineChart : Control
     {
         DefaultStyleKey = typeof(BleeckerLineChart);
         Data = new ObservableCollection<IReadOnlyDictionary<string, object?>>(); Series = new ObservableCollection<BleeckerChartSeries>();
-        Loaded += (_, _) => { Observe(); Render(); ConnectTooltipEffects(); }; Unloaded += (_, _) => { StopObserving();interaction.Reset(); ClearActive(); DisconnectTooltipEffects(); };
+        Loaded += OnChartLoaded; Unloaded += OnChartUnloaded;
         SizeChanged += (_, _) => QueueRender(); ActualThemeChanged += (_, _) => QueueRender();
         RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => QueueRender());
         PointerMoved += OnPointerMoved; PointerExited += (_, _) => {interaction.Exit();PaintInteraction();};
@@ -66,6 +66,18 @@ public sealed partial class BleeckerLineChart : Control
     public static readonly DependencyProperty TooltipFormatterProperty = DependencyProperty.Register(nameof(TooltipFormatter), typeof(object), typeof(BleeckerLineChart), new PropertyMetadata(null, OnAppearanceChanged));
     public Func<double, string>? YAxisTickFormatter { get => (Func<double, string>?)GetValue(YAxisTickFormatterProperty); set => SetValue(YAxisTickFormatterProperty, value); }
     public Func<double, string>? TooltipFormatter { get => (Func<double, string>?)GetValue(TooltipFormatterProperty); set => SetValue(TooltipFormatterProperty, value); }
+
+    private void OnChartLoaded(object sender, RoutedEventArgs args)
+    {
+        interaction.Reset(); DisconnectTooltipEffects(); Observe(); Render(); ConnectTooltipEffects();
+    }
+    private void OnChartUnloaded(object sender, RoutedEventArgs args)
+    {
+        // A quick reparent can deliver the previous Unloaded after the new
+        // Loaded. The current connection owns its observers and effects.
+        if (IsLoaded) return;
+        StopObserving(); interaction.Reset(); ClearActive(); DisconnectTooltipEffects();
+    }
 
     private static void OnDataChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args)
     {
