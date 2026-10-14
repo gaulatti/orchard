@@ -26,6 +26,20 @@ public sealed partial class SwitchesFixture : UserControl
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, bool physicalInput = false)
     {
+        var untemplated = new BleeckerSwitch { Label = "Unmounted switch metadata" };
+        Require(VisualTreeHelper.GetChildrenCount(untemplated) == 0, "Untemplated switch regression already has presentation.");
+        var earlyPeer = FrameworkElementAutomationPeer.CreatePeerForElement(untemplated);
+        Require(earlyPeer.IsControlElement() && earlyPeer.IsContentElement() && earlyPeer.IsEnabled(),
+            "Untemplated switch metadata cannot be queried by UI Automation.");
+        untemplated.IsEnabled = false;
+        Require(earlyPeer.IsControlElement() && earlyPeer.IsContentElement() && !earlyPeer.IsEnabled(),
+            "Untemplated switch metadata lost disabled state.");
+        AutomationProperties.SetAccessibilityView(untemplated,AccessibilityView.Raw);
+        Require(!earlyPeer.IsControlElement() && !earlyPeer.IsContentElement(), "Untemplated switch ignored its consumer's Raw accessibility view.");
+        AutomationProperties.SetAccessibilityView(untemplated,AccessibilityView.Content);
+        Require(earlyPeer.IsControlElement() && earlyPeer.IsContentElement(), "Untemplated switch did not restore its consumer's Content accessibility view.");
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"switch-untemplated-{scheme}.json"),
+            JsonSerializer.Serialize(new { passed=true, visualChildren=VisualTreeHelper.GetChildrenCount(untemplated), control=earlyPeer.IsControlElement(), content=earlyPeer.IsContentElement(), enabled=earlyPeer.IsEnabled() }));
         UpdateLayout();
         await Task.Delay(100);
         await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"switch-initial-{scheme}.png"));

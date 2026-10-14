@@ -254,8 +254,11 @@ public sealed class BleeckerSwitch : Control
         protected override string GetClassNameCore() => nameof(BleeckerSwitch);
         protected override AutomationControlType GetAutomationControlTypeCore() => NativePeer.GetAutomationControlType();
         protected override string GetLocalizedControlTypeCore() => NativePeer.GetLocalizedControlType();
-        protected override bool IsControlElementCore() => NativePeer.IsControlElement();
-        protected override bool IsContentElementCore() => NativePeer.IsContentElement();
+        // UIA queries these visibility contracts while XAML constructs the
+        // tree, before PART_Switch exists. Use this public owner's framework
+        // metadata, which also preserves an explicit accessibility view.
+        protected override bool IsControlElementCore() => base.IsControlElementCore();
+        protected override bool IsContentElementCore() => base.IsContentElementCore();
         protected override object GetPatternCore(PatternInterface pattern) => pattern == PatternInterface.Toggle ? this : base.GetPatternCore(pattern);
         protected override IList<AutomationPeer> GetChildrenCore() => null!;
         protected override bool IsKeyboardFocusableCore() => NativePeer.IsKeyboardFocusable();

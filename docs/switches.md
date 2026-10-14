@@ -1,5 +1,22 @@
 # Switch
 
+The UI Automation control/content visibility metadata is independent of the
+template. XAML can query these properties, including while reading enabled
+state, before PART_Switch exists. Both now use the public owner's native
+framework metadata, including explicit Raw/Content accessibility views;
+actions, role, localization and focus still use the actual
+native input. The catalog regression creates an unmounted switch with zero
+visual children and queries control/content visibility and enabled/disabled
+state, recording `switch-untemplated-{scheme}.json`. The old peer throws on
+this boundary and can abort catalog startup. The complete focused x64 Switch
+suite passes both themes at `artifacts/smoke-switch-untemplated`, including
+the zero-child metadata queries and Raw/Content view changes. The correction
+does not change toggle, role, localization or focus delegation. Hosted
+verification and broader accessibility acceptance remain open.
+Both final architecture builds are clean; the existing 38 resource/regression
+tests and fresh isolated x64 package consumer also pass. This is a native
+control metadata correction with no backend or metrics impact.
+
 `BleeckerSwitch` is a preview of the fixed Bleecker `src/components/switch.tsx`
 at commit `a86059013cd59684ce452849278ea81e734f2066`.
 
