@@ -112,6 +112,30 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff, "hit-testing-disabled", false, 32512, anchor);
             DisabledOff.IsHitTestVisible = true; UpdateLayout();
             await Check(DisabledOff, "hit-testing-restored", true, 32648, anchor);
+            var canceledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
+            var completedBefore=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
+            NativeCursorDiagnostics.QueueOwnedRepublish(DisabledOff);
+            DisabledOff.IsHitTestVisible=false;UpdateLayout();
+            try
+            {
+                await WaitOwnedAsync(()=>NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls")==canceledBefore+1&&
+                    NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls")==completedBefore&&
+                    CurrentCheckboxCursor()==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32512)),
+                    "Queued cursor publication survived its native owner release.");
+            }
+            finally
+            {
+                await File.WriteAllTextAsync(Path.Combine(folder,$"checkbox-queued-cancellation-{scheme}.json"),JsonSerializer.Serialize(new
+                {
+                    canceledBefore,completedBefore,
+                    canceledAfter=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls"),
+                    completedAfter=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls"),
+                    cursor=NativeInputSession.DescribeCursor(),publication=NativeCursorDiagnostics.Describe(DisabledOff)
+                }));
+            }
+            await Check(DisabledOff,"queued-publication-canceled",false,32512,anchor);
+            DisabledOff.IsHitTestVisible=true;UpdateLayout();
+            await Check(DisabledOff,"queued-publication-owner-restored",true,32648,anchor);
             for (var round = 0; round < 12; round++)
             {
                 DisabledOff.IsHitTestVisible = false; UpdateLayout();

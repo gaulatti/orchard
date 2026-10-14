@@ -1,5 +1,62 @@
 # Input editing preview
 
+The next cursor candidate separates the stale-value recovery assignments into
+two dispatcher callbacks. The current same-callback producer/UniversalNo
+transition still fails on ARM64 despite continued publication, correct paint,
+owned foreground/point and matching source/root dispatcher identity. Combining
+the assignments inside the SDK is a hypothesis, not an established cause.
+
+On a detected owned mismatch, the publisher assigns its exact retained
+producer selection and queues UniversalNo at Low priority. Rendering/layout
+refreshes preserve the intermediate selection while that operation is pending.
+The callback checks its version, current root/source and active ownership.
+Release invalidates queued work before restoring the latest native producer;
+resource/null selections remain authoritative. Queue rejection fails explicitly.
+Normal publication and the existing restore path are otherwise unchanged.
+There is no SetCursor call, invented restore shape, widened deadline or
+substitution for GetCursorInfo's displayed handle and showing flag. The queue
+ordering follows [DispatcherQueue.TryEnqueue](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.dispatching.dispatcherqueue.tryenqueue?view=windows-app-sdk-2.0).
+
+The focused local x64 suite passes both themes at
+`artifacts/smoke-cursor-dispatch-input`, including all 192 rounded samples and
+final cursor exit. Its counters record twenty completed deferred publications
+in each theme (cumulative twenty/forty), so the candidate path was exercised.
+Catalog diagnostics record queued/completed/canceled counts and pending state.
+The Checkbox regression deliberately schedules this real publication for its
+actual owner, disables native hit testing before delivery, then requires one
+canceled callback, no completion, an actual Arrow and unchanged pointer
+position before restoring the owner. This controlled scheduling is test-only;
+it does not replace native cursor assertions or expose a production API.
+Native ARM64 recovery and the complete lifecycle suite remain required.
+
+The first complete candidate run at `artifacts/smoke-cursor-dispatch-full`
+passes Light cancellation, then fails the same strict check in Dark. Disabling
+IsHitTestVisible does not necessarily refresh the observer synchronously before
+a Low-priority callback. That exposes stale ownership at delivery. The callback
+now re-reads the actual native point and current XAML hit before evaluating its
+version/source/ownership guards. The test records counters and the real cursor
+on both success and failure, and keeps its exact cancellation/no-completion
+and displayed-Arrow requirements. Recovery remains a candidate pending the
+updated complete run and hosted ARM64 verification.
+
+The corrected complete local suite passes both themes at
+`artifacts/smoke-cursor-dispatch-delivery-hit`, including Input rounded samples,
+stationary-pointer hit testing, template removal/restoration, re-enable,
+remount, clipping/occlusion, scrolling and shared Input/Checkbox ownership.
+The cancellation record preserves counters and the actual global cursor:
+Light changes canceled 2 to 3 with completed fixed at 38; Dark changes canceled
+6 to 7 with completed fixed at 80. Each owner restoration again requires the
+actual UniversalNo cursor. The previous Dark failure is therefore a regression
+for the delivery-time hit check, with no relaxed cancellation or cursor gate.
+This is native-only and has no backend/metrics impact. Hosted ARM64 recovery,
+real contrast and independent package consumption remain pending.
+
+Both final solution builds pass without warnings and all 38 unit/resource
+regressions pass at `artifacts/tests-cursor-dispatch`. Local disk capacity does
+not support another fresh independent restore; the hosted consumer remains a
+required gate. No complete cursor or component acceptance is claimed before
+native ARM64 and real-contrast results establish this candidate's behavior.
+
 The pinned browser Input paints its background through the complete border
 box. Its source SHA-256 is
 `01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192`.

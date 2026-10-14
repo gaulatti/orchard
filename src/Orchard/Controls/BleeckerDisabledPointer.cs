@@ -19,6 +19,11 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     internal bool IsOver { get; private set; }
     internal bool OwnsCursor => BleeckerPointerCursor.IsOwner(this);
 
+    internal static void RefreshRoot(UIElement root)
+    {
+        if(roots.TryGetValue(root,out var observer))observer.Refresh();
+    }
+
     internal void Update()
     {
         var root = owner.IsLoaded && (observeEnabled || !owner.IsEnabled) && bounds() is not null ? owner.XamlRoot?.Content : null;
@@ -244,6 +249,8 @@ internal static class BleeckerPointerCursor
         private InputCursor? selected;
         private InputSystemCursor? publishedBlocked;
         private long blockCalls, republishCalls, restoreCalls;
+        private long publicationVersion, queuedRepublishCalls, completedRepublishCalls, canceledRepublishCalls;
+        private bool republishQueued;
         private bool lastReadWasBlocked;
         private long lastVisibleHandle;
         private string? lastRestoredType;
@@ -252,6 +259,10 @@ internal static class BleeckerPointerCursor
         internal void Block()
         {
             blockCalls++;
+            // Keep the intermediate producer selection visible to the SDK
+            // until its queued counterpart runs. Rendering/layout refreshes
+            // must not collapse both assignments back into this dispatch.
+            if (republishQueued) return;
             var current = Source(root);
             var cursor = current.Cursor;
             // Preserve cursor values published by WinUI while our override is
@@ -269,9 +280,9 @@ internal static class BleeckerPointerCursor
             if (ReadCursor(ref visible) && (visible.Flags & 1) != 0 &&
                 visible.Cursor != LoadSystemCursor(IntPtr.Zero, new IntPtr(32648)) && IsBlocked(cursor))
             {
-                republishCalls++;
-                current.Cursor = selected;
-                publishedBlocked = ReferenceEquals(publishedBlocked, blocked) ? republishedBlocked : blocked;
+                lastVisibleHandle=visible.Cursor.ToInt64();
+                QueueRepublish(current);
+                return;
             }
             lastVisibleHandle=visible.Cursor.ToInt64();
             current.Cursor = publishedBlocked;
@@ -279,9 +290,39 @@ internal static class BleeckerPointerCursor
 
         private bool IsBlocked(InputCursor? cursor) => ReferenceEquals(cursor, blocked) || ReferenceEquals(cursor, republishedBlocked);
 
+        private void QueueRepublish(InputPointerSource current)
+        {
+            republishCalls++;
+            var version=++publicationVersion;
+            republishQueued=true;
+            if (!root.DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,()=>
+            {
+                // Hit testing, layout or ownership can change without a
+                // synchronous pointer/layout event before this callback runs.
+                BleeckerDisabledPointer.RefreshRoot(root);
+                if (version!=publicationVersion || !ReferenceEquals(active,this) || owner is null ||
+                    !ReferenceEquals(source,current) || root.XamlRoot?.Content!=root)
+                { if(version==publicationVersion)republishQueued=false; canceledRepublishCalls++; return; }
+                republishQueued=false;
+                var producer=current.Cursor;
+                if (!IsBlocked(producer)) selected=producer;
+                publishedBlocked=ReferenceEquals(publishedBlocked,blocked)?republishedBlocked:blocked;
+                current.Cursor=publishedBlocked;
+                completedRepublishCalls++;
+            }))
+            {
+                republishQueued=false;
+                throw new InvalidOperationException("Could not queue the owned cursor publication.");
+            }
+            queuedRepublishCalls++;
+            current.Cursor=selected;
+        }
+
         internal void Restore()
         {
             restoreCalls++;
+            publicationVersion++;
+            republishQueued=false;
             if (source is not null && root.XamlRoot is not null)
             {
                 var cursor = source.Cursor;

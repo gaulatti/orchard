@@ -4,11 +4,35 @@ using Microsoft.UI.Xaml;
 
 namespace Orchard.Catalog;
 
-// Catalog-only observation. These fields explain the native boundary without
-// replacing the actual displayed-cursor assertion or changing publication.
+// Catalog-only observation plus controlled scheduling for the cancellation
+// regression. All acceptance still reads the actual displayed Windows cursor.
 internal static class NativeCursorDiagnostics
 {
     private const BindingFlags Instance=BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public;
+    private static object Selection(FrameworkElement control)
+    {
+        var type=typeof(BleeckerInput).Assembly.GetType("Orchard.BleeckerPointerCursor",throwOnError:true)!;
+        var roots=type.GetField("roots",BindingFlags.Static|BindingFlags.NonPublic)!.GetValue(null)!;
+        object?[] arguments=[control.XamlRoot.Content,null];
+        if(!(bool)roots.GetType().GetMethod("TryGetValue")!.Invoke(roots,arguments)!)throw new InvalidOperationException("Cursor fixture has no native publisher.");
+        return arguments[1]!;
+    }
+    internal static long Counter(FrameworkElement control,string name)
+    {
+        var selection=Selection(control);
+        return (long)selection.GetType().GetField(name,Instance)!.GetValue(selection)!;
+    }
+    internal static void QueueOwnedRepublish(FrameworkElement control)
+    {
+        var tracker=control.GetType().GetField("disabledPointer",Instance)!.GetValue(control)!;
+        if(!(bool)tracker.GetType().GetProperty("OwnsCursor",Instance)!.GetValue(tracker)!)
+            throw new InvalidOperationException("Only an actual native cursor owner can exercise queued cancellation.");
+        var selection=Selection(control);
+        if((bool)selection.GetType().GetField("republishQueued",Instance)!.GetValue(selection)!)
+            throw new InvalidOperationException("A native publication is already pending.");
+        var source=selection.GetType().GetField("source",Instance)!.GetValue(selection)!;
+        selection.GetType().GetMethod("QueueRepublish",Instance)!.Invoke(selection,[source]);
+    }
     internal static object Describe(FrameworkElement control)
     {
         var tracker=control.GetType().GetField("disabledPointer",Instance)?.GetValue(control);
@@ -29,6 +53,8 @@ internal static class NativeCursorDiagnostics
         {
             refreshCalls=observer?.GetType().GetField("refreshCalls",Instance)?.GetValue(observer),
             blockCalls=Field("blockCalls"),republishCalls=Field("republishCalls"),restoreCalls=Field("restoreCalls"),
+            queuedRepublishCalls=Field("queuedRepublishCalls"),completedRepublishCalls=Field("completedRepublishCalls"),
+            canceledRepublishCalls=Field("canceledRepublishCalls"),republishQueued=Field("republishQueued"),
             lastReadWasBlocked=Field("lastReadWasBlocked"),lastVisibleHandle=Field("lastVisibleHandle"),
             retainedProducerType=selected?.GetType().Name,retainedProducerShape=(selected as InputSystemCursor)?.CursorShape.ToString(),
             lastRestoredType=Field("lastRestoredType"),lastRestoredShape=Field("lastRestoredShape")?.ToString(),
