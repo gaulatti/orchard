@@ -19,6 +19,8 @@ public sealed partial class SectionHeadersFixture : UserControl
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1,
             "Frozen Section Header comparison requires display/text scale 1; scaling acceptance remains open.");
+        using var input = new NativeInputSession(XamlRoot, folder, $"section-header-{scheme}");
+        await input.AcquireAsync(Specimen);
         using var reference = JsonDocument.Parse(typeof(SectionHeadersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SectionHeaderLayout.json")!);
         var root = (Grid)XamlRoot.Content;
         var host = new StackPanel { Margin = new Thickness(20), Background = root.Background, VerticalAlignment = VerticalAlignment.Top };
@@ -37,6 +39,11 @@ public sealed partial class SectionHeadersFixture : UserControl
                     FlowDirection = item.TryGetProperty("rtl", out var rtl) && rtl.GetBoolean() ? FlowDirection.RightToLeft : FlowDirection.LeftToRight };
                 host.Children.Clear(); host.Children.Add(control); await MountedAsync(control); control.ApplyTemplate(); UpdateLayout();
                 var title = Part<TextBlock>(control, "PART_Title"); var description = Part<TextBlock>(control, "PART_Description"); var eyebrow = Part<BleeckerEyebrow>(control, "PART_Eyebrow");
+                var metrics = new TextBlock { Text = "Mg", FontFamily = description.FontFamily, FontSize = description.FontSize, FontWeight = description.FontWeight,
+                    IsHitTestVisible = false, Opacity = 0 };
+                AutomationProperties.SetAccessibilityView(metrics, AccessibilityView.Raw);
+                var probe = new Canvas { Height = 0, IsHitTestVisible = false }; probe.Children.Add(metrics); host.Children.Add(probe);
+                await MountedAsync(metrics); UpdateLayout();
                 var expected = item.GetProperty("layout");
                 var actualHeight = control.ActualHeight; var expectedHeight = expected.GetProperty("header").GetProperty("height").GetDouble();
                 reports.Add(new { id, width = control.ActualWidth, height = actualHeight, expectedHeight, titleHeight = title.ActualHeight,
@@ -44,6 +51,8 @@ public sealed partial class SectionHeadersFixture : UserControl
                     descriptionAlignment = description.HorizontalAlignment.ToString(), descriptionParent = VisualTreeHelper.GetParent(description).GetType().Name,
                     descriptionSlot = Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(description).Width,
                     descriptionY = description.TransformToVisual(control).TransformPoint(new Point()).Y,
+                    titleBaseline = title.BaselineOffset, descriptionBaseline = description.BaselineOffset,
+                    naturalSummaryHeight = metrics.ActualHeight, naturalSummaryBaseline = metrics.BaselineOffset,
                     eyebrowHeight = eyebrow.ActualHeight, titleY = title.TransformToVisual(control).TransformPoint(new Point()).Y });
                 await File.WriteAllTextAsync(Path.Combine(folder, $"section-header-layout-{scheme}.json"), JsonSerializer.Serialize(reports, new JsonSerializerOptions { WriteIndented = true }));
                 Require(Math.Abs(actualHeight - expectedHeight) < .001, $"Section Header {id} height differs: {actualHeight:R}/{expectedHeight:R}.");
@@ -67,14 +76,18 @@ public sealed partial class SectionHeadersFixture : UserControl
                         Math.Abs(description.TransformToVisual(control).TransformPoint(new Point()).Y - expectedY) < .001, "Section Header summary width/gap differs.");
                 }
                 if (actualHeight > 0) await MainWindow.CaptureElementAsync(control, Path.Combine(folder, $"section-header-{id}-{scheme}.png"));
-                if (id == "full") await VerifyMutationAsync(control, host);
+                if (id == "full")
+                {
+                    var client = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"section-header-composed-{scheme}.png"));
+                    await File.WriteAllTextAsync(Path.Combine(folder, $"section-header-composed-{scheme}.json"), JsonSerializer.Serialize(new { client, bounds = input.ScreenBounds(control) }));
+                    await VerifyMutationAsync(control, host);
+                }
             }
             host.Children.Clear();
             var before = new BleeckerButton { Content = "Before section", HorizontalAlignment = HorizontalAlignment.Left };
             var after = new BleeckerButton { Content = "After section", HorizontalAlignment = HorizontalAlignment.Left };
             host.Children.Add(before); host.Children.Add(new BleeckerSectionHeader { Title = "Keyboard section", Eyebrow = "Workspace", Description = "Passive section summary" }); host.Children.Add(after);
             UpdateLayout(); await MountedAsync(after);
-            using var input = new NativeInputSession(XamlRoot, folder, $"section-header-{scheme}");
             var beforeAction = Part<Button>(before, "PART_Action"); var afterAction = Part<Button>(after, "PART_Action");
             await input.AcquireAsync(before); Require(beforeAction.Focus(FocusState.Keyboard), "Could not focus preceding section action.");
             input.Key(0x09); await FocusedAsync(afterAction, "Section Header interrupted physical Tab traversal.");

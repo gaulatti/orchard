@@ -61,6 +61,15 @@ at `artifacts/package-consumer-section-header`. It verifies bundled fonts,
 the real level-two heading peer, optional-content collapse and live title
 updates, then removes its own isolated cache.
 
+The fixture also records an invisible, non-interactive native font-metrics
+probe and captures the actual composed client in each theme, with the header's
+screen bounds. Focused checks pass at `artifacts/smoke-section-header-metrics`.
+For the 16px summary in a 28px line box, the native baseline is 22.3168335px;
+its natural line box is 19.3920002px with baseline 15.4560003px. Centering that
+natural line box gives 19.7600002px, consistent with the observed roughly 3px
+summary ink displacement. This is diagnostic evidence; no hardcoded offset or
+baseline correction has been applied.
+
 Exact glyph/baseline
 raster comparison, CSS `text-balance`/`text-pretty`, the complete override and
 multilingual constraint matrix, actual contrast schemes, Narrator and
