@@ -1,5 +1,24 @@
 # BauhausBackground reference and acceptance
 
+Run [38563463296](https://github.com/gaulatti/orchard/actions/runs/38563463296)
+still fails full-suite ARM64 motion: the observer measures 333.1919ms while the
+storyboard advances 393.2726ms, producing 7.078908 degrees against 5.9974542
+expected by the unchanged wall-clock gate. The verified runtime archive has
+SHA-256 `2fd1646dff1e07a54ae32cbc7e729a6af893fca643d18b4626996eac12523604`.
+Motion reports now also retain each native
+[`RenderingEventArgs.RenderingTime`](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.renderingeventargs.renderingtime?view=windows-app-sdk-2.0),
+available in the WinUI 2.3.9 metadata pinned by Windows App SDK 2.5.1. This adds
+the timestamp of the rendered frame alongside observer and storyboard time.
+It changes no animation behavior, wall-clock expectation, sample duration,
+native reduced-motion requirement or one-degree tolerance. Enabled ARM64
+evidence is required before changing the timing diagnosis or acceptance claim.
+Both x64/ARM64 solution builds and all 38 regressions pass at
+`artifacts/tests-bauhaus-frame-clock`. The focused native x64 fixture passes
+both appearances in `artifacts/smoke-bauhaus-frame-clock`; all 22 Light and 21
+Dark samples contain native frame timestamps. The actual local preference is
+animations disabled, so storyboard time is null and both angles remain zero.
+This validates collection and reduced motion, not enabled-motion timing.
+
 The frozen source is
 [`bauhaus-background.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/bauhaus-background.tsx),
 SHA-256 `648c0cdb37639b40ac6c67ecbad04b692d1400358b8b3bed9fad12e5baa1489c`.

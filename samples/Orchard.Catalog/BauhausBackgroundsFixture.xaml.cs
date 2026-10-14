@@ -54,12 +54,14 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         var rotationField = typeof(BleeckerBauhausBackground).GetField("rotation", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
             ?? throw new InvalidOperationException("Missing Bauhaus animation clock for fixture diagnostics.");
         var timeline = rotationField.GetValue(Nazca) as Storyboard;
-        var frames = new List<(double Milliseconds, double? AnimationMilliseconds, double Outer, double Inner)>(); var elapsed = new Stopwatch();
+        var frames = new List<(double Milliseconds, double RenderingMilliseconds, double? AnimationMilliseconds, double Outer, double Inner)>(); var elapsed = new Stopwatch();
         var sampled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         void Sample(object? sender,object args)
         {
+            Require(args is RenderingEventArgs, "Bauhaus motion sample did not receive the native frame timestamp.");
+            var rendering = (RenderingEventArgs)args;
             if(!elapsed.IsRunning)elapsed.Start();
-            frames.Add((elapsed.Elapsed.TotalMilliseconds, timeline?.GetCurrentTime().TotalMilliseconds, ((RotateTransform)outer.RenderTransform).Angle, ((RotateTransform)((Border)Find<Canvas>(Nazca, "PART_Pattern").Children[1]).RenderTransform).Angle));
+            frames.Add((elapsed.Elapsed.TotalMilliseconds, rendering.RenderingTime.TotalMilliseconds, timeline?.GetCurrentTime().TotalMilliseconds, ((RotateTransform)outer.RenderTransform).Angle, ((RotateTransform)((Border)Find<Canvas>(Nazca, "PART_Pattern").Children[1]).RenderTransform).Angle));
             if(elapsed.Elapsed.TotalMilliseconds>=320)sampled.TrySetResult();
         }
         CompositionTarget.Rendering+=Sample;
@@ -68,7 +70,7 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         var enabled = new UISettings().AnimationsEnabled;
         var first = frames.First(); var last = frames.Last(); var expectedDelta = 18 * (last.Milliseconds - first.Milliseconds) / 1000;
         var outerDelta = (last.Outer - first.Outer + 360) % 360; var innerDelta = (first.Inner - last.Inner + 360) % 360;
-        await File.WriteAllTextAsync(Path.Combine(folder, $"bauhaus-motion-{scheme}.json"), JsonSerializer.Serialize(new { enabled, expectedDelta, outerDelta, innerDelta, frames = frames.Select(frame => new { frame.Milliseconds, frame.AnimationMilliseconds, frame.Outer, frame.Inner }) }, new JsonSerializerOptions { WriteIndented = true }));
+        await File.WriteAllTextAsync(Path.Combine(folder, $"bauhaus-motion-{scheme}.json"), JsonSerializer.Serialize(new { enabled, expectedDelta, outerDelta, innerDelta, frames = frames.Select(frame => new { frame.Milliseconds, frame.RenderingMilliseconds, frame.AnimationMilliseconds, frame.Outer, frame.Inner }) }, new JsonSerializerOptions { WriteIndented = true }));
         Require(enabled ? Math.Abs(outerDelta - expectedDelta) < 1 && Math.Abs(innerDelta - expectedDelta) < 1 && outerDelta > 0 : frames.All(frame => frame.Outer == 0 && frame.Inner == 0), "Bauhaus counter-rotation did not respect the 20-second linear cycle or native reduced-motion preference.");
         await CapturePixelsAsync(input, scheme, folder);
         using (var pixels = source.PixelBuffer.AsStream())
