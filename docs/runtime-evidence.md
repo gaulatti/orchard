@@ -1,5 +1,18 @@
 # Native Windows runtime evidence
 
+Run [38507683990](https://github.com/gaulatti/orchard/actions/runs/38507683990)
+at `cf94a93` passes both builds, all 32 regressions, focused Attention with the
+new painted/action bounds and far-edge activation on both native architectures,
+and both native independent package consumers. The full x64 catalog passes.
+Its focused Input step fails a Small/valid top-left `(0,0)` restoration:
+GetCursorInfo reports AppStarting while Arrow is required. Full ARM64 reaches
+and passes the updated Breadcrumb checks, then fails Input's Medium/invalid
+bottom-left `(3,0)` with matching paint and opacity but global Arrow instead of
+UniversalNo. Both contrast jobs retain 46/124 Attention glyph positions.
+The native sizing correction and template-readiness change do not resolve
+those separate cursor/contrast gates. No required check is weakened or accepted
+by this checkpoint.
+
 Run [38506082985](https://github.com/gaulatti/orchard/actions/runs/38506082985)
 at `c7fdad4` passes both builds, all 32 regressions, the new focused chart-theme
 fixture on x64 and native ARM64, and both independent native package consumers.
