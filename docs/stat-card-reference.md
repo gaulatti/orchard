@@ -77,6 +77,12 @@ that column. Captures and pixel counts are retained as
 and narrow captures were visually inspected; complete raster acceptance remains
 open. Keyboard-only setup moves the physical pointer to the preceding action so
 the documented chart pointer channel cannot override keyboard inspection.
+The initial published focused run fails history inspection. The fixture now
+waits for the source's first focused value before Right and records exactly one
+native key press/release delivered to the actual chart. Those stronger checks
+pass in both themes at `artifacts/smoke-stat-card-key-ack`. A future failure
+retains focus, records, series and interaction-channel diagnostics. The initial
+failure lacks that state, so its exact cause is unproven.
 
 The first RTL native comparison records a 0.015625px trend-value allocation
 residual. RTL checks retain the source's trailing anchor and native 8px sibling

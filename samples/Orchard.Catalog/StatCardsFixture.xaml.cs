@@ -72,11 +72,11 @@ public sealed partial class StatCardsFixture:UserControl
                 if(id is "full" or "default" or "narrow" or "rtl" or "long")await MainWindow.CaptureElementAsync(card,System.IO.Path.Combine(folder,$"stat-card-{id}-{scheme}.png"));
                 if(id=="narrow")await VerifyComposedOverflowAsync(input,card,folder,scheme);
             }
-            await MutationAsync(host,input);
+            await MutationAsync(host,input,folder,scheme);
         }
         finally{root.Children.Remove(host);}
     }
-    private async Task MutationAsync(Grid host,NativeInputSession input)
+    private async Task MutationAsync(Grid host,NativeInputSession input,string folder,BleeckerColorScheme scheme)
     {
         var incomplete=new BleeckerStatTrend{Value="Consumer value"};var rejected=false;
         try{_=incomplete.Direction;}catch(InvalidOperationException){rejected=true;}Require(rejected,"Stat Card invented a direction for an incomplete consumer trend.");
@@ -91,7 +91,20 @@ public sealed partial class StatCardsFixture:UserControl
         card.Trend=null;UpdateLayout();Require(Part<TextBlock>(card,"PART_Description").Visibility==Visibility.Visible,"Stat Card did not restore its description when trend was removed.");
         card.SparklineDataKey="";UpdateLayout();Require(!Descendants<BleeckerSparkline>(card).Any(),"Stat Card retained an empty-key Sparkline.");card.SparklineDataKey="v";UpdateLayout();
         await input.AcquireAsync(before);await input.MoveAsync(before);Require(Part<Button>(before,"PART_Action").Focus(FocusState.Keyboard),"Could not focus preceding statistic action.");input.Key(0x09);
-        var chart=Part<BleeckerLineChart>(Descendants<BleeckerSparkline>(card).Single(),"PART_Chart");await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Stat Card did not expose only the child's native inspection stop.");input.Key(0x27);await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Stat Card history did not inspect consumer data.");
+        var chart=Part<BleeckerLineChart>(Descendants<BleeckerSparkline>(card).Single(),"PART_Chart");
+        try
+        {
+            await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Stat Card did not expose only the child's native inspection stop.");
+            await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 10","Stat Card initial focus did not inspect its first consumer value.");
+            await input.KeyAsync(0x27,chart);await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Stat Card history did not inspect consumer data.");
+        }
+        catch
+        {
+            var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+            var interaction=typeof(BleeckerLineChart).GetField("interaction",flags)!.GetValue(chart)!;
+            await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"stat-card-history-failure-{scheme}.json"),JsonSerializer.Serialize(new{chart.IsLoaded,chart.FocusState,help=AutomationProperties.GetHelpText(chart),data=chart.Data,series=chart.Series.Select(series=>new{series.Key,series.Name}),input.OwnsForeground,focus=(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.GetType().FullName,state=interaction.GetType().GetFields(flags).ToDictionary(field=>field.Name,field=>field.GetValue(interaction))}));
+            throw;
+        }
         input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),Part<Button>(action,"PART_Action")),"Stat Card skipped its consumer footer action.");input.Key(0x20);await AwaitAsync(()=>clicks==1,"Stat Card consumer action did not invoke through native Space.");input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Stat Card reverse Tab did not restore history focus.");
         card.IsEnabled=false;UpdateLayout();Require(!Part<Button>(action,"PART_Action").IsEnabled&&!chart.IsEnabled,"Disabled Stat Card left its child controls enabled.");card.IsEnabled=true;
         stack.Children.Remove(card);await AwaitAsync(()=>!card.IsLoaded,"Stat Card did not unmount.");card.Trend=trend;trend.Value="-9%";stack.Children.Insert(1,card);await AwaitAsync(()=>card.IsLoaded&&Part<TextBlock>(card,"PART_TrendValue").Text=="-9%","Stat Card lost changed consumer state after remount.");
