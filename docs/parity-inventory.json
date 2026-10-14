@@ -1106,7 +1106,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Exact glyph baselines and full raster comparison",
-        "Flex minimum-content and complete consumer override matrix",
+        "Wrappable-action minimum-content and complete consumer override matrix",
         "Contrast schemes, Narrator, scaling and complete x64/ARM64 visual acceptance"
       ]
     },

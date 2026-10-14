@@ -52,6 +52,9 @@ public sealed partial class DashboardSectionsFixture : UserControl
                 await AwaitAsync(() => control.IsLoaded, "Dashboard Section did not mount."); control.ApplyTemplate(); UpdateLayout();
                 await FrameAsync(); UpdateLayout();
                 var expected = item.GetProperty("layout"); var title = Part<TextBlock>(control,"PART_Title"); var description = Part<TextBlock>(control,"PART_Description");
+                if(expected.GetProperty("title").ValueKind!=JsonValueKind.Null)Require(title.Text==expected.GetProperty("title").GetProperty("accessibleName").GetString(),$"Dashboard {id} did not follow source title whitespace.");
+                if(expected.GetProperty("description").ValueKind!=JsonValueKind.Null)Require(description.Text==expected.GetProperty("description").GetProperty("renderedText").GetString(),$"Dashboard {id} did not follow source description whitespace.");
+                Require(control.Title==(props.TryGetProperty("title",out var rawTitle)?rawTitle.GetString():null)&&control.Description==(props.TryGetProperty("description",out var rawDescription)?rawDescription.GetString():null),"Dashboard Section changed consumer strings.");
                 reports.Add(new { id, viewport, height = control.ActualHeight, expectedHeight = expected.GetProperty("section").GetProperty("height").GetDouble(),
                     titleHeight = title.ActualHeight, descriptionHeight = description.ActualHeight,
                     titleWidth=title.ActualWidth,descriptionWidth=description.ActualWidth,titleDirection=title.FlowDirection.ToString(),descriptionDirection=description.FlowDirection.ToString(),readingOrder=description.TextReadingOrder.ToString(),
@@ -72,7 +75,9 @@ public sealed partial class DashboardSectionsFixture : UserControl
                     "Dashboard Section lost its passive group semantics.");
                 if (!string.IsNullOrEmpty(control.Title)) Require(FrameworkElementAutomationPeer.CreatePeerForElement(title).GetHeadingLevel()==AutomationHeadingLevel.Level2,
                     "Dashboard Section title lost its real level-two heading peer.");
-                if (control.ActualHeight>0) await CaptureAsync(control,Path.Combine(folder,$"dashboard-section-{id}-{scheme}.png"));
+                if (!string.IsNullOrEmpty(control.Title))Require(FrameworkElementAutomationPeer.CreatePeerForElement(title).GetName()==expected.GetProperty("title").GetProperty("accessibleName").GetString(),$"Dashboard {id} heading name differs from the source accessibility tree.");
+                if (control.ActualHeight>0) await CaptureAsync(control,Path.Combine(folder,$"dashboard-section-{id}-{scheme}.png"),expected.GetProperty("paintWidth").GetInt32());
+                if(id is "unbroken" or "minimum-overflow")await VerifyComposedOverflowAsync(input,control,action,folder,$"{id}-{scheme}");
                 if (id=="full") await MutationAsync(control,host,action,content);
             }
             host.Children.Clear(); window.ResizeClient(new SizeInt32(1000,745));
@@ -108,6 +113,12 @@ public sealed partial class DashboardSectionsFixture : UserControl
         control.HeaderStyle=new Style(typeof(Grid)){Setters={new Setter(Grid.PaddingProperty,new Thickness(3))}};UpdateLayout();Near(control.ActualHeight,142,"header style override");
         control.HeaderStyle=null;control.Padding=new Thickness(6);UpdateLayout();Near(control.ActualHeight,148,"surface padding override");
         control.Padding=new Thickness();UpdateLayout();Near(control.ActualHeight,136,"restored surface");
+        control.Title="  Monitoring\t queue\r\n";control.Description="  Consumer-owned\t section\nsummary. ";UpdateLayout();
+        Require(Part<TextBlock>(control,"PART_Title").Text=="Monitoring queue"&&Part<TextBlock>(control,"PART_Description").Text=="Consumer-owned section summary."&&control.Title=="  Monitoring\t queue\r\n","Live whitespace rendering changed consumer strings or retained native line breaks.");
+        control.Title="Monitoring";control.Description="Consumer-owned section summary.";control.Width=160;UpdateLayout();Near(control.ActualHeight,196,"live word-minimum overflow");
+        control.Width=280;UpdateLayout();Near(control.ActualHeight,156,"live constrained action");
+        Near(PhysicalBounds((FrameworkElement)action,control).X,200,"live constrained action x");
+        control.Width=800;UpdateLayout();Near(control.ActualHeight,136,"live width restoration");
     }
     private async Task KeyboardAsync(Grid host,NativeInputSession input)
     {
@@ -138,12 +149,13 @@ public sealed partial class DashboardSectionsFixture : UserControl
     }
     private static object? Bounds(FrameworkElement element,FrameworkElement owner)=>element.IsLoaded?PhysicalBounds(element,owner):null;
     private static string CssColor(Brush brush){var c=((SolidColorBrush)brush).Color;return $"rgb({c.R}, {c.G}, {c.B})";}
-    private static async Task CaptureAsync(BleeckerDashboardSection control,string path)
+    private static async Task CaptureAsync(BleeckerDashboardSection control,string path,int expectedWidth)
     {
         // Action-only/body-only specimens intentionally contain flat colors.
         // Verify their actual fill instead of using the catalog's glyph-rich gate.
         var bitmap=new Microsoft.UI.Xaml.Media.Imaging.RenderTargetBitmap();await bitmap.RenderAsync(control);
         Require(bitmap.PixelWidth>0&&bitmap.PixelHeight>0,"Dashboard Section did not render.");
+        Require(bitmap.PixelWidth==expectedWidth,"Dashboard Section painted overflow width differs from the source.");
         var buffer=await bitmap.GetPixelsAsync();var bytes=new byte[checked((int)buffer.Length)];
         using(var reader=Windows.Storage.Streams.DataReader.FromBuffer(buffer))reader.ReadBytes(bytes);
         foreach(var block in new[]{control.Content as Border,control.Action as Border}.OfType<Border>())
@@ -153,6 +165,23 @@ public sealed partial class DashboardSectionsFixture : UserControl
             Require(bytes[offset]==color.B&&bytes[offset+1]==color.G&&bytes[offset+2]==color.R&&bytes[offset+3]==255,"Dashboard Section consumer fill did not render.");
         }
         await MainWindow.SavePngAsync(path,bytes,bitmap.PixelWidth,bitmap.PixelHeight);
+    }
+    private static async Task VerifyComposedOverflowAsync(NativeInputSession input,BleeckerDashboardSection control,Border action,string folder,string specimen)
+    {
+        var path=Path.Combine(folder,$"dashboard-section-overflow-{specimen}.png");
+        var client=await NativeScreenCapture.CaptureClientAsync(input.Window,path);
+        var section=input.ScreenBounds(control);var bounds=input.ScreenBounds(action);
+        Require(bounds.Right>section.Right,"Dashboard overflow fixture did not cross the section edge.");
+        using var stream=new Windows.Storage.Streams.InMemoryRandomAccessStream();
+        using(var writer=new Windows.Storage.Streams.DataWriter(stream)){writer.WriteBytes(await File.ReadAllBytesAsync(path));await writer.StoreAsync();writer.DetachStream();}
+        stream.Seek(0);var decoder=await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
+        var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Straight,
+            new Windows.Graphics.Imaging.BitmapTransform(),Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
+        var x=(int)(bounds.Right-4-client.X);var y=(int)(bounds.Y+bounds.Height/2-client.Y);var offset=(y*(int)decoder.PixelWidth+x)*4;
+        var color=((SolidColorBrush)action.Background).Color;
+        var passed=pixels[offset]==color.B&&pixels[offset+1]==color.G&&pixels[offset+2]==color.R;
+        await File.WriteAllTextAsync(Path.Combine(folder,$"dashboard-section-overflow-{specimen}.json"),JsonSerializer.Serialize(new {passed,section,bounds,sample=new{x,y}}));
+        Require(passed,"Dashboard action overflow was clipped in the actual composed window.");
     }
     private static void Check(FrameworkElement owner,FrameworkElement actual,JsonElement layout,string name,string id)
     {

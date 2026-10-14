@@ -8,8 +8,8 @@
     <StackPanel x:Name="PART_Layout" Spacing="20">
      <Grid x:Name="PART_Header" Style="{TemplateBinding HeaderStyle}">
       <StackPanel x:Name="PART_Lead">
-       <TextBlock x:Name="PART_Title" Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontSize="18" FontWeight="Medium" LineHeight="28" LineStackingStrategy="BlockLineHeight" CharacterSpacing="-20" TextWrapping="Wrap" TextReadingOrder="UseFlowDirection" AutomationProperties.HeadingLevel="Level2" />
-       <TextBlock x:Name="PART_Description" Text="{TemplateBinding Description}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerSecondaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Margin="0,4,0,0" TextWrapping="Wrap" TextReadingOrder="UseFlowDirection" />
+       <TextBlock x:Name="PART_Title" Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontSize="18" FontWeight="Medium" LineHeight="28" LineStackingStrategy="BlockLineHeight" CharacterSpacing="-20" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" AutomationProperties.HeadingLevel="Level2" />
+       <TextBlock x:Name="PART_Description" Text="{TemplateBinding Description}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerSecondaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Margin="0,4,0,0" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
       </StackPanel>
       <ContentPresenter x:Name="PART_Action" Content="{TemplateBinding Action}" ContentTemplate="{TemplateBinding ActionTemplate}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
      </Grid>

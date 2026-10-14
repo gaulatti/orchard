@@ -308,6 +308,14 @@ public sealed partial class MainWindow : Window
         PackageDashboardSection.Content=content;PackageDashboardSection.Action=action;Root.UpdateLayout();
         Require(title.Text==PackageDashboardSection.Title&&ReferenceEquals(((ContentPresenter)root.FindName("PART_Content")).Content,content),
             "Packaged Dashboard Section lost live content.");
+        PackageDashboardSection.Title="  Monitoring\t queue\r\n";PackageDashboardSection.Description="  Consumer-owned\t section\nsummary. ";Root.UpdateLayout();
+        Require(title.Text=="Monitoring queue"&&description.Text=="Consumer-owned section summary."&&PackageDashboardSection.Title=="  Monitoring\t queue\r\n",
+            "Packaged Dashboard Section did not collapse display whitespace while preserving consumer values.");
+        var originalWidth=PackageDashboardSection.Width;
+        PackageDashboardSection.Title="Monitoring";PackageDashboardSection.Description="Consumer-owned section summary.";PackageDashboardSection.Width=280;Root.UpdateLayout();
+        Require(Math.Abs(PackageDashboardSection.ActualHeight-156)<.001&&Math.Abs(((FrameworkElement)action!).TransformToVisual(PackageDashboardSection).TransformPoint(new Windows.Foundation.Point()).X-200)<.001,
+            "Packaged Dashboard Section shrank its fixed action or misplaced constrained content.");
+        PackageDashboardSection.Width=originalWidth;Root.UpdateLayout();
     }
 
     private void VerifySectionHeader()
