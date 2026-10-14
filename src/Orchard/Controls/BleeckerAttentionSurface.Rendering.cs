@@ -142,7 +142,11 @@ public sealed partial class BleeckerAttentionSurface
         var lineHeight = text.LineHeight * (text.IsTextScaleFactorEnabled ? settings.TextScaleFactor : 1);
         var target = Math.Round((origin+(lineHeight-metrics.ActualHeight)/2+metrics.BaselineOffset)*scale)/scale;
         var offset = target-origin-text.BaselineOffset;
-        if (Math.Abs(baseline.Y-offset) > .000001) baseline.Y = offset;
+        // Preserve the paragraph's measured height while positioning the native
+        // text in layout, before glyph rasterization and its pixel snapping.
+        baseline.Y=0;
+        if (Math.Abs(text.Margin.Top-offset) > .000001 || Math.Abs(text.Margin.Bottom+offset) > .000001)
+            text.Margin=new Thickness(0,offset,0,-offset);
     }
     private void OnFrame(object? sender,object args)
     {

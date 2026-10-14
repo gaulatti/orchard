@@ -157,6 +157,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         var originalBackground=Action.ReadLocalValue(BackgroundProperty);var gradientBackground=Action.Background;
         var originalDensity=Action.Density;var originalContent=Action.Content;
         var samples=new List<object>();
+        int[]? establishedInk=null;var establishedWidth=0;var establishedHeight=0;
         try
         {
             Action.Density=BleeckerAttentionDensity.Compact;Action.Content="Contrast surface";
@@ -181,10 +182,22 @@ public sealed partial class AttentionSurfacesFixture : UserControl
                 var client=await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,file));
                 Require(bounds.X>=client.X&&bounds.Y>=client.Y&&bounds.Right<=client.Right&&bounds.Bottom<=client.Bottom,
                     "Fractional baseline specimen is outside the owned composed capture.");
+                var cropX=(int)Math.Floor(bounds.X-client.X);var cropY=(int)Math.Floor(bounds.Y-client.Y);
+                var cropWidth=(int)Math.Ceiling(bounds.Width);var cropHeight=(int)Math.Ceiling(bounds.Height);
+                using(var image=File.OpenRead(Path.Combine(folder,file)))
+                using(var random=image.AsRandomAccessStream())
+                {
+                    var decoder=await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(random);
+                    var transform=new Windows.Graphics.Imaging.BitmapTransform{Bounds=new Windows.Graphics.Imaging.BitmapBounds{X=(uint)cropX,Y=(uint)cropY,Width=(uint)cropWidth,Height=(uint)cropHeight}};
+                    var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,transform,Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
+                    bool IsInk(int index)=>pixels[index*4]==color.B&&pixels[index*4+1]==color.G&&pixels[index*4+2]==color.R&&pixels[index*4+3]==255;
+                    if(establishedInk is null){establishedWidth=cropWidth;establishedHeight=cropHeight;establishedInk=Enumerable.Range(0,cropWidth*cropHeight).Where(IsInk).ToArray();Require(establishedInk.Length>0,"Attention baseline has no established solid glyph pixels.");}
+                    else Require(cropWidth==establishedWidth&&cropHeight==establishedHeight&&establishedInk.All(IsInk),"Attention glyph positions changed across the owned fractional/color/background transition.");
+                }
                 samples.Add(new{margin,file,solidBackground=probe.Solid,foreground=new[]{(int)color.R,(int)color.G,(int)color.B},x=(int)Math.Floor(bounds.X-client.X),y=(int)Math.Floor(bounds.Y-client.Y),
                     width=(int)Math.Ceiling(bounds.Width),height=(int)Math.Ceiling(bounds.Height),ownerY=ownerBounds.Y-client.Y,
                     textOrigin,paragraphOrigin,text.BaselineOffset,text.ActualHeight,text.LineHeight,metricsHeight=metrics.ActualHeight,
-                    metricsBaseline=metrics.BaselineOffset,transformY=((TranslateTransform)text.RenderTransform).Y});
+                    metricsBaseline=metrics.BaselineOffset,textMargin=text.Margin,transformY=((TranslateTransform)text.RenderTransform).Y});
             }
         }
         finally
@@ -194,7 +207,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
             if(originalBackground==DependencyProperty.UnsetValue)Action.ClearValue(BackgroundProperty);else Action.SetValue(BackgroundProperty,originalBackground);
             Action.Density=originalDensity;Action.Content=originalContent;
         }
-        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baselines-{scheme}.json"),JsonSerializer.Serialize(new{diagnosticOnly=true,samples}));
+        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baselines-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,establishedInkPixels=establishedInk?.Length,samples}));
     }
     private async Task CaptureGradientPixelsAsync(NativeInputSession input,JsonElement source,BleeckerColorScheme scheme,string folder)
     {

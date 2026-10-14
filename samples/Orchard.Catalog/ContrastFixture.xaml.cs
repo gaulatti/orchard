@@ -269,7 +269,8 @@ public sealed partial class ContrastFixture : UserControl
         {
             var position=element.TransformToVisual(text.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
             ancestors.Add(new{element.Name,type=element.GetType().Name,position,element.ActualWidth,element.ActualHeight,
-                element.UseLayoutRounding,transformY=(element.RenderTransform as TranslateTransform)?.Y});
+                element.UseLayoutRounding,element.Margin,transformY=(element.RenderTransform as TranslateTransform)?.Y,
+                compositionSnap=Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(element).IsPixelSnappingEnabled});
             if(element is BleeckerAttentionSurface)
             {
                 var template=(FrameworkElement)VisualTreeHelper.GetChild(element,0);

@@ -205,6 +205,28 @@ gradient-to-solid background change also retains all 124 positions at
 These diagnostics rule out those changes alone as the hosted one-pixel cause;
 they do not replace actual Windows contrast verification or establish a fix.
 
+The next candidate places the same measured baseline through balanced top/bottom
+text margins instead of a TextBlock render translation. The margins sum to zero,
+preserving the source paragraph height and owner sizing while putting the text
+position into layout before glyph rasterization. Its local Attention matrix
+passes at `artifacts/smoke-attention-layout-baseline` in both themes, including
+physical actions, sizing and the existing fractional-position captures. This is
+not yet a verified hosted contrast correction. The exact established glyph
+mask remains unchanged; hosted diagnostics also record margins and each owned
+ancestor's composition pixel-snapping setting.
+The existing five-state capture is now a regression assertion: it establishes
+the first label's solid glyph mask and requires every corresponding position to
+adopt each subsequent foreground. `artifacts/smoke-attention-layout-glyphs`
+passes all 124 positions across all five states in both themes. It does not
+offset the mask, broaden pixel tolerances or replace the hosted contrast gate.
+Both updated solution builds pass without warnings. The independently restored
+and published x64 consumer passes in both themes at
+`artifacts/package-consumer-render-corrections` for package SHA-256
+`e3925e5319e063b89417207db4b555f00bebe5943cffadd287f09c9460ec832a`.
+The complete local x64 catalog passes at `artifacts/smoke-render-corrections-all`,
+including all 124 glyph positions in each of the five controlled transitions
+in both themes. Local contrast is off, so actual hosted contrast remains open.
+
 The expanded native ancestor diagnostics exposed a separate width defect:
 the compact contrast specimen's owner is 320px wide, while its inner native
 Button and painted border are only 148.735992px wide. The initial source-layout
