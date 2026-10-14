@@ -1,5 +1,26 @@
 # Native Windows runtime evidence
 
+Run [38593563145](https://github.com/gaulatti/orchard/actions/runs/38593563145)
+at `9303b06` passes the entire native ARM64 job, with an ARM64 process/OS,
+display/text scale 1 and actual animations enabled. Both new producer-phase
+cancellations record one cancellation and zero No deliveries, with visible
+Arrow and detached observers. Both forced transactions record one delivery,
+one acknowledgement, two producer callbacks, actual UniversalNo/visible flag
+and no pending publication. The fresh native ARM64 consumer passes with package
+SHA-256 `f66a3d478979dcad4ee25c31cabb6f56be9fec13c9d9b2892271b7b5bfed38e4`,
+and its own cache cleanup succeeds. Verified archive `11910030536` SHA-256:
+`a68c8aed669b393f1948f0e16bb2eba839acb48961e31cd5623627078d9ad00e`.
+
+The same run's x64 job passes focused checks, contrast and the fresh consumer
+but fails full Light contextual-help/Breadcrumb hover. The physical move chose
+the expansion button's center at y=646, then its real bounds moved from
+y=634.5 to y=592.5. The final pointer remains at y=646, below that target. The
+popup does not occlude it and the catalog owns foreground. This is evidence of
+stale target geometry, not evidence that pointer delivery reached the button.
+Verified x64 archive `11908797521` SHA-256:
+`124253a22d5a204ad27dbf68ecb2b22143d5324a3b2f204c7d0b45a26c1f98e5`.
+Overall CI remains red; no inventory entry is accepted.
+
 Run [38588481432](https://github.com/gaulatti/orchard/actions/runs/38588481432)
 at `38426be` passes the complete x64 job and ARM64 cross-build. The Attention
 geometry wait passes the full hosted x64 sequence. Native ARM64 passes every

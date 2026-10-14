@@ -35,6 +35,7 @@ public sealed partial class ContrastFixture : UserControl
         {
             await MainWindow.CaptureElementAsync(tooltip, System.IO.Path.Combine(folder, $"contrast-entry-popup-{scheme}.png"));
             var expansion = Descendants<Button>(Path).Single();
+            await SettlePointerTargetAsync(expansion, folder, $"contrast-entry-layout-{scheme}");
             await input.MoveAsync(expansion);
             var targetBounds = input.ScreenBounds(expansion); var tooltipBounds = input.ScreenBounds(tooltip);
             var center = new Windows.Foundation.Point(targetBounds.X+targetBounds.Width/2, targetBounds.Y+targetBounds.Height/2);
@@ -53,6 +54,47 @@ public sealed partial class ContrastFixture : UserControl
                 Help.FocusState == FocusState.Keyboard, "Dismissing contextual help lost keyboard focus.");
         }
         finally { tooltip.IsOpen = false; }
+    }
+
+    private static async Task SettlePointerTargetAsync(FrameworkElement target, string folder, string name)
+    {
+        var viewports = new List<ScrollViewer>();
+        for (DependencyObject? parent = VisualTreeHelper.GetParent(target); parent is not null; parent = VisualTreeHelper.GetParent(parent))
+            if (parent is ScrollViewer viewport) viewports.Add(viewport);
+        var intermediate = new HashSet<ScrollViewer>();
+        var samples = new List<object>();
+        var settled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        Windows.Foundation.Rect? previous = null; TimeSpan? previousTime = null; var stableFrames = 0;
+        void ViewChanged(object? sender, ScrollViewerViewChangedEventArgs args)
+        {
+            if (sender is not ScrollViewer viewport) return;
+            if (args.IsIntermediate) intermediate.Add(viewport); else intermediate.Remove(viewport);
+            stableFrames = 0;
+        }
+        void Frame(object? sender, object args)
+        {
+            if (args is not RenderingEventArgs frame || previousTime == frame.RenderingTime) return;
+            var origin = target.TransformToVisual(target.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+            var current = new Windows.Foundation.Rect(origin.X, origin.Y, target.ActualWidth, target.ActualHeight);
+            stableFrames = intermediate.Count == 0 && previous == current ? stableFrames + 1 : 0;
+            previous = current; previousTime = frame.RenderingTime;
+            samples.Add(new { time = frame.RenderingTime.TotalMilliseconds, bounds = current, stableFrames,
+                viewports = viewports.Select(viewport => new { viewport.Name, viewport.VerticalOffset, viewport.HorizontalOffset, intermediate = intermediate.Contains(viewport) }).ToArray() });
+            if (stableFrames >= 2) settled.TrySetResult();
+        }
+        foreach (var viewport in viewports) viewport.ViewChanged += ViewChanged;
+        CompositionTarget.Rendering += Frame;
+        try
+        {
+            target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
+            await settled.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        }
+        finally
+        {
+            CompositionTarget.Rendering -= Frame;
+            foreach (var viewport in viewports) viewport.ViewChanged -= ViewChanged;
+            await File.WriteAllTextAsync(System.IO.Path.Combine(folder, name + ".json"), JsonSerializer.Serialize(samples));
+        }
     }
 
     private async Task<BleeckerTooltip> OpenHelpAsync(NativeInputSession input)

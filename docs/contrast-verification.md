@@ -1,5 +1,19 @@
 # Windows contrast verification
 
+At `9303b06`, the full x64 contextual-help entry failure has a different cause
+from the historical popup occlusion below: the unobscured Breadcrumb target
+moves 42px after input chooses its coordinates. The native report retains the
+pointer outside the final target bounds. The entry fixture now settles rendered
+geometry and viewport notifications before that move; native movement also
+checks the final bounds directly. Focused Light/Dark entry passes at
+`artifacts/smoke-contrast-entry-settlement`. The original hover, popup,
+keyboard focus, color and two-second state gates are unchanged. Hosted
+verification of this settlement change is still required.
+The full local Light/Dark catalog also passes with the final-bounds guard at
+`artifacts/smoke-section-header-full`.
+The focused check also passes the hosted 1024×697 viewport at
+`artifacts/smoke-contrast-entry-settlement-697`.
+
 Run [38533153948](https://github.com/gaulatti/orchard/actions/runs/38533153948)
 at `45c011d` passes all three required jobs: both builds, 38 regressions, both
 complete native catalogs, both real Windows contrast transitions and both

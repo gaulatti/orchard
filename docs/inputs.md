@@ -1,14 +1,26 @@
 # Input editing preview
 
-The next candidate separates SDK publication into rendering phases. After the
+The publisher separates SDK publication into rendering phases. After the
 queued owner/epoch check, it retains the exact producer selection for two
 rendering callbacks, then publishes UniversalNo and waits for an actual visible
 native acknowledgement. This tests whether the prior same-dispatch transition
-was coalesced; it is not yet verified as the cause of the remaining failure.
+was coalesced; the underlying SDK cause is not established by a passing run.
 Owner release cancels the producer phase, invalidates its epoch and detaches
 the frame observer. A native regression releases the real owner in that phase
 and requires one cancellation, zero No deliveries and actual Arrow restoration.
 No pointer coordinates, expected handles, tolerances or state deadlines change.
+
+Run `38593563145` at `9303b06` passes the entire native ARM64 job with actual
+animations enabled. The verified full-catalog reports contain both producer
+phase cancellations (one cancellation, zero deliveries, real Arrow) and both
+forced settlements (one delivery, one acknowledgement, two producer callbacks,
+visible UniversalNo and no pending publication). Its fresh ARM64 consumer passes
+and removes its own cache. Archive `11910030536` SHA-256:
+`a68c8aed669b393f1948f0e16bb2eba839acb48961e31cd5623627078d9ad00e`.
+The x64 job passes focused checks, contrast and its consumer but fails the full
+catalog's contextual-help/Breadcrumb pointer check. Its verified diagnostics
+show that the target moved 42px after the native move selected its coordinates.
+Overall CI is still red; this run alone does not establish complete acceptance.
 
 Local x64 focused Input and the full Light/Dark catalog pass at
 `artifacts/smoke-cursor-producer-frame-input` and
@@ -20,8 +32,8 @@ UniversalNo with no pending publication. Both architecture solution builds and
 all 42 regression tests pass. A fresh independent x64 package consumer passes
 with package SHA-256
 `80055ea6ef93f79d80bce5a3a75736283fa4843e22c6824b8f41125683c15b32`;
-its own GUID cache was removed after verification. Hosted ARM64 validation is
-still required before treating the remaining failure as resolved.
+its own GUID cache was removed after verification. The later hosted ARM64
+verification is recorded above.
 
 At `38426be`, run `38588481432` passes the full x64 job and both focused Input
 matrices. Full ARM64 Dark still fails Checkbox hit-testing restoration round 6:

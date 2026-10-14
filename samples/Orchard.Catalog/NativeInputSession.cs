@@ -160,10 +160,11 @@ internal sealed class NativeInputSession : IDisposable
         } } }]);
         await Task.Delay(30);
         var positioned = GetCursorPos(out var actual);
-        pointerMoves.Add(new { target = target.Name, bounds, localPoint, requested = new { x, y },
+        var finalBounds = ScreenBounds(target);
+        pointerMoves.Add(new { target = target.Name, bounds, finalBounds, localPoint, requested = new { x, y },
             positioned, actual = new { actual.X, actual.Y },
             hit = NativeScreenCapture.DescribePoint(Window, actual.X, actual.Y) });
-        Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) &&
+        Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) && finalBounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
     }

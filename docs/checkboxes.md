@@ -7,7 +7,10 @@ suite passes at `artifacts/smoke-cursor-producer-frame-full`, including release
 during that producer phase: one cancellation, no No delivery, detached frame
 observers and actual Arrow restoration. The forced completed transaction then
 records one delivery and one visible UniversalNo acknowledgement per theme.
-Hosted ARM64 verification of this candidate remains pending. See
+Native ARM64 run `38593563145` passes the full catalog and both new transactions
+with animations enabled. Its archive hash and verified consumer are recorded
+in [runtime evidence](runtime-evidence.md). The run remains red because of a
+separate x64 contextual-help target-layout failure. See
 [Input publication evidence](inputs.md) and [runtime evidence](runtime-evidence.md)
 for the later runs following the historical failure below.
 

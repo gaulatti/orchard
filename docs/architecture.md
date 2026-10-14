@@ -8,6 +8,15 @@ cursor lifecycle checks. Per-state settling deadlines and architecture gates
 remain unchanged. A deadline expiry terminates that owned test process and fails
 verification; it does not count as runtime acceptance.
 
+The contextual-help keyboard-entry fixture settles its Breadcrumb target
+before physical pointer movement. It observes actual rendered geometry over
+distinct rendering times and the ancestor viewports' intermediate/final
+notifications, retaining the existing two-second deadline. Its diagnostic
+records bounds and offsets. Native moves also record bounds after input and
+require the actual pointer to remain inside both the selected and current
+target bounds. A later layout shift now fails that boundary directly instead
+of being mistaken for missing hover delivery.
+
 The shared native-input session and Switch fixture invoke hosted welcome-window
 preparation only when `CI=true`. Local runs acquire the catalog's own window
 without invoking that CI-only operation. The preparation helper still rejects
