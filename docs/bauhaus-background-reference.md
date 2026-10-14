@@ -1,5 +1,14 @@
 # BauhausBackground reference and acceptance
 
+Live enabled-motion verification at `faab41e`, run `38578657500`, passes native
+ARM64 focused Light/Dark and the full-suite Light boundary. The full-suite span
+is 332.4672ms of frame time, predicting 5.9844096 degrees against 5.9843607
+observed; maximum error across the complete trace is 0.000152741492 degrees.
+Its verified archive SHA-256 is
+`cd5210b2fe18ee1c289b8283e9216b782da2868df4b340a468941aaab350cd0b`.
+Other full-suite failures prevent overall CI success. This verifies the clock
+correction, while the broader motion/raster acceptance matrix remains open.
+
 Run [38576042972](https://github.com/gaulatti/orchard/actions/runs/38576042972)
 isolates the timing mismatch on native ARM64. Its full-suite Light observer
 span is 324.7343ms while the rendered-frame span is 395.6032ms. Both transforms

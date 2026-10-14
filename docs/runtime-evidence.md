@@ -1,5 +1,38 @@
 # Native Windows runtime evidence
 
+The next local runtime candidate passes both solution builds, all 42 regressions,
+the focused 192-sample Input matrix, focused Attention viewport returns, and
+the complete x64 Light/Dark catalog at `artifacts/smoke-runtime-settlement-full`.
+Deferred cursor acknowledgement now records actual visible UniversalNo after
+owner revalidation, while handling SDK producer changes within the same pending
+transaction. Both forced transactions complete/acknowledge exactly once; their
+native snapshots show handle 65559 and flag 1 with no pending frame observer.
+The Attention fixture explicitly resets its registered viewport before returning
+to its first-row heading. Hosted verification remains required.
+The fresh x64 NuGet consumer passes both themes at
+`artifacts/package-consumer-runtime-settlement` and confirms isolated workspace
+cleanup. Package 0.1.0 SHA-256 is
+`e8cc7b0a238e027920418bd13138b0e5d52a2ab005cb8d8042f30314765e54cc`.
+The fresh ARM64 cross-build consumes that same package and confirms cleanup at
+`artifacts/package-consumer-runtime-settlement-arm64`. It explicitly reports
+`runtimeVerified: false` on this x64 machine.
+
+Run [38578657500](https://github.com/gaulatti/orchard/actions/runs/38578657500)
+at `faab41e` passes both builds, all 42 regressions, focused Page Header checks,
+Windows contrast and both fresh package consumers. Enabled ARM64 Bauhaus passes
+focused Light/Dark and full-suite Light with maximum per-frame errors below
+0.000153 degrees. The verified runtime archive SHA-256 is
+`cd5210b2fe18ee1c289b8283e9216b782da2868df4b340a468941aaab350cd0b`;
+its consumer cleanup reports `removed: true`.
+
+Required CI remains red. ARM64's focused Input fails the Large invalid
+bottom-right 0,3 boundary: border/opacity match, but Windows displays Arrow
+65539 instead of UniversalNo 65559 after 50 completed publications. Its full
+suite later fails Line Chart's `explicit-transparent` category-indicator check.
+x64's full suite rejects an off-screen Attention heading at 350,-1950 after a
+bring-into-view request. These are separate unresolved runtime boundaries;
+the verified clock correction does not close them or accept any inventory entry.
+
 Run [38576042972](https://github.com/gaulatti/orchard/actions/runs/38576042972)
 at `f72666b` passes the complete x64 job, the ARM64 cross-build and both fresh
 native package consumers. Both focused Page Header suites and Windows contrast
