@@ -141,7 +141,8 @@ internal sealed class NativeInputSession : IDisposable
         if (!NativeScreenCapture.OwnsScreenPoint(Window, x, y))
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"{prefix}-hit-target.json"),
-                JsonSerializer.Serialize(NativeScreenCapture.DescribePoint(Window, x, y), new JsonSerializerOptions { WriteIndented = true }));
+                JsonSerializer.Serialize(new { target.Name, target.IsLoaded, bounds, localPoint, point = NativeScreenCapture.DescribePoint(Window, x, y),
+                    viewports = DescribeViewports(target) }, new JsonSerializerOptions { WriteIndented = true }));
             throw new InvalidOperationException($"Physical target {target.Name} at {x},{y} does not belong to the catalog.");
         }
         var virtualX = GetSystemMetrics(76); var virtualY = GetSystemMetrics(77);
@@ -165,6 +166,16 @@ internal sealed class NativeInputSession : IDisposable
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
+    }
+
+    private static object[] DescribeViewports(FrameworkElement target)
+    {
+        var viewports = new List<object>();
+        for (DependencyObject? parent = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(target); parent is not null; parent = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(parent))
+            if (parent is Microsoft.UI.Xaml.Controls.ScrollViewer viewport)
+                viewports.Add(new { viewport.Name, viewport.VerticalOffset, viewport.HorizontalOffset, viewport.ScrollableHeight, viewport.ScrollableWidth,
+                    viewport.ViewportHeight, viewport.ViewportWidth, viewport.ExtentHeight, viewport.ExtentWidth });
+        return viewports.ToArray();
     }
 
     internal bool OwnsForeground => GetForegroundWindow() == Window;

@@ -37,7 +37,8 @@ public sealed partial class AttentionSurfacesFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme,string folder)
     {
         using var input = new NativeInputSession(XamlRoot,folder,$"attention-{scheme}");
-        await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
+        await input.AcquireAsync(Heading); await MoveToHeadingAsync(input);
+        await VerifyViewportReturnAsync(input, scheme, folder);
         using var stream = typeof(AttentionSurfacesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.AttentionLayout.json")!;
         using var reference = JsonDocument.Parse(stream);
         var source = reference.RootElement.GetProperty("schemes").EnumerateArray().Single(value=>value.GetProperty("scheme").GetString()==scheme.ToString());
@@ -115,7 +116,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         finally { Slot.Tapped -= onTap; }
         foreach(var specimen in new[]{Action,InteractiveArticle,DisabledAction})
         {
-            await input.MoveAsync(Heading); await AwaitAsync(()=>Lift(specimen)==0,"Attention resting lift did not settle.");
+            await MoveToHeadingAsync(input); await AwaitAsync(()=>Lift(specimen)==0,"Attention resting lift did not settle.");
             await input.MoveAsync(specimen);
             try { await AwaitAsync(()=>Math.Abs(Lift(specimen)+1)<.000001,$"Attention {specimen.Name} hover did not lift the actual surface."); }
             catch
@@ -136,7 +137,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         Require(native.Focus(FocusState.Keyboard),"Attention native button refused keyboard focus.");
         await input.RequireForegroundAsync(); input.Key(0x20); await Task.Delay(50);
         Require(command.Count>before+1,"Attention physical Space did not activate its consumer command.");
-        await input.MoveAsync(Heading);
+        await MoveToHeadingAsync(input);
         var parent=(Panel)VisualTreeHelper.GetParent(InteractiveArticle);var index=parent.Children.IndexOf(InteractiveArticle);
         for(var cycle=0;cycle<12;cycle++){parent.Children.Remove(InteractiveArticle);parent.Children.Insert(index,InteractiveArticle);}
         await Task.Delay(50);InteractiveArticle.UpdateLayout();
@@ -147,6 +148,35 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         await CaptureGradientPixelsAsync(input,source,scheme,folder);
         await CaptureFractionalBaselinesAsync(input,scheme,folder);
         await File.WriteAllTextAsync(Path.Combine(folder,$"attention-actions-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,command.Count,command.Last,inherited,unavailableInvokeRefused=refused}));
+    }
+    private async Task MoveToHeadingAsync(NativeInputSession input)
+    {
+        var viewport = CatalogViewport();
+        // The heading is the fixture's first row in the catalog content.
+        // Set that authoritative viewport explicitly before returning the pointer.
+        viewport.ChangeView(null, 0, null, disableAnimation: true);
+        await input.MoveAsync(Heading);
+    }
+    private ScrollViewer CatalogViewport()
+    {
+        for (DependencyObject? parent = VisualTreeHelper.GetParent(this); parent is not null; parent = VisualTreeHelper.GetParent(parent))
+            if (parent is ScrollViewer { Name: "CatalogScroll" } viewport) return viewport;
+        throw new InvalidOperationException("Attention fixture requires the registered catalog viewport.");
+    }
+    private async Task VerifyViewportReturnAsync(NativeInputSession input, BleeckerColorScheme scheme, string folder)
+    {
+        var viewport = CatalogViewport(); var samples = new List<object>();
+        foreach (var keyboard in new[] { false, true })
+        {
+            await input.ClickAsync(ChildAction);
+            if (keyboard) Require(ChildAction.Focus(FocusState.Keyboard), "Attention viewport regression could not focus the distant child action.");
+            var before = viewport.VerticalOffset; var beforeBounds = input.ScreenBounds(Heading);
+            Require(before > 0 && beforeBounds.Y < input.ScreenBounds(ChildAction).Y, "Attention viewport regression did not traverse the distant child.");
+            await MoveToHeadingAsync(input);
+            Require(viewport.VerticalOffset == 0 && input.OwnsCurrentPoint, "Attention heading did not return to the actual owned viewport.");
+            samples.Add(new { keyboard, before, beforeBounds, after = viewport.VerticalOffset, afterBounds = input.ScreenBounds(Heading), input.OwnsCurrentPoint });
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, $"attention-viewport-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, samples }));
     }
     private async Task CaptureFractionalBaselinesAsync(NativeInputSession input,BleeckerColorScheme scheme,string folder)
     {

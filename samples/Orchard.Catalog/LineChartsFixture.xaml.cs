@@ -222,6 +222,7 @@ public sealed partial class LineChartsFixture : UserControl
             await AwaitAsync(() => Chart.FocusState == FocusState.Keyboard && (Chart.Data.Count == 0 || items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == Convert.ToString(Chart.Data[0][Chart.XAxisKey!], CultureInfo.InvariantCulture)), $"{id}: initial focus did not cross the native entry boundary.");
             await input.KeyAsync(0x27,Chart);
             var expected = specimen.GetProperty("keyboard"); var visible = expected.GetProperty("visible").GetBoolean();
+            var cursorBeforeCapture = active.Children.OfType<Line>().Count();
             await AwaitAsync(() => popup.Visibility == (visible ? Visibility.Visible : Visibility.Collapsed) && (Chart.Data.Count == 0 || items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == expected.GetProperty("label").GetString()) && active.Children.OfType<Line>().Any() == expected.GetProperty("cursor").GetBoolean(), $"{id}: source/native tooltip visibility, category or cursor differs.");
             if (visible)
             {
@@ -236,7 +237,26 @@ public sealed partial class LineChartsFixture : UserControl
                 VerifyEffects(root); evidence.Add(new { id, source = box.Clone(), native = new { x = container.Margin.Left, y = container.Margin.Top, width = popup.ActualWidth, height = popup.ActualHeight } });
                 await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"line-tooltip-{scheme}-{id}.png"));
             }
-            Require(active.Children.OfType<Line>().Any() == expected.GetProperty("cursor").GetBoolean(), $"{id}: source/native category cursor differs."); checkedCases++;
+            try { Require(active.Children.OfType<Line>().Any() == expected.GetProperty("cursor").GetBoolean(), $"{id}: source/native category cursor differs."); }
+            catch
+            {
+                var currentRoot = (FrameworkElement)VisualTreeHelper.GetChild(Chart, 0);
+                var currentActive = (Canvas)currentRoot.FindName("PART_Active");
+                var state = typeof(BleeckerLineChart).GetField("interaction", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(Chart)!;
+                var stateFields = state.GetType().GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+                    .ToDictionary(field => field.Name, field => field.GetValue(state));
+                await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"line-tooltip-cursor-{scheme}-{id}.json"), JsonSerializer.Serialize(new
+                {
+                    id, expected = expected.Clone(), cursorBeforeCapture, afterCount = active.Children.OfType<Line>().Count(),
+                    sameRoot = ReferenceEquals(root, currentRoot), sameActive = ReferenceEquals(active, currentActive),
+                    active.IsLoaded, active.Visibility, currentCount = currentActive.Children.OfType<Line>().Count(),
+                    children = active.Children.Select(child => child.GetType().Name), Chart.FocusState,
+                    popup = popup.Visibility, labels = items.Children.OfType<TextBlock>().Select(text => text.Text), stateFields,
+                    point = input.DescribeCurrentPoint(), routing = input.DescribeInputRouting()
+                }));
+                throw;
+            }
+            checkedCases++;
         }
         Before.Focus(FocusState.Keyboard); Chart.Width = 640; Chart.XAxisLabel = null; Chart.YAxisLabel = null; Chart.YAxisTickFormatter = null; Chart.TooltipFormatter = null; Chart.ShowGrid = true; Chart.ShowLegend = true;
         Chart.Series = new ObservableCollection<BleeckerChartSeries> { new() { Key = "total", Name = "Consumer total" }, new() { Key = "selected", Name = "Consumer selected" } };

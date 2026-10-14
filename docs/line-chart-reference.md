@@ -1,5 +1,13 @@
 # Line Chart frozen contract and acceptance
 
+Run `38578657500` fails the ARM64 full sequence's `explicit-transparent`
+category-indicator assertion after the tooltip checks. The focused chart
+passes that same run. A rejected indicator now retains its count before/after
+composed capture, current/template-part identity, loaded state, focus, labels,
+private interaction channels and actual native input routing. This evidence
+distinguishes a stale part from an interaction transition; it changes no chart
+behavior, expected indicator or settling deadline. The failure remains open.
+
 The frozen [Line Chart source](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/line-chart.tsx)
 has SHA-256 `673539e9a2c5a264fbfb6c35f09e7d956d2dbde9670f3ae6cf1888e752ec403a`.
 Its package lock pins Recharts 3.8.1, victory-vendor 37.3.6, D3 Shape 3.2.0,

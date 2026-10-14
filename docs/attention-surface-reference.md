@@ -8,6 +8,20 @@ Its helper is
 SHA-256 `967280e82680e07604a5ac271c1dd21388b006c3e82ecb537e20ea6c5dd01fab`.
 The public wiki remote remains unavailable; this contract is maintained here.
 
+The native fixture returns to its first-row heading by explicitly setting the
+registered catalog viewport to vertical offset zero before physical movement.
+Run `38578657500` retained an off-screen heading at 350,-1950 after the previous
+bring-into-view request. The viewport regression traverses the distant consumer
+child action, then returns to the actual heading with pointer and keyboard
+focus states. It requires offset zero and a real owned pointer position.
+The native input helper retains viewport geometry on rejected hit targets.
+Its 100ms positioning preparation and all foreground, desktop and ownership
+guards remain unchanged. This does not alter the library surface's behavior.
+The focused local Light/Dark fixture passes at
+`artifacts/smoke-attention-viewport`. Both focus paths return from vertical
+offset 2682.75 to zero and move the heading from screen Y=-2250.75 back to Y=432
+inside the owned window. Hosted full-sequence verification remains required.
+
 The consumer owns content and button attributes/actions. `hue` and `intensity`
 are required numeric inputs. Hue is rounded with ECMAScript Math.round and
 wrapped into 0–359; a non-finite hue explicitly uses 210 in the frozen source.
