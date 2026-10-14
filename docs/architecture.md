@@ -14,6 +14,11 @@ without invoking that CI-only operation. The preparation helper still rejects
 non-CI callers; this keeps its foreign-window mutation restricted to isolated
 hosted runners. All foreground, hit-target and actual-input checks remain active
 locally.
+The independent package consumer uses the same transient Alt press/release
+when Windows rejects its initial foreground request. Its two-second acquisition
+deadline includes that preparation. It records the actual foreground window
+before and after, and still refuses component keyboard input until its own
+visible window owns foreground input.
 Composed captures likewise work locally, but require the foreground window to
 belong to the running catalog process, remain entirely on its monitor and pass
 the existing occlusion checks. They cannot capture another application's window.

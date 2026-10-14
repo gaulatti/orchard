@@ -193,6 +193,7 @@ public sealed partial class MainWindow : Window
                 await VerifyChartThemeAsync(theme);
                 await VerifyLineChartAsync();
                 await VerifyErrorStateAsync();
+                await VerifyPageHeaderAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -284,6 +285,46 @@ public sealed partial class MainWindow : Window
             if (originalPaint == DependencyProperty.UnsetValue) link.ClearValue(Control.ForegroundProperty);
             else link.SetValue(Control.ForegroundProperty, originalPaint);
             link.IsEnabled = originalEnabled;
+        }
+    }
+
+    private async Task VerifyPageHeaderAsync()
+    {
+        var command = new ConsumerRetryCommand(); var parameter = new object(); var notified = 0;
+        var breadcrumb = new TextBlock { Text = "Independent / Editorial" };
+        var actions = new System.Collections.ObjectModel.ObservableCollection<UIElement> { new BleeckerButton { Content = "Save", Size = BleeckerButtonSize.Small } };
+        PackagePageHeader.BackCommand = command; PackagePageHeader.BackCommandParameter = parameter;
+        PackagePageHeader.Breadcrumbs = breadcrumb; PackagePageHeader.Actions = actions;
+        RoutedEventHandler handler = (_, _) => notified++;
+        PackagePageHeader.BackRequested += handler;
+        try
+        {
+            PackagePageHeader.ApplyTemplate(); Root.UpdateLayout();
+            var root = (FrameworkElement)VisualTreeHelper.GetChild(PackagePageHeader, 0);
+            var back = (Button)((Grid)root.FindName("PART_Back")).Children[0];
+            var title = (TextBlock)root.FindName("PART_Title");
+            var peer = FrameworkElementAutomationPeer.CreatePeerForElement(back);
+            Require(peer.GetAutomationControlType() == AutomationControlType.Hyperlink && peer.GetName() == "Back" &&
+                AutomationProperties.GetHeadingLevel(title) == AutomationHeadingLevel.Level1 &&
+                PackagePageHeader.BackHref == "#consumer-editorial" && ReferenceEquals(((ContentPresenter)root.FindName("PART_Breadcrumbs")).Content, breadcrumb),
+                "Packaged Page Header lost heading, route, content or Back semantics.");
+            ((IInvokeProvider)peer.GetPattern(PatternInterface.Invoke)).Invoke();
+            await AwaitAsync(() => command.Executions == 1 && notified == 1, "Packaged Back did not deliver consumer invocation.");
+            Require(ReferenceEquals(command.Parameter, parameter), "Packaged Back changed its parameter.");
+            command.Allowed = false; command.RaiseChanged();
+            await AwaitAsync(() => !back.IsEnabled, "Packaged Back ignored CanExecute.");
+            command.Allowed = true; command.RaiseChanged();
+            await AwaitAsync(() => back.IsEnabled, "Packaged Back failed to restore CanExecute.");
+            actions.Add(new BleeckerButton { Content = "Preview", Size = BleeckerButtonSize.Small }); Root.UpdateLayout();
+            Require(((Panel)((Grid)root.FindName("PART_Actions")).Children[0]).Children.Count == 2, "Packaged live action collection did not render.");
+            PackagePageHeader.Description = ""; PackagePageHeader.BackCommand = null; PackagePageHeader.BackHref = null; Root.UpdateLayout();
+            Require(back.Visibility == Visibility.Collapsed && ((TextBlock)root.FindName("PART_Description")).Visibility == Visibility.Collapsed,
+                "Packaged Page Header retained removed content or Back action.");
+        }
+        finally
+        {
+            PackagePageHeader.BackRequested -= handler; PackagePageHeader.BackHref = "#consumer-editorial";
+            PackagePageHeader.Description = "Consumer-owned page summary";
         }
     }
 
@@ -453,14 +494,24 @@ public sealed partial class MainWindow : Window
         Require(own != IntPtr.Zero && process == Environment.ProcessId && IsWindowVisible(own),
             "Independent input requires its own visible native window.");
         var before = DescribeWindow(GetForegroundWindow());
+        var watch = System.Diagnostics.Stopwatch.StartNew();
         Activate();
         var requested = SetForegroundWindow(own);
-        var watch = System.Diagnostics.Stopwatch.StartNew();
+        var activationKeySent = false;
+        if (GetForegroundWindow() != own)
+        {
+            // Use the catalog's existing transient-Alt foreground preparation.
+            // Physical component input still requires the actual owned foreground.
+            var keys = new[] { new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = 0x12 } } },
+                new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = 0x12, Flags = 2 } } } };
+            Require(SendInput(2, keys, Marshal.SizeOf<ConsumerInput>()) == 2, "Windows rejected independent foreground preparation.");
+            activationKeySent = true; await Task.Delay(16); requested = SetForegroundWindow(own);
+        }
         while (GetForegroundWindow() != own && watch.Elapsed < TimeSpan.FromSeconds(2)) await Task.Delay(16);
         var args = Environment.GetCommandLineArgs(); var index = Array.IndexOf(args, "--verify-output");
         if (index >= 0)
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(args[index+1])!, $"consumer-input-{Root.RequestedTheme}.json"),
-                System.Text.Json.JsonSerializer.Serialize(new { requested, milliseconds = watch.Elapsed.TotalMilliseconds,
+                System.Text.Json.JsonSerializer.Serialize(new { requested, activationKeySent, milliseconds = watch.Elapsed.TotalMilliseconds,
                     own = DescribeWindow(own), before, after = DescribeWindow(GetForegroundWindow()), acquired = GetForegroundWindow() == own }));
         Require(GetForegroundWindow() == own, "Independent consumer did not acquire its own foreground window for native input.");
         static object DescribeWindow(IntPtr handle)

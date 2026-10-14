@@ -24,6 +24,7 @@ public sealed partial class MainWindow
             ("Chart theme",ChartThemes),
             ("Line charts",LineCharts),
             ("Error states",ErrorStates),
+            ("Page headers",PageHeaders),
             ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes), ("Windows contrast", Contrast)
         ]);
         var declared = FixtureHost.Children.OfType<FrameworkElement>().ToArray();

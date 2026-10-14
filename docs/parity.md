@@ -47,7 +47,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | stat-card | Pending | Pending | Full pinned contract |
 | dashboard-grid | Pending | Pending | Full pinned contract |
 | dashboard-section | Pending | Pending | Full pinned contract |
-| page-header | Pending native implementation | Frozen sixteen-case browser reference | [Pinned source contract](page-header-reference.md); native component, catalog/consumer fixtures and full platform acceptance remain pending |
+| page-header | `BleeckerPageHeader`: consumer title, description, breadcrumbs, wrapping actions and Back commands/routes | Registered sixteen-case viewport/RTL and content/lifecycle/keyboard fixture; independent package consumer | In progress: [source contract and API](page-header-reference.md); exact text balancing/raster, minimum-content constraints, contrast/Narrator/scaling and full platform acceptance |
 | sidebar | Pending | Pending | Full pinned contract |
 | data-table-toolbar | Pending | Pending | Full pinned contract |
 | data-table-filters | Pending | Pending | Full pinned contract |

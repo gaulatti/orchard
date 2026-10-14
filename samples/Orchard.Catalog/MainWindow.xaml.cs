@@ -66,6 +66,16 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);
+            else if (args.Contains("--smoke-page-header"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(PageHeaders);
+                    await PageHeaders.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "page-header", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-error-state") || args.Contains("--smoke-error-state-after-chart"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -321,6 +331,8 @@ public sealed partial class MainWindow : Window
             await LineCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(ErrorStates);
             await ErrorStates.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(PageHeaders);
+            await PageHeaders.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Tooltips);
             await Tooltips.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(FieldHelp);

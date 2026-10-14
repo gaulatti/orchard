@@ -1,0 +1,15 @@
+<UserControl x:Class="Orchard.Catalog.PageHeadersFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <DataTemplate x:Key="BreadcrumbTemplate"><TextBlock Text="{Binding}" FontSize="18" LineHeight="28" /></DataTemplate>
+  <DataTemplate x:Key="ActionTemplate"><orchard:BleeckerButton Content="{Binding}" Size="Small" /></DataTemplate>
+ </UserControl.Resources>
+ <StackPanel Spacing="20">
+  <TextBlock x:Name="Heading" Text="Page headers" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned titles, breadcrumbs, wrapping actions and Back commands. Navigation metadata stays with the application." Style="{StaticResource BleeckerBodyStyle}" />
+  <StackPanel x:Name="Host">
+   <orchard:BleeckerPageHeader x:Name="Specimen" HorizontalAlignment="Left" Width="640" Title="Editorial" Description="Review fictional stories before publication." BackHref="#fictional-editorial">
+    <orchard:BleeckerPageHeader.Breadcrumbs><TextBlock Text="Workspace / Editorial" /></orchard:BleeckerPageHeader.Breadcrumbs>
+   </orchard:BleeckerPageHeader>
+  </StackPanel>
+ </StackPanel>
+</UserControl>

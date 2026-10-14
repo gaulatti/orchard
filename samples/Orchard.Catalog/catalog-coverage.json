@@ -28,6 +28,7 @@
   },
   "controls": {
     "BleeckerErrorState": "ErrorStatesFixture.xaml",
+    "BleeckerPageHeader": "PageHeadersFixture.xaml",
     "BleeckerLineChart": "LineChartsFixture.xaml",
     "BleeckerChartSeries": "ChartThemesFixture.xaml",
     "BleeckerAttentionSurface": "AttentionSurfacesFixture.xaml",

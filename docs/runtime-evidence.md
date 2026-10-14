@@ -1,5 +1,32 @@
 # Native Windows runtime evidence
 
+The Page Header checkpoint passes both local solution builds, all 38
+unit/resource tests, its sixteen-case focused native gate, and the complete
+x64 Light/Dark catalog at `artifacts/smoke-page-header-full`. This host uses
+display/text scale 1 and the actual reduced-motion preference. Its fresh
+independent x64 NuGet consumer passes in both themes at
+`artifacts/package-consumer-page-header`, and its isolated workspace cleanup
+reports `removed: true`. Package SHA-256 is
+`d5b5f552e399505d598fd9c1407619ef174fd6f0400e7821e770e3d1d4a1ce61`.
+The foreground trace confirms a real owned-window transition from Terminal
+after transient Alt preparation in 39.5ms. The initial rejected acquisition
+was retained during investigation; no ownership assertion was removed.
+The fresh ARM64 consumer cross-build also passes with the identical package
+hash and confirms cleanup. It explicitly reports `runtimeVerified: false` on
+this x64 host; native ARM64 verification belongs to the hosted runtime job.
+Broader Page Header raster, text balancing, contrast/Narrator/scaling and hosted
+platform acceptance remain open, as documented in its source contract.
+
+The subsequent diagnostic run
+[38568587791](https://github.com/gaulatti/orchard/actions/runs/38568587791) passes
+the x64 job but fails ARM64's complete catalog because its physical Attention
+child-action target no longer belongs to the catalog at the sampled screen
+point. Run [38569920476](https://github.com/gaulatti/orchard/actions/runs/38569920476)
+passes both ARM64 jobs, but x64 fails Error State contrast at 242/243 established
+glyph pixels and a rapid disabled Input remount cursor check. Package consumers
+pass in both runs. These failures remain open; main is not fully green at this
+checkpoint. No cursor, pixel-mask or deadline assertion has been relaxed.
+
 Run [38567209211](https://github.com/gaulatti/orchard/actions/runs/38567209211)
 at `64f4f25` passes every required job: both complete catalogs, both live Windows
 contrast suites and all independent consumers. Native ARM64 retains enabled
@@ -8,8 +35,8 @@ both themes. Its verified archive SHA-256 is
 `f8ba882068d43a9d56740c71a3c0cf3998565ddb643abd3b7cdd08e0108fec51`.
 The previous intermittent glyph and motion failures remain unexplained; this
 passing checkpoint does not close their full acceptance matrix. The subsequent
-frame-timestamp diagnostics have their own pending hosted run. Inventory
-completion is still unproven: 31 entries are in progress and 81 are pending.
+frame-timestamp diagnostics have separate hosted evidence above. Inventory
+completion is still unproven: 32 entries are in progress and 80 are pending.
 
 Run [38558580437](https://github.com/gaulatti/orchard/actions/runs/38558580437)
 at `7920215` passes the full x64 job, ARM64 build and both independent package

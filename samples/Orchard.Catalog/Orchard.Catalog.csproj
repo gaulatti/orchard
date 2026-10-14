@@ -37,6 +37,7 @@
         <EmbeddedResource Include="Reference/LineShadow.json" />
         <EmbeddedResource Include="Reference/LineInteraction.json" />
         <EmbeddedResource Include="Reference/ErrorStateLayout.json" />
+        <EmbeddedResource Include="../../tests/Reference/PageHeaderLayout.json" LogicalName="Orchard.Catalog.Reference.PageHeaderLayout.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

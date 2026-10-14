@@ -51,6 +51,13 @@ variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerErrorState` provides consumer-owned title/description/icon content and
 an optional native retry command, with parameter and CanExecute support.
 Its complete visual and accessibility acceptance remains in progress.
+`BleeckerPageHeader` supplies a consumer-owned title/description, breadcrumb
+content/template and wrapping action content or observable collection. Its
+640px breakpoint follows the window viewport. `BackHref` remains exact
+application navigation metadata; `BackCommand`, parameter and `BackRequested`
+deliver invocation without launching a URL. `BackLabel` supplies the accessible
+name. Complete text raster, scaling, contrast and Narrator acceptance remains
+in progress.
 `BleeckerBrandLockup` preserves consumer-owned routes and commands, supports both
 sizes, optional names, custom image sources and typed consumer link templates.
 `BleeckerBauhausBackground` provides four decorative image/pattern variants;
