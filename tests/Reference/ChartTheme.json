@@ -1,0 +1,129 @@
+{
+  "theme": {
+    "colors": {
+      "sea": "var(--color-sea)",
+      "desert": "var(--color-desert)",
+      "terracotta": "var(--color-terracotta)",
+      "sunset": "var(--color-sunset)",
+      "dusk": "var(--color-dusk)",
+      "accentGold": "var(--color-accent-gold)",
+      "accentBlue": "var(--color-accent-blue)",
+      "textPrimary": "var(--color-text-primary)",
+      "textSecondary": "var(--color-text-secondary)",
+      "background": "var(--color-background)",
+      "card": "var(--color-card)",
+      "border": "var(--color-border)"
+    },
+    "palette": [
+      "var(--color-sea)",
+      "var(--color-desert)",
+      "var(--color-terracotta)",
+      "var(--color-sunset)",
+      "var(--color-dusk)",
+      "var(--color-accent-gold)",
+      "var(--color-accent-blue)",
+      "var(--color-accent-oxblood)",
+      "var(--color-accent-bronze)",
+      "var(--color-accent-yellow)"
+    ],
+    "grid": {
+      "stroke": "var(--color-border)",
+      "strokeDasharray": "3 3"
+    },
+    "axis": {
+      "stroke": "var(--color-border)",
+      "tick": {
+        "fill": "var(--color-text-secondary)",
+        "fontSize": 12
+      }
+    },
+    "tooltip": {
+      "contentStyle": {
+        "backgroundColor": "var(--color-card)",
+        "borderRadius": "12px",
+        "border": "1px solid var(--color-border)",
+        "boxShadow": "0 8px 32px rgba(0,0,0,0.08)",
+        "backdropFilter": "blur(8px)"
+      },
+      "itemStyle": {
+        "color": "var(--color-text-primary)"
+      },
+      "labelStyle": {
+        "color": "var(--color-text-secondary)",
+        "fontWeight": 600
+      }
+    }
+  },
+  "cases": [
+    {
+      "index": -21,
+      "value": null
+    },
+    {
+      "index": -20,
+      "value": "var(--color-sea)"
+    },
+    {
+      "index": -11,
+      "value": null
+    },
+    {
+      "index": -10,
+      "value": "var(--color-sea)"
+    },
+    {
+      "index": -1,
+      "value": null
+    },
+    {
+      "index": "-0",
+      "value": "var(--color-sea)"
+    },
+    {
+      "index": 0,
+      "value": "var(--color-sea)"
+    },
+    {
+      "index": 1,
+      "value": "var(--color-desert)"
+    },
+    {
+      "index": 9,
+      "value": "var(--color-accent-yellow)"
+    },
+    {
+      "index": 10,
+      "value": "var(--color-sea)"
+    },
+    {
+      "index": 11,
+      "value": "var(--color-desert)"
+    },
+    {
+      "index": 20,
+      "value": "var(--color-sea)"
+    },
+    {
+      "index": 0.5,
+      "value": null
+    },
+    {
+      "index": 9.5,
+      "value": null
+    },
+    {
+      "index": "NaN",
+      "value": null
+    },
+    {
+      "index": "Infinity",
+      "value": null
+    },
+    {
+      "index": "-Infinity",
+      "value": null
+    }
+  ],
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "94e006606feb77fc8163d05812e83668b04916dcdbb818a8aa8dc0d49e08e750"
+}
