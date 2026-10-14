@@ -22,6 +22,11 @@ internal static class NativeCursorDiagnostics
         var selection=Selection(control);
         return (long)selection.GetType().GetField(name,Instance)!.GetValue(selection)!;
     }
+    internal static bool Flag(FrameworkElement control,string name)
+    {
+        var selection=Selection(control);
+        return (bool)selection.GetType().GetField(name,Instance)!.GetValue(selection)!;
+    }
     internal static void QueueOwnedRepublish(FrameworkElement control)
     {
         var tracker=control.GetType().GetField("disabledPointer",Instance)!.GetValue(control)!;
@@ -55,7 +60,11 @@ internal static class NativeCursorDiagnostics
             blockCalls=Field("blockCalls"),republishCalls=Field("republishCalls"),restoreCalls=Field("restoreCalls"),
             queuedRepublishCalls=Field("queuedRepublishCalls"),completedRepublishCalls=Field("completedRepublishCalls"),
             canceledRepublishCalls=Field("canceledRepublishCalls"),republishQueued=Field("republishQueued"),
+            awaitingPublicationFrames=Field("awaitingPublicationFrames"),publicationFrames=Field("publicationFrames"),
+            acknowledgedPublicationCalls=Field("acknowledgedPublicationCalls"),
             lastReadWasBlocked=Field("lastReadWasBlocked"),lastVisibleHandle=Field("lastVisibleHandle"),
+            lastInitialPublication=Field("lastInitialPublication"),lastProducerPublication=Field("lastProducerPublication"),
+            lastDeferredPublication=Field("lastDeferredPublication"),lastRestoration=Field("lastRestoration"),
             retainedProducerType=selected?.GetType().Name,retainedProducerShape=(selected as InputSystemCursor)?.CursorShape.ToString(),
             lastRestoredType=Field("lastRestoredType"),lastRestoredShape=Field("lastRestoredShape")?.ToString(),
             sourceQueueHasThreadAccess=source?.DispatcherQueue.HasThreadAccess,

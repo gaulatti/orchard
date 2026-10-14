@@ -52,7 +52,7 @@ internal static class NativeScreenCapture
         {
             var name = new System.Text.StringBuilder(256);
             GetClassName(target, name, name.Capacity);
-            GetWindowThreadProcessId(target, out var process);
+            var thread = GetWindowThreadProcessId(target, out var process);
             var session = process != 0 && ProcessIdToSessionId(process, out var sessionId) ? (uint?)sessionId : null;
             var status = DwmGetWindowAttribute(target, 14, out var cloaked, 4); // DWMWA_CLOAKED
             string? executable = null, processReadError = null;
@@ -64,7 +64,7 @@ internal static class NativeScreenCapture
                 catch (System.ComponentModel.Win32Exception error) { processReadError = $"win32-{error.NativeErrorCode}"; }
             }
             var application = ApplicationIdentity(process);
-            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, executable, processReadError, application, session,
+            return new { handle = target.ToInt64(), windowClass = name.ToString(), process, thread, executable, processReadError, application, session,
                 topmost = (GetWindowLongPtr(target, -20).ToInt64() & 8) != 0,
                 visible = IsWindowVisible(target), cloaked = status >= 0 ? (uint?)cloaked : null };
         }

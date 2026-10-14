@@ -251,10 +251,14 @@ internal static class BleeckerPointerCursor
         private long blockCalls, republishCalls, restoreCalls;
         private long publicationVersion, queuedRepublishCalls, completedRepublishCalls, canceledRepublishCalls;
         private bool republishQueued;
+        private bool awaitingPublicationFrames;
+        private int publicationFrames;
+        private long acknowledgementVersion, acknowledgedPublicationCalls;
         private bool lastReadWasBlocked;
         private long lastVisibleHandle;
         private string? lastRestoredType;
         private InputSystemCursorShape? lastRestoredShape;
+        private CursorPublicationSnapshot? lastInitialPublication, lastProducerPublication, lastDeferredPublication, lastRestoration;
 
         internal void Block()
         {
@@ -286,6 +290,7 @@ internal static class BleeckerPointerCursor
             }
             lastVisibleHandle=visible.Cursor.ToInt64();
             current.Cursor = publishedBlocked;
+            lastInitialPublication = ObservePublication();
         }
 
         private bool IsBlocked(InputCursor? cursor) => ReferenceEquals(cursor, blocked) || ReferenceEquals(cursor, republishedBlocked);
@@ -303,12 +308,19 @@ internal static class BleeckerPointerCursor
                 if (version!=publicationVersion || !ReferenceEquals(active,this) || owner is null ||
                     !ReferenceEquals(source,current) || root.XamlRoot?.Content!=root)
                 { if(version==publicationVersion)republishQueued=false; canceledRepublishCalls++; return; }
-                republishQueued=false;
                 var producer=current.Cursor;
                 if (!IsBlocked(producer)) selected=producer;
                 publishedBlocked=ReferenceEquals(publishedBlocked,blocked)?republishedBlocked:blocked;
                 current.Cursor=publishedBlocked;
+                lastDeferredPublication = ObservePublication();
                 completedRepublishCalls++;
+                // The SDK property can retain our cursor before Windows displays
+                // it. Keep this publication pending through a complete frame so
+                // the next refresh cannot reset it to the intermediate producer.
+                acknowledgementVersion=version;
+                publicationFrames=0;
+                awaitingPublicationFrames=true;
+                CompositionTarget.Rendering+=OnPublicationFrame;
             }))
             {
                 republishQueued=false;
@@ -316,12 +328,33 @@ internal static class BleeckerPointerCursor
             }
             queuedRepublishCalls++;
             current.Cursor=selected;
+            lastProducerPublication = ObservePublication();
+        }
+
+        private void OnPublicationFrame(object? sender, object args)
+        {
+            if (++publicationFrames < 2) return;
+            DetachPublicationFrames();
+            BleeckerDisabledPointer.RefreshRoot(root);
+            if (acknowledgementVersion==publicationVersion)
+            {
+                republishQueued=false;
+                acknowledgedPublicationCalls++;
+            }
+        }
+
+        private void DetachPublicationFrames()
+        {
+            if (!awaitingPublicationFrames) return;
+            CompositionTarget.Rendering-=OnPublicationFrame;
+            awaitingPublicationFrames=false;
         }
 
         internal void Restore()
         {
             restoreCalls++;
             publicationVersion++;
+            DetachPublicationFrames();
             republishQueued=false;
             if (source is not null && root.XamlRoot is not null)
             {
@@ -337,9 +370,22 @@ internal static class BleeckerPointerCursor
                 lastRestoredType=selected?.GetType().Name;
                 lastRestoredShape=(selected as InputSystemCursor)?.CursorShape;
                 source.Cursor = selected;
+                lastRestoration = ObservePublication();
             }
             source = null; selected = null;
         }
+    }
+
+    // Observe the real Windows state immediately after each SDK assignment.
+    // These bounded snapshots do not supply cursor values or affect ownership.
+    private sealed record CursorPublicationSnapshot(bool ReadSucceeded, long VisibleHandle, uint Flags,
+        long ThreadCursorHandle, uint ThreadId, int X, int Y, long Timestamp);
+    private static CursorPublicationSnapshot ObservePublication()
+    {
+        var visible = new CursorInformation { Size = (uint)Marshal.SizeOf<CursorInformation>() };
+        var read = ReadCursor(ref visible);
+        return new(read, visible.Cursor.ToInt64(), visible.Flags, ReadThreadCursor().ToInt64(),
+            CurrentThreadId(), visible.Position.X, visible.Position.Y, System.Diagnostics.Stopwatch.GetTimestamp());
     }
 
     [StructLayout(LayoutKind.Sequential)] private struct CursorPoint { public int X; public int Y; }
@@ -352,4 +398,6 @@ internal static class BleeckerPointerCursor
     [DllImport("user32.dll", EntryPoint = "GetCursorInfo")]
     [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ReadCursor(ref CursorInformation info);
     [DllImport("user32.dll", EntryPoint = "LoadCursorW")] private static extern IntPtr LoadSystemCursor(IntPtr instance, IntPtr name);
+    [DllImport("user32.dll", EntryPoint = "GetCursor")] private static extern IntPtr ReadThreadCursor();
+    [DllImport("kernel32.dll", EntryPoint = "GetCurrentThreadId")] private static extern uint CurrentThreadId();
 }

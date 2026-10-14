@@ -1,5 +1,47 @@
 # Input editing preview
 
+Cursor diagnostics now retain bounded native snapshots immediately after the
+initial blocked assignment, intermediate producer assignment, deferred blocked
+assignment and producer restoration. Each records whether `GetCursorInfo`
+succeeded, its displayed handle/flags/point, the caller's `GetCursor` handle,
+native thread ID and monotonic timestamp. Window-point diagnostics also record
+the owning window threads. These observations distinguish an immediately
+ineffective SDK assignment from a later replacement; they do not supply an
+expected handle or alter publication, ownership, cancellation or acceptance.
+
+The local 1024x745 x64 matrix passes all 192 Light/Dark samples in
+`artifacts/smoke-cursor-publication-observation-input-sized`. In 39 samples,
+Windows still displays Arrow immediately after the deferred blocked assignment
+and displays UniversalNo later at the same point. The publisher now keeps that
+deferred transaction pending for two rendering ticks, allowing a complete frame
+before another refresh can start recovery through the intermediate producer.
+Restore detaches the pending frame observer and invalidates its epoch. This is
+a candidate timing correction; the displayed-cursor deadline and expected
+handles remain unchanged. The Checkbox fixture additionally forces one real
+publication at a stationary owned point and requires exactly one completion,
+one frame acknowledgement, no cancellation and actual UniversalNo display.
+Its existing owner-release cancellation and repeated lifecycle checks remain.
+Both solution builds are clean and all 38 regressions pass in
+`artifacts/tests-cursor-publication-settle`. The complete local x64 catalog
+passes both themes at a 1024x745 client size in
+`artifacts/smoke-cursor-publication-settle-full`, including all 192 Input samples,
+the original cancellation checks and exactly one completed/acknowledged forced
+publication per theme. Each completion records two rendering ticks, no pending
+observer and actual UniversalNo. The earlier maximized run stopped at its
+unchanged composed-client occlusion guard before exercising publication; its
+failure remains in `artifacts/smoke-cursor-publication-observation-input`.
+Hosted ARM64 verification is still required for the frame-settlement candidate.
+The fresh independent ARM64 consumer cross-build also passes in
+`artifacts/package-consumer-publication-settle-buildonly`, restoring package
+SHA-256 `ed1de471d9f642c68530fb1eec056730ccdab6e6a8ce1aadb1a2e4561650bba8`.
+Its cache is removed successfully; `runtimeVerified` remains false on this
+x64 host. Native consumption remains a required hosted gate.
+
+The pinned [WinUI 2.5.1 input source](https://github.com/microsoft/microsoft-ui-xaml/blob/ba3a8d59e6de4e2b86ca4f61c78bc26ccf129afd/src/dxaml/xcp/core/input/InputServices.cpp#L1057)
+walks the captured/entered element ancestry and publishes through the same
+`InputPointerSource.Cursor` API. Its interaction with Orchard's publisher is
+still under investigation. The strict native cursor checks remain required.
+
 Run [38556522194](https://github.com/gaulatti/orchard/actions/runs/38556522194)
 at `7d11f1b` does not establish ARM64 cursor recovery. The failing Dark
 Medium/top-right sample reports Arrow while its publisher has queued 86

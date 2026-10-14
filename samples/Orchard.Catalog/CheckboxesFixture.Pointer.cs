@@ -136,6 +136,34 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff,"queued-publication-canceled",false,32512,anchor);
             DisabledOff.IsHitTestVisible=true;UpdateLayout();
             await Check(DisabledOff,"queued-publication-owner-restored",true,32648,anchor);
+            await WaitOwnedAsync(()=>!NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued"),
+                "Restored owner retained an unfinished cursor publication.");
+            var settledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"acknowledgedPublicationCalls");
+            var deliveredBefore=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
+            var settledCanceledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
+            NativeCursorDiagnostics.QueueOwnedRepublish(DisabledOff);
+            try
+            {
+                await WaitOwnedAsync(()=>NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls")==deliveredBefore+1&&
+                    NativeCursorDiagnostics.Counter(DisabledOff,"acknowledgedPublicationCalls")==settledBefore+1&&
+                    NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls")==settledCanceledBefore&&
+                    !NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued")&&
+                    !NativeCursorDiagnostics.Flag(DisabledOff,"awaitingPublicationFrames")&&
+                    CurrentCheckboxCursor()==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32648)),
+                    "Owned cursor publication did not settle once without being reset before display.");
+            }
+            finally
+            {
+                await File.WriteAllTextAsync(Path.Combine(folder,$"checkbox-publication-settled-{scheme}.json"),JsonSerializer.Serialize(new
+                {
+                    settledBefore,deliveredBefore,settledCanceledBefore,
+                    settledAfter=NativeCursorDiagnostics.Counter(DisabledOff,"acknowledgedPublicationCalls"),
+                    deliveredAfter=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls"),
+                    canceledAfter=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls"),
+                    cursor=NativeInputSession.DescribeCursor(),publication=NativeCursorDiagnostics.Describe(DisabledOff)
+                }));
+            }
+            await Check(DisabledOff,"publication-settled",true,32648,anchor);
             for (var round = 0; round < 12; round++)
             {
                 DisabledOff.IsHitTestVisible = false; UpdateLayout();
