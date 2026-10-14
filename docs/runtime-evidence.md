@@ -1,5 +1,17 @@
 # Native Windows runtime evidence
 
+Run [38506082985](https://github.com/gaulatti/orchard/actions/runs/38506082985)
+at `c7fdad4` passes both builds, all 32 regressions, the new focused chart-theme
+fixture on x64 and native ARM64, and both independent native package consumers.
+The full x64 catalog passes. The full ARM64 catalog stops at Breadcrumb's
+custom-template `ConsumerLink` lookup before its named child materializes.
+Both contrast jobs retain the 46/124 Attention glyph failure. Verified ARM64
+snapshots show unchanged natural text metrics and UseLayoutRounding=false
+throughout the owned ancestor tree; see [contrast diagnostics](contrast-verification.md).
+The native archive SHA-256 is
+`fda55ecdcb6e9003581ba9bcf765975a967ff7f98ec0d9ebbbf48fd860545c34`.
+This remains a failing required CI checkpoint, with no inventory acceptance.
+
 Run [38502493745](https://github.com/gaulatti/orchard/actions/runs/38502493745)
 at `4fde530` passes both builds, all 31 unit/resource regressions, the focused
 Bauhaus/Input/Activity/Attention/Notifications checks on both native

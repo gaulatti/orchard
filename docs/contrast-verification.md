@@ -290,3 +290,13 @@ positioning failure. No pixel offset or relaxed acceptance is introduced.
 Snapshots additionally retain the natural metrics, baseline offset and each
 owned ancestor's position, rounding and transform to distinguish the next
 renderer investigation from an assumed capture race.
+
+Run `38506082985` at `c7fdad4` retains 46/124 on both architectures. Its native
+ARM64 archive has verified SHA-256
+`fda55ecdcb6e9003581ba9bcf765975a967ff7f98ec0d9ebbbf48fd860545c34`.
+The expanded snapshots retain the same text baseline 19.776001, natural height
+20 and natural baseline 16.480000 before and during contrast. Every owned
+ancestor reports UseLayoutRounding=false in both phases. The paragraph moves
+from Y=430.5 to 394 while the transformed text retains its fractional phase.
+This rules out a changed font-metric value or rounding-property toggle in the
+recorded tree; it does not yet identify or correct the composed raster shift.

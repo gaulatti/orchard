@@ -133,3 +133,12 @@ The complete local x64 catalog passes both appearances with the registered
 chart fixture and expanded contrast baseline diagnostics at
 `artifacts/smoke-chart-theme-all`. This retains the same local settings and
 does not establish a passing hosted contrast or ARM64 cursor gate.
+
+Hosted run [38506082985](https://github.com/gaulatti/orchard/actions/runs/38506082985)
+at `c7fdad4` passes the focused chart-theme step on both x64 and native ARM64;
+ARM64 retains enabled Windows animations. Both steps use the real catalog
+fixture and architecture-checked reports. Both independent native package
+consumers also pass. Overall CI remains red: both contrast checks retain the
+46/124 Attention failure, and the full ARM64 catalog stops at Breadcrumb's
+custom-template `ConsumerLink` lookup. The full x64 catalog passes. These
+focused successes do not establish complete chart or platform acceptance.
