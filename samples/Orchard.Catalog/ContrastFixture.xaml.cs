@@ -19,6 +19,9 @@ public sealed partial class ContrastFixture : UserControl
         using (var pixels = image.PixelBuffer.AsStream()) pixels.Write(new byte[] { 0,0,0,255, 110,70,30,255, 55,35,15,128, 0,0,0,0 });
         image.Invalidate(); Brand.LogoSource = image;
         Bauhaus.ImageSource=image;
+        // Keep the mode-transition help open without covering the independent
+        // pointer targets when a small viewport would flip it above the owner.
+        BleeckerTooltipService.GetToolTip(Help)!.Placement = Microsoft.UI.Xaml.Controls.Primitives.PlacementMode.Right;
     }
     internal async Task VerifyKeyboardEntryAsync(string folder, BleeckerColorScheme scheme)
     {
@@ -31,6 +34,19 @@ public sealed partial class ContrastFixture : UserControl
         try
         {
             await MainWindow.CaptureElementAsync(tooltip, System.IO.Path.Combine(folder, $"contrast-entry-popup-{scheme}.png"));
+            var expansion = Descendants<Button>(Path).Single();
+            await input.MoveAsync(expansion);
+            var targetBounds = input.ScreenBounds(expansion); var tooltipBounds = input.ScreenBounds(tooltip);
+            var center = new Windows.Foundation.Point(targetBounds.X+targetBounds.Width/2, targetBounds.Y+targetBounds.Height/2);
+            var actionRoot = (FrameworkElement)VisualTreeHelper.GetChild(expansion, 0);
+            await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"contrast-entry-hover-{scheme}.json"), JsonSerializer.Serialize(new
+            {
+                targetBounds, tooltipBounds, occluded = tooltipBounds.Contains(center), tooltip.ActualPlacement,
+                states = VisualStateManager.GetVisualStateGroups(actionRoot).Select(group => new { group.Name, current = group.CurrentState?.Name })
+            }));
+            Require(!tooltipBounds.Contains(center), "Contrast entry's open help occludes its Breadcrumb pointer target.");
+            await AwaitAsync(() => VisualStateManager.GetVisualStateGroups(actionRoot).Any(group => group.Name == "CommonStates" && group.CurrentState?.Name == "PointerOver"),
+                "Open contextual help prevented normal pointer delivery to Breadcrumb.");
             input.Key(0x1B);
             await AwaitAsync(() => !tooltip.IsOpen, "Physical Escape did not dismiss contextual help.");
             Require(ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Help) &&
@@ -149,6 +165,9 @@ public sealed partial class ContrastFixture : UserControl
             var icon = Descendants<Microsoft.UI.Xaml.Shapes.Path>(expansion).Single(item => item.Name == "PART_Icon");
             try
             {
+                var targetBounds = input.ScreenBounds(expansion); var tooltipBounds = input.ScreenBounds(tooltip);
+                Require(!tooltipBounds.Contains(new Windows.Foundation.Point(targetBounds.X+targetBounds.Width/2, targetBounds.Y+targetBounds.Height/2)),
+                    "Contrast mode's open help occludes its Breadcrumb pointer target.");
                 await AwaitAsync(() => Matches(chrome.Background, NativeContrastSession.Color(13)) && Matches(icon.Stroke, NativeContrastSession.Color(14)),
                     "Hovered breadcrumb did not pair Windows Highlight and HighlightText.");
             }
@@ -156,6 +175,7 @@ public sealed partial class ContrastFixture : UserControl
             {
                 var actionRoot = (FrameworkElement)VisualTreeHelper.GetChild(expansion, 0);
                 var palette = (Border)actionRoot.FindName("PART_Palette");
+                var bounds = input.ScreenBounds(expansion); var helpSurfaceBounds = input.ScreenBounds(tooltip);
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-breadcrumb-hover.json"), JsonSerializer.Serialize(new
                 {
                     expansion.IsLoaded, expansion.IsEnabled, expansion.IsPressed, expansion.FocusState,
@@ -163,6 +183,7 @@ public sealed partial class ContrastFixture : UserControl
                     paletteBackground = Hex(palette.Background), paletteForeground = Hex(palette.BorderBrush),
                     paletteBackgroundOpacity = BrushOpacity(palette.Background), paletteForegroundOpacity = BrushOpacity(palette.BorderBrush),
                     paintedBackground = Hex(chrome.Background), paintedForeground = Hex(icon.Stroke),
+                    bounds, helpSurfaceBounds, occluded = helpSurfaceBounds.Contains(new Windows.Foundation.Point(bounds.X+bounds.Width/2, bounds.Y+bounds.Height/2)),
                     states = VisualStateManager.GetVisualStateGroups(actionRoot).Select(group => new { group.Name, current = group.CurrentState?.Name }),
                     foreground = input.OwnsForeground, native = input.DescribeCurrentPoint()
                 }));

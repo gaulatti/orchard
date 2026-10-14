@@ -1,5 +1,31 @@
 # Native Windows runtime evidence
 
+The contrast fixture now places its open contextual help to the right so
+small viewports do not flip it over Breadcrumb's pointer target. The original
+fixture reproduces the hosted failure locally at a 1024x745 client size in
+`artifacts/smoke-contrast-entry-occlusion-before`: the tooltip covers the target
+center and CommonStates stays Normal. The corrected focused native entry
+passes Light/Dark in `artifacts/smoke-contrast-entry-unobscured`, recording no
+occlusion and PointerOver, followed by physical Escape and retained keyboard
+focus. The actual contrast check keeps its exact semantic colors, popup
+retention and restoration requirements, and now explicitly checks occlusion.
+Hosted mode-changing verification remains pending. This changes catalog
+verification only; the library's tooltip default and backend/metrics behavior
+are unchanged.
+Both solution builds are clean, all 38 regressions pass at
+`artifacts/tests-contrast-entry`, token generation matches its pinned source,
+and the complete local x64 catalog passes both themes at
+`artifacts/smoke-contrast-entry-full`. The unchanged package retains its
+previous independently restored consumer evidence; no new library packaging
+contract is introduced by this catalog-only correction.
+
+Run [38530280838](https://github.com/gaulatti/orchard/actions/runs/38530280838)
+at `645189c` passes both builds, 38 regressions, the complete x64 catalog and
+both independent package consumers. ARM64's focused Input and full catalog
+still fail real global cursor checks, and both contrast jobs still fail
+Breadcrumb hover. The consumer foreground correction has passed its hosted
+runtime gate; required CI and inventory acceptance remain incomplete.
+
 The independent consumer's physical chart input now performs one explicit
 activation of its own visible process-owned window before keyboard focus.
 It calls Window.Activate and SetForegroundWindow once, then requires the
@@ -20,7 +46,13 @@ native runtime unverified on this x64 host. Both use unchanged package SHA-256
 `becbbfa4b759f068a7c582d0f7521473ba6227ca1fcf1dd0344442ce39bebc22`.
 All 38 regressions pass at `artifacts/tests-consumer-foreground`. This changes
 consumer verification only; no library or backend/metrics behavior changes.
-Actual hosted ARM64 foreground acquisition remains unverified.
+Run `38530280838` verifies hosted native ARM64 acquisition and consumer runtime.
+Its retained archive `artifacts/ci-645189c-arm64.zip` matches published SHA-256
+`9119834e2f9b8376fb76787763e5399f8081cfbe4e694354976468d34ea32e9e`.
+Selected evidence in `artifacts/ci-645189c-arm64-evidence` records the consumer's
+own visible window before/after activation in both themes, `acquired=true`,
+and passing native ARM64 runtime. This successful run began with the window
+already in foreground; it does not prove activation after foreign ownership.
 
 Run [38527036318](https://github.com/gaulatti/orchard/actions/runs/38527036318)
 at `00734d0` passes both builds, 38 regressions, both focused notification

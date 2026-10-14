@@ -1,5 +1,32 @@
 # Windows contrast verification
 
+The Breadcrumb hover failure has a native local reproduction at a 1024x745
+client viewport without changing Windows settings. In
+`artifacts/smoke-contrast-entry-occlusion-before`, the open help tooltip flips
+above its owner and covers the expansion button's center; the button remains
+in Normal. The hosted ARM64 trace at `55d17e1` likewise records Normal and
+rendered brushes matching the unchanged palette, despite owned native input.
+The contrast fixture now requests the existing public Right placement for
+this help surface, preserving its open state and keyboard focus during the
+transition. FieldHelp's library default placement is unchanged.
+
+The focused `scripts/smoke-catalog.ps1 -Component contrast-entry` check runs the
+ordinary Light/Dark entry, hover and Escape path without changing Windows
+preferences. Both themes pass at `artifacts/smoke-contrast-entry-unobscured`
+with the same 1024x745 client size: the popup does not cover the pointer target,
+Breadcrumb enters PointerOver, and Escape retains keyboard focus on Help.
+`contrast-entry-hover-{scheme}.json` records both screen bounds, occlusion,
+actual placement and visual states. The real contrast check additionally
+requires the hover target to be unobscured and records these bounds in
+`contrast-breadcrumb-hover.json`; its exact Highlight/HighlightText assertion
+and existing deadline remain required. Actual hosted contrast verification
+of this fixture correction is pending.
+Both architecture builds finish with zero warnings, all 38 regressions pass
+at `artifacts/tests-contrast-entry`, and the complete local x64 catalog passes
+both themes at `artifacts/smoke-contrast-entry-full`. Local animations remain
+disabled, scale remains 1, and contrast remains off. The wiki remote remains
+unavailable; these contracts and evidence are maintained in repository docs.
+
 The latest Attention renderer candidate has a local reproduction of the hosted
 glyph defect without changing Windows settings. A 36.5px fractional viewport
 scroll fails the initial glyph mask at 46/124. Quantizing native text ascent
