@@ -194,6 +194,7 @@ public sealed partial class MainWindow : Window
                 await VerifyLineChartAsync();
                 await VerifyErrorStateAsync();
                 await VerifyPageHeaderAsync();
+                VerifySectionHeader();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -286,6 +287,24 @@ public sealed partial class MainWindow : Window
             else link.SetValue(Control.ForegroundProperty, originalPaint);
             link.IsEnabled = originalEnabled;
         }
+    }
+
+    private void VerifySectionHeader()
+    {
+        PackageSectionHeader.ApplyTemplate(); Root.UpdateLayout();
+        var surface = (FrameworkElement)VisualTreeHelper.GetChild(PackageSectionHeader, 0);
+        var title = (TextBlock)surface.FindName("PART_Title"); var description = (TextBlock)surface.FindName("PART_Description");
+        var eyebrow = (BleeckerEyebrow)surface.FindName("PART_Eyebrow");
+        Require(title.Text == "Independent section" && title.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf") && title.FontSize == 28 && title.LineHeight == 35 &&
+            FrameworkElementAutomationPeer.CreatePeerForElement(title).GetHeadingLevel() == AutomationHeadingLevel.Level2 &&
+            description.FontFamily.Source.Contains("LibreFranklin-Regular.ttf") && description.LineHeight == 28 && eyebrow.ActualHeight == 16 &&
+            !PackageSectionHeader.IsTabStop, "Packaged Section Header lost its fonts, layout or heading semantics.");
+        PackageSectionHeader.Eyebrow = ""; PackageSectionHeader.Description = ""; Root.UpdateLayout();
+        Require(eyebrow.Visibility == Visibility.Collapsed && description.Visibility == Visibility.Collapsed && PackageSectionHeader.ActualHeight == 35,
+            "Packaged Section Header retained removed content gaps.");
+        PackageSectionHeader.Title = "Updated independent section"; Root.UpdateLayout();
+        Require(title.Text == PackageSectionHeader.Title, "Packaged Section Header did not render consumer changes.");
+        PackageSectionHeader.Title = "Independent section"; PackageSectionHeader.Eyebrow = "Workspace"; PackageSectionHeader.Description = "Consumer-owned section summary";
     }
 
     private async Task VerifyPageHeaderAsync()

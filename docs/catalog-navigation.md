@@ -17,6 +17,13 @@ content consume Orchard's fonts, colors and controls. The sidebar uses existing
 Bleecker button previews and the Input preview; their outstanding component
 parity gaps still apply.
 
+Section Headers follows Page Headers. It covers optional eyebrow/summary text,
+empty titles, constrained widths, RTL and multilingual content. Focused
+`-Component section-header` uses the same navigation path and verifies the
+frozen source layouts, real heading peers, live bindings, remount/template
+replacement and physical forward/reverse Tab traversal. Complete text raster,
+contrast, scaling and Narrator acceptance remains open.
+
 Breadcrumb is registered after Avatars, with source threshold boundaries,
 independent wrapping, custom content, keyboard expansion and consumer updates.
 

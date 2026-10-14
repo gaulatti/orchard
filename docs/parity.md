@@ -89,7 +89,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | radio-group | Pending | Pending | Full pinned contract |
 | checkbox | `BleeckerCheckbox`: native selection with consumer label/description content | Registered Checkboxes fixture and independent package consumer; runtime verification pending | In progress: [usage and gaps](checkboxes.md); exact rendering, input/cursor/focus, lifecycle, accessibility, scaling, motion and x64/ARM64 runtime |
 | scroll-area | Pending | Pending | Full pinned contract |
-| separator | Pending | Pending | Full pinned contract |
+| separator | `BleeckerSeparator`: horizontal/vertical, decorative or semantic | Registered geometry, theme, live orientation and automation fixture; independent consumer | In progress: [contract and evidence](separator.md); complete raster, contrast/Narrator/scaling, keyboard traversal and ARM64 acceptance |
 | sheet | Pending | Pending | Full pinned contract |
 | slider | Pending | Pending | Full pinned contract |
 | sonner | Pending | Pending | Full pinned contract |
@@ -114,9 +114,9 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | command-spotlight | Pending | Pending | Full pinned contract |
 | select | Pending | Pending | Full pinned contract |
 | file-input | Pending | Pending | Full pinned contract |
-| section-header | Pending | Pending | Full pinned contract |
+| section-header | `BleeckerSectionHeader`: title, optional eyebrow/description and native level-two heading | Registered 24-case frozen layout and live binding/lifecycle/keyboard fixture; independent consumer | In progress: [source contract and evidence](section-header-reference.md); exact text raster/balancing, complete overrides, contrast/Narrator/scaling and full platform acceptance |
 | panel | Pending | Pending | Full pinned contract |
-| status-badge | Pending | Pending | Full pinned contract |
+| status-badge | `BleeckerStatusBadge`: five variants, consumer label/description and constrained reflow | Registered palette/layout/automation and live binding fixtures; independent consumer | In progress: [contract and evidence](status-badge.md); complete shaping/gamut/raster, contrast/Narrator/scaling and ARM64 acceptance |
 | table | Pending | Pending | Full pinned contract |
 | data-table | Pending | Pending | Full pinned contract |
 | tabs | Pending | Pending | Full pinned contract |

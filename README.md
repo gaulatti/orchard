@@ -21,6 +21,8 @@ frozen role/palette resource keys and immutable chart style metadata. The
 [Line Chart preview](docs/line-chart-reference.md) renders observable consumer
 records/series with native monotone curves, axes, a legend and category
 inspection; complete chart/platform acceptance remains in progress.
+The [Section Header preview](docs/section-header-reference.md) supplies a
+level-two heading, optional eyebrow and consumer-owned summary.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

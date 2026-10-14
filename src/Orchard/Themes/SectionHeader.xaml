@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerSectionHeader">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="UseSystemFocusVisuals" Value="False" />
+  <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="UseLayoutRounding" Value="False" />
+  <Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSectionHeader">
+   <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+    <StackPanel Spacing="14">
+     <local:BleeckerEyebrow x:Name="PART_Eyebrow" Content="{TemplateBinding Eyebrow}" />
+     <StackPanel x:Name="PART_Group">
+      <TextBlock x:Name="PART_Title" Text="{TemplateBinding Title}" Foreground="{TemplateBinding Foreground}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontSize="28" FontWeight="SemiBold" LineHeight="35" LineStackingStrategy="BlockLineHeight" CharacterSpacing="-20" TextWrapping="Wrap" AutomationProperties.HeadingLevel="Level2" />
+      <Grid x:Name="PART_DescriptionHost"><TextBlock x:Name="PART_Description" Text="{TemplateBinding Description}" MaxWidth="672" HorizontalAlignment="Stretch" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerSecondaryFontFamily}" FontSize="16" LineHeight="28" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" /></Grid>
+     </StackPanel>
+    </StackPanel>
+   </Border>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

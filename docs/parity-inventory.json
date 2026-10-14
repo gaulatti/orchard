@@ -3899,14 +3899,23 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerSectionHeader.cs",
+        "src/Orchard/Themes/SectionHeader.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/SectionHeadersFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/SectionHeadersFixture.xaml.cs",
+        "tests/Reference/SectionHeaderLayout.json",
+        "tests/PackageConsumer/MainWindow.xaml.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact glyph baselines and CSS text balancing/pretty",
+        "Complete consumer override and constrained multilingual matrix",
+        "Contrast schemes, Narrator, scaling and complete x64/ARM64 visual acceptance"
       ]
     },
     {

@@ -58,6 +58,10 @@ application navigation metadata; `BackCommand`, parameter and `BackRequested`
 deliver invocation without launching a URL. `BackLabel` supplies the accessible
 name. Complete text raster, scaling, contrast and Narrator acceptance remains
 in progress.
+`BleeckerSectionHeader` supplies a level-two title, optional eyebrow and summary.
+Its strings remain consumer-owned, optional empty content collapses, and it adds
+no keyboard stop or action. Full text raster, contrast, scaling and Narrator
+acceptance remains in progress.
 `BleeckerBrandLockup` preserves consumer-owned routes and commands, supports both
 sizes, optional names, custom image sources and typed consumer link templates.
 `BleeckerBauhausBackground` provides four decorative image/pattern variants;

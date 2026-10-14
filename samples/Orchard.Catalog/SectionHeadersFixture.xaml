@@ -1,0 +1,13 @@
+<UserControl x:Class="Orchard.Catalog.SectionHeadersFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Section headers" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned section titles, optional eyebrows and summaries. The title retains level-two heading semantics." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerSectionHeader x:Name="Specimen" Title="Editorial" Eyebrow="Workspace" Description="Review fictional stories before publication." />
+  <orchard:BleeckerSectionHeader Title="Title without supporting content" />
+  <orchard:BleeckerSectionHeader Title="A longer fictional editorial workspace title" Eyebrow="Workspace" Description="A consumer-owned description wraps within the chosen space." Width="280" HorizontalAlignment="Left" />
+  <orchard:BleeckerSectionHeader Title="日本語 · العربية · Éditorial" Eyebrow="Straße" Description="日本語とالعربيةの consumer-owned summary." />
+  <orchard:BleeckerSectionHeader Title="Editorial" Eyebrow="Workspace" Description="Consumer-owned right-to-left description." FlowDirection="RightToLeft" Width="320" HorizontalAlignment="Left" />
+  <orchard:BleeckerSectionHeader Title="" Eyebrow="Workspace" Description="Consumer description" />
+  <orchard:BleeckerSectionHeader Title="" Eyebrow="" Description="" />
+ </StackPanel>
+</UserControl>
