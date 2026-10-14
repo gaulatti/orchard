@@ -1,5 +1,24 @@
 # Native Windows runtime evidence
 
+Run [38496131766](https://github.com/gaulatti/orchard/actions/runs/38496131766)
+at `0b60f37` passes both builds, 28 unit/resource tests, the full x64 catalog,
+both native package consumers, and focused Bauhaus/Input/Activity/Attention on
+both native architectures. Attention's focused ARM64 run uses enabled animations
+and verifies its initial source-layout/action/command/lifecycle/interior-pixel
+checks; it does not close full raster, motion, contrast, scaling or Narrator.
+Native ARM64's full suite fails Checkbox's `hit-testing-repeat-restored-5`, and
+both contrast jobs retain the 38/46 Attention isolated-ink failure.
+
+The verified ARM64 archive `11864352182` has SHA-256
+`81af82c674c5fd5c7f10a9269ca0e7e3cef6dae6fb4328d6e41e1bb1948d677c`;
+selected reports and ink images are at `artifacts/ci-0b60f37-arm64-evidence`.
+Its native package consumer passes with 0.1.0 SHA-256
+`10efe2dfb780bf61fcd14721b8fbc22000fc44ec82c1070917dbb848b95063ba`.
+The new ink diagnostics establish a changing local text transform with stable
+displayed baseline phase; the next fixture compares composed screen glyphs,
+retaining the pre-transition mask and exact system foreground requirement.
+The full required checkpoint remains red.
+
 ## Attention verification checkpoint
 
 Run [38494432792](https://github.com/gaulatti/orchard/actions/runs/38494432792)

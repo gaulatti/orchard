@@ -225,3 +225,26 @@ and before/after origin, dimensions, font, transform and scale values. Files use
 `contrast-ink-<name>-before.png`, `-after.png` and `-details.json`. These diagnose
 paint, layout and rasterization differences without deriving a replacement mask
 from the post-transition result or relaxing the exact color/opacity assertion.
+
+The verified ARM64 archive for run `38496131766` shows Attention's isolated
+label transform changing from -1.27600098 to -1.77600098 as its ancestor layout
+changes during contrast mode. Its displayed origin changes from Y=429.223999
+to 392.223999: the same fractional phase, 37 whole pixels apart. Font, dimensions
+and scale remain unchanged. Eight isolated-snapshot samples are partly covered
+after the half-pixel local transform change, explaining why a local TextBlock
+raster is insufficient evidence of displayed foreground adoption.
+
+The glyph check now crops the actual composed client capture at each label's
+physical bounds. It requires owned foreground, an unoccluded client and a desktop
+composition flush, retains exact before/final label crops, and keeps the mask
+established before the mode change. All those established positions must still
+match exact Windows foreground with alpha 255 within eight seconds. The ordinary
+keyboard-entry fixture also reads the composed Attention baseline without
+changing Windows settings. Fresh hosted contrast verification is required; the
+capture change does not assert that the observed displayed glyphs already pass.
+
+The ordinary x64 full suite passes the composed Attention baseline reads in
+both themes at `artifacts/smoke-notifications-theme-composed-ink-all`. This proves
+the owned-screen capture, cropping and ink-mask path runs without changing
+local Windows settings. It does not prove live contrast adoption; that requires
+the fresh isolated hosted transition check.

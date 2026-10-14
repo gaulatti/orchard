@@ -25,6 +25,8 @@ public sealed partial class ContrastFixture : UserControl
         using var input = new NativeInputSession(XamlRoot, folder, $"contrast-entry-{scheme}");
         await input.AcquireAsync(Heading);
         await input.MoveAsync(Heading);
+        var attentionRoot=(FrameworkElement)VisualTreeHelper.GetChild(Attention,0);
+        await ReadInkAsync(input,(TextBlock)attentionRoot.FindName("PART_String"),folder,$"attention-entry-{scheme}");
         var tooltip = await OpenHelpAsync(input);
         try
         {
@@ -91,9 +93,9 @@ public sealed partial class ContrastFixture : UserControl
         Help.GotFocus += GotFocus; Help.LostFocus += LostFocus;
         tooltip.Closed += Closed;
         Help.AddHandler(PointerPressedEvent, new Microsoft.UI.Xaml.Input.PointerEventHandler(Pressed), true);
-        var headingInk = await ReadInkAsync(Heading,folder,"heading");
-        var labelInk = await ReadInkAsync(Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"),folder,"action-label");
-        var attentionInk = await ReadInkAsync(attentionText,folder,"attention-label");
+        var headingInk = await ReadInkAsync(input,Heading,folder,"heading");
+        var labelInk = await ReadInkAsync(input,Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"),folder,"action-label");
+        var attentionInk = await ReadInkAsync(input,attentionText,folder,"attention-label");
         var passed = false;
         try
         {
@@ -119,8 +121,8 @@ public sealed partial class ContrastFixture : UserControl
                 "Contrast switching closed contextual help or lost its focus while the catalog owned foreground.");
             var action = Action();
             await VerifyPaintAsync(action, folder);
-            await VerifyInkAsync(Heading, 8, headingInk, folder, "heading");
-            await VerifyInkAsync(Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), 14, labelInk, folder, "action-label");
+            await VerifyInkAsync(input,Heading, 8, headingInk, folder, "heading");
+            await VerifyInkAsync(input,Descendants<TextBlock>(action).First(item => item.Text == "Contrast action"), 14, labelInk, folder, "action-label");
             await VerifyBrandPaintAsync(input, folder);
             var activitySurface = (Border)VisualTreeHelper.GetChild(Activity, 0);
             Require(activitySurface.Name == "PART_Surface", "Activity contrast verification requires its own template surface.");
@@ -140,7 +142,7 @@ public sealed partial class ContrastFixture : UserControl
                 attentionSurface.Background is null && ((TranslateTransform)attentionRoot.RenderTransform).Y==0 &&
                 Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementChildVisual(attentionShadow) is null,
                 "Attention did not adopt Windows semantic paint or suppress gradient, lift and shadow in actual contrast mode.");
-            await VerifyInkAsync(attentionText,8,attentionInk,folder,"attention-label");
+            await VerifyInkAsync(input,attentionText,8,attentionInk,folder,"attention-label");
             await MainWindow.CaptureElementAsync(Attention,System.IO.Path.Combine(folder,"contrast-attention-active.png"));
             await input.MoveAsync(expansion);
             var chrome = Descendants<Border>(expansion).Single(item => item.Name == "PART_Chrome");
@@ -194,33 +196,46 @@ public sealed partial class ContrastFixture : UserControl
             cursor = NativeInputSession.DescribeCursor(), helpBounds = input.ScreenBounds(Help), headingBounds = input.ScreenBounds(Heading) };
     }
     private sealed record InkSample(int Width, int Height, int[] Pixels, object Geometry);
-    private static async Task<InkSample> ReadInkAsync(TextBlock text,string folder,string name)
+    private sealed record InkRaster(int Width,int Height,byte[] Pixels);
+    private static async Task<InkRaster> ReadScreenInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
     {
-        var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(text);
-        var buffer = await bitmap.GetPixelsAsync();
-        var pixels = new byte[checked((int)buffer.Length)];
-        using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
+        await input.RequireForegroundAsync();
+        var path=System.IO.Path.Combine(folder,$"contrast-ink-{name}-window.png");
+        var client=await NativeScreenCapture.CaptureClientAsync(input.Window,path);
+        var bounds=input.ScreenBounds(text);
+        var x=(int)Math.Floor(bounds.X-client.X);var y=(int)Math.Floor(bounds.Y-client.Y);
+        var width=(int)Math.Ceiling(bounds.Width);var height=(int)Math.Ceiling(bounds.Height);
+        Require(x>=0&&y>=0&&width>0&&height>0&&x+width<=client.Width&&y+height<=client.Height,
+            "Contrast label exceeds the owned composed client capture.");
+        using var stream=File.OpenRead(path);using var random=stream.AsRandomAccessStream();
+        var decoder=await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(random);
+        var transform=new Windows.Graphics.Imaging.BitmapTransform{Bounds=new Windows.Graphics.Imaging.BitmapBounds{
+            X=(uint)x,Y=(uint)y,Width=(uint)width,Height=(uint)height}};
+        var data=await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,
+            transform,Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage);
+        return new InkRaster(width,height,data.DetachPixelData());
+    }
+    private static async Task<InkSample> ReadInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
+    {
+        var raster=await ReadScreenInkAsync(input,text,folder,name);var pixels=raster.Pixels;
         var color = ((SolidColorBrush)text.Foreground).Color;
-        var ink = Enumerable.Range(0, bitmap.PixelWidth * bitmap.PixelHeight).Where(index =>
+        var ink = Enumerable.Range(0, raster.Width * raster.Height).Where(index =>
             pixels[index * 4] == color.B && pixels[index * 4 + 1] == color.G && pixels[index * 4 + 2] == color.R && pixels[index * 4 + 3] == 255).ToArray();
         Require(ink.Length > 0, "Initial label has no solid glyph pixels to establish its ink mask.");
-        await SaveInkRasterAsync(bitmap,pixels,System.IO.Path.Combine(folder,$"contrast-ink-{name}-before.png"));
-        return new InkSample(bitmap.PixelWidth, bitmap.PixelHeight, ink,InkGeometry(text));
+        await SaveInkRasterAsync(raster.Width,raster.Height,pixels,System.IO.Path.Combine(folder,$"contrast-ink-{name}-before.png"));
+        return new InkSample(raster.Width, raster.Height, ink,InkGeometry(text));
     }
-    private static async Task VerifyInkAsync(TextBlock text, int systemColor, InkSample sample, string folder, string name)
+    private static async Task VerifyInkAsync(NativeInputSession input,TextBlock text, int systemColor, InkSample sample, string folder, string name)
     {
         var observations = new List<object>();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         var matching = 0;
-        byte[]? lastPixels=null; RenderTargetBitmap? lastBitmap=null;
+        byte[]? lastPixels=null;
         do
         {
-            var bitmap = new RenderTargetBitmap(); await bitmap.RenderAsync(text);
-            Require(bitmap.PixelWidth == sample.Width && bitmap.PixelHeight == sample.Height, "Contrast transition changed label raster dimensions.");
-            var buffer = await bitmap.GetPixelsAsync();
-            var pixels = new byte[checked((int)buffer.Length)];
-            using (var reader = Windows.Storage.Streams.DataReader.FromBuffer(buffer)) reader.ReadBytes(pixels);
-            lastPixels=pixels;lastBitmap=bitmap;
+            var raster=await ReadScreenInkAsync(input,text,folder,name);
+            Require(raster.Width == sample.Width && raster.Height == sample.Height, "Contrast transition changed label raster dimensions.");
+            var pixels=raster.Pixels;lastPixels=pixels;
             var expected = NativeContrastSession.Color(systemColor);
             matching = sample.Pixels.Count(index => pixels[index * 4] == expected.B && pixels[index * 4 + 1] == expected.G &&
                 pixels[index * 4 + 2] == expected.R && pixels[index * 4 + 3] == 255);
@@ -233,7 +248,7 @@ public sealed partial class ContrastFixture : UserControl
         var unmatched=sample.Pixels.Where(index=>lastPixels![index*4]!=finalExpected.B || lastPixels[index*4+1]!=finalExpected.G ||
             lastPixels[index*4+2]!=finalExpected.R || lastPixels[index*4+3]!=255).Select(index=>new{x=index%sample.Width,y=index/sample.Width,
                 actual=new[]{(int)lastPixels![index*4+2],(int)lastPixels[index*4+1],(int)lastPixels[index*4],(int)lastPixels[index*4+3]}}).ToArray();
-        await SaveInkRasterAsync(lastBitmap!,lastPixels!,System.IO.Path.Combine(folder,$"contrast-ink-{name}-after.png"));
+        await SaveInkRasterAsync(sample.Width,sample.Height,lastPixels!,System.IO.Path.Combine(folder,$"contrast-ink-{name}-after.png"));
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"contrast-ink-{name}-details.json"),JsonSerializer.Serialize(new{
             before=sample.Geometry,after=InkGeometry(text),width=sample.Width,height=sample.Height,expected=ColorHex(finalExpected),sample.Pixels,unmatched}));
         Require(matching == sample.Pixels.Length, $"Only {matching}/{sample.Pixels.Length} established glyph pixels adopted the Windows foreground.");
@@ -245,13 +260,13 @@ public sealed partial class ContrastFixture : UserControl
             text.ActualTheme,rasterScale=text.XamlRoot.RasterizationScale,textScale=new UISettings().TextScaleFactor,
             transformY=(text.RenderTransform as TranslateTransform)?.Y,foreground=Hex(text.Foreground)};
     }
-    private static async Task SaveInkRasterAsync(RenderTargetBitmap bitmap,byte[] pixels,string path)
+    private static async Task SaveInkRasterAsync(int width,int height,byte[] pixels,string path)
     {
         using var stream=File.Open(path,FileMode.Create,FileAccess.ReadWrite);
         using var random=stream.AsRandomAccessStream();
         var encoder=await Windows.Graphics.Imaging.BitmapEncoder.CreateAsync(Windows.Graphics.Imaging.BitmapEncoder.PngEncoderId,random);
         encoder.SetPixelData(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Premultiplied,
-            (uint)bitmap.PixelWidth,(uint)bitmap.PixelHeight,96,96,pixels);
+            (uint)width,(uint)height,96,96,pixels);
         await encoder.FlushAsync();
     }
     private static async Task VerifyPaintAsync(Button action, string folder)
