@@ -183,7 +183,8 @@ comparisons. Its result explicitly reports `captureOnly: true` and
 
 `tests/Reference/StatCardTypography.json` freezes 16 additional rendered source
 specimens from the unchanged pinned component, React and Recharts versions.
-SHA-256: `52b0be9177db9115e87228aea9581243a9f13c850318a6466150390a279cb664`.
+SHA-256 of the committed LF-normalized JSON:
+`24bef09cee9c00039e4020915c8f4ca7f3b4ed5e07f02a1aecb5f949618d8593`.
 The capture records actual custom-font selection through browser CDP, font-file
 hashes, first baselines and every occupied pixel row in each text rectangle.
 Import with `scripts/derive-stat-card-typography-reference.mjs`. Source captures
@@ -223,3 +224,20 @@ Both x64 and ARM64 solution builds pass with zero warnings. The full Light/Dark
 catalog passes at `artifacts/smoke-stat-typography-full` with the six-minute
 deadline unchanged. The final font diagnostic captures are at
 `artifacts/smoke-font-audit-final`; their result remains capture-only.
+
+Fresh package 0.1.0 from clean implementation commit
+`50a936c5e351b1cd80312a7a007948d304280b9f` has SHA-256
+`66e4478291e33e5a9102742032ef2965c9c22e94671d33b916136e3e89513464`.
+The isolated x64 consumer passes both themes, including first-baseline checks
+for title, value and trend, at `artifacts/package-consumer-stat-typography`.
+The isolated ARM64 consumer cross-build passes at
+`artifacts/package-consumer-stat-typography-arm64`; runtimeVerified is false.
+Both GUID-scoped temporary caches are removed. The separately published x64
+catalog passes all 80 layout/content cases, 54 composed typography results,
+40 typography lifecycle checks and existing native input gates at
+`artifacts/smoke-stat-typography-published`. The runnable output is
+`artifacts/catalog-stat-typography`, and the NuGet file is
+`artifacts/packages-stat-typography/Gaulatti.Orchard.0.1.0.nupkg`.
+The package README remains accurate; no public API or font resource changed.
+Push-triggered Actions remain paused at the user's request; these are local
+verification results and do not establish native ARM64 or hosted acceptance.
