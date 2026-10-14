@@ -36,7 +36,12 @@ by [Microsoft](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/win
 The frozen browser data in `tests/Reference/SectionHeaderLayout.json` contains
 24 Light/Dark cases rendered from that exact source with its pinned React
 19.2.4 dependencies and Orchard's bundled fonts. Capture SHA-256:
-`f56e112018ba0ea3bec63168dad8595c61623b5854a5f241cd1cd6445b11e4cb`.
+`fede6a8f4d06ce46822f05bd3bc74bd67af249ec7b9d3e2816b40cb74c0631ab`.
+The capture now includes measured first-line summary baselines and the full
+specimen's painted summary rows. A zero-size inline baseline marker is removed
+before capture, and all 24 original geometry records remain unchanged.
+`scripts/derive-section-header-reference.mjs` validates the source pin and
+required measurements before copying a supplied frozen capture into the tests.
 The catalog fixture checks source geometry, palette, typography and real
 heading peers, then exercises consumer binding updates, optional content
 removal, disabled layout, remount, template replacement and physical
@@ -61,17 +66,28 @@ at `artifacts/package-consumer-section-header`. It verifies bundled fonts,
 the real level-two heading peer, optional-content collapse and live title
 updates, then removes its own isolated cache.
 
-The fixture also records an invisible, non-interactive native font-metrics
-probe and captures the actual composed client in each theme, with the header's
-screen bounds. Focused checks pass at `artifacts/smoke-section-header-metrics`.
-For the 16px summary in a 28px line box, the native baseline is 22.3168335px;
-its natural line box is 19.3920002px with baseline 15.4560003px. Centering that
-natural line box gives 19.7600002px, consistent with the observed roughly 3px
-summary ink displacement. This is diagnostic evidence; no hardcoded offset or
-baseline correction has been applied.
+The summary retains its native 28px line boxes and uses a private measured-font
+probe to position its first baseline. Rounding native ascent/descent to
+integral layout values and flooring the first half-leading reproduces the
+frozen summary baseline, 19px from the paragraph top. This is a model verified
+against the captured cases, rather than a claim about browser internals.
+Unadjusted WinUI places the baseline at
+22.3168335px. The control computes the source position from live font metrics,
+then arranges the text inside its unchanged paragraph allocation. It does not
+apply a fixed three-pixel translation. The probe follows native font bindings,
+has no input behavior and is omitted from the accessible content tree.
 
-Exact glyph/baseline
-raster comparison, CSS `text-balance`/`text-pretty`, the complete override and
+Focused x64 checks pass at `artifacts/smoke-section-header-baseline`. Both
+composed Light/Dark captures now paint the full summary at rows 84–98, matching
+the frozen browser; the previous native rows were 87–101. The runtime gate
+reads the real window PNG and compares the first/last rows with the frozen
+capture. Baselines are also checked for every nonempty summary, including
+wrapped, RTL, multilingual and empty-title cases. The full local Light/Dark
+catalog passes at `artifacts/smoke-section-header-baseline-full`; all 42
+regression tests and the pinned token check pass. Native ARM64 validation of
+this correction remains open while automatic Actions push runs are paused.
+
+Complete glyph/baseline raster comparison, CSS `text-balance`/`text-pretty`, the complete override and
 multilingual constraint matrix, actual contrast schemes, Narrator and
 display/text scaling remain open. The inventory entry remains in progress;
 these gaps are not approved platform substitutions. This passive control has

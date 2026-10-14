@@ -39,6 +39,7 @@ public sealed partial class SectionHeadersFixture : UserControl
                     FlowDirection = item.TryGetProperty("rtl", out var rtl) && rtl.GetBoolean() ? FlowDirection.RightToLeft : FlowDirection.LeftToRight };
                 host.Children.Clear(); host.Children.Add(control); await MountedAsync(control); control.ApplyTemplate(); UpdateLayout();
                 var title = Part<TextBlock>(control, "PART_Title"); var description = Part<TextBlock>(control, "PART_Description"); var eyebrow = Part<BleeckerEyebrow>(control, "PART_Eyebrow");
+                var paragraph = (FrameworkElement)VisualTreeHelper.GetParent(description);
                 var metrics = new TextBlock { Text = "Mg", FontFamily = description.FontFamily, FontSize = description.FontSize, FontWeight = description.FontWeight,
                     IsHitTestVisible = false, Opacity = 0 };
                 AutomationProperties.SetAccessibilityView(metrics, AccessibilityView.Raw);
@@ -51,6 +52,8 @@ public sealed partial class SectionHeadersFixture : UserControl
                     descriptionAlignment = description.HorizontalAlignment.ToString(), descriptionParent = VisualTreeHelper.GetParent(description).GetType().Name,
                     descriptionSlot = Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(description).Width,
                     descriptionY = description.TransformToVisual(control).TransformPoint(new Point()).Y,
+                    paragraphY = paragraph.TransformToVisual(control).TransformPoint(new Point()).Y,
+                    summaryBaselineY = description.TransformToVisual(control).TransformPoint(new Point()).Y + description.BaselineOffset,
                     titleBaseline = title.BaselineOffset, descriptionBaseline = description.BaselineOffset,
                     naturalSummaryHeight = metrics.ActualHeight, naturalSummaryBaseline = metrics.BaselineOffset,
                     eyebrowHeight = eyebrow.ActualHeight, titleY = title.TransformToVisual(control).TransformPoint(new Point()).Y });
@@ -60,6 +63,7 @@ public sealed partial class SectionHeadersFixture : UserControl
                     AutomationProperties.GetHeadingLevel(title) == AutomationHeadingLevel.Level2, "Section Header lost its title typography or heading level.");
                 Require(description.FontSize == 16 && description.LineHeight == 28 && description.MaxWidth == 672 && description.FontFamily.Source.Contains("LibreFranklin-Regular.ttf"), "Section Header summary typography differs.");
                 Require(!control.IsTabStop && !FrameworkElementAutomationPeer.CreatePeerForElement(control).IsKeyboardFocusable(), "Section Header became a keyboard stop.");
+                Require(!PeerNames(FrameworkElementAutomationPeer.CreatePeerForElement(control)).Contains("Mg"), "Section Header exposed its private font probe.");
                 if (!string.IsNullOrEmpty(control.Title))
                 {
                     var peer = FrameworkElementAutomationPeer.CreatePeerForElement(title);
@@ -73,13 +77,17 @@ public sealed partial class SectionHeadersFixture : UserControl
                     var expectedDescription = expected.GetProperty("description");
                     var expectedY = expectedDescription.GetProperty("y").GetDouble() - expected.GetProperty("header").GetProperty("y").GetDouble();
                     Require(Math.Abs(Microsoft.UI.Xaml.Controls.Primitives.LayoutInformation.GetLayoutSlot(description).Width - expectedDescription.GetProperty("width").GetDouble()) < .001 &&
-                        Math.Abs(description.TransformToVisual(control).TransformPoint(new Point()).Y - expectedY) < .001, "Section Header summary width/gap differs.");
+                        Math.Abs(paragraph.TransformToVisual(control).TransformPoint(new Point()).Y - expectedY) < .001, "Section Header summary width/gap differs.");
+                    var baseline = description.TransformToVisual(control).TransformPoint(new Point()).Y + description.BaselineOffset;
+                    var expectedBaseline = expected.GetProperty("descriptionBaseline").GetDouble() - expected.GetProperty("header").GetProperty("y").GetDouble();
+                    Require(Math.Abs(baseline - expectedBaseline) < .001, $"Section Header {id} summary baseline differs: {baseline:R}/{expectedBaseline:R}.");
                 }
                 if (actualHeight > 0) await MainWindow.CaptureElementAsync(control, Path.Combine(folder, $"section-header-{id}-{scheme}.png"));
                 if (id == "full")
                 {
                     var client = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"section-header-composed-{scheme}.png"));
                     await File.WriteAllTextAsync(Path.Combine(folder, $"section-header-composed-{scheme}.json"), JsonSerializer.Serialize(new { client, bounds = input.ScreenBounds(control) }));
+                    await VerifyInkRowsAsync(Path.Combine(folder, $"section-header-composed-{scheme}.png"), client, input.ScreenBounds(control), expected.GetProperty("descriptionInk"), scheme, folder);
                     await VerifyMutationAsync(control, host);
                 }
             }
@@ -97,6 +105,29 @@ public sealed partial class SectionHeadersFixture : UserControl
         finally { root.Children.Remove(host); }
     }
 
+    private static async Task VerifyInkRowsAsync(string path, Rect client, Rect bounds, JsonElement expected, BleeckerColorScheme scheme, string folder)
+    {
+        using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+        using (var writer = new Windows.Storage.Streams.DataWriter(stream)) { writer.WriteBytes(await File.ReadAllBytesAsync(path)); await writer.StoreAsync(); writer.DetachStream(); }
+        stream.Seek(0);
+        var decoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
+        var pixels = (await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8, Windows.Graphics.Imaging.BitmapAlphaMode.Straight,
+            new Windows.Graphics.Imaging.BitmapTransform(), Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
+        var left = checked((int)(bounds.X - client.X)); var top = checked((int)(bounds.Y - client.Y));
+        var backgroundOffset = checked((top * (int)decoder.PixelWidth + left) * 4);
+        int? first = null, last = null;
+        for (var y = expected.GetProperty("top").GetInt32(); y < expected.GetProperty("bottom").GetInt32(); y++)
+            for (var x = expected.GetProperty("left").GetInt32(); x < expected.GetProperty("right").GetInt32(); x++)
+            {
+                var offset = checked(((top + y) * (int)decoder.PixelWidth + left + x) * 4);
+                if (Enumerable.Range(0, 3).Any(channel => Math.Abs(pixels[offset + channel] - pixels[backgroundOffset + channel]) > expected.GetProperty("threshold").GetInt32()))
+                { first = first is null ? y : Math.Min(first.Value, y); last = last is null ? y : Math.Max(last.Value, y); }
+            }
+        var passed = first == expected.GetProperty("first").GetInt32() && last == expected.GetProperty("last").GetInt32();
+        await File.WriteAllTextAsync(Path.Combine(folder, $"section-header-ink-{scheme}.json"), JsonSerializer.Serialize(new { passed, first, last, expectedFirst = expected.GetProperty("first").GetInt32(), expectedLast = expected.GetProperty("last").GetInt32() }));
+        Require(passed, "Composed Section Header summary glyph rows differ from the frozen browser.");
+    }
+
     private async Task VerifyMutationAsync(BleeckerSectionHeader control, Panel host)
     {
         var source = new TextBlock { Text = "Consumer title" };
@@ -112,6 +143,15 @@ public sealed partial class SectionHeadersFixture : UserControl
         control.ApplyTemplate(); UpdateLayout(); Require(((TextBlock)((Border)VisualTreeHelper.GetChild(control, 0)).Child).Text == source.Text, "Section Header rejected a consumer template.");
         control.Template = template; control.ApplyTemplate(); UpdateLayout(); source.Text = "Restored consumer title"; UpdateLayout();
         Require(Part<TextBlock>(control, "PART_Title").Text == source.Text && control.ActualHeight == 35, "Section Header failed to restore its template or binding.");
+        control.Eyebrow = "Workspace"; control.Description = "Restored consumer summary"; UpdateLayout();
+        var restored = Part<TextBlock>(control, "PART_Description");
+        Require(control.ActualHeight == 105 && Math.Abs(restored.TransformToVisual(control).TransformPoint(new Point()).Y + restored.BaselineOffset - 96) < .001,
+            "Section Header did not restore summary metrics after optional content and template replacement.");
+    }
+    private static IEnumerable<string> PeerNames(AutomationPeer peer)
+    {
+        yield return peer.GetName();
+        foreach (var child in peer.GetChildren() ?? []) foreach (var name in PeerNames(child)) yield return name;
     }
     private static string Color(Brush brush) { var c = ((SolidColorBrush)brush).Color; return $"#{c.A:X2}{c.R:X2}{c.G:X2}{c.B:X2}"; }
     private static T Part<T>(DependencyObject owner, string name) where T : FrameworkElement

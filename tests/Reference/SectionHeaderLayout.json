@@ -63,7 +63,8 @@
           "text": "Editorial"
         },
         "description": null,
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": null
       }
     },
     {
@@ -160,6 +161,16 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
+        },
+        "descriptionBaseline": 116,
+        "descriptionInk": {
+          "left": 0,
+          "right": 672,
+          "top": 77,
+          "bottom": 105,
+          "threshold": 10,
+          "first": 84,
+          "last": 98
         }
       }
     },
@@ -240,7 +251,8 @@
           "textWrap": "pretty",
           "text": "Review fictional stories before publication."
         },
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": 86
       }
     },
     {
@@ -320,7 +332,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": null
       }
     },
     {
@@ -417,7 +430,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 116
       }
     },
     {
@@ -514,7 +528,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 186
       }
     },
     {
@@ -579,7 +594,8 @@
           "text": ""
         },
         "description": null,
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": null
       }
     },
     {
@@ -676,7 +692,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 81
       }
     },
     {
@@ -756,7 +773,8 @@
           "textWrap": "pretty",
           "text": "Consumer description"
         },
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": 51
       }
     },
     {
@@ -836,7 +854,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": null
       }
     },
     {
@@ -934,7 +953,8 @@
           "direction": "rtl",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 116
       }
     },
     {
@@ -1031,7 +1051,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Straße"
-        }
+        },
+        "descriptionBaseline": 116
       }
     },
     {
@@ -1094,7 +1115,8 @@
           "text": "Editorial"
         },
         "description": null,
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": null
       }
     },
     {
@@ -1191,6 +1213,16 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
+        },
+        "descriptionBaseline": 116,
+        "descriptionInk": {
+          "left": 0,
+          "right": 672,
+          "top": 77,
+          "bottom": 105,
+          "threshold": 10,
+          "first": 84,
+          "last": 98
         }
       }
     },
@@ -1271,7 +1303,8 @@
           "textWrap": "pretty",
           "text": "Review fictional stories before publication."
         },
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": 86
       }
     },
     {
@@ -1351,7 +1384,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": null
       }
     },
     {
@@ -1448,7 +1482,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 116
       }
     },
     {
@@ -1545,7 +1580,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 186
       }
     },
     {
@@ -1610,7 +1646,8 @@
           "text": ""
         },
         "description": null,
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": null
       }
     },
     {
@@ -1707,7 +1744,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 81
       }
     },
     {
@@ -1787,7 +1825,8 @@
           "textWrap": "pretty",
           "text": "Consumer description"
         },
-        "eyebrow": null
+        "eyebrow": null,
+        "descriptionBaseline": 51
       }
     },
     {
@@ -1867,7 +1906,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": null
       }
     },
     {
@@ -1965,7 +2005,8 @@
           "direction": "rtl",
           "textWrap": "wrap",
           "text": "Workspace"
-        }
+        },
+        "descriptionBaseline": 116
       }
     },
     {
@@ -2062,7 +2103,8 @@
           "direction": "ltr",
           "textWrap": "wrap",
           "text": "Straße"
-        }
+        },
+        "descriptionBaseline": 116
       }
     }
   ]

@@ -1,7 +1,10 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 using Windows.Foundation;
+using Windows.UI.ViewManagement;
 
 namespace Orchard;
 
@@ -40,7 +43,7 @@ public sealed class BleeckerSectionHeader : Control
         if (summaryHost is not null && description is not null)
         {
             summaryHost.Children.Remove(description);
-            summaryPanel = new SummaryPanel(); summaryPanel.Children.Add(description); summaryHost.Children.Add(summaryPanel);
+            summaryPanel = new SummaryPanel(description); summaryHost.Children.Add(summaryPanel);
         }
         UpdatePresentation();
     }
@@ -72,6 +75,12 @@ public sealed class BleeckerSectionHeader : Control
     {
         protected override string GetClassNameCore() => nameof(BleeckerSectionHeader);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
+        protected override IList<AutomationPeer> GetChildrenCore()
+        {
+            var peers = base.GetChildrenCore() ?? [];
+            var probe = owner.summaryPanel is null ? null : FromElement(owner.summaryPanel.Metrics);
+            return peers.Where(peer => !ReferenceEquals(peer, probe)).ToList();
+        }
     }
 
     // A CSS block fills its available inline size up to max-width. TextBlock's
@@ -79,15 +88,43 @@ public sealed class BleeckerSectionHeader : Control
     // the source allocation without binding layout output back into measurement.
     private sealed class SummaryPanel : Panel
     {
+        private readonly TextBlock text, metrics;
+        private readonly UISettings settings = new();
+        internal TextBlock Metrics => metrics;
+
+        internal SummaryPanel(TextBlock text)
+        {
+            this.text = text;
+            metrics = new TextBlock { Text = "Mg", Opacity = 0, IsHitTestVisible = false };
+            AutomationProperties.SetAccessibilityView(metrics, AccessibilityView.Raw);
+            foreach (var (name, property) in new[] {
+                (nameof(TextBlock.FontFamily), TextBlock.FontFamilyProperty), (nameof(TextBlock.FontSize), TextBlock.FontSizeProperty),
+                (nameof(TextBlock.FontWeight), TextBlock.FontWeightProperty), (nameof(TextBlock.FontStyle), TextBlock.FontStyleProperty),
+                (nameof(TextBlock.FontStretch), TextBlock.FontStretchProperty), (nameof(TextBlock.IsTextScaleFactorEnabled), TextBlock.IsTextScaleFactorEnabledProperty) })
+                metrics.SetBinding(property, new Binding { Source = text, Path = new PropertyPath(name) });
+            Children.Add(text); Children.Add(metrics);
+        }
+
         protected override Size MeasureOverride(Size availableSize)
         {
-            var width = Math.Min(672, availableSize.Width);
-            var child = Children[0]; child.Measure(new Size(width, availableSize.Height));
-            return new Size(width, child.DesiredSize.Height);
+            var width = Math.Min(text.MaxWidth, availableSize.Width);
+            metrics.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            text.Measure(new Size(width, double.PositiveInfinity));
+            return new Size(width, text.DesiredSize.Height);
         }
         protected override Size ArrangeOverride(Size finalSize)
         {
-            Children[0].Arrange(new Rect(0, 0, Math.Min(672, finalSize.Width), finalSize.Height));
+            metrics.Arrange(new Rect(0, 0, metrics.DesiredSize.Width, metrics.DesiredSize.Height));
+            var width = Math.Min(text.MaxWidth, finalSize.Width);
+            text.Arrange(new Rect(0, 0, width, finalSize.Height));
+            // Integral ascent/descent and floored half-leading reproduce the
+            // frozen browser's measured first baseline. Preserve the native
+            // line spacing while arranging text at that source position.
+            var ascent = Math.Round(metrics.BaselineOffset, MidpointRounding.AwayFromZero);
+            var descent = Math.Round(metrics.ActualHeight - metrics.BaselineOffset, MidpointRounding.AwayFromZero);
+            var lineHeight = text.LineHeight * (text.IsTextScaleFactorEnabled ? settings.TextScaleFactor : 1);
+            var firstBaseline = ascent + Math.Floor((lineHeight - ascent - descent) / 2);
+            text.Arrange(new Rect(0, firstBaseline - text.BaselineOffset, width, finalSize.Height));
             return finalSize;
         }
     }

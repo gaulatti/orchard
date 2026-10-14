@@ -299,6 +299,8 @@ public sealed partial class MainWindow : Window
             FrameworkElementAutomationPeer.CreatePeerForElement(title).GetHeadingLevel() == AutomationHeadingLevel.Level2 &&
             description.FontFamily.Source.Contains("LibreFranklin-Regular.ttf") && description.LineHeight == 28 && eyebrow.ActualHeight == 16 &&
             !PackageSectionHeader.IsTabStop, "Packaged Section Header lost its fonts, layout or heading semantics.");
+        Require(Math.Abs(description.TransformToVisual(PackageSectionHeader).TransformPoint(new Windows.Foundation.Point()).Y + description.BaselineOffset - 96) < .001,
+            "Packaged Section Header summary lost its source baseline.");
         PackageSectionHeader.Eyebrow = ""; PackageSectionHeader.Description = ""; Root.UpdateLayout();
         Require(eyebrow.Visibility == Visibility.Collapsed && description.Visibility == Visibility.Collapsed && PackageSectionHeader.ActualHeight == 35,
             "Packaged Section Header retained removed content gaps.");
