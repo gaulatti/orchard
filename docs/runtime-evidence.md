@@ -1,5 +1,18 @@
 # Native Windows runtime evidence
 
+Run [38588481432](https://github.com/gaulatti/orchard/actions/runs/38588481432)
+at `38426be` passes the complete x64 job and ARM64 cross-build. The Attention
+geometry wait passes the full hosted x64 sequence. Native ARM64 passes every
+focused check, contrast and the fresh package consumer, but fails the full
+Dark Checkbox phase `hit-testing-repeat-restored-6`. Border, alpha and ownership
+are correct; Windows displays Arrow 65539 while the SDK source retains
+UniversalNo. The pending transaction spans 97 rendering callbacks and correctly
+records no new acknowledgement. This differs from a replaced SDK selection;
+the remaining native materialization failure is still open.
+Verified ARM64 archive SHA-256:
+`acce72fba3a6e9a45e25f5dd2644a9803eb2eb4617671a2d7c014bfea2036cfb`.
+Overall CI remains red and no inventory entry is accepted.
+
 Run [38584983610](https://github.com/gaulatti/orchard/actions/runs/38584983610)
 at `d68a732` passes the entire native ARM64 job with animations enabled. Both
 focused and full Input matrices retain 96 passing samples per theme. Each

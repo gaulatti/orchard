@@ -1,5 +1,37 @@
 # Input editing preview
 
+The next candidate separates SDK publication into rendering phases. After the
+queued owner/epoch check, it retains the exact producer selection for two
+rendering callbacks, then publishes UniversalNo and waits for an actual visible
+native acknowledgement. This tests whether the prior same-dispatch transition
+was coalesced; it is not yet verified as the cause of the remaining failure.
+Owner release cancels the producer phase, invalidates its epoch and detaches
+the frame observer. A native regression releases the real owner in that phase
+and requires one cancellation, zero No deliveries and actual Arrow restoration.
+No pointer coordinates, expected handles, tolerances or state deadlines change.
+
+Local x64 focused Input and the full Light/Dark catalog pass at
+`artifacts/smoke-cursor-producer-frame-input` and
+`artifacts/smoke-cursor-producer-frame-full`. In each theme the new producer-phase
+cancellation records exactly one cancellation, zero deliveries, no pending
+observer and actual Arrow. The following forced transaction records exactly
+one delivery, one acknowledgement, two producer callbacks and visible
+UniversalNo with no pending publication. Both architecture solution builds and
+all 42 regression tests pass. A fresh independent x64 package consumer passes
+with package SHA-256
+`80055ea6ef93f79d80bce5a3a75736283fa4843e22c6824b8f41125683c15b32`;
+its own GUID cache was removed after verification. Hosted ARM64 validation is
+still required before treating the remaining failure as resolved.
+
+At `38426be`, run `38588481432` passes the full x64 job and both focused Input
+matrices. Full ARM64 Dark still fails Checkbox hit-testing restoration round 6:
+the SDK retains UniversalNo, the visual/ownership state matches, but Windows
+displays Arrow for 97 callbacks. The publisher leaves that transaction pending
+and does not falsely acknowledge it. Its verified archive SHA-256 is
+`acce72fba3a6e9a45e25f5dd2644a9803eb2eb4617671a2d7c014bfea2036cfb`.
+The remaining case requires further SDK publication investigation; accepting
+Arrow, changing pointer coordinates or relaxing its deadline is not verified.
+
 Native ARM64 at `d68a732`, run `38584983610`, passes both complete Input
 matrices, both native acknowledgement snapshots, queued cancellation, full
 catalog lifecycle checks and the independent consumer. Its actual preference

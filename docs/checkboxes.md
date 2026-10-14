@@ -1,5 +1,16 @@
 # Checkbox
 
+The shared cursor publisher now keeps the retained SDK producer selected for
+two rendering callbacks before publishing UniversalNo. Its acknowledgement
+still requires the actual visible Windows cursor. The full local x64 Light/Dark
+suite passes at `artifacts/smoke-cursor-producer-frame-full`, including release
+during that producer phase: one cancellation, no No delivery, detached frame
+observers and actual Arrow restoration. The forced completed transaction then
+records one delivery and one visible UniversalNo acknowledgement per theme.
+Hosted ARM64 verification of this candidate remains pending. See
+[Input publication evidence](inputs.md) and [runtime evidence](runtime-evidence.md)
+for the later runs following the historical failure below.
+
 Run `38417349460` at `e0fe381` passes x64 catalog/consumer but fails ARM64's Light
 stationary `unclipped` phase before the constrained scroll phase. Its report has
 the expected hover border/opacity but global Arrow rather than UniversalNo; the

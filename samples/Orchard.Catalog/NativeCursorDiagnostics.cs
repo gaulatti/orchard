@@ -72,6 +72,7 @@ internal static class NativeCursorDiagnostics
             queuedRepublishCalls=Field("queuedRepublishCalls"),completedRepublishCalls=Field("completedRepublishCalls"),
             canceledRepublishCalls=Field("canceledRepublishCalls"),republishQueued=Field("republishQueued"),
             awaitingPublicationFrames=Field("awaitingPublicationFrames"),publicationFrames=Field("publicationFrames"),
+            awaitingProducerFrames=Field("awaitingProducerFrames"),producerFrames=Field("producerFrames"),lastProducerFrame=Field("lastProducerFrame"),
             acknowledgedPublicationCalls=Field("acknowledgedPublicationCalls"),
             producerReplacementCalls=Field("producerReplacementCalls"),
             lastReadWasBlocked=Field("lastReadWasBlocked"),lastVisibleHandle=Field("lastVisibleHandle"),

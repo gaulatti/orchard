@@ -252,6 +252,8 @@ internal static class BleeckerPointerCursor
         private long publicationVersion, queuedRepublishCalls, completedRepublishCalls, canceledRepublishCalls;
         private bool republishQueued;
         private bool awaitingPublicationFrames;
+        private bool awaitingProducerFrames;
+        private int producerFrames;
         private int publicationFrames;
         private long acknowledgementVersion, acknowledgedPublicationCalls, producerReplacementCalls;
         private bool lastReadWasBlocked;
@@ -259,7 +261,7 @@ internal static class BleeckerPointerCursor
         private string? lastRestoredType;
         private InputSystemCursorShape? lastRestoredShape;
         private CursorPublicationSnapshot? lastInitialPublication, lastProducerPublication, lastDeferredPublication, lastRestoration;
-        private CursorPublicationSnapshot? lastSettlementObservation, lastAcknowledgement;
+        private CursorPublicationSnapshot? lastSettlementObservation, lastAcknowledgement, lastProducerFrame;
 
         internal void Block()
         {
@@ -322,18 +324,12 @@ internal static class BleeckerPointerCursor
                 if (version!=publicationVersion || !ReferenceEquals(active,this) || owner is null ||
                     !ReferenceEquals(source,current) || root.XamlRoot?.Content!=root)
                 { if(version==publicationVersion)republishQueued=false; canceledRepublishCalls++; return; }
-                var producer=current.Cursor;
-                if (!IsBlocked(producer)) selected=producer;
-                publishedBlocked=ReferenceEquals(publishedBlocked,blocked)?republishedBlocked:blocked;
-                current.Cursor=publishedBlocked;
-                lastDeferredPublication = ObservePublication();
-                completedRepublishCalls++;
-                // The SDK property can retain our cursor before Windows displays
-                // it. Keep this publication pending through a complete frame so
-                // the next refresh cannot reset it to the intermediate producer.
                 acknowledgementVersion=version;
+                // Leave the retained producer selected across rendering instead
+                // of allowing the SDK to coalesce both values in one dispatch.
+                producerFrames=0;
                 publicationFrames=0;
-                awaitingPublicationFrames=true;
+                awaitingProducerFrames=true;
                 CompositionTarget.Rendering+=OnPublicationFrame;
             }))
             {
@@ -347,7 +343,6 @@ internal static class BleeckerPointerCursor
 
         private void OnPublicationFrame(object? sender, object args)
         {
-            if (++publicationFrames < 2) return;
             BleeckerDisabledPointer.RefreshRoot(root);
             if (acknowledgementVersion!=publicationVersion || !ReferenceEquals(active,this) || owner is null ||
                 source is null || root.XamlRoot?.Content!=root)
@@ -355,6 +350,22 @@ internal static class BleeckerPointerCursor
                 DetachPublicationFrames();
                 return;
             }
+            if (awaitingProducerFrames)
+            {
+                lastProducerFrame = ObservePublication();
+                if (++producerFrames < 2) return;
+                var producer=source.Cursor;
+                if (!IsBlocked(producer)) selected=producer;
+                publishedBlocked=ReferenceEquals(publishedBlocked,blocked)?republishedBlocked:blocked;
+                source.Cursor=publishedBlocked;
+                lastDeferredPublication=ObservePublication();
+                completedRepublishCalls++;
+                awaitingProducerFrames=false;
+                awaitingPublicationFrames=true;
+                publicationFrames=0;
+                return;
+            }
+            if (++publicationFrames < 2) return;
             lastSettlementObservation = ObservePublication();
             // Rendering callbacks can be delivered while the SDK selection is
             // still waiting to become the displayed Windows cursor. Keep the
@@ -369,15 +380,17 @@ internal static class BleeckerPointerCursor
 
         private void DetachPublicationFrames()
         {
-            if (!awaitingPublicationFrames) return;
+            if (!awaitingPublicationFrames && !awaitingProducerFrames) return;
             CompositionTarget.Rendering-=OnPublicationFrame;
             awaitingPublicationFrames=false;
+            awaitingProducerFrames=false;
         }
 
         internal void Restore()
         {
             restoreCalls++;
             publicationVersion++;
+            if (awaitingProducerFrames) canceledRepublishCalls++;
             DetachPublicationFrames();
             republishQueued=false;
             if (source is not null && root.XamlRoot is not null)

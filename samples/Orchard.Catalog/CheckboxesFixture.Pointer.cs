@@ -138,6 +138,40 @@ public sealed partial class CheckboxesFixture
             await Check(DisabledOff,"queued-publication-owner-restored",true,32648,anchor);
             await WaitOwnedAsync(()=>!NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued"),
                 "Restored owner retained an unfinished cursor publication.");
+            var frameCanceledBefore = NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
+            var frameDeliveredBefore = NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
+            var producerCanceled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+            void CancelDuringProducer(object? sender, object args)
+            {
+                if (!NativeCursorDiagnostics.Flag(DisabledOff,"awaitingProducerFrames")) return;
+                DisabledOff.IsHitTestVisible = false; UpdateLayout(); producerCanceled.TrySetResult();
+            }
+            CompositionTarget.Rendering += CancelDuringProducer;
+            try
+            {
+                NativeCursorDiagnostics.QueueOwnedRepublish(DisabledOff);
+                await producerCanceled.Task.WaitAsync(TimeSpan.FromSeconds(2));
+                await WaitOwnedAsync(()=>NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls")==frameCanceledBefore+1&&
+                    NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls")==frameDeliveredBefore&&
+                    !NativeCursorDiagnostics.Flag(DisabledOff,"awaitingProducerFrames")&&
+                    !NativeCursorDiagnostics.Flag(DisabledOff,"awaitingPublicationFrames")&&
+                    CurrentCheckboxCursor()==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32512)),
+                    "Producer-frame cursor publication survived owner release.");
+            }
+            finally
+            {
+                CompositionTarget.Rendering -= CancelDuringProducer;
+                await File.WriteAllTextAsync(Path.Combine(folder,$"checkbox-producer-frame-cancellation-{scheme}.json"),JsonSerializer.Serialize(new
+                {
+                    frameCanceledBefore,frameDeliveredBefore,
+                    canceledAfter=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls"),
+                    deliveredAfter=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls"),
+                    cursor=NativeInputSession.DescribeCursor(),publication=NativeCursorDiagnostics.Describe(DisabledOff)
+                }));
+            }
+            DisabledOff.IsHitTestVisible = true; UpdateLayout();
+            await Check(DisabledOff,"producer-frame-owner-restored",true,32648,anchor);
+            await WaitOwnedAsync(()=>!NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued"), "Producer-frame owner did not settle after restoration.");
             var settledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"acknowledgedPublicationCalls");
             var deliveredBefore=NativeCursorDiagnostics.Counter(DisabledOff,"completedRepublishCalls");
             var settledCanceledBefore=NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls");
@@ -149,6 +183,7 @@ public sealed partial class CheckboxesFixture
                     NativeCursorDiagnostics.Counter(DisabledOff,"canceledRepublishCalls")==settledCanceledBefore&&
                     !NativeCursorDiagnostics.Flag(DisabledOff,"republishQueued")&&
                     !NativeCursorDiagnostics.Flag(DisabledOff,"awaitingPublicationFrames")&&
+                    !NativeCursorDiagnostics.Flag(DisabledOff,"awaitingProducerFrames")&&
                     NativeCursorDiagnostics.AcknowledgedCursor(DisabledOff)==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32648))&&
                     CurrentCheckboxCursor()==CheckboxSystemCursor(IntPtr.Zero,new IntPtr(32648)),
                     "Owned cursor publication did not settle once without being reset before display.");
