@@ -87,6 +87,18 @@ catalog passes at `artifacts/smoke-section-header-baseline-full`; all 42
 regression tests and the pinned token check pass. Native ARM64 validation of
 this correction remains open while automatic Actions push runs are paused.
 
+The fresh 0.1.0 package built from clean source commit
+`c1b0dff8365bcf4e6c9b04bab80f33afcb465bd8` has SHA-256
+`12099e23714392ebc52f760008489d214f49fd6c8c4ffd392b6730141e70d628`.
+Its isolated x64 consumer passes both themes, including the corrected summary
+baseline, at `artifacts/package-consumer-section-header-baseline`. The isolated
+ARM64 consumer builds at `artifacts/package-consumer-section-header-baseline-arm64`;
+this is a cross-build and records runtime verification as false. Both consumers
+remove their own temporary caches. The separately published x64 catalog also
+passes the focused runtime checks at
+`artifacts/smoke-section-header-baseline-published` with display/text scale 1
+and the host's animation effects disabled.
+
 Complete glyph/baseline raster comparison, CSS `text-balance`/`text-pretty`, the complete override and
 multilingual constraint matrix, actual contrast schemes, Narrator and
 display/text scaling remain open. The inventory entry remains in progress;
