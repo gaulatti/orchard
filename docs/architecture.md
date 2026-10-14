@@ -198,8 +198,29 @@ source mapping and verifies its SHA-256. The consumer has its own pinned SDK
 configuration and package references. It publishes and runs a small native shell
 with all six foundation styles, tests light/dark colors and button invocation,
 checks bundled fonts/licenses, and captures native renders. CI retains the
-package, runnable consumer and reports under `artifacts`. The temporary source
-and package cache are retained for diagnosis; their path is in the report.
+package, runnable consumer and reports under `artifacts`. Each invocation removes
+its own temporary source, feed, build workspace and isolated package cache in a
+`finally` block, including restore/build failures and `-BuildOnly` returns.
+`cleanup.json` records the generated workspace path and confirms its removal;
+that path is diagnostic metadata, not a retained checkout. Cleanup refuses paths
+outside the exact generated child of the temporary directory and reparse-point
+roots. A cleanup failure fails verification rather than silently accumulating
+another cache. Package isolation, source mapping, SHA-256, architecture and native
+runtime checks remain required.
+Successful `result.json` reports are written only after cleanup has completed;
+a cleanup failure cannot leave a new successful verification report.
+`scripts/verify-package-cleanup.ps1` also invokes the real verifier with a
+forbidden project reference and a malformed project that fails `dotnet restore`.
+Both must propagate their expected failure, retain a cleanup report, leave no
+temporary consumer directory and produce no successful result. These regressions
+run after package verification in all three Windows CI jobs.
+Local failure regressions pass in `artifacts/package-cleanup-regression`; the
+fresh ARM64 `-BuildOnly` consumer also publishes successfully and removes its
+cache in `artifacts/package-consumer-cache-cleanup-buildonly`. The local native
+x64 consumer restores and publishes, then fails its existing foreground guard
+while Windows Terminal remains foreground. Its `cleanup.json` still confirms
+removal, and the failed runtime report remains in
+`artifacts/package-consumer-cache-cleanup`. No foreground assertion is relaxed.
 CI also builds the solution and clean package consumer for ARM64 on its x64
 runner. `-Platform ARM64 -BuildOnly` records `runtimeVerified: false`; it never
 counts cross-compilation as ARM64 runtime acceptance. Run the same command

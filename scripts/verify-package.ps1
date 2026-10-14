@@ -9,7 +9,7 @@ $repository = Split-Path $PSScriptRoot -Parent
 $packagePath = (Resolve-Path -LiteralPath $Package).Path
 $outputPath = [IO.Path]::GetFullPath($Output)
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
-foreach ($reportName in @('result.json', 'runtime.json')) {
+foreach ($reportName in @('result.json', 'runtime.json', 'cleanup.json')) {
     $reportPath = Join-Path $outputPath $reportName
     if (Test-Path -LiteralPath $reportPath) { Remove-Item -LiteralPath $reportPath }
 }
@@ -50,58 +50,85 @@ finally { $archive.Dispose() }
 
 # A new directory and cache ensure a previously packed version cannot satisfy this test.
 # No parent repository props, source projects or sibling checkouts are copied.
-$consumerRoot = Join-Path ([IO.Path]::GetTempPath()) ('orchard-consumer-' + [Guid]::NewGuid().ToString('N'))
-New-Item -ItemType Directory -Path $consumerRoot | Out-Null
-$consumerSource = Join-Path $consumerRoot 'source'
-New-Item -ItemType Directory -Path $consumerSource | Out-Null
-Get-ChildItem -LiteralPath "$repository/tests/PackageConsumer" -File | Copy-Item -Destination $consumerSource
-Copy-Item -LiteralPath "$repository/global.json" -Destination $consumerRoot
-$feed = Join-Path $consumerRoot 'feed'
-New-Item -ItemType Directory -Path $feed | Out-Null
-Copy-Item -LiteralPath $packagePath -Destination $feed
-$project = Join-Path $consumerSource 'PackageConsumer.csproj'
-if ((Get-Content -LiteralPath $project -Raw) -match 'ProjectReference') { throw 'Consumer must reference the package, never a project.' }
-$config = [xml]'<?xml version="1.0" encoding="utf-8"?><configuration><packageSources><clear/><add key="orchard" value=""/><add key="nuget.org" value="https://api.nuget.org/v3/index.json"/></packageSources><packageSourceMapping><clear/><packageSource key="orchard"><package pattern="Gaulatti.Orchard"/></packageSource><packageSource key="nuget.org"><package pattern="*"/></packageSource></packageSourceMapping></configuration>'
-$config.configuration.packageSources.add[0].SetAttribute('value', $feed)
-$configPath = Join-Path $consumerRoot 'NuGet.Config'
-$config.Save($configPath)
-Push-Location $consumerSource
+$consumerTempRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd([char[]]'\/')
+$consumerDirectoryName = 'orchard-consumer-' + [Guid]::NewGuid().ToString('N')
+$consumerRoot = Join-Path $consumerTempRoot $consumerDirectoryName
+$verificationResult = $null
 try {
-    dotnet restore $project --configfile $configPath --packages "$consumerRoot/packages" -p:Platform=$Platform -p:OrchardPackageVersion=$version
-    if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer restore failed.' }
-    dotnet publish $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version --no-restore -o "$outputPath/app"
-    if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer publish failed.' }
+    New-Item -ItemType Directory -Path $consumerRoot | Out-Null
+    $consumerSource = Join-Path $consumerRoot 'source'
+    New-Item -ItemType Directory -Path $consumerSource | Out-Null
+    Get-ChildItem -LiteralPath "$repository/tests/PackageConsumer" -File | Copy-Item -Destination $consumerSource
+    Copy-Item -LiteralPath "$repository/global.json" -Destination $consumerRoot
+    $feed = Join-Path $consumerRoot 'feed'
+    New-Item -ItemType Directory -Path $feed | Out-Null
+    Copy-Item -LiteralPath $packagePath -Destination $feed
+    $project = Join-Path $consumerSource 'PackageConsumer.csproj'
+    if ((Get-Content -LiteralPath $project -Raw) -match 'ProjectReference') { throw 'Consumer must reference the package, never a project.' }
+    $config = [xml]'<?xml version="1.0" encoding="utf-8"?><configuration><packageSources><clear/><add key="orchard" value=""/><add key="nuget.org" value="https://api.nuget.org/v3/index.json"/></packageSources><packageSourceMapping><clear/><packageSource key="orchard"><package pattern="Gaulatti.Orchard"/></packageSource><packageSource key="nuget.org"><package pattern="*"/></packageSource></packageSourceMapping></configuration>'
+    $config.configuration.packageSources.add[0].SetAttribute('value', $feed)
+    $configPath = Join-Path $consumerRoot 'NuGet.Config'
+    $config.Save($configPath)
+    Push-Location $consumerSource
+    try {
+        dotnet restore $project --configfile $configPath --packages "$consumerRoot/packages" -p:Platform=$Platform -p:OrchardPackageVersion=$version
+        if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer restore failed.' }
+        dotnet publish $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version --no-restore -o "$outputPath/app"
+        if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer publish failed.' }
+    }
+    finally { Pop-Location }
+    $restoredPackage = "$consumerRoot/packages/gaulatti.orchard/$version/gaulatti.orchard.$version.nupkg"
+    if ((Get-FileHash -LiteralPath $packagePath).Hash -ne (Get-FileHash -LiteralPath $restoredPackage).Hash) {
+        throw 'Consumer restored a different package from the one under test.'
+    }
+    if ($BuildOnly) {
+        $verificationResult = [ordered]@{ buildPassed = $true; runtimeVerified = $false; version = $version; platform = $Platform;
+            packageSha256 = (Get-FileHash -LiteralPath $packagePath).Hash.ToLowerInvariant(); isolatedConsumer = $consumerRoot
+        }
+        return
+    }
+    $runtimeReport = Join-Path $outputPath 'runtime.json'
+    $process = Start-Process -FilePath "$outputPath/app/PackageConsumer.exe" -ArgumentList "--verify-output `"$runtimeReport`"" -PassThru -WindowStyle Hidden
+    if (-not $process.WaitForExit(60000)) { $process.Kill(); throw 'Package consumer runtime verification timed out.' }
+    if ($process.ExitCode -ne 0) {
+        if (Test-Path -LiteralPath $runtimeReport) { Get-Content -LiteralPath $runtimeReport }
+        throw "Package consumer exited with code $($process.ExitCode)."
+    }
+    $runtime = Get-Content -LiteralPath $runtimeReport -Raw | ConvertFrom-Json
+    if (-not $runtime.passed) { throw 'Package consumer reported failure.' }
+    if ($runtime.architecture -ne $Platform -or ($Platform -eq 'ARM64' -and $runtime.osArchitecture -ne 'Arm64')) {
+        throw "Package consumer requires $Platform runtime; reported process=$($runtime.architecture), OS=$($runtime.osArchitecture)."
+    }
+    $verificationResult = [ordered]@{
+        passed = $true
+        version = $version
+        packageSha256 = (Get-FileHash -LiteralPath $packagePath).Hash.ToLowerInvariant()
+        platform = $Platform
+        isolatedConsumer = $consumerRoot
+        runtime = $runtime
+    }
 }
-finally { Pop-Location }
-$restoredPackage = "$consumerRoot/packages/gaulatti.orchard/$version/gaulatti.orchard.$version.nupkg"
-if ((Get-FileHash -LiteralPath $packagePath).Hash -ne (Get-FileHash -LiteralPath $restoredPackage).Hash) {
-    throw 'Consumer restored a different package from the one under test.'
+finally {
+    # Delete only this invocation's generated direct child of the temp directory.
+    # Reports and the runnable consumer remain in the requested output directory.
+    $cleanupTarget = [IO.Path]::GetFullPath($consumerRoot)
+    if ([IO.Path]::GetDirectoryName($cleanupTarget) -ne $consumerTempRoot -or
+        [IO.Path]::GetFileName($cleanupTarget) -ne $consumerDirectoryName -or
+        $consumerDirectoryName -notmatch '^orchard-consumer-[a-f0-9]{32}$') {
+        throw 'Refusing package consumer cleanup outside its generated temporary workspace.'
+    }
+    if (Test-Path -LiteralPath $cleanupTarget) {
+        if ((Get-Item -LiteralPath $cleanupTarget -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) {
+            throw 'Refusing package consumer cleanup through a reparse point.'
+        }
+        Remove-Item -LiteralPath $cleanupTarget -Recurse -Force
+    }
+    $removed = -not (Test-Path -LiteralPath $cleanupTarget)
+    if (-not $removed) { throw 'Temporary package consumer cleanup did not complete.' }
+    [ordered]@{ removed = $removed; isolatedConsumer = $cleanupTarget } |
+        ConvertTo-Json | Set-Content -LiteralPath "$outputPath/cleanup.json"
+    if ($null -ne $verificationResult) {
+        $verificationResult | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath "$outputPath/result.json"
+        Get-Content -LiteralPath "$outputPath/result.json"
+    }
 }
-if ($BuildOnly) {
-    [ordered]@{ buildPassed = $true; runtimeVerified = $false; version = $version; platform = $Platform;
-        packageSha256 = (Get-FileHash -LiteralPath $packagePath).Hash.ToLowerInvariant(); isolatedConsumer = $consumerRoot
-    } | ConvertTo-Json | Set-Content -LiteralPath "$outputPath/result.json"
-    Get-Content -LiteralPath "$outputPath/result.json"
-    return
-}
-$runtimeReport = Join-Path $outputPath 'runtime.json'
-$process = Start-Process -FilePath "$outputPath/app/PackageConsumer.exe" -ArgumentList "--verify-output `"$runtimeReport`"" -PassThru -WindowStyle Hidden
-if (-not $process.WaitForExit(60000)) { $process.Kill(); throw 'Package consumer runtime verification timed out.' }
-if ($process.ExitCode -ne 0) {
-    if (Test-Path -LiteralPath $runtimeReport) { Get-Content -LiteralPath $runtimeReport }
-    throw "Package consumer exited with code $($process.ExitCode)."
-}
-$runtime = Get-Content -LiteralPath $runtimeReport -Raw | ConvertFrom-Json
-if (-not $runtime.passed) { throw 'Package consumer reported failure.' }
-if ($runtime.architecture -ne $Platform -or ($Platform -eq 'ARM64' -and $runtime.osArchitecture -ne 'Arm64')) {
-    throw "Package consumer requires $Platform runtime; reported process=$($runtime.architecture), OS=$($runtime.osArchitecture)."
-}
-[ordered]@{
-    passed = $true
-    version = $version
-    packageSha256 = (Get-FileHash -LiteralPath $packagePath).Hash.ToLowerInvariant()
-    platform = $Platform
-    isolatedConsumer = $consumerRoot
-    runtime = $runtime
-} | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath "$outputPath/result.json"
-Get-Content -LiteralPath "$outputPath/result.json"

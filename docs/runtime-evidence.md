@@ -1,5 +1,21 @@
 # Native Windows runtime evidence
 
+Run [38558580437](https://github.com/gaulatti/orchard/actions/runs/38558580437)
+at `7920215` passes the full x64 job, ARM64 build and both independent package
+consumers. Both focused Input suites and Error State contrast checks pass.
+The complete ARM64 catalog still fails disabled cursor publication on the Large
+invalid Input at bottom-right 3,0: Windows displays Arrow after 136 completed
+deferred publications, with three cancellations and one publication pending.
+Ownership, hover, border paint and opacity remain correct. This is a failed
+required runtime gate; the existing displayed-cursor assertion remains intact.
+
+The passing x64 contrast archive has SHA-256
+`7940371dfde28b562ddf187193b49d2cc73ef562ccb38ac1c7a20b39f209b342`.
+It uses the same 243-pixel description mask and geometry as failed run
+`38556522194`: pixel 218,9 is now white rather than RGB 246,246,246. This confirms
+the earlier contrast failure is intermittent, without establishing its cause
+or accepting a changed mask, crop or tolerance. No inventory entry is accepted.
+
 Run [38545127689](https://github.com/gaulatti/orchard/actions/runs/38545127689)
 at `a236ab7` verifies the Switch metadata correction with a passing x64 job and
 ARM64 build. The native ARM64 job fails Input cursor restoration and a Checkbox
