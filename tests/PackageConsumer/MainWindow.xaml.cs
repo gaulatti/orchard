@@ -114,6 +114,22 @@ public sealed partial class MainWindow : Window
                     "Packaged notification control lost its XAML resources or geometry.");
                 Require(((ItemsControl)PackageNotifications.FindName("NotificationItems")).Items.Count == 1,
                     "Packaged notification collection did not reach the popup.");
+                var notificationFocus=FocusManager.GetFocusedElement(Root.XamlRoot);
+                try
+                {
+                    var opposite=theme==ElementTheme.Light?ElementTheme.Dark:ElementTheme.Light;
+                    Root.RequestedTheme=opposite;
+                    await VerifyNotificationThemeAsync(notificationPresenter,opposite);
+                    PackageNotifications.RequestedTheme=theme;
+                    await VerifyNotificationThemeAsync(notificationPresenter,theme);
+                    Require(Root.RequestedTheme==opposite,"Packaged local notification theme changed its consumer root.");
+                    PackageNotifications.ClearValue(FrameworkElement.RequestedThemeProperty);
+                    await VerifyNotificationThemeAsync(notificationPresenter,opposite);
+                    Require(ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot),notificationFocus)&&notificationPresenter.ActualWidth==320,
+                        "Packaged notification theme changes moved focus or resized the open popup.");
+                }
+                finally { PackageNotifications.ClearValue(FrameworkElement.RequestedThemeProperty);Root.RequestedTheme=theme; }
+                await VerifyNotificationThemeAsync(notificationPresenter,theme);
                 notificationTrigger.Flyout.Hide();
                 await Task.Delay(150);
                 PackageTooltip.IsOpen = true;
@@ -335,13 +351,14 @@ public sealed partial class MainWindow : Window
             Require(count == 1 && href == "/consumer?keep=%2F#section", "Packaged brand invocation changed or duplicated the consumer route.");
         }
         finally { PackageBrand.Invoked -= OnInvoked; }
-        static IEnumerable<T> BrandDescendants<T>(DependencyObject root) where T : DependencyObject
+    }
+
+    private static IEnumerable<T> BrandDescendants<T>(DependencyObject root) where T : DependencyObject
+    {
+        for (var index = 0; index < VisualTreeHelper.GetChildrenCount(root); index++)
         {
-            for (var index = 0; index < VisualTreeHelper.GetChildrenCount(root); index++)
-            {
-                var child = VisualTreeHelper.GetChild(root, index); if (child is T match) yield return match;
-                foreach (var nested in BrandDescendants<T>(child)) yield return nested;
-            }
+            var child = VisualTreeHelper.GetChild(root, index); if (child is T match) yield return match;
+            foreach (var nested in BrandDescendants<T>(child)) yield return nested;
         }
     }
 
@@ -401,6 +418,19 @@ public sealed partial class MainWindow : Window
             "Independent package lost Bauhaus source or geometry.");
         var peer=FrameworkElementAutomationPeer.CreatePeerForElement(PackageBauhaus);
         Require(!peer.IsControlElement()&&!peer.IsContentElement()&&!PackageBauhaus.IsHitTestVisible,"Packaged background lost decorative semantics.");
+    }
+
+    private async Task VerifyNotificationThemeAsync(FlyoutPresenter presenter,ElementTheme theme)
+    {
+        var colors=BleeckerTokens.Colors(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark);
+        var surface=BrandDescendants<BleeckerOverlaySurface>(presenter).Single();
+        var items=(ItemsControl)PackageNotifications.FindName("NotificationItems");
+        var title=BrandDescendants<TextBlock>(items).Single(text=>text.Text=="Local review"&&text.Visibility==Visibility.Visible);
+        string Paint(Brush brush){var color=((SolidColorBrush)brush).Color;return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";}
+        bool Matches()=>presenter.ActualTheme==theme&&Paint(surface.Background)==colors[theme==ElementTheme.Light?"card":"deepSea"]&&
+            Paint(title.Foreground)==colors["textPrimary"];
+        var elapsed=System.Diagnostics.Stopwatch.StartNew();while(!Matches()&&elapsed.Elapsed<TimeSpan.FromSeconds(1))await Task.Delay(16);
+        Require(Matches(),"Packaged open notification surface/text did not follow its consumer owner's current theme.");
     }
 
     private static bool HasReferenceSpinner(DependencyObject owner)

@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI.Xaml.Media;
 
 namespace Orchard;
 
@@ -14,6 +15,7 @@ namespace Orchard;
 public sealed partial class BleeckerNotificationBadge : UserControl
 {
     private readonly HashSet<BleeckerNotificationItem> observed = [];
+    private FlyoutPresenter? popupPresenter;
     public static readonly DependencyProperty ItemsProperty = DependencyProperty.Register(nameof(Items), typeof(object), typeof(BleeckerNotificationBadge),
         new PropertyMetadata(null, OnItemsReplaced));
     public ObservableCollection<BleeckerNotificationItem> Items
@@ -28,13 +30,33 @@ public sealed partial class BleeckerNotificationBadge : UserControl
         InitializeComponent();
         Popup.Opened += (_, _) =>
         {
+            popupPresenter = FindPopupPresenter();
+            CompositionTarget.Rendering -= OnPopupFrame;
+            CompositionTarget.Rendering += OnPopupFrame;
+            UpdatePopupTheme();
             if (FocusManager.FindFirstFocusableElement(Popup.Content) is Control first)
                 first.Focus(FocusState.Programmatic);
         };
+        Popup.Closed += (_, _) => { if (!Popup.IsOpen) { CompositionTarget.Rendering -= OnPopupFrame; popupPresenter = null; } };
+        Trigger.ActualThemeChanged += (_, _) => DispatcherQueue.TryEnqueue(UpdatePopupTheme);
         Loaded += (_, _) => { Items.CollectionChanged += OnItemsChanged; ObserveItems(); UpdateState(); };
-        Unloaded += (_, _) => { Items.CollectionChanged -= OnItemsChanged; StopObserving(); Popup.Hide(); };
+        Unloaded += (_, _) => { Items.CollectionChanged -= OnItemsChanged; StopObserving(); CompositionTarget.Rendering -= OnPopupFrame; Popup.Hide(); popupPresenter = null; };
         UpdateState();
     }
+
+    private FlyoutPresenter FindPopupPresenter()
+    {
+        for (DependencyObject? element = Popup.Content; element is not null; element = VisualTreeHelper.GetParent(element))
+            if (element is FlyoutPresenter presenter) return presenter;
+        throw new InvalidOperationException("Notification content requires its native FlyoutPresenter.");
+    }
+
+    private void UpdatePopupTheme()
+    {
+        if (Popup.IsOpen && popupPresenter is not null && popupPresenter.RequestedTheme != Trigger.ActualTheme)
+            popupPresenter.RequestedTheme = Trigger.ActualTheme;
+    }
+    private void OnPopupFrame(object? sender,object args)=>UpdatePopupTheme();
 
     public static readonly DependencyProperty CountProperty = DependencyProperty.Register(nameof(Count), typeof(int), typeof(BleeckerNotificationBadge),
         new PropertyMetadata(0, (owner, _) => ((BleeckerNotificationBadge)owner).UpdateState()));

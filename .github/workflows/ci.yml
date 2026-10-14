@@ -54,8 +54,12 @@ jobs:
         id: attention_smoke
         if: ${{ !cancelled() && (steps.activity_smoke.outcome == 'success' || steps.activity_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component attention -Output artifacts/attention -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify notification owner themes and native popup
+        id: notifications_smoke
         if: ${{ !cancelled() && (steps.attention_smoke.outcome == 'success' || steps.attention_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component notifications -Output artifacts/notifications -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.notifications_smoke.outcome == 'success' || steps.notifications_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -147,8 +151,12 @@ jobs:
         id: attention_smoke
         if: ${{ !cancelled() && (steps.activity_smoke.outcome == 'success' || steps.activity_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component attention -Output artifacts/attention -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 notification owner themes and popup
+        id: notifications_smoke
         if: ${{ !cancelled() && (steps.attention_smoke.outcome == 'success' || steps.attention_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component notifications -Output artifacts/notifications -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.notifications_smoke.outcome == 'success' || steps.notifications_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

@@ -33,3 +33,42 @@ surface `#FF182533` instead of `#FFFFFFFF`. The exact readiness assertion remain
 required; a passing local or earlier hosted run does not close this recurrence.
 The verified archive and shared checkpoint are recorded in
 [runtime evidence](runtime-evidence.md).
+
+The owned native FlyoutPresenter now follows the notification trigger's
+ActualTheme on opening and while the popup renders. The presenter is located through
+this popup's own content ancestry; Orchard does not select or recolor unrelated
+open popups. Queued theme events and an open-only render observer read the
+trigger's current value, avoiding an obsolete event value during rapid changes.
+Only a changed theme value is assigned. The event-only candidate reproduced the
+stale presenter locally even with the owner/trigger/root already Light, so an
+event notification alone is not treated as proof of synchronized rendering.
+Closing/unloading removes the observer and clears the presenter reference;
+reopening resolves the current owner again.
+
+Acceptance for this correction requires the same open popup to update surface,
+title/description, unread dot and count colors through inherited theme changes
+and a local owner override, preserving width, focus and consumer root/sibling
+themes. The catalog repeats six inherited transitions in each appearance and
+captures the local override. The independent package consumer exercises
+inherited/local/inherited transitions and checks the actual loaded surface and
+title. The focused route is `./scripts/smoke-catalog.ps1 -Component notifications`;
+the ordinary full catalog still includes the fixture. Fresh native x64/ARM64
+runtime and package verification remain required before accepting the fix.
+
+Focused x64 verification passes both appearances at
+`artifacts/smoke-notifications-rendered-owner-theme`. The complete local catalog
+also passes at `artifacts/smoke-notifications-theme-composed-ink-all`, with
+inherited/local palette and focus/geometry checks and retained owner-theme
+captures. System animations are disabled and display/text scale is 1 in those
+runs. All 28 unit/resource tests and token generation pass.
+
+The independent x64 consumer passes the new open-popup theme assertions at
+`artifacts/package-consumer-notifications-owner-theme`, using package 0.1.0
+SHA-256 `75345cd7cf57af8d166f96ce8bc5935b6188c033ac9865fe5da572913cd07b08`.
+Its new cache was populated for this exact package. After correcting a test's
+Color/string comparison, the same isolated source project was republished and
+the restored package hash was rechecked before native execution. It contains
+no repository project reference or parent repository configuration. Native ARM64
+verification of the fix remains pending; CI now runs Notifications directly on
+both architectures before the full catalog. No backend or metrics surface is
+affected by this native theme synchronization.

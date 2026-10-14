@@ -88,6 +88,34 @@ public sealed partial class NotificationsFixture : UserControl
         }
         finally { root.RequestedTheme = originalTheme; }
         await AwaitVerificationAsync(() => VerifyPalette(presenter, rows[0], counter, scheme));
+        var focusedBeforeThemeCycles=FocusManager.GetFocusedElement(XamlRoot);
+        try
+        {
+            for(var iteration=0;iteration<6;iteration++)
+            {
+                var next=iteration%2==0?changedScheme:scheme;
+                root.RequestedTheme=next==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark;
+                await AwaitVerificationAsync(()=>VerifyPalette(presenter,rows[0],counter,next));
+                Require(popup.IsOpen&&presenter.ActualWidth==320&&ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot),focusedBeforeThemeCycles),
+                    "Repeated inherited notification themes changed popup ownership, width or focus.");
+            }
+            var originalBadgeTheme=Badge.ReadLocalValue(RequestedThemeProperty);
+            try
+            {
+                Badge.RequestedTheme=changedScheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark;
+                await AwaitVerificationAsync(()=>VerifyPalette(presenter,rows[0],counter,changedScheme));
+                Require(root.RequestedTheme==originalTheme&&Empty.ActualTheme==root.ActualTheme,
+                    "A notification owner's local theme changed its root or sibling theme.");
+                await MainWindow.CaptureElementAsync(presenter,Path.Combine(folder,$"notifications-owner-theme-{changedScheme.ToString().ToLowerInvariant()}.png"));
+            }
+            finally
+            {
+                if(originalBadgeTheme==DependencyProperty.UnsetValue)Badge.ClearValue(RequestedThemeProperty);
+                else Badge.SetValue(RequestedThemeProperty,originalBadgeTheme);
+            }
+            await AwaitVerificationAsync(()=>VerifyPalette(presenter,rows[0],counter,scheme));
+        }
+        finally { root.RequestedTheme=originalTheme; }
         Require(mark.Focus(FocusState.Keyboard), "Notification header did not accept keyboard focus.");
         Require(rows[0].Focus(FocusState.Keyboard), "Notification row did not accept keyboard focus.");
         Require(Descendants<Border>(rows[0]).Single(border => border.Name == "FocusHighlight").Opacity == 1,
@@ -128,6 +156,7 @@ public sealed partial class NotificationsFixture : UserControl
         Require(((TextBlock)emptyStack.Children[2]).Visibility == Visibility.Visible &&
             ((Button)((Grid)emptyStack.Children[0]).Children[1]).Visibility == Visibility.Collapsed, "Empty notification state is incorrect.");
         presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(item => item.Child).OfType<FlyoutPresenter>().Single();
+        Require(presenter.RequestedTheme==emptyTrigger.ActualTheme,"A separately opened notification popup retained another owner's theme.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-empty-{scheme.ToString().ToLowerInvariant()}.png"));
         Empty.Items = [new BleeckerNotificationItem { Id = "live", Title = "Live collection update", IsUnread = true }];
         await Task.Delay(100);
@@ -142,12 +171,12 @@ public sealed partial class NotificationsFixture : UserControl
         await VerifyLongContentAsync(scheme, folder);
     }
 
-    private static void VerifyPalette(FlyoutPresenter presenter, Button row, Border counter, BleeckerColorScheme scheme)
+    private void VerifyPalette(FlyoutPresenter presenter, Button row, Border counter, BleeckerColorScheme scheme)
     {
         var colors = BleeckerTokens.Colors(scheme);
         var surface = Descendants<BleeckerOverlaySurface>(presenter).Single();
         Require(BrushColor(surface.Background) == colors[scheme == BleeckerColorScheme.Dark ? "deepSea" : "card"],
-            $"Open notification surface retained its previous theme: requested={scheme}, actual={surface.ActualTheme}, explicit={surface.RequestedTheme}, presenter={presenter.ActualTheme}/{presenter.RequestedTheme}, background={BrushColor(surface.Background)}, expected={colors[scheme == BleeckerColorScheme.Dark ? "deepSea" : "card"]}.");
+            $"Open notification surface retained its previous theme: requested={scheme}, actual={surface.ActualTheme}, explicit={surface.RequestedTheme}, presenter={presenter.ActualTheme}/{presenter.RequestedTheme}, owner={Badge.ActualTheme}/{Badge.RequestedTheme}, trigger={((BleeckerIconButton)Badge.FindName("Trigger")).ActualTheme}, root={((FrameworkElement)XamlRoot.Content).ActualTheme}/{((FrameworkElement)XamlRoot.Content).RequestedTheme}, background={BrushColor(surface.Background)}, expected={colors[scheme == BleeckerColorScheme.Dark ? "deepSea" : "card"]}.");
         var text = Descendants<TextBlock>(row).Where(block => block.Visibility == Visibility.Visible && block.ActualHeight > 0).ToArray();
         Require(BrushColor(text[0].Foreground) == colors["textPrimary"] && BrushColor(text[1].Foreground) == colors["textSecondary"],
             $"Open notification text palette mismatch: {BrushColor(text[0].Foreground)}/{BrushColor(text[1].Foreground)} for {scheme}.");
