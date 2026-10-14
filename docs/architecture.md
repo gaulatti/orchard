@@ -11,6 +11,15 @@ push validation, add `push: { branches: [main] }` under the workflow's `on` map.
 
 ## Platform ownership
 
+Native input sessions restore the original cursor position through one absolute
+virtual-desktop SendInput move, using the same coordinate calculation as fixture
+movement. SetCursorPos moved the Win32 cursor without updating WinUI's cached
+input position in the chart sequence; later layout-generated events incorrectly
+activated a Sparkline at the previous button's location. Recorded native/XAML
+coordinates and the passing sequence are documented in [Sparkline evidence](sparkline-reference.md).
+This does not change product cursor publication, expected cursor handles,
+pointer target bounds or settling deadlines.
+
 The catalog smoke process has a six-minute overall deadline for the registered
 Light/Dark suite, including the expanded physical Input corner matrix and shared
 cursor lifecycle checks. Per-state settling deadlines and architecture gates

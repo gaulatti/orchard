@@ -104,3 +104,18 @@ retains data, loaded/focus state, tooltip items, private interaction channels an
 profile state on failure. It sends no additional key and changes no expected
 output or two-second settling deadline. Focused Light/Dark checks pass at
 `artifacts/smoke-sparkline-bar-key-ack`. Full-sequence confirmation remains pending.
+
+The shorter Bar Chart → Sparkline → Stat Card sequence reproduces a pointer
+channel override before any Sparkline arrow. At
+`artifacts/smoke-bar-chart-sequence-pointer`, Win32 reports (910,843), outside
+the Sparkline's (262,285)–(582,325) bounds, while XAML delivers local (55,20).
+That maps to (317,305), the preceding Bar Chart button's last physical position.
+The chart is loaded/enabled, owns keyboard focus, and uses the Sparkline profile;
+pointer index 1 overrides keyboard index 0. The session's SetCursorPos restoration
+leaves this stale WinUI input position behind.
+
+The existing single cursor restoration now uses the same absolute virtual-desktop
+SendInput movement path as normal fixture moves. The complete chart sequence
+passes both themes at `artifacts/smoke-bar-chart-sequence-restored`, retaining
+all source outputs, normal native delivery and unchanged deadlines. This is a
+catalog input-session correction; chart interaction behavior is unchanged.

@@ -36,6 +36,12 @@ public sealed partial class SparklinesFixture:UserControl
                 AutomationProperties.SetName(spark,"Consumer compact series");host.Children.Clear();host.Children.Add(spark);
                 await AwaitAsync(()=>spark.IsLoaded,"Sparkline did not mount.");UpdateLayout();await FrameAsync();UpdateLayout();
                 var chart=Part<BleeckerLineChart>(spark,"PART_Chart");var plot=Part<Canvas>(chart,"PART_Plot");var legend=Part<Canvas>(chart,"PART_Legend");
+                var pointerTrace=new List<object>();
+                chart.PointerMoved+=(_,args)=>
+                {
+                    var point=args.GetCurrentPoint(chart);
+                    pointerTrace.Add(new{position=point.Position,point.Timestamp,device=args.Pointer.PointerDeviceType.ToString(),screen=input.ReadPointerPosition(),bounds=input.ScreenBounds(chart),original=(args.OriginalSource as FrameworkElement)?.Name});
+                };
                 var sourceCurves=expected.GetProperty("lines").EnumerateArray().ToArray();
                 await AwaitAsync(()=>plot.Children.OfType<Path>().Count()==sourceCurves.Length,"Sparkline curve count did not settle.");
                 var paths=plot.Children.OfType<Path>().ToArray();
@@ -49,9 +55,10 @@ public sealed partial class SparklinesFixture:UserControl
                     ComparePaint(paths[i].Stroke,sourceCurves[i].GetProperty("stroke").GetString()!,id);
                 }
                 if(id is "default" or "area" or "explicit" or "gaps" or "negative" or "narrow")await MainWindow.CaptureElementAsync(host,System.IO.Path.Combine(folder,$"sparkline-{id}-{scheme}.png"));
-                Require(chart.Focus(FocusState.Keyboard),"Could not focus Sparkline inspection.");await VerifyInspectionAsync(chart,item.GetProperty("focus"),id+" focus");
                 try
                 {
+                    Require(chart.Focus(FocusState.Keyboard),"Could not focus Sparkline inspection.");
+                    await VerifyInspectionAsync(chart,item.GetProperty("focus"),id+" focus");
                     await input.KeyAsync(0x27,chart);
                     await VerifyInspectionAsync(chart,item.GetProperty("right"),id+" right");
                 }
@@ -62,10 +69,15 @@ public sealed partial class SparklinesFixture:UserControl
                     await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-input-failure-{id}-{scheme}.json"),JsonSerializer.Serialize(new
                     {
                         id,chart.IsLoaded,chart.FocusState,input.OwnsForeground,help=AutomationProperties.GetHelpText(chart),data=chart.Data,
+                        chart.IsEnabled,chart.ActualWidth,chart.ActualHeight,
+                        targetFocused=ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),
+                        tooltip=Part<Border>(chart,"PART_Tooltip").Visibility.ToString(),
                         focus=(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.GetType().FullName,
                         items=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(text=>text.Text),
                         interaction=state.GetType().GetFields(flags).ToDictionary(field=>field.Name,field=>field.GetValue(state)),
-                        sparklineMode=typeof(BleeckerLineChart).GetField("sparklineMode",flags)!.GetValue(chart)
+                        sparklineMode=typeof(BleeckerLineChart).GetField("sparklineMode",flags)!.GetValue(chart),
+                        barMode=typeof(BleeckerLineChart).GetField("barMode",flags)?.GetValue(chart),
+                        pointerTrace,screenPointer=input.ReadPointerPosition(),screenBounds=input.ScreenBounds(chart)
                     }));
                     throw;
                 }

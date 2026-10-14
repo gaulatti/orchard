@@ -17,6 +17,11 @@ internal sealed class NativeInputSession : IDisposable
     private bool pointerButtonDown;
     private bool hostedForegroundRecoveryAttempted;
     internal IntPtr Window { get; }
+    internal Point ReadPointerPosition()
+    {
+        Require(GetCursorPos(out var point), "Could not observe the native pointer position.");
+        return new Point(point.X, point.Y);
+    }
 
     internal NativeInputSession(XamlRoot root, string folder, string prefix)
     {
@@ -145,19 +150,7 @@ internal sealed class NativeInputSession : IDisposable
                     viewports = DescribeViewports(target) }, new JsonSerializerOptions { WriteIndented = true }));
             throw new InvalidOperationException($"Physical target {target.Name} at {x},{y} does not belong to the catalog.");
         }
-        var virtualX = GetSystemMetrics(76); var virtualY = GetSystemMetrics(77);
-        var virtualWidth = GetSystemMetrics(78); var virtualHeight = GetSystemMetrics(79);
-        Require(virtualWidth > 1 && virtualHeight > 1 && x >= virtualX && y >= virtualY &&
-            x < virtualX + virtualWidth && y < virtualY + virtualHeight, "Physical target exceeds the virtual desktop.");
-        // Send a mouse movement event through the same input path as button and
-        // keyboard actions. Absolute virtual-desktop coordinates avoid pointer
-        // acceleration and preserve the user's mouse settings.
-        Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput
-        {
-            X = (int)Math.Round((x - virtualX) * 65535d / (virtualWidth - 1)),
-            Y = (int)Math.Round((y - virtualY) * 65535d / (virtualHeight - 1)),
-            Flags = 0x0001 | 0x8000 | 0x4000 // MOVE | ABSOLUTE | VIRTUALDESK
-        } } }]);
+        SendPointerMovement(x, y);
         await Task.Delay(30);
         var positioned = GetCursorPos(out var actual);
         var finalBounds = ScreenBounds(target);
@@ -167,6 +160,22 @@ internal sealed class NativeInputSession : IDisposable
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) && finalBounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
+    }
+
+    private static void SendPointerMovement(int x, int y)
+    {
+        var virtualX = GetSystemMetrics(76); var virtualY = GetSystemMetrics(77);
+        var virtualWidth = GetSystemMetrics(78); var virtualHeight = GetSystemMetrics(79);
+        Require(virtualWidth > 1 && virtualHeight > 1 && x >= virtualX && y >= virtualY &&
+            x < virtualX + virtualWidth && y < virtualY + virtualHeight, "Physical target exceeds the virtual desktop.");
+        // Keep Win32 and WinUI's input position on the same native event path,
+        // including the one restoration to the session's original location.
+        Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput
+        {
+            X = (int)Math.Round((x - virtualX) * 65535d / (virtualWidth - 1)),
+            Y = (int)Math.Round((y - virtualY) * 65535d / (virtualHeight - 1)),
+            Flags = 0x0001 | 0x8000 | 0x4000 // MOVE | ABSOLUTE | VIRTUALDESK
+        } } }]);
     }
 
     private static object[] DescribeViewports(FrameworkElement target)
@@ -306,7 +315,7 @@ internal sealed class NativeInputSession : IDisposable
             finally
             {
                 SetWindowPos(Window, new IntPtr(-2), 0, 0, 0, 0, 0x0013);
-                SetCursorPos(originalPointer.X, originalPointer.Y);
+                SendPointerMovement(originalPointer.X, originalPointer.Y);
             }
         }
     }
