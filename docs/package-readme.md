@@ -47,6 +47,10 @@ the pinned source's unfilled Line output. Complete parity remains in progress.
 A Trend suppresses Description. Full visual/platform acceptance remains open.
 Raw zero Icon/Footer content renders without chrome; Boolean content and
 whitespace follow the pinned source. Custom templates retain their own data.
+`BleeckerBarChart` consumes observable records and series in both source layouts,
+with grouped rounded bars, optional grid/legend, formatters and native category
+inspection. Set XAxisKey before mounting. Full raster, motion and platform
+acceptance remains in progress.
 The packaged brand SVG is copied to `Orchard/Assets/Images`. Brand filtering uses
 the pinned transitive Win2D 1.4.0 dependency; keep its native runtime files with
 the complete build/publish output.

@@ -23,6 +23,8 @@ public sealed partial class MainWindow : Window
         InitializeComponent();
         PackageBauhaus.ImageSource = new WriteableBitmap(4, 4);
         foreach(var value in new[]{10d,30d,20d,40d})PackageSparkline.Data.Add(new Dictionary<string,object?>{{"v",value}});
+        PackageBarChart.Data.Add(new Dictionary<string,object?>{{"label","A"},{"v",10d}});
+        PackageBarChart.Data.Add(new Dictionary<string,object?>{{"label","B"},{"v",20d}});
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
@@ -199,6 +201,7 @@ public sealed partial class MainWindow : Window
                 VerifyDashboardSection();
                 VerifyDashboardGrid();
                 await VerifySparklineAsync();
+                await VerifyBarChartAsync();
                 await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
@@ -317,6 +320,30 @@ public sealed partial class MainWindow : Window
         var original=PackageSparkline.Data;PackageSparkline.Data=new();
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0,"Packaged Sparkline retained an empty curve.");
         PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
+    }
+
+    private async Task VerifyBarChartAsync()
+    {
+        PackageBarChart.Layout=BleeckerBarChartLayout.Horizontal;
+        PackageBarChart.Data[1]=new Dictionary<string,object?>{{"label","B"},{"v",20d}};
+        var parent=(Panel)VisualTreeHelper.GetParent(PackageBarChart);var position=parent.Children.IndexOf(PackageBarChart);
+        parent.Children.Remove(PackageBarChart);await AwaitAsync(()=>!PackageBarChart.IsLoaded,"Packaged Bar Chart did not unmount.");
+        parent.Children.Insert(position,PackageBarChart);await AwaitAsync(()=>PackageBarChart.IsLoaded,"Packaged Bar Chart did not remount.");
+        PackageBarChart.ApplyTemplate();Root.UpdateLayout();
+        var chart=BrandDescendants<BleeckerLineChart>(PackageBarChart).Single();var plot=BrandDescendants<Canvas>(chart).Single(canvas=>canvas.Name=="PART_Plot");
+        await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==2,"Packaged Bar Chart did not render its consumer records.");
+        var first=((PathGeometry)plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().First().Data).Figures[0].StartPoint;
+        Require(Math.Abs(first.X-72)<.001&&Math.Abs(first.Y-91.5)<.001&&ReferenceEquals(chart.Data,PackageBarChart.Data)&&ReferenceEquals(chart.Series,PackageBarChart.Series),"Packaged Bar Chart lost source geometry or original consumer collections.");
+        Require(!PackageBarChart.IsTabStop&&chart.IsTabStop&&AutomationProperties.GetName(chart)=="Independent grouped bars"&&FrameworkElementAutomationPeer.CreatePeerForElement(chart).GetClassName()==nameof(BleeckerBarChart),"Packaged Bar Chart lost its single native inspection boundary.");
+        await AcquireConsumerInputAsync();Require(chart.Focus(FocusState.Keyboard),"Could not focus packaged Bar Chart.");
+        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="A;  : 10","Packaged Bar Chart did not inspect its first category.");
+        var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
+        Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Packaged Bar Chart key did not enter native input.");
+        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="B;  : 20","Packaged Bar Chart did not inspect consumer values through native Right.");
+        PackageBarChart.Layout=BleeckerBarChartLayout.Vertical;
+        await AwaitAsync(()=>((PathGeometry)plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().First().Data).Figures[0].StartPoint.X==60,"Packaged Bar Chart ignored a live orientation change.");
+        PackageBarChart.Data[1]=new Dictionary<string,object?>{{"label","B"},{"v",30d}};
+        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="B;  : 30","Packaged Bar Chart ignored live replacement records.");
     }
 
     private async Task VerifyStatCardAsync()

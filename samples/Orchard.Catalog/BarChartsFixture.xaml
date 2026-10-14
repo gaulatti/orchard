@@ -1,0 +1,12 @@
+<UserControl x:Class="Orchard.Catalog.BarChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Bar charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional local collections. Consumers own records, series, formatting and accessible names. Focus a chart to inspect categories." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerBarChart x:Name="Specimen" XAxisKey="label" Height="300" AutomationProperties.Name="Fictional collection totals">
+   <orchard:BleeckerBarChart.Series><orchard:BleeckerChartSeries Key="total" Name="Consumer total" /><orchard:BleeckerChartSeries Key="selected" Name="Consumer selected" /></orchard:BleeckerBarChart.Series>
+  </orchard:BleeckerBarChart>
+  <orchard:BleeckerBarChart x:Name="Vertical" XAxisKey="label" Layout="Vertical" Height="300" AutomationProperties.Name="Fictional horizontal comparison">
+   <orchard:BleeckerBarChart.Series><orchard:BleeckerChartSeries Key="total" Name="Consumer total" /></orchard:BleeckerBarChart.Series>
+  </orchard:BleeckerBarChart>
+ </StackPanel>
+</UserControl>

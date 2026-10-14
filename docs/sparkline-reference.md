@@ -119,3 +119,6 @@ SendInput movement path as normal fixture moves. The complete chart sequence
 passes both themes at `artifacts/smoke-bar-chart-sequence-restored`, retaining
 all source outputs, normal native delivery and unchanged deadlines. This is a
 catalog input-session correction; chart interaction behavior is unchanged.
+The complete Light/Dark catalog subsequently passes at
+`artifacts/smoke-bar-chart-full-restored`, under the same six-minute deadline,
+including all pre-existing pointer/cursor and keyboard gates.

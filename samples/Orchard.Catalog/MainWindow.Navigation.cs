@@ -23,6 +23,7 @@ public sealed partial class MainWindow
             ("Attention surfaces",AttentionSurfaces),
             ("Chart theme",ChartThemes),
             ("Line charts",LineCharts),
+            ("Bar charts",BarCharts),
             ("Sparklines",Sparklines),
             ("Stat cards",StatCards),
             ("Error states",ErrorStates),
