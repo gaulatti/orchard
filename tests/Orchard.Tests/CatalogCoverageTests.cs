@@ -50,13 +50,26 @@ public sealed class CatalogCoverageTests
         var (library, catalog) = FixturePaths();
         using var coverage = JsonDocument.Parse(File.ReadAllText(Path.Combine(catalog, "catalog-coverage.json")));
         var registrations = coverage.RootElement.GetProperty("controls");
+        var utilities = coverage.RootElement.GetProperty("utilities");
         // All public library classes except the token container require a fixture.
         // This deliberately includes view models/helpers until explicitly classified,
         // so an unfamiliar base class cannot silently evade visual coverage.
         var classes = Directory.GetFiles(library, "*.cs", SearchOption.AllDirectories)
             .SelectMany(path => Regex.Matches(File.ReadAllText(path), @"public\s+(?:(?:sealed|abstract|partial|static)\s+)*class\s+(\w+)"))
             .Select(match => match.Groups[1].Value).Where(name => name != "BleeckerTokens").Distinct().ToArray();
-        CollectionAssert.AreEquivalent(classes, registrations.EnumerateObject().Select(item => item.Name).ToArray());
+        CollectionAssert.AreEquivalent(classes, registrations.EnumerateObject().Concat(utilities.EnumerateObject()).Select(item => item.Name).ToArray());
+        // The source chart theme is a static configuration module, not an
+        // instantiable control. Its dedicated native fixture must consume every
+        // public entry point and is exercised by the catalog runtime gate.
+        CollectionAssert.AreEquivalent(new[]{"BleeckerChartTheme"},utilities.EnumerateObject().Select(item=>item.Name).ToArray());
+        foreach(var utility in utilities.EnumerateObject())
+        {
+            var source=File.ReadAllText(Path.Combine(catalog,utility.Value.GetString()!+".cs"));
+            foreach(var member in new[]{"Colors","Palette","PickColor","Grid","Axis","Tooltip"})
+                StringAssert.Contains(source,utility.Name+"."+member);
+            var fixture=XDocument.Load(Path.Combine(catalog,utility.Value.GetString()!));
+            Assert.IsTrue(fixture.Descendants().Any(element=>element.Name.LocalName=="Grid"),"Chart theme fixture has no rendered consumer host.");
+        }
         foreach (var registration in registrations.EnumerateObject())
         {
             var fixture = XDocument.Load(Path.Combine(catalog, registration.Value.GetString()!));

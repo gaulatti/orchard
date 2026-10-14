@@ -1,0 +1,14 @@
+<UserControl x:Class="Orchard.Catalog.ChartThemesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <StackPanel Spacing="16" Margin="0,0,0,24">
+  <TextBlock Text="Chart theme" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Named roles, automatic series palette and scoped brand colors follow the active appearance." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <TextBlock Text="Named roles" Style="{StaticResource BleeckerBodyStyle}" FontWeight="SemiBold" />
+  <Grid x:Name="Roles" ColumnSpacing="8" RowSpacing="8" />
+  <TextBlock Text="Automatic palette · source order" Style="{StaticResource BleeckerBodyStyle}" FontWeight="SemiBold" />
+  <Grid x:Name="Palette" ColumnSpacing="8" />
+  <TextBlock Text="Scoped brand palette" Style="{StaticResource BleeckerBodyStyle}" FontWeight="SemiBold" />
+  <Grid x:Name="BrandScope"><Grid x:Name="ScopedPalette" ColumnSpacing="8" /></Grid>
+  <TextBlock Text="Axis, grid and tooltip surface defaults" Style="{StaticResource BleeckerBodyStyle}" FontWeight="SemiBold" />
+  <Grid x:Name="StyleHost" />
+ </StackPanel>
+</UserControl>

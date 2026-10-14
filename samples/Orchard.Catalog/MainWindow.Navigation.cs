@@ -21,6 +21,7 @@ public sealed partial class MainWindow
             ("Status badges", StatusBadges), ("Menus", Menus), ("Notifications", Notifications), ("Alerts", Alerts), ("Brand lockups", BrandLockups), ("Bauhaus backgrounds", BauhausBackgrounds),
             ("Activity items",ActivityItems),
             ("Attention surfaces",AttentionSurfaces),
+            ("Chart theme",ChartThemes),
             ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes), ("Windows contrast", Contrast)
         ]);
         var declared = FixtureHost.Children.OfType<FrameworkElement>().ToArray();

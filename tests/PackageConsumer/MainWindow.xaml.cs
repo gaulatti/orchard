@@ -180,6 +180,7 @@ public sealed partial class MainWindow : Window
                 VerifyBauhaus();
                 VerifyActivity();
                 VerifyAttention();
+                await VerifyChartThemeAsync(theme);
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -242,6 +243,64 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private async Task VerifyChartThemeAsync(ElementTheme originalTheme)
+    {
+        var host=new Grid{HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Margin=new Thickness(32)};
+        var brandScope=new StackPanel{Orientation=Orientation.Horizontal,Spacing=4};
+        var regular=new StackPanel{Orientation=Orientation.Horizontal,Spacing=4};
+        host.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});host.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});
+        Grid.SetRow(brandScope,1);host.Children.Add(regular);host.Children.Add(brandScope);
+        var brand=new SolidColorBrush(Windows.UI.Color.FromArgb(255,25,115,145));brandScope.Resources["BleeckerSeaBrush"]=brand;
+        var regularSwatches=new List<Microsoft.UI.Xaml.Shapes.Rectangle>();var brandSwatches=new List<Microsoft.UI.Xaml.Shapes.Rectangle>();
+        foreach(var key in BleeckerChartTheme.Palette)
+        {
+            foreach(var pair in new[]{(Parent:regular,Swatches:regularSwatches),(Parent:brandScope,Swatches:brandSwatches)})
+            {
+                var swatch=(Microsoft.UI.Xaml.Shapes.Rectangle)Microsoft.UI.Xaml.Markup.XamlReader.Load(
+                    $"<Rectangle xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Width=\"32\" Height=\"24\" Fill=\"{{ThemeResource {key}}}\" />");
+                pair.Parent.Children.Add(swatch);pair.Swatches.Add(swatch);
+            }
+        }
+        Root.Children.Add(host);
+        try
+        {
+            foreach(var theme in new[]{originalTheme,originalTheme==ElementTheme.Light?ElementTheme.Dark:ElementTheme.Light,originalTheme})
+            {
+                Root.RequestedTheme=theme;Root.UpdateLayout();
+                var watch=System.Diagnostics.Stopwatch.StartNew();
+                var scheme=theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark;
+                bool Matches()
+                {
+                    for(var index=0;index<BleeckerChartTheme.Palette.Count;index++)
+                    {
+                        var key=BleeckerChartTheme.Palette[index]["Bleecker".Length..^"Brush".Length];key=char.ToLowerInvariant(key[0])+key[1..];
+                        if(Hex(regularSwatches[index].Fill)!=BleeckerTokens.Colors(scheme)[key] ||
+                            Hex(brandSwatches[index].Fill)!=(index==0?Hex(brand):BleeckerTokens.Colors(scheme)[key]))return false;
+                    }
+                    return true;
+                }
+                while(!Matches()&&watch.Elapsed<TimeSpan.FromSeconds(2))await Task.Delay(16);
+                Require(Matches(),"Packaged chart theme lost live appearance, palette order or scoped brand resources.");
+            }
+            Require(BleeckerChartTheme.Colors.Count==12&&BleeckerChartTheme.PickColor(10)==BleeckerChartTheme.Palette[0]&&
+                BleeckerChartTheme.PickColor(-1) is null && BleeckerChartTheme.PickColor(.5) is null,
+                "Packaged chart theme changed the public source contract.");
+            BleeckerChartGridStyle grid=BleeckerChartTheme.Grid;BleeckerChartAxisStyle axis=BleeckerChartTheme.Axis;BleeckerChartTooltipStyle tooltip=BleeckerChartTheme.Tooltip;
+            Require(grid.StrokeDashes.SequenceEqual(new[]{3d,3d})&&axis.TickFontSize==12&&tooltip.CornerRadius==12&&
+                tooltip.ShadowBlurCssPixels==32&&tooltip.BackdropBlurCssPixels==8&&tooltip.LabelFontWeight==600,
+                "Packaged chart style metadata is incomplete.");
+            brand.Color=Windows.UI.Color.FromArgb(255,145,55,95);
+            Require(ReferenceEquals(brandSwatches[0].Fill,brand)&&Hex(regularSwatches[0].Fill)!=Hex(brand),
+                "Packaged chart brand brush mutation lost ownership or escaped its scope.");
+        }
+        finally{Root.Children.Remove(host);Root.RequestedTheme=originalTheme;}
+        static string? Hex(Brush? brush)
+        {
+            if(brush is not SolidColorBrush solid)return null;
+            var color=solid.Color;return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
+        }
     }
 
     private async Task VerifyCustomBreadcrumbFocusAsync()

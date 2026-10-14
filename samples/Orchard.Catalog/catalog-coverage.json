@@ -23,6 +23,9 @@
     "BleeckerSmallOutlineToggleStyle": "TogglesFixture.xaml",
     "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
   },
+  "utilities": {
+    "BleeckerChartTheme": "ChartThemesFixture.xaml"
+  },
   "controls": {
     "BleeckerAttentionSurface": "AttentionSurfacesFixture.xaml",
     "BleeckerBrandLockup": "BrandLockupsFixture.xaml",

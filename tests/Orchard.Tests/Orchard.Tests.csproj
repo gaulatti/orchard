@@ -30,5 +30,6 @@
         <None Include="../../src/Orchard/**/*.cs" Exclude="../../src/Orchard/bin/**;../../src/Orchard/obj/**" Link="Fixtures/Library/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/catalog-coverage.json" Link="Fixtures/Catalog/catalog-coverage.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/**/*.xaml" Exclude="../../samples/Orchard.Catalog/bin/**;../../samples/Orchard.Catalog/obj/**" Link="Fixtures/Catalog/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/ChartThemesFixture.xaml.cs" Link="Fixtures/Catalog/ChartThemesFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>

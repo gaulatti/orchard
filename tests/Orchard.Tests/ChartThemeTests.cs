@@ -9,6 +9,22 @@ namespace Orchard.Tests;
 public sealed class ChartThemeTests
 {
     [TestMethod]
+    public void PublicMetadataCannotBeMutatedByAChartConsumer()
+    {
+        Assert.IsTrue(typeof(BleeckerChartTheme).IsPublic);
+        Assert.IsTrue(typeof(BleeckerChartGridStyle).IsPublic);
+        Assert.IsTrue(typeof(BleeckerChartAxisStyle).IsPublic);
+        Assert.IsTrue(typeof(BleeckerChartTooltipStyle).IsPublic);
+        var colors=(IDictionary<string,string>)BleeckerChartTheme.Colors;
+        var palette=(IList<string>)BleeckerChartTheme.Palette;
+        var dashes=(IList<double>)BleeckerChartTheme.Grid.StrokeDashes;
+        Assert.ThrowsExactly<NotSupportedException>(()=>colors["sea"]="ConsumerReplacement");
+        Assert.ThrowsExactly<NotSupportedException>(()=>palette[0]="ConsumerReplacement");
+        Assert.ThrowsExactly<NotSupportedException>(()=>dashes[0]=99);
+        Assert.AreEqual("BleeckerSeaBrush",BleeckerChartTheme.PickColor(0));
+        CollectionAssert.AreEqual(new[]{3d,3d},BleeckerChartTheme.Grid.StrokeDashes.ToArray());
+    }
+    [TestMethod]
     public void FrozenPaletteAndRemainderCasesPreserveProducerReferences()
     {
         using var source=Reference();

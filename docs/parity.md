@@ -31,7 +31,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, Narrator, contrast, scaling, remaining ARM64 state checks; see [usage](button-group.md) |
 | card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, contrast/accessibility/scaling, remaining ARM64 state checks; see [usage](cards.md) |
 | chart | Pending | Pending | Full pinned contract |
-| chart-theme | Pending | Pending | Full pinned contract |
+| chart-theme | `BleeckerChartTheme`: scoped resource keys, source palette selection and immutable style metadata | Registered role/palette/brand and axis/grid/tooltip surface fixture; frozen metadata regressions | In progress: [contract and API](chart-theme-reference.md); ChartSeries, actual chart consumers, tooltip effects and full platform acceptance |
 | line-chart | Pending | Pending | Full pinned contract |
 | bar-chart | Pending | Pending | Full pinned contract |
 | area-chart | Pending | Pending | Full pinned contract |

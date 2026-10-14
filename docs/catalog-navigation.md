@@ -29,6 +29,12 @@ RTL examples retain consumer strings and have no built-in activation action.
 The focused `-Component activity` mode uses this same navigation path in both
 appearances and checks physical hover, Tab behavior and lifecycle restoration.
 
+Chart Theme is registered after Attention Surfaces. Its named roles, automatic
+palette, scoped brand override and chart style specimens use live theme
+references. The focused `-Component chart-theme` mode switches the root theme
+in place and verifies composed palette pixels. Actual chart rendering and the
+tooltip shadow/backdrop effects remain separate inventory acceptance gaps.
+
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise
 search, native button activation, no-result messaging, clearing search, retained

@@ -4,8 +4,8 @@ The frozen [Bleecker chart-theme source](https://github.com/gaulatti/bleecker/bl
 has SHA-256 `94e006606feb77fc8163d05812e83668b04916dcdbb818a8aa8dc0d49e08e750`.
 It exports `chartTheme`, `pickColor` and `ChartSeries`. It defines shared chart
 configuration rather than a standalone rendered component. The Windows
-inventory entry remains in progress; the internal metadata port does not
-constitute a public native API or accepted chart rendering.
+inventory entry remains in progress; the public metadata API and palette
+fixture do not constitute accepted chart rendering.
 
 Colors are references to the active Bleecker CSS variables. They must remain
 live references to the equivalent scoped Windows theme resources, preserving
@@ -75,6 +75,61 @@ Three regressions compare palette selection and all style defaults with the
 verified source module, then require every resource reference to exist in each
 of Light, Default and HighContrast. All 31 unit/resource tests pass at
 `artifacts/tests-chart-theme`, and both architecture builds have zero warnings.
-These are metadata/resource-boundary checks. Public ChartSeries/native theme
-APIs, live scoped resource resolution and overrides, catalog rendering, native
-chart consumers and their entire acceptance matrices remain unimplemented.
+These are metadata/resource-boundary checks.
+
+The immutable metadata is public as `BleeckerChartTheme.Colors`, `Palette`,
+`Grid`, `Axis`, `Tooltip` and `PickColor(double)`. Grid/axis/tooltip values use
+public readonly record structs. Resource keys are intended for real scoped
+XAML `ThemeResource` expressions; they are not resolved brush snapshots.
+The API returns null for the frozen source's undefined palette results.
+
+`ChartThemesFixture` is registered after Attention Surfaces and the focused
+`-Component chart-theme` mode uses ordinary catalog navigation. It renders all
+12 roles and ten automatic colors, a second palette under a local sea-brush
+override, and the native axis/grid/tooltip surface defaults. Runtime checks
+switch the root appearance in place, retain the local brand scope, mutate the
+owned brand brush and require exact composed screen pixels for every palette
+swatch. Its tooltip surface specimen does not yet implement shadow or backdrop
+blur and must not be treated as acceptance of those effects. Focused hosted
+x64 and ARM64 checks run before the full catalog so earlier component failures
+cannot hide this new fixture.
+
+The series-color audit has verified the frozen SHA-256 for all twelve chart
+modules under `artifacts/chart-theme-reference`. Line, Bar and Area consume
+`ChartSeries.key`/`name` unchanged and select `s.color ?? palette[index % 10]`.
+Radar and Scatter use their extended series models with the same color
+precedence. Pie/Donut use each data item's explicit color; Sparkline uses its
+explicit color or the sea role. The future native series model must preserve
+explicit brush ownership and use a live scoped resource reference only when
+that optional color is absent. An explicit value must not silently fall back
+to a palette color.
+
+The independent package consumer exercises the public style types, source
+palette selection and real scoped XAML brush references across both root
+appearances. Fresh native reports are required before claiming those checks
+passed. `ChartSeries`, the actual chart renderers, tooltip effects, Windows
+contrast/Narrator/scaling and the complete chart acceptance matrices remain
+unimplemented or unverified.
+
+The focused local x64 run passes both appearances at
+`artifacts/smoke-chart-theme-native`, with Windows animations off and display/
+text scale 1. Its three capture phases (initial, brand mutation, restored)
+require exact RGBA for all twenty mounted regular/scoped palette swatches in
+each appearance, including the consumer brush mutation's actual composed
+pixels. Both solution architectures build with zero warnings, all 32
+unit/resource/coverage tests pass, and token generation matches the pin.
+This is initial native theme-consumer evidence, not chart visual acceptance.
+
+The fresh isolated x64 NuGet consumer passes at
+`artifacts/package-consumer-chart-theme-native`, including the new public
+metadata types and mounted regular/scoped palette references in both themes.
+Package 0.1.0 has SHA-256
+`8e5f1d430e81d22ec3ff666bb6c3e2c4c49314961d92f75487b907d375f711ca`.
+The verifier restores into a new independent cache and uses no source project
+reference. Native ARM64 and enabled-animation evidence require the hosted run;
+the unrelated contrast and disabled-cursor failures remain required gates.
+
+The complete local x64 catalog passes both appearances with the registered
+chart fixture and expanded contrast baseline diagnostics at
+`artifacts/smoke-chart-theme-all`. This retains the same local settings and
+does not establish a passing hosted contrast or ARM64 cursor gate.
