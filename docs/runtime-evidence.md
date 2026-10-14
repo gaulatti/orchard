@@ -1,5 +1,14 @@
 # Native Windows runtime evidence
 
+Run [38576042972](https://github.com/gaulatti/orchard/actions/runs/38576042972)
+at `f72666b` passes the complete x64 job, the ARM64 cross-build and both fresh
+native package consumers. Both focused Page Header suites and Windows contrast
+checks pass. ARM64's complete catalog fails the Bauhaus delivery-clock timing
+comparison. Its verified frame timestamps identify a correct 18 degrees/second
+rotation across 395.6032ms of frame time versus 324.7343ms of callback time.
+See [the clock correction and unchanged limits](bauhaus-background-reference.md).
+Main is not fully green at this checkpoint; no inventory entry is accepted.
+
 The Page Header checkpoint passes both local solution builds, all 38
 unit/resource tests, its sixteen-case focused native gate, and the complete
 x64 Light/Dark catalog at `artifacts/smoke-page-header-full`. This host uses

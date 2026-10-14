@@ -1,0 +1,155 @@
+{
+  "run": 38576042972,
+  "commit": "f72666b37d112fe9e75dc80f8377bbac404137ba",
+  "artifactSha256": "d4e77e3c390570184467bb7e158076b0195f9f1300f6fead7e1a71492ec4dabe",
+  "enabled": true,
+  "frames": [
+    {
+      "Milliseconds": 0.0005,
+      "RenderingMilliseconds": 58614.9952,
+      "AnimationMilliseconds": 564.9213,
+      "Outer": 10.168583869934082,
+      "Inner": -10.168583869934082
+    },
+    {
+      "Milliseconds": 3.3257,
+      "RenderingMilliseconds": 58704.1664,
+      "AnimationMilliseconds": 654.091,
+      "Outer": 11.773638725280762,
+      "Inner": -11.773638725280762
+    },
+    {
+      "Milliseconds": 7.5874,
+      "RenderingMilliseconds": 58706.3488,
+      "AnimationMilliseconds": 656.2709,
+      "Outer": 11.81287670135498,
+      "Inner": -11.81287670135498
+    },
+    {
+      "Milliseconds": 23.6837,
+      "RenderingMilliseconds": 58711.5904,
+      "AnimationMilliseconds": 661.512,
+      "Outer": 11.90721607208252,
+      "Inner": -11.90721607208252
+    },
+    {
+      "Milliseconds": 39.5716,
+      "RenderingMilliseconds": 58726.4704,
+      "AnimationMilliseconds": 676.3953,
+      "Outer": 12.175115585327148,
+      "Inner": -12.175115585327148
+    },
+    {
+      "Milliseconds": 55.5924,
+      "RenderingMilliseconds": 58742.0224,
+      "AnimationMilliseconds": 691.9429,
+      "Outer": 12.454971313476562,
+      "Inner": -12.454971313476562
+    },
+    {
+      "Milliseconds": 71.5915,
+      "RenderingMilliseconds": 58757.4976,
+      "AnimationMilliseconds": 707.4252,
+      "Outer": 12.73365306854248,
+      "Inner": -12.73365306854248
+    },
+    {
+      "Milliseconds": 103.0989,
+      "RenderingMilliseconds": 58773.4336,
+      "AnimationMilliseconds": 723.3591,
+      "Outer": 13.020462989807129,
+      "Inner": -13.020462989807129
+    },
+    {
+      "Milliseconds": 118.9599,
+      "RenderingMilliseconds": 58804.9472,
+      "AnimationMilliseconds": 754.8749,
+      "Outer": 13.587747573852539,
+      "Inner": -13.587747573852539
+    },
+    {
+      "Milliseconds": 134.8883,
+      "RenderingMilliseconds": 58820.8256,
+      "AnimationMilliseconds": 770.7481,
+      "Outer": 13.873467445373535,
+      "Inner": -13.873467445373535
+    },
+    {
+      "Milliseconds": 150.8751,
+      "RenderingMilliseconds": 58836.7296,
+      "AnimationMilliseconds": 786.652,
+      "Outer": 14.159735679626465,
+      "Inner": -14.159735679626465
+    },
+    {
+      "Milliseconds": 166.9423,
+      "RenderingMilliseconds": 58852.7168,
+      "AnimationMilliseconds": 802.6385,
+      "Outer": 14.447493553161621,
+      "Inner": -14.447493553161621
+    },
+    {
+      "Milliseconds": 198.1036,
+      "RenderingMilliseconds": 58868.7872,
+      "AnimationMilliseconds": 818.71,
+      "Outer": 14.736780166625977,
+      "Inner": -14.736780166625977
+    },
+    {
+      "Milliseconds": 213.7611,
+      "RenderingMilliseconds": 58899.9744,
+      "AnimationMilliseconds": 849.8947,
+      "Outer": 15.298105239868164,
+      "Inner": -15.298105239868164
+    },
+    {
+      "Milliseconds": 229.7853,
+      "RenderingMilliseconds": 58915.6736,
+      "AnimationMilliseconds": 865.6007,
+      "Outer": 15.580812454223633,
+      "Inner": -15.580812454223633
+    },
+    {
+      "Milliseconds": 245.6459,
+      "RenderingMilliseconds": 58931.6352,
+      "AnimationMilliseconds": 881.5603,
+      "Outer": 15.868084907531738,
+      "Inner": -15.868084907531738
+    },
+    {
+      "Milliseconds": 261.2795,
+      "RenderingMilliseconds": 58947.5072,
+      "AnimationMilliseconds": 897.4286,
+      "Outer": 16.153717041015625,
+      "Inner": -16.153717041015625
+    },
+    {
+      "Milliseconds": 277.1851,
+      "RenderingMilliseconds": 58963.1936,
+      "AnimationMilliseconds": 913.1208,
+      "Outer": 16.436174392700195,
+      "Inner": -16.436174392700195
+    },
+    {
+      "Milliseconds": 292.9773,
+      "RenderingMilliseconds": 58979.0272,
+      "AnimationMilliseconds": 928.9509,
+      "Outer": 16.72111701965332,
+      "Inner": -16.72111701965332
+    },
+    {
+      "Milliseconds": 308.7516,
+      "RenderingMilliseconds": 58994.8224,
+      "AnimationMilliseconds": 944.7449,
+      "Outer": 17.005407333374023,
+      "Inner": -17.005407333374023
+    },
+    {
+      "Milliseconds": 324.7348,
+      "RenderingMilliseconds": 59010.5984,
+      "AnimationMilliseconds": 960.5215,
+      "Outer": 17.289386749267578,
+      "Inner": -17.289386749267578
+    }
+  ]
+}

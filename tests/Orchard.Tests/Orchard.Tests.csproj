@@ -21,6 +21,8 @@
         <None Include="../../samples/Orchard.Catalog/Reference/LineInteraction.json" Link="Fixtures/LineInteraction.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssTransition.cs" Link="BleeckerCssTransition.cs" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssEasing.cs" Link="BleeckerCssEasing.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/BauhausMotionTiming.cs" Link="BauhausMotionTiming.cs" />
+        <None Include="../Reference/BauhausFrameTiming.json" Link="Fixtures/BauhausFrameTiming.json" CopyToOutputDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../src/Orchard/Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />
         <None Include="../../tokens/bleecker.tokens.json" Link="Fixtures/bleecker.tokens.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SwitchTransitions.json" Link="Fixtures/SwitchTransitions.json" CopyToOutputDirectory="PreserveNewest" />

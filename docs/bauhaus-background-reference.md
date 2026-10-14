@@ -1,15 +1,43 @@
 # BauhausBackground reference and acceptance
 
+Run [38576042972](https://github.com/gaulatti/orchard/actions/runs/38576042972)
+isolates the timing mismatch on native ARM64. Its full-suite Light observer
+span is 324.7343ms while the rendered-frame span is 395.6032ms. Both transforms
+advance 7.1208029 degrees, matching the frame interval's 7.1208576 degrees.
+The maximum error across all 21 frames is 0.000104230066 degrees. The first
+two callbacks arrive 3.3252ms apart but represent frames 89.1712ms apart: a
+callback stopwatch does not identify the frames whose angles were captured.
+The archive's verified SHA-256 is
+`d4e77e3c390570184467bb7e158076b0195f9f1300f6fead7e1a71492ec4dabe`.
+
+The gate now compares every actual outer/inner transform against the independent
+`RenderingEventArgs.RenderingTime` interval at the same 18 degrees/second and
+strict one-degree bound. `Storyboard.GetCurrentTime` remains diagnostic only.
+Both callback and rendered-frame sampling spans must reach at least 320ms;
+the existing two-second timeout and native reduced-motion requirement remain.
+Timestamps must be finite and monotonic. The observer expectation is retained
+as `expectedDelta`, with `expectedFrameDelta` and maximum per-frame error
+reported separately. No frames are discarded, and no animation behavior changes.
+`tests/Reference/BauhausFrameTiming.json` retains the real failed trace. Regression
+coverage also rejects a bad intermediate rotation with correct endpoints,
+non-static reduced motion, short windows and regressing frame timestamps.
+Full motion/raster/platform acceptance still remains open.
+The corrected fixture passes the focused native x64 Light/Dark suite at
+`artifacts/smoke-bauhaus-rendering-time` with the actual animations-disabled
+preference, zero angles/error, and both sampling spans above 320ms. All 42
+unit/resource regressions pass, including the preserved enabled ARM64 trace.
+Live enabled-motion verification of this correction still requires hosted CI.
+
 Run [38563463296](https://github.com/gaulatti/orchard/actions/runs/38563463296)
 still fails full-suite ARM64 motion: the observer measures 333.1919ms while the
 storyboard advances 393.2726ms, producing 7.078908 degrees against 5.9974542
 expected by the unchanged wall-clock gate. The verified runtime archive has
 SHA-256 `2fd1646dff1e07a54ae32cbc7e729a6af893fca643d18b4626996eac12523604`.
-Motion reports now also retain each native
+The preceding diagnostic reports also retained each native
 [`RenderingEventArgs.RenderingTime`](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.renderingeventargs.renderingtime?view=windows-app-sdk-2.0),
-available in the WinUI 2.3.9 metadata pinned by Windows App SDK 2.5.1. This adds
+available in the WinUI 2.3.9 metadata pinned by Windows App SDK 2.5.1. That added
 the timestamp of the rendered frame alongside observer and storyboard time.
-It changes no animation behavior, wall-clock expectation, sample duration,
+That diagnostic checkpoint changed no animation behavior, wall-clock expectation, sample duration,
 native reduced-motion requirement or one-degree tolerance. Enabled ARM64
 evidence is required before changing the timing diagnosis or acceptance claim.
 Both x64/ARM64 solution builds and all 38 regressions pass at

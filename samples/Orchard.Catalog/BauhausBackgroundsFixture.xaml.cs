@@ -54,24 +54,26 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         var rotationField = typeof(BleeckerBauhausBackground).GetField("rotation", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
             ?? throw new InvalidOperationException("Missing Bauhaus animation clock for fixture diagnostics.");
         var timeline = rotationField.GetValue(Nazca) as Storyboard;
-        var frames = new List<(double Milliseconds, double RenderingMilliseconds, double? AnimationMilliseconds, double Outer, double Inner)>(); var elapsed = new Stopwatch();
+        var frames = new List<BauhausMotionFrame>(); var elapsed = new Stopwatch();
         var sampled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         void Sample(object? sender,object args)
         {
             Require(args is RenderingEventArgs, "Bauhaus motion sample did not receive the native frame timestamp.");
             var rendering = (RenderingEventArgs)args;
             if(!elapsed.IsRunning)elapsed.Start();
-            frames.Add((elapsed.Elapsed.TotalMilliseconds, rendering.RenderingTime.TotalMilliseconds, timeline?.GetCurrentTime().TotalMilliseconds, ((RotateTransform)outer.RenderTransform).Angle, ((RotateTransform)((Border)Find<Canvas>(Nazca, "PART_Pattern").Children[1]).RenderTransform).Angle));
-            if(elapsed.Elapsed.TotalMilliseconds>=320)sampled.TrySetResult();
+            frames.Add(new(elapsed.Elapsed.TotalMilliseconds, rendering.RenderingTime.TotalMilliseconds, timeline?.GetCurrentTime().TotalMilliseconds, ((RotateTransform)outer.RenderTransform).Angle, ((RotateTransform)((Border)Find<Canvas>(Nazca, "PART_Pattern").Children[1]).RenderTransform).Angle));
+            if(frames[^1].Milliseconds-frames[0].Milliseconds>=320 && frames[^1].RenderingMilliseconds-frames[0].RenderingMilliseconds>=320)sampled.TrySetResult();
         }
         CompositionTarget.Rendering+=Sample;
         try { await sampled.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
         finally { CompositionTarget.Rendering-=Sample; }
         var enabled = new UISettings().AnimationsEnabled;
-        var first = frames.First(); var last = frames.Last(); var expectedDelta = 18 * (last.Milliseconds - first.Milliseconds) / 1000;
-        var outerDelta = (last.Outer - first.Outer + 360) % 360; var innerDelta = (first.Inner - last.Inner + 360) % 360;
-        await File.WriteAllTextAsync(Path.Combine(folder, $"bauhaus-motion-{scheme}.json"), JsonSerializer.Serialize(new { enabled, expectedDelta, outerDelta, innerDelta, frames = frames.Select(frame => new { frame.Milliseconds, frame.RenderingMilliseconds, frame.AnimationMilliseconds, frame.Outer, frame.Inner }) }, new JsonSerializerOptions { WriteIndented = true }));
-        Require(enabled ? Math.Abs(outerDelta - expectedDelta) < 1 && Math.Abs(innerDelta - expectedDelta) < 1 && outerDelta > 0 : frames.All(frame => frame.Outer == 0 && frame.Inner == 0), "Bauhaus counter-rotation did not respect the 20-second linear cycle or native reduced-motion preference.");
+        var measurement = BauhausMotionTiming.Measure(frames, enabled);
+        await File.WriteAllTextAsync(Path.Combine(folder, $"bauhaus-motion-{scheme}.json"), JsonSerializer.Serialize(new { enabled,
+            expectedDelta = measurement.ExpectedDelta, expectedFrameDelta = measurement.ExpectedFrameDelta,
+            outerDelta = measurement.OuterDelta, innerDelta = measurement.InnerDelta, maximumFrameError = measurement.MaximumFrameError,
+            measurement.ObserverSpan, measurement.FrameSpan, measurement.Monotonic, measurement.Passed, frames }, new JsonSerializerOptions { WriteIndented = true }));
+        Require(measurement.Passed, "Bauhaus counter-rotation did not respect the 20-second linear cycle or native reduced-motion preference.");
         await CapturePixelsAsync(input, scheme, folder);
         using (var pixels = source.PixelBuffer.AsStream())
             for (var y = 0; y < 4; y++) { pixels.Position = y * 48; pixels.Write(new byte[] { 110, 70, 30, 255, 110, 70, 30, 255, 110, 70, 30, 255 }); }
