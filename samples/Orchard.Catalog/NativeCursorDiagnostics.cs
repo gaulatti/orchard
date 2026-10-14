@@ -24,6 +24,7 @@ internal static class NativeCursorDiagnostics
         }
         object? Field(string name)=>selection?.GetType().GetField(name,Instance)?.GetValue(selection);
         var selected=Field("selected") as InputCursor;
+        var source=Field("source") as InputPointerSource;
         return new
         {
             refreshCalls=observer?.GetType().GetField("refreshCalls",Instance)?.GetValue(observer),
@@ -31,6 +32,9 @@ internal static class NativeCursorDiagnostics
             lastReadWasBlocked=Field("lastReadWasBlocked"),lastVisibleHandle=Field("lastVisibleHandle"),
             retainedProducerType=selected?.GetType().Name,retainedProducerShape=(selected as InputSystemCursor)?.CursorShape.ToString(),
             lastRestoredType=Field("lastRestoredType"),lastRestoredShape=Field("lastRestoredShape")?.ToString(),
+            sourceQueueHasThreadAccess=source?.DispatcherQueue.HasThreadAccess,
+            rootQueueHasThreadAccess=control.DispatcherQueue.HasThreadAccess,
+            sameDispatcherQueue=source is not null&&source.DispatcherQueue.Equals(control.DispatcherQueue),
             active=selection is not null&&ReferenceEquals(active,selection)
         };
     }

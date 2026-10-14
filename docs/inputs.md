@@ -1,5 +1,23 @@
 # Input editing preview
 
+Run `38545127689` at `a236ab7` still fails the actual ARM64 cursor boundary.
+The verified runtime archive `11884776670` has SHA-256
+`2319baa17e66cce4ba77f22a8c3969b330af939d48554af349fdb614d75ece5f`.
+Its rounded matrix passes all 96 Light samples, then exit reports an owned
+point on Heading with hover/ownership cleared and the source selecting Arrow,
+while GetCursorInfo displays AppStarting. The Checkbox repeat-restoration
+failure in the same archive also shows continued republishing with Arrow
+displayed and UniversalNo selected. The existing same-callback producer
+transition therefore does not establish recovery.
+
+The catalog observer additionally records source/root DispatcherQueue thread
+access and queue identity. The local focused suite passes both themes at
+`artifacts/smoke-input-cursor-queue`; its active source and root both report
+thread access and the same queue. This rules out a simple queue mismatch for
+that x64 observation; it does not establish ARM64 queue identity or repair the
+displayed-cursor defect. No cursor writes, native assertions or deadlines are
+changed by these diagnostics.
+
 The rounded-pointer runtime matrix translates each specimen by less than one
 physical pixel to an integer screen origin before issuing the pinned one-pixel
 corner samples. This addresses the local catalog's fractional centered column:
