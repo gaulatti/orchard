@@ -29,6 +29,9 @@ Apply `BleeckerPrimaryButtonStyle`, `BleeckerSecondaryButtonStyle`,
 and their SIL Open Font License texts to `Orchard/Assets/Fonts` in build and
 publish output; no sibling source checkout or installed fonts are required.
 Bleecker token attribution is included in `licenses/LICENSE-Bleecker.txt`.
+D3 Shape attribution for the internal monotone curve foundation is included
+in `licenses/LICENSE-D3-Shape.txt`; this foundation does not yet expose a
+complete public chart component.
 The packaged brand SVG is copied to `Orchard/Assets/Images`. Brand filtering uses
 the pinned transitive Win2D 1.4.0 dependency; keep its native runtime files with
 the complete build/publish output.

@@ -32,7 +32,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, contrast/accessibility/scaling, remaining ARM64 state checks; see [usage](cards.md) |
 | chart | Pending | Pending | Full pinned contract |
 | chart-theme | `BleeckerChartTheme` and `BleeckerChartSeries`: scoped resource keys, source palette selection, immutable style metadata and consumer-owned series | Registered role/palette/brand, series-paint and axis/grid/tooltip surface fixture; frozen metadata regressions | In progress: [contract and API](chart-theme-reference.md); actual chart consumers, tooltip effects and full platform acceptance |
-| line-chart | Pending | Pending | Full pinned contract |
+| line-chart | `BleeckerMonotoneCurve`: internal pinned geometry foundation | 64 source-producer curve cases; 22 full-source browser captures | In progress: [contract and evidence](line-chart-reference.md); native renderer and every remaining chart/platform boundary |
 | bar-chart | Pending | Pending | Full pinned contract |
 | area-chart | Pending | Pending | Full pinned contract |
 | pie-chart | Pending | Pending | Full pinned contract |
