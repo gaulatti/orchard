@@ -102,3 +102,23 @@ The implementation uses the repository's pinned Windows App SDK
 existing Card surface recipe and existing Sparkline renderer. A consumer value
 template receives its original data without invoking that object's ToString;
 the native fixture supplies a value whose ToString throws to verify the boundary.
+
+Fresh NuGet 0.1.0 from clean implementation commit
+`b3de3487e3cdfa9cffb0e2fc06bce5acbf767b27` has SHA-256
+`4ab803d6cda7defabe4c243b9bc3572893d713467ea7613be4da47888c450f61`.
+The isolated x64 consumer passes both themes at
+`artifacts/package-consumer-stat-card`, verifying independent resources,
+typography/layout, live trend changes, restored description and original
+history collection identity. The isolated ARM64 consumer cross-build passes
+at `artifacts/package-consumer-stat-card-arm64`; runtimeVerified remains false.
+Both GUID-scoped temporary caches are removed. The separately published x64
+catalog passes the 44 focused specimens, desktop overflow gates and acknowledged
+native history input at `artifacts/smoke-stat-card-published-key-ack`. Its Right
+records retain exactly one down/up at the actual chart in each theme. Native
+ARM64/hosted validation remains deferred while push-triggered Actions are paused.
+The same published output also passes the complete Light/Dark catalog at
+`artifacts/smoke-stat-card-published-full`, with the six-minute deadline
+unchanged. This includes the first-focus/key-delivery gates alongside all
+existing catalog fixtures. The runnable output is
+`artifacts/catalog-stat-card-key-ack` and the NuGet file is
+`artifacts/packages-stat-card/Gaulatti.Orchard.0.1.0.nupkg`.
