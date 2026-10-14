@@ -120,7 +120,56 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         Require(ReferenceEquals(Slot.Content,content)&&ReferenceEquals(VisualTreeHelper.GetParent(ChildAction),((FrameworkElement)VisualTreeHelper.GetChild(Slot,0)).FindName("PART_Content")),
             "Attention template replacement changed or retained the old parent of consumer content.");
         await CaptureGradientPixelsAsync(input,source,scheme,folder);
+        await CaptureFractionalBaselinesAsync(input,scheme,folder);
         await File.WriteAllTextAsync(Path.Combine(folder,$"attention-actions-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,command.Count,command.Last,inherited,unavailableInvokeRefused=refused}));
+    }
+    private async Task CaptureFractionalBaselinesAsync(NativeInputSession input,BleeckerColorScheme scheme,string folder)
+    {
+        var root=(FrameworkElement)VisualTreeHelper.GetChild(Action,0);
+        var text=(TextBlock)root.FindName("PART_String");var metrics=(TextBlock)root.FindName("PART_StringMetrics");
+        var paragraph=(FrameworkElement)root.FindName("PART_StringParagraph");
+        var originalMargin=Action.ReadLocalValue(MarginProperty);var originalForeground=Action.ReadLocalValue(ForegroundProperty);
+        var originalBackground=Action.ReadLocalValue(BackgroundProperty);var gradientBackground=Action.Background;
+        var originalDensity=Action.Density;var originalContent=Action.Content;
+        var samples=new List<object>();
+        try
+        {
+            Action.Density=BleeckerAttentionDensity.Compact;Action.Content="Contrast surface";
+            await input.MoveAsync(PassiveAction);
+            await AwaitAsync(()=>Lift(Action)==0,"Fractional baseline probe did not reach resting lift.");
+            foreach(var probe in new[]{(Margin:.5,White:false,Solid:false),(Margin:0d,White:true,Solid:true),(Margin:.5,White:true,Solid:true),
+                (Margin:0d,White:false,Solid:false),(Margin:.5,White:false,Solid:false)})
+            {
+                var margin=probe.Margin;var color=probe.White?Microsoft.UI.Colors.White:Windows.UI.Color.FromArgb(255,240,244,248);
+                Action.Foreground=new SolidColorBrush(color);
+                Action.Background=probe.Solid?new SolidColorBrush(Windows.UI.Color.FromArgb(255,32,32,32)):gradientBackground;
+                Action.Margin=new Thickness(0,margin,0,0);UpdateLayout();
+                var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
+                void Frame(object? sender,object args){if(++frames==2)presented.TrySetResult();}
+                CompositionTarget.Rendering+=Frame;
+                try{await presented.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
+                await input.RequireForegroundAsync();
+                var bounds=input.ScreenBounds(text);var ownerBounds=input.ScreenBounds(Action);
+                var textOrigin=text.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+                var paragraphOrigin=paragraph.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
+                var file=$"attention-baseline-{scheme}-{samples.Count}.png";
+                var client=await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,file));
+                Require(bounds.X>=client.X&&bounds.Y>=client.Y&&bounds.Right<=client.Right&&bounds.Bottom<=client.Bottom,
+                    "Fractional baseline specimen is outside the owned composed capture.");
+                samples.Add(new{margin,file,solidBackground=probe.Solid,foreground=new[]{(int)color.R,(int)color.G,(int)color.B},x=(int)Math.Floor(bounds.X-client.X),y=(int)Math.Floor(bounds.Y-client.Y),
+                    width=(int)Math.Ceiling(bounds.Width),height=(int)Math.Ceiling(bounds.Height),ownerY=ownerBounds.Y-client.Y,
+                    textOrigin,paragraphOrigin,text.BaselineOffset,text.ActualHeight,text.LineHeight,metricsHeight=metrics.ActualHeight,
+                    metricsBaseline=metrics.BaselineOffset,transformY=((TranslateTransform)text.RenderTransform).Y});
+            }
+        }
+        finally
+        {
+            if(originalMargin==DependencyProperty.UnsetValue)Action.ClearValue(MarginProperty);else Action.SetValue(MarginProperty,originalMargin);
+            if(originalForeground==DependencyProperty.UnsetValue)Action.ClearValue(ForegroundProperty);else Action.SetValue(ForegroundProperty,originalForeground);
+            if(originalBackground==DependencyProperty.UnsetValue)Action.ClearValue(BackgroundProperty);else Action.SetValue(BackgroundProperty,originalBackground);
+            Action.Density=originalDensity;Action.Content=originalContent;
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baselines-{scheme}.json"),JsonSerializer.Serialize(new{diagnosticOnly=true,samples}));
     }
     private async Task CaptureGradientPixelsAsync(NativeInputSession input,JsonElement source,BleeckerColorScheme scheme,string folder)
     {

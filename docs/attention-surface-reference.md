@@ -188,3 +188,19 @@ pinned token-generation check pass. The library has no behavior change in this
 checkpoint; the new contrast diagnostics and focused native ARM64 CI step still
 require their fresh hosted run. This native library has no backend metrics
 surface, and its unavailable public wiki is documented in-repository.
+
+The catalog now records controlled fractional-position diagnostics after its
+ordinary Attention assertions. It preserves/restores the consumer margin,
+foreground, background, density and content, waits for two real render frames,
+and captures paragraph origin, text baseline/transform, natural metrics and
+physical glyph bounds. It changes only this owned UI, not Windows preferences.
+
+At `artifacts/smoke-attention-fractional-baselines`, whole/half-pixel margin
+changes retain all 215 established white glyph positions in both themes. The
+compact `Contrast surface` specimen, with the same #F0F4F8-to-white foreground
+change as the hosted transition, retains all 124 positions at
+`artifacts/smoke-attention-compact-color-baselines`. Adding a consumer
+gradient-to-solid background change also retains all 124 positions at
+`artifacts/smoke-attention-background-baselines`. None needs a mask offset.
+These diagnostics rule out those changes alone as the hosted one-pixel cause;
+they do not replace actual Windows contrast verification or establish a fix.

@@ -256,3 +256,26 @@ foreground at a one-pixel downward offset. That diagnostic offset is not used
 to align the mask or relax acceptance. The label's logical origin retains its
 fractional phase and its local transform changes by half a pixel; the physical
 glyph/crop/baseline relationship remains an open positioning boundary.
+
+Owned-UI diagnostics reproduce the compact content, foreground change,
+gradient-to-solid background transition and half-pixel margin change without
+changing Windows settings. All 124 established positions remain correct without
+offset in both themes after two render frames. The half-pixel transform change
+alone is therefore insufficient to explain the hosted displacement.
+
+The capture previously read the label's bounds after awaiting asynchronous PNG
+encoding. It now records bounds and geometry before capture, retains the later
+pose in `contrast-ink-<name>-poses.jsonl`, and refuses a pose change during
+encoding. Baseline capture waits for two actual render frames. This makes the
+coordinate/pixel relationship reviewable; exact colors, the unchanged baseline
+mask, owned-window requirements and the eight-second contrast deadline remain
+required. Fresh hosted verification must establish whether this capture-boundary
+correction resolves the failure.
+
+The complete local x64 catalog passes the new baseline frame barrier and
+pre-encoding coordinate reads in both themes at
+`artifacts/smoke-attention-capture-pose-all`. Every ordinary baseline capture
+reports a stable before/after pose. All 31 unit/resource tests pass. This
+checkpoint changes catalog verification and diagnostics only; the library's
+typography and rendering remain unchanged. Actual hosted contrast adoption
+remains unverified until the fresh run completes.

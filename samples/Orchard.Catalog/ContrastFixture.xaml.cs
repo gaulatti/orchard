@@ -196,13 +196,17 @@ public sealed partial class ContrastFixture : UserControl
             cursor = NativeInputSession.DescribeCursor(), helpBounds = input.ScreenBounds(Help), headingBounds = input.ScreenBounds(Heading) };
     }
     private sealed record InkSample(int Width, int Height, int[] Pixels, object Geometry);
-    private sealed record InkRaster(int Width,int Height,byte[] Pixels);
+    private sealed record InkRaster(int Width,int Height,byte[] Pixels,object Geometry);
     private static async Task<InkRaster> ReadScreenInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
     {
         await input.RequireForegroundAsync();
         var path=System.IO.Path.Combine(folder,$"contrast-ink-{name}-window.png");
+        var bounds=input.ScreenBounds(text);var geometry=InkGeometry(text);
         var client=await NativeScreenCapture.CaptureClientAsync(input.Window,path);
-        var bounds=input.ScreenBounds(text);
+        var boundsAfter=input.ScreenBounds(text);
+        await File.AppendAllTextAsync(System.IO.Path.Combine(folder,$"contrast-ink-{name}-poses.jsonl"),JsonSerializer.Serialize(new{
+            before=bounds,after=boundsAfter,geometry,stable=bounds==boundsAfter})+Environment.NewLine);
+        Require(bounds==boundsAfter,"Contrast label pose changed while its composed capture was encoded.");
         var x=(int)Math.Floor(bounds.X-client.X);var y=(int)Math.Floor(bounds.Y-client.Y);
         var width=(int)Math.Ceiling(bounds.Width);var height=(int)Math.Ceiling(bounds.Height);
         Require(x>=0&&y>=0&&width>0&&height>0&&x+width<=client.Width&&y+height<=client.Height,
@@ -213,17 +217,21 @@ public sealed partial class ContrastFixture : UserControl
             X=(uint)x,Y=(uint)y,Width=(uint)width,Height=(uint)height}};
         var data=await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,
             transform,Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage);
-        return new InkRaster(width,height,data.DetachPixelData());
+        return new InkRaster(width,height,data.DetachPixelData(),geometry);
     }
     private static async Task<InkSample> ReadInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
     {
+        var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
+        void Frame(object? sender,object args){if(++frames==2)presented.TrySetResult();}
+        CompositionTarget.Rendering+=Frame;
+        try{await presented.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
         var raster=await ReadScreenInkAsync(input,text,folder,name);var pixels=raster.Pixels;
         var color = ((SolidColorBrush)text.Foreground).Color;
         var ink = Enumerable.Range(0, raster.Width * raster.Height).Where(index =>
             pixels[index * 4] == color.B && pixels[index * 4 + 1] == color.G && pixels[index * 4 + 2] == color.R && pixels[index * 4 + 3] == 255).ToArray();
         Require(ink.Length > 0, "Initial label has no solid glyph pixels to establish its ink mask.");
         await SaveInkRasterAsync(raster.Width,raster.Height,pixels,System.IO.Path.Combine(folder,$"contrast-ink-{name}-before.png"));
-        return new InkSample(raster.Width, raster.Height, ink,InkGeometry(text));
+        return new InkSample(raster.Width, raster.Height, ink,raster.Geometry);
     }
     private static async Task VerifyInkAsync(NativeInputSession input,TextBlock text, int systemColor, InkSample sample, string folder, string name)
     {
