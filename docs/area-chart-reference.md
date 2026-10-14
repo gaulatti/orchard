@@ -108,6 +108,27 @@ observer cleanup and live path changes after rapid reparenting at
 was removed. Package failures retain actual data/observer, focus/input and
 lifecycle diagnostics.
 
+The regular 0.1.0 package from clean commit
+`15375de8cff98b144a179530786cf280cc27eed6` has SHA-256
+`c58dd09226a6e56b2837a12aed4bb7ca30d64afffd84dd0eab6f7440f200576d`;
+its repository metadata matches that exact commit. The fresh isolated x64
+consumer passes both themes at `artifacts/package-consumer-area-chart-observer`,
+including physical Right, original collection identity, fill/boundary geometry,
+live accumulation and replacement records after remount. Bar Chart's formerly
+stale replacement value also passes. The fresh ARM64 consumer builds at
+`artifacts/package-consumer-area-chart-observer-arm64`; its runtimeVerified
+remains false. Both isolated temporary caches are removed. The package is
+`artifacts/packages-area-chart-observer/Gaulatti.Orchard.0.1.0.nupkg`, and the
+runnable x64 catalog is `artifacts/catalog-area-chart-observer`.
+
+The complete published catalog passes both themes at
+`artifacts/smoke-area-chart-published-full`, including all 80 Area Chart cases,
+real detach/rapid-reparent updates, the existing Line/Bar/Sparkline/Stat Card
+sequence and shared Checkbox/Input ownership. The six-minute deadline remains
+unchanged. All six stationary Input remounts record two rendered, owned,
+settled native cursor/border observations. The published focused Checkbox mode
+also passes both themes at `artifacts/smoke-checkbox-remount-published`.
+
 This component remains **in progress**. Full area/glyph/legend/tooltip raster
 and effect equivalence, normal/interrupted motion, the complete content/key/
 formatter/override/RTL matrix, actual contrast, Narrator, display/text scaling,

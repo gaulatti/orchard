@@ -835,4 +835,8 @@ theme border, stationary coordinates and two-second deadline, and additionally
 checks owned foreground/cursor with no queued publication. Per-frame success
 and failure evidence is retained. This changes verification timing rather than
 Input or cursor production; it does not establish the cause of the original
-unrecorded failure. Final runtime evidence is recorded after verification.
+unrecorded failure. The complete published catalog passes both themes at
+`artifacts/smoke-area-chart-published-full`, under the unchanged six-minute
+deadline. All six rapid Input remounts record two ready rendered observations
+at approximately 114ms. The focused published mode passes both themes at
+`artifacts/smoke-checkbox-remount-published`, including the required captures.
