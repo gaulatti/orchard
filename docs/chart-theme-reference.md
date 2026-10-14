@@ -155,6 +155,14 @@ animations and display/text scale 1. The first model candidate's failure is
 preserved; it is not counted as package acceptance. Fresh hosted native ARM64
 series evidence and every actual chart consumer remain open requirements.
 
+Hosted run `38509625229` at `6f5e41d` passes the focused series fixture, full
+catalog and independent native consumer on both x64 and ARM64. The consumer
+requires real mounted name/color bindings to update, including transparent and
+null color transitions; the native fixture requires the composed paint samples.
+These close the initial native series-model/runtime proof on both architectures.
+Actual chart renderers, complete visual/accessibility/scaling/performance
+acceptance and the unrelated required contrast gate remain open.
+
 The focused local x64 run passes both appearances at
 `artifacts/smoke-chart-theme-native`, with Windows animations off and display/
 text scale 1. Its three capture phases (initial, brand mutation, restored)

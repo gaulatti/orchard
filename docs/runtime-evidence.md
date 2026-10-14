@@ -1,5 +1,15 @@
 # Native Windows runtime evidence
 
+Run [38509625229](https://github.com/gaulatti/orchard/actions/runs/38509625229)
+at `6f5e41d` passes both builds, all 32 regressions, both complete native
+catalogs and both independent native package consumers. The focused chart-theme
+steps exercise the new automatic/explicit/transparent series and real bindings
+on x64 and native ARM64; ARM64 retains enabled animations. The current run does
+not reproduce the prior cursor failure, which remains an intermittent open
+boundary. Both required contrast checks still fail Attention at 46/124 exact
+foreground glyph positions. Passing catalogs and package consumers therefore
+do not establish passing overall CI or complete inventory acceptance.
+
 Run [38507683990](https://github.com/gaulatti/orchard/actions/runs/38507683990)
 at `cf94a93` passes both builds, all 32 regressions, focused Attention with the
 new painted/action bounds and far-edge activation on both native architectures,
