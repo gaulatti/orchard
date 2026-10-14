@@ -1,0 +1,17 @@
+<UserControl x:Class="Orchard.Catalog.ErrorStatesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel x:Name="Rows" Spacing="16" Margin="0,0,0,40">
+  <TextBlock x:Name="Heading" Text="Error states" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned error summaries. Retry is present only when a consumer supplies a command; the library performs no data loading." Style="{StaticResource BleeckerBodyStyle}" />
+  <Button x:Name="KeyboardStart" Content="Before error summaries" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+  <orchard:BleeckerErrorState x:Name="Default" Width="640" HorizontalAlignment="Left" />
+  <orchard:BleeckerErrorState x:Name="Retrying" Width="640" HorizontalAlignment="Left" Title="Fictional archive unavailable" Description="Retry the consumer-owned archive request." RetryLabel="Reload archive" />
+  <orchard:BleeckerErrorState x:Name="Custom" Width="320" HorizontalAlignment="Left" Title="Custom icon" Description="">
+   <orchard:BleeckerErrorState.Icon><Border x:Name="ConsumerIcon" Width="28" Height="28" Background="{ThemeResource BleeckerSeaBrush}"><TextBlock Text="!" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource BleeckerBackgroundBrush}" /></Border></orchard:BleeckerErrorState.Icon>
+  </orchard:BleeckerErrorState>
+  <orchard:BleeckerErrorState x:Name="Long" Width="280" HorizontalAlignment="Left" Title="A longer fictional failure title wraps within the consumer's chosen width" Description="The consumer retains this complete description. No filename, endpoint, service or recovery policy is inferred by the component." />
+  <orchard:BleeckerErrorState x:Name="Rtl" Width="320" HorizontalAlignment="Left" FlowDirection="RightToLeft" Title="العربية · archive" Description="Consumer-owned right-to-left summary." />
+  <orchard:BleeckerErrorState x:Name="EmptyTitle" Width="320" HorizontalAlignment="Left" Title="" Description="Consumer description" />
+  <orchard:BleeckerErrorState x:Name="EmptyText" Width="320" HorizontalAlignment="Left" Title="" Description="" />
+  <Button x:Name="KeyboardEnd" Content="After error summaries" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+ </StackPanel>
+</UserControl>

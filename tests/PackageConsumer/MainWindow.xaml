@@ -28,6 +28,7 @@
             <orchard:BleeckerCard x:Name="PackageCard" Style="{StaticResource ConsumerCardStyle}" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated">
             <StackPanel Spacing="16">
                 <orchard:BleeckerStatusBadge x:Name="PackageStatus" Label="LOCAL" Variant="Info" Description="Independent package preview" />
+                <orchard:BleeckerErrorState x:Name="PackageErrorState" Width="320" HorizontalAlignment="Left" Title="Independent archive unavailable" Description="Consumer-owned failure" RetryLabel="Retry archive" />
                 <orchard:BleeckerAttentionSurface x:Name="PackageAttention" Hue="210" Intensity="5" Width="320" Height="120" Content="" HorizontalAlignment="Left" />
                 <orchard:BleeckerAttentionSurface x:Name="PackageAttentionAction" Element="Button" Hue="48" Intensity="8" Width="320" Content="Independent surface action" Click="OnSave" HorizontalAlignment="Left" />
                 <orchard:BleeckerSkeleton x:Name="PackageSkeleton" Width="160" Height="16" HorizontalAlignment="Left" />

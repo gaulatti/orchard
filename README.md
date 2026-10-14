@@ -110,6 +110,8 @@ Action component usage and remaining acceptance are documented separately:
 [buttons](docs/buttons.md), [icon buttons](docs/icon-buttons.md),
 [button groups](docs/button-group.md), [toggles](docs/toggles.md), and
 [toggle groups](docs/toggle-groups.md).
+Consumer-owned error summaries and optional retry commands are documented in
+[Error State](docs/error-states.md).
 
 See [architecture and verification](docs/architecture.md) for boundaries,
 accepted scaffold behavior, and the remaining component work.

@@ -13,6 +13,7 @@ internal sealed class NativeInputSession : IDisposable
     private readonly CursorPoint originalPointer;
     private readonly string folder, prefix;
     private readonly List<object> pointerMoves = [];
+    private readonly List<object> keyActions = [];
     private bool pointerButtonDown;
     private bool hostedForegroundRecoveryAttempted;
     internal IntPtr Window { get; }
@@ -65,6 +66,39 @@ internal sealed class NativeInputSession : IDisposable
     {
         Require(GetForegroundWindow() == Window, "Physical keyboard input lost the catalog foreground window.");
         SendKeyCore(key);
+    }
+
+    internal async Task KeyAsync(ushort key, FrameworkElement target)
+    {
+        Require(ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(root), target),
+            "Physical keyboard target does not own XAML focus.");
+        var released = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var downs = 0; var ups = 0; var targetRetained = true;
+        var down = new Microsoft.UI.Xaml.Input.KeyEventHandler((_, args) =>
+        {
+            if ((ushort)args.Key != key) return;
+            downs++; targetRetained &= ReferenceEquals(args.OriginalSource, target);
+        });
+        var up = new Microsoft.UI.Xaml.Input.KeyEventHandler((_, args) =>
+        {
+            if ((ushort)args.Key != key) return;
+            ups++; targetRetained &= ReferenceEquals(args.OriginalSource, target); released.TrySetResult();
+        });
+        root.Content.AddHandler(UIElement.KeyDownEvent, down, true);
+        root.Content.AddHandler(UIElement.KeyUpEvent, up, true);
+        try
+        {
+            Key(key);
+            await released.Task.WaitAsync(TimeSpan.FromSeconds(2));
+            Require(downs == 1 && ups == 1 && targetRetained,
+                "Physical keyboard action did not deliver exactly one press/release to its focused target.");
+        }
+        finally
+        {
+            root.Content.RemoveHandler(UIElement.KeyDownEvent, down);
+            root.Content.RemoveHandler(UIElement.KeyUpEvent, up);
+            keyActions.Add(new { key, target = target.Name, downs, ups, targetRetained });
+        }
     }
 
     internal void ShiftKey(ushort key)
@@ -151,6 +185,26 @@ internal sealed class NativeInputSession : IDisposable
         return NativeScreenCapture.DescribePoint(Window, point.X, point.Y);
     }
 
+    internal object DescribeInputRouting()
+    {
+        var thread=GetWindowThreadProcessId(Window,out _);
+        var info=new GuiThreadInformation { Size=(uint)Marshal.SizeOf<GuiThreadInformation>() };
+        var read=GetGUIThreadInfo(thread,ref info);
+        return new { read,info.Flags,active=info.Active.ToInt64(),focus=info.Focus.ToInt64(),capture=info.Capture.ToInt64(),
+            menuOwner=info.MenuOwner.ToInt64(),moveSize=info.MoveSize.ToInt64(),caret=info.Caret.ToInt64(),children=DescribeChildren(),
+            leftButton=(GetAsyncKeyState(1)&0x8000)!=0,alt=(GetAsyncKeyState(0x12)&0x8000)!=0,enter=(GetAsyncKeyState(0x0D)&0x8000)!=0 };
+    }
+    private object[] DescribeChildren()
+    {
+        var children=new List<object>();
+        EnumChildWindows(Window,(child,_)=>
+        {
+            var className=new System.Text.StringBuilder(256);GetClassName(child,className,className.Capacity);GetWindowRect(child,out var rect);
+            children.Add(new {handle=child.ToInt64(),windowClass=className.ToString(),visible=IsWindowVisible(child),enabled=IsWindowEnabled(child),rect.Left,rect.Top,rect.Right,rect.Bottom});return true;
+        },IntPtr.Zero);
+        return children.ToArray();
+    }
+
     internal async Task RequireForegroundAsync()
     {
         if (!OwnsForeground) await RestoreHostedForegroundAsync();
@@ -223,7 +277,7 @@ internal sealed class NativeInputSession : IDisposable
             File.WriteAllText(Path.Combine(folder, $"{prefix}-desktop.json"),
                 JsonSerializer.Serialize(new { window = Window.ToInt64(), foregroundWindow = GetForegroundWindow().ToInt64(),
                     sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(),
-                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves },
+                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves, keyActions },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
         finally
@@ -266,6 +320,19 @@ internal sealed class NativeInputSession : IDisposable
     [StructLayout(LayoutKind.Sequential)] private struct MouseInput { public int X, Y; public uint MouseData, Flags, Time; public IntPtr Extra; }
     [StructLayout(LayoutKind.Sequential)] private struct KeyboardInput { public ushort Key, Scan; public uint Flags, Time; public IntPtr Extra; }
     [StructLayout(LayoutKind.Sequential)] private struct CursorPoint { public int X, Y; }
+    [StructLayout(LayoutKind.Sequential)] private struct GuiThreadInformation
+    {
+        public uint Size,Flags; public IntPtr Active,Focus,Capture,MenuOwner,MoveSize,Caret; public NativeRectangle CaretBounds;
+    }
+    [StructLayout(LayoutKind.Sequential)] private struct NativeRectangle { public int Left,Top,Right,Bottom; }
+    [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)] private static extern bool GetGUIThreadInfo(uint thread,ref GuiThreadInformation info);
+    [DllImport("user32.dll")] private static extern short GetAsyncKeyState(int key);
+    private delegate bool ChildWindowCallback(IntPtr child,IntPtr data);
+    [DllImport("user32.dll")]private static extern bool EnumChildWindows(IntPtr parent,ChildWindowCallback callback,IntPtr data);
+    [DllImport("user32.dll",CharSet=CharSet.Unicode)]private static extern int GetClassName(IntPtr window,System.Text.StringBuilder name,int capacity);
+    [DllImport("user32.dll")]private static extern bool GetWindowRect(IntPtr window,out NativeRectangle rect);
+    [DllImport("user32.dll")]private static extern bool IsWindowVisible(IntPtr window);
+    [DllImport("user32.dll")]private static extern bool IsWindowEnabled(IntPtr window);
     [DllImport("user32.dll", SetLastError = true)] private static extern uint SendInput(uint count, NativeInput[] inputs, int size);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SetForegroundWindow(IntPtr window);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool ShowWindow(IntPtr window, int command);

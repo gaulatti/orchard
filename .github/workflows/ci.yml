@@ -66,8 +66,20 @@ jobs:
         id: line_chart_smoke
         if: ${{ !cancelled() && (steps.chart_theme_smoke.outcome == 'success' || steps.chart_theme_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component line-chart -Output artifacts/line-chart -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify Error State content and native retry
+        id: error_state_smoke
         if: ${{ !cancelled() && (steps.line_chart_smoke.outcome == 'success' || steps.line_chart_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component error-state -Output artifacts/error-state -ExpectedArchitecture X64
+      - name: Verify Error State live Windows contrast
+        id: error_state_contrast
+        if: ${{ !cancelled() && (steps.error_state_smoke.outcome == 'success' || steps.error_state_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component error-state-contrast -Output artifacts/error-state-contrast -ExpectedArchitecture X64
+      - name: Verify native retry after Line Chart keyboard input
+        id: error_state_after_chart
+        if: ${{ !cancelled() && (steps.error_state_contrast.outcome == 'success' || steps.error_state_contrast.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component error-state-after-chart -Output artifacts/error-state-after-chart -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.error_state_after_chart.outcome == 'success' || steps.error_state_after_chart.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -171,8 +183,20 @@ jobs:
         id: line_chart_smoke
         if: ${{ !cancelled() && (steps.chart_theme_smoke.outcome == 'success' || steps.chart_theme_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component line-chart -Output artifacts/line-chart -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 Error State content and retry
+        id: error_state_smoke
         if: ${{ !cancelled() && (steps.line_chart_smoke.outcome == 'success' || steps.line_chart_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component error-state -Output artifacts/error-state -ExpectedArchitecture Arm64
+      - name: Verify native ARM64 Error State Windows contrast
+        id: error_state_contrast
+        if: ${{ !cancelled() && (steps.error_state_smoke.outcome == 'success' || steps.error_state_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component error-state-contrast -Output artifacts/error-state-contrast -ExpectedArchitecture Arm64
+      - name: Verify native ARM64 retry after Line Chart keyboard input
+        id: error_state_after_chart
+        if: ${{ !cancelled() && (steps.error_state_contrast.outcome == 'success' || steps.error_state_contrast.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component error-state-after-chart -Output artifacts/error-state-after-chart -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.error_state_after_chart.outcome == 'success' || steps.error_state_after_chart.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

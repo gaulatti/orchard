@@ -127,7 +127,7 @@ public sealed partial class ContrastFixture : UserControl
             {
                 Require(!tooltip.IsOpen, "Contextual help did not dismiss on native window deactivation.");
                 samples.Add(new { phase = "native-deactivation", state = Snapshot() });
-                await AwaitRecoveryTargetAsync(input, folder);
+                await AwaitRecoveryTargetAsync(input, folder, this);
                 await input.RequireForegroundAsync();
                 Require(ReferenceEquals(tooltip, await OpenHelpAsync(input)), "Keyboard re-entry replaced the contextual-help control.");
                 await AwaitAsync(() => Matches(tooltip.Background, NativeContrastSession.Color(5)) &&
@@ -234,7 +234,7 @@ public sealed partial class ContrastFixture : UserControl
             foreground = input.OwnsForeground, foreignForeground = input.HasForeignForeground,
             cursor = NativeInputSession.DescribeCursor(), helpBounds = input.ScreenBounds(Help), headingBounds = input.ScreenBounds(Heading) };
     }
-    private sealed record InkSample(int Width, int Height, int[] Pixels, object Geometry);
+    internal sealed record InkSample(int Width, int Height, int[] Pixels, object Geometry);
     private sealed record InkRaster(int Width,int Height,byte[] Pixels,object Geometry);
     private static async Task<InkRaster> ReadScreenInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
     {
@@ -258,7 +258,7 @@ public sealed partial class ContrastFixture : UserControl
             transform,Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage);
         return new InkRaster(width,height,data.DetachPixelData(),geometry);
     }
-    private static async Task<InkSample> ReadInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
+    internal static async Task<InkSample> ReadInkAsync(NativeInputSession input,TextBlock text,string folder,string name)
     {
         var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
         void Frame(object? sender,object args){if(++frames==2)presented.TrySetResult();}
@@ -272,7 +272,7 @@ public sealed partial class ContrastFixture : UserControl
         await SaveInkRasterAsync(raster.Width,raster.Height,pixels,System.IO.Path.Combine(folder,$"contrast-ink-{name}-before.png"));
         return new InkSample(raster.Width, raster.Height, ink,raster.Geometry);
     }
-    private static async Task VerifyInkAsync(NativeInputSession input,TextBlock text, int systemColor, InkSample sample, string folder, string name)
+    internal static async Task VerifyInkAsync(NativeInputSession input,TextBlock text, int systemColor, InkSample sample, string folder, string name)
     {
         var observations = new List<object>();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
@@ -417,7 +417,7 @@ public sealed partial class ContrastFixture : UserControl
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-brand-pixels.json"), JsonSerializer.Serialize(observations));
         Require(matched, "Contrast decorative imagery did not preserve brand alpha/WindowText and a flat Window background for Bauhaus.");
     }
-    private async Task AwaitRecoveryTargetAsync(NativeInputSession input, string folder)
+    internal static async Task AwaitRecoveryTargetAsync(NativeInputSession input, string folder, FrameworkElement layout)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
         TimeSpan? readySince = null;
@@ -441,7 +441,7 @@ public sealed partial class ContrastFixture : UserControl
             else readySince = null;
             ready = readySince is TimeSpan since && elapsed.Elapsed - since >= TimeSpan.FromMilliseconds(250);
             if (ready) break;
-            UpdateLayout(); await Task.Delay(32);
+            layout.UpdateLayout(); await Task.Delay(32);
         } while (elapsed.Elapsed < TimeSpan.FromSeconds(8));
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "contrast-recovery-target.json"),
             JsonSerializer.Serialize(new { ready, elapsedMilliseconds = elapsed.Elapsed.TotalMilliseconds, observations }));

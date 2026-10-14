@@ -90,6 +90,7 @@
                 <local:AttentionSurfacesFixture x:Name="AttentionSurfaces" />
                 <local:ChartThemesFixture x:Name="ChartThemes" />
                 <local:LineChartsFixture x:Name="LineCharts" />
+                <local:ErrorStatesFixture x:Name="ErrorStates" />
                 <local:TooltipsFixture x:Name="Tooltips" />
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />

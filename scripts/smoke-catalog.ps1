@@ -1,7 +1,7 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'contrast-entry', 'alerts', 'brand', 'bauhaus', 'switches', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart')][string]$Component = 'all',
+    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'contrast-entry', 'alerts', 'brand', 'bauhaus', 'switches', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart', 'error-state', 'error-state-contrast', 'error-state-after-chart')][string]$Component = 'all',
     [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture,
     [ValidateCount(2,2)][int[]]$ClientSize
 )
@@ -32,7 +32,7 @@ if ($ExpectedArchitecture -and ($report.environment.processArchitecture -ne $Exp
     $report.environment.osArchitecture -ne $ExpectedArchitecture)) {
     throw "Catalog requires $ExpectedArchitecture process and OS; reported process=$($report.environment.processArchitecture), OS=$($report.environment.osArchitecture)."
 }
-if ($Component -eq 'contrast') {
+if ($Component -in @('contrast','error-state-contrast')) {
     foreach ($phase in @('before', 'active', 'restored')) {
         if (-not (Test-Path "$outputPath/contrast-$phase.png")) { throw "Missing contrast $phase render." }
     }

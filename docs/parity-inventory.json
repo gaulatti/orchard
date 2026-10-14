@@ -1524,14 +1524,25 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerErrorState.cs",
+        "src/Orchard/Themes/ErrorState.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/ErrorStatesFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/ErrorStatesFixture.xaml.cs",
+        "samples/Orchard.Catalog/Reference/ErrorStateLayout.json",
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/Orchard.Tests/CatalogCoverageTests.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete browser/native glyph, icon and composed raster comparison",
+        "Verify display/text scaling, Narrator and all Windows contrast schemes",
+        "Verify hosted native x64/ARM64 runtime and independent consumption for the new component",
+        "Verify all lifecycle, custom-template and live-theme edge cases"
       ]
     },
     {

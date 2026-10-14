@@ -114,15 +114,15 @@ public sealed partial class LineChartsFixture : UserControl
             {
                 case "focus":case "refocus":Require(Chart.Focus(FocusState.Keyboard),"Chart refused keyboard entry.");break;
                 case "blur":Require(After.Focus(FocusState.Keyboard),"Chart refused normal focus exit.");break;
-                case "ArrowRight":input.Key(0x27);break;
-                case "ArrowLeft":input.Key(0x25);break;
-                case "Enter":input.Key(0x0D);break;
+                case "ArrowRight":await input.KeyAsync(0x27,Chart);break;
+                case "ArrowLeft":await input.KeyAsync(0x25,Chart);break;
+                case "Enter":await input.KeyAsync(0x0D,Chart);break;
                 case "pointer-midpoint":await input.MoveAsync(Chart,localPoint:new Point(340,100));break;
                 case "pointer-exit":await input.MoveAsync(Before);break;
-                case "single-right":Chart.Data=new ObservableCollection<IReadOnlyDictionary<string,object?>>{Record("Harbor",100,0)};await Task.Delay(32);input.Key(0x27);break;
-                case "single-enter":input.Key(0x0D);break;
-                case "empty-left":Chart.Data.Clear();await Task.Delay(32);input.Key(0x25);break;
-                case "empty-enter":input.Key(0x0D);break;
+                case "single-right":Chart.Data=new ObservableCollection<IReadOnlyDictionary<string,object?>>{Record("Harbor",100,0)};await Task.Delay(32);await input.KeyAsync(0x27,Chart);break;
+                case "single-enter":await input.KeyAsync(0x0D,Chart);break;
+                case "empty-left":Chart.Data.Clear();await Task.Delay(32);await input.KeyAsync(0x25,Chart);break;
+                case "empty-enter":await input.KeyAsync(0x0D,Chart);break;
                 default:throw new InvalidOperationException("Unknown frozen keyboard action.");
             }
             bool Matches()=>popup.Visibility==(expected.GetProperty("visible").GetBoolean()?Visibility.Visible:Visibility.Collapsed)&&active.Children.OfType<Line>().Any()==expected.GetProperty("cursor").GetBoolean()&&(popup.Visibility!=Visibility.Visible||items.Children.OfType<TextBlock>().First().Text==expected.GetProperty("label").GetString())&&(Chart.FocusState==FocusState.Keyboard)==expected.GetProperty("focused").GetBoolean();

@@ -185,6 +185,7 @@ public sealed partial class MainWindow : Window
                 await VerifyAttentionScrollAsync();
                 await VerifyChartThemeAsync(theme);
                 await VerifyLineChartAsync();
+                await VerifyErrorStateAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -279,6 +280,52 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private async Task VerifyErrorStateAsync()
+    {
+        var command = new ConsumerRetryCommand(); var parameter = new object();
+        PackageErrorState.RetryCommand = command; PackageErrorState.RetryCommandParameter = parameter;
+        var icon = new TextBlock { Text = "!", FontSize = 20 };
+        PackageErrorState.Icon = icon; PackageErrorState.ApplyTemplate(); Root.UpdateLayout();
+        var surface = (Grid)VisualTreeHelper.GetChild(PackageErrorState, 0);
+        var retry = (BleeckerButton)surface.FindName("PART_Retry"); retry.ApplyTemplate();
+        var native = (Button)((FrameworkElement)VisualTreeHelper.GetChild(retry, 0)).FindName("PART_Action");
+        var peer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageErrorState);
+        Require(peer.GetAutomationControlType() == AutomationControlType.Group && peer.GetName() == PackageErrorState.Title &&
+            peer.GetHelpText() == PackageErrorState.Description && !peer.IsKeyboardFocusable() &&
+            ReferenceEquals(((ContentPresenter)surface.FindName("PART_Icon")).Content, icon),
+            "Packaged Error State lost its summary semantics or consumer icon.");
+        Require(retry.Visibility == Visibility.Visible && retry.Size == BleeckerButtonSize.Small && retry.Variant == BleeckerButtonVariant.Secondary &&
+            new ButtonAutomationPeer(native).GetName() == "Retry archive", "Packaged Error State lost its native retry action.");
+        ((IInvokeProvider)new ButtonAutomationPeer(native).GetPattern(PatternInterface.Invoke)).Invoke();
+        await AwaitAsync(() => command.Executions == 1, "Packaged retry did not reach the consumer command.");
+        Require(ReferenceEquals(command.Parameter, parameter), "Packaged retry changed the consumer parameter.");
+        command.Allowed = false; command.RaiseChanged();
+        await AwaitAsync(() => !native.IsEnabled, "Packaged retry did not respect CanExecute.");
+        command.Allowed = true; command.RaiseChanged();
+        await AwaitAsync(() => native.IsEnabled, "Packaged retry did not restore CanExecute.");
+        PackageErrorState.RetryCommand = null; PackageErrorState.Description = ""; PackageErrorState.Icon = null;
+        Root.UpdateLayout();
+        Require(retry.Visibility == Visibility.Collapsed && ((TextBlock)surface.FindName("PART_Description")).Visibility == Visibility.Collapsed &&
+            ((Viewbox)surface.FindName("PART_DefaultIcon")).Visibility == Visibility.Visible,
+            "Packaged Error State did not remove retry/description or restore its default icon.");
+        PackageErrorState.Description = "Consumer-owned failure";
+    }
+    private sealed class ConsumerRetryCommand : System.Windows.Input.ICommand
+    {
+        public bool Allowed { get; set; } = true;
+        public int Executions { get; private set; }
+        public object? Parameter { get; private set; }
+        public bool CanExecute(object? parameter) => Allowed;
+        public void Execute(object? parameter) { if (!Allowed) throw new InvalidOperationException("Rejected retry executed."); Executions++; Parameter=parameter; }
+        public event EventHandler? CanExecuteChanged;
+        public void RaiseChanged() => CanExecuteChanged?.Invoke(this,EventArgs.Empty);
+    }
+    private async Task AwaitAsync(Func<bool> condition, string message)
+    {
+        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+        while (!condition() && elapsed.ElapsedMilliseconds < 2000) { Root.UpdateLayout(); await Task.Delay(16); }
+        Require(condition(), message);
+    }
     private async Task VerifyAttentionScrollAsync()
     {
         var surface = new BleeckerAttentionSurface { Width = 320, Element = BleeckerAttentionElement.Button,

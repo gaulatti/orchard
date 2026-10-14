@@ -27,6 +27,7 @@
     "BleeckerChartTheme": "ChartThemesFixture.xaml"
   },
   "controls": {
+    "BleeckerErrorState": "ErrorStatesFixture.xaml",
     "BleeckerLineChart": "LineChartsFixture.xaml",
     "BleeckerChartSeries": "ChartThemesFixture.xaml",
     "BleeckerAttentionSurface": "AttentionSurfacesFixture.xaml",

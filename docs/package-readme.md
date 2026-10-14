@@ -48,6 +48,9 @@ variants, sizes, commands and loading. `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;
 `BleeckerAlertContainer.ShowAlert` publishes to containers in an explicit XAML root.
+`BleeckerErrorState` provides consumer-owned title/description/icon content and
+an optional native retry command, with parameter and CanExecute support.
+Its complete visual and accessibility acceptance remains in progress.
 `BleeckerBrandLockup` preserves consumer-owned routes and commands, supports both
 sizes, optional names, custom image sources and typed consumer link templates.
 `BleeckerBauhausBackground` provides four decorative image/pattern variants;

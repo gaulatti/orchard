@@ -214,5 +214,16 @@ categories, date/object/boolean plotting and raw tooltip conversion, consumer
 overrides, complete unload/reload and retemplating, measured collection performance,
 contrast, Narrator, display/text scaling and native ARM64 checks. The inventory
 stays in progress; this control is not an accepted complete chart component.
+
+The catalog's retained interaction sequence now waits for actual routed key
+release before changing focus or consumer data. Each injected key must deliver
+exactly one down/up to the focused chart within the existing two-second
+boundary. This also proves empty-data keys whose expected visual state was
+already present. The original Line Chart then Error State sequence fails retry
+pointer delivery at `artifacts/smoke-error-state-after-chart-handled`; with
+routed key acknowledgement it passes both themes at
+`artifacts/smoke-error-state-chart-key-release`. NativeInputSession records the
+key counts and retained target in its desktop evidence. Product keyboard
+semantics, cursor gates and pixel/timing tolerances are unchanged.
 Orchard has no backend/metrics surface affected by this work. The public wiki
 remote is unavailable; this in-repository contract is authoritative for the task.

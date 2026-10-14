@@ -1,0 +1,143 @@
+# Error State
+
+`BleeckerErrorState` implements the pinned Bleecker
+[`ErrorState`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/error-state.tsx)
+contract as a native Windows error summary. It supplies no data-loading,
+endpoint selection, retry scheduling or inferred recovery policy.
+
+```xml
+<orchard:BleeckerErrorState Title="Archive unavailable"
+    Description="The archive could not be loaded."
+    RetryLabel="Reload archive" RetryCommand="{Binding ReloadArchive}"
+    RetryCommandParameter="{Binding CurrentArchive}" />
+```
+
+Title defaults to “Something went wrong”, Description to “We couldn't load
+this data. Please try again.” and RetryLabel to “Try again”. Empty/null strings
+remain empty rather than being replaced with defaults. An empty description
+is removed from layout. Icon accepts consumer-owned content; null selects the
+default 28px Lucide circle-alert within the 48px icon box. The consumer retains
+its icon object and normal native content semantics.
+
+RetryCommand maps the source's optional callback to a normal Windows command.
+The retry action exists only when that command is supplied. It uses the existing
+Small/Secondary BleeckerButton and native Button activation, accessible name,
+CommandParameter and CanExecute. The Retry event observes that activation;
+subscribing does not add an action. Consumers own all work performed by the
+command. IsEnabled disables the native action through normal inheritance.
+
+The outer summary is a non-focusable UI Automation Group named from Title,
+with Description as help text. Explicit AutomationProperties.Name, LabeledBy
+and HelpText take precedence. The optional retry retains its own native button
+and Invoke provider. The component does not announce an unsolicited live alert.
+
+The recipe uses the existing terracotta and text theme resources, 12px card
+radius, 32px horizontal/56px vertical padding, a 20px main gap and 4px text gap.
+Title uses 16px semibold Encode Sans, 24px line height and -0.02em tracking;
+description uses 14px Encode Sans, 20px line height and a 320px maximum width.
+Light/Dark surface alpha is .035/.07; icon alpha is .07/.15; border alpha is
+.25/.15. Contrast mode maps backgrounds to Window, foreground/borders to
+WindowText, and removes the low alpha. Native button colors remain authoritative
+for the retry label and glyph. No independent Error State animation is added.
+
+The catalog registers default, retry, custom icon/empty description, constrained
+long text, RTL, empty title and empty text specimens. The frozen browser record
+`samples/Orchard.Catalog/Reference/ErrorStateLayout.json` captures all fourteen
+theme/specimen combinations from the unchanged source and Tailwind 4.2.2,
+React 19.2.4 and Lucide 0.563.0. The native fixture compares block geometry
+directly with that record at display/text scale 1. Source capture and rendered
+screenshots are retained in `artifacts/error-state-browser`; the source SHA-256
+is `b1c0e51f0d36ef3e29443393b983f8bf05caaf47d1d666fcf6202092902e033d`.
+`scripts/derive-error-state-reference.mjs` validates the frozen capture before
+refreshing the tracked record.
+
+Run `scripts/smoke-catalog.ps1 -Component error-state` for content, native pointer
+and Space retry, exact command/event counts and parameter identity, live
+CanExecute, disabled state, icon/text changes and template replacement. The
+complete catalog also exercises this fixture. The independent package consumer
+checks the public summary and command/content boundary after a fresh isolated
+restore. Both hosted native jobs additionally run `-Component error-state-contrast`:
+the existing guarded helper changes real Windows contrast only on isolated
+GitHub-hosted Windows, compares painted background and established composed
+title/description ink, then restores the original mode and palette. Local
+invocations refuse before changing preferences.
+
+This is in progress. Full glyph/icon/composed raster parity, scaling, Narrator,
+all Windows contrast schemes and broader custom-template/lifecycle edge cases
+remain required. There is no backend, metrics or production publishing surface.
+The wiki remote remains unavailable; component documentation is kept here.
+
+The focused native x64 suite passes both themes at
+`artifacts/smoke-error-state-source-final`, including all fourteen source block
+geometries, native pointer/Space command delivery, parameter identity, command
+rejection/restoration, live icon/description changes and template replacement.
+The old empty-title template fails the frozen 206px source block at 230px in
+`artifacts/smoke-error-state-source-boundary`. The title-empty visual state
+removes that phantom line. Live null-title diagnostics record Height=0, a 206px
+summary and an empty accessible name; TextBlock.ActualHeight retains its old
+24px metrics, so the regression checks actual summary layout and restoration.
+The retry glyph and label bind to the mounted native content presenter's
+foreground, including native state/theme updates, rather than a text getter
+whose inherited paint does not represent the actual presentation brush.
+
+The new actual-contrast entry point refuses locally at
+`artifacts/smoke-error-state-contrast-local-refusal`, reporting contrast false.
+No local Windows animation, scale or contrast preference is changed. Both
+final solution builds are clean and all 38 regressions pass at
+`artifacts/tests-error-state`. The fresh isolated x64 package consumer passes
+both themes at `artifacts/package-consumer-error-state`, including native Invoke
+delivery, exact parameter identity, live CanExecute, consumer icon ownership
+and removal/restoration of optional content. Its package SHA-256 is
+`03597a05acb331b1faeb449bfdb94b1616695b581ad285fee50fb852fc4ad331`.
+Restore/build and native execution are separated; the isolated restored package
+hash is rechecked before execution. Actual hosted contrast, native ARM64 and
+the final complete-catalog verification remain pending for this candidate.
+
+The initial complete catalog failed the first Light retry after Line Chart.
+`-Component error-state-after-chart` reproduces that boundary independently at
+`artifacts/smoke-error-state-after-chart-raw`. Command/event counts remain zero;
+the native button is loaded/enabled and its command/parameter are unchanged.
+The native point and foreground are owned, and XAML hit testing finds the
+button's label/content/action. A held press reaches InputPointerSource at the
+expected coordinates, but no routed XAML press/release reaches the new page
+and the button never enters IsPressed. The GUI-thread trace records no capture,
+menu loop, Alt or Enter key. The additional handled/moved trace shows native
+Handled=true and routed movement over the retry label, with no managed input
+exception. Counts, pressed-state assertions and deadlines are retained.
+
+Mount-only and before-interaction diagnostic sequences pass both themes. The
+failure requires the final Line Chart interaction sequence. Its empty-data
+keys could satisfy an already-present expected state immediately after
+SendInput, before routed key delivery completed. NativeInputSession.KeyAsync
+now requires exactly one routed down/up on the focused chart before the next
+operation. With that boundary, the complete Line Chart then Error State
+sequence passes both themes at `artifacts/smoke-error-state-chart-key-release`.
+Temporary diagnostic skip switches are removed. The focused cross-fixture
+regression is also registered for both hosted architectures. This establishes
+local integration recovery; final complete-catalog and hosted evidence remain
+required.
+
+`error-state-retry-pointer-{scheme}.json` records routed/raw events, command
+counts, XAML/native point ownership, GUI-thread routing and child-window
+geometry without window titles or content bodies. The catalog-only routing
+observer uses [GetGUIThreadInfo](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getguithreadinfo)
+and [InputPointerSource.PointerPressed](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputpointersource.pointerpressed?view=windows-app-sdk-2.0)
+without changing input routing. Any held button is released by the existing
+input-session cleanup on failure.
+
+The final complete x64 catalog at
+`artifacts/smoke-error-state-key-release-full` passes Line Chart and Error State
+in Light, including thirteen acknowledged chart keys with exactly one routed
+down/up each and retained focus. It then fails the existing Input
+reading-direction raster boundary: a 317px opaque span for a 320px input.
+The focused Input suite passes both themes at
+`artifacts/smoke-input-after-key-release`. The full-suite raster failure remains
+open; neither focused pass nor the earlier Error State result replaces it.
+
+Final x64/ARM64 solution builds pass without warnings, all 38 regressions pass
+at `artifacts/tests-error-state-key-release`, and token generation matches the
+pinned source. The final binaries pass the complete Line Chart then Error
+State sequence in both themes at `artifacts/smoke-error-state-key-release-final`.
+Each theme records thirteen native keys, exactly one down/up per key, with no
+lost target. The new component remains in progress; these checks do not
+establish complete visual/accessibility acceptance or a green full suite.
