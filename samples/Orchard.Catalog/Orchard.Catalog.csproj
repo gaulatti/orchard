@@ -32,6 +32,9 @@
         <EmbeddedResource Include="Reference/ActivityLayout.json" />
         <EmbeddedResource Include="Reference/AttentionLayout.json" />
         <EmbeddedResource Include="Reference/LineLayout.json" />
+        <EmbeddedResource Include="Reference/LineTooltip.json" />
+        <EmbeddedResource Include="Reference/LineBlur.json" />
+        <EmbeddedResource Include="Reference/LineShadow.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

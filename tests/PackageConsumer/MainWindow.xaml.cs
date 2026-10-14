@@ -12,6 +12,7 @@ using Orchard;
 using Windows.Graphics;
 using Windows.Graphics.Imaging;
 using Windows.Storage.Streams;
+using System.Runtime.InteropServices;
 
 namespace PackageConsumer;
 
@@ -267,6 +268,14 @@ public sealed partial class MainWindow : Window
                 "Packaged chart lost its template, source scale or exact literal data key.");
             var peer=FrameworkElementAutomationPeer.CreatePeerForElement(chart);
             Require(peer.GetName()=="Independent package chart"&&chart.IsTabStop&&chart.Focus(FocusState.Keyboard),"Packaged chart lost its consumer accessible name or keyboard entry.");
+            Require(GetForegroundWindow()==WinRT.Interop.WindowNative.GetWindowHandle(this),"Independent tooltip input lost its own foreground window.");
+            var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
+            Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Independent tooltip key did not enter the normal native input path.");
+            var tooltip=(Border)template.FindName("PART_Tooltip");var tooltipItems=(StackPanel)template.FindName("PART_TooltipItems");var tooltipContainer=(Grid)template.FindName("PART_TooltipContainer");
+            await AwaitAsync(()=>tooltip.Visibility==Visibility.Visible&&tooltip.ActualHeight==78&&tooltipItems.Children.OfType<TextBlock>().First().Text=="Reed","Packaged tooltip lost source content or row dimensions.");
+            Require(Math.Abs(tooltipContainer.Margin.Top-67)<.001,"Packaged tooltip lost its keyboard coordinate and vertical placement.");
+            var shadow=(ContainerVisual)ElementCompositionPreview.GetElementChildVisual((Grid)template.FindName("PART_TooltipShadow"));
+            Require(shadow.Children.Single() is SpriteVisual shadowSprite&&shadowSprite.Shadow is DropShadow drop&&drop.BlurRadius==32&&drop.Mask is not null&&shadow.Clip is CompositionGeometricClip&&ElementCompositionPreview.GetElementChildVisual((Grid)template.FindName("PART_TooltipBackdrop")) is SpriteVisual{Brush:CompositionEffectBrush},"Packaged tooltip lost its native clipped shadow/backdrop graph.");
             series.Name="Changed packaged total";
             await AwaitAsync(()=>legend.Children.OfType<StackPanel>().Single().Children.OfType<TextBlock>().Single().Text==series.Name,"Packaged chart did not observe series changes.");
             var transparent=new SolidColorBrush(Microsoft.UI.Colors.Transparent);series.Color=transparent;
@@ -276,6 +285,7 @@ public sealed partial class MainWindow : Window
             chart.ShowGrid=false;chart.ShowLegend=false;
             await AwaitAsync(()=>!plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Line>().Any()&&legend.Children.Count==0,"Packaged chart did not apply consumer grid/legend visibility.");
             chart.Data.Clear();await AwaitAsync(()=>!plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Any(),"Packaged empty chart retained live line artifacts.");
+            Require(ElementCompositionPreview.GetElementChildVisual((Grid)template.FindName("PART_TooltipShadow")) is null&&ElementCompositionPreview.GetElementChildVisual((Grid)template.FindName("PART_TooltipBackdrop")) is null,"Packaged empty tooltip retained composition resources.");
         }
         finally{Root.Children.Remove(chart);}
         async Task AwaitAsync(Func<bool> condition,string message)
@@ -284,6 +294,13 @@ public sealed partial class MainWindow : Window
             Require(condition(),message);
         }
     }
+
+    [StructLayout(LayoutKind.Sequential)]private struct ConsumerInput{internal uint Type;internal ConsumerInputData Data;}
+    [StructLayout(LayoutKind.Explicit)]private struct ConsumerInputData{[FieldOffset(0)]internal ConsumerKeyboard Keyboard;[FieldOffset(0)]internal ConsumerMouse Mouse;}
+    [StructLayout(LayoutKind.Sequential)]private struct ConsumerKeyboard{internal ushort VirtualKey,ScanCode;internal uint Flags,Time;internal UIntPtr ExtraInfo;}
+    [StructLayout(LayoutKind.Sequential)]private struct ConsumerMouse{internal int X,Y;internal uint Data,Flags,Time;internal UIntPtr ExtraInfo;}
+    [DllImport("user32.dll")]private static extern uint SendInput(uint count,[In]ConsumerInput[] inputs,int size);
+    [DllImport("user32.dll")]private static extern IntPtr GetForegroundWindow();
 
     private async Task VerifyChartThemeAsync(ElementTheme originalTheme)
     {

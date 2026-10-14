@@ -36,6 +36,8 @@ Recharts numeric domain and layout attribution is retained in
 `licenses/LICENSE-Recharts.txt`.
 `BleeckerLineChart` accepts consumer-owned observable records and series,
 an X-axis key, optional labels/formatters, and grid/legend visibility.
+Its category tooltip follows keyboard/pointer coordinates, preserves raw string
+values, and owns a clipped native shadow and Gaussian backdrop effect.
 Its full visual, motion and platform acceptance remains in progress.
 The packaged brand SVG is copied to `Orchard/Assets/Images`. Brand filtering uses
 the pinned transitive Win2D 1.4.0 dependency; keep its native runtime files with

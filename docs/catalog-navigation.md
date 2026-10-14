@@ -36,7 +36,7 @@ in place and verifies composed palette pixels. The Line Charts fixture follows
 Chart Theme and supplies observable consumer records, monotone curves and
 keyboard inspection. Focused `-Component line-chart` verification compares
 22 frozen light/dark specimens and tests live consumer changes. Complete chart
-rendering and tooltip shadow/backdrop effects remain inventory acceptance gaps.
+rendering, tooltip motion and full raster/platform acceptance remain inventory gaps.
 
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise

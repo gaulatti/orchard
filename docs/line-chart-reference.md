@@ -120,10 +120,59 @@ The complete local x64 catalog also passes in Light/Dark at
 and contrast off. This does not establish enabled-motion, contrast or scaling
 acceptance.
 
-Remaining acceptance includes complete text/paint/legend positioning comparison,
-source tooltip shadow/backdrop blur/positioning, animation, clipping, duplicate
+## Tooltip source and composed-render evidence
+
+The native tooltip now uses 24px text lines and 4px top/bottom padding for each
+item, producing source heights of 110px for two items and 78px for one. Numeric
+formatters leave raw string values unchanged, including strings excluded from
+the numeric axis. A category with only null values retains its cursor while
+the tooltip stays hidden. Pointer inspection follows the physical pointer's Y
+coordinate; keyboard inspection uses `(plotTop + chartHeight) / 2`. Recharts'
+10px offset and edge-flip/clamping rules are preserved, including oversized
+tooltips extending beyond a narrow plot.
+
+`TooltipPlacement.json` contains 60 outputs from the locked Recharts placement
+function. All 37 regressions pass at `artifacts/tests-tooltip-placement`.
+`Reference/LineTooltip.json` records 26 Light/Dark source specimens with actual
+tooltip payloads, dimensions and placements. Derive it with
+`node scripts/derive-line-tooltip-reference.mjs artifacts/line-chart-browser/tooltip-reference.json`.
+The capture moves the pointer outside the chart before keyboard inspection to
+keep the previous specimen's hover from contaminating the next one.
+
+The chart owns a rounded, clipped Composition shadow and Win2D Gaussian
+backdrop effect. Its opaque mask stays in a private translated host and is
+arranged before obtaining the alpha surface. Effects are cleared when closed,
+unloaded or retemplated, and suppressed under Windows contrast. The shadow is
+excluded from the border box, preserving translucent consumer card paint.
+Implementation uses the pinned Windows App SDK 2.5.1 and Win2D 1.4.0 APIs;
+[Microsoft's visual-layer guidance](https://learn.microsoft.com/en-us/windows/apps/develop/composition/using-the-visual-layer-with-xaml)
+documents the mask/shadow and backdrop-effect approach. The
+[CSS filter definition](https://drafts.csswg.org/filter-effects/#funcdef-filter-blur)
+establishes the backdrop's 8px Gaussian standard deviation.
+
+The local `artifacts/smoke-line-tooltip-mask` run passes the 22 prior chart
+specimens, all 26 tooltip specimens, actual keyboard/pointer and raw-string/gap
+checks, composition cleanup, and both effects' real pixels in Light/Dark.
+`LineBlur.json` compares eight samples from blurred black/white 8px stripes
+under a consumer-owned white card at opacity 0.25. `LineShadow.json` compares
+eight samples across the outside shadow. Each RGB channel must be within two
+levels of the frozen browser producer; the first shadow implementation failed
+this check because it painted no visible shadow. These are sampled effect
+profiles, not complete tooltip/font raster acceptance. Native/source tooltip
+widths and captures remain recorded for review.
+Both updated solution builds pass without warnings. The newly restored and
+published x64 consumer passes actual tooltip keyboard input, native dimensions,
+shadow/backdrop graphs and cleanup in Light/Dark at
+`artifacts/package-consumer-line-tooltip`, for package SHA-256
+`893bae053e9a45e4476d5a3889b361c650306ceeea91e3aea7984b33b08e789b`.
+The complete local x64 catalog passes at `artifacts/smoke-line-tooltip-full`.
+Native ARM64 tooltip verification remains required; the earlier ARM64 focused
+chart evidence predates these tooltip changes.
+
+Remaining acceptance includes complete text/paint/legend and tooltip raster comparison,
+source line/tooltip animation, plot clipping, duplicate
 categories, date/object/boolean plotting and raw tooltip conversion, consumer
-overrides, unload/reload and retemplating, measured collection performance,
+overrides, complete unload/reload and retemplating, measured collection performance,
 contrast, Narrator, display/text scaling and native ARM64 checks. The inventory
 stays in progress; this control is not an accepted complete chart component.
 Orchard has no backend/metrics surface affected by this work. The public wiki

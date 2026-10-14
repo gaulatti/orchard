@@ -21,6 +21,7 @@ public sealed partial class BleeckerLineChart : Control
 {
     private Canvas? plot, legend, active;
     private Border? tooltip;
+    private Grid? tooltipContainer;
     private StackPanel? tooltipItems;
     private readonly HashSet<BleeckerChartSeries> observedSeries = [];
     private readonly HashSet<INotifyPropertyChanged> observedRecords = [];
@@ -28,6 +29,7 @@ public sealed partial class BleeckerLineChart : Control
     private ObservableCollection<BleeckerChartSeries>? observedCollection;
     private double left, right, top, bottom, min, max;
     private int? activeIndex;
+    private double? activePointerY;
     private bool queued;
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
@@ -36,7 +38,7 @@ public sealed partial class BleeckerLineChart : Control
     {
         DefaultStyleKey = typeof(BleeckerLineChart);
         Data = new ObservableCollection<IReadOnlyDictionary<string, object?>>(); Series = new ObservableCollection<BleeckerChartSeries>();
-        Loaded += (_, _) => { Observe(); Render(); }; Unloaded += (_, _) => { StopObserving(); ClearActive(); };
+        Loaded += (_, _) => { Observe(); Render(); ConnectTooltipEffects(); }; Unloaded += (_, _) => { StopObserving(); ClearActive(); DisconnectTooltipEffects(); };
         SizeChanged += (_, _) => QueueRender(); ActualThemeChanged += (_, _) => QueueRender();
         RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => QueueRender());
         PointerMoved += OnPointerMoved; PointerExited += (_, _) => ClearActive();
@@ -70,12 +72,15 @@ public sealed partial class BleeckerLineChart : Control
     private static void OnAppearanceChanged(DependencyObject owner, DependencyPropertyChangedEventArgs _) => ((BleeckerLineChart)owner).QueueRender();
     protected override void OnApplyTemplate()
     {
+        DisconnectTooltipEffects();
         base.OnApplyTemplate();
         plot = GetTemplateChild("PART_Plot") as Canvas ?? throw new InvalidOperationException("Line Chart requires PART_Plot.");
         legend = GetTemplateChild("PART_Legend") as Canvas ?? throw new InvalidOperationException("Line Chart requires PART_Legend.");
         active = GetTemplateChild("PART_Active") as Canvas ?? throw new InvalidOperationException("Line Chart requires PART_Active.");
         tooltip = GetTemplateChild("PART_Tooltip") as Border ?? throw new InvalidOperationException("Line Chart requires PART_Tooltip.");
         tooltipItems = GetTemplateChild("PART_TooltipItems") as StackPanel ?? throw new InvalidOperationException("Line Chart requires PART_TooltipItems.");
+        tooltipContainer = GetTemplateChild("PART_TooltipContainer") as Grid ?? throw new InvalidOperationException("Line Chart requires PART_TooltipContainer.");
+        ApplyTooltipEffectsTemplate();
         QueueRender();
     }
     private void Observe()
@@ -139,16 +144,16 @@ public sealed partial class BleeckerLineChart : Control
             var label = Text(YAxisLabel, 12, "BleeckerTextSecondaryBrush"); label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             label.RenderTransform = new RotateTransform { Angle = -90 }; AddText(plot, label, 16, (top + bottom + label.DesiredSize.Width) / 2);
         }
-        if (ticks.Length > 0) for (var index = 0; index < Series.Count; index++)
+        for (var index = 0; index < Series.Count; index++)
         {
-            var series = Series[index]; var points = Data.Select((row, i) => new BleeckerMonotoneCurve.Point(X(i), BleeckerChartData.Number(BleeckerChartData.Read(row, series.Key)) is double value ? Y(value) : double.NaN)).ToArray();
+            var series = Series[index]; var points = Data.Select((row, i) => new BleeckerMonotoneCurve.Point(X(i), ticks.Length > 0 && BleeckerChartData.Number(BleeckerChartData.Read(row, series.Key)) is double value ? Y(value) : double.NaN)).ToArray();
             var path = Resource<Path>($"<Path Stroke=\"{{ThemeResource {BleeckerChartTheme.PickColor(index)}}}\" StrokeThickness=\"2\" />");
             if (series.Color is not null) path.Stroke = series.Color;
             path.Data = Geometry(BleeckerMonotoneCurve.Create(points));
-            if (points.Length >= 2) plot.Children.Add(path);
+            if (ticks.Length > 0 && points.Length >= 2) plot.Children.Add(path);
             rendered.Add((series, path.Stroke, points));
         }
-        if (activeIndex is int selected && selected < Data.Count) ShowActive(selected); else ClearActive();
+        if (activeIndex is int selected && selected < Data.Count) ShowActive(selected, activePointerY); else ClearActive();
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
     private double RenderLegend()
@@ -198,7 +203,8 @@ public sealed partial class BleeckerLineChart : Control
         var point = args.GetCurrentPoint(this).Position;
         if (point.X < left || point.X > right || point.Y < top || point.Y > bottom) { ClearActive(); return; }
         var index = Data.Count == 1 ? 0 : (int)Math.Round((point.X - left) / (right - left) * (Data.Count - 1), MidpointRounding.AwayFromZero);
-        ShowActive(Math.Clamp(index, 0, Data.Count - 1));
+        if (index > 0 && point.X <= (X(index - 1) + X(index)) / 2) index--;
+        ShowActive(Math.Clamp(index, 0, Data.Count - 1), point.Y);
     }
     private void OnKeyDown(object sender, KeyRoutedEventArgs args)
     {
@@ -208,28 +214,39 @@ public sealed partial class BleeckerLineChart : Control
             ShowActive(Math.Clamp((activeIndex ?? 0) + (args.Key == VirtualKey.Right ? 1 : -1), 0, Data.Count - 1)); args.Handled = true;
         }
     }
-    private void ShowActive(int index)
+    private void ShowActive(int index, double? pointerY = null)
     {
-        if (active is null || tooltip is null || tooltipItems is null || index < 0 || index >= Data.Count) return;
-        activeIndex = index; active.Children.Clear(); tooltipItems.Children.Clear();
+        if (active is null || tooltip is null || tooltipItems is null || tooltipContainer is null || index < 0 || index >= Data.Count) return;
+        activeIndex = index; activePointerY = pointerY; active.Children.Clear(); tooltipItems.Children.Clear();
         var category = BleeckerChartData.Label(BleeckerChartData.Read(Data[index], XAxisKey!));
-        var heading = Text(category, 16, "BleeckerTextSecondaryBrush"); heading.FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 }; tooltipItems.Children.Add(heading);
+        var heading = Text(category, 16, "BleeckerTextSecondaryBrush"); heading.FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 };
+        heading.LineHeight = 24; heading.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; tooltipItems.Children.Add(heading);
         var cursor = Resource<Line>($"<Line X1=\"{N(X(index))}\" X2=\"{N(X(index))}\" Y1=\"{N(top)}\" Y2=\"{N(bottom)}\" Stroke=\"{{ThemeResource BleeckerBorderBrush}}\" />"); active.Children.Add(cursor);
         var descriptions = new List<string> { category };
         foreach (var entry in rendered.OrderBy(item => item.Series.Name, StringComparer.Ordinal))
         {
-            var value = BleeckerChartData.Number(BleeckerChartData.Read(Data[index], entry.Series.Key)); if (value is null) continue;
+            var raw = BleeckerChartData.Read(Data[index], entry.Series.Key); if (raw is null) continue;
+            var value = BleeckerChartData.Number(raw);
             var point = entry.Points[index];
-            var dot = Resource<Ellipse>("<Ellipse Width=\"10\" Height=\"10\" Stroke=\"{ThemeResource BleeckerCardBrush}\" StrokeThickness=\"2\" />"); dot.Fill = entry.Brush;
-            Canvas.SetLeft(dot, point.X - 5); Canvas.SetTop(dot, point.Y - 5); active.Children.Add(dot);
-            var text = Text(entry.Series.Name + " : " + (TooltipFormatter is null ? N(value.Value) : TooltipFormatter(value.Value)), 16, "BleeckerTextPrimaryBrush"); tooltipItems.Children.Add(text); descriptions.Add(text.Text);
+            if (double.IsFinite(point.X) && double.IsFinite(point.Y))
+            {
+                var dot = Resource<Ellipse>("<Ellipse Width=\"10\" Height=\"10\" Stroke=\"{ThemeResource BleeckerCardBrush}\" StrokeThickness=\"2\" />"); dot.Fill = entry.Brush;
+                Canvas.SetLeft(dot, point.X - 5); Canvas.SetTop(dot, point.Y - 5); active.Children.Add(dot);
+            }
+            var formatted = TooltipFormatter is not null && raw is not string && value is double numeric ? TooltipFormatter(numeric) : BleeckerChartData.Label(raw);
+            var text = Text(entry.Series.Name + " : " + formatted, 16, "BleeckerTextPrimaryBrush");
+            text.LineHeight = 24; text.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; text.Margin = new Thickness(0, 4, 0, 4);
+            tooltipItems.Children.Add(text); descriptions.Add(text.Text);
         }
-        tooltip.Visibility = Visibility.Visible; tooltip.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-        var x = X(index) + 10; if (x + tooltip.DesiredSize.Width > right) x = X(index) - tooltip.DesiredSize.Width - 10;
-        tooltip.Margin = new Thickness(Math.Max(left, x), Math.Max(top, (top + bottom - tooltip.DesiredSize.Height) / 2), 0, 0);
+        tooltip.Visibility = Visibility.Visible; tooltipContainer.Visibility = Visibility.Visible; tooltip.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+        var x = BleeckerTooltipPlacement.Position(X(index), tooltip.DesiredSize.Width, left, right);
+        var y = BleeckerTooltipPlacement.Position(pointerY ?? (top + ActualHeight) / 2, tooltip.DesiredSize.Height, top, bottom);
+        tooltipContainer.Margin = new Thickness(x, y, 0, 0);
+        if (tooltipItems.Children.Count == 1) { tooltip.Visibility = Visibility.Collapsed; tooltipContainer.Visibility = Visibility.Collapsed; }
+        UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
-    private void ClearActive() { activeIndex = null; active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; AutomationProperties.SetHelpText(this, ""); }
+    private void ClearActive() { activeIndex = null; activePointerY = null; active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
     private TextBlock Text(string? value, double size, string key)
     {
         var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; text.Text = value ?? ""; return text;

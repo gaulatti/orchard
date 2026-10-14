@@ -1,0 +1,426 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "rechartsVersion": "3.8.1",
+  "samples": [
+    {
+      "coordinate": 10,
+      "dimension": 22,
+      "start": 10,
+      "end": 225,
+      "expected": 20
+    },
+    {
+      "coordinate": 117.5,
+      "dimension": 22,
+      "start": 10,
+      "end": 225,
+      "expected": 127.5
+    },
+    {
+      "coordinate": 225,
+      "dimension": 22,
+      "start": 10,
+      "end": 225,
+      "expected": 193
+    },
+    {
+      "coordinate": 10,
+      "dimension": 78,
+      "start": 10,
+      "end": 225,
+      "expected": 20
+    },
+    {
+      "coordinate": 117.5,
+      "dimension": 78,
+      "start": 10,
+      "end": 225,
+      "expected": 127.5
+    },
+    {
+      "coordinate": 225,
+      "dimension": 78,
+      "start": 10,
+      "end": 225,
+      "expected": 137
+    },
+    {
+      "coordinate": 10,
+      "dimension": 110,
+      "start": 10,
+      "end": 225,
+      "expected": 20
+    },
+    {
+      "coordinate": 117.5,
+      "dimension": 110,
+      "start": 10,
+      "end": 225,
+      "expected": 10
+    },
+    {
+      "coordinate": 225,
+      "dimension": 110,
+      "start": 10,
+      "end": 225,
+      "expected": 105
+    },
+    {
+      "coordinate": 10,
+      "dimension": 192,
+      "start": 10,
+      "end": 225,
+      "expected": 20
+    },
+    {
+      "coordinate": 117.5,
+      "dimension": 192,
+      "start": 10,
+      "end": 225,
+      "expected": 10
+    },
+    {
+      "coordinate": 225,
+      "dimension": 192,
+      "start": 10,
+      "end": 225,
+      "expected": 23
+    },
+    {
+      "coordinate": 10,
+      "dimension": 258,
+      "start": 10,
+      "end": 225,
+      "expected": 10
+    },
+    {
+      "coordinate": 117.5,
+      "dimension": 258,
+      "start": 10,
+      "end": 225,
+      "expected": 10
+    },
+    {
+      "coordinate": 225,
+      "dimension": 258,
+      "start": 10,
+      "end": 225,
+      "expected": 10
+    },
+    {
+      "coordinate": 10,
+      "dimension": 22,
+      "start": 10,
+      "end": 265,
+      "expected": 20
+    },
+    {
+      "coordinate": 137.5,
+      "dimension": 22,
+      "start": 10,
+      "end": 265,
+      "expected": 147.5
+    },
+    {
+      "coordinate": 265,
+      "dimension": 22,
+      "start": 10,
+      "end": 265,
+      "expected": 233
+    },
+    {
+      "coordinate": 10,
+      "dimension": 78,
+      "start": 10,
+      "end": 265,
+      "expected": 20
+    },
+    {
+      "coordinate": 137.5,
+      "dimension": 78,
+      "start": 10,
+      "end": 265,
+      "expected": 147.5
+    },
+    {
+      "coordinate": 265,
+      "dimension": 78,
+      "start": 10,
+      "end": 265,
+      "expected": 177
+    },
+    {
+      "coordinate": 10,
+      "dimension": 110,
+      "start": 10,
+      "end": 265,
+      "expected": 20
+    },
+    {
+      "coordinate": 137.5,
+      "dimension": 110,
+      "start": 10,
+      "end": 265,
+      "expected": 147.5
+    },
+    {
+      "coordinate": 265,
+      "dimension": 110,
+      "start": 10,
+      "end": 265,
+      "expected": 145
+    },
+    {
+      "coordinate": 10,
+      "dimension": 192,
+      "start": 10,
+      "end": 265,
+      "expected": 20
+    },
+    {
+      "coordinate": 137.5,
+      "dimension": 192,
+      "start": 10,
+      "end": 265,
+      "expected": 10
+    },
+    {
+      "coordinate": 265,
+      "dimension": 192,
+      "start": 10,
+      "end": 265,
+      "expected": 63
+    },
+    {
+      "coordinate": 10,
+      "dimension": 258,
+      "start": 10,
+      "end": 265,
+      "expected": 10
+    },
+    {
+      "coordinate": 137.5,
+      "dimension": 258,
+      "start": 10,
+      "end": 265,
+      "expected": 10
+    },
+    {
+      "coordinate": 265,
+      "dimension": 258,
+      "start": 10,
+      "end": 265,
+      "expected": 10
+    },
+    {
+      "coordinate": 60,
+      "dimension": 22,
+      "start": 60,
+      "end": 620,
+      "expected": 70
+    },
+    {
+      "coordinate": 340,
+      "dimension": 22,
+      "start": 60,
+      "end": 620,
+      "expected": 350
+    },
+    {
+      "coordinate": 620,
+      "dimension": 22,
+      "start": 60,
+      "end": 620,
+      "expected": 588
+    },
+    {
+      "coordinate": 60,
+      "dimension": 78,
+      "start": 60,
+      "end": 620,
+      "expected": 70
+    },
+    {
+      "coordinate": 340,
+      "dimension": 78,
+      "start": 60,
+      "end": 620,
+      "expected": 350
+    },
+    {
+      "coordinate": 620,
+      "dimension": 78,
+      "start": 60,
+      "end": 620,
+      "expected": 532
+    },
+    {
+      "coordinate": 60,
+      "dimension": 110,
+      "start": 60,
+      "end": 620,
+      "expected": 70
+    },
+    {
+      "coordinate": 340,
+      "dimension": 110,
+      "start": 60,
+      "end": 620,
+      "expected": 350
+    },
+    {
+      "coordinate": 620,
+      "dimension": 110,
+      "start": 60,
+      "end": 620,
+      "expected": 500
+    },
+    {
+      "coordinate": 60,
+      "dimension": 192,
+      "start": 60,
+      "end": 620,
+      "expected": 70
+    },
+    {
+      "coordinate": 340,
+      "dimension": 192,
+      "start": 60,
+      "end": 620,
+      "expected": 350
+    },
+    {
+      "coordinate": 620,
+      "dimension": 192,
+      "start": 60,
+      "end": 620,
+      "expected": 418
+    },
+    {
+      "coordinate": 60,
+      "dimension": 258,
+      "start": 60,
+      "end": 620,
+      "expected": 70
+    },
+    {
+      "coordinate": 340,
+      "dimension": 258,
+      "start": 60,
+      "end": 620,
+      "expected": 350
+    },
+    {
+      "coordinate": 620,
+      "dimension": 258,
+      "start": 60,
+      "end": 620,
+      "expected": 352
+    },
+    {
+      "coordinate": 60,
+      "dimension": 22,
+      "start": 60,
+      "end": 220,
+      "expected": 70
+    },
+    {
+      "coordinate": 140,
+      "dimension": 22,
+      "start": 60,
+      "end": 220,
+      "expected": 150
+    },
+    {
+      "coordinate": 220,
+      "dimension": 22,
+      "start": 60,
+      "end": 220,
+      "expected": 188
+    },
+    {
+      "coordinate": 60,
+      "dimension": 78,
+      "start": 60,
+      "end": 220,
+      "expected": 70
+    },
+    {
+      "coordinate": 140,
+      "dimension": 78,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 220,
+      "dimension": 78,
+      "start": 60,
+      "end": 220,
+      "expected": 132
+    },
+    {
+      "coordinate": 60,
+      "dimension": 110,
+      "start": 60,
+      "end": 220,
+      "expected": 70
+    },
+    {
+      "coordinate": 140,
+      "dimension": 110,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 220,
+      "dimension": 110,
+      "start": 60,
+      "end": 220,
+      "expected": 100
+    },
+    {
+      "coordinate": 60,
+      "dimension": 192,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 140,
+      "dimension": 192,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 220,
+      "dimension": 192,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 60,
+      "dimension": 258,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 140,
+      "dimension": 258,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    },
+    {
+      "coordinate": 220,
+      "dimension": 258,
+      "start": 60,
+      "end": 220,
+      "expected": 60
+    }
+  ]
+}

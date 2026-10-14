@@ -9,9 +9,16 @@
     <Canvas x:Name="PART_Plot" />
     <Canvas x:Name="PART_Legend" />
     <Canvas x:Name="PART_Active" IsHitTestVisible="False" />
-    <Border x:Name="PART_Tooltip" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}" BorderThickness="1" CornerRadius="12">
-     <StackPanel x:Name="PART_TooltipItems" Spacing="4" />
-    </Border>
+    <Canvas IsHitTestVisible="False">
+    <Grid x:Name="PART_TooltipContainer" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False" UseLayoutRounding="False">
+     <Canvas x:Name="PART_TooltipMaskHost"><Path x:Name="PART_TooltipMask" Fill="White" /></Canvas>
+     <Grid x:Name="PART_TooltipShadow" />
+     <Grid x:Name="PART_TooltipBackdrop" />
+     <Border x:Name="PART_Tooltip" Visibility="Collapsed" Padding="10" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}" BorderThickness="1" CornerRadius="12" UseLayoutRounding="False">
+      <StackPanel x:Name="PART_TooltipItems" Spacing="0" />
+     </Border>
+    </Grid>
+    </Canvas>
    </Grid>
   </ControlTemplate></Setter.Value></Setter>
  </Style>

@@ -1,5 +1,22 @@
 # Native Windows runtime evidence
 
+The tooltip checkpoint passes both updated solution builds without warnings,
+37 regressions, 22 chart and 26 tooltip source specimens, sampled real
+blur/shadow profiles in both themes, a fresh independent x64 package consumer
+with actual keyboard input, and the complete local x64 catalog. Evidence is at
+`artifacts/tests-line-tooltip-final`, `artifacts/smoke-line-tooltip-mask`,
+`artifacts/package-consumer-line-tooltip` and `artifacts/smoke-line-tooltip-full`.
+Display/text scale is 1, animations are disabled and contrast is off. Native
+ARM64 tooltip execution, complete raster/motion/lifecycle and accessibility
+acceptance remain open; the inventory stays in progress.
+
+Run [38513468894](https://github.com/gaulatti/orchard/actions/runs/38513468894)
+at `9e74f40` passes both builds and the focused Line Chart source cases on x64
+and native ARM64. The full ARM64 catalog times out while invoking/closing a
+Menu item, before reaching Line Chart. Both contrast checks retain the 46/124
+Attention glyph failure. Focused chart success does not establish passing
+overall CI or complete chart/inventory acceptance.
+
 The public Line Chart checkpoint passes both solution builds without warnings,
 36 unit regressions, all 22 source-backed native chart specimens including
 series/axis paint, the complete local x64 catalog and an independently

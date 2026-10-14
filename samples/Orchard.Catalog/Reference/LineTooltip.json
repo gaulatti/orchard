@@ -1,0 +1,1605 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "673539e9a2c5a264fbfb6c35f09e7d956d2dbde9670f3ae6cf1888e752ec403a",
+  "recharts": "3.8.1",
+  "browser": "155.0.4283.45",
+  "captureSha256": "73eb2eec8e70df7fc50b078329598925ffdbb08b142ec8661b46e77b24b32bb0",
+  "cases": [
+    {
+      "id": "default",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "no-legend-grid",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label",
+        "showLegend": false,
+        "showGrid": false
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "labels",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label",
+        "xAxisLabel": "Consumer categories",
+        "yAxisLabel": "Consumer value",
+        "format": true
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 270,
+          "y": 35,
+          "width": 250.421875,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : amount 180",
+          "Consumer total : amount 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 270,
+          "y": 60,
+          "width": 250.421875,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : amount 180",
+          "Consumer total : amount 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "empty",
+      "scheme": "Light",
+      "props": {
+        "data": [],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 22,
+          "height": 22
+        },
+        "label": "",
+        "items": [],
+        "cursor": false
+      },
+      "pointer": {
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 22,
+          "height": 22
+        },
+        "label": "",
+        "items": [],
+        "cursor": false
+      }
+    },
+    {
+      "id": "single",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 35,
+          "width": 183.984375,
+          "height": 110
+        },
+        "label": "Harbor",
+        "items": [
+          "Consumer selected : 50",
+          "Consumer total : 100"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 183.984375,
+          "height": 110
+        },
+        "label": "Harbor",
+        "items": [
+          "Consumer selected : 50",
+          "Consumer total : 100"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "negative",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "A",
+            "total": -50
+          },
+          {
+            "label": "B",
+            "total": -200
+          },
+          {
+            "label": "C",
+            "total": 50
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 67,
+          "width": 174.859375,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : -200"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 174.859375,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : -200"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "zero",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "A",
+            "total": 0
+          },
+          {
+            "label": "B",
+            "total": 0
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 459.421875,
+          "y": 67,
+          "width": 150.578125,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : 0"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 459.421875,
+          "y": 60,
+          "width": 150.578125,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : 0"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "gaps",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "A",
+            "total": 10
+          },
+          {
+            "label": "B",
+            "total": null
+          },
+          {
+            "label": "C",
+            "total": 30
+          },
+          {
+            "label": "D",
+            "total": 20
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": false,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 165,
+          "width": 32.46875,
+          "height": 46
+        },
+        "label": "B",
+        "items": [],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": false,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 32.46875,
+          "height": 46
+        },
+        "label": "B",
+        "items": [],
+        "cursor": true
+      }
+    },
+    {
+      "id": "explicit-transparent",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total",
+            "color": "#197391"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected",
+            "color": "transparent"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "narrow",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 240,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 60,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 60,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "long-label",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "東京の架空編集室 · العربية · café — consumer category",
+            "total": 12
+          },
+          {
+            "label": "Second long consumer category",
+            "total": 19
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 351.75,
+          "y": 67,
+          "width": 258.25,
+          "height": 78
+        },
+        "label": "Second long consumer category",
+        "items": [
+          "Consumer total : 19"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 351.75,
+          "y": 60,
+          "width": 258.25,
+          "height": 78
+        },
+        "label": "Second long consumer category",
+        "items": [
+          "Consumer total : 19"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "numeric-string",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100
+          },
+          {
+            "label": "Reed",
+            "total": "220"
+          },
+          {
+            "label": "North",
+            "total": 310
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label",
+        "format": true
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 67,
+          "width": 166.265625,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 166.265625,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "invalid-string",
+      "scheme": "Light",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100
+          },
+          {
+            "label": "Reed",
+            "total": "pending"
+          },
+          {
+            "label": "North",
+            "total": 310
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label",
+        "format": true
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 67,
+          "width": 197.859375,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : pending"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 197.859375,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : pending"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "default",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "no-legend-grid",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label",
+        "showLegend": false,
+        "showGrid": false
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "labels",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label",
+        "xAxisLabel": "Consumer categories",
+        "yAxisLabel": "Consumer value",
+        "format": true
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 270,
+          "y": 35,
+          "width": 250.421875,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : amount 180",
+          "Consumer total : amount 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 270,
+          "y": 60,
+          "width": 250.421875,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : amount 180",
+          "Consumer total : amount 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "empty",
+      "scheme": "Dark",
+      "props": {
+        "data": [],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 22,
+          "height": 22
+        },
+        "label": "",
+        "items": [],
+        "cursor": false
+      },
+      "pointer": {
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 22,
+          "height": 22
+        },
+        "label": "",
+        "items": [],
+        "cursor": false
+      }
+    },
+    {
+      "id": "single",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 35,
+          "width": 183.984375,
+          "height": 110
+        },
+        "label": "Harbor",
+        "items": [
+          "Consumer selected : 50",
+          "Consumer total : 100"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 183.984375,
+          "height": 110
+        },
+        "label": "Harbor",
+        "items": [
+          "Consumer selected : 50",
+          "Consumer total : 100"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "negative",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "A",
+            "total": -50
+          },
+          {
+            "label": "B",
+            "total": -200
+          },
+          {
+            "label": "C",
+            "total": 50
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 67,
+          "width": 174.859375,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : -200"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 174.859375,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : -200"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "zero",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "A",
+            "total": 0
+          },
+          {
+            "label": "B",
+            "total": 0
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 459.421875,
+          "y": 67,
+          "width": 150.578125,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : 0"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 459.421875,
+          "y": 60,
+          "width": 150.578125,
+          "height": 78
+        },
+        "label": "B",
+        "items": [
+          "Consumer total : 0"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "gaps",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "A",
+            "total": 10
+          },
+          {
+            "label": "B",
+            "total": null
+          },
+          {
+            "label": "C",
+            "total": 30
+          },
+          {
+            "label": "D",
+            "total": 20
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": false,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 165,
+          "width": 32.46875,
+          "height": 46
+        },
+        "label": "B",
+        "items": [],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": false,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 32.46875,
+          "height": 46
+        },
+        "label": "B",
+        "items": [],
+        "cursor": true
+      }
+    },
+    {
+      "id": "explicit-transparent",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total",
+            "color": "#197391"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected",
+            "color": "transparent"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 256.6666564941406,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "narrow",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100,
+            "selected": 50
+          },
+          {
+            "label": "Reed",
+            "total": 220,
+            "selected": 180
+          },
+          {
+            "label": "Vale",
+            "total": 140,
+            "selected": 90
+          },
+          {
+            "label": "North",
+            "total": 310,
+            "selected": 240
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          },
+          {
+            "key": "selected",
+            "name": "Consumer selected"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 240,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 60,
+          "y": 35,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 60,
+          "y": 60,
+          "width": 191.703125,
+          "height": 110
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer selected : 180",
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "long-label",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "東京の架空編集室 · العربية · café — consumer category",
+            "total": 12
+          },
+          {
+            "label": "Second long consumer category",
+            "total": 19
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label"
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 351.75,
+          "y": 67,
+          "width": 258.25,
+          "height": 78
+        },
+        "label": "Second long consumer category",
+        "items": [
+          "Consumer total : 19"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 351.75,
+          "y": 60,
+          "width": 258.25,
+          "height": 78
+        },
+        "label": "Second long consumer category",
+        "items": [
+          "Consumer total : 19"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "numeric-string",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100
+          },
+          {
+            "label": "Reed",
+            "total": "220"
+          },
+          {
+            "label": "North",
+            "total": 310
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label",
+        "format": true
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 67,
+          "width": 166.265625,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 166.265625,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : 220"
+        ],
+        "cursor": true
+      }
+    },
+    {
+      "id": "invalid-string",
+      "scheme": "Dark",
+      "props": {
+        "data": [
+          {
+            "label": "Harbor",
+            "total": 100
+          },
+          {
+            "label": "Reed",
+            "total": "pending"
+          },
+          {
+            "label": "North",
+            "total": 310
+          }
+        ],
+        "series": [
+          {
+            "key": "total",
+            "name": "Consumer total"
+          }
+        ],
+        "xAxisKey": "label",
+        "format": true
+      },
+      "width": 640,
+      "height": 300,
+      "keyboard": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 67,
+          "width": 197.859375,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : pending"
+        ],
+        "cursor": true
+      },
+      "pointer": {
+        "visible": true,
+        "box": {
+          "x": 350,
+          "y": 60,
+          "width": 197.859375,
+          "height": 78
+        },
+        "label": "Reed",
+        "items": [
+          "Consumer total : pending"
+        ],
+        "cursor": true
+      }
+    }
+  ]
+}

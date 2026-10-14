@@ -1,0 +1,10 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const input=process.argv[2];
+if(!input)throw new Error('Pass the complete frozen tooltip capture JSON path.');
+const bytes=await readFile(input);const source=JSON.parse(bytes);
+if(source.sourceCommit!=='a86059013cd59684ce452849278ea81e734f2066'||source.sourceSha256!=='673539e9a2c5a264fbfb6c35f09e7d956d2dbde9670f3ae6cf1888e752ec403a'||source.recharts!=='3.8.1'||source.results.length!==26)throw new Error('The capture changed the frozen tooltip boundary.');
+const phase=sample=>({visible:sample.visible,box:sample.box,label:sample.label.text,items:sample.items.map(item=>item.text),cursor:!!sample.cursor});
+const cases=source.results.map(item=>({id:item.id,scheme:item.scheme,props:item.props,width:item.normal.width,height:item.normal.height,keyboard:phase(item.keyboard),pointer:phase(item.pointer)}));
+await writeFile(new URL('../samples/Orchard.Catalog/Reference/LineTooltip.json',import.meta.url),JSON.stringify({sourceCommit:source.sourceCommit,sourceSha256:source.sourceSha256,recharts:source.recharts,browser:source.browser,captureSha256:createHash('sha256').update(bytes).digest('hex'),cases},null,2)+'\n');
+console.log(JSON.stringify({cases:cases.length}));

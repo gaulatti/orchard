@@ -543,12 +543,12 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": ["src/Orchard/Charts/BleeckerLineChart.cs", "src/Orchard/Charts/BleeckerMonotoneCurve.cs", "src/Orchard/Charts/BleeckerChartData.cs", "src/Orchard/Charts/BleeckerChartScale.cs", "src/Orchard/Themes/LineChart.xaml"],
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerLineChart.cs", "src/Orchard/Charts/BleeckerLineChart.TooltipEffects.cs", "src/Orchard/Charts/BleeckerTooltipPlacement.cs", "src/Orchard/Charts/BleeckerMonotoneCurve.cs", "src/Orchard/Charts/BleeckerChartData.cs", "src/Orchard/Charts/BleeckerChartScale.cs", "src/Orchard/Themes/LineChart.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/LineChartsFixture.xaml"],
-      "regressionTests": ["tests/Orchard.Tests/LineCurveTests.cs", "tests/Reference/LineCurve.json", "tests/Orchard.Tests/LineDataTests.cs", "tests/Reference/LineData.json", "samples/Orchard.Catalog/LineChartsFixture.xaml.cs", "samples/Orchard.Catalog/Reference/LineLayout.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["tests/Orchard.Tests/LineCurveTests.cs", "tests/Reference/LineCurve.json", "tests/Orchard.Tests/LineDataTests.cs", "tests/Reference/LineData.json", "tests/Orchard.Tests/TooltipPlacementTests.cs", "tests/Reference/TooltipPlacement.json", "samples/Orchard.Catalog/LineChartsFixture.xaml.cs", "samples/Orchard.Catalog/Reference/LineLayout.json", "samples/Orchard.Catalog/Reference/LineTooltip.json", "samples/Orchard.Catalog/Reference/LineBlur.json", "samples/Orchard.Catalog/Reference/LineShadow.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete source/native text and paint comparison, tooltip blur/shadow/positioning, source motion and clipping",
+        "Complete source/native text, paint and tooltip raster comparison, source line/tooltip motion and plot clipping",
         "Audit every data conversion, lifecycle, duplicate category and consumer override boundary; measure collection performance",
         "Verify native x64/ARM64 runtime, independent package, contrast, Narrator and display/text scaling",
         "See docs/line-chart-reference.md for the frozen contract and current evidence"
