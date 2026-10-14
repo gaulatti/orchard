@@ -327,6 +327,14 @@ public sealed partial class MainWindow : Window
         var description=BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_Description");
         Require(title.Text=="INDEPENDENT STATISTIC"&&Math.Abs(PackageStatCard.ActualHeight-132.5)<.001&&!PackageStatCard.IsTabStop&&
             FrameworkElementAutomationPeer.CreatePeerForElement(PackageStatCard).GetAutomationControlType()==AutomationControlType.Group,"Packaged Stat Card lost typography, source layout or passive semantics.");
+        var valueText=BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_Value");
+        foreach(var (text,sourceBaseline) in new[]{(title,37d),(valueText,76.5d),(trendValue,102.5d)})
+            await AwaitAsync(()=>
+            {
+                var origin=PackageStatCard.TransformToVisual(Root.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point()).Y;
+                var actual=text.TransformToVisual(Root.XamlRoot.Content).TransformPoint(new Windows.Foundation.Point()).Y+text.BaselineOffset;
+                return Math.Abs(actual-Math.Round(origin+sourceBaseline,MidpointRounding.AwayFromZero))<.001;
+            },"Packaged Stat Card lost its source text baseline.");
         var trend=PackageStatCard.Trend!;trend.Value="-2%";trend.Direction=BleeckerStatTrendDirection.Down;
         await AwaitAsync(()=>trendValue.Text=="-2%","Packaged Stat Card ignored the consumer trend.");
         PackageStatCard.Trend=null;Root.UpdateLayout();Require(description.Visibility==Visibility.Visible,"Packaged Stat Card did not restore its consumer description.");

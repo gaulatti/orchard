@@ -34,19 +34,17 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | chart-theme | `BleeckerChartTheme` and `BleeckerChartSeries`: scoped resource keys, source palette selection, immutable style metadata and consumer-owned series | Registered role/palette/brand, series-paint and axis/grid/tooltip surface fixture; frozen metadata regressions | In progress: [contract and API](chart-theme-reference.md); actual chart consumers, tooltip effects and full platform acceptance |
 | line-chart | `BleeckerLineChart`: consumer records/series, monotone curves, grid, axes, legend and category inspection | Registered fixture; frozen curve/domain/data cases, 60 placement cases, 22 chart and 26 tooltip specimens, composed blur/shadow profiles; independent consumer | In progress: [API and evidence](line-chart-reference.md); complete visual/motion/lifecycle, tooltip raster and platform acceptance |
 | sparkline | `BleeckerSparkline`: compact consumer records/key, monotone curves, optional paint and raw category inspection | Registered 36-case frozen fixture, negative-domain axes, physical input/binding/remount gates and independent consumer | In progress: [source contract and evidence](sparkline-reference.md); full raster/motion/data matrix and platform acceptance |
-| stat-card | `BleeckerStatCard` and `BleeckerStatTrend`: consumer value/templates, trend/description precedence, icon, history and footer composition | Registered 80-case frozen layout/content, composed clipping and native binding/input/lifecycle/template gates; independent consumer | In progress: [contract and evidence](stat-card-reference.md); exact glyph/raster/motion, full content/override and platform acceptance |
+| stat-card | `BleeckerStatCard` and `BleeckerStatTrend`: consumer value/templates, trend/description precedence, icon, history and footer composition | Registered 80-case layout/content and 16-case typography references, composed clipping/occupied-row and native binding/input/lifecycle/template gates; independent consumer | In progress: [contract and evidence](stat-card-reference.md); exact glyph/raster/motion, full content/override and platform acceptance |
 | bar-chart | Pending | Pending | Full pinned contract |
 | area-chart | Pending | Pending | Full pinned contract |
 | pie-chart | Pending | Pending | Full pinned contract |
 | donut-chart | Pending | Pending | Full pinned contract |
-| sparkline | Pending | Pending | Full pinned contract |
 | scatter-chart | Pending | Pending | Full pinned contract |
 | radar-chart | Pending | Pending | Full pinned contract |
 | radial-bar-chart | Pending | Pending | Full pinned contract |
 | funnel-chart | Pending | Pending | Full pinned contract |
 | sankey-chart | Pending | Pending | Full pinned contract |
 | sunburst-chart | Pending | Pending | Full pinned contract |
-| stat-card | Pending | Pending | Full pinned contract |
 | dashboard-grid | `BleeckerDashboardGrid` and `BleeckerDashboardSpan`: viewport columns, responsive/full spans and consumer children | Registered 96-case frozen layout, mutation/keyboard fixture and independent consumer; monitoring/editorial compositions | In progress: [source contract and evidence](dashboard-grid-reference.md); full intrinsic/override matrix, raster, contrast/Narrator/scaling and platform acceptance |
 | dashboard-section | `BleeckerDashboardSection`: consumer content, optional title/description/action and viewport-responsive header | Registered 50-case frozen layout, binding/lifecycle/keyboard fixture and independent consumer | In progress: [source contract and evidence](dashboard-section-reference.md); exact raster, minimum-content/override matrix, contrast/Narrator/scaling and full platform acceptance |
 | page-header | `BleeckerPageHeader`: consumer title, description, breadcrumbs, wrapping actions and Back commands/routes | Registered sixteen-case viewport/RTL and content/lifecycle/keyboard fixture; independent package consumer | In progress: [source contract and API](page-header-reference.md); exact text balancing/raster, minimum-content constraints, contrast/Narrator/scaling and full platform acceptance |

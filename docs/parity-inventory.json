@@ -1013,9 +1013,9 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": ["src/Orchard/Controls/BleeckerStatCard.cs", "src/Orchard/Controls/BleeckerStatTrend.cs", "src/Orchard/Themes/StatCard.xaml", "src/Orchard/Themes/StatCardPalette.xaml"],
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerStatCard.cs", "src/Orchard/Controls/BleeckerStatCard.Typography.cs", "src/Orchard/Controls/BleeckerStatTrend.cs", "src/Orchard/Themes/StatCard.xaml", "src/Orchard/Themes/StatCardPalette.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/StatCardsFixture.xaml"],
-      "regressionTests": ["samples/Orchard.Catalog/StatCardsFixture.xaml.cs", "samples/Orchard.Catalog/StatCardsFixture.Content.cs", "tests/Reference/StatCardLayout.json", "tests/Reference/StatCardContent.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["samples/Orchard.Catalog/StatCardsFixture.xaml.cs", "samples/Orchard.Catalog/StatCardsFixture.Content.cs", "samples/Orchard.Catalog/StatCardsFixture.Typography.cs", "tests/Reference/StatCardLayout.json", "tests/Reference/StatCardContent.json", "tests/Reference/StatCardTypography.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Exact glyph advances and curve/surface raster, including the recorded RTL trend residual",

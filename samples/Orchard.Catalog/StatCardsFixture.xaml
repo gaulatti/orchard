@@ -8,6 +8,7 @@
    </orchard:BleeckerStatCard>
    <orchard:BleeckerStatCard Title="Pending review" Value="24" Description="Consumer-owned local summary." />
    <orchard:BleeckerStatCard x:Name="ScalarSlots" Title="Local checks" Value="0" Description="Consumer scalar content is retained." />
+   <orchard:BleeckerStatCard Title="Consumer-owned local review totals" Value="12,480,000" Description="A longer consumer-owned summary wraps over several lines." Icon="R" Footer="Updated locally." />
   </orchard:BleeckerDashboardGrid>
  </StackPanel>
 </UserControl>

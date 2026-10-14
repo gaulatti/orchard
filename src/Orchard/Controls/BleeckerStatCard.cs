@@ -11,7 +11,7 @@ using Windows.Foundation;
 namespace Orchard;
 
 /// <summary>A consumer-owned statistic, trend and optional compact history.</summary>
-public sealed class BleeckerStatCard : Control
+public sealed partial class BleeckerStatCard : Control
 {
     private TextBlock? title,value,description,trendValue,trendLabel,iconText,footerText,iconScalar,footerScalar;
     private ContentPresenter? richValue,richIcon,richFooter;
@@ -25,6 +25,7 @@ public sealed class BleeckerStatCard : Control
     public BleeckerStatCard()
     {
         DefaultStyleKey=typeof(BleeckerStatCard);
+        InitializeTypography();
         Loaded+=(_,_)=>UpdatePresentation();
         Unloaded+=(_,_)=>{StopObserving();DispatcherQueue.TryEnqueue(()=>{if(IsLoaded)UpdatePresentation();});};
         ActualThemeChanged+=(_,_)=>UpdatePresentation();
@@ -56,6 +57,7 @@ public sealed class BleeckerStatCard : Control
     public SolidColorBrush? SparklineColor {get=>(SolidColorBrush?)GetValue(SparklineColorProperty);set=>SetValue(SparklineColorProperty,value);}
     protected override void OnApplyTemplate()
     {
+        DetachTypography();
         if(richValue is not null)richValue.Content=null;
         if(richIcon is not null)richIcon.Content=null;if(richFooter is not null)richFooter.Content=null;
         sparklineHost?.Children.Clear();trend=null;trendHost=null;
@@ -81,7 +83,7 @@ public sealed class BleeckerStatCard : Control
             foreach(var child in new UIElement?[]{trendIcon,trendValue,trendLabel})if(child is not null)trend.Children.Add(child);
             host.Children.Add(trend);
         }
-        UpdatePresentation();
+        AttachTypography();UpdatePresentation();
     }
     private void StopObserving(){if(observedTrend is not null)observedTrend.Changed-=TrendChanged;observedTrend=null;}
     private void TrendChanged(object? sender,EventArgs args)=>UpdatePresentation();

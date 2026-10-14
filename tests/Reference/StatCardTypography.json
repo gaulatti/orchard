@@ -1,0 +1,3290 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "7085e7d88f1109a0d1ca93885fc0de01aa735fd7ca973de1bdb63cac333ffb06",
+  "react": "19.2.4",
+  "recharts": "3.8.1",
+  "fontFiles": [
+    {
+      "file": "EncodeSans-Regular.ttf",
+      "weight": 400,
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "file": "EncodeSans-Medium.ttf",
+      "weight": 500,
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "file": "EncodeSans-SemiBold.ttf",
+      "weight": 600,
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "deviceScale": 1,
+  "cases": [
+    {
+      "id": "default",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248"
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 320,
+        "height": 104.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 270,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 270,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "description",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "description": "Consumer-owned summary."
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 320,
+        "height": 132.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 270,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 270,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "description": {
+            "text": "Consumer-owned summary.",
+            "x": 25,
+            "y": 87.5,
+            "width": 270,
+            "height": 20,
+            "baseline": 102.5,
+            "range": {
+              "x": 25,
+              "y": 88.5,
+              "width": 174.328125,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 87,
+              "right": 201,
+              "bottom": 107,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "trend",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "trend": {
+          "value": "+12%",
+          "direction": "up",
+          "label": "this week"
+        }
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 320,
+        "height": 132.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 270,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 270,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "trendValue": {
+            "text": "+12%",
+            "x": 47,
+            "y": 87.5,
+            "width": 33.296875,
+            "height": 20,
+            "baseline": 102.5,
+            "range": {
+              "x": 47,
+              "y": 88.5,
+              "width": 33.296875,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 500,
+            "spacing": "normal",
+            "ink": {
+              "left": 46,
+              "top": 87,
+              "right": 82,
+              "bottom": 107,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102
+              ]
+            }
+          },
+          "trendLabel": {
+            "text": "this week",
+            "x": 88.296875,
+            "y": 87.5,
+            "width": 59.703125,
+            "height": 20,
+            "baseline": 102.5,
+            "range": {
+              "x": 88.296875,
+              "y": 88.5,
+              "width": 59.703125,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 87,
+              "top": 87,
+              "right": 149,
+              "bottom": 107,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "long",
+      "width": 240,
+      "props": {
+        "title": "Consumer-owned local review totals",
+        "value": "12,480,000",
+        "description": "A longer consumer-owned summary wraps over several lines."
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 240,
+        "height": 189,
+        "texts": {
+          "title": {
+            "text": "CONSUMER-OWNED LOCAL REVIEW TOTALS",
+            "x": 25,
+            "y": 25,
+            "width": 190,
+            "height": 33,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 167.03125,
+              "height": 29.5
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 194,
+              "bottom": 57,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53
+              ]
+            }
+          },
+          "value": {
+            "text": "12,480,000",
+            "x": 25,
+            "y": 66,
+            "width": 190,
+            "height": 30,
+            "baseline": 93,
+            "range": {
+              "x": 25,
+              "y": 62,
+              "width": 152.0625,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 61,
+              "right": 179,
+              "bottom": 101,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97
+              ]
+            }
+          },
+          "description": {
+            "text": "A longer consumer-owned summary wraps over several lines.",
+            "x": 25,
+            "y": 104,
+            "width": 190,
+            "height": 60,
+            "baseline": 119,
+            "range": {
+              "x": 25,
+              "y": 105,
+              "width": 176.78125,
+              "height": 57
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 104,
+              "right": 203,
+              "bottom": 163,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157,
+                158
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 33
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "slots",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "icon": "R",
+        "footer": "Updated locally."
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 320,
+        "height": 165.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 206,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 206,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "iconText": {
+            "text": "R",
+            "x": 269.765625,
+            "y": 33,
+            "width": 10.46875,
+            "height": 24,
+            "baseline": 51,
+            "range": {
+              "x": 269.765625,
+              "y": 35,
+              "width": 10.46875,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 268,
+              "top": 34,
+              "right": 282,
+              "bottom": 56,
+              "background": [
+                246,
+                248,
+                250
+              ],
+              "rows": [
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ]
+            }
+          },
+          "footerText": {
+            "text": "Updated locally.",
+            "x": 25,
+            "y": 99.5,
+            "width": 270,
+            "height": 41,
+            "baseline": 134.5,
+            "range": {
+              "x": 25,
+              "y": 118.5,
+              "width": 111.703125,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 117,
+              "right": 138,
+              "bottom": 140,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "icon": 0,
+        "footer": 0
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 320,
+        "height": 148.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 236,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 236,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "iconScalar": {
+            "text": "0",
+            "x": 285,
+            "y": 25,
+            "width": 10,
+            "height": 24,
+            "baseline": 43,
+            "range": {
+              "x": 285,
+              "y": 27,
+              "width": 10,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 284,
+              "top": 26,
+              "right": 296,
+              "bottom": 48,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          },
+          "footerScalar": {
+            "text": "0",
+            "x": 25,
+            "y": 99.5,
+            "width": 270,
+            "height": 24,
+            "baseline": 117.5,
+            "range": {
+              "x": 25,
+              "y": 101.5,
+              "width": 10,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 100,
+              "right": 36,
+              "bottom": 123,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "footer-wrap",
+      "width": 180,
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "footer": "Consumer-owned summary wraps across several lines."
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 180,
+        "height": 237.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 130,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 130,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "footerText": {
+            "text": "Consumer-owned summary wraps across several lines.",
+            "x": 25,
+            "y": 99.5,
+            "width": 130,
+            "height": 113,
+            "baseline": 134.5,
+            "range": {
+              "x": 25,
+              "y": 118.5,
+              "width": 125.984375,
+              "height": 92
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 117,
+              "right": 152,
+              "bottom": 212,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157,
+                158,
+                159,
+                160,
+                161,
+                162,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "trend-wrap",
+      "width": 240,
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "trend": {
+          "value": "+12%",
+          "direction": "down",
+          "label": "compared with the previous local week"
+        }
+      },
+      "scheme": "Light",
+      "layout": {
+        "width": 240,
+        "height": 152.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 190,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 190,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "trendValue": {
+            "text": "+12%",
+            "x": 47,
+            "y": 97.5,
+            "width": 33.296875,
+            "height": 20,
+            "baseline": 112.5,
+            "range": {
+              "x": 47,
+              "y": 98.5,
+              "width": 33.296875,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 500,
+            "spacing": "normal",
+            "ink": {
+              "left": 46,
+              "top": 97,
+              "right": 82,
+              "bottom": 117,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112
+              ]
+            }
+          },
+          "trendLabel": {
+            "text": "compared with the previous local week",
+            "x": 88.296875,
+            "y": 87.5,
+            "width": 126.703125,
+            "height": 40,
+            "baseline": 102.5,
+            "range": {
+              "x": 88.296875,
+              "y": 88.5,
+              "width": 120.546875,
+              "height": 37
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 87,
+              "top": 87,
+              "right": 210,
+              "bottom": 127,
+              "background": [
+                255,
+                255,
+                255
+              ],
+              "rows": [
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "default",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248"
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 320,
+        "height": 104.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 270,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 270,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "description",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "description": "Consumer-owned summary."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 320,
+        "height": 132.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 270,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 270,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "description": {
+            "text": "Consumer-owned summary.",
+            "x": 25,
+            "y": 87.5,
+            "width": 270,
+            "height": 20,
+            "baseline": 102.5,
+            "range": {
+              "x": 25,
+              "y": 88.5,
+              "width": 174.328125,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 87,
+              "right": 201,
+              "bottom": 107,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "trend",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "trend": {
+          "value": "+12%",
+          "direction": "up",
+          "label": "this week"
+        }
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 320,
+        "height": 132.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 270,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 270,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "trendValue": {
+            "text": "+12%",
+            "x": 47,
+            "y": 87.5,
+            "width": 33.296875,
+            "height": 20,
+            "baseline": 102.5,
+            "range": {
+              "x": 47,
+              "y": 88.5,
+              "width": 33.296875,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 500,
+            "spacing": "normal",
+            "ink": {
+              "left": 46,
+              "top": 87,
+              "right": 82,
+              "bottom": 107,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102
+              ]
+            }
+          },
+          "trendLabel": {
+            "text": "this week",
+            "x": 88.296875,
+            "y": 87.5,
+            "width": 59.703125,
+            "height": 20,
+            "baseline": 102.5,
+            "range": {
+              "x": 88.296875,
+              "y": 88.5,
+              "width": 59.703125,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 87,
+              "top": 87,
+              "right": 149,
+              "bottom": 107,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "long",
+      "width": 240,
+      "props": {
+        "title": "Consumer-owned local review totals",
+        "value": "12,480,000",
+        "description": "A longer consumer-owned summary wraps over several lines."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 240,
+        "height": 189,
+        "texts": {
+          "title": {
+            "text": "CONSUMER-OWNED LOCAL REVIEW TOTALS",
+            "x": 25,
+            "y": 25,
+            "width": 190,
+            "height": 33,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 167.03125,
+              "height": 29.5
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 194,
+              "bottom": 57,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53
+              ]
+            }
+          },
+          "value": {
+            "text": "12,480,000",
+            "x": 25,
+            "y": 66,
+            "width": 190,
+            "height": 30,
+            "baseline": 93,
+            "range": {
+              "x": 25,
+              "y": 62,
+              "width": 152.0625,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 61,
+              "right": 179,
+              "bottom": 101,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97
+              ]
+            }
+          },
+          "description": {
+            "text": "A longer consumer-owned summary wraps over several lines.",
+            "x": 25,
+            "y": 104,
+            "width": 190,
+            "height": 60,
+            "baseline": 119,
+            "range": {
+              "x": 25,
+              "y": 105,
+              "width": 176.78125,
+              "height": 57
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 104,
+              "right": 203,
+              "bottom": 163,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157,
+                158
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 33
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "slots",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "icon": "R",
+        "footer": "Updated locally."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 320,
+        "height": 165.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 206,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 206,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "iconText": {
+            "text": "R",
+            "x": 269.765625,
+            "y": 33,
+            "width": 10.46875,
+            "height": 24,
+            "baseline": 51,
+            "range": {
+              "x": 269.765625,
+              "y": 35,
+              "width": 10.46875,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 268,
+              "top": 34,
+              "right": 282,
+              "bottom": 56,
+              "background": [
+                29,
+                47,
+                67
+              ],
+              "rows": [
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ]
+            }
+          },
+          "footerText": {
+            "text": "Updated locally.",
+            "x": 25,
+            "y": 99.5,
+            "width": 270,
+            "height": 41,
+            "baseline": 134.5,
+            "range": {
+              "x": 25,
+              "y": 118.5,
+              "width": 111.703125,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 117,
+              "right": 138,
+              "bottom": 140,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero",
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "icon": 0,
+        "footer": 0
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 320,
+        "height": 148.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 236,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 236,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "iconScalar": {
+            "text": "0",
+            "x": 285,
+            "y": 25,
+            "width": 10,
+            "height": 24,
+            "baseline": 43,
+            "range": {
+              "x": 285,
+              "y": 27,
+              "width": 10,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 284,
+              "top": 26,
+              "right": 296,
+              "bottom": 48,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42
+              ]
+            }
+          },
+          "footerScalar": {
+            "text": "0",
+            "x": 25,
+            "y": 99.5,
+            "width": 270,
+            "height": 24,
+            "baseline": 117.5,
+            "range": {
+              "x": 25,
+              "y": 101.5,
+              "width": 10,
+              "height": 20
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 100,
+              "right": 36,
+              "bottom": 123,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "footer-wrap",
+      "width": 180,
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "footer": "Consumer-owned summary wraps across several lines."
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 180,
+        "height": 237.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 130,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 130,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "footerText": {
+            "text": "Consumer-owned summary wraps across several lines.",
+            "x": 25,
+            "y": 99.5,
+            "width": 130,
+            "height": 113,
+            "baseline": 134.5,
+            "range": {
+              "x": 25,
+              "y": 118.5,
+              "width": 125.984375,
+              "height": 92
+            },
+            "size": 16,
+            "line": 24,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 24,
+              "top": 117,
+              "right": 152,
+              "bottom": 212,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157,
+                158,
+                159,
+                160,
+                161,
+                162,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "trend-wrap",
+      "width": 240,
+      "props": {
+        "title": "Reviews",
+        "value": "1,248",
+        "trend": {
+          "value": "+12%",
+          "direction": "down",
+          "label": "compared with the previous local week"
+        }
+      },
+      "scheme": "Dark",
+      "layout": {
+        "width": 240,
+        "height": 152.5,
+        "texts": {
+          "title": {
+            "text": "REVIEWS",
+            "x": 25,
+            "y": 25,
+            "width": 190,
+            "height": 16.5,
+            "baseline": 37,
+            "range": {
+              "x": 25,
+              "y": 26,
+              "width": 56.703125,
+              "height": 13
+            },
+            "size": 11,
+            "line": 16.5,
+            "weight": 600,
+            "spacing": "0.99px",
+            "ink": {
+              "left": 24,
+              "top": 25,
+              "right": 83,
+              "bottom": 40,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36
+              ]
+            }
+          },
+          "value": {
+            "text": "1,248",
+            "x": 25,
+            "y": 49.5,
+            "width": 190,
+            "height": 30,
+            "baseline": 76.5,
+            "range": {
+              "x": 25,
+              "y": 45.5,
+              "width": 70.609375,
+              "height": 38
+            },
+            "size": 30,
+            "line": 30,
+            "weight": 600,
+            "spacing": "-0.6px",
+            "ink": {
+              "left": 24,
+              "top": 44,
+              "right": 97,
+              "bottom": 85,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ]
+            }
+          },
+          "trendValue": {
+            "text": "+12%",
+            "x": 47,
+            "y": 97.5,
+            "width": 33.296875,
+            "height": 20,
+            "baseline": 112.5,
+            "range": {
+              "x": 47,
+              "y": 98.5,
+              "width": 33.296875,
+              "height": 17
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 500,
+            "spacing": "normal",
+            "ink": {
+              "left": 46,
+              "top": 97,
+              "right": 82,
+              "bottom": 117,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112
+              ]
+            }
+          },
+          "trendLabel": {
+            "text": "compared with the previous local week",
+            "x": 88.296875,
+            "y": 87.5,
+            "width": 126.703125,
+            "height": 40,
+            "baseline": 102.5,
+            "range": {
+              "x": 88.296875,
+              "y": 88.5,
+              "width": 120.546875,
+              "height": 37
+            },
+            "size": 14,
+            "line": 20,
+            "weight": 400,
+            "spacing": "normal",
+            "ink": {
+              "left": 87,
+              "top": 87,
+              "right": 210,
+              "bottom": 127,
+              "background": [
+                24,
+                37,
+                51
+              ],
+              "rows": [
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125
+              ]
+            }
+          }
+        }
+      },
+      "faces": {
+        "title": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 7
+          }
+        ],
+        "value": [
+          {
+            "familyName": "Encode Sans SmBold",
+            "postScriptName": "EncodeSans-SmBold",
+            "isCustomFont": true,
+            "glyphCount": 5
+          }
+        ]
+      }
+    }
+  ]
+}

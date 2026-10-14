@@ -60,7 +60,15 @@ Stat cards follows Sparklines. Focused `-Component stat-card` compares 80 frozen
 Light/Dark compositions, then checks live bindings/trends, normal keyboard input
 through history and footer actions, disabled inheritance, remount and consumer
 value/control template replacement. Scalar slots, word overflow/wrapping and
-composed clipping are included. RTL glyph advance accuracy remains open.
+composed clipping are included. Sixteen further source specimens check 54
+baseline/occupied-row results in composed desktop captures, plus typography
+after content changes, fractional-origin moves, remount and template replacement.
+RTL glyph advance and complete glyph raster accuracy remain open.
+
+Focused `-Component font-audit` is a capture-only diagnostic for the five bundled
+font faces, canonical/legacy names, weight selection and explicit system/missing
+family comparisons. `result.json` marks `captureOnly` true and `parityVerified`
+false. It is separate from the full acceptance suite.
 
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise

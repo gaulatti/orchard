@@ -73,6 +73,7 @@ public sealed partial class StatCardsFixture:UserControl
                 if(id=="narrow")await VerifyComposedOverflowAsync(input,card,folder,scheme);
             }
             await VerifyContentAsync(host,input,folder,scheme);
+            await VerifyTypographyAsync(host,input,folder,scheme);
             await MutationAsync(host,input,folder,scheme);
         }
         finally{root.Children.Remove(host);}

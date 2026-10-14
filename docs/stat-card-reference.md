@@ -170,3 +170,56 @@ unchanged. This includes the first-focus/key-delivery gates alongside all
 existing catalog fixtures. The runnable output is
 `artifacts/catalog-stat-card-key-ack` and the NuGet file is
 `artifacts/packages-stat-card/Gaulatti.Orchard.0.1.0.nupkg`.
+
+## Text baseline follow-up
+
+The bundled font investigation retains the canonical typographic family names.
+Native Medium/Semibold samples retain the same glyphs at Normal weight; explicit
+Segoe UI and missing-family samples differ. Legacy aliases change baseline
+metrics without improving glyph selection. No shared font resources changed.
+`-Component font-audit` captures all five bundled faces with these diagnostic
+comparisons. Its result explicitly reports `captureOnly: true` and
+`parityVerified: false`; capture completion is not acceptance evidence.
+
+`tests/Reference/StatCardTypography.json` freezes 16 additional rendered source
+specimens from the unchanged pinned component, React and Recharts versions.
+SHA-256: `52b0be9177db9115e87228aea9581243a9f13c850318a6466150390a279cb664`.
+The capture records actual custom-font selection through browser CDP, font-file
+hashes, first baselines and every occupied pixel row in each text rectangle.
+Import with `scripts/derive-stat-card-typography-reference.mjs`. Source captures
+and the capture script are retained at `artifacts/stat-card-typography`.
+
+The regression first reproduces 27 text-placement failures in Light. Titles,
+body, trend and scalar-slot text sit about 1.5–1.8px too low; large values sit
+2.28px too high. WinUI's BlockLineHeight scales the ascent, whereas the browser
+uses rounded natural font ascent/descent and floored half-leading. The default
+template now shifts each built-in text part to that measured baseline, snapping
+once in device coordinates to avoid inconsistent half-pixel raster rounding.
+The origin comes from WinUI's arranged `ActualOffset`, rather than a transformed
+position with the previous paint shift subtracted; repeated updates otherwise
+cross the rounding boundary. The pinned SDK's API documentation defines that
+property as arrange output; see the [UIElement reference](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.actualoffset?view=windows-app-sdk-2.0).
+Line boxes, intrinsic measurements, wrapping and consumer templates retain their
+existing behavior. Font/layout changes queue a single rendering update;
+unload cancels it and template replacement detaches old observers/transforms.
+
+The desktop regression compares 54 baseline/occupied-row results across both
+themes, including multiline title, description, trend label and footer, raw
+icon/footer text, and anonymous zero slots. It compares every pixel in the
+captured text rectangles with their background, without a color threshold or
+pixel mask. Matching occupied rows verifies placement, not complete glyph
+shaping, horizontal advances, antialiasing or raster equality. Those gaps,
+contrast/Narrator/scaling and native ARM64 acceptance remain open.
+
+The registered gallery adds a wrapped title/summary with raw icon and footer
+text. Native checks pass at `artifacts/smoke-stat-typography-stable`, including
+all 80 existing cases and 40 additional lifecycle baseline checks. The initial
+correction exposes a repeated-update failure (76px instead of 77px for a value)
+at `artifacts/smoke-stat-typography-lifecycle`; reading arrange output removes
+that feedback. Source and native screenshots remain available beside the JSON
+reports. All 43 unit tests and token generation checks pass at
+`artifacts/tests-stat-typography`.
+Both x64 and ARM64 solution builds pass with zero warnings. The full Light/Dark
+catalog passes at `artifacts/smoke-stat-typography-full` with the six-minute
+deadline unchanged. The final font diagnostic captures are at
+`artifacts/smoke-font-audit-final`; their result remains capture-only.

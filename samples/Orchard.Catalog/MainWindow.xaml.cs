@@ -86,6 +86,7 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "stat-card", environment = RuntimeEnvironment() }));
             }
+            else if (args.Contains("--smoke-font-audit")) await RunFontAuditAsync(folder);
             else if (args.Contains("--smoke-dashboard-grid"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
