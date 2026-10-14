@@ -24,6 +24,7 @@ public sealed partial class MainWindow
             ("Chart theme",ChartThemes),
             ("Line charts",LineCharts),
             ("Sparklines",Sparklines),
+            ("Stat cards",StatCards),
             ("Error states",ErrorStates),
             ("Page headers",PageHeaders),
             ("Section headers",SectionHeaders),

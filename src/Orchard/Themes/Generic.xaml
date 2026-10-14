@@ -19,6 +19,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Attention.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/LineChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Sparkline.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCard.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/ErrorState.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/PageHeader.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SectionHeader.xaml" />

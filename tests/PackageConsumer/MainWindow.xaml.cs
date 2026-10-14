@@ -199,6 +199,7 @@ public sealed partial class MainWindow : Window
                 VerifyDashboardSection();
                 VerifyDashboardGrid();
                 await VerifySparklineAsync();
+                await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -316,6 +317,26 @@ public sealed partial class MainWindow : Window
         var original=PackageSparkline.Data;PackageSparkline.Data=new();
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0,"Packaged Sparkline retained an empty curve.");
         PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
+    }
+
+    private async Task VerifyStatCardAsync()
+    {
+        PackageStatCard.ApplyTemplate();Root.UpdateLayout();
+        var title=BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_Title");
+        var trendValue=BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_TrendValue");
+        var description=BrandDescendants<TextBlock>(PackageStatCard).Single(text=>text.Name=="PART_Description");
+        Require(title.Text=="INDEPENDENT STATISTIC"&&Math.Abs(PackageStatCard.ActualHeight-132.5)<.001&&!PackageStatCard.IsTabStop&&
+            FrameworkElementAutomationPeer.CreatePeerForElement(PackageStatCard).GetAutomationControlType()==AutomationControlType.Group,"Packaged Stat Card lost typography, source layout or passive semantics.");
+        var trend=PackageStatCard.Trend!;trend.Value="-2%";trend.Direction=BleeckerStatTrendDirection.Down;
+        await AwaitAsync(()=>trendValue.Text=="-2%","Packaged Stat Card ignored the consumer trend.");
+        PackageStatCard.Trend=null;Root.UpdateLayout();Require(description.Visibility==Visibility.Visible,"Packaged Stat Card did not restore its consumer description.");
+        PackageStatCard.Trend=trend;
+        var data=new System.Collections.ObjectModel.ObservableCollection<IReadOnlyDictionary<string,object?>>(new[]{10d,30d,20d,40d}.Select(value=>(IReadOnlyDictionary<string,object?>)new Dictionary<string,object?>{{"v",value}}));
+        PackageStatCard.SparklineData=data;PackageStatCard.SparklineDataKey="v";
+        await AwaitAsync(()=>BrandDescendants<BleeckerSparkline>(PackageStatCard).Any(),"Packaged Stat Card did not mount consumer history.");
+        var spark=BrandDescendants<BleeckerSparkline>(PackageStatCard).Single();Require(ReferenceEquals(spark.Data,data)&&spark.Height==48&&spark.ShowArea,"Packaged Stat Card replaced consumer history or changed its compact profile.");
+        PackageStatCard.SparklineDataKey="";await AwaitAsync(()=>!BrandDescendants<BleeckerSparkline>(PackageStatCard).Any(),"Packaged Stat Card retained empty-key history.");
+        PackageStatCard.SparklineData=null;
     }
 
     private void VerifyDashboardGrid()

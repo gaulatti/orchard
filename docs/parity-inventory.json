@@ -1013,14 +1013,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Controls/BleeckerStatCard.cs", "src/Orchard/Controls/BleeckerStatTrend.cs", "src/Orchard/Themes/StatCard.xaml", "src/Orchard/Themes/StatCardPalette.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/StatCardsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/StatCardsFixture.xaml.cs", "tests/Reference/StatCardLayout.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact glyph advances and curve/surface raster, including the recorded RTL trend residual",
+        "Complete content/template/override and intrinsic wrapping matrix; reference surface motion",
+        "Actual contrast, Narrator, display/text scaling and native ARM64 acceptance"
       ]
     },
     {

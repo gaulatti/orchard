@@ -97,8 +97,12 @@ jobs:
         if: ${{ !cancelled() && (steps.dashboard_grid_smoke.outcome == 'success' || steps.dashboard_grid_smoke.outcome == 'failure') }}
         id: sparkline_smoke
         run: ./scripts/smoke-catalog.ps1 -Component sparkline -Output artifacts/sparkline -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify Stat Card layout and consumer composition
         if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
+        id: stat_card_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component stat-card -Output artifacts/stat-card -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -238,8 +242,12 @@ jobs:
         if: ${{ !cancelled() && (steps.dashboard_grid_smoke.outcome == 'success' || steps.dashboard_grid_smoke.outcome == 'failure') }}
         id: sparkline_smoke
         run: ./scripts/smoke-catalog.ps1 -Component sparkline -Output artifacts/sparkline -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify Stat Card layout and consumer composition
         if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
+        id: stat_card_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component stat-card -Output artifacts/stat-card -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

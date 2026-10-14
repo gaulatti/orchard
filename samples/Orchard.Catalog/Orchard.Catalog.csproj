@@ -42,6 +42,7 @@
         <EmbeddedResource Include="../../tests/Reference/DashboardSectionLayout.json" LogicalName="Orchard.Catalog.Reference.DashboardSectionLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/DashboardGridLayout.json" LogicalName="Orchard.Catalog.Reference.DashboardGridLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/SparklineLayout.json" LogicalName="Orchard.Catalog.Reference.SparklineLayout.json" />
+        <EmbeddedResource Include="../../tests/Reference/StatCardLayout.json" LogicalName="Orchard.Catalog.Reference.StatCardLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/NegativeChartDomains.json" LogicalName="Orchard.Catalog.Reference.NegativeChartDomains.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />

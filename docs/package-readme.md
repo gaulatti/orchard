@@ -42,6 +42,9 @@ Its full visual, motion and platform acceptance remains in progress.
 `BleeckerSparkline` supplies a compact monotone line from observable Data and a
 DataKey, with Height 40, optional Color and native inspection. ShowArea preserves
 the pinned source's unfilled Line output. Complete parity remains in progress.
+`BleeckerStatCard` composes Title, Value/ValueTemplate, an observable
+`BleeckerStatTrend`, optional Icon/Footer content and consumer Sparkline history.
+A Trend suppresses Description. Full visual/platform acceptance remains open.
 The packaged brand SVG is copied to `Orchard/Assets/Images`. Brand filtering uses
 the pinned transitive Win2D 1.4.0 dependency; keep its native runtime files with
 the complete build/publish output.

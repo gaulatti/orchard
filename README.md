@@ -29,6 +29,8 @@ The [Dashboard Grid preview](docs/dashboard-grid-reference.md) supplies responsi
 columns and spans, with fictional monitoring and editorial catalog compositions.
 The [Sparkline preview](docs/sparkline-reference.md) supplies compact consumer
 trends with monotone curves and native keyboard/pointer inspection.
+The [Stat Card preview](docs/stat-card-reference.md) composes consumer values,
+live trends, optional history, icons and footer actions.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

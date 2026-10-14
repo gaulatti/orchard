@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.MergedDictionaries><ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" /></ResourceDictionary.MergedDictionaries>
+ <Style TargetType="local:BleeckerStatCard">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="UseSystemFocusVisuals" Value="False" /><Setter Property="UseLayoutRounding" Value="False" /><Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="Background" Value="{ThemeResource CardBackground}" /><Setter Property="BorderBrush" Value="{ThemeResource CardBorderBrush}" /><Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="{StaticResource BleeckerCardCornerRadius}" /><Setter Property="Padding" Value="24" /><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerStatCard">
+   <local:BleeckerCard x:Name="PART_Card" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}" FlowDirection="{TemplateBinding FlowDirection}" UseLayoutRounding="False">
+    <StackPanel Spacing="20">
+     <Grid x:Name="PART_Header" ColumnSpacing="24">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+      <StackPanel x:Name="PART_Lead" Spacing="8" MinWidth="0">
+       <TextBlock x:Name="PART_Title" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="11" LineHeight="16.5" LineStackingStrategy="BlockLineHeight" CharacterSpacing="90" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+       <Grid x:Name="PART_ValueHost">
+        <TextBlock x:Name="PART_Value" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="30" LineHeight="30" LineStackingStrategy="BlockLineHeight" CharacterSpacing="-20" Foreground="{TemplateBinding Foreground}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+        <ContentPresenter x:Name="PART_RichValue" ContentTemplate="{TemplateBinding ValueTemplate}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontWeight="SemiBold" FontSize="30" CharacterSpacing="-20" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="Stretch" />
+       </Grid>
+       <Grid x:Name="PART_TrendHost">
+        <Viewbox x:Name="PART_TrendIcon" Width="14" Height="14" AutomationProperties.AccessibilityView="Raw" IsHitTestVisible="False" FlowDirection="LeftToRight" />
+        <TextBlock x:Name="PART_TrendValue" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}" FontWeight="Medium" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+        <TextBlock x:Name="PART_TrendLabel" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+       </Grid>
+       <TextBlock x:Name="PART_Description" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" FontSize="14" LineHeight="20" LineStackingStrategy="BlockLineHeight" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" />
+      </StackPanel>
+      <Border x:Name="PART_Icon" Grid.Column="1" Width="40" Height="40" VerticalAlignment="Top" CornerRadius="9" BorderThickness="1" Background="{ThemeResource BleeckerStatIconBackgroundBrush}" BorderBrush="{ThemeResource BleeckerStatIconBorderBrush}">
+       <ContentPresenter Content="{TemplateBinding Icon}" ContentTemplate="{TemplateBinding IconTemplate}" Foreground="{ThemeResource BleeckerStatIconForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+      </Border>
+     </Grid>
+     <Grid x:Name="PART_SparklineHost" Height="48" Margin="-4,0" />
+     <Border x:Name="PART_Footer" BorderThickness="0,1,0,0" BorderBrush="{ThemeResource BleeckerStatFooterBorderBrush}" Padding="0,16,0,0">
+      <ContentPresenter Content="{TemplateBinding Footer}" ContentTemplate="{TemplateBinding FooterTemplate}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" FontSize="16" HorizontalContentAlignment="Stretch" />
+     </Border>
+    </StackPanel>
+   </local:BleeckerCard>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

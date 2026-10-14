@@ -1,0 +1,12 @@
+<UserControl x:Class="Orchard.Catalog.StatCardsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Stat cards" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional monitoring statistics. Applications own the values, trends, history and actions." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerDashboardGrid Columns="2">
+   <orchard:BleeckerStatCard x:Name="Specimen" Title="Reviews" Value="1,248" SparklineDataKey="v">
+    <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+12%" Direction="Up" Label="this week" /></orchard:BleeckerStatCard.Trend>
+   </orchard:BleeckerStatCard>
+   <orchard:BleeckerStatCard Title="Pending review" Value="24" Description="Consumer-owned local summary." />
+  </orchard:BleeckerDashboardGrid>
+ </StackPanel>
+</UserControl>

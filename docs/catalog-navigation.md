@@ -56,6 +56,10 @@ Sparklines follows Line Charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.
+Stat cards follows Sparklines. Focused `-Component stat-card` compares 44 frozen
+Light/Dark compositions, then checks live bindings/trends, normal keyboard input
+through history and footer actions, disabled inheritance, remount and consumer
+value/control template replacement. RTL glyph advance accuracy remains open.
 
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise

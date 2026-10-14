@@ -76,6 +76,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "sparkline", environment = RuntimeEnvironment() }));
             }
+            else if (args.Contains("--smoke-stat-card"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(StatCards);
+                    await StatCards.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "stat-card", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-dashboard-grid"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -381,6 +391,8 @@ public sealed partial class MainWindow : Window
             await DashboardGrids.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Sparklines);
             await Sparklines.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(StatCards);
+            await StatCards.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Tooltips);
             await Tooltips.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(FieldHelp);
