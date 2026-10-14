@@ -71,6 +71,18 @@ with the existing six-minute deadline unchanged. Both architecture solution
 builds pass with zero warnings; local ARM64 build evidence is a cross-build,
 not native runtime acceptance.
 
+Fresh package 0.1.0 from clean implementation commit
+`53f9a15c154ba299a0d2515dc1ec12f0728a6d1b` has SHA-256
+`751463fbf5e4fffa27766672383c58f41142c9164db250a83243def8488df2e8`.
+The isolated x64 consumer passes both themes at
+`artifacts/package-consumer-dashboard-grid`, verifying responsive tracks, full
+spans, live span changes and unchanged child identity. The ARM64 consumer
+cross-build passes at `artifacts/package-consumer-dashboard-grid-arm64`, with
+native runtime verification explicitly false. Both consumers remove their own
+temporary caches. The separately published x64 catalog passes the 96 focused
+cases at `artifacts/smoke-dashboard-grid-published`. Native ARM64/hosted
+validation remains deferred while push-triggered Actions are paused.
+
 Complete intrinsic sizing for arbitrary wrapping content/implicit tracks,
 consumer overrides and content templates, text/glyph raster, actual contrast
 schemes, Narrator, display/text scaling and native ARM64 acceptance remain open.
