@@ -30,6 +30,8 @@ public sealed partial class BleeckerLineChart : Control
     private double left, right, top, bottom, min, max;
     private readonly BleeckerChartInteraction interaction=new();
     private bool queued;
+    private bool sparklineMode;
+    internal void UseSparklineProfile(){sparklineMode=true;QueueRender();}
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
 
@@ -109,12 +111,13 @@ public sealed partial class BleeckerLineChart : Control
     private void Render()
     {
         if (!IsLoaded || plot is null || legend is null || active is null || ActualWidth <= 0 || ActualHeight <= 0) return;
-        if (XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
+        if (!sparklineMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
         foreach (var item in Series) { _ = item.Key; _ = item.Name; }
         plot.Children.Clear(); legend.Children.Clear(); rendered.Clear();
         var legendHeight = RenderLegend();
         left = 60 + (string.IsNullOrEmpty(YAxisLabel) ? 0 : 20); right = ActualWidth - 20; top = 10;
         bottom = ActualHeight - (string.IsNullOrEmpty(XAxisLabel) ? 5 : 25) - 30 - legendHeight;
+        if(sparklineMode){left=top=2;right=ActualWidth-2;bottom=ActualHeight-2;}
         if (right <= left || bottom <= top) { ClearActive(); return; }
         var ticks = BleeckerChartScale.Ticks(Series.SelectMany(series => Data.Select(row => BleeckerChartData.Number(BleeckerChartData.Read(row, series.Key)))).OfType<double>());
         if (ticks.Length > 0) { min = ticks[0]; max = ticks[^1]; }
@@ -127,26 +130,26 @@ public sealed partial class BleeckerLineChart : Control
                 plot.Children.Add(line);
             }
         }
-        foreach (var value in ticks)
+        if(!sparklineMode)foreach (var value in ticks)
         {
-            var label = Text(YAxisTickFormatter is null ? N(value) : YAxisTickFormatter(value), 12, "BleeckerTextSecondaryBrush");
+            var label = Text(YAxisTickFormatter is null ? BleeckerChartScale.TickLabel(value) : YAxisTickFormatter(value), 12, "BleeckerTextSecondaryBrush");
             label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             AddText(plot, label, left - 8 - label.DesiredSize.Width, Math.Clamp(Y(value), top + 2, bottom) + 4.26 - label.BaselineOffset);
         }
-        RenderCategoryTicks();
-        if (!string.IsNullOrEmpty(XAxisLabel))
+        if(!sparklineMode)RenderCategoryTicks();
+        if (!sparklineMode&&!string.IsNullOrEmpty(XAxisLabel))
         {
             var label = Text(XAxisLabel, 12, "BleeckerTextSecondaryBrush"); label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             AddText(plot, label, (left + right - label.DesiredSize.Width) / 2, bottom + 40);
         }
-        if (!string.IsNullOrEmpty(YAxisLabel))
+        if (!sparklineMode&&!string.IsNullOrEmpty(YAxisLabel))
         {
             var label = Text(YAxisLabel, 12, "BleeckerTextSecondaryBrush"); label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             label.RenderTransform = new RotateTransform { Angle = -90 }; AddText(plot, label, 16, (top + bottom + label.DesiredSize.Width) / 2);
         }
         for (var index = 0; index < Series.Count; index++)
         {
-            var series = Series[index]; var points = Data.Select((row, i) => new BleeckerMonotoneCurve.Point(X(i), ticks.Length > 0 && BleeckerChartData.Number(BleeckerChartData.Read(row, series.Key)) is double value ? Y(value) : double.NaN)).ToArray();
+            var series = Series[index]; var points = Data.Select((row, i) => new BleeckerMonotoneCurve.Point(X(i), ticks.Length > 0 && PointValue(BleeckerChartData.Read(row, series.Key)) is double value ? Y(value) : double.NaN)).ToArray();
             var path = Resource<Path>($"<Path Stroke=\"{{ThemeResource {BleeckerChartTheme.PickColor(index)}}}\" StrokeThickness=\"2\" />");
             if (series.Color is not null) path.Stroke = series.Color;
             path.Data = Geometry(BleeckerMonotoneCurve.Create(points));
@@ -156,6 +159,7 @@ public sealed partial class BleeckerLineChart : Control
         PaintInteraction();
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
+    private double? PointValue(object? value)=>sparklineMode&&value is bool boolean?(boolean?1:0):BleeckerChartData.Number(value);
     private double RenderLegend()
     {
         if (!ShowLegend || Series.Count == 0) return 0;
@@ -218,11 +222,11 @@ public sealed partial class BleeckerLineChart : Control
     {
         if (active is null || tooltip is null || tooltipItems is null || tooltipContainer is null || index < 0 || index >= Data.Count) return;
         active.Children.Clear(); tooltipItems.Children.Clear();
-        var category = BleeckerChartData.Label(BleeckerChartData.Read(Data[index], XAxisKey!));
+        var category = sparklineMode?"":BleeckerChartData.Label(BleeckerChartData.Read(Data[index], XAxisKey!));
         var heading = Text(category, 16, "BleeckerTextSecondaryBrush"); heading.FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 };
-        heading.LineHeight = 24; heading.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; tooltipItems.Children.Add(heading);
-        var cursor = Resource<Line>($"<Line X1=\"{N(X(index))}\" X2=\"{N(X(index))}\" Y1=\"{N(top)}\" Y2=\"{N(bottom)}\" Stroke=\"{{ThemeResource BleeckerBorderBrush}}\" />"); active.Children.Add(cursor);
-        var descriptions = new List<string> { category };
+        heading.LineHeight = 24; heading.LineStackingStrategy = LineStackingStrategy.BlockLineHeight;if(!sparklineMode)tooltipItems.Children.Add(heading);
+        var cursor = Resource<Line>($"<Line X1=\"{N(X(index))}\" X2=\"{N(X(index))}\" Y1=\"{N(top)}\" Y2=\"{N(bottom)}\" Stroke=\"{{ThemeResource {(sparklineMode?"BleeckerSparklineCursorBrush":"BleeckerBorderBrush")}}}\" />"); active.Children.Add(cursor);
+        var descriptions = sparklineMode?new List<string>():new List<string> { category };
         foreach (var entry in rendered.OrderBy(item => item.Series.Name, StringComparer.Ordinal))
         {
             var raw = BleeckerChartData.Read(Data[index], entry.Series.Key); if (raw is null) continue;
@@ -231,9 +235,10 @@ public sealed partial class BleeckerLineChart : Control
             if (double.IsFinite(point.X) && double.IsFinite(point.Y))
             {
                 var dot = Resource<Ellipse>("<Ellipse Width=\"10\" Height=\"10\" Stroke=\"{ThemeResource BleeckerCardBrush}\" StrokeThickness=\"2\" />"); dot.Fill = entry.Brush;
-                Canvas.SetLeft(dot, point.X - 5); Canvas.SetTop(dot, point.Y - 5); active.Children.Add(dot);
+                var radius=sparklineMode?3:5;if(sparklineMode){dot.Width=dot.Height=6;dot.StrokeThickness=0;}
+                Canvas.SetLeft(dot, point.X - radius); Canvas.SetTop(dot, point.Y - radius); active.Children.Add(dot);
             }
-            var formatted = TooltipFormatter is not null && raw is not string && value is double numeric ? TooltipFormatter(numeric) : BleeckerChartData.Label(raw);
+            var formatted = sparklineMode&&raw is bool?"":TooltipFormatter is not null && raw is not string && value is double numeric ? TooltipFormatter(numeric) : BleeckerChartData.Label(raw);
             var text = Text(entry.Series.Name + " : " + formatted, 16, "BleeckerTextPrimaryBrush");
             text.LineHeight = 24; text.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; text.Margin = new Thickness(0, 4, 0, 4);
             tooltipItems.Children.Add(text); descriptions.Add(text.Text);
@@ -242,7 +247,7 @@ public sealed partial class BleeckerLineChart : Control
         var x = BleeckerTooltipPlacement.Position(X(index), tooltip.DesiredSize.Width, left, right);
         var y = BleeckerTooltipPlacement.Position(pointerY ?? (top + ActualHeight) / 2, tooltip.DesiredSize.Height, top, bottom);
         tooltipContainer.Margin = new Thickness(x, y, 0, 0);
-        if (tooltipItems.Children.Count == 1) { tooltip.Visibility = Visibility.Collapsed; tooltipContainer.Visibility = Visibility.Collapsed; }
+        if (tooltipItems.Children.Count == (sparklineMode?0:1)) { tooltip.Visibility = Visibility.Collapsed; tooltipContainer.Visibility = Visibility.Collapsed; }
         UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
@@ -273,7 +278,7 @@ public sealed partial class BleeckerLineChart : Control
     protected override AutomationPeer OnCreateAutomationPeer() => new ChartPeer(this);
     private sealed class ChartPeer(BleeckerLineChart owner) : FrameworkElementAutomationPeer(owner)
     {
-        protected override string GetClassNameCore() => nameof(BleeckerLineChart);
+        protected override string GetClassNameCore() => owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsControlElementCore() => true;
         protected override bool IsContentElementCore() => true;

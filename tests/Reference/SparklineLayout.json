@@ -1,0 +1,5004 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "7e143cfb557045bfad591be820c28b3bcb29e77469261f51723317f4ffef0ed5",
+  "recharts": "3.8.1",
+  "react": "19.2.4",
+  "cases": [
+    {
+      "id": "default",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "area",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "showArea": true
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "negative",
+      "props": {
+        "data": [
+          {
+            "v": -5
+          },
+          {
+            "v": -20
+          },
+          {
+            "v": 5
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,17.429C54.667,27.071,107.333,36.714,160,36.714C212.667,36.714,265.333,20.643,318,4.571",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,17.429C54.667,27.071,107.333,36.714,160,36.714C212.667,36.714,265.333,20.643,318,4.571",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 44.15625,
+            "height": 54
+          },
+          "text": " : -5",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-5</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "17.42857142857143",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,17.429C54.667,27.071,107.333,36.714,160,36.714C212.667,36.714,265.333,20.643,318,4.571",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-20</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "36.714285714285715",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "zero",
+      "props": {
+        "data": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,38L318,38",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,38L318,38",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">0</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,38L318,38",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 268.390625,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">0</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "constant",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 10
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,8L318,8",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,8L318,8",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,8L318,8",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 262.546875,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "gaps",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": null
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          }
+        ],
+        "dataKey": "v",
+        "showArea": true
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75ZM212.667,4.25L318,15.5",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75ZM212.667,4.25L318,15.5",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75ZM212.667,4.25L318,15.5",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "single",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "empty",
+      "props": {
+        "data": [],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "missing",
+      "props": {
+        "data": [
+          {},
+          {}
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "nested",
+      "props": {
+        "data": [
+          {
+            "metrics": {
+              "value": 10
+            }
+          },
+          {
+            "metrics": {
+              "value": 30
+            }
+          },
+          {
+            "metrics": {
+              "value": 20
+            }
+          }
+        ],
+        "dataKey": "metrics.value"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75C54.667,15.5,107.333,4.25,160,4.25C212.667,4.25,265.333,9.875,318,15.5",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75C54.667,15.5,107.333,4.25,160,4.25C212.667,4.25,265.333,9.875,318,15.5",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75C54.667,15.5,107.333,4.25,160,4.25C212.667,4.25,265.333,9.875,318,15.5",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "strings",
+      "props": {
+        "data": [
+          {
+            "v": "0x10"
+          },
+          {
+            "v": "7"
+          },
+          {
+            "v": ""
+          },
+          {
+            "v": false
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,2C37.111,9.125,72.222,16.25,107.333,22.25C142.444,28.25,177.556,38,212.667,38C247.778,38,282.889,38,318,38",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,2C37.111,9.125,72.222,16.25,107.333,22.25C142.444,28.25,177.556,38,212.667,38C247.778,38,282.889,38,318,38",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 63.328125,
+            "height": 54
+          },
+          "text": " : 0x10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">0x10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,2C37.111,9.125,72.222,16.25,107.333,22.25C142.444,28.25,177.556,38,212.667,38C247.778,38,282.889,38,318,38",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 37.140625,
+            "height": 54
+          },
+          "text": " : 7",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">7</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "22.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "explicit",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "color": "#197391",
+        "showArea": true
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(25, 115, 145)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "#197391",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "#197391",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(25, 115, 145)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "#197391",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "#197391",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(25, 115, 145)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "#197391",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "#197391",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "transparent",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "color": "transparent",
+        "showArea": true
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgba(0, 0, 0, 0)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "transparent",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "transparent",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgba(0, 0, 0, 0)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "transparent",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "transparent",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgba(0, 0, 0, 0)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "transparent",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "transparent",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "short",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "height": 12
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 12,
+        "lines": [
+          {
+            "d": "M2,8C37.111,6,72.222,4,107.333,4C142.444,4,177.556,6,212.667,6C247.778,6,282.889,4,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 12,
+        "lines": [
+          {
+            "d": "M2,8C37.111,6,72.222,4,107.333,4C142.444,4,177.556,6,212.667,6C247.778,6,282.889,4,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "8",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 12,
+        "lines": [
+          {
+            "d": "M2,8C37.111,6,72.222,4,107.333,4C142.444,4,177.556,6,212.667,6C247.778,6,282.889,4,318,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "4",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "narrow",
+      "width": 80,
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 80,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C10.444,20,18.889,11,27.333,11C35.778,11,44.222,20,52.667,20C61.111,20,69.556,11,78,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 80,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C10.444,20,18.889,11,27.333,11C35.778,11,44.222,20,52.667,20C61.111,20,69.556,11,78,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 80,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C10.444,20,18.889,11,27.333,11C35.778,11,44.222,20,52.667,20C61.111,20,69.556,11,78,2",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 2,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "27.333333333333332",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "empty-key",
+      "props": {
+        "data": [
+          {
+            "": 10
+          },
+          {
+            "": 30
+          }
+        ],
+        "dataKey": ""
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75L318,4.25",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75L318,4.25",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75L318,4.25",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.21875,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "all-negative",
+      "props": {
+        "data": [
+          {
+            "v": -10
+          },
+          {
+            "v": -20
+          },
+          {
+            "v": -5
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,15.5C54.667,26.75,107.333,38,160,38C212.667,38,265.333,21.125,318,4.25",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,15.5C54.667,26.75,107.333,38,160,38C212.667,38,265.333,21.125,318,4.25",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 51.484375,
+            "height": 54
+          },
+          "text": " : -10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,15.5C54.667,26.75,107.333,38,160,38C212.667,38,265.333,21.125,318,4.25",
+            "stroke": "rgb(44, 87, 132)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-20</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "non-numeric",
+      "props": {
+        "data": [
+          {
+            "v": "alpha"
+          },
+          {
+            "v": "42x"
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Light",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 67.890625,
+            "height": 54
+          },
+          "text": " : alpha",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">alpha</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 253.25,
+            "y": 2,
+            "width": 54.75,
+            "height": 54
+          },
+          "text": " : 42x",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">42x</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "default",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "area",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "showArea": true
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "negative",
+      "props": {
+        "data": [
+          {
+            "v": -5
+          },
+          {
+            "v": -20
+          },
+          {
+            "v": 5
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,17.429C54.667,27.071,107.333,36.714,160,36.714C212.667,36.714,265.333,20.643,318,4.571",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,17.429C54.667,27.071,107.333,36.714,160,36.714C212.667,36.714,265.333,20.643,318,4.571",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 44.15625,
+            "height": 54
+          },
+          "text": " : -5",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-5</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "17.42857142857143",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,17.429C54.667,27.071,107.333,36.714,160,36.714C212.667,36.714,265.333,20.643,318,4.571",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-20</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "36.714285714285715",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "zero",
+      "props": {
+        "data": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,38L318,38",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,38L318,38",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">0</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,38L318,38",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 268.390625,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">0</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "constant",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 10
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,8L318,8",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,8L318,8",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,8L318,8",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 262.546875,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "gaps",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": null
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          }
+        ],
+        "dataKey": "v",
+        "showArea": true
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75ZM212.667,4.25L318,15.5",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75ZM212.667,4.25L318,15.5",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75ZM212.667,4.25L318,15.5",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "single",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "empty",
+      "props": {
+        "data": [],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "missing",
+      "props": {
+        "data": [
+          {},
+          {}
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "nested",
+      "props": {
+        "data": [
+          {
+            "metrics": {
+              "value": 10
+            }
+          },
+          {
+            "metrics": {
+              "value": 30
+            }
+          },
+          {
+            "metrics": {
+              "value": 20
+            }
+          }
+        ],
+        "dataKey": "metrics.value"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75C54.667,15.5,107.333,4.25,160,4.25C212.667,4.25,265.333,9.875,318,15.5",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75C54.667,15.5,107.333,4.25,160,4.25C212.667,4.25,265.333,9.875,318,15.5",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75C54.667,15.5,107.333,4.25,160,4.25C212.667,4.25,265.333,9.875,318,15.5",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "strings",
+      "props": {
+        "data": [
+          {
+            "v": "0x10"
+          },
+          {
+            "v": "7"
+          },
+          {
+            "v": ""
+          },
+          {
+            "v": false
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,2C37.111,9.125,72.222,16.25,107.333,22.25C142.444,28.25,177.556,38,212.667,38C247.778,38,282.889,38,318,38",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,2C37.111,9.125,72.222,16.25,107.333,22.25C142.444,28.25,177.556,38,212.667,38C247.778,38,282.889,38,318,38",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 63.328125,
+            "height": 54
+          },
+          "text": " : 0x10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">0x10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,2C37.111,9.125,72.222,16.25,107.333,22.25C142.444,28.25,177.556,38,212.667,38C247.778,38,282.889,38,318,38",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 37.140625,
+            "height": 54
+          },
+          "text": " : 7",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">7</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "22.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "explicit",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "color": "#197391",
+        "showArea": true
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(25, 115, 145)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "#197391",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "#197391",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(25, 115, 145)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "#197391",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "#197391",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgb(25, 115, 145)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "#197391",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "#197391",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "transparent",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "color": "transparent",
+        "showArea": true
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgba(0, 0, 0, 0)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "transparent",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "transparent",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgba(0, 0, 0, 0)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "transparent",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "transparent",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C37.111,20,72.222,11,107.333,11C142.444,11,177.556,20,212.667,20C247.778,20,282.889,11,318,2",
+            "stroke": "rgba(0, 0, 0, 0)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "transparent",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "transparent",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "short",
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v",
+        "height": 12
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 12,
+        "lines": [
+          {
+            "d": "M2,8C37.111,6,72.222,4,107.333,4C142.444,4,177.556,6,212.667,6C247.778,6,282.889,4,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 12,
+        "lines": [
+          {
+            "d": "M2,8C37.111,6,72.222,4,107.333,4C142.444,4,177.556,6,212.667,6C247.778,6,282.889,4,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "8",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 12,
+        "lines": [
+          {
+            "d": "M2,8C37.111,6,72.222,4,107.333,4C142.444,4,177.556,6,212.667,6C247.778,6,282.889,4,318,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "4",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "narrow",
+      "width": 80,
+      "props": {
+        "data": [
+          {
+            "v": 10
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 80,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C10.444,20,18.889,11,27.333,11C35.778,11,44.222,20,52.667,20C61.111,20,69.556,11,78,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 80,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C10.444,20,18.889,11,27.333,11C35.778,11,44.222,20,52.667,20C61.111,20,69.556,11,78,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 80,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,29C10.444,20,18.889,11,27.333,11C35.778,11,44.222,20,52.667,20C61.111,20,69.556,11,78,2",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 2,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "27.333333333333332",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "empty-key",
+      "props": {
+        "data": [
+          {
+            "": 10
+          },
+          {
+            "": 30
+          }
+        ],
+        "dataKey": ""
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75L318,4.25",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75L318,4.25",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,26.75L318,4.25",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.21875,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">30</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "all-negative",
+      "props": {
+        "data": [
+          {
+            "v": -10
+          },
+          {
+            "v": -20
+          },
+          {
+            "v": -5
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,15.5C54.667,26.75,107.333,38,160,38C212.667,38,265.333,21.125,318,4.25",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,15.5C54.667,26.75,107.333,38,160,38C212.667,38,265.333,21.125,318,4.25",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 51.484375,
+            "height": 54
+          },
+          "text": " : -10",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-10</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [
+          {
+            "d": "M2,15.5C54.667,26.75,107.333,38,160,38C212.667,38,265.333,21.125,318,4.25",
+            "stroke": "rgb(91, 163, 245)",
+            "strokeWidth": "2px",
+            "fill": "none"
+          }
+        ],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">-20</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ],
+        "axes": 0,
+        "legend": 0
+      }
+    },
+    {
+      "id": "non-numeric",
+      "props": {
+        "data": [
+          {
+            "v": "alpha"
+          },
+          {
+            "v": "42x"
+          }
+        ],
+        "dataKey": "v"
+      },
+      "scheme": "Dark",
+      "normal": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": "",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 67.890625,
+            "height": 54
+          },
+          "text": " : alpha",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">alpha</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "lines": [],
+        "gradient": [
+          {
+            "offset": "0%",
+            "color": "var(--color-sea)",
+            "opacity": "0.3"
+          },
+          {
+            "offset": "100%",
+            "color": "var(--color-sea)",
+            "opacity": "0"
+          }
+        ],
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 253.25,
+            "y": 2,
+            "width": 54.75,
+            "height": 54
+          },
+          "text": " : 42x",
+          "html": "<div class=\"recharts-default-tooltip\" role=\"status\" aria-live=\"assertive\" style=\"margin: 0px; padding: 10px; background-color: var(--color-card); border: 1px solid var(--color-border); white-space: nowrap; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 32px; backdrop-filter: blur(8px);\"><p class=\"recharts-tooltip-label\" style=\"margin: 0px; color: var(--color-text-secondary); font-weight: 600;\"></p><ul class=\"recharts-tooltip-item-list\" style=\"padding: 0px; margin: 0px;\"><li class=\"recharts-tooltip-item\" style=\"display: block; padding-top: 4px; padding-bottom: 4px; color: var(--color-text-primary);\"><span class=\"recharts-tooltip-item-name\"></span><span class=\"recharts-tooltip-item-separator\"> : </span><span class=\"recharts-tooltip-item-value\">42x</span><span class=\"recharts-tooltip-item-unit\"></span></li></ul></div>"
+        },
+        "dots": [],
+        "axes": 0,
+        "legend": 0
+      }
+    }
+  ]
+}

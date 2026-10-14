@@ -43,6 +43,17 @@ filtered for spacing; long labels can remove earlier ticks. Native acceptance
 must preserve the algorithm and text-measurement boundary rather than hardcode
 these examples.
 
+The Sparkline implementation exposed an erroneous zero clamp in the earlier
+all-negative domain reference generator. Four actual rendered source axes now
+establish the negative upper bound and constant-negative behavior in
+`tests/Reference/NegativeChartDomains.json`. For example, [-10,-4] yields
+-12/-10/-8/-6/-4, and [-0.3,-0.3] yields -0.5/-0.4/-0.3/-0.2/-0.1.
+Shared scale construction follows decimal tick multiplication, and visible tick
+labels use shortest numeric strings instead of geometry's 17-digit formatting.
+Unit regressions and native axes in both themes check those captured strings.
+The earlier negative vector in LineData.json is corrected to the rendered
+producer's domain. See [Sparkline evidence](sparkline-reference.md).
+
 The default legend sorts entries by their displayed names. Its source line
 icon is 14px with a 4px gap and 10px item margin. The wrapper adds 16px top
 padding. Tooltip content uses the chart-specific theme, label and series names,

@@ -320,7 +320,7 @@ public sealed partial class LineChartsFixture : UserControl
         Require(channels.Length is 3 or 4, $"{id}: unexpected source paint syntax."); var alpha = channels.Length == 4 ? channels[3] : 1;
         Require(Math.Abs(brush.Color.A / 255d * brush.Opacity - alpha) < 1e-9 && (alpha == 0 || brush.Color.R == channels[0] && brush.Color.G == channels[1] && brush.Color.B == channels[2]), $"{id}: native/source chart paint differs.");
     }
-    private static void CompareCurve(PathGeometry actual, string expected, string id)
+    internal static void CompareCurve(PathGeometry actual, string expected, string id)
     {
         var commands = new List<(string Kind, double[] Values)>();
         foreach (var figure in actual.Figures)

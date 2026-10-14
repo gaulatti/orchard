@@ -31,6 +31,7 @@
         <None Include="../Reference/ChartTheme.json" Link="Fixtures/ChartTheme.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/LineCurve.json" Link="Fixtures/LineCurve.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/LineData.json" Link="Fixtures/LineData.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/NegativeChartDomains.json" Link="Fixtures/NegativeChartDomains.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/TooltipPlacement.json" Link="Fixtures/TooltipPlacement.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/CheckboxRoundedHit.json" Link="Fixtures/CheckboxRoundedHit.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/InputRoundedHit.json" Link="Fixtures/InputRoundedHit.json" CopyToOutputDirectory="PreserveNewest" />

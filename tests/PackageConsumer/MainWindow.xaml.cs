@@ -22,6 +22,7 @@ public sealed partial class MainWindow : Window
     {
         InitializeComponent();
         PackageBauhaus.ImageSource = new WriteableBitmap(4, 4);
+        foreach(var value in new[]{10d,30d,20d,40d})PackageSparkline.Data.Add(new Dictionary<string,object?>{{"v",value}});
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
@@ -197,6 +198,7 @@ public sealed partial class MainWindow : Window
                 VerifySectionHeader();
                 VerifyDashboardSection();
                 VerifyDashboardGrid();
+                await VerifySparklineAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -289,6 +291,22 @@ public sealed partial class MainWindow : Window
             else link.SetValue(Control.ForegroundProperty, originalPaint);
             link.IsEnabled = originalEnabled;
         }
+    }
+
+    private async Task VerifySparklineAsync()
+    {
+        PackageSparkline.ApplyTemplate();Root.UpdateLayout();
+        var chart=BrandDescendants<BleeckerLineChart>(PackageSparkline).Single();var plot=BrandDescendants<Canvas>(chart).Single(x=>x.Name=="PART_Plot");
+        await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not render.");
+        var path=plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Single();var geometry=(PathGeometry)path.Data;
+        Require(ReferenceEquals(chart.Data,PackageSparkline.Data)&&Math.Abs(geometry.Figures[0].StartPoint.X-2)<.001&&Math.Abs(geometry.Figures[0].StartPoint.Y-29)<.001&&path.Fill is null&&path.StrokeThickness==2,
+            "Packaged Sparkline lost compact geometry, source ShowArea behavior or consumer data identity.");
+        Require(AutomationProperties.GetName(chart)=="Independent compact series"&&!PackageSparkline.IsTabStop&&chart.IsTabStop,"Packaged Sparkline lost its inspection boundary.");
+        Require(chart.Focus(FocusState.Keyboard),"Could not focus packaged Sparkline.");
+        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 10","Packaged Sparkline did not inspect its first raw value.");
+        var original=PackageSparkline.Data;PackageSparkline.Data=new();
+        await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0,"Packaged Sparkline retained an empty curve.");
+        PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
     }
 
     private void VerifyDashboardGrid()

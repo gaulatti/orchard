@@ -1,0 +1,10 @@
+<UserControl x:Class="Orchard.Catalog.SparklinesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Sparklines" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned compact series. The pinned source's ShowArea option still produces an unfilled line." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerSparkline x:Name="Specimen" DataKey="v" Width="320" HorizontalAlignment="Left" AutomationProperties.Name="Fictional review trend" />
+  <orchard:BleeckerSparkline x:Name="Area" DataKey="v" ShowArea="True" Width="320" HorizontalAlignment="Left" AutomationProperties.Name="Source ShowArea preview" />
+  <orchard:BleeckerSparkline x:Name="Explicit" DataKey="v" Height="48" Width="320" HorizontalAlignment="Left" Color="{ThemeResource BleeckerTerracottaBrush}" AutomationProperties.Name="Explicit color trend" />
+  <orchard:BleeckerSparkline DataKey="v" Width="320" HorizontalAlignment="Left" AutomationProperties.Name="Empty consumer trend" />
+ </StackPanel>
+</UserControl>

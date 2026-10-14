@@ -93,8 +93,12 @@ jobs:
         if: ${{ !cancelled() && (steps.dashboard_section_smoke.outcome == 'success' || steps.dashboard_section_smoke.outcome == 'failure') }}
         id: dashboard_grid_smoke
         run: ./scripts/smoke-catalog.ps1 -Component dashboard-grid -Output artifacts/dashboard-grid -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify Sparkline geometry, raw inspection and lifecycle
         if: ${{ !cancelled() && (steps.dashboard_grid_smoke.outcome == 'success' || steps.dashboard_grid_smoke.outcome == 'failure') }}
+        id: sparkline_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component sparkline -Output artifacts/sparkline -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -230,8 +234,12 @@ jobs:
         if: ${{ !cancelled() && (steps.dashboard_section_smoke.outcome == 'success' || steps.dashboard_section_smoke.outcome == 'failure') }}
         id: dashboard_grid_smoke
         run: ./scripts/smoke-catalog.ps1 -Component dashboard-grid -Output artifacts/dashboard-grid -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 Sparkline geometry and inspection
         if: ${{ !cancelled() && (steps.dashboard_grid_smoke.outcome == 'success' || steps.dashboard_grid_smoke.outcome == 'failure') }}
+        id: sparkline_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component sparkline -Output artifacts/sparkline -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition
