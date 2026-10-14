@@ -26,6 +26,7 @@ public sealed partial class LineChartsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"line-chart-{scheme}"); await input.AcquireAsync(Chart); await input.MoveAsync(Before);
+        await RemountChartAsync();
         Chart.ApplyTemplate(); UpdateLayout(); var root = (FrameworkElement)VisualTreeHelper.GetChild(Chart, 0);
         var plot = (Canvas)root.FindName("PART_Plot"); var legend = (Canvas)root.FindName("PART_Legend");
         await AwaitAsync(() => plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count() == 2, "Line chart did not render both consumer series.");
@@ -38,14 +39,16 @@ public sealed partial class LineChartsFixture : UserControl
         Require(plot.Children.OfType<TextBlock>().Any(label => label.Text == "Harbor") && plot.Children.OfType<TextBlock>().Any(label => label.Text == "North"),
             "Category tick visibility incorrectly clipped labels to the plot instead of the full chart view box.");
         Require(FrameworkElementAutomationPeer.CreatePeerForElement(Chart).GetName() == "Fictional coverage totals" && Chart.IsTabStop, "Native chart lost its consumer name or single keyboard entry.");
-        Require(Chart.Focus(FocusState.Keyboard), "Native chart refused keyboard focus."); input.Key(0x27);
         var popup = (Border)root.FindName("PART_Tooltip"); var items = (StackPanel)root.FindName("PART_TooltipItems");
+        Require(Chart.Focus(FocusState.Keyboard), "Native chart refused keyboard focus.");
+        await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Harbor", "Initial keyboard focus did not inspect the first consumer category.");
+        input.Key(0x27);
         await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().First().Text == "Reed", "Arrow navigation did not inspect the second consumer category.");
         var container = (Grid)root.FindName("PART_TooltipContainer");
         await AwaitAsync(() => Math.Abs(popup.ActualHeight - 110) < .001, "Tooltip item padding and line height did not cross the source layout boundary.");
         Require(Math.Abs(container.Margin.Top - 35) < .001 && Math.Abs(container.Margin.Left - 256.6666667) < .001, "Keyboard tooltip lost the frozen chart-height coordinate or edge placement.");
         VerifyEffects(root);
-        await AwaitPresentationAsync();
+        await AwaitPresentationAsync(root);
         Require(((Canvas)root.FindName("PART_Active")).Children.OfType<Ellipse>().Count() == 2, "Active chart category did not show both source dots.");
         await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"line-chart-{scheme}-keyboard.png"));
         await VerifyShadowPixelsAsync(scheme, folder);
@@ -53,7 +56,7 @@ public sealed partial class LineChartsFixture : UserControl
         var bounds = input.ScreenBounds(Chart); var actualPointerY = ((int)(bounds.Y + 50 * XamlRoot.RasterizationScale) - bounds.Y) / XamlRoot.RasterizationScale;
         await AwaitAsync(() => Math.Abs(container.Margin.Top - (actualPointerY + 10)) < .001, "Pointer tooltip did not track the physical pointer coordinate.");
         await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"line-chart-{scheme}-pointer.png"));
-        await input.MoveAsync(Before); Chart.Focus(FocusState.Keyboard); input.Key(0x27);
+        await input.MoveAsync(Before); Chart.Focus(FocusState.Keyboard); input.Key(0x0D);
         await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().First().Text == "Reed", "Keyboard inspection did not restore after pointer exit.");
         Chart.TooltipFormatter = value => $"amount {value}"; Chart.YAxisTickFormatter = value => $"${value}";
         await AwaitAsync(() => items.Children.OfType<TextBlock>().Any(item => item.Text.Contains("amount 220")), "Consumer tooltip formatter did not reach the native overlay.");
@@ -74,11 +77,60 @@ public sealed partial class LineChartsFixture : UserControl
         foreach (var record in new[] { Record("Harbor", 100, 50), Record("Reed", 220, 180), Record("Vale", 140, 90), Record("North", 310, 240) }) Chart.Data.Add(record);
         Chart.Series[0].Name = "Consumer total"; Chart.Series[0].Color = null; Chart.TooltipFormatter = null; Chart.YAxisTickFormatter = null; Chart.ShowLegend = true; Chart.ShowGrid = true;
         await AwaitAsync(() => plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count() == 2 && legend.Children.Count == 2, "Native chart did not restore consumer data and defaults.");
+        Require(Before.Focus(FocusState.Keyboard), "Normal chart capture could not leave keyboard inspection.");
         await input.MoveAsync(Before); await MainWindow.CaptureElementAsync(Chart, System.IO.Path.Combine(folder, $"line-chart-{scheme}.png"));
         var sourceCases = await VerifySourceCasesAsync(scheme, folder, plot, legend);
         var tooltipCases = await VerifyTooltipCasesAsync(scheme, folder, input, root);
         await VerifyBlurProbeAsync(scheme, folder, input);
+        await VerifyInteractionAsync(scheme,folder,input);
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"line-chart-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, sourceCases, tooltipCases, curves = 2, keyboard = true, liveData = true, explicitTransparent = true }));
+    }
+    private async Task RemountChartAsync()
+    {
+        Before.Focus(FocusState.Keyboard);
+        var unloaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var loaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        void OnUnloaded(object sender, RoutedEventArgs args) => unloaded.TrySetResult();
+        void OnLoaded(object sender, RoutedEventArgs args) => loaded.TrySetResult();
+        Chart.Unloaded += OnUnloaded; Chart.Loaded += OnLoaded;
+        try
+        {
+            ChartStage.Children.Remove(Chart); await unloaded.Task.WaitAsync(TimeSpan.FromSeconds(2));
+            ChartStage.Children.Add(Chart); await loaded.Task.WaitAsync(TimeSpan.FromSeconds(2)); UpdateLayout();
+        }
+        finally { Chart.Unloaded -= OnUnloaded; Chart.Loaded -= OnLoaded; }
+    }
+    private async Task VerifyInteractionAsync(BleeckerColorScheme scheme,string folder,NativeInputSession input)
+    {
+        await input.MoveAsync(Before);Chart.Series=new ObservableCollection<BleeckerChartSeries>{new(){Key="total",Name="Consumer total"}};
+        Chart.Data=new ObservableCollection<IReadOnlyDictionary<string,object?>>{Record("Harbor",100,0),Record("Reed",220,0),Record("Vale",140,0),Record("North",310,0)};
+        await RemountChartAsync();var root=(FrameworkElement)VisualTreeHelper.GetChild(Chart,0);var popup=(Border)root.FindName("PART_Tooltip");var active=(Canvas)root.FindName("PART_Active");var items=(StackPanel)root.FindName("PART_TooltipItems");
+        using var stream=typeof(LineChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LineInteraction.json")??throw new InvalidOperationException("Missing frozen interaction sequence.");using var reference=JsonDocument.Parse(stream);
+        var sequence=reference.RootElement.GetProperty("results").EnumerateArray().Single(item=>item.GetProperty("scheme").GetString()==scheme.ToString());var evidence=new List<object>();
+        foreach(var expected in sequence.GetProperty("steps").EnumerateArray())
+        {
+            var action=expected.GetProperty("action").GetString()!;
+            switch(action)
+            {
+                case "focus":case "refocus":Require(Chart.Focus(FocusState.Keyboard),"Chart refused keyboard entry.");break;
+                case "blur":Require(After.Focus(FocusState.Keyboard),"Chart refused normal focus exit.");break;
+                case "ArrowRight":input.Key(0x27);break;
+                case "ArrowLeft":input.Key(0x25);break;
+                case "Enter":input.Key(0x0D);break;
+                case "pointer-midpoint":await input.MoveAsync(Chart,localPoint:new Point(340,100));break;
+                case "pointer-exit":await input.MoveAsync(Before);break;
+                case "single-right":Chart.Data=new ObservableCollection<IReadOnlyDictionary<string,object?>>{Record("Harbor",100,0)};await Task.Delay(32);input.Key(0x27);break;
+                case "single-enter":input.Key(0x0D);break;
+                case "empty-left":Chart.Data.Clear();await Task.Delay(32);input.Key(0x25);break;
+                case "empty-enter":input.Key(0x0D);break;
+                default:throw new InvalidOperationException("Unknown frozen keyboard action.");
+            }
+            bool Matches()=>popup.Visibility==(expected.GetProperty("visible").GetBoolean()?Visibility.Visible:Visibility.Collapsed)&&active.Children.OfType<Line>().Any()==expected.GetProperty("cursor").GetBoolean()&&(popup.Visibility!=Visibility.Visible||items.Children.OfType<TextBlock>().First().Text==expected.GetProperty("label").GetString())&&(Chart.FocusState==FocusState.Keyboard)==expected.GetProperty("focused").GetBoolean();
+            await AwaitAsync(Matches,$"{action}: native focus/keyboard/pointer state differs from the frozen source.");
+            evidence.Add(new{action,visible=popup.Visibility==Visibility.Visible,label=popup.Visibility==Visibility.Visible?items.Children.OfType<TextBlock>().First().Text:"",cursor=active.Children.OfType<Line>().Any(),focused=Chart.FocusState==FocusState.Keyboard});
+        }
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"line-interaction-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,steps=evidence}));
+        Before.Focus(FocusState.Keyboard);Chart.Series=new ObservableCollection<BleeckerChartSeries>{new(){Key="total",Name="Consumer total"},new(){Key="selected",Name="Consumer selected"}};Chart.Data=new ObservableCollection<IReadOnlyDictionary<string,object?>>{Record("Harbor",100,50),Record("Reed",220,180),Record("Vale",140,90),Record("North",310,240)};
     }
     private static void VerifyEffects(FrameworkElement root)
     {
@@ -88,12 +140,14 @@ public sealed partial class LineChartsFixture : UserControl
         var backdrop = ElementCompositionPreview.GetElementChildVisual((Grid)root.FindName("PART_TooltipBackdrop")) as SpriteVisual;
         Require(backdrop?.Brush is CompositionEffectBrush brush && brush.Properties.TryGetScalar("chartBackdrop.BlurAmount", out var amount) == CompositionGetValueStatus.Succeeded && amount == 8 && backdrop.Clip is CompositionGeometricClip, "Tooltip backdrop did not consume its scoped Gaussian blur or rounded clipping.");
     }
-    private static async Task AwaitPresentationAsync()
+    private static async Task AwaitPresentationAsync(FrameworkElement root)
     {
         var completion=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(2));
         void Frame(object? sender,object args){if(++frames==2)completion.TrySetResult();}
         CompositionTarget.Rendering+=Frame;
-        try{await completion.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
+        try{await completion.Task.WaitAsync(deadline.Token);}finally{CompositionTarget.Rendering-=Frame;}
+        await ElementCompositionPreview.GetElementVisual(root).Compositor.RequestCommitAsync().AsTask().WaitAsync(deadline.Token);
     }
     private async Task VerifyShadowPixelsAsync(BleeckerColorScheme scheme, string folder)
     {
@@ -124,10 +178,13 @@ public sealed partial class LineChartsFixture : UserControl
         ChartStage.Children.Add(probe);
         try
         {
-            UpdateLayout(); await Task.Delay(32); Require(probe.Focus(FocusState.Keyboard), "Blur probe refused actual keyboard entry."); input.Key(0x27);
+            UpdateLayout(); await Task.Delay(32); Require(probe.Focus(FocusState.Keyboard), "Blur probe refused actual keyboard entry.");
             var root = (FrameworkElement)VisualTreeHelper.GetChild(probe, 0); var popup = (Border)root.FindName("PART_Tooltip");
-            await AwaitAsync(() => popup.Visibility == Visibility.Visible && popup.ActualHeight == 110, "Blur probe did not produce its source tooltip dimensions."); VerifyEffects(root);
-            await Task.Delay(50); var capturePath = System.IO.Path.Combine(folder, $"line-tooltip-{scheme}-blur.png"); await NativeScreenCapture.CaptureClientAsync(input.Window, capturePath);
+            var items = (StackPanel)root.FindName("PART_TooltipItems");
+            await AwaitAsync(() => popup.Visibility == Visibility.Visible && items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Harbor", "Blur probe initial focus did not select its first source category.");
+            input.Key(0x27);
+            await AwaitAsync(() => popup.Visibility == Visibility.Visible && popup.ActualHeight == 110 && items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Reed", "Blur probe did not produce its source tooltip dimensions and category."); VerifyEffects(root);
+            await AwaitPresentationAsync(root); var capturePath = System.IO.Path.Combine(folder, $"line-tooltip-{scheme}-blur.png"); await NativeScreenCapture.CaptureClientAsync(input.Window, capturePath);
             using var file = File.OpenRead(capturePath); using var random = file.AsRandomAccessStream(); var decoder = await BitmapDecoder.CreateAsync(random);
             var pixels = (await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, new BitmapTransform(), ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage)).DetachPixelData();
             var actual = new List<object>();
@@ -157,7 +214,13 @@ public sealed partial class LineChartsFixture : UserControl
             var format = props.TryGetProperty("format", out var formatting) && formatting.GetBoolean(); Chart.YAxisTickFormatter = format ? value => "$" + value.ToString(CultureInfo.InvariantCulture) : null; Chart.TooltipFormatter = format ? value => "amount " + value.ToString(CultureInfo.InvariantCulture) : null;
             Chart.Series = new ObservableCollection<BleeckerChartSeries>(props.GetProperty("series").EnumerateArray().Select(item => new BleeckerChartSeries { Key = item.GetProperty("key").GetString()!, Name = item.GetProperty("name").GetString()!, Color = item.TryGetProperty("color", out var color) ? new SolidColorBrush(color.GetString() == "transparent" ? Microsoft.UI.Colors.Transparent : Windows.UI.Color.FromArgb(255, 25, 115, 145)) : null }));
             Chart.Data = new ObservableCollection<IReadOnlyDictionary<string, object?>>(props.GetProperty("data").EnumerateArray().Select(item => (IReadOnlyDictionary<string, object?>)item.EnumerateObject().ToDictionary(property => property.Name, property => Value(property.Value))));
-            UpdateLayout(); await Task.Delay(32); Require(Chart.Focus(FocusState.Keyboard), $"{id}: tooltip keyboard entry failed."); input.Key(0x27);
+            await RemountChartAsync();
+            root = (FrameworkElement)VisualTreeHelper.GetChild(Chart, 0);
+            popup = (Border)root.FindName("PART_Tooltip"); container = (Grid)root.FindName("PART_TooltipContainer");
+            items = (StackPanel)root.FindName("PART_TooltipItems"); active = (Canvas)root.FindName("PART_Active");
+            UpdateLayout(); Require(Chart.Focus(FocusState.Keyboard), $"{id}: tooltip keyboard entry failed.");
+            await AwaitAsync(() => Chart.FocusState == FocusState.Keyboard && (Chart.Data.Count == 0 || items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == Convert.ToString(Chart.Data[0][Chart.XAxisKey!], CultureInfo.InvariantCulture)), $"{id}: initial focus did not cross the native entry boundary.");
+            input.Key(0x27);
             var expected = specimen.GetProperty("keyboard"); var visible = expected.GetProperty("visible").GetBoolean();
             await AwaitAsync(() => popup.Visibility == (visible ? Visibility.Visible : Visibility.Collapsed) && (Chart.Data.Count == 0 || items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == expected.GetProperty("label").GetString()) && active.Children.OfType<Line>().Any() == expected.GetProperty("cursor").GetBoolean(), $"{id}: source/native tooltip visibility, category or cursor differs.");
             if (visible)
@@ -169,7 +232,7 @@ public sealed partial class LineChartsFixture : UserControl
                 var anchor = Chart.Data.Count == 1 ? (60 + (string.IsNullOrEmpty(Chart.YAxisLabel) ? 0 : 20) + Chart.ActualWidth - 20) / 2 : 60 + (string.IsNullOrEmpty(Chart.YAxisLabel) ? 0 : 20) + (Chart.ActualWidth - 20 - 60 - (string.IsNullOrEmpty(Chart.YAxisLabel) ? 0 : 20)) / (Chart.Data.Count - 1);
                 if (Math.Abs(sourceX - anchor - 10) < .001) Require(Math.Abs(container.Margin.Left - sourceX) < .001, $"{id}: right tooltip offset differs.");
                 else if (Math.Abs(sourceX - 60) < .001) Require(Math.Abs(container.Margin.Left - sourceX) < .001, $"{id}: oversized tooltip lost source clamping.");
-                else Require(Math.Abs(container.Margin.Left + popup.ActualWidth - sourceX - sourceWidth) < .001, $"{id}: left tooltip edge placement differs.");
+                else await AwaitAsync(() => Math.Abs(container.Margin.Left + popup.ActualWidth - sourceX - sourceWidth) < .001, $"{id}: left tooltip edge placement differs.");
                 VerifyEffects(root); evidence.Add(new { id, source = box.Clone(), native = new { x = container.Margin.Left, y = container.Margin.Top, width = popup.ActualWidth, height = popup.ActualHeight } });
                 await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"line-tooltip-{scheme}-{id}.png"));
             }

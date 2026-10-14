@@ -1,0 +1,297 @@
+{
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "673539e9a2c5a264fbfb6c35f09e7d956d2dbde9670f3ae6cf1888e752ec403a",
+  "recharts": "3.8.1",
+  "browser": "155.0.4283.45",
+  "props": {
+    "xAxisKey": "label",
+    "series": [
+      {
+        "key": "total",
+        "name": "Consumer total"
+      }
+    ],
+    "data": [
+      {
+        "label": "Harbor",
+        "total": 100
+      },
+      {
+        "label": "Reed",
+        "total": 220
+      },
+      {
+        "label": "Vale",
+        "total": 140
+      },
+      {
+        "label": "North",
+        "total": 310
+      }
+    ]
+  },
+  "results": [
+    {
+      "scheme": "Light",
+      "steps": [
+        {
+          "action": "focus",
+          "visible": true,
+          "label": "Harbor",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "Enter",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "Enter",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "Vale",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "North",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "North",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowLeft",
+          "visible": true,
+          "label": "Vale",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "blur",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": false
+        },
+        {
+          "action": "refocus",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "Enter",
+          "visible": true,
+          "label": "Vale",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "pointer-midpoint",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "pointer-exit",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "ArrowLeft",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "single-right",
+          "visible": true,
+          "label": "Harbor",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "single-enter",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "empty-left",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "empty-enter",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "steps": [
+        {
+          "action": "focus",
+          "visible": true,
+          "label": "Harbor",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "Enter",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "Enter",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "Vale",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "North",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowRight",
+          "visible": true,
+          "label": "North",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "ArrowLeft",
+          "visible": true,
+          "label": "Vale",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "blur",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": false
+        },
+        {
+          "action": "refocus",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "Enter",
+          "visible": true,
+          "label": "Vale",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "pointer-midpoint",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "pointer-exit",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "ArrowLeft",
+          "visible": true,
+          "label": "Reed",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "single-right",
+          "visible": true,
+          "label": "Harbor",
+          "cursor": true,
+          "focused": true
+        },
+        {
+          "action": "single-enter",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "empty-left",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        },
+        {
+          "action": "empty-enter",
+          "visible": false,
+          "label": "",
+          "cursor": false,
+          "focused": true
+        }
+      ]
+    }
+  ]
+}

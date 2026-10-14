@@ -39,8 +39,20 @@ The default legend sorts entries by their displayed names. Its source line
 icon is 14px with a 4px gap and 10px item margin. The wrapper adds 16px top
 padding. Tooltip content uses the chart-specific theme, label and series names,
 numeric formatter results when provided, and the source's empty/null behavior.
-The chart is one keyboard stop with application semantics; Arrow navigation
-updates the active category and tooltip. Native accessible names, values,
+The source chart is one keyboard stop with application semantics. Initial focus
+opens the first category. Left/Right navigation retains a separate keyboard
+index and ignores moves beyond either boundary. Enter toggles inspection; blur
+hides it without discarding that index. Refocus alone leaves retained inspection
+hidden; Enter reopens it. Pointer hover takes precedence and disables keyboard
+inspection; pointer exit hides hover without replacing the retained keyboard
+index. A subsequent arrow moves from the retained keyboard category. Data
+shrink clips the resolved index; empty data has no inspection output.
+
+`LineInteraction.json` records 18 actual browser actions in each theme against
+the unchanged source and pinned Recharts 3.8.1. Native state regression coverage
+uses these captured outcomes. Catalog and independent package fixtures exercise
+the normal WinUI focus and native keyboard path; lifecycle remounts wait for
+actual Loaded/Unloaded events. Native accessible names, values,
 keyboard/pointer focus and ownership still require actual UIA/Narrator evidence.
 
 ## Evidence and implementation boundary
@@ -164,9 +176,11 @@ widths and captures remain recorded for review.
 Run `38517156846` exposed an unpainted shadow on both hosted architectures,
 despite local success. The vector-mask candidate passes the unchanged local
 pixel checks at `artifacts/smoke-line-tooltip-vector-mask`. The fixture waits for
-two actual rendering frames before its first composed sample, with the same
-two-second presentation deadline used by the contrast mask fixture. Hosted
-verification of this correction remains required.
+two actual rendering frames and an explicit compositor commit before sampling
+the first tooltip and blur probe. Both stages share the existing two-second deadline;
+RGB tolerances remain unchanged. Run `38519659390` passes the shadow profile
+on native ARM64 and the complete focused chart on x64. ARM64 then fails the
+zero-data tooltip's left edge placement; the full hosted chart is not accepted.
 Both updated solution builds, the complete local x64 catalog at
 `artifacts/smoke-render-corrections-all` and a fresh x64 package consumer at
 `artifacts/package-consumer-render-corrections` pass. The current package has
@@ -179,6 +193,20 @@ shadow/backdrop graphs and cleanup in Light/Dark at
 The complete local x64 catalog passes at `artifacts/smoke-line-tooltip-full`.
 Native ARM64 tooltip verification remains required; the earlier ARM64 focused
 chart evidence predates these tooltip changes.
+
+The source interaction checkpoint passes the actual native 18-step sequence
+in each theme at `artifacts/smoke-line-interaction-native`, alongside all 22
+chart and 26 tooltip specimens and sampled effect pixels. Focus, Enter, blur,
+refocus, pointer precedence/exit, boundary arrows and data shrink/empty actions
+use normal WinUI focus and physical native input. This local x64 result uses
+display/text scale 1, disabled animations and contrast off.
+The fresh independent x64 consumer passes initial focus, physical arrows/Enter,
+hide/reopen and retained selection across blur/refocus in both themes at
+`artifacts/package-consumer-line-interaction`. Its package SHA-256 is
+`302b2e59e1e7d60349a09fc2c83816c6d8b352780d2830ce3b125069d04385a8`.
+This checkpoint has 38 passing regressions and clean x64/ARM64 solution builds.
+The complete local x64 catalog passes Light/Dark at
+`artifacts/smoke-line-interaction-all`; hosted ARM64 interaction remains required.
 
 Remaining acceptance includes complete text/paint/legend and tooltip raster comparison,
 source line/tooltip animation, plot clipping, duplicate

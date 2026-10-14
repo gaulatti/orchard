@@ -28,8 +28,7 @@ public sealed partial class BleeckerLineChart : Control
     private ObservableCollection<IReadOnlyDictionary<string, object?>>? observedData;
     private ObservableCollection<BleeckerChartSeries>? observedCollection;
     private double left, right, top, bottom, min, max;
-    private int? activeIndex;
-    private double? activePointerY;
+    private readonly BleeckerChartInteraction interaction=new();
     private bool queued;
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
@@ -38,11 +37,12 @@ public sealed partial class BleeckerLineChart : Control
     {
         DefaultStyleKey = typeof(BleeckerLineChart);
         Data = new ObservableCollection<IReadOnlyDictionary<string, object?>>(); Series = new ObservableCollection<BleeckerChartSeries>();
-        Loaded += (_, _) => { Observe(); Render(); ConnectTooltipEffects(); }; Unloaded += (_, _) => { StopObserving(); ClearActive(); DisconnectTooltipEffects(); };
+        Loaded += (_, _) => { Observe(); Render(); ConnectTooltipEffects(); }; Unloaded += (_, _) => { StopObserving();interaction.Reset(); ClearActive(); DisconnectTooltipEffects(); };
         SizeChanged += (_, _) => QueueRender(); ActualThemeChanged += (_, _) => QueueRender();
         RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => QueueRender());
-        PointerMoved += OnPointerMoved; PointerExited += (_, _) => ClearActive();
-        LostFocus += (_, _) => ClearActive(); KeyDown += OnKeyDown;
+        PointerMoved += OnPointerMoved; PointerExited += (_, _) => {interaction.Exit();PaintInteraction();};
+        GotFocus+=(_,_)=>{interaction.Focus();PaintInteraction();};
+        LostFocus += (_, _) => {interaction.Blur();PaintInteraction();}; KeyDown += OnKeyDown;
     }
     public static readonly DependencyProperty DataProperty = DependencyProperty.Register(nameof(Data), typeof(object), typeof(BleeckerLineChart), new PropertyMetadata(null, OnDataChanged));
     public static readonly DependencyProperty SeriesProperty = DependencyProperty.Register(nameof(Series), typeof(object), typeof(BleeckerLineChart), new PropertyMetadata(null, OnDataChanged));
@@ -153,7 +153,7 @@ public sealed partial class BleeckerLineChart : Control
             if (ticks.Length > 0 && points.Length >= 2) plot.Children.Add(path);
             rendered.Add((series, path.Stroke, points));
         }
-        if (activeIndex is int selected && selected < Data.Count) ShowActive(selected, activePointerY); else ClearActive();
+        PaintInteraction();
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
     private double RenderLegend()
@@ -201,23 +201,23 @@ public sealed partial class BleeckerLineChart : Control
     {
         if (Data.Count == 0 || right <= left) return;
         var point = args.GetCurrentPoint(this).Position;
-        if (point.X < left || point.X > right || point.Y < top || point.Y > bottom) { ClearActive(); return; }
+        if (point.X < left || point.X > right || point.Y < top || point.Y > bottom) {interaction.Exit();PaintInteraction();return;}
         var index = Data.Count == 1 ? 0 : (int)Math.Round((point.X - left) / (right - left) * (Data.Count - 1), MidpointRounding.AwayFromZero);
         if (index > 0 && point.X <= (X(index - 1) + X(index)) / 2) index--;
-        ShowActive(Math.Clamp(index, 0, Data.Count - 1), point.Y);
+        interaction.Pointer(Math.Clamp(index,0,Data.Count-1),point.Y);PaintInteraction();
     }
     private void OnKeyDown(object sender, KeyRoutedEventArgs args)
     {
-        if (Data.Count == 0) return;
-        if (args.Key is VirtualKey.Left or VirtualKey.Right)
+        if (args.Key is VirtualKey.Left or VirtualKey.Right or VirtualKey.Enter)
         {
-            ShowActive(Math.Clamp((activeIndex ?? 0) + (args.Key == VirtualKey.Right ? 1 : -1), 0, Data.Count - 1)); args.Handled = true;
+            interaction.Key(args.Key==VirtualKey.Enter?0:args.Key==VirtualKey.Right?1:-1,Data.Count);PaintInteraction();args.Handled=true;
         }
     }
+    private void PaintInteraction(){if(interaction.Index(Data.Count) is int index)ShowActive(index,interaction.PointerY);else ClearActive();}
     private void ShowActive(int index, double? pointerY = null)
     {
         if (active is null || tooltip is null || tooltipItems is null || tooltipContainer is null || index < 0 || index >= Data.Count) return;
-        activeIndex = index; activePointerY = pointerY; active.Children.Clear(); tooltipItems.Children.Clear();
+        active.Children.Clear(); tooltipItems.Children.Clear();
         var category = BleeckerChartData.Label(BleeckerChartData.Read(Data[index], XAxisKey!));
         var heading = Text(category, 16, "BleeckerTextSecondaryBrush"); heading.FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 };
         heading.LineHeight = 24; heading.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; tooltipItems.Children.Add(heading);
@@ -246,7 +246,7 @@ public sealed partial class BleeckerLineChart : Control
         UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
-    private void ClearActive() { activeIndex = null; activePointerY = null; active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
+    private void ClearActive() { active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
     private TextBlock Text(string? value, double size, string key)
     {
         var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; text.Text = value ?? ""; return text;

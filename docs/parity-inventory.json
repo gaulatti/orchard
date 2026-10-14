@@ -543,9 +543,9 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": ["src/Orchard/Charts/BleeckerLineChart.cs", "src/Orchard/Charts/BleeckerLineChart.TooltipEffects.cs", "src/Orchard/Charts/BleeckerTooltipPlacement.cs", "src/Orchard/Charts/BleeckerMonotoneCurve.cs", "src/Orchard/Charts/BleeckerChartData.cs", "src/Orchard/Charts/BleeckerChartScale.cs", "src/Orchard/Themes/LineChart.xaml"],
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerLineChart.cs", "src/Orchard/Charts/BleeckerChartInteraction.cs", "src/Orchard/Charts/BleeckerLineChart.TooltipEffects.cs", "src/Orchard/Charts/BleeckerTooltipPlacement.cs", "src/Orchard/Charts/BleeckerMonotoneCurve.cs", "src/Orchard/Charts/BleeckerChartData.cs", "src/Orchard/Charts/BleeckerChartScale.cs", "src/Orchard/Themes/LineChart.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/LineChartsFixture.xaml"],
-      "regressionTests": ["tests/Orchard.Tests/LineCurveTests.cs", "tests/Reference/LineCurve.json", "tests/Orchard.Tests/LineDataTests.cs", "tests/Reference/LineData.json", "tests/Orchard.Tests/TooltipPlacementTests.cs", "tests/Reference/TooltipPlacement.json", "samples/Orchard.Catalog/LineChartsFixture.xaml.cs", "samples/Orchard.Catalog/Reference/LineLayout.json", "samples/Orchard.Catalog/Reference/LineTooltip.json", "samples/Orchard.Catalog/Reference/LineBlur.json", "samples/Orchard.Catalog/Reference/LineShadow.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["tests/Orchard.Tests/LineCurveTests.cs", "tests/Reference/LineCurve.json", "tests/Orchard.Tests/LineDataTests.cs", "tests/Reference/LineData.json", "tests/Orchard.Tests/TooltipPlacementTests.cs", "tests/Reference/TooltipPlacement.json", "tests/Orchard.Tests/ChartInteractionTests.cs", "samples/Orchard.Catalog/Reference/LineInteraction.json", "samples/Orchard.Catalog/LineChartsFixture.xaml.cs", "samples/Orchard.Catalog/Reference/LineLayout.json", "samples/Orchard.Catalog/Reference/LineTooltip.json", "samples/Orchard.Catalog/Reference/LineBlur.json", "samples/Orchard.Catalog/Reference/LineShadow.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Complete source/native text, paint and tooltip raster comparison, source line/tooltip motion and plot clipping",

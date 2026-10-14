@@ -17,6 +17,8 @@
         <Compile Include="../../src/Orchard/Charts/BleeckerChartData.cs" Link="BleeckerChartData.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartScale.cs" Link="BleeckerChartScale.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerTooltipPlacement.cs" Link="BleeckerTooltipPlacement.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerChartInteraction.cs" Link="BleeckerChartInteraction.cs" />
+        <None Include="../../samples/Orchard.Catalog/Reference/LineInteraction.json" Link="Fixtures/LineInteraction.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssTransition.cs" Link="BleeckerCssTransition.cs" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssEasing.cs" Link="BleeckerCssEasing.cs" />
         <EmbeddedResource Include="../../src/Orchard/Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />

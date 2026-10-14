@@ -268,14 +268,30 @@ public sealed partial class MainWindow : Window
                 "Packaged chart lost its template, source scale or exact literal data key.");
             var peer=FrameworkElementAutomationPeer.CreatePeerForElement(chart);
             Require(peer.GetName()=="Independent package chart"&&chart.IsTabStop&&chart.Focus(FocusState.Keyboard),"Packaged chart lost its consumer accessible name or keyboard entry.");
-            Require(GetForegroundWindow()==WinRT.Interop.WindowNative.GetWindowHandle(this),"Independent tooltip input lost its own foreground window.");
-            var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
-            Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Independent tooltip key did not enter the normal native input path.");
             var tooltip=(Border)template.FindName("PART_Tooltip");var tooltipItems=(StackPanel)template.FindName("PART_TooltipItems");var tooltipContainer=(Grid)template.FindName("PART_TooltipContainer");
+            await AwaitAsync(()=>tooltip.Visibility==Visibility.Visible&&tooltipItems.Children.OfType<TextBlock>().FirstOrDefault()?.Text=="Harbor","Packaged initial focus did not inspect the first category.");
+            Require(GetForegroundWindow()==WinRT.Interop.WindowNative.GetWindowHandle(this),"Independent tooltip input lost its own foreground window.");
+            Key(0x27);
             await AwaitAsync(()=>tooltip.Visibility==Visibility.Visible&&tooltip.ActualHeight==78&&tooltipItems.Children.OfType<TextBlock>().First().Text=="Reed","Packaged tooltip lost source content or row dimensions.");
             Require(Math.Abs(tooltipContainer.Margin.Top-67)<.001,"Packaged tooltip lost its keyboard coordinate and vertical placement.");
             var shadow=(ContainerVisual)ElementCompositionPreview.GetElementChildVisual((Grid)template.FindName("PART_TooltipShadow"));
             Require(shadow.Children.Single() is SpriteVisual shadowSprite&&shadowSprite.Shadow is DropShadow drop&&drop.BlurRadius==32&&drop.Mask is not null&&shadow.Clip is CompositionGeometricClip&&ElementCompositionPreview.GetElementChildVisual((Grid)template.FindName("PART_TooltipBackdrop")) is SpriteVisual{Brush:CompositionEffectBrush},"Packaged tooltip lost its native clipped shadow/backdrop graph.");
+            Key(0x0D);
+            await AwaitAsync(()=>tooltip.Visibility==Visibility.Collapsed&&chart.FocusState==FocusState.Keyboard,"Packaged Enter did not hide inspection while retaining focus.");
+            Key(0x0D);
+            await AwaitAsync(()=>tooltip.Visibility==Visibility.Visible&&tooltipItems.Children.OfType<TextBlock>().First().Text=="Reed","Packaged Enter did not restore its retained category.");
+            var exit=new Button{Content="Consumer focus exit",HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Top};
+            Root.Children.Add(exit);
+            try
+            {
+                Require(exit.Focus(FocusState.Keyboard),"Independent consumer could not leave chart focus.");
+                await AwaitAsync(()=>tooltip.Visibility==Visibility.Collapsed,"Packaged chart did not hide inspection on blur.");
+                Require(chart.Focus(FocusState.Keyboard),"Independent consumer could not return to chart focus.");
+                Require(tooltip.Visibility==Visibility.Collapsed,"Packaged refocus reopened retained inspection without Enter.");
+                Key(0x0D);
+                await AwaitAsync(()=>tooltip.Visibility==Visibility.Visible&&tooltipItems.Children.OfType<TextBlock>().First().Text=="Reed","Packaged chart lost retained selection across blur/refocus.");
+            }
+            finally{Root.Children.Remove(exit);}
             series.Name="Changed packaged total";
             await AwaitAsync(()=>legend.Children.OfType<StackPanel>().Single().Children.OfType<TextBlock>().Single().Text==series.Name,"Packaged chart did not observe series changes.");
             var transparent=new SolidColorBrush(Microsoft.UI.Colors.Transparent);series.Color=transparent;
@@ -292,6 +308,12 @@ public sealed partial class MainWindow : Window
         {
             var watch=System.Diagnostics.Stopwatch.StartNew();while(!condition()&&watch.Elapsed<TimeSpan.FromSeconds(2)){Root.UpdateLayout();await Task.Delay(16);}
             Require(condition(),message);
+        }
+        void Key(ushort key)
+        {
+            Require(GetForegroundWindow()==WinRT.Interop.WindowNative.GetWindowHandle(this),"Independent tooltip input lost its own foreground window.");
+            var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=key}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=key,Flags=2}}}};
+            Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Independent tooltip key did not enter the normal native input path.");
         }
     }
 

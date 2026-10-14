@@ -211,7 +211,9 @@ preserving the source paragraph height and owner sizing while putting the text
 position into layout before glyph rasterization. Its local Attention matrix
 passes at `artifacts/smoke-attention-layout-baseline` in both themes, including
 physical actions, sizing and the existing fractional-position captures. This is
-not yet a verified hosted contrast correction. The exact established glyph
+not a verified hosted contrast correction: run `38519659390` at `81a352b`
+still adopts only 46/124 established glyph pixels on both architectures.
+Moving the baseline into layout did not resolve this defect. The exact established glyph
 mask remains unchanged; hosted diagnostics also record margins and each owned
 ancestor's composition pixel-snapping setting.
 The existing five-state capture is now a regression assertion: it establishes

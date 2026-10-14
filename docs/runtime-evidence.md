@@ -1,5 +1,34 @@
 # Native Windows runtime evidence
 
+The retained Line Chart interaction checkpoint passes all 38 regressions,
+both solution builds without warnings, and focused native x64 inspection in
+Light/Dark at `artifacts/smoke-line-interaction-native`. The fixture exercises
+36 source-captured focus, arrow, Enter, blur/refocus, pointer and data-shrink
+outcomes, alongside 22 chart and 26 tooltip specimens and unchanged effect
+pixel checks. The fresh independent x64 NuGet consumer passes actual keyboard
+hide/reopen and retained selection across blur/refocus in both themes at
+`artifacts/package-consumer-line-interaction`. Package SHA-256 is
+`302b2e59e1e7d60349a09fc2c83816c6d8b352780d2830ce3b125069d04385a8`.
+Local scale is 1, animations are disabled and contrast is off. Native ARM64
+interaction, actual contrast, complete chart acceptance and required CI remain
+open.
+The complete local x64 catalog also passes both themes at
+`artifacts/smoke-line-interaction-all`, using the final shared two-second
+presentation deadline and the existing geometry/pixel tolerances.
+
+Run [38519659390](https://github.com/gaulatti/orchard/actions/runs/38519659390)
+at `81a352b` passes both solution builds and independent package consumers.
+The x64 focused chart and full catalog pass. The ARM64 chart passes the unchanged
+shadow pixel profile, then fails the zero-data tooltip's left edge placement.
+ARM64 also fails Input's Large/invalid top-left `(3,0)` cursor publication and
+loses foreground during the full catalog's Alert pointer action. Both contrast
+jobs still fail Attention at 46/124 established glyph pixels: moving baseline
+correction into layout did not resolve the live contrast transition.
+The ARM64 artifact is retained at `artifacts/ci-81a352b-arm64.zip`, verified
+against SHA-256 `ee2a75832d753b670add881107acc56ccce7aeadf92604395e2d691c2a51b0f9`.
+Selected evidence is at `artifacts/ci-81a352b-arm64-evidence`. Required CI remains
+failing and no inventory component becomes accepted.
+
 The next renderer candidates place Attention's baseline in layout and give the
 chart shadow a Composition-owned vector mask. Both solution builds, 37
 regressions, focused Attention glyph transitions, focused chart/effect pixel
