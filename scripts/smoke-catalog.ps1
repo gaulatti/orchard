@@ -1,7 +1,7 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'alerts', 'brand', 'bauhaus', 'switches', 'activity', 'attention', 'notifications', 'chart-theme')][string]$Component = 'all',
+    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'alerts', 'brand', 'bauhaus', 'switches', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart')][string]$Component = 'all',
     [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture,
     [ValidateCount(2,2)][int[]]$ClientSize
 )

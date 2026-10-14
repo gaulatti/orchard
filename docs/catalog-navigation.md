@@ -32,8 +32,11 @@ appearances and checks physical hover, Tab behavior and lifecycle restoration.
 Chart Theme is registered after Attention Surfaces. Its named roles, automatic
 palette, scoped brand override and chart style specimens use live theme
 references. The focused `-Component chart-theme` mode switches the root theme
-in place and verifies composed palette pixels. Actual chart rendering and the
-tooltip shadow/backdrop effects remain separate inventory acceptance gaps.
+in place and verifies composed palette pixels. The Line Charts fixture follows
+Chart Theme and supplies observable consumer records, monotone curves and
+keyboard inspection. Focused `-Component line-chart` verification compares
+22 frozen light/dark specimens and tests live consumer changes. Complete chart
+rendering and tooltip shadow/backdrop effects remain inventory acceptance gaps.
 
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise

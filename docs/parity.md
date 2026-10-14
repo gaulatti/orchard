@@ -32,7 +32,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, contrast/accessibility/scaling, remaining ARM64 state checks; see [usage](cards.md) |
 | chart | Pending | Pending | Full pinned contract |
 | chart-theme | `BleeckerChartTheme` and `BleeckerChartSeries`: scoped resource keys, source palette selection, immutable style metadata and consumer-owned series | Registered role/palette/brand, series-paint and axis/grid/tooltip surface fixture; frozen metadata regressions | In progress: [contract and API](chart-theme-reference.md); actual chart consumers, tooltip effects and full platform acceptance |
-| line-chart | `BleeckerMonotoneCurve`: internal pinned geometry foundation | 64 source-producer curve cases; 22 full-source browser captures | In progress: [contract and evidence](line-chart-reference.md); native renderer and every remaining chart/platform boundary |
+| line-chart | `BleeckerLineChart`: consumer records/series, monotone curves, grid, axes, legend and category inspection | Registered Line Charts fixture; 64 curve, 71 domain, 11 data-key and 23 numeric producer cases; 22 source layout specimens; independent consumer | In progress: [API and evidence](line-chart-reference.md); complete visual/motion/lifecycle, tooltip effects and platform acceptance |
 | bar-chart | Pending | Pending | Full pinned contract |
 | area-chart | Pending | Pending | Full pinned contract |
 | pie-chart | Pending | Pending | Full pinned contract |

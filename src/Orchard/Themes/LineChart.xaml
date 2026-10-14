@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerLineChart">
+  <Setter Property="Height" Value="300" /><Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" />
+  <Setter Property="UseLayoutRounding" Value="False" /><Setter Property="IsTabStop" Value="True" />
+  <Setter Property="HighContrastAdjustment" Value="None" /><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="16" />
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerLineChart">
+   <Grid x:Name="PART_Root" Background="Transparent">
+    <Canvas x:Name="PART_Plot" />
+    <Canvas x:Name="PART_Legend" />
+    <Canvas x:Name="PART_Active" IsHitTestVisible="False" />
+    <Border x:Name="PART_Tooltip" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}" BorderThickness="1" CornerRadius="12">
+     <StackPanel x:Name="PART_TooltipItems" Spacing="4" />
+    </Border>
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

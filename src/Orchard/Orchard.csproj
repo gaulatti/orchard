@@ -52,5 +52,7 @@
         <None Include="../../licenses/LICENSE-Radix.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Unicode.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-D3-Shape.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-EsToolkit.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-Recharts.txt" Pack="true" PackagePath="licenses/" />
     </ItemGroup>
 </Project>

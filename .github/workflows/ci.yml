@@ -62,8 +62,12 @@ jobs:
         id: chart_theme_smoke
         if: ${{ !cancelled() && (steps.notifications_smoke.outcome == 'success' || steps.notifications_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component chart-theme -Output artifacts/chart-theme -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify native Line Chart source cases and consumer updates
+        id: line_chart_smoke
         if: ${{ !cancelled() && (steps.chart_theme_smoke.outcome == 'success' || steps.chart_theme_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component line-chart -Output artifacts/line-chart -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.line_chart_smoke.outcome == 'success' || steps.line_chart_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -163,8 +167,12 @@ jobs:
         id: chart_theme_smoke
         if: ${{ !cancelled() && (steps.notifications_smoke.outcome == 'success' || steps.notifications_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component chart-theme -Output artifacts/chart-theme -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 Line Chart source cases and consumer updates
+        id: line_chart_smoke
         if: ${{ !cancelled() && (steps.chart_theme_smoke.outcome == 'success' || steps.chart_theme_smoke.outcome == 'failure') }}
+        run: ./scripts/smoke-catalog.ps1 -Component line-chart -Output artifacts/line-chart -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.line_chart_smoke.outcome == 'success' || steps.line_chart_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

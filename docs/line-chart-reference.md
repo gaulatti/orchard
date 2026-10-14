@@ -66,18 +66,65 @@ suppression, one-point closure, two-point lines and exact cubic control points.
 `tests/Reference/LineCurve.json` contains 64 cases evaluated by the unmodified
 pinned D3 context, including increasing/reversed/vertical/coincident inputs,
 gaps, nonfinite values and varied curves. The regression compares native
-commands and coordinates to that producer; all 33 regressions pass at
-`artifacts/tests-line-curve`. The required D3 ISC notice is retained and packaged.
-Both x64 and ARM64 solution builds pass with zero warnings. The local package
-at `artifacts/packages-line-curve` contains the required D3 notice. This
-checkpoint adds an unused internal numeric foundation and source evidence;
-it does not change public control behavior or claim native chart rendering.
+commands and coordinates to that producer. `LineData.json` adds 71 source
+five-tick domains, 11 literal/nested data-key cases and 23 numeric conversions
+evaluated by the frozen selector. All 36 unit regressions pass at
+`artifacts/tests-line-numeric`. D3, es-toolkit and Recharts notices are retained
+and required by the package verifier.
 
-The native public Line Chart, complete data-key resolution, adaptive numeric
-domain/ticks, text measurement/layout, live data/series/theme updates, legend,
-tooltip effects, motion, keyboard/pointer/selection, accessibility, scaling,
-performance, catalog and independent package/runtime checks remain required.
-The geometry regression is not evidence that those layers are implemented or
-accepted. The inventory stays in progress with every remaining boundary visible.
+## Native API and current boundary
+
+`BleeckerLineChart` exposes observable `Data` records and `Series` collections.
+Each record implements `IReadOnlyDictionary<string, object?>`; notifications
+from records implementing `INotifyPropertyChanged` schedule a render, as do
+collection replacements and series changes. Supply `XAxisKey` before mounting;
+a missing key fails explicitly. Literal keys take precedence over nested paths.
+Empty strings, whitespace, radix strings and finite decimal/exponent strings
+follow the frozen numeric-domain conversion. Booleans and invalid/nonfinite
+domain values do not contribute ticks.
+
+```csharp
+var chart = new BleeckerLineChart { Width = 640, XAxisKey = "category" };
+chart.Series.Add(new BleeckerChartSeries { Key = "total", Name = "Consumer total" });
+chart.Data.Add(new Dictionary<string, object?> { ["category"] = "Harbor", ["total"] = 100d });
+```
+
+`ShowGrid`/`ShowLegend`, axis labels, `YAxisTickFormatter` and `TooltipFormatter`
+are consumer-owned dependency properties. Scoped theme expressions supply
+palette paint; an explicit series brush, including transparent paint, keeps
+precedence. The control renders native monotone paths, category/numeric axes,
+a wrapping name-sorted legend and category inspection with Arrow/pointer input.
+Supply an accessible name through `AutomationProperties.Name`.
+
+The registered Line Charts fixture exercises live collection/series changes,
+formatters, transparent paint, empty data and actual Arrow input in both themes.
+Its initial local run passes at `artifacts/smoke-line-chart-labels`. The fixture
+also embeds `Reference/LineLayout.json`, derived from all 22 full-source browser
+captures, and compares native curve commands, grid coordinates, visible tick
+labels, series/axis paint and legend order. The 0.000501 curve tolerance follows the source SVG
+producer's three-decimal coordinate rounding. These checks do not prove font
+raster, every label position, tooltip effects or motion parity. The independent
+package consumer includes real chart templates and live consumer mutations.
+The local x64 run passes all 22 specimens, including paint assertions, at
+`artifacts/smoke-line-chart-paint`. Derive the embedded reference from the
+retained capture with
+`node scripts/derive-line-chart-reference.mjs artifacts/line-chart-browser/reference.json`;
+the output records the input's
+SHA-256. The independently restored/published x64
+consumer passes in both themes at `artifacts/package-consumer-line-chart` for
+package SHA-256 `24db115d2aa000d7ea9694fef184b4380111a3c27034b7447ffa818dee9f257d`.
+Both solution architectures build without warnings; native ARM64 verification
+of the new public control remains required.
+The complete local x64 catalog also passes in Light/Dark at
+`artifacts/smoke-line-chart-full`, with display/text scale 1, animations disabled
+and contrast off. This does not establish enabled-motion, contrast or scaling
+acceptance.
+
+Remaining acceptance includes complete text/paint/legend positioning comparison,
+source tooltip shadow/backdrop blur/positioning, animation, clipping, duplicate
+categories, date/object/boolean plotting and raw tooltip conversion, consumer
+overrides, unload/reload and retemplating, measured collection performance,
+contrast, Narrator, display/text scaling and native ARM64 checks. The inventory
+stays in progress; this control is not an accepted complete chart component.
 Orchard has no backend/metrics surface affected by this work. The public wiki
 remote is unavailable; this in-repository contract is authoritative for the task.

@@ -181,6 +181,7 @@ public sealed partial class MainWindow : Window
                 VerifyActivity();
                 VerifyAttention();
                 await VerifyChartThemeAsync(theme);
+                await VerifyLineChartAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,
                     "Packaged separator lost its geometry or semantics.");
@@ -243,6 +244,45 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private async Task VerifyLineChartAsync()
+    {
+        var series=new BleeckerChartSeries{Key="consumer.value",Name="Consumer total"};
+        var chart=new BleeckerLineChart{Width=640,XAxisKey="category",HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Margin=new Thickness(32)};
+        AutomationProperties.SetName(chart,"Independent package chart");
+        chart.Series.Add(series);
+        chart.Data.Add(new Dictionary<string,object?>{{"category","Harbor"},{"consumer.value",100d}});
+        chart.Data.Add(new Dictionary<string,object?>{{"category","Reed"},{"consumer.value",220d}});
+        chart.Data.Add(new Dictionary<string,object?>{{"category","North"},{"consumer.value",310d}});
+        Root.Children.Add(chart);
+        try
+        {
+            chart.ApplyTemplate();Root.UpdateLayout();
+            var template=(FrameworkElement)VisualTreeHelper.GetChild(chart,0);var plot=(Canvas)template.FindName("PART_Plot");var legend=(Canvas)template.FindName("PART_Legend");
+            await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged chart did not render independent consumer records.");
+            var path=plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Single();var geometry=(PathGeometry)path.Data;
+            Require(chart.ActualHeight==300&&geometry.Figures.Single().Segments.Count==2&&geometry.Figures.Single().Segments.All(segment=>segment is BezierSegment)&&
+                Math.Abs(geometry.Figures.Single().StartPoint.X-60)<.001&&Math.Abs(geometry.Figures.Single().StartPoint.Y-157.8125)<.001,
+                "Packaged chart lost its template, source scale or exact literal data key.");
+            var peer=FrameworkElementAutomationPeer.CreatePeerForElement(chart);
+            Require(peer.GetName()=="Independent package chart"&&chart.IsTabStop&&chart.Focus(FocusState.Keyboard),"Packaged chart lost its consumer accessible name or keyboard entry.");
+            series.Name="Changed packaged total";
+            await AwaitAsync(()=>legend.Children.OfType<StackPanel>().Single().Children.OfType<TextBlock>().Single().Text==series.Name,"Packaged chart did not observe series changes.");
+            var transparent=new SolidColorBrush(Microsoft.UI.Colors.Transparent);series.Color=transparent;
+            await AwaitAsync(()=>ReferenceEquals(plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Single().Stroke,transparent),"Packaged chart did not preserve explicit transparent paint.");
+            chart.Data[0]=new Dictionary<string,object?>{{"category","Changed category"},{"consumer.value",0d}};
+            await AwaitAsync(()=>Math.Abs(((PathGeometry)plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Single().Data).Figures.Single().StartPoint.Y-225)<.001,"Packaged chart did not observe record replacement.");
+            chart.ShowGrid=false;chart.ShowLegend=false;
+            await AwaitAsync(()=>!plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Line>().Any()&&legend.Children.Count==0,"Packaged chart did not apply consumer grid/legend visibility.");
+            chart.Data.Clear();await AwaitAsync(()=>!plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Any(),"Packaged empty chart retained live line artifacts.");
+        }
+        finally{Root.Children.Remove(chart);}
+        async Task AwaitAsync(Func<bool> condition,string message)
+        {
+            var watch=System.Diagnostics.Stopwatch.StartNew();while(!condition()&&watch.Elapsed<TimeSpan.FromSeconds(2)){Root.UpdateLayout();await Task.Delay(16);}
+            Require(condition(),message);
+        }
     }
 
     private async Task VerifyChartThemeAsync(ElementTheme originalTheme)

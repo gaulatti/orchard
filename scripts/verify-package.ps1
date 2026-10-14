@@ -16,7 +16,7 @@ foreach ($reportName in @('result.json', 'runtime.json')) {
 $archive = [IO.Compression.ZipFile]::OpenRead($packagePath)
 try {
     $entries = @($archive.Entries | ForEach-Object FullName)
-    foreach ($required in @('buildTransitive/Gaulatti.Orchard.targets', 'README.md', 'licenses/LICENSE-Bleecker.txt', 'licenses/LICENSE-Lucide.txt', 'licenses/LICENSE-Radix.txt', 'licenses/LICENSE-D3-Shape.txt',
+    foreach ($required in @('buildTransitive/Gaulatti.Orchard.targets', 'README.md', 'licenses/LICENSE-Bleecker.txt', 'licenses/LICENSE-Lucide.txt', 'licenses/LICENSE-Radix.txt', 'licenses/LICENSE-D3-Shape.txt', 'licenses/LICENSE-EsToolkit.txt', 'licenses/LICENSE-Recharts.txt',
         'assets/fonts/EncodeSans-Regular.ttf', 'assets/fonts/EncodeSans-Medium.ttf', 'assets/fonts/EncodeSans-SemiBold.ttf',
         'assets/fonts/LibreFranklin-Regular.ttf', 'assets/fonts/LibreFranklin-SemiBold.ttf',
         'assets/fonts/OFL-EncodeSans.txt', 'assets/fonts/OFL-LibreFranklin.txt', 'assets/images/gaulatti-logo.svg')) {

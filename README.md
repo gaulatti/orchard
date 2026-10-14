@@ -17,8 +17,10 @@ silhouettes and overlapping groups with overflow counts in all five sizes.
 The [Activity Item preview](docs/activity-item-reference.md) supplies exact
 consumer-owned title/time strings, an Avatar and source hover styling.
 The [Chart theme API and preview](docs/chart-theme-reference.md) supplies the
-frozen role/palette resource keys and immutable chart style metadata; chart
-renderers and their complete acceptance remain in progress.
+frozen role/palette resource keys and immutable chart style metadata. The
+[Line Chart preview](docs/line-chart-reference.md) renders observable consumer
+records/series with native monotone curves, axes, a legend and category
+inspection; complete chart/platform acceptance remains in progress.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

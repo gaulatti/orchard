@@ -1,5 +1,22 @@
 # Native Windows runtime evidence
 
+The public Line Chart checkpoint passes both solution builds without warnings,
+36 unit regressions, all 22 source-backed native chart specimens including
+series/axis paint, the complete local x64 catalog and an independently
+restored/published x64 package consumer in both themes. Evidence is retained in
+`artifacts/tests-line-chart-final`, `artifacts/smoke-line-chart-paint`,
+`artifacts/smoke-line-chart-full` and `artifacts/package-consumer-line-chart`.
+Local display/text scale is 1, animations are disabled and contrast is off.
+Native ARM64 chart execution and the remaining visual/motion/accessibility
+boundaries are unverified; no inventory entry becomes accepted from this run.
+
+Run [38510904185](https://github.com/gaulatti/orchard/actions/runs/38510904185)
+at `c63e7c2` passes both builds and the frozen-curve unit checkpoint. The full
+x64 catalog passes; the full native ARM64 catalog fails Checkbox's
+`hit-testing-repeat-restored-7` disabled-pointer phase. Both contrast checks
+still fail Attention at 46/124 established glyph positions. The cursor and
+contrast gates remain open; this run does not establish passing overall CI.
+
 Run [38509625229](https://github.com/gaulatti/orchard/actions/runs/38509625229)
 at `6f5e41d` passes both builds, all 32 regressions, both complete native
 catalogs and both independent native package consumers. The focused chart-theme
