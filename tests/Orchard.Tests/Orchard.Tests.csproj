@@ -20,6 +20,9 @@
         <Compile Include="../../src/Orchard/Charts/BleeckerChartInteraction.cs" Link="BleeckerChartInteraction.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerSvgCircleMeasure.cs" Link="BleeckerSvgCircleMeasure.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerFunnelGeometry.cs" Link="BleeckerFunnelGeometry.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerSankeyGeometry.cs" Link="BleeckerSankeyGeometry.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerSankeyInteraction.cs" Link="BleeckerSankeyInteraction.cs" />
+        <None Include="../Reference/SankeyChartLayout.json" Link="Fixtures/SankeyChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/FunnelChartLayout.json" Link="Fixtures/FunnelChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/Reference/LineInteraction.json" Link="Fixtures/LineInteraction.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssTransition.cs" Link="BleeckerCssTransition.cs" />

@@ -137,3 +137,17 @@ keys retain that selection, Enter toggles inspection and pointer hover inspects
 the actual trapezoid. Transparent Fill brushes retain their identity. Set the
 wrapper's automation name for its single named inspection stop. See the
 repository's Funnel contract for visual and platform acceptance gaps.
+
+`BleeckerSankeyChart` consumes a `BleeckerSankeyChartData` object containing the
+original observable Nodes and Links collections. `BleeckerSankeyNode` supplies
+Name/Fill and `BleeckerSankeyLink` supplies Source/Target indexes and Value, all
+with live notifications. Indexes address the original Nodes order. Defaults:
+Height 400, NodeWidth 12, LinkCurvature 0.5, LinkOpacity 0.35 and NodeRadius 4.
+Optional NodeColors holds original native brushes; per-node Fill takes
+precedence and remains shared by its outgoing bands. The frozen source's bands
+use palette index zero unless an original dictionary node supplies `index`.
+Empty palettes paint black, as measured in SVG. Set the wrapper automation name
+for one named group stop. Native Left/Right traverses nodes then flows; Enter
+toggles inspection and Tab leaves normally. This Windows keyboard convention
+extends a source chart that has no keyboard stop. Source geometry quirks and
+remaining visual/platform gaps are documented in the Sankey contract.

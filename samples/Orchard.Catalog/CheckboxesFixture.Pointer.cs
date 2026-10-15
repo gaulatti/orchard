@@ -249,8 +249,7 @@ public sealed partial class CheckboxesFixture
 
             Rows.Children.Insert(index, editor); UpdateLayout();
             await input.MoveAsync(editor);
-            await WaitAsync(() => CurrentCheckboxCursor() == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)),
-                "Disabled editor did not select its blocked cursor.");
+            await AwaitEditorEntryAsync();
             samples.Add(new { phase = "input-blocked", cursor = CurrentCheckboxCursor().ToInt64() });
             await input.MoveAsync(Find<Border>(DisabledOff, "PART_Box"));
             await Check(DisabledOff, "input-to-checkbox", true, 32648);
@@ -385,6 +384,25 @@ public sealed partial class CheckboxesFixture
                     inputOpacity = Find<Grid>(control, "PART_InputChrome").Opacity, cursor = CurrentCheckboxCursor().ToInt64(),
                     globalCursor = DescribeGlobalCursor(),
                     expectedCursor = cursor, position.X, position.Y });
+            }
+
+            async Task AwaitEditorEntryAsync()
+            {
+                var trace = new List<object>(); var watch = System.Diagnostics.Stopwatch.StartNew(); var stable = 0;
+                var ready = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+                void Frame(object? sender, object args)
+                {
+                    var visible = CurrentCheckboxCursor(); var publishing = NativeCursorDiagnostics.Flag(editor, "republishQueued");
+                    var owned = input.OwnsForeground && NativeCursorDiagnostics.OwnsCursor(editor);
+                    stable = editor.IsLoaded && owned && !publishing && visible == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) ? stable + 1 : 0;
+                    trace.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, visible = visible.ToInt64(), editor.IsLoaded, owned, publishing, stable, publication = NativeCursorDiagnostics.Describe(editor) });
+                    if (stable >= 2) ready.TrySetResult();
+                }
+                CompositionTarget.Rendering += Frame;
+                try { await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+                catch { samples.Add(new { phase = "input-entry-failed", trace, cursor = DescribeEditorCursor(input, editor) }); throw; }
+                finally { CompositionTarget.Rendering -= Frame; }
+                samples.Add(new { phase = "input-entry-settled", trace });
             }
 
             Task ReadyToPublishAsync() => WaitOwnedAsync(() => NativeCursorDiagnostics.OwnsCursor(DisabledOff) &&

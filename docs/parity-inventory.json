@@ -932,14 +932,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerSankeyChart.cs", "src/Orchard/Charts/BleeckerSankeyChartData.cs", "src/Orchard/Charts/BleeckerSankeyGeometry.cs", "src/Orchard/Charts/BleeckerSankeyInteraction.cs", "src/Orchard/Charts/BleeckerLineChart.Sankey.cs", "src/Orchard/Themes/SankeyChart.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/SankeyChartsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/SankeyChartsFixture.xaml.cs", "samples/Orchard.Catalog/SankeyChartsFixture.Mutation.cs", "tests/PackageConsumer/MainWindow.SankeyChart.cs", "tests/Orchard.Tests/SankeyGeometryTests.cs", "tests/Orchard.Tests/SankeyInteractionTests.cs", "tests/Reference/SankeyChartLayout.json"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete source raster/motion, data/override/RTL and measured collection-performance coverage",
+        "Verify fresh independent package and full published runtime",
+        "Verify actual contrast, Narrator, display/text scaling and native ARM64 runtime"
       ]
     },
     {

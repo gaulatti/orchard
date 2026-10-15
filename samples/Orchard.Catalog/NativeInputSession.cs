@@ -15,8 +15,10 @@ internal sealed class NativeInputSession : IDisposable
     private readonly List<object> pointerMoves = [];
     private readonly List<object> pointerPresentations = [];
     private readonly List<object> keyActions = [];
+    private readonly List<object> pointerClicks = [];
     private bool pointerButtonDown;
     private bool hostedForegroundRecoveryAttempted;
+    private CursorPoint? lastDeliveredPointer;
     internal IntPtr Window { get; }
     internal Point ReadPointerPosition()
     {
@@ -123,10 +125,29 @@ internal sealed class NativeInputSession : IDisposable
     internal async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
     {
         await MoveAsync(target, requireForeground);
-        if (requireForeground) await PressPointerAsync();
-        else PointerButton(true, false);
-        PointerButton(false, requireForeground);
-        await Task.Delay(100);
+        var expected = ReadPointerPosition(); var watch = Stopwatch.StartNew(); var receipts = new List<object>();
+        var delivered = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var roots = new HashSet<UIElement> { root.Content, target };
+        foreach (var popup in Microsoft.UI.Xaml.Media.VisualTreeHelper.GetOpenPopupsForXamlRoot(root)) if (popup.Child is UIElement child) roots.Add(child);
+        var released = new Microsoft.UI.Xaml.Input.PointerEventHandler((_, args) =>
+        {
+            var point = args.GetCurrentPoint(root.Content).Position; var client = NativeScreenCapture.ClientBounds(Window);
+            var x = client.X + point.X * root.RasterizationScale; var y = client.Y + point.Y * root.RasterizationScale;
+            var exact = !args.IsGenerated && args.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse && !args.GetCurrentPoint(root.Content).Properties.IsLeftButtonPressed && Math.Abs(x - expected.X) < .001 && Math.Abs(y - expected.Y) < .001;
+            receipts.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, args.IsGenerated, x, y, exact });
+            if (exact) delivered.TrySetResult();
+        });
+        foreach (var element in roots) element.AddHandler(UIElement.PointerReleasedEvent, released, true);
+        try
+        {
+            if (requireForeground) await PressPointerAsync(); else PointerButton(true, false);
+            PointerButton(false, requireForeground); await delivered.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        }
+        finally
+        {
+            foreach (var element in roots) element.RemoveHandler(UIElement.PointerReleasedEvent, released);
+            pointerClicks.Add(new { target = target.Name, expected, delivered = delivered.Task.IsCompletedSuccessfully, receipts });
+        }
     }
 
     internal async Task PressPointerAsync()
@@ -138,8 +159,9 @@ internal sealed class NativeInputSession : IDisposable
     internal async Task MoveAsync(FrameworkElement target, bool requireForeground = true, Point? localPoint = null)
     {
         if (requireForeground) await RequireForegroundAsync();
+        var initialViewports = JsonSerializer.Serialize(DescribeViewports(target));
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
-        var bounds = await AwaitPointerPresentationAsync(target, localPoint);
+        var bounds = await AwaitPointerPresentationAsync(target, localPoint, initialViewports);
         Require(bounds.Width > 0 && bounds.Height > 0, "Physical pointer target has no bounds.");
         if (localPoint is Point local) Require(local.X >= 0 && local.Y >= 0 && local.X < target.ActualWidth && local.Y < target.ActualHeight,
             "Physical pointer offset exceeds its target bounds.");
@@ -153,29 +175,56 @@ internal sealed class NativeInputSession : IDisposable
                     viewports = DescribeViewports(target) }, new JsonSerializerOptions { WriteIndented = true }));
             throw new InvalidOperationException($"Physical target {target.Name} at {x},{y} does not belong to the catalog.");
         }
-        SendPointerMovement(x, y);
-        await Task.Delay(30);
+        var receiptWatch = Stopwatch.StartNew(); var receipts = new List<object>();
+        var delivered = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var stationary = GetCursorPos(out var before) && before.X == x && before.Y == y && lastDeliveredPointer is CursorPoint known && known.X == x && known.Y == y;
+        var receiptRoots = new HashSet<UIElement> { root.Content, target };
+        foreach (var popup in Microsoft.UI.Xaml.Media.VisualTreeHelper.GetOpenPopupsForXamlRoot(root)) if (popup.Child is UIElement child) receiptRoots.Add(child);
+        var receipt = new Microsoft.UI.Xaml.Input.PointerEventHandler((_, args) =>
+        {
+            var position = args.GetCurrentPoint(root.Content).Position;
+            var client = NativeScreenCapture.ClientBounds(Window);
+            var screenX = client.X + position.X * scale; var screenY = client.Y + position.Y * scale;
+            var exact = !args.IsGenerated && args.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse && Math.Abs(screenX - x) < .001 && Math.Abs(screenY - y) < .001;
+            receipts.Add(new { milliseconds = receiptWatch.Elapsed.TotalMilliseconds, args.IsGenerated, position, screenX, screenY, exact });
+            if (exact) { lastDeliveredPointer = new CursorPoint { X = x, Y = y }; delivered.TrySetResult(); }
+        });
+        foreach (var element in receiptRoots) element.AddHandler(UIElement.PointerMovedEvent, receipt, true);
+        try
+        {
+            SendPointerMovement(x, y);
+            // Windows need not emit PointerMoved for an unchanged position.
+            // Reuse only an actual prior receipt at that exact current point;
+            // every changed position requires its own real routed mouse event.
+            if (!stationary) await delivered.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        }
+        finally
+        {
+            foreach (var element in receiptRoots) element.RemoveHandler(UIElement.PointerMovedEvent, receipt);
+            if (!stationary && !delivered.Task.IsCompletedSuccessfully) pointerMoves.Add(new { target = target.Name, requested = new { x, y }, deliveryFailed = true, receipts });
+        }
         var positioned = GetCursorPos(out var actual);
         var finalBounds = ScreenBounds(target);
         pointerMoves.Add(new { target = target.Name, bounds, finalBounds, localPoint, requested = new { x, y },
             positioned, actual = new { actual.X, actual.Y },
-            hit = NativeScreenCapture.DescribePoint(Window, actual.X, actual.Y) });
+            hit = NativeScreenCapture.DescribePoint(Window, actual.X, actual.Y), stationary, delivered = delivered.Task.IsCompletedSuccessfully, deliveryMilliseconds = receiptWatch.Elapsed.TotalMilliseconds, receipts });
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) && finalBounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
     }
 
-    private async Task<Rect> AwaitPointerPresentationAsync(FrameworkElement target, Point? localPoint)
+    private async Task<Rect> AwaitPointerPresentationAsync(FrameworkElement target, Point? localPoint, string initialViewports)
     {
         var ready = new TaskCompletionSource<Rect>(TaskCreationOptions.RunContinuationsAsynchronously);
-        var watch = Stopwatch.StartNew(); var observations = new List<object>();
+        var watch = Stopwatch.StartNew(); var observations = new List<object>(); var commits = new List<object>();
+        using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(2)); var committing = false;
         (Rect Bounds, double Width, double Height, string Viewports, bool Owned)? previous = null;
         var stable = 0; var frames = 0;
-        void Presented(object? sender, object args)
+        async void Presented(object? sender, object args)
         {
             try
             {
-                frames++;
+                frames++; if (committing) return;
                 if (!target.IsLoaded || target.XamlRoot is null) { previous = null; stable = 0; observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, target.IsLoaded }); return; }
                 var bounds = ScreenBounds(target); var viewports = DescribeViewports(target);
                 var scale = root.RasterizationScale;
@@ -183,19 +232,36 @@ internal sealed class NativeInputSession : IDisposable
                 var y = (int)(bounds.Y + (localPoint?.Y * scale ?? bounds.Height / 2));
                 var client = NativeScreenCapture.ClientBounds(Window);
                 var owned = bounds.Width > 0 && bounds.Height > 0 && NativeScreenCapture.OwnsScreenPoint(Window, x, y);
-                var state = (bounds, target.ActualWidth, target.ActualHeight, JsonSerializer.Serialize(viewports), owned);
+                var state = (Bounds: bounds, Width: target.ActualWidth, Height: target.ActualHeight, Viewports: JsonSerializer.Serialize(viewports), Owned: owned);
                 stable = owned && previous == state ? stable + 1 : 0; previous = state;
                 observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, bounds, target.ActualWidth, target.ActualHeight, stable, viewports, requested = new { x, y }, client, owned });
-                if (stable >= 2) ready.TrySetResult(bounds);
+                if (stable >= 2)
+                {
+                    if (state.Viewports != initialViewports)
+                    {
+                        // Scroll metrics can reach their destination before
+                        // TransformToVisual reflects the compositor's scroll.
+                        committing = true;
+                        try
+                        {
+                            await Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(target).Compositor.RequestCommitAsync().AsTask().WaitAsync(deadline.Token);
+                            var after = (ScreenBounds(target), target.ActualWidth, target.ActualHeight, JsonSerializer.Serialize(DescribeViewports(target)), NativeScreenCapture.OwnsScreenPoint(Window, x, y));
+                            var unchanged = state == after; commits.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, before = bounds, after = after.Item1, unchanged });
+                            if (!unchanged) { previous = null; stable = 0; return; }
+                        }
+                        finally { committing = false; }
+                    }
+                    ready.TrySetResult(bounds);
+                }
             }
             catch (Exception error) { ready.TrySetException(error); }
         }
         Microsoft.UI.Xaml.Media.CompositionTarget.Rendering += Presented;
-        try { return await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        try { return await ready.Task.WaitAsync(deadline.Token); }
         finally
         {
             Microsoft.UI.Xaml.Media.CompositionTarget.Rendering -= Presented;
-            pointerPresentations.Add(new { target = target.Name, milliseconds = watch.Elapsed.TotalMilliseconds, frames, stable, passed = ready.Task.IsCompletedSuccessfully, observations });
+            pointerPresentations.Add(new { target = target.Name, milliseconds = watch.Elapsed.TotalMilliseconds, frames, stable, passed = ready.Task.IsCompletedSuccessfully, observations, commits });
         }
     }
 
@@ -336,7 +402,7 @@ internal sealed class NativeInputSession : IDisposable
             File.WriteAllText(Path.Combine(folder, $"{prefix}-desktop.json"),
                 JsonSerializer.Serialize(new { window = Window.ToInt64(), foregroundWindow = GetForegroundWindow().ToInt64(),
                     sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(),
-                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves, pointerPresentations, keyActions },
+                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves, pointerPresentations, keyActions, pointerClicks },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
         finally

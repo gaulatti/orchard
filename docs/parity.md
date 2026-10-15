@@ -44,8 +44,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | radial-bar-chart | `BleeckerRadialBarChart`, typed observable records, curved labels and consumer radii/angles | Registered 80-case source fixture and native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](radial-bar-chart-reference.md) |
 | funnel-chart | `BleeckerFunnelChart`, typed observable records, native trapezoids and wrapped source labels | Registered 54-case source fixture and native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](funnel-chart-reference.md) |
 | radial-bar-chart | Pending | Pending | Full pinned contract |
-| funnel-chart | Pending | Pending | Full pinned contract |
-| sankey-chart | Pending | Pending | Full pinned contract |
+| sankey-chart | `BleeckerSankeyChart`, original nodes/indexed flows and native cubic bands | Registered 76-case source fixture and graph-error/input/lifecycle checks | In progress: [source contract and acceptance gaps](sankey-chart-reference.md) |
 | sunburst-chart | Pending | Pending | Full pinned contract |
 | dashboard-grid | `BleeckerDashboardGrid` and `BleeckerDashboardSpan`: viewport columns, responsive/full spans and consumer children | Registered 96-case frozen layout, mutation/keyboard fixture and independent consumer; monitoring/editorial compositions | In progress: [source contract and evidence](dashboard-grid-reference.md); full intrinsic/override matrix, raster, contrast/Narrator/scaling and platform acceptance |
 | dashboard-section | `BleeckerDashboardSection`: consumer content, optional title/description/action and viewport-responsive header | Registered 50-case frozen layout, binding/lifecycle/keyboard fixture and independent consumer | In progress: [source contract and evidence](dashboard-section-reference.md); exact raster, minimum-content/override matrix, contrast/Narrator/scaling and full platform acceptance |

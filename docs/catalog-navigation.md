@@ -111,6 +111,15 @@ remount, template/data replacement, resize and empty data. `-Component
 funnel-chart-sequence` runs Funnel, Radial Bar, Radar, Scatter and Sparkline in
 each theme. See [the Funnel contract](funnel-chart-reference.md).
 
+Sankey charts follows Funnel charts. Focused `-Component sankey-chart` compares
+76 frozen Light/Dark graphs, node/cubic geometry, paint, hover opacity and
+tooltip text/geometry through actual native pointer input. Its lifecycle suite
+checks original nodes/links, live record/palette/options, stationary updates,
+bounded node/flow keyboard inspection, disabled traversal, detach/rapid reparent,
+template/root collection replacement, reordering, resize and empty data.
+`-Component sankey-chart-sequence` runs Sankey, Funnel, Radial Bar, Radar,
+Scatter and Sparkline in each theme. See [the Sankey contract](sankey-chart-reference.md).
+
 Tooltip opening checks require full opacity/scale and unchanged size, placement
 and origin across two Rendering transitions within two seconds. Dismissal
 waits for the actual popup to leave the root; the separate motion/interruption
@@ -120,7 +129,7 @@ captures complete the actual native render before reading measurements,
 replacing fixed sleeps while preserving each PNG and assertion. These changes
 leave pointer gates, source tolerances and the full 360-second deadline intact.
 
-Sparklines follows Funnel charts. Focused `-Component sparkline` checks 36 frozen
+Sparklines follows Sankey charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.
@@ -220,3 +229,36 @@ the normal foreground, native ownership, exact boundary-position and final-hit
 checks. Each input session records `pointerPresentations`, including every
 observation and failure. This replaces the unconditional 100ms pre-move delay;
 the complete runtime check still has its 360-second limit.
+
+The post-move gate waits for a real, non-generated mouse `PointerMoved` routed
+through the catalog root, target or current popup child. Its root-relative
+coordinates must map to the exact requested native screen pixel, within the
+same two-second policy. This replaces a fixed 30ms delay. A move to unchanged
+coordinates can reuse only a previous actual receipt at that exact point,
+together with a fresh matching native cursor read; Windows need not emit a new
+event for that move. The normal SendInput operation still runs. Every movement
+records receipts, elapsed delivery time and whether this stationary condition
+applied. Final bounds, ownership and exact boundary assertions are preserved.
+Baseline diagnostics retained the old delay across 874 moves in Sankey, Input,
+Checkbox, Tooltip, Alert and Attention fixtures: all 854 changed positions had
+actual matching receipts, and twenty eventless moves repeated a preceding
+confirmed coordinate. See `artifacts/pointer-receipt-baseline.json`. Full runtime
+verification of the event-based gate is recorded separately.
+
+The first complete working-tree attempt at
+`artifacts/smoke-sankey-chart-source-full` stopped after 230.298 seconds during
+Dark Attention gradient checks. A final pointer assertion detected a 222-pixel
+target shift: scroll metrics had changed while the reported transform remained
+at its previous position for two Rendering transitions. When a bring-into-view
+operation changes viewport metrics, preparation now waits for a compositor
+commit and rechecks the complete bounds/dimensions/viewport/ownership state.
+Any change resets the stable count. The same two-second deadline and final
+native pointer assertions remain active.
+
+Click delivery likewise requires an actual non-generated mouse release at the
+requested screen point, with the left button released, within two seconds.
+This replaces the fixed 100ms post-click wait. Baseline runs retained that delay
+while recording all 56 click releases in Attention, Switch, Checkbox, Alert,
+Brand, Activity and Page Header fixtures; every release matched, with a maximum
+of 36.706ms (`artifacts/pointer-release-baseline.json`). Existing invocation,
+toggle, disabled, focus and timed-motion assertions remain separate.

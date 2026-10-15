@@ -840,3 +840,13 @@ unrecorded failure. The complete published catalog passes both themes at
 deadline. All six rapid Input remounts record two ready rendered observations
 at approximately 114ms. The focused published mode passes both themes at
 `artifacts/smoke-checkbox-remount-published`, including the required captures.
+
+During Sankey verification, the initial disabled-editor entry in Checkbox's
+shared ownership suite also stopped at a generic two-read cursor poll after
+native pointer delivery (`artifacts/pointer-release-checkboxes`). It now uses
+the existing stronger publication boundary: two rendered observations of the
+actual blocked cursor with owned foreground/cursor and no queued publication,
+within the same two-second limit. The entry trace is retained separately from
+the later stationary disabling and rapid-remount traces. Cursor production and
+native system handles are unchanged; the original failed poll did not record
+enough observations to establish its precise publication timing.

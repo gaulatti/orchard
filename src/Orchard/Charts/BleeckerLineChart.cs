@@ -31,11 +31,11 @@ public sealed partial class BleeckerLineChart : Control
     private readonly BleeckerChartInteraction interaction=new();
     private bool queued;
     private bool sparklineMode;
-    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=pieMode=scatterMode=radarMode=radialBarMode=funnelMode=false;QueueRender();}
+    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=pieMode=scatterMode=radarMode=radialBarMode=funnelMode=sankeyMode=false;QueueRender();}
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
-    private double RenderWidth => barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
-    private double RenderHeight => barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
+    private double RenderWidth => barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
+    private double RenderHeight => barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
 
     public BleeckerLineChart()
     {
@@ -44,9 +44,9 @@ public sealed partial class BleeckerLineChart : Control
         Loaded += OnChartLoaded; Unloaded += OnChartUnloaded;
         SizeChanged += (_, _) => QueueRender(); ActualThemeChanged += (_, _) => QueueRender();
         RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => QueueRender());
-        PointerMoved += OnPointerMoved; PointerExited += (_, args) => {if(scatterMode&&args.IsGenerated)return;scatterPointerAnchor=null;interaction.Exit();PaintInteraction();};
-        GotFocus+=(_,_)=>{interaction.Focus();PaintInteraction();};
-        LostFocus += (_, _) => {interaction.Blur();PaintInteraction();}; KeyDown += OnKeyDown;
+        PointerMoved += OnPointerMoved; PointerExited += (_, args) => {if(scatterMode&&args.IsGenerated)return;scatterPointerAnchor=null;SetSankeyHover(null);if(sankeyMode)sankeyInteraction.Exit();else interaction.Exit();PaintInteraction();};
+        GotFocus+=(_,_)=>{if(sankeyMode)sankeyInteraction.Focus();else interaction.Focus();PaintInteraction();};
+        LostFocus += (_, _) => {if(sankeyMode)sankeyInteraction.Blur();else interaction.Blur();PaintInteraction();}; KeyDown += OnKeyDown;
     }
     public static readonly DependencyProperty DataProperty = DependencyProperty.Register(nameof(Data), typeof(object), typeof(BleeckerLineChart), new PropertyMetadata(null, OnDataChanged));
     public static readonly DependencyProperty SeriesProperty = DependencyProperty.Register(nameof(Series), typeof(object), typeof(BleeckerLineChart), new PropertyMetadata(null, OnDataChanged));
@@ -69,14 +69,14 @@ public sealed partial class BleeckerLineChart : Control
 
     private void OnChartLoaded(object sender, RoutedEventArgs args)
     {
-        interaction.Reset(); scatterPointerAnchor=null; DisconnectTooltipEffects(); Observe(); Render(); ConnectTooltipEffects();
+        interaction.Reset(); sankeyInteraction.Reset(); scatterPointerAnchor=null; sankeyHoveredLink=null; sankeyMotions.Clear(); DisconnectTooltipEffects(); Observe(); Render(); ConnectTooltipEffects();
     }
     private void OnChartUnloaded(object sender, RoutedEventArgs args)
     {
         // A quick reparent can deliver the previous Unloaded after the new
         // Loaded. The current connection owns its observers and effects.
         if (IsLoaded) return;
-        StopObserving(); interaction.Reset(); scatterPointerAnchor=null; ClearActive(); DisconnectTooltipEffects();
+        StopObserving(); ReleaseSankeyGeometry(); interaction.Reset(); sankeyInteraction.Reset(); scatterPointerAnchor=null; ClearActive(); DisconnectTooltipEffects();
     }
 
     private static void OnDataChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args)
@@ -107,11 +107,13 @@ public sealed partial class BleeckerLineChart : Control
         foreach (var record in Data.OfType<INotifyPropertyChanged>()) if (observedRecords.Add(record)) record.PropertyChanged += OnRecordChanged;
         ObserveScatter();
         ObserveRadar();
+        ObserveSankey();
     }
     private void StopObserving()
     {
         StopObservingScatter();
         StopObservingRadar();
+        StopObservingSankey();
         if (observedData is not null) observedData.CollectionChanged -= OnCollectionChanged;
         if (observedCollection is not null) observedCollection.CollectionChanged -= OnCollectionChanged;
         foreach (var item in observedSeries) item.Changed -= OnSeriesChanged;
@@ -129,8 +131,9 @@ public sealed partial class BleeckerLineChart : Control
     private void Render()
     {
         if (!IsLoaded || plot is null || legend is null || active is null || ActualWidth <= 0 || ActualHeight <= 0) return;
-        if (!sparklineMode && !pieMode && !scatterMode && !radialBarMode && !funnelMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
+        if (!sparklineMode && !pieMode && !scatterMode && !radialBarMode && !funnelMode && !sankeyMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
         foreach (var item in Series) { _ = item.Key; _ = item.Name; }
+        if (sankeyMode) { RenderSankey(); return; }
         if (funnelMode) { RenderFunnel(); return; }
         if (radialBarMode) { RenderRadialBar(); return; }
         if (radarMode) { RenderRadar(); return; }
@@ -229,6 +232,7 @@ public sealed partial class BleeckerLineChart : Control
     private double Y(double value) => BleeckerChartScale.Position(value, min, max, bottom, top);
     private void OnPointerMoved(object sender, PointerRoutedEventArgs args)
     {
+        if (sankeyMode) { MoveSankeyPointer(args); return; }
         if (funnelMode) { MoveFunnelPointer(args); return; }
         if (radialBarMode) { MoveRadialBarPointer(args); return; }
         if (radarMode) { MoveRadarPointer(args); return; }
@@ -247,14 +251,16 @@ public sealed partial class BleeckerLineChart : Control
         if (funnelMode && args.Key is VirtualKey.Left or VirtualKey.Right or VirtualKey.Up or VirtualKey.Down) { args.Handled = true; return; }
         if (args.Key is VirtualKey.Left or VirtualKey.Right or VirtualKey.Enter)
         {
+            if (sankeyMode) { sankeyInteraction.Key(args.Key == VirtualKey.Enter ? 0 : args.Key == VirtualKey.Right ? 1 : -1, sankeyLayout.Nodes.Length, sankeyLayout.Links.Length); PaintInteraction(); args.Handled = true; return; }
             var direction = args.Key==VirtualKey.Enter?0:args.Key==VirtualKey.Right?1:-1;
             if (barMode && VerticalBars) direction = -direction;
             interaction.Key(direction,InspectionCount);PaintInteraction();args.Handled=true;
         }
     }
-    private void PaintInteraction(){if(interaction.Index(InspectionCount) is int index)ShowActive(index,interaction.PointerY);else ClearActive();}
+    private void PaintInteraction(){var selected=sankeyMode?sankeyInteraction.Index(sankeyLayout.Nodes.Length,sankeyLayout.Links.Length):interaction.Index(InspectionCount);if(selected is int index)ShowActive(index,interaction.PointerY);else ClearActive();}
     private void ShowActive(int index, double? pointerY = null)
     {
+        if (sankeyMode) { ShowSankeyActive(index); return; }
         if (funnelMode) { ShowFunnelActive(index); return; }
         if (radialBarMode) { ShowRadialBarActive(index); return; }
         if (radarMode) { ShowRadarActive(index); return; }
@@ -293,10 +299,10 @@ public sealed partial class BleeckerLineChart : Control
         UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
-    private void ClearActive() { if (pieMode || scatterMode || radarMode || radialBarMode || funnelMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
+    private void ClearActive() { if (pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
     private TextBlock Text(string? value, double size, string key)
     {
-        var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; if (pieMode || radarMode || radialBarMode || funnelMode) BleeckerPieText.Set(text, value ?? ""); else text.Text = value ?? ""; return text;
+        var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; if (pieMode || radarMode || radialBarMode || funnelMode || sankeyMode) BleeckerPieText.Set(text, value ?? ""); else text.Text = value ?? ""; return text;
     }
     private static T Resource<T>(string markup) where T : FrameworkElement
     {
@@ -320,7 +326,7 @@ public sealed partial class BleeckerLineChart : Control
     protected override AutomationPeer OnCreateAutomationPeer() => new ChartPeer(this);
     private sealed class ChartPeer(BleeckerLineChart owner) : FrameworkElementAutomationPeer(owner)
     {
-        protected override string GetClassNameCore() => owner.funnelMode ? nameof(BleeckerFunnelChart) : owner.radialBarMode ? nameof(BleeckerRadialBarChart) : owner.radarMode ? nameof(BleeckerRadarChart) : owner.scatterMode ? nameof(BleeckerScatterChart) : owner.pieMode ? owner.pieDonutIdentity ? nameof(BleeckerDonutChart) : nameof(BleeckerPieChart) : owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
+        protected override string GetClassNameCore() => owner.sankeyMode ? nameof(BleeckerSankeyChart) : owner.funnelMode ? nameof(BleeckerFunnelChart) : owner.radialBarMode ? nameof(BleeckerRadialBarChart) : owner.radarMode ? nameof(BleeckerRadarChart) : owner.scatterMode ? nameof(BleeckerScatterChart) : owner.pieMode ? owner.pieDonutIdentity ? nameof(BleeckerDonutChart) : nameof(BleeckerPieChart) : owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsControlElementCore() => true;
         protected override bool IsContentElementCore() => true;

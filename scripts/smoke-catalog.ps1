@@ -1,7 +1,7 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'contrast-entry', 'alerts', 'brand', 'bauhaus', 'switches', 'checkboxes', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart', 'bar-chart', 'area-chart', 'pie-chart', 'donut-chart', 'scatter-chart', 'scatter-chart-sequence', 'radar-chart', 'radar-chart-sequence', 'radial-bar-chart', 'radial-bar-chart-sequence', 'funnel-chart', 'funnel-chart-sequence', 'bar-chart-sequence', 'error-state', 'error-state-contrast', 'error-state-after-chart', 'page-header', 'section-header', 'dashboard-section', 'dashboard-grid', 'sparkline', 'stat-card', 'font-audit')][string]$Component = 'all',
+    [ValidateSet('all', 'input', 'tooltips', 'breadcrumb', 'contrast', 'contrast-entry', 'alerts', 'brand', 'bauhaus', 'switches', 'checkboxes', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart', 'bar-chart', 'area-chart', 'pie-chart', 'donut-chart', 'scatter-chart', 'scatter-chart-sequence', 'radar-chart', 'radar-chart-sequence', 'radial-bar-chart', 'radial-bar-chart-sequence', 'funnel-chart', 'funnel-chart-sequence', 'sankey-chart', 'sankey-chart-sequence', 'bar-chart-sequence', 'error-state', 'error-state-contrast', 'error-state-after-chart', 'page-header', 'section-header', 'dashboard-section', 'dashboard-grid', 'sparkline', 'stat-card', 'font-audit')][string]$Component = 'all',
     [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture,
     [ValidateCount(2,2)][int[]]$ClientSize
 )

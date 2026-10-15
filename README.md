@@ -40,6 +40,8 @@ consumer-owned radial bars, curved value labels, backgrounds and a sorted
 legend, with live records and native keyboard/pointer inspection.
 The [Funnel Chart preview](docs/funnel-chart-reference.md) supplies native
 trapezoids, source name-only labels, live records and value inspection.
+The [Sankey Chart preview](docs/sankey-chart-reference.md) supplies native nodes
+and cubic flows from original consumer graphs, with live data and inspection.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

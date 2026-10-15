@@ -1,0 +1,12 @@
+<UserControl x:Class="Orchard.Catalog.SankeyChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Sankey charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional consumer-owned flow data. Native arrows inspect nodes followed by flows; Enter hides or restores inspection." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerSankeyChart x:Name="Specimen" AutomationProperties.Name="Fictional workflow flows">
+   <orchard:BleeckerSankeyChart.Data><orchard:BleeckerSankeyChartData>
+    <orchard:BleeckerSankeyChartData.Nodes><orchard:BleeckerSankeyNode Name="Harbor" /><orchard:BleeckerSankeyNode Name="Terrace" /><orchard:BleeckerSankeyNode Name="Cove" /><orchard:BleeckerSankeyNode Name="Archive" /></orchard:BleeckerSankeyChartData.Nodes>
+    <orchard:BleeckerSankeyChartData.Links><orchard:BleeckerSankeyLink Source="0" Target="1" Value="40" /><orchard:BleeckerSankeyLink Source="0" Target="2" Value="60" /><orchard:BleeckerSankeyLink Source="1" Target="3" Value="40" /><orchard:BleeckerSankeyLink Source="2" Target="3" Value="60" /></orchard:BleeckerSankeyChartData.Links>
+   </orchard:BleeckerSankeyChartData></orchard:BleeckerSankeyChart.Data>
+  </orchard:BleeckerSankeyChart>
+ </StackPanel>
+</UserControl>

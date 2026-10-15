@@ -18,7 +18,7 @@ public sealed partial class BleeckerLineChart
     internal void UseRadialBarProfile(object inner, object outer, double start, double end)
     {
         if (!double.IsFinite(start) || !double.IsFinite(end)) throw new ArgumentOutOfRangeException(nameof(start), "Radial Bar angles must be finite.");
-        radialBarMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radarMode = funnelMode = false;
+        radialBarMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radarMode = funnelMode = sankeyMode = false;
         radialInnerSetting = inner; radialOuterSetting = outer; radialStart = start; radialEnd = end; QueueRender();
     }
     private Brush? RadialPaint(int index)
