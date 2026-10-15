@@ -40,7 +40,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | pie-chart | `BleeckerPieChart` and consumer-owned `BleeckerPieChartDatum` | Registered shared 84-case Pie/Donut source fixture and native lifecycle checks | In progress: [source contract and acceptance gaps](pie-chart-reference.md) |
 | donut-chart | `BleeckerDonutChart`: source ring and independent center text | Shared Pie/Donut fixture | In progress: [source contract and acceptance gaps](pie-chart-reference.md) |
 | scatter-chart | `BleeckerScatterChart`, typed series and independent consumer collections | Registered 64-case source fixture plus native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](scatter-chart-reference.md) |
-| radar-chart | Pending | Pending | Full pinned contract |
+| radar-chart | `BleeckerRadarChart`, typed series, polar subjects and range boundaries | Registered 72-case source fixture and native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](radar-chart-reference.md) |
 | radial-bar-chart | Pending | Pending | Full pinned contract |
 | funnel-chart | Pending | Pending | Full pinned contract |
 | sankey-chart | Pending | Pending | Full pinned contract |

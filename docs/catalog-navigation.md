@@ -83,7 +83,13 @@ two-second presentation deadline and writes a `.png.layout.json` report. This
 replaces fixed 100/350ms screenshot sleeps; fixture checks, screenshot order,
 pixels and the complete run's 360-second limit remain unchanged.
 
-Sparklines follows Scatter charts. Focused `-Component sparkline` checks 36 frozen
+Radar charts follows Scatter charts. Focused `-Component radar-chart` compares
+72 frozen browser cases for polar paths, axes, labels, legend and inspection,
+then exercises live data, native input and observer/template lifecycles.
+`-Component radar-chart-sequence` runs Radar, Scatter and Sparkline in each
+theme. See [the Radar contract](radar-chart-reference.md).
+
+Sparklines follows Radar charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.

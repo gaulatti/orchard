@@ -213,6 +213,7 @@ public sealed partial class MainWindow : Window
                 await VerifyAreaChartAsync();
                 await VerifyCircularChartsAsync();
                 await VerifyScatterChartAsync();
+                await VerifyRadarChartAsync();
                 await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,

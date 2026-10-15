@@ -5,7 +5,7 @@ namespace Orchard;
 // bound follows the data maximum, including an entirely negative series.
 internal static class BleeckerChartScale
 {
-    internal static double[] Ticks(IEnumerable<double> values)
+    internal static double[] Ticks(IEnumerable<double> values, bool allowDecimals = true)
     {
         var finite = values.Where(double.IsFinite).ToArray();
         if (finite.Length == 0) return [];
@@ -13,6 +13,7 @@ internal static class BleeckerChartScale
         if (min == max)
         {
             if(min==0)return [0,1,2,3,4];
+            if(!allowDecimals)return Enumerable.Range(0,5).Select(i=>Math.Floor(min)+i-2).ToArray();
             var exponent=0;var middle=min;
             if(min!=Math.Truncate(min))
             {
@@ -28,10 +29,12 @@ internal static class BleeckerChartScale
         for (var correction = 0; ; correction++)
         {
             var step = (initial + correction) * ratioScale * magnitude;
+            if(!allowDecimals)step=Math.Max(1,Math.Ceiling(DecimalPower((initial+correction)*(digits==1?1:5),(int)digits-(digits==1?1:2))));
             var below = (int)Math.Ceiling(-min / step); var above = (int)Math.Ceiling(max / step);
             var count = below + above + 1;
             if (count > 5) continue;
             if (count < 5) { if (max > 0) above += 5 - count; else below += 5 - count; }
+            if(!allowDecimals)return Enumerable.Range(-below,below+above+1).Select(index=>index*step).ToArray();
             // The producer multiplies decimal tick steps before converting to
             // IEEE doubles. Avoid accumulating a binary step's rounding error.
             var coefficient=(initial+correction)*(digits==1?1:5);var exponent=(int)digits-(digits==1?1:2);

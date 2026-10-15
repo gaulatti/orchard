@@ -109,3 +109,10 @@ acceptance remains in progress; see the repository parity documentation.
 The first series supplies the shared numeric X/Y/Z keys. It supports bubble
 sizes, native inspection, axis labels and numeric formatters. Source/native
 and platform acceptance are tracked in the repository's Scatter contract.
+
+`BleeckerRadarChart` consumes original observable records and
+`BleeckerRadarSeries` objects. Supply SubjectKey and each series Key/Name;
+ShowLegend defaults to true and Height to 350. Series Fill enables 0.35 opacity,
+Color preserves consumer brushes, and TickFormatter formats numeric radius
+ticks and inspection values. Native inspection uses one named keyboard stop.
+See the repository's Radar contract for visual and platform acceptance gaps.

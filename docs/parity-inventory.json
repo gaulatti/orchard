@@ -816,14 +816,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerRadarChart.cs", "src/Orchard/Charts/BleeckerRadarSeries.cs", "src/Orchard/Charts/BleeckerLineChart.Radar.cs", "src/Orchard/Charts/BleeckerLineChart.Radar.Inspection.cs", "src/Orchard/Themes/RadarChart.xaml", "src/Orchard/Themes/RadarChartPalette.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/RadarChartsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/RadarChartsFixture.xaml.cs", "samples/Orchard.Catalog/RadarChartsFixture.Mutation.cs", "tests/Reference/RadarChartLayout.json", "tests/PackageConsumer/MainWindow.RadarChart.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete exact raster/effects, normal and interrupted motion parity",
+        "Complete data, overrides, RTL and collection-performance matrix",
+        "Verify actual contrast, Narrator, display/text scaling and native ARM64 runtime"
       ]
     },
     {

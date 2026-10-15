@@ -29,6 +29,8 @@
   "controls": {
     "BleeckerScatterChart": "ScatterChartsFixture.xaml",
     "BleeckerScatterSeries": "ScatterChartsFixture.xaml",
+    "BleeckerRadarChart": "RadarChartsFixture.xaml",
+    "BleeckerRadarSeries": "RadarChartsFixture.xaml",
     "BleeckerErrorState": "ErrorStatesFixture.xaml",
     "BleeckerPageHeader": "PageHeadersFixture.xaml",
     "BleeckerSectionHeader": "SectionHeadersFixture.xaml",

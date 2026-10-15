@@ -20,7 +20,7 @@ public sealed partial class BleeckerLineChart
     private double pieCx, pieCy, pieInner, pieOuter;
     internal void UsePieProfile(string nameKey, string dataKey, object radius, bool donut)
     {
-        pieMode = true; sparklineMode = barMode = areaMode = scatterMode = false;
+        pieMode = true; sparklineMode = barMode = areaMode = scatterMode = radarMode = false;
         pieNameKey = nameKey; pieDataKey = dataKey; pieInnerRadius = radius; pieDonutIdentity = donut; QueueRender();
     }
     private object? PieValue(int index, string key, object? missing) => BleeckerChartData.TryRead(Data[index], key, out var value) ? value : missing;

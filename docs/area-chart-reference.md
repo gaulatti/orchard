@@ -64,7 +64,7 @@ consumer transparency, fractional/narrow sizes, formatters, long labels and
 Import with `scripts/derive-area-chart-reference.mjs`; reproducible source
 captures and PNGs are under `artifacts/area-chart-browser`.
 
-The registered fixture follows Bar Charts and precedes Sparklines. Run
+The registered fixture follows Bar Charts and precedes Pie and donut charts. Run
 `scripts/smoke-catalog.ps1 -Component area-chart` for frozen geometry/paint,
 grid/tick/legend, dot and native inspection comparisons plus live mutation and
 lifecycle checks. All 80 comparisons and the live checks pass at
