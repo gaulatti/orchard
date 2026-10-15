@@ -1,6 +1,6 @@
 # Native Windows runtime evidence
 
-## Current Sidebar verification work
+## Current Sidebar checkpoint
 
 The native Sidebar remains in progress: 49 of the fixed 112 contracts are in
 progress, 63 are pending and none is accepted. Its focused native fixture
@@ -42,10 +42,31 @@ two stable Rendering transitions (maximum 219.4854 ms); 1,732 key actions,
 52 click receipts, 28 tooltip gates and 16 settled final captures pass without
 failure. Sidebar's two Tab handovers and two cancelled releases retain exact
 owned receipts. Audits are `artifacts/sidebar-state-gates-input-report.json`
-and `artifacts/sidebar-state-gates-evidence.json`. Final packages and a matching
-published-catalog run are still required. Push-triggered Actions remain paused
-by user request. Native ARM64, exact raster, Narrator/contrast, scaling and
-measured collection acceptance remain open.
+and `artifacts/sidebar-state-gates-evidence.json`.
+
+The published catalog from `5fcdd1af521779af6b15945926957263d15358ab` also
+passes the full run in 356.4127496 seconds at
+`artifacts/smoke-sidebar-native-published-full`. It retains the same 1,004 PNGs,
+174 unchanged glyph hashes and all input/tooltip/final-capture coverage; its
+maximum pointer gate is 214.1027 ms. Audits are
+`artifacts/sidebar-native-published-input-report.json` and
+`artifacts/sidebar-native-published-evidence.json`. An independent decoder
+verifies all 1,004 PNG structures/checksums.
+
+Versioned artifacts are `artifacts/catalog-sidebar-native` and
+`artifacts/packages-sidebar-native/Gaulatti.Orchard.0.1.0.nupkg` (package SHA-256
+`1ccad0a78427ba92812b14a8bc2a5e6bb8bad97464cbd1e80eb37e7d636eccf3`).
+Both contain identical Orchard assemblies, SHA-256
+`ca97be7a79ddcbbb3dff22b2bb4b0b82bba4381e5d165c2d07c5ff50f40c6a28`,
+and informational version `0.1.0+5fcdd1af521779af6b15945926957263d15358ab`.
+The fresh x64 consumer at `artifacts/package-consumer-sidebar-native` passes
+both themes; `artifacts/package-consumer-sidebar-native-arm64` passes a fresh
+ARM64 build only. Both isolated caches are removed. ARM64 runtime is unverified.
+Provenance is `artifacts/sidebar-native-artifact-provenance.json`.
+
+Push-triggered Actions remain paused by user request. Native ARM64, exact
+raster, Narrator/contrast, scaling and measured collection acceptance remain
+open. This is a verified implementation checkpoint, not full contract acceptance.
 
 ## Earlier published checkpoints
 

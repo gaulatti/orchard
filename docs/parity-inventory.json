@@ -1199,7 +1199,7 @@
       "remainingGaps": [
         "Exact raster and complete state, motion/reversal, arbitrary content/template, override and RTL matrices",
         "Actual Windows contrast, Narrator, display/text scaling and measured collection performance",
-        "Native ARM64 runtime, full catalog verification and final versioned package/catalog artifacts"
+        "Native ARM64 runtime"
       ]
     },
     {

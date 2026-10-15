@@ -222,12 +222,21 @@ The subsequent complete working-tree run at
 52 click receipts, 28 tooltip gates and 16 final presentation gates pass.
 The reused-consumer focused fixture also passes all 82 source cases and native
 interaction/lifecycle checks. All 66 local tests and generated tokens pass.
-See [runtime verification changes](runtime-evidence.md). Matching committed
-package/catalog artifacts and published runtime verification remain pending.
+See [runtime verification changes](runtime-evidence.md).
+
+The published catalog and package from `5fcdd1a` pass a fresh full x64 run in
+356.4127496 seconds at `artifacts/smoke-sidebar-native-published-full`, with the
+same 1,004 captures, all 174 unchanged glyph hashes and all required gates.
+The final maximum pointer gate is 214.1027 ms. The regular `0.1.0` package at
+`artifacts/packages-sidebar-native/Gaulatti.Orchard.0.1.0.nupkg`, SHA-256
+`1ccad0a78427ba92812b14a8bc2a5e6bb8bad97464cbd1e80eb37e7d636eccf3`,
+passes the fresh x64 consumer in both themes and the ARM64 build-only consumer.
+Both caches are removed; native ARM64 remains unverified. The catalog is
+`artifacts/catalog-sidebar-native`; package and catalog Orchard assemblies
+match exactly and carry the source commit in their informational version.
 
 Full raster/motion/override and RTL coverage, Windows contrast, Narrator,
-display/text scaling, measured collection performance, native ARM64 runtime,
-freshly published package/runtime artifacts still
+display/text scaling, measured collection performance and native ARM64 runtime
 need evidence. The existing catalog navigation continues using button/input
 previews. The public wiki remains unavailable; documentation remains in this
 repository. No backend or Prometheus surface is involved. Push-triggered
