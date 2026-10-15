@@ -83,3 +83,44 @@ Windows animations disabled and does not prove enabled-motion acceptance.
 Conditional-removal focus differences and the broader content, lifecycle,
 accessibility, scaling, collection-performance and ARM64 runtime matrices
 remain open. Component acceptance remains false.
+
+## Published checkpoint
+
+Final binary source: `6f680bd81a8cdfada5bf114baadede9d88fbd38d`.
+`artifacts/catalog-toolbar-press` passes the 54-state/56-image held-input replay
+in 12.8675053 seconds at `artifacts/smoke-toolbar-press-published`. Its audit
+retains 10 exact held-key pairs, 26 forward/reverse Tab transfers, six exact
+pointer releases, 26 owned pointer gates and 12 original search clicks.
+The independent PNG comparator verifies all 108 source images and all 54
+native control crops. An independent Pillow audit agrees with every difference
+count and maximum channel difference. All 54 exact raster comparisons still
+fail, with 1,584–2,678 differing pixels and zero masks/tolerance.
+
+The original 376-state replay passes its checked boundaries in 56.8778542
+seconds at `artifacts/smoke-toolbar-press-published-matrix`. All 376 source/native
+difference counts are unchanged from the previous published Ghost-alpha fix
+(total 622,366 first-frame differing pixels); all 26 known conditional-removal
+focus differences remain reported. No full source/native pair is exact.
+
+The complete native suite passes in 349.5825474 seconds at
+`artifacts/smoke-toolbar-press-published-full`, within the unchanged 360-second
+limit. All 1,028 prior PNG names are preserved, all 174 protected Sunburst/Radial
+Bar glyph hashes are unchanged, and all 1,732 pointer gates, 1,738 same-target
+key actions, 62 clicks, 118 source toolbar cases, 28 tooltip presentation gates
+and 16 final presentation gates pass. Both stationary Reset replacements
+retain their actual pointer position and paint. All 14 initial native toolbar
+rectangles are unchanged. Earlier tooltip/capture failures stay preserved;
+this pass does not establish their cause.
+
+All 81 regressions and token checks pass; both solution architectures build
+without warnings/errors. NuGet 0.1.0 at `artifacts/packages-toolbar-press` has
+SHA-256 `35f95c2539e5dece7aedb742534f9e1b28e6cfb83cb94ac267394be2941b4610`.
+Fresh x64 runtime and ARM64 build-only consumers pass at
+`artifacts/package-consumer-toolbar-press` and its `-arm64` sibling. Both private
+restore caches are removed. Package, catalog and both consumers have identical
+Orchard DLL SHA-256
+`dc7f4cd7af4c5bb98567954bef25b9b2906534d6b902252419563e1de9849c91`,
+ProductVersion `0.1.0+6f680bd81a8cdfada5bf114baadede9d88fbd38d`.
+Native ARM64 execution and all broader remaining acceptance are still open.
+Inventory remains 50 in progress, 62 pending and none accepted out of 112.
+Push-triggered Actions remain paused by user request.
