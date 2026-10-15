@@ -104,15 +104,14 @@ missing literal keys and collection reset. The independent ARM64 consumer
 builds with runtime verification explicitly false. Both isolated restore/build
 directories are removed.
 
-The first complete published run times out at the unchanged 360-second deadline
+The first complete published run timed out at the unchanged 360-second deadline
 near the final Dark checks. All 94 Sunburst cases and both lifecycle suites
-pass within that run. Complete published runtime verification remains pending;
-nonanimated setup waits are being replaced with actual presentation/lifecycle
+passed within that run. Nonanimated setup waits were replaced with actual presentation/lifecycle
 completion while preserving the existing assertions and timed motion samples.
 The focused presentation suite passes all 18 affected fixtures in both themes,
 including actual menu Closed-event/reopen checks. Both architecture builds have
 zero warnings. Twelve whole Sunburst viewports, using their recorded native
-bounds and zero excluded pixels, all differ from the browser (1,527–4,409
+bounds and zero excluded pixels, all differ from the browser (1,526–4,408
 changed pixels, maximum channel difference 251). This is an explicit open
 visual acceptance gap.
 
@@ -143,17 +142,38 @@ unchanged-code repeats themselves differ in 9 of 12 viewports by 3–76 pixels,
 with maximum channel difference 70. No pixels are masked or declared equal.
 The final seven-chart sequence passes in both themes, including the missing
 font rejection and corrected exact absolute mouse input. Both architecture
-builds have zero warnings. Fresh package/published verification of this font
-optimization remains pending.
+builds have zero warnings.
 
 The second complete published run uses catalog source
-`c3902c3acce7bdce6543951985b95ededf7ced1b` and also reaches the unchanged
+`c3902c3acce7bdce6543951985b95ededf7ced1b` and also reached the unchanged
 360-second deadline near the final Dark checks. Both Sunburst themes and
-lifecycle suites pass. This run is retained as failed verification; no full
-runtime success is claimed and the Sunburst commits remain unpublished.
+lifecycle suites passed. This run is retained as failed verification.
 Capture profiling on the unchanged 140-image Input sequence attributes about
 5.7 seconds to rendering and 1.3 seconds to PNG encoding. Bitmap reuse and
 render-event submission show no useful improvement and are not retained.
+
+The final clean source `3b3c836e07c7c988f74606d431d34ccd51e6d98d` produces the
+current `0.1.0` package, SHA-256
+`57832285ebc784d125460656faeb55679cff2ba2e7977c6b6352132b3ff51b2d`.
+The fresh independent x64 consumer passes both themes with the scoped font
+style; ARM64 consumption compiles with runtime verification false. Both
+temporary restore/build workspaces are removed. The runnable catalog is
+`artifacts/catalog-chart-font-style`, with actual ProductVersion
+`0.1.0+3b3c836e07c7c988f74606d431d34ccd51e6d98d`.
+
+Its complete published Light/Dark run passes in **354.531 seconds**, with the
+360-second deadline unchanged, at `artifacts/smoke-chart-font-style-published-full`.
+All 964 prior PNGs remain and 12 Sunburst captures bring the total to 976.
+All 1,684 pointer presentation gates pass at two stable transitions or more;
+maximum settling is 180.264 ms. Eight of 85 scroll commits catch changed bounds
+before input. All changed-position moves have exact nongenerated receipts;
+86 stationary moves reuse only a prior real receipt at the exact current point.
+All final points are owned. All 46 click releases and 28 tooltip-opening gates
+pass, with the latter retaining two stable transitions and a maximum 50.568 ms.
+All 16 final capture reports retain at least two stable transitions. The 94
+Sunburst and 80 Radial Bar native glyph hashes still match their baselines.
+This establishes the current source/native/package/runtime foundation, while
+the visual and platform acceptance gaps below remain open.
 
 This entry is in progress and is not accepted. Complete raster/motion, tree/data/
 override/RTL, actual contrast, Narrator, display/text scaling, measured

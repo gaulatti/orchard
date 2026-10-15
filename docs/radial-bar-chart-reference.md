@@ -108,6 +108,9 @@ every native glyph hash matches the prior implementation. It selects the same
 bundled/consumer family and weight once per render and disposes the style after
 all independent value layouts finish. Fonts/data are not cached across renders.
 The measured focused phase changes from 14.00/13.32 seconds in Light/Dark to
-12.29/11.66; complete published verification is still pending. See the
+12.29/11.66. The optimized package and complete published catalog from
+`3b3c836` pass independent x64 consumption and the full Light/Dark run in
+354.531 seconds. ARM64 consumption compiles, with runtime verification false.
+All 80 native glyph hashes remain unchanged in that full run. See the
 [Sunburst performance evidence](sunburst-chart-reference.md) for the shared
 style contract and unchanged-code raster variability.

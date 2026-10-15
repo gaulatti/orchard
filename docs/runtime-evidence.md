@@ -1685,3 +1685,31 @@ Library inputs remain the independently verified `ad2814e` NuGet package.
 The inventory remains 42 in progress, 70 pending and none accepted. Native
 ARM64, full raster/motion, contrast, Narrator, scaling and collection-performance
 acceptance remain open. Push-triggered Actions remain paused by user request.
+
+## Sunburst and scoped chart font setup
+
+Clean source `3b3c836e07c7c988f74606d431d34ccd51e6d98d` passes the complete
+published x64 catalog in 354.531 seconds at
+`artifacts/smoke-chart-font-style-published-full`. The 360-second deadline is
+unchanged. All 964 previous PNGs remain, with 976 total. All 1,684 native pointer
+gates pass their existing stable-transition, ownership and exact-receipt
+checks; 46 click releases, 28 tooltip gates and 16 final capture reports pass.
+Absolute input now addresses the requested pixel's interior correctly; no
+coordinate tolerance, cursor handle, pointer parking or deadline is changed.
+
+Sunburst adds 94 frozen source cases, four invalid-tree probes and actual native
+input/tree/font/lifecycle checks. Shared font setup is selected once per render
+for Sunburst and Radial Bar; all 174 native glyph hashes match the originals.
+Both architecture builds have zero warnings, all 55 regressions and generated
+token checks pass. The package at `artifacts/packages-chart-font-style` has
+SHA-256 `57832285ebc784d125460656faeb55679cff2ba2e7977c6b6352132b3ff51b2d`;
+fresh x64 consumption passes both themes, while ARM64 consumption is build-only.
+Both isolated caches are removed. The runnable catalog is
+`artifacts/catalog-chart-font-style`, with its source commit in ProductVersion.
+
+Inventory: 47 in progress, 65 pending, none accepted. Twelve complete Sunburst
+viewports still differ from the browser with zero excluded pixels. Exact
+raster/motion, complete overrides/RTL, actual contrast/Narrator/scaling,
+collection-performance acceptance and native ARM64 runtime remain open. There
+is no backend/Prometheus surface. Wiki access remains unavailable, and these
+in-repository documents retain the contract. Push-triggered Actions stay paused.
