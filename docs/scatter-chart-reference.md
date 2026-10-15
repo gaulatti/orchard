@@ -186,3 +186,28 @@ settled mutations and a generated move with inspection preserved. The unchanged
 browser eleven-update probe retains `x : 40y : 60` over blank space, its
 ten-update probe returns to the original geometry and hides on point leave, and
 both hide on chart exit. All 44 unit/resource checks and tokens pass.
+
+The corrected regular 0.1.0 package is built from clean source commit
+`ad2814e36140af64d9c035321c959f4d7860d57c`, matching its nuspec metadata.
+SHA-256 is `5e14ae3752ba6c91f840a7a2a876df4868576f867f88ceca6e0ded3f606205fb`.
+The fresh isolated x64 consumer passes Light/Dark runtime at
+`artifacts/package-consumer-scatter-chart-interaction`; the fresh ARM64 consumer
+build passes at `artifacts/package-consumer-scatter-chart-interaction-arm64`,
+with runtime verification false. Both temporary restore/build workspaces are
+removed. Both solution builds have zero warnings. The corrected runnable x64
+catalog is `artifacts/catalog-scatter-chart-interaction`.
+
+That full run passes every component check, including Dark hover and Sparkline,
+but reaches 360 seconds during final Dark screenshots, before completing
+Toggles/Foundation. It is not a complete pass. The PNG encoder experiment at
+`artifacts/png-encoding-benchmark` preserves exact decoded pixels across nine
+samples but offers only a small saving; PNG encoding remains unchanged.
+
+Pointer preparation instead observes stable target screen bounds, dimensions
+and ancestor viewport metrics over two Rendering transitions, replacing its
+unconditional 100ms delay. Foreground, ownership, exact coordinates, final-hit
+checks and the 360-second global deadline remain unchanged. The strengthened
+Scatter/Sparkline sequence passes at
+`artifacts/smoke-scatter-chart-stable-pointer`; its sixteen Scatter target gates
+average about 42ms, with two stable transitions each. The complete focused Input
+fixture also passes both themes at `artifacts/smoke-input-stable-pointer`.

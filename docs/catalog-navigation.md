@@ -174,3 +174,11 @@ Focused `-Component checkboxes` runs the Checkbox page's normal fixture in
 both themes, including shared disabled Checkbox/Input ownership and rapid
 stationary Input remounts. It retains native border/cursor expectations and
 records the standard catalog captures. See [Input verification](inputs.md).
+
+Physical pointer preparation waits for native target bounds, actual dimensions
+and ancestor viewport metrics to remain unchanged across two Rendering
+transitions. It uses the catalog's two-second presentation policy and retains
+the normal foreground, native ownership, exact boundary-position and final-hit
+checks. Each input session records `pointerPresentations`, including every
+observation and failure. This replaces the unconditional 100ms pre-move delay;
+the complete runtime check still has its 360-second limit.

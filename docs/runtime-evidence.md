@@ -1589,3 +1589,26 @@ cache. Its geometry-keyed hover identity distinguishes leaving an unchanged
 point from retained inspection after point replacement; a new point hit restores
 normal leave behavior. Event/state traces and superseding verification are recorded in
 [the Scatter contract](scatter-chart-reference.md).
+
+The corrected source commit `ad2814e36140af64d9c035321c959f4d7860d57c`
+passes the strengthened 64-case Light/Dark sequence at
+`artifacts/smoke-scatter-chart-hover-identity`, including eleven stationary
+mutations and both unchanged/replaced point leave paths. Its fresh regular
+0.1.0 package has SHA-256
+`5e14ae3752ba6c91f840a7a2a876df4868576f867f88ceca6e0ded3f606205fb`.
+The isolated x64 consumer passes actual Light/Dark runtime at
+`artifacts/package-consumer-scatter-chart-interaction`; the isolated ARM64
+consumer builds at `artifacts/package-consumer-scatter-chart-interaction-arm64`,
+with runtime verification false. Both temporary workspaces are removed. The
+runnable x64 catalog is `artifacts/catalog-scatter-chart-interaction`.
+
+The complete run from that catalog passes all component fixtures, including
+Dark stationary hover, but reaches the unchanged 360-second limit during final
+Dark screenshots. `artifacts/smoke-scatter-chart-published-interaction-full` is
+not a complete pass. Pointer moves now wait for two unchanged Rendering
+transitions in native screen bounds, dimensions and ancestor viewport metrics
+instead of a fixed 100ms pause. Every observation is retained; existing native
+foreground, ownership, exact boundary and final-hit assertions remain active.
+The focused Scatter/Sparkline sequence and complete Input fixture pass both
+themes at `artifacts/smoke-scatter-chart-stable-pointer` and
+`artifacts/smoke-input-stable-pointer`. No library or package input changes.

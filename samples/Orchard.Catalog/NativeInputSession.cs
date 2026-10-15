@@ -13,6 +13,7 @@ internal sealed class NativeInputSession : IDisposable
     private readonly CursorPoint originalPointer;
     private readonly string folder, prefix;
     private readonly List<object> pointerMoves = [];
+    private readonly List<object> pointerPresentations = [];
     private readonly List<object> keyActions = [];
     private bool pointerButtonDown;
     private bool hostedForegroundRecoveryAttempted;
@@ -135,8 +136,7 @@ internal sealed class NativeInputSession : IDisposable
     {
         if (requireForeground) await RequireForegroundAsync();
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
-        await Task.Delay(100);
-        var bounds = ScreenBounds(target);
+        var bounds = await AwaitPointerPresentationAsync(target);
         Require(bounds.Width > 0 && bounds.Height > 0, "Physical pointer target has no bounds.");
         if (localPoint is Point local) Require(local.X >= 0 && local.Y >= 0 && local.X < target.ActualWidth && local.Y < target.ActualHeight,
             "Physical pointer offset exceeds its target bounds.");
@@ -160,6 +160,35 @@ internal sealed class NativeInputSession : IDisposable
         Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) && finalBounds.Contains(new Point(actual.X, actual.Y)) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
+    }
+
+    private async Task<Rect> AwaitPointerPresentationAsync(FrameworkElement target)
+    {
+        var ready = new TaskCompletionSource<Rect>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var watch = Stopwatch.StartNew(); var observations = new List<object>();
+        (Rect Bounds, double Width, double Height, string Viewports)? previous = null;
+        var stable = 0; var frames = 0;
+        void Presented(object? sender, object args)
+        {
+            try
+            {
+                frames++;
+                if (!target.IsLoaded || target.XamlRoot is null) { previous = null; stable = 0; observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, target.IsLoaded }); return; }
+                var bounds = ScreenBounds(target); var viewports = DescribeViewports(target);
+                var state = (bounds, target.ActualWidth, target.ActualHeight, JsonSerializer.Serialize(viewports));
+                stable = bounds.Width > 0 && bounds.Height > 0 && previous == state ? stable + 1 : 0; previous = state;
+                observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, bounds, target.ActualWidth, target.ActualHeight, stable, viewports });
+                if (stable >= 2) ready.TrySetResult(bounds);
+            }
+            catch (Exception error) { ready.TrySetException(error); }
+        }
+        Microsoft.UI.Xaml.Media.CompositionTarget.Rendering += Presented;
+        try { return await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally
+        {
+            Microsoft.UI.Xaml.Media.CompositionTarget.Rendering -= Presented;
+            pointerPresentations.Add(new { target = target.Name, milliseconds = watch.Elapsed.TotalMilliseconds, frames, stable, passed = ready.Task.IsCompletedSuccessfully, observations });
+        }
     }
 
     private static void SendPointerMovement(int x, int y)
@@ -299,7 +328,7 @@ internal sealed class NativeInputSession : IDisposable
             File.WriteAllText(Path.Combine(folder, $"{prefix}-desktop.json"),
                 JsonSerializer.Serialize(new { window = Window.ToInt64(), foregroundWindow = GetForegroundWindow().ToInt64(),
                     sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(),
-                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves, keyActions },
+                    currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves, pointerPresentations, keyActions },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
         finally
