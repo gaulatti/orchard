@@ -229,6 +229,8 @@ public sealed partial class MainWindow : Window
                     await BarCharts.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
                     if (args.Contains("--smoke-bar-chart-sequence"))
                     {
+                        await SelectFixtureAsync(AreaCharts);
+                        await AreaCharts.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
                         await SelectFixtureAsync(Sparklines);
                         await Sparklines.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
                         await SelectFixtureAsync(StatCards);

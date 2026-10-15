@@ -134,3 +134,11 @@ and effect equivalence, normal/interrupted motion, the complete content/key/
 formatter/override/RTL matrix, actual contrast, Narrator, display/text scaling,
 large-collection performance and native ARM64 acceptance remain required.
 This native presentation change has no backend or metrics surface.
+
+The shared Recharts 3.8.1 mouse-priority contract is now verified with a real
+hover, Right while hovered, pointer exit and Left restoration before the
+fixture's original keyboard sequence. Focus waits for the actual GotFocus
+receipt. All geometry, cursor/dot, paint, keyboard and timing assertions
+remain. The Bar sequence now includes Area before Sparkline and Stat Card;
+this complete four-profile sequence passes both themes at
+`artifacts/smoke-bar-area-source-handover`. No production behavior changed.

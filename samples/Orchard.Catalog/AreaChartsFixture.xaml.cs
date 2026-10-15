@@ -28,6 +28,7 @@ public sealed partial class AreaChartsFixture : UserControl
         using var input = new NativeInputSession(XamlRoot, folder, $"area-chart-{scheme}"); await input.AcquireAsync(Specimen);
         var root = (Grid)XamlRoot.Content;
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
+        var outside = new Button { Content = "Outside chart", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Style = (Style)Application.Current.Resources["BleeckerSecondaryButtonStyle"] };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(typeof(AreaChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.AreaChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
@@ -55,7 +56,7 @@ public sealed partial class AreaChartsFixture : UserControl
                     chart.YAxisTickFormatter = value => "Y" + value.ToString(System.Globalization.CultureInfo.InvariantCulture);
                     chart.TooltipFormatter = value => "Value " + value.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 }
-                AutomationProperties.SetName(chart, "Consumer area comparison"); host.Children.Clear(); host.Children.Add(chart);
+                AutomationProperties.SetName(chart, "Consumer area comparison"); host.Children.Clear(); host.Children.Add(chart); host.Children.Add(outside);
                 await AwaitAsync(() => chart.IsLoaded, "Area Chart did not mount."); chart.ApplyTemplate(); UpdateLayout(); await FrameAsync(); UpdateLayout();
                 var inner = Part<BleeckerLineChart>(chart, "PART_Chart"); var plot = Part<Canvas>(inner, "PART_Plot"); var legend = Part<Canvas>(inner, "PART_Legend");
                 var errors = new List<string>();
@@ -85,9 +86,27 @@ public sealed partial class AreaChartsFixture : UserControl
                 Check(() => Require(ReferenceEquals(chart.Data, inner.Data) && ReferenceEquals(chart.Series, inner.Series) && !chart.IsTabStop && inner.IsTabStop && AutomationProperties.GetName(inner) == "Consumer area comparison" && FrameworkElementAutomationPeer.CreatePeerForElement(inner).GetClassName() == nameof(BleeckerAreaChart), "consumer identity or native inspection boundary differs"));
                 if (id is "default" or "narrow" or "negative" or "types" or "long-labels")
                     await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"area-chart-{id}-{chart.Stacked}-{scheme}.png"));
-                Require(inner.Focus(FocusState.Keyboard), "Could not focus Area Chart.");
+                var handover = id == "default" && !chart.Stacked;
+                if (handover)
+                {
+                    var firstDot = item.GetProperty("focus").GetProperty("dots")[0];
+                    await input.MoveAsync(inner, localPoint: new Point(firstDot.GetProperty("cx").GetDouble(), firstDot.GetProperty("cy").GetDouble()));
+                    await AwaitAsync(() => InspectionText(inner) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Area Chart physical hover did not inspect the first source category.");
+                }
+                await FocusAsync(inner);
                 await AwaitAsync(() => InspectionText(inner) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Area Chart focus inspection did not settle.");
                 Check(() => VerifyInspection(inner, item.GetProperty("focus"), false));
+                if (handover)
+                {
+                    await input.KeyAsync(0x27, inner);
+                    Require(Part<Border>(inner, "PART_Tooltip").Visibility == Visibility.Visible, "Area Chart hid the source mouse-priority tooltip during a real key action.");
+                    Check(() => VerifyInspection(inner, item.GetProperty("focus"), false));
+                    await input.MoveAsync(outside);
+                    await AwaitAsync(() => InspectionText(inner) == item.GetProperty("key").GetProperty("tooltip").GetString(), "Area Chart pointer exit did not restore the remembered keyboard category.");
+                    Check(() => VerifyInspection(inner, item.GetProperty("key"), true));
+                    await input.KeyAsync(0x25, inner);
+                    await AwaitAsync(() => InspectionText(inner) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Area Chart Left did not restore its initial category after handover.");
+                }
                 await input.KeyAsync((ushort)0x27, inner);
                 await AwaitAsync(() => InspectionText(inner) == item.GetProperty("key").GetProperty("tooltip").GetString(), "Area Chart key inspection did not settle.");
                 Check(() => VerifyInspection(inner, item.GetProperty("key"), true));
@@ -113,6 +132,13 @@ public sealed partial class AreaChartsFixture : UserControl
         Require(cursors.Length == source.Length, "inspection cursor count differs");
         for (var i = 0; i < cursors.Length; i++) CompareGeometry(new PathGeometry { Figures = { new PathFigure { StartPoint = new Point(cursors[i].X1, cursors[i].Y1), IsFilled = false, Segments = { new LineSegment { Point = new Point(cursors[i].X2, cursors[i].Y2) } } } } }, source[i].GetProperty("path").GetString()!);
         VerifyDots(active, expected.GetProperty("dots"), Part<Canvas>(chart, "PART_Plot").Children.OfType<Microsoft.UI.Xaml.Shapes.Ellipse>().ToArray());
+    }
+    private static async Task FocusAsync(BleeckerLineChart chart)
+    {
+        var focused = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Focused(object sender, RoutedEventArgs args) { if (ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(chart.XamlRoot), chart)) focused.TrySetResult(); }
+        chart.GotFocus += Focused;
+        try { Require(chart.Focus(FocusState.Keyboard), "Could not focus Area Chart."); await focused.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { chart.GotFocus -= Focused; }
     }
     private static void VerifyDots(Canvas canvas, JsonElement expected, Microsoft.UI.Xaml.Shapes.Ellipse[]? persistent = null)
     {

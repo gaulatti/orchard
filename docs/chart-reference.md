@@ -118,3 +118,9 @@ handover. The Bar fixture now verifies that real interaction explicitly and
 awaits GotFocus before its original keyboard assertions. Both themes pass the
 focused Bar checks; the suite now has 57 passing tests. Production chart
 interaction behavior is unchanged. Complete published verification is pending.
+
+The `1251148` candidate passed Bar and stopped at the equivalent Area keyboard
+handover boundary after 70.630 seconds. Area now verifies the same source
+hover/key/exit contract. The extended Bar → Area → Sparkline → Stat Card
+sequence passes both themes (`artifacts/smoke-bar-area-source-handover`). No
+source assertion, pointer receipt requirement or deadline changed.
