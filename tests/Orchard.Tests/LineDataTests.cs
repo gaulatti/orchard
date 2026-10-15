@@ -29,6 +29,23 @@ public sealed class LineDataTests
     }
     private static JsonDocument Reference() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "LineData.json")));
     [TestMethod]
+    public void MissingKeysAndExplicitNullRemainDistinctAtTheChartBoundary()
+    {
+        var record = new Dictionary<string, object?>
+        {
+            ["n.value"] = null,
+            ["n"] = new Dictionary<string, object?> { ["value"] = 20d, ["empty"] = null },
+            ["rows"] = new object?[] { null, 30d }
+        };
+        Assert.IsTrue(BleeckerChartData.TryRead(record, "n.value", out var literal)); Assert.IsNull(literal);
+        Assert.IsTrue(BleeckerChartData.TryRead(record, "n.empty", out var nested)); Assert.IsNull(nested);
+        Assert.IsTrue(BleeckerChartData.TryRead(record, "rows[0]", out var indexed)); Assert.IsNull(indexed);
+        Assert.IsFalse(BleeckerChartData.TryRead(record, "n.absent", out _));
+        Assert.IsFalse(BleeckerChartData.TryRead(record, "rows[2]", out _));
+        Assert.IsFalse(BleeckerChartData.TryRead(record, "__proto__", out _));
+        Assert.AreEqual(30d, BleeckerChartData.Read(record, "rows[1]"));
+    }
+    [TestMethod]
     public void NativeNumericDomainValuesMatchTheFrozenSelector()
     {
         using var reference = Reference();

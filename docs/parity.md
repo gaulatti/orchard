@@ -37,8 +37,8 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | stat-card | `BleeckerStatCard` and `BleeckerStatTrend`: consumer value/templates, trend/description precedence, icon, history and footer composition | Registered 80-case layout/content and 16-case typography references, composed clipping/occupied-row and native binding/input/lifecycle/template gates; independent consumer | In progress: [contract and evidence](stat-card-reference.md); exact glyph/raster/motion, full content/override and platform acceptance |
 | bar-chart | `BleeckerBarChart`: consumer grouped bars, both layouts, axes, grid/legend and category inspection | Registered 68-case frozen geometry/palette/tick/cursor/tooltip fixture, source wrapping baselines and native live-data/input/lifecycle checks | In progress: [source contract and evidence](bar-chart-reference.md); full raster/motion/content/override/RTL and platform acceptance |
 | area-chart | `BleeckerAreaChart`: overlapping/stacked monotone areas, ranges, axes and native inspection | Registered 80-case source fixture and live data/input/lifecycle checks | In progress: [source contract and acceptance gaps](area-chart-reference.md) |
-| pie-chart | Pending | Pending | Full pinned contract |
-| donut-chart | Pending | Pending | Full pinned contract |
+| pie-chart | `BleeckerPieChart` and consumer-owned `BleeckerPieChartDatum` | Registered shared 84-case Pie/Donut source fixture and native lifecycle checks | In progress: [source contract and acceptance gaps](pie-chart-reference.md) |
+| donut-chart | `BleeckerDonutChart`: source ring and independent center text | Shared Pie/Donut fixture | In progress: [source contract and acceptance gaps](pie-chart-reference.md) |
 | scatter-chart | Pending | Pending | Full pinned contract |
 | radar-chart | Pending | Pending | Full pinned contract |
 | radial-bar-chart | Pending | Pending | Full pinned contract |

@@ -64,7 +64,11 @@ Light/Dark source cases in overlapping and stacked modes, including curves,
 ranges, single dots, signed stacks, grid/ticks, legend and native inspection.
 See [the source contract and acceptance gaps](area-chart-reference.md).
 
-Sparklines follows Area charts. Focused `-Component sparkline` checks 36 frozen
+Pie and donut charts follows Area charts. The shared `-Component pie-chart`
+(or `donut-chart`) mode checks 84 frozen browser cases for both controls and
+their native input/data/lifecycle path. See [the contract](pie-chart-reference.md).
+
+Sparklines follows Pie and donut charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.

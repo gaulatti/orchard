@@ -1,0 +1,10 @@
+<UserControl x:Class="Orchard.Catalog.PieChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Pie and donut charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional consumer-owned categories. Focus either chart to inspect slices with Left, Right and Enter." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerPieChart x:Name="Specimen" Height="300" AutomationProperties.Name="Fictional collection shares">
+   <orchard:BleeckerPieChart.Data><orchard:BleeckerPieChartDatum Name="Harbor" Value="100" /><orchard:BleeckerPieChartDatum Name="Reed" Value="220" /><orchard:BleeckerPieChartDatum Name="Vale" Value="140" /><orchard:BleeckerPieChartDatum Name="North" Value="310" /></orchard:BleeckerPieChart.Data>
+  </orchard:BleeckerPieChart>
+  <orchard:BleeckerDonutChart x:Name="DonutSpecimen" Height="300" CenterValue="770" CenterLabel="Fictional total" AutomationProperties.Name="Fictional ring summary" />
+ </StackPanel>
+</UserControl>

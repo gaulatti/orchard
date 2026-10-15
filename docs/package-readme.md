@@ -97,3 +97,9 @@ directory together when distributing an application.
 stacked monotone areas, with optional numeric tick/tooltip formatters, a shared
 palette and one native category inspection stop. See the Area Chart source
 contract in the repository documentation for current acceptance limits.
+
+`BleeckerPieChart` and `BleeckerDonutChart` consume original observable records
+(or `BleeckerPieChartDatum` models), native brushes and one keyboard inspection
+stop. Pie supports custom record keys and numeric/percentage inner radius; Donut
+provides the source ring with independent center text. Full platform and visual
+acceptance remains in progress; see the repository parity documentation.

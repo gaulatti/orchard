@@ -27,6 +27,11 @@ public sealed partial class MainWindow : Window
         PackageBarChart.Data.Add(new Dictionary<string,object?>{{"label","B"},{"v",20d}});
         PackageAreaChart.Data.Add(new Dictionary<string,object?>{{"label","A"},{"v",10d}});
         PackageAreaChart.Data.Add(new Dictionary<string,object?>{{"label","B"},{"v",20d}});
+        foreach (var data in new[] { PackagePieChart.Data, PackageDonutChart.Data })
+        {
+            data.Add(new BleeckerPieChartDatum { Name = "A", Value = 10 });
+            data.Add(new BleeckerPieChartDatum { Name = "B", Value = 20 });
+        }
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
@@ -205,6 +210,7 @@ public sealed partial class MainWindow : Window
                 await VerifySparklineAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();
+                await VerifyCircularChartsAsync();
                 await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,

@@ -11,20 +11,22 @@ internal static class BleeckerChartData
     // The frozen renderer's es-toolkit get first preserves an exact record key,
     // then resolves dotted/bracketed paths. The series model itself never parses it.
     internal static object? Read(IReadOnlyDictionary<string, object?> record, string key)
+        => TryRead(record, key, out var value) ? value : null;
+    internal static bool TryRead(IReadOnlyDictionary<string, object?> record, string key, out object? value)
     {
-        if (key == "__proto__") return null;
-        if (record.TryGetValue(key, out var direct)) return direct;
-        var path = Path(key); if (path.Count == 0) return null;
+        value = null;
+        if (key == "__proto__") return false;
+        if (record.TryGetValue(key, out value)) return true;
+        var path = Path(key); if (path.Count == 0) return false;
         object? current = record;
         foreach (var name in path)
         {
-            if (name == "__proto__") return null;
-            if (current is IReadOnlyDictionary<string, object?> dictionary) current = dictionary.TryGetValue(name, out var value) ? value : null;
+            if (name == "__proto__") return false;
+            if (current is IReadOnlyDictionary<string, object?> dictionary) { if (!dictionary.TryGetValue(name, out current)) return false; }
             else if (current is IList list && int.TryParse(name, NumberStyles.None, CultureInfo.InvariantCulture, out var index) && index >= 0 && index < list.Count) current = list[index];
-            else return null;
-            if (current is null) return null;
+            else return false;
         }
-        return current;
+        value = current; return true;
     }
     // es-toolkit's locked toPath grammar, including quoted bracket keys and
     // escaped characters. Leading dots address an explicit empty-string key.
