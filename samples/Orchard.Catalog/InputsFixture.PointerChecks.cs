@@ -123,8 +123,16 @@ public sealed partial class InputsFixture
                 viewport.Height = originalHeight;
                 viewport.VerticalAlignment = originalAlignment;
                 UpdateLayout();
-                DisabledPointerHost.Children.Remove(DisabledErrorInput);
-                await Task.Delay(250);
+                var unloaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+                void Unloaded(object sender, RoutedEventArgs args) => unloaded.TrySetResult();
+                DisabledErrorInput.Unloaded += Unloaded;
+                try
+                {
+                    DisabledPointerHost.Children.Remove(DisabledErrorInput);
+                    await unloaded.Task.WaitAsync(TimeSpan.FromSeconds(2));
+                    await MainWindow.AwaitPresentationAsync(this);
+                }
+                finally { DisabledErrorInput.Unloaded -= Unloaded; }
                 Require(!DisabledErrorInput.IsLoaded && CurrentCursor() != SystemCursor(IntPtr.Zero, new IntPtr(32648)), "Unloaded input retained its cursor.");
                 steps.Add($"{theme}, invalid={invalid}: unloaded");
                 DisabledPointerHost.Children.Insert(0, DisabledErrorInput);

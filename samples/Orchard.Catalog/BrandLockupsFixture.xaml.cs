@@ -44,7 +44,7 @@ public sealed partial class BrandLockupsFixture : UserControl
         var controls = new[] { SmallLogo, LargeLogo, SmallNamed, LargeNamed, EmptyName, Disabled, CustomLink, LongName, CustomImage };
         foreach (var control in controls) control.ApplyTemplate();
         await AwaitAsync(() => controls.All(control => Find<Image>(control).ActualWidth > 0), "Brand images did not produce native layout.");
-        UpdateLayout(); await Task.Delay(250);
+        await MainWindow.AwaitPresentationAsync(this);
         foreach (var control in new[] { SmallLogo, LargeLogo, SmallNamed, LargeNamed, EmptyName })
         {
             var image = Find<Image>(control); var large = control.Size == BleeckerBrandLockupSize.Large;
@@ -118,6 +118,7 @@ public sealed partial class BrandLockupsFixture : UserControl
         finally { ((FrameworkElement)XamlRoot.Content).RequestedTheme=ownerTheme; }
         await AwaitAsync(() => SmallNamed.ActualTheme==(scheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark), "Brand did not restore its owner theme.");
         SmallNamed.FlowDirection=FlowDirection.RightToLeft;CustomImage.FlowDirection=FlowDirection.RightToLeft;UpdateLayout();
+        await MainWindow.AwaitPresentationAsync(SmallNamed);
         var rtlNameElement=Find<TextBlock>(SmallNamed,"PART_Name");var rtlLogoElement=Find<Grid>(SmallNamed,"PART_Logo");
         var rtlText=rtlNameElement.TransformToVisual(XamlRoot.Content).TransformBounds(new Rect(0,0,rtlNameElement.ActualWidth,rtlNameElement.ActualHeight));
         var rtlLogo=rtlLogoElement.TransformToVisual(XamlRoot.Content).TransformBounds(new Rect(0,0,rtlLogoElement.ActualWidth,rtlLogoElement.ActualHeight));
@@ -125,6 +126,7 @@ public sealed partial class BrandLockupsFixture : UserControl
         Require(rtlText.Right<rtlLogo.Left,"RTL brand did not reverse its layout while preserving source artwork.");
         await VerifyPixelsAsync(input,scheme,folder);
         SmallNamed.FlowDirection=FlowDirection.LeftToRight;CustomImage.FlowDirection=FlowDirection.LeftToRight;UpdateLayout();
+        await MainWindow.AwaitPresentationAsync(SmallNamed);
         var originalSource=CustomImage.LogoSource;
         CustomImage.LogoSource=null;UpdateLayout();
         Require(Find<Image>(CustomImage).Source is null,"Cleared consumer logo silently selected the packaged logo.");

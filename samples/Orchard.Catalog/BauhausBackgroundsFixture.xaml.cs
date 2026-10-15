@@ -36,7 +36,7 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"bauhaus-{scheme}");
         await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
-        await Task.Delay(250); UpdateLayout();
+        await MainWindow.AwaitPresentationAsync(this);
         var controls = new[] { Nazca, Autostrada, Pompeii, Monitor, Square, Tall };
         foreach (var control in controls)
         {

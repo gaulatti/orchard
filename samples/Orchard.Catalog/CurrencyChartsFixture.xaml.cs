@@ -30,30 +30,42 @@ public sealed partial class CurrencyChartsFixture : UserControl
         var reports = new List<object>(); var failures = new List<string>();
         try
         {
+            var owner = new BleeckerChart { Width = 640, Height = 300, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }; AutomationProperties.SetName(owner, "Consumer currency totals");
+            await MountAsync(host, owner); owner.ApplyTemplate(); host.UpdateLayout(); await FrameAsync(); host.UpdateLayout();
+            var inner = Descendants<BleeckerLineChart>(owner).Single(); var plot = Descendants<Canvas>(owner).Single(c => c.Name == "PART_Plot"); var active = Descendants<Canvas>(owner).Single(c => c.Name == "PART_Active");
+            var popup = Descendants<Border>(owner).Single(c => c.Name == "PART_Tooltip"); var items = Descendants<StackPanel>(owner).Single(c => c.Name == "PART_TooltipItems"); var container = Descendants<Grid>(owner).Single(c => c.Name == "PART_TooltipContainer");
+            await FocusAsync(inner); host.UpdateLayout();
             foreach (var sample in reference.RootElement.GetProperty("cases").EnumerateArray().Where(c => c.GetProperty("scheme").GetString() == scheme.ToString()))
             {
+                var clock = Stopwatch.StartNew();
                 var id = sample.GetProperty("id").GetString()!; var source = sample.GetProperty("normal"); var data = new ObservableCollection<object?>((object?[])Read(sample.GetProperty("props").GetProperty("data"))!);
-                var owner = new BleeckerChart { Data = data, Width = source.GetProperty("width").GetDouble(), Height = source.GetProperty("height").GetDouble(), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }; AutomationProperties.SetName(owner, "Consumer currency totals");
-                before.Focus(FocusState.Keyboard); host.Children.Insert(0, owner); await AwaitAsync(() => owner.IsLoaded, "Chart did not mount."); owner.ApplyTemplate(); UpdateLayout(); await MainWindow.AwaitPresentationAsync(owner); UpdateLayout();
-                var inner = Descendants<BleeckerLineChart>(owner).Single(); var plot = Descendants<Canvas>(owner).Single(c => c.Name == "PART_Plot"); var active = Descendants<Canvas>(owner).Single(c => c.Name == "PART_Active");
-                var popup = Descendants<Border>(owner).Single(c => c.Name == "PART_Tooltip"); var items = Descendants<StackPanel>(owner).Single(c => c.Name == "PART_TooltipItems"); var container = Descendants<Grid>(owner).Single(c => c.Name == "PART_TooltipContainer");
+                owner.Width = source.GetProperty("width").GetDouble(); owner.Height = source.GetProperty("height").GetDouble(); owner.Data = data; host.UpdateLayout(); await FrameAsync(); host.UpdateLayout();
                 var errors = new List<string>(); void Check(string boundary, Action action) { try { action(); } catch (InvalidOperationException error) { errors.Add(boundary + ": " + error.Message); } }
+                var mountedMilliseconds = clock.Elapsed.TotalMilliseconds;
                 Check("ownership", () => { var peer = FrameworkElementAutomationPeer.CreatePeerForElement(inner); Require(ReferenceEquals(owner.Data, data) && !owner.IsTabStop && inner.IsTabStop && peer.GetClassName() == nameof(BleeckerChart) && peer.GetName() == "Consumer currency totals" && peer.GetAutomationControlType() == AutomationControlType.Group, "Chart lost original data or its single named keyboard entry."); });
                 Check("curve", () => CompareCurve(plot, source)); Check("axes", () => CompareAxes(plot, source)); Check("grid", () => CompareGrid(plot, source));
                 Require(Descendants<Canvas>(owner).Single(c => c.Name == "PART_Legend").Children.Count == 0, "Chart invented a legend.");
-                Require(inner.Focus(FocusState.Keyboard), "Chart refused keyboard focus."); await MainWindow.AwaitPresentationAsync(inner); UpdateLayout();
+                // These comparisons inspect live XAML geometry and arranged
+                // properties after actual focus/key event receipts.
+                // Physical pointer gates and actual captures retain their
+                // independent two-frame presentation/commit checks.
                 var firstState = sample.GetProperty("states")[0].GetProperty("state"); Check("inspection", () => CompareInspection(active, popup, items, container, firstState));
+                var inspectedMilliseconds = clock.Elapsed.TotalMilliseconds;
                 if (id is "default" or "partial-names" or "duplicate-partial" or "no-names")
                 {
                     foreach (var state in sample.GetProperty("states").EnumerateArray().Skip(1).Take(4))
                     {
-                        var key = state.GetProperty("action").GetString(); await input.KeyAsync(key == "ArrowRight" ? (ushort)0x27 : key == "ArrowLeft" ? (ushort)0x25 : (ushort)0x0D, inner); await MainWindow.AwaitPresentationAsync(inner); UpdateLayout(); Check(key!, () => CompareInspection(active, popup, items, container, state.GetProperty("state"), comparePlacement: false));
+                        var key = state.GetProperty("action").GetString(); await input.KeyAsync(key == "ArrowRight" ? (ushort)0x27 : key == "ArrowLeft" ? (ushort)0x25 : (ushort)0x0D, inner); host.UpdateLayout(); Check(key!, () => CompareInspection(active, popup, items, container, state.GetProperty("state"), comparePlacement: false));
                     }
-                    await input.MoveAsync(inner, localPoint: new Point(61, 84)); await MainWindow.AwaitPresentationAsync(inner); Require(popup.Visibility == Visibility.Visible, "Physical pointer did not enter Chart inspection."); await input.MoveAsync(before);
+                    await input.MoveAsync(inner, localPoint: new Point(61, 84)); host.UpdateLayout(); Require(popup.Visibility == Visibility.Visible, "Physical pointer did not enter Chart inspection."); await input.MoveAsync(before);
+                    // Restore index zero through real keyboard input before the
+                    // next source data replacement on this mounted consumer.
+                    await input.KeyAsync(id is "no-names" or "partial-names" ? (ushort)0x0D : (ushort)0x25, inner); host.UpdateLayout(); Check("reset", () => CompareInspection(active, popup, items, container, firstState, comparePlacement: false));
                 }
-                if (id is "default" or "negative" or "missing" or "narrow" or "short" or "multilingual") { before.Focus(FocusState.Keyboard); await MainWindow.AwaitPresentationAsync(owner); await MainWindow.CaptureElementAsync(root, System.IO.Path.Combine(folder, $"currency-chart-{id}-{scheme}.png")); }
-                reports.Add(new { id, errors }); failures.AddRange(errors.Select(error => id + ": " + error)); host.Children.Remove(owner);
+                if (id is "default" or "negative" or "missing" or "narrow" or "short" or "multilingual") { before.Focus(FocusState.Keyboard); await MainWindow.AwaitPresentationAsync(owner); await MainWindow.CaptureElementAsync(root, System.IO.Path.Combine(folder, $"currency-chart-{id}-{scheme}.png")); await FocusAsync(inner); await input.KeyAsync(0x0D, inner); host.UpdateLayout(); }
+                reports.Add(new { id, errors, mountedMilliseconds, inspectedMilliseconds, elapsedMilliseconds = clock.Elapsed.TotalMilliseconds }); failures.AddRange(errors.Select(error => id + ": " + error));
             }
+            host.Children.Remove(owner);
             await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"currency-chart-{scheme}.json"), JsonSerializer.Serialize(new { passed = failures.Count == 0, reports }, new JsonSerializerOptions { WriteIndented = true }));
             Require(failures.Count == 0, "Chart mismatches: " + string.Join(" | ", failures)); await VerifyLifecycleAsync(host, before, input);
         }
@@ -119,6 +131,21 @@ public sealed partial class CurrencyChartsFixture : UserControl
         public new object? this[string key] { get => base[key]; set { base[key] = value; handlers?.Invoke(this, new PropertyChangedEventArgs(key)); } }
     }
     private async Task AwaitAsync(Func<bool> condition, string message) { var watch = Stopwatch.StartNew(); while (!condition() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); } Require(condition(), message); }
+    private static async Task MountAsync(Panel host, FrameworkElement element)
+    {
+        var loaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Loaded(object sender, RoutedEventArgs args) => loaded.TrySetResult();
+        element.Loaded += Loaded;
+        try { host.Children.Insert(0, element); await loaded.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { element.Loaded -= Loaded; }
+    }
+    private static async Task FocusAsync(Control element)
+    {
+        var focused = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Focused(object sender, RoutedEventArgs args) { if (ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(element.XamlRoot), element)) focused.TrySetResult(); }
+        element.GotFocus += Focused;
+        try { Require(element.Focus(FocusState.Keyboard), "Chart refused keyboard focus."); await focused.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { element.GotFocus -= Focused; }
+    }
+    private static async Task FrameAsync() { var ready = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Frame(object? sender, object args) => ready.TrySetResult(); CompositionTarget.Rendering += Frame; try { await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); } finally { CompositionTarget.Rendering -= Frame; } }
     private static IEnumerable<T> Descendants<T>(DependencyObject owner) where T : DependencyObject { for (var i = 0; i < VisualTreeHelper.GetChildrenCount(owner); i++) { var child = VisualTreeHelper.GetChild(owner, i); if (child is T found) yield return found; foreach (var descendant in Descendants<T>(child)) yield return descendant; } }
     private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
     private static void Near(double actual, double expected) => Require(Math.Abs(actual - expected) < .001, $"{actual:R}/{expected:R}");

@@ -94,3 +94,19 @@ tolerance (`artifacts/currency-chart-raster-comparison.json`). Full raster and
 motion parity remain open. Fresh package-consumer and complete published
 catalog validation are still pending at this source checkpoint. Inventory is
 48 in progress, 64 pending, none accepted.
+
+The first complete published run at `1b9bf1b` timed out at 360.223 seconds
+during Dark Input after all chart checks passed. Its 884 PNGs and failure are
+preserved in `artifacts/smoke-currency-chart-published-full`.
+
+The currency matrix now replaces original data and dimensions on one mounted
+consumer, awaiting real Loaded/GotFocus receipts and a Rendering boundary.
+Keyboard resets use real native keys; all 94 cases and the same curve, axis,
+grid, paint, tooltip and cursor assertions remain. Normal captures retain
+their presentation gate, and physical pointer moves retain two stable Rendering
+transitions, owned final bounds and exact nongenerated event receipts. All
+two-second presentation deadlines and the full 360-second deadline remain.
+Focused Brand, Bauhaus, Input and Currency checks pass both themes. Static
+setup/unload waits now use presentation/Unloaded events, and Brand RTL checks
+await presentation after direction changes. Measured motion windows remain
+unchanged. The revised complete published run is still pending.
