@@ -421,9 +421,10 @@ remain open; the library does not force focus to a fixture-specific target.
 The new consumer/geometry/input gate does not establish rendered paint, motion,
 accessibility or complete focus parity.
 
-The focused run at
+The first correctly sized diagnostic at
 `artifacts/smoke-data-table-toolbar-interactions-client-sized` passes the CLI
-and independent audit. All 376 state PNGs are exactly 1000×745; both final
+and its initial audit, before measured toolbar rectangles became required in
+the current audit. All 376 state PNGs are exactly 1000×745; both final
 catalog PNGs are 1024×745. There are 86 owned pointer gates/moves (minimum two
 stable transitions, maximum 51.5934ms), 316 same-target key actions including
 84 Shift/Ctrl combinations, 68 clicks, 18 exact held releases and 134 exact
@@ -437,6 +438,47 @@ failed the independent image-size check: the new fixture had saved startup
 window dimensions before input acquisition applied the requested client size.
 It now saves dimensions after acquisition and restores those exact dimensions.
 No size assertion or existing full-suite check was relaxed.
+
+The current reproducible published run from source `29f42bd` is
+`artifacts/smoke-data-table-toolbar-interactions-published`. Its CLI and current
+standalone audit pass in 56.5281415 seconds, retaining the measured rectangles
+for all 376 state captures and both final catalog renders. The counts remain
+86 owned pointer gates/moves, 316 key actions (84 modified), 68 clicks,
+18 held releases and 134 Tab transfers; maximum pointer readiness is 50.9236ms.
+All 26 focus differences remain reported, with component acceptance false.
+
+The complete published catalog also passes at
+`artifacts/smoke-data-table-toolbar-interactions-published-full` in
+350.9128699 seconds under the unchanged 360-second deadline. All 1,026 previous
+PNG names remain, with no additions or omissions. All 174 protected glyph
+hashes, 1,732 owned pointer gates/moves (minimum two stable transitions,
+maximum 200.7276ms), 1,738 same-target keys, 62 clicks, two exact Reset releases,
+eight toolbar Tab transfers, 28 tooltip gates and 16 final-capture gates pass.
+See `artifacts/data-table-toolbar-interactions-retention-report.json`,
+`artifacts/data-table-toolbar-interactions-full-audit.json` and
+`artifacts/data-table-toolbar-interactions-full-input.json`.
+
+All 14 initial native toolbar rectangles are pixel-identical to the previous
+published full run, with zero masks/tolerance, at
+`artifacts/data-table-toolbar-interactions-native-raster.json`. The 14 exact
+browser/native comparisons still fail (1,056–1,795 pixels, maximum delta 227)
+at `artifacts/data-table-toolbar-interactions-browser-raster.json`. The earlier
+tooltip capture abort does not recur; its cause remains unestablished.
+
+The matching package is
+`artifacts/packages-data-table-toolbar-interactions/Gaulatti.Orchard.0.1.0.nupkg`,
+SHA-256 `87c88a4942fe36b21820e82b128544fd48710f842160e368fb835e957f6f4723`;
+the runnable catalog is `artifacts/catalog-data-table-toolbar-interactions`.
+All four Orchard DLLs match SHA-256
+`f8d45fb99c3fb9f4301633162768a65e88937e392d8880540e172ca814e6c4ce`,
+ProductVersion `0.1.0+29f42bdcb7826f449cb24a8e56102cfb1a0c8c39`.
+Fresh x64 consumer runtime and ARM64 build-only checks pass at
+`artifacts/package-consumer-data-table-toolbar-interactions` and its
+`-arm64` sibling; both temporary restore caches are removed. ARM64 runtime
+remains unverified. All 77 local regressions and token checks pass; both
+solution architectures build with zero warnings/errors. This checkpoint
+changes catalog verification and documentation; there is no backend or
+Prometheus impact. Inventory remains 50 in progress, 62 pending, none accepted.
 
 ## Native acceptance still required
 
