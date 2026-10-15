@@ -151,3 +151,18 @@ for one named group stop. Native Left/Right traverses nodes then flows; Enter
 toggles inspection and Tab leaves normally. This Windows keyboard convention
 extends a source chart that has no keyboard stop. Source geometry quirks and
 remaining visual/platform gaps are documented in the Sankey contract.
+
+`BleeckerSunburstChart.Data` is a required original recursive record implementing
+`IReadOnlyDictionary<string, object?>`. `BleeckerSunburstNode` provides Name,
+optional Value/Fill and an original observable Children collection. Shared
+records remain shared at every tree path; record notifications and collection
+changes update sectors, outlined values and accessible hierarchy text. Defaults
+are Height 350, DataKey `value` and NameKey `name`; keys are literal properties,
+including empty or dotted keys. Root totals follow the frozen source: infer a
+positive leaf sum only when the root lacks a numeric selected value, preserve
+explicit root totals, and never infer branch values. Palette indexes restart
+among each node's siblings; explicit native Fill brushes retain identity.
+Set the chart's automation name for its noninteractive Image role. Tab skips it;
+hover/click adds no visible inspection. Help text supplies ancestor paths and
+values. Cycles and malformed child collections fail explicitly. See the
+Sunburst contract for source quirks and outstanding visual/platform acceptance.

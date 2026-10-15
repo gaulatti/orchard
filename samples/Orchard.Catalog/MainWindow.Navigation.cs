@@ -31,6 +31,7 @@ public sealed partial class MainWindow
             ("Radial bar charts",RadialBarCharts),
             ("Funnel charts",FunnelCharts),
             ("Sankey charts",SankeyCharts),
+            ("Sunburst charts",SunburstCharts),
             ("Sparklines",Sparklines),
             ("Stat cards",StatCards),
             ("Error states",ErrorStates),

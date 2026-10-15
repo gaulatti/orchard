@@ -970,14 +970,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerSunburstChart.cs", "src/Orchard/Charts/BleeckerSunburstNode.cs", "src/Orchard/Charts/BleeckerSunburstGeometry.cs", "src/Orchard/Charts/BleeckerSunburstText.cs", "src/Orchard/Themes/SunburstChart.xaml", "src/Orchard/Themes/SunburstChartPalette.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/SunburstChartsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/SunburstChartsFixture.xaml.cs", "samples/Orchard.Catalog/SunburstChartsFixture.Mutation.cs", "tests/PackageConsumer/MainWindow.SunburstChart.cs", "tests/Orchard.Tests/SunburstGeometryTests.cs", "tests/Reference/SunburstChartLayout.json"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete raster/motion, tree/data/override/RTL and measured collection-performance coverage",
+        "Verify fresh independent package and complete published runtime",
+        "Verify actual contrast, Narrator, display/text scaling and native ARM64 runtime"
       ]
     },
     {

@@ -122,9 +122,9 @@ internal sealed class NativeInputSession : IDisposable
             new NativeInput { Type = 1, Data = new InputData { Keyboard = new KeyboardInput { Key = 0x10, Flags = 2 } } }]);
     }
 
-    internal async Task ClickAsync(FrameworkElement target, bool requireForeground = true)
+    internal async Task ClickAsync(FrameworkElement target, bool requireForeground = true, Point? localPoint = null)
     {
-        await MoveAsync(target, requireForeground);
+        await MoveAsync(target, requireForeground, localPoint);
         var expected = ReadPointerPosition(); var watch = Stopwatch.StartNew(); var receipts = new List<object>();
         var delivered = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var roots = new HashSet<UIElement> { root.Content, target };

@@ -11,6 +11,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadarChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadialBarChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/FunnelChartPalette.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/SunburstChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCardPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Menus.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />

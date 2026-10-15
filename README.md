@@ -42,6 +42,9 @@ The [Funnel Chart preview](docs/funnel-chart-reference.md) supplies native
 trapezoids, source name-only labels, live records and value inspection.
 The [Sankey Chart preview](docs/sankey-chart-reference.md) supplies native nodes
 and cubic flows from original consumer graphs, with live data and inspection.
+The [Sunburst Chart preview](docs/sunburst-chart-reference.md) supplies recursive
+sectors and outlined values from original consumer trees, with a named native
+image and live hierarchy updates.
 
 The catalog has a searchable component list. Selecting a component mounts its
 fixture and unloads the previous one while preserving its local example state.

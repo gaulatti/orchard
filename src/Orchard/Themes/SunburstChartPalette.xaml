@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Default"><SolidColorBrush x:Key="BleeckerSunburstSectorStrokeBrush" Color="#FFFFFF" /><SolidColorBrush x:Key="BleeckerSunburstTextOutlineBrush" Color="#FFFFFF" /><SolidColorBrush x:Key="BleeckerSunburstTextBrush" Color="#000000" /></ResourceDictionary>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="BleeckerSunburstSectorStrokeBrush" Color="#FFFFFF" /><SolidColorBrush x:Key="BleeckerSunburstTextOutlineBrush" Color="#FFFFFF" /><SolidColorBrush x:Key="BleeckerSunburstTextBrush" Color="#000000" /></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="BleeckerSunburstSectorStrokeBrush" Color="{ThemeResource SystemColorWindowTextColor}" /><SolidColorBrush x:Key="BleeckerSunburstTextOutlineBrush" Color="{ThemeResource SystemColorWindowColor}" /><SolidColorBrush x:Key="BleeckerSunburstTextBrush" Color="{ThemeResource SystemColorWindowTextColor}" /></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

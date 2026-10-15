@@ -21,6 +21,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        PackageSunburstChart.Data = SunburstData();
         PackageBauhaus.ImageSource = new WriteableBitmap(4, 4);
         foreach(var value in new[]{10d,30d,20d,40d})PackageSparkline.Data.Add(new Dictionary<string,object?>{{"v",value}});
         PackageBarChart.Data.Add(new Dictionary<string,object?>{{"label","A"},{"v",10d}});
@@ -217,6 +218,7 @@ public sealed partial class MainWindow : Window
                 await VerifyRadialBarChartAsync();
                 await VerifyFunnelChartAsync();
                 await VerifySankeyChartAsync();
+                await VerifySunburstChartAsync();
                 await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,

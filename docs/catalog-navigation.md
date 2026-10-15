@@ -120,6 +120,16 @@ template/root collection replacement, reordering, resize and empty data.
 `-Component sankey-chart-sequence` runs Sankey, Funnel, Radial Bar, Radar,
 Scatter and Sparkline in each theme. See [the Sankey contract](sankey-chart-reference.md).
 
+Sunburst charts follows Sankey charts. Focused `-Component sunburst-chart`
+compares 94 frozen Light/Dark cases for recursive sector paths, palette,
+outlined values, advances and baselines. Its lifecycle suite exercises original
+shared records, property/collection changes, literal keys, explicit root totals,
+fonts, template replacement, detach/rapid reparent, reset and resize. Actual
+native hover/click preserves the source's absence of visible inspection; Tab
+skips the named image. The image's help text exposes ancestor paths and values.
+`-Component sunburst-chart-sequence` runs Sunburst, Sankey, Funnel, Radial Bar,
+Radar, Scatter and Sparkline in each theme. See [the Sunburst contract](sunburst-chart-reference.md).
+
 Tooltip opening checks require full opacity/scale and unchanged size, placement
 and origin across two Rendering transitions within two seconds. Dismissal
 waits for the actual popup to leave the root; the separate motion/interruption
@@ -129,7 +139,7 @@ captures complete the actual native render before reading measurements,
 replacing fixed sleeps while preserving each PNG and assertion. These changes
 leave pointer gates, source tolerances and the full 360-second deadline intact.
 
-Sparklines follows Sankey charts. Focused `-Component sparkline` checks 36 frozen
+Sparklines follows Sunburst charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.

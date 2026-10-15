@@ -26,6 +26,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadialBarChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/FunnelChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SankeyChart.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/SunburstChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DonutChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Sparkline.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCard.xaml" />

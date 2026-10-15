@@ -22,6 +22,9 @@
         <Compile Include="../../src/Orchard/Charts/BleeckerFunnelGeometry.cs" Link="BleeckerFunnelGeometry.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerSankeyGeometry.cs" Link="BleeckerSankeyGeometry.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerSankeyInteraction.cs" Link="BleeckerSankeyInteraction.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerPieGeometry.cs" Link="BleeckerPieGeometry.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerSunburstGeometry.cs" Link="BleeckerSunburstGeometry.cs" />
+        <None Include="../Reference/SunburstChartLayout.json" Link="Fixtures/SunburstChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SankeyChartLayout.json" Link="Fixtures/SankeyChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/FunnelChartLayout.json" Link="Fixtures/FunnelChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/Reference/LineInteraction.json" Link="Fixtures/LineInteraction.json" CopyToOutputDirectory="PreserveNewest" />

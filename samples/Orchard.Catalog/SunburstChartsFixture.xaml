@@ -1,0 +1,11 @@
+<UserControl x:Class="Orchard.Catalog.SunburstChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Sunburst charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional hierarchical allocation. Values are drawn as outlined labels; the source has no visible pointer or keyboard inspection." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerSunburstChart x:Name="Specimen" AutomationProperties.Name="Fictional hierarchical allocation">
+   <orchard:BleeckerSunburstChart.Data><orchard:BleeckerSunburstNode Name="Root">
+    <orchard:BleeckerSunburstNode.Children><orchard:BleeckerSunburstNode Name="Harbor" Value="40"><orchard:BleeckerSunburstNode.Children><orchard:BleeckerSunburstNode Name="A" Value="25" /><orchard:BleeckerSunburstNode Name="B" Value="15" /></orchard:BleeckerSunburstNode.Children></orchard:BleeckerSunburstNode><orchard:BleeckerSunburstNode Name="Terrace" Value="20" /></orchard:BleeckerSunburstNode.Children>
+   </orchard:BleeckerSunburstNode></orchard:BleeckerSunburstChart.Data>
+  </orchard:BleeckerSunburstChart>
+ </StackPanel>
+</UserControl>
