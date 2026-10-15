@@ -28,6 +28,7 @@ public sealed partial class BarChartsFixture : UserControl
         using var input = new NativeInputSession(XamlRoot, folder, $"bar-chart-{scheme}"); await input.AcquireAsync(Specimen);
         var root = (Grid)XamlRoot.Content;
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
+        var outside = new Button { Content = "Outside chart", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Style = (Style)Application.Current.Resources["BleeckerSecondaryButtonStyle"] };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(typeof(BarChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.BarChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
@@ -55,7 +56,7 @@ public sealed partial class BarChartsFixture : UserControl
                     chart.YAxisTickFormatter = value => value is double number ? "Y" + number.ToString(System.Globalization.CultureInfo.InvariantCulture) : "Category " + value;
                     chart.TooltipFormatter = value => "Value " + value.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 }
-                AutomationProperties.SetName(chart, "Consumer bar comparison"); host.Children.Clear(); host.Children.Add(chart);
+                AutomationProperties.SetName(chart, "Consumer bar comparison"); host.Children.Clear(); host.Children.Add(chart); host.Children.Add(outside);
                 await AwaitAsync(() => chart.IsLoaded, "Bar Chart did not mount."); chart.ApplyTemplate(); UpdateLayout(); await FrameAsync(); UpdateLayout();
                 var inner = Part<BleeckerLineChart>(chart, "PART_Chart"); var plot = Part<Canvas>(inner, "PART_Plot"); var legend = Part<Canvas>(inner, "PART_Legend");
                 var errors = new List<string>();
@@ -106,9 +107,27 @@ public sealed partial class BarChartsFixture : UserControl
                 Check(() => Require(ReferenceEquals(chart.Data, inner.Data) && ReferenceEquals(chart.Series, inner.Series) && !chart.IsTabStop && inner.IsTabStop && AutomationProperties.GetName(inner) == "Consumer bar comparison" && FrameworkElementAutomationPeer.CreatePeerForElement(inner).GetClassName() == nameof(BleeckerBarChart), "consumer identity or native inspection boundary differs"));
                 if (id is "default" or "narrow" or "negative" or "types" or "long-labels")
                     await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"bar-chart-{id}-{chart.Layout}-{scheme}.png"));
-                Require(inner.Focus(FocusState.Keyboard), "Could not focus Bar Chart.");
+                var handover = id == "default" && chart.Layout == BleeckerBarChartLayout.Horizontal;
+                if (handover)
+                {
+                    var firstBar = expected.GetProperty("bars")[0];
+                    await input.MoveAsync(inner, localPoint: new Point(firstBar.GetProperty("x").GetDouble() + firstBar.GetProperty("width").GetDouble() / 2, firstBar.GetProperty("y").GetDouble() + firstBar.GetProperty("height").GetDouble() / 2));
+                    await AwaitAsync(() => InspectionText(inner) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Bar Chart physical hover did not inspect the first source category.");
+                }
+                await FocusAsync(inner);
                 await AwaitAsync(() => InspectionText(inner) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Bar Chart focus inspection did not settle.");
                 Check(() => VerifyInspection(inner, item.GetProperty("focus"), false));
+                if (handover)
+                {
+                    await input.KeyAsync(0x27, inner);
+                    Require(Part<Border>(inner, "PART_Tooltip").Visibility == Visibility.Visible, "Bar Chart hid the source mouse-priority tooltip during a real key action.");
+                    Check(() => VerifyInspection(inner, item.GetProperty("focus"), false));
+                    await input.MoveAsync(outside);
+                    await AwaitAsync(() => InspectionText(inner) == item.GetProperty("key").GetProperty("tooltip").GetString(), "Bar Chart pointer exit did not restore the remembered keyboard category.");
+                    Check(() => VerifyInspection(inner, item.GetProperty("key"), true));
+                    await input.KeyAsync(0x25, inner);
+                    await AwaitAsync(() => InspectionText(inner) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Bar Chart Left did not restore its initial category after handover.");
+                }
                 await input.KeyAsync(chart.Layout == BleeckerBarChartLayout.Horizontal ? (ushort)0x27 : (ushort)0x28, inner);
                 await AwaitAsync(() => InspectionText(inner) == item.GetProperty("key").GetProperty("tooltip").GetString(), "Bar Chart key inspection did not settle.");
                 Check(() => VerifyInspection(inner, item.GetProperty("key"), true));
@@ -141,6 +160,13 @@ public sealed partial class BarChartsFixture : UserControl
         }
     }
     private static string InspectionText(BleeckerLineChart chart) => string.Concat(Part<StackPanel>(chart, "PART_TooltipItems").Children.OfType<TextBlock>().Select(text => text.Text));
+    private static async Task FocusAsync(BleeckerLineChart chart)
+    {
+        var focused = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Focused(object sender, RoutedEventArgs args) { if (ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(chart.XamlRoot), chart)) focused.TrySetResult(); }
+        chart.GotFocus += Focused;
+        try { Require(chart.Focus(FocusState.Keyboard), "Could not focus Bar Chart."); await focused.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { chart.GotFocus -= Focused; }
+    }
     private static object? Read(JsonElement value) => value.ValueKind switch
     {
         JsonValueKind.Object => value.EnumerateObject().ToDictionary(property => property.Name, property => Read(property.Value)),

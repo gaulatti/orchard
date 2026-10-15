@@ -6,6 +6,20 @@ namespace Orchard.Tests;
 public sealed class ChartInteractionTests
 {
     [TestMethod]
+    public void MouseHoverKeepsSourcePriorityAndExitRevealsRememberedKeyboardSelection()
+    {
+        using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "ChartPointerPriority.json")));
+        Assert.AreEqual("dcd8c302e50d0b8255207a57603999a5498cf4361034021d71aab96cd6f65235", reference.RootElement.GetProperty("sourceSha256").GetString());
+        var state = new BleeckerChartInteraction(); var names = new[] { "Harbor", "Reed", "Vale", "North" };
+        foreach (var step in reference.RootElement.GetProperty("states").EnumerateArray())
+        {
+            var action = step.GetProperty("action").GetString();
+            if (action == "focus") state.Focus(); else if (action == "hover-first") state.Pointer(0, 100); else if (action == "outside") state.Exit(); else state.Key(1, 4);
+            var index = state.Index(4); Assert.AreEqual(step.GetProperty("visible").GetBoolean(), index is not null, action);
+            Assert.AreEqual(step.GetProperty("text").GetString()!.Split(" : ")[0], index is int selected ? names[selected] : "", action);
+        }
+    }
+    [TestMethod]
     public void NativeChannelsMatchTheFrozenFocusKeyboardAndPointerSequence()
     {
         using var reference=JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","LineInteraction.json")));

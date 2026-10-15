@@ -131,3 +131,14 @@ normal/interrupted motion, full formatter/content/key/override/RTL matrix,
 actual Windows contrast, Narrator, display/text scaling and native ARM64 acceptance
 remain required. A successful static path comparison does not establish those
 requirements. Push-triggered Actions remain paused at the user's request.
+
+The pinned React 19.2.4/Recharts 3.8.1 browser confirms that active mouse hover
+keeps priority over a real keyboard action; leaving the chart reveals the
+remembered keyboard category. `tests/Reference/ChartPointerPriority.json`
+records that six-step sequence, with source/bundle/lock verification in
+`scripts/derive-chart-pointer-priority.mjs`. The native fixture now exercises
+real hover, Right while hovered, pointer exit and Left restoration before its
+original keyboard sequence. It awaits the actual GotFocus receipt. All
+existing source assertions, two-second deadlines and exact physical-event
+receipts remain. Focused checks pass both themes; 57 local tests pass. The
+complete revised published run is pending.

@@ -110,3 +110,11 @@ Focused Brand, Bauhaus, Input and Currency checks pass both themes. Static
 setup/unload waits now use presentation/Unloaded events, and Brand RTL checks
 await presentation after direction changes. Measured motion windows remain
 unchanged. The revised complete published run is still pending.
+
+The revised `a43fc9b` run stopped at 67.103 seconds in Light Bar keyboard
+inspection (`artifacts/smoke-currency-chart-events-published-full`). A separate
+unchanged-browser probe confirms mouse-over-keyboard priority and exit
+handover. The Bar fixture now verifies that real interaction explicitly and
+awaits GotFocus before its original keyboard assertions. Both themes pass the
+focused Bar checks; the suite now has 57 passing tests. Production chart
+interaction behavior is unchanged. Complete published verification is pending.
