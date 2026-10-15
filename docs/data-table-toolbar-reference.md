@@ -214,16 +214,29 @@ with their complete props set before mounting. Live mutations and all pointer/
 final-capture gates keep their existing ordering. All 14 native source toolbar
 rectangles remain pixel-identical between the original and optimized full runs.
 
+Final published evidence from source `2743907` is at
+`artifacts/smoke-data-table-toolbar-published-full`: the complete x64 run passes
+in 352.0595866 seconds with all 1,020 PNGs and protected input/glyph gates.
+The published native-raster comparison has one pixel at channel delta one in
+Light column-filter; that exact check stays failed without tolerance or masks.
+All 14 browser/native comparisons also stay failed. See the complete hashes
+and reports in [runtime evidence](runtime-evidence.md).
+
+The versioned package is
+`artifacts/packages-data-table-toolbar-native/Gaulatti.Orchard.0.1.0.nupkg` and
+the matching runnable catalog is `artifacts/catalog-data-table-toolbar-native`.
+Both independent consumers restore that exact package into fresh GUID caches,
+then remove those caches. x64 runtime passes both themes; ARM64 compilation
+passes with runtime explicitly unverified. All four Orchard DLLs are identical.
+
 ## Native acceptance still required
 
 - Extend the normal-state and representative input coverage to all 376 source
   interaction states, complete content/override/error/RTL and enabled/motion
   matrices, reverse/edge focus traversal and every original action/filter callback.
-- Verify final matching-source package/catalog artifacts and native ARM64
-  runtime. The provisional independent x64 consumer passes in both themes,
-  including physical typing, original row/column identity and initial/global
-  reset semantics, and removes its own GUID cache. Both solution architectures
-  compile; those results do not establish native ARM64 runtime acceptance.
+- Verify native ARM64 runtime; both solution architectures and fresh consumer
+  builds pass, and the independent x64 consumer passes physical typing,
+  original row/column identity and initial/global reset semantics in both themes.
 - Verify exact rendered parity, full content/override/error matrices, Windows
   contrast, Narrator, display/text scaling and measured collection performance.
   Include monitoring/editorial compositions and final matching-source artifacts.

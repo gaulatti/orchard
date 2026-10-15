@@ -1237,7 +1237,7 @@
       "remainingGaps": [
         "Complete all 376 source interaction states and full content/override/error/RTL and motion matrices",
         "Verify exact raster, native contrast, Narrator, display/text scaling and collection performance",
-        "Verify fresh package consumer and both architecture builds; native ARM64 runtime remains required"
+        "Native ARM64 runtime remains required; matching-source package/catalog and fresh x64 runtime/ARM64 build-only consumers pass"
       ]
     },
     {

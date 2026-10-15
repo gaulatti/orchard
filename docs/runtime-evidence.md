@@ -39,6 +39,34 @@ four Light cases; those diagnostics are retained without masks or tolerance.
 This comparison establishes full-run raster retention for the scheduling change.
 Browser/native exact parity remains failed and no component is accepted.
 
+The final published catalog from source
+`274390749b5c8a25685808784074a466b073cb7c` passes the complete x64 run at
+`artifacts/smoke-data-table-toolbar-published-full` in 352.0595866 seconds.
+The same 1,020 PNGs, all 174 protected glyph hashes, 118 normal toolbar cases,
+1,738 same-target keys, 60 clicks, eight toolbar Tab transfers, 28 tooltip gates
+and 16 final-capture gates pass. All 1,728 pointer gates have at least two
+actual stable transitions; maximum readiness is 265.9897ms, with no failures.
+This final run also verifies that search automation names follow the original
+placeholder, including an explicitly empty placeholder.
+
+The final toolbar native-raster retention comparison passes 13 of 14 rectangles;
+the Light column-filter rectangle has one pixel at channel delta one relative
+to the original sequential-wait full capture. Its exact comparison remains
+failed, with zero masks/tolerance. Browser/native comparison still fails all
+14 pairs (1,216–2,456 pixels, maximum channel delta 242). Neither the scheduling
+change nor the published artifacts close visual acceptance.
+
+The final package is
+`artifacts/packages-data-table-toolbar-native/Gaulatti.Orchard.0.1.0.nupkg`,
+SHA-256 `1d02b8d530ce4b52a9ef0075b0b6ce5de37ce4c224c9dc874dee1e655e251d15`.
+Catalog: `artifacts/catalog-data-table-toolbar-native`. The package, catalog,
+fresh x64 consumer and fresh ARM64 consumer contain the same Orchard DLL,
+SHA-256 `6cadca81414eb6e0c3b79047182197bee8bbaa08bab2c0e4bf9b430a16694247`,
+version `0.1.0+274390749b5c8a25685808784074a466b073cb7c`. Fresh x64 consumer
+runtime passes both themes; fresh ARM64 consumer compilation passes with
+runtime explicitly unverified. Both GUID restore caches are removed. Push
+Actions remain paused by user request; no manual dispatch is authorized.
+
 ## Previous Sidebar checkpoint
 
 The native Sidebar remains in progress: 49 of the fixed 112 contracts are in
