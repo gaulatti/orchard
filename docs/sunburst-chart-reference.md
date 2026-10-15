@@ -116,6 +116,15 @@ bounds and zero excluded pixels, all differ from the browser (1,527–4,409
 changed pixels, maximum channel difference 251). This is an explicit open
 visual acceptance gap.
 
+The second complete published run uses catalog source
+`c3902c3acce7bdce6543951985b95ededf7ced1b` and also reaches the unchanged
+360-second deadline near the final Dark checks. Both Sunburst themes and
+lifecycle suites pass. This run is retained as failed verification; no full
+runtime success is claimed and the Sunburst commits remain unpublished.
+Capture profiling on the unchanged 140-image Input sequence attributes about
+5.7 seconds to rendering and 1.3 seconds to PNG encoding. Bitmap reuse and
+render-event submission show no useful improvement and are not retained.
+
 This entry is in progress and is not accepted. Complete raster/motion, tree/data/
 override/RTL, actual contrast, Narrator, display/text scaling, measured
 collection performance and native ARM64 runtime remain required. This native
