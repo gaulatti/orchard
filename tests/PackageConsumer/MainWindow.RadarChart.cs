@@ -34,6 +34,18 @@ public sealed partial class MainWindow
             await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 20", "Packaged Radar did not inspect through native Right.");
             owner.Data[1] = new Dictionary<string, object?> { ["subject"] = "B", ["a"] = 25d };
             await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 25", "Packaged Radar ignored replacement records.");
+            void Key(ushort value)
+            {
+                var input = new[] { new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = value } } }, new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = value, Flags = 2 } } } };
+                Require(SendInput(2, input, Marshal.SizeOf<ConsumerInput>()) == 2, "Packaged Radar range input did not enter native input.");
+            }
+            owner.Data[0] = new Dictionary<string, object?> { ["subject"] = "A", ["a"] = new object?[] { 10d, 40d } }; Key(0x25);
+            await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "A;  : 1040" && Shapes("radar-base").Length == 1, "Packaged Radar lost a live range.");
+            var tooltip = BrandDescendants<Border>(chart).Single(border => border.Name == "PART_Tooltip");
+            // The source range's nameless row has two context-shaped text nodes.
+            await AwaitAsync(() => Math.Abs(tooltip.ActualWidth - 64.90625) < .001, "Packaged Radar lost contextual range text or its bundled font path.");
+            owner.Data[0] = new Dictionary<string, object?> { ["subject"] = "A", ["a"] = 10d }; Key(0x27);
+            await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : 25" && Shapes("radar-base").Length == 0, "Packaged Radar did not restore a scalar range boundary.");
             var paint = new SolidColorBrush(Microsoft.UI.Colors.Transparent); owner.Series[0].Color = paint; owner.Series[0].Fill = false;
             await AwaitAsync(() => ReferenceEquals(Shapes("radar-stroke")[0].Stroke, paint) && ReferenceEquals(Shapes("radar-fill")[0].Fill, paint) && Shapes("radar-fill")[0].Opacity == 0, "Packaged Radar lost consumer transparent paint or fill changes.");
             owner.TickFormatter = value => "T" + value; await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == "B;  : T25", "Packaged Radar ignored live formatting."); owner.TickFormatter = null;
