@@ -44,9 +44,11 @@ public sealed partial class MainWindow
         toolbarSource.Initial = "Reed";
         toolbarSource.Global = "Reed";
         var reset = BrandDescendants<Button>(PackageToolbar).Single(button => button.Name == "PART_Reset");
+        reset.ApplyTemplate(); Root.UpdateLayout();
+        await AwaitAsync(() => BrandDescendants<TextBlock>(reset).Any(text => text.Text == "Reset"), "Packaged Reset caption did not load.");
         var caption = BrandDescendants<TextBlock>(reset).Single(text => text.Text == "Reset");
-        var baseline = caption.TransformToVisual(reset).TransformPoint(new Windows.Foundation.Point()).Y + caption.BaselineOffset;
-        Require(Math.Abs(baseline - 22.25) <= 1d / 32, "Packaged Reset caption differs from the measured source baseline.");
+        await AwaitAsync(() => Math.Abs(caption.TransformToVisual(reset).TransformPoint(new Windows.Foundation.Point()).Y + caption.BaselineOffset - 22.25) <= 1d / 32,
+            "Packaged Reset caption differs from the measured source baseline.");
         ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(reset).GetPattern(PatternInterface.Invoke)).Invoke();
         await AwaitAsync(() => search.Text == "Reed" && PackageToolbarRows.Text == "Reed", "Packaged toolbar reset did not restore initial filters.");
         Require(Equals(toolbarSource.GlobalFilter, "Reed") && reset.IsLoaded && ReferenceEquals(PackageToolbarFilter.Parent, search.Parent),

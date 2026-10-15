@@ -264,8 +264,7 @@ The Light default difference falls from 1,900 to 1,163 pixels; column-filter
 falls from 2,312 to 1,499. All 14 exact browser/native comparisons remain failed
 (1,056–1,795 pixels, maximum channel delta 227), with no masks or tolerance.
 Two earlier flat-template runs retain identical pixels across all 14 rectangles
-at `artifacts/data-table-toolbar-flat-slots-repeat-report.json`. Full final
-runtime, artifact and consumer validation for this follow-up is still pending.
+at `artifacts/data-table-toolbar-flat-slots-repeat-report.json`.
 
 The expanded x64 run at
 `artifacts/smoke-data-table-toolbar-caption-diagnostic-full` passes in
@@ -280,8 +279,28 @@ passing rerun does not establish the earlier failure's cause or resolve it.
 
 Exact focused/full native comparison still fails for five pixels at channel
 delta one in Dark small-viewport; the other 13 toolbar rectangles are identical.
-No tolerance or mask is applied. Native ARM64, final matching artifacts and
-fresh consumers for this follow-up remain pending.
+No tolerance or mask is applied. Native ARM64 runtime remains unverified.
+
+The matching published run from source `3df8889` passes at
+`artifacts/smoke-data-table-toolbar-caption-published-full` in 349.6342151
+seconds. All 1,020 PNGs, 174 protected glyph hashes and the input/source/capture
+audits pass unchanged; maximum pointer readiness is 165.9788ms. The earlier
+Checkbox failure does not recur in either final complete run, but its cause
+remains unestablished and the extra failure diagnostics are retained.
+
+The package is
+`artifacts/packages-data-table-toolbar-caption/Gaulatti.Orchard.0.1.0.nupkg`,
+SHA-256 `7ff7cd8d41e953376d397365d2ece02181b9c3534df4455f927d01418558dbc0`;
+the matching catalog is `artifacts/catalog-data-table-toolbar-caption`.
+All four Orchard DLLs (package, catalog, x64 consumer and ARM64 consumer) match
+SHA-256 `9b26e31f81f2c466bc27fe3420daa2cd1e1a73406b35b7154393d4a3f0a54de8`,
+version `0.1.0+3df888927db4bb7680314b484ec242f20a5d8f60`. Both solution builds
+pass with zero warnings/errors. The fresh x64 consumer verifies the measured
+22.25px caption baseline in both themes after the actual Reset text template
+loads; the fresh ARM64 consumer compiles with runtime explicitly unverified.
+All GUID caches are removed, including the first x64 attempt that queried the
+new text subtree before its template loaded. The final exact browser/native
+and focused/full raster checks remain failed without masks or tolerance.
 
 ## Native acceptance still required
 

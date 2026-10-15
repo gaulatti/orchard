@@ -1,5 +1,33 @@
 # Native Windows runtime evidence
 
+## Toolbar chrome and caption follow-up
+
+Source `3df888927db4bb7680314b484ec242f20a5d8f60` corrects the toolbar Reset
+caption's CSS baseline and the source fixture's original consumer button
+chrome/line boxes. An independent frozen-producer probe measures 22.25px in
+both themes while preserving the original PNG hashes before/after insertion
+of a zero-width baseline marker. The native fixture and isolated package
+consumer verify that actual baseline. All 76 local tests, token checks and
+x64/ARM64 builds pass; actual source slot label fonts/colors are also checked.
+
+The final published x64 run passes in 349.6342151 seconds at
+`artifacts/smoke-data-table-toolbar-caption-published-full`. All 1,020 PNGs,
+174 protected glyph hashes, 118 toolbar cases, 1,728 pointer gates (minimum two
+stable transitions; maximum 165.9788ms), 1,738 same-target keys, 60 clicks,
+eight toolbar Tab transfers, 28 tooltip and 16 final-capture gates pass.
+An earlier run failed the unchanged Dark Long Checkbox settle predicate;
+additional failure-only diagnostics were added. The later complete runs pass,
+but the earlier failure's cause remains unestablished.
+
+Fresh x64 consumer runtime passes both themes, including caption baseline;
+fresh ARM64 consumer compilation passes with runtime unverified. Their own
+GUID caches are removed. Matching package/catalog hashes and paths are in the
+[toolbar reference](data-table-toolbar-reference.md). All 14 exact browser/
+native raster pairs still fail (1,056–1,795 pixels, maximum channel delta 227).
+Five Dark small-viewport pixels differ at channel delta one between focused
+and full native captures. No masks or tolerance are applied, and zero of the
+fixed 112 contracts is accepted. Push Actions remain paused by user request.
+
 ## Native Data Table Toolbar work
 
 The toolbar preview brings the working inventory to 50 in progress, 62 pending
