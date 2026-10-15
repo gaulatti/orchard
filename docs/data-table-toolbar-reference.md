@@ -598,6 +598,55 @@ rendered brush. The old DLL SHA-256 is
 `398e161f6c38a3120cd73e035de509514ff02a6efeded567521f8606e46d39aa`.
 Exact raster, focus-removal and broader platform acceptance remain open.
 
+The final published matrix from source `48353b1` passes at
+`artifacts/smoke-data-table-toolbar-stationary-hover-published` in
+57.2748724 seconds. All 18 Reset-hover records verify the physical owned hit
+and rendered palette; Dark live-source retains a false framework flag while
+presenting the correct hover. All 376 consumer/geometry/input checks, 134 Tab
+transfers and 378 images pass the independent audit. The full pixel comparison
+at `artifacts/data-table-toolbar-stationary-hover-raster-report.json` still fails
+all 376 pairs against both source frames, with no masks/tolerance. Against the
+original matrix, 43 first-frame counts improve, four worsen and 329 stay equal;
+the total falls from 760,441 to 741,517. The four worse comparisons are Light/Dark
+live-source search-fill and search-keyboard: the corrected native control now
+hovers under the retained stationary pointer before the later explicit hover
+step, whereas the frozen browser case starts with a fresh page's hover context.
+That input-context difference remains an acceptance limitation; it is not hidden
+by pointer parking or image exclusions.
+
+The complete published catalog passes at
+`artifacts/smoke-data-table-toolbar-stationary-hover-published-full` in
+350.4817014 seconds under the unchanged 360-second deadline. All 1,026 prior
+PNG names remain, with the two new stationary captures (1,028 total). Both
+stationary reports show an unchanged point, a new Reset, one preceding release
+callback and a false framework flag with correct paint. All 174 protected glyph
+hashes, 1,732 owned pointer gates/moves (minimum two stable transitions,
+maximum 183.3565ms), 1,738 same-target keys, 62 clicks, two exact Reset releases,
+eight toolbar Tab transfers, 28 tooltip gates and 16 final capture gates pass.
+See `artifacts/data-table-toolbar-stationary-hover-full-audit.json` and
+`artifacts/data-table-toolbar-stationary-hover-full-input.json`.
+
+All 14 initial native toolbar rectangles remain pixel-identical to the previous
+published full run. The 14 browser/native initial comparisons remain failed
+(1,056–1,795 pixels, maximum delta 227) with zero masks/tolerance; reports are
+`artifacts/data-table-toolbar-stationary-hover-initial-native-raster.json` and
+`artifacts/data-table-toolbar-stationary-hover-initial-browser-raster.json`.
+
+The final package is
+`artifacts/packages-data-table-toolbar-stationary-hover/Gaulatti.Orchard.0.1.0.nupkg`,
+SHA-256 `410f2f1fe2b87817c53738203b4dfdf2e57e364762977f97712f3ae2c86d22ce`;
+the matching catalog is `artifacts/catalog-data-table-toolbar-stationary-hover`.
+All four Orchard DLLs match SHA-256
+`4317bf4f7297d60c6331a6a3d2a77232c607760bb7f986d9f580cd744c36198a`,
+ProductVersion `0.1.0+48353b1f2508b68d540ba8e13d82a9875b9b9aa4`.
+Fresh x64 runtime and ARM64 build-only consumers pass at
+`artifacts/package-consumer-data-table-toolbar-stationary-hover` and its
+`-arm64` sibling; both temporary restore caches are removed. Native ARM64
+runtime remains unverified. All 79 regressions and token checks pass, and both
+solution architectures build without warnings/errors. The public wiki is still
+unavailable; documentation remains here. There is no backend/Prometheus impact.
+Inventory remains 50 in progress, 62 pending, none accepted out of 112.
+
 ## Native acceptance still required
 
 - Complete rendered paint/focus/motion acceptance for the 376 source interaction
