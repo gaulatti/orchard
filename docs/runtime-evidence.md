@@ -1,5 +1,19 @@
 # Native Windows runtime evidence
 
+The local published x64 catalog from `d1ea925` passes the complete Light/Dark
+run in 355.519 seconds at `artifacts/smoke-radar-chart-published-full`, under
+the unchanged 360-second limit. It adds 72 frozen Radar cases and native
+data/input/lifecycle checks while preserving all previous fixture checks,
+928 PNGs, sixteen settled final-capture reports and 768 owned pointer gates.
+Final x64/ARM64 builds have zero warnings; 44 regressions and generated tokens
+pass. A fresh regular `0.1.0` NuGet package from `2fdb1c9`, SHA-256
+`7d38ea5ccab8ca98e2cf0011557c5f7d24712579bf2c4122ca221586a15b2070`,
+passes the isolated x64 runtime consumer and ARM64 build-only consumer; both
+temporary caches are removed. See [Radar evidence](radar-chart-reference.md).
+Push-triggered Actions remain paused, and these local results do not replace
+the unresolved hosted native ARM64 checks or full platform/visual acceptance.
+Inventory remains 43 in progress, 69 pending and zero accepted of 112.
+
 Run [38597371241](https://github.com/gaulatti/orchard/actions/runs/38597371241)
 at `17b0e1b` passes the complete x64 job, ARM64 cross-build, both focused native
 Section Header checks, contrast and both fresh consumers. Native ARM64 fails

@@ -91,9 +91,29 @@ The Radar → Scatter → Sparkline sequence also passes in both themes at
 `artifacts/smoke-radar-chart-sequence`. The fixture starts outside the first
 chart before normal capture; each verified source outside action establishes
 the next mount's pointer setup, avoiding a redundant setup move. All source
-actions, comparisons and deadlines remain active. Package and published catalog
-verification follow. No Radar inventory entry
-is accepted. Full raster/effects, normal/interrupted motion, complete data and
+actions, comparisons and deadlines remain active.
+
+The clean regular `0.1.0` package from `2fdb1c9` is
+`artifacts/packages-radar-chart/Gaulatti.Orchard.0.1.0.nupkg`, SHA-256
+`7d38ea5ccab8ca98e2cf0011557c5f7d24712579bf2c4122ca221586a15b2070`.
+The isolated x64 consumer at `artifacts/package-consumer-radar-chart` passes
+actual Light/Dark runtime, including live range geometry and the source's
+64.90625px contextual text width through the packaged font path. The same
+package builds in the isolated ARM64 consumer at
+`artifacts/package-consumer-radar-chart-arm64`; native ARM64 runtime is unverified.
+Both temporary restore/build caches were removed. Final x64/ARM64 solution
+builds have zero warnings; all 44 regressions and generated tokens pass.
+
+The complete published x64 catalog from `d1ea925` passes both themes in
+355.519 seconds under the unchanged 360-second limit at
+`artifacts/smoke-radar-chart-published-full`. It retains 928 PNG captures,
+sixteen settled final-capture reports, both Radar source/lifecycle suites and
+the existing components' checks. All 768 native pointer presentation gates pass,
+with owned final points and at least two unchanged transitions; twenty wait for
+an initially unowned point. Maximum settling is 184.4789ms. The runnable catalog
+is `artifacts/catalog-radar-chart`. Push-triggered Actions remain paused.
+
+No Radar inventory entry is accepted. Full raster/effects, normal/interrupted motion, complete data and
 override/RTL coverage, actual contrast, Narrator, display/text scaling,
 collection performance and native ARM64 acceptance remain required. This native
 presentation work has no backend or Prometheus surface.
