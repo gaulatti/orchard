@@ -79,6 +79,14 @@ public sealed partial class DataTableToolbarsFixture
                     });
                     await Capture("released");
                 }
+                if (id == "enter-outside")
+                {
+                    await input.HeldKeyAsync(0x20, reset, () => reset, () => Capture("space-held")); await Capture("space-released");
+                    await input.MoveAsync(reset); await Capture("mouse-hover"); await input.PressPointerAsync();
+                    try { await Capture("mouse-held"); }
+                    finally { await ReleaseToolbarPointerAsync(input, $"press-{id}-restored-{scheme}", folder); }
+                    await Capture("mouse-released");
+                }
                 Require(step == test.GetProperty("states").GetArrayLength(), "Press specimen omitted a source state.");
             }
             finally { root.Children.Remove(scenario.Host); }

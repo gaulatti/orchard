@@ -668,3 +668,5 @@ This correction does not establish full toolbar raster acceptance.
 The public wiki is unavailable, so documentation remains in the repository.
 This native presentation work has no backend or Prometheus surface. Push
 Actions remain paused by user request; no CI dispatch is authorized here.
+
+The [held-input source contract](data-table-toolbar-press-reference.md) adds explicit non-hovered Space, Enter key-down timing, drag-out/return and cancellation evidence. Its dedicated native command supplements the existing full and interaction suites; full toolbar acceptance remains open.

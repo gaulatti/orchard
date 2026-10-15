@@ -25,7 +25,7 @@ public sealed class DataTableToolbarPressReferenceTests
         Assert.AreEqual("initial", Text(root, "caret")); Assert.AreEqual("allow", Text(root, "animations")); Assert.AreEqual(0, root.GetProperty("masks").GetInt32()); Assert.AreEqual(0, root.GetProperty("tolerance").GetInt32());
         var cases = root.GetProperty("results").EnumerateArray().ToArray(); Assert.HasCount(24, cases);
         Assert.AreEqual(24, cases.Select(item => (Text(item, "id"), Text(item, "scheme"), Text(item, "reducedMotion"))).Distinct().Count());
-        Assert.AreEqual(88, cases.Sum(item => item.GetProperty("states").GetArrayLength()));
+        Assert.AreEqual(108, cases.Sum(item => item.GetProperty("states").GetArrayLength()));
         foreach (var item in cases)
         {
             Assert.AreEqual(0, item.GetProperty("errors").GetArrayLength());
@@ -64,6 +64,12 @@ public sealed class DataTableToolbarPressReferenceTests
             if (id == "space-tab-cancel")
             {
                 var blurred = State(item, "blurred"); Assert.AreEqual("1", Text(blurred, "scale")); Assert.AreEqual("filters", Text(blurred, "focusRole")); Assert.AreEqual(0, Clicks(blurred)); Assert.IsFalse(blurred.GetProperty("focused").GetBoolean());
+            }
+            if (id == "enter-outside")
+            {
+                Assert.AreEqual(1, Clicks(State(item, "space-held"))); Assert.AreEqual("0.99", Text(State(item, "space-held"), "scale"));
+                Assert.AreEqual(2, Clicks(State(item, "space-released"))); Assert.AreEqual(2, Clicks(State(item, "mouse-held")));
+                Assert.AreEqual("0.99", Text(State(item, "mouse-held"), "scale")); Assert.AreEqual(3, Clicks(State(item, "mouse-released")));
             }
         }
     }

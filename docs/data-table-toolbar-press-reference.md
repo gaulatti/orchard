@@ -9,7 +9,7 @@ with an actual search click and two Tab transfers; it does not park the
 pointer or synthesize DOM events. Global filtering keeps Reset mounted so
 callback timing can be observed without conflating conditional removal.
 
-`tests/Reference/DataTableToolbarPress.json` records 24 source cases and 88
+`tests/Reference/DataTableToolbarPress.json` records 24 source cases and 108
 states across both themes and both motion preferences. Each phase has at
 least three stable actual animation frames within two seconds, a live-caret
 PNG/hash, exact before/after state equality, trusted input receipts, consumer
@@ -38,7 +38,7 @@ data-table-toolbar-press -ClientSize 1024,745` against a built/published
 catalog. It replays the reduced-motion source cases through the owned native
 window, actual pointer/key input, exact forward and reverse Tab receipts and
 an explicit Space/Enter release target. Key-up is sent in a finally path even
-when the held action fails. It records 44 native states plus two final catalog
+when the held action fails. It records 54 native states plus two final catalog
 images and retains every source mismatch. This additional matrix does not
 replace the original full suite or 376-state interaction replay.
 
@@ -54,3 +54,32 @@ first diagnostic's unnecessarily exact floating-point assertions.
 The public wiki remains unavailable, so documentation stays here. This native
 input/presentation work has no backend or Prometheus surface. Full platform
 and component acceptance remain open.
+
+The Enter scenario also follows the same original button with held Space and
+a mouse press/release. Source callbacks are 1 after Enter down, unchanged on
+Enter up/Space down, 2 after Space up, unchanged on mouse down and 3 after
+mouse release. This verifies restoration through observable input behavior.
+
+The correction keeps the private native Button and its normal Click/guards.
+Enter temporarily uses native `ClickMode.Press`, restored on key-up, blur,
+disable, unload or template detachment. Space and mouse keep their original
+release activation. Background follows the owned physical hover hit rather
+than native `IsPressed`; the source has no active Ghost fill. The transform
+uses actual mouse press/release/cancellation/capture events to retain `.99`/Y1
+while dragging outside, where native `IsPressed` becomes false. It suppresses
+the Enter press transform. No cursor moves or generated routed events are
+introduced by the control. All new handlers/state detach with the template.
+
+The expanded x64 probe at
+`artifacts/smoke-data-table-toolbar-press-restoration-probe` passes all 54
+states, 10 exact held-key pairs, 26 forward/reverse Tab transfers and six exact
+mouse releases. Its 26 owned pointer presentation gates each retain at least
+two stable real render transitions. All 81 regressions and token checks pass.
+The strict 54-pair raster comparison still fails (1,584–2,678 differing pixels,
+zero masks/tolerance), recorded at
+`artifacts/data-table-toolbar-press-restoration-raster.json`. Both themes and
+motion preferences are captured in the browser; native execution here has
+Windows animations disabled and does not prove enabled-motion acceptance.
+Conditional-removal focus differences and the broader content, lifecycle,
+accessibility, scaling, collection-performance and ARM64 runtime matrices
+remain open. Component acceptance remains false.

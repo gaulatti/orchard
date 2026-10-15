@@ -15,7 +15,7 @@ const {chromium}=require(modulePath),hash=bytes=>crypto.createHash('sha256').upd
  await fs.mkdir(output,{recursive:true});const browser=await chromium.launch({headless:true,channel:'msedge'}),results=[];assert.equal(browser.version(),reference.browser);
  try{for(const scheme of ['Light','Dark'])for(const reducedMotion of ['reduce','no-preference'])for(const id of ['space-outside','space-hover','enter-outside','drag-out','drag-return','space-tab-cancel']){
   const sample=reference.cases.find(item=>item.id==='global-filter'&&item.scheme===scheme),page=await browser.newPage({viewport:{width:1000,height:745},deviceScaleFactor:1,reducedMotion}),errors=[];
-  page.on('pageerror',error=>errors.push(error.message));let keyHeld=false,mouseHeld=false;
+  page.on('pageerror',error=>errors.push(error.message));let keyHeld=null,mouseHeld=false;
   try{
    await page.setContent('<html class="'+(scheme==='Dark'?'dark':'')+'"><head><style>'+css+fonts+'body{margin:0;background:var(--color-background)}#root{width:800px}</style></head><body><button id="before">Before</button><div id="root"></div><button id="after">After</button><output id="data-probe"></output><script>'+bundle+'</script></body></html>');
    await page.evaluate(async()=>{await Promise.all([400,500,600].map(weight=>document.fonts.load(weight+' 16px "Encode Sans"')));await document.fonts.ready;});
@@ -42,13 +42,17 @@ const {chromium}=require(modulePath),hash=bytes=>crypto.createHash('sha256').upd
     if(id==='drag-return'){await reset.hover();await capture('returned');}
     await page.mouse.up();mouseHeld=false;await capture('released');
    }else{
-    const key=id==='enter-outside'?'Enter':'Space';await page.keyboard.down(key);keyHeld=true;await capture('held');
+    const key=id==='enter-outside'?'Enter':'Space';await page.keyboard.down(key);keyHeld=key;await capture('held');
     if(id==='space-tab-cancel'){await page.keyboard.press('Shift+Tab');await capture('blurred');}
-    await page.keyboard.up(key);keyHeld=false;await capture('released');
+    await page.keyboard.up(key);keyHeld=null;await capture('released');
+    if(id==='enter-outside'){
+     await page.keyboard.down('Space');keyHeld='Space';await capture('space-held');await page.keyboard.up('Space');keyHeld=null;await capture('space-released');
+     await reset.hover();await capture('mouse-hover');await page.mouse.down();mouseHeld=true;await capture('mouse-held');await page.mouse.up();mouseHeld=false;await capture('mouse-released');
+    }
    }
    const receipts=await page.evaluate(()=>window.inputEvents);assert.equal(receipts.every(item=>item.trusted),true);assert.deepEqual(errors,[]);
    results.push({id,scheme,reducedMotion,props:sample.props,states,receipts,errors});console.log(JSON.stringify({id,scheme,reducedMotion,states:states.length}));
-  }finally{if(keyHeld)await page.keyboard.up(id==='enter-outside'?'Enter':'Space');if(mouseHeld)await page.mouse.up();await page.close();}
+  }finally{if(keyHeld)await page.keyboard.up(keyHeld);if(mouseHeld)await page.mouse.up();await page.close();}
  }}finally{await browser.close();}
  assert.equal(hash(await fs.readFile(__filename)),scriptSha256,'Capture script changed during collection.');
  const report={format:'orchard-data-table-toolbar-press-v1',browser:reference.browser,playwright:'1.62.1',sourceCommit:reference.sourceCommit,sourceSha256:reference.sourceSha256,compiledCssSha256:reference.compiledCssSha256,bundleSha256:hash(bundle),referenceSha256:hash(referenceBytes),scriptSha256,caret:'initial',animations:'allow',masks:0,tolerance:0,results};

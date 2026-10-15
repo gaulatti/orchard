@@ -113,9 +113,9 @@ public sealed partial class BleeckerDataTableToolbar:Control
     private void ResetClicked(object sender,RoutedEventArgs args)
     {
         if(!IsEnabled||!IsLoaded)return;
-        // WinUI raises Click while routing PointerReleased. React publishes
+        // Native Click runs inside its pointer/key handler. React publishes
         // this conditional removal after its input handler. Preserve that
-        // boundary so removing Reset cannot swallow its real release.
+        // boundary so removal cannot swallow the native event being routed.
         resetting=true;
         try{Table!.ResetColumnFilters();}
         finally{resetting=false;DispatcherQueue.TryEnqueue(()=>{if(IsLoaded)Refresh();});}
