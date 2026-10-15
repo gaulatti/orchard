@@ -43,7 +43,7 @@ public sealed partial class DataTableToolbarsFixture
                                 case "search-keyboard":await FocusAsync(scenario.Search);await TypeToolbarTextAsync(input,scenario.Search,"Reed");break;
                                 case "reset-hover":
                                     var hoveredReset=scenario.Reset;await input.MoveAsync(hoveredReset);
-                                    try{await AwaitAsync(()=>ResetHoverPresented(hoveredReset,scheme),"Interaction Reset did not present its actual native hover palette.");}
+                                    try{await AwaitAsync(()=>ResetHoverPresented(hoveredReset,scheme,input),"Interaction Reset did not present its actual native hover palette.");}
                                     catch(InvalidOperationException)
                                     {
                                         var child=Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChild(hoveredReset,0) as FrameworkElement;
@@ -74,7 +74,7 @@ public sealed partial class DataTableToolbarsFixture
                             await MainWindow.AwaitPresentationAsync(scenario.Bar);scenario.RegisterSlots();
                             var errors=new List<string>();void Check(string name,Action verify){try{verify();}catch(InvalidOperationException error){errors.Add(name+": "+error.Message);}}
                             Check("consumer",()=>scenario.VerifyConsumer(expected));Check("geometry",()=>VerifyToolbarInteractionGeometry(scenario.Bar,expected));
-                            if(action=="reset-hover")Check("rendered-hover",()=>Require(ResetHoverPresented(scenario.Reset,scheme),"Reset lost its native hover presentation before capture."));
+                            if(action=="reset-hover")Check("rendered-hover",()=>Require(ResetHoverPresented(scenario.Reset,scheme,input),"Reset lost its native hover presentation before capture."));
                             Check("callbacks",()=>
                             {
                                 var increment=action is "reset-release" or "reset-click" or "reset-keyboard" or "reset-Enter"?1:0;
@@ -86,7 +86,8 @@ public sealed partial class DataTableToolbarsFixture
                             if(sourceFocus!=nativeFocus)focusDifferences.Add(new{id,step,action,sourceFocus,nativeFocus});
                             var capture=$"data-table-toolbar-matrix-{id}-{step:D2}-{action}-{scheme}.png";
                             await MainWindow.CaptureElementAsync(root,Path.Combine(folder,capture));
-                            reports.Add(new{id,step,action,sourceFocus,nativeFocus,focus=scenario.FocusEvidence(),sourceFocusMatched=sourceFocus==nativeFocus,table=scenario.ActiveName,scenario.Active.VisibleText,filters=scenario.Active.CurrentFilters.Count,resets=scenario.Active.Resets,slotCallbacks=scenario.Calls.ToArray(),surface=Bounds(scenario.Bar,root),capture,errors});stateCount++;
+                            var hover=action=="reset-hover"?new{frameworkIsPointerOver=scenario.Reset.IsPointerOver,physicalHitAndPalette=ResetHoverPresented(scenario.Reset,scheme,input)}:null;
+                            reports.Add(new{id,step,action,sourceFocus,nativeFocus,focus=scenario.FocusEvidence(),sourceFocusMatched=sourceFocus==nativeFocus,table=scenario.ActiveName,scenario.Active.VisibleText,filters=scenario.Active.CurrentFilters.Count,resets=scenario.Active.Resets,slotCallbacks=scenario.Calls.ToArray(),surface=Bounds(scenario.Bar,root),hover,capture,errors});stateCount++;
                             Require(errors.Count==0,$"Toolbar interaction {id}/{step}/{action}: "+string.Join(" | ",errors));
                         }
                     }
@@ -115,10 +116,15 @@ public sealed partial class DataTableToolbarsFixture
     private static async Task ReplaceToolbarTextAsync(NativeInputSession input,BleeckerInput search,string text)
     {await FocusAsync(search);await input.ModifiedKeyAsync(0x11,0x41,search);await input.KeyAsync(0x08,search);await TypeToolbarTextAsync(input,search,text);}
 
-    private static bool ResetHoverPresented(Button reset,BleeckerColorScheme scheme)
+    private static bool ResetHoverPresented(Button reset,BleeckerColorScheme scheme,NativeInputSession input)
     {
+        if(!input.OwnsCurrentPoint||reset.IsPressed)return false;
+        var screen=input.ReadPointerPosition();var client=NativeScreenCapture.ClientBounds(input.Window);var root=reset.XamlRoot.Content;
+        var logical=new Windows.Foundation.Point((screen.X-client.X)/reset.XamlRoot.RasterizationScale,(screen.Y-client.Y)/reset.XamlRoot.RasterizationScale);
+        var hit=Microsoft.UI.Xaml.Media.VisualTreeHelper.FindElementsInHostCoordinates(logical,root).FirstOrDefault();var owned=false;
+        for(var node=hit as DependencyObject;node is not null;node=Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(node))if(ReferenceEquals(node,reset)){owned=true;break;}
         var surface=Descendants<ContentPresenter>(reset).SingleOrDefault(element=>element.Name=="ContentPresenter");
-        return reset.IsPointerOver&&!reset.IsPressed&&surface?.Background is Microsoft.UI.Xaml.Media.SolidColorBrush background&&background.Color.A==255&&
+        return owned&&surface?.Background is Microsoft.UI.Xaml.Media.SolidColorBrush background&&background.Color.A==255&&
             background.Color.R==(scheme==BleeckerColorScheme.Light?230:255)&&background.Color.G==(scheme==BleeckerColorScheme.Light?213:255)&&background.Color.B==(scheme==BleeckerColorScheme.Light?184:255)&&
             Math.Abs(background.Opacity-(scheme==BleeckerColorScheme.Light?.12:.06))<.000001;
     }

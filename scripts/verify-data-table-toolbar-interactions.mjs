@@ -29,6 +29,7 @@ for(const scheme of ['Light','Dark']){
    for(const field of ['OriginalTable','OriginalRows','OriginalNode'])assert.equal(call[field],true);
   }
   assert.equal(native.sourceFocus,step.state.focused);assert.equal(native.nativeFocus,native.focus.role);assert.equal(native.sourceFocusMatched,native.sourceFocus===native.nativeFocus);
+  if(step.action==='reset-hover')assert.equal(native.hover.physicalHitAndPalette,true);
   if(native.focus.nativeHostBoundary){assert.equal(native.focus.name,'OutsideToolbar');assert.equal(native.focus.type,'Button');assert.equal(native.nativeFocus,'body');}
   const name=`data-table-toolbar-matrix-${sample.id}-${String(stepNumber).padStart(2,'0')}-${step.action}-${scheme}.png`;
   assert.equal(native.capture,name);captures.add(name);const png=await fs.readFile(path.join(directory,name));

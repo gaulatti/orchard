@@ -561,6 +561,43 @@ Two instrumented runs at `artifacts/smoke-data-table-toolbar-hover-diagnostic`
 and its `-repeat` sibling pass all 376 states. These passes do not resolve the
 earlier missing-hover failure. This remains an open interaction acceptance gap.
 
+### Stationary Reset hover reconciliation
+
+The final failure diagnostic establishes the missing-hover mechanism: an
+enabled, loaded Reset can be under the exact owned stationary pointer while
+WinUI reports `IsPointerOver=false`, keeps CommonStates at Normal and renders
+a zero-opacity background. See
+`artifacts/smoke-data-table-toolbar-hover-proof-published`. A pointer move to
+the unchanged point need not emit another native event.
+
+Reset now uses Orchard's existing root pointer observer, sharing its real
+window/point query, rounded hit test, clipping and occlusion checks. It observes
+only while loaded and enabled, detaches on unload/template replacement and
+reconciles queued native visual-state/lifecycle changes. Native IsPressed,
+Click, focus and disabled behavior remain authoritative. No pointer movement
+or synthetic input is introduced. The hover regression checks the actual
+owned hit and rendered palette rather than treating WinUI's stale flag as
+authoritative; the framework flag remains visible in diagnostic records.
+
+The recreated-button check at
+`artifacts/smoke-data-table-toolbar-stationary-reset` passes both themes with
+an unchanged screen point, a new Reset instance, correct hover paint and no
+additional callback, while the framework flag is false. Two new stationary
+captures extend the full capture set; all previous names remain required.
+The strict matrix passes twice at
+`artifacts/smoke-data-table-toolbar-hover-reconciled` and its `-final` sibling.
+The latter records actual-hit/palette evidence for every Reset hover.
+
+An isolated copy of the current catalog with the previous library DLL passes
+the simple recreation check, so that check alone does not prove rejection of
+every old execution. The same old-library copy fails the complete live-source
+sequence with Normal/zero-opacity paint at
+`artifacts/smoke-data-table-toolbar-old-library-hover-negative`. Its diagnostic
+retains the loaded/enabled state, false framework flag, exact owned pointer and
+rendered brush. The old DLL SHA-256 is
+`398e161f6c38a3120cd73e035de509514ff02a6efeded567521f8606e46d39aa`.
+Exact raster, focus-removal and broader platform acceptance remain open.
+
 ## Native acceptance still required
 
 - Complete rendered paint/focus/motion acceptance for the 376 source interaction

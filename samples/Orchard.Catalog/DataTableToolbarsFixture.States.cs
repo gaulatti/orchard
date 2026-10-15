@@ -62,6 +62,15 @@ public sealed partial class DataTableToolbarsFixture
             Require(Equals(table.GlobalFilter,"Harbor")&&table.ColumnFilterCount==0&&reset.IsLoaded,"Held/released Reset lost global filtering or did not clear column filtering.");
             states.Add(new{phase="released",bounds=released,reset.IsPressed,paint=Paint(),callbacks=table.Resets-resets});
             await MainWindow.CaptureElementAsync(XamlRoot.Content,Path.Combine(folder,$"data-table-toolbar-reset-released-{scheme}.png"));
+            var stationary=input.ReadPointerPosition();var template=Preview.Template;var originalReset=reset;
+            Preview.Template=null;await AwaitAsync(()=>!originalReset.IsLoaded,"Old Reset did not unload during stationary template replacement.");
+            Preview.Template=template;Preview.ApplyTemplate();UpdateLayout();
+            reset=Descendants<Button>(Preview).Single(button=>button.Name=="PART_Reset");
+            await AwaitAsync(()=>reset.IsLoaded&&ResetHoverPresented(reset,scheme,input),"Recreated Reset did not reconcile its real stationary hover.");await MainWindow.AwaitPresentationAsync(Preview);
+            var after=input.ReadPointerPosition();Require(stationary==after&&input.OwnsCurrentPoint&&!ReferenceEquals(originalReset,reset)&&table.Resets==resets+1,
+                "Stationary Reset replacement moved the pointer, reused the old button or invoked its callback.");
+            await File.WriteAllTextAsync(Path.Combine(folder,$"data-table-toolbar-reset-stationary-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,stationary,after,reset.IsPointerOver,recreated=true,callbacks=table.Resets-resets}));
+            await MainWindow.CaptureElementAsync(XamlRoot.Content,Path.Combine(folder,$"data-table-toolbar-reset-stationary-hover-{scheme}.png"));
         }
         finally
         {
