@@ -16,13 +16,13 @@ public sealed partial class MenusFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         using var input = new NativeInputSession(XamlRoot, folder, $"menus-{scheme}");
         var heading = (FrameworkElement)((StackPanel)Content).Children[0];
         await input.AcquireAsync(heading);
         await input.MoveAsync(heading);
         Menu.ShowAt(Trigger);
-        await Task.Delay(200);
+        await AwaitPresenterAsync();
         var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
         Require(Menu.IsConstrainedToRootBounds, "Branded menu escaped the application viewport.");
         Require(presenter.Padding.Left == 6 && presenter.CornerRadius.TopLeft == 7 && presenter.MinWidth == 176 && !presenter.IsDefaultShadowEnabled, "Menu presenter retained Windows geometry or shadow.");
@@ -49,7 +49,7 @@ public sealed partial class MenusFixture : UserControl
             $"Keyboard focus did not visibly highlight the menu row: {Action.FocusState}, states={string.Join(',', VisualStateManager.GetVisualStateGroups(root).Select(group => group.CurrentState?.Name))}.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"menu-{scheme.ToString().ToLowerInvariant()}.png"));
         Compact.Focus(FocusState.Keyboard);
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(presenter);
         Require(focusHighlight.Opacity == 0, "Menu focus highlight remained on the previous row.");
         Compact.IsChecked = true;
         Require(!Comfortable.IsChecked && Compact.IsChecked, "Native radio group retained multiple selections.");
@@ -57,7 +57,7 @@ public sealed partial class MenusFixture : UserControl
         Require(!Compact.IsChecked, "Native radio group did not restore selection.");
         var expansion = (IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(Submenu).GetPattern(PatternInterface.ExpandCollapse);
         expansion.Expand();
-        await Task.Delay(200);
+        await AwaitPresenterAsync(presenter);
         var childPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single(candidate => candidate != presenter);
         Require(childPresenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf") && childPresenter.Padding.Left == 6, "Submenu popup retained Windows appearance.");
         Require(childPresenter.MinWidth == 144 && childPresenter.ActualWidth == 144 && presenter.MinWidth == 176,
@@ -70,21 +70,21 @@ public sealed partial class MenusFixture : UserControl
             nestedLabel.GetPattern(PatternInterface.Invoke) is null, "Submenu omitted or made its label actionable.");
         await MainWindow.CaptureElementAsync(childPresenter, Path.Combine(folder, $"submenu-{scheme.ToString().ToLowerInvariant()}.png"));
         expansion.Collapse();
-        await Task.Delay(100);
+        await AwaitMenuStateAsync(() => !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(popup => ReferenceEquals(popup.Child, childPresenter)));
         var checkPeer = new ToggleMenuFlyoutItemAutomationPeer(Checkbox);
         await InvokeAndWaitForCloseAsync(() => ((IToggleProvider)checkPeer.GetPattern(PatternInterface.Toggle)).Toggle());
         Require(!Checkbox.IsChecked, "Native checkbox menu action did not toggle.");
         Checkbox.IsChecked = true;
-        if (!Menu.IsOpen) { Menu.ShowAt(Trigger); await Task.Delay(150); }
+        if (!Menu.IsOpen) { Menu.ShowAt(Trigger); await AwaitPresenterAsync(); }
         var before = actions;
         await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(Action).GetPattern(PatternInterface.Invoke)).Invoke());
         Require(actions == before + 1 && !Menu.IsOpen, "Native menu invocation did not execute and dismiss.");
         Menu.ShowAt(Trigger);
-        await Task.Delay(150);
+        await AwaitPresenterAsync();
         await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)new MenuFlyoutItemAutomationPeer(InsetAction).GetPattern(PatternInterface.Invoke)).Invoke());
         Require(actions == before + 2 && !Menu.IsOpen, "Inset menu invocation did not execute and dismiss.");
         Menu.ShowAt(Trigger);
-        await Task.Delay(150);
+        await AwaitPresenterAsync();
         await InvokeAndWaitForCloseAsync(() => ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(RichAction).GetPattern(PatternInterface.Invoke)).Invoke());
         Require(actions == before + 3 && !Menu.IsOpen, "Composed menu invocation did not execute and dismiss.");
         var originalStyle = Menu.MenuFlyoutPresenterStyle;
@@ -92,18 +92,31 @@ public sealed partial class MenusFixture : UserControl
         consumerStyle.Setters.Add(new Setter(FrameworkElement.MinWidthProperty, 220d));
         Menu.MenuFlyoutPresenterStyle = consumerStyle;
         Menu.ShowAt(Trigger);
-        await Task.Delay(200);
+        await AwaitPresenterAsync();
         presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
         Require(presenter.MinWidth == 220 && presenter.ActualWidth == 220, "Consumer presenter width was overridden.");
-        Menu.Hide();
-        await Task.Delay(150);
+        await InvokeAndWaitForCloseAsync(Menu.Hide);
+        await AwaitMenuStateAsync(() => !Menu.IsOpen && !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(popup => ReferenceEquals(popup.Child, presenter)));
         Menu.MenuFlyoutPresenterStyle = originalStyle;
         Menu.ShowAt(Trigger);
-        await Task.Delay(200);
+        await AwaitPresenterAsync();
         presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
         Require(presenter.MinWidth == 176, "Restored default root menu lost its width.");
-        Menu.Hide();
-        await Task.Delay(150);
+        await InvokeAndWaitForCloseAsync(Menu.Hide);
+        await AwaitMenuStateAsync(() => !Menu.IsOpen && !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(popup => ReferenceEquals(popup.Child, presenter)));
+    }
+    private async Task AwaitPresenterAsync(MenuFlyoutPresenter? parent = null)
+    {
+        MenuFlyoutPresenter? presenter = null;
+        await AwaitMenuStateAsync(() => (presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().SingleOrDefault(candidate => candidate != parent)) is { IsLoaded: true, ActualWidth: > 0, ActualHeight: > 0 });
+        await MainWindow.AwaitPresentationAsync(presenter!);
+        Require(presenter!.IsLoaded && presenter.ActualWidth > 0 && presenter.ActualHeight > 0, "Menu lost its presented popup.");
+    }
+    private async Task AwaitMenuStateAsync(Func<bool> condition)
+    {
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        while (!condition() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); }
+        Require(condition(), "Menu popup did not complete its lifecycle transition.");
     }
     private void VerifyContentAndShortcuts()
     {
@@ -190,6 +203,7 @@ public sealed partial class MenusFixture : UserControl
         {
             invoke();
             await closed.Task.WaitAsync(TimeSpan.FromSeconds(5));
+            await MainWindow.AwaitPresentationAsync(this);
         }
         finally { Menu.Closed -= OnClosed; }
     }

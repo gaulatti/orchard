@@ -12,7 +12,7 @@ public sealed partial class EyebrowsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         UpdateLayout();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         var text = Find<TextBlock>(Accent, "PART_Text");
         Require(text.Text == "PRIVATE CLIENT SERVICES" && (string)Accent.Content == "Private client services",
             "Eyebrow did not uppercase its display while retaining consumer content.");

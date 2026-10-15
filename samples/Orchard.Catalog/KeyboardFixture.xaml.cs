@@ -20,7 +20,7 @@ public sealed partial class KeyboardFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         UpdateLayout();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(Single.ActualHeight == 20 && Single.ActualWidth >= 20 && Empty.ActualWidth == 20 && Single.Padding.Left == 6,
             "Keycap geometry differs from the pinned contract.");
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Combo);

@@ -14,7 +14,7 @@ public sealed partial class InputsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-        await Task.Delay(150);
+        await MainWindow.AwaitPresentationAsync(this);
         UpdateLayout();
         Require(SmallInput.ActualHeight == 36 && MediumInput.ActualHeight == 40 && LargeInput.ActualHeight == 44, "Input size heights differ from the reference.");
         Require(new[]{SmallInput,MediumInput,LargeInput,IconsInput,ErrorInput,DisabledInput,DisabledErrorInput,ReadOnlyInput}

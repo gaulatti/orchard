@@ -41,23 +41,23 @@ public sealed partial class CardsFixture : UserControl
             Require(card.Padding.Left == (card.PaddingSize switch { BleeckerCardPadding.None => 0, BleeckerCardPadding.Small => 16, BleeckerCardPadding.Medium => 24, _ => 32 }), "Card padding mismatch.");
         var original = Composition.ActualHeight;
         Composition.Width = 240;
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(Composition.ActualHeight > original, "Card content did not wrap at constrained width.");
         Composition.Width = 320;
         var before = clicks;
         var action = (Button)VisualTreeHelper.GetChild(CardAction, 0);
         ((IInvokeProvider)new ButtonAutomationPeer(action).GetPattern(PatternInterface.Invoke)).Invoke();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(clicks == before + 1, "Card intercepted its consumer action.");
         SurfaceCard.Variant = BleeckerCardVariant.Subtle;
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(Math.Abs(((SolidColorBrush)SurfaceCard.Background).Opacity - (scheme == BleeckerColorScheme.Dark ? .035 : .45)) < .001, "Live card variant did not refresh resources.");
         SurfaceCard.Variant = BleeckerCardVariant.Surface;
         var source = new Border { Background = new SolidColorBrush(Microsoft.UI.Colors.Coral) };
         SurfaceCard.SetBinding(Control.BackgroundProperty, new Binding { Source = source, Path = new PropertyPath("Background") });
         SurfaceCard.Variant = BleeckerCardVariant.Outlined;
         source.Background = new SolidColorBrush(Microsoft.UI.Colors.CornflowerBlue);
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(SurfaceCard.GetBindingExpression(Control.BackgroundProperty) is not null && Hex((SolidColorBrush)SurfaceCard.Background) == "#FF6495ED", "Changing variant replaced a consumer background binding.");
         SurfaceCard.ClearValue(Control.BackgroundProperty);
         SurfaceCard.Variant = BleeckerCardVariant.Surface;
@@ -67,7 +67,7 @@ public sealed partial class CardsFixture : UserControl
         foreach (var variant in Enum.GetValues<BleeckerCardVariant>())
         {
             StyledCard.Variant = variant;
-            await Task.Delay(80);
+            await MainWindow.AwaitPresentationAsync(this);
             Require(StyledCard.GetBindingExpression(FrameworkElement.StyleProperty) is not null && ReferenceEquals(StyledCard.Style, consumerStyle), "Changing card variant replaced the consumer style binding.");
             Require(StyledCard.CornerRadius.TopLeft == 20 && StyledCard.BorderThickness.Left == 2, "Changing card variant discarded consumer style setters.");
             var expected = variant == BleeckerCardVariant.Transparent ? 0 : variant == BleeckerCardVariant.Subtle ? scheme == BleeckerColorScheme.Dark ? .035 : .45 : 1;
@@ -76,14 +76,14 @@ public sealed partial class CardsFixture : UserControl
         var replacementStyle = new Style { TargetType = typeof(BleeckerCard) };
         replacementStyle.Setters.Add(new Setter(Control.CornerRadiusProperty, new CornerRadius(16)));
         styleSource.Style = replacementStyle;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(StyledCard.CornerRadius.TopLeft == 16, "Consumer style source stopped propagating after variant changes.");
         StyledCard.ClearValue(FrameworkElement.StyleProperty);
         StyledCard.Style = consumerStyle;
         StyledCard.Variant = BleeckerCardVariant.Subtle;
         var elevated = Variants.Children.OfType<BleeckerCard>().Single(card => card.Variant == BleeckerCardVariant.Elevated);
         elevated.CornerRadius = new CornerRadius(20, 8, 4, 16);
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         var elevatedRoot = (Grid)VisualTreeHelper.GetChild(elevated, 0);
         var mask = (Microsoft.UI.Xaml.Shapes.Path)((Canvas)elevatedRoot.Children[0]).Children[0];
         var outline = ((PathGeometry)mask.Data).Figures.Single();

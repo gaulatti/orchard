@@ -22,7 +22,7 @@ public sealed partial class ProgressFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         UpdateLayout();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         foreach (var control in Matrix.Children.OfType<BleeckerProgress>())
         {
             var track = Find<Border>(control, "PART_Track");

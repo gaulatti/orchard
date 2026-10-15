@@ -15,7 +15,7 @@ public sealed partial class TooltipsFixture : UserControl
     {
         tooltipPresentations.Clear();
         StartBringIntoView();
-        await Task.Delay(150);
+        await MainWindow.AwaitPresentationAsync(this);
         foreach (var tip in new[] { TopTip, BottomTip, LeftTip, RightTip, LongTip, TemplateTip })
         {
             tip.IsOpen = true;

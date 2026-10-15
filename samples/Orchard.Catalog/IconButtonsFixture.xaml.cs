@@ -35,7 +35,7 @@ public sealed partial class IconButtonsFixture : UserControl
         }
         var before = count;
         ((IInvokeProvider)new ButtonAutomationPeer(EditAction).GetPattern(PatternInterface.Invoke)).Invoke();
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(count == before + 1 && Result.Text == $"Edit story: {count}", "Icon command or parameter failed.");
         Require(!DisabledAction.IsEnabled, "Disabled icon action became enabled.");
         foreach (var button in new[] { EditAction, SubtleAction, GhostAction })
@@ -76,7 +76,7 @@ public sealed partial class IconButtonsFixture : UserControl
         Require(original.ReadLocalValue(Control.ForegroundProperty) == DependencyProperty.UnsetValue, "A replacement consumer style could not take ownership of its foreground.");
         original.Style = originalStyle;
         Require(original.GetBindingExpression(Control.ForegroundProperty) is not null, "Reference foreground was not restored after replacing the custom style.");
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
     }
 
     private static IEnumerable<DependencyObject> Descendants(DependencyObject parent)

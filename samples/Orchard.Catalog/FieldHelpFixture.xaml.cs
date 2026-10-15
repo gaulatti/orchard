@@ -14,7 +14,7 @@ public sealed partial class FieldHelpFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-        await Task.Delay(150);
+        await MainWindow.AwaitPresentationAsync(this);
         using var input = new NativeInputSession(XamlRoot, folder, $"field-help-{scheme}");
         await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
         Require(Help.ActualWidth == 16 && Help.ActualHeight == 16 && EmptyHelp.Visibility == Visibility.Collapsed, "Field help trigger or empty-text geometry differs.");

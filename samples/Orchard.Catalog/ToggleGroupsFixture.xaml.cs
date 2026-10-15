@@ -43,17 +43,17 @@ public sealed partial class ToggleGroupsFixture : UserControl
         Require(SingleGroup.SelectedValue == "grid" && SelectionValueInput.Text == "grid" && GridItem.IsChecked == true && ListItem.IsChecked == false,
             $"Single selection failed to reach the consumer and clear the previous item: value={SingleGroup.SelectedValue}; text={SelectionValueInput.Text}; grid={GridItem.IsChecked}; list={ListItem.IsChecked}.");
         ((IToggleProvider)gridPeer.GetPattern(PatternInterface.Toggle)).Toggle();
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(string.IsNullOrEmpty(SingleGroup.SelectedValue) && selection.GetSelection().Length == 0, "Activating the selected single item did not clear selection.");
         SelectionValueInput.Text = "list";
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(SingleGroup.GetBindingExpression(BleeckerToggleGroup.SelectedValueProperty) is not null, "Selecting an item replaced the consumer binding.");
         Require(((ISelectionItemProvider)listPeer.GetPattern(PatternInterface.SelectionItem)).IsSelected,
             "Consumer selection did not reach the item automation state.");
         SingleGroup.Items.Remove(ListItem);
         SingleGroup.Items.Insert(1, ListItem);
         SingleGroup.UpdateLayout();
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(SingleGroup.SelectedValue == "list" && ListItem.IsChecked == true, "Selection did not survive item reorder.");
         SingleGroup.Items.Remove(ListItem);
         SingleGroup.Items.Insert(0, ListItem);

@@ -46,7 +46,7 @@ public sealed partial class NotificationsFixture : UserControl
         Badge.Count = 3;
         foreach (var item in Badge.Items) item.IsUnread = item.Id != "3";
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         var trigger = Descendants<BleeckerIconButton>(Badge).Single();
         using var input = new NativeInputSession(XamlRoot, folder, $"notifications-{scheme}");
         using var trace = new NotificationPopupTrace(XamlRoot, input, folder, scheme,
@@ -125,18 +125,18 @@ public sealed partial class NotificationsFixture : UserControl
             "Keyboard-focused notification lost its branded highlight.");
         var firstCommand = (ActionCommand)Badge.Items[0].Command!;
         firstCommand.Enabled = false;
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(presenter);
         Require(!rows[0].IsEnabled, "Notification ignored consumer CanExecuteChanged.");
         Require(!rows[0].Focus(FocusState.Keyboard), "A disabled notification accepted keyboard focus.");
         firstCommand.Enabled = true;
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(presenter);
         Require(rows[0].IsEnabled, "Notification did not restore consumer command availability.");
         rows[0].Focus(FocusState.Keyboard);
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-focus-{scheme.ToString().ToLowerInvariant()}.png"));
         var beforeMarked = marked;
         await input.RequireForegroundAsync();
         ((IInvokeProvider)new ButtonAutomationPeer(mark).GetPattern(PatternInterface.Invoke)).Invoke();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(presenter);
         Require(marked == beforeMarked + 1 && popup.IsOpen && Badge.Count == 0 && Badge.Items.All(item => !item.IsUnread) && mark.Visibility == Visibility.Collapsed,
             "Mark-all command did not update consumer state while retaining the popup.");
         Require(Descendants<Microsoft.UI.Xaml.Shapes.Ellipse>(items).All(dot => dot.Visibility == Visibility.Collapsed),
@@ -163,7 +163,7 @@ public sealed partial class NotificationsFixture : UserControl
         Require(presenter.RequestedTheme==emptyTrigger.ActualTheme,"A separately opened notification popup retained another owner's theme.");
         await MainWindow.CaptureElementAsync(presenter, Path.Combine(folder, $"notifications-empty-{scheme.ToString().ToLowerInvariant()}.png"));
         Empty.Items = [new BleeckerNotificationItem { Id = "live", Title = "Live collection update", IsUnread = true }];
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(presenter);
         Require(((ItemsControl)emptyStack.Children[3]).Items.Count == 1 && ((TextBlock)emptyStack.Children[2]).Visibility == Visibility.Collapsed &&
             ((Button)((Grid)emptyStack.Children[0]).Children[1]).Visibility == Visibility.Visible,
             "Replacing the consumer collection did not update the open notification list.");
@@ -171,7 +171,7 @@ public sealed partial class NotificationsFixture : UserControl
         Require(((TextBlock)emptyStack.Children[2]).Visibility == Visibility.Visible && ((Border)Empty.FindName("CountBadge")).Visibility == Visibility.Collapsed,
             "Clearing items changed the independent count or failed to restore the empty state.");
         emptyPopup.Hide();
-        await Task.Delay(150);
+        await AwaitVerificationAsync(() => Require(!emptyPopup.IsOpen && !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(p => ReferenceEquals(p.Child, presenter)), "Empty notification popup did not close."));
         await VerifyLongContentAsync(scheme, folder, input);
     }
 
@@ -222,7 +222,7 @@ public sealed partial class NotificationsFixture : UserControl
         item.Description = originalDescription;
         await AwaitVerificationAsync(() => Require(row.ActualHeight == tallHeight, "Restoring long text did not restore wrapped layout."));
         popup.Hide();
-        await Task.Delay(150);
+        await AwaitVerificationAsync(() => Require(!popup.IsOpen && !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(p => ReferenceEquals(p.Child, presenter)), "Long-content notification popup did not close."));
     }
     private static async Task<FlyoutPresenter> OpenAsync(Button trigger, Flyout popup, NativeInputSession input)
     {

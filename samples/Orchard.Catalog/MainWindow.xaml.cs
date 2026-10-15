@@ -74,6 +74,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-activity")) await RunActivitySmokeAsync(folder);
             else if (args.Contains("--smoke-attention")) await RunAttentionSmokeAsync(folder);
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
+            else if (args.Contains("--smoke-presentation")) await RunPresentationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);
             else if (args.Contains("--smoke-sunburst-chart") || args.Contains("--smoke-sunburst-chart-sequence"))
@@ -589,13 +590,13 @@ public sealed partial class MainWindow : Window
                 await CaptureFixtureAsync(fixture, Path.Combine(folder, $"{name}-{theme.ToString().ToLowerInvariant()}.png"));
             await SelectFixtureAsync(Foundation);
             CatalogScroll.ChangeView(null, 0, null, disableAnimation: true);
-            await Task.Delay(100);
+            await AwaitPresentationAsync(Foundation);
             Require(HeadingSample.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans", StringComparison.Ordinal), "Bundled headline font was not selected.");
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing font: {font}");
             var peer = new ButtonAutomationPeer(PrimaryAction);
             ((IInvokeProvider)peer.GetPattern(PatternInterface.Invoke)).Invoke();
-            await Task.Delay(100);
+            await AwaitPresentationAsync(Foundation);
             Require(actionCount == captures.Count + 1 && ActionResult.Text.StartsWith("Action invoked", StringComparison.Ordinal), "Button invocation did not reach the handler.");
             Require(!DisabledAction.IsEnabled, "Disabled action became enabled.");
             HeadlineInput.Text = "A Windows-native newsroom";

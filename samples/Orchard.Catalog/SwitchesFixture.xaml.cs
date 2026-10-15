@@ -41,7 +41,7 @@ public sealed partial class SwitchesFixture : UserControl
         await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"switch-untemplated-{scheme}.json"),
             JsonSerializer.Serialize(new { passed=true, visualChildren=VisualTreeHelper.GetChildrenCount(untemplated), control=earlyPeer.IsControlElement(), content=earlyPeer.IsContentElement(), enabled=earlyPeer.IsEnabled() }));
         UpdateLayout();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"switch-initial-{scheme}.png"));
         await MainWindow.CaptureElementAsync(XamlRoot.Content, Path.Combine(folder, $"switch-context-{scheme}.png"));
         await File.WriteAllTextAsync(Path.Combine(folder, $"switch-initial-measurements-{scheme}.json"),

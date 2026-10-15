@@ -27,11 +27,11 @@ public sealed partial class TogglesFixture : UserControl
         var provider = (IToggleProvider)peer.GetPattern(PatternInterface.Toggle);
         Require(provider.ToggleState == ToggleState.Off, "Toggle automation did not expose Off.");
         provider.Toggle();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(DefaultToggle.IsChecked == true && provider.ToggleState == ToggleState.On && ToggleResult.Text == "Follow updates: on",
             "Native toggle did not propagate selection to the consumer.");
         provider.Toggle();
-        await Task.Delay(100);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(DefaultToggle.IsChecked == false && ToggleResult.Text == "Follow updates: off", "Native toggle did not deselect.");
         Require(!DisabledToggle.IsEnabled, "Disabled toggle was enabled.");
 
@@ -46,7 +46,7 @@ public sealed partial class TogglesFixture : UserControl
             foreach (var state in new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Checked", "CheckedPointerOver", "CheckedPressed", "CheckedDisabled" })
             {
                 Require(VisualStateManager.GoToState(toggle, state, false), $"Missing toggle state {state}.");
-                await Task.Delay(120);
+                await MainWindow.AwaitPresentationAsync(this);
                 var selected = state.StartsWith("Checked", StringComparison.Ordinal);
                 var expected = BleeckerTokens.Colors(scheme)[selected ? "primary" : state is "PointerOver" or "Pressed" ? "textPrimary" : "textSecondary"];
                 Require(presenter.Foreground is SolidColorBrush brush &&

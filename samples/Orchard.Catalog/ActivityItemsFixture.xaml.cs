@@ -13,7 +13,7 @@ public sealed partial class ActivityItemsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"activity-{scheme}"); await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
-        UpdateLayout(); await Task.Delay(150); var measurements = new List<object>();
+        UpdateLayout(); await MainWindow.AwaitPresentationAsync(this); var measurements = new List<object>();
         using var reference = JsonDocument.Parse(typeof(ActivityItemsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.ActivityLayout.json")
             ?? throw new InvalidOperationException("Missing pinned browser activity reference."));
         var browserRows = reference.RootElement.GetProperty("schemes").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString()).GetProperty("measurements");
@@ -85,7 +85,7 @@ public sealed partial class ActivityItemsFixture : UserControl
         Normal.Title = "Updated exact title"; Normal.Time = "opaque consumer time / 07:03"; Normal.Init = "Bob Reed";
         Require(Find<TextBlock>(Normal, "PART_Title").Text == Normal.Title && Find<TextBlock>(Normal, "PART_Time").Text == Normal.Time && Find<BleeckerAvatar>(Normal, "PART_Avatar").Fallback == Normal.Init, "Activity live consumer changes were transformed or dropped.");
         Normal.Title = initialTitle; Normal.Time = initialTime; Normal.Init = initialInit;
-        var template = Normal.Template; Normal.Template = null; Normal.Template = template; Normal.ApplyTemplate(); UpdateLayout(); await Task.Delay(80);
+        var template = Normal.Template; Normal.Template = null; Normal.Template = template; Normal.ApplyTemplate(); UpdateLayout(); await MainWindow.AwaitPresentationAsync(this);
         Require(Find<TextBlock>(Normal, "PART_Time").Text == Normal.Time && ((SolidColorBrush)Find<Border>(Normal, "PART_Surface").Background).Opacity == 0, "Activity template replacement lost content or retained hover.");
         var parent = (Panel)VisualTreeHelper.GetParent(Normal); var index = parent.Children.IndexOf(Normal); parent.Children.Remove(Normal);
         await AwaitAsync(() => !Normal.IsLoaded, "Activity did not unload from its consumer host."); parent.Children.Insert(index, Normal);
@@ -155,7 +155,7 @@ public sealed partial class ActivityItemsFixture : UserControl
         var parent = (Panel)Content; parent.Children.Add(host);
         try
         {
-            UpdateLayout(); await Task.Delay(100);
+            UpdateLayout(); await MainWindow.AwaitPresentationAsync(this);
             await File.WriteAllTextAsync(Path.Combine(folder, $"activity-typography-strategies-{scheme}.json"), JsonSerializer.Serialize(
                 probes.Select(probe => new { probe.Kind, strategy = probe.Text.LineStackingStrategy.ToString(), bounds = probe.Text.TextLineBounds.ToString(),
                     probe.Text.ActualHeight, probe.Text.BaselineOffset }), new JsonSerializerOptions { WriteIndented = true }));

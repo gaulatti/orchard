@@ -96,7 +96,25 @@ Sparkline sequence passes. Shared paths, collection reorder/removal/reset,
 explicit totals, literal keys, font family/size/weight, hierarchical automation,
 detach/rapid reparent and template replacement are covered. x64 and ARM64
 solution builds pass with zero warnings; ARM64 is compilation evidence only.
-Fresh package and complete published runtime checks are pending.
+The clean `4489fbd99f9b32a7e6069d30f6dacb07f50f94eb` source produces package
+SHA-256 `e16470293ee39da6f17cb62e7dc6146fa289e3d01629e0211e268ea4b216bdb2`.
+The independent x64 consumer passes both themes, including source sector
+geometry, outlined values, original shared nodes/brushes, hierarchy updates,
+missing literal keys and collection reset. The independent ARM64 consumer
+builds with runtime verification explicitly false. Both isolated restore/build
+directories are removed.
+
+The first complete published run times out at the unchanged 360-second deadline
+near the final Dark checks. All 94 Sunburst cases and both lifecycle suites
+pass within that run. Complete published runtime verification remains pending;
+nonanimated setup waits are being replaced with actual presentation/lifecycle
+completion while preserving the existing assertions and timed motion samples.
+The focused presentation suite passes all 18 affected fixtures in both themes,
+including actual menu Closed-event/reopen checks. Both architecture builds have
+zero warnings. Twelve whole Sunburst viewports, using their recorded native
+bounds and zero excluded pixels, all differ from the browser (1,527–4,409
+changed pixels, maximum channel difference 251). This is an explicit open
+visual acceptance gap.
 
 This entry is in progress and is not accepted. Complete raster/motion, tree/data/
 override/RTL, actual contrast, Narrator, display/text scaling, measured

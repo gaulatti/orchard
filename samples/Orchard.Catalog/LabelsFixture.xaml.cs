@@ -25,7 +25,7 @@ public sealed partial class LabelsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-        await Task.Delay(150);
+        await MainWindow.AwaitPresentationAsync(this);
         UpdateLayout();
         var root = (Grid)VisualTreeHelper.GetChild(EmailLabel, 0);
         var text = (TextBlock)root.FindName("PART_Text");

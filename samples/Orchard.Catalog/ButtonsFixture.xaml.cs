@@ -60,10 +60,10 @@ public sealed partial class ButtonsFixture : UserControl
         Require(peer.GetName() == "Run preview", "Button lost its accessible name.");
         var before = invocations;
         invoke.Invoke();
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(invocations == before + 1 && ButtonResult.Text == $"Command preview: {invocations}", "Consumer command/parameter did not execute exactly once.");
         LoadingSwitch.IsOn = true;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(!native.IsEnabled && Find<ProgressRing>(LoadingAction)?.IsActive == true && AutomationProperties.GetItemStatus(native) == "Loading",
             "Loading must expose busy status, show progress and disable activation.");
         var spinner = FindNamed<Microsoft.UI.Xaml.Shapes.Path>(LoadingAction, "PART_SpinnerPath")
@@ -82,24 +82,24 @@ public sealed partial class ButtonsFixture : UserControl
         catch (System.Runtime.InteropServices.COMException error) when (error.HResult == unchecked((int)0x80040200)) { } // UIA_E_ELEMENTNOTENABLED
         ConsumerEnabled.IsOn = false;
         LoadingSwitch.IsOn = false;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(rotation.Angle == 0, "Loading completion did not stop and reset the spinner animation.");
         Require(!native.IsEnabled && !LoadingAction.IsEnabled, "Loading completion discarded the consumer's disabled state.");
         Require(LoadingAction.GetBindingExpression(Control.IsEnabledProperty) is not null, "Consumer IsEnabled binding was replaced.");
         ConsumerEnabled.IsOn = true;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(native.IsEnabled, "Consumer re-enabling did not reach the native action.");
         previewCommand.SetCanExecute(false);
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(!native.IsEnabled, "CanExecuteChanged(false) did not disable the action.");
         LoadingSwitch.IsOn = true;
         LoadingSwitch.IsOn = false;
         LoadingAction.Size = BleeckerButtonSize.Large;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(!native.IsEnabled, "A presentation change bypassed CanExecute(false).");
         previewCommand.SetCanExecute(true);
         LoadingAction.Size = BleeckerButtonSize.Medium;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(native.IsEnabled, "CanExecuteChanged(true) did not re-enable the action.");
         foreach (var variant in Enum.GetValues<BleeckerButtonVariant>())
         {
@@ -189,7 +189,7 @@ public sealed partial class ButtonsFixture : UserControl
         LoadingAction.Click += onClick;
         var countBeforeReplacement = invocations;
         ((IInvokeProvider)new ButtonAutomationPeer(replacement).GetPattern(PatternInterface.Invoke)).Invoke();
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(clicks == 1 && invocations == countBeforeReplacement + 1, "Template replacement lost or duplicated activation.");
         LoadingAction.Click -= onClick;
         LoadingAction.Template = originalTemplate;

@@ -21,10 +21,10 @@ public sealed partial class StatusBadgesFixture : UserControl
         Require(longSurface.ActualHeight == 39 && Math.Abs(longSurface.ActualWidth - 190.203125) < 3 && Math.Abs(descriptionSlot - 121.796875) < 3,
             $"Long status label did not share constrained width with its description: badge={longSurface.ActualWidth}x{longSurface.ActualHeight}, description={longDescription.ActualWidth}x{longDescription.ActualHeight}, root={longRoot.ActualWidth}, column={longRoot.ColumnDefinitions[0].Width}.");
         LongLabel.Width = 640;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(longSurface.ActualHeight == 24 && longDescription.ActualHeight <= 17, "Widening status content did not restore single-line layout.");
         LongLabel.Width = 320;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(longSurface.ActualHeight > 24 && longDescription.ActualHeight > 17, "Narrowing status content did not restore wrapping.");
         foreach (var badge in Variants.Children.OfType<BleeckerStatusBadge>())
         {
@@ -49,7 +49,7 @@ public sealed partial class StatusBadgesFixture : UserControl
         }
         var originalHeight = Constrained.ActualHeight;
         Constrained.Width = 160;
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         var constrainedSurface = (Border)((Grid)VisualTreeHelper.GetChild(Constrained, 0)).Children[0];
         var constrainedLabel = (TextBlock)((Grid)constrainedSurface.Child).Children[1];
         Require(constrainedLabel.ActualWidth >= 11, "International status label was squeezed below a readable glyph width.");
@@ -60,7 +60,7 @@ public sealed partial class StatusBadgesFixture : UserControl
         Changing.Variant = BleeckerStatusBadgeVariant.Offline;
         source.Text = "RESTORED";
         Changing.Description = "";
-        await Task.Delay(80);
+        await MainWindow.AwaitPresentationAsync(this);
         Require(Changing.Label == "RESTORED" && Changing.GetBindingExpression(BleeckerStatusBadge.LabelProperty) is not null, "Status change discarded consumer label binding.");
         Require(((Grid)VisualTreeHelper.GetChild(Changing, 0)).Children[1].Visibility == Visibility.Collapsed, "Empty status description retained a visible text element.");
         Require(((SolidColorBrush)Changing.Foreground).Color == ((SolidColorBrush)Variants.Children.OfType<BleeckerStatusBadge>().Single(b => b.Variant == BleeckerStatusBadgeVariant.Offline).Foreground).Color, "Live status variant did not update its palette.");

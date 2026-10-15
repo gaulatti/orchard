@@ -139,6 +139,19 @@ captures complete the actual native render before reading measurements,
 replacing fixed sleeps while preserving each PNG and assertion. These changes
 leave pointer gates, source tolerances and the full 360-second deadline intact.
 
+Nonanimated fixture binding, visual-state, template and font-probe checks use
+the same two Rendering callbacks followed by an actual compositor commit.
+Menu checks wait for their owned loaded presenter and its presentation; hiding
+waits for the actual Closed event, presentation completion and removal from the
+root before reopening. Notification command/collection checks
+wait for the presented content, and closing waits for the actual popup removal.
+The previous fixed 80–200 ms setup sleeps are removed. Timed motion samples,
+all source/pixel/state assertions, pointer delivery gates and capture sets stay
+unchanged. The complete catalog retains its 360-second deadline.
+Focused `-Component presentation` runs every affected fixture in both themes,
+including menu/notification lifecycle, source typography, normal input and cursor
+checks, and unchanged toggle/button state assertions.
+
 Sparklines follows Sunburst charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
