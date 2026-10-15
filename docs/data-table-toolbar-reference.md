@@ -1,0 +1,151 @@
+# Data Table Toolbar source contract and native acceptance
+
+The frozen Bleecker producer is `src/components/data-table-toolbar.tsx` at
+`a86059013cd59684ce452849278ea81e734f2066`, SHA-256
+`a2beb795287fd027857d9f4d12df9d0e76406b0fa0703a9fcf20aaa23064a0ef`.
+Its public contract is `DataTableToolbarProps<TData>` / `DataTableToolbar`:
+the original table, optional search-column ID, placeholder (default `Search...`),
+consumer filter renderers/actions and a consumer class name. Native
+implementation remains pending. Source evidence does not accept a Windows
+implementation or increase the implemented inventory count.
+
+## State, ownership and observable behavior
+
+The toolbar reads `table.getState().columnFilters.length` and JavaScript
+truthiness of `globalFilter`. It shows Reset when either is active. The search
+input exists only for a truthy search-column ID; it reads that column's filter
+value, substitutes an empty string for null/undefined, and writes the actual
+input string through the same column's `setFilterValue`. It does not search the
+global filter or infer a default column. A missing column leaves a visible,
+controlled empty input whose attempted edits do not update table state.
+
+Reset invokes `table.resetColumnFilters()` without an argument. In the pinned
+TanStack table this restores the table's initial column filters. It does not
+clear the global filter. A global-only filter therefore leaves Reset visible
+after repeated pointer/keyboard activation. An initial nonempty column filter
+can also keep Reset visible. Do not replace this behavior with a generic
+clear-all-filters command.
+
+The reference uses real TanStack `useReactTable`, controlled column/global
+state, core/filtered row models, and three fictional original records. Changes
+reach a rendered consumer row-result probe. It checks original table, column,
+row and callback ownership. Replacing the table switches to a second real
+table; restoring the first retains its own column/global state. Live column,
+placeholder and slot changes are also captured. No table API is mocked.
+
+JavaScript truthiness is deliberate: null, undefined, false, numeric zero,
+negative zero, NaN and the empty string hide a global-only Reset. Whitespace,
+the string `0`, nonzero numbers, true, Infinity, empty arrays and empty objects
+show it. Merely having a column-filter entry shows Reset even when its value
+is empty. Non-string filter values reach the browser input as `0`, `false`,
+`42`, `Harbor,Reed`, `[object Object]` and `NaN`; null/undefined display empty.
+Number/undefined descriptors preserve these values in JSON without losing
+NaN or negative zero through ordinary JSON number serialization.
+
+Consumer filter/action nodes pass through directly. Fragments produce sibling
+flex items; the toolbar does not wrap each slot or disable consumer content.
+Numeric zero renders an anonymous text item, while true, false, null and empty
+string produce no node. Disabled consumer buttons do not disable Reset.
+Callbacks retain the original table and data array.
+
+## Measured layout and paint
+
+The outer/left groups are columns with 12 px gaps below viewport width 640.
+At 640 and above they become rows; the outer group centers and distributes
+left/right groups, with the left growing and the right holding Reset/actions.
+The breakpoint follows the viewport, not the toolbar's own width. The right
+group uses an 8 px gap and starts at the leading edge in a column layout.
+
+The search Input is 36 px high, with 14 px type, a 20 px line height, 14 px
+horizontal padding, one-pixel border and 7 px radius. Its outer wrapper fills
+the left group's remaining width. The inner input alone is capped at 320 px
+above the breakpoint; this can leave space before the next consumer filter.
+It must not be modeled as a 320 px wrapper. Its minimum border-box width is
+30 px from padding/borders; narrower hosts retain overflow rather than
+inventing wrapping or clipping.
+
+With the 800 px default fixture, the left group is 684 px and its input wrapper
+496 px. The input itself is 320 px, the 176 px consumer filter starts at x=508,
+and the 104 px action starts at x=696. With Reset, the right group is
+196.96875 px, including the 84.96875 px Reset and the 8 px internal gap.
+At a 639 px viewport / 600 px host, the fixture is 132 px high: input at y=0,
+filter at y=48 and actions at y=96. At viewport 640 the same host is 36 px high
+with a 296 px input. A 180 px host at a wide viewport still has 334 px of
+content; it does not switch to the narrow layout. RTL mirrors these groups.
+
+Reset is the source ghost/small Button: 36 px high, 13 px medium type,
+14 px horizontal padding, 8 px icon/text gap and a 14 px Lucide X. The actual
+compiled stylesheet yields normal letter spacing. Source hover uses sand/12
+in Light and white/6 in Dark; a held press translates one pixel and scales to
+0.99. The Input/Button transitions retain their source properties and premium
+easing. This capture uses reduced motion (computed 0.01 ms durations); complete
+enabled-motion/reversal coverage remains required.
+
+## Evidence and reproducibility
+
+`tests/Reference/DataTableToolbarLayout.json` retains 118 cases (59 in each
+theme), 376 interaction states, 494 fresh geometry/paint/value/state gates and
+14 initial-state screenshots. All gates have at least three stable animation
+frame transitions within two seconds; the maximum is 81.4 ms. The 1,246
+distinct per-fixture browser input receipts are trusted (9,932 appearances in
+cumulative state snapshots). No page errors or console warnings/errors occur.
+
+The runtime is React/React DOM 19.2.4, TanStack React Table/Table Core 8.21.3,
+Lucide React 0.563.0, scheduler 0.27.0, clsx 2.1.1 and tailwind-merge 3.5.0.
+The actual bundle's eight package versions/integrities are checked against the
+frozen producer lock, alongside all four bundled producer-file hashes, fonts,
+stylesheet, fixture signature and checked-in capture/client code. Build tools
+are esbuild 0.25.12 and Playwright 1.62.1, outside the producer runtime. The
+recorded Edge version is 155.0.4283.45.
+
+The raw capture is `artifacts/data-table-toolbar-browser/reference-v2.json`,
+SHA-256 `3bf21063db6d63d3c274a7447de83ac8934b672ca74494913261b1d979013a4b`.
+The derived reference SHA-256 is
+`521d44096ee981c3581cfc022b1821ba8432dd275b182d5f6bd4f90085a8a00d`.
+Style interning retains every field and reconstructs the complete raw capture
+before writing. Thirteen negative derivation guards reject partial/duplicate
+cases, changed props/runtime/source, untrusted input, lost ownership, wrong
+visible rows/input values/reset behavior, missing paint gates and changed
+screenshots. The DOM-only v1 diagnostic captured an unsettled hover paint;
+it is not the reference. v2 resets and verifies a fresh paint gate after every
+action. Seven source boundary regressions pass with all 73 local tests.
+
+Run from the repository root with the frozen source checkout at
+`artifacts/line-chart-browser/frozen-source`, its compiled `styles.css`, and
+`artifacts/chart-theme-reference/bleecker-package-lock.json`:
+
+```powershell
+node scripts/reference/prepare-data-table-toolbar-runtime.cjs
+npm ci --prefix artifacts/data-table-toolbar-browser --ignore-scripts --no-audit --no-fund
+node scripts/reference/capture-data-table-toolbar.cjs --esbuild-module '<absolute esbuild package directory>' --playwright-module '<absolute playwright package directory>'
+node scripts/derive-data-table-toolbar-reference.mjs artifacts/data-table-toolbar-browser/reference-v2.json
+node scripts/reference/verify-data-table-toolbar-derivation.mjs artifacts/data-table-toolbar-browser/reference-v2.json
+dotnet test tests/Orchard.Tests/Orchard.Tests.csproj -c Release
+```
+
+`--probe` captures eleven Light fixtures and cannot be derived as the full
+reference. Full captures resume only when all provenance matches. Use a fresh
+capture file after changing capture code, dependencies, fonts or CSS. Keep the
+original native full-run deadline, motion windows, input receipts, stable
+Rendering gates, all 1,004 existing PNGs and all prior assertions intact.
+
+## Native acceptance still required
+
+- Implement the complete consumer-owned table/filter boundary: lookup,
+  controlled search, original column callbacks, actual filtered rows, global
+  truthiness and reset-to-initial semantics. Support external updates, old
+  source detachment, table/column replacement and original state retention.
+- Implement original filter/action content and templates, responsive wrapper/
+  input layout, overflow, RTL, empty/long/non-Latin content, source paint,
+  focus/hover/held/release and enabled/reduced-motion behavior without Windows
+  defaults changing the branded appearance.
+- Add and register a real native catalog fixture and consumer table workflow;
+  exercise actual native input, ownership, UI Automation and lifecycle paths.
+  Add the independent NuGet consumer and both architecture builds/runtime.
+- Verify exact rendered parity, full content/override/error matrices, Windows
+  contrast, Narrator, display/text scaling and measured collection performance.
+  Include monitoring/editorial compositions and final matching-source artifacts.
+
+The public wiki is unavailable, so documentation remains in the repository.
+This native presentation work has no backend or Prometheus surface. Push
+Actions remain paused by user request; no CI dispatch is authorized here.

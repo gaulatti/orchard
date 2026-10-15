@@ -1232,10 +1232,10 @@
       ],
       "windowsImplementation": [],
       "catalogFixtures": [],
-      "regressionTests": [],
+      "regressionTests": ["tests/Reference/DataTableToolbarLayout.json", "tests/Orchard.Tests/DataTableToolbarReferenceTests.cs", "scripts/reference/verify-data-table-toolbar-derivation.mjs"],
       "status": "pending",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
+        "Implement full pinned contract with native Windows conventions; frozen 118-case real TanStack source reference is captured",
         "Register variants and applicable interactive states",
         "Verify runtime, accessibility and visuals"
       ]

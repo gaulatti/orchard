@@ -21,6 +21,7 @@
         <None Include="../Reference/ChartLayout.json" Link="Fixtures/ChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/ChartPointerPriority.json" Link="Fixtures/ChartPointerPriority.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SidebarLayout.json" Link="Fixtures/SidebarLayout.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DataTableToolbarLayout.json" Link="Fixtures/DataTableToolbarLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartScale.cs" Link="BleeckerChartScale.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerTooltipPlacement.cs" Link="BleeckerTooltipPlacement.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartInteraction.cs" Link="BleeckerChartInteraction.cs" />

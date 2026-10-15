@@ -1,0 +1,10 @@
+const fs=require('node:fs'),path=require('node:path');
+const repo=path.resolve(__dirname,'../..');
+const original=JSON.parse(fs.readFileSync(path.join(repo,'artifacts/chart-theme-reference/bleecker-package-lock.json'),'utf8'));
+const names=['react','react-dom','lucide-react','clsx','tailwind-merge','@tanstack/react-table'],selected=new Map();
+function resolve(from,name){let base=from;while(base){const candidate=base+'/node_modules/'+name;if(original.packages[candidate])return candidate;const index=base.lastIndexOf('/node_modules/');base=index<0?'':base.slice(0,index);}const candidate='node_modules/'+name;return original.packages[candidate]?candidate:null;}
+function visit(key){if(selected.has(key))return;const entry=original.packages[key];if(!entry)throw Error('Missing frozen package '+key);selected.set(key,entry);for(const name of new Set([...Object.keys(entry.dependencies||{}),...Object.keys(entry.optionalDependencies||{}),...Object.keys(entry.peerDependencies||{})])){const dependency=resolve(key,name);if(dependency)visit(dependency);else if(entry.dependencies?.[name])throw Error('Missing dependency '+key+' -> '+name);}}
+for(const name of names)visit('node_modules/'+name);
+const manifest={name:'orchard-data-table-toolbar-reference',version:'0.0.0',private:true,dependencies:Object.fromEntries(names.map(name=>[name,original.packages['node_modules/'+name].version]))};
+const lock={name:manifest.name,version:manifest.version,lockfileVersion:3,requires:true,packages:{'':{name:manifest.name,version:manifest.version,dependencies:manifest.dependencies},...Object.fromEntries([...selected].sort(([a],[b])=>a.localeCompare(b)))}};
+const directory=path.join(repo,'artifacts/data-table-toolbar-browser');fs.mkdirSync(directory,{recursive:true});fs.writeFileSync(directory+'/package.json',JSON.stringify(manifest,null,2)+'\n');fs.writeFileSync(directory+'/package-lock.json',JSON.stringify(lock,null,2)+'\n');console.log(JSON.stringify({packages:selected.size,dependencies:manifest.dependencies}));
