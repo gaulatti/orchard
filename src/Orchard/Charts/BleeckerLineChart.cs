@@ -44,7 +44,7 @@ public sealed partial class BleeckerLineChart : Control
         Loaded += OnChartLoaded; Unloaded += OnChartUnloaded;
         SizeChanged += (_, _) => QueueRender(); ActualThemeChanged += (_, _) => QueueRender();
         RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => QueueRender());
-        PointerMoved += OnPointerMoved; PointerExited += (_, _) => {interaction.Exit();PaintInteraction();};
+        PointerMoved += OnPointerMoved; PointerExited += (_, args) => {if(scatterMode&&args.IsGenerated)return;scatterPointerAnchor=null;interaction.Exit();PaintInteraction();};
         GotFocus+=(_,_)=>{interaction.Focus();PaintInteraction();};
         LostFocus += (_, _) => {interaction.Blur();PaintInteraction();}; KeyDown += OnKeyDown;
     }
@@ -69,14 +69,14 @@ public sealed partial class BleeckerLineChart : Control
 
     private void OnChartLoaded(object sender, RoutedEventArgs args)
     {
-        interaction.Reset(); DisconnectTooltipEffects(); Observe(); Render(); ConnectTooltipEffects();
+        interaction.Reset(); scatterPointerAnchor=null; DisconnectTooltipEffects(); Observe(); Render(); ConnectTooltipEffects();
     }
     private void OnChartUnloaded(object sender, RoutedEventArgs args)
     {
         // A quick reparent can deliver the previous Unloaded after the new
         // Loaded. The current connection owns its observers and effects.
         if (IsLoaded) return;
-        StopObserving(); interaction.Reset(); ClearActive(); DisconnectTooltipEffects();
+        StopObserving(); interaction.Reset(); scatterPointerAnchor=null; ClearActive(); DisconnectTooltipEffects();
     }
 
     private static void OnDataChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args)

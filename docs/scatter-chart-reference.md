@@ -123,13 +123,11 @@ An unchanged-source browser probe keeps `x : 40y : 60` visible at the same
 physical pointer location after that update. The browser replaces its SVG
 element, so element identity is not an acceptance requirement.
 
-The native renderer now updates existing point visuals during data changes and
-removes only obsolete points. Palette resources remain live through a style;
-clearing a consumer brush restores theme paint. Separate occurrences of the
-same series retain separate points. The regression requires updated geometry
-and tooltip text, then checks the tooltip again after two rendering events with
-the native pointer unchanged. It also checks transparent paint restoration,
-repeated-series insertion/removal, and the existing detach/template paths.
+The first correction retained point visuals during data changes. The regression
+requires updated geometry and tooltip text, then checks the tooltip again after
+two rendering events with the native pointer unchanged. It also checks
+transparent paint restoration, repeated-series insertion/removal, and the
+existing detach/template paths.
 The initial retained-visual attempts failed startup (XAML namespace placement,
 then sharing an already-parented geometry); those reports remain preserved.
 Final package and complete catalog evidence follow after verification.
@@ -139,3 +137,52 @@ The strengthened focused sequence passes both themes at
 rendering, color reset, repeated-series points, all 64 source cases and the
 following Sparkline input gate. Release x64 and ARM64 solution builds have zero
 warnings; all 44 unit/resource checks and generated tokens pass.
+
+The intermediate regular 0.1.0 package contains that first correction from clean commit
+`a6e23bd22a4b8cd6289a71e021c783675cbdce87`. Its SHA-256 is
+`6c56d4797a37039bdf0a8872d210b60efb4012fa1f54e4701dbc1bb0c829313f`;
+nuspec repository metadata matches that source. The isolated x64 consumer
+passes actual Light/Dark runtime at
+`artifacts/package-consumer-scatter-chart-hover`. The ARM64 consumer builds at
+`artifacts/package-consumer-scatter-chart-hover-arm64`, with runtime verification
+explicitly false. Both temporary restore/build workspaces are removed. The
+runnable x64 catalog is `artifacts/catalog-scatter-chart-hover`.
+
+That complete published catalog fails the strengthened Dark stationary-hover
+check at 291.150 seconds, after the full Light sequence passes. The subsequent
+ten-mutation control at `artifacts/smoke-scatter-chart-hover-events-control`
+reproduces the failure immediately in Light. Its trace records native pointer
+(946,412), chart-local (300,35), timestamp 276593981928 and owned focus unchanged.
+The real Path hover has `IsGenerated=false`; the later Line hit has
+`IsGenerated=true` and clears the pointer index. Retaining the visual does not
+prevent this layout-generated re-hit-test.
+
+Scatter now preserves interaction on platform-generated empty hits and exits.
+Live point hits still select their point. The visual cache is removed;
+normal rendering still updates geometry, palette and data. Microsoft's
+[IsGenerated contract](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.pointerroutedeventargs.isgenerated?view=windows-app-sdk-2.0)
+distinguishes these UI changes from user interaction. The regression retains all
+event flags, coordinates, timestamps and interaction state, alternates Y=50/60
+eleven times with the physical mouse stationary, and checks a real move into blank
+plot space and a real exit. The intermediate package is superseded by the next
+verified package; its passing consumer is not full catalog acceptance.
+
+The unchanged source hides inspection when an unchanged point is left for blank
+space. A point replaced by a geometry update instead retains its last tooltip
+over blank space; chart exit hides it. Returning the point under the mouse after
+ten alternating updates restores normal leave behavior. The source keys symbols
+by series key, X/Y, area and row. Native inspection retains that identity from
+the last live point hit and distinguishes leaving the same item from leaving
+blank space after its replacement. The regression checks normal blank-space
+leave, stationary updates, retained inspection after replacement, a new point
+hit and its normal leave, then actual chart exit. Separate unchanged-source
+browser probes record these boundaries under `artifacts/scatter-chart-browser`.
+
+The corrected native sequence passes Light/Dark at
+`artifacts/smoke-scatter-chart-hover-identity`: all 64 source cases, eleven
+stationary mutations, unchanged/replaced point leave behavior, re-hover, actual
+exit and the following Sparkline checks. Both event traces contain eleven
+settled mutations and a generated move with inspection preserved. The unchanged
+browser eleven-update probe retains `x : 40y : 60` over blank space, its
+ten-update probe returns to the original geometry and hides on point leave, and
+both hide on chart exit. All 44 unit/resource checks and tokens pass.

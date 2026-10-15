@@ -21,10 +21,9 @@ public sealed partial class BleeckerLineChart
     private readonly HashSet<ObservableCollection<IReadOnlyDictionary<string, object?>>> observedScatterData = [];
     private Func<object?, string>? scatterXFormatter, scatterYFormatter;
     private readonly List<ScatterPoint> scatterPoints = [];
-    private readonly Dictionary<(BleeckerScatterSeries Series, string Key, int Occurrence, int Row), Path> scatterShapes = [];
-    private readonly Dictionary<Path, int> scatterShapePalettes = [];
-    private Canvas? scatterPlot;
-    private sealed record ScatterPoint(BleeckerScatterSeries Series, int SeriesIndex, int RowIndex, IReadOnlyDictionary<string, object?> Record, double? X, double? Y, double Radius);
+    private (string SeriesKey, int Row, double? X, double? Y, double Size)? scatterPointerAnchor;
+    private sealed record ScatterPoint(BleeckerScatterSeries Series, int SeriesIndex, int RowIndex, IReadOnlyDictionary<string, object?> Record, double? X, double? Y, double Size, double Radius);
+    private static (string, int, double?, double?, double) ScatterIdentity(ScatterPoint point) => (point.Series.Key, point.RowIndex, point.X, point.Y, point.Size);
     internal void UseScatterProfile(ObservableCollection<BleeckerScatterSeries> series, Func<object?, string>? xFormatter, Func<object?, string>? yFormatter)
     {
         var changed = !scatterMode || !ReferenceEquals(scatterSeries, series);
@@ -64,12 +63,7 @@ public sealed partial class BleeckerLineChart
     {
         if (scatterSeries is null || scatterSeries.Count == 0) throw new InvalidOperationException("A mounted Scatter Chart requires at least one series, as the first series owns its axes.");
         foreach (var series in scatterSeries) { _ = series.Key; _ = series.Name; _ = series.XKey; _ = series.YKey; }
-        if (!ReferenceEquals(scatterPlot, plot)) { scatterShapes.Clear(); scatterShapePalettes.Clear(); scatterPlot = plot; }
-        var retained = scatterShapes.Values.ToHashSet();
-        foreach (var child in plot!.Children.ToArray()) if (child is not Path path || !retained.Contains(path)) plot.Children.Remove(child);
-        plot.Clip = null; legend!.Children.Clear(); rendered.Clear(); scatterPoints.Clear();
-        var usedShapes = new HashSet<(BleeckerScatterSeries Series, string Key, int Occurrence, int Row)>();
-        var occurrences = new Dictionary<BleeckerScatterSeries, int>();
+        plot!.Children.Clear(); plot.Clip = null; legend!.Children.Clear(); rendered.Clear(); scatterPoints.Clear();
         var first = scatterSeries[0]; var records = scatterSeries.SelectMany(series => series.Data ?? Data).ToArray();
         left = 60 + (string.IsNullOrEmpty(YAxisLabel) ? 0 : 20); right = RenderWidth - 20; top = 10;
         bottom = RenderHeight - (string.IsNullOrEmpty(XAxisLabel) ? 5 : 25) - 30 - RenderScatterLegend();
@@ -118,32 +112,17 @@ public sealed partial class BleeckerLineChart
         for (var s = 0; s < scatterSeries.Count; s++)
         {
             var series = scatterSeries[s]; var data = series.Data ?? Data;
-            var occurrence = occurrences.GetValueOrDefault(series); occurrences[series] = occurrence + 1;
             for (var i = 0; i < data.Count; i++)
             {
                 var row = data[i]; var x = ScatterNumber(BleeckerChartData.Read(row, first.XKey)); var y = ScatterNumber(BleeckerChartData.Read(row, first.YKey)); var z = first.ZKey is null ? null : BleeckerChartData.Read(row, first.ZKey);
                 var size = first.ZKey is null ? 64 : !ScatterTruthy(z) ? 60 : ScatterNumber(z) is double number ? zMin == zMax ? 230 : BleeckerChartScale.Position(number, zMin, zMax, 60, 400) : double.NaN;
-                var point = new ScatterPoint(series, s, i, row, x is double xv && xTicks.Length > 0 ? XValue(xv) : null, y is double yv && yTicks.Length > 0 ? YValue(yv) : null, Math.Sqrt(Math.Max(0, size) / Math.PI));
+                var point = new ScatterPoint(series, s, i, row, x is double xv && xTicks.Length > 0 ? XValue(xv) : null, y is double yv && yTicks.Length > 0 ? YValue(yv) : null, size, Math.Sqrt(Math.Max(0, size) / Math.PI));
                 var index = scatterPoints.Count; scatterPoints.Add(point);
                 if (point.X is not double cx || point.Y is not double cy || !double.IsFinite(point.Radius)) continue;
-                var key = (series, series.Key, occurrence, i); usedShapes.Add(key);
-                if (!scatterShapes.TryGetValue(key, out var shape))
-                {
-                    shape = Resource<Path>($"<Path Stretch=\"None\"><Path.Style><Style TargetType=\"Path\"><Setter Property=\"Fill\" Value=\"{{ThemeResource {BleeckerChartTheme.PickColor(s)}}}\" /></Style></Path.Style></Path>");
-                    scatterShapes.Add(key, shape); scatterShapePalettes.Add(shape, s); plot.Children.Add(shape);
-                }
-                if (scatterShapePalettes[shape] != s)
-                {
-                    shape.Style = Resource<Path>($"<Path Stretch=\"None\"><Path.Style><Style TargetType=\"Path\"><Setter Property=\"Fill\" Value=\"{{ThemeResource {BleeckerChartTheme.PickColor(s)}}}\" /></Style></Path.Style></Path>").Style;
-                    scatterShapePalettes[shape] = s;
-                }
-                var parsed = Resource<Path>($"<Path Data=\"{ScatterCircle(point.Radius)}\" />");
-                var geometry = parsed.Data; parsed.Data = null; shape.Data = geometry;
-                if (series.Color is not null) shape.Fill = series.Color; else shape.ClearValue(Shape.FillProperty);
-                shape.Tag = index; Canvas.SetZIndex(shape, index + 1); Canvas.SetLeft(shape, cx); Canvas.SetTop(shape, cy);
+                var shape = Resource<Path>($"<Path Data=\"{ScatterCircle(point.Radius)}\" Fill=\"{{ThemeResource {BleeckerChartTheme.PickColor(s)}}}\" />"); if (series.Color is not null) shape.Fill = series.Color;
+                shape.Tag = index; Canvas.SetLeft(shape, cx); Canvas.SetTop(shape, cy); plot.Children.Add(shape);
             }
         }
-        foreach (var key in scatterShapes.Keys.Where(key => !usedShapes.Contains(key)).ToArray()) { var shape = scatterShapes[key]; plot.Children.Remove(shape); scatterShapePalettes.Remove(shape); scatterShapes.Remove(key); }
         PaintInteraction(); FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
     private double RenderScatterLegend()
@@ -170,8 +149,14 @@ public sealed partial class BleeckerLineChart
     private void MoveScatterPointer(PointerRoutedEventArgs args)
     {
         for (var source = args.OriginalSource as DependencyObject; source is not null && !ReferenceEquals(source, this); source = VisualTreeHelper.GetParent(source))
-            if (source is Path { Tag: int index } && index < scatterPoints.Count) { interaction.Pointer(index, 0); PaintInteraction(); return; }
-        interaction.Exit(); PaintInteraction();
+            if (source is Path { Tag: int index } && index < scatterPoints.Count) { scatterPointerAnchor = ScatterIdentity(scatterPoints[index]); interaction.Pointer(index, 0); PaintInteraction(); return; }
+        // Layout-generated empty hits do not dismiss the source tooltip. Its
+        // geometry-keyed item can also be replaced while the mouse stays still;
+        // that retained item closes on chart exit or the next live item leave.
+        if (args.IsGenerated) return;
+        var selected = interaction.PointerY is not null ? scatterPoints.ElementAtOrDefault(interaction.Index(InspectionCount) ?? -1) : null;
+        if (scatterPointerAnchor is not null && selected is not null && scatterPointerAnchor != ScatterIdentity(selected)) return;
+        scatterPointerAnchor = null; interaction.Exit(); PaintInteraction();
     }
     private void ShowScatterActive(int index)
     {

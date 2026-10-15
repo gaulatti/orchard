@@ -1558,3 +1558,34 @@ accepted. Full shape/glyph/effects raster, motion, data/key/formatter/override/
 RTL coverage, actual contrast, Narrator, scaling, collection performance and
 native ARM64 acceptance remain required. Push-triggered Actions remain paused
 at the user's request; the public wiki is still unavailable.
+
+Full catalog verification subsequently exposes a Dark hovered-record mutation
+failure. An intermediate correction retains point visuals during data changes;
+the unchanged browser source confirms that updated hover text remains visible
+while the physical pointer stays stationary. The strengthened native sequence
+passes at `artifacts/smoke-scatter-chart-settled-hover`, including two rendering
+events after the mutation, consumer color reset and repeated-series points.
+The catalog's final screenshot navigation now waits for stable viewports,
+and Sparkline's mutation records actual key press/release delivery and state.
+Those verification changes preserve the existing bounds and deadlines. Earlier
+timeouts and failed runs remain documented in the component contracts.
+
+The fresh package from clean commit
+`a6e23bd22a4b8cd6289a71e021c783675cbdce87` has SHA-256
+`6c56d4797a37039bdf0a8872d210b60efb4012fa1f54e4701dbc1bb0c829313f`.
+It passes the isolated x64 consumer in both themes at
+`artifacts/package-consumer-scatter-chart-hover`; the isolated ARM64 consumer
+build passes at `artifacts/package-consumer-scatter-chart-hover-arm64`, with
+runtime verification false. Both temporary workspaces are removed. Both
+solution architectures build without warnings and all 44 checks plus tokens
+pass. The intermediate runnable x64 catalog is `artifacts/catalog-scatter-chart-hover`.
+
+That full published run fails the strengthened Dark stationary-hover check at
+291.150 seconds, so it is not accepted. A repeated-mutation control identifies a
+platform-generated `PointerMoved` event with identical native/local coordinates
+and timestamp, but a new Line hit target, clearing pointer selection. The final
+correction ignores generated empty hits/exits for Scatter and removes the visual
+cache. Its geometry-keyed hover identity distinguishes leaving an unchanged
+point from retained inspection after point replacement; a new point hit restores
+normal leave behavior. Event/state traces and superseding verification are recorded in
+[the Scatter contract](scatter-chart-reference.md).

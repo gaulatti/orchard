@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 using Path = Microsoft.UI.Xaml.Shapes.Path;
@@ -30,8 +31,24 @@ public sealed partial class ScatterChartsFixture
         await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart)&&Inspection(chart)=="x : 10y : 20","Tab did not enter Scatter's single inspection stop.");
         first.Change("y",25d);await AwaitAsync(()=>Inspection(chart)=="x : 10y : 25","Root record notification did not reach Scatter inspection.");
         await input.KeyAsync(0x27,chart);await AwaitAsync(()=>Inspection(chart)=="x : 20y : 40","Scatter Right did not inspect its next point.");
-        var point=Points()[2];await input.MoveAsync(chart,localPoint:new Point(Canvas.GetLeft(point),Canvas.GetTop(point)));await AwaitAsync(()=>Inspection(chart)=="x : 40y : 50","Native hover did not inspect independent series data through first-series axis keys.");
-        var oldPointY=Canvas.GetTop(point);var pointerBefore=input.ReadPointerPosition();((MutableRecord)independent[0]).Change("y",60d);await AwaitAsync(()=>Canvas.GetTop(Points()[2])!=oldPointY,"Independent record notification did not update point geometry.");await AwaitAsync(()=>Inspection(chart)=="x : 40y : 60","Independent record notification did not reach pointer inspection.");await FrameAsync();await FrameAsync();Require(Inspection(chart)=="x : 40y : 60"&&input.ReadPointerPosition()==pointerBefore,"Scatter lost updated inspection while the native pointer stayed stationary.");
+        var hoverEvents=new List<object>();object HoverSnapshot(string kind,PointerRoutedEventArgs? args=null)
+        {
+            var state=typeof(BleeckerLineChart).GetField("interaction",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic)!.GetValue(chart)!;
+            return new {kind,help=Inspection(chart),chart.IsLoaded,chart.ActualWidth,chart.ActualHeight,origin=chart.TransformToVisual(XamlRoot.Content).TransformPoint(new Point()),pointer=input.ReadPointerPosition(),local=args?.GetCurrentPoint(chart).Position,rootPoint=args?.GetCurrentPoint(null).Position,timestamp=args?.GetCurrentPoint(chart).Timestamp,generated=args?.IsGenerated,source=args?.OriginalSource.GetType().Name,focused=ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),state=state.GetType().GetFields(System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).ToDictionary(field=>field.Name,field=>field.GetValue(state))};
+        }
+        void Moved(object sender,PointerRoutedEventArgs args)=>hoverEvents.Add(HoverSnapshot("move",args));void Exited(object sender,PointerRoutedEventArgs args)=>hoverEvents.Add(HoverSnapshot("exit",args));chart.PointerMoved+=Moved;chart.PointerExited+=Exited;
+        try
+        {
+            var point=Points()[2];await input.MoveAsync(chart,localPoint:new Point(Canvas.GetLeft(point),Canvas.GetTop(point)));await AwaitAsync(()=>Inspection(chart)=="x : 40y : 50","Native hover did not inspect independent series data through first-series axis keys.");
+            await input.MoveAsync(chart,localPoint:new Point(100,100));await AwaitAsync(()=>Inspection(chart)=="","Scatter retained an unchanged point after a real move into empty plot space.");await input.MoveAsync(chart,localPoint:new Point(Canvas.GetLeft(point),Canvas.GetTop(point)));await AwaitAsync(()=>Inspection(chart)=="x : 40y : 50","Scatter did not inspect a point after returning from empty plot space.");
+            var pointerBefore=input.ReadPointerPosition();
+            for(var update=0;update<11;update++)
+            {
+                var y=update%2==0?60d:50d;var oldPointY=Canvas.GetTop(Points()[2]);hoverEvents.Add(HoverSnapshot("before-"+y));((MutableRecord)independent[0]).Change("y",y);await AwaitAsync(()=>Canvas.GetTop(Points()[2])!=oldPointY,"Independent record notification did not update point geometry.");await AwaitAsync(()=>Inspection(chart)=="x : 40y : "+y,"Independent record notification did not reach pointer inspection.");await FrameAsync();await FrameAsync();hoverEvents.Add(HoverSnapshot("rendered-"+y));Require(Inspection(chart)=="x : 40y : "+y&&input.ReadPointerPosition()==pointerBefore,"Scatter lost updated inspection while the native pointer stayed stationary.");
+            }
+            await input.MoveAsync(chart,localPoint:new Point(100,100));Require(Inspection(chart)=="x : 40y : 60","Scatter lost its replaced item over empty plot space.");await input.MoveAsync(chart,localPoint:new Point(Canvas.GetLeft(Points()[2]),Canvas.GetTop(Points()[2])));await AwaitAsync(()=>Inspection(chart)=="x : 40y : 60","Scatter did not inspect the replacement point.");await input.MoveAsync(chart,localPoint:new Point(100,100));await AwaitAsync(()=>Inspection(chart)=="","Scatter retained the replacement point after its real pointer leave.");
+        }
+        finally{chart.PointerMoved-=Moved;chart.PointerExited-=Exited;await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"scatter-chart-hover-mutation-{scheme}.json"),JsonSerializer.Serialize(hoverEvents,new JsonSerializerOptions{WriteIndented=true}));}
         await input.MoveAsync(before);await AwaitAsync(()=>Inspection(chart)=="","Leaving Scatter retained pointer inspection.");await input.KeyAsync(0x25,chart);await AwaitAsync(()=>Inspection(chart)=="x : 10y : 25","Scatter hover discarded the retained keyboard index.");
         var defaultPaint=((SolidColorBrush)Points()[0].Fill).Color;var paint=new SolidColorBrush(Windows.UI.Color.FromArgb(0,0,0,0));primary.Color=paint;await AwaitAsync(()=>ReferenceEquals(Points()[0].Fill,paint),"Scatter replaced a consumer's transparent brush.");primary.Color=null;await AwaitAsync(()=>Points()[0].Fill is SolidColorBrush restored&&restored.Color==defaultPaint,"Scatter did not restore theme paint after clearing consumer color.");
         owner.Series.Insert(1,primary);await AwaitAsync(()=>Points().Length==5,"Scatter lost a repeated series occurrence.");owner.Series.RemoveAt(1);await AwaitAsync(()=>Points().Length==3,"Scatter retained a removed series occurrence.");
