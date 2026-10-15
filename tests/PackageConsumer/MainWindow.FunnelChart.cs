@@ -14,6 +14,7 @@ public sealed partial class MainWindow
     private async Task VerifyFunnelChartAsync()
     {
         var owner = PackageFunnelChart; var a = new BleeckerFunnelChartDatum { Name = "A", Value = 30 }; var b = new BleeckerFunnelChartDatum { Name = "B", Value = 20 };
+        owner.ValueFormatter = null;
         owner.Data = new() { a, b, new BleeckerFunnelChartDatum { Name = "C", Value = 10 } }; owner.ShowLabels = true;
         var parent = (Panel)VisualTreeHelper.GetParent(owner); var position = parent.Children.IndexOf(owner); parent.Children.Remove(owner); await AwaitAsync(() => !owner.IsLoaded, "Packaged Funnel did not unmount."); Root.Children.Add(owner); owner.VerticalAlignment = VerticalAlignment.Top;
         try
@@ -26,7 +27,9 @@ public sealed partial class MainWindow
             var figure = ((PathGeometry)Bars()[0].Data).Figures[0]; var point = ((LineSegment)figure.Segments[1]).Point;
             Require(figure.IsClosed && figure.StartPoint == new Windows.Foundation.Point(5, 5) && Math.Abs(point.X - 263.3333) < .001 && Math.Abs(point.Y - 81.6667) < .001 && Labels()[0].Text == "A: ", "Packaged Funnel lost the unchanged source consumer geometry or label text.");
             Require(ReferenceEquals(chart.Data, owner.Data) && !owner.IsTabStop && chart.IsTabStop && AutomationProperties.GetName(chart) == "Independent funnel counts" && FrameworkElementAutomationPeer.CreatePeerForElement(chart).GetClassName() == nameof(BleeckerFunnelChart), "Packaged Funnel lost original data or its single named inspection stop.");
-            await AcquireConsumerInputAsync(); Require(chart.Focus(FocusState.Keyboard), "Could not focus packaged Funnel."); await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == " : 30", "Packaged Funnel did not inspect its initial record.");
+            await AcquireConsumerInputAsync(); Require(chart.Focus(FocusState.Keyboard), "Could not focus packaged Funnel.");
+            try { await AwaitAsync(() => AutomationProperties.GetHelpText(chart) == " : 30", "Packaged Funnel did not inspect its initial record."); }
+            catch (InvalidOperationException error) { throw new InvalidOperationException($"Packaged Funnel initial inspection failed: theme={Root.RequestedTheme}, help={AutomationProperties.GetHelpText(chart)}, formatter={owner.ValueFormatter is not null}, loaded={chart.IsLoaded}.", error); }
             void Key(ushort value)
             {
                 var input = new[] { new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = value } } }, new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = value, Flags = 2 } } } };
