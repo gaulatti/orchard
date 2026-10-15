@@ -74,6 +74,13 @@ browser cases, then exercises live root and independent series data, native
 input, formatters, templates and observer lifecycles. See
 [the source contract](scatter-chart-reference.md).
 
+The full smoke run's final per-page screenshots select each fixture and request
+nonanimated bring-into-view, then observe two unchanged Rendering transitions
+for viewport offsets, fixture origin/size and scroll extent. Each retains its
+two-second presentation deadline and writes a `.png.layout.json` report. This
+replaces fixed 100/350ms screenshot sleeps; fixture checks, screenshot order,
+pixels and the complete run's 360-second limit remain unchanged.
+
 Sparklines follows Scatter charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against

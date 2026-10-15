@@ -109,6 +109,30 @@ public sealed partial class MainWindow
         finally { CompositionTarget.Rendering -= OnPresented; }
     }
 
+    private async Task CaptureFixtureAsync(FrameworkElement fixture, string path)
+    {
+        await SelectFixtureAsync(fixture);
+        fixture.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
+        var ready = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        (double Vertical, double Horizontal, double X, double Y, double Width, double Height, double Extent)? previous = null;
+        var stable = 0; var frames = 0;
+        void Presented(object? sender, object args)
+        {
+            if (!fixture.IsLoaded || !ReferenceEquals(selectedFixture, fixture)) { stable = 0; return; }
+            var origin = fixture.TransformToVisual(CatalogRoot).TransformPoint(new Windows.Foundation.Point());
+            var state = (CatalogScroll.VerticalOffset, CatalogScroll.HorizontalOffset, origin.X, origin.Y, fixture.ActualWidth, fixture.ActualHeight, CatalogScroll.ExtentHeight);
+            stable = previous == state ? stable + 1 : 0; previous = state; frames++;
+            if (stable >= 2) ready.TrySetResult();
+        }
+        CompositionTarget.Rendering += Presented;
+        try { await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+        finally { CompositionTarget.Rendering -= Presented; }
+        Require(fixture.IsLoaded && ReferenceEquals(selectedFixture, fixture) && FixtureHost.Children.Count == 1 && ReferenceEquals(FixtureHost.Children[0], fixture), "Capture lost its selected fixture.");
+        await File.WriteAllTextAsync(path + ".layout.json", System.Text.Json.JsonSerializer.Serialize(new { fixture = fixture.GetType().Name, milliseconds = watch.Elapsed.TotalMilliseconds, frames, stable, CatalogScroll.VerticalOffset, CatalogScroll.HorizontalOffset, fixture.ActualWidth, fixture.ActualHeight }));
+        await CaptureAsync(path);
+    }
+
     private async Task VerifyNavigationAsync()
     {
         await SelectFixtureAsync(Foundation);

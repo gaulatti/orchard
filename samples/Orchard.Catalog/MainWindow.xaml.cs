@@ -82,7 +82,7 @@ public sealed partial class MainWindow : Window
                 {
                     CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(ScatterCharts);
                     await ScatterCharts.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
-                    await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                    await CaptureFixtureAsync(ScatterCharts, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "scatter-chart", environment = RuntimeEnvironment() }));
             }
@@ -479,38 +479,13 @@ public sealed partial class MainWindow : Window
             await Switches.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Contrast);
             await Contrast.VerifyKeyboardEntryAsync(folder, scheme);
-            await SelectFixtureAsync(StatusBadges);
-            StatusBadges.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-            await Task.Delay(350);
-            await CaptureAsync(Path.Combine(folder, $"status-badges-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(Separators);
-            Separators.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-            await Task.Delay(100);
-            await CaptureAsync(Path.Combine(folder, $"separators-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(Cards);
-            Cards.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-            await Task.Delay(100);
-            await CaptureAsync(Path.Combine(folder, $"cards-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(LoadingSpinners);
-            LoadingSpinners.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-            await Task.Delay(100);
-            await CaptureAsync(Path.Combine(folder, $"loading-spinners-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(ToggleGroups);
-            ToggleGroups.StartBringIntoView();
-            await Task.Delay(350);
-            await CaptureAsync(Path.Combine(folder, $"toggle-groups-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(IconButtons);
-            IconButtons.StartBringIntoView();
-            await Task.Delay(350);
-            await CaptureAsync(Path.Combine(folder, $"icon-buttons-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(Buttons);
-            Buttons.StartBringIntoView();
-            await Task.Delay(350);
-            await CaptureAsync(Path.Combine(folder, $"buttons-{theme.ToString().ToLowerInvariant()}.png"));
-            await SelectFixtureAsync(Toggles);
-            Toggles.StartBringIntoView();
-            await Task.Delay(350);
-            await CaptureAsync(Path.Combine(folder, $"toggles-{theme.ToString().ToLowerInvariant()}.png"));
+            foreach (var (fixture, name) in new (FrameworkElement Fixture, string Name)[]
+            {
+                (StatusBadges, "status-badges"), (Separators, "separators"), (Cards, "cards"),
+                (LoadingSpinners, "loading-spinners"), (ToggleGroups, "toggle-groups"),
+                (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
+            })
+                await CaptureFixtureAsync(fixture, Path.Combine(folder, $"{name}-{theme.ToString().ToLowerInvariant()}.png"));
             await SelectFixtureAsync(Foundation);
             CatalogScroll.ChangeView(null, 0, null, disableAnimation: true);
             await Task.Delay(100);

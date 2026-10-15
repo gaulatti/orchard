@@ -80,6 +80,28 @@ Initial reports remain at `artifacts/package-consumer-scatter-chart` and
 `artifacts/package-consumer-scatter-chart-geometry`. This correction changes
 the consumer assertion only; the package and library remain unchanged.
 
+The same package passes the fresh independent x64 consumer's actual Light/Dark
+runtime at `artifacts/package-consumer-scatter-chart-float`: source numeric and
+bubble geometry, original root/independent data, one named inspection stop,
+physical Right, live record replacements, transparent brush ownership and
+empty data. The corrected independent ARM64 consumer builds at
+`artifacts/package-consumer-scatter-chart-float-arm64`, with runtime verification
+explicitly false. Both generated temporary restore/build workspaces are removed.
+
+The first complete published run at `artifacts/smoke-scatter-chart-published-full`
+passes the component fixtures through Dark contrast entry but reaches the
+360-second limit during final Dark screenshots, so it is not a complete pass.
+The final screenshot navigation now waits for stable viewport geometry rather
+than fixed 100/350ms delays. It preserves all fixture checks and screenshot
+order, uses a two-second presentation deadline, and retains per-capture layout
+evidence. The global deadline remains unchanged. This changes only catalog
+verification; package/library inputs remain the independently verified commit.
+The focused run at `artifacts/smoke-scatter-chart-viewport` passes all source and
+live checks with that final capture gate in both themes. Its layout reports
+record three frames/two unchanged transitions, offsets zero, and 32.6826ms and
+35.0733ms settling times. All 44 regressions still pass. Complete catalog
+verification remains a separate required run.
+
 Full shape/glyph/legend/cursor/tooltip raster and effects, motion, complete
 data/key/formatter/override/RTL coverage, actual contrast, Narrator, display/text
 scaling, collection performance and native ARM64 acceptance remain open. This

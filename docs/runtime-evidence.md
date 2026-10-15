@@ -1527,3 +1527,34 @@ geometry instead of two arbitrary frames. Frame traces demonstrate text moving
 between those first two events. The final runnable output is
 `artifacts/catalog-pie-chart-settled`; no library/package input changed after
 the independently verified `d95e454` package.
+
+## Scatter Chart implementation checkpoint
+
+Commit `d650242` adds numeric Scatter/bubble plots, typed series with original
+optional data, shared first-series axis keys and a registered catalog page.
+All 64 source cases and live native input/data/lifecycle checks pass in both
+themes at `artifacts/smoke-scatter-chart-crosshair`. The reference loads the
+bundled font before mounting the unchanged source; its initial fallback-font
+measurement and recapture evidence are documented in
+[the Scatter contract](scatter-chart-reference.md). Exact circle paths, numeric
+axes, labels/grid, legend baselines, tooltip payload/height/visibility and
+crosshair paths are checked. Source/native Light and Dark screenshots were
+inspected. Full raster and platform acceptance remain open.
+
+Both solution architectures build without warnings, all 44 unit/resource
+regressions pass, and token generation is current. A clean-source 0.1.0 package
+from `d6502425f138e5d046765c944644134d7f5e300d` has SHA-256
+`4f83502c585ea3cd08585d876659dc9a3ec7c288463812cad47c2c7875e7655c`.
+Its isolated x64 consumer passes actual Light/Dark runtime at
+`artifacts/package-consumer-scatter-chart-float`; its independent ARM64 consumer
+build passes at `artifacts/package-consumer-scatter-chart-float-arm64`, with
+runtime verification explicitly false. Both temporary workspaces are removed.
+The consumer's initial radius assertion was corrected to the exact native
+single-precision stored value, with library/package inputs unchanged. The
+initial diagnostic failures remain recorded.
+
+The inventory contains 42 in-progress and 70 pending entries, with none fully
+accepted. Full shape/glyph/effects raster, motion, data/key/formatter/override/
+RTL coverage, actual contrast, Narrator, scaling, collection performance and
+native ARM64 acceptance remain required. Push-triggered Actions remain paused
+at the user's request; the public wiki is still unavailable.
