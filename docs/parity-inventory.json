@@ -938,7 +938,6 @@
       "status": "in-progress",
       "remainingGaps": [
         "Complete source raster/motion, data/override/RTL and measured collection-performance coverage",
-        "Verify fresh independent package and full published runtime",
         "Verify actual contrast, Narrator, display/text scaling and native ARM64 runtime"
       ]
     },

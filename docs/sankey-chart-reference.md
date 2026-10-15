@@ -114,15 +114,43 @@ collection replacement, reordering, resize and empty data. Native keyboard
 inspection resets to the first node on focus and takes over stationary pointer
 inspection; subsequent actual pointer movement resumes hover. All 50 current
 regressions and generated tokens pass. x64 and ARM64 cross-builds have zero
-warnings; native ARM64 execution remains open. Independent package and full
-published verification are pending.
+warnings; native ARM64 execution remains open.
+
+A fresh regular `0.1.0` package from clean source
+`a34bb35b93791b3984f75f38f3106be350da0488` has SHA-256
+`d48769634ee5e4133ba489c14f5ea802d465b0f8ae0a74268d18465d0f205ce1`
+at `artifacts/packages-sankey-chart/Gaulatti.Orchard.0.1.0.nupkg`. Its isolated
+x64 consumer passes actual Light/Dark runtime checks, including original
+node/link records, native flow geometry and input, node-count changes during
+flow inspection, notifications, brush identity, palette/root replacement and
+empty data (`artifacts/package-consumer-sankey-chart`). The same package passes
+the isolated ARM64 build-only check at
+`artifacts/package-consumer-sankey-chart-arm64`; `runtimeVerified` is false.
+Both temporary restore/build caches were removed by the guarded cleanup path.
+
+The runnable catalog at `artifacts/catalog-sankey-chart` reports version
+`0.1.0+a34bb35b93791b3984f75f38f3106be350da0488`. Its complete published
+Light/Dark run passes in **359.5718438 seconds**, under the unchanged
+360-second limit, at `artifacts/smoke-sankey-chart-published-full`. There are
+964 PNGs, retaining all 952 previous captures, and sixteen settled final capture
+reports. All 1,676 pointer presentation gates pass with at least two stable
+Rendering transitions; maximum settling is 187.683ms. All changed moves have
+actual exact mouse receipts; 86 stationary moves reuse preceding confirmed
+coordinates. All final points remain owned, all 44 click releases are delivered,
+and no delivery gate fails. Eighty-two scroll compositor checks catch five
+changes in reported bounds before movement. All 28 tooltip opening gates also
+pass with two stable transitions, at most 51.353ms. Timing has only 0.428 seconds
+of headroom; these results do not establish collection-performance acceptance.
+The complete report is `artifacts/sankey-published-runtime-report.json`.
 
 Whole chart viewport comparisons for twelve captured normal states retain
 every pixel, including background and clipped flow bands, with no exclusions.
 All twelve differ from the browser raster: changed counts range from 60 to
 129,342 pixels, with maximum per-channel differences of 14 to 47. Exact
 geometry and paint-property checks do not resolve these raster differences.
-The complete measured report is `artifacts/sankey-raster-comparison.json`;
+The latest published comparison reproduces those differences at
+`artifacts/sankey-published-raster-comparison.json` (the initial report remains
+at `artifacts/sankey-raster-comparison.json`);
 full visual acceptance remains open.
 
 Work is in progress and this inventory entry is not accepted. Complete raster,

@@ -1,5 +1,29 @@
 # Native Windows runtime evidence
 
+The complete published x64 catalog from `a34bb35` passes Light/Dark in
+359.572 seconds, under the unchanged 360-second limit, at
+`artifacts/smoke-sankey-chart-published-full`. It adds all 76 frozen Sankey
+cases and native lifecycle/collection/keyboard checks. All 952 prior PNGs are
+retained, for 964 total. All 1,676 pointer presentation gates pass with at least
+two stable Rendering transitions and owned final points; actual native event
+receipts replace fixed post-input waits. Scroll compositor checks detect five
+stale bounds before movement. All 44 click release gates and 28 tooltip opening
+gates pass, with no failed deliveries. Sixteen settled final captures remain.
+
+Final x64 and ARM64 builds have zero warnings; all fifty regressions and
+generated tokens pass. The fresh regular `0.1.0` package from `a34bb35`, SHA-256
+`d48769634ee5e4133ba489c14f5ea802d465b0f8ae0a74268d18465d0f205ce1`,
+passes the isolated x64 runtime consumer and ARM64 build-only consumer; both
+temporary caches are removed. Native ARM64 remains unverified. See
+[Sankey evidence and limits](sankey-chart-reference.md). Whole chart viewport
+comparisons retain raster differences without excluded pixels. Inventory is
+46 in progress, 66 pending and zero accepted of 112. Push-triggered Actions
+remain paused by user request. The full run has only 0.428 seconds of timing
+headroom; full raster/motion, contrast, Narrator, scaling and measured collection
+performance remain open.
+
+The preceding Funnel checkpoint follows for comparison.
+
 The local published x64 catalog from `648dd18` passes the complete Light/Dark
 run in 354.689 seconds at `artifacts/smoke-funnel-chart-published-full`, under
 the unchanged 360-second limit. It adds 54 frozen Funnel cases and native
