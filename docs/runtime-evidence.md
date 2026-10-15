@@ -1622,3 +1622,16 @@ and exact 124-pixel masks. All fifty target gates pass; nine wait for an initial
 unowned point, and maximum settling is 96.6803ms. Scatter/Sparkline also pass at
 `artifacts/smoke-scatter-chart-visible-pointer`. The failed full run remains at
 `artifacts/smoke-scatter-chart-published-stable-pointer-full`.
+
+The final complete published catalog from `20820c6` passes in 325.934 seconds,
+with the 360-second limit unchanged, at
+`artifacts/smoke-scatter-chart-published-visible-pointer-full`. It retains 916
+PNG captures, sixteen settled final-capture reports, exact 124-pixel Attention
+masks in both themes and eleven stationary Scatter mutations per theme. All
+544 pointer gates pass, with two stable transitions and owned final points;
+twenty-one wait for initially unowned targets, and maximum settling is
+167.0193ms. The runnable catalog is `artifacts/catalog-scatter-chart-visible-pointer`.
+Library inputs remain the independently verified `ad2814e` NuGet package.
+The inventory remains 42 in progress, 70 pending and none accepted. Native
+ARM64, full raster/motion, contrast, Narrator, scaling and collection-performance
+acceptance remain open. Push-triggered Actions remain paused by user request.

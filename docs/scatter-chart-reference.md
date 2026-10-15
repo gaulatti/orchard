@@ -222,3 +222,15 @@ scroll/return paths and exact 124-pixel masks. Fifty target gates pass; nine
 wait for an initially unowned point to become visible. Maximum settling is
 96.6803ms. Scatter/Sparkline also pass both themes at
 `artifacts/smoke-scatter-chart-visible-pointer`. No library/package input changes.
+
+The complete published catalog from `20820c6` passes Light/Dark in 325.934
+seconds at `artifacts/smoke-scatter-chart-published-visible-pointer-full`, under
+the unchanged 360-second limit. It retains 916 PNG captures, sixteen settled
+final-capture reports, both exact 124-pixel Attention masks and eleven stationary
+Scatter mutations per theme. All 544 pointer gates pass with at least two stable
+transitions and owned final points; twenty-one wait for initially unowned
+targets. Maximum settling is 167.0193ms. The final runnable catalog is
+`artifacts/catalog-scatter-chart-visible-pointer`; the independently verified
+library package remains the clean `ad2814e` package recorded above. Full raster,
+motion, accessibility, scaling, collection performance and native ARM64
+acceptance remain open; the inventory entry remains in progress.
