@@ -60,7 +60,7 @@ public sealed partial class PageHeadersFixture : UserControl
                 control.BackRequested += (_, _) => notifications++;
                 specimenHost.Children.Clear(); specimenHost.Children.Add(control);
                 await AwaitAsync(() => control.IsLoaded, "Page Header did not mount.");
-                control.ApplyTemplate(); UpdateLayout(); await Task.Delay(100); UpdateLayout();
+                control.ApplyTemplate(); UpdateLayout(); await MainWindow.AwaitPresentationAsync(control); UpdateLayout();
                 var title = Part<TextBlock>(control, "PART_Title"); var desc = Part<TextBlock>(control, "PART_Description");
                 var backHost = Part<Grid>(control, "PART_Back"); var back = (Button)backHost.Children[0];
                 var lead = Part<Grid>(control, "PART_Lead"); var actionHost = Part<Grid>(control, "PART_Actions");

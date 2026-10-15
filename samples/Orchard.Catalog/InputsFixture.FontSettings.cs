@@ -17,7 +17,6 @@ public sealed partial class InputsFixture
             input.FontStretch = FontStretch.Condensed;
             input.IsTextScaleFactorEnabled = false;
             UpdateLayout();
-            await Task.Delay(100);
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"input-font-settings-placeholder-{scheme}.png"));
             var editor = Find<ScrollViewer>(input, "ContentElement");
             var placeholder = Find<TextBlock>(input, "PlaceholderTextContentPresenter");
@@ -31,7 +30,6 @@ public sealed partial class InputsFixture
                 "Text-scale preference did not reach all input typography parts.");
             input.Text = input.PlaceholderText;
             UpdateLayout();
-            await Task.Delay(100);
             await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"input-font-settings-filled-{scheme}.png"));
         }
         finally

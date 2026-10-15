@@ -22,7 +22,9 @@ public sealed partial class InputsFixture
                     inputs[index].FontFamily = new FontFamily(originals[index].FontFamily.Source + candidates[candidate]);
                 }
                 UpdateLayout();
-                await Task.Delay(100);
+                await MainWindow.CaptureElementAsync(this, Path.Combine(folder,
+                    $"input-font-fallback-{candidate}-{scheme}.png"));
+                UpdateLayout();
                 foreach (var input in inputs)
                 {
                     var start = input.GetRectFromCharacterIndex(0, false);
@@ -30,8 +32,6 @@ public sealed partial class InputsFixture
                     results.Add(new { size = input.InputSize.ToString(), family = input.FontFamily.Source,
                         language = input.Language, width = end.X - start.X });
                 }
-                await MainWindow.CaptureElementAsync(this, Path.Combine(folder,
-                    $"input-font-fallback-{candidate}-{scheme}.png"));
             }
             File.WriteAllText(Path.Combine(folder, $"input-font-fallback-{scheme}.json"),
                 JsonSerializer.Serialize(results, new JsonSerializerOptions { WriteIndented = true }));

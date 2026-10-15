@@ -127,3 +127,13 @@ or source percentage strings. Consumer Fill brushes retain their identity,
 including transparent paint. Curved values and the sorted legend use the
 bundled typography; native inspection has one consumer-named keyboard stop.
 See the repository's Radial Bar contract for remaining acceptance gaps.
+
+`BleeckerFunnelChart` consumes original observable name/value/fill records,
+including `BleeckerFunnelChartDatum` with live property notifications. Height
+defaults to 350 and ShowLabels to true. ValueFormatter formats numeric
+inspection values. The pinned source's inside labels contain the name followed
+by a colon; they omit the value. Native focus inspects the first record, arrow
+keys retain that selection, Enter toggles inspection and pointer hover inspects
+the actual trapezoid. Transparent Fill brushes retain their identity. Set the
+wrapper's automation name for its single named inspection stop. See the
+repository's Funnel contract for visual and platform acceptance gaps.

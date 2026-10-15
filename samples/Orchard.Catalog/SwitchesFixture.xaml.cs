@@ -427,10 +427,10 @@ public sealed partial class SwitchesFixture : UserControl
             {
                 NonLatin.FontFamily = new FontFamily(original.Source + candidates[index]);
                 UpdateLayout();
-                await Task.Delay(50);
+                await MainWindow.CaptureElementAsync(NonLatin, Path.Combine(folder, $"switch-font-fallback-{index}-{scheme}.png"));
+                UpdateLayout();
                 var label = Find<TextBlock>(NonLatin, "PART_Label");
                 results.Add(new { font = label.FontFamily.Source, label.Language, label.ActualWidth, label.ActualHeight, label.BaselineOffset });
-                await MainWindow.CaptureElementAsync(NonLatin, Path.Combine(folder, $"switch-font-fallback-{index}-{scheme}.png"));
             }
             await File.WriteAllTextAsync(Path.Combine(folder, $"switch-font-fallback-{scheme}.json"),
                 JsonSerializer.Serialize(results, new JsonSerializerOptions { WriteIndented = true }));

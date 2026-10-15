@@ -27,7 +27,6 @@ public sealed partial class InputsFixture
                     input.Text = filled ? "أخبار القاهرة" : "";
                 }
                 UpdateLayout();
-                await Task.Delay(100);
                 await MainWindow.CaptureElementAsync(this, Path.Combine(folder, $"input-direction-{direction}-{filled}-{scheme}.png"));
                 var bitmap = new RenderTargetBitmap();
                 await bitmap.RenderAsync(this);

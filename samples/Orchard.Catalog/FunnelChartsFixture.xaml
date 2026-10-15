@@ -1,0 +1,9 @@
+<UserControl x:Class="Orchard.Catalog.FunnelChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Funnel charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional consumer-owned workflow counts. Focus inspects the first value; Enter hides or restores inspection." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerFunnelChart x:Name="Specimen" AutomationProperties.Name="Fictional workflow counts">
+   <orchard:BleeckerFunnelChart.Data><orchard:BleeckerFunnelChartDatum Name="Harbor" Value="120" /><orchard:BleeckerFunnelChartDatum Name="Terrace" Value="90" /><orchard:BleeckerFunnelChartDatum Name="Cove" Value="60" /></orchard:BleeckerFunnelChart.Data>
+  </orchard:BleeckerFunnelChart>
+ </StackPanel>
+</UserControl>

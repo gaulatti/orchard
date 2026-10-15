@@ -27,7 +27,7 @@ public sealed partial class BleeckerLineChart
     internal void UseScatterProfile(ObservableCollection<BleeckerScatterSeries> series, Func<object?, string>? xFormatter, Func<object?, string>? yFormatter)
     {
         var changed = !scatterMode || !ReferenceEquals(scatterSeries, series);
-        scatterMode = true; sparklineMode = barMode = areaMode = pieMode = radarMode = radialBarMode = false;
+        scatterMode = true; sparklineMode = barMode = areaMode = pieMode = radarMode = radialBarMode = funnelMode = false;
         scatterSeries = series; scatterXFormatter = xFormatter; scatterYFormatter = yFormatter;
         if (changed && IsLoaded) Observe(); QueueRender();
     }

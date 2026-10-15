@@ -33,6 +33,8 @@
     "BleeckerRadarSeries": "RadarChartsFixture.xaml",
     "BleeckerRadialBarChart": "RadialBarChartsFixture.xaml",
     "BleeckerRadialBarChartDatum": "RadialBarChartsFixture.xaml",
+    "BleeckerFunnelChart": "FunnelChartsFixture.xaml",
+    "BleeckerFunnelChartDatum": "FunnelChartsFixture.xaml",
     "BleeckerErrorState": "ErrorStatesFixture.xaml",
     "BleeckerPageHeader": "PageHeadersFixture.xaml",
     "BleeckerSectionHeader": "SectionHeadersFixture.xaml",

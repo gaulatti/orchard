@@ -235,7 +235,7 @@ public sealed partial class SkeletonsFixture : UserControl
             Require(surface.CornerRadius == new CornerRadius(shape.ActualHeight == 12 ? 6 : 7),
                 "Skeleton painted overlapping 7px corners without CSS normalization.");
     }
-    private async Task SettleAsync() { UpdateLayout(); await Task.Delay(80); UpdateLayout(); }
+    private async Task SettleAsync() { UpdateLayout(); await MainWindow.AwaitPresentationAsync(this); UpdateLayout(); }
     private static async Task CaptureMonochromeAsync(FrameworkElement owner, string path, bool animations, List<object> samples)
     {
         var bitmap = new RenderTargetBitmap();

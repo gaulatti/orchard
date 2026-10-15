@@ -453,11 +453,12 @@ public sealed partial class CheckboxesFixture : UserControl
             for (var index = 0; index < suffixes.Length; index++)
             {
                 NonLatin.FontFamily = new FontFamily(original.Source + suffixes[index]);
-                UpdateLayout(); await Task.Delay(50); UpdateLayout();
+                UpdateLayout();
+                await MainWindow.CaptureElementAsync(NonLatin, Path.Combine(folder, $"checkbox-font-fallback-{index}-{scheme}.png"));
+                UpdateLayout();
                 var label = Find<TextBlock>(NonLatin, "PART_Label");
                 probes.Add(new { font = label.FontFamily.Source, label.Language, label.FontSize,
                     weight = label.FontWeight.Weight, label.ActualWidth, label.ActualHeight, label.BaselineOffset });
-                await MainWindow.CaptureElementAsync(NonLatin, Path.Combine(folder, $"checkbox-font-fallback-{index}-{scheme}.png"));
             }
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-font-fallback-{scheme}.json"),
                 JsonSerializer.Serialize(probes, new JsonSerializerOptions { WriteIndented = true }));
@@ -529,7 +530,12 @@ public sealed partial class CheckboxesFixture : UserControl
                 }
                 NonLatin.Language = script.Language;
                 NonLatin.Content = text;
-                UpdateLayout(); await Task.Delay(50); UpdateLayout();
+                UpdateLayout();
+                // The completed native render is the observation boundary for
+                // this exact specimen. Measure it before changing the content.
+                await MainWindow.CaptureElementAsync(NonLatin,
+                    Path.Combine(folder, $"checkbox-script-{script.Name}-{weight.Value}-{candidate}-{scheme}.png"));
+                UpdateLayout();
                 Require(text.LineHeight == 20 && text.ActualHeight == 20 && double.IsFinite(text.ActualWidth),
                     "Script evidence probe did not receive the branded text layout.");
                 probes.Add(new { name = script.Name, language = text.Language, weight = weight.Value, candidate,
@@ -537,8 +543,6 @@ public sealed partial class CheckboxesFixture : UserControl
                     runs = text.Inlines.OfType<Microsoft.UI.Xaml.Documents.Run>().Select(run =>
                         new { run.Text, font = run.FontFamily.Source, weight = run.FontWeight.Weight }).ToArray(),
                     text.ActualWidth, text.ActualHeight, text.BaselineOffset, rowWidth = NonLatin.ActualWidth });
-                await MainWindow.CaptureElementAsync(NonLatin,
-                    Path.Combine(folder, $"checkbox-script-{script.Name}-{weight.Value}-{candidate}-{scheme}.png"));
             }
             await File.WriteAllTextAsync(Path.Combine(folder, $"checkbox-script-weights-{scheme}.json"),
                 JsonSerializer.Serialize(new { referenceCommit = "a86059013cd59684ce452849278ea81e734f2066",

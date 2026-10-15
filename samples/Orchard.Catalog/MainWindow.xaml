@@ -96,6 +96,7 @@
                 <local:ScatterChartsFixture x:Name="ScatterCharts" />
                 <local:RadarChartsFixture x:Name="RadarCharts" />
                 <local:RadialBarChartsFixture x:Name="RadialBarCharts" />
+                    <local:FunnelChartsFixture x:Name="FunnelCharts" />
                 <local:SparklinesFixture x:Name="Sparklines" />
                 <local:StatCardsFixture x:Name="StatCards" />
                 <local:ErrorStatesFixture x:Name="ErrorStates" />

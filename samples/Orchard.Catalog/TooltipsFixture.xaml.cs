@@ -13,12 +13,13 @@ public sealed partial class TooltipsFixture : UserControl
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
+        tooltipPresentations.Clear();
         StartBringIntoView();
         await Task.Delay(150);
         foreach (var tip in new[] { TopTip, BottomTip, LeftTip, RightTip, LongTip, TemplateTip })
         {
             tip.IsOpen = true;
-            await Task.Delay(180);
+            await AwaitTooltipPresentationAsync(tip, scheme, folder);
             tip.UpdateLayout();
             try
             {
@@ -57,7 +58,7 @@ public sealed partial class TooltipsFixture : UserControl
                 }
             }
             finally { tip.IsOpen = false; }
-            await Task.Delay(80);
+            await AwaitTooltipClosedAsync(tip);
         }
         await VerifyCollisionsAsync(scheme, folder);
         TopTip.IsOpen = true;
@@ -167,9 +168,9 @@ public sealed partial class TooltipsFixture : UserControl
                 Canvas.SetLeft(target, x);
                 Canvas.SetTop(target, y);
                 tip.Placement = side;
-                await Task.Delay(80);
+                await MainWindow.AwaitPresentationAsync(target);
                 tip.IsOpen = true;
-                await Task.Delay(180);
+                await AwaitTooltipPresentationAsync(tip, scheme, folder);
                 var opposite = side switch { PlacementMode.Top => PlacementMode.Bottom, PlacementMode.Bottom => PlacementMode.Top, PlacementMode.Left => PlacementMode.Right, _ => PlacementMode.Left };
                 Require(tip.ActualPlacement == (edge ? opposite : side), "Tooltip did not resolve the expected collision side.");
                 var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Single(item => ReferenceEquals(item.Child, tip));
@@ -186,7 +187,7 @@ public sealed partial class TooltipsFixture : UserControl
                 Require(Math.Abs(gap - 7) <= .5, $"Tooltip arrow clearance differs from reference: {side}/{edge}/{gap}.");
                 await MainWindow.CaptureElementAsync(tip, System.IO.Path.Combine(folder, $"tooltip-collision-{side}-{edge}-{scheme}.png"));
                 tip.IsOpen = false;
-                await Task.Delay(80);
+                await AwaitTooltipClosedAsync(tip);
             }
         }
         finally

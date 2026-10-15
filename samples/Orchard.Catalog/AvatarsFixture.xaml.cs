@@ -231,7 +231,7 @@ public sealed partial class AvatarsFixture : UserControl
     private static T Part<T>(Control owner, string name) where T : DependencyObject =>
         (T)((FrameworkElement)VisualTreeHelper.GetChild(owner, 0)).FindName(name);
     private static string Color(Brush brush) { var color = ((SolidColorBrush)brush).Color; return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}"; }
-    private async Task SettleAsync() { UpdateLayout(); await Task.Delay(100); UpdateLayout(); }
+    private async Task SettleAsync() { UpdateLayout(); await MainWindow.AwaitPresentationAsync(this); UpdateLayout(); }
     private async Task AwaitAsync(Func<bool> condition, string message)
     {
         var elapsed = Stopwatch.StartNew();

@@ -103,7 +103,24 @@ resize or request foreground only when the requested size/foreground differs.
 All state assertions and pointer presentation/ownership gates remain in place;
 the full smoke deadline remains 360 seconds.
 
-Sparklines follows Radial Bar charts. Focused `-Component sparkline` checks 36 frozen
+Funnel charts follows Radial Bar charts. Focused `-Component funnel-chart`
+compares 54 frozen Light/Dark cases for trapezoids, label text/wrapping/baselines,
+palette and inspection. Native lifecycle checks cover original records, live
+names/values/formatters/paint/fonts, physical Tab/Enter/arrows, stationary hover,
+remount, template/data replacement, resize and empty data. `-Component
+funnel-chart-sequence` runs Funnel, Radial Bar, Radar, Scatter and Sparkline in
+each theme. See [the Funnel contract](funnel-chart-reference.md).
+
+Tooltip opening checks require full opacity/scale and unchanged size, placement
+and origin across two Rendering transitions within two seconds. Dismissal
+waits for the actual popup to leave the root; the separate motion/interruption
+observations retain their original timing. Avatar, Skeleton and Page Header
+setup uses the existing two-frame/compositor readiness check. Font evidence
+captures complete the actual native render before reading measurements,
+replacing fixed sleeps while preserving each PNG and assertion. These changes
+leave pointer gates, source tolerances and the full 360-second deadline intact.
+
+Sparklines follows Funnel charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.
