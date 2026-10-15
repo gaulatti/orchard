@@ -74,3 +74,23 @@ layout allocation and the path's finite length. The official Win2D
 [glyph-run API](https://microsoft.github.io/Win2D/WinUI3/html/M_Microsoft_Graphics_Canvas_Geometry_CanvasGeometry_CreateGlyphRun.htm)
 and [renderer contract](https://microsoft.github.io/Win2D/WinUI3/html/T_Microsoft_Graphics_Canvas_Text_ICanvasTextRenderer.htm)
 were consulted for the pinned native implementation.
+
+The regular `0.1.0` NuGet package from clean source `43d200c`, SHA-256
+`102fec25ab72d99f068f56992beb6c59b69f189adbdb4e8758356565a84edc99`,
+passes the fresh isolated x64 consumer in both themes at
+`artifacts/package-consumer-radial-bar-chart`. That consumer loads actual curved
+font outlines, checks source geometry, original data identity, typed record
+notifications, native Right inspection, transparent fill, radius/name changes
+and empty cleanup. The same package passes the separate ARM64 build-only
+consumer at `artifacts/package-consumer-radial-bar-chart-arm64`; ARM64 runtime
+is unverified. Both isolated restore/build caches are removed.
+
+The runnable x64 catalog at `artifacts/catalog-radial-bar-chart` is built from
+`43d200c`. Its complete published Light/Dark run passes in 357.220 seconds at
+`artifacts/smoke-radial-bar-chart-published-full`, within the unchanged
+360-second deadline. All 928 earlier PNGs remain, with 12 new source captures.
+All 992 native pointer gates pass their original ownership and two-unchanged-
+transition checks, within the two-second presentation limit. Sixteen final
+capture layout reports also settle. The focused Radial Bar → Radar → Scatter
+→ Sparkline sequence passes both themes. Light/Dark default captures were
+visually inspected; complete raster/platform acceptance remains open.
