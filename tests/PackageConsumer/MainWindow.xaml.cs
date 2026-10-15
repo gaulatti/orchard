@@ -99,13 +99,19 @@ public sealed partial class MainWindow : Window
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageHelp).GetName() == PackageHelp.Text &&
                     BleeckerTooltipService.GetToolTip(PackageHelp)?.Placement == Microsoft.UI.Xaml.Controls.Primitives.PlacementMode.Bottom,
                     "Packaged field help lost its size, accessible name or bottom tooltip.");
+                await AcquireConsumerInputAsync();
                 PackageMenu.ShowAt(MenuTrigger);
                 await Task.Delay(200);
                 var menuPresenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
+                menuPresenter.ApplyTemplate(); menuPresenter.UpdateLayout();
+                await AwaitAsync(() => menuPresenter.IsLoaded && VisualTreeHelper.GetChildrenCount(menuPresenter) > 0, "Packaged menu presenter did not load its template.");
                 Require(menuPresenter.Padding.Left == 6 && menuPresenter.CornerRadius.TopLeft == 7 &&
                     menuPresenter.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Packaged menu lost its branded presenter.");
                 var menuSurface = (BleeckerOverlaySurface)VisualTreeHelper.GetChild(menuPresenter, 0);
+                menuSurface.ApplyTemplate(); menuSurface.UpdateLayout();
+                await AwaitAsync(() => menuSurface.IsLoaded && VisualTreeHelper.GetChildrenCount(menuSurface) > 0, "Packaged menu surface did not load its template.");
                 var menuSurfaceRoot = (Grid)VisualTreeHelper.GetChild(menuSurface, 0);
+                await AwaitAsync(() => ElementCompositionPreview.GetElementChildVisual((Grid)menuSurfaceRoot.Children[1]) is ContainerVisual layers && layers.Children.Count == 2, "Packaged menu shadow layers did not attach after loading.");
                 Require(ElementCompositionPreview.GetElementChildVisual((Grid)menuSurfaceRoot.Children[1]) is ContainerVisual menuShadows && menuShadows.Children.Count == 2,
                     "Packaged menu did not render its overlay shadow layers.");
                 var labelPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageLabel);

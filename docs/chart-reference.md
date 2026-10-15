@@ -124,3 +124,39 @@ handover boundary after 70.630 seconds. Area now verifies the same source
 hover/key/exit contract. The extended Bar → Area → Sparkline → Stat Card
 sequence passes both themes (`artifacts/smoke-bar-area-source-handover`). No
 source assertion, pointer receipt requirement or deadline changed.
+
+## Validated published checkpoint
+
+The clean `aa5e6d4731d8843fdaf2589abc2212284064801f` catalog passes the
+complete run in **358.064 seconds**, under the unchanged 360-second deadline:
+`artifacts/smoke-currency-chart-area-handover-published-full`. All 988 PNGs are
+present, including all 976 from the preceding checkpoint. Both themes pass all
+94 currency cases. The full audit records 1,710 successful pointer gates with
+at least two stable Rendering transitions (maximum 233.734 ms), 1,710 owned
+exact moves, 1,724 exact key actions, 46 click releases, 28 tooltip gates and
+16 final capture gates, with no failures. Eighty-six stationary moves reuse
+only an actual prior receipt at the same current point. All 174 existing
+Sunburst/Radial Bar glyph hashes remain identical.
+
+Both architecture builds have zero warnings, and 57 tests plus token checks
+pass. The runnable catalog is `artifacts/catalog-currency-chart-area-handover`
+with ProductVersion `0.1.0+aa5e6d4731d8843fdaf2589abc2212284064801f`.
+Package 0.1.0 is
+`artifacts/packages-currency-chart-area-handover/Gaulatti.Orchard.0.1.0.nupkg`,
+SHA-256 `ade2395c1ec16f50961a1f9dc56c4b4c7be9877d8e47adcf9e2ff366164c9155`.
+The fresh x64 consumer passes both themes at
+`artifacts/package-consumer-currency-chart-final`; the ARM64 consumer build
+passes at `artifacts/package-consumer-currency-chart-final-arm64`, with
+`runtimeVerified:false`. Both isolated caches are removed. Catalog and x64
+consumer load byte-identical Orchard assemblies.
+
+Consumer menu verification now acquires its own foreground window, applies
+the presenter/surface templates and awaits their loaded children and actual
+shadow layers before inspecting them. This fixes a startup-check race without
+changing the package or any assertion. The successful full catalog remains
+the exact published `aa5e6d4` artifact.
+
+All twelve complete currency rasters still differ by 769–5,761 pixels, maximum
+channel difference 239, with zero masks/tolerance. Inventory remains 48 in
+progress, 64 pending, none accepted; all documented platform, data, visual and
+performance acceptance gaps remain. Push-triggered Actions remain paused.

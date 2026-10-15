@@ -1713,3 +1713,42 @@ raster/motion, complete overrides/RTL, actual contrast/Narrator/scaling,
 collection-performance acceptance and native ARM64 runtime remain open. There
 is no backend/Prometheus surface. Wiki access remains unavailable, and these
 in-repository documents retain the contract. Push-triggered Actions stay paused.
+
+## Currency Chart published checkpoint
+
+The fixed currency Chart adds 94 source cases and native coverage while
+retaining the 112-entry inventory. Source `aa5e6d4` passes the complete native
+catalog in 358.064 seconds under the unchanged 360-second deadline at
+`artifacts/smoke-currency-chart-area-handover-published-full`. All 988 PNGs are
+present and every previous 976 PNG is retained. Both solution architectures
+build without warnings; 57 tests and token checks pass.
+
+The audit records 1,710 pointer gates, minimum two stable Rendering
+transitions, maximum 233.734 ms; 1,710 exact owned moves, including 86
+stationary moves backed by prior actual receipts; 1,724 exact key actions;
+46 click releases; 28 tooltip presentation gates; and 16 final captures.
+There are no failed gates, moves, keys or releases. Eighty-two compositor
+commits include seven bounds changes caught before input. All 174 preexisting
+Sunburst/Radial Bar glyph hashes match. Evidence is retained in
+`artifacts/currency-chart-final-full-input-report.json` and
+`artifacts/currency-chart-final-evidence.json`.
+
+The runnable catalog is `artifacts/catalog-currency-chart-area-handover`,
+ProductVersion `0.1.0+aa5e6d4731d8843fdaf2589abc2212284064801f`. Package 0.1.0
+at `artifacts/packages-currency-chart-area-handover` has SHA-256
+`ade2395c1ec16f50961a1f9dc56c4b4c7be9877d8e47adcf9e2ff366164c9155`.
+Fresh x64 runtime verification passes both themes at
+`artifacts/package-consumer-currency-chart-final`; ARM64 build-only
+verification passes at `artifacts/package-consumer-currency-chart-final-arm64`.
+Both private caches are removed. Their Orchard assembly matches the catalog.
+Consumer menu checks now await actual foreground/template/shadow readiness;
+all existing assertions remain. No catalog or library code changed after the
+successful published run.
+
+Inventory: 48 in progress, 64 pending, none accepted. Currency's twelve whole
+viewports still differ from the browser by 769–5,761 pixels, maximum channel
+difference 239, with no excluded pixels or tolerance. Full data/override/RTL,
+raster/motion, contrast/Narrator/scaling, collection performance and native
+ARM64 runtime remain open. There is no backend/Prometheus surface. The public
+wiki remains unavailable; documentation stays in the repository. Push-triggered
+Actions stay paused at the user's request.
