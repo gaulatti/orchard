@@ -133,6 +133,40 @@ public sealed class DataTableToolbarReferenceTests
             Near(Number(result,"baselineY"),22.25);Assert.AreEqual("13px",Text(result,"fontSize"));Assert.AreEqual("500",Text(result,"fontWeight"));Assert.AreEqual("19.5px",Text(result,"lineHeight"));
         }
     }
+    [TestMethod]
+    public void ResetPressUsesImmediateIndividualTransformsWithBothMotionPreferences()
+    {
+        using var source=new Reference();using var probe=JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","DataTableToolbarReset.json")));
+        var root=probe.RootElement;Assert.AreEqual("orchard-data-table-toolbar-reset-v1",Text(root,"format"));
+        foreach(var field in new[]{"sourceCommit","sourceSha256","compiledCssSha256","browser"})Assert.AreEqual(Text(source.Root,field),Text(root,field));
+        Assert.AreEqual("1.62.1",Text(root,"playwright"));Assert.AreEqual(64,Text(root,"probeScriptSha256").Length);Assert.AreEqual(64,Text(root,"bundleSha256").Length);
+        Assert.AreEqual(4,root.GetProperty("results").GetArrayLength());
+        foreach(var scheme in Themes)foreach(var preference in new[]{"reduce","no-preference"})
+        {
+            var result=root.GetProperty("results").EnumerateArray().Single(item=>Text(item,"scheme")==scheme&&Text(item,"reducedMotion")==preference);
+            var normal=result.GetProperty("hover").GetProperty("box");
+            foreach(var phase in new[]{"hover","held","released","spaceHeld","spaceReleased"})
+            {
+                var state=result.GetProperty(phase);var held=phase is "held" or "spaceHeld";var scale=held?.99:1;var box=state.GetProperty("box");
+                Assert.AreEqual(held?"0.99":"1",Text(state,"scale"));Assert.AreEqual(held?"0px 1px":"0px",Text(state,"translate"));Assert.AreEqual("none",Text(state,"transform"));
+                Assert.AreEqual(preference=="reduce"?"1e-05s":"0.19s",Text(state,"transitionDuration"));
+                Assert.IsFalse(Text(state,"transitionProperty").Split(", ").Any(value=>value is "scale" or "translate"));
+                Assert.IsTrue(Math.Abs(Number(box,"width")-Number(normal,"width")*scale)<1d/32&&Math.Abs(Number(box,"height")-36*scale)<1d/32);
+                Assert.IsTrue(Math.Abs(Number(box,"x")-Number(normal,"x")-Number(normal,"width")*(1-scale)/2)<1d/32&&Math.Abs(Number(box,"y")-(held?1:0)-18*(1-scale))<1d/32);
+                Assert.IsGreaterThanOrEqualTo(3,state.GetProperty("stable").GetInt32());Assert.IsLessThan(2000,Number(state,"milliseconds"));
+                Assert.AreEqual(Text(result.GetProperty("hover"),"background"),Text(state,"background"));
+            }
+            foreach(var state in result.GetProperty("frames").EnumerateArray().Where(item=>Text(item,"phase") is "pointerdown" or "held"))
+            {Assert.AreEqual("0.99",Text(state,"scale"));Assert.AreEqual("0px 1px",Text(state,"translate"));}
+            var receipts=result.GetProperty("receipts").EnumerateArray().ToArray();Assert.HasCount(3,receipts);
+            Assert.AreEqual("pointerdown|pointerup|click",string.Join('|',receipts.Select(item=>Text(item,"name"))));
+            foreach(var receipt in receipts){Assert.IsTrue(receipt.GetProperty("trusted").GetBoolean());Assert.AreEqual("mouse",Text(receipt,"pointerType"));Assert.AreEqual(0,receipt.GetProperty("button").GetInt32());}
+            var keys=result.GetProperty("keyboard").GetProperty("receipts").EnumerateArray().ToArray();Assert.HasCount(2,keys);
+            Assert.AreEqual("keydown|keyup",string.Join('|',keys.Select(item=>Text(item,"name"))));
+            foreach(var receipt in keys){Assert.IsTrue(receipt.GetProperty("trusted").GetBoolean());Assert.AreEqual(" ",Text(receipt,"key"));Assert.IsFalse(receipt.GetProperty("repeat").GetBoolean());}
+            Assert.IsTrue(result.GetProperty("table").GetProperty("globalTruthy").GetBoolean());Assert.IsTrue(result.GetProperty("keyboard").GetProperty("table").GetProperty("globalTruthy").GetBoolean());
+        }
+    }
     private static readonly string[] Themes=["Light","Dark"];
     private static IEnumerable<JsonElement> States(JsonElement sample)=>new[]{sample.GetProperty("normal")}.Concat(sample.GetProperty("states").EnumerateArray().Select(s=>s.GetProperty("state")));
     private static JsonElement State(JsonElement sample,string action)=>sample.GetProperty("states").EnumerateArray().Single(s=>Text(s,"action")==action).GetProperty("state");

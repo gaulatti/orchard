@@ -43,6 +43,7 @@ public sealed partial class DataTableToolbarsFixture:UserControl
         await File.WriteAllTextAsync(Path.Combine(folder,$"data-table-toolbar-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,search.ActualHeight,search.ActualWidth,table.Resets,writes=table.Writes.Count,table.VisibleText,originalRows=table.VisibleRows.All(row=>ToolbarFilterTable.OriginalRows.Any(original=>ReferenceEquals(original,row)))}));
         await VerifyInputHeightAsync();
         await VerifyLifecycleAsync(scheme,folder);
+        await VerifyResetStatesAsync(input,scheme,folder);
         await VerifyActionsAsync(input,scheme,folder);
     }
     private async Task VerifyInputHeightAsync()

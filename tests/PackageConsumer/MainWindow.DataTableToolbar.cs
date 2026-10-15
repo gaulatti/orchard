@@ -49,6 +49,7 @@ public sealed partial class MainWindow
         var caption = BrandDescendants<TextBlock>(reset).Single(text => text.Text == "Reset");
         await AwaitAsync(() => Math.Abs(caption.TransformToVisual(reset).TransformPoint(new Windows.Foundation.Point()).Y + caption.BaselineOffset - 22.25) <= 1d / 32,
             "Packaged Reset caption differs from the measured source baseline.");
+        await VerifyToolbarPressAsync(reset);
         ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(reset).GetPattern(PatternInterface.Invoke)).Invoke();
         await AwaitAsync(() => search.Text == "Reed" && PackageToolbarRows.Text == "Reed", "Packaged toolbar reset did not restore initial filters.");
         Require(Equals(toolbarSource.GlobalFilter, "Reed") && reset.IsLoaded && ReferenceEquals(PackageToolbarFilter.Parent, search.Parent),
@@ -83,12 +84,13 @@ public sealed partial class MainWindow
         internal FilterColumn? LastColumn;
         internal string Initial = "";
         internal string? Global;
+        internal int Resets;
         internal ConsumerFilterSource() => Column = new(this);
         public event EventHandler? Changed;
         public int ColumnFilterCount => Column.Value.Length > 0 ? 1 : 0;
         public object? GlobalFilter => Global;
         public IBleeckerDataTableFilterColumn? GetColumn(string id) => id == "title" ? Column : null;
-        public void ResetColumnFilters() => Column.SetFilterValue(Initial);
+        public void ResetColumnFilters() { Resets++; Column.SetFilterValue(Initial); }
         private void Publish() => Changed?.Invoke(this, EventArgs.Empty);
         internal Row[] VisibleRows => Rows.Where(row => row.Title.Contains(Column.Value, StringComparison.OrdinalIgnoreCase) &&
             (string.IsNullOrEmpty(Global) || row.Title.Contains(Global, StringComparison.OrdinalIgnoreCase))).ToArray();

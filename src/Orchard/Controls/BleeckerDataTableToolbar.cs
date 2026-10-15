@@ -64,12 +64,12 @@ public sealed partial class BleeckerDataTableToolbar:Control
         var icon=new Microsoft.UI.Xaml.Shapes.Path{Data=cross,StrokeThickness=2,StrokeStartLineCap=PenLineCap.Round,StrokeEndLineCap=PenLineCap.Round};
         icon.SetBinding(Microsoft.UI.Xaml.Shapes.Shape.StrokeProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(Foreground))});var canvas=new Canvas{Width=24,Height=24};canvas.Children.Add(icon);var glyph=new Viewbox{Width=14,Height=14,Child=canvas,VerticalAlignment=VerticalAlignment.Center};AutomationProperties.SetAccessibilityView(glyph,AccessibilityView.Raw);
         var content=new Grid{ColumnSpacing=8,UseLayoutRounding=false,VerticalAlignment=VerticalAlignment.Center};content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.Children.Add(glyph);var lineBox=new CaptionLineBox(caption);Grid.SetColumn(lineBox,1);content.Children.Add(lineBox);reset.Content=content;
-        AutomationProperties.SetName(reset,"Reset");reset.Click+=ResetClicked;layout.Reset=reset;
+        AutomationProperties.SetName(reset,"Reset");reset.Click+=ResetClicked;AttachResetPresentation(reset);layout.Reset=reset;
         if(IsLoaded)Observe();Refresh();
     }
     private void DetachTemplate()
     {
-        if(search is not null)search.TextChanged-=SearchChanged;if(reset is not null){reset.Click-=ResetClicked;reset.Content=null;}
+        if(search is not null)search.TextChanged-=SearchChanged;if(reset is not null){DetachResetPresentation(reset);reset.Click-=ResetClicked;reset.Content=null;}
         layout?.Children.Clear();host?.Children.Clear();layout=null;host=null;search=null;reset=null;
     }
     private void Observe()

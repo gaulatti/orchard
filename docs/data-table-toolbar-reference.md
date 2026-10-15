@@ -302,6 +302,42 @@ All GUID caches are removed, including the first x64 attempt that queried the
 new text subtree before its template loaded. The final exact browser/native
 and focused/full raster checks remain failed without masks or tolerance.
 
+### Reset press geometry follow-up
+
+Reset previously entered WinUI's pressed state without changing its rendered
+bounds. The focused regression at
+`artifacts/smoke-data-table-toolbar-reset-states-initial` fails that boundary.
+Reset now follows the original Button's centered 0.99 scale and 1px downward
+translation through its actual `IsPressed` state. Native Click still owns the
+consumer callback. The transform returns to rest on release, disabling or
+unload; template replacement detaches the old presentation callbacks.
+
+`tests/Reference/DataTableToolbarReset.json` captures the frozen producer with
+trusted mouse down/up/click and Space down/up receipts, both themes and both
+motion preferences. The individual CSS scale/translate properties already
+have their final values during pointerdown and every held sample. They are
+absent from the source transition-property list, even when its color transition
+duration is 190ms. The native press geometry therefore changes immediately.
+Reproduce with `scripts/reference/capture-data-table-toolbar-reset.cjs
+--playwright-module <absolute Playwright 1.62.1 package directory>`.
+
+Focused native evidence at
+`artifacts/smoke-data-table-toolbar-reset-verified` passes actual hover, held
+and release geometry, rendered Ghost background/foreground in both themes,
+pointer focus, no callback on down, exactly one callback on release, cleared
+column filters and retained global filtering. Hover follows a real search
+click and a real move to Reset. Each release retains an exact, non-generated,
+owned native mouse receipt. Six additional whole-window PNGs preserve those
+states. The 118 initial source cases and existing lifecycle/action checks still
+pass. All 77 regression tests, token checks and both solution architecture
+builds pass; the builds have zero warnings/errors.
+
+The independent package consumer includes a held native Space check for the
+same geometry, exact original key targets, callback timing, focus and release.
+Final fresh-consumer and published full-catalog results are recorded separately.
+Native evidence here uses Windows animations off; enabled native color motion,
+all source interaction states and exact raster acceptance remain open.
+
 ## Native acceptance still required
 
 - Extend the normal-state and representative input coverage to all 376 source

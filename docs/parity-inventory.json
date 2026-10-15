@@ -1232,7 +1232,7 @@
       ],
       "windowsImplementation": ["BleeckerDataTableToolbar", "IBleeckerDataTableFilterSource", "IBleeckerDataTableFilterColumn"],
       "catalogFixtures": ["samples/Orchard.Catalog/DataTableToolbarsFixture.xaml", "samples/Orchard.Catalog/DataTableToolbarsFixture.xaml.cs"],
-      "regressionTests": ["tests/Reference/DataTableToolbarLayout.json", "tests/Reference/DataTableToolbarCaption.json", "tests/Orchard.Tests/DataTableToolbarReferenceTests.cs", "tests/Orchard.Tests/DataTableConsumerTests.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.Source.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.Lifecycle.cs", "tests/PackageConsumer/MainWindow.DataTableToolbar.cs", "scripts/reference/verify-data-table-toolbar-derivation.mjs", "scripts/reference/capture-data-table-toolbar-caption.cjs"],
+      "regressionTests": ["tests/Reference/DataTableToolbarLayout.json", "tests/Reference/DataTableToolbarCaption.json", "tests/Reference/DataTableToolbarReset.json", "tests/Orchard.Tests/DataTableToolbarReferenceTests.cs", "tests/Orchard.Tests/DataTableConsumerTests.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.Source.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.Lifecycle.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.States.cs", "tests/PackageConsumer/MainWindow.DataTableToolbar.cs", "tests/PackageConsumer/MainWindow.DataTableToolbar.Press.cs", "scripts/reference/verify-data-table-toolbar-derivation.mjs", "scripts/reference/capture-data-table-toolbar-caption.cjs", "scripts/reference/capture-data-table-toolbar-reset.cjs"],
       "status": "in-progress",
       "remainingGaps": [
         "Complete all 376 source interaction states and full content/override/error/RTL and motion matrices",
