@@ -338,6 +338,47 @@ Final fresh-consumer and published full-catalog results are recorded separately.
 Native evidence here uses Windows animations off; enabled native color motion,
 all source interaction states and exact raster acceptance remain open.
 
+The matching published catalog from source `d2f1b8c` passes the complete x64
+suite at `artifacts/smoke-data-table-toolbar-reset-published-repeat-full` in
+350.7423591 seconds under the unchanged 360-second deadline. All 1,020 prior
+PNG names remain, with six additional Reset captures (1,026 total). All 174
+protected glyph hashes, 1,732 owned pointer gates (minimum two stable
+transitions, maximum 208.4624ms), 1,738 same-target key actions, 62 click
+releases, two exact Reset releases, eight toolbar Tab transfers, 28 tooltip
+gates and 16 final capture gates pass. Reports are
+`artifacts/data-table-toolbar-reset-full-audit.json` and
+`artifacts/data-table-toolbar-reset-full-input.json`.
+
+The first full run at
+`artifacts/smoke-data-table-toolbar-reset-published-full` failed after
+144.8268361 seconds with Windows `0x80004004` aborting the Light BottomTip
+RenderTargetBitmap capture, after its original presentation gate passed.
+The focused tooltip suite passes at
+`artifacts/smoke-data-table-toolbar-reset-tooltip-diagnostic`; the complete
+rerun also passes with the same published binary. No capture retry, predicate,
+deadline, mask or tolerance was added. The original abort remains preserved
+and its cause remains unestablished.
+
+Package `artifacts/packages-data-table-toolbar-reset/Gaulatti.Orchard.0.1.0.nupkg`
+has SHA-256 `ad769e48a8c0b59fd900394ad363528fea0c39039507bb4991ec790aab1d5562`.
+The runnable catalog is `artifacts/catalog-data-table-toolbar-reset`.
+Fresh x64 runtime verification passes both themes at
+`artifacts/package-consumer-data-table-toolbar-reset`, including the actual
+held Space check. ARM64 build-only verification passes at
+`artifacts/package-consumer-data-table-toolbar-reset-arm64`; native ARM64
+runtime remains unverified. Both generated restore caches are removed. All
+four Orchard DLLs match SHA-256
+`77579027cf3e4eeab3d9b0e47bf7bb191fe28f971b0bde002a0de7f99fba9888`,
+ProductVersion `0.1.0+d2f1b8c0288d9db64ed15720351b6e9afcc9d7c7`.
+
+Exact focused/full native comparison remains failed: 13 of 14 rectangles
+match, while Dark multilingual has five pixels at channel delta one. All 14
+browser/native comparisons still fail (1,056–1,795 pixels, maximum delta 227).
+Reports retain zero masks and zero tolerance at
+`artifacts/data-table-toolbar-reset-native-raster.json` and
+`artifacts/data-table-toolbar-reset-browser-raster.json`. Inventory status
+remains 50 in progress, 62 pending, none accepted out of the fixed 112.
+
 ## Native acceptance still required
 
 - Extend the normal-state and representative input coverage to all 376 source
