@@ -41,7 +41,17 @@ public sealed partial class DataTableToolbarsFixture
                                 case "search-fill":await ReplaceToolbarTextAsync(input,scenario.Search,"Harbor");break;
                                 case "search-clear":await ReplaceToolbarTextAsync(input,scenario.Search,"");break;
                                 case "search-keyboard":await FocusAsync(scenario.Search);await TypeToolbarTextAsync(input,scenario.Search,"Reed");break;
-                                case "reset-hover":await input.MoveAsync(scenario.Reset);break;
+                                case "reset-hover":
+                                    var hoveredReset=scenario.Reset;await input.MoveAsync(hoveredReset);
+                                    try{await AwaitAsync(()=>ResetHoverPresented(hoveredReset,scheme),"Interaction Reset did not present its actual native hover palette.");}
+                                    catch(InvalidOperationException)
+                                    {
+                                        var child=Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChild(hoveredReset,0) as FrameworkElement;
+                                        var surface=Descendants<ContentPresenter>(hoveredReset).SingleOrDefault(element=>element.Name=="ContentPresenter");
+                                        await File.WriteAllTextAsync(Path.Combine(folder,$"data-table-toolbar-hover-failure-{id}-{scheme}.json"),JsonSerializer.Serialize(new{id,step,hoveredReset.IsPointerOver,hoveredReset.IsPressed,hoveredReset.IsEnabled,hoveredReset.IsLoaded,theme=hoveredReset.ActualTheme.ToString(),pointer=input.ReadPointerPosition(),owned=input.OwnsCurrentPoint,bounds=input.ScreenBounds(hoveredReset),background=DescribeBrush(surface?.Background),states=child is null?[]:VisualStateManager.GetVisualStateGroups(child).Select(group=>new{group.Name,current=group.CurrentState?.Name}).ToArray()},new JsonSerializerOptions{WriteIndented=true}));
+                                        await MainWindow.CaptureElementAsync(root,Path.Combine(folder,$"data-table-toolbar-hover-failure-{id}-{scheme}.png"));throw;
+                                    }
+                                    break;
                                 case "reset-held":await input.PressPointerAsync();held=true;await AwaitAsync(()=>scenario.Reset.IsPressed,"Interaction Reset did not enter an actual held press.");break;
                                 case "reset-release":await ReleaseToolbarPointerAsync(input,$"{id}-{step}-{scheme}",folder);held=false;break;
                                 case "reset-click":await input.ClickAsync(scenario.Reset);break;
@@ -64,6 +74,7 @@ public sealed partial class DataTableToolbarsFixture
                             await MainWindow.AwaitPresentationAsync(scenario.Bar);scenario.RegisterSlots();
                             var errors=new List<string>();void Check(string name,Action verify){try{verify();}catch(InvalidOperationException error){errors.Add(name+": "+error.Message);}}
                             Check("consumer",()=>scenario.VerifyConsumer(expected));Check("geometry",()=>VerifyToolbarInteractionGeometry(scenario.Bar,expected));
+                            if(action=="reset-hover")Check("rendered-hover",()=>Require(ResetHoverPresented(scenario.Reset,scheme),"Reset lost its native hover presentation before capture."));
                             Check("callbacks",()=>
                             {
                                 var increment=action is "reset-release" or "reset-click" or "reset-keyboard" or "reset-Enter"?1:0;
@@ -103,6 +114,14 @@ public sealed partial class DataTableToolbarsFixture
     }
     private static async Task ReplaceToolbarTextAsync(NativeInputSession input,BleeckerInput search,string text)
     {await FocusAsync(search);await input.ModifiedKeyAsync(0x11,0x41,search);await input.KeyAsync(0x08,search);await TypeToolbarTextAsync(input,search,text);}
+
+    private static bool ResetHoverPresented(Button reset,BleeckerColorScheme scheme)
+    {
+        var surface=Descendants<ContentPresenter>(reset).SingleOrDefault(element=>element.Name=="ContentPresenter");
+        return reset.IsPointerOver&&!reset.IsPressed&&surface?.Background is Microsoft.UI.Xaml.Media.SolidColorBrush background&&background.Color.A==255&&
+            background.Color.R==(scheme==BleeckerColorScheme.Light?230:255)&&background.Color.G==(scheme==BleeckerColorScheme.Light?213:255)&&background.Color.B==(scheme==BleeckerColorScheme.Light?184:255)&&
+            Math.Abs(background.Opacity-(scheme==BleeckerColorScheme.Light?.12:.06))<.000001;
+    }
 
     private void VerifyToolbarInteractionGeometry(BleeckerDataTableToolbar bar,JsonElement expected)
     {

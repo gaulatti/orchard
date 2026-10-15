@@ -539,6 +539,28 @@ unchanged. Total first-frame differing pixels fall from 760,441 to 733,921.
 All 376 exact checks still fail; focus-removal differences and the live-caret
 repeat difference remain recorded. No component is accepted by this change.
 
+The first published raster check at
+`artifacts/data-table-toolbar-state-pixels-published-raster-report.json` has
+37 improved states, six worse by two differing pixels each and 333 unchanged
+against the original matrix; the total is 731,635 differing first-frame pixels.
+The six changes are in Dark column-filter input-focus/hover captures. Between
+the focus probe and published run, 43 native pixels at the input's rounded right
+edge differ by at most one channel level; the cause remains unestablished.
+
+The Dark live-source hover probe also captured a missing Reset hover background.
+The matrix now requires actual native `IsPointerOver`, no held press and the
+rendered Ghost brush before capture, then checks that state again after the
+existing presentation gate. The original two-second deadline and all physical
+pointer rules remain. A stricter run at
+`artifacts/smoke-data-table-toolbar-hover-ready` fails Dark live-source hover;
+its desktop receipt shows the exact owned stationary point, backed by a prior
+actual receipt, with no new move emitted. The cause remains unestablished.
+Failure-only diagnostics retain hover/press/enabled/load/theme flags, actual
+brush, visual state, pointer ownership/bounds and a whole-window PNG.
+Two instrumented runs at `artifacts/smoke-data-table-toolbar-hover-diagnostic`
+and its `-repeat` sibling pass all 376 states. These passes do not resolve the
+earlier missing-hover failure. This remains an open interaction acceptance gap.
+
 ## Native acceptance still required
 
 - Complete rendered paint/focus/motion acceptance for the 376 source interaction
