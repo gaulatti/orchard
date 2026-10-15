@@ -275,8 +275,8 @@ internal sealed class NativeInputSession : IDisposable
         // including the one restoration to the session's original location.
         Send([new NativeInput { Type = 0, Data = new InputData { Mouse = new MouseInput
         {
-            X = (int)Math.Round((x - virtualX) * 65535d / (virtualWidth - 1)),
-            Y = (int)Math.Round((y - virtualY) * 65535d / (virtualHeight - 1)),
+            X = NativeAbsolutePointer.Normalize(x, virtualX, virtualWidth),
+            Y = NativeAbsolutePointer.Normalize(y, virtualY, virtualHeight),
             Flags = 0x0001 | 0x8000 | 0x4000 // MOVE | ABSOLUTE | VIRTUALDESK
         } } }]);
     }
@@ -401,6 +401,7 @@ internal sealed class NativeInputSession : IDisposable
             var positioned = GetCursorPos(out var point);
             File.WriteAllText(Path.Combine(folder, $"{prefix}-desktop.json"),
                 JsonSerializer.Serialize(new { window = Window.ToInt64(), foregroundWindow = GetForegroundWindow().ToInt64(),
+                    virtualDesktop = new { x = GetSystemMetrics(76), y = GetSystemMetrics(77), width = GetSystemMetrics(78), height = GetSystemMetrics(79) },
                     sessionId = Process.GetCurrentProcess().SessionId, desktop = NativeScreenCapture.DescribeDesktop(),
                     currentPoint = positioned ? NativeScreenCapture.DescribePoint(Window, point.X, point.Y) : null, pointerMoves, pointerPresentations, keyActions, pointerClicks },
                     new JsonSerializerOptions { WriteIndented = true }));

@@ -152,6 +152,16 @@ Focused `-Component presentation` runs every affected fixture in both themes,
 including menu/notification lifecycle, source typography, normal input and cursor
 checks, and unchanged toggle/button state assertions.
 
+Absolute mouse input selects the requested pixel's interior in the 65,536-unit
+virtual-desktop range. The prior endpoint interpolation could request `(61,84)`
+and actually deliver `(60,84)`; exact native receipt checks caught that error.
+The normalizer is exhaustively checked against the Windows mapping across
+desktop sizes and negative origins. Out-of-range or unrepresentable pixels
+fail explicitly. Actual owned positioning, nongenerated event receipts, exact
+boundary samples and the two-second deadline remain required. See Microsoft's
+[absolute input contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-mouseinput)
+and Chromium's [Windows input implementation](https://github.com/chromium/chromium/blob/main/ui/base/win/event_creation_utils.cc).
+
 Sparklines follows Sunburst charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
