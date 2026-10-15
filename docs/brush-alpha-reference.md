@@ -63,3 +63,42 @@ matrix remain required for palette changes.
 
 The public wiki is unavailable, so this evidence is documented in the
 repository. There is no backend or Prometheus surface.
+
+## Published checkpoint
+
+The final binary source is `b28fac0c3bf72cbe8960c9550e7081795a2bd656`.
+`artifacts/catalog-ghost-byte-alpha-diagnostic` passes the complete native suite
+in 351.1146312 seconds at
+`artifacts/smoke-ghost-byte-alpha-diagnostic-published-full`. All 1,028 PNG names
+are preserved, all 174 protected Sunburst/Radial Bar glyph hashes are unchanged,
+and all 1,732 pointer presentation gates, 1,738 same-target key actions, 62
+clicks, 118 source toolbar cases, 28 tooltip gates and 16 final presentation
+gates pass. The previous failed full run remains preserved and unexplained.
+
+The matching 376-state interaction replay passes its checked boundaries in
+55.809279 seconds at
+`artifacts/smoke-ghost-byte-alpha-diagnostic-published-matrix`. Compared with the
+previous published stationary-hover source images, 49 states improve, none
+worsen and 327 remain identical in differing-pixel count. Total first-frame
+differing pixels decrease from 741,517 to 622,366. Every complete source/native
+pair still differs (358–4,750 pixels), all 26 known focus-removal differences
+remain, and the source's one changing caret repeat remains recorded. The
+14 initial native toolbar rectangles are unchanged from the previous catalog;
+all 14 still differ from the browser. No mask or tolerance is introduced.
+The actual production Reset interior patches match both source themes; the
+Light legacy/floor negative controls still fail and the source Dark flat-cell
+counterexample is retained in
+`artifacts/ghost-byte-alpha-diagnostic-probe-comparison.json`.
+
+All 79 regressions, token checks and x64/ARM64 solution builds pass. NuGet 0.1.0
+at `artifacts/packages-ghost-byte-alpha-diagnostic` has SHA-256
+`7ced03a87b55ded799ef6a0377ab681aa7130c3f29659b203f00e3df00269ab6`.
+Fresh x64 runtime and ARM64 build-only consumers pass under
+`artifacts/package-consumer-ghost-byte-alpha-diagnostic` and its `-arm64`
+sibling; both temporary restore caches are removed. Package, catalog and both
+consumers have identical Orchard DLL SHA-256
+`e0fa47a03ba224630a7d707940c427bf7f3df841cb48ccf2657d50952dc71e50`,
+ProductVersion `0.1.0+b28fac0c3bf72cbe8960c9550e7081795a2bd656`.
+Native ARM64 execution, full raster/motion, contrast/Narrator/scaling and the
+remaining acceptance matrices stay open. Inventory remains 50 in progress,
+62 pending and none accepted out of 112. Push Actions remain paused.

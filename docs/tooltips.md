@@ -65,3 +65,11 @@ Opened/Closed call stacks. The original two-second deadline and two stable
 render transitions remain required. Later passes must not erase this failure
 or be described as a root-cause repair without evidence.
 The focused diagnostic run passes at `artifacts/smoke-ghost-byte-alpha-tooltip-diagnostic` without changing tooltip behavior. The full-run timeout's cause remains unestablished.
+
+The subsequent diagnostic full run passes all 28 tooltip presentation gates
+and all 1,028 catalog captures in 351.1146312 seconds at
+`artifacts/smoke-ghost-byte-alpha-diagnostic-published-full`, binary source
+`b28fac0c3bf72cbe8960c9550e7081795a2bd656`. This confirms that run only; the
+prior BottomTip timeout and earlier capture abort still have no established
+root cause. No tooltip behavior, retry, presentation deadline or stability
+requirement was changed.
