@@ -1,0 +1,43 @@
+{
+  "format": "orchard-data-table-toolbar-caption-v1",
+  "browser": "155.0.4283.45",
+  "playwright": "1.62.1",
+  "probeScriptSha256": "456c548e575c9ea7efa9f64595dc444147b8762160ca2bd04db4e76d6a50a410",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "a2beb795287fd027857d9f4d12df9d0e76406b0fa0703a9fcf20aaa23064a0ef",
+  "compiledCssSha256": "6eda85498bb18d3458513833cd27848e69a1c7190be867b87d02a6ab677bc766",
+  "results": [
+    {
+      "scheme": "Light",
+      "initialScreenshotSha256": "94fef3834f1147d9ec7d66c9b17993cbdf3f4f7f911879ba7837314b9dabb80d",
+      "markerScreenshotSha256": "94fef3834f1147d9ec7d66c9b17993cbdf3f4f7f911879ba7837314b9dabb80d",
+      "baselineY": 22.25,
+      "textRange": {
+        "x": 640.03125,
+        "y": 9.25,
+        "width": 32.96875,
+        "height": 16
+      },
+      "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+      "fontSize": "13px",
+      "fontWeight": "500",
+      "lineHeight": "19.5px"
+    },
+    {
+      "scheme": "Dark",
+      "initialScreenshotSha256": "99a21ae0146b3f2d3212d2b5fba8a31dc1a07f7927214462fc16de744638d452",
+      "markerScreenshotSha256": "99a21ae0146b3f2d3212d2b5fba8a31dc1a07f7927214462fc16de744638d452",
+      "baselineY": 22.25,
+      "textRange": {
+        "x": 640.03125,
+        "y": 9.25,
+        "width": 32.96875,
+        "height": 16
+      },
+      "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+      "fontSize": "13px",
+      "fontWeight": "500",
+      "lineHeight": "19.5px"
+    }
+  ]
+}

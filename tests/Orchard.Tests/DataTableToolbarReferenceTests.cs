@@ -117,6 +117,22 @@ public sealed class DataTableToolbarReferenceTests
             Assert.AreEqual("Replacement filter",Text(Slot(State(sample,"replace-slots"),"filters"),"text"));
         }
     }
+    [TestMethod]
+    public void CaptionBaselineMeasurementPreservesTheOriginalSourcePixels()
+    {
+        using var source=new Reference();using var probe=JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","DataTableToolbarCaption.json")));
+        var root=probe.RootElement;Assert.AreEqual("orchard-data-table-toolbar-caption-v1",Text(root,"format"));
+        foreach(var field in new[]{"sourceCommit","sourceSha256","compiledCssSha256","browser"})Assert.AreEqual(Text(source.Root,field),Text(root,field));
+        Assert.AreEqual("1.62.1",Text(root,"playwright"));Assert.AreEqual(64,Text(root,"probeScriptSha256").Length);
+        Assert.AreEqual(2,root.GetProperty("results").GetArrayLength());
+        foreach(var scheme in Themes)
+        {
+            var result=root.GetProperty("results").EnumerateArray().Single(item=>Text(item,"scheme")==scheme);
+            var original=source.Case("column-filter",scheme).GetProperty("screenshots")[0].GetProperty("sha256").GetString();
+            Assert.AreEqual(original,Text(result,"initialScreenshotSha256"));Assert.AreEqual(original,Text(result,"markerScreenshotSha256"));
+            Near(Number(result,"baselineY"),22.25);Assert.AreEqual("13px",Text(result,"fontSize"));Assert.AreEqual("500",Text(result,"fontWeight"));Assert.AreEqual("19.5px",Text(result,"lineHeight"));
+        }
+    }
     private static readonly string[] Themes=["Light","Dark"];
     private static IEnumerable<JsonElement> States(JsonElement sample)=>new[]{sample.GetProperty("normal")}.Concat(sample.GetProperty("states").EnumerateArray().Select(s=>s.GetProperty("state")));
     private static JsonElement State(JsonElement sample,string action)=>sample.GetProperty("states").EnumerateArray().Single(s=>Text(s,"action")==action).GetProperty("state");

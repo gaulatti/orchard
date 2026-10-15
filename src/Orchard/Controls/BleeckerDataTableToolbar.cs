@@ -63,7 +63,7 @@ public sealed partial class BleeckerDataTableToolbar:Control
         var second=new PathFigure{StartPoint=new Point(6,6),IsFilled=false};second.Segments.Add(new LineSegment{Point=new Point(18,18)});cross.Figures.Add(second);
         var icon=new Microsoft.UI.Xaml.Shapes.Path{Data=cross,StrokeThickness=2,StrokeStartLineCap=PenLineCap.Round,StrokeEndLineCap=PenLineCap.Round};
         icon.SetBinding(Microsoft.UI.Xaml.Shapes.Shape.StrokeProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(Foreground))});var canvas=new Canvas{Width=24,Height=24};canvas.Children.Add(icon);var glyph=new Viewbox{Width=14,Height=14,Child=canvas,VerticalAlignment=VerticalAlignment.Center};AutomationProperties.SetAccessibilityView(glyph,AccessibilityView.Raw);
-        var content=new Grid{ColumnSpacing=8,UseLayoutRounding=false,VerticalAlignment=VerticalAlignment.Center};content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.Children.Add(glyph);Grid.SetColumn(caption,1);content.Children.Add(caption);reset.Content=content;
+        var content=new Grid{ColumnSpacing=8,UseLayoutRounding=false,VerticalAlignment=VerticalAlignment.Center};content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.Children.Add(glyph);var lineBox=new CaptionLineBox(caption);Grid.SetColumn(lineBox,1);content.Children.Add(lineBox);reset.Content=content;
         AutomationProperties.SetName(reset,"Reset");reset.Click+=ResetClicked;layout.Reset=reset;
         if(IsLoaded)Observe();Refresh();
     }

@@ -698,13 +698,26 @@ public sealed partial class CheckboxesFixture : UserControl
         catch (InvalidOperationException error) when (error.Message.StartsWith("Missing checkbox part ", StringComparison.Ordinal))
         { return new { control.Name, measurementError = error.Message }; }
     }
-    private Task SettleAsync(BleeckerCheckbox control) => WaitAsync(() =>
+    private async Task SettleAsync(BleeckerCheckbox control)
+    {
+        try { await WaitAsync(() =>
         Find<Viewbox>(control, "PART_Glyph").Opacity == (control.IsChecked == true ? 1 : 0) &&
         Find<Grid>(control, "PART_InputChrome").Opacity == (control.IsEnabled ? 1 : .5) &&
         Hex(Find<Border>(control, "PART_Box").Background) == (control.IsChecked == true ? control.ActualTheme == ElementTheme.Light ? "#FF2C5784" : "#FF5BA3F5" : control.ActualTheme == ElementTheme.Light ? "#FFFFFFFF" : "#FF182533") &&
         Math.Abs(Find<Border>(control, "PART_Box").BorderBrush.Opacity - (float)(control.IsChecked == true ? 1 :
             VisualStateManager.GetVisualStateGroups(Find<Grid>(control, "PART_Root")).Single(group => group.Name == "CombinedStates").CurrentState?.Name.EndsWith("PointerOver", StringComparison.Ordinal) == true ? .5 : control.ActualTheme == ElementTheme.Light ? .6 : .2)) < 1e-9,
-        $"Checkbox {control.Name} did not settle to its native state.");
+        $"Checkbox {control.Name} did not settle to its native state."); }
+        catch (InvalidOperationException error)
+        {
+            var root = control.XamlRoot.Content;
+            var bounds = control.TransformToVisual(root).TransformBounds(new Rect(0,0,control.ActualWidth,control.ActualHeight));
+            var details = new { control.Name, control.ActualTheme, control.IsPointerOver, control.IsHitTestVisible,
+                pointerOver = typeof(BleeckerCheckbox).GetField("pointerOver",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic)!.GetValue(control),
+                state = VisualStateManager.GetVisualStateGroups(Find<Grid>(control,"PART_Root")).Single(group=>group.Name=="CombinedStates").CurrentState?.Name,
+                bounds, cursor = NativeInputSession.DescribeCursor(), row = MeasureForReport(control) };
+            throw new InvalidOperationException(error.Message+" "+JsonSerializer.Serialize(details),error);
+        }
+    }
     private async Task WaitAsync(Func<bool> condition, string message) { var timer = Stopwatch.StartNew(); while (!condition() && timer.ElapsedMilliseconds < 2000) { UpdateLayout(); await Task.Delay(1); } Require(condition(), message); }
     private static string Hex(Brush brush) { var color = ((SolidColorBrush)brush).Color; return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}"; }
     private static T Find<T>(DependencyObject parent, string name) where T : FrameworkElement

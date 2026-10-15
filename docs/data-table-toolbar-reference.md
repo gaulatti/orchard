@@ -229,6 +229,60 @@ Both independent consumers restore that exact package into fresh GUID caches,
 then remove those caches. x64 runtime passes both themes; ARM64 compilation
 passes with runtime explicitly unverified. All four Orchard DLLs are identical.
 
+### Flat consumer chrome and caption baseline follow-up
+
+The frozen consumer buttons specify a flat theme-sand border, transparent
+background, regular 14px type and a 20px line box. The native source fixture
+previously let Windows' default button chrome override those supplied values.
+Its explicit consumer-owned template now preserves those CSS properties in
+both themes; the toolbar still passes original UI elements through unchanged.
+Every normal source case checks the actual native surface brush types/colors,
+font size/weight, border thickness and radius against the frozen style records.
+
+The fixture labels and library-owned Reset caption now use the existing CSS
+line-box rule from Section Header/Stat Card: rounded natural ascent/descent
+with floored half-leading. This preserves allocation, wrapping and the original
+font; it does not add a fixed pixel offset. In the captured Light column-filter
+case, Reset's occupied glyph rows move from 13–23 to the source's 11–21 while
+the already-correct X icon stays unchanged. Original filter/action callbacks,
+controlled values, row ownership, reset semantics, lifecycle and exact native
+input/Tab checks still pass across both themes.
+
+`tests/Reference/DataTableToolbarCaption.json` records the original browser
+baseline at 22.25px in both themes. A zero-width inline baseline marker leaves
+both initial PNGs byte-identical to the frozen producer screenshots, before
+and after insertion. The reproducible pinned-browser probe is
+`scripts/reference/capture-data-table-toolbar-caption.cjs --playwright-module
+<absolute Playwright 1.62.1 package directory>`. Native source checks compare
+the actual caption baseline with that independent measurement using the
+existing 1/32px geometry boundary. They also inspect the visible slot label's
+actual font and foreground, beyond the parent Button's properties. All 76
+local tests pass, including the source-baseline provenance regression.
+
+Focused evidence: `artifacts/smoke-data-table-toolbar-caption-baseline`.
+The Light default difference falls from 1,900 to 1,163 pixels; column-filter
+falls from 2,312 to 1,499. All 14 exact browser/native comparisons remain failed
+(1,056–1,795 pixels, maximum channel delta 227), with no masks or tolerance.
+Two earlier flat-template runs retain identical pixels across all 14 rectangles
+at `artifacts/data-table-toolbar-flat-slots-repeat-report.json`. Full final
+runtime, artifact and consumer validation for this follow-up is still pending.
+
+The expanded x64 run at
+`artifacts/smoke-data-table-toolbar-caption-diagnostic-full` passes in
+348.6147173 seconds with all 1,020 PNGs, all 174 protected glyph hashes,
+1,728 pointer gates (minimum two stable transitions), 1,738 same-target keys,
+60 clicks, eight toolbar Tab transfers, 28 tooltip and 16 final-capture gates.
+An earlier run failed the unchanged Dark Long Checkbox palette-settle check;
+the report showed hover-level border opacity while the fixture expected rest.
+Additional failure-only diagnostics now retain native/tracked hover, VSM and
+cursor state without changing the predicate or its two-second limit. This
+passing rerun does not establish the earlier failure's cause or resolve it.
+
+Exact focused/full native comparison still fails for five pixels at channel
+delta one in Dark small-viewport; the other 13 toolbar rectangles are identical.
+No tolerance or mask is applied. Native ARM64, final matching artifacts and
+fresh consumers for this follow-up remain pending.
+
 ## Native acceptance still required
 
 - Extend the normal-state and representative input coverage to all 376 source
