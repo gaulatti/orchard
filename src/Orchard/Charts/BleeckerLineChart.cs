@@ -31,11 +31,11 @@ public sealed partial class BleeckerLineChart : Control
     private readonly BleeckerChartInteraction interaction=new();
     private bool queued;
     private bool sparklineMode;
-    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=pieMode=false;QueueRender();}
+    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=pieMode=scatterMode=false;QueueRender();}
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
-    private double RenderWidth => barMode || areaMode || pieMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
-    private double RenderHeight => barMode || areaMode || pieMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
+    private double RenderWidth => barMode || areaMode || pieMode || scatterMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
+    private double RenderHeight => barMode || areaMode || pieMode || scatterMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
 
     public BleeckerLineChart()
     {
@@ -105,9 +105,11 @@ public sealed partial class BleeckerLineChart : Control
         observedData.CollectionChanged += OnCollectionChanged; observedCollection.CollectionChanged += OnCollectionChanged;
         foreach (var item in Series) { _ = item.Key; _ = item.Name; if (observedSeries.Add(item)) item.Changed += OnSeriesChanged; }
         foreach (var record in Data.OfType<INotifyPropertyChanged>()) if (observedRecords.Add(record)) record.PropertyChanged += OnRecordChanged;
+        ObserveScatter();
     }
     private void StopObserving()
     {
+        StopObservingScatter();
         if (observedData is not null) observedData.CollectionChanged -= OnCollectionChanged;
         if (observedCollection is not null) observedCollection.CollectionChanged -= OnCollectionChanged;
         foreach (var item in observedSeries) item.Changed -= OnSeriesChanged;
@@ -125,9 +127,10 @@ public sealed partial class BleeckerLineChart : Control
     private void Render()
     {
         if (!IsLoaded || plot is null || legend is null || active is null || ActualWidth <= 0 || ActualHeight <= 0) return;
-        if (!sparklineMode && !pieMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
+        if (!sparklineMode && !pieMode && !scatterMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
         foreach (var item in Series) { _ = item.Key; _ = item.Name; }
         if (pieMode) { RenderPie(); return; }
+        if (scatterMode) { RenderScatter(); return; }
         if (barMode) { RenderBars(); return; }
         if (areaMode) { RenderAreas(); return; }
         plot.Clip = null; plot.Children.Clear(); legend.Children.Clear(); rendered.Clear();
@@ -222,6 +225,7 @@ public sealed partial class BleeckerLineChart : Control
     private void OnPointerMoved(object sender, PointerRoutedEventArgs args)
     {
         if (pieMode) { MovePiePointer(args); return; }
+        if (scatterMode) { MoveScatterPointer(args); return; }
         if (barMode) { MoveBarPointer(args); return; }
         if (Data.Count == 0 || right <= left) return;
         var point = args.GetCurrentPoint(this).Position;
@@ -236,13 +240,14 @@ public sealed partial class BleeckerLineChart : Control
         {
             var direction = args.Key==VirtualKey.Enter?0:args.Key==VirtualKey.Right?1:-1;
             if (barMode && VerticalBars) direction = -direction;
-            interaction.Key(direction,Data.Count);PaintInteraction();args.Handled=true;
+            interaction.Key(direction,InspectionCount);PaintInteraction();args.Handled=true;
         }
     }
-    private void PaintInteraction(){if(interaction.Index(Data.Count) is int index)ShowActive(index,interaction.PointerY);else ClearActive();}
+    private void PaintInteraction(){if(interaction.Index(InspectionCount) is int index)ShowActive(index,interaction.PointerY);else ClearActive();}
     private void ShowActive(int index, double? pointerY = null)
     {
         if (pieMode) { ShowPieActive(index); return; }
+        if (scatterMode) { ShowScatterActive(index); return; }
         if (barMode) { ShowBarActive(index, pointerY); return; }
         if (areaMode) { ShowAreaActive(index, pointerY); return; }
         if (active is null || tooltip is null || tooltipItems is null || tooltipContainer is null || index < 0 || index >= Data.Count) return;
@@ -276,7 +281,7 @@ public sealed partial class BleeckerLineChart : Control
         UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
-    private void ClearActive() { if (pieMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
+    private void ClearActive() { if (pieMode || scatterMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
     private TextBlock Text(string? value, double size, string key)
     {
         var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; if (pieMode) BleeckerPieText.Set(text, value ?? ""); else text.Text = value ?? ""; return text;
@@ -303,7 +308,7 @@ public sealed partial class BleeckerLineChart : Control
     protected override AutomationPeer OnCreateAutomationPeer() => new ChartPeer(this);
     private sealed class ChartPeer(BleeckerLineChart owner) : FrameworkElementAutomationPeer(owner)
     {
-        protected override string GetClassNameCore() => owner.pieMode ? owner.pieDonutIdentity ? nameof(BleeckerDonutChart) : nameof(BleeckerPieChart) : owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
+        protected override string GetClassNameCore() => owner.scatterMode ? nameof(BleeckerScatterChart) : owner.pieMode ? owner.pieDonutIdentity ? nameof(BleeckerDonutChart) : nameof(BleeckerPieChart) : owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsControlElementCore() => true;
         protected override bool IsContentElementCore() => true;

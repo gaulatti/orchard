@@ -97,6 +97,9 @@
                     <orchard:BleeckerAreaChart.Series><orchard:BleeckerChartSeries Key="v" Name="Consumer" /></orchard:BleeckerAreaChart.Series>
                 </orchard:BleeckerAreaChart>
                 <orchard:BleeckerPieChart x:Name="PackagePieChart" Width="320" Height="200" ShowLegend="False" HorizontalAlignment="Left" AutomationProperties.Name="Independent slices" />
+                <orchard:BleeckerScatterChart x:Name="PackageScatterChart" Width="320" Height="200" ShowLegend="False" HorizontalAlignment="Left" AutomationProperties.Name="Independent points">
+                    <orchard:BleeckerScatterChart.Series><orchard:BleeckerScatterSeries Key="primary" Name="Alpha" XKey="x" YKey="y" ZKey="z" /><orchard:BleeckerScatterSeries Key="secondary" Name="Beta" XKey="ignored" YKey="ignored" /></orchard:BleeckerScatterChart.Series>
+                </orchard:BleeckerScatterChart>
                 <orchard:BleeckerDonutChart x:Name="PackageDonutChart" Width="320" Height="200" ShowLegend="False" CenterValue="30" CenterLabel="Consumer total" HorizontalAlignment="Left" AutomationProperties.Name="Independent ring" />
                 <orchard:BleeckerStatCard x:Name="PackageStatCard" Title="Independent statistic" Value="42" Description="Consumer-owned summary" Width="320" HorizontalAlignment="Left">
                     <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+2%" Direction="Neutral" /></orchard:BleeckerStatCard.Trend>

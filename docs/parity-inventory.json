@@ -777,14 +777,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": ["src/Orchard/Charts/BleeckerScatterChart.cs", "src/Orchard/Charts/BleeckerScatterSeries.cs", "src/Orchard/Charts/BleeckerLineChart.Scatter.cs", "src/Orchard/Themes/ScatterChart.xaml", "src/Orchard/Themes/ScatterChartPalette.xaml"],
+      "catalogFixtures": ["samples/Orchard.Catalog/ScatterChartsFixture.xaml"],
+      "regressionTests": ["samples/Orchard.Catalog/ScatterChartsFixture.xaml.cs", "samples/Orchard.Catalog/ScatterChartsFixture.Mutation.cs", "tests/Reference/ScatterChartLayout.json", "tests/PackageConsumer/MainWindow.ScatterChart.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Full shape/glyph/legend/crosshair/tooltip raster and effects",
+        "Normal/interrupted motion and complete data/key/formatter/override/RTL matrix",
+        "Actual contrast, Narrator, display/text scaling, collection performance and native ARM64 acceptance"
       ]
     },
     {

@@ -68,7 +68,13 @@ Pie and donut charts follows Area charts. The shared `-Component pie-chart`
 (or `donut-chart`) mode checks 84 frozen browser cases for both controls and
 their native input/data/lifecycle path. See [the contract](pie-chart-reference.md).
 
-Sparklines follows Pie and donut charts. Focused `-Component sparkline` checks 36 frozen
+Scatter charts follows Pie and donut charts. Focused `-Component scatter-chart`
+compares numeric/bubble paths, axes, grid, legend and inspection with 64 pinned
+browser cases, then exercises live root and independent series data, native
+input, formatters, templates and observer lifecycles. See
+[the source contract](scatter-chart-reference.md).
+
+Sparklines follows Scatter charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.

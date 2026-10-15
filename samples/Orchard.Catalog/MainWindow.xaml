@@ -93,6 +93,7 @@
                 <local:BarChartsFixture x:Name="BarCharts" />
                 <local:AreaChartsFixture x:Name="AreaCharts" />
                 <local:PieChartsFixture x:Name="PieCharts" />
+                <local:ScatterChartsFixture x:Name="ScatterCharts" />
                 <local:SparklinesFixture x:Name="Sparklines" />
                 <local:StatCardsFixture x:Name="StatCards" />
                 <local:ErrorStatesFixture x:Name="ErrorStates" />

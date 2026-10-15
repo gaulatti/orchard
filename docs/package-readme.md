@@ -103,3 +103,9 @@ contract in the repository documentation for current acceptance limits.
 stop. Pie supports custom record keys and numeric/percentage inner radius; Donut
 provides the source ring with independent center text. Full platform and visual
 acceptance remains in progress; see the repository parity documentation.
+
+`BleeckerScatterChart` consumes original root records and
+`BleeckerScatterSeries` objects with optional per-series observable data.
+The first series supplies the shared numeric X/Y/Z keys. It supports bubble
+sizes, native inspection, axis labels and numeric formatters. Source/native
+and platform acceptance are tracked in the repository's Scatter contract.

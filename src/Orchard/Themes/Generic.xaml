@@ -21,6 +21,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/BarChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/AreaChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/PieChart.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/ScatterChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DonutChart.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Sparkline.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCard.xaml" />

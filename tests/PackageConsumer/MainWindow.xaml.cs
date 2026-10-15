@@ -32,6 +32,7 @@ public sealed partial class MainWindow : Window
             data.Add(new BleeckerPieChartDatum { Name = "A", Value = 10 });
             data.Add(new BleeckerPieChartDatum { Name = "B", Value = 20 });
         }
+        ResetScatterData();
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
@@ -211,6 +212,7 @@ public sealed partial class MainWindow : Window
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();
                 await VerifyCircularChartsAsync();
+                await VerifyScatterChartAsync();
                 await VerifyStatCardAsync();
                 Require(PackageSeparator.ActualHeight == 1 && PackageSeparator.ActualWidth > 0 &&
                     FrameworkElementAutomationPeer.CreatePeerForElement(PackageSeparator).GetAutomationControlType() == AutomationControlType.Separator,

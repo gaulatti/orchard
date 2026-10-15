@@ -1,0 +1,9 @@
+<UserControl x:Class="Orchard.Catalog.ScatterChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Scatter charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional consumer-owned coordinates and bubble values. Use Left, Right and Enter to inspect points." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerScatterChart x:Name="Specimen" Height="350" AutomationProperties.Name="Fictional numeric collection">
+   <orchard:BleeckerScatterChart.Series><orchard:BleeckerScatterSeries Key="primary" Name="Harbor" XKey="x" YKey="y" ZKey="z" /></orchard:BleeckerScatterChart.Series>
+  </orchard:BleeckerScatterChart>
+ </StackPanel>
+</UserControl>
