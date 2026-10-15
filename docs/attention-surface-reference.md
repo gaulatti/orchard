@@ -344,3 +344,8 @@ first and second Rendering events while their text margin is already updated.
 Those cases settle across four observed frames; the scroll cases settle across
 three. This directly demonstrates why counting two arbitrary frames is not a
 settled-layout test. Full catalog and native ARM64 validation remain separate.
+The complete published Light/Dark catalog then passes at
+`artifacts/smoke-pie-chart-published-settled-full` from `220a8ec`, retaining
+124/124 expected glyph positions in both themes. Its 352.436-second runtime
+stays within the original 360-second limit. Native ARM64 retesting remains
+deferred while push-triggered Actions are paused.

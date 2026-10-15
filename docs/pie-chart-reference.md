@@ -124,6 +124,15 @@ The public wiki remote remains unavailable, so this contract and verification
 evidence are maintained in the repository. Push-triggered Actions remain
 paused at the user's request.
 
+The final published catalog from `220a8ec` passes the complete Light/Dark
+sequence at `artifacts/smoke-pie-chart-published-settled-full` in 352.436 seconds
+under the unchanged 360-second limit, saving all 904 PNG captures. Both
+42-case theme reports and both live Pie/Donut lifecycle reports pass. Attention
+also retains its exact 124-pixel masks in each theme. The runnable final catalog
+is `artifacts/catalog-pie-chart-settled`. Library sources and all package inputs
+remain unchanged from the independently verified `d95e454` package; later
+commits change catalog capture/observation and documentation only.
+
 Both components remain **in progress**. Full sector/glyph/legend/center/tooltip
 raster and effects, normal/interrupted motion, the complete data/key/radius/
 formatter/override and RTL matrix, actual contrast, Narrator, display/text

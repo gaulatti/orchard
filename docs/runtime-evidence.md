@@ -1514,3 +1514,16 @@ RTL, actual contrast, Narrator, display/text scaling, collection performance
 and native ARM64 acceptance remain required. The public wiki is unavailable;
 repository documentation records this evidence. Push-triggered Actions remain
 paused at the user's request.
+
+The final published catalog from `220a8ec` passes the complete Light/Dark
+sequence in 352.436 seconds with the 360-second deadline unchanged, at
+`artifacts/smoke-pie-chart-published-settled-full`. It saves 904 PNG captures,
+passes both Pie/Donut source and lifecycle reports, and retains both exact
+124-pixel Attention masks. The two preceding runs remain recorded as failures:
+one reaches the final Dark captures but times out; the next fails Attention's
+fractional-scroll return. Both screenshot blank checks now short circuit the
+same nine-distinct-byte predicate, and the Attention fixture waits for stable
+geometry instead of two arbitrary frames. Frame traces demonstrate text moving
+between those first two events. The final runnable output is
+`artifacts/catalog-pie-chart-settled`; no library/package input changed after
+the independently verified `d95e454` package.
