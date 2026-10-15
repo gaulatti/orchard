@@ -14,7 +14,7 @@ public sealed partial class BleeckerLineChart
 {
     private bool areaMode, areaStacked;
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Upper, BleeckerMonotoneCurve.Point[] Lower, bool Range)> areaRendered = [];
-    internal void UseAreaProfile(bool stacked) { areaMode = true; barMode = sparklineMode = pieMode = scatterMode = radarMode = radialBarMode = funnelMode = sankeyMode = false; areaStacked = stacked; QueueRender(); }
+    internal void UseAreaProfile(bool stacked) { areaMode = true; barMode = sparklineMode = pieMode = scatterMode = radarMode = radialBarMode = funnelMode = sankeyMode = currencyMode = false; areaStacked = stacked; QueueRender(); }
     private void RenderAreas()
     {
         plot!.Clip = null; plot.Children.Clear(); legend!.Children.Clear(); rendered.Clear(); areaRendered.Clear();

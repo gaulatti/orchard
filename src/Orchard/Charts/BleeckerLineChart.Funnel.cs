@@ -17,7 +17,7 @@ public sealed partial class BleeckerLineChart
     private BleeckerFunnelGeometry.Entry[] funnelEntries = [];
     internal void UseFunnelProfile(bool labels)
     {
-        funnelMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radarMode = radialBarMode = sankeyMode = false;
+        funnelMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radarMode = radialBarMode = sankeyMode = currencyMode = false;
         funnelShowLabels = labels; QueueRender();
     }
     private Brush? FunnelPaint(int index)

@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="BleeckerCurrencyCursorBrush" Color="#CCCCCC" /></ResourceDictionary>
+  <ResourceDictionary x:Key="Dark"><SolidColorBrush x:Key="BleeckerCurrencyCursorBrush" Color="#CCCCCC" /></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="BleeckerCurrencyCursorBrush" Color="{ThemeResource SystemColorHighlightColor}" /></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

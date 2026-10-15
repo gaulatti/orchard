@@ -27,7 +27,7 @@ public sealed partial class BleeckerLineChart
     internal void UseScatterProfile(ObservableCollection<BleeckerScatterSeries> series, Func<object?, string>? xFormatter, Func<object?, string>? yFormatter)
     {
         var changed = !scatterMode || !ReferenceEquals(scatterSeries, series);
-        scatterMode = true; sparklineMode = barMode = areaMode = pieMode = radarMode = radialBarMode = funnelMode = sankeyMode = false;
+        scatterMode = true; sparklineMode = barMode = areaMode = pieMode = radarMode = radialBarMode = funnelMode = sankeyMode = currencyMode = false;
         scatterSeries = series; scatterXFormatter = xFormatter; scatterYFormatter = yFormatter;
         if (changed && IsLoaded) Observe(); QueueRender();
     }
@@ -51,7 +51,7 @@ public sealed partial class BleeckerLineChart
         observedScatterSeries = null; observedScatterItems.Clear(); observedScatterData.Clear();
     }
     private void OnScatterSeriesChanged(object? sender, PropertyChangedEventArgs args) { Observe(); QueueRender(); }
-    private int InspectionCount => radarMode ? RadarInspectionCount : scatterMode ? scatterSeries?.Sum(series => (series.Data ?? Data).Count) ?? 0 : Data.Count;
+    private int InspectionCount => currencyMode ? currencyLayout?.InspectionCount ?? 0 : radarMode ? RadarInspectionCount : scatterMode ? scatterSeries?.Sum(series => (series.Data ?? Data).Count) ?? 0 : Data.Count;
     private static double? ScatterNumber(object? value) => value is bool flag ? flag ? 1 : 0 : BleeckerChartData.Number(value);
     private static bool ScatterTruthy(object? value) => value is not null && value is not false && value is not "" && !(value is not string and not bool && BleeckerChartData.Number(value) is double number && number == 0) && !(value is double invalid && double.IsNaN(invalid));
     private static string ScatterCircle(double radius)

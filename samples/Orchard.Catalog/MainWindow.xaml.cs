@@ -77,6 +77,29 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-presentation")) await RunPresentationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);
+            else if (args.Contains("--smoke-currency-chart") || args.Contains("--smoke-currency-chart-sequence"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    var scheme = theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark;
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(CurrencyCharts); await CurrencyCharts.VerifyAsync(scheme, folder);
+                    if (args.Contains("--smoke-currency-chart-sequence"))
+                    {
+                        await SelectFixtureAsync(LineCharts); await LineCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(AreaCharts); await AreaCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(BarCharts); await BarCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(ScatterCharts); await ScatterCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(RadarCharts); await RadarCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(RadialBarCharts); await RadialBarCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(FunnelCharts); await FunnelCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(SankeyCharts); await SankeyCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(SunburstCharts); await SunburstCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(Sparklines); await Sparklines.VerifyAsync(scheme, folder);
+                    }
+                    await CaptureFixtureAsync(CurrencyCharts, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "currency-chart", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-sunburst-chart") || args.Contains("--smoke-sunburst-chart-sequence"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -557,6 +580,8 @@ public sealed partial class MainWindow : Window
             await SankeyCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(SunburstCharts);
             await SunburstCharts.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(CurrencyCharts);
+            await CurrencyCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Sparklines);
             await Sparklines.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(StatCards);

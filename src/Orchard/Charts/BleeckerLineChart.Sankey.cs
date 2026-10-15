@@ -34,7 +34,7 @@ public sealed partial class BleeckerLineChart
     private void ReleaseSankeyGeometry() { foreach (var geometry in sankeyFlowGeometry.Values) geometry.Dispose(); sankeyFlowGeometry.Clear(); }
     internal void UseSankeyProfile(BleeckerSankeyChartData data, ObservableCollection<Brush>? colors, double nodeWidth, double curvature, double opacity, double radius)
     {
-        sankeyMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radarMode = radialBarMode = funnelMode = false;
+        sankeyMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radarMode = radialBarMode = funnelMode = currencyMode = false;
         var changed = !ReferenceEquals(sankeyData, data) || !ReferenceEquals(sankeyColors, colors);
         if (changed) StopObservingSankey();
         sankeyData = data; sankeyColors = colors; sankeyNodeWidth = nodeWidth; sankeyCurvature = curvature; sankeyOpacity = opacity; sankeyRadius = radius;

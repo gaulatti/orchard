@@ -23,7 +23,7 @@ public sealed partial class BleeckerLineChart
     internal void UseRadarProfile(ObservableCollection<BleeckerRadarSeries> series)
     {
         var changed = !radarMode || !ReferenceEquals(radarSeries, series);
-        radarMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radialBarMode = funnelMode = sankeyMode = false; radarSeries = series;
+        radarMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radialBarMode = funnelMode = sankeyMode = currencyMode = false; radarSeries = series;
         if (changed && IsLoaded) Observe(); QueueRender();
     }
     private void ObserveRadar()

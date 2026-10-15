@@ -465,14 +465,26 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Charts/BleeckerChart.cs",
+        "src/Orchard/Charts/BleeckerCurrencyChartLayout.cs",
+        "src/Orchard/Charts/BleeckerLineChart.Currency.cs",
+        "src/Orchard/Themes/Chart.xaml",
+        "src/Orchard/Themes/ChartPalette.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/CurrencyChartsFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/CurrencyChartsFixture.xaml.cs",
+        "tests/PackageConsumer/MainWindow.CurrencyChart.cs",
+        "tests/Orchard.Tests/CurrencyChartLayoutTests.cs",
+        "tests/Reference/ChartLayout.json"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete raster/motion, data/override/RTL and measured collection-performance coverage",
+        "Verify actual contrast, Narrator, display/text scaling and native ARM64 runtime"
       ]
     },
     {

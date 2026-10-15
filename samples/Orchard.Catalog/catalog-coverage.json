@@ -39,6 +39,7 @@
     "BleeckerSankeyChartData": "SankeyChartsFixture.xaml",
     "BleeckerSankeyNode": "SankeyChartsFixture.xaml",
     "BleeckerSankeyLink": "SankeyChartsFixture.xaml",
+    "BleeckerChart": "CurrencyChartsFixture.xaml",
     "BleeckerSunburstChart": "SunburstChartsFixture.xaml",
     "BleeckerSunburstNode": "SunburstChartsFixture.xaml",
     "BleeckerErrorState": "ErrorStatesFixture.xaml",

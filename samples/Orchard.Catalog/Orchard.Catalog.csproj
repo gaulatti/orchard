@@ -54,6 +54,7 @@
         <EmbeddedResource Include="../../tests/Reference/FunnelChartLayout.json" LogicalName="Orchard.Catalog.Reference.FunnelChartLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/SankeyChartLayout.json" LogicalName="Orchard.Catalog.Reference.SankeyChartLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/SunburstChartLayout.json" LogicalName="Orchard.Catalog.Reference.SunburstChartLayout.json" />
+        <EmbeddedResource Include="../../tests/Reference/ChartLayout.json" LogicalName="Orchard.Catalog.Reference.ChartLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/NegativeChartDomains.json" LogicalName="Orchard.Catalog.Reference.NegativeChartDomains.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />

@@ -16,6 +16,8 @@
         <Compile Include="../../src/Orchard/Charts/BleeckerChartTheme.cs" Link="BleeckerChartTheme.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerMonotoneCurve.cs" Link="BleeckerMonotoneCurve.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartData.cs" Link="BleeckerChartData.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerCurrencyChartLayout.cs" Link="BleeckerCurrencyChartLayout.cs" />
+        <None Include="../Reference/ChartLayout.json" Link="Fixtures/ChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartScale.cs" Link="BleeckerChartScale.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerTooltipPlacement.cs" Link="BleeckerTooltipPlacement.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartInteraction.cs" Link="BleeckerChartInteraction.cs" />

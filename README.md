@@ -21,6 +21,9 @@ frozen role/palette resource keys and immutable chart style metadata. The
 [Line Chart preview](docs/line-chart-reference.md) renders observable consumer
 records/series with native monotone curves, axes, a legend and category
 inspection; complete chart/platform acceptance remains in progress.
+The [Currency Chart preview](docs/chart-reference.md) implements the fixed
+`Chart` export with original `name`/`total` records, dollar ticks and a desert
+monotone line. Its acceptance remains in progress.
 The [Section Header preview](docs/section-header-reference.md) supplies a
 level-two heading, optional eyebrow and consumer-owned summary.
 The [Dashboard Section preview](docs/dashboard-section-reference.md) groups

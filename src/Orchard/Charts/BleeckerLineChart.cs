@@ -31,11 +31,11 @@ public sealed partial class BleeckerLineChart : Control
     private readonly BleeckerChartInteraction interaction=new();
     private bool queued;
     private bool sparklineMode;
-    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=pieMode=scatterMode=radarMode=radialBarMode=funnelMode=sankeyMode=false;QueueRender();}
+    internal void UseSparklineProfile(){sparklineMode=true;barMode=areaMode=pieMode=scatterMode=radarMode=radialBarMode=funnelMode=sankeyMode=currencyMode=false;QueueRender();}
     private readonly List<(BleeckerChartSeries Series, Brush Brush, BleeckerMonotoneCurve.Point[] Points)> rendered = [];
     private const string Presentation = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
-    private double RenderWidth => barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
-    private double RenderHeight => barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
+    private double RenderWidth => currencyMode || barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode ? Math.Round(ActualWidth, MidpointRounding.AwayFromZero) : ActualWidth;
+    private double RenderHeight => currencyMode || barMode || areaMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode ? Math.Round(ActualHeight, MidpointRounding.AwayFromZero) : ActualHeight;
 
     public BleeckerLineChart()
     {
@@ -108,12 +108,14 @@ public sealed partial class BleeckerLineChart : Control
         ObserveScatter();
         ObserveRadar();
         ObserveSankey();
+        ObserveCurrency();
     }
     private void StopObserving()
     {
         StopObservingScatter();
         StopObservingRadar();
         StopObservingSankey();
+        StopObservingCurrency();
         if (observedData is not null) observedData.CollectionChanged -= OnCollectionChanged;
         if (observedCollection is not null) observedCollection.CollectionChanged -= OnCollectionChanged;
         foreach (var item in observedSeries) item.Changed -= OnSeriesChanged;
@@ -131,8 +133,9 @@ public sealed partial class BleeckerLineChart : Control
     private void Render()
     {
         if (!IsLoaded || plot is null || legend is null || active is null || ActualWidth <= 0 || ActualHeight <= 0) return;
-        if (!sparklineMode && !pieMode && !scatterMode && !radialBarMode && !funnelMode && !sankeyMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
+        if (!currencyMode && !sparklineMode && !pieMode && !scatterMode && !radialBarMode && !funnelMode && !sankeyMode && XAxisKey is null) throw new InvalidOperationException("Line Chart XAxisKey must be supplied before mounting.");
         foreach (var item in Series) { _ = item.Key; _ = item.Name; }
+        if (currencyMode) { RenderCurrency(); return; }
         if (sankeyMode) { RenderSankey(); return; }
         if (funnelMode) { RenderFunnel(); return; }
         if (radialBarMode) { RenderRadialBar(); return; }
@@ -232,6 +235,7 @@ public sealed partial class BleeckerLineChart : Control
     private double Y(double value) => BleeckerChartScale.Position(value, min, max, bottom, top);
     private void OnPointerMoved(object sender, PointerRoutedEventArgs args)
     {
+        if (currencyMode) { MoveCurrencyPointer(args); return; }
         if (sankeyMode) { MoveSankeyPointer(args); return; }
         if (funnelMode) { MoveFunnelPointer(args); return; }
         if (radialBarMode) { MoveRadialBarPointer(args); return; }
@@ -260,6 +264,7 @@ public sealed partial class BleeckerLineChart : Control
     private void PaintInteraction(){var selected=sankeyMode?sankeyInteraction.Index(sankeyLayout.Nodes.Length,sankeyLayout.Links.Length):interaction.Index(InspectionCount);if(selected is int index)ShowActive(index,interaction.PointerY);else ClearActive();}
     private void ShowActive(int index, double? pointerY = null)
     {
+        if (currencyMode) { ShowCurrencyActive(index, pointerY); return; }
         if (sankeyMode) { ShowSankeyActive(index); return; }
         if (funnelMode) { ShowFunnelActive(index); return; }
         if (radialBarMode) { ShowRadialBarActive(index); return; }
@@ -299,10 +304,10 @@ public sealed partial class BleeckerLineChart : Control
         UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
-    private void ClearActive() { if (pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
+    private void ClearActive() { if (currencyMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
     private TextBlock Text(string? value, double size, string key)
     {
-        var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; if (pieMode || radarMode || radialBarMode || funnelMode || sankeyMode) BleeckerPieText.Set(text, value ?? ""); else text.Text = value ?? ""; return text;
+        var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; if (currencyMode || pieMode || radarMode || radialBarMode || funnelMode || sankeyMode) BleeckerPieText.Set(text, value ?? ""); else text.Text = value ?? ""; return text;
     }
     private static T Resource<T>(string markup) where T : FrameworkElement
     {
@@ -326,7 +331,7 @@ public sealed partial class BleeckerLineChart : Control
     protected override AutomationPeer OnCreateAutomationPeer() => new ChartPeer(this);
     private sealed class ChartPeer(BleeckerLineChart owner) : FrameworkElementAutomationPeer(owner)
     {
-        protected override string GetClassNameCore() => owner.sankeyMode ? nameof(BleeckerSankeyChart) : owner.funnelMode ? nameof(BleeckerFunnelChart) : owner.radialBarMode ? nameof(BleeckerRadialBarChart) : owner.radarMode ? nameof(BleeckerRadarChart) : owner.scatterMode ? nameof(BleeckerScatterChart) : owner.pieMode ? owner.pieDonutIdentity ? nameof(BleeckerDonutChart) : nameof(BleeckerPieChart) : owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
+        protected override string GetClassNameCore() => owner.currencyMode ? nameof(BleeckerChart) : owner.sankeyMode ? nameof(BleeckerSankeyChart) : owner.funnelMode ? nameof(BleeckerFunnelChart) : owner.radialBarMode ? nameof(BleeckerRadialBarChart) : owner.radarMode ? nameof(BleeckerRadarChart) : owner.scatterMode ? nameof(BleeckerScatterChart) : owner.pieMode ? owner.pieDonutIdentity ? nameof(BleeckerDonutChart) : nameof(BleeckerPieChart) : owner.areaMode?nameof(BleeckerAreaChart):owner.barMode?nameof(BleeckerBarChart):owner.sparklineMode?nameof(BleeckerSparkline):nameof(BleeckerLineChart);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsControlElementCore() => true;
         protected override bool IsContentElementCore() => true;

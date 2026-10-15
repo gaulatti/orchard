@@ -107,6 +107,7 @@
                 <orchard:BleeckerFunnelChart x:Name="PackageFunnelChart" Width="320" Height="240" HorizontalAlignment="Left" AutomationProperties.Name="Independent funnel counts" />
                 <orchard:BleeckerSankeyChart x:Name="PackageSankeyChart" Width="320" Height="240" HorizontalAlignment="Left" AutomationProperties.Name="Independent Sankey flows" />
                 <orchard:BleeckerSunburstChart x:Name="PackageSunburstChart" Width="320" Height="240" HorizontalAlignment="Left" AutomationProperties.Name="Independent Sunburst hierarchy" />
+                <orchard:BleeckerChart x:Name="PackageCurrencyChart" Width="320" Height="200" HorizontalAlignment="Left" AutomationProperties.Name="Independent currency totals" />
                 <orchard:BleeckerDonutChart x:Name="PackageDonutChart" Width="320" Height="200" ShowLegend="False" CenterValue="30" CenterLabel="Consumer total" HorizontalAlignment="Left" AutomationProperties.Name="Independent ring" />
                 <orchard:BleeckerStatCard x:Name="PackageStatCard" Title="Independent statistic" Value="42" Description="Consumer-owned summary" Width="320" HorizontalAlignment="Left">
                     <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+2%" Direction="Neutral" /></orchard:BleeckerStatCard.Trend>
