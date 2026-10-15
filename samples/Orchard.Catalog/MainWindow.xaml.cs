@@ -76,12 +76,17 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);
-            else if (args.Contains("--smoke-scatter-chart"))
+            else if (args.Contains("--smoke-scatter-chart") || args.Contains("--smoke-scatter-chart-sequence"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
                 {
                     CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(ScatterCharts);
                     await ScatterCharts.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    if (args.Contains("--smoke-scatter-chart-sequence"))
+                    {
+                        await SelectFixtureAsync(Sparklines);
+                        await Sparklines.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    }
                     await CaptureFixtureAsync(ScatterCharts, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "scatter-chart", environment = RuntimeEnvironment() }));

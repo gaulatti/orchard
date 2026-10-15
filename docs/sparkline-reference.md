@@ -123,3 +123,16 @@ catalog input-session correction; chart interaction behavior is unchanged.
 The complete Light/Dark catalog subsequently passes at
 `artifacts/smoke-bar-chart-full-restored`, under the same six-minute deadline,
 including all pre-existing pointer/cursor and keyboard gates.
+
+The Scatter full catalog at
+`artifacts/smoke-scatter-chart-published-viewport-full` fails the Light mutation's
+physical Right value check. That path did not retain key delivery or private
+interaction state, so its cause is unclassified. It now uses the existing
+native press/release verifier on the actual focused chart and records focus,
+keys, pointer, modes, data/observer identity and interaction fields on both
+success and failure. Expected value and the two-second deadline are unchanged;
+no Sparkline production code changes. The focused `-Component
+scatter-chart-sequence` passes both themes at
+`artifacts/smoke-scatter-sparkline-input`, with one Right down/up, matching
+focus, observers connected and the expected ` : 30` value. Complete catalog
+validation remains separate; this does not prove the original failure's cause.

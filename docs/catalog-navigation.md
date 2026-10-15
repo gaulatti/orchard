@@ -72,7 +72,9 @@ Scatter charts follows Pie and donut charts. Focused `-Component scatter-chart`
 compares numeric/bubble paths, axes, grid, legend and inspection with 64 pinned
 browser cases, then exercises live root and independent series data, native
 input, formatters, templates and observer lifecycles. See
-[the source contract](scatter-chart-reference.md).
+[the source contract](scatter-chart-reference.md). `-Component
+scatter-chart-sequence` runs that fixture followed by Sparkline in each theme
+to retain the physical-input handoff regression.
 
 The full smoke run's final per-page screenshots select each fixture and request
 nonanimated bring-into-view, then observe two unchanged Rendering transitions

@@ -107,3 +107,10 @@ data/key/formatter/override/RTL coverage, actual contrast, Narrator, display/tex
 scaling, collection performance and native ARM64 acceptance remain open. This
 native presentation change has no backend or metrics surface. The public wiki
 is unavailable, so the contract is maintained in repository documentation.
+
+The next complete run at
+`artifacts/smoke-scatter-chart-published-viewport-full` fails the Light Sparkline
+mutation before the final screenshot gate runs. Source input diagnostics and
+its focused passing sequence are recorded in [the Sparkline contract](sparkline-reference.md).
+That full run is not accepted as a pass. `-Component scatter-chart-sequence`
+exercises Scatter followed by Sparkline in both themes.

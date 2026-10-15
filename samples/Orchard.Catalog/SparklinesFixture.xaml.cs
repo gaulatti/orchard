@@ -85,7 +85,7 @@ public sealed partial class SparklinesFixture:UserControl
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-{scheme}.json"),JsonSerializer.Serialize(reports,new JsonSerializerOptions{WriteIndented=true}));
             }
             await VerifyNegativeAxesAsync(host);
-            await MutationAsync(host,input);
+            await MutationAsync(host,input,folder,scheme);
         }
         finally{root.Children.Remove(host);}
     }
@@ -131,14 +131,36 @@ public sealed partial class SparklinesFixture:UserControl
             await AwaitAsync(()=>Part<Canvas>(chart,"PART_Plot").Children.OfType<TextBlock>().Where(text=>Math.Abs(Canvas.GetLeft(text)+text.DesiredSize.Width-52)<.001).Select(text=>text.Text).SequenceEqual(expected),"Native negative axis labels differ from the rendered pinned producer.");
         }
     }
-    private async Task MutationAsync(Grid host,NativeInputSession input)
+    private async Task MutationAsync(Grid host,NativeInputSession input,string folder,BleeckerColorScheme scheme)
     {
         var before=new BleeckerButton{Content="Before sparkline"};var after=new BleeckerButton{Content="After sparkline"};var spark=new BleeckerSparkline{Data=Data(10,30,20),DataKey="v",Width=320,Height=40};
         var stack=new StackPanel{VerticalAlignment=VerticalAlignment.Top};host.Children.Clear();stack.Children.Add(before);stack.Children.Add(spark);stack.Children.Add(after);host.Children.Add(stack);
         await AwaitAsync(()=>after.IsLoaded,"Sparkline keyboard fixture did not mount.");UpdateLayout();await input.AcquireAsync(before);
         var chart=Part<BleeckerLineChart>(spark,"PART_Chart");var first=Part<Button>(before,"PART_Action");var last=Part<Button>(after,"PART_Action");
-        Require(first.Focus(FocusState.Keyboard),"Could not focus preceding action.");input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Tab did not enter Sparkline inspection.");
-        input.Key(0x27);await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Sparkline did not inspect consumer data through physical Right.");
+        var events=new List<object>();var clock=Stopwatch.StartNew();var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+        object Snapshot(string kind)
+        {
+            object? Field(string name)=>typeof(BleeckerLineChart).GetField(name,flags)?.GetValue(chart);
+            var interaction=Field("interaction")!;
+            return new{kind,milliseconds=clock.Elapsed.TotalMilliseconds,chart.IsLoaded,chart.FocusState,input.OwnsForeground,focused=ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),help=AutomationProperties.GetHelpText(chart),chart.Data,queued=Field("queued"),sparkline=Field("sparklineMode"),scatter=Field("scatterMode"),observedSame=ReferenceEquals(Field("observedData"),chart.Data),state=interaction.GetType().GetFields(flags).ToDictionary(field=>field.Name,field=>field.GetValue(interaction)),pointer=input.ReadPointerPosition(),bounds=input.ScreenBounds(chart)};
+        }
+        void Focused(object sender,RoutedEventArgs args)=>events.Add(Snapshot("focus"));
+        void LoadedAgain(object sender,RoutedEventArgs args)=>events.Add(Snapshot("loaded"));
+        void Pointer(object sender,Microsoft.UI.Xaml.Input.PointerRoutedEventArgs args)=>events.Add(new{snapshot=Snapshot("pointer"),position=args.GetCurrentPoint(chart).Position});
+        var keyDown=new Microsoft.UI.Xaml.Input.KeyEventHandler((_,args)=>events.Add(new{snapshot=Snapshot("keyDown"),key=args.Key.ToString()}));
+        var keyUp=new Microsoft.UI.Xaml.Input.KeyEventHandler((_,args)=>events.Add(new{snapshot=Snapshot("keyUp"),key=args.Key.ToString()}));
+        chart.GotFocus+=Focused;chart.Loaded+=LoadedAgain;chart.PointerMoved+=Pointer;chart.AddHandler(UIElement.KeyDownEvent,keyDown,true);chart.AddHandler(UIElement.KeyUpEvent,keyUp,true);
+        var verified=false;
+        try
+        {
+            Require(first.Focus(FocusState.Keyboard),"Could not focus preceding action.");input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Tab did not enter Sparkline inspection.");
+            events.Add(Snapshot("beforeRight"));await input.KeyAsync(0x27,chart);await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Sparkline did not inspect consumer data through physical Right.");verified=true;
+        }
+        finally
+        {
+            events.Add(Snapshot("result"));chart.GotFocus-=Focused;chart.Loaded-=LoadedAgain;chart.PointerMoved-=Pointer;chart.RemoveHandler(UIElement.KeyDownEvent,keyDown);chart.RemoveHandler(UIElement.KeyUpEvent,keyUp);
+            await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-mutation-input-{scheme}.json"),JsonSerializer.Serialize(new{passed=verified,events},new JsonSerializerOptions{WriteIndented=true}));
+        }
         input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),last),"Tab did not leave Sparkline.");input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Reverse Tab skipped Sparkline.");
         await input.MoveAsync(chart,localPoint:new Point(318,20));await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 20","Sparkline did not inspect its last value through the physical pointer.");
         await input.MoveAsync(after);await AwaitAsync(()=>Part<Border>(chart,"PART_Tooltip").Visibility==Visibility.Collapsed,"Sparkline pointer exit did not dismiss inspection.");
