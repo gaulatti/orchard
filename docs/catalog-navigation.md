@@ -175,7 +175,8 @@ both themes, including shared disabled Checkbox/Input ownership and rapid
 stationary Input remounts. It retains native border/cursor expectations and
 records the standard catalog captures. See [Input verification](inputs.md).
 
-Physical pointer preparation waits for native target bounds, actual dimensions
+Physical pointer preparation requires the requested point to pass the existing
+native owned-window hit check, then waits for native target bounds, actual dimensions
 and ancestor viewport metrics to remain unchanged across two Rendering
 transitions. It uses the catalog's two-second presentation policy and retains
 the normal foreground, native ownership, exact boundary-position and final-hit

@@ -1612,3 +1612,13 @@ foreground, ownership, exact boundary and final-hit assertions remain active.
 The focused Scatter/Sparkline sequence and complete Input fixture pass both
 themes at `artifacts/smoke-scatter-chart-stable-pointer` and
 `artifacts/smoke-input-stable-pointer`. No library or package input changes.
+
+The initial complete stable-pointer run fails Dark Attention's distant child
+action while its stable bounds are still off-screen. Readiness now requires the
+requested point to pass the existing native owned-window hit check across the
+stable frames. Focused Attention passes Light/Dark at
+`artifacts/smoke-attention-visible-pointer`, preserving four scroll/return paths
+and exact 124-pixel masks. All fifty target gates pass; nine wait for an initial
+unowned point, and maximum settling is 96.6803ms. Scatter/Sparkline also pass at
+`artifacts/smoke-scatter-chart-visible-pointer`. The failed full run remains at
+`artifacts/smoke-scatter-chart-published-stable-pointer-full`.

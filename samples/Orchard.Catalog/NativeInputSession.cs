@@ -136,7 +136,7 @@ internal sealed class NativeInputSession : IDisposable
     {
         if (requireForeground) await RequireForegroundAsync();
         target.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false, VerticalAlignmentRatio = .5 });
-        var bounds = await AwaitPointerPresentationAsync(target);
+        var bounds = await AwaitPointerPresentationAsync(target, localPoint);
         Require(bounds.Width > 0 && bounds.Height > 0, "Physical pointer target has no bounds.");
         if (localPoint is Point local) Require(local.X >= 0 && local.Y >= 0 && local.X < target.ActualWidth && local.Y < target.ActualHeight,
             "Physical pointer offset exceeds its target bounds.");
@@ -162,11 +162,11 @@ internal sealed class NativeInputSession : IDisposable
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
     }
 
-    private async Task<Rect> AwaitPointerPresentationAsync(FrameworkElement target)
+    private async Task<Rect> AwaitPointerPresentationAsync(FrameworkElement target, Point? localPoint)
     {
         var ready = new TaskCompletionSource<Rect>(TaskCreationOptions.RunContinuationsAsynchronously);
         var watch = Stopwatch.StartNew(); var observations = new List<object>();
-        (Rect Bounds, double Width, double Height, string Viewports)? previous = null;
+        (Rect Bounds, double Width, double Height, string Viewports, bool Owned)? previous = null;
         var stable = 0; var frames = 0;
         void Presented(object? sender, object args)
         {
@@ -175,9 +175,14 @@ internal sealed class NativeInputSession : IDisposable
                 frames++;
                 if (!target.IsLoaded || target.XamlRoot is null) { previous = null; stable = 0; observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, target.IsLoaded }); return; }
                 var bounds = ScreenBounds(target); var viewports = DescribeViewports(target);
-                var state = (bounds, target.ActualWidth, target.ActualHeight, JsonSerializer.Serialize(viewports));
-                stable = bounds.Width > 0 && bounds.Height > 0 && previous == state ? stable + 1 : 0; previous = state;
-                observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, bounds, target.ActualWidth, target.ActualHeight, stable, viewports });
+                var scale = root.RasterizationScale;
+                var x = (int)(bounds.X + (localPoint?.X * scale ?? bounds.Width / 2));
+                var y = (int)(bounds.Y + (localPoint?.Y * scale ?? bounds.Height / 2));
+                var client = NativeScreenCapture.ClientBounds(Window);
+                var owned = bounds.Width > 0 && bounds.Height > 0 && NativeScreenCapture.OwnsScreenPoint(Window, x, y);
+                var state = (bounds, target.ActualWidth, target.ActualHeight, JsonSerializer.Serialize(viewports), owned);
+                stable = owned && previous == state ? stable + 1 : 0; previous = state;
+                observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, bounds, target.ActualWidth, target.ActualHeight, stable, viewports, requested = new { x, y }, client, owned });
                 if (stable >= 2) ready.TrySetResult(bounds);
             }
             catch (Exception error) { ready.TrySetException(error); }

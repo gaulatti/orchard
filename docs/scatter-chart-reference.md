@@ -211,3 +211,14 @@ Scatter/Sparkline sequence passes at
 `artifacts/smoke-scatter-chart-stable-pointer`; its sixteen Scatter target gates
 average about 42ms, with two stable transitions each. The complete focused Input
 fixture also passes both themes at `artifacts/smoke-input-stable-pointer`.
+
+The first complete stable-pointer run fails Dark Attention at an off-screen
+ChildAction before queued scrolling completes. Stable off-screen geometry is
+not readiness. The gate now requires its requested point to pass the same
+native owned-window check during the two stable transitions; the final hit check
+still runs. The focused Attention fixture passes both themes at
+`artifacts/smoke-attention-visible-pointer`, including all four distant-child
+scroll/return paths and exact 124-pixel masks. Fifty target gates pass; nine
+wait for an initially unowned point to become visible. Maximum settling is
+96.6803ms. Scatter/Sparkline also pass both themes at
+`artifacts/smoke-scatter-chart-visible-pointer`. No library/package input changes.
