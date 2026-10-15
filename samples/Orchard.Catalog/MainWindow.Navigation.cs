@@ -28,6 +28,7 @@ public sealed partial class MainWindow
             ("Pie and donut charts",PieCharts),
             ("Scatter charts",ScatterCharts),
             ("Radar charts",RadarCharts),
+            ("Radial bar charts",RadialBarCharts),
             ("Sparklines",Sparklines),
             ("Stat cards",StatCards),
             ("Error states",ErrorStates),

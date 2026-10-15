@@ -23,7 +23,7 @@ public sealed partial class BleeckerLineChart
     internal void UseRadarProfile(ObservableCollection<BleeckerRadarSeries> series)
     {
         var changed = !radarMode || !ReferenceEquals(radarSeries, series);
-        radarMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = false; radarSeries = series;
+        radarMode = true; sparklineMode = barMode = areaMode = pieMode = scatterMode = radialBarMode = false; radarSeries = series;
         if (changed && IsLoaded) Observe(); QueueRender();
     }
     private void ObserveRadar()
@@ -41,16 +41,6 @@ public sealed partial class BleeckerLineChart
     private void OnRadarSeriesChanged(object? sender, PropertyChangedEventArgs args) => QueueRender();
     private int RadarInspectionCount => Data.Count == 0 ? 0 : Math.Max(1, radarSubjects.Count);
     private static object? RadarCategory(object? value) => value is string text ? text : value is not bool && BleeckerChartData.Number(value) is double number ? number : null;
-    private static IEnumerable<double> RadarDomain(object? value)
-    {
-        if (value is IList array)
-        {
-            // The pinned producer accepts a range domain only when both its
-            // first two entries can be numbers; points use the last entry.
-            if (array.Count >= 2 && array[0] is not bool && array[1] is not bool && BleeckerChartData.Number(array[0]) is double low && BleeckerChartData.Number(array[1]) is double high) { yield return low; yield return high; }
-        }
-        else if (value is not bool && BleeckerChartData.Number(value) is double scalar) yield return scalar;
-    }
     private double RadarAngle(object? category)
     {
         var index = category is null ? -1 : radarSubjects.IndexOf(category);
@@ -76,7 +66,7 @@ public sealed partial class BleeckerLineChart
         radarLegendHeight = RenderRadarLegend();
         radarCx = RenderWidth / 2; radarCy = RenderHeight / 2;
         radarRadius = Math.Max(0, Math.Min(RenderWidth - 20, RenderHeight - 15 - radarLegendHeight) / 2) * .8;
-        radarTicks = BleeckerChartScale.Ticks(radarSeries.SelectMany(series => Data.SelectMany(row => RadarDomain(BleeckerChartData.Read(row, series.Key)))), false);
+        radarTicks = BleeckerChartScale.Ticks(radarSeries.SelectMany(series => Data.SelectMany(row => BleeckerChartData.NumericDomain(BleeckerChartData.Read(row, series.Key)))), false);
         foreach (var subject in radarTicks.Length > 0 ? radarSubjects : [])
         {
             var point = RadarPosition(radarRadius, RadarAngle(subject));

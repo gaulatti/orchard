@@ -18,6 +18,7 @@
         <Compile Include="../../src/Orchard/Charts/BleeckerChartScale.cs" Link="BleeckerChartScale.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerTooltipPlacement.cs" Link="BleeckerTooltipPlacement.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartInteraction.cs" Link="BleeckerChartInteraction.cs" />
+        <Compile Include="../../src/Orchard/Charts/BleeckerSvgCircleMeasure.cs" Link="BleeckerSvgCircleMeasure.cs" />
         <None Include="../../samples/Orchard.Catalog/Reference/LineInteraction.json" Link="Fixtures/LineInteraction.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssTransition.cs" Link="BleeckerCssTransition.cs" />
         <Compile Include="../../src/Orchard/Motion/BleeckerCssEasing.cs" Link="BleeckerCssEasing.cs" />
@@ -33,6 +34,7 @@
         <None Include="../Reference/LineData.json" Link="Fixtures/LineData.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/NegativeChartDomains.json" Link="Fixtures/NegativeChartDomains.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/TooltipPlacement.json" Link="Fixtures/TooltipPlacement.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/RadialBarChartLayout.json" Link="Fixtures/RadialBarChartLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/CheckboxRoundedHit.json" Link="Fixtures/CheckboxRoundedHit.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/InputRoundedHit.json" Link="Fixtures/InputRoundedHit.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Medium.ttf" Link="Fixtures/EncodeSans-Medium.ttf" CopyToOutputDirectory="PreserveNewest" />

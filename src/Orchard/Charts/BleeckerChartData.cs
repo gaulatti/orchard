@@ -54,6 +54,16 @@ internal static class BleeckerChartData
         }
         if (key.Length > 0) parts.Add(key.ToString()); return parts;
     }
+    internal static IEnumerable<double> NumericDomain(object? value)
+    {
+        if (value is IList array)
+        {
+            // The pinned producer accepts a range domain only when both its
+            // first two entries can be numbers; point selection is mode-owned.
+            if (array.Count >= 2 && array[0] is not bool && array[1] is not bool && BleeckerChartData.Number(array[0]) is double low && BleeckerChartData.Number(array[1]) is double high) { yield return low; yield return high; }
+        }
+        else if (value is not bool && BleeckerChartData.Number(value) is double scalar) yield return scalar;
+    }
     internal static double? Number(object? value)
     {
         if (value is null || value is bool) return null;

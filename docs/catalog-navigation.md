@@ -89,7 +89,21 @@ then exercises live data, native input and observer/template lifecycles.
 `-Component radar-chart-sequence` runs Radar, Scatter and Sparkline in each
 theme. See [the Radar contract](radar-chart-reference.md).
 
-Sparklines follows Radar charts. Focused `-Component sparkline` checks 36 frozen
+Radial Bar charts follows Radar charts. Focused `-Component radial-bar-chart`
+compares 80 frozen Light/Dark cases for sectors, backgrounds, curved glyph
+placement, legend and native inspection. The lifecycle checks exercise live
+records, consumer paint/fonts, angle/radius changes, native Tab/Enter, remount,
+template replacement, resize and empty data. `-Component
+radial-bar-chart-sequence` runs Radial Bar, Radar, Scatter and Sparkline in each
+theme. See [the Radial Bar contract](radial-bar-chart-reference.md).
+
+Nonanimated button/icon state checks observe two Rendering frames and a
+compositor commit within the existing two-second deadline. Input sessions
+resize or request foreground only when the requested size/foreground differs.
+All state assertions and pointer presentation/ownership gates remain in place;
+the full smoke deadline remains 360 seconds.
+
+Sparklines follows Radial Bar charts. Focused `-Component sparkline` checks 36 frozen
 Light/Dark cases, raw tooltips, physical keyboard/pointer input, live bindings
 and remount. It also verifies four all-negative normal Line Chart axes against
 actual rendered source tick labels in each theme.

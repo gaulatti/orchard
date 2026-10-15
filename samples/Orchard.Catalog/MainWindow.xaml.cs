@@ -76,6 +76,22 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);
+            else if (args.Contains("--smoke-radial-bar-chart") || args.Contains("--smoke-radial-bar-chart-sequence"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    var scheme = theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark;
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(RadialBarCharts); await RadialBarCharts.VerifyAsync(scheme, folder);
+                    if (args.Contains("--smoke-radial-bar-chart-sequence"))
+                    {
+                        await SelectFixtureAsync(RadarCharts); await RadarCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(ScatterCharts); await ScatterCharts.VerifyAsync(scheme, folder);
+                        await SelectFixtureAsync(Sparklines); await Sparklines.VerifyAsync(scheme, folder);
+                    }
+                    await CaptureFixtureAsync(RadialBarCharts, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "radial-bar-chart", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-radar-chart") || args.Contains("--smoke-radar-chart-sequence"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -401,7 +417,7 @@ public sealed partial class MainWindow : Window
         {
             await SelectFixtureAsync(Foundation);
             ThemeSelector.SelectedIndex = theme == ElementTheme.Light ? 1 : 2;
-            await Task.Delay(500);
+            await AwaitPresentationAsync(CatalogRoot);
             CatalogRoot.UpdateLayout();
             Require(CatalogRoot.ActualWidth > 0 && PrimaryAction.ActualWidth > 0, "Controls did not lay out.");
             var scheme = theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark;
@@ -478,6 +494,8 @@ public sealed partial class MainWindow : Window
             await ScatterCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(RadarCharts);
             await RadarCharts.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(RadialBarCharts);
+            await RadialBarCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Sparklines);
             await Sparklines.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(StatCards);
@@ -598,7 +616,7 @@ public sealed partial class MainWindow : Window
         foreach (var state in disabled ? new[] { "Disabled" } : new[] { "Normal", "PointerOver", "Pressed", "Normal" })
         {
             Require(VisualStateManager.GoToState(button, state, false), $"Missing native button state: {state}.");
-            await Task.Delay(120);
+            await AwaitPresentationAsync(button);
             foreach (var (property, actual) in new[] { ("Background", presenter.Background), ("Foreground", presenter.Foreground), ("BorderBrush", presenter.BorderBrush) })
             {
                 var token = property == "Foreground" ? "primaryForeground" : "primary";

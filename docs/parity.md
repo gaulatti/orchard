@@ -41,6 +41,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | donut-chart | `BleeckerDonutChart`: source ring and independent center text | Shared Pie/Donut fixture | In progress: [source contract and acceptance gaps](pie-chart-reference.md) |
 | scatter-chart | `BleeckerScatterChart`, typed series and independent consumer collections | Registered 64-case source fixture plus native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](scatter-chart-reference.md) |
 | radar-chart | `BleeckerRadarChart`, typed series, polar subjects and range boundaries | Registered 72-case source fixture and native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](radar-chart-reference.md) |
+| radial-bar-chart | `BleeckerRadialBarChart`, typed observable records, curved labels and consumer radii/angles | Registered 80-case source fixture and native input/data/lifecycle checks | In progress: [source contract and acceptance gaps](radial-bar-chart-reference.md) |
 | radial-bar-chart | Pending | Pending | Full pinned contract |
 | funnel-chart | Pending | Pending | Full pinned contract |
 | sankey-chart | Pending | Pending | Full pinned contract |

@@ -21,12 +21,12 @@ internal static class BleeckerPieGeometry
     }
     private static bool Zero(object? value) => value is not null and not bool and not string && BleeckerChartData.Number(value) == 0;
     internal static Point Polar(double cx, double cy, double radius, double angle) => new(cx + radius * Math.Cos(-angle * Math.PI / 180), cy + radius * Math.Sin(-angle * Math.PI / 180));
-    internal static double Radius(object value, double maximum)
+    internal static double Radius(object value, double maximum, double defaultValue = 0)
     {
         var percent = value is string text && text.EndsWith('%');
-        if (!percent) return BleeckerChartData.Number(value) ?? 0;
+        if (!percent) return BleeckerChartData.Number(value) ?? defaultValue;
         var match = Regex.Match((string)value, @"^[\s\uFEFF]*([+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?)");
-        return match.Success && double.TryParse(match.Groups[1].Value, NumberStyles.Float, CultureInfo.InvariantCulture, out var number) ? number / 100 * maximum : 0;
+        return match.Success && double.TryParse(match.Groups[1].Value, NumberStyles.Float, CultureInfo.InvariantCulture, out var number) ? number / 100 * maximum : defaultValue;
     }
     internal static string? Path(double cx, double cy, double inner, double outer, Sector sector)
     {

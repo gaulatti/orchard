@@ -50,17 +50,6 @@ public sealed partial class BleeckerLineChart
         var index = (int)Math.Floor((90 - angle) * count / 360 + .5) % count;
         interaction.Pointer(index, radius); PaintInteraction();
     }
-    private static string RadarReactText(object? value)
-    {
-        if (value is null or bool) return "";
-        if (value is IList values) return string.Concat(values.Cast<object?>().Select(RadarReactText));
-        return value is not string && BleeckerChartData.Number(value) is double number ? BleeckerChartScale.TickLabel(number) : BleeckerChartData.Label(value);
-    }
-    private static IEnumerable<string> RadarReactFragments(object? value)
-    {
-        if (value is IList values) { foreach (var item in values) foreach (var fragment in RadarReactFragments(item)) yield return fragment; }
-        else if (value is not null and not bool) yield return RadarReactText(value);
-    }
     private void ShowRadarActive(int index)
     {
         if (Data.Count == 0 || active is null || tooltip is null || tooltipItems is null || tooltipContainer is null) { ClearActive(); return; }
@@ -72,7 +61,7 @@ public sealed partial class BleeckerLineChart
         var descriptions = new List<string>(); var headingPresent = subject is not null;
         if (headingPresent)
         {
-            var headingText = RadarReactText(subject); var heading = Text(RadarVisibleText(headingText), 16, "BleeckerTextSecondaryBrush"); AutomationProperties.SetName(heading, headingText); heading.FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 };
+            var headingText = ChartReactText(subject); var heading = Text(ChartVisibleText(headingText), 16, "BleeckerTextSecondaryBrush"); AutomationProperties.SetName(heading, headingText); heading.FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 };
             if (FontFamily.Source.EndsWith("/EncodeSans-Regular.ttf#Encode Sans", StringComparison.Ordinal))
                 heading.FontFamily = Resource<TextBlock>("<TextBlock FontFamily=\"{StaticResource BleeckerPrimarySemiboldFontFamily}\" />").FontFamily;
             heading.LineHeight = 24; heading.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; tooltipItems.Children.Add(heading); descriptions.Add(headingText);
@@ -80,13 +69,13 @@ public sealed partial class BleeckerLineChart
         foreach (var series in radarSeries!.OrderBy(series => series.Name, StringComparer.Ordinal))
         {
             var raw = BleeckerChartData.Read(record, series.Key); if (raw is null) continue;
-            var formatted = raw is not string and not bool and not IList && BleeckerChartData.Number(raw) is double number && TooltipFormatter is not null ? TooltipFormatter(number) : RadarReactText(raw);
-            var content = " : " + formatted; var text = Text(RadarVisibleText(content), 16, "BleeckerTextPrimaryBrush"); AutomationProperties.SetName(text, content); text.LineHeight = 24; text.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; text.Margin = new Thickness(0, 4, 0, 4);
+            var formatted = raw is not string and not bool and not IList && BleeckerChartData.Number(raw) is double number && TooltipFormatter is not null ? TooltipFormatter(number) : ChartReactText(raw);
+            var content = " : " + formatted; var text = Text(ChartVisibleText(content), 16, "BleeckerTextPrimaryBrush"); AutomationProperties.SetName(text, content); text.LineHeight = 24; text.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; text.Margin = new Thickness(0, 4, 0, 4);
             // HTML allocates the separator and value spans independently. Keep
             // the trailing separator space in its intrinsic-width measurement.
-            var visibleValue = RadarVisibleText(formatted); var separator = Text(visibleValue.Length == 0 ? ":" : ": \u200B", 16, "BleeckerTextPrimaryBrush");
+            var visibleValue = ChartVisibleText(formatted); var separator = Text(visibleValue.Length == 0 ? ":" : ": \u200B", 16, "BleeckerTextPrimaryBrush");
             separator.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity)); var contentWidth = Math.Ceiling(BleeckerPieText.InlineWidth(separator) * 64) / 64;
-            if (raw is IList) contentWidth += RadarFragmentsWidth(RadarReactFragments(raw).Select(RadarVisibleText).Where(fragment => fragment.Length > 0).ToArray());
+            if (raw is IList) contentWidth += ChartFragmentsWidth(ChartReactFragments(raw).Select(ChartVisibleText).Where(fragment => fragment.Length > 0).ToArray());
             else
             {
                 var valueText = Text(visibleValue, 16, "BleeckerTextPrimaryBrush"); valueText.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
@@ -117,35 +106,5 @@ public sealed partial class BleeckerLineChart
         tooltipContainer.Margin = hasTick ? new Thickness(BleeckerTooltipPlacement.Position(coordinate.X, tooltip.DesiredSize.Width, 0, RenderWidth - 20), BleeckerTooltipPlacement.Position(coordinate.Y, tooltip.DesiredSize.Height, 10, RenderHeight - 5 - radarLegendHeight), 0, 0) : interaction.PointerY.HasValue ? new Thickness(10, 10, 0, 0) : new Thickness(0);
         if (tooltipItems.Children.Count == (headingPresent ? 1 : 0)) tooltip.Visibility = tooltipContainer.Visibility = Visibility.Collapsed;
         UpdateTooltipEffects(); AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
-    }
-    private static string RadarVisibleText(string value) => Regex.Replace(value, @"[ \t\r\n\f]+", " ").Trim(' ');
-    private double RadarFragmentsWidth(IReadOnlyList<string> fragments)
-    {
-        if (fragments.Count == 0) return 0;
-        var family = FontFamily.Source; var marker = family.IndexOf('#');
-        if (marker >= 0 && Uri.TryCreate(family[..marker], UriKind.Absolute, out var uri))
-        {
-            // Use the same documented loose-font path as the package and the
-            // Dashboard Section's intrinsic text measurement.
-            if (uri.Scheme == "ms-appx" && uri.Host.Length == 0)
-            {
-                uri = new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory, Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));
-                family = uri.AbsoluteUri + family[marker..];
-            }
-            using var fonts = new Microsoft.Graphics.Canvas.Text.CanvasFontSet(uri);
-            if (fonts.Fonts.Count == 0) throw new InvalidOperationException("Radar cannot measure the requested bundled font.");
-        }
-        using var format = new Microsoft.Graphics.Canvas.Text.CanvasTextFormat { FontFamily = family, FontSize = (float)(16 * tooltipSettings.TextScaleFactor), Direction = FlowDirection == FlowDirection.RightToLeft ? Microsoft.Graphics.Canvas.Text.CanvasTextDirection.RightToLeftThenTopToBottom : Microsoft.Graphics.Canvas.Text.CanvasTextDirection.LeftToRightThenTopToBottom };
-        using var layout = new Microsoft.Graphics.Canvas.Text.CanvasTextLayout(Microsoft.Graphics.Canvas.CanvasDevice.GetSharedDevice(), string.Concat(fragments), format, float.MaxValue, float.MaxValue);
-        layout.SetPairKerning(0, fragments.Sum(fragment => fragment.Length), true);
-        var width = 0d; var start = 0;
-        foreach (var fragment in fragments)
-        {
-            // Shape with full context, then allocate each React text node in
-            // browser layout units. Separate measurements lose boundary kerning.
-            width += Math.Ceiling(layout.GetCharacterRegions(start, fragment.Length).Sum(region => region.LayoutBounds.Width) * 64) / 64;
-            start += fragment.Length;
-        }
-        return width;
     }
 }

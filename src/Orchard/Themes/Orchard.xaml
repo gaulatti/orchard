@@ -9,6 +9,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/PieChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/ScatterChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadarChartPalette.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadialBarChartPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCardPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Menus.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />

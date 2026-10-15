@@ -34,6 +34,8 @@ D3 Shape attribution for native monotone curves is included in
 is included in `licenses/LICENSE-EsToolkit.txt`.
 Recharts numeric domain and layout attribution is retained in
 `licenses/LICENSE-Recharts.txt`.
+The curved radial label's SVG path measurement includes Skia-derived math;
+its BSD license is included in `licenses/LICENSE-Skia.txt`.
 `BleeckerLineChart` accepts consumer-owned observable records and series,
 an X-axis key, optional labels/formatters, and grid/legend visibility.
 Its category tooltip follows keyboard/pointer coordinates, preserves raw string
@@ -116,3 +118,12 @@ ShowLegend defaults to true and Height to 350. Series Fill enables 0.35 opacity,
 Color preserves consumer brushes, and TickFormatter formats numeric radius
 ticks and inspection values. Native inspection uses one named keyboard stop.
 See the repository's Radar contract for visual and platform acceptance gaps.
+
+`BleeckerRadialBarChart` consumes original observable name/value/fill records,
+including `BleeckerRadialBarChartDatum` with live property notifications.
+Height defaults to 350, ShowLegend to true, InnerRadius/OuterRadius to
+"10%"/"80%" and StartAngle/EndAngle to 90/-270. Radii accept native numbers
+or source percentage strings. Consumer Fill brushes retain their identity,
+including transparent paint. Curved values and the sorted legend use the
+bundled typography; native inspection has one consumer-named keyboard stop.
+See the repository's Radial Bar contract for remaining acceptance gaps.

@@ -46,7 +46,7 @@ public sealed partial class IconButtonsFixture : UserControl
             foreach (var state in new[] { "Normal", "PointerOver", "Pressed", "Disabled", "Normal" })
             {
                 Require(VisualStateManager.GoToState(button, state, false), $"Missing icon button state {state}.");
-                await Task.Delay(120);
+                await MainWindow.AwaitPresentationAsync(button);
                 foreach (var path in Descendants(button).OfType<Microsoft.UI.Xaml.Shapes.Path>())
                 {
                     Require(path.Stroke is SolidColorBrush stroke && presenter.Foreground is SolidColorBrush foreground && stroke.Color == foreground.Color && Math.Abs(stroke.Opacity - foreground.Opacity) < 0.001,

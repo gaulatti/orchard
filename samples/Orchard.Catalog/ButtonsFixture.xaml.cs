@@ -105,7 +105,7 @@ public sealed partial class ButtonsFixture : UserControl
         {
             LoadingAction.Variant = variant;
             LoadingAction.UpdateLayout();
-            await Task.Delay(120);
+            await MainWindow.AwaitPresentationAsync(LoadingAction);
             Require(native.FocusVisualPrimaryBrush is SolidColorBrush focusRing &&
                 Math.Abs(focusRing.Opacity - (scheme == BleeckerColorScheme.Dark ? 0.45 : 0.35)) < 0.001 &&
                 native.FocusVisualPrimaryThickness == new Thickness(2) && native.FocusVisualSecondaryThickness == new Thickness(2) &&
@@ -137,7 +137,7 @@ public sealed partial class ButtonsFixture : UserControl
             foreach (var state in new[] { "PointerOver", "Pressed", "Disabled", "Normal" })
             {
                 Require(VisualStateManager.GoToState(native, state, false), $"Native button is missing {state}.");
-                await Task.Delay(250);
+                await MainWindow.AwaitPresentationAsync(native);
                 if (variant == BleeckerButtonVariant.Link)
                 {
                     var underline = FindNamed<Border>(LoadingAction, "PART_LinkUnderline")!;

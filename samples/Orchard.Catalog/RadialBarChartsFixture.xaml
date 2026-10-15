@@ -1,0 +1,9 @@
+<UserControl x:Class="Orchard.Catalog.RadialBarChartsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Radial bar charts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Fictional consumer-owned collections. Use Left, Right and Enter to inspect each ring." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerRadialBarChart x:Name="Specimen" AutomationProperties.Name="Fictional radial collections">
+   <orchard:BleeckerRadialBarChart.Data><orchard:BleeckerRadialBarChartDatum Name="Harbor" Value="120" /><orchard:BleeckerRadialBarChartDatum Name="Terrace" Value="90" /><orchard:BleeckerRadialBarChartDatum Name="Cove" Value="60" /></orchard:BleeckerRadialBarChart.Data>
+  </orchard:BleeckerRadialBarChart>
+ </StackPanel>
+</UserControl>

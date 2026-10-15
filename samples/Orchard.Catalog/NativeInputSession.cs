@@ -51,14 +51,17 @@ internal sealed class NativeInputSession : IDisposable
             Require(width > 0 && height > 0, "Smoke client width and height must be positive.");
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(root.ContentIslandEnvironment.AppWindowId);
             Require(appWindow.Presenter is Microsoft.UI.Windowing.OverlappedPresenter, "Smoke client sizing requires an overlapped catalog window.");
-            ((Microsoft.UI.Windowing.OverlappedPresenter)appWindow.Presenter).Restore(false);
-            appWindow.ResizeClient(new Windows.Graphics.SizeInt32(width, height));
-            await Task.Delay(100);
+            if (appWindow.ClientSize.Width != width || appWindow.ClientSize.Height != height)
+            {
+                ((Microsoft.UI.Windowing.OverlappedPresenter)appWindow.Presenter).Restore(false);
+                appWindow.ResizeClient(new Windows.Graphics.SizeInt32(width, height));
+                await MainWindow.AwaitPresentationAsync(foregroundTarget);
+            }
             Require(appWindow.ClientSize.Width == width && appWindow.ClientSize.Height == height,
                 "Catalog did not adopt the explicitly requested client size.");
         }
         Require(SetWindowPos(Window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the catalog for physical input.");
-        SetForegroundWindow(Window); await Task.Delay(100);
+        if (GetForegroundWindow() != Window) { SetForegroundWindow(Window); await Task.Delay(100); }
         if (GetForegroundWindow() != Window)
         {
             SendKeyCore(0x12); // Transient Alt clears the hosted desktop's foreground lock.
