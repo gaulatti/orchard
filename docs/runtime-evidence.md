@@ -1,6 +1,45 @@
 # Native Windows runtime evidence
 
-## Current Sidebar checkpoint
+## Native Data Table Toolbar work
+
+The toolbar preview brings the working inventory to 50 in progress, 62 pending
+and zero accepted out of the fixed 112 contracts. All 118 normal source layouts
+and actual consumer filtering/reset, ownership, lifecycle, original actions,
+disabled inheritance and eight exact native Tab transfers pass in both themes.
+All 75 regression tests and token generation checks pass. Exact raster still
+fails all 14 compared initial toolbar rectangles; see the
+[source contract and remaining acceptance](data-table-toolbar-reference.md).
+
+The first expanded full run reached 973 PNGs before the unchanged 360-second
+deadline. Moving PNG conversion/encoding to a worker did not improve timing
+and was reverted. A concurrent generic presentation barrier caused a Dark RTL
+Brand failure and was also reverted; established live-mutation presentation
+ordering is retained. Readiness polling now gives pending UI callbacks one
+dispatcher turn bounded by the existing 16ms poll, with identical conditions,
+layout checks and deadlines. Only new toolbar source specimens, whose complete
+direction/props precede mounting, await the compositor commit alongside two
+actual Rendering callbacks within two seconds. Native pointer gates,
+final-capture stable transitions, all assertions, captures, motion windows and
+full-run deadline remain unchanged.
+
+The expanded full x64 run passes at
+`artifacts/smoke-data-table-toolbar-readiness-full` in 350.1131651 seconds.
+All 1,004 prior PNGs remain and 16 toolbar PNGs are added (1,020 total).
+All 174 protected Sunburst/Radial Bar glyph hashes remain identical. The audit
+verifies 1,728 owned pointer gates (minimum two stable transitions, maximum
+191.4257ms), 1,738 same-target key press/releases, 60 clicks, 28 tooltip gates,
+16 final-capture stability gates and eight exact toolbar Tab transfers without
+failures. All 118 normal toolbar source cases have zero geometry/value/row or
+presentation-writeback errors. All 75 local tests pass after the final build.
+
+All 14 toolbar rectangles from this full run are pixel-identical to their
+corresponding original sequential-wait full-run captures. The earlier focused
+captures differ from both full runs by six pixels at channel delta one across
+four Light cases; those diagnostics are retained without masks or tolerance.
+This comparison establishes full-run raster retention for the scheduling change.
+Browser/native exact parity remains failed and no component is accepted.
+
+## Previous Sidebar checkpoint
 
 The native Sidebar remains in progress: 49 of the fixed 112 contracts are in
 progress, 63 are pending and none is accepted. Its focused native fixture

@@ -19,6 +19,7 @@ public sealed partial class BleeckerInput : TextBox
         InitializeMotion();
         InitializePointer();
         InitializeTypography();
+        RegisterPropertyChangedCallback(HeightProperty, (_, _) => UpdateMinimumHeight(Geometry.Height));
         GotFocus += (_, _) => UpdateAppearance();
         LostFocus += (_, _) => UpdateAppearance();
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { UpdatePointerObservation(); UpdateAppearance(); });
@@ -49,16 +50,23 @@ public sealed partial class BleeckerInput : TextBox
     }
 
     private static void OnGeometryChanged(DependencyObject owner, DependencyPropertyChangedEventArgs _) => ((BleeckerInput)owner).UpdateGeometry();
+    private (double Height,double Inset,double Font) Geometry=>InputSize switch
+    {
+        BleeckerInputSize.Small => (36d, 12d, 13d),
+        BleeckerInputSize.Medium => (40d, 14d, 14d),
+        BleeckerInputSize.Large => (44d, 16d, 15d),
+        _ => throw new ArgumentOutOfRangeException(nameof(InputSize))
+    };
+    private void UpdateMinimumHeight(double height)
+    {
+        // An explicit source height (for example Toolbar's h-9 over the
+        // default medium h-10 recipe) must be able to replace that recipe.
+        MinHeight = double.IsNaN(Height) ? height : Math.Min(height, Height);
+    }
     private void UpdateGeometry()
     {
-        var (height, inset, font) = InputSize switch
-        {
-            BleeckerInputSize.Small => (36d, 12d, 13d),
-            BleeckerInputSize.Medium => (40d, 14d, 14d),
-            BleeckerInputSize.Large => (44d, 16d, 15d),
-            _ => throw new ArgumentOutOfRangeException(nameof(InputSize))
-        };
-        MinHeight = height;
+        var (height,inset,font)=Geometry;
+        UpdateMinimumHeight(height);
         FontSize = font;
         Padding = new Thickness(StartIcon is null ? inset : 40, 0, EndIcon is null ? inset : 40, 0);
     }

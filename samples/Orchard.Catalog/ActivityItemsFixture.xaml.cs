@@ -189,7 +189,7 @@ public sealed partial class ActivityItemsFixture : UserControl
         using var cursor = JsonDocument.Parse(JsonSerializer.Serialize(NativeInputSession.DescribeCursor())); var root = cursor.RootElement;
         return (root.GetProperty("Flags").GetUInt32() & 1) != 0 && root.GetProperty("global").GetInt64() == root.GetProperty("systemShapes").EnumerateArray().Single(shape => shape.GetProperty("Name").GetString() == "Hand").GetProperty("handle").GetInt64();
     }
-    private async Task AwaitAsync(Func<bool> condition, string message) { var clock = Stopwatch.StartNew(); while (!condition() && clock.ElapsedMilliseconds < 3000) { UpdateLayout(); if (condition()) break; await Task.Delay(16); } Require(condition(), message); }
+    private async Task AwaitAsync(Func<bool> condition, string message) { var clock = Stopwatch.StartNew(); var readiness = new NativeReadiness(DispatcherQueue); while (!condition() && clock.ElapsedMilliseconds < 3000) { UpdateLayout(); if (condition()) break; await readiness.WaitAsync(); } Require(condition(), message); }
     private static string Hex(SolidColorBrush brush) => $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}";
     private static T Find<T>(DependencyObject parent, string name) where T : FrameworkElement
     {

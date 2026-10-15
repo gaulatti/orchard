@@ -1230,14 +1230,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": ["tests/Reference/DataTableToolbarLayout.json", "tests/Orchard.Tests/DataTableToolbarReferenceTests.cs", "scripts/reference/verify-data-table-toolbar-derivation.mjs"],
-      "status": "pending",
+      "windowsImplementation": ["BleeckerDataTableToolbar", "IBleeckerDataTableFilterSource", "IBleeckerDataTableFilterColumn"],
+      "catalogFixtures": ["samples/Orchard.Catalog/DataTableToolbarsFixture.xaml", "samples/Orchard.Catalog/DataTableToolbarsFixture.xaml.cs"],
+      "regressionTests": ["tests/Reference/DataTableToolbarLayout.json", "tests/Orchard.Tests/DataTableToolbarReferenceTests.cs", "tests/Orchard.Tests/DataTableConsumerTests.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.Source.cs", "samples/Orchard.Catalog/DataTableToolbarsFixture.Lifecycle.cs", "tests/PackageConsumer/MainWindow.DataTableToolbar.cs", "scripts/reference/verify-data-table-toolbar-derivation.mjs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions; frozen 118-case real TanStack source reference is captured",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete all 376 source interaction states and full content/override/error/RTL and motion matrices",
+        "Verify exact raster, native contrast, Narrator, display/text scaling and collection performance",
+        "Verify fresh package consumer and both architecture builds; native ARM64 runtime remains required"
       ]
     },
     {

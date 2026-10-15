@@ -71,6 +71,11 @@ templates. `ItemInvoked` and item commands hand opaque routes to the consumer.
 Its CSS-style `Disabled` flag blocks link pointer input while preserving
 keyboard activation; command availability and `IsEnabled` are native guards.
 Complete visual and desktop acceptance remains in progress.
+`BleeckerDataTableToolbar` connects controlled column search and Reset to an
+application-owned `IBleeckerDataTableFilterSource`; the adapter retains its
+original columns, rows, initial filters and global state. Original filter/action
+content and optional templates follow the responsive 640px viewport layout.
+The native preview's complete interaction, visual and platform acceptance is open.
 `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;

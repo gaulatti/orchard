@@ -182,7 +182,7 @@ public sealed partial class SparklinesFixture:UserControl
     }
     private static T Part<T>(DependencyObject owner,string name)where T:FrameworkElement{if(owner is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(owner);i++){try{return Part<T>(VisualTreeHelper.GetChild(owner,i),name);}catch(InvalidOperationException){}}throw new InvalidOperationException($"Missing Sparkline part {name}.");}
     private static async Task FrameAsync(){var frame=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);void Presented(object? sender,object args)=>frame.TrySetResult();CompositionTarget.Rendering+=Presented;try{await frame.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Presented;}}
-    private async Task AwaitAsync(Func<bool> ready,string message){var watch=Stopwatch.StartNew();while(!ready()&&watch.Elapsed<TimeSpan.FromSeconds(2)){UpdateLayout();if (ready()) break; await Task.Delay(16);}Require(ready(),message);}
+    private async Task AwaitAsync(Func<bool> ready,string message){var watch=Stopwatch.StartNew();var readiness = new NativeReadiness(DispatcherQueue); while(!ready()&&watch.Elapsed<TimeSpan.FromSeconds(2)){UpdateLayout();if (ready()) break; await readiness.WaitAsync();}Require(ready(),message);}
     private static void Near(double actual,double expected,string label)=>Require(Math.Abs(actual-expected)<.001,$"Sparkline {label} differs: {actual:R}/{expected:R}.");
     private static void Require(bool condition,string message){if(!condition)throw new InvalidOperationException(message);}
 }

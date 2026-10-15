@@ -162,7 +162,7 @@ public sealed partial class LabelsFixture : UserControl
     private async Task AwaitAsync(Func<bool> condition, string message)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
-        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
+        var readiness = new NativeReadiness(DispatcherQueue); while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); if (condition()) break; await readiness.WaitAsync(); }
         Require(condition(), message);
     }
 

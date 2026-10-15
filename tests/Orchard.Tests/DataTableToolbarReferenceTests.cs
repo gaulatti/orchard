@@ -2,8 +2,8 @@ using System.Text.Json;
 
 namespace Orchard.Tests;
 
-// Browser producer evidence. These tests do not accept a native Toolbar;
-// its consumer/table boundary, catalog and Windows runtime are still pending.
+// Browser producer evidence. These tests do not accept the native Toolbar;
+// complete interaction, visual and Windows platform acceptance remains open.
 [TestClass]
 public sealed class DataTableToolbarReferenceTests
 {

@@ -23,6 +23,12 @@ consumer templates, keyed expansion and actual native routing/input boundary;
 see [usage and acceptance gaps](sidebars.md). It does not replace the catalog's
 existing component list.
 
+**Data Table Toolbars** follows Sidebar. It mounts the original consumer table,
+column callbacks and filtered row projection, with controlled search, status
+filter and consumer action. Focused `-Component data-table-toolbar` checks the
+118 normal source cases, actual native search/reset and lifecycle ownership.
+See [the API and remaining acceptance](data-table-toolbar-reference.md).
+
 Section Headers follows Page Headers. It covers optional eyebrow/summary text,
 empty titles, constrained widths, RTL and multilingual content. Focused
 `-Component section-header` uses the same navigation path and verifies the

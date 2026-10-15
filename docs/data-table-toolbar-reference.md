@@ -5,9 +5,9 @@ The frozen Bleecker producer is `src/components/data-table-toolbar.tsx` at
 `a2beb795287fd027857d9f4d12df9d0e76406b0fa0703a9fcf20aaa23064a0ef`.
 Its public contract is `DataTableToolbarProps<TData>` / `DataTableToolbar`:
 the original table, optional search-column ID, placeholder (default `Search...`),
-consumer filter renderers/actions and a consumer class name. Native
-implementation remains pending. Source evidence does not accept a Windows
-implementation or increase the implemented inventory count.
+consumer filter renderers/actions and a consumer class name. The native
+`BleeckerDataTableToolbar` preview implements the consumer boundary and the
+118 normal-state source layouts. Complete Windows acceptance remains open.
 
 ## State, ownership and observable behavior
 
@@ -129,19 +129,101 @@ capture file after changing capture code, dependencies, fonts or CSS. Keep the
 original native full-run deadline, motion windows, input receipts, stable
 Rendering gates, all 1,004 existing PNGs and all prior assertions intact.
 
+## Native preview and ownership
+
+Set `Table` to an application adapter implementing
+`IBleeckerDataTableFilterSource`. It exposes `ColumnFilterCount`, `GlobalFilter`,
+`GetColumn(id)`, `ResetColumnFilters()` and a `Changed` event. Each original
+column implements `GetFilterValue()` / `SetFilterValue(object?)`. The application
+owns filtering, rows, initial state and column identity; the toolbar never
+copies or replaces those objects. Raise `Changed` after external state changes.
+Table notifications are dispatched to the toolbar's UI thread; the adapter
+still owns synchronization of its data. Update content collections on the UI
+thread, as with other native UI-bound observable collections.
+The catalog's `ToolbarFilterTable` shows a real three-row consumer view.
+
+```xml
+<orchard:BleeckerDataTableToolbar Table="{x:Bind TableAdapter}" SearchColumn="title">
+    <orchard:BleeckerDataTableToolbar.FilterRenderers>
+        <Button Content="Status" Click="FilterStatus" />
+    </orchard:BleeckerDataTableToolbar.FilterRenderers>
+    <orchard:BleeckerDataTableToolbar.Actions>
+        <Button Content="New record" Command="{x:Bind CreateRecordCommand}" />
+    </orchard:BleeckerDataTableToolbar.Actions>
+</orchard:BleeckerDataTableToolbar>
+```
+
+Here `TableAdapter`, `FilterStatus` and `CreateRecordCommand` belong to the
+application. The adapter wraps that application's actual table; the toolbar
+does not supply a data store, table widget or record-creation workflow.
+
+`SearchColumn` defaults to absent. `SearchPlaceholder` defaults to `Search...`.
+The native search automation name follows that original placeholder, including
+an explicitly empty value; no alternate label is invented for it.
+The native Input renders a controlled string, including source number/boolean/
+array/object coercion, without writing that string back merely on presentation.
+Missing columns retain the source's visible empty/no-op behavior. Reset calls
+the adapter's no-argument method and leaves global state under consumer control.
+Conditional Reset removal is queued after the routed click so its real pointer
+release reaches the original target.
+
+`FilterRenderers` and `Actions` accept original UI elements, scalar content and
+nested collections. Observable collections update while mounted; replacement
+and unload detach prior subscriptions. `FilterTemplate` / `ActionTemplate`
+render application models with their original data identity. Unsupported model
+content requires a template; cycles, invalid spacing and a missing mounted
+table fail explicitly. Use ordinary native `IsEnabled` and accessible names.
+
+The 640px breakpoint reads the window viewport, independent of the toolbar's
+width. The wide search wrapper grows while its Input caps at 320px; constrained
+wide layouts retain the source's 30px input minimum and overflow. Narrow layouts
+stack the left items and trailing row. `Spacing` controls the outer group gap
+(default 12); source inner gaps remain 12 and 8. Standard padding, border, font
+and template properties remain available. The medium Input's explicit 36px
+height preserves its 14px type and 14px horizontal padding.
+
+`-Component data-table-toolbar` exercises the registered fixture. At
+`artifacts/smoke-data-table-toolbar-actions`, all 59 cases per theme
+match source geometry within the unchanged 1/32px layout boundary, controlled
+values and actual filtered row projections without presentation writeback.
+Physical H/R/Enter input, exact Reset mouse down/up, initial/global state,
+missing columns, UI Automation identity, live source/collection replacement,
+unload/remount, template restore and original model/node identity pass. Input
+height overrides, clearing the override and custom typography also pass.
+Original status-filter and trailing-action clicks, eight exact forward Tab
+press/release transfers, disabled control/peer inheritance and external updates
+while disabled pass. All 75 local regression tests and token drift checks pass.
+The final search-name follow-up passes all 118 source cases at
+`artifacts/smoke-data-table-toolbar-accessible-names`, including the explicitly
+empty placeholder. Both architecture solution builds pass with zero warnings
+or errors after that change.
+
+Exact raster acceptance fails for all 14 initial browser/native pairs:
+1,216–2,456 pixels differ, with maximum channel delta 242. The comparison uses
+the identical toolbar rectangle (native window origin 16,16 versus the producer
+root screenshot), with no masks or tolerance. Complete window captures are
+retained alongside the report at `artifacts/data-table-toolbar-raster-report.json`.
+
+The full x64 run at `artifacts/smoke-data-table-toolbar-readiness-full` passes
+in 350.1131651 seconds, retaining all 1,004 prior PNGs and adding 16 toolbar PNGs.
+All 174 protected chart glyph hashes are unchanged. Native source, exact input,
+tooltip and final-capture audits pass; see [runtime evidence](runtime-evidence.md).
+Readiness gives queued UI work one turn bounded by the original 16ms poll.
+Static toolbar source cases await both a commit and two real Rendering callbacks
+with their complete props set before mounting. Live mutations and all pointer/
+final-capture gates keep their existing ordering. All 14 native source toolbar
+rectangles remain pixel-identical between the original and optimized full runs.
+
 ## Native acceptance still required
 
-- Implement the complete consumer-owned table/filter boundary: lookup,
-  controlled search, original column callbacks, actual filtered rows, global
-  truthiness and reset-to-initial semantics. Support external updates, old
-  source detachment, table/column replacement and original state retention.
-- Implement original filter/action content and templates, responsive wrapper/
-  input layout, overflow, RTL, empty/long/non-Latin content, source paint,
-  focus/hover/held/release and enabled/reduced-motion behavior without Windows
-  defaults changing the branded appearance.
-- Add and register a real native catalog fixture and consumer table workflow;
-  exercise actual native input, ownership, UI Automation and lifecycle paths.
-  Add the independent NuGet consumer and both architecture builds/runtime.
+- Extend the normal-state and representative input coverage to all 376 source
+  interaction states, complete content/override/error/RTL and enabled/motion
+  matrices, reverse/edge focus traversal and every original action/filter callback.
+- Verify final matching-source package/catalog artifacts and native ARM64
+  runtime. The provisional independent x64 consumer passes in both themes,
+  including physical typing, original row/column identity and initial/global
+  reset semantics, and removes its own GUID cache. Both solution architectures
+  compile; those results do not establish native ARM64 runtime acceptance.
 - Verify exact rendered parity, full content/override/error matrices, Windows
   contrast, Narrator, display/text scaling and measured collection performance.
   Include monitoring/editorial compositions and final matching-source artifacts.

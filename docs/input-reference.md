@@ -297,6 +297,15 @@ passes at `artifacts/package-consumer-input-adornment`; package SHA-256 is
 ARM64 runtime, scaling and full typography parity remain open. This template
 change has no backend metrics impact; the unavailable public wiki is unchanged.
 
+### Explicit height override
+
+An explicit `Height` can reduce the size recipe's minimum without changing its
+font or padding. The table toolbar uses medium Input at 36px with 14px type and
+14px horizontal padding. Clearing `Height` restores the recipe minimum (40px
+medium, 44px large). A height-only update preserves consumer font and padding
+overrides. These transitions pass in both native toolbar themes; the complete
+Input suite remains required when this shared primitive changes.
+
 ### Remaining acceptance gates
 
 - Register all three sizes, empty/populated, both adornments independently and

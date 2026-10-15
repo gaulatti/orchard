@@ -241,7 +241,7 @@ public sealed partial class AlertsFixture : UserControl
     private async Task AwaitAsync(Func<bool> condition, string message, int milliseconds = 3000)
     {
         var watch = System.Diagnostics.Stopwatch.StartNew();
-        while (!condition() && watch.Elapsed < TimeSpan.FromMilliseconds(milliseconds)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
+        var readiness = new NativeReadiness(DispatcherQueue); while (!condition() && watch.Elapsed < TimeSpan.FromMilliseconds(milliseconds)) { UpdateLayout(); if (condition()) break; await readiness.WaitAsync(); }
         Require(condition(), message);
     }
     private static bool IsPresented(BleeckerAlert alert)

@@ -225,7 +225,7 @@ public sealed partial class BrandLockupsFixture : UserControl
                 frames=frames.Select(frame=>new{frame.Phase,frame.Milliseconds,frame.Opacity})}));
         }
     }
-    private async Task AwaitAsync(Func<bool> predicate,string error){var timer=Stopwatch.StartNew();while(!predicate()&&timer.Elapsed<TimeSpan.FromSeconds(3)){UpdateLayout();if (predicate()) break; await Task.Delay(16);}Require(predicate(),error);}
+    private async Task AwaitAsync(Func<bool> predicate,string error){var timer=Stopwatch.StartNew();var readiness = new NativeReadiness(DispatcherQueue); while(!predicate()&&timer.Elapsed<TimeSpan.FromSeconds(3)){UpdateLayout();if (predicate()) break; await readiness.WaitAsync();}Require(predicate(),error);}
     private static T Find<T>(DependencyObject root,string? name=null) where T:FrameworkElement=>Descendants<T>(root).First(item=>name is null||item.Name==name);
     private static IEnumerable<T> Descendants<T>(DependencyObject root) where T:DependencyObject{for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++){var child=VisualTreeHelper.GetChild(root,i);if(child is T match)yield return match;foreach(var nested in Descendants<T>(child))yield return nested;}}
     private static string Hex(SolidColorBrush brush)=>$"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}";

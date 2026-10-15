@@ -130,7 +130,7 @@ public sealed partial class CurrencyChartsFixture : UserControl
         public ObservableRecord() { base["name"] = "A"; base["total"] = 10d; }
         public new object? this[string key] { get => base[key]; set { base[key] = value; handlers?.Invoke(this, new PropertyChangedEventArgs(key)); } }
     }
-    private async Task AwaitAsync(Func<bool> condition, string message) { var watch = Stopwatch.StartNew(); while (!condition() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); } Require(condition(), message); }
+    private async Task AwaitAsync(Func<bool> condition, string message) { var watch = Stopwatch.StartNew(); var readiness = new NativeReadiness(DispatcherQueue); while (!condition() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); if (condition()) break; await readiness.WaitAsync(); } Require(condition(), message); }
     private static async Task MountAsync(Panel host, FrameworkElement element)
     {
         var loaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Loaded(object sender, RoutedEventArgs args) => loaded.TrySetResult();

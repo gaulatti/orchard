@@ -174,7 +174,7 @@ public sealed partial class StatCardsFixture:UserControl
     private static IEnumerable<T> Descendants<T>(DependencyObject owner)where T:DependencyObject{for(var i=0;i<VisualTreeHelper.GetChildrenCount(owner);i++){var child=VisualTreeHelper.GetChild(owner,i);if(child is T match)yield return match;foreach(var nested in Descendants<T>(child))yield return nested;}}
     private static T Part<T>(DependencyObject owner,string name)where T:FrameworkElement=>Descendants<T>(owner).FirstOrDefault(x=>x.Name==name)??throw new InvalidOperationException("Missing Stat Card part "+name);
     private static async Task FrameAsync(){var frame=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);void Presented(object? sender,object args)=>frame.TrySetResult();CompositionTarget.Rendering+=Presented;try{await frame.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Presented;}}
-    private async Task AwaitAsync(Func<bool> ready,string message){var watch=Stopwatch.StartNew();while(!ready()&&watch.Elapsed<TimeSpan.FromSeconds(2)){UpdateLayout();if (ready()) break; await Task.Delay(16);}Require(ready(),message);}
+    private async Task AwaitAsync(Func<bool> ready,string message){var watch=Stopwatch.StartNew();var readiness = new NativeReadiness(DispatcherQueue); while(!ready()&&watch.Elapsed<TimeSpan.FromSeconds(2)){UpdateLayout();if (ready()) break; await readiness.WaitAsync();}Require(ready(),message);}
     private static void Near(double actual,double expected,string label)=>Require(Math.Abs(actual-expected)<.001,$"Stat Card {label} differs: {actual:R}/{expected:R}.");
     private static void Require(bool condition,string message){if(!condition)throw new InvalidOperationException(message);}
 }
