@@ -100,6 +100,11 @@ non-alpha byte values: the same `> 8` predicate with an early exit. An actual
 1024x745 capture and blank/eight-value/varied inputs retain equivalent results;
 20 benchmark repetitions take 1059.104ms before and 19.530ms after. Capture
 pixels, required checks and deadlines remain unchanged.
+The same early exit applies to composed screen capture's duplicate blank
+predicate. The next run fails a pre-existing Attention fractional-scroll mask;
+its retained pixels and the stronger presentation gate are documented in
+[the Attention contract](attention-surface-reference.md). That run is also
+not accepted as a complete catalog pass.
 
 Release x64 and ARM64 solution builds pass without warnings; all 44 regression
 tests and generated-token validation pass. A regular `Gaulatti.Orchard.0.1.0`

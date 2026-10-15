@@ -191,7 +191,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         var originalMargin=Action.ReadLocalValue(MarginProperty);var originalForeground=Action.ReadLocalValue(ForegroundProperty);
         var originalBackground=Action.ReadLocalValue(BackgroundProperty);var gradientBackground=Action.Background;
         var originalDensity=Action.Density;var originalContent=Action.Content;
-        var samples=new List<object>();
+        var samples=new List<object>(); var presentationTrace=new List<object>();
         int[]? establishedInk=null;var establishedWidth=0;var establishedHeight=0;
         ScrollViewer? scroll = null;
         for (DependencyObject? current = Action; current is not null; current = VisualTreeHelper.GetParent(current))
@@ -215,8 +215,21 @@ public sealed partial class AttentionSurfacesFixture : UserControl
                 var scrollTarget = originalScrollOffset.Value + probe.ScrollDelta;
                 scroll.ChangeView(null, scrollTarget, null, true);
                 await AwaitAsync(() => Math.Abs(scroll.VerticalOffset-scrollTarget) < .001, "Attention fractional scroll did not settle at its native target.");
-                var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
-                void Frame(object? sender,object args){if(++frames==2)presented.TrySetResult();}
+                var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+                var watch=System.Diagnostics.Stopwatch.StartNew(); var frames=new List<object>();
+                (double Scroll,double OwnerY,double ParagraphY,double TextY,Thickness Margin)? previous=null; var stable=0;
+                void Frame(object? sender,object args)
+                {
+                    var state=(scroll.VerticalOffset,Action.TransformToVisual(XamlRoot.Content).TransformPoint(new()).Y,
+                        paragraph.TransformToVisual(XamlRoot.Content).TransformPoint(new()).Y,
+                        text.TransformToVisual(XamlRoot.Content).TransformPoint(new()).Y,text.Margin);
+                    stable=previous==state?stable+1:0; previous=state;
+                    frames.Add(new{milliseconds=watch.Elapsed.TotalMilliseconds,scroll=state.VerticalOffset,ownerY=state.Item2,paragraphY=state.Item3,textY=state.Item4,margin=state.Margin,stable});
+                    // Require two complete stable presentations before sampling
+                    // the next frame; counting arbitrary frames can capture the
+                    // previous glyph arrangement after a fractional scroll.
+                    if(stable>=2)presented.TrySetResult();
+                }
                 CompositionTarget.Rendering+=Frame;
                 try{await presented.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
                 await input.RequireForegroundAsync();
@@ -224,6 +237,8 @@ public sealed partial class AttentionSurfacesFixture : UserControl
                 var textOrigin=text.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
                 var paragraphOrigin=paragraph.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
                 var file=$"attention-baseline-{scheme}-{samples.Count}.png";
+                presentationTrace.Add(new{file,probe.ScrollDelta,frames});
+                await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baseline-presentation-{scheme}.json"),JsonSerializer.Serialize(presentationTrace));
                 var client=await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,file));
                 Require(bounds.X>=client.X&&bounds.Y>=client.Y&&bounds.Right<=client.Right&&bounds.Bottom<=client.Bottom,
                     "Fractional baseline specimen is outside the owned composed capture.");

@@ -325,3 +325,22 @@ and painted bounds in both appearances at
 The complete local x64 catalog passes Light and Dark with the sizing correction
 at `artifacts/smoke-attention-sizing-all`. Fresh native ARM64 and hosted contrast
 checks remain required; the correction does not relax either gate.
+
+The later Pie/Donut full catalog at
+`artifacts/smoke-pie-chart-published-early-exit-full` fails the last Dark
+fractional-scroll return: the established mask reports 0/124 at the expected
+positions. Retained screen pixels contain the same 124 pixels one device pixel
+above those positions, with the expected foreground. The earlier two-frame
+counter did not record whether text layout changed during those frames.
+The fixture now records scroll, owner/paragraph/text origins and text margins
+on each Rendering event, and requires two consecutive unchanged transitions
+before composed capture. The existing two-second presentation deadline and
+exact glyph-mask assertion remain unchanged. No Attention production code is
+changed by this observation correction; runtime evidence must confirm it.
+The focused x64 run at `artifacts/smoke-attention-stable-presentation` passes
+both exact 124-pixel masks across all seven transitions. Retained frame traces
+show the first five cases in each theme changing text Y by 0.5px between the
+first and second Rendering events while their text margin is already updated.
+Those cases settle across four observed frames; the scroll cases settle across
+three. This directly demonstrates why counting two arbitrary frames is not a
+settled-layout test. Full catalog and native ARM64 validation remain separate.
