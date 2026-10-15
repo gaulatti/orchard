@@ -67,6 +67,17 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="sidebar",environment=RuntimeEnvironment()}));
             }
+            else if(args.Contains("--smoke-data-table-toolbar-interactions"))
+            {
+                var results=new List<object>();
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                {
+                    CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(DataTableToolbars);
+                    results.Add(await DataTableToolbars.VerifyInteractionsAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder));
+                    await CaptureFixtureAsync(DataTableToolbars,Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="data-table-toolbar-interactions",environment=RuntimeEnvironment(),results}));
+            }
             else if(args.Contains("--smoke-data-table-toolbar"))
             {
                 foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})

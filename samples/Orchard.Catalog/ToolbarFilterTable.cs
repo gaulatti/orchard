@@ -22,6 +22,8 @@ internal sealed class ToolbarFilterTable:IBleeckerDataTableFilterSource
     public event EventHandler? Changed{add{changed+=value;Subscribers++;}remove{changed-=value;Subscribers--;}}
     internal int Subscribers{get;private set;}
     internal int Resets{get;private set;}
+    internal IReadOnlyDictionary<string,object?> CurrentFilters=>filters;
+    internal IReadOnlyList<Row> Rows=>OriginalRows;
     internal List<(Column Column,object? Value)> Writes{get;}=[];
     internal ObservableCollection<Row> VisibleRows{get;}=[];
     internal string VisibleText=>string.Join('|',VisibleRows.Select(row=>row.Title));

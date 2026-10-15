@@ -7,7 +7,7 @@ using Windows.Foundation;
 namespace Orchard.Catalog;
 
 /// <summary>Physical fixture input scoped to the catalog's own native window.</summary>
-internal sealed class NativeInputSession : IDisposable
+internal sealed partial class NativeInputSession : IDisposable
 {
     private readonly XamlRoot root;
     private readonly CursorPoint originalPointer;

@@ -379,11 +379,71 @@ Reports retain zero masks and zero tolerance at
 `artifacts/data-table-toolbar-reset-browser-raster.json`. Inventory status
 remains 50 in progress, 62 pending, none accepted out of the fixed 112.
 
+### Complete consumer interaction replay
+
+The catalog adds a dedicated `data-table-toolbar-interactions` smoke check for
+all 376 recorded states across 52 original scenarios (188 states / 26 scenarios
+per theme). It preserves the existing full-suite checks and 360-second limit.
+Run the dedicated matrix, then independently audit its output:
+
+```powershell
+./scripts/smoke-catalog.ps1 -Executable <catalog-exe> -ClientSize 1024,745 -ExpectedArchitecture X64 -Component data-table-toolbar-interactions -Output <output-directory>
+node scripts/verify-data-table-toolbar-interactions.mjs <output-directory>
+```
+
+The replay uses real native letter keys, Shift for capitals, Ctrl+A/Backspace
+for replacement, actual mouse hover/down/up/click and routed Tab transfers.
+Each key and modifier retains its original focused target and one down/up
+receipt. Physical typing produces a native change per character; the producer's
+Playwright `fill` produces a single change. Their resulting controlled state,
+original column, filters and rendered consumer rows are compared at each
+recorded boundary. Initial-filter restoration, global-only Reset, disabled
+consumer slots, missing columns, live table/column replacement and replacement
+slots follow the original frozen sequence.
+
+Each boundary checks original table, column and row identities, raw filter
+values, rendered row text, search/Reset/slot bounds and visibility, Reset
+callback timing and the original slot callback role/index/table/data array/UI
+element. Callback records are snapshots for that exact step; each capture also
+retains the measured toolbar rectangle in the window for later raster comparison.
+The standalone
+audit verifies reference SHA-256, the complete ordered case/state/capture set,
+all routed key/modifier/pointer receipts, 134 Tab transfers, held releases and
+two final catalog captures. It explicitly reports component acceptance as false.
+
+The fixture has visible Before/After controls and a visible Outside toolbar
+host control, with native cyclic Tab navigation. That last control represents
+the producer leaving its document for browser chrome; its actual native type,
+name and host-boundary mapping remain in every focus record. Focus after
+conditional Reset removal is separately recorded: the producer reports document
+focus, while WinUI moves to the next action or After control. Those differences
+remain open; the library does not force focus to a fixture-specific target.
+The new consumer/geometry/input gate does not establish rendered paint, motion,
+accessibility or complete focus parity.
+
+The focused run at
+`artifacts/smoke-data-table-toolbar-interactions-client-sized` passes the CLI
+and independent audit. All 376 state PNGs are exactly 1000×745; both final
+catalog PNGs are 1024×745. There are 86 owned pointer gates/moves (minimum two
+stable transitions, maximum 51.5934ms), 316 same-target key actions including
+84 Shift/Ctrl combinations, 68 clicks, 18 exact held releases and 134 exact
+Tab transfers. All 52 scenarios and 376 consumer/geometry/ownership checks
+pass. The embedded source reference SHA-256 matches the frozen derived file.
+The 26 conditional-removal focus differences (13 per theme) stay in the audit.
+
+Two earlier diagnostics remain preserved. The first completed the replay but
+the CLI rejected missing final catalog renders. The next completed replay
+failed the independent image-size check: the new fixture had saved startup
+window dimensions before input acquisition applied the requested client size.
+It now saves dimensions after acquisition and restores those exact dimensions.
+No size assertion or existing full-suite check was relaxed.
+
 ## Native acceptance still required
 
-- Extend the normal-state and representative input coverage to all 376 source
-  interaction states, complete content/override/error/RTL and enabled/motion
-  matrices, reverse/edge focus traversal and every original action/filter callback.
+- Complete rendered paint/focus/motion acceptance for the 376 source interaction
+  states, full content/override/error/RTL matrices and reverse/edge focus traversal.
+  The dedicated replay checks consumer state, geometry, ownership and native input;
+  source/native focus differences after conditional Reset removal remain open.
 - Verify native ARM64 runtime; both solution architectures and fresh consumer
   builds pass, and the independent x64 consumer passes physical typing,
   original row/column identity and initial/global reset semantics in both themes.
