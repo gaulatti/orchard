@@ -42,3 +42,5 @@ The catalog registers all variants/sizes, disabled/loading controls, full-width 
 Consumer templates must provide `PART_Action` (`Button`) and `PART_Progress` (`ProgressRing`). They may provide `PART_LinkUnderline` (`Border`) for the built-in link treatment. Keep the native action's command, parameter, content and automation bindings when replacing the template. Missing required parts fail explicitly.
 
 Acceptance remains in progress: the complete keyboard/pointer matrix, Narrator, actual contrast settings, scaling, reduced motion, loading focus behavior and ARM64 runtime. Desktop pointer testing confirms the link's hover-only underline; runtime checks verify its text color binding through each visual state. The [rendered visual audit](visual-audit.md) records Bleecker measurements and outstanding appearance work. Published reports and captures prove only the checks they exercise.
+
+Light Ghost hover/pressed sand uses byte alpha 31 at brush opacity 1, based on the [actual source/native alpha diagnostic](brush-alpha-reference.md). Dark, disabled, contrast and other variant recipes retain their existing representations.

@@ -649,6 +649,11 @@ Inventory remains 50 in progress, 62 pending, none accepted out of 112.
 
 ## Native acceptance still required
 
+The Light Reset hover/pressed sand now uses byte alpha 31 with brush opacity 1.
+The [alpha diagnostic](brush-alpha-reference.md) records actual source/native
+Reset paint, legacy/floor negative controls and the Dark flat-cell counterexample.
+This correction does not establish full toolbar raster acceptance.
+
 - Complete rendered paint/focus/motion acceptance for the 376 source interaction
   states, full content/override/error/RTL matrices and reverse/edge focus traversal.
   The dedicated replay checks consumer state, geometry, ownership and native input;

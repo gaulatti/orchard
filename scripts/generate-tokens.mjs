@@ -189,7 +189,12 @@ for (const variant of ['Primary', 'Secondary', 'Outline', 'Subtle', 'Ghost', 'Li
           : state === 'Disabled' ? 'SystemColorGrayTextColor' : filled ? 'SystemColorHighlightTextColor' : 'SystemColorWindowTextColor';
         const color = theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(key.startsWith('#') ? key : colors[key]);
         const opacity = theme === 'HighContrast' ? 1 : alpha * (state === 'Disabled' ? 0.45 : 1);
-        button += `            <SolidColorBrush x:Key="Button${property}${state}" Color="${color}" Opacity="${opacity}" />\n`;
+        // Native brush-opacity paints light Ghost sand like alpha 30/255 here.
+        // The frozen browser and the actual native Reset paint match at 31/255.
+        // Keep the dark recipe and all other palettes on their measured paths.
+        const byteAlpha = theme === 'Light' && (variant === 'Ghost' || variant === 'IconGhost') && property === 'Background' && hover;
+        const brushColor = byteAlpha ? '#' + Math.round(opacity * 255).toString(16).padStart(2, '0').toUpperCase() + color.slice(3) : color;
+        button += `            <SolidColorBrush x:Key="Button${property}${state}" Color="${brushColor}" Opacity="${byteAlpha ? 1 : opacity}" />\n`;
       }
     }
     button += '        </ResourceDictionary>\n';

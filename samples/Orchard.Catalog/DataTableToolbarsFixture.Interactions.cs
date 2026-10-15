@@ -124,9 +124,9 @@ public sealed partial class DataTableToolbarsFixture
         var hit=Microsoft.UI.Xaml.Media.VisualTreeHelper.FindElementsInHostCoordinates(logical,root).FirstOrDefault();var owned=false;
         for(var node=hit as DependencyObject;node is not null;node=Microsoft.UI.Xaml.Media.VisualTreeHelper.GetParent(node))if(ReferenceEquals(node,reset)){owned=true;break;}
         var surface=Descendants<ContentPresenter>(reset).SingleOrDefault(element=>element.Name=="ContentPresenter");
-        return owned&&surface?.Background is Microsoft.UI.Xaml.Media.SolidColorBrush background&&background.Color.A==255&&
+        return owned&&surface?.Background is Microsoft.UI.Xaml.Media.SolidColorBrush background&&background.Color.A==(scheme==BleeckerColorScheme.Light?31:255)&&
             background.Color.R==(scheme==BleeckerColorScheme.Light?230:255)&&background.Color.G==(scheme==BleeckerColorScheme.Light?213:255)&&background.Color.B==(scheme==BleeckerColorScheme.Light?184:255)&&
-            Math.Abs(background.Opacity-(scheme==BleeckerColorScheme.Light?.12:.06))<.000001;
+            Math.Abs(background.Opacity-(scheme==BleeckerColorScheme.Light?1:.06))<.000001;
     }
 
     private void VerifyToolbarInteractionGeometry(BleeckerDataTableToolbar bar,JsonElement expected)

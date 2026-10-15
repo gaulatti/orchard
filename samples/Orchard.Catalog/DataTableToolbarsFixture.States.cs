@@ -28,9 +28,9 @@ public sealed partial class DataTableToolbarsFixture
         void CheckPaint()
         {
             var surface=Descendants<ContentPresenter>(reset).Single(element=>element.Name=="ContentPresenter");
-            Require(surface.Background is SolidColorBrush background&&background.Color.A==255&&
+            Require(surface.Background is SolidColorBrush background&&background.Color.A==(scheme==BleeckerColorScheme.Light?31:255)&&
                 background.Color.R==(scheme==BleeckerColorScheme.Light?230:255)&&background.Color.G==(scheme==BleeckerColorScheme.Light?213:255)&&
-                background.Color.B==(scheme==BleeckerColorScheme.Light?184:255)&&Math.Abs(background.Opacity-(scheme==BleeckerColorScheme.Light?.12:.06))<.000001,
+                background.Color.B==(scheme==BleeckerColorScheme.Light?184:255)&&Math.Abs(background.Opacity-(scheme==BleeckerColorScheme.Light?1:.06))<.000001,
                 "Reset's rendered hover/held background differs from the original Ghost palette.");
             Require(surface.Foreground is SolidColorBrush foreground&&foreground.Color.A==255&&foreground.Opacity==1&&
                 foreground.Color.R==(scheme==BleeckerColorScheme.Light?45:240)&&foreground.Color.G==(scheme==BleeckerColorScheme.Light?45:244)&&foreground.Color.B==(scheme==BleeckerColorScheme.Light?45:248),

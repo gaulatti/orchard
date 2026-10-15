@@ -27,3 +27,5 @@ The catalog registers all nine size/variant combinations plus a disabled action.
 Physical desktop testing in the dark theme verifies the Edit fixture: pointer click increments its command result, Tab/Shift+Tab displays its branded focus ring, Space increments the result again, and its Edit story tooltip appears. Evidence: `artifacts/icon-keyboard-dark.jpg`.
 
 Still open: the remaining physical keyboard/pointer and tooltip matrix, Narrator, actual Windows contrast settings, display/text scaling, reduced motion and ARM64 runtime. ARM64 compilation is separate evidence and does not establish runtime support.
+
+Light Ghost hover/pressed backgrounds share the [measured byte-alpha sand recipe](brush-alpha-reference.md) with text Ghost buttons. Foreground, border, disabled and contrast resources retain their existing recipes.

@@ -55,7 +55,8 @@ public sealed partial class MainWindow : Window
         Directory.CreateDirectory(folder);
         try
         {
-            if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
+            if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            else if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
             else if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
             else if (args.Contains("--smoke-sidebar"))
             {
