@@ -68,6 +68,18 @@ Release x64 and ARM64 solution builds pass without warnings; all 44 existing
 unit/resource regressions and generated-token validation pass. Independent
 package and complete published catalog verification are recorded after they run.
 
+The regular 0.1.0 package is built from clean source commit
+`d6502425f138e5d046765c944644134d7f5e300d`; SHA-256 is
+`4f83502c585ea3cd08585d876659dc9a3ec7c288463812cad47c2c7875e7655c`.
+Repository metadata matches that commit. The first x64 independent-consumer
+geometry assertion reports X=120, Y=113.33333333333334 and radius
+6.794000148773193. The native path parser stores the source's rounded 6.794
+coordinate in single precision. The consumer now compares the exact stored
+float value rather than a double literal; coordinate bounds are unchanged.
+Initial reports remain at `artifacts/package-consumer-scatter-chart` and
+`artifacts/package-consumer-scatter-chart-geometry`. This correction changes
+the consumer assertion only; the package and library remain unchanged.
+
 Full shape/glyph/legend/cursor/tooltip raster and effects, motion, complete
 data/key/formatter/override/RTL coverage, actual contrast, Narrator, display/text
 scaling, collection performance and native ARM64 acceptance remain open. This
