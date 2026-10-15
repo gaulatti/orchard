@@ -65,6 +65,12 @@ that breakpoint. Full visual/platform acceptance remains in progress.
 `BleeckerDashboardGrid` accepts consumer children, Columns 1–6 or automatic (0),
 and responsive `BleeckerDashboardSpan` wrappers (One–Four or Full). The 24px gap
 uses the shared group token; window viewport breakpoints follow the source.
+`BleeckerSidebar` retains consumer `ObservableCollection<BleeckerSidebarItem>`
+records, keyed group expansion, header/footer slots and optional native link
+templates. `ItemInvoked` and item commands hand opaque routes to the consumer.
+Its CSS-style `Disabled` flag blocks link pointer input while preserving
+keyboard activation; command availability and `IsEnabled` are native guards.
+Complete visual and desktop acceptance remains in progress.
 `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;

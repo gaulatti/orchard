@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Text.Json;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.ViewManagement;
 using Windows.Graphics;
 using Windows.Graphics.Imaging;
@@ -56,6 +57,16 @@ public sealed partial class MainWindow : Window
         {
             if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
             else if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
+            else if (args.Contains("--smoke-sidebar"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(Sidebars);
+                    await Sidebars.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder);
+                    await CaptureFixtureAsync(Sidebars,Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="sidebar",environment=RuntimeEnvironment()}));
+            }
             else if (args.Contains("--smoke-breadcrumb")) await RunBreadcrumbSmokeAsync(folder);
             else if (args.Contains("--smoke-alerts")) await RunAlertSmokeAsync(folder);
             else if (args.Contains("--smoke-brand")) await RunBrandSmokeAsync(folder);
@@ -564,6 +575,8 @@ public sealed partial class MainWindow : Window
             await DashboardSections.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DashboardGrids);
             await DashboardGrids.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(Sidebars);
+            await Sidebars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(BarCharts);
             await BarCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(AreaCharts);
@@ -747,14 +760,13 @@ public sealed partial class MainWindow : Window
 
     internal static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
     {
-        using var stream = new InMemoryRandomAccessStream();
-        var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-        encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied, (uint)width, (uint)height, 96, 96, pixels);
-        await encoder.FlushAsync();
-        using var reader = new DataReader(stream.GetInputStreamAt(0));
-        await reader.LoadAsync(checked((uint)stream.Size));
-        var output = new byte[checked((int)stream.Size)];
-        reader.ReadBytes(output);
+        // Use Windows' own conversion, including its premultiplied-alpha
+        // rounding, then encode losslessly with faster Deflate compression.
+        using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
+        using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
+        var rgba = new byte[pixels.Length];
+        straight.CopyToBuffer(rgba.AsBuffer());
+        var output = NativeCapturePng.Encode(rgba, width, height);
         await File.WriteAllBytesAsync(path, output);
     }
 }

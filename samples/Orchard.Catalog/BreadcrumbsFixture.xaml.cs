@@ -287,7 +287,7 @@ public sealed partial class BreadcrumbsFixture : UserControl
     private async Task AwaitAsync(Func<bool> condition, string message, Func<string>? details = null)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
-        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); }
+        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
         Require(condition(), $"{message} {details?.Invoke()}");
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

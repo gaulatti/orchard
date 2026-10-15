@@ -77,12 +77,12 @@ public sealed class CatalogCoverageTests
             // typed template. Its internal constructor is deliberately not a
             // second consumer factory. Require all four source-contract bindings
             // in that rendered fixture instead of inventing a XAML instance.
-            if (registration.Name == "BleeckerBrandLinkContext")
+            if (registration.Name is "BleeckerBrandLinkContext" or "BleeckerSidebarLinkContext")
             {
                 XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
                 var template = fixture.Descendants().Single(element => element.Name.LocalName == "DataTemplate" &&
                     ((string?)element.Attribute(x + "DataType"))?.EndsWith(":" + registration.Name, StringComparison.Ordinal) == true);
-                foreach (var field in new[] { "Href", "Label", "Content", "Command" })
+                foreach (var field in registration.Name == "BleeckerSidebarLinkContext" ? new[] { "Href", "Label", "Content", "Command", "Style", "Item" } : new[] { "Href", "Label", "Content", "Command" })
                     Assert.IsTrue(template.Descendants().Attributes().Any(attribute => attribute.Value == "{x:Bind " + field + "}" ||
                         attribute.Value.StartsWith("{x:Bind " + field + ",", StringComparison.Ordinal)),
                         $"Brand renderer fixture does not bind context {field}.");

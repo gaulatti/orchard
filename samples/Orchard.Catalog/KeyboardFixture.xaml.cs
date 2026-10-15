@@ -109,7 +109,7 @@ public sealed partial class KeyboardFixture : UserControl
     private async Task AwaitAsync(Func<bool> condition, string message)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
-        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); await Task.Delay(16); }
+        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
         Require(condition(), message);
     }
 

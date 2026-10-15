@@ -115,7 +115,7 @@ public sealed partial class MenusFixture : UserControl
     private async Task AwaitMenuStateAsync(Func<bool> condition)
     {
         var watch = System.Diagnostics.Stopwatch.StartNew();
-        while (!condition() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); }
+        while (!condition() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
         Require(condition(), "Menu popup did not complete its lifecycle transition.");
     }
     private void VerifyContentAndShortcuts()

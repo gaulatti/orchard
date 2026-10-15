@@ -1,0 +1,28 @@
+<UserControl x:Class="Orchard.Catalog.SidebarsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <DataTemplate x:Key="ScalarSlot">
+   <ContentControl Tag="{Binding}" Height="24" Padding="0" IsTabStop="False"><TextBlock Text="Templated content" FontFamily="{StaticResource BleeckerPrimaryFontFamily}" Foreground="{ThemeResource BleeckerTextPrimaryBrush}" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" /></ContentControl>
+  </DataTemplate>
+  <DataTemplate x:Key="ConsumerLink" x:DataType="orchard:BleeckerSidebarLinkContext">
+   <HyperlinkButton Content="{x:Bind Content, Mode=OneWay}" Command="{x:Bind Command}" Style="{x:Bind Style}" Tag="{x:Bind Item, Mode=OneWay}" AutomationProperties.Name="{x:Bind Label, Mode=OneWay}" AutomationProperties.HelpText="{x:Bind Href, Mode=OneWay}" />
+  </DataTemplate>
+ </UserControl.Resources>
+ <StackPanel x:Name="Rows" Spacing="16">
+  <TextBlock x:Name="Heading" Text="Sidebar" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-owned destinations, retained groups, independent scrolling and native link templates." Style="{StaticResource BleeckerBodyStyle}" />
+  <Button x:Name="Outside" Content="Outside navigation" Style="{StaticResource BleeckerSecondaryButtonStyle}" HorizontalAlignment="Left" />
+  <Grid x:Name="Stage">
+   <orchard:BleeckerSidebar x:Name="Preview" Height="480" Header="Fictional workspace" Footer="Local only">
+    <orchard:BleeckerSidebarItem Id="overview" Label="Overview" Href="#overview" Active="True" />
+    <orchard:BleeckerSidebarItem Id="coverage" Label="Coverage">
+     <orchard:BleeckerSidebarItem.Items>
+      <orchard:BleeckerSidebarItem Id="drafts" Label="Drafts" Href="#drafts" />
+      <orchard:BleeckerSidebarItem Id="published" Label="Published" Href="#published" Active="True" />
+     </orchard:BleeckerSidebarItem.Items>
+    </orchard:BleeckerSidebarItem>
+    <orchard:BleeckerSidebarItem Id="settings" Label="Settings" Href="#settings" Disabled="True" />
+   </orchard:BleeckerSidebar>
+  </Grid>
+  <TextBlock x:Name="Status" Text="No destination invoked" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite" />
+ </StackPanel>
+</UserControl>

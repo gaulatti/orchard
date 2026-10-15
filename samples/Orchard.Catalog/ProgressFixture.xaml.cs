@@ -141,7 +141,7 @@ public sealed partial class ProgressFixture : UserControl
     private async Task SettleAsync(Func<bool> condition)
     {
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
-        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); await Task.Delay(16); }
+        while (!condition() && elapsed.Elapsed < TimeSpan.FromSeconds(1)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
         Require(condition(), "Progress did not reach its destination width.");
     }
     private static string Hex(Brush brush)

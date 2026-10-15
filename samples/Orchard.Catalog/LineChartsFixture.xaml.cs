@@ -344,7 +344,7 @@ public sealed partial class LineChartsFixture : UserControl
     private static IReadOnlyDictionary<string, object?> Record(string label, double total, double selected) => new Dictionary<string, object?> { { "label", label }, { "total", total }, { "selected", selected } };
     private async Task AwaitAsync(Func<bool> condition, string message)
     {
-        var clock = System.Diagnostics.Stopwatch.StartNew(); while (!condition() && clock.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); }
+        var clock = System.Diagnostics.Stopwatch.StartNew(); while (!condition() && clock.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); if (condition()) break; await Task.Delay(16); }
         Require(condition(), message);
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

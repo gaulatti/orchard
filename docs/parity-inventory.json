@@ -1192,14 +1192,14 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": ["tests/Reference/SidebarLayout.json", "tests/Orchard.Tests/SidebarReferenceTests.cs"],
-      "status": "pending",
+      "windowsImplementation": ["BleeckerSidebar", "BleeckerSidebarItem", "BleeckerSidebarLinkContext"],
+      "catalogFixtures": ["samples/Orchard.Catalog/SidebarsFixture.xaml", "samples/Orchard.Catalog/SidebarsFixture.xaml.cs"],
+      "regressionTests": ["tests/Reference/SidebarLayout.json", "tests/Orchard.Tests/SidebarReferenceTests.cs", "tests/Orchard.Tests/CatalogCoverageTests.cs", "samples/Orchard.Catalog/SidebarsFixture.xaml.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact raster and complete state, motion/reversal, arbitrary content/template, override and RTL matrices",
+        "Actual Windows contrast, Narrator, display/text scaling and measured collection performance",
+        "Native ARM64 runtime, full catalog verification and final versioned package/catalog artifacts"
       ]
     },
     {

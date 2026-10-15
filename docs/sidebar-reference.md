@@ -161,19 +161,74 @@ code, source, fonts, CSS or tooling. `--probe` runs seven Light fixtures only
 and cannot be published by the full-capture derivation. Input/presentation
 budgets and all existing native assertions remain unchanged.
 
-## Native acceptance remains pending
+## Native implementation and remaining acceptance
 
-No public native Sidebar API, catalog fixture, independent package consumer or
-native runtime result is supplied by this source-contract change. Inventory
-remains 48 in progress, 64 pending and zero accepted out of the fixed 112.
-Implement the complete consumer/action/state path next, then verify native
-geometry, glyphs, motion/reversal, lifecycle, override/template and data
-updates, scrolling, RTL, commands, contrast, Narrator, scaling, performance,
-x64 and native ARM64. Native accessible names for collapsed destinations and
-ExpandCollapse UI Automation must be documented as Windows adaptations. The
-existing catalog navigation continues using the current button/input previews.
+The native implementation supplies `BleeckerSidebar`,
+`BleeckerSidebarItem` and `BleeckerSidebarLinkContext`, with a registered Sidebar
+fixture and an independent package-consumer declaration. See [the native API,
+Windows adaptations and remaining gaps](sidebars.md). Focused x64 checks pass
+the 82 frozen layout/color cases, original parent/child and custom-link
+callbacks, command availability, actual pointer/keyboard input, held/cancelled
+presses, keyed state and focus retention, scrolling and slot/model/template
+lifecycle. Source-reference tests remain separate from native runtime evidence.
+No component is accepted on compilation or geometry/color checks alone.
 
-The public wiki remains unavailable; documentation is retained in the
-repository. This native presentation surface has no backend or Prometheus
-concern. Library/catalog binaries and their previous runtime evidence are
-unchanged. Push-triggered Actions remain paused at the user's request.
+Working-tree evidence is `artifacts/smoke-sidebar-ownership`; earlier
+`artifacts/smoke-sidebar-templates-typography` supplies the same source matrix
+and the raster specimens. Both solution architectures compile without
+warnings. The local suite passes 63 tests. Fresh package probes at
+`artifacts/package-consumer-sidebar-probe` and
+`artifacts/package-consumer-sidebar-probe-arm64` pass x64 runtime in both themes
+and ARM64 compilation respectively; both temporary GUID caches are removed.
+These probes precede the final source commit and are not release provenance.
+
+The native input audit records ten exact owned pointer moves, ten gates with
+at least two stable Rendering transitions (maximum 784.5419 ms under the
+unchanged two-second limit), eight same-target key actions and six click
+receipts without failure. Separate Tab reports record exactly one press at the
+source and one release at the new focus destination in both themes. Separate
+cancelled-release reports record one nongenerated mouse release at the exact
+owned point. The scrolling fixture reaches offset 1202 in a 334-unit viewport
+while its header/footer remain at y=20/y=419 relative to the surface.
+
+The final ownership run's audit is
+`artifacts/sidebar-ownership-input-report.json`: the same ten gates, eight
+keys and six clicks pass, with a maximum pointer gate of 45.6767 ms. It also
+verifies explicit formatting values/bindings/styles and restoration of only
+library-owned defaults when content detaches.
+
+`artifacts/sidebar-raster-report.json` compares ten whole initial-state images
+with the browser. All ten still differ: 2,544–20,993 pixels, maximum channel
+delta 235, with no masks and zero tolerance. A light active fill samples
+`250,247,244` natively versus source `250,248,245`; glyph/baseline and scrollbar
+differences also remain. Preserve the source values and these open gaps rather
+than claiming native geometry or brush equality proves pixel parity.
+
+The first full working-tree run at `artifacts/smoke-sidebar-full-initial`
+terminated at the unchanged 360-second deadline (360.238486 seconds including
+the wrapper). Sidebar completed in both themes; the suite reached the Dark
+Input rounded-pointer matrix. It produced 896 PNGs and still lacked 108 of the
+previous full run's 988 PNGs. `artifacts/sidebar-full-initial-gap.json` records
+those missing names. This is a failed full run, not replacement evidence for
+the previously successful published catalog. Preserve every assertion,
+capture and input/presentation gate while making the complete run fit the
+existing deadline. The package probes are diagnostic, not final release
+artifacts.
+
+The subsequent complete working-tree run at
+`artifacts/smoke-sidebar-state-gates-full` passes in 356.4662745 seconds with all
+988 previous PNGs plus 16 Sidebar PNGs. All 174 Sunburst/Radial glyph hashes,
+1,720 pointer gates (minimum two stable transitions), 1,732 key actions,
+52 click receipts, 28 tooltip gates and 16 final presentation gates pass.
+The reused-consumer focused fixture also passes all 82 source cases and native
+interaction/lifecycle checks. All 66 local tests and generated tokens pass.
+See [runtime verification changes](runtime-evidence.md). Matching committed
+package/catalog artifacts and published runtime verification remain pending.
+
+Full raster/motion/override and RTL coverage, Windows contrast, Narrator,
+display/text scaling, measured collection performance, native ARM64 runtime,
+freshly published package/runtime artifacts still
+need evidence. The existing catalog navigation continues using button/input
+previews. The public wiki remains unavailable; documentation remains in this
+repository. No backend or Prometheus surface is involved. Push-triggered
+Actions remain paused at the user's request.

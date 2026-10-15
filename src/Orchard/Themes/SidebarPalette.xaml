@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="BleeckerSidebarBackgroundBrush" Color="#FFFFFF" />
+   <SolidColorBrush x:Key="BleeckerSidebarBorderBrush" Color="#E6D5B8" Opacity=".25" />
+   <SolidColorBrush x:Key="BleeckerSidebarSectionBorderBrush" Color="#E6D5B8" Opacity=".2" />
+   <SolidColorBrush x:Key="BleeckerSidebarActiveBackgroundBrush" Color="#F9F6F2" Opacity=".8" />
+   <SolidColorBrush x:Key="BleeckerSidebarActiveForegroundBrush" Color="#1A374D" />
+   <SolidColorBrush x:Key="BleeckerSidebarRailBrush" Color="#2C5784" />
+   <SolidColorBrush x:Key="BleeckerSidebarHoverBrush" Color="#F9F6F2" Opacity=".55" />
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Dark">
+   <SolidColorBrush x:Key="BleeckerSidebarBackgroundBrush" Color="#182533" />
+   <SolidColorBrush x:Key="BleeckerSidebarBorderBrush" Color="#FFFFFF" Opacity=".08" />
+   <SolidColorBrush x:Key="BleeckerSidebarSectionBorderBrush" Color="#FFFFFF" Opacity=".07" />
+   <SolidColorBrush x:Key="BleeckerSidebarActiveBackgroundBrush" Color="#FFFFFF" Opacity=".07" />
+   <SolidColorBrush x:Key="BleeckerSidebarActiveForegroundBrush" Color="#5BA3F5" />
+   <SolidColorBrush x:Key="BleeckerSidebarRailBrush" Color="#5BA3F5" />
+   <SolidColorBrush x:Key="BleeckerSidebarHoverBrush" Color="#FFFFFF" Opacity=".05" />
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="BleeckerSidebarBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
+   <SolidColorBrush x:Key="BleeckerSidebarBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+   <SolidColorBrush x:Key="BleeckerSidebarSectionBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+   <SolidColorBrush x:Key="BleeckerSidebarActiveBackgroundBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+   <SolidColorBrush x:Key="BleeckerSidebarActiveForegroundBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
+   <SolidColorBrush x:Key="BleeckerSidebarRailBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
+   <SolidColorBrush x:Key="BleeckerSidebarHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

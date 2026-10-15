@@ -117,7 +117,7 @@ public sealed partial class PieChartsFixture : UserControl
     private static void Near(double actual, double expected) => Require(Math.Abs(actual - expected) < .001, $"coordinate {actual:R}/{expected:R}");
     private static IEnumerable<T> Descendants<T>(DependencyObject owner) where T : DependencyObject { for (var i = 0; i < VisualTreeHelper.GetChildrenCount(owner); i++) { var child = VisualTreeHelper.GetChild(owner, i); if (child is T item) yield return item; foreach (var nested in Descendants<T>(child)) yield return nested; } }
     private static T Part<T>(DependencyObject owner, string name) where T : FrameworkElement => Descendants<T>(owner).FirstOrDefault(element => element.Name == name) ?? throw new InvalidOperationException("Missing Pie Chart part " + name);
-    private async Task AwaitAsync(Func<bool> ready, string message) { var watch = Stopwatch.StartNew(); while (!ready() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); await Task.Delay(16); } Require(ready(), message); }
+    private async Task AwaitAsync(Func<bool> ready, string message) { var watch = Stopwatch.StartNew(); while (!ready() && watch.Elapsed < TimeSpan.FromSeconds(2)) { UpdateLayout(); if (ready()) break; await Task.Delay(16); } Require(ready(), message); }
     private static async Task FrameAsync() { var frame = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); void Rendered(object? sender, object args) => frame.TrySetResult(); CompositionTarget.Rendering += Rendered; try { await frame.Task.WaitAsync(TimeSpan.FromSeconds(2)); } finally { CompositionTarget.Rendering -= Rendered; } }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
 }

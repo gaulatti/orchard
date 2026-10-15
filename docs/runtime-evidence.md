@@ -1,5 +1,54 @@
 # Native Windows runtime evidence
 
+## Current Sidebar verification work
+
+The native Sidebar remains in progress: 49 of the fixed 112 contracts are in
+progress, 63 are pending and none is accepted. Its focused native fixture
+passes all 82 frozen source cases across Light/Dark plus navigation, original
+callbacks, expansion retention, scrolling, templates and lifecycle checks.
+See [Sidebar evidence and remaining acceptance](sidebar-reference.md).
+
+Catalog readiness polling now rechecks its condition immediately after
+`UpdateLayout`, avoiding a polling sleep when layout already satisfied the
+condition. Required Rendering transitions, input receipts, motion sampling
+windows and the complete-run 360-second deadline are unchanged. An experiment
+using Loaded-event waits exposed a timing-sensitive Pie focus failure in the
+full sequence; it was reverted and the existing mount sequence is retained.
+Independent Sidebar reference cases reuse a mounted consumer while replacing
+its collection through the public API to discard keyed state. A change in
+initial collapse mode creates a fresh owner, preserving initial-state behavior
+when animations are enabled. Static Field Help captures require the expected
+color and scale for three Rendering frames (two stable transitions) within two
+seconds. The four 300 ms motion-sampling windows remain unchanged.
+
+Capture encoding uses Windows `SoftwareBitmap` to convert premultiplied BGRA
+to straight RGBA, preserving Windows' alpha rounding, then writes a lossless
+PNG with faster Deflate compression. Resolution, sRGB and gamma metadata match
+the prior Windows encoder. For the same premultiplied inputs, all valid
+channel/alpha combinations and all 988 prior full-run images decode identically
+through the old and new paths. An independent decoder verifies all 988 PNG
+structures and checksums. Compression takes about 2.08 seconds versus 6.04
+seconds across that benchmark, with larger encoded files (31.30 MB versus
+19.71 MB). No pixels, masks or tolerances change. Boundary regression coverage
+includes RGBA scanlines/Zlib, metadata and invalid dimensions/buffer lengths;
+all 66 local tests pass. These are verification-harness changes and have no
+backend or Prometheus impact.
+
+The complete working-tree x64 run passes in 356.4662745 seconds at
+`artifacts/smoke-sidebar-state-gates-full`, under the unchanged 360-second
+deadline. All 988 prior PNG names remain, for 1,004 total. All 174 Sunburst and
+Radial glyph hashes are unchanged. All 1,720 owned pointer gates have at least
+two stable Rendering transitions (maximum 219.4854 ms); 1,732 key actions,
+52 click receipts, 28 tooltip gates and 16 settled final captures pass without
+failure. Sidebar's two Tab handovers and two cancelled releases retain exact
+owned receipts. Audits are `artifacts/sidebar-state-gates-input-report.json`
+and `artifacts/sidebar-state-gates-evidence.json`. Final packages and a matching
+published-catalog run are still required. Push-triggered Actions remain paused
+by user request. Native ARM64, exact raster, Narrator/contrast, scaling and
+measured collection acceptance remain open.
+
+## Earlier published checkpoints
+
 The complete published x64 catalog from `a34bb35` passes Light/Dark in
 359.572 seconds, under the unchanged 360-second limit, at
 `artifacts/smoke-sankey-chart-published-full`. It adds all 76 frozen Sankey

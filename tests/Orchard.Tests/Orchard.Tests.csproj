@@ -7,6 +7,7 @@
         <PackageReference Include="MSTest" />
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../samples/Orchard.Catalog/NativeAbsolutePointer.cs" Link="NativeAbsolutePointer.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/NativeCapturePng.cs" Link="NativeCapturePng.cs" />
         <Compile Include="../../src/Orchard/Tokens/BleeckerTokens.g.cs" Link="BleeckerTokens.g.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerPointerTransit.cs" Link="BleeckerPointerTransit.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerRoundedPointerHit.cs" Link="BleeckerRoundedPointerHit.cs" />

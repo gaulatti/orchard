@@ -40,6 +40,7 @@ public sealed partial class MainWindow
             ("Section headers",SectionHeaders),
             ("Dashboard sections",DashboardSections),
             ("Dashboard grids",DashboardGrids),
+            ("Sidebar",Sidebars),
             ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes), ("Windows contrast", Contrast)
         ]);
         var declared = FixtureHost.Children.OfType<FrameworkElement>().ToArray();

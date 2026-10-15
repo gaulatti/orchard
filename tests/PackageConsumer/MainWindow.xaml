@@ -5,6 +5,9 @@
     Title="Orchard package consumer">
     <Grid x:Name="Root" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <Grid.Resources>
+            <DataTemplate x:Key="ConsumerSidebarLink" x:DataType="orchard:BleeckerSidebarLinkContext">
+                <HyperlinkButton Content="{x:Bind Content, Mode=OneWay}" Style="{x:Bind Style}" Command="{x:Bind Command}" Tag="{x:Bind Item, Mode=OneWay}" AutomationProperties.Name="{x:Bind Label, Mode=OneWay}" AutomationProperties.HelpText="{x:Bind Href, Mode=OneWay}" />
+            </DataTemplate>
             <DataTemplate x:Key="ConsumerBreadcrumbLink"><Button Content="{Binding Label}" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></DataTemplate>
             <Style x:Key="ConsumerCardStyle" TargetType="orchard:BleeckerCard">
                 <Setter Property="CornerRadius" Value="20,8,4,16" />
@@ -108,6 +111,13 @@
                 <orchard:BleeckerSankeyChart x:Name="PackageSankeyChart" Width="320" Height="240" HorizontalAlignment="Left" AutomationProperties.Name="Independent Sankey flows" />
                 <orchard:BleeckerSunburstChart x:Name="PackageSunburstChart" Width="320" Height="240" HorizontalAlignment="Left" AutomationProperties.Name="Independent Sunburst hierarchy" />
                 <orchard:BleeckerChart x:Name="PackageCurrencyChart" Width="320" Height="200" HorizontalAlignment="Left" AutomationProperties.Name="Independent currency totals" />
+                <orchard:BleeckerSidebar x:Name="PackageSidebar" Height="260" Header="Independent workspace" Footer="Fictional local routes">
+                    <orchard:BleeckerSidebarItem Id="home" Label="Home" Href="opaque:consumer/route?x=1#part" Active="True" />
+                    <orchard:BleeckerSidebarItem Id="group" Label="Coverage" Disabled="True">
+                        <orchard:BleeckerSidebarItem.Items><orchard:BleeckerSidebarItem Id="child" Label="Current" Href="#current" Active="True" /></orchard:BleeckerSidebarItem.Items>
+                    </orchard:BleeckerSidebarItem>
+                    <orchard:BleeckerSidebarItem Id="disabled" Label="Disabled destination" Href="#disabled" Disabled="True" />
+                </orchard:BleeckerSidebar>
                 <orchard:BleeckerDonutChart x:Name="PackageDonutChart" Width="320" Height="200" ShowLegend="False" CenterValue="30" CenterLabel="Consumer total" HorizontalAlignment="Left" AutomationProperties.Name="Independent ring" />
                 <orchard:BleeckerStatCard x:Name="PackageStatCard" Title="Independent statistic" Value="42" Description="Consumer-owned summary" Width="320" HorizontalAlignment="Left">
                     <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+2%" Direction="Neutral" /></orchard:BleeckerStatCard.Trend>

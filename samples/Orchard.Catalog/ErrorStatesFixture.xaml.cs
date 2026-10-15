@@ -176,7 +176,7 @@ public sealed partial class ErrorStatesFixture : UserControl
         }));
     }
     private async Task AwaitAsync(Func<bool> condition,string message)
-    { var timer=Stopwatch.StartNew(); while(!condition()&&timer.ElapsedMilliseconds<2000){UpdateLayout();await Task.Delay(16);}Require(condition(),message); }
+    { var timer=Stopwatch.StartNew(); while(!condition()&&timer.ElapsedMilliseconds<2000){UpdateLayout();if (condition()) break; await Task.Delay(16);}Require(condition(),message); }
     internal async Task VerifyContrastAsync(string folder)
     {
         using var contrast = new NativeContrastSession(folder);

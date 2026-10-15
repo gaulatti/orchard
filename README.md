@@ -30,6 +30,8 @@ The [Dashboard Section preview](docs/dashboard-section-reference.md) groups
 consumer content beneath an optional responsive heading and action.
 The [Dashboard Grid preview](docs/dashboard-grid-reference.md) supplies responsive
 columns and spans, with fictional monitoring and editorial catalog compositions.
+The [Sidebar preview](docs/sidebars.md) supplies keyed consumer destinations,
+retained groups, independent scrolling and native link templates.
 The [Sparkline preview](docs/sparkline-reference.md) supplies compact consumer
 trends with monotone curves and native keyboard/pointer inspection.
 The [Stat Card preview](docs/stat-card-reference.md) composes consumer values,

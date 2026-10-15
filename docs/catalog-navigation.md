@@ -17,6 +17,12 @@ content consume Orchard's fonts, colors and controls. The sidebar uses existing
 Bleecker button previews and the Input preview; their outstanding component
 parity gaps still apply.
 
+The **Sidebar** fixture follows Dashboard Grids and exercises the separate
+`BleeckerSidebar` library control. It covers the frozen source data/layout,
+consumer templates, keyed expansion and actual native routing/input boundary;
+see [usage and acceptance gaps](sidebars.md). It does not replace the catalog's
+existing component list.
+
 Section Headers follows Page Headers. It covers optional eyebrow/summary text,
 empty titles, constrained widths, RTL and multilingual content. Focused
 `-Component section-header` uses the same navigation path and verifies the

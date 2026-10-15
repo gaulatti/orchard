@@ -75,7 +75,7 @@ public sealed partial class ScatterChartsFixture : UserControl
     private static void Near(double actual,double expected)=>Require(Math.Abs(actual-expected)<.001,$"coordinate {actual:R}/{expected:R}");
     private static IEnumerable<T> Descendants<T>(DependencyObject owner)where T:DependencyObject{for(var i=0;i<VisualTreeHelper.GetChildrenCount(owner);i++){var child=VisualTreeHelper.GetChild(owner,i);if(child is T item)yield return item;foreach(var nested in Descendants<T>(child))yield return nested;}}
     private static T Part<T>(DependencyObject owner,string name)where T:FrameworkElement=>Descendants<T>(owner).FirstOrDefault(item=>item.Name==name)??throw new InvalidOperationException("Missing Scatter part "+name);
-    private async Task AwaitAsync(Func<bool> condition,string message){var watch=Stopwatch.StartNew();while(!condition()&&watch.Elapsed<TimeSpan.FromSeconds(2)){UpdateLayout();await Task.Delay(16);}Require(condition(),message);}
+    private async Task AwaitAsync(Func<bool> condition,string message){var watch=Stopwatch.StartNew();while(!condition()&&watch.Elapsed<TimeSpan.FromSeconds(2)){UpdateLayout();if (condition()) break; await Task.Delay(16);}Require(condition(),message);}
     private static async Task FrameAsync(){var ready=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);void Frame(object? sender,object args)=>ready.TrySetResult();CompositionTarget.Rendering+=Frame;try{await ready.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}}
     private static void Require(bool condition,string message){if(!condition)throw new InvalidOperationException(message);}
 }

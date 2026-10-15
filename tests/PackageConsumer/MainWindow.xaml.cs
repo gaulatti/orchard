@@ -216,6 +216,7 @@ public sealed partial class MainWindow : Window
                 VerifySectionHeader();
                 VerifyDashboardSection();
                 VerifyDashboardGrid();
+                await VerifySidebarAsync();
                 await VerifySparklineAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();
@@ -472,6 +473,36 @@ public sealed partial class MainWindow : Window
         PackageStatCard.FooterTemplate=(DataTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<DataTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><TextBlock Text=\"Independent footer template\" Tag=\"{Binding}\" Height=\"24\" /></DataTemplate>");PackageStatCard.Footer=false;
         await AwaitAsync(()=>BrandDescendants<TextBlock>(PackageStatCard).Any(text=>text.Text=="Independent footer template"&&Equals(text.Tag,false)),"Packaged Stat Card discarded template-owned false data.");
         PackageStatCard.Footer=null;PackageStatCard.FooterTemplate=null;PackageStatCard.Icon=null;
+    }
+
+    private async Task VerifySidebarAsync()
+    {
+        PackageSidebar.ApplyTemplate();Root.UpdateLayout();
+        Microsoft.UI.Xaml.Controls.Primitives.ButtonBase[] Rows()=>BrandDescendants<Microsoft.UI.Xaml.Controls.Primitives.ButtonBase>(PackageSidebar).Where(action=>action.Tag is BleeckerSidebarItem).ToArray();
+        await AwaitAsync(()=>Rows().Length==4,"Packaged Sidebar did not render its initially active child.");
+        var first=(HyperlinkButton)Rows()[0];var item=PackageSidebar.Items[0];BleeckerSidebarItem? invoked=null;var calls=0;
+        void Invoked(object? sender,BleeckerSidebarItem value){invoked=value;calls++;}
+        PackageSidebar.ItemInvoked+=Invoked;
+        try
+        {
+            ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(first).GetPattern(PatternInterface.Invoke)).Invoke();
+            await AwaitAsync(()=>calls==1,"Packaged Sidebar did not invoke the consumer.");
+            Require(ReferenceEquals(invoked,item)&&item.Href=="opaque:consumer/route?x=1#part"&&first.NavigateUri is null,"Packaged Sidebar cloned the original item or interpreted its opaque route.");
+            var group=Rows().Single(row=>row is not HyperlinkButton);var provider=(IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(group).GetPattern(PatternInterface.ExpandCollapse);
+            Require(provider.ExpandCollapseState==Microsoft.UI.Xaml.Automation.ExpandCollapseState.Expanded&&group.IsEnabled,"Packaged group lost source disabled/active-child semantics.");
+            provider.Collapse();await AwaitAsync(()=>Rows().Length==3,"Packaged group did not collapse.");provider.Expand();await AwaitAsync(()=>Rows().Length==4,"Packaged group did not expand.");
+            Require(calls==1,"Packaged group invoked a navigation callback.");
+            var disabled=Rows().Last();Require(disabled.IsEnabled&&!disabled.IsHitTestVisible&&disabled.Opacity==.5,"Packaged CSS-disabled link changed its keyboard/pointer boundary.");
+            PackageSidebar.Collapsed=true;Root.UpdateLayout();await AwaitAsync(()=>Rows().Length==2&&Math.Abs(PackageSidebar.ActualWidth-64)<.001,"Packaged collapsed Sidebar retained non-route groups or the expanded width.");
+            PackageSidebar.Collapsed=false;Root.UpdateLayout();await AwaitAsync(()=>Rows().Length==4,"Packaged Sidebar lost expansion across collapse/expand.");
+            PackageSidebar.LinkTemplate=(DataTemplate)Root.Resources["ConsumerSidebarLink"];Root.UpdateLayout();
+            await AwaitAsync(()=>Rows().Length==4,"Packaged consumer template did not render its original contexts.");
+            var custom=(HyperlinkButton)Rows()[0];((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(custom).GetPattern(PatternInterface.Invoke)).Invoke();
+            await AwaitAsync(()=>calls==2,"Packaged custom link lost its consumer activation.");
+            Require(ReferenceEquals(custom.Tag,item)&&ReferenceEquals(invoked,item),"Packaged link template lost original-item identity.");
+            PackageSidebar.LinkTemplate=null;Root.UpdateLayout();
+        }
+        finally{PackageSidebar.ItemInvoked-=Invoked;}
     }
 
     private void VerifyDashboardGrid()

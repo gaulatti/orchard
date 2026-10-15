@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p="using:Microsoft.UI.Xaml.Controls.Primitives">
+ <ControlTemplate x:Key="SidebarActionTemplate" TargetType="p:ButtonBase">
+  <Grid x:Name="PART_Surface" Background="Transparent">
+   <Grid.RenderTransform><TranslateTransform x:Name="PART_Move" /></Grid.RenderTransform>
+   <Border x:Name="PART_NormalPalette" Visibility="Collapsed" BorderBrush="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" />
+   <Border x:Name="PART_ActivePalette" Visibility="Collapsed" BorderBrush="{ThemeResource BleeckerSidebarActiveForegroundBrush}" Background="{ThemeResource BleeckerSidebarActiveBackgroundBrush}" />
+   <Border x:Name="PART_HoverPalette" Visibility="Collapsed" BorderBrush="{ThemeResource BleeckerTextPrimaryBrush}" Background="{ThemeResource BleeckerSidebarHoverBrush}" />
+   <Border x:Name="PART_RailPalette" Visibility="Collapsed" BorderBrush="{ThemeResource BleeckerSidebarRailBrush}" />
+   <Border x:Name="PART_Chrome" CornerRadius="{TemplateBinding CornerRadius}" />
+   <Border x:Name="PART_Rail" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="2,0,0,0" />
+   <ContentPresenter x:Name="PART_Content" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+  </Grid>
+ </ControlTemplate>
+ <Style TargetType="HyperlinkButton">
+  <Setter Property="UseLayoutRounding" Value="False" /><Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="40" />
+  <Setter Property="Padding" Value="12,0" /><Setter Property="BorderThickness" Value="0" /><Setter Property="CornerRadius" Value="7" />
+  <Setter Property="FontSize" Value="16" /><Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}" /><Setter Property="Background" Value="Transparent" />
+  <Setter Property="HorizontalAlignment" Value="Stretch" /><Setter Property="HorizontalContentAlignment" Value="Stretch" />
+  <Setter Property="UseSystemFocusVisuals" Value="True" /><Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerButtonFocusRingBrush}" />
+  <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" /><Setter Property="FocusVisualPrimaryThickness" Value="2" /><Setter Property="FocusVisualSecondaryThickness" Value="1" /><Setter Property="FocusVisualMargin" Value="-2" />
+  <Setter Property="Template" Value="{StaticResource SidebarActionTemplate}" />
+ </Style>
+ <Style TargetType="Button">
+  <Setter Property="UseLayoutRounding" Value="False" /><Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="40" />
+  <Setter Property="Padding" Value="12,0" /><Setter Property="BorderThickness" Value="0" /><Setter Property="CornerRadius" Value="7" />
+  <Setter Property="FontSize" Value="16" /><Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}" /><Setter Property="Background" Value="Transparent" />
+  <Setter Property="HorizontalAlignment" Value="Stretch" /><Setter Property="HorizontalContentAlignment" Value="Stretch" />
+  <Setter Property="UseSystemFocusVisuals" Value="True" /><Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerButtonFocusRingBrush}" />
+  <Setter Property="FocusVisualSecondaryBrush" Value="{ThemeResource BleeckerFocusOffsetBrush}" /><Setter Property="FocusVisualPrimaryThickness" Value="2" /><Setter Property="FocusVisualSecondaryThickness" Value="1" /><Setter Property="FocusVisualMargin" Value="-2" />
+  <Setter Property="Template" Value="{StaticResource SidebarActionTemplate}" />
+ </Style>
+</ResourceDictionary>

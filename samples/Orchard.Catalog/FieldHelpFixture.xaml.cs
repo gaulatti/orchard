@@ -68,8 +68,14 @@ public sealed partial class FieldHelpFixture : UserControl
         // transition samples before requesting static state captures.
         foreach (var state in new[] { "Normal", "PointerOver", "Pressed", "Disabled" })
         {
-            VisualStateManager.GoToState(Help, state, true);
-            await Task.Delay(250);
+            Require(VisualStateManager.GoToState(Help, state, true), $"Missing field help state {state}.");
+            var expected=BleeckerTokens.Colors(scheme)[state=="PointerOver"||(state=="Pressed"&&Help.IsPointerOver)?"textPrimary":"textSecondary"];
+            var expectedScale=state=="Pressed"?.9:1;
+            await AwaitStaticPaintAsync(()=>
+            {
+                var color=((SolidColorBrush)circle.Stroke).Color;var scale=(ScaleTransform)root.RenderTransform;
+                return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}"==expected&&Math.Abs(scale.ScaleX-expectedScale)<.000001&&Math.Abs(scale.ScaleY-expectedScale)<.000001;
+            },state);
             await MainWindow.CaptureElementAsync(Help, System.IO.Path.Combine(folder, $"field-help-{state}-{scheme}.png"));
         }
         VisualStateManager.GoToState(Help, "Normal", false);
@@ -99,6 +105,16 @@ public sealed partial class FieldHelpFixture : UserControl
         Require(Help.Visibility == Visibility.Collapsed && !tooltip.IsOpen, "Empty help left its trigger or popup active.");
         Help.Text = original;
         Require(Help.Visibility == Visibility.Visible, "Restored help did not restore its trigger.");
+    }
+
+    private static async Task AwaitStaticPaintAsync(Func<bool> settled,string state)
+    {
+        var ready=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var stable=0;var frames=0;
+        void Frame(object? sender,object args){frames++;stable=settled()?stable+1:0;if(stable>=3)ready.TrySetResult();}
+        CompositionTarget.Rendering+=Frame;
+        try{await ready.Task.WaitAsync(TimeSpan.FromSeconds(2));}
+        catch(TimeoutException error){throw new InvalidOperationException($"Field help {state} static paint did not settle ({frames} frames).",error);}
+        finally{CompositionTarget.Rendering-=Frame;}
     }
 
     private async Task VerifyLiveBrushAsync(Ellipse circle, Grid root, BleeckerColorScheme scheme, string folder)

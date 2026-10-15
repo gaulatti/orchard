@@ -107,6 +107,7 @@
                 <local:SectionHeadersFixture x:Name="SectionHeaders" />
                 <local:DashboardSectionsFixture x:Name="DashboardSections" />
                 <local:DashboardGridsFixture x:Name="DashboardGrids" />
+                <local:SidebarsFixture x:Name="Sidebars" />
                 <local:TooltipsFixture x:Name="Tooltips" />
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />
