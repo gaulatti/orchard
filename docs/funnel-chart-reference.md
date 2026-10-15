@@ -47,8 +47,7 @@ All 46 portable regressions pass, including the full source path matrix at
 the unchanged .001 coordinate limit. All 54 x64 native source cases and both
 lifecycle suites pass at `artifacts/smoke-funnel-chart-lifecycle`. The complete
 Funnel → Radial Bar → Radar → Scatter → Sparkline sequence also passes both
-themes at `artifacts/smoke-funnel-chart-sequence`. Package and published full
-catalog verification remain pending.
+themes at `artifacts/smoke-funnel-chart-sequence`.
 
 The producer's settled labels contain names followed by a colon and trailing
 space, without values. They wrap using the mean of the upper/lower trapezoid
@@ -59,3 +58,25 @@ cursor. It preserves the producer's raw scalar/array text and applies
 ValueFormatter only to numeric scalar values. A zero maximum paints no paths
 or labels; its visible zero-value tooltip stays at the source wrapper's origin
 because the browser rejects its nonfinite transform.
+
+The fresh regular `0.1.0` package from clean source `648dd18`, SHA-256
+`125605d46bbb85c5a1f100136519a95eb880aae061da5bf780f59a0c8998d7cd`,
+passes actual x64 consumption in both themes at
+`artifacts/package-consumer-funnel-chart-reset`. The independent test resets
+its consumer-owned formatter before each theme at `efc5ba2`, then checks
+original record identity, source geometry/labels, native input, notifications,
+formatting, transparent fill, live names/visibility and empty cleanup. The same
+package passes the isolated ARM64 build-only consumer at
+`artifacts/package-consumer-funnel-chart-arm64`; ARM64 runtime is unverified.
+Both temporary restore/build workspaces are removed.
+
+The runnable x64 catalog at `artifacts/catalog-funnel-chart` is built from
+`648dd18`. Its full Light/Dark run passes in 354.689 seconds at
+`artifacts/smoke-funnel-chart-published-full`, within the unchanged 360-second
+deadline. All 940 earlier PNGs remain, with twelve new source captures.
+All 1,146 pointer gates pass their original ownership and two-unchanged-
+transition checks. All 28 tooltip opening gates pass their full-opacity/scale
+and stable geometry checks. Sixteen final capture layout reports settle.
+Default Light/Dark Funnel captures were visually inspected. See
+[the runtime record](runtime-evidence.md) for the unmasked font-capture
+comparison and outstanding raster/platform acceptance gaps.

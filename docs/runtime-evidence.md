@@ -1,20 +1,30 @@
 # Native Windows runtime evidence
 
-The local published x64 catalog from `43d200c` passes the complete Light/Dark
-run in 357.220 seconds at `artifacts/smoke-radial-bar-chart-published-full`,
-under the unchanged 360-second limit. It adds 80 frozen Radial Bar cases and
-native data/input/lifecycle checks while preserving every previous fixture
-check and all 928 previous PNGs. There are 940 PNGs, sixteen settled final
-capture reports and 992 owned pointer gates, with zero failed gates and at
-least two unchanged Rendering transitions. The slowest gate is 144.807ms.
-Final x64/ARM64 builds have zero warnings; 45 regressions and generated tokens
-pass. A fresh regular `0.1.0` NuGet package from `43d200c`, SHA-256
-`102fec25ab72d99f068f56992beb6c59b69f189adbdb4e8758356565a84edc99`,
+The local published x64 catalog from `648dd18` passes the complete Light/Dark
+run in 354.689 seconds at `artifacts/smoke-funnel-chart-published-full`, under
+the unchanged 360-second limit. It adds 54 frozen Funnel cases and native
+data/input/lifecycle checks while preserving every previous fixture check and
+all 940 previous PNGs. There are 952 PNGs, sixteen settled final capture reports
+and 1,146 owned pointer gates, with zero failed gates and at least two unchanged
+Rendering transitions. The slowest pointer gate is 144.164ms. All 28 tooltip
+opening gates also settle within their two-second limit, at most 87.843ms.
+Final x64/ARM64 builds have zero warnings; 46 regressions and generated tokens
+pass. A fresh regular `0.1.0` NuGet package from `648dd18`, SHA-256
+`125605d46bbb85c5a1f100136519a95eb880aae061da5bf780f59a0c8998d7cd`,
 passes the isolated x64 runtime consumer and ARM64 build-only consumer; both
-temporary caches are removed. See [Radial Bar evidence](radial-bar-chart-reference.md).
+temporary caches are removed. Consumer test setup at `efc5ba2` resets its
+formatter between themes. See [Funnel evidence](funnel-chart-reference.md).
 Push-triggered Actions remain paused, and these local results do not replace
 the unresolved hosted native ARM64 checks or full platform/visual acceptance.
-Inventory remains 44 in progress, 68 pending and zero accepted of 112.
+Inventory remains 45 in progress, 67 pending and zero accepted of 112.
+
+The readiness comparison retains whole PNGs and does not mask differences.
+All 122 Checkbox font PNGs match the previous decoded pixels exactly; all
+twelve compared font/reading-direction metric reports are unchanged. Across
+166 compared PNGs, 127 are identical and 39 Input/Switch captures have raster
+differences, including fixture-button glyphs and a one-pixel Switch alpha
+difference. Full raster acceptance remains open. Details are recorded in
+`artifacts/funnel-published-readiness-comparison.json`.
 
 Run [38597371241](https://github.com/gaulatti/orchard/actions/runs/38597371241)
 at `17b0e1b` passes the complete x64 job, ARM64 cross-build, both focused native

@@ -898,7 +898,6 @@
       "regressionTests": ["samples/Orchard.Catalog/FunnelChartsFixture.xaml.cs", "samples/Orchard.Catalog/FunnelChartsFixture.Mutation.cs", "tests/PackageConsumer/MainWindow.FunnelChart.cs", "tests/Orchard.Tests/FunnelGeometryTests.cs", "tests/Reference/FunnelChartLayout.json"],
       "status": "in-progress",
       "remainingGaps": [
-        "Finish independent package and full published catalog validation",
         "Complete raster/motion, data/override/RTL and measured collection-performance coverage",
         "Verify actual contrast, Narrator, display/text scaling and native ARM64 runtime"
       ]
