@@ -91,6 +91,34 @@ open. The initial reference timing issue is retained at
 `artifacts/smoke-pie-chart-initial`. Further build and package evidence is
 recorded after verification.
 
+The first full published run, `artifacts/smoke-pie-chart-published-full`, reaches
+the final Dark screenshot sequence but exceeds the unchanged 360-second limit;
+it is not a passing run. File timestamps attribute about 11.2 seconds to the
+new fixture. The screenshot blank check also needlessly scans every color byte
+after proving its required variation. It now stops after nine distinct
+non-alpha byte values: the same `> 8` predicate with an early exit. An actual
+1024x745 capture and blank/eight-value/varied inputs retain equivalent results;
+20 benchmark repetitions take 1059.104ms before and 19.530ms after. Capture
+pixels, required checks and deadlines remain unchanged.
+
+Release x64 and ARM64 solution builds pass without warnings; all 44 regression
+tests and generated-token validation pass. A regular `Gaulatti.Orchard.0.1.0`
+package was produced from clean commit
+`d95e454d28afb91c2c23c33d8300122d01e472c2`, with SHA-256
+`d26aa70c763c39921f99a0fa1badd3aecd87f47e27a93cb983892135be5b9aae`.
+Its repository metadata is checked against that source commit. The isolated
+ARM64 consumer builds at `artifacts/package-consumer-pie-chart-arm64` with
+`runtimeVerified: false`; its generated temporary workspace is removed.
+The same package passes the independent x64 consumer's actual Light/Dark
+runtime at `artifacts/package-consumer-pie-chart`. Both new public controls and
+the typed model are consumed from the NuGet assembly, with original collection
+identity, source sector/ring geometry, native focus/Right, live datum changes,
+transparent brush identity, live radius/center and collection replacement
+verified. That consumer's temporary restore/build workspace is also removed.
+The public wiki remote remains unavailable, so this contract and verification
+evidence are maintained in the repository. Push-triggered Actions remain
+paused at the user's request.
+
 Both components remain **in progress**. Full sector/glyph/legend/center/tooltip
 raster and effects, normal/interrupted motion, the complete data/key/radius/
 formatter/override and RTL matrix, actual contrast, Narrator, display/text

@@ -1485,3 +1485,32 @@ The reports retain all four Dark samples and both Light samples. This verifies
 the corrected local observation boundary; native ARM64 retesting and the
 separate exterior Input/AppStarting failure remain deferred during the Actions
 pause.
+
+## Pie and Donut implementation checkpoint
+
+Commit `d95e454` adds both controls, the typed consumer datum and the shared
+registered fixture. All 84 pinned browser cases pass native x64 checks in both
+themes at `artifacts/smoke-pie-chart-final`, including path geometry, colors,
+source text baselines and center allocation, raw keyboard payloads and tooltip
+visibility. Live native input, typed notifications, consumer collection/brush
+identity, radius and center changes, font overrides, real detach, rapid
+reparent and template restoration pass. The font and source observation details
+are recorded in [the Pie/Donut contract](pie-chart-reference.md).
+
+Both solution architectures build without warnings, all 44 regressions pass,
+and token generation is current. The regular 0.1.0 package has SHA-256
+`d26aa70c763c39921f99a0fa1badd3aecd87f47e27a93cb983892135be5b9aae`
+and repository metadata for the clean source commit
+`d95e454d28afb91c2c23c33d8300122d01e472c2`. Its isolated x64 consumer passes
+actual Light/Dark runtime, including both new controls and live typed data;
+the isolated ARM64 consumer builds with runtime verification explicitly false.
+Reports are under `artifacts/package-consumer-pie-chart` and
+`artifacts/package-consumer-pie-chart-arm64`. Both temporary workspaces are
+removed. The runnable catalog is `artifacts/catalog-pie-chart`.
+
+These controls remain in progress. The inventory contains 41 in-progress and
+71 pending entries, with no entries accepted. Full visual/motion/data/override/
+RTL, actual contrast, Narrator, display/text scaling, collection performance
+and native ARM64 acceptance remain required. The public wiki is unavailable;
+repository documentation records this evidence. Push-triggered Actions remain
+paused at the user's request.

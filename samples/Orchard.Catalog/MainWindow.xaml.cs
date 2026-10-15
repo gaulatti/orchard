@@ -624,7 +624,7 @@ public sealed partial class MainWindow : Window
         var pixels = await bitmap.GetPixelsAsync();
         var bytes = new byte[checked((int)pixels.Length)];
         using (var reader = DataReader.FromBuffer(pixels)) reader.ReadBytes(bytes);
-        Require(bytes.Where((_, offset) => offset % 4 != 3).Distinct().Count() > 8, "The render is blank.");
+        Require(bytes.Where((_, offset) => offset % 4 != 3).Distinct().Take(9).Count() > 8, "The render is blank.");
         await SavePngAsync(path, bytes, bitmap.PixelWidth, bitmap.PixelHeight);
         return new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
     }
