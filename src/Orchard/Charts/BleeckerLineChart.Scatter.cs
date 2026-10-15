@@ -21,6 +21,9 @@ public sealed partial class BleeckerLineChart
     private readonly HashSet<ObservableCollection<IReadOnlyDictionary<string, object?>>> observedScatterData = [];
     private Func<object?, string>? scatterXFormatter, scatterYFormatter;
     private readonly List<ScatterPoint> scatterPoints = [];
+    private readonly Dictionary<(BleeckerScatterSeries Series, string Key, int Occurrence, int Row), Path> scatterShapes = [];
+    private readonly Dictionary<Path, int> scatterShapePalettes = [];
+    private Canvas? scatterPlot;
     private sealed record ScatterPoint(BleeckerScatterSeries Series, int SeriesIndex, int RowIndex, IReadOnlyDictionary<string, object?> Record, double? X, double? Y, double Radius);
     internal void UseScatterProfile(ObservableCollection<BleeckerScatterSeries> series, Func<object?, string>? xFormatter, Func<object?, string>? yFormatter)
     {
@@ -61,7 +64,12 @@ public sealed partial class BleeckerLineChart
     {
         if (scatterSeries is null || scatterSeries.Count == 0) throw new InvalidOperationException("A mounted Scatter Chart requires at least one series, as the first series owns its axes.");
         foreach (var series in scatterSeries) { _ = series.Key; _ = series.Name; _ = series.XKey; _ = series.YKey; }
-        plot!.Children.Clear(); plot.Clip = null; legend!.Children.Clear(); rendered.Clear(); scatterPoints.Clear();
+        if (!ReferenceEquals(scatterPlot, plot)) { scatterShapes.Clear(); scatterShapePalettes.Clear(); scatterPlot = plot; }
+        var retained = scatterShapes.Values.ToHashSet();
+        foreach (var child in plot!.Children.ToArray()) if (child is not Path path || !retained.Contains(path)) plot.Children.Remove(child);
+        plot.Clip = null; legend!.Children.Clear(); rendered.Clear(); scatterPoints.Clear();
+        var usedShapes = new HashSet<(BleeckerScatterSeries Series, string Key, int Occurrence, int Row)>();
+        var occurrences = new Dictionary<BleeckerScatterSeries, int>();
         var first = scatterSeries[0]; var records = scatterSeries.SelectMany(series => series.Data ?? Data).ToArray();
         left = 60 + (string.IsNullOrEmpty(YAxisLabel) ? 0 : 20); right = RenderWidth - 20; top = 10;
         bottom = RenderHeight - (string.IsNullOrEmpty(XAxisLabel) ? 5 : 25) - 30 - RenderScatterLegend();
@@ -110,6 +118,7 @@ public sealed partial class BleeckerLineChart
         for (var s = 0; s < scatterSeries.Count; s++)
         {
             var series = scatterSeries[s]; var data = series.Data ?? Data;
+            var occurrence = occurrences.GetValueOrDefault(series); occurrences[series] = occurrence + 1;
             for (var i = 0; i < data.Count; i++)
             {
                 var row = data[i]; var x = ScatterNumber(BleeckerChartData.Read(row, first.XKey)); var y = ScatterNumber(BleeckerChartData.Read(row, first.YKey)); var z = first.ZKey is null ? null : BleeckerChartData.Read(row, first.ZKey);
@@ -117,10 +126,24 @@ public sealed partial class BleeckerLineChart
                 var point = new ScatterPoint(series, s, i, row, x is double xv && xTicks.Length > 0 ? XValue(xv) : null, y is double yv && yTicks.Length > 0 ? YValue(yv) : null, Math.Sqrt(Math.Max(0, size) / Math.PI));
                 var index = scatterPoints.Count; scatterPoints.Add(point);
                 if (point.X is not double cx || point.Y is not double cy || !double.IsFinite(point.Radius)) continue;
-                var shape = Resource<Path>($"<Path Data=\"{ScatterCircle(point.Radius)}\" Fill=\"{{ThemeResource {BleeckerChartTheme.PickColor(s)}}}\" />"); if (series.Color is not null) shape.Fill = series.Color;
-                shape.Tag = index; Canvas.SetLeft(shape, cx); Canvas.SetTop(shape, cy); plot.Children.Add(shape);
+                var key = (series, series.Key, occurrence, i); usedShapes.Add(key);
+                if (!scatterShapes.TryGetValue(key, out var shape))
+                {
+                    shape = Resource<Path>($"<Path Stretch=\"None\"><Path.Style><Style TargetType=\"Path\"><Setter Property=\"Fill\" Value=\"{{ThemeResource {BleeckerChartTheme.PickColor(s)}}}\" /></Style></Path.Style></Path>");
+                    scatterShapes.Add(key, shape); scatterShapePalettes.Add(shape, s); plot.Children.Add(shape);
+                }
+                if (scatterShapePalettes[shape] != s)
+                {
+                    shape.Style = Resource<Path>($"<Path Stretch=\"None\"><Path.Style><Style TargetType=\"Path\"><Setter Property=\"Fill\" Value=\"{{ThemeResource {BleeckerChartTheme.PickColor(s)}}}\" /></Style></Path.Style></Path>").Style;
+                    scatterShapePalettes[shape] = s;
+                }
+                var parsed = Resource<Path>($"<Path Data=\"{ScatterCircle(point.Radius)}\" />");
+                var geometry = parsed.Data; parsed.Data = null; shape.Data = geometry;
+                if (series.Color is not null) shape.Fill = series.Color; else shape.ClearValue(Shape.FillProperty);
+                shape.Tag = index; Canvas.SetZIndex(shape, index + 1); Canvas.SetLeft(shape, cx); Canvas.SetTop(shape, cy);
             }
         }
+        foreach (var key in scatterShapes.Keys.Where(key => !usedShapes.Contains(key)).ToArray()) { var shape = scatterShapes[key]; plot.Children.Remove(shape); scatterShapePalettes.Remove(shape); scatterShapes.Remove(key); }
         PaintInteraction(); FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
     private double RenderScatterLegend()

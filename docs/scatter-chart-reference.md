@@ -114,3 +114,28 @@ mutation before the final screenshot gate runs. Source input diagnostics and
 its focused passing sequence are recorded in [the Sparkline contract](sparkline-reference.md).
 That full run is not accepted as a pass. `-Component scatter-chart-sequence`
 exercises Scatter followed by Sparkline in both themes.
+
+The later full run at `artifacts/smoke-scatter-chart-published-input-full`
+passes Light, including the Sparkline key gate and final screenshots, but fails
+the Dark Scatter record mutation: the independent point moves after Y=50
+changes to 60 and its pointer tooltip disappears. This run is not a pass.
+An unchanged-source browser probe keeps `x : 40y : 60` visible at the same
+physical pointer location after that update. The browser replaces its SVG
+element, so element identity is not an acceptance requirement.
+
+The native renderer now updates existing point visuals during data changes and
+removes only obsolete points. Palette resources remain live through a style;
+clearing a consumer brush restores theme paint. Separate occurrences of the
+same series retain separate points. The regression requires updated geometry
+and tooltip text, then checks the tooltip again after two rendering events with
+the native pointer unchanged. It also checks transparent paint restoration,
+repeated-series insertion/removal, and the existing detach/template paths.
+The initial retained-visual attempts failed startup (XAML namespace placement,
+then sharing an already-parented geometry); those reports remain preserved.
+Final package and complete catalog evidence follow after verification.
+
+The strengthened focused sequence passes both themes at
+`artifacts/smoke-scatter-chart-settled-hover`, including stationary hover after
+rendering, color reset, repeated-series points, all 64 source cases and the
+following Sparkline input gate. Release x64 and ARM64 solution builds have zero
+warnings; all 44 unit/resource checks and generated tokens pass.
