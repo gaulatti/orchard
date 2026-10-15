@@ -53,3 +53,15 @@ using package SHA-256
 `3b2ab31d6c0549034d3c1455bad2cc6f58b452f0a17a17b9386350a97a05bcef`.
 
 Activation verification passes in artifacts/smoke-tooltip-activation-ready for a native button, BleeckerButton's inner native action, and field help, including retained focus and delivery of the consumer click handler. The isolated package consumer passes at artifacts/package-consumer-tooltip-activation. Physical dark-theme Enter and Space dismiss field help without losing its focus ring (artifacts/field-help-enter-dismissed.jpg). x64/ARM64 builds and 13 unit tests pass. Other input/theme/accessibility matrix gaps remain open.
+
+A later full run at source `23784436f58fa80d68b44bcad145bc560c1bf6be`
+stopped after 141.9706138 seconds at Light `BottomTip`:
+`artifacts/smoke-ghost-byte-alpha-published-full`. Its two-second presentation
+report has one settled frame followed by unsettled observations, so this run
+is a failure. It does not establish why the tooltip stopped settling. The
+presentation checker now records open/load/popup/motion state for unsettled
+frames and writes failure-only tooltip/focus/popup snapshots and actual
+Opened/Closed call stacks. The original two-second deadline and two stable
+render transitions remain required. Later passes must not erase this failure
+or be described as a root-cause repair without evidence.
+The focused diagnostic run passes at `artifacts/smoke-ghost-byte-alpha-tooltip-diagnostic` without changing tooltip behavior. The full-run timeout's cause remains unestablished.
