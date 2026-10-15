@@ -480,6 +480,65 @@ solution architectures build with zero warnings/errors. This checkpoint
 changes catalog verification and documentation; there is no backend or
 Prometheus impact. Inventory remains 50 in progress, 62 pending, none accepted.
 
+### Complete browser state images and consumer focus paint
+
+`tests/Reference/DataTableToolbarStatePixels.json` adds 390 image records:
+all 376 interaction states and all 14 original initial captures, each with a
+second live frame (780 PNGs). The source capture covers 62 scenarios and
+retains all 1,246 distinct trusted receipts. Every captured DOM/layout/style,
+table, callback, selection and accessibility snapshot matches the expanded
+frozen v2 record; only receipt timestamps are excluded from that equality.
+Before/after screenshot snapshot hashes also match. All 14 initial PNGs and
+their repeats remain byte-identical to the originals.
+
+Interaction screenshots use `caret: initial` and `animations: allow`, with
+no masks or tolerance. Each state keeps three stable paint transitions within
+the original two-second deadline. A repeated Light both-filters/Reset-hover
+capture changes 17 pixels at the live text caret; both frames and the failed
+repeat-stability result are preserved. The original initial screenshot step
+is replayed only while unfocused: Playwright's original caret cleanup creates
+an empty style attribute that the frozen later DOM snapshots contain. No DOM
+attribute is silently dropped to make those snapshots agree.
+
+Reproduce the source and compare against a verified native matrix:
+
+```powershell
+node scripts/reference/capture-data-table-toolbar-state-pixels.cjs --playwright-module <Playwright-1.62.1-directory> --output <source-output>
+node scripts/compare-data-table-toolbar-state-pixels.mjs --source <source-output> --native <native-matrix-output> --output <comparison.json>
+```
+
+The source images are at `artifacts/data-table-toolbar-browser-states-live-caret`.
+The comparator verifies source hashes/state checks, native input-audit status,
+environment and the measured window rectangle, then compares every RGBA pixel
+of each complete toolbar against both browser frames. Its built-in PNG reader
+checks CRCs and decodes only the actual 8-bit RGB/RGBA, noninterlaced formats;
+unsupported input fails explicitly. Pillow independently agrees with all
+1,128 first/repeat/source-repeat comparisons in
+`artifacts/data-table-toolbar-state-raster-pillow-audit.json`.
+
+The original native matrix comparison at
+`artifacts/data-table-toolbar-state-raster-report.json` fails all 376 pairs
+against both source frames: 358–4,959 pixels differ in the first-frame pairs,
+with maximum channel delta 255 and zero masks/tolerance. This broadens the
+rendered acceptance evidence beyond the 14 initial images.
+
+The measured browser consumer-button focus ring paints two dark inset pixels
+despite its computed `auto 1px` outline. The native fixture previously used
+Windows' offset black/white focus visual. `SourceSlotButtonStyle` now uses a
+two-pixel primary visual, zero margin/secondary thickness and an opaque
+`#101010` brush. A High Contrast resource selects the Windows highlight color;
+actual Windows contrast verification remains open. The fixture checks these
+normal-theme properties alongside its original consumer chrome. The toolbar
+continues to pass the original consumer elements and callbacks through.
+
+The probe at `artifacts/smoke-data-table-toolbar-slot-focus-probe` passes all
+376 consumer/geometry/input checks and 134 Tab transfers. The complete raster
+comparison at `artifacts/data-table-toolbar-slot-focus-raster-report.json`
+improves 42 states, worsens none by differing-pixel count and leaves 334
+unchanged. Total first-frame differing pixels fall from 760,441 to 733,921.
+All 376 exact checks still fail; focus-removal differences and the live-caret
+repeat difference remain recorded. No component is accepted by this change.
+
 ## Native acceptance still required
 
 - Complete rendered paint/focus/motion acceptance for the 376 source interaction

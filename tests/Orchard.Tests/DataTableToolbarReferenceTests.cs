@@ -167,6 +167,51 @@ public sealed class DataTableToolbarReferenceTests
             Assert.IsTrue(result.GetProperty("table").GetProperty("globalTruthy").GetBoolean());Assert.IsTrue(result.GetProperty("keyboard").GetProperty("table").GetProperty("globalTruthy").GetBoolean());
         }
     }
+    [TestMethod]
+    public void EveryInteractionRetainsBothRealCaretFramesAndItsExactFrozenState()
+    {
+        using var source=new Reference();using var pixels=JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","DataTableToolbarStatePixels.json")));
+        var root=pixels.RootElement;Assert.AreEqual("orchard-data-table-toolbar-state-pixels-v1",Text(root,"format"));Assert.IsTrue(root.GetProperty("captureComplete").GetBoolean());Assert.IsFalse(root.GetProperty("nativeComponentAccepted").GetBoolean());
+        foreach(var field in new[]{"sourceCommit","sourceSha256","compiledCssSha256","clientSha256","browser"})Assert.AreEqual(Text(source.Root,field),Text(root,field));
+        string Sha(string file)=>Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory,"Fixtures",file)))).ToLowerInvariant();
+        Assert.AreEqual(Sha("DataTableToolbarLayout.json"),Text(root,"referenceSha256"));Assert.AreEqual(Sha("CaptureDataTableToolbarStatePixels.cjs"),Text(root,"probeScriptSha256"));
+        Assert.AreEqual("initial",Text(root,"caret"));Assert.AreEqual("allow",Text(root,"animations"));Assert.AreEqual("reduce",Text(root,"reducedMotion"));
+        Assert.AreEqual(1,root.GetProperty("deviceScaleFactor").GetInt32());Assert.AreEqual(0,root.GetProperty("masks").GetInt32());Assert.AreEqual(0,root.GetProperty("tolerance").GetInt32());
+        var captures=root.GetProperty("captures").EnumerateArray().ToArray();Assert.HasCount(390,captures);Assert.AreEqual(376,captures.Count(item=>item.GetProperty("step").GetInt32()>0));
+        Assert.AreEqual(780,captures.SelectMany(item=>new[]{Text(item,"file"),Text(item,"repeatFile")}).Distinct().Count());
+        foreach(var sample in source.Cases)for(var index=0;index<sample.GetProperty("states").GetArrayLength();index++)
+        {
+            var state=sample.GetProperty("states")[index];var capture=captures.Single(item=>Text(item,"id")==Text(sample,"id")&&Text(item,"scheme")==Text(sample,"scheme")&&item.GetProperty("step").GetInt32()==index+1);
+            Assert.AreEqual(Text(state,"action"),Text(capture,"action"));Assert.AreEqual(Text(state.GetProperty("state"),"focused"),Text(capture,"focused"));
+        }
+        foreach(var capture in captures)
+        {
+            Assert.AreEqual(64,Text(capture,"sha256").Length);Assert.AreEqual(64,Text(capture,"repeatSha256").Length);
+            Assert.AreEqual(Text(capture,"stateSha256"),Text(capture,"expectedStateSha256"));Assert.AreEqual(Text(capture,"stateSha256"),Text(capture,"postCaptureStateSha256"));
+            Assert.AreEqual(capture.GetProperty("inputReceipts").GetInt32(),capture.GetProperty("trustedInputReceipts").GetInt32());
+            Assert.AreEqual(Text(capture,"sha256")==Text(capture,"repeatSha256"),capture.GetProperty("repeatPixelStable").GetBoolean());
+            Assert.IsGreaterThanOrEqualTo(3,capture.GetProperty("presentation").GetProperty("stable").GetInt32());Assert.IsLessThan(2000,Number(capture.GetProperty("presentation"),"milliseconds"));
+        }
+        Assert.AreEqual(captures.All(item=>item.GetProperty("repeatPixelStable").GetBoolean()),root.GetProperty("repeatPixelStable").GetBoolean());
+    }
+    [TestMethod]
+    public void StatePixelCapturePreservesEveryInitialPngAndAllTrustedSourceReceipts()
+    {
+        using var source=new Reference();using var pixels=JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","DataTableToolbarStatePixels.json")));
+        var captures=pixels.RootElement.GetProperty("captures").EnumerateArray().ToArray();var cases=pixels.RootElement.GetProperty("cases").EnumerateArray().ToArray();Assert.HasCount(62,cases);
+        Assert.AreEqual(1246,cases.Sum(item=>item.GetProperty("inputReceipts").GetInt32()));Assert.AreEqual(1246,cases.Sum(item=>item.GetProperty("trustedInputReceipts").GetInt32()));
+        foreach(var captured in cases)
+        {
+            var sample=source.Case(Text(captured,"id"),Text(captured,"scheme"));var states=sample.GetProperty("states");Assert.AreEqual(states.GetArrayLength(),captured.GetProperty("states").GetInt32());
+            var final=states.GetArrayLength()==0?sample.GetProperty("normal"):states[states.GetArrayLength()-1].GetProperty("state");
+            Assert.AreEqual(final.GetProperty("inputEvents").GetArrayLength(),captured.GetProperty("inputReceipts").GetInt32());Assert.AreEqual(0,captured.GetProperty("errors").GetArrayLength());
+            if(sample.GetProperty("screenshots").GetArrayLength()==0){Assert.AreEqual(JsonValueKind.Null,captured.GetProperty("originalInitialReplay").ValueKind);continue;}
+            var initial=captures.Single(item=>Text(item,"id")==Text(captured,"id")&&Text(item,"scheme")==Text(captured,"scheme")&&item.GetProperty("step").GetInt32()==0);
+            var expected=sample.GetProperty("screenshots")[0].GetProperty("sha256").GetString();Assert.AreEqual(expected,Text(initial,"sha256"));Assert.AreEqual(expected,Text(initial,"repeatSha256"));
+            var replay=captured.GetProperty("originalInitialReplay");Assert.AreEqual(expected,Text(replay,"sha256"));Assert.AreEqual("hide",Text(replay,"caret"));Assert.IsTrue(replay.GetProperty("unfocused").GetBoolean());Assert.AreEqual("body",Text(sample.GetProperty("normal"),"focused"));
+        }
+        Assert.AreEqual(14,captures.Count(item=>item.GetProperty("step").GetInt32()==0));
+    }
     private static readonly string[] Themes=["Light","Dark"];
     private static IEnumerable<JsonElement> States(JsonElement sample)=>new[]{sample.GetProperty("normal")}.Concat(sample.GetProperty("states").EnumerateArray().Select(s=>s.GetProperty("state")));
     private static JsonElement State(JsonElement sample,string action)=>sample.GetProperty("states").EnumerateArray().Single(s=>Text(s,"action")==action).GetProperty("state");

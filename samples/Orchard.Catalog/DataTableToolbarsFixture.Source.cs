@@ -78,6 +78,8 @@ public sealed partial class DataTableToolbarsFixture
     private static void Compare(Rect actual,JsonElement expected){foreach(var(key,value)in new[]{("x",actual.X),("y",actual.Y),("width",actual.Width),("height",actual.Height)})Require(Math.Abs(value-expected.GetProperty(key).GetDouble())<=1d/32,$"{key} {value:R}/{expected.GetProperty(key).GetDouble():R}");}
     private static void VerifySlotPaint(Button button,JsonElement expected)
     {
+        Require(button.UseSystemFocusVisuals&&button.FocusVisualPrimaryThickness==new Thickness(2)&&button.FocusVisualSecondaryThickness==new Thickness(0)&&button.FocusVisualMargin==new Thickness(0),"Consumer keyboard focus geometry differs from the measured browser outline.");
+        Require(button.FocusVisualPrimaryBrush is SolidColorBrush focus&&focus.Color.A==255&&focus.Color.R==16&&focus.Color.G==16&&focus.Color.B==16&&focus.Opacity==1,"Consumer keyboard focus paint differs from the original browser outline.");
         Require(VisualTreeHelper.GetChild(button,0) is Border{Name:"PART_SourceSlotSurface"},"Consumer slot retained Windows default chrome.");
         var surface=(Border)VisualTreeHelper.GetChild(button,0);
         void Color(Brush brush,string css)
