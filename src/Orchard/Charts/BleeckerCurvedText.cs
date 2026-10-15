@@ -12,22 +12,10 @@ namespace Orchard;
 internal static class BleeckerCurvedText
 {
     internal sealed record Glyph(int CharacterIndex, string Character, Point Start, Point End, double Rotation, PathGeometry? Geometry);
-    internal static IReadOnlyList<Glyph> Create(string text, string family, float size, double cx, double cy, double radius, double angle, bool clockwise)
+    internal static IReadOnlyList<Glyph> Create(string text, BleeckerChartTextStyle style, double cx, double cy, double radius, double angle, bool clockwise)
     {
         if (text.Length == 0 || radius <= 0 || !double.IsFinite(radius)) return [];
-        var marker = family.IndexOf('#');
-        if (marker >= 0 && Uri.TryCreate(family[..marker], UriKind.Absolute, out var uri))
-        {
-            if (uri.Scheme == "ms-appx" && uri.Host.Length == 0)
-            {
-                uri = new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory, Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));
-                family = uri.AbsoluteUri + family[marker..];
-            }
-            using var fonts = new CanvasFontSet(uri);
-            if (fonts.Fonts.Count == 0) throw new InvalidOperationException("Curved label cannot load its requested font.");
-        }
-        using var format = new CanvasTextFormat { FontFamily = family, FontSize = size, FontWeight = new Windows.UI.Text.FontWeight { Weight = 600 } };
-        using var layout = new CanvasTextLayout(CanvasDevice.GetSharedDevice(), text, format, float.MaxValue, float.MaxValue); layout.SetPairKerning(0, text.Length, true);
+        using var layout = new CanvasTextLayout(CanvasDevice.GetSharedDevice(), text, style.Format, float.MaxValue, float.MaxValue); layout.SetPairKerning(0, text.Length, true);
         var start = BleeckerPieGeometry.Polar(cx, cy, radius, angle); var end = BleeckerPieGeometry.Polar(cx, cy, radius, angle + (clockwise ? -359 : 359));
         var measure = new BleeckerSvgCircleMeasure(new((float)start.X, (float)start.Y), new((float)end.X, (float)end.Y), (float)radius, clockwise);
         var renderer = new Renderer(measure); layout.DrawToTextRenderer(renderer, Vector2.Zero);

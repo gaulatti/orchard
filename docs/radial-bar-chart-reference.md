@@ -94,3 +94,20 @@ transition checks, within the two-second presentation limit. Sixteen final
 capture layout reports also settle. The focused Radial Bar → Radar → Scatter
 → Sparkline sequence passes both themes. Light/Dark default captures were
 visually inspected; complete raster/platform acceptance remains open.
+
+Font-setup performance work must preserve the complete 80-case source fixture,
+each native glyph figure/segment coordinate and fill rule, every captured
+viewport pixel, lifecycle behavior, physical input gates and existing deadlines.
+One font style may be reused within one render; separate per-value layouts and
+fresh consumer font selection on subsequent renders remain required. Native
+glyph hashes are recorded before and after the change without rounding or
+excluded glyphs. Raster differences remain open evidence, never masked.
+
+The scoped font style passes all 80 source cases and native lifecycle checks;
+every native glyph hash matches the prior implementation. It selects the same
+bundled/consumer family and weight once per render and disposes the style after
+all independent value layouts finish. Fonts/data are not cached across renders.
+The measured focused phase changes from 14.00/13.32 seconds in Light/Dark to
+12.29/11.66; complete published verification is still pending. See the
+[Sunburst performance evidence](sunburst-chart-reference.md) for the shared
+style contract and unchanged-code raster variability.

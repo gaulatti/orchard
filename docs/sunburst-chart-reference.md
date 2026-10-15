@@ -86,7 +86,7 @@ The capture and derivation audit the actual bundled dependency directories,
 versions and lockfile integrities, including one React 19.2.4 runtime. Browser
 hover/click/keyboard states contain no inspection surface. All 94 captured
 paths, label strings and baselines pass the pure regression; original records
-remain unchanged. The full regression suite has 53 passing tests, and generated
+remain unchanged. The full regression suite has 55 passing tests, and generated
 tokens match the pinned source.
 
 The expanded 94-case native run passes both themes, including actual font
@@ -115,6 +115,36 @@ zero warnings. Twelve whole Sunburst viewports, using their recorded native
 bounds and zero excluded pixels, all differ from the browser (1,527–4,409
 changed pixels, maximum channel difference 251). This is an explicit open
 visual acceptance gap.
+
+Performance investigation must preserve all 94 source cases, all native glyph
+figure/segment coordinates and fill rules, and every captured viewport pixel.
+Record hashes from the original native glyph geometries before changing their
+materialization. Keep native pointer/presentation checks, motion windows and
+the full 360-second deadline unchanged.
+
+The CPU profile identifies repeated file-font and format setup for each label.
+Sunburst and Radial Bar now select/validate one `BleeckerChartTextStyle` within
+each render, retain separate per-value layouts, and dispose the format/font set
+when that render finishes. No data or font selection is cached across renders.
+Consumer family/size/weight changes therefore select a fresh style. Missing
+font assets still fail explicitly, with a native regression at that boundary.
+The pinned Win2D 1.4.0 [release notes](https://github.com/microsoft/Win2D/blob/winappsdk/main/CHANGELOG.md),
+[text format](https://microsoft.github.io/Win2D/WinUI3/html/T_Microsoft_Graphics_Canvas_Text_CanvasTextFormat.htm)
+and [layout](https://microsoft.github.io/Win2D/WinUI3/html/T_Microsoft_Graphics_Canvas_Text_CanvasTextLayout.htm)
+contracts were consulted.
+
+All 94 Sunburst native glyph hashes match the original figures, fill rules and
+curve coordinates exactly; all 80 Radial Bar hashes also match. Diagnostic
+Sunburst setup totals fall from 9.53 seconds over 592 layout calls to 1.37 over
+579 calls (async rerenders vary). The separate Radial Bar baseline took
+14.00/13.32 seconds per Light/Dark phase, versus 12.29/11.66 with the scoped
+style. Temporary counters are removed. Native raster comparisons stay open:
+unchanged-code repeats themselves differ in 9 of 12 viewports by 3–76 pixels,
+with maximum channel difference 70. No pixels are masked or declared equal.
+The final seven-chart sequence passes in both themes, including the missing
+font rejection and corrected exact absolute mouse input. Both architecture
+builds have zero warnings. Fresh package/published verification of this font
+optimization remains pending.
 
 The second complete published run uses catalog source
 `c3902c3acce7bdce6543951985b95ededf7ced1b` and also reaches the unchanged

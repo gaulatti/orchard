@@ -15,6 +15,11 @@ public sealed partial class SunburstChartsFixture
 {
     private async Task VerifyMutationAsync(Grid host, string folder, BleeckerColorScheme scheme)
     {
+        var styleType = typeof(BleeckerSunburstChart).Assembly.GetType("Orchard.BleeckerChartTextStyle")!;
+        var missingFontRejected = false;
+        try { (Activator.CreateInstance(styleType, BindingFlags.Instance | BindingFlags.NonPublic, null, new object[] { "ms-appx:///Orchard/Assets/Fonts/nonexistent-chart-font.ttf#Missing", 12f, (ushort)600 }, null) as IDisposable)?.Dispose(); }
+        catch (TargetInvocationException error) when (error.InnerException is not null) { missingFontRejected = true; }
+        Require(missingFontRejected, "Chart text silently substituted a missing font asset.");
         var shared = new BleeckerSunburstNode { Name = "Shared", Value = 25 }; var second = new BleeckerSunburstNode { Name = "Second", Value = 15 };
         var a = new BleeckerSunburstNode { Name = "A", Value = 40, Children = new() { second, shared } }; var b = new BleeckerSunburstNode { Name = "B", Value = 20 };
         var tree = new BleeckerSunburstNode { Name = "Root", Children = new() { a, b } }; var owner = new BleeckerSunburstChart { Data = tree, Width = 320, Height = 240 }; AutomationProperties.SetName(owner, "Live hierarchical allocation");

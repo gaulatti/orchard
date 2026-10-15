@@ -11,19 +11,12 @@ namespace Orchard;
 internal static class BleeckerSunburstText
 {
     internal sealed record Label(string Text, double X, double Baseline, double Advance, PathGeometry Geometry, PathGeometry OutlineGeometry);
-    internal static Label Create(string text, string family, float size, ushort weight, double x, double baseline)
+    internal static Label Create(string text, BleeckerChartTextStyle style, double x, double baseline)
     {
-        var marker = family.IndexOf('#');
-        if (marker >= 0 && Uri.TryCreate(family[..marker], UriKind.Absolute, out var uri))
-        {
-            if (uri.Scheme == "ms-appx" && uri.Host.Length == 0) { uri = new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory, Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/')))); family = uri.AbsoluteUri + family[marker..]; }
-            using var fonts = new CanvasFontSet(uri); if (fonts.Fonts.Count == 0) throw new InvalidOperationException("Sunburst cannot load its requested font.");
-        }
-        using var format = new CanvasTextFormat { FontFamily = family, FontSize = size, FontWeight = new Windows.UI.Text.FontWeight { Weight = weight } };
         // SVG's default whitespace processing removes the outer breaking spaces
         // after Recharts has joined its words. Keep the original DOM label text.
         var paintedText = text.Trim(' ');
-        using var layout = new CanvasTextLayout(CanvasDevice.GetSharedDevice(), paintedText, format, float.MaxValue, float.MaxValue); if (paintedText.Length > 0) layout.SetPairKerning(0, paintedText.Length, true);
+        using var layout = new CanvasTextLayout(CanvasDevice.GetSharedDevice(), paintedText, style.Format, float.MaxValue, float.MaxValue); if (paintedText.Length > 0) layout.SetPairKerning(0, paintedText.Length, true);
         var advance = Math.Ceiling(layout.LayoutBounds.Width * 64) / 64;
         using var outline = CanvasGeometry.CreateText(layout);
         var nativeBaseline = layout.LineMetrics.Length == 0 ? 0 : layout.LineMetrics[0].Baseline;

@@ -58,7 +58,8 @@ public sealed partial class RadialBarChartsFixture : UserControl
                     if (value.GetProperty("tooltipVisible").GetBoolean()) await AwaitAsync(() => Math.Abs(Part<Border>(chart, "PART_Tooltip").ActualHeight - value.GetProperty("tooltipBox").GetProperty("height").GetDouble()) < .001 && Math.Abs(Part<Border>(chart, "PART_Tooltip").ActualWidth - Part<Border>(chart, "PART_Tooltip").Width) < .001, "Radial Bar tooltip did not arrange.");
                     Check(action, () => CompareInspection(chart, value));
                 }
-                reports.Add(new { id, errors }); failures.AddRange(errors.Select(error => id + ": " + error));
+                var glyphSha256 = NativeGlyphGeometry.Hash(plot.Children.OfType<Path>().Where(path => path.Tag is ValueTuple<string, int, int> tag && tag.Item1 == "radial-label-glyph").Select(path => (PathGeometry)path.Data));
+                reports.Add(new { id, errors, glyphSha256 }); failures.AddRange(errors.Select(error => id + ": " + error));
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"radial-bar-chart-{scheme}.json"), JsonSerializer.Serialize(new { passed = failures.Count == 0, reports }, new JsonSerializerOptions { WriteIndented = true }));
             }
             Require(failures.Count == 0, "Radial Bar mismatches: " + string.Join(" | ", failures));

@@ -67,6 +67,7 @@ public sealed class BleeckerSunburstChart : Control
             family = Element<TextBlock>($"<TextBlock FontFamily=\"{{StaticResource {resource}}}\" />").FontFamily.Source;
             weight = (ushort)(weight < 450 ? 400 : weight < 550 ? 500 : 600);
         }
+        using var textStyle = layout.Entries.Any(entry => entry.HasLabel) ? new BleeckerChartTextStyle(family, (float)(FontSize * settings.TextScaleFactor), weight) : null;
         for (var i = 0; i < layout.Entries.Length; i++)
         {
             var entry = layout.Entries[i];
@@ -79,7 +80,7 @@ public sealed class BleeckerSunburstChart : Control
             }
             if (entry.HasLabel)
             {
-                var label = BleeckerSunburstText.Create(entry.Label, family, (float)(FontSize * settings.TextScaleFactor), weight, entry.LabelX, entry.LabelY); labels.Add(label);
+                var label = BleeckerSunburstText.Create(entry.Label, textStyle!, entry.LabelX, entry.LabelY); labels.Add(label);
                 var stroke = Element<Path>("<Path Stroke=\"{ThemeResource BleeckerSunburstTextOutlineBrush}\" StrokeThickness=\"1\" IsHitTestVisible=\"False\" />"); stroke.Data = label.OutlineGeometry; stroke.Tag = ("sunburst-label-outline", i); plot.Children.Add(stroke);
                 var ink = Element<Path>("<Path Fill=\"{ThemeResource BleeckerSunburstTextBrush}\" IsHitTestVisible=\"False\" />"); ink.Data = label.Geometry; ink.Tag = ("sunburst-label", i); plot.Children.Add(ink);
             }

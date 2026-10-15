@@ -54,7 +54,9 @@ public sealed partial class BleeckerLineChart
             }
             foreach (var entry in radialEntries) AddRadialSector(entry, true);
             foreach (var entry in radialEntries) AddRadialSector(entry, false);
-            foreach (var entry in radialEntries) RenderRadialLabel(entry);
+            BleeckerChartTextStyle? textStyle = null;
+            try { foreach (var entry in radialEntries) RenderRadialLabel(entry, ref textStyle); }
+            finally { textStyle?.Dispose(); }
         }
         PaintInteraction(); FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
