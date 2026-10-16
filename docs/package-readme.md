@@ -76,6 +76,15 @@ application-owned `IBleeckerDataTableFilterSource`; the adapter retains its
 original columns, rows, initial filters and global state. Original filter/action
 content and optional templates follow the responsive 640px viewport layout.
 The native preview's complete interaction, visual and platform acceptance is open.
+`BleeckerDataTablePagination` displays an application-owned
+`IBleeckerDataTablePaginationSource`. Set `Table` before mounting and raise its
+`Changed` event when page state, filtered counts or navigation flags change.
+The view forwards first/previous/next/last and page-size requests to that same
+adapter; the application retains rows, filtering, sorting, selection and paging
+policy. `PageSizeOptions` defaults to 10, 20, 30, 50 and 100 and accepts a live
+integer collection. Unknown manual page counts remain `-1`; an unlisted size
+has an empty selector display. Complete visual, keyboard and platform acceptance
+remains open.
 `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;
