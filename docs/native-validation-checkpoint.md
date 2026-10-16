@@ -1,6 +1,56 @@
 # Current native validation checkpoint
 
-## Loading Overlay two-window checkpoint
+## Loading Overlay guarded contrast preparation
+
+Catalog/test source: `9b4d7ba84157ef1f6e48014784b931e10b16559e`.
+The public library and hosted-only mutation helper are unchanged.
+
+The clean x64 `loading-overlay-contrast-entry` mode passes both ordinary themes,
+retaining default palette, blur/shadows and original keyboard focus. Each actual
+native label capture contains 217 solid glyph pixels. Three negative audits
+reject missing baseline shadows, an incorrect ordinary text color and an
+attempt to pass entry-only evidence as actual contrast verification.
+
+The live mode refuses local execution with the existing isolated-runner error
+before creating native mutation stages. Win32 state before/after refusal is
+identical: flags 126, configured scheme `High Contrast Black`, enabled false.
+The request for a temporary local-settings exception is unanswered; the guard
+has not been weakened and CI metadata has not been spoofed. The new live gate
+is compiled and registered for future native CI runs, but **actual contrast
+transition and restoration remain unverified**. Actions are still paused for
+pushes, with zero runs for `9b4d7ba`.
+
+Both clean architecture publications, all 113 unit tests and token checks pass.
+Across architectures all 5,777 method definitions/IL records and managed
+resources match. A resolved-operand comparison with the prior package release
+also matches implementations and all 24 exposed-type mappings. No new package
+is needed for this catalog-only preparation; independent consumer evidence
+remains at the prior two-window checkpoint. The new catalog library hashes are
+`8b3068443e933691da5ce690fdc71247da96b3b388682eacc9f3fb6a208f78dc` (x64) and
+`d9e1036a3f1498eba5d0d58527ea4ad20c4695636a397bf1476ad55ad176a4e6` (ARM64).
+
+Both versioned catalog archives match every published file. The x64 archive
+has entry-only runtime evidence; ARM64 has build-only evidence. Neither archive
+claims an actual contrast transition:
+
+| Artifact below `artifacts/` | Entries | SHA-256 |
+| --- | --- | --- |
+| `Orchard.Catalog.0.1.0-9b4d7ba-x64.zip` | 533 | `3a66407515d25df43c22cfdb4f8936274e47628a49228ef05793cf124af904df` |
+| `Orchard.Catalog.0.1.0-9b4d7ba-arm64.zip` | 529 | `96dfc4851cf01acecb0b1f15582d4afbb0edd0bd67b3b10f7cc1bd33f36278c7` |
+
+Evidence is in `artifacts/loading-overlay-contrast-validated-entry`,
+`artifacts/loading-overlay-contrast-validated-negative-audit.json`,
+`artifacts/loading-overlay-contrast-local-refusal`,
+`artifacts/loading-overlay-contrast-local-state-audit.json` and
+`artifacts/loading-overlay-contrast-{architecture-il,resolved-method}-audit.json`.
+`artifacts/loading-overlay-contrast-validated-archives.json` records artifact scope.
+Current catalog runtime evidence is entry-only. Actual contrast, Narrator,
+scaling, motion, exact raster and native ARM64 runtime remain open. Inventory
+stays 57 in progress, 55 pending, zero accepted. The public wiki remains
+unavailable. The next independent inventory entry is FilterChip/FilterGroup;
+its frozen source hash is verified, with implementation still pending.
+
+## Previous Loading Overlay two-window checkpoint
 
 Catalog/test source: `c27b2a4b504f3fb807a22348050fe8fc89806a6b`.
 The public library source remains unchanged from `2e72e33`.
