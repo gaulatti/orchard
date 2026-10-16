@@ -66,6 +66,7 @@ public sealed partial class MainWindow
             var buttons = new List<object>();
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
                 buttons.Add(await CaptureResetAlphaAsync(host, theme, folder));
+            await CapturePersistenceProbe.VerifyAsync(folder);
             await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "brush-alpha", environment = RuntimeEnvironment(), reports, buttons }, new JsonSerializerOptions { WriteIndented = true }));
         }
         finally { CatalogRoot.Children.Remove(host); }

@@ -109,6 +109,12 @@ jobs:
         if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
+      - name: Verify PNG persistence and alpha conversion
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component brush-alpha -ClientSize 1024,745 -Output artifacts/capture-persistence -ExpectedArchitecture X64
+          node scripts/verify-capture-persistence.mjs --native artifacts/capture-persistence --output artifacts/capture-persistence/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'PNG persistence regression failed.' }
       - name: Verify live Windows contrast transition
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component contrast -Output artifacts/contrast -ExpectedArchitecture X64
@@ -169,6 +175,9 @@ jobs:
       - uses: actions/setup-dotnet@v5
         with:
           global-json-file: global.json
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
       - name: Verify native ARM64 host
         run: |
           $hostArchitecture = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture
@@ -258,6 +267,12 @@ jobs:
         if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
+      - name: Verify native ARM64 PNG persistence and alpha conversion
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component brush-alpha -ClientSize 1024,745 -Output artifacts/capture-persistence -ExpectedArchitecture Arm64
+          node scripts/verify-capture-persistence.mjs --native artifacts/capture-persistence --output artifacts/capture-persistence/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 PNG persistence regression failed.' }
       - name: Verify live Windows contrast transition
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component contrast -Output artifacts/contrast -ExpectedArchitecture Arm64

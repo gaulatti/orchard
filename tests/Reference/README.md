@@ -50,3 +50,15 @@ Direct CSS family requests can silently choose another family, so zero
 99.538086px in canvas, matching the native default's advance, while full Yu
 Gothic faces give the reference's DOM width but different canvas glyphs. None
 of the tested named CJK faces matches the canonical canvas raster exactly.
+
+`CapturePersistence.json` freezes the existing Windows PNG persistence path,
+separately from the Bleecker browser references. Its four deterministic
+premultiplied BGRA inputs cover a transparent pixel, odd dimensions, every
+alpha/channel pair in a 256 by 256 grid and a 1024 by 745 image. The baseline
+was captured before changing `SavePngAsync`; it records exact input, PNG and
+decoded RGBA hashes plus the unchanged helper/encoder and binary provenance.
+The encoder source comparison normalizes CRLF to LF and preserves the
+original raw hash as provenance. The existing `brush-alpha` diagnostic runs
+the native regression, immediately reads every completed file and proves
+that a write failure propagates. Independently verify those actual files
+with `scripts/verify-capture-persistence.mjs --native <output> --output <audit>`.

@@ -66,6 +66,7 @@
         <EmbeddedResource Include="../../tests/Reference/SelectShadowPointer.json" LogicalName="Orchard.Catalog.Reference.SelectShadowPointer.json" />
         <EmbeddedResource Include="../../tests/Reference/SparklinePointer.json" LogicalName="Orchard.Catalog.Reference.SparklinePointer.json" />
         <EmbeddedResource Include="../../tests/Reference/PiePointer.json" LogicalName="Orchard.Catalog.Reference.PiePointer.json" />
+        <EmbeddedResource Include="../../tests/Reference/CapturePersistence.json" LogicalName="Orchard.Catalog.Reference.CapturePersistence.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarCaption.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarCaption.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarReset.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarReset.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarPress.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarPress.json" />

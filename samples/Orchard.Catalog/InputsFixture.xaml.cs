@@ -294,6 +294,15 @@ public sealed partial class InputsFixture : UserControl
         var expected = BleeckerTokens.Colors(scheme)["terracotta"];
         var otherBorder = Find<Border>(SmallInput, "BorderElement");
         var otherColor = Hex(otherBorder.BorderBrush);
+        var otherBrush = otherBorder.BorderBrush;
+        object OtherSnapshot() => new
+        {
+            color = Hex(otherBorder.BorderBrush), SmallInput.IsLoaded, SmallInput.IsEnabled,
+            SmallInput.IsHitTestVisible, SmallInput.IsError, SmallInput.FocusState, SmallInput.ActualTheme,
+            states = VisualStateManager.GetVisualStateGroups((FrameworkElement)VisualTreeHelper.GetChild(SmallInput, 0))
+                .Select(group => new { group.Name, state = group.CurrentState?.Name }).ToArray()
+        };
+        var otherBefore = OtherSnapshot();
         var samples = new List<(double Milliseconds, string Color, double Opacity)>();
         var elapsed = new System.Diagnostics.Stopwatch();
         var finished = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -319,6 +328,14 @@ public sealed partial class InputsFixture : UserControl
                 new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         Require(Hex(border.BorderBrush) == expected && Math.Abs(editor.Opacity - .6) < .000001,
             $"Input motion did not reach the disabled-error appearance: border={Hex(border.BorderBrush)}, expected={expected}, opacity={editor.Opacity}.");
+        if (Hex(otherBorder.BorderBrush) != otherColor || ReferenceEquals(border.BorderBrush, otherBorder.BorderBrush))
+            await System.IO.File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"input-brush-isolation-{scheme}.json"),
+                System.Text.Json.JsonSerializer.Serialize(new
+                {
+                    before = otherBefore, after = OtherSnapshot(), otherBrushRetained = ReferenceEquals(otherBrush, otherBorder.BorderBrush),
+                    brushesShared = ReferenceEquals(border.BorderBrush, otherBorder.BorderBrush),
+                    mediumColor = Hex(border.BorderBrush), expected, cursor = NativeInputSession.DescribeCursor()
+                }, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
         Require(Hex(otherBorder.BorderBrush) == otherColor && !ReferenceEquals(border.BorderBrush, otherBorder.BorderBrush), "Input motion changed another editor's brush.");
         if (enabled)
         {

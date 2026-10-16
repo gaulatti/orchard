@@ -148,22 +148,28 @@ internal static class NativeScreenCapture
         var pixels = new byte[checked(width * height * 4)];
         try
         {
-            memory = CreateCompatibleDC(screen);
-            bitmap = CreateCompatibleBitmap(screen, width, height);
+            using (CatalogRuntimeProfile.Measure("screen.allocate"))
+            {
+                memory = CreateCompatibleDC(screen);
+                bitmap = CreateCompatibleBitmap(screen, width, height);
+            }
             if (screen == IntPtr.Zero || memory == IntPtr.Zero || bitmap == IntPtr.Zero)
                 throw new InvalidOperationException("Could not allocate the catalog screen capture.");
             previous = SelectObject(memory, bitmap);
             if (previous == IntPtr.Zero || previous == new IntPtr(-1))
                 throw new InvalidOperationException("Could not select the catalog capture bitmap.");
-            if (!BitBlt(memory, 0, 0, width, height, screen, origin.X, origin.Y, 0x40CC0020))
-                throw new InvalidOperationException("Could not copy the composed catalog pixels.");
+            using (CatalogRuntimeProfile.Measure("screen.blit"))
+                if (!BitBlt(memory, 0, 0, width, height, screen, origin.X, origin.Y, 0x40CC0020))
+                    throw new InvalidOperationException("Could not copy the composed catalog pixels.");
             SelectObject(memory, previous); previous = IntPtr.Zero;
             var info = new BitmapInfo { Size = 40, Width = width, Height = -height, Planes = 1, BitCount = 32 };
-            if (GetDIBits(memory, bitmap, 0, (uint)height, pixels, ref info, 0) != height)
-                throw new InvalidOperationException("Could not read the composed catalog bitmap.");
+            using (CatalogRuntimeProfile.Measure("screen.read"))
+                if (GetDIBits(memory, bitmap, 0, (uint)height, pixels, ref info, 0) != height)
+                    throw new InvalidOperationException("Could not read the composed catalog bitmap.");
         }
         finally
         {
+            using var cleanup = CatalogRuntimeProfile.Measure("screen.cleanup");
             if (previous != IntPtr.Zero && previous != new IntPtr(-1)) SelectObject(memory, previous);
             if (bitmap != IntPtr.Zero) DeleteObject(bitmap);
             if (memory != IntPtr.Zero) DeleteDC(memory);

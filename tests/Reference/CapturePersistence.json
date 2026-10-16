@@ -1,0 +1,57 @@
+{
+  "format": "orchard-capture-persistence-reference-v1",
+  "generator": "premultiplied-grid-v1",
+  "baseline": {
+    "parentCommit": "72f0e2108b93452b11974cd440a667be55b1da71",
+    "note": "Parent source plus the capture probe and GDI timing scopes. The PNG helper and encoder are unchanged.",
+    "saveHelperSourceSha256": "1166168b03a05f94424fd0a6546cab48b972ec73cf5137ee70ad9c4588dafc06",
+    "encoderSourceSha256": "36c5a59ec5d4f877648f8f2edcdd13633ff7c50b85ee6b83cb5a1e64ef95dfb1",
+    "probeBinarySha256": "584cdb7059cc4a5ca62384b0fcc9ff77a0def9bb6994d9342eb18968cad141cf",
+    "environment": {
+      "processArchitecture": "X64",
+      "osArchitecture": "X64",
+      "osDescription": "Microsoft Windows 10.0.26200",
+      "framework": ".NET 10.0.12",
+      "displayScale": 1,
+      "textScale": 1,
+      "animationsEnabled": false,
+      "highContrast": false
+    },
+    "encoderSourceRawSha256": "36c5a59ec5d4f877648f8f2edcdd13633ff7c50b85ee6b83cb5a1e64ef95dfb1",
+    "encoderSourceNormalization": "lf"
+  },
+  "cases": [
+    {
+      "id": "transparent",
+      "width": 1,
+      "height": 1,
+      "inputSha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "pngSha256": "7ece73869569fbd04c3b0b6665eabce6a2c501430a663e4536879e17fb575222",
+      "rgbaSha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "id": "odd-size",
+      "width": 17,
+      "height": 3,
+      "inputSha256": "9c9c6daf1767dcbd211ce127de6dc64c9e122e65d47659616361e7d7d15eb4d9",
+      "pngSha256": "3ceee39ef4816036efca8042fa240c337a1ae0c351e229a0b22718f523e6b915",
+      "rgbaSha256": "614483022bd70a1f41cb7f75d06874e3e404bc9a3e61047183864af4cdb1d1e1"
+    },
+    {
+      "id": "alpha-grid",
+      "width": 256,
+      "height": 256,
+      "inputSha256": "68ca5d95e7cc5363c396370caca5fc093ff14b9235df85d1587cedecaf953597",
+      "pngSha256": "67bbb475b7f691bf63366cee9fd0b6bd148674be3f701f0db397cccd71b0eb9e",
+      "rgbaSha256": "f0cb39f3d50c720b9662a729b4aad5827d83343fe32c936f01ee8f1b7c1eb449"
+    },
+    {
+      "id": "catalog-size",
+      "width": 1024,
+      "height": 745,
+      "inputSha256": "e9a0872933a2b1f57f447f892638be10f14921fc8e5b060b30f08527adc791af",
+      "pngSha256": "98b80ba68ad00c9fcf1c01cc79ef3e5ce568aae579f4cfe90ab9d30b4f274f00",
+      "rgbaSha256": "775db1bffc7e056f02dae937e1b80df0826526b8d9d180a9a14fb58339549884"
+    }
+  ]
+}
