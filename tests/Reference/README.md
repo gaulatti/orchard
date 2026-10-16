@@ -1,5 +1,12 @@
 # Browser reference probes
 
+`DataTableFilters.json` records the actual frozen Select Filter and real
+TanStack consumer in 56 cases and 276 states. The collector/client live under
+`scripts/reference`; `scripts/verify-data-table-filters-reference.mjs` checks
+raw PNGs, pinned dependencies, trusted input and source-specific edge cases.
+See [the source contract](../../docs/data-table-filters-reference.md). Native
+Filters implementation and acceptance remain pending.
+
 `DataTableColumnToggle.json` records the actual frozen React/TanStack/Radix
 column visibility popover in 28 cases and 132 states. Its collector/client
 under `scripts/reference` verify the original lock blob, dependency versions

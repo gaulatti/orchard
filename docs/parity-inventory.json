@@ -1271,7 +1271,14 @@
       ],
       "windowsImplementation": [],
       "catalogFixtures": [],
-      "regressionTests": [],
+      "regressionTests": [
+        "tests/Reference/DataTableFilters.json",
+        "tests/Orchard.Tests/DataTableFiltersReferenceTests.cs",
+        "samples/Orchard.Catalog/SelectFilterTable.cs",
+        "scripts/reference/capture-data-table-filters.cjs",
+        "scripts/reference/data-table-filters-client.tsx",
+        "scripts/verify-data-table-filters-reference.mjs"
+      ],
       "status": "pending",
       "remainingGaps": [
         "Implement full pinned contract with native Windows conventions",

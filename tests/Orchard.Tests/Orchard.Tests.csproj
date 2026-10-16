@@ -4,6 +4,10 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="../../samples/Orchard.Catalog/SelectFilterTable.cs" Link="SelectFilterTable.cs" />
+        <None Include="../Reference/DataTableFilters.json" Link="Fixtures/DataTableFilters.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-data-table-filters.cjs" Link="Fixtures/CaptureDataTableFilters.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/data-table-filters-client.tsx" Link="Fixtures/DataTableFiltersClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <PackageReference Include="MSTest" />
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../samples/Orchard.Catalog/NativeAbsolutePointer.cs" Link="NativeAbsolutePointer.cs" />
