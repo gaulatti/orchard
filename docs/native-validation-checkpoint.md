@@ -1,6 +1,64 @@
 # Current native validation checkpoint
 
-## Chart focus ownership repair checkpoint
+## DataList first-line baseline checkpoint
+
+Current library/catalog source: `82d7d34137d2c76080a33c870e7e2a8a5b30c69d`.
+All **396 scalar first-line baselines** pass across **72 cases**, both themes
+and viewport widths 639, 640 and 1024. Maximum error is 0.0000124 DIP at the
+unchanged 0.05-DIP geometry bound. The original native implementation fails
+all 396 checks, by up to 2.068001 DIPs. Source ranges and Canvas font metrics
+are measured without changing the frozen component. The correction rounds
+font ascent/descent before placing the line baseline, preserving compact
+rows' half-DIP origins. Six consumer-button baselines remain diagnostic;
+the library preserves consumer typography and layout.
+
+The clean published full x64 sequence passes in **435.2680508 seconds**,
+retaining all **1,104 capture names** and **174 protected glyph hashes**.
+Its audit verifies 1,982 pointer moves/presentation gates, 1,748 owned key
+pairs and 70 physical clicks. Maximum gate: 210.8032 ms under the unchanged
+two-second deadline. All 324 Stepper baselines remain within 0.0000153 DIP.
+The full watchdog remains eight minutes; no collection-performance claim
+is made. The first postprocessing attempt incorrectly required a component
+field in the full-suite report. The audit now requires explicit
+`--full-suite` mode and validates that report's existing schema; five negative
+checks retain the original baseline failures and reject mismatched modes.
+The existing native evidence passes corrected postprocessing at the same bounds.
+
+Both clean architecture builds/publications, **109 unit tests** and token
+generation pass. A fresh independent x64 NuGet consumer passes both themes
+and native actions. The ARM64 consumer builds only. Both isolated caches
+are removed. Exact images remain open: **66/72 differ**, with 2,496,401
+differing pixels and 76,288,484 absolute RGBA error, using zero tolerance,
+no masks and no resampling. The clean replay differs from the prototype
+by one unit of total RGBA error. See [the control contract](data-list.md)
+for the remaining raster, override, scaling, accessibility and platform gaps.
+Inventory remains **55 in progress, 57 pending, zero accepted**.
+
+Evidence is in `artifacts/data-list-baseline-release-matrix/{1024,639,640}`,
+`artifacts/smoke-data-list-baseline-release-full`,
+`artifacts/data-list-baseline-release-{1024,639,640}-audit.json`,
+`artifacts/data-list-baseline-release-{full-audit,full-timing,pixel-audit,archives}.json`,
+`artifacts/data-list-baseline-negative-audit.json` and
+`artifacts/package-consumer-data-list-baseline-{x64,arm64}`.
+`artifacts/data-list-baseline-release-binary-correspondence.json` verifies
+identical library bytes in the package, x64 catalog and both package consumers:
+
+- Library SHA-256: `a4742298ae522f5791a52c4df09a37e55e4fea6b02c064e4b5469f41830229c4`.
+- Package SHA-256: `d2c12fbea8d9c70c748dfca528e1bb2c70e5c2cdc309c19546e12210a039f765`.
+- x64 ZIP: 532 entries, SHA-256 `7b67a24771df8d0af0c7a0f09630cd525faf1b243501cdd343f154dc65066113`.
+- ARM64 ZIP: 528 entries, SHA-256 `88166f99cd35bdc7c83985675ad7d92613c61fee50dfa6f31faa39c465a7898b`.
+
+The separately built ARM64 catalog library has SHA-256
+`372a911a86b5c710e21b1d0c75a20e10232d15dd3edee7399d495089e4e8c034`
+and matches its clean architecture build. Its PE bytes differ from the
+portable package. `artifacts/data-list-baseline-architecture-il-audit.json`
+verifies identical method signatures and IL instruction records for all
+5,616 methods, including 84 DataList methods, plus identical managed resources.
+This is build evidence; native ARM64 runtime remains unverified. Both ZIPs
+match every published entry. Push-triggered Actions remain paused; no hosted
+result is claimed. The public wiki remains unavailable. The goal stays active.
+
+## Previous chart focus ownership repair checkpoint
 
 Current library/catalog source: `4d14c0e6be01d12cbd2b48ae565c7924f5f37631`.
 The clean published full x64 sequence passes in **434.4379521 seconds**, retaining

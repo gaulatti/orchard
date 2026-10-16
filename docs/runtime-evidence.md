@@ -2121,8 +2121,30 @@ Exact images remain open: 66/72 differ without masks or tolerance. The full
 published x64 sequence passes 1,104 captures in 437.5147483 seconds, preserving
 all previous names and 174 protected glyph hashes. Both architecture builds,
 108 unit tests and token generation pass. The ARM64 consumer has build-only
-evidence. The x64 consumer passes an instrumented attempt after two Bar Chart
-focus failures that remain unresolved; a passing retry does not repair that
-boundary. See the [current checkpoint](native-validation-checkpoint.md).
+evidence. At that checkpoint, the x64 consumer passes an instrumented attempt
+after two unresolved Bar Chart focus failures. The subsequent focus-owner repair
+has separate native/package evidence in the
+[current checkpoint](native-validation-checkpoint.md).
 Inventory: 55 in progress, 57 pending, zero accepted. Push-triggered Actions
 remain paused and the goal remains active.
+
+## DataList first-line baseline checkpoint
+
+Source `82d7d34` corrects scalar text placement with measured font metrics and
+line-relative quantization, retaining compact rows' half-DIP origins. All 396
+scalar first-line baselines pass across the 72-case published x64 matrix,
+within 0.0000124 DIP. The original renderer fails all 396 checks. Consumer
+controls keep their own layout. The full published x64 sequence passes 1,104
+captures in 435.2680508 seconds, retaining every prior name and 174 protected
+glyph hashes. All 324 Stepper baselines remain within 0.0000153 DIP.
+
+Both clean architecture builds, 109 unit tests and token generation pass.
+The fresh x64 package consumer passes both themes and native actions; ARM64
+has build-only evidence. Consumer caches are removed. Exact images still
+differ in 66/72 cases: 2,496,401 pixels and 76,288,484 absolute RGBA error,
+with zero masks/tolerance and no resampling. The first postprocessing run
+rejected the full report's schema; explicit full-suite audit mode now passes
+and rejects mismatched report modes. See the
+[current checkpoint](native-validation-checkpoint.md) for separate binary,
+archive and platform evidence. Inventory remains 55 in progress, 57 pending,
+zero accepted. Push-triggered Actions remain paused; the goal stays active.

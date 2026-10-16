@@ -117,3 +117,13 @@ differing pixels and 38,454,635 less error than the initial matrix. Exact font,
 shape and alpha rasterization, wrapped-line detail, consumer/override coverage,
 scaling, contrast/Narrator and ARM64 runtime remain open. These baseline checks
 do not accept the component or its remaining platform requirements.
+
+The clean `82d7d34` published replay at
+`artifacts/data-list-baseline-release-matrix/{1024,639,640}` passes the same
+396 scalar baselines. Its exact image audit retains the same differing-pixel
+count with 76,288,484 total RGBA error, one unit above the prototype. The full
+published x64 sequence and fresh package consumer pass; ARM64 has build-only
+evidence. To audit a complete catalog report, pass `--full-suite` to the
+typography verifier; focused reports use its default mode. See
+[the current checkpoint](native-validation-checkpoint.md) for source/artifact
+hashes, retained negative checks and the remaining acceptance requirements.
