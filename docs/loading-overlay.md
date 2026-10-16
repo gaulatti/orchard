@@ -80,6 +80,27 @@ independent NuGet consumer also replaces its template and changes a caller label
 This fixture preserves the documented part layout; it does not establish every
 possible caller template, cross-window transfer, display scaling or raster parity.
 
+The caller can move the same control between windows on the same UI thread by
+removing it from the old parent and adding it to the new parent. Each window has
+its own XamlRoot; window creation, activation and closure remain caller-owned.
+See Microsoft's [multiple-window model](https://learn.microsoft.com/en-us/windows/apps/develop/ui/multiple-windows).
+The loading portal follows its current root's viewport and theme.
+
+`-Component loading-overlay-windows -ClientSize 640,480` exercises thirteen
+phases across two real native windows. It covers transfers with a detach wait,
+immediate transfers, identical size/theme/scale transfers, old-root resizing
+and theme changes, return/remount, old-window closure and final hiding. Ten
+visible phases verify the destination window ID, root ownership, viewport,
+palette, accessible name and original keyboard focus. Every visible phase
+blocks a real pointer click while allowing one owned Space press/release to
+activate the underlying action. The captures use 640×480 Light and 320×240 Dark
+clients. Four negative audits reject stale old-root portals, incorrect target
+window IDs, stale palettes and missing keyboard releases. The independent
+NuGet consumer transfers its custom template to a second window and back in
+both themes. This coverage uses one UI thread, one display scale and the
+documented template layout; cross-thread UI ownership and broader scaling,
+template and lifecycle combinations are not established by it.
+
 `tests/Reference/LoadingOverlay.json` records 60 unmodified browser cases across
 1024×900, 640×480 and 320×240 in both themes, plus six real keyboard/pointer
 interaction probes. `scripts/reference/capture-loading-overlay.cjs` reproduces

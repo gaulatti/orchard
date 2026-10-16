@@ -1699,7 +1699,10 @@
         "scripts/test-loading-overlay-accessibility-audit.mjs",
         "samples/Orchard.Catalog/MainWindow.LoadingOverlayTemplate.cs",
         "scripts/verify-loading-overlay-template.mjs",
-        "scripts/test-loading-overlay-template-audit.mjs"
+        "scripts/test-loading-overlay-template-audit.mjs",
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlayWindows.cs",
+        "scripts/verify-loading-overlay-windows.mjs",
+        "scripts/test-loading-overlay-windows-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

@@ -53,9 +53,42 @@ public sealed partial class MainWindow
                 ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(Root.XamlRoot), timelineAction), "Packaged custom template lost its viewport, accessible name or original focus.");
             PackageLoadingOverlay.Label = "Caller template 日本語"; Root.UpdateLayout();
             await AwaitAsync(() => BrandDescendants<TextBlock>(replacement).Any(part => part.Name == "PART_Label" && part.Text == PackageLoadingOverlay.Label), "Packaged custom template ignored the live caller label.");
+            await VerifyLoadingOverlayWindowAsync();
         }
         finally { PackageLoadingOverlay.IsVisible = false; PackageLoadingOverlay.Template = originalTemplate; PackageLoadingOverlay.ApplyTemplate(); PackageLoadingOverlay.ClearValue(AutomationProperties.NameProperty); AutomationProperties.SetLabeledBy(PackageLoadingOverlay, null); PackageLoadingOverlay.Label = "Preparing consumer data"; Root.UpdateLayout(); }
         Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Any(p => p.Child is FrameworkElement child && child.Name == "PART_Portal"), "Packaged loading portal did not close.");
+    }
+
+    private async Task VerifyLoadingOverlayWindowAsync()
+    {
+        var originalParent = (Panel)VisualTreeHelper.GetParent(PackageLoadingOverlay); var originalIndex = originalParent.Children.IndexOf(PackageLoadingOverlay);
+        var root = Root.XamlRoot; var destination = new Grid(); var action = new Button { Content = "Consumer window action", Width = 160, Height = 32 };
+        destination.Children.Add(action); var page = new Page { Content = destination, RequestedTheme = ElementTheme.Dark };
+        var other = new Window { Content = page, Title = "Orchard package transfer validation" };
+        try
+        {
+            other.Activate(); other.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400, 300));
+            await AwaitAsync(() => page.XamlRoot is not null && page.IsLoaded, "Packaged transfer target did not load.");
+            Require(!ReferenceEquals(page.XamlRoot, root) && action.Focus(FocusState.Keyboard), "Packaged transfer target did not have a distinct focused root.");
+            originalParent.Children.Remove(PackageLoadingOverlay); destination.Children.Add(PackageLoadingOverlay);
+            await AwaitAsync(() => ReferenceEquals(PackageLoadingOverlay.XamlRoot, page.XamlRoot) &&
+                VisualTreeHelper.GetOpenPopupsForXamlRoot(page.XamlRoot).Any(p => p.Child is FrameworkElement child && child.Name == "PART_Portal"), "Packaged loading portal did not transfer to its second window.");
+            Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(root).Any(p => p.Child is FrameworkElement child && child.Name == "PART_Portal"), "Packaged transfer left a portal in its old window.");
+            var portal = (FrameworkElement)VisualTreeHelper.GetOpenPopupsForXamlRoot(page.XamlRoot).Single(p => p.Child is FrameworkElement child && child.Name == "PART_Portal").Child;
+            Require(Math.Abs(portal.ActualWidth - page.XamlRoot.Size.Width) < .05 && Math.Abs(portal.ActualHeight - page.XamlRoot.Size.Height) < .05 &&
+                FrameworkElementAutomationPeer.CreatePeerForElement(BrandDescendants<BleeckerLoadingSpinner>(portal).Single()).GetName() == "Explicit consumer operation" &&
+                ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(page.XamlRoot), action), "Packaged transferred portal lost its viewport, name or target focus.");
+            destination.Children.Remove(PackageLoadingOverlay); originalParent.Children.Insert(originalIndex, PackageLoadingOverlay);
+            await AwaitAsync(() => ReferenceEquals(PackageLoadingOverlay.XamlRoot, root) &&
+                VisualTreeHelper.GetOpenPopupsForXamlRoot(root).Any(p => p.Child is FrameworkElement child && child.Name == "PART_Portal"), "Packaged loading portal did not return to its original window.");
+            Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(page.XamlRoot).Any(p => p.Child is FrameworkElement child && child.Name == "PART_Portal"), "Packaged return retained the second window's portal.");
+        }
+        finally
+        {
+            if (destination.Children.Contains(PackageLoadingOverlay)) destination.Children.Remove(PackageLoadingOverlay);
+            if (!originalParent.Children.Contains(PackageLoadingOverlay)) originalParent.Children.Insert(originalIndex, PackageLoadingOverlay);
+            other.Close(); Activate(); Require(timelineAction.Focus(FocusState.Keyboard), "Packaged transfer did not restore original-window keyboard focus."); Root.UpdateLayout();
+        }
     }
 
     private static ControlTemplate ConsumerLoadingTemplate() => (ControlTemplate)XamlReader.Load("""
