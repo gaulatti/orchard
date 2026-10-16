@@ -1682,17 +1682,20 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/MainWindow.LoadingOverlay.cs",
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlayLifecycle.cs",
         "tests/Reference/LoadingOverlay.json",
         "tests/Orchard.Tests/LoadingOverlayReferenceTests.cs",
         "tests/PackageConsumer/MainWindow.LoadingOverlay.cs",
         "scripts/verify-loading-overlay.mjs",
         "scripts/test-loading-overlay-audit.mjs",
-        "scripts/compare-loading-overlay-pixels.mjs"
+        "scripts/compare-loading-overlay-pixels.mjs",
+        "scripts/verify-loading-overlay-lifecycle.mjs",
+        "scripts/test-loading-overlay-lifecycle-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Complete exact raster and motion comparison",
-        "Verify live theme/resource, resize/reparent/template and popup stacking lifecycle",
+        "Verify cross-window root transfer, arbitrary custom templates and complete live resource/lifecycle matrices",
         "Verify display/text scaling, Narrator and Windows contrast schemes",
         "Verify native ARM64 runtime for the new component"
       ]

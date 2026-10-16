@@ -81,6 +81,7 @@ public sealed class BleeckerLoadingOverlay : Control
         var root = XamlRoot; var target = root.Content;
         if (ReferenceEquals(FocusManager.GetFocusedElement(root), target)) return;
         if (target.IsTabStop) { target.Focus(FocusState.Pointer); return; }
+        var originalTabStop = target.IsTabStop;
         var local = target.ReadLocalValue(IsTabStopProperty);
         var element = target as FrameworkElement; var binding = element?.GetBindingExpression(IsTabStopProperty)?.ParentBinding;
         target.IsTabStop = true;
@@ -95,7 +96,14 @@ public sealed class BleeckerLoadingOverlay : Control
         void RestoreTabStop()
         {
             if (binding is not null) element!.SetBinding(IsTabStopProperty, binding);
-            else if (ReferenceEquals(local, DependencyProperty.UnsetValue)) target.ClearValue(IsTabStopProperty);
+            else if (ReferenceEquals(local, DependencyProperty.UnsetValue))
+            {
+                target.ClearValue(IsTabStopProperty);
+                // A Page used as Window.Content has an effective non-tab-stop
+                // root default. ClearValue can instead restore Control's true
+                // metadata default. Preserve the captured root value in that case.
+                if (target.IsTabStop != originalTabStop) target.IsTabStop = originalTabStop;
+            }
             else target.SetValue(IsTabStopProperty, local);
         }
     }

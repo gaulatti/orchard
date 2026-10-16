@@ -59,6 +59,7 @@ public sealed partial class MainWindow : Window
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
+            else if (args.Contains("--smoke-loading-overlay-lifecycle")) await RunLoadingOverlayLifecycleAsync(folder);
             else if (args.Contains("--smoke-chart-load-focus")) await RunChartLoadFocusAsync(folder);
             else if (args.Contains("--smoke-timeline"))
             {

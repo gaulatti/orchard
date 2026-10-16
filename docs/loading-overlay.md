@@ -55,6 +55,26 @@ focus move restores the original `IsTabStop` value or binding. Opening and hidin
 the overlay do not themselves take focus. The catalog source harness hides its
 navigation while measuring the isolated source viewport, then restores it.
 
+A `Page` used as `Window.Content` can start with an effective non-tab-stop value
+that `ClearValue` does not recover: the API can expose Control's `true` default
+instead. Pointer focus clearing captures that original effective value and
+restores it explicitly when needed. Existing bindings are reattached; ordinary
+unset Grid values remain unset. The native Page regression reproduces the
+original failure after a real click, hide and Tab, then verifies restoration.
+
+Focused `-Component loading-overlay-lifecycle -ClientSize 640,480` validates
+14 phases under a Page root: open Light/Dark/Light changes, original mutable
+brushes and asymmetric geometry, real window resizing, immediate reparenting,
+template removal/restoration, unload/remount, independent stacked callers and
+pointer/root focus restoration. It restores the original window content and
+records real viewport bounds, palette values, focus notifications and native
+pointer receipts. `scripts/verify-loading-overlay-lifecycle.mjs` audits that
+evidence. This does not establish arbitrary custom-template or cross-window
+root-transfer behavior, complete resource replacement, scaling or pixel parity.
+Three negative audits reject a retained root tab stop, shifted resized portal
+and stale Dark palette. The published frozen-source matrix also retains all
+original Grid-root value and binding checks.
+
 Exact unmasked pixel comparison remains required. The native fixture uses real
 native underlying buttons, whose own rendering also differs from the browser
 fixture. The checkerboard phase matches the source. No masks, resampling or
@@ -71,8 +91,8 @@ both themes, viewport coverage, its original keyboard action, consumer label,
 spinner automation and omitted-label layout. The ARM64 consumer builds only;
 both isolated caches are removed. See [release evidence](native-validation-checkpoint.md).
 
-Acceptance remains open: exact raster parity, live theme/resource
-updates, resize/reparent/template lifecycle, original popup stacking, scaling,
+Acceptance remains open: exact raster parity, complete resource replacement,
+arbitrary custom-template/cross-window lifecycle, scaling,
 contrast, Narrator, motion and native ARM64
 runtime. A successful build or the presence of the catalog example is not
 component acceptance.
