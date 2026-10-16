@@ -2037,3 +2037,21 @@ consumer evidence, image/route gaps and source correspondence are in the
 No component is fully accepted; the inventory remains 53 in progress and
 59 pending. The public wiki is unavailable and push-triggered Actions remain
 paused.
+
+## Local overlay shadow checkpoint
+
+Source `c7ffe78` passes clean x64/ARM64 builds, 98 regressions, token checks,
+nine published focused modes and fresh isolated NuGet consumers (ARM64 build
+only). The original 276 Filters states verify both live Gaussian layers and
+98 cleared closures; all 114 open frames reduce full-client source RGBA error.
+Native menu resize/corner checks retain the loaded graph and brush identities.
+
+Full validation remains unsuccessful: the preceding source timed out after
+1,025 captures, and two optimized-source runs stop at the Sparkline area
+focus assertion after 274 captures. Matching browser probes reproduce the
+hovered source value while the keyboard-only fixture expects another value.
+The [overlay checkpoint](overlay-shadow.md#local-artifact-checkpoint-full-gate-remains-open)
+records hashes, failures, source observations and remaining work. This is
+local progress, with no successful full-runtime or throughput claim. The
+new commits remain unpushed; Actions remain paused and the public wiki is
+unavailable. No component is fully accepted.

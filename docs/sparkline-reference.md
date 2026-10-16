@@ -136,3 +136,28 @@ scatter-chart-sequence` passes both themes at
 `artifacts/smoke-scatter-sparkline-input`, with one Right down/up, matching
 focus, observers connected and the expected ` : 30` value. Complete catalog
 validation remains separate; this does not prove the original failure's cause.
+
+## Concurrent hover precondition
+
+The overlay work at `c7ffe78` exposes another full-run boundary: Light area
+focus expects the frozen keyboard-only value 10, but native keyboard focus
+and foreground are both owned while a stationary mouse over index 2 supplies
+value 20. Both unchanged full runs stop after 274 captures. Raw focus,
+pointer coordinates/events and interaction fields remain in
+`artifacts/smoke-select-shadow-reuse-validated-full{,-v2}/sparkline-input-failure-area-Light.json`.
+A focused replay can fail the same case in Dark; a separate focused run can
+pass under a different initial window/pointer arrangement. None establishes
+a fix, and the original two-second/source-value gates remain unchanged.
+
+`artifacts/probe-sparkline-remount.cjs` runs the actual pinned Sparkline at
+local point `(252,32)`: hover, remount, focus and a trusted Right key retain
+the source hover value 20 in both themes. The second probe,
+`artifacts/probe-sparkline-document-reset.cjs`, repeats a document reset with
+the same stationary pointer and records trusted pointer-over/enter events;
+the source again retains 20 through focus and Right. The reports are
+`sparkline-{remount,document-reset}-browser-probe.json`; the remount provenance
+report verifies the frozen dependency lock, React 19.2.4, Recharts 3.8.1 and
+Sparkline source hash. This evidence shows that concurrent hover must be
+accounted for separately from the keyboard-only reference. It does not
+authorize dropping or weakening either contract. No Sparkline production
+behavior, original reference, cursor setup or input gate was changed.

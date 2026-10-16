@@ -74,3 +74,57 @@ fixture resizes the live preview, changes its corners and restores both,
 requiring the original native container/brush identities and updated kernel
 bounds. Fresh focused, package and full verification remain required for
 this optimization; the deadline and original input gates are unchanged.
+
+## Local artifact checkpoint: full gate remains open
+
+Source `c7ffe78` builds cleanly for x64 and ARM64, passes 98 regressions and
+the token check, and passes nine published focused modes: Menus, shadow-only
+outside input, original/live Filters, Pagination producer states, held/rapid
+keys, scroll/typeahead and pointer input. The menu resize checks retain the
+same native container and effect brushes through widths 224/256/224 and
+corners 7/8/7. Both theme reports verify the updated mask/kernel bounds.
+
+The 276-state Filters audit verifies 228 native shadow layers and 98 cleared
+closures. Every one of its 114 open frames improves against the unchanged
+browser capture: absolute RGBA error falls from 150,235,406 to 116,793,191
+(22.3%), with differing pixels falling from 3,584,570 to 2,753,381. Its
+162 closed frames retain 28,571 changed native pixels. These differences,
+the four original missing-column focus differences, raw event-route gaps
+and exact raster mismatch remain explicit; masks and tolerance are zero.
+The 140-state live audit still matches settled focus and retained identities.
+
+Fresh isolated NuGet consumers pass x64 runtime in both themes and ARM64
+compilation. Both temporary caches are removed. All 532 published x64 files
+match the clean build, and the published catalog and both consumers contain
+the same package library. ARM64 runtime is unverified.
+
+| Local artifact | SHA-256 |
+| --- | --- |
+| `packages-select-shadow-reuse-validated/Gaulatti.Orchard.0.1.0.nupkg` | `c9b826c0aef80858ec3895a8853042dab1b198ed48b9c65a98e152d95d1ede59` |
+| `Orchard.dll` | `dda0631225ab7c1513bee8b91f44936e47004e99cef68b63ed137d3a76eff121` |
+| `Orchard.Catalog.0.1.0-c7ffe78-x64.zip` | `f2907138a1f9a873c3e66a070d73fca52bc3b4292e9819981369850be9563bca` |
+| `Orchard.Catalog.0.1.0-c7ffe78-ARM64.zip` | `2d90343d9d8023fbdc94034184076c1b92790cca3a70417191c508522b0d1978` |
+
+All paths are below `artifacts/`. The ZIP audit verifies every archived file;
+its x64 runtime scope is the nine focused modes, and full-runtime acceptance
+is false. Evidence uses the `select-shadow-reuse-release-*-audit.json`
+prefix, plus `select-shadow-reuse-{artifact-correspondence,package-consumer-audit,catalog-archives}.json`.
+
+Two full runs of this optimized source fail the unchanged Sparkline area
+focus assertion after 274 captures, at 140.3108473s and 139.1630071s.
+Their folders are `smoke-select-shadow-reuse-validated-full` and its `-v2`
+counterpart; matching `*-timing.json` files retain both failures. Native
+focus and foreground are owned, while the stationary pointer is over the
+chart and its tooltip shows value 20 instead of the keyboard-only reference's
+10. A separate pinned browser probe also shows 20 after remount, focus and
+Right-arrow under that pointer, including after a document reset with trusted
+pointer-over/enter events. This identifies a concurrent-hover precondition
+that the old keyboard-only fixture does not model; it does not repair that
+fixture or establish a causal fix. See the [Sparkline evidence](sparkline-reference.md#concurrent-hover-precondition).
+
+The full gate and throughput acceptance remain unresolved. No deadline,
+input/presentation gate, original reference or comparison mask was relaxed.
+The new commits remain local pending full validation. The inventory remains
+53 in progress, 59 pending and zero accepted; the goal is active.
+Push-triggered Actions remain paused. The public wiki is unavailable, so
+this checkpoint is documented in the repository.
