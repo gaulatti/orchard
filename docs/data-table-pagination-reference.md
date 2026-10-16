@@ -241,3 +241,72 @@ Both architecture builds are clean and 87 regressions pass. The fixed inventory
 remains 51 in progress, 61 pending and zero accepted. Push-triggered Actions
 remain paused. This is further preview evidence; it does not close the open
 visual, zero-delay input, disabled input, platform or performance criteria.
+
+## Popup placement work
+
+The source Select requests bottom/start placement with a 4px gap, 8px collision
+padding and a viewport height bounded by 18rem and available space. The native
+default ComboBox instead overlays its selected row on the trigger. Placement
+acceptance requires the popup to leave the trigger/value visible, retain its
+80px width, preserve source counts/rows and keyboard/pointer selection, and
+remain owned and reachable within the XAML root. Current work measures the
+pinned WinUI 2.3.9 Popup placement API against the captured source before
+accepting the layout. Collision edges, scrolling, full appearance and motion
+remain separate unverified criteria.
+
+The local placement prototype passes the existing 136 keyboard states at
+`artifacts/smoke-pagination-popup-painted-bounds`. Its composed frames show
+the controlled value while open. The measured painted borders have the 4px
+gap and 80px width in all 34 open states; 26 heights match. The eight long-list
+states have a 288px native viewport but still lack the source's scroll buttons.
+Horizontal differences inherited from the bar's typography remain recorded;
+the popup comparison does not claim full geometry or pixel parity.
+
+The native split animation is coupled to close completion/focus restoration.
+Removing its storyboard broke those boundaries. The prototype preserves the
+completion storyboard object, replaces its split effect with a zero-duration
+opacity transition, and targets the actual popup border. Native input and
+completion checks pass with that approach on this animations-disabled host;
+enabled motion remains unverified.
+
+The earlier local lifecycle check at
+`artifacts/smoke-pagination-popup-item-identity` failed after removing the
+currently selected option while open: the popup remains open, the producer
+keeps size 8 and receives zero extra requests, but the display retains `8`
+instead of becoming empty. Reusing unchanged native items is implemented;
+the failed output is preserved. The private chooser now presents an owned
+label from the authoritative table/options instead of reusing WinUI's cached
+selection-box text. This clears an unlisted size without changing the producer.
+
+`capture-data-table-pagination-open-options.cjs` pins and reuses the original
+React bundle, source keyboard reference, browser, CSS and fonts. Its eight
+states in `artifacts/data-table-pagination-open-options-browser/capture-v2`
+confirm that changing size while open, removing the selected option and
+restoring it preserve the original table/rows and produce no pagination
+callbacks. The unlisted value displays empty while the popup stays open.
+`DataTablePaginationOpenOptionsTests` pins the evidence and checks the consumer
+row boundary. All 88 regressions pass.
+
+`artifacts/smoke-pagination-popup-verified` passes 136 keyboard states, including
+the controlled display, with 138 composed/final captures. The popup layout
+report still fails full equivalence: all 34 gaps and widths match and 26 heights
+match, but typography positions and long-list scroll-button geometry differ.
+The pointer/Escape replay at `artifacts/smoke-pagination-popup-final-input`
+also passes. The original pixel tolerances and input deadlines are unchanged.
+
+The keyboard harness also exercises two unknown-but-already-positioned native
+pointer clicks. Each has one exact, nongenerated press/release pair, an owned
+target and two stable presentation transitions, with zero movement events.
+It does not manufacture or reuse a movement receipt or move the pointer away
+to provoke one. Ordinary movement verification remains unchanged.
+
+The complete local prototype at `artifacts/smoke-pagination-popup-native-height`
+also checks that every focused option is inside the painted popup viewport.
+Visual review caught an offscreen End destination after capping only the inner
+ScrollViewer; the native ComboBox's total drop-down height is now bounded as
+well, and its focused item requests native viewport scrolling. End reaches and
+visibly displays option 500. All 136 states pass with this additional check.
+`artifacts/smoke-pagination-popup-final2-lifecycle` passes the external/unlisted
+open-value, observer, template and unload checks in both themes. The updated
+pointer/Escape regression is at `artifacts/smoke-pagination-popup-final2-input`.
+This native component has no backend or metrics surface.

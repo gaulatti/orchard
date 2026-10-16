@@ -22,7 +22,7 @@ for(const scheme of ['Light','Dark']){
  assert.equal(expected.length,native.reports.length);
  for(const [index,point]of expected.entries()){
   const actual=native.reports[index];assert.equal(actual.id,point.id);assert.equal(actual.phase,point.phase);assert.deepEqual(actual.errors,[]);assert.equal(actual.expectedRole,point.state.focused);assert.equal(actual.popupOpen,point.state.popupOpen);assert.equal(actual.capture,'desktop-client');
-  assert.deepEqual([actual.PageIndex,actual.PageSize,actual.PageCount],[point.state.table.pagination.pageIndex,point.state.table.pagination.pageSize,point.state.table.pageCount]);assert.equal(actual.callbacks,point.state.events.length);assert.equal(actual.probe,point.state.visibleRows);
+  assert.deepEqual([actual.PageIndex,actual.PageSize,actual.PageCount],[point.state.table.pagination.pageIndex,point.state.table.pagination.pageSize,point.state.table.pageCount]);assert.equal(actual.callbacks,point.state.events.length);assert.equal(actual.probe,point.state.visibleRows);assert.equal(actual.displayedValue,String(point.state.table.pagination.pageSize));
   assert.equal(point.presentation.stable>=3,true);assert.equal(point.presentation.milliseconds<2000,true);assert.equal(point.state.inputEvents.every(event=>event.trusted),true);
   if(point.key){const key=actual.receipt;assert.equal(key.key,point.key);assert.equal(key.downs,1);assert.equal(key.ups,1);assert.equal(key.downOwned,true);assert.equal(key.upOwned,true);keys++;
    if(point.key==='Shift+Tab'){reverseTabs++;assert.equal(key.shiftDowns,1);assert.equal(key.shiftUps,1);assert.equal(key.shiftOwned,true);}else{assert.equal(key.shiftDowns,0);assert.equal(key.shiftUps,0);}
@@ -36,11 +36,15 @@ for(const scheme of ['Light','Dark']){
   assert.equal(held.length,sample.snapshots.filter(point=>point.key&&point.key!=='Shift+Tab').length);
   for(const pair of held){assert.equal(pair.downs,1);assert.equal(pair.ups,1);assert.equal(pair.downOwned,true);assert.equal(pair.upOwned,true);heldKeys++;}
   const desktop=await read(path.join(nativeDirectory,prefix+'-desktop.json'));assert.equal(desktop.pointerPresentations.length,1);assert.equal(desktop.pointerClicks.length,1);
+  for(const click of desktop.pointerClicks){assert.equal(click.delivered,true);if(click.currentPosition){assert.equal(click.downs,1);assert.equal(click.ups,1);assert.equal(click.downExact,true);assert.equal(click.upExact,true);assert.equal(click.receipts.length,2);assert.ok(click.receipts.every(item=>item.exact&&!item.IsGenerated));}}
   for(const gate of desktop.pointerPresentations){assert.equal(gate.passed,true);assert.ok(gate.stable>=2&&gate.milliseconds<2000);pointerGates++;}
   for(const move of desktop.pointerMoves){assert.equal(move.hit.root.handle,move.hit.own.handle);assert.equal(move.delivered,true);assert.ok(move.receipts.some(receipt=>receipt.exact&&!receipt.IsGenerated));}
  }
+ const current=await read(path.join(nativeDirectory,`pagination-keyboard-current-point-${scheme}-desktop.json`));assert.equal(current.pointerMoves.length,0);assert.equal(current.pointerClicks.length,1);assert.equal(current.pointerPresentations.length,1);
+ const click=current.pointerClicks[0];assert.equal(click.currentPosition,true);assert.equal(click.downs,1);assert.equal(click.ups,1);assert.equal(click.downExact,true);assert.equal(click.upExact,true);assert.equal(click.delivered,true);assert.equal(click.receipts.length,2);assert.ok(click.receipts.every(item=>item.exact&&!item.IsGenerated));
+ assert.equal(current.pointerPresentations[0].passed,true);assert.ok(current.pointerPresentations[0].stable>=2&&current.pointerPresentations[0].milliseconds<2000);
 }
 assert.equal(states,136);assert.equal(keys,120);assert.equal(heldKeys,118);assert.equal(reverseTabs,2);assert.equal(pointerGates,16);
 const files=(await fs.readdir(nativeDirectory)).filter(name=>name.endsWith('.png'));assert.equal(files.length,138);assert.equal(new Set(captures.map(item=>item.nativeFile)).size,136);assert.ok(files.includes('catalog-light.png')&&files.includes('catalog-dark.png'));
-const report={format:'orchard-data-table-pagination-keyboard-audit-v1',referenceSha256,checkedGatesPassed:true,nativeComponentAccepted:false,states,keys,heldKeys,reverseTabs,pointerGates,captures:files.length,zeroDelayKeyPairsVerified:false,pixelParityVerified:false,images:captures};
+const report={format:'orchard-data-table-pagination-keyboard-audit-v1',referenceSha256,checkedGatesPassed:true,nativeComponentAccepted:false,states,keys,heldKeys,reverseTabs,pointerGates,currentPointClicks:2,currentPointMovedEvents:0,captures:files.length,zeroDelayKeyPairsVerified:false,pixelParityVerified:false,images:captures};
 await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,images:undefined}));

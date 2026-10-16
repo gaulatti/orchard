@@ -42,6 +42,12 @@ public sealed partial class DataTablePaginationsFixture
             writes = b.Requests.Count; oldSize.SelectedItem = oldSize.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 8);
             Require(b.Requests.Count == writes, "Detached template selector retained a mutation handler.");
             Expand(Size(), true); await ReadyAsync(() => Size().IsDropDownOpen);
+            string DisplayedSize() { var value = Descendants<ContentPresenter>(Size()).Single(item => item.Name == "ContentPresenter").Content; return value is TextBlock text ? text.Text : value?.ToString() ?? ""; }
+            var beforeExternal = b.Requests.Count; b.SetPagination(0, 8); await MainWindow.AwaitPresentationAsync(bar);
+            Require(Size().IsDropDownOpen && DisplayedSize() == "8" && b.Requests.Count == beforeExternal, "An external page size did not update the open chooser without a consumer request.");
+            replacement.Remove(8); await MainWindow.AwaitPresentationAsync(bar);
+            Require(Size().IsDropDownOpen && DisplayedSize() == "" && b.PageSize == 8 && b.Requests.Count == beforeExternal, $"An unlisted controlled size did not clear the open display without changing the producer: open={Size().IsDropDownOpen}, display={DisplayedSize()}, size={b.PageSize}, requests={b.Requests.Count}/{beforeExternal}, items={string.Join(',', Size().Items.OfType<ComboBoxItem>().Select(item => item.Tag))}, selected={(Size().SelectedItem as ComboBoxItem)?.Tag}.");
+            replacement.Add(8); b.SetPagination(1, 4); await MainWindow.AwaitPresentationAsync(bar);
             var removedSize = Size(); host.Children.Remove(bar); await ReadyAsync(() => !bar.IsLoaded && b.Subscribers == 0 && replacement.Subscribers == 0);
             Require(!removedSize.IsDropDownOpen, "Unloaded pagination retained an open selector popup.");
             b.SetPagination(0, 4); replacement.Add(16); host.Children.Add(bar); await ReadyAsync(() => bar.IsLoaded); await MainWindow.AwaitPresentationAsync(bar);
@@ -55,7 +61,7 @@ public sealed partial class DataTablePaginationsFixture
         finally { root.Children.Remove(host); }
         await ReadyAsync(() => !bar.IsLoaded && a.Subscribers == 0 && b.Subscribers == 0 && original.Subscribers == 0 && replacement.Subscribers == 0);
         Require(a.Subscribers == 0 && b.Subscribers == 0 && original.Subscribers == 0 && replacement.Subscribers == 0, "Final removal retained source observers.");
-        await File.WriteAllTextAsync(Path.Combine(folder, $"data-table-pagination-lifecycle-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, perInstanceDefaults = true, tableReplacement = true, optionReplacement = true, staleSourcesDetached = true, disabledMutationSuppressed = true, templateReplacement = true, oldTemplateDetached = true, popupClosedOnUnload = true, reparent = true, nativeRolesAndNames = true, finalObservers = 0 }));
+        await File.WriteAllTextAsync(Path.Combine(folder, $"data-table-pagination-lifecycle-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, perInstanceDefaults = true, tableReplacement = true, optionReplacement = true, staleSourcesDetached = true, disabledMutationSuppressed = true, templateReplacement = true, oldTemplateDetached = true, openExternalSize = true, openUnlistedSize = true, openProducerRequests = 0, popupClosedOnUnload = true, reparent = true, nativeRolesAndNames = true, finalObservers = 0 }));
     }
 
     private sealed class TrackedPageSizes(IEnumerable<int> values) : ObservableCollection<int>(values)

@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using Windows.Foundation;
 using Orchard;
 
 namespace PackageConsumer;
@@ -38,13 +39,24 @@ public sealed partial class MainWindow
         paginationSource.SelectedCount = 0; paginationSource.SetPageSize(10); paginationSource.SetPageIndex(0);
         await AcquireConsumerInputAsync(); PackagePagination.StartBringIntoView(); Require(size.Focus(FocusState.Keyboard), "Packaged page-size selector refused native focus.");
         var input = new List<object>(); var sizeRequests = paginationSource.SizeRequests;
+        var measuredGap = double.NaN; var measuredWidth = double.NaN;
+        void VerifyOpenPopup()
+        {
+            var value = BrandDescendants<ContentPresenter>(size).Single(item => item.Name == "ContentPresenter");
+            var text = value.Content is TextBlock block ? block.Text : value.Content?.ToString();
+            var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(item => item.Child is not null && BrandDescendants<ComboBoxItem>(item.Child).Any(option => size.Items.Contains(option)));
+            var border = BrandDescendants<Border>(popup.Child).Single(item => item.Name == "PopupBorder");
+            var trigger = size.TransformToVisual(Root).TransformBounds(new Rect(0, 0, size.ActualWidth, size.ActualHeight)); var bounds = border.TransformToVisual(Root).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
+            measuredGap = bounds.Top - trigger.Bottom; measuredWidth = bounds.Width;
+            Require(text == "10" && value.Opacity == 1 && Math.Abs(measuredGap - 4) <= 1d / 32 && measuredWidth == 80 && Math.Abs(bounds.Left - trigger.Left) <= 1d / 32, "Packaged popup did not preserve its controlled value, source gap, width or alignment.");
+        }
         var ten = size.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 10); var twenty = size.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 20);
-        input.Add(await PaginationConsumerKeyAsync(0x28, size, ten, () => Require(size.IsDropDownOpen && paginationSource.SizeRequests == sizeRequests, "Packaged ArrowDown mutated the table instead of opening its options.")));
+        input.Add(await PaginationConsumerKeyAsync(0x28, size, ten, () => { Require(size.IsDropDownOpen && paginationSource.SizeRequests == sizeRequests, "Packaged ArrowDown mutated the table instead of opening its options."); VerifyOpenPopup(); }));
         input.Add(await PaginationConsumerKeyAsync(0x09, ten, ten, () => Require(size.IsDropDownOpen && paginationSource.SizeRequests == sizeRequests, "Packaged popup Tab escaped or changed paging.")));
         input.Add(await PaginationConsumerKeyAsync(0x28, ten, twenty, () => Require(paginationSource.PageSize == 10 && paginationSource.SizeRequests == sizeRequests, "Packaged highlight committed before selection.")));
         input.Add(await PaginationConsumerKeyAsync(0x0D, twenty, size, () => Require(!size.IsDropDownOpen && paginationSource.PageSize == 20 && paginationSource.PageIndex == 0 && paginationSource.SizeRequests == sizeRequests + 1 && PackagePaginationRows.Text == paginationSource.VisibleText && ReferenceEquals(paginationSource.VisibleRows.First(), paginationSource.Rows[0]), "Packaged Enter did not commit exactly once through original consumer rows.")));
         var args = Environment.GetCommandLineArgs(); var report = args[Array.IndexOf(args, "--verify-output") + 1];
-        await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!, $"consumer-pagination-keyboard-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed = true, input, originalRows = true, oneSizeCommit = true }));
+        await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!, $"consumer-pagination-keyboard-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed = true, input, originalRows = true, oneSizeCommit = true, measuredGap, measuredWidth, controlledValue = "10" }));
         paginationSource.SetPageSize(10); paginationSource.SetPageIndex(0);
     }
 

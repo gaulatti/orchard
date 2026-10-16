@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation;
 using ShapePath = Microsoft.UI.Xaml.Shapes.Path;
 using Windows.Foundation;
 
@@ -59,7 +60,7 @@ public sealed partial class BleeckerDataTablePagination : Control
         summary = Text("PART_Selection", false); page = Text("PART_Page", true);
         var rows = Text("PART_RowsLabel", false); rows.Text = "Rows per page";
         var resources = new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Orchard.xaml") };
-        size = new PageSizeComboBox { Name = "PART_PageSize", Style = (Style)resources["BleeckerComboBoxStyle"], Width = 80, MinWidth = 0, MinHeight = 40, Height = 40, PlaceholderText = "", FontSize = 14, Padding = new Thickness(14, 0, 14, 0), UseLayoutRounding = false };
+        size = new PageSizeComboBox(this) { Name = "PART_PageSize", Style = (Style)resources["BleeckerComboBoxStyle"], Width = 80, MinWidth = 0, MinHeight = 40, Height = 40, PlaceholderText = "", FontSize = 14, Padding = new Thickness(14, 0, 14, 0), UseLayoutRounding = false };
         size.SetBinding(FontFamilyProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontFamily)) });
         AutomationProperties.SetLabeledBy(size, rows); AutomationProperties.SetName(size, "Rows per page"); size.SelectionChanged += PageSizeSelectionChanged;
         first = Navigation("PART_First", "Go to first page", "M11 17L6 12L11 7 M18 17L13 12L18 7", FirstClicked);
@@ -132,12 +133,25 @@ public sealed partial class BleeckerDataTablePagination : Control
         {
             var options = PageSizeOptions.ToArray();
             if (!renderedOptions.SequenceEqual(options) || size.Items.Count != options.Length)
-            { size.Items.Clear(); foreach (var value in options) size.Items.Add(new PageSizeComboBoxItem((PageSizeComboBox)size) { Content = value.ToString(CultureInfo.InvariantCulture), Tag = value, FontFamily = FontFamily, FontSize = 14, MinHeight = 36 }); renderedOptions = options; }
+            {
+                var available = size.Items.OfType<ComboBoxItem>().GroupBy(item => (int)item.Tag).ToDictionary(group => group.Key, group => new Queue<ComboBoxItem>(group));
+                var ordered = options.Select(value => available.TryGetValue(value, out var queue) && queue.Count > 0 ? queue.Dequeue() : new PageSizeComboBoxItem((PageSizeComboBox)size) { Content = value.ToString(CultureInfo.InvariantCulture), Tag = value, FontFamily = FontFamily, FontSize = 14, MinHeight = 36 }).ToArray();
+                for (var index = size.Items.Count - 1; index >= 0; index--) if (!ordered.Contains(size.Items[index])) size.Items.RemoveAt(index);
+                for (var index = 0; index < ordered.Length; index++)
+                {
+                    var position = size.Items.IndexOf(ordered[index]);
+                    if (position == index) continue;
+                    if (position >= 0) size.Items.RemoveAt(position);
+                    size.Items.Insert(index, ordered[index]);
+                }
+                renderedOptions = options;
+            }
             size.SelectedItem = size.Items.OfType<ComboBoxItem>().FirstOrDefault(item => (int)item.Tag == table.PageSize);
         }
         finally { updating = false; }
         first.IsEnabled = previous.IsEnabled = table.CanPreviousPage; next.IsEnabled = last.IsEnabled = table.CanNextPage;
         var wide = XamlRoot is not null && XamlRoot.Size.Width >= 640; first.Visibility = last.Visibility = wide ? Visibility.Visible : Visibility.Collapsed; layout.Wide = wide; layout.InvalidateMeasure();
+        ((PageSizeComboBox)size).RefreshOpenValue();
     }
     private void DetachTemplate()
     {
@@ -150,6 +164,56 @@ public sealed partial class BleeckerDataTablePagination : Control
     { protected override string GetClassNameCore() => nameof(BleeckerDataTablePagination); protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group; }
     private sealed class PageSizeComboBox : ComboBox
     {
+        private readonly BleeckerDataTablePagination owner;
+        private Popup? positionedPopup;
+        private long horizontalToken, verticalToken;
+        private ContentPresenter? displayedPresenter;
+        private TextBlock? controlledValue;
+        private long contentToken;
+        private bool positionQueued;
+        internal PageSizeComboBox(BleeckerDataTablePagination owner)
+        {
+            this.owner = owner;
+            MaxDropDownHeight = 290;
+            DropDownOpened += (_, _) => QueueOpenPosition();
+        }
+        internal void RefreshOpenValue()
+        {
+            if (!IsDropDownOpen) return;
+            var table = owner.Table ?? throw new InvalidOperationException("The opened chooser requires its consumer Table.");
+            var value = (ContentPresenter)GetTemplateChild("ContentPresenter");
+            var label = controlledValue ?? throw new InvalidOperationException("The opened chooser requires its controlled value label.");
+            label.Text = Items.OfType<ComboBoxItem>().FirstOrDefault(item => (int)item.Tag == table.PageSize)?.Content?.ToString() ?? "";
+            if (!ReferenceEquals(value.Content, label)) value.Content = label;
+            QueueOpenPosition();
+        }
+        internal void QueueOpenPosition()
+        {
+            if (!IsDropDownOpen || positionQueued) return;
+            positionQueued = true;
+            if (!DispatcherQueue.TryEnqueue(() =>
+            {
+                try
+                {
+                    if (!IsDropDownOpen || positionedPopup is null) return;
+                    var border = (Border)GetTemplateChild("PopupBorder"); positionedPopup.Child.UpdateLayout();
+                    var target = TransformToVisual(XamlRoot.Content).TransformBounds(new Rect(0, 0, ActualWidth, ActualHeight));
+                    var painted = border.TransformToVisual(XamlRoot.Content).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
+                    var dx = target.Left - painted.Left; var dy = target.Bottom + 4 - painted.Top;
+                    if (Math.Abs(dx) > 1d / 64) positionedPopup.HorizontalOffset += dx;
+                    if (Math.Abs(dy) > 1d / 64) positionedPopup.VerticalOffset += dy;
+                    RefreshOpenValue();
+                    if (FocusManager.GetFocusedElement(XamlRoot) is ComboBoxItem focused && Items.Contains(focused))
+                    {
+                        var scroll = (ScrollViewer)GetTemplateChild("ScrollViewer");
+                        var item = focused.TransformToVisual(scroll).TransformBounds(new Rect(0, 0, focused.ActualWidth, focused.ActualHeight));
+                        if (item.Top < 0) scroll.ChangeView(null, Math.Max(0, scroll.VerticalOffset + item.Top), null, true);
+                        else if (item.Bottom > scroll.ActualHeight) scroll.ChangeView(null, scroll.VerticalOffset + item.Bottom - scroll.ActualHeight, null, true);
+                    }
+                }
+                finally { positionQueued = false; }
+            })) { positionQueued = false; throw new InvalidOperationException("The opened chooser could not schedule its native layout."); }
+        }
         protected override void OnKeyDown(KeyRoutedEventArgs args)
         {
             if (IsDropDownOpen && args.Key == Windows.System.VirtualKey.Tab) { args.Handled = true; return; }
@@ -163,13 +227,51 @@ public sealed partial class BleeckerDataTablePagination : Control
         }
         protected override void OnApplyTemplate()
         {
+            if (positionedPopup is not null)
+            {
+                positionedPopup.UnregisterPropertyChangedCallback(Popup.HorizontalOffsetProperty, horizontalToken);
+                positionedPopup.UnregisterPropertyChangedCallback(Popup.VerticalOffsetProperty, verticalToken);
+            }
+            if (displayedPresenter is not null) displayedPresenter.UnregisterPropertyChangedCallback(ContentPresenter.ContentProperty, contentToken);
             base.OnApplyTemplate();
             var popup = GetTemplateChild("Popup") as Popup ?? throw new InvalidOperationException("The native page-size ComboBox template requires Popup.");
             popup.ShouldConstrainToRootBounds = true;
+            popup.PlacementTarget = this;
+            popup.DesiredPlacement = PopupPlacementMode.BottomEdgeAlignedLeft;
+            popup.VerticalOffset = 4;
+            var templateRoot = VisualTreeHelper.GetChild(this, 0) as FrameworkElement ?? throw new InvalidOperationException("The page-size template requires its layout root.");
+            var dropDown = VisualStateManager.GetVisualStateGroups(templateRoot).Single(group => group.Name == "DropDownStates");
+            var border = GetTemplateChild("PopupBorder") as Border ?? throw new InvalidOperationException("The page-size template requires PopupBorder.");
+            // The native split animation hides the trigger and aligns its selected
+            // row over it. The source keeps the trigger visible beneath its popper.
+            foreach (var state in dropDown.States)
+            {
+                var storyboard = state.Storyboard ?? throw new InvalidOperationException("The page-size state requires its completion storyboard.");
+                storyboard.Stop(); storyboard.Children.Clear();
+                var opacity = new DoubleAnimation { To = state.Name == "Opened" ? 1 : 0, Duration = new Duration(TimeSpan.Zero) };
+                Storyboard.SetTarget(opacity, border); Storyboard.SetTargetProperty(opacity, "Opacity"); storyboard.Children.Add(opacity);
+            }
+            var scroll = GetTemplateChild("ScrollViewer") as ScrollViewer ?? throw new InvalidOperationException("The page-size template requires ScrollViewer.");
+            border.Width = Width; border.Margin = new Thickness(0);
+            scroll.MinWidth = 0; scroll.MaxHeight = 288;
+            positionedPopup = popup;
+            horizontalToken = popup.RegisterPropertyChangedCallback(Popup.HorizontalOffsetProperty, (_, _) => QueueOpenPosition());
+            verticalToken = popup.RegisterPropertyChangedCallback(Popup.VerticalOffsetProperty, (_, _) => QueueOpenPosition());
+            displayedPresenter = (ContentPresenter)GetTemplateChild("ContentPresenter");
+            controlledValue = new TextBlock();
+            controlledValue.SetBinding(TextBlock.FontFamilyProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontFamily)) });
+            controlledValue.SetBinding(TextBlock.FontSizeProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontSize)) });
+            AutomationProperties.SetAccessibilityView(controlledValue, AccessibilityView.Raw);
+            contentToken = displayedPresenter.RegisterPropertyChangedCallback(ContentPresenter.ContentProperty, (_, _) => QueueOpenPosition());
         }
     }
     private sealed class PageSizeComboBoxItem(PageSizeComboBox owner) : ComboBoxItem
     {
+        protected override void OnGotFocus(RoutedEventArgs args)
+        {
+            base.OnGotFocus(args);
+            if (owner.IsDropDownOpen) { StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false }); owner.QueueOpenPosition(); }
+        }
         protected override void OnKeyDown(KeyRoutedEventArgs args)
         {
             if (owner.IsDropDownOpen && args.Key == Windows.System.VirtualKey.Tab) { args.Handled = true; return; }

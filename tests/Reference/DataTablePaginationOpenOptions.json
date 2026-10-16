@@ -1,0 +1,1182 @@
+{
+  "format": "orchard-data-table-pagination-open-options-v1",
+  "scriptSha256": "b6bf333c95c724fd2b2d629689baeda6c7d7b5591a96feee20bd51deb305bc46",
+  "keyboardReferenceSha256": "8952c025e5e2afc03823c6d1ac715182a51f030869d20aed9a68902972e5f248",
+  "bundleSha256": "18963e242fca7e997bd4870be66a709a8a17ae184dd768da3bc2562add030928",
+  "reports": [
+    {
+      "scheme": "Light",
+      "phase": "opened",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 1,
+            "pageSize": 4
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 2,
+          "pageOptions": [
+            0,
+            1
+          ],
+          "canPrevious": true,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.3000000119209
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.6999999880791
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 621.3000000119209
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          }
+        ],
+        "displayed": "4",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4",
+          "8"
+        ],
+        "visibleRows": "Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 38.10000002384186
+      },
+      "file": "open-options-opened-Light.png",
+      "sha256": "d09176905fec5827a0f592f651c044569279bdb5963e103221876b8858977f79"
+    },
+    {
+      "scheme": "Light",
+      "phase": "external-size",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 8
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 1,
+          "pageOptions": [
+            0
+          ],
+          "canPrevious": false,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.3000000119209
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.6999999880791
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 621.3000000119209
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          }
+        ],
+        "displayed": "8",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4",
+          "8"
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 8,
+        "milliseconds": 105.10000002384186
+      },
+      "file": "open-options-external-size-Light.png",
+      "sha256": "e35f636a16837e4961068dd7f4c69e279bbd63c093f26ac5f1c0c313aa047a07"
+    },
+    {
+      "scheme": "Light",
+      "phase": "remove-current",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 8
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 1,
+          "pageOptions": [
+            0
+          ],
+          "canPrevious": false,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.3000000119209
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.6999999880791
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 621.3000000119209
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}24",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 951.1000000238419
+          }
+        ],
+        "displayed": "",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4"
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 6,
+        "milliseconds": 66.89999997615814
+      },
+      "file": "open-options-remove-current-Light.png",
+      "sha256": "77d0d56e45eaa51126d199f6e9fd29d1695235f9f0c48bf3dca425fa321818d3"
+    },
+    {
+      "scheme": "Light",
+      "phase": "restore-current",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 1,
+            "pageSize": 4
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 2,
+          "pageOptions": [
+            0,
+            1
+          ],
+          "canPrevious": true,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.3000000119209
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.6999999880791
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 621.3000000119209
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 585.8000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}24",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 951.1000000238419
+          }
+        ],
+        "displayed": "4",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4",
+          "8"
+        ],
+        "visibleRows": "Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 8,
+        "milliseconds": 111.5
+      },
+      "file": "open-options-restore-current-Light.png",
+      "sha256": "4e1223bbcd755a01e8f9c678ac6ca54237d983dfc2776d3e646b27fb6cb7b0b6"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "opened",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 1,
+            "pageSize": 4
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 2,
+          "pageOptions": [
+            0,
+            1
+          ],
+          "canPrevious": true,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 492.9000000357628
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.4000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 558.6999999880791
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          }
+        ],
+        "displayed": "4",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4",
+          "8"
+        ],
+        "visibleRows": "Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 41.80000001192093
+      },
+      "file": "open-options-opened-Dark.png",
+      "sha256": "0be86b323622c50df1b866411435035455dad64f98a1e7bad29f9c7e5a00f94e"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "external-size",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 8
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 1,
+          "pageOptions": [
+            0
+          ],
+          "canPrevious": false,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 492.9000000357628
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.4000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 558.6999999880791
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          }
+        ],
+        "displayed": "8",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4",
+          "8"
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 9,
+        "milliseconds": 122.80000001192093
+      },
+      "file": "open-options-external-size-Dark.png",
+      "sha256": "be59ea4ecbe189397921374f1b5c79494b6b401cac60b8e442e0b4c54d1115e7"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "remove-current",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 8
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 1,
+          "pageOptions": [
+            0
+          ],
+          "canPrevious": false,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 492.9000000357628
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.4000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 558.6999999880791
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}24",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 858.9000000357628
+          }
+        ],
+        "displayed": "",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4"
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 5,
+        "milliseconds": 64.30000001192093
+      },
+      "file": "open-options-remove-current-Dark.png",
+      "sha256": "62c5d5560b1a750d9065eeb21c4a52922a7e6b1ecb25a8ab3278429380a235fa"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "restore-current",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 1,
+            "pageSize": 4
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 2,
+          "pageOptions": [
+            0,
+            1
+          ],
+          "canPrevious": true,
+          "canNext": false,
+          "filteredCount": 8,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 492.9000000357628
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "4",
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.4000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "4",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 558.6999999880791
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 511,
+            "y": 20,
+            "time": 493.80000001192093
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}24",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 858.9000000357628
+          }
+        ],
+        "displayed": "4",
+        "popupOpen": true,
+        "options": [
+          "2",
+          "4",
+          "8"
+        ],
+        "visibleRows": "Coverage 005|Coverage 006|Coverage 007|Coverage 008"
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 9,
+        "milliseconds": 122.69999998807907
+      },
+      "file": "open-options-restore-current-Dark.png",
+      "sha256": "594caea4e2b6bdd2302f3a4a2b02e2c74e9a8c07c739614164ace7a85d2728b4"
+    }
+  ]
+}

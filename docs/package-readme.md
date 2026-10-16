@@ -87,6 +87,11 @@ has an empty selector display. ArrowDown/ArrowUp/Enter/Space open the chooser
 without changing the table; Tab stays inside the open list. A committed option
 forwards its size, while Escape cancels. Complete visual, keyboard and platform acceptance
 remains open.
+The pagination chooser keeps its current value visible above a popup aligned
+4px below the trigger and bounded to its 80px width. External table/options
+updates preserve an open chooser; an unlisted current size displays empty
+without selecting a replacement or changing the table. Full popup appearance,
+collision edges, scroll buttons and enabled motion remain in progress.
 `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerAlert` provides typed window-owned messages, duration and close callbacks;
