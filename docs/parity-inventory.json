@@ -1692,7 +1692,11 @@
         "scripts/compare-loading-overlay-pixels.mjs",
         "scripts/verify-loading-overlay-lifecycle.mjs",
         "scripts/test-loading-overlay-lifecycle-audit.mjs",
-        "scripts/verify-loading-overlay-scroll.mjs"
+        "scripts/verify-loading-overlay-scroll.mjs",
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlayAccessibility.cs",
+        "scripts/LoadingOverlayUiaProbe.cs",
+        "scripts/verify-loading-overlay-accessibility.mjs",
+        "scripts/test-loading-overlay-accessibility-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

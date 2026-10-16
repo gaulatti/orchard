@@ -1,6 +1,60 @@
 # Current native validation checkpoint
 
-## Loading Overlay root and viewport checkpoint
+## Loading Overlay accessible-name checkpoint
+
+Current library/catalog source: `2e72e334c5b321f795a248ba3aef1dc3563233da`.
+The spinner now honors caller `AutomationProperties.Name` and `LabeledBy`
+before the visible label, following the existing Button contract. The retained
+pre-fix regression fails at the explicit name. Live localized bindings, linked
+captions, explicit-name priority, omitted labels and template replacement pass
+in both themes. Twenty visible states preserve the original action's focus;
+22 separate-process UI Automation trees verify named, nonfocusable,
+indeterminate progress and hidden-peer removal. Three negative audits reject
+stale external names, lost focus and retained hidden peers. This verifies
+automation exposure; Narrator speech remains unverified.
+
+The clean full x64 run passes **1,130 captures in 456.908882 seconds**, preserving
+all prior captures and **174 protected glyph hashes**. It retains 2,006 pointer
+moves/presentation gates, 1,754 owned key pairs and 72 physical clicks; maximum
+gate time is 218.8598 ms under the unchanged two-second deadline. The first
+full run stopped on an Avatar presentation timeout after 43.7977438 seconds.
+Its evidence is preserved; the subsequent pass does not establish its cause.
+
+All **113 unit tests**, token checks and clean x64/ARM64 publications pass.
+The 60-case overlay matrix retains 42 baselines at the original 0.05-DIP bound;
+14 lifecycle phases and 24 observed scroll/transform frames pass. Exact raster
+comparison remains open: all 60 frames differ, with 3,041,291 differing pixels
+and 38,220,303 total RGBA channel error, without masks, resampling or tolerance.
+The independent x64 NuGet consumer passes both themes, including live bound
+and linked names with an omitted visible label. ARM64 consumption is build-only;
+both isolated caches are removed. All 5,777 managed method definitions,
+including 30 overlay methods, and managed resources match across architectures.
+
+The package, x64 catalog and both consumers contain identical portable library
+bytes. The ARM64 catalog matches its separate architecture build; its library
+SHA-256 is `cff23d1b4aa0094b1c4e1804b804ec6d8af16fbfd50a373d1b899d8b45da6026`.
+Both versioned archives match every published file:
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `packages-loading-overlay-accessibility-release/Gaulatti.Orchard.0.1.0.nupkg` | `7074796d9b7f34f3daab4d7ee1cfea10987c140cafb1c0b00bb44d24de9ceea8` |
+| Portable `Orchard.dll` | `48592cbecb2c324cc0874d880b97068989b65919021a93e745f0d25af2251d98` |
+| `Orchard.Catalog.0.1.0-2e72e33-x64.zip` (533 entries) | `9b996c6f77beeec5c0dc42b8e5a488fb2682c2b17c53298f2583b19db1bc6c17` |
+| `Orchard.Catalog.0.1.0-2e72e33-arm64.zip` (529 entries, build-only) | `afeb7525f1a21ab2c24bc8fe87d9c07c8d2af385c24c0a79e30b459a69f9116b` |
+
+Evidence is in `artifacts/loading-overlay-accessibility-release-{matrix,lifecycle,scroll,accessibility}`,
+`artifacts/smoke-loading-overlay-accessibility-release-full-v2`,
+`artifacts/loading-overlay-accessibility-release-{full-audit,full-v2-timing,pixel-audit,negative-audit,binary-correspondence,archives}.json`,
+and `artifacts/loading-overlay-accessibility-v1` (pre-fix failure).
+The earlier failed full run is `artifacts/smoke-loading-overlay-accessibility-release-full`.
+Validation used x64 Windows at display/text scale 1, animations disabled and
+high contrast disabled. Native ARM64 execution, Narrator, scaling, contrast,
+complete motion/raster/lifecycle acceptance and remaining inventory stay open.
+Push-triggered Actions remain paused; GitHub reports zero runs for `2e72e33`.
+Inventory stays **57 in progress, 55 pending, zero accepted**. The public wiki
+remains unavailable; documentation is maintained in-repository.
+
+## Previous Loading Overlay root and viewport checkpoint
 
 Current library/catalog source: `5550af051b3a0e93d0eca804a0774f6d76838f10`.
 The Page-root correction preserves the original effective `IsTabStop` value
