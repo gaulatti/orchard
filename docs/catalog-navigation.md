@@ -34,7 +34,13 @@ all statuses, disabled/static actions, empty content, long labels and RTL.
 Focused `-Component stepper` replays the source cases and exercises native
 activation and consumer-owned state; see [the contract and open acceptance](stepper.md).
 
-**Data Table Toolbars** follows Stepper. It mounts the original consumer table,
+**Data list** follows Stepper. The source-case picker includes normal/striped,
+empty, raw scalar, long, narrow, RTL and embedded-action content. Focused
+`-Component data-list` checks source geometry, consumer actions/templates,
+keyed lifecycle and real window resizing at the 640-DIP breakpoint. See
+[the API and remaining acceptance](data-list.md).
+
+**Data Table Toolbars** follows Data list. It mounts the original consumer table,
 column callbacks and filtered row projection, with controlled search, status
 filter and consumer action. Focused `-Component data-table-toolbar` checks the
 118 normal source cases, actual native search/reset and lifecycle ownership.

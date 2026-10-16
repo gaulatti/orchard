@@ -2095,3 +2095,19 @@ image comparison retains zero tolerance and no masks; 42/44 cases still differ,
 with 143,878 differing pixels and 11,026,803 absolute RGBA error. The component
 and overall goal remain in progress; see the
 [current checkpoint](native-validation-checkpoint.md) for artifacts and gaps.
+
+## DataList implementation checkpoint
+
+Source `a7dc3ca` adds consumer-owned DataList content/templates, stripes,
+viewport-responsive columns and native list/item semantics. All 72 published
+source geometry cases pass across both themes and widths 639, 640 and 1024,
+including native actions, bindings, lifecycle and real breakpoint changes.
+Exact images remain open: 66/72 differ without masks or tolerance. The full
+published x64 sequence passes 1,104 captures in 437.5147483 seconds, preserving
+all previous names and 174 protected glyph hashes. Both architecture builds,
+108 unit tests and token generation pass. The ARM64 consumer has build-only
+evidence. The x64 consumer passes an instrumented attempt after two Bar Chart
+focus failures that remain unresolved; a passing retry does not repair that
+boundary. See the [current checkpoint](native-validation-checkpoint.md).
+Inventory: 55 in progress, 57 pending, zero accepted. Push-triggered Actions
+remain paused and the goal remains active.

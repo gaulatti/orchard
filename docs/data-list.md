@@ -80,3 +80,12 @@ and `v2`. A managed stack in `artifacts/data-list-action-stall-stack.txt` locate
 the stall in the rich slot's native measure loop. Measuring its collapsed
 scalar child resolves the pending-layout loop; the same embedded-action
 boundary passes in the complete matrix. No deadline was increased.
+
+The clean published `a7dc3ca` replay at
+`artifacts/data-list-release-matrix/{1024,639,640}` passes the same 72 cases.
+Its pixel audit reproduces the initial totals exactly. The full published
+catalog passes 1,104 captures in 437.5147483 seconds, preserving all 1,080 prior
+names and 174 protected glyph hashes. The independent package consumer passes
+its DataList checks and an instrumented complete attempt; two earlier Bar Chart
+focus failures remain unresolved. See [the current checkpoint](native-validation-checkpoint.md)
+for separate package failure/success evidence, artifact hashes and open gaps.

@@ -1,5 +1,59 @@
 # Current native validation checkpoint
 
+## DataList release checkpoint
+
+Current full-suite/package library and catalog source:
+`a7dc3caf6b4fcc1fc5a50add2c87017046e971b5`.
+The clean published x64 run passes in **437.5147483 seconds**, with **1,104
+captures**, all 1,080 prior names and all **174 protected glyph hashes**.
+Its independent audit verifies 1,982 pointer moves/presentation gates, 1,748
+owned key pairs and 70 physical clicks. The maximum pointer gate is 169.8662 ms
+under the unchanged two-second deadline. The eight-minute full watchdog is
+unchanged; no collection-performance or speedup claim is made.
+
+All 72 published DataList cases pass the existing 0.05-DIP geometry bound
+across both themes and widths 639, 640 and 1024. Consumer actions, templates,
+live binding, keyed lifecycle and real window resizing pass. Exact images
+remain open: 66/72 differ without masks, tolerance or resampling, totaling
+2,536,268 pixels and 114,743,118 absolute RGBA error. Six empty frames match.
+See [the API and acceptance gaps](data-list.md). Inventory: **55 in progress,
+57 pending and zero accepted**.
+
+Sequential clean x64/ARM64 builds and publications pass without warnings;
+108 unit tests and token generation pass. The initial concurrent build failed
+because ARM64 restore replaced the shared x64 assets target; that failure is
+retained in `artifacts/data-list-clean-x64-build.log`. All 324 Stepper baselines
+remain within 0.0000153 DIP. Final visuals, contrast, Narrator, scaling, native
+ARM64 runtime, remaining components and both compositions remain open.
+
+The independent x64 consumer passes both themes at
+`artifacts/package-consumer-data-list-x64-v3`. Its first two attempts fail the
+existing Bar Chart initial-inspection assertion after DataList's own action
+checks. The second failure records keyboard focus, intact records, empty help
+text and no pointer events. Added lifecycle/focus observations change timing
+and the third attempt passes; **no control fix is claimed**. Preserve both
+failures and investigate this intermittent boundary before acceptance. The
+ARM64 consumer builds only. All isolated restore caches are removed.
+
+The library in the package, x64 catalog and passing/build-only consumers matches
+byte for byte. `artifacts/data-list-release-binary-correspondence.json` records:
+
+- Library SHA-256: `c62a181ae273d1059068970b533f872ed92b70ed8d77de39a535d04ebe751b1d`.
+- Package SHA-256: `d2e6657b50ba39964890526582446f1b6839459f93cf2a675eb98ca4ac1c635d`.
+- x64 catalog ZIP: 532 files, SHA-256 `92fc4e4afb044fb6bed9d33f148dcb8ce26b616536ac178ee31395cb30386742`.
+- ARM64 catalog ZIP: 528 files, SHA-256 `ce1bf56ed414895cb574ba24864fa00560d8934ba3866163e7f8fbad1d300f4a`.
+
+Both ZIPs match every published entry. The x64 publication has full-run
+evidence; ARM64 has build evidence. Artifacts include
+`artifacts/smoke-data-list-release-full`,
+`artifacts/data-list-release-{full-audit,full-timing,archives,pixel-audit}.json`,
+`artifacts/data-list-release-matrix/{1024,639,640}` and
+`artifacts/data-list-release-stepper-typography-audit.json`. Push-triggered
+Actions remain paused; no new hosted result is claimed. The public wiki
+remains unavailable. The goal remains active.
+
+## Previous Stepper baseline checkpoint
+
 Full-suite and packaged library/catalog source: `b59cef474ad95c94841cbfccd77059e85dcc06ad`.
 The clean published x64 full run passes in **406.1895514 seconds** with all
 **1,080 captures**, every prior filename and all **174 protected glyph hashes**.
