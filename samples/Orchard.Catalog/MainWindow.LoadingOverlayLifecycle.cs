@@ -10,6 +10,18 @@ namespace Orchard.Catalog;
 
 public sealed partial class MainWindow
 {
+    private async Task RunLoadingOverlayAfterTimelineAsync(string folder)
+    {
+        foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+        {
+            CatalogRoot.RequestedTheme = theme;
+            await SelectFixtureAsync(Timelines); await Timelines.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, CatalogRoot, ComponentSearch);
+            await SelectFixtureAsync(LoadingOverlays);
+            await LoadingOverlays.VerifyCatalogAsync(folder, theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "loading-overlay-after-timeline", environment = RuntimeEnvironment() }));
+    }
+
     private async Task RunLoadingOverlayLifecycleAsync(string folder)
     {
         var originalContent = Content; var originalTheme = CatalogRoot.RequestedTheme;

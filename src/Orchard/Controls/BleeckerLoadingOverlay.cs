@@ -34,6 +34,7 @@ public sealed class BleeckerLoadingOverlay : Control
     private SpriteVisual? blurVisual;
     private XamlRoot? observedRoot;
     private bool updating;
+    private bool trackingPresentation;
     private object? lastLayout;
 
     public BleeckerLoadingOverlay()
@@ -133,6 +134,7 @@ public sealed class BleeckerLoadingOverlay : Control
 
     private void Close()
     {
+        if (trackingPresentation) { CompositionTarget.Rendering -= OnRendering; trackingPresentation = false; }
         if (popup is not null) popup.IsOpen = false;
         if (backdrop is not null) ElementCompositionPreview.SetElementChildVisual(backdrop, null);
         for (var i = effects.Count - 1; i >= 0; i--) effects[i].Dispose();
@@ -198,9 +200,15 @@ public sealed class BleeckerLoadingOverlay : Control
             AutomationProperties.SetName(spinner, Label ?? "");
             popup.IsOpen = true;
             UpdateBlur(size);
+            // Commit a changed native Popup anchor before this frame is drawn.
+            // Render-only ancestor motion does not otherwise run a layout pass.
+            portal.UpdateLayout();
+            if (!trackingPresentation) { CompositionTarget.Rendering += OnRendering; trackingPresentation = true; }
         }
         finally { updating = false; }
     }
+
+    private void OnRendering(object? sender, object args) => Present();
 
     private void UpdateBlur(Size size)
     {

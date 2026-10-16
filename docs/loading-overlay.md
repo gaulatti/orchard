@@ -75,6 +75,14 @@ Three negative audits reject a retained root tab stop, shifted resized portal
 and stale Dark palette. The published frozen-source matrix also retains all
 original Grid-root value and binding checks.
 
+The portal tracks presentation while visible as well as layout changes. An
+ancestor's render transform can move without a layout notification; changed
+popup anchors are laid out before that frame is drawn. Hiding, detachment and
+template replacement release the rendering subscription. Focused
+`-Component loading-overlay-scroll -ClientSize 640,480` records every observed
+frame while the parent scrolls and changes its render transform. Its viewport
+bound remains 0.05 DIP, including the first frame after a change.
+
 Exact unmasked pixel comparison remains required. The native fixture uses real
 native underlying buttons, whose own rendering also differs from the browser
 fixture. The checkerboard phase matches the source. No masks, resampling or

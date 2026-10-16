@@ -153,6 +153,9 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay live lifecycle audit failed.' }
           node scripts/test-loading-overlay-lifecycle-audit.mjs --native artifacts/loading-overlay-lifecycle --output artifacts/loading-overlay-lifecycle-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay lifecycle negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-scroll -ClientSize 640,480 -Output artifacts/loading-overlay-scroll -ExpectedArchitecture X64
+          node scripts/verify-loading-overlay-scroll.mjs --native artifacts/loading-overlay-scroll --output artifacts/loading-overlay-scroll/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay scroll/transform audit failed.' }
       - name: Verify chart focus across native load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
@@ -366,6 +369,9 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay live lifecycle audit failed.' }
           node scripts/test-loading-overlay-lifecycle-audit.mjs --native artifacts/loading-overlay-lifecycle --output artifacts/loading-overlay-lifecycle-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay lifecycle negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-scroll -ClientSize 640,480 -Output artifacts/loading-overlay-scroll -ExpectedArchitecture Arm64
+          node scripts/verify-loading-overlay-scroll.mjs --native artifacts/loading-overlay-scroll --output artifacts/loading-overlay-scroll/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay scroll/transform audit failed.' }
       - name: Verify native ARM64 chart focus across load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus

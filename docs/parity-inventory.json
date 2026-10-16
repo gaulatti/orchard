@@ -1683,6 +1683,7 @@
       "regressionTests": [
         "samples/Orchard.Catalog/MainWindow.LoadingOverlay.cs",
         "samples/Orchard.Catalog/MainWindow.LoadingOverlayLifecycle.cs",
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlayScroll.cs",
         "tests/Reference/LoadingOverlay.json",
         "tests/Orchard.Tests/LoadingOverlayReferenceTests.cs",
         "tests/PackageConsumer/MainWindow.LoadingOverlay.cs",
@@ -1690,7 +1691,8 @@
         "scripts/test-loading-overlay-audit.mjs",
         "scripts/compare-loading-overlay-pixels.mjs",
         "scripts/verify-loading-overlay-lifecycle.mjs",
-        "scripts/test-loading-overlay-lifecycle-audit.mjs"
+        "scripts/test-loading-overlay-lifecycle-audit.mjs",
+        "scripts/verify-loading-overlay-scroll.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
