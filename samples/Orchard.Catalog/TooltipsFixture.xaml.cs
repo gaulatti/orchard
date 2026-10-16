@@ -16,6 +16,11 @@ public sealed partial class TooltipsFixture : UserControl
         tooltipPresentations.Clear();
         StartBringIntoView();
         await MainWindow.AwaitPresentationAsync(this);
+        // A hovered trigger can legitimately win the one-tooltip rule when its
+        // delay expires. Keep programmatic appearance checks out of that race.
+        using var programmaticInput = new NativeInputSession(XamlRoot, folder, $"tooltip-programmatic-{scheme}");
+        await programmaticInput.AcquireAsync(Heading);
+        await programmaticInput.MoveAsync(Heading);
         foreach (var tip in new[] { TopTip, BottomTip, LeftTip, RightTip, LongTip, TemplateTip })
         {
             tip.IsOpen = true;

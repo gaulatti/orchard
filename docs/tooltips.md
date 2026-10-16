@@ -1,5 +1,16 @@
 # Tooltip preview
 
+The programmatic appearance checks establish a genuine neutral pointer receipt
+at the fixture heading before opening tooltip specimens. At source `ba1434b`,
+`artifacts/smoke-stepper-motion-full` records LongTip closing after a delayed
+BottomTip hover timer opens BottomTip. That is a competing input path during a
+programmatic check, not proof that LongTip failed to render. Both old and new
+focused builds pass. The fixture now isolates that programmatic input condition;
+the physical hover/transit checks, original two-second deadline, two stable
+Rendering transitions and single-open assertion remain unchanged. This evidence
+establishes the cause of this run only; earlier historical failures below retain
+their recorded scope.
+
 `BleeckerTooltip` owns a WinUI `Popup` constrained to the application's XAML root. Attach it with Orchard's service, which supplies the input/placement owner and its accessible description relationship:
 
 ```xml
