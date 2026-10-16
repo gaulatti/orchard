@@ -2238,3 +2238,25 @@ open. Inventory is 58 started (51.8%), 54 pending and zero accepted of 112.
 Push-triggered Actions remain paused; no hosted run was dispatched. The public
 wiki is unavailable. See [checkpoint and artifact hashes](native-validation-checkpoint.md)
 and [FilterChip contract](filter-chip.md).
+
+## FilterChip live font-style measurements (2026-10-16)
+
+At `8fa91ab`, live Segoe UI italic/style/stretch changes refresh every label,
+value, Clear all width and baseline probe. The regression first reproduced a
+2.1667-DIP Clear all width discrepancy. Twenty native phases and 100 independent
+text-width measurements now pass exactly; four deliberate corruptions are
+rejected. Both appearances retain native actions, RTL ordering, constrained
+wrapping, multilingual content, restoration and remounting. The 40 default
+reference cases and all 115 unit tests pass. Only four library method bodies
+change; the other 5,963 are unchanged or exposed through equivalent WinRT
+providers. Both architecture publications pass and 5,967 resolved method bodies
+match. A fresh x64 NuGet consumer passes the italic-width and native action
+checks; ARM64 is build-only. Both isolated caches are removed.
+
+Strict equality with earlier default frames remains false: 291 pixels differ,
+with maximum channel difference three. No masks, resampling or Windows preference
+changes were used. Actual Windows scaling, complete raster/motion/customization,
+contrast/Narrator and native ARM64 acceptance remain open. The earlier full
+1,132-capture result is scoped to the previous candidate. Inventory remains
+58 started, 54 pending, zero accepted. Push-triggered Actions remain paused.
+See [current checkpoint and artifact hashes](native-validation-checkpoint.md).

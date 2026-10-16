@@ -1,5 +1,49 @@
 # Current native validation checkpoint
 
+## FilterChip live font measurements
+
+Source: `8fa91ab`. Switching a mounted Segoe UI filter group to italic reproduced
+stale paragraph widths in labels, values and Clear all. Clear all retained
+90.1600 DIPs while its rendered italic face required 92.3267 DIPs. Rendered text
+inherited the style, but detached width/baseline probes retained the normal face.
+The fix observes style/stretch changes and propagates them through chip/group
+rendering, intrinsic probes and baseline probes.
+
+The new focused `filter-chip-typography` mode passes 20 phases in light/dark,
+including true italics, family/size/tracking changes, RTL, constrained wrapping,
+multilingual text, restoration and remounting. All 100 paragraph widths match
+independent native measurements exactly. Two physical Space pairs reach the
+original consumer actions. Four corruption checks reject wrong styles, stale
+widths, missing baselines and incorrect RTL order. The 40 default frozen cases,
+72 baselines, source colors, native actions and all 115 unit tests still pass.
+The source token check passes. The previous full 1,132-capture result below
+belongs to the preceding candidate; current verification targets the affected
+typography and default component paths.
+
+The resolved method audit confines implementation changes to four FilterChip
+methods; the other 5,963 methods are unchanged or use equivalent generated
+WinRT providers. Both architecture libraries have matching managed resources
+and all 5,967 resolved method bodies/interfaces match across architectures.
+A new isolated x64 NuGet consumer verifies the italic measurements and native
+actions in both themes; its library bytes match the x64 catalog. The ARM64
+consumer build passes with runtime unverified. Both temporary caches are removed.
+Every ZIP entry matches the published directory.
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `packages-filter-chip-typography/Gaulatti.Orchard.0.1.0-filter-typography.8fa91ab.nupkg` | `2ce8061e4ba3be27d9c89e4bd58fbbad0ad966193b37ac4bd339f9d0b871697b` |
+| `Orchard.Catalog.0.1.0-8fa91ab-x64.zip` | `7dd9e59ef4e0afa75ef63787959f2558ce120489c6b4b198e9f484412d70afe9` |
+| `Orchard.Catalog.0.1.0-8fa91ab-ARM64.zip` | `ff1a3179965edd0f10c53c3eb8b33ecab2f95cdbb1c65d011ba97a9cfdedff4d` |
+
+Strict before/after default-frame equality does not pass: 291 pixels differ,
+with total absolute RGBA error 1,381 and maximum channel difference three.
+Those differences are retained without masks or resampling. Pixel parity,
+enabled motion, broader customization, actual Windows text/display scaling,
+contrast/Narrator, external UI Automation and native ARM64 acceptance remain
+open. No Windows preference changed. Inventory stays **58 in progress,
+54 pending, zero accepted** (51.8% started). Push Actions remain paused and no
+hosted run was dispatched. The public wiki remains unavailable.
+
 ## FilterChip and FilterGroup foundation
 
 Public implementation source: `e0cae0d`. Catalog/input evidence corrections:
