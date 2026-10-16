@@ -36,15 +36,47 @@ public sealed class DataTableFiltersReferenceTests
         }
     }
     [TestMethod]
-    public void NativeSelectValuesPreserveSourcePlaceholderAndDuplicatePaint()
+    public void LiveReferencePreservesKeyedFocusAndNeverWritesDuringOptionUpdates()
     {
-        using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture("DataTableFilters.json")));
+        using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture("DataTableFiltersLive.json"))); var root = document.RootElement;
+        Assert.AreEqual("orchard-data-table-filters-live-v1", root.GetProperty("format").GetString());
+        Assert.AreEqual("a86059013cd59684ce452849278ea81e734f2066", root.GetProperty("sourceCommit").GetString());
+        Assert.AreEqual("83a7e5de0d5b0a63d42591e3d45b230243d0ee97d9797a2f9b6b87d4369334bb", root.GetProperty("sourceSha256").GetString());
+        Assert.AreEqual(Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(Fixture("CaptureDataTableFiltersLive.cjs")))).ToLowerInvariant(), root.GetProperty("scriptSha256").GetString());
+        Assert.AreEqual(Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(Fixture("DataTableFiltersClient.tsx")))).ToLowerInvariant(), root.GetProperty("clientSha256").GetString());
+        var cases = root.GetProperty("cases").EnumerateArray().ToArray(); Assert.HasCount(32, cases); Assert.AreEqual(140, cases.Sum(sample => sample.GetProperty("snapshots").GetArrayLength()));
+        var retained = 0; var viewport = 0;
+        foreach (var sample in cases)
+        foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
+        {
+            var state = point.GetProperty("state");
+            Assert.IsTrue(state.GetProperty("inputEvents").EnumerateArray().All(item => item.GetProperty("trusted").GetBoolean()));
+            Assert.IsGreaterThanOrEqualTo(3, point.GetProperty("presentation").GetProperty("stable").GetInt32());
+            Assert.IsLessThan(2000, point.GetProperty("presentation").GetProperty("milliseconds").GetDouble());
+            if (!sample.GetProperty("updates").TryGetProperty(point.GetProperty("phase").GetString()!, out _)) continue;
+            Assert.AreEqual(0, state.GetProperty("events").GetArrayLength());
+            if (sample.GetProperty("id").GetString() is "remove-focused" or "disable-focused" or "change-focused-value")
+            { Assert.AreEqual("listbox", state.GetProperty("focused").GetString()); Assert.IsFalse(point.GetProperty("focusIdentity").GetProperty("retained").GetBoolean()); viewport++; }
+            else { Assert.IsTrue(point.GetProperty("focusIdentity").GetProperty("retained").GetBoolean()); retained++; }
+            if (sample.GetProperty("id").GetString() == "long-reorder") Assert.AreEqual(400, state.GetProperty("viewport").GetProperty("scrollTop").GetDouble());
+        }
+        Assert.AreEqual(26, retained); Assert.AreEqual(6, viewport);
+    }
+    [TestMethod]
+    [DataRow("DataTableFilters.json")]
+    [DataRow("DataTableFiltersLive.json")]
+    public void NativeSelectValuesPreserveSourcePlaceholderAndDuplicatePaint(string referenceFile)
+    {
+        using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture(referenceFile)));
         foreach (var sample in document.RootElement.GetProperty("cases").EnumerateArray())
         {
             var props = sample.GetProperty("props"); var placeholder = props.TryGetProperty("placeholder", out var label) ? label.GetString()! : "All";
-            var options = new[] { new BleeckerSelectOption("", placeholder) }.Concat(props.TryGetProperty("options", out var values) ? values.EnumerateArray().Select(option => new BleeckerSelectOption(option.GetProperty("value").GetString()!, option.GetProperty("label").GetString()!, option.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())) : new[] { new BleeckerSelectOption("Draft", "Draft"), new BleeckerSelectOption("Published", "Published") }).ToArray();
+            JsonElement? values = props.TryGetProperty("options", out var supplied) ? supplied : null;
             foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
             {
+                if (sample.TryGetProperty("updates", out var updates) && updates.TryGetProperty(point.GetProperty("phase").GetString()!, out var update))
+                { if (update.TryGetProperty("placeholder", out var nextLabel)) placeholder = nextLabel.GetString()!; if (update.TryGetProperty("options", out var nextOptions)) values = nextOptions; }
+                var options = new[] { new BleeckerSelectOption("", placeholder) }.Concat(values is { } choices ? choices.EnumerateArray().Select(option => new BleeckerSelectOption(option.GetProperty("value").GetString()!, option.GetProperty("label").GetString()!, option.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())) : new[] { new BleeckerSelectOption("Draft", "Draft"), new BleeckerSelectOption("Published", "Published") }).ToArray();
                 var state = point.GetProperty("state"); if (!state.GetProperty("table").GetProperty("columnPresent").GetBoolean()) continue;
                 var raw = state.GetProperty("table").GetProperty("filterValue"); var value = BleeckerSelectFilterValue.Internal(raw.ValueKind == JsonValueKind.Object ? null : Decode(raw));
                 Assert.AreEqual(state.GetProperty("trigger").GetProperty("text").GetString(), BleeckerSelectFilterValue.Display(value, placeholder, options));
@@ -54,9 +86,11 @@ public sealed class DataTableFiltersReferenceTests
         }
     }
     [TestMethod]
-    public void SourceActionsReachOriginalConsumerFiltersAndVisibleRows()
+    [DataRow("DataTableFilters.json")]
+    [DataRow("DataTableFiltersLive.json")]
+    public void SourceActionsReachOriginalConsumerFiltersAndVisibleRows(string referenceFile)
     {
-        using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture("DataTableFilters.json")));
+        using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture(referenceFile)));
         foreach (var sample in document.RootElement.GetProperty("cases").EnumerateArray())
         {
             var props = sample.GetProperty("props");

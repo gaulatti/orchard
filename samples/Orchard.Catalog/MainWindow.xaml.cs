@@ -68,19 +68,20 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="sidebar",environment=RuntimeEnvironment()}));
             }
-            else if(args.Contains("--smoke-data-table-filters") || args.Contains("--smoke-data-table-filters-native"))
+            else if(args.Contains("--smoke-data-table-filters") || args.Contains("--smoke-data-table-filters-native") || args.Contains("--smoke-data-table-filters-live"))
             {
                 var filterFailures = new List<string>();
                 var desktopFocusContract = args.Contains("--smoke-data-table-filters-native");
+                var liveOptions = args.Contains("--smoke-data-table-filters-live");
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
                 {
                     CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DataTableFilters);
-                    try { await DataTableFilters.VerifySourceAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, desktopFocusContract); await DataTableFilters.VerifyLifecycleAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder); }
+                    try { await DataTableFilters.VerifySourceAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, desktopFocusContract, liveOptions); await DataTableFilters.VerifyLifecycleAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder); }
                     catch (Exception error) { filterFailures.Add(theme + ": " + error); }
                     await CaptureFixtureAsync(DataTableFilters, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
                 Require(filterFailures.Count == 0, "Filter source replay failed; both theme reports retain all independent evidence: " + string.Join("; ", filterFailures));
-                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = desktopFocusContract ? "data-table-filters-native" : "data-table-filters", environment = RuntimeEnvironment() }));
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = liveOptions ? "data-table-filters-live" : desktopFocusContract ? "data-table-filters-native" : "data-table-filters", environment = RuntimeEnvironment() }));
             }
             else if(args.Contains("--smoke-data-table-column-toggle"))
             {

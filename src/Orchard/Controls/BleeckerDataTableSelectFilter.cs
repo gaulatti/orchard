@@ -20,6 +20,8 @@ public sealed class BleeckerDataTableSelectFilter : Control
     private INotifyCollectionChanged? observedOptions;
     private XamlRoot? observedRoot;
     private bool updating;
+    // Preserve the last applied key when the original observable option mutates.
+    private readonly Dictionary<BleeckerSelectItem, string> optionKeys = [];
     private IBleeckerDataTableFilterColumn? Column => Table?.GetColumn(ColumnId ?? throw new InvalidOperationException("A column filter requires its original ColumnId."));
     private object? Value => BleeckerSelectFilterValue.Internal(Column?.GetFilterValue());
     private IEnumerable<BleeckerSelectOption> Choices => new[] { empty }.Concat(Options);
@@ -100,14 +102,20 @@ public sealed class BleeckerDataTableSelectFilter : Control
         if (column is null) { select.IsDropDownOpen = false; select.Visibility = Visibility.Collapsed; host.Width = double.NaN; return; }
         select.Visibility = Visibility.Visible; select.IsEnabled = IsEnabled; empty.Label = Placeholder;
         AutomationProperties.SetName(select, Placeholder); var wide = XamlRoot?.Size.Width >= 640; host.Width = wide ? 176 : double.NaN; host.HorizontalAlignment = wide ? HorizontalAlignment.Left : HorizontalAlignment.Stretch;
-        updating = true; var restore = select.PreserveViewportFocus();
+        updating = true; var restore = select.PreserveOptionsFocus(item => optionKeys[item]);
         try
         {
-            var available = select.Items.OfType<BleeckerSelectItem>().GroupBy(item => (BleeckerSelectOption)item.Tag).ToDictionary(group => group.Key, group => new Queue<BleeckerSelectItem>(group));
-            var ordered = Choices.Select(option => { var item = available.TryGetValue(option, out var queue) && queue.Count > 0 ? queue.Dequeue() : new BleeckerSelectItem(select) { Tag = option, FontSize = 14, MinHeight = 36 }; item.Content = option.Label; item.IsEnabled = IsEnabled && !option.IsDisabled; return item; }).ToArray();
+            var available = select.Items.OfType<BleeckerSelectItem>().GroupBy(item => optionKeys[item]).ToDictionary(group => group.Key, group => new Queue<BleeckerSelectItem>(group));
+            var nextKeys = new Dictionary<BleeckerSelectItem, string>();
+            var ordered = Choices.Select(option =>
+            {
+                var item = available.TryGetValue(option.Value, out var queue) && queue.Count > 0 ? queue.Dequeue() : new BleeckerSelectItem(select) { FontSize = 14, MinHeight = 36 };
+                item.Tag = option; item.Content = option.Label; item.IsEnabled = IsEnabled && !option.IsDisabled; nextKeys.Add(item, option.Value); return item;
+            }).ToArray();
             for (var index = select.Items.Count - 1; index >= 0; index--) if (!ordered.Contains(select.Items[index])) select.Items.RemoveAt(index);
             for (var index = 0; index < ordered.Length; index++) { var current = select.Items.IndexOf(ordered[index]); if (current == index) continue; if (current >= 0) select.Items.RemoveAt(current); select.Items.Insert(index, ordered[index]); }
             select.SelectedItem = ordered.LastOrDefault(item => BleeckerSelectFilterValue.Matches(Value, (BleeckerSelectOption)item.Tag));
+            optionKeys.Clear(); foreach (var item in nextKeys) optionKeys.Add(item.Key, item.Value);
         }
         finally { updating = false; }
         restore?.Invoke(); select.RefreshOpenValue();
@@ -115,6 +123,6 @@ public sealed class BleeckerDataTableSelectFilter : Control
     private void DetachTemplate()
     {
         if (select is not null) { select.SelectionChanged -= SelectionChanged; select.SizeChanged -= SelectSizeChanged; select.IsDropDownOpen = false; }
-        host?.Children.Clear(); host = null; select = null;
+        host?.Children.Clear(); host = null; select = null; optionKeys.Clear();
     }
 }

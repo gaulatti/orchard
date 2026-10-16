@@ -107,6 +107,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     }
     private void PopupOpened(object? sender, object args)
     {
+        ClearControlledFocus();
         ((Border)positionedPopup!.Child).Width = ActualWidth;
         triggerSearch = contentSearch = ""; triggerSearchReset.Stop(); contentSearchReset.Stop(); typeaheadOffset = null;
         scrollInitialized = false; positionedPopup!.Child.UpdateLayout(); InitializeScrollIndicators(); RenderChooser(); NotifyExpansion(false,true);
@@ -119,15 +120,15 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
             {
                 if (option is not null && !option.Focus(openingFromKeyboard ? FocusState.Keyboard : FocusState.Pointer)) throw new InvalidOperationException("The opened page-size chooser could not focus its option.");
                 if (option is null && !popupFocus!.Focus(openingFromKeyboard ? FocusState.Keyboard : FocusState.Pointer)) throw new InvalidOperationException("The empty page-size chooser could not focus its viewport.");
+                QueueOpenPosition();
             }
             finally { initialFocus = false; }
-            QueueOpenPosition();
         }
         if (Items.OfType<BleeckerSelectItem>().Any(item => item.IsLoaded)) FocusInitial();
         else if (!DispatcherQueue.TryEnqueue(FocusInitial)) throw new InvalidOperationException("The opened chooser could not schedule option focus.");
     }
     private void PopupClosed(object? sender, object args)
-    { StopScroll(); contentSearch = ""; contentSearchReset.Stop(); typeaheadOffset = null; if (restoreFocus && IsLoaded && IsEnabled) Focus(FocusState.Programmatic); restoreFocus = false; RenderChooser(); NotifyExpansion(true,false); }
+    { ClearControlledFocus(); StopScroll(); contentSearch = ""; contentSearchReset.Stop(); typeaheadOffset = null; if (restoreFocus && IsLoaded && IsEnabled) Focus(FocusState.Programmatic); restoreFocus = false; RenderChooser(); NotifyExpansion(true,false); }
     private void Close(bool focus) { restoreFocus = focus; IsDropDownOpen = false; }
     protected override void OnPointerEntered(PointerRoutedEventArgs args) { base.OnPointerEntered(args); pointerOver = true; RenderChooser(); }
     protected override void OnPointerExited(PointerRoutedEventArgs args) { base.OnPointerExited(args); pointerOver = false; RenderChooser(); }
@@ -135,6 +136,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     {
         base.OnPointerPressed(args);
         if (!IsEnabled || !args.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
+        ClearControlledFocus();
         // Keep this genuine trigger press/release on its native owner while
         // opening a new popup input site and moving keyboard focus into it.
         if (!CapturePointer(args.Pointer)) throw new InvalidOperationException("The Select trigger could not retain its original pointer press.");
@@ -155,6 +157,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     internal void HandleOpenKey(KeyRoutedEventArgs args)
     {
         if (args.Handled || !IsDropDownOpen) return;
+        ClearControlledFocus();
         if (args.Key == VirtualKey.Tab) { args.Handled = true; return; }
         if (args.Key == VirtualKey.Space && contentSearch.Length > 0) { args.Handled = true; return; }
         if (args.Key == VirtualKey.Escape)
@@ -209,6 +212,12 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         var triggerTop = TransformToVisual(XamlRoot.Content).TransformPoint(new Point()).Y;
         var offset = popupTop < triggerTop ? -4d : 4d;
         if (positionedPopup.VerticalOffset != offset) { positionedPopup.VerticalOffset = offset; positionedPopup.Child.UpdateLayout(); }
+        if (controlledScrollOffset is { } retained && popupScroll is { } retainedScroll)
+        {
+            var wanted = Math.Clamp(retained, 0, retainedScroll.ScrollableHeight);
+            if (retainedScroll.VerticalOffset != wanted) retainedScroll.ChangeView(null, wanted, null, true);
+            return;
+        }
         if (FocusManager.GetFocusedElement(XamlRoot) is BleeckerSelectItem focused && Items.Contains(focused) && popupScroll is { } scroll)
         {
             if (typeaheadOffset is { } wanted) { if (Math.Abs(scroll.VerticalOffset-wanted) > 1d/64) scroll.ChangeView(null,wanted,null,true); else typeaheadOffset = null; return; }
@@ -226,6 +235,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     private void Typeahead(UIElement sender, CharacterReceivedRoutedEventArgs args)
     {
         if (args.Handled || !IsEnabled || char.IsControl(args.Character)) return;
+        ClearControlledFocus();
         var search = IsDropDownOpen ? contentSearch : triggerSearch;
         if (args.Character == ' ' && search.Length == 0) { args.Handled = true; return; }
         search += args.Character;
@@ -288,7 +298,7 @@ internal sealed class BleeckerSelectItem : Button
             </ControlTemplate>
             """);
         Click += (_, _) => Chooser.QueueCommit(this); GotFocus += (_, _) => { Render(); if (Chooser.IsDropDownOpen) Chooser.QueueOpenPosition(); }; LostFocus += (_, _) => Render();
-        PointerMoved += (_, args) => { if (!args.IsGenerated && Chooser.IsDropDownOpen) Focus(FocusState.Pointer); };
+        PointerMoved += (_, args) => { if (!args.IsGenerated && Chooser.IsDropDownOpen) { Chooser.ClearControlledFocus(); Focus(FocusState.Pointer); } };
     }
     protected override void OnApplyTemplate() { base.OnApplyTemplate(); Render(); }
     protected override void OnKeyDown(KeyRoutedEventArgs args) { Chooser.HandleOpenKey(args); if (!args.Handled) base.OnKeyDown(args); }

@@ -1286,6 +1286,9 @@
         "scripts/reference/data-table-filters-client.tsx",
         "scripts/verify-data-table-filters-reference.mjs",
         "scripts/verify-data-table-filters-native.mjs",
+        "tests/Reference/DataTableFiltersLive.json",
+        "scripts/reference/capture-data-table-filters-live.cjs",
+        "scripts/verify-data-table-filters-live-native.mjs",
         "samples/Orchard.Catalog/DataTableFiltersFixture.xaml.cs",
         "samples/Orchard.Catalog/DataTableFiltersFixture.Input.cs",
         "samples/Orchard.Catalog/DataTableFiltersFixture.Lifecycle.cs",
@@ -1294,7 +1297,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Exact raster and raw event-route parity; four browser body/native next-control focus differences remain explicitly recorded",
-        "Open option replacement/reordering, live disabled/value mutations and full state/motion/override/RTL matrices",
+        "Complete collection/content, state/motion/override/RTL matrices; 140 added live-update states verify keyed focus, identity, scrolling and mutation boundaries",
         "Narrator, contrast, display/text scaling, performance and native ARM64 runtime",
         "Complete platform acceptance remains open; clean matching-source x64 catalog/package/consumer checks pass, ARM64 builds only"
       ]

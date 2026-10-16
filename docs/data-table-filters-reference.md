@@ -189,9 +189,10 @@ node scripts/verify-data-table-filters-native.mjs `
 
 The independent audit hashes all 276 original/native images and compares all
 114 open-popup regions with zero tolerance and no masks. Exact pixel parity
-is false. The desktop replay does not establish component acceptance. Open
-option-collection replacement/reordering, complete live disabled/value
-mutation, full visual/motion/override/RTL matrices, Narrator, contrast, text
+is false. The desktop replay does not establish component acceptance. The
+separate live-update checkpoint below covers keyed option replacement,
+reordering and focused disabled/value changes. Full collection/content,
+visual/motion/override/RTL matrices, Narrator, contrast, text
 and display scaling, performance and native ARM64 runtime remain required.
 The clean release checkpoint below verifies the isolated consumer and the
 integrated full run while retaining those acceptance gaps.
@@ -246,3 +247,75 @@ ARM64 runtime remains unverified. The fixed inventory is **53 in progress,
 in-repository documents carry the contract. Push-triggered Actions remain
 paused at the user's request; local verification does not claim new CI or
 deployment evidence.
+
+## Live option updates
+
+The additional reference `tests/Reference/DataTableFiltersLive.json` preserves
+the original 276-state fixture unchanged. It freezes **32 cases / 140 states**
+from the same actual producer, CSS, four source files, 48 bundled dependencies,
+browser and fonts. It includes **32 updates**, **76 open states**, **44 key
+pairs** and **272 trusted events**. Reference SHA-256:
+`9d63fbc158c57cd970dbe3d7c72a1fc654580ae9db7fc6c89f72b8f40c530ef3`.
+
+Source behavior established by real browser rendering/input:
+
+- Same-value new option objects retain the existing keyed node, focus and
+  current selection. Labels, order, disabled metadata and placeholder update
+  without a table write. Duplicate empty keys and sentinel collisions retain
+  the measured focused occurrence.
+- Removing, disabling or changing the key of the focused option moves focus
+  to the listbox. Escape and the next normal navigation/commit remain usable.
+- A long list initially selected at Status 17 opens at scroll offset 400.
+  Reordering preserves that offset and the focused node, even when the node's
+  new allocation lies outside the current viewport. The next genuine native
+  navigation/pointer action resumes normal scrolling behavior.
+
+The pre-fix native run at `artifacts/smoke-filters-live-baseline` fails these
+boundaries: same-value replacement loses focus, subsequent Enter cannot
+commit, and an initial pointer-opened long selection remains at offset zero.
+Those failures are retained with their original two-second limits.
+
+The control now keys native rows by raw option Value and duplicate occurrence,
+retags retained rows with the current original consumer option, and remembers
+the last applied key for observable Value changes. Existing providers for a
+retained key expose current metadata; removing or changing the key invalidates
+its old provider. The earlier same-value replacement rejection assumption was
+too strict: the rendered source proves that the keyed node survives. Native
+focus restoration preserves that node and the existing viewport; pending
+restorations are invalidated by later updates, native input, dismissal or
+unload. Initial pointer-open positioning now runs within the initial-focus
+transaction, so its selected row scrolls correctly.
+
+`artifacts/smoke-filters-live-keyed` and its independent
+`artifacts/filters-live-keyed-audit.json` pass all 140 states, 44 key pairs,
+32 mutations, 32 clicks and 142 captures. All 32 update focus identities and
+all 108 post-initial settled focus roles match the source. No table callback
+occurs during updates. The 32 initially unfocused states are excluded from
+focus-role parity, as in the original native fixture. Source raw event-route
+and exact pixel parity remain unverified/false; component acceptance is false.
+
+Lifecycle checks additionally exercise the original option's live Label,
+Value and IsDisabled notifications while open. Stable keys keep native
+identity, changed keys reject old providers, focused disabling moves to the
+listbox, and template/table/unload boundaries retain zero final observers.
+The isolated package consumer includes open replacement, reordering, live
+metadata, retained-provider metadata and removed-key rejection checks.
+
+Reproduce the added source and native audits with:
+
+```powershell
+node scripts/reference/capture-data-table-filters-live.cjs `
+  --output <source-output> --esbuild-module <esbuild> `
+  --playwright-module <playwright>
+node scripts/verify-data-table-filters-reference.mjs --live `
+  --source <source-output> --output <source-audit.json>
+./scripts/smoke-catalog.ps1 -Executable <catalog.exe> `
+  -Component data-table-filters-live -ClientSize 1000,745 `
+  -ExpectedArchitecture X64 -Output <native-output>
+node scripts/verify-data-table-filters-live-native.mjs `
+  --source <source-output> --native <native-output> --output <audit.json>
+```
+
+The original 276-state replay, shared Pagination input/scroll boundaries,
+clean architecture/package builds and the full published sequence must pass
+again before this change replaces the validated artifact checkpoint above.

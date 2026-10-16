@@ -8,6 +8,8 @@
         <Compile Include="../../src/Orchard/Controls/BleeckerSelectOption.cs" Link="BleeckerSelectOption.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerSelectFilterValue.cs" Link="BleeckerSelectFilterValue.cs" />
         <None Include="../Reference/DataTableFilters.json" Link="Fixtures/DataTableFilters.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DataTableFiltersLive.json" Link="Fixtures/DataTableFiltersLive.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-data-table-filters-live.cjs" Link="Fixtures/CaptureDataTableFiltersLive.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-filters.cjs" Link="Fixtures/CaptureDataTableFilters.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/data-table-filters-client.tsx" Link="Fixtures/DataTableFiltersClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <PackageReference Include="MSTest" />

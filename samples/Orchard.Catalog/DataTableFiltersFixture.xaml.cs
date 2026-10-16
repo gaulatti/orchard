@@ -27,9 +27,12 @@ public sealed partial class DataTableFiltersFixture : UserControl
     { var timer = System.Diagnostics.Stopwatch.StartNew(); while (!condition() && timer.ElapsedMilliseconds < 2000) { UpdateLayout(); await Task.Delay(16); } Require(condition(), "Filter readiness exceeded its original two-second bound."); }
     private static IEnumerable<KeyValuePair<string, object?>> Filters(JsonElement value) => value.EnumerateArray().Select(item => new KeyValuePair<string, object?>(item.GetProperty("id").GetString()!, Decode(item.GetProperty("value"))));
     private static object? Decode(JsonElement value) => value.ValueKind switch { JsonValueKind.Null => null, JsonValueKind.String => value.GetString(), JsonValueKind.True => true, JsonValueKind.False => false, JsonValueKind.Number => value.GetDouble(), JsonValueKind.Array => value.EnumerateArray().Select(Decode).ToArray(), _ => throw new InvalidOperationException("Unknown frozen filter descriptor.") };
-    internal async Task VerifySourceAsync(BleeckerColorScheme scheme, string folder, bool desktopFocusContract = false)
+    internal async Task VerifySourceAsync(BleeckerColorScheme scheme, string folder, bool desktopFocusContract = false, bool liveOptions = false)
     {
-        using var stream = typeof(DataTableFiltersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTableFilters.json")!; using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var reference = JsonDocument.Parse(bytes);
+        var referenceName = liveOptions ? "DataTableFiltersLive" : "DataTableFilters";
+        var reportName = liveOptions ? "data-table-filters-live" : "data-table-filters";
+        var inputName = liveOptions ? "filters-live" : "filters";
+        using var stream = typeof(DataTableFiltersFixture).Assembly.GetManifestResourceStream($"Orchard.Catalog.Reference.{referenceName}.json")!; using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var reference = JsonDocument.Parse(bytes);
         var root = (Grid)XamlRoot.Content; var app = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId); var originalSize = app.ClientSize; var reports = new List<object>(); var failures = new List<string>(); var focusDifferences = new List<object>();
         try
         {
@@ -46,7 +49,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                 var probe = new TextBlock { Text = active.VisibleText, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(16, top + 72, 16, 0), VerticalAlignment = VerticalAlignment.Top };
                 EventHandler changed = (sender, _) => { if (ReferenceEquals(sender, active)) probe.Text = active.VisibleText; }; a.Changed += changed; b.Changed += changed;
                 var host = new Grid { Background = root.Background, TabFocusNavigation = KeyboardNavigationMode.Cycle }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); host.Children.Add(layout); host.Children.Add(outside); host.Children.Add(probe); root.Children.Add(host);
-                using var input = new NativeInputSession(XamlRoot, folder, $"filters-{id}-{scheme}");
+                using var input = new NativeInputSession(XamlRoot, folder, $"{inputName}-{id}-{scheme}");
                 try
                 {
                     await ReadyAsync(() => view.IsLoaded && a.Subscribers == 2); view.ApplyTemplate(); await MainWindow.AwaitPresentationAsync(view); await input.AcquireAsync(outside); outsideClicks = 0;
@@ -58,7 +61,17 @@ public sealed partial class DataTableFiltersFixture : UserControl
                     foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
                     {
                         var phase = point.GetProperty("phase").GetString()!; var expected = point.GetProperty("state"); var errors = new List<string>(); object? receipt = null;
-                        switch (phase)
+                        var previousFocus = FocusManager.GetFocusedElement(XamlRoot);
+                        if (sample.TryGetProperty("updates", out var updates) && updates.TryGetProperty(phase, out var update))
+                        {
+                            if (update.TryGetProperty("options", out var nextOptions))
+                            {
+                                options = nextOptions.EnumerateArray().Select(item => new BleeckerSelectOption(item.GetProperty("value").GetString()!, item.GetProperty("label").GetString()!, item.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())).ToArray();
+                                view.Options = options;
+                            }
+                            if (update.TryGetProperty("placeholder", out var nextPlaceholder)) view.Placeholder = nextPlaceholder.GetString()!;
+                        }
+                        else switch (phase)
                         {
                             case "closed": break;
                             case "open":
@@ -126,7 +139,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                             }
                             else geometry = new { trigger = triggerBox };
                         }
-                        var file = $"data-table-filters-{id}-{index++:00}-{phase}-{scheme}.png"; await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, file)); reports.Add(new { id, phase, file, errors, receipt, focus = Focus(focused), sourceFocus, expectedFocus, nativeFocusPolicy, rawFocus = focused?.GetType().Name, callbacks = a.Requests.Count + b.Requests.Count, outsideClicks, rows = probe.Text, geometry }); failures.AddRange(errors.Select(error => id + "/" + phase + ": " + error));
+                        var file = $"{reportName}-{id}-{index++:00}-{phase}-{scheme}.png"; await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, file)); reports.Add(new { id, phase, file, errors, receipt, focus = Focus(focused), sourceFocus, expectedFocus, nativeFocusPolicy, focusRetained = ReferenceEquals(previousFocus, focused), priorFocusLoaded = previousFocus is FrameworkElement { IsLoaded: true }, rawFocus = focused?.GetType().Name, callbacks = a.Requests.Count + b.Requests.Count, outsideClicks, rows = probe.Text, geometry }); failures.AddRange(errors.Select(error => id + "/" + phase + ": " + error));
                     }
                 }
                 catch (Exception error) { failures.Add(id + ": " + error); }
@@ -136,7 +149,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
             Require(failures.Count == 0, "One or more original filter cases failed; all independent case evidence is retained.");
         }
         catch (Exception error) { failures.Add(error.ToString()); throw; }
-        finally { app.ResizeClient(originalSize); await File.WriteAllTextAsync(Path.Combine(folder, $"data-table-filters-{scheme}.json"), JsonSerializer.Serialize(new { passed = failures.Count == 0, desktopFocusContract, sourceFocusParityVerified = focusDifferences.Count == 0, focusDifferences, nativeComponentAccepted = false, referenceSha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant(), reports, failures }, new JsonSerializerOptions { WriteIndented = true })); }
+        finally { app.ResizeClient(originalSize); await File.WriteAllTextAsync(Path.Combine(folder, $"{reportName}-{scheme}.json"), JsonSerializer.Serialize(new { passed = failures.Count == 0, desktopFocusContract, liveOptions, sourceFocusParityVerified = focusDifferences.Count == 0, focusDifferences, nativeComponentAccepted = false, referenceSha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant(), reports, failures }, new JsonSerializerOptions { WriteIndented = true })); }
     }
     private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
 }

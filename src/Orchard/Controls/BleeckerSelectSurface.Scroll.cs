@@ -20,6 +20,48 @@ internal sealed partial class BleeckerSelectSurface
     private int scrollDirection;
     private Border? scrollingIndicator;
     private Point scrollPointer;
+    private double? controlledScrollOffset;
+    private int optionsFocusVersion;
+
+    internal Action? PreserveOptionsFocus(Func<BleeckerSelectItem, string> key)
+    {
+        // Radix keeps keyed option focus and the existing scroll position on
+        // controlled updates, even when reordering moves that row offscreen.
+        var version = ++optionsFocusVersion;
+        if (!IsDropDownOpen || popupFocus is null || popupScroll is null) return null;
+        var focused = FocusManager.GetFocusedElement(XamlRoot);
+        var options = Items.OfType<BleeckerSelectItem>().ToArray();
+        if (!ReferenceEquals(focused, popupFocus) && (focused is not BleeckerSelectItem item || !options.Contains(item))) return null;
+        var original = focused as BleeckerSelectItem;
+        var value = original is null ? null : key(original);
+        var occurrence = original is null ? 0 : options.TakeWhile(item => !ReferenceEquals(item, original)).Count(item => key(item) == value);
+        var state = ((Control)focused).FocusState;
+        var offset = popupScroll.VerticalOffset;
+        return () =>
+        {
+            if (!IsDropDownOpen || !IsLoaded || version != optionsFocusVersion) return;
+            var next = original is null ? null : Items.OfType<BleeckerSelectItem>().Where(item => key(item) == value).Skip(occurrence).FirstOrDefault();
+            var target = next is { IsEnabled: true } ? (Control)next : popupFocus;
+            void Restore()
+            {
+                if (!IsDropDownOpen || !IsLoaded || version != optionsFocusVersion) return;
+                if (next is not null && !Items.Contains(next)) return;
+                positionedPopup!.Child.UpdateLayout();
+                controlledScrollOffset = offset;
+                if (!target.Focus(state)) throw new InvalidOperationException("The controlled options update could not retain its logical focus target.");
+                QueueOpenPosition();
+            }
+            positionedPopup!.Child.UpdateLayout();
+            if (target.IsLoaded) Restore();
+            else if (!DispatcherQueue.TryEnqueue(Restore)) throw new InvalidOperationException("The controlled options update could not schedule its logical focus target.");
+        };
+    }
+
+    internal void ClearControlledFocus()
+    {
+        optionsFocusVersion++;
+        controlledScrollOffset = null;
+    }
 
     internal Action? PreserveViewportFocus()
     {
@@ -82,6 +124,7 @@ internal sealed partial class BleeckerSelectSurface
     private void BeginScroll(Border indicator, PointerRoutedEventArgs args, int direction)
     {
         if (!IsDropDownOpen || !IsEnabled || popupScroll is null) return;
+        ClearControlledFocus();
         scrollingIndicator = indicator; scrollPointer = args.GetCurrentPoint(XamlRoot.Content).Position;
         if (!popupFocus!.Focus(FocusState.Pointer)) throw new InvalidOperationException("The source scroll control requires focus on its open viewport.");
         scrollDirection = direction;

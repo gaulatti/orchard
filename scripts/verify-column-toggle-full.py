@@ -1,8 +1,10 @@
 import hashlib,json,sys
 from pathlib import Path
 
-arguments=sys.argv[1:]; filtersMode='--filters' in arguments
-if filtersMode:arguments.remove('--filters')
+arguments=sys.argv[1:]; liveFiltersMode='--filters-live' in arguments
+if liveFiltersMode:arguments.remove('--filters-live')
+filtersMode=liveFiltersMode or '--filters' in arguments
+if '--filters' in arguments:arguments.remove('--filters')
 prior=Path('artifacts/smoke-shared-select-validated-full' if filtersMode else 'artifacts/smoke-pagination-owned-validated-full')
 current,output=map(Path,arguments)
 read=lambda path:json.loads(path.read_text(encoding='utf-8-sig'))
@@ -29,5 +31,8 @@ if filtersMode:
  filters=[dict(scheme=scheme,lifecycle=read(current/f'data-table-filters-lifecycle-{scheme}.json'),unload=read(current/f'data-table-filters-unload-{scheme}.json')) for scheme in ['Light','Dark']]
  report['filters']=filters
  report['passed']=report['passed'] and all(item['lifecycle']['passed'] and item['lifecycle']['originalRequests']==1 and item['lifecycle']['replacementRequests']==0 and all(item['lifecycle'][key] for key in ['originalRows','originalColumn','staleOptionRejected','disabledOptionRejected','disabledFilterRejected','detachedTemplateRejected','templateReplaced','tableReplaced','remounted']) and item['unload']['passed'] and item['unload']['finalObservers']==0 for item in filters)
+ if liveFiltersMode:
+  report['liveOptionsLifecycleVerified']=all(all(item['lifecycle'][key] for key in ['keyedNativeIdentityRetained','liveLabelRetainedFocus','liveValueInvalidatesProvider','liveDisabledFocusedRejected']) for item in filters)
+  report['passed']=report['passed'] and report['liveOptionsLifecycleVerified']
 output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k not in ['resetStates','toolbarTabTransfers','pagination','stationary']}))
 if not report['passed']:sys.exit(1)

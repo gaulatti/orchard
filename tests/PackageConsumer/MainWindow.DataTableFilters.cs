@@ -50,15 +50,26 @@ public sealed partial class MainWindow
             keys.Add(await PaginationConsumerKeyAsync(0x28, empty, draft, () => Require(source.Requests == 2, "Packaged option highlight committed early.")));
             keys.Add(await PaginationConsumerKeyAsync(0x0D, draft, chooser, () => Require(source.Requests == 3 && rows.Text == "Harbor:Draft" && Expand().ExpandCollapseState == ExpandCollapseState.Collapsed, "Packaged Enter did not commit once through original visible rows.")));
 
-            var staleChoice = Choice("Published"); filter.Options = new ObservableCollection<BleeckerSelectOption> { new("Draft", "Replacement Draft"), new("Published", "Replacement Published", true) };
-            await AwaitAsync(() => Value() == "Replacement Draft", "Packaged option replacement lost controlled value.");
-            var stale = false; try { staleChoice.Select(); } catch (ElementNotAvailableException) { stale = true; } Require(stale && source.Requests == 3, "Stale packaged option retained a mutation path.");
+            var staleChoice = Choice("Published");
+            keys.Add(await PaginationConsumerKeyAsync(0x28, chooser, draft, () => Require(Expand().ExpandCollapseState == ExpandCollapseState.Expanded && source.Requests == 3, "Packaged Select reopening changed original filter state.")));
+            var replacement = new ObservableCollection<BleeckerSelectOption> { new("Draft", "Replacement Draft"), new("Published", "Replacement Published", true) }; filter.Options = replacement;
+            await AwaitAsync(() => Value() == "Replacement Draft" && ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), Item("Draft")), "Packaged open option replacement lost its controlled value or logical focus.");
+            Require(ReferenceEquals(draft, Item("Draft")) && FrameworkElementAutomationPeer.CreatePeerForElement(draft).GetName() == "Replacement Draft", "Stable packaged option key lost its native identity or current metadata.");
+            var retainedDisabled = false; try { staleChoice.Select(); } catch (ElementNotEnabledException) { retainedDisabled = true; } Require(retainedDisabled && source.Requests == 3, "Retained packaged provider did not use current disabled metadata.");
+            var removedChoice = Choice("Published"); var removedOption = replacement[1]; removedOption.IsDisabled = false; replacement.RemoveAt(1);
+            var stale = false; try { removedChoice.Select(); } catch (ElementNotAvailableException) { stale = true; } Require(stale && source.Requests == 3, "Removed packaged option key retained a mutation path.");
+            removedOption.IsDisabled = true; replacement.Add(removedOption); await AwaitAsync(() => Select().Items.Count == 3, "Restored packaged option key did not remount.");
+            replacement.Move(1, 0);
+            await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), Item("Draft")) && Select().Items.IndexOf(Item("Draft")) == 2, "Packaged open option reordering lost its logical focus.");
+            replacement[1].Label = "Live Draft Again"; filter.Placeholder = "Any status";
+            await AwaitAsync(() => Value() == "Live Draft Again" && FrameworkElementAutomationPeer.CreatePeerForElement(Select()).GetName() == "Any status", "Packaged open option metadata or placeholder did not refresh.");
             var disabledOption = false; try { Choice("Published").Select(); } catch (ElementNotEnabledException) { disabledOption = true; } Require(disabledOption, "Disabled packaged option accepted a selection.");
+            keys.Add(await PaginationConsumerKeyAsync(0x0D, Item("Draft"), chooser, () => Require(source.Requests == 3 && Expand().ExpandCollapseState == ExpandCollapseState.Collapsed && rows.Text == "Harbor:Draft", "Packaged updated option commit changed the current original filter or lost dismissal.")));
             filter.IsEnabled = false; var disabled = false; try { Expand().Expand(); } catch (ElementNotEnabledException) { disabled = true; } Require(disabled && source.Requests == 3, "Disabled packaged Select accepted expansion."); filter.IsEnabled = true;
             Require(source.Rows.Zip(originals).All(pair => ReferenceEquals(pair.First, pair.Second)) && source.TitleFilter == "r" && source.GlobalFilter is "consumer-owned", "Packaged Select replaced original rows or unrelated filter state.");
             Root.Children.Remove(host); await AwaitAsync(() => !filter.IsLoaded && source.Subscribers == 1, "Packaged Select did not disconnect on unmount.");
             source.SetExternal("Published"); Root.Children.Add(host); await AwaitAsync(() => filter.IsLoaded && source.Subscribers == 2 && Value() == "Replacement Published", "Packaged Select did not remount from authoritative consumer state.");
-            await File.WriteAllTextAsync(Path.Combine(output, $"consumer-select-filter-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed = true, originalRows = true, originalColumn = true, preservedUnrelatedFilters = true, requests = source.Requests, externalRequests = 0, staleOptionRejected = stale, disabledOptionRejected = disabledOption, disabledFilterRejected = disabled, remounted = true, keys, presentation }));
+            await File.WriteAllTextAsync(Path.Combine(output, $"consumer-select-filter-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed = true, originalRows = true, originalColumn = true, preservedUnrelatedFilters = true, requests = source.Requests, externalRequests = 0, keyedNativeIdentityRetained = true, retainedProviderUsesCurrentMetadata = retainedDisabled, staleOptionRejected = stale, disabledOptionRejected = disabledOption, disabledFilterRejected = disabled, liveReplacement = true, liveReordering = true, liveMetadata = true, remounted = true, keys, presentation }));
         }
         finally
         {

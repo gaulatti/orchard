@@ -44,6 +44,9 @@ The separate `data-table-filters` mode preserves the strict browser comparison
 and its four missing-column focus differences. Full catalog verification
 includes both-theme lifecycle checks and the registered preview captures.
 See [the API, evidence and remaining gaps](data-table-filters-reference.md).
+The separate `-Component data-table-filters-live` mode replays 140 additional
+source states for live option replacement, labels, ordering, disabled/value
+changes, duplicate keys and long-list scroll preservation.
 
 Section Headers follows Page Headers. It covers optional eyebrow/summary text,
 empty titles, constrained widths, RTL and multilingual content. Focused

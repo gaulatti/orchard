@@ -96,3 +96,21 @@ Evidence/artifacts:
 The inventory remains 52 in progress, 60 pending and zero accepted. This
 checkpoint does not complete any component or the full goal. Push-triggered
 Actions remain paused and no workflow was dispatched.
+
+## Controlled option updates
+
+The Filters live reference adds 140 states for keyed metadata/order changes,
+focused removal/disable/value changes and initial long-list selection. The
+shared surface preserves the current option key/occurrence and viewport
+during controlled updates, and invalidates pending restoration when newer
+updates, native input or dismissal supersede it. Retained keys keep their
+native row and use the current original option object. Removed or changed
+keys reject their old providers. Initial pointer-open positioning runs before
+the initial-focus transaction ends, so a selected offscreen row scrolls into
+view. The consumer adapter supplies its raw key mapping; the surface remains
+independent of Filters and Pagination types.
+
+The original 276 Filters states and shared Pagination source, input,
+held/rapid-key and scroll modes remain required regression boundaries. See
+[the live-update evidence](data-table-filters-reference.md#live-option-updates)
+for the measured browser contract, native checks and remaining acceptance.

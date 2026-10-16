@@ -202,6 +202,13 @@ focus restoration. Native Windows focus advances when a focused column is
 removed. Full rendered and platform acceptance remains in progress; see the
 repository's Data Table Filters contract.
 
+Use an observable Options collection for live add/remove/reorder notifications.
+Rows retain native identity for unchanged raw Value keys and expose current
+original option metadata. Label/IsDisabled changes update in place; changing
+Value changes the row key. Removed or changed keys invalidate old providers.
+Open controlled updates preserve logical focus and the existing viewport;
+removing or disabling the focused option transfers focus to the listbox.
+
 `BleeckerSunburstChart.Data` is a required original recursive record implementing
 `IReadOnlyDictionary<string, object?>`. `BleeckerSunburstNode` provides Name,
 optional Value/Fill and an original observable Children collection. Shared
