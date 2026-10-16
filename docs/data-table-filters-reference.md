@@ -193,5 +193,56 @@ is false. The desktop replay does not establish component acceptance. Open
 option-collection replacement/reordering, complete live disabled/value
 mutation, full visual/motion/override/RTL matrices, Narrator, contrast, text
 and display scaling, performance and native ARM64 runtime remain required.
-The isolated consumer and integrated full-run additions require clean
-release validation before they can be reported as verified artifacts.
+The clean release checkpoint below verifies the isolated consumer and the
+integrated full run while retaining those acceptance gaps.
+
+## Verified artifact checkpoint
+
+Product source `877625ea4c975744ae8e5ac94ca2bec99c57396f` builds x64 and ARM64
+in the fresh managed `filters-validation` worktree without warnings/errors.
+All **94** regressions and generated-token checks pass. The x64 published
+catalog's **532 files** match the clean build byte for byte, and its library
+matches the NuGet library byte for byte. Product version is
+`0.1.0+877625ea4c975744ae8e5ac94ca2bec99c57396f`.
+
+The actual published `artifacts/catalog-filters-validated` passes the focused
+desktop replay at `artifacts/smoke-filters-validated-native`. Its independent
+`filters-validated-native-audit.json` verifies 276 states, 278 captures, 80
+key pairs, 118 clicks, 120 presentation gates and two genuine modal outside
+clicks. All **114** compared popup regions differ, totaling **172,947 pixels**
+with zero tolerance and no masks. The four literal focus differences and raw
+event-route differences remain explicit. Inspection also shows missing native
+popup shadow and selected-text/glyph paint differences; these remain work.
+
+The full published sequence at `artifacts/smoke-filters-validated-full`
+passes **1,034 captures in 357.0138124 seconds** under the unchanged 360-second
+wrapper. It preserves all **1,032** preceding names and all **174** protected
+Sunburst/Radial glyph hashes. Full audits verify 1,732 input presentation gates,
+1,738 keys, 62 clicks, 28 tooltip gates, 18 final presentation gates, 118 Toolbar
+source cases and both-theme Filters/Columns/Pagination lifecycles with no
+failed gate or remaining observer. Evidence:
+`filters-validated-full-{audit,input-audit,timing}.json`.
+
+The isolated x64 consumer at `artifacts/package-consumer-filters-validated`
+passes both themes using only the restored NuGet public API. It verifies the
+original column and rows, preserves unrelated filters, makes three intended
+requests, produces no external/unchanged-selection request, and passes four
+physical key pairs per theme. Live labels, replacement/stale providers,
+disabled option/control rejection and unload/remount pass; final observer
+counts are zero. The separate ARM64 consumer builds only. Both generated
+temporary consumer directories are removed.
+
+Artifacts and SHA-256 values:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `artifacts/packages-filters-validated/Gaulatti.Orchard.0.1.0.nupkg` | `925553f870147c573a4247bb735fc7dbfa5efabfd73759d24881195d005a4860` |
+| Published/package `Orchard.dll` | `fce34659c392b1ee71fd02e4b7c5159e714496e320eb7cda935905f04957a196` |
+| `artifacts/Orchard.Catalog.0.1.0-877625e-x64.zip` | `e1e078fd476c06738183cf613b9b7a2c312201c3559638c6de24c4affa3551cc` |
+| `artifacts/Orchard.Catalog.0.1.0-877625e-ARM64.zip` | `362adbbb35687e5f74bcb23c979796944b0d1b0e3c9ecb83b48c44ef37b9384d` |
+
+ARM64 runtime remains unverified. The fixed inventory is **53 in progress,
+59 pending, zero accepted**. The public wiki remains unavailable; these
+in-repository documents carry the contract. Push-triggered Actions remain
+paused at the user's request; local verification does not claim new CI or
+deployment evidence.

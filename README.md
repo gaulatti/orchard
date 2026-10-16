@@ -41,6 +41,9 @@ consumer's original table and rows, with viewport-responsive controls.
 The [Data Table Column Toggle preview](docs/data-table-column-toggle.md) offers
 eligible original columns in a nonmodal checkbox popover. Visibility changes
 reach the consumer's original columns and visible-cell projection.
+The [Data Table Filters preview](docs/data-table-filters-reference.md) connects
+a controlled Select to an original consumer column, with observable options,
+modal keyboard/pointer input and a real filtered-row projection.
 The [Sparkline preview](docs/sparkline-reference.md) supplies compact consumer
 trends with monotone curves and native keyboard/pointer inspection.
 The [Stat Card preview](docs/stat-card-reference.md) composes consumer values,

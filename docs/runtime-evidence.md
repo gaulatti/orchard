@@ -1999,3 +1999,22 @@ The Filters prototype remains local with failed modal-input and missing-column
 focus verification, and is excluded from this released checkpoint. Inventory
 acceptance remains zero. The public wiki is unavailable and push-triggered
 Actions remain paused.
+
+## Data Table Filters artifact checkpoint
+
+Clean product source `877625e` builds x64 and ARM64 without warnings/errors
+and passes 94 regressions plus token checks. The actual published x64 catalog
+passes the 276-state desktop filter replay and all 1,034 full-sequence captures
+in 357.0138124 seconds. All 1,032 prior names and 174 protected glyph hashes
+are preserved; input/presentation audits have no failed gates. Both themes
+pass original consumer ownership, disabled/stale rejection and lifecycle
+cleanup. Exact source raster, four focus differences and raw event-route
+parity remain open.
+
+The fresh isolated x64 NuGet consumer passes both themes, including native
+Select keyboard commits and visible original filtered rows. ARM64 consumer
+builds only. Published/package bytes, hashes, artifacts, audit paths and the
+remaining acceptance are recorded in the
+[Filters checkpoint](data-table-filters-reference.md#verified-artifact-checkpoint).
+The inventory is 53 in progress, 59 pending and zero accepted. The public wiki
+remains unavailable, and push-triggered Actions remain paused.

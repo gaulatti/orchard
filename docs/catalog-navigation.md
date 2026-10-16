@@ -36,6 +36,15 @@ states and tests original-column ownership, real input, popup geometry,
 disabled rejection, table/template replacement, unload and remount. See
 [the source contract and open parity gaps](data-table-column-toggle.md).
 
+**Data table filters** follows Data table columns. The selector operates on
+the original consumer status column and displays its actual filtered rows.
+Focused `-Component data-table-filters-native` verifies 276 frozen states,
+native keyboard/pointer/modal input and source/template/option lifecycle.
+The separate `data-table-filters` mode preserves the strict browser comparison
+and its four missing-column focus differences. Full catalog verification
+includes both-theme lifecycle checks and the registered preview captures.
+See [the API, evidence and remaining gaps](data-table-filters-reference.md).
+
 Section Headers follows Page Headers. It covers optional eyebrow/summary text,
 empty titles, constrained widths, RTL and multilingual content. Focused
 `-Component section-header` uses the same navigation path and verifies the
