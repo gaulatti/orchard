@@ -13,6 +13,8 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using ShapePath = Microsoft.UI.Xaml.Shapes.Path;
 using Windows.Foundation;
+using PageSizeChooser = Orchard.BleeckerSelectSurface;
+using PageSizeOption = Orchard.BleeckerSelectItem;
 
 namespace Orchard;
 
@@ -60,7 +62,7 @@ public sealed partial class BleeckerDataTablePagination : Control
         summary = Text("PART_Selection", false); page = Text("PART_Page", true);
         var rows = Text("PART_RowsLabel", false); rows.Text = "Rows per page";
         var resources = new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Orchard.xaml") };
-        size = new PageSizeChooser(this) { Name = "PART_PageSize", Width = 80, MinWidth = 0, MinHeight = 40, Height = 40, FontSize = 14, Padding = new Thickness(14, 0, 14, 0), UseLayoutRounding = false };
+        size = new PageSizeChooser(() => updating, () => Table, PageSizeDisplay, item => ReferenceEquals(size?.SelectedItem, item), "Rows per page options", "OrchardPageSizeChooser") { Name = "PART_PageSize", Width = 80, MinWidth = 0, MinHeight = 40, Height = 40, FontSize = 14, Padding = new Thickness(14, 0, 14, 0), UseLayoutRounding = false };
         size.SetBinding(FontFamilyProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontFamily)) });
         AutomationProperties.SetLabeledBy(size, rows); AutomationProperties.SetName(size, "Rows per page"); size.SelectionChanged += PageSizeSelectionChanged;
         first = Navigation("PART_First", "Go to first page", "M11 17L6 12L11 7 M18 17L13 12L18 7", FirstClicked);
@@ -103,6 +105,7 @@ public sealed partial class BleeckerDataTablePagination : Control
     { if (!IsLoaded || !IsEnabled) return; action(Table ?? throw new InvalidOperationException("Pagination requires its consumer Table.")); Refresh(); }
     private void PageSizeSelectionChanged(object? sender, EventArgs args)
     { if (!updating && size?.SelectedItem is PageSizeOption { Tag: int value }) Execute(table => table.SetPageSize(value)); }
+    private string PageSizeDisplay() => Table is { } table ? size?.Items.OfType<PageSizeOption>().FirstOrDefault(item => (int)item.Tag == table.PageSize)?.Content?.ToString() ?? "" : "";
 
     private void Observe()
     {
