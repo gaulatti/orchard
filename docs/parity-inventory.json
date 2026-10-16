@@ -1307,14 +1307,25 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "BleeckerDataTableColumnToggle",
+        "IBleeckerDataTableColumnVisibilitySource",
+        "IBleeckerDataTableVisibilityColumn"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/DataTableColumnTogglesFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/DataTableColumnToggleReferenceTests.cs",
+        "samples/Orchard.Catalog/DataTableColumnTogglesFixture.xaml.cs",
+        "samples/Orchard.Catalog/DataTableColumnTogglesFixture.Lifecycle.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact raster, typography, focus and release-owner parity; source body/native dialog focus remains different after eligibility removal",
+        "Complete hover/pressed/disabled, theme/override, motion and mutation matrix",
+        "Narrator, contrast, text/display scaling and collection performance",
+        "Current independent NuGet/full-catalog artifact checkpoint and ARM64 runtime"
       ]
     },
     {

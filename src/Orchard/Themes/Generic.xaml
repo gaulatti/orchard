@@ -15,6 +15,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Sidebar.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTableToolbar.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTablePagination.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTableColumnToggle.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Alert.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Brand.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Bauhaus.xaml" />

@@ -76,6 +76,16 @@ application-owned `IBleeckerDataTableFilterSource`; the adapter retains its
 original columns, rows, initial filters and global state. Original filter/action
 content and optional templates follow the responsive 640px viewport layout.
 The native preview's complete interaction, visual and platform acceptance is open.
+`BleeckerDataTableColumnToggle` reads an application-owned
+`IBleeckerDataTableColumnVisibilitySource`. Set `Table` before mounting and
+raise `Changed` when original columns, headers, eligibility or visibility
+change. `GetAllColumns()` must return the original top-level columns; the
+picker offers only `HasAccessor && CanHide`, reads `IsVisible` and forwards
+one `ToggleVisibility(bool)` action. String `Header` values are literal;
+other headers use `Id`. The consumer owns all rows and visibility state.
+`Label` defaults to `Columns`; the nonmodal popover uses native checkboxes.
+Full visual, accessibility, scaling and platform acceptance is pending.
+
 `BleeckerDataTablePagination` displays an application-owned
 `IBleeckerDataTablePaginationSource`. Set `Table` before mounting and raise its
 `Changed` event when page state, filtered counts or navigation flags change.

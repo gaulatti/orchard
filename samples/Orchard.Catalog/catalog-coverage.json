@@ -66,6 +66,7 @@
     "BleeckerSidebar": "SidebarsFixture.xaml",
     "BleeckerDataTableToolbar": "DataTableToolbarsFixture.xaml",
     "BleeckerDataTablePagination": "DataTablePaginationsFixture.xaml",
+    "BleeckerDataTableColumnToggle": "DataTableColumnTogglesFixture.xaml",
     "BleeckerSidebarItem": "SidebarsFixture.xaml",
     "BleeckerSidebarLinkContext": "SidebarsFixture.xaml",
     "BleeckerAlert": "AlertsFixture.xaml",

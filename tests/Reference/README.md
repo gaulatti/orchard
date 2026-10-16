@@ -1,5 +1,14 @@
 # Browser reference probes
 
+`DataTableColumnToggle.json` records the actual frozen React/TanStack/Radix
+column visibility popover in 28 cases and 132 states. Its collector/client
+under `scripts/reference` verify the original lock blob, dependency versions
+and integrity, CSS/fonts, real trusted input, stable presentations, original
+table/row/column/cell identity and accessibility. Regeneration requires those
+frozen dependencies and the source commit listed in the fixture. See
+[the source contract](../../docs/data-table-column-toggle.md) for native
+comparison commands and open focus/visual/platform gaps.
+
 These isolated pages measure properties of Bleecker's Switch contract at
 `a86059013cd59684ce452849278ea81e734f2066`. They are diagnostic probes, not copies
 of the component or evidence of full native visual acceptance.

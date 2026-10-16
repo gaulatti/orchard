@@ -221,6 +221,7 @@ public sealed partial class MainWindow : Window
                 await VerifySidebarAsync();
                 await VerifyToolbarAsync();
                 await VerifyPaginationAsync();
+                await VerifyColumnToggleAsync();
                 await VerifySparklineAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();

@@ -1,0 +1,8 @@
+<UserControl x:Class="Orchard.Catalog.DataTableColumnTogglesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Data table columns" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="The original consumer owns column eligibility, headers and visibility. The nonmodal picker changes the original visible-cell projection." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <Grid Width="520" HorizontalAlignment="Left"><orchard:BleeckerDataTableColumnToggle x:Name="Preview" HorizontalAlignment="Right"/></Grid>
+  <TextBlock x:Name="Cells" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+ </StackPanel>
+</UserControl>

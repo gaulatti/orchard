@@ -13,6 +13,11 @@
         <Compile Include="../../samples/Orchard.Catalog/ToolbarFilterTable.cs" Link="ToolbarFilterTable.cs" />
         <Compile Include="../../samples/Orchard.Catalog/PaginationTable.cs" Link="PaginationTable.cs" />
         <Compile Include="../../src/Orchard/Controls/IBleeckerDataTablePaginationSource.cs" Link="IBleeckerDataTablePaginationSource.cs" />
+        <Compile Include="../../src/Orchard/Controls/IBleeckerDataTableColumnVisibilitySource.cs" Link="IBleeckerDataTableColumnVisibilitySource.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/ColumnVisibilityTable.cs" Link="ColumnVisibilityTable.cs" />
+        <None Include="../Reference/DataTableColumnToggle.json" Link="Fixtures/DataTableColumnToggle.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-data-table-column-toggle.cjs" Link="Fixtures/CaptureDataTableColumnToggle.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/data-table-column-toggle-client.tsx" Link="Fixtures/DataTableColumnToggleClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Tokens/BleeckerTokens.g.cs" Link="BleeckerTokens.g.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerPointerTransit.cs" Link="BleeckerPointerTransit.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerRoundedPointerHit.cs" Link="BleeckerRoundedPointerHit.cs" />
