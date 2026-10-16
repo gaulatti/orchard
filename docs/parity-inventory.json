@@ -1476,7 +1476,7 @@
       ],
       "windowsImplementation": ["src/Orchard/Controls/BleeckerStepper.cs", "src/Orchard/Controls/BleeckerStep.cs", "src/Orchard/Themes/Stepper.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/SteppersFixture.xaml"],
-      "regressionTests": ["tests/Orchard.Tests/StepperContractTests.cs", "tests/Reference/Stepper.json", "scripts/smoke-catalog.ps1 -Component stepper", "tests/Orchard.Tests/StepperMotionTests.cs", "tests/Reference/StepperMotion.json", "scripts/smoke-stepper-motion.ps1", "tests/Reference/StepperTypography.json", "scripts/verify-stepper-typography.mjs"],
+      "regressionTests": ["tests/Orchard.Tests/StepperContractTests.cs", "tests/Reference/Stepper.json", "scripts/smoke-catalog.ps1 -Component stepper", "tests/Orchard.Tests/StepperMotionTests.cs", "tests/Reference/StepperMotion.json", "scripts/smoke-stepper-motion.ps1", "tests/Reference/StepperTypography.json", "scripts/verify-stepper-typography.mjs", "scripts/smoke-catalog.ps1 -Component stepper-raster", "scripts/compare-stepper-raster.mjs", "scripts/test-stepper-raster-audit.mjs"],
       "status": "in-progress",
       "remainingGaps": [
         "Complete exact source pixels, reversal/override motion matrices, scaling and contrast verification",

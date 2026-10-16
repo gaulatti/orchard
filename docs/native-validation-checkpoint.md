@@ -1,6 +1,6 @@
 # Current native validation checkpoint
 
-Current library/catalog source: `b59cef474ad95c94841cbfccd77059e85dcc06ad`.
+Full-suite and packaged library/catalog source: `b59cef474ad95c94841cbfccd77059e85dcc06ad`.
 The clean published x64 full run passes in **406.1895514 seconds** with all
 **1,080 captures**, every prior filename and all **174 protected glyph hashes**.
 Its independent audits verify 1,980 pointer moves/presentation gates, 1,744
@@ -62,6 +62,21 @@ The archive audit is `artifacts/stepper-baseline-archives.json`. The x64
 archive contains the runtime-verified publication; the ARM64 archive has build
 evidence only. These hashes identify artifacts and do not establish component
 visual acceptance.
+
+The subsequent capture-only Stepper raster diagnostic verifies all 44 cases
+with **zero screen-versus-bitmap differences**. Every visible frame stays
+identical before/after bitmap rendering, and the original catalog parent is
+restored. It rules out the bitmap path as the cause of this host's observed
+browser differences. The diagnostic's browser comparison still differs in
+42 cases (143,883 pixels, 11,020,905 absolute RGBA error). The rehosted bitmap
+differs from the prior full-run bitmap by 226 pixels across 26 cases; these
+captures remain separate. No production control, reference image, comparison
+tolerance or mask changes. Artifacts are `artifacts/smoke-stepper-raster-final`,
+`artifacts/stepper-raster-final-audit.json` and
+`artifacts/stepper-raster-negative-audit.json`. All four negative audit cases,
+105 unit tests, token generation and x64/ARM64 diagnostic builds pass. The
+complete suite/package evidence above remains at its stated source revision;
+no new full-suite or ARM64 runtime result is claimed for the diagnostic.
 
 ## Previous source-motion checkpoint
 

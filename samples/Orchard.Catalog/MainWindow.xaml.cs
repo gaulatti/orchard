@@ -57,6 +57,12 @@ public sealed partial class MainWindow : Window
         {
             CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            else if (args.Contains("--smoke-stepper-raster"))
+            {
+                await SelectFixtureAsync(Steppers);
+                await Steppers.CaptureRasterAsync(CatalogRoot, ComponentSearch, folder);
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, captureOnly = true, parityVerified = false, component = "stepper-raster", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-stepper-motion"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })

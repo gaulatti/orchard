@@ -135,3 +135,37 @@ absolute RGBA error; this is a separate capture from the focused result above.
 Published enabled/reduced motion remains verified. Current evidence is under
 `artifacts/smoke-stepper-baseline-full`, with the independent baseline audit at
 `artifacts/stepper-baseline-typography-audit.json`.
+
+## Screen and bitmap diagnostic
+
+`scripts/smoke-catalog.ps1 -Component stepper-raster` temporarily hosts the
+existing 1024×745 reference frame fully on screen at integer device coordinates.
+It captures the catalog client before and after `RenderTargetBitmap` renders
+that same frame, for all 44 source cases. Display and text scale must both be 1.
+The original control, font, brushes, reference geometry and source images are
+unchanged, and the frame returns to its catalog parent in `finally`.
+
+`scripts/compare-stepper-raster.mjs --native <diagnostic> --source <browser>
+--baseline <prior-native> --output <audit.json>` requires every on-screen frame
+to remain identical across the bitmap capture. It compares all frame pixels
+between the screen, bitmap, original browser and prior native captures, with
+zero tolerance, no masks and no resampling. Extracting the exact frame bounds
+from the client is the only crop. This separate diagnostic reports capture
+evidence and does not grant visual or component acceptance.
+
+The final x64 diagnostic at `artifacts/smoke-stepper-raster-final` verifies all
+44 screen/bitmap pairs with **zero differing pixels**, and both screen captures
+of each case remain identical. The catalog parent and child index are restored.
+This rules out the bitmap capture path as the cause of the observed source
+differences on this host. Browser comparison still differs in 42 cases, with
+143,883 differing pixels and 11,020,905 absolute RGBA error. The newly hosted
+bitmap differs from the prior full-run bitmap by 226 pixels across 26 cases;
+the two runs remain separate evidence, with neither result substituted for
+the other. See `artifacts/stepper-raster-final-audit.json`.
+
+`scripts/test-stepper-raster-audit.mjs` uses the same arguments to test rejection
+of a changed on-screen frame, fractional capture coordinates, duplicate cases
+and an unrestored catalog parent. All four negative cases are rejected at
+`artifacts/stepper-raster-negative-audit.json`; temporary test metadata is removed.
+The public library is unchanged by this diagnostic. Both architecture builds,
+all 105 unit tests and token generation pass; native ARM64 runtime remains open.

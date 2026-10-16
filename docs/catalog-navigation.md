@@ -222,6 +222,12 @@ font faces, canonical/legacy names, weight selection and explicit system/missing
 family comparisons. `result.json` marks `captureOnly` true and `parityVerified`
 false. It is separate from the full acceptance suite.
 
+Focused `-Component stepper-raster` captures the existing Stepper reference
+frame fully on screen and as a bitmap for all 44 source cases. Its independent
+audit checks screen stability and compares every frame pixel; the diagnostic
+restores the frame's original catalog parent. Like the font audit, it is
+capture-only and grants no parity acceptance. See [Stepper](stepper.md).
+
 The full runtime suite uses the same fixture selection path before exercising
 each registered component and capturing its result. Navigation checks exercise
 search, native button activation, no-result messaging, clearing search, retained
