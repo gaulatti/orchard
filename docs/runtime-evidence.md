@@ -2170,3 +2170,26 @@ arbitrary-content/template, complete override/scaling, contrast/Narrator and
 native ARM64 matrices remain open. Inventory is now 56 in progress, 56 pending,
 zero accepted. See [the current checkpoint](native-validation-checkpoint.md)
 for package and release evidence. Push-triggered Actions stay paused.
+
+## Loading Overlay implementation checkpoint
+
+Source `d4067ea` adds the caller-owned viewport portal, large spinner, label,
+two-DIP backdrop blur and canonical overlay shadows. The published x64 matrix
+passes 60 cases and 42 first-line baselines across three viewports and both
+themes. Native opening focus, Space/Enter, pointer blocking, Escape, pointer
+focus clearing, subsequent Tab/hide and root value/live-binding restoration pass.
+Four negative audits reject invalid geometry, focus and physical pointer evidence.
+All 113 unit tests, token generation and clean x64/ARM64 builds pass. The fresh
+independent x64 NuGet consumer passes both themes and native actions; ARM64
+consumption is build-only. Both temporary consumer caches are removed.
+
+The complete published x64 sequence passes 1,130 captures in 463.9042732 seconds,
+retaining all 1,128 earlier names and 174 protected glyph hashes. It verifies
+2,006 pointer moves/presentation gates, 1,754 owned key pairs and 72 real clicks,
+plus the existing Timeline, Stepper and DataList baseline gates. Exact overlay
+frames differ in all 60 cases: 3,041,308 pixels and 38,254,621 RGBA error, with
+zero masks/tolerance and no resampling; native/browser underlying buttons also
+differ. Complete visual/motion, lifecycle/theme/overrides, scaling, contrast,
+Narrator and native ARM64 acceptance remain open. Inventory is 57 in progress,
+55 pending, zero accepted. See [release evidence](native-validation-checkpoint.md).
+Push-triggered Actions remain paused; no hosted job was dispatched.

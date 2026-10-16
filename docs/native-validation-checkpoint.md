@@ -1,6 +1,57 @@
 # Current native validation checkpoint
 
-## Timeline initial contract checkpoint
+## Loading Overlay initial contract checkpoint
+
+Current library/catalog source: `d4067eaedf0ab6c9c0889c07c8c9c2389df6f44f`.
+The clean published full x64 sequence passes in **463.9042732 seconds** with
+**1,130 captures**. It retains all **1,128 previous capture names** and
+**174 protected glyph hashes**, adding two full-window overlay previews.
+The audit verifies 2,006 real pointer moves/presentation gates, 1,754 owned
+key pairs and 72 physical clicks. Maximum gate time is 188.2566 ms under
+the unchanged two-second deadline; the full watchdog remains eight minutes.
+
+The published overlay matrix passes **60 cases** and **42 first-line baselines**
+at 1024×900, 640×480 and 320×240 in both themes. Maximum geometry error is
+0.018189 DIP and baseline error is 0.000031 DIP at the existing 0.05-DIP bound.
+Original keyboard focus, real Space/Enter, pointer blocking, Escape, pointer
+focus clearing, subsequent Tab/hide behavior and restoration of the original
+root value/live binding pass. Four negative audits reject invalid geometry,
+focus and physical input evidence. See [the contract](loading-overlay.md).
+
+Both clean architecture builds, **113 unit tests** and token generation pass.
+The fresh independent x64 package consumer passes both themes and the loading
+portal's public API and original native action. Its build and runtime reports
+are retained separately. ARM64 consumption is build-only; both isolated caches
+are removed. Existing Timeline, Stepper and DataList baseline gates still pass.
+Exact unmasked overlay frames remain open: **60/60 differ**, with **3,041,308
+pixels** and **38,254,621 total RGBA error**. The native underlying buttons also
+differ from the browser fixture. No masks, tolerances or resampling are used.
+
+Evidence is in `artifacts/loading-overlay-release-matrix/{1024,640,320}`,
+`artifacts/smoke-loading-overlay-release-full`,
+`artifacts/loading-overlay-release-{full-audit,full-timing,pixel-audit,negative-audit,archives,binary-correspondence}.json`
+and `artifacts/package-consumer-loading-overlay-{x64,arm64}`.
+Package, x64 catalog and both consumers contain the same portable library:
+
+- Library SHA-256: `3956a5ed62b21585301360f48b431276e1524824ea83ab6e9f0c341ee53fb797`.
+- Package SHA-256: `c2400030ddf0c08706fc6010083eff0913df6c75f9cba1ee7772fabb1aea6791`.
+- x64 ZIP: 532 entries, SHA-256 `85dfc8e7efb4b412c4b2789e0b05733276c708202550be5524485f810ff3f98c`.
+- ARM64 ZIP: 528 entries, SHA-256 `87798b8f1c45bad67c518d9faad06aa3045b551a89473631aa59b93b857155af`.
+
+Both archives match every published file. The separate ARM64 catalog library
+matches its architecture build, with SHA-256
+`22ba5fa72d26c98033e715b79d7d8809d06c10e2698b3765ab9b4bfd91f9c2b1`.
+Its PE bytes differ from the portable package; all 5,773 method signatures and
+IL records, including 26 overlay methods, and managed resources match.
+
+Full visual/motion, live/lifecycle/override, scaling, contrast, Narrator and
+native ARM64 acceptance remain open. Inventory is **57 in progress, 55 pending,
+zero accepted**: 50.9% started, 0% accepted. Push-triggered Actions remain paused;
+the remote workflow permits only PR/manual runs. The GitHub API run count could
+not be checked because of rate limiting. No hosted run was dispatched or claimed.
+The public wiki remains unavailable. The goal stays active.
+
+## Previous Timeline initial contract checkpoint
 
 Current library/catalog source: `1f85bbc263c112bd26a5ddbbba080eb46be01a7a`.
 The clean published full x64 sequence passes in **447.8767607 seconds**, retaining

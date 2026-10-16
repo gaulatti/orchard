@@ -1694,7 +1694,7 @@
         "Complete exact raster and motion comparison",
         "Verify live theme/resource, resize/reparent/template and popup stacking lifecycle",
         "Verify display/text scaling, Narrator and Windows contrast schemes",
-        "Verify independent package consumption and native ARM64 runtime"
+        "Verify native ARM64 runtime for the new component"
       ]
     },
     {

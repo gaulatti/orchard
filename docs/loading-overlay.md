@@ -59,12 +59,20 @@ Exact unmasked pixel comparison remains required. The native fixture uses real
 native underlying buttons, whose own rendering also differs from the browser
 fixture. The checkerboard phase matches the source. No masks, resampling or
 pixel tolerances are applied.
-The current 60-case comparison retains 3,041,325 differing pixels and
-38,288,458 total RGBA channel error across the complete source/native frames.
+The published 60-case comparison retains 3,041,308 differing pixels and
+38,254,621 total RGBA channel error across the complete source/native frames.
 Every frame differs. These totals include underlying fixture differences.
+
+Clean release source is `d4067eaedf0ab6c9c0889c07c8c9c2389df6f44f`.
+Both architecture builds and all 113 unit tests pass. The full x64 catalog
+passes 1,130 captures in 463.9042732 seconds, retaining every prior capture
+and 174 protected glyph hashes. The independent x64 NuGet consumer passes
+both themes, viewport coverage, its original keyboard action, consumer label,
+spinner automation and omitted-label layout. The ARM64 consumer builds only;
+both isolated caches are removed. See [release evidence](native-validation-checkpoint.md).
 
 Acceptance remains open: exact raster parity, live theme/resource
 updates, resize/reparent/template lifecycle, original popup stacking, scaling,
-contrast, Narrator, motion, independent package consumption and native ARM64
+contrast, Narrator, motion and native ARM64
 runtime. A successful build or the presence of the catalog example is not
 component acceptance.
