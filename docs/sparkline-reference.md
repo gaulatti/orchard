@@ -161,3 +161,39 @@ Sparkline source hash. This evidence shows that concurrent hover must be
 accounted for separately from the keyboard-only reference. It does not
 authorize dropping or weakening either contract. No Sparkline production
 behavior, original reference, cursor setup or input gate was changed.
+
+## Hover, exit and keyboard sequence
+
+`SparklinePointer.json` adds a separately rendered 36-case source sequence:
+move to the last-point inspection target, leave through the following action,
+focus the chart and press Right. Its focus/right text, active-dot coordinates
+and tooltip bounds must exactly equal every original `SparklineLayout.json`
+snapshot. The original file and all existing geometry/input tolerances remain
+unchanged. Capture provenance pins the source, dependency lock, React/Recharts,
+CSS, fonts and tool versions; the new unit regression verifies that boundary.
+
+The native fixture performs both real pointer moves with the existing exact
+delivery and two-frame presentation gates, then checks hover and exit against
+the new source. Every move has a required observable result. It subsequently
+executes the original keyboard-only checks. The following action exists only
+after each original normal screenshot, preserving those capture compositions.
+This tests pointer exit and keyboard ownership as one source-defined workflow.
+
+The new exit gate exposes stale hidden rows: the source empties tooltip text,
+whereas native Sparkline previously hid the surface while retaining its last
+row. Sparkline now clears those rows through the shared cleanup path, including
+pointer exit, empty data and unload. Other chart profiles retain their existing
+cleanup contracts. The isolated NuGet consumer additionally checks cleared
+empty-data inspection and an exactly owned Right press/release.
+
+```powershell
+node scripts/reference/capture-sparkline-pointer.cjs `
+  --output artifacts/sparkline-pointer-browser/capture-v1 `
+  --esbuild-module <esbuild-module-path> --playwright-module <playwright-module-path>
+./scripts/smoke-catalog.ps1 -Executable <catalog-exe> -Component sparkline `
+  -ClientSize 1024,745 -ExpectedArchitecture X64 -Output <native-output>
+node scripts/verify-sparkline-pointer.mjs --native <native-output> --output <audit-json>
+```
+
+Full-sequence runtime and performance, source raster, accessibility/scaling
+and current ARM64 runtime remain separate acceptance requirements.

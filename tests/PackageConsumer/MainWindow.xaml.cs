@@ -346,12 +346,12 @@ public sealed partial class MainWindow : Window
         await AcquireConsumerInputAsync();Require(chart.Focus(FocusState.Keyboard),"Could not focus packaged Sparkline.");
         await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 10","Packaged Sparkline did not inspect its first raw value.");
         Require(GetForegroundWindow()==WinRT.Interop.WindowNative.GetWindowHandle(this),"Packaged Sparkline lost its native foreground.");
-        var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
-        Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Packaged Sparkline Right did not enter native input.");
-        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Packaged Sparkline did not inspect the next raw value through physical Right.");
+        var key=await PaginationConsumerKeyAsync(0x27,chart,chart,()=>Require(AutomationProperties.GetHelpText(chart)==" : 30","Packaged Sparkline did not inspect the next raw value through physical Right."));
         var original=PackageSparkline.Data;PackageSparkline.Data=new();
-        await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0,"Packaged Sparkline retained an empty curve.");
+        var tooltip=BrandDescendants<Border>(chart).Single(item=>item.Name=="PART_Tooltip");var items=BrandDescendants<StackPanel>(chart).Single(item=>item.Name=="PART_TooltipItems");
+        await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0&&tooltip.Visibility==Visibility.Collapsed&&items.Children.Count==0&&AutomationProperties.GetHelpText(chart)=="","Packaged Sparkline retained an empty curve or stale inspection text.");
         PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
+        await File.WriteAllTextAsync(Path.Combine(output,$"consumer-sparkline-{Root.RequestedTheme}.json"),System.Text.Json.JsonSerializer.Serialize(new{passed=true,originalData=ReferenceEquals(chart.Data,original),emptyInspectionCleared=true,restored=true,key}));
     }
 
     private async Task VerifyAreaChartAsync()

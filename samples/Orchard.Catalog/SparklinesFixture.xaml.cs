@@ -23,6 +23,9 @@ public sealed partial class SparklinesFixture:UserControl
         using var input=new NativeInputSession(XamlRoot,folder,$"sparkline-{scheme}");await input.AcquireAsync(Specimen);
         var root=(Grid)XamlRoot.Content;var host=new Grid{Margin=new Thickness(20),Background=root.Background};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
         using var reference=JsonDocument.Parse(typeof(SparklinesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SparklineLayout.json")!);
+        using var pointerStream=typeof(SparklinesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SparklinePointer.json")!;
+        using var pointerBytes=new MemoryStream();await pointerStream.CopyToAsync(pointerBytes);var pointerData=pointerBytes.ToArray();using var pointerReference=JsonDocument.Parse(pointerData);
+        var pointerReferenceSha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(pointerData)).ToLowerInvariant();
         var reports=new List<object>();
         try
         {
@@ -40,7 +43,7 @@ public sealed partial class SparklinesFixture:UserControl
                 chart.PointerMoved+=(_,args)=>
                 {
                     var point=args.GetCurrentPoint(chart);
-                    pointerTrace.Add(new{position=point.Position,point.Timestamp,device=args.Pointer.PointerDeviceType.ToString(),screen=input.ReadPointerPosition(),bounds=input.ScreenBounds(chart),original=(args.OriginalSource as FrameworkElement)?.Name});
+                    pointerTrace.Add(new{position=point.Position,point.Timestamp,args.IsGenerated,device=args.Pointer.PointerDeviceType.ToString(),screen=input.ReadPointerPosition(),bounds=input.ScreenBounds(chart),original=(args.OriginalSource as FrameworkElement)?.Name});
                 };
                 var sourceCurves=expected.GetProperty("lines").EnumerateArray().ToArray();
                 await AwaitAsync(()=>plot.Children.OfType<Path>().Count()==sourceCurves.Length,"Sparkline curve count did not settle.");
@@ -55,8 +58,21 @@ public sealed partial class SparklinesFixture:UserControl
                     ComparePaint(paths[i].Stroke,sourceCurves[i].GetProperty("stroke").GetString()!,id);
                 }
                 if(id is "default" or "area" or "explicit" or "gaps" or "negative" or "narrow")await MainWindow.CaptureElementAsync(host,System.IO.Path.Combine(folder,$"sparkline-{id}-{scheme}.png"));
+                object? hoverInspection=null,exitInspection=null;
                 try
                 {
+                    var pointerCase=pointerReference.RootElement.GetProperty("cases").EnumerateArray().Single(point=>point.GetProperty("id").GetString()==id&&point.GetProperty("scheme").GetString()==scheme.ToString());
+                    // Exercise the source's real hover/exit transition before its
+                    // keyboard-only snapshots. Each move has its own exact native
+                    // receipt and asserted source result; no cursor-only setup.
+                    var target=pointerCase.GetProperty("outside");
+                    var exitTarget=new BleeckerButton{Name="SparklineAfter",Content="After sparkline",Width=target.GetProperty("width").GetDouble(),Height=target.GetProperty("height").GetDouble(),HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Margin=new Thickness(target.GetProperty("x").GetDouble(),target.GetProperty("y").GetDouble(),0,0)};
+                    host.Children.Add(exitTarget);
+                    var point=pointerCase.GetProperty("point");
+                    await input.MoveAsync(chart,localPoint:new Point(point.GetProperty("x").GetDouble(),point.GetProperty("y").GetDouble()));
+                    await VerifyInspectionAsync(chart,pointerCase.GetProperty("hover"),id+" pointer hover");hoverInspection=InspectionSnapshot(chart);
+                    await input.MoveAsync(exitTarget);
+                    await VerifyPointerExitAsync(chart,pointerCase.GetProperty("exit"),id);exitInspection=InspectionSnapshot(chart);
                     Require(chart.Focus(FocusState.Keyboard),"Could not focus Sparkline inspection.");
                     await VerifyInspectionAsync(chart,item.GetProperty("focus"),id+" focus");
                     await input.KeyAsync(0x27,chart);
@@ -81,13 +97,24 @@ public sealed partial class SparklinesFixture:UserControl
                     }));
                     throw;
                 }
-                reports.Add(new{id,height=spark.ActualHeight,width=spark.ActualWidth,curves=paths.Length,showArea=spark.ShowArea,tooltip=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(x=>x.Text).ToArray()});
+                reports.Add(new{id,height=spark.ActualHeight,width=spark.ActualWidth,curves=paths.Length,showArea=spark.ShowArea,pointerReferenceSha256,hoverInspection,exitInspection,pointerTrace,tooltip=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(x=>x.Text).ToArray()});
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-{scheme}.json"),JsonSerializer.Serialize(reports,new JsonSerializerOptions{WriteIndented=true}));
             }
             await VerifyNegativeAxesAsync(host);
             await MutationAsync(host,input,folder,scheme);
         }
         finally{root.Children.Remove(host);}
+    }
+    private async Task VerifyPointerExitAsync(BleeckerLineChart chart,JsonElement expected,string id)
+    {
+        var source=expected.GetProperty("tooltip");
+        Require(source.GetProperty("visible").GetString()=="hidden"&&expected.GetProperty("dots").GetArrayLength()==0,"Pointer exit reference must hide inspection and active dots.");
+        await AwaitAsync(()=>Part<Border>(chart,"PART_Tooltip").Visibility==Visibility.Collapsed&&Part<Grid>(chart,"PART_TooltipContainer").Visibility==Visibility.Collapsed&&string.Concat(Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(item=>item.Text))==source.GetProperty("text").GetString()&&Part<Canvas>(chart,"PART_Active").Children.Count==0&&AutomationProperties.GetHelpText(chart)=="",$"Sparkline {id} pointer exit did not clear source text and visible/accessible inspection.");
+    }
+    private static object InspectionSnapshot(BleeckerLineChart chart)
+    {
+        var tooltip=Part<Border>(chart,"PART_Tooltip");var container=Part<Grid>(chart,"PART_TooltipContainer");
+        return new{visible=tooltip.Visibility==Visibility.Visible,text=string.Concat(Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(item=>item.Text)),x=container.Margin.Left,y=container.Margin.Top,width=tooltip.ActualWidth,height=tooltip.ActualHeight,dots=Part<Canvas>(chart,"PART_Active").Children.OfType<Ellipse>().Select(dot=>new{x=Canvas.GetLeft(dot)+3,y=Canvas.GetTop(dot)+3,r=dot.Width/2}).ToArray()};
     }
     private async Task VerifyInspectionAsync(BleeckerLineChart chart,JsonElement expected,string label)
     {

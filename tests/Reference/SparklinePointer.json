@@ -1,0 +1,5690 @@
+{
+  "format": "orchard-sparkline-pointer-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "7e143cfb557045bfad591be820c28b3bcb29e77469261f51723317f4ffef0ed5",
+  "originalReferenceSha256": "bcb1a8b4f58995000a4a415a3d907dd6d8d77474856af14759a65d8d80b86ac5",
+  "scriptSha256": "01d372a7077af8893ebea735b9c8ad2a87681c7c50e56cf31b32609731b53575",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "bundleSha256": "0df4778befdb45f8b2014030220cf33a5bb1464ed52fba9e72e1555a144166c6",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "react": "19.2.4",
+  "recharts": "3.8.1",
+  "esbuild": "0.25.12",
+  "playwright": "1.62.1",
+  "browser": "155.0.4283.45",
+  "cases": [
+    {
+      "id": "default",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "area",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 270.203125,
+            "y": 2,
+            "width": 37.796875,
+            "height": 54
+          },
+          "text": " : 5"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.57142857142857",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 44.15625,
+            "height": 54
+          },
+          "text": " : -5"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "17.42857142857143",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "36.714285714285715",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 268.390625,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 268.390625,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "constant",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 262.546875,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 262.546875,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "gaps",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.59375,
+            "y": 2,
+            "width": 47.40625,
+            "height": 54
+          },
+          "text": " : 20"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "missing",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "nested",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.59375,
+            "y": 2,
+            "width": 47.40625,
+            "height": 54
+          },
+          "text": " : 20"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 282.296875,
+            "y": 2,
+            "width": 25.703125,
+            "height": 54
+          },
+          "text": " : "
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 63.328125,
+            "height": 54
+          },
+          "text": " : 0x10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 37.140625,
+            "height": 54
+          },
+          "text": " : 7"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "22.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "explicit",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "transparent",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "short",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 6
+      },
+      "outside": {
+        "x": 0,
+        "y": 28,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "8",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "4",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 26,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 26,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 68,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 68,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 68,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "scheme": "Light",
+      "point": {
+        "x": 76,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 18.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "78",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 46,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 2,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "27.333333333333332",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 96,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 96,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "empty-key",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.21875,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.21875,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "all-negative",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 263.84375,
+            "y": 2,
+            "width": 44.15625,
+            "height": 54
+          },
+          "text": " : -5"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 51.484375,
+            "height": 54
+          },
+          "text": " : -10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "non-numeric",
+      "scheme": "Light",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 253.25,
+            "y": 2,
+            "width": 54.75,
+            "height": 54
+          },
+          "text": " : 42x"
+        },
+        "dots": []
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 67.890625,
+            "height": 54
+          },
+          "text": " : alpha"
+        },
+        "dots": []
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 253.25,
+            "y": 2,
+            "width": 54.75,
+            "height": 54
+          },
+          "text": " : 42x"
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "area",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 270.203125,
+            "y": 2,
+            "width": 37.796875,
+            "height": 54
+          },
+          "text": " : 5"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.57142857142857",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 44.15625,
+            "height": 54
+          },
+          "text": " : -5"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "17.42857142857143",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "36.714285714285715",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "zero",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 268.390625,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 268.390625,
+            "y": 2,
+            "width": 39.609375,
+            "height": 54
+          },
+          "text": " : 0"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "constant",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 262.546875,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 262.546875,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "gaps",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.59375,
+            "y": 2,
+            "width": 47.40625,
+            "height": 54
+          },
+          "text": " : 20"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "single",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "7.999999999999999",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "missing",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "nested",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.59375,
+            "y": 2,
+            "width": 47.40625,
+            "height": 54
+          },
+          "text": " : 20"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 282.296875,
+            "y": 2,
+            "width": 25.703125,
+            "height": 54
+          },
+          "text": " : "
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 63.328125,
+            "height": 54
+          },
+          "text": " : 0x10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 37.140625,
+            "height": 54
+          },
+          "text": " : 7"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "22.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "explicit",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "transparent",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "short",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 6
+      },
+      "outside": {
+        "x": 0,
+        "y": 28,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 258.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "8",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 12,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 117.33334350585938,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "107.33333333333333",
+            "cy": "4",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 26,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 26,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 68,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 68,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 68,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "scheme": "Dark",
+      "point": {
+        "x": 76,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 18.96875,
+            "y": 2,
+            "width": 49.03125,
+            "height": 54
+          },
+          "text": " : 40"
+        },
+        "dots": [
+          {
+            "cx": "78",
+            "cy": "2",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 46,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "29",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 80,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 2,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "27.333333333333332",
+            "cy": "11",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 96,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 96,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "empty-key",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.21875,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 45.453125,
+            "height": 54
+          },
+          "text": " : 10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "26.75",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 260.21875,
+            "y": 2,
+            "width": 47.78125,
+            "height": 54
+          },
+          "text": " : 30"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "all-negative",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 263.84375,
+            "y": 2,
+            "width": 44.15625,
+            "height": 54
+          },
+          "text": " : -5"
+        },
+        "dots": [
+          {
+            "cx": "318",
+            "cy": "4.25",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 51.484375,
+            "height": 54
+          },
+          "text": " : -10"
+        },
+        "dots": [
+          {
+            "cx": "2",
+            "cy": "15.5",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 170,
+            "y": 2,
+            "width": 53.890625,
+            "height": 54
+          },
+          "text": " : -20"
+        },
+        "dots": [
+          {
+            "cx": "160",
+            "cy": "38",
+            "r": "3",
+            "strokeWidth": "0"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    },
+    {
+      "id": "non-numeric",
+      "scheme": "Dark",
+      "point": {
+        "x": 316,
+        "y": 20
+      },
+      "outside": {
+        "x": 0,
+        "y": 56,
+        "width": 160,
+        "height": 40
+      },
+      "hover": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 253.25,
+            "y": 2,
+            "width": 54.75,
+            "height": 54
+          },
+          "text": " : 42x"
+        },
+        "dots": []
+      },
+      "exit": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "hidden",
+          "box": {
+            "x": 286,
+            "y": 2,
+            "width": 22,
+            "height": 22
+          },
+          "text": ""
+        },
+        "dots": []
+      },
+      "focus": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 12,
+            "y": 2,
+            "width": 67.890625,
+            "height": 54
+          },
+          "text": " : alpha"
+        },
+        "dots": []
+      },
+      "right": {
+        "width": 320,
+        "height": 40,
+        "tooltip": {
+          "visible": "visible",
+          "box": {
+            "x": 253.25,
+            "y": 2,
+            "width": 54.75,
+            "height": 54
+          },
+          "text": " : 42x"
+        },
+        "dots": []
+      },
+      "events": [
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 336,
+          "y": 40,
+          "target": "svg"
+        },
+        {
+          "type": "pointerout",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "svg"
+        },
+        {
+          "type": "pointerover",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "pointermove",
+          "trusted": true,
+          "key": null,
+          "x": 100,
+          "y": 96,
+          "target": "after"
+        },
+        {
+          "type": "focusin",
+          "trusted": true,
+          "key": null,
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "ArrowRight",
+          "x": null,
+          "y": null,
+          "target": "svg"
+        }
+      ]
+    }
+  ]
+}

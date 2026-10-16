@@ -10,6 +10,9 @@
         <None Include="../Reference/DataTableFilters.json" Link="Fixtures/DataTableFilters.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTableFiltersLive.json" Link="Fixtures/DataTableFiltersLive.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SelectShadowPointer.json" Link="Fixtures/SelectShadowPointer.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/SparklineLayout.json" Link="Fixtures/SparklineLayout.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/SparklinePointer.json" Link="Fixtures/SparklinePointer.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-sparkline-pointer.cjs" Link="Fixtures/CaptureSparklinePointer.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-select-shadow-pointer.cjs" Link="Fixtures/CaptureSelectShadowPointer.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-filters-live.cjs" Link="Fixtures/CaptureDataTableFiltersLive.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-filters.cjs" Link="Fixtures/CaptureDataTableFilters.cjs" CopyToOutputDirectory="PreserveNewest" />

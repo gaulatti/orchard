@@ -304,7 +304,7 @@ public sealed partial class BleeckerLineChart : Control
         UpdateTooltipEffects();
         AutomationProperties.SetHelpText(this, string.Join("; ", descriptions));
     }
-    private void ClearActive() { if (currencyMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
+    private void ClearActive() { if (sparklineMode || currencyMode || pieMode || scatterMode || radarMode || radialBarMode || funnelMode || sankeyMode) tooltipItems?.Children.Clear(); ClearBarCursor(); active?.Children.Clear(); if (tooltip is not null) tooltip.Visibility = Visibility.Collapsed; if (tooltipContainer is not null) tooltipContainer.Visibility = Visibility.Collapsed; ClearTooltipEffects(); AutomationProperties.SetHelpText(this, ""); }
     private TextBlock Text(string? value, double size, string key)
     {
         var text = Resource<TextBlock>($"<TextBlock FontSize=\"{N(size)}\" Foreground=\"{{ThemeResource {key}}}\" UseLayoutRounding=\"False\" HighContrastAdjustment=\"None\" />"); text.FontFamily = FontFamily; if (currencyMode || pieMode || radarMode || radialBarMode || funnelMode || sankeyMode) BleeckerPieText.Set(text, value ?? ""); else text.Text = value ?? ""; return text;

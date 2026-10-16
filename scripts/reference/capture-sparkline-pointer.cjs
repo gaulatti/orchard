@@ -1,0 +1,36 @@
+const fs=require('node:fs/promises'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const arg=name=>{const at=process.argv.indexOf(name);assert.ok(at>=0&&process.argv[at+1],`Pass ${name} <path>.`);return path.resolve(process.argv[at+1]);};
+const output=arg('--output'),esbuildPath=arg('--esbuild-module'),playwrightPath=arg('--playwright-module'),hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+(async()=>{
+ await fs.mkdir(output,{recursive:true});
+ const originalBytes=await fs.readFile('tests/Reference/SparklineLayout.json'),original=JSON.parse(originalBytes);assert.equal(hash(originalBytes),'bcb1a8b4f58995000a4a415a3d907dd6d8d77474856af14759a65d8d80b86ac5');
+ const source=path.resolve('artifacts/line-chart-browser/frozen-source/src/components/sparkline.tsx'),sourceBytes=await fs.readFile(source);assert.equal(hash(sourceBytes),original.sourceSha256);
+ const frozenLockBytes=await fs.readFile('artifacts/chart-theme-reference/bleecker-package-lock.json'),lock=JSON.parse(frozenLockBytes),installed=JSON.parse(await fs.readFile('artifacts/line-chart-browser/package-lock.json'));
+ for(const [key,item] of Object.entries(installed.packages))if(key){assert.equal(item.version,lock.packages[key]?.version,key);assert.equal(item.integrity,lock.packages[key]?.integrity,key);}
+ const runtime=path.resolve('artifacts/line-chart-browser/node_modules');for(const [name,version]of[['react','19.2.4'],['recharts','3.8.1']])assert.equal(require(path.join(runtime,name,'package.json')).version,version);
+ assert.equal(require(path.join(esbuildPath,'package.json')).version,'0.25.12');assert.equal(require(path.join(playwrightPath,'package.json')).version,'1.62.1');
+ const bundle=await require(esbuildPath).build({stdin:{contents:`import React from 'react';import{createRoot}from'react-dom/client';import{Sparkline}from ${JSON.stringify(source)};const root=createRoot(document.getElementById('root'));window.showSpark=p=>root.render(<Sparkline {...p}/>);`,loader:'tsx',resolveDir:process.cwd()},bundle:true,write:false,platform:'browser',nodePaths:[runtime],define:{'process.env.NODE_ENV':'"production"'}});
+ const cssBytes=await fs.readFile('artifacts/line-chart-browser/styles.css'),css=cssBytes.toString().replace(/@import url\([^\r\n]*\);/g,'');let fonts='';const fontFiles=[];
+ for(const [weight,file]of[[400,'EncodeSans-Regular.ttf'],[500,'EncodeSans-Medium.ttf'],[600,'EncodeSans-SemiBold.ttf']]){const bytes=await fs.readFile('src/Orchard/Assets/Fonts/'+file);fontFiles.push({weight,file,sha256:hash(bytes)});fonts+=`@font-face{font-family:'Encode Sans';font-weight:${weight};src:url(data:font/ttf;base64,${bytes.toString('base64')})}`;}
+ const browser=await require(playwrightPath).chromium.launch({headless:true,channel:'msedge'});assert.equal(browser.version(),'155.0.4283.45');const cases=[];
+ try{for(const item of original.cases){
+  const page=await browser.newPage({viewport:{width:800,height:500},deviceScaleFactor:1,reducedMotion:'reduce'});page.setDefaultTimeout(2000);const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  try{
+   const width=item.normal.width,height=item.normal.height;
+   await page.setContent(`<html class="${item.scheme==='Dark'?'dark':''}"><head><style>${css}${fonts}body{margin:0;padding:20px;background:${item.scheme==='Dark'?'#0D1821':'white'}}#root{width:${width}px}#after{position:absolute;left:20px;top:${20+height+16}px;width:160px;height:40px;border:0;padding:0}</style></head><body><div id="root"></div><button id="after">After sparkline</button><script>${bundle.outputFiles[0].text}</script></body></html>`);
+   await page.evaluate(p=>window.showSpark(p),item.props);await page.waitForFunction(()=>document.querySelector('.recharts-surface'));await page.evaluate(async()=>{await Promise.all([400,500,600].map(weight=>document.fonts.load(weight+' 14px "Encode Sans"')));await document.fonts.ready;});
+   await page.waitForFunction(expected=>JSON.stringify([...document.querySelectorAll('.recharts-line-curve')].map(node=>node.getAttribute('d')))===JSON.stringify(expected),item.normal.lines.map(line=>line.d));
+   const settle=()=>page.evaluate(()=>new Promise(resolve=>{let frames=0;function frame(){if(++frames>=3)resolve();else requestAnimationFrame(frame)}requestAnimationFrame(frame)}));
+   const read=()=>page.locator('#root').evaluate(root=>{const r=root.getBoundingClientRect(),tip=root.querySelector('.recharts-tooltip-wrapper');const box=e=>{const b=e.getBoundingClientRect();return{x:b.x-r.x,y:b.y-r.y,width:b.width,height:b.height}};return{width:r.width,height:r.height,tooltip:tip?{visible:getComputedStyle(tip).visibility,box:box(tip),text:tip.textContent}:null,dots:[...root.querySelectorAll('.recharts-active-dot circle')].map(e=>({cx:e.getAttribute('cx'),cy:e.getAttribute('cy'),r:e.getAttribute('r'),strokeWidth:e.getAttribute('stroke-width')}))};});
+   await settle();await page.evaluate(()=>{window.pointerProbe=[];for(const type of ['pointermove','pointerout','pointerover','focusin','keydown','keyup'])document.addEventListener(type,e=>window.pointerProbe.push({type,trusted:e.isTrusted,key:e.key??null,x:e.clientX??null,y:e.clientY??null,target:e.target.id||e.target.tagName}),true)});
+   const point={x:width-4,y:height/2};await page.mouse.move(20+point.x,20+point.y);await settle();const hover=await read();
+   const target=await page.locator('#after').boundingBox();await page.mouse.move(target.x+target.width/2,target.y+target.height/2);await settle();const exit=await read();
+   await page.locator('.recharts-surface[role=application]').focus();await settle();const focus=await read();await page.keyboard.press('ArrowRight');await settle();const right=await read();
+   for(const [phase,snapshot]of[['focus',focus],['right',right]]){assert.deepEqual(snapshot.dots,item[phase].dots,`${item.scheme}/${item.id}/${phase}/dots`);assert.deepEqual(snapshot.tooltip,item[phase].tooltip?{visible:item[phase].tooltip.visible,box:item[phase].tooltip.box,text:item[phase].tooltip.text}:null,`${item.scheme}/${item.id}/${phase}/tooltip`);}
+   assert.deepEqual(errors,[]);const events=await page.evaluate(()=>window.pointerProbe);assert.ok(events.every(event=>event.trusted));
+   cases.push({id:item.id,scheme:item.scheme,point,outside:{x:0,y:height+16,width:160,height:40},hover,exit,focus,right,events});console.log(JSON.stringify({id:item.id,scheme:item.scheme,hover:hover.tooltip?.text,exit:exit.tooltip?.visible,focus:focus.tooltip?.text,right:right.tooltip?.text}));
+  }finally{await page.close();}
+ }}finally{await browser.close();}
+ const report={format:'orchard-sparkline-pointer-v1',sourceCommit:original.sourceCommit,sourceSha256:original.sourceSha256,originalReferenceSha256:hash(originalBytes),scriptSha256:hash(await fs.readFile(__filename)),frozenLockSha256:hash(frozenLockBytes),cssSha256:hash(cssBytes),bundleSha256:hash(bundle.outputFiles[0].contents),fontFiles,react:'19.2.4',recharts:'3.8.1',esbuild:'0.25.12',playwright:'1.62.1',browser:browser.version(),cases};
+ assert.equal(cases.length,36);await fs.writeFile(path.join(output,'reference.json'),JSON.stringify(report,null,2)+'\n');
+})().catch(error=>{console.error(error);process.exitCode=1});
