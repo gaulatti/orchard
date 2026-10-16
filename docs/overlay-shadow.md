@@ -18,8 +18,10 @@ dependency. See the [CSS blur definition](https://www.w3.org/TR/css-backgrounds-
 and [Direct2D Gaussian blur](https://learn.microsoft.com/en-us/windows/win32/direct2d/gaussian-blur).
 
 Composition children extend the paint beyond the layout box without adding
-XAML hit regions. Resizing, corner changes and template replacement rebuild
-the mask. Unloading detaches the visual and disposes the owned native graph;
+XAML hit regions. Resizing and corner changes update the live caster mask,
+source extent and output placement while retaining the loaded effect graph.
+Unchanged geometry skips that update. Template replacement and unloading
+detach the visual and dispose the owned native graph;
 XAML retains ownership of its alpha-mask brush. Existing Windows contrast
 suppression remains in place. Live OS contrast switching, scaling and ARM64
 runtime remain acceptance work.
@@ -63,3 +65,12 @@ The clean-checkout test caught a CRLF/LF script provenance mismatch in the
 first new shadow reference. Capture v2 regenerates the same six source states
 from Git's normalized LF script. The failed clean test and capture v1 remain
 retained; the original Filters and live-update references are unchanged.
+
+The first published full run timed out at the unchanged 360-second deadline
+after 1,025 captures. Its failure remains in
+`artifacts/select-shadow-validated-full-timing.json`. The renderer now reuses
+its loaded effect factories and brushes through geometry changes. The menu
+fixture resizes the live preview, changes its corners and restores both,
+requiring the original native container/brush identities and updated kernel
+bounds. Fresh focused, package and full verification remain required for
+this optimization; the deadline and original input gates are unchanged.

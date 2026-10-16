@@ -68,6 +68,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="sidebar",environment=RuntimeEnvironment()}));
             }
+            else if (args.Contains("--smoke-menus"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Menus);
+                    await Menus.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(Menus, Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new { passed = true, component = "menus", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-select-shadow"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })

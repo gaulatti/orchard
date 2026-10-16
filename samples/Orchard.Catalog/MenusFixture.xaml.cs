@@ -21,6 +21,7 @@ public sealed partial class MenusFixture : UserControl
         var heading = (FrameworkElement)((StackPanel)Content).Children[0];
         await input.AcquireAsync(heading);
         await input.MoveAsync(heading);
+        await VerifyShadowResizeAsync(scheme, folder);
         Menu.ShowAt(Trigger);
         await AwaitPresenterAsync();
         var presenter = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Select(popup => popup.Child).OfType<MenuFlyoutPresenter>().Single();
@@ -207,6 +208,26 @@ public sealed partial class MenusFixture : UserControl
         }
         finally { Menu.Closed -= OnClosed; }
     }
+    private async Task VerifyShadowResizeAsync(BleeckerColorScheme scheme, string folder)
+    {
+        var surface = ShadowPreview; var width = surface.Width; var radius = surface.CornerRadius;
+        var host = (Grid)((Grid)VisualTreeHelper.GetChild(surface, 0)).Children[1];
+        var graph = (ContainerVisual)ElementCompositionPreview.GetElementChildVisual(host);
+        var brushes = graph.Children.Cast<SpriteVisual>().Select(item => item.Brush).ToArray();
+        var original = OverlayShadowProbe.Read(surface); object? resized = null;
+        try
+        {
+            surface.Width = width + 32; surface.CornerRadius = new CornerRadius(8);
+            await MainWindow.AwaitPresentationAsync(surface);
+            var changed = OverlayShadowProbe.Read(surface); resized = changed;
+            Require(changed.ActualWidth == original.ActualWidth + 32 && changed.radius == 8 && ReferenceEquals(graph, ElementCompositionPreview.GetElementChildVisual(host)) && graph.Children.Cast<SpriteVisual>().Select(item => item.Brush).Zip(brushes).All(pair => ReferenceEquals(pair.First,pair.Second)), "Live overlay geometry rebuilt its loaded graph or retained stale dimensions.");
+        }
+        finally { surface.Width = width; surface.CornerRadius = radius; await MainWindow.AwaitPresentationAsync(surface); }
+        var restored = OverlayShadowProbe.Read(surface);
+        Require(restored.ActualWidth == original.ActualWidth && restored.radius == original.radius && ReferenceEquals(graph, ElementCompositionPreview.GetElementChildVisual(host)), "Restored overlay lost its original geometry or loaded graph.");
+        await File.WriteAllTextAsync(Path.Combine(folder,$"menu-shadow-live-{scheme}.json"),System.Text.Json.JsonSerializer.Serialize(new { passed = true, graphRetained = true, brushesRetained = true, original, resized, restored }));
+    }
+
     private static void VerifyShadow(BleeckerOverlaySurface surface)
     {
         Require(!surface.IsTabStop && surface.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Overlay surface inherited Windows typography or keyboard focus.");
