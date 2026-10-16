@@ -398,15 +398,22 @@ public sealed partial class MainWindow : Window
     private async Task VerifyBarChartAsync()
     {
         var lifecycle = new List<object>();
+        var lifecycleClock = System.Diagnostics.Stopwatch.StartNew();
         object Snapshot(BleeckerLineChart item, string kind) {
             var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
             var observed = typeof(BleeckerLineChart).GetField("observedData", flags)!.GetValue(item);
-            return new { kind, item.IsLoaded, sameData = ReferenceEquals(item.Data, PackageBarChart.Data), observedNull = observed is null, observedSame = ReferenceEquals(observed, item.Data) };
+            var interaction = typeof(BleeckerLineChart).GetField("interaction", flags)!.GetValue(item)!;
+            return new { kind, milliseconds = lifecycleClock.Elapsed.TotalMilliseconds, item.IsLoaded, focusState = item.FocusState.ToString(),
+                focused = ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), item),
+                interaction = interaction.GetType().GetFields(flags).ToDictionary(field => field.Name, field => field.GetValue(interaction)),
+                sameData = ReferenceEquals(item.Data, PackageBarChart.Data), observedNull = observed is null, observedSame = ReferenceEquals(observed, item.Data) };
         }
         void Trace(BleeckerLineChart item) {
             lifecycle.Add(Snapshot(item, "attach"));
             item.Loaded += (_, _) => lifecycle.Add(Snapshot(item, "loaded"));
             item.Unloaded += (_, _) => lifecycle.Add(Snapshot(item, "unloaded"));
+            item.GotFocus += (_, _) => lifecycle.Add(Snapshot(item, "got-focus"));
+            item.LostFocus += (_, _) => lifecycle.Add(Snapshot(item, "lost-focus"));
             item.RegisterPropertyChangedCallback(BleeckerLineChart.DataProperty, (_, _) => lifecycle.Add(Snapshot(item, "data")));
             item.RegisterPropertyChangedCallback(BleeckerLineChart.SeriesProperty, (_, _) => lifecycle.Add(Snapshot(item, "series")));
         }
@@ -427,7 +434,13 @@ public sealed partial class MainWindow : Window
         Require(Math.Abs(first.X-72)<.001&&Math.Abs(first.Y-91.5)<.001&&ReferenceEquals(chart.Data,PackageBarChart.Data)&&ReferenceEquals(chart.Series,PackageBarChart.Series),"Packaged Bar Chart lost source geometry or original consumer collections.");
         Require(!PackageBarChart.IsTabStop&&chart.IsTabStop&&AutomationProperties.GetName(chart)=="Independent grouped bars"&&FrameworkElementAutomationPeer.CreatePeerForElement(chart).GetClassName()==nameof(BleeckerBarChart),"Packaged Bar Chart lost its single native inspection boundary.");
         await AcquireConsumerInputAsync();Require(chart.Focus(FocusState.Keyboard),"Could not focus packaged Bar Chart.");
-        await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="A;  : 10","Packaged Bar Chart did not inspect its first category.");
+        try { await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="A;  : 10","Packaged Bar Chart did not inspect its first category."); }
+        catch (Exception error)
+        {
+            GetCursorPos(out var pointer); var bounds = chart.TransformToVisual(Root).TransformBounds(new Windows.Foundation.Rect(0, 0, chart.ActualWidth, chart.ActualHeight));
+            throw new InvalidOperationException(error.Message + " " + ChartObservation(chart) + " " + System.Text.Json.JsonSerializer.Serialize(new {
+                focus = ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), chart), bounds, pointer.X, pointer.Y, pointerTrace, lifecycle }), error);
+        }
         var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
         Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Packaged Bar Chart key did not enter native input.");
         await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)=="B;  : 20","Packaged Bar Chart did not inspect consumer values through native Right.");

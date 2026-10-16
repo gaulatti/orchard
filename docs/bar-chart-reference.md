@@ -1,5 +1,16 @@
 # Bar Chart source contract and evidence
 
+The DataList release's independent consumer exposes an intermittent remount/focus
+failure at the initial Bar Chart inspection assertion. The failed runtime
+`artifacts/package-consumer-data-list-x64-v2/runtime.json` records keyboard
+focus, valid original data, empty inspection text and no pointer events.
+Additional lifecycle/focus timestamps are retained in the consumer harness;
+the instrumented v3 attempt passes both themes, which does not resolve the
+earlier failures. Event ordering around `Loaded` and the focus-state reset
+needs a deterministic native boundary regression before changing the control
+or adding a readiness wait. Both failures and removed-cache reports remain
+available. This is an open acceptance gap.
+
 Independent package mutation checks subsequently exposed a shared chart
 remount defect: a delayed `Unloaded` ran after the new `Loaded` while the
 renderer was connected, detaching the original collection's observers. See
