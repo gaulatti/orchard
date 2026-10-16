@@ -109,6 +109,7 @@
                 <local:DashboardGridsFixture x:Name="DashboardGrids" />
                 <local:SidebarsFixture x:Name="Sidebars" />
                 <local:DataTableToolbarsFixture x:Name="DataTableToolbars" />
+                <local:DataTablePaginationsFixture x:Name="DataTablePaginations" />
                 <local:TooltipsFixture x:Name="Tooltips" />
                 <local:FieldHelpFixture x:Name="FieldHelp" />
                 <local:LabelsFixture x:Name="Labels" />

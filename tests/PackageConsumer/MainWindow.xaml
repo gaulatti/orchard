@@ -123,6 +123,8 @@
                     <orchard:BleeckerDataTableToolbar.Actions><Button Content="Consumer export" Width="104" Height="36" /></orchard:BleeckerDataTableToolbar.Actions>
                 </orchard:BleeckerDataTableToolbar>
                 <TextBlock x:Name="PackageToolbarRows" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerDataTablePagination x:Name="PackagePagination" Width="800" HorizontalAlignment="Left" AutomationProperties.Name="Independent table pages" />
+                <TextBlock x:Name="PackagePaginationRows" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerDonutChart x:Name="PackageDonutChart" Width="320" Height="200" ShowLegend="False" CenterValue="30" CenterLabel="Consumer total" HorizontalAlignment="Left" AutomationProperties.Name="Independent ring" />
                 <orchard:BleeckerStatCard x:Name="PackageStatCard" Title="Independent statistic" Value="42" Description="Consumer-owned summary" Width="320" HorizontalAlignment="Left">
                     <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+2%" Direction="Neutral" /></orchard:BleeckerStatCard.Trend>

@@ -35,6 +35,9 @@ retained groups, independent scrolling and native link templates.
 The [Data Table Toolbar preview](docs/data-table-toolbar-reference.md) connects
 controlled search and reset to an application-owned table/filter adapter,
 original content and a real filtered-row catalog view.
+The [Data Table Pagination preview](docs/data-table-pagination-reference.md)
+connects page navigation, size selection and filtered selection counts to the
+consumer's original table and rows, with viewport-responsive controls.
 The [Sparkline preview](docs/sparkline-reference.md) supplies compact consumer
 trends with monotone curves and native keyboard/pointer inspection.
 The [Stat Card preview](docs/stat-card-reference.md) composes consumer values,

@@ -1,0 +1,9 @@
+<UserControl x:Class="Orchard.Catalog.DataTablePaginationsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Data table pagination" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="The original consumer owns paging, row selection, filtering and sorting. Page size changes preserve its top-row position." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerDataTablePagination x:Name="Preview" HorizontalAlignment="Stretch" />
+  <TextBlock x:Name="Rows" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" />
+  <Button x:Name="Outside" Content="After pagination" Style="{StaticResource BleeckerSecondaryButtonStyle}" HorizontalAlignment="Left" />
+ </StackPanel>
+</UserControl>

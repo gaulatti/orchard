@@ -22,6 +22,7 @@ public sealed partial class MainWindow : Window
     {
         InitializeComponent();
         InitializeToolbar();
+        InitializePagination();
         PackageSunburstChart.Data = SunburstData();
         PackageCurrencyChart.Data = CurrencyData();
         PackageBauhaus.ImageSource = new WriteableBitmap(4, 4);
@@ -219,6 +220,7 @@ public sealed partial class MainWindow : Window
                 VerifyDashboardGrid();
                 await VerifySidebarAsync();
                 await VerifyToolbarAsync();
+                await VerifyPaginationAsync();
                 await VerifySparklineAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();

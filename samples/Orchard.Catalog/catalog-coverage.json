@@ -65,6 +65,7 @@
     "BleeckerBrandLinkContext": "BrandLockupsFixture.xaml",
     "BleeckerSidebar": "SidebarsFixture.xaml",
     "BleeckerDataTableToolbar": "DataTableToolbarsFixture.xaml",
+    "BleeckerDataTablePagination": "DataTablePaginationsFixture.xaml",
     "BleeckerSidebarItem": "SidebarsFixture.xaml",
     "BleeckerSidebarLinkContext": "SidebarsFixture.xaml",
     "BleeckerAlert": "AlertsFixture.xaml",

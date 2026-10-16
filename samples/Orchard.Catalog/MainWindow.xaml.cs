@@ -68,6 +68,36 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="sidebar",environment=RuntimeEnvironment()}));
             }
+            else if(args.Contains("--smoke-data-table-pagination-input"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DataTablePaginations);
+                    await DataTablePaginations.VerifyPhysicalAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(DataTablePaginations, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "data-table-pagination-input", environment = RuntimeEnvironment() }));
+            }
+            else if(args.Contains("--smoke-data-table-pagination-source"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DataTablePaginations);
+                    await DataTablePaginations.VerifySourceAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(DataTablePaginations, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "data-table-pagination-source", environment = RuntimeEnvironment() }));
+            }
+            else if(args.Contains("--smoke-data-table-pagination"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DataTablePaginations);
+                    await DataTablePaginations.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(DataTablePaginations, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "data-table-pagination", environment = RuntimeEnvironment() }));
+            }
             else if(args.Contains("--smoke-data-table-toolbar-press"))
             {
                 var results = new List<bool>();
@@ -613,6 +643,8 @@ public sealed partial class MainWindow : Window
             await Sidebars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTableToolbars);
             await DataTableToolbars.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(DataTablePaginations);
+            await DataTablePaginations.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(BarCharts);
             await BarCharts.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(AreaCharts);

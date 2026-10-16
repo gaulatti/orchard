@@ -11,6 +11,8 @@
         <Compile Include="../../src/Orchard/Controls/IBleeckerDataTableFilterSource.cs" Link="IBleeckerDataTableFilterSource.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerDataTableValue.cs" Link="BleeckerDataTableValue.cs" />
         <Compile Include="../../samples/Orchard.Catalog/ToolbarFilterTable.cs" Link="ToolbarFilterTable.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/PaginationTable.cs" Link="PaginationTable.cs" />
+        <Compile Include="../../src/Orchard/Controls/IBleeckerDataTablePaginationSource.cs" Link="IBleeckerDataTablePaginationSource.cs" />
         <Compile Include="../../src/Orchard/Tokens/BleeckerTokens.g.cs" Link="BleeckerTokens.g.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerPointerTransit.cs" Link="BleeckerPointerTransit.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerRoundedPointerHit.cs" Link="BleeckerRoundedPointerHit.cs" />
@@ -25,6 +27,10 @@
         <None Include="../Reference/ChartPointerPriority.json" Link="Fixtures/ChartPointerPriority.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SidebarLayout.json" Link="Fixtures/SidebarLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTableToolbarLayout.json" Link="Fixtures/DataTableToolbarLayout.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DataTablePagination.json" Link="Fixtures/DataTablePagination.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-data-table-pagination.cjs" Link="Fixtures/CaptureDataTablePagination.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/data-table-pagination-client.tsx" Link="Fixtures/DataTablePaginationClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/data-table-pagination-cases.cjs" Link="Fixtures/DataTablePaginationCases.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTableToolbarCaption.json" Link="Fixtures/DataTableToolbarCaption.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTableToolbarReset.json" Link="Fixtures/DataTableToolbarReset.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTableToolbarPress.json" Link="Fixtures/DataTableToolbarPress.json" CopyToOutputDirectory="PreserveNewest" />
