@@ -21,7 +21,8 @@ public sealed partial class MainWindow
         await AcquireConsumerInputAsync();
         Require(buttons[0].Focus(FocusState.Keyboard), "Could not focus the packaged step button.");
         var count = packageStepInvocations;
-        await PaginationConsumerKeyAsync(0x20, buttons[0], buttons[0], () => Require(packageStepInvocations == count + 1 && ReferenceEquals(lastPackageStep, first), "Packaged Stepper did not invoke its original step through native Space."));
+        await PaginationConsumerKeyAsync(0x20, buttons[0], buttons[0], () => Require(buttons[0].IsPressed && packageStepInvocations == count, "Packaged Stepper invoked before native Space was released."));
+        Require(packageStepInvocations == count + 1 && ReferenceEquals(lastPackageStep, first), "Packaged Stepper did not invoke its original step after native Space release.");
         Require(PackageStepper.ActiveStep == "review" && first.Status is null, "Packaged Stepper advanced controlled state.");
         first.Label = "Updated consumer draft"; first.Status = BleeckerStepStatus.Error; Root.UpdateLayout();
         Require(ReferenceEquals(BrandDescendants<Button>(PackageStepper).First(), buttons[0]) && AutomationProperties.GetName(buttons[0]) == first.Label &&
