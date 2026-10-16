@@ -33,8 +33,7 @@ public sealed partial class BleeckerStepper
         private readonly Paragraph label = new(14, 20, "BleeckerPrimaryMediumFontFamily", Microsoft.UI.Text.FontWeights.Medium);
         private readonly Paragraph description = new(12, 16, "BleeckerPrimaryFontFamily", Microsoft.UI.Text.FontWeights.Normal);
         private readonly SolidColorBrush fillPaint = new(), foregroundPaint = new();
-        private readonly BleeckerCssTransition<(double L, double A, double B, double Alpha)> fillMotion = new(BleeckerColorMix.MixPremultiplied), foregroundMotion = new(BleeckerColorMix.MixPremultiplied);
-        private readonly BleeckerCssTransition<double> scaleMotion = new((a, b, p) => a + (b - a) * p);
+        private readonly BleeckerCssTransition<(double R, double G, double B, double Alpha)> fillMotion = new(BleeckerSrgbColorMix.MixPremultiplied), foregroundMotion = new(BleeckerSrgbColorMix.MixPremultiplied);
         private readonly ScaleTransform scale = new();
         private BleeckerStepStatus status;
         private bool last;
@@ -48,7 +47,7 @@ public sealed partial class BleeckerStepper
             fill.Name = "CircleFill"; ring.Name = "CircleRing"; focus.Name = "CircleFocus"; offset.Name = "CircleOffset"; circle.Name = "Circle";
             Button = new StepButton { Style = (Style)owner.actions[typeof(Button)], Content = circle, Name = "StepButton" };
             Button.Click += (_, _) => owner.Invoke(this);
-            Button.RegisterPropertyChangedCallback(Microsoft.UI.Xaml.Controls.Primitives.ButtonBase.IsPressedProperty, (_, _) => RetargetScale(true));
+            Button.RegisterPropertyChangedCallback(Microsoft.UI.Xaml.Controls.Primitives.ButtonBase.IsPressedProperty, (_, _) => UpdateScale());
             Button.RegisterPropertyChangedCallback(Control.FocusStateProperty, (_, _) => UpdateRings());
             Button.Loaded += (_, _) => disabledPointer!.Update();
             Button.Unloaded += (_, _) => { disabledPointer!.Detach(); disabledPointer.ReconcileLifecycle(); };
@@ -90,7 +89,7 @@ public sealed partial class BleeckerStepper
             var motion = animate && owner.IsLoaded && owner.settings.AnimationsEnabled;
             fillMotion.Retarget(Color(owner.Paint(state switch { BleeckerStepStatus.Completed => "Accent", BleeckerStepStatus.Error => "Error", _ => "Surface" })), now, 190, motion);
             foregroundMotion.Retarget(Color(owner.Paint(state switch { BleeckerStepStatus.Completed or BleeckerStepStatus.Error => "OnAccent", BleeckerStepStatus.Active => "Accent", _ => "Secondary" })), now, 190, motion);
-            RetargetScale(animate); UpdateRings(); Animate(now);
+            UpdateScale(); UpdateRings(); Animate(now);
             disabledPointer.Update(); InvalidateMeasure();
             if (IsAnimating(now)) owner.StartRendering();
         }
@@ -104,26 +103,25 @@ public sealed partial class BleeckerStepper
             focus.BorderBrush = owner.Paint("Accent");
             offset.BorderBrush = owner.Paint("OnAccent");
         }
-        private void RetargetScale(bool animate)
+        private void UpdateScale()
         {
-            var now = owner.clock.Elapsed.TotalMilliseconds;
-            scaleMotion.Retarget(Button.IsPressed && Button.IsEnabled ? .94 : 1, now, 190, animate && owner.IsLoaded && owner.settings.AnimationsEnabled);
-            Animate(now); if (IsAnimating(now)) owner.StartRendering();
+            // Tailwind uses the individual scale property; the source transitions
+            // transform, background-color and color, so scale changes immediately.
+            scale.ScaleX = scale.ScaleY = Button.IsPressed && Button.IsEnabled ? .94 : 1;
         }
         internal void Animate(double now)
         {
             SetColor(fillPaint, fillMotion.ValueAt(now)); SetColor(foregroundPaint, foregroundMotion.ValueAt(now));
-            scale.ScaleX = scale.ScaleY = scaleMotion.ValueAt(now);
         }
-        internal bool IsAnimating(double now) => fillMotion.IsRunning(now) || foregroundMotion.IsRunning(now) || scaleMotion.IsRunning(now);
-        private static (double L, double A, double B, double Alpha) Color(Brush brush)
+        internal bool IsAnimating(double now) => fillMotion.IsRunning(now) || foregroundMotion.IsRunning(now);
+        private static (double R, double G, double B, double Alpha) Color(Brush brush)
         {
             var solid = (SolidColorBrush)brush; var c = solid.Color;
-            return BleeckerColorMix.Premultiply((c.R, c.G, c.B, c.A / 255d * solid.Opacity));
+            return BleeckerSrgbColorMix.Premultiply((c.R, c.G, c.B, c.A / 255d * solid.Opacity));
         }
-        private static void SetColor(SolidColorBrush brush, (double L, double A, double B, double Alpha) color)
+        private static void SetColor(SolidColorBrush brush, (double R, double G, double B, double Alpha) color)
         {
-            var c = BleeckerColorMix.EncodePremultiplied(color); brush.Color = Windows.UI.Color.FromArgb((byte)Math.Round(c.Alpha * 255), c.R, c.G, c.B);
+            var c = BleeckerSrgbColorMix.EncodePremultiplied(color); brush.Color = Windows.UI.Color.FromArgb((byte)Math.Round(c.Alpha * 255), c.R, c.G, c.B);
         }
         internal double MinimumWidth => Math.Max(32, Math.Min(128, Math.Max(label.MinimumWidth, description.MinimumWidth)));
         internal double PreferredWidth => Math.Max(label.PreferredWidth, description.PreferredWidth);

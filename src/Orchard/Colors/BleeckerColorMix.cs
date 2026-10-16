@@ -1,6 +1,6 @@
 namespace Orchard;
 
-// CSS color transitions interpolate premultiplied Oklab, including alpha.
+// Premultiplied OKLab interpolation for CSS rules that select that color space.
 internal static class BleeckerColorMix
 {
     internal static (byte R, byte G, byte B, double Alpha) Mix(

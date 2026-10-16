@@ -49,14 +49,14 @@ public sealed partial class BleeckerStepper : Control
             foreach (var entry in entries) entry.DetachPointer();
             DispatcherQueue.TryEnqueue(() => { if (IsLoaded) { Observe(); ObservePalette(); Render(false); } });
         };
-        ActualThemeChanged += (_, _) => Render(false);
+        ActualThemeChanged += (_, _) => Render(true);
         LayoutUpdated += (_, _) =>
         {
             if (textScale != settings.TextScaleFactor) { textScale = settings.TextScaleFactor; layout?.InvalidateMeasure(); }
             foreach (var entry in entries) entry.AlignText();
         };
         foreach (var property in new[] { FontFamilyProperty, FontSizeProperty, IsTextScaleFactorEnabledProperty, CharacterSpacingProperty, FlowDirectionProperty, IsEnabledProperty })
-            RegisterPropertyChangedCallback(property, (_, _) => Render(false));
+            RegisterPropertyChangedCallback(property, (_, _) => Render(true));
         RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
     }
 
@@ -75,8 +75,8 @@ public sealed partial class BleeckerStepper : Control
     public ICommand? StepCommand { get => (ICommand?)GetValue(StepCommandProperty); set => SetValue(StepCommandProperty, value); }
     public event EventHandler<BleeckerStep>? StepInvoked
     {
-        add { invoked += value; Render(false); }
-        remove { invoked -= value; Render(false); }
+        add { invoked += value; Render(true); }
+        remove { invoked -= value; Render(true); }
     }
 
     private static void Changed(DependencyObject sender, DependencyPropertyChangedEventArgs args)
@@ -131,7 +131,7 @@ public sealed partial class BleeckerStepper : Control
     }
     private void CollectionChanged(object? sender, NotifyCollectionChangedEventArgs args) { Observe(); Render(true); }
     private void ItemChanged(object? sender, PropertyChangedEventArgs args) => Render(true);
-    private void CommandChanged(object? sender, EventArgs args) => Render(false);
+    private void CommandChanged(object? sender, EventArgs args) => Render(true);
     private bool CanInvoke(BleeckerStep step) => IsLoaded && IsEnabled && !step.IsDisabled &&
         (invoked is not null || StepCommand is not null) && (StepCommand?.CanExecute(step) ?? true);
     private void Invoke(Entry entry)
@@ -172,10 +172,10 @@ public sealed partial class BleeckerStepper : Control
         StopPalette();
         foreach (var probe in palette.Values)
         {
-            paletteObservers.Add((probe, TextBlock.ForegroundProperty, probe.RegisterPropertyChangedCallback(TextBlock.ForegroundProperty, (_, _) => { ObservePalette(); Render(false); })));
+            paletteObservers.Add((probe, TextBlock.ForegroundProperty, probe.RegisterPropertyChangedCallback(TextBlock.ForegroundProperty, (_, _) => { ObservePalette(); Render(true); })));
             if (probe.Foreground is SolidColorBrush brush)
                 foreach (var property in new[] { SolidColorBrush.ColorProperty, Brush.OpacityProperty })
-                    paletteObservers.Add((brush, property, brush.RegisterPropertyChangedCallback(property, (_, _) => Render(false))));
+                    paletteObservers.Add((brush, property, brush.RegisterPropertyChangedCallback(property, (_, _) => Render(true))));
         }
     }
     private void StopPalette()
@@ -183,7 +183,7 @@ public sealed partial class BleeckerStepper : Control
         foreach (var (owner, property, token) in paletteObservers) owner.UnregisterPropertyChangedCallback(property, token);
         paletteObservers.Clear();
     }
-    private void ColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => Render(false));
+    private void ColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => Render(true));
     private void MotionChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) => DispatcherQueue.TryEnqueue(() => Render(false));
     private void StartRendering()
     {

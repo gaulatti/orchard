@@ -60,3 +60,38 @@ frames match exactly. Keep the component **in progress**. Local evidence is in
 `artifacts/stepper-release-full-pixel-audit.json`. The full catalog run retains
 all 1,034 earlier captures plus 46 Stepper captures; see
 [the current checkpoint](native-validation-checkpoint.md).
+
+## Press and color motion
+
+The frozen browser capture in `tests/Reference/StepperMotion.json` distinguishes
+the individual CSS `scale` property from `transform`. Pointer/Space press sets
+scale to 0.94 immediately, and release restores 1 immediately, in both motion
+modes. The source transitions `background-color` and `color` for 190 ms using
+`cubic-bezier(0.22,1,0.36,1)`. Its legacy RGB endpoints interpolate in encoded
+sRGB. Stepper uses a separate sRGB interpolator; controls with explicit OKLab
+color-mix rules retain their existing interpolator.
+
+Live status, theme and palette changes animate when Windows enables animation.
+Changing callback/command availability preserves an unchanged running color
+transition. Native reduced motion snaps synchronously. The source's 0.01 ms
+reduced-motion floor is complete before a displayed frame; the regression
+compares reduced-mode presented samples after that floor, while retaining the
+browser's time-zero record.
+
+`scripts/smoke-stepper-motion.ps1` scopes the real Windows client-area animation
+preference, runs `stepper-motion` in enabled and reduced modes, and restores the
+original preference in its outer `finally`. It uses the documented
+[SystemParametersInfo client-area animation flags](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-systemparametersinfoa).
+The fixture checks 42 source status/theme transitions, intermediate native
+frames, the sRGB trajectory, callback removal and immediate press/release scale
+at the native `IsPressed` boundary. `scripts/verify-stepper-motion.mjs` separately
+audits those reports, all four owned Space down/up pairs and preference
+restoration. This motion coverage does not establish exact screenshot parity,
+all reversal/override combinations or final desktop acceptance.
+
+The initial x64 motion run passes all 42 transitions and 767 sampled frames,
+with four owned Space pairs and verified preference restoration. The independent
+trajectory audit's maximum error is 0.893 channel values under the fixed 1.5
+quantization bound. The prior OKLab implementation fails the same audit. Source
+timeline regressions now pass 104 unit tests. Evidence is retained under
+`artifacts/smoke-stepper-motion-v2` and `artifacts/stepper-motion-v2-audit.json`.

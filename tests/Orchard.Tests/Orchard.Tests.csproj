@@ -23,6 +23,8 @@
         <PackageReference Include="MSTest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerStep.cs" Link="BleeckerStep.cs" />
         <None Include="../Reference/Stepper.json" Link="Fixtures/Stepper.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/StepperMotion.json" Link="Fixtures/StepperMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-stepper-motion.cjs" Link="Fixtures/CaptureStepperMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-stepper.cjs" Link="Fixtures/CaptureStepper.cjs" CopyToOutputDirectory="PreserveNewest" />
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../samples/Orchard.Catalog/NativeAbsolutePointer.cs" Link="NativeAbsolutePointer.cs" />
@@ -42,6 +44,7 @@
         <Compile Include="../../src/Orchard/Controls/BleeckerRoundedPointerHit.cs" Link="BleeckerRoundedPointerHit.cs" />
         <Compile Include="../../src/Orchard/Text/BleeckerTextCasing.cs" Link="BleeckerTextCasing.cs" />
         <Compile Include="../../src/Orchard/Colors/BleeckerColorMix.cs" Link="BleeckerColorMix.cs" />
+        <Compile Include="../../src/Orchard/Colors/BleeckerSrgbColorMix.cs" Link="BleeckerSrgbColorMix.cs" />
         <Compile Include="../../src/Orchard/Colors/BleeckerAttentionColor.cs" Link="BleeckerAttentionColor.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerChartTheme.cs" Link="BleeckerChartTheme.cs" />
         <Compile Include="../../src/Orchard/Charts/BleeckerMonotoneCurve.cs" Link="BleeckerMonotoneCurve.cs" />
