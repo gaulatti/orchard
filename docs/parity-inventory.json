@@ -602,7 +602,6 @@
       "status": "in-progress",
       "remainingGaps": [
         "Complete bar/glyph/legend/tooltip raster and normal/interrupted motion",
-        "Resolve intermittent independent-consumer first-inspection failure after remount/focus; instrumented retry passes without a control fix",
         "Full content/key/formatter/override and RTL matrix",
         "Actual contrast, Narrator, display/text scaling and native ARM64 acceptance"
       ]

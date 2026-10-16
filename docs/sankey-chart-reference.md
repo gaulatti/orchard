@@ -1,5 +1,11 @@
 # Sankey Chart source contract and acceptance
 
+The shared renderer reconciles reload, focus and blur against the current
+`FocusManager` owner. The native `chart-load-focus` fixture covers Sankey's node
+channel and Bar's category channel across both themes, real event orders,
+genuine blur and owned Right navigation. See [the diagnosis and regression](bar-chart-reference.md).
+This lifecycle check does not replace Sankey's remaining visual/platform acceptance.
+
 The frozen [Sankey Chart](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/sankey-chart.tsx)
 has SHA-256 `026b636fa2441ac68933be304bc25689be66efc8f6b669b524cc580c78af578e`.
 Its pinned runtime is React 19.2.4 and Recharts 3.8.1. Orchard pins .NET SDK

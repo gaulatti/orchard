@@ -37,6 +37,14 @@ changes. Full release/package and native ARM64 evidence must retain their own
 source revisions and scope; this focus check does not establish final visual
 or component acceptance.
 
+Final clean source `4d14c0e` passes the published 24-case regression, two fresh
+x64 NuGet consumers in both themes, and the complete 1,104-capture catalog in
+434.4379521 seconds. All prior names and 174 protected glyph hashes remain.
+The consumer retains failure-only state snapshots; temporary per-event focus
+instrumentation is removed. The original and intermediate failures stay
+separate evidence. See [the current checkpoint](native-validation-checkpoint.md)
+for artifact hashes and still-open visual/platform acceptance.
+
 Independent package mutation checks subsequently exposed a shared chart
 remount defect: a delayed `Unloaded` ran after the new `Loaded` while the
 renderer was connected, detaching the original collection's observers. See

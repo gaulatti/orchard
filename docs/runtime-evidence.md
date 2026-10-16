@@ -1,5 +1,20 @@
 # Native Windows runtime evidence
 
+## Chart focus ownership repair
+
+Source `4d14c0e` passes the 24-case native Bar/Sankey load/focus regression,
+including real event ordering, genuine/stale blur and owned Right input.
+The original 12 eager cases' 24 failures and the property-based intermediate's
+package failure remain recorded. The current-owner repair passes three cold
+runs with consumer IL unchanged, then two fresh x64 NuGet consumer runs in both
+themes without temporary per-event focus instrumentation. The complete published
+x64 sequence passes 1,104 captures in 434.4379521 seconds, preserving every
+prior filename and 174 protected glyph hashes. Both architecture builds, 108
+unit tests, token generation and the ARM64 consumer build pass; native ARM64
+runtime is unverified. See [the checkpoint](native-validation-checkpoint.md)
+for separate failure/success evidence, input audits and artifact hashes.
+Visual/platform acceptance remains open; no component is fully accepted.
+
 ## Toolbar chrome and caption follow-up
 
 Source `3df888927db4bb7680314b484ec242f20a5d8f60` corrects the toolbar Reset

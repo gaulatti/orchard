@@ -1,6 +1,51 @@
 # Current native validation checkpoint
 
-## DataList release checkpoint
+## Chart focus ownership repair checkpoint
+
+Current library/catalog source: `4d14c0e6be01d12cbd2b48ae565c7924f5f37631`.
+The clean published full x64 sequence passes in **434.4379521 seconds**, retaining
+all **1,104 capture names** and **174 protected glyph hashes**. Its independent
+audit verifies 1,982 pointer moves/presentation gates, 1,748 owned key pairs and
+70 physical clicks. Maximum gate: 152.1393 ms under the unchanged two-second
+deadline. The eight-minute full watchdog is unchanged; no collection-performance
+or speedup claim is made.
+
+The shared renderer reconciles lifecycle/focus notifications with the current
+`FocusManager.GetFocusedElement(XamlRoot)` owner. The published native probe
+passes 24 Bar/Sankey cases across both themes, both event orders, genuine blur,
+stale blur and 24 owned Right pairs. It preserves the original 12 eager cases'
+24 first/next-record failures. The property-based intermediate at `d6808e1`
+still failed a fresh consumer and one of three cold runs. Holding consumer IL
+unchanged and replacing only the library passes three cold prototype runs.
+Final fresh-package verification passes **two separate x64 restores/builds/native
+runs in both themes**, without temporary per-event focus instrumentation.
+The targeted x64 regression is resolved; all old failures remain preserved.
+
+Both clean architecture builds/publications, 108 unit tests and token generation
+pass. ARM64 package validation is build-only. All isolated consumer caches are
+removed. All 324 Stepper baselines remain within 0.0000153 DIP. Source data,
+geometry, navigation rules and deadlines are unchanged. Native ARM64 runtime,
+visuals, scaling, contrast, Narrator, remaining components and compositions stay
+open. Inventory: **55 in progress, 57 pending, zero accepted**.
+
+Evidence is in `artifacts/smoke-chart-owner-release`,
+`artifacts/smoke-chart-owner-release-full`,
+`artifacts/chart-owner-release-{audit,full-audit,full-timing,archives}.json`,
+`artifacts/package-consumer-chart-owner-x64-{1,2}` and
+`artifacts/package-consumer-chart-owner-arm64`.
+`artifacts/chart-owner-release-binary-correspondence.json` verifies the same
+library in the package, x64 catalog and all three consumers:
+
+- Library SHA-256: `690098b411e9f0f297dcc17a727615ddf3156f96bf08a9c6a28ee3d9ac90f0de`.
+- Package SHA-256: `b2a9d52b2ffbc9e988694c0f4155ef59890fa8012b17a0329a99433ef9bb8efd`.
+- x64 ZIP: 532 entries, SHA-256 `1d8719b95dcc558b95df2ad1248b8aa8ac8df466263bd16a8eecdfe5a0be715d`.
+- ARM64 ZIP: 528 entries, SHA-256 `6257a44d7c8184b88d42ddc365d1d2c76c6893fd350d11da8cdcc202f257f71b`.
+
+Both ZIPs match every published entry. x64 has full runtime evidence; ARM64 has
+build evidence. Push-triggered Actions remain paused, with no hosted result
+claimed. The public wiki remains unavailable. The goal remains active.
+
+## Previous DataList release checkpoint
 
 Current full-suite/package library and catalog source:
 `a7dc3caf6b4fcc1fc5a50add2c87017046e971b5`.
