@@ -148,3 +148,42 @@ Light/Dark catalog at `artifacts/smoke-pagination-popup-full-diagnostic` pass.
 The latter saves all 1,030 expected captures in 355.1883746 seconds. No causal
 fix is claimed for the earlier failure; the evidence remains separate from
 component acceptance. See the [validated Pagination checkpoint](data-table-pagination-reference.md#validated-popup-checkpoint).
+
+## Explicit pointer and keyboard source sequence
+
+The later full run at `36230fd` stops at the light circular Enter payload
+after 221 captures. The fixture previously applied keyboard-only snapshots
+without first establishing the source's pointer-exit state. The separately
+captured `PiePointer.json` now records hover, exit, focus, Right, Left and
+Enter for all 84 original cases. Source text and visibility for every original
+keyboard snapshot must remain exactly equal to `PieChartLayout.json`; the
+original fixture and 0.001 geometry tolerance remain unchanged.
+
+The native fixture performs both real source-defined pointer movements,
+checks their exact receipts and observable payloads, collapses the following
+test action and verifies the original normal state. Existing client captures
+retain their names and composition and await genuine presentation after that
+action is collapsed. All original geometry, data identity, focus, key and
+lifecycle checks remain active. Each phase now records native payload,
+visibility, focus and pointer evidence, with failure diagnostics for any phase.
+No circular-chart production behavior was changed.
+
+The capture pins both source files, the dependency lock, CSS, fonts, browser
+and tool versions. The 100th unit regression verifies its provenance, 84-case
+coverage, trusted inputs and unchanged original keyboard fields. The independent
+`verify-pie-pointer.mjs` audit checks 588 source states, 180 pointer movements
+and presentation gates, 268 owned key pairs and both lifecycle reports. Existing
+stationary mutation targets must link to a prior exact real receipt at the same
+point; all 168 new hover/exit movements require their own real receipts.
+
+```powershell
+node scripts/reference/capture-pie-pointer.cjs `
+  --output artifacts/pie-pointer-browser/capture-v2 `
+  --esbuild-module <esbuild-module-path> --playwright-module <playwright-module-path>
+./scripts/smoke-catalog.ps1 -Executable <catalog-exe> -Component pie-chart `
+  -ClientSize 1024,745 -ExpectedArchitecture X64 -Output <native-output>
+node scripts/verify-pie-pointer.mjs --native <native-output> --output <audit-json>
+```
+
+Focused/source checks do not establish full-suite timing, raster, accessibility,
+scaling, motion or current ARM64 runtime acceptance.

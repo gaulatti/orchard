@@ -21,6 +21,9 @@ public sealed partial class PieChartsFixture : UserControl
         var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(typeof(PieChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.PieChartLayout.json")!);
+        using var pointerStream=typeof(PieChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.PiePointer.json")!;
+        using var pointerBuffer=new MemoryStream();await pointerStream.CopyToAsync(pointerBuffer);var pointerBytes=pointerBuffer.ToArray();using var pointerReference=JsonDocument.Parse(pointerBytes);
+        var pointerReferenceSha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(pointerBytes)).ToLowerInvariant();
         var reports = new List<object>(); var failures = new List<string>();
         try {
             foreach (var item in reference.RootElement.GetProperty("cases").EnumerateArray().Where(c => c.GetProperty("scheme").GetString() == scheme.ToString()))
@@ -63,18 +66,9 @@ public sealed partial class PieChartsFixture : UserControl
                         Require(Math.Abs(Canvas.GetLeft(text[i]) - centerSource[i].GetProperty("box").GetProperty("x").GetDouble()) < .001, $"center x={Canvas.GetLeft(text[i]):R}/{centerSource[i].GetProperty("box").GetProperty("x").GetDouble():R}, nativeWidth={text[i].DesiredSize.Width:R}, unspaced={plain.DesiredSize.Width:R}, text={text[i].Text}");
                     }
                 });
-                if (id is "default" or "narrow" or "center" or "mixed-sign" or "long-labels" or "ring-large") await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"pie-chart-{id}-{donut}-{scheme}.png"));
-                Require(chart.Focus(FocusState.Keyboard), "Could not focus native Pie inspection.");
-                try { await AwaitAsync(() => InspectionText(chart) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Pie focus payload did not settle."); }
-                catch
-                {
-                    await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"pie-focus-failure-{scheme}.json"), JsonSerializer.Serialize(new { id, donut, expected = item.GetProperty("focus").GetProperty("tooltip").GetString(), actual = InspectionText(chart), chart.FocusState, focusedType = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name, pointer = input.ReadPointerPosition(), client = NativeScreenCapture.ClientBounds(input.Window), chart = input.ScreenBounds(chart), tooltip = Part<Border>(chart, "PART_Tooltip").Visibility.ToString() }, new JsonSerializerOptions { WriteIndented = true }));
-                    await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"pie-focus-failure-{scheme}.png"));
-                    throw;
-                }
-                Check(() => Inspection(chart, item.GetProperty("focus")));
-                foreach (var (state, key) in new[] { ("right", (ushort)0x27), ("left", (ushort)0x25), ("enter", (ushort)0x0D) }) { await input.KeyAsync(key, chart); await AwaitAsync(() => InspectionText(chart) == item.GetProperty(state).GetProperty("tooltip").GetString(), "Pie " + state + " payload did not settle."); Check(() => Inspection(chart, item.GetProperty(state))); }
-                reports.Add(new { id, donut, errors, sectors = paths.Length }); failures.AddRange(errors.Select(error => $"{id}/{donut}: {error}"));
+                var pointerCase=pointerReference.RootElement.GetProperty("cases").EnumerateArray().Single(sample=>sample.GetProperty("id").GetString()==id&&sample.GetProperty("scheme").GetString()==scheme.ToString()&&sample.GetProperty("mode").GetString()==(donut?"donut":"pie"));
+                var interaction=await VerifyPointerKeyboardAsync(chart,host,input,item,pointerCase,id,donut,scheme,folder,Check);
+                reports.Add(new { id, donut, errors, sectors = paths.Length, pointerReferenceSha256, interaction }); failures.AddRange(errors.Select(error => $"{id}/{donut}: {error}"));
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"pie-chart-{scheme}.json"), JsonSerializer.Serialize(new { passed = failures.Count == 0, reports }, new JsonSerializerOptions { WriteIndented = true }));
             }
             Require(failures.Count == 0, "Pie/Donut mismatches: " + string.Join(" | ", failures));
