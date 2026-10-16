@@ -83,7 +83,9 @@ The view forwards first/previous/next/last and page-size requests to that same
 adapter; the application retains rows, filtering, sorting, selection and paging
 policy. `PageSizeOptions` defaults to 10, 20, 30, 50 and 100 and accepts a live
 integer collection. Unknown manual page counts remain `-1`; an unlisted size
-has an empty selector display. Complete visual, keyboard and platform acceptance
+has an empty selector display. ArrowDown/ArrowUp/Enter/Space open the chooser
+without changing the table; Tab stays inside the open list. A committed option
+forwards its size, while Escape cancels. Complete visual, keyboard and platform acceptance
 remains open.
 `BleeckerIconButton` supports three
 variants and sizes and requires a consumer-supplied accessible name.

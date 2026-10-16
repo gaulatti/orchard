@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using ShapePath = Microsoft.UI.Xaml.Shapes.Path;
@@ -131,7 +132,7 @@ public sealed partial class BleeckerDataTablePagination : Control
         {
             var options = PageSizeOptions.ToArray();
             if (!renderedOptions.SequenceEqual(options) || size.Items.Count != options.Length)
-            { size.Items.Clear(); foreach (var value in options) size.Items.Add(new ComboBoxItem { Content = value.ToString(CultureInfo.InvariantCulture), Tag = value, FontFamily = FontFamily, FontSize = 14, MinHeight = 36 }); renderedOptions = options; }
+            { size.Items.Clear(); foreach (var value in options) size.Items.Add(new PageSizeComboBoxItem((PageSizeComboBox)size) { Content = value.ToString(CultureInfo.InvariantCulture), Tag = value, FontFamily = FontFamily, FontSize = 14, MinHeight = 36 }); renderedOptions = options; }
             size.SelectedItem = size.Items.OfType<ComboBoxItem>().FirstOrDefault(item => (int)item.Tag == table.PageSize);
         }
         finally { updating = false; }
@@ -149,11 +150,30 @@ public sealed partial class BleeckerDataTablePagination : Control
     { protected override string GetClassNameCore() => nameof(BleeckerDataTablePagination); protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group; }
     private sealed class PageSizeComboBox : ComboBox
     {
+        protected override void OnKeyDown(KeyRoutedEventArgs args)
+        {
+            if (IsDropDownOpen && args.Key == Windows.System.VirtualKey.Tab) { args.Handled = true; return; }
+            if (IsEnabled && !IsDropDownOpen && args.Key is Windows.System.VirtualKey.Down or Windows.System.VirtualKey.Up or Windows.System.VirtualKey.Enter or Windows.System.VirtualKey.Space)
+            {
+                IsDropDownOpen = true;
+                args.Handled = true;
+                return;
+            }
+            base.OnKeyDown(args);
+        }
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             var popup = GetTemplateChild("Popup") as Popup ?? throw new InvalidOperationException("The native page-size ComboBox template requires Popup.");
             popup.ShouldConstrainToRootBounds = true;
+        }
+    }
+    private sealed class PageSizeComboBoxItem(PageSizeComboBox owner) : ComboBoxItem
+    {
+        protected override void OnKeyDown(KeyRoutedEventArgs args)
+        {
+            if (owner.IsDropDownOpen && args.Key == Windows.System.VirtualKey.Tab) { args.Handled = true; return; }
+            base.OnKeyDown(args);
         }
     }
 }

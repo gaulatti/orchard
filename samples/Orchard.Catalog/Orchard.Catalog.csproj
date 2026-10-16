@@ -58,6 +58,7 @@
         <EmbeddedResource Include="../../tests/Reference/SidebarLayout.json" LogicalName="Orchard.Catalog.Reference.SidebarLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarLayout.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarLayout.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTablePagination.json" LogicalName="Orchard.Catalog.Reference.DataTablePagination.json" />
+        <EmbeddedResource Include="../../tests/Reference/DataTablePaginationKeyboard.json" LogicalName="Orchard.Catalog.Reference.DataTablePaginationKeyboard.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarCaption.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarCaption.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarReset.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarReset.json" />
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarPress.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarPress.json" />

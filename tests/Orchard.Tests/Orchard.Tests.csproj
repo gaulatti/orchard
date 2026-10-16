@@ -28,6 +28,8 @@
         <None Include="../Reference/SidebarLayout.json" Link="Fixtures/SidebarLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTableToolbarLayout.json" Link="Fixtures/DataTableToolbarLayout.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTablePagination.json" Link="Fixtures/DataTablePagination.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DataTablePaginationKeyboard.json" Link="Fixtures/DataTablePaginationKeyboard.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-data-table-pagination-keyboard.cjs" Link="Fixtures/CaptureDataTablePaginationKeyboard.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-pagination.cjs" Link="Fixtures/CaptureDataTablePagination.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/data-table-pagination-client.tsx" Link="Fixtures/DataTablePaginationClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/data-table-pagination-cases.cjs" Link="Fixtures/DataTablePaginationCases.cjs" CopyToOutputDirectory="PreserveNewest" />

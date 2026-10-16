@@ -94,7 +94,7 @@ actual Unloaded cleanup within the existing two-second readiness bound.
 
 This is an initial preview, not accepted pagination parity. The page-size
 chooser currently uses the existing native ComboBox foundation. Complete
-source-derived selector/popup appearance, keyboard selection/tab traversal,
+source-derived selector/popup appearance, complete keyboard input timing,
 all constrained/RTL visual layouts, enabled-state input matrix, ARM64 runtime,
 contrast/Narrator/scaling and collection performance remain unverified. The
 new source consumer model regressions do not stand in for those UI checks.
@@ -144,3 +144,52 @@ This checkpoint establishes packaged preview behavior, not completed parity.
 No inventory entry is accepted by this evidence. The remaining visual,
 keyboard, accessibility, scaling, motion, performance and ARM64 runtime
 criteria remain open.
+
+## Keyboard selection and traversal checkpoint
+
+`capture-data-table-pagination-keyboard.cjs` uses the same pinned original
+React/TanStack/Radix consumer and validates its baseline, client, frozen source,
+dependency integrities, fonts and CSS. The final collection is
+`artifacts/data-table-pagination-keyboard-browser/capture-v3`; the earlier
+collections remain separate. `DataTablePaginationKeyboard.json` records 16
+cases, 136 states and 120 actual trusted source key pairs. Full viewport PNGs
+include opened popup states. It covers first/middle/last pages, custom long
+options, Home/End, Enter/Space, Escape cancellation, popup Tab containment,
+forward/reverse Tab, RTL and the narrow viewport's hidden navigation actions.
+
+The baseline native probe found that closed ArrowDown changed page size
+immediately. Pagination's private native ComboBox now opens on ArrowDown,
+ArrowUp, Enter and Space without changing the consumer. A second probe found
+that Tab closed the list and moved to Next; the private ComboBox/items now
+contain Tab while open. Other native selection, pointer, peer and enabled-state
+behavior continues through the existing ComboBox. The shared ComboBox style
+and other consumers are not modified.
+
+`artifacts/smoke-pagination-keyboard-held` passes all 136 state checks in both
+themes. It uses physical keys and the normal original consumer callbacks,
+checks original row objects and exactly one size commit, and observes each
+explicit down/up owner. There are 118 held pairs plus two Shift+Tab transfers,
+16 owned physical Before clicks and 138 native PNGs. Held keys wait for the
+explicit focus destination and two actual rendering transitions before
+release, within the existing two-second readiness/presentation gates. No
+generated key events or forced focus changes stand in for these transitions.
+The verifier checks reference and image hashes, PNG CRCs, capture dimensions,
+all states, key owners/modifiers and pointer ownership/presentation.
+
+Visual review found that the initial XAML-root bitmap omitted the native popup
+island. `artifacts/smoke-pagination-keyboard-desktop` repeats and passes the
+same 136 states with 136 guarded composed desktop-client captures plus two
+final catalog renders. The current verifier requires this capture method;
+it checks the owning foreground process, monitor bounds and occlusion guards.
+The actual popup, selection highlight and scroll position are now visible in
+the frames. This improves the visual evidence without establishing parity.
+
+An earlier immediate press/release probe reached the correct middle-page
+Enter result and final focus, but its keyup did not reach the assumed ComboBox
+release target. The held-key suite does not establish zero-delay release
+routing; that remains an explicit open check. Native key ownership is
+checked against explicit native targets; the source's transient DOM keyup
+targets are recorded separately and are not claimed to be identical.
+All 87 source/consumer regressions pass. Pixel parity, the complete disabled
+input matrix, accessibility/scaling/motion/performance and native ARM64
+execution remain open. The backend/metrics contract is unaffected.

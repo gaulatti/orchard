@@ -1353,11 +1353,12 @@
         "DataTablePaginationsFixture.xaml"
       ],
       "regressionTests": [
-        "DataTablePaginationReferenceTests"
+        "DataTablePaginationReferenceTests",
+        "DataTablePaginationKeyboardReferenceTests"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete physical keyboard selection/tab traversal and the enabled-state input matrix; 132 source-state checks, 12 physical clicks and two Escape transfers pass",
+        "Verify zero-delay key-release routing and the complete enabled-state input matrix; 136 held-key states, 132 source-state checks, 12 pointer clicks and two Escape transfers pass",
         "Resolve 132 differing rendered-state pairs and 154 geometry differences, including selector/popup appearance, typography, icons and motion",
         "Verify native ARM64 execution; fresh x64 package consumer and full current-source x64 suite pass",
         "Verify contrast, Narrator, text/display scaling and measured collection performance"
