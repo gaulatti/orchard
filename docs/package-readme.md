@@ -189,6 +189,19 @@ toggles inspection and Tab leaves normally. This Windows keyboard convention
 extends a source chart that has no keyboard stop. Source geometry quirks and
 remaining visual/platform gaps are documented in the Sankey contract.
 
+`BleeckerDataTableSelectFilter` consumes the original
+`IBleeckerDataTableFilterSource` through required `Table`, `ColumnId` and
+`Options`. `BleeckerSelectOption` has observable `Value`, `Label` and
+`IsDisabled` properties and supports XAML construction. `Placeholder` defaults
+to `All`. Selecting All passes null to the original column; it preserves
+unrelated filters and never resets the table. Missing columns hide the
+selector. A wide viewport uses 176×40 geometry; below 640 the selector fills
+its host. The child ComboBox exposes its placeholder name and controlled
+value, modal list/scroll roles, Arrow/Home/End/typeahead navigation and Escape
+focus restoration. Native Windows focus advances when a focused column is
+removed. Full rendered and platform acceptance remains in progress; see the
+repository's Data Table Filters contract.
+
 `BleeckerSunburstChart.Data` is a required original recursive record implementing
 `IReadOnlyDictionary<string, object?>`. `BleeckerSunburstNode` provides Name,
 optional Value/Fill and an original observable Children collection. Shared

@@ -104,6 +104,8 @@
     "BleeckerButton": "ButtonsFixture.xaml",
     "BleeckerIconButton": "IconButtonsFixture.xaml",
     "BleeckerToggleGroup": "ToggleGroupsFixture.xaml",
-    "BleeckerToggleGroupItem": "ToggleGroupsFixture.xaml"
+    "BleeckerToggleGroupItem": "ToggleGroupsFixture.xaml",
+    "BleeckerDataTableSelectFilter": "DataTableFiltersFixture.xaml",
+    "BleeckerSelectOption": "DataTableFiltersFixture.xaml"
   }
 }

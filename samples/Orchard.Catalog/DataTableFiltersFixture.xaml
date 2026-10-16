@@ -1,0 +1,9 @@
+<UserControl x:Class="Orchard.Catalog.DataTableFiltersFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources><orchard:BleeckerSelectOption x:Key="DraftOption" Value="Draft" Label="Draft"/><orchard:BleeckerSelectOption x:Key="PublishedOption" Value="Published" Label="Published"/></UserControl.Resources>
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Data table filters" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="The original column owns its filter and visible rows. The selector preserves source empty, disabled and controlled-value behavior." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <Grid Width="520" HorizontalAlignment="Left"><orchard:BleeckerDataTableSelectFilter x:Name="Preview" ColumnId="status"/></Grid>
+  <TextBlock x:Name="Rows" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+ </StackPanel>
+</UserControl>

@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerDataTableSelectFilter">
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="FontSize" Value="14"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerDataTableSelectFilter"><Grid x:Name="PART_Layout" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

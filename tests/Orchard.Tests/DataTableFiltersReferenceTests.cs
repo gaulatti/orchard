@@ -36,6 +36,24 @@ public sealed class DataTableFiltersReferenceTests
         }
     }
     [TestMethod]
+    public void NativeSelectValuesPreserveSourcePlaceholderAndDuplicatePaint()
+    {
+        using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture("DataTableFilters.json")));
+        foreach (var sample in document.RootElement.GetProperty("cases").EnumerateArray())
+        {
+            var props = sample.GetProperty("props"); var placeholder = props.TryGetProperty("placeholder", out var label) ? label.GetString()! : "All";
+            var options = new[] { new BleeckerSelectOption("", placeholder) }.Concat(props.TryGetProperty("options", out var values) ? values.EnumerateArray().Select(option => new BleeckerSelectOption(option.GetProperty("value").GetString()!, option.GetProperty("label").GetString()!, option.TryGetProperty("disabled", out var disabled) && disabled.GetBoolean())) : new[] { new BleeckerSelectOption("Draft", "Draft"), new BleeckerSelectOption("Published", "Published") }).ToArray();
+            foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
+            {
+                var state = point.GetProperty("state"); if (!state.GetProperty("table").GetProperty("columnPresent").GetBoolean()) continue;
+                var raw = state.GetProperty("table").GetProperty("filterValue"); var value = BleeckerSelectFilterValue.Internal(raw.ValueKind == JsonValueKind.Object ? null : Decode(raw));
+                Assert.AreEqual(state.GetProperty("trigger").GetProperty("text").GetString(), BleeckerSelectFilterValue.Display(value, placeholder, options));
+                Assert.AreEqual(state.GetProperty("trigger").GetProperty("placeholder").GetBoolean(), value is null);
+                if (state.GetProperty("popupOpen").GetBoolean()) Assert.AreEqual(state.GetProperty("options").EnumerateArray().Count(option => option.GetProperty("state").GetString() == "checked"), options.Count(option => BleeckerSelectFilterValue.Matches(value, option)));
+            }
+        }
+    }
+    [TestMethod]
     public void SourceActionsReachOriginalConsumerFiltersAndVisibleRows()
     {
         using var document = JsonDocument.Parse(File.ReadAllBytes(Fixture("DataTableFilters.json")));

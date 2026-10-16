@@ -44,6 +44,7 @@ public sealed partial class MainWindow
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),
+            ("Data table filters",DataTableFilters),
             ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes), ("Windows contrast", Contrast)
         ]);
         var declared = FixtureHost.Children.OfType<FrameworkElement>().ToArray();
