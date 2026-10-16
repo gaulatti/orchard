@@ -1,0 +1,5753 @@
+{
+  "format": "orchard-data-table-pagination-scroll-v1",
+  "scriptSha256": "950076278c5dafaf56293a690ad590dbff5c46cf6c50abc71034a90b4217c4ad",
+  "keyboardReferenceSha256": "8952c025e5e2afc03823c6d1ac715182a51f030869d20aed9a68902972e5f248",
+  "bundleSha256": "18963e242fca7e997bd4870be66a709a8a17ae184dd768da3bc2562add030928",
+  "browser": "155.0.4283.45",
+  "reports": [
+    {
+      "scheme": "Light",
+      "phase": "opened",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          }
+        ],
+        "receipts": [],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "option:10",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 70.90000003576279
+      },
+      "file": "scroll-opened-Light.png",
+      "sha256": "602c131b42069d460543cd09557e39509b5812532676a2112d157694f8e3a5eb"
+    },
+    {
+      "scheme": "Light",
+      "phase": "end",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "option:500",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 73,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 188,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-up\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\"></path></svg>"
+        },
+        "down": null
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 7,
+        "milliseconds": 86.19999998807907
+      },
+      "file": "scroll-end-Light.png",
+      "sha256": "24a411bd2952351985236bac7b9dd051aaea7ee616cfeba14c00f5073ecedc65"
+    },
+    {
+      "scheme": "Light",
+      "phase": "home",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "option:1",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 7,
+        "milliseconds": 93.5
+      },
+      "file": "scroll-home-Light.png",
+      "sha256": "a69e4c27172d8ad5f79ed4f886eec8ac94979d4bbb7e81416e2a7ef73b9a2cda"
+    },
+    {
+      "scheme": "Light",
+      "phase": "hover-down-step",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 944.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 958.8000000119209
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 346
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 73,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 36,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-up\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\"></path></svg>"
+        },
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 361,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 45.80000001192093
+      },
+      "file": "scroll-hover-down-step-Light.png",
+      "sha256": "d3b63887c42d715ab3cfda045e8c5fa9aa5399d4a088e7da13dd6fbc8a420564"
+    },
+    {
+      "scheme": "Light",
+      "phase": "hover-bottom",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 944.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 958.8000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 1128.4000000357628
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 73,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 188,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-up\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\"></path></svg>"
+        },
+        "down": null
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 47
+      },
+      "file": "scroll-hover-bottom-Light.png",
+      "sha256": "2ddc83aa33f37c302e33b9056edc9098789319f5e1712de8cec112334807aec2"
+    },
+    {
+      "scheme": "Light",
+      "phase": "hover-top",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 944.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 958.8000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 1128.4000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1527.9000000357628
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 47.30000001192093
+      },
+      "file": "scroll-hover-top-Light.png",
+      "sha256": "933aa41cd54a8d74542c33f1d9c000ee56dd987dbe076edd7fcebf38bf13bcae"
+    },
+    {
+      "scheme": "Light",
+      "phase": "left-indicator",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 944.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 958.8000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 1128.4000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1527.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 950,
+            "y": 700,
+            "time": 1955.7000000476837
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "HTML"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 49.19999998807907
+      },
+      "file": "scroll-left-indicator-Light.png",
+      "sha256": "933aa41cd54a8d74542c33f1d9c000ee56dd987dbe076edd7fcebf38bf13bcae"
+    },
+    {
+      "scheme": "Light",
+      "phase": "shrink-open",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 944.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 958.8000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 1128.4000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1527.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 950,
+            "y": 700,
+            "time": 1955.7000000476837
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "HTML"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 110
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 80
+          },
+          "scrollTop": 0,
+          "clientHeight": 80,
+          "scrollHeight": 80
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 125,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(255, 255, 255)",
+          "color": "rgb(89, 89, 89)",
+          "borderTop": "1px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "borderBottom": "0px solid oklab(0.879352 0.00668868 0.0424888 / 0.15)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 38.40000003576279
+      },
+      "file": "scroll-shrink-open-Light.png",
+      "sha256": "b5b546dab8e5fcd5fd91981e8d5b70b8bf1ff4afd58291fed2f51b818589d800"
+    },
+    {
+      "scheme": "Light",
+      "phase": "closed",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 458
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 461.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 493
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 496.10000002384186
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 649.8000000119209
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 651.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 659.4000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 793.1000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 794.1000000238419
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 808.5
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 944.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 958.8000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 1128.4000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1527.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 950,
+            "y": 700,
+            "time": 1955.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}1020",
+            "key": "Escape",
+            "x": null,
+            "y": null,
+            "time": 2154.400000035763
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "BODY",
+            "role": null,
+            "text": null,
+            "key": "Escape",
+            "x": null,
+            "y": null,
+            "time": 2158.5
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 2189.800000011921
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "HTML"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": false,
+        "displayed": "10",
+        "focused": "combobox",
+        "popup": null,
+        "viewport": null,
+        "up": null,
+        "down": null
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 6,
+        "milliseconds": 73.69999998807907
+      },
+      "file": "scroll-closed-Light.png",
+      "sha256": "0b9e190cc5da8e82c1e137caa990825f8cf4bcb79b596b700865252400af1df7"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "opened",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          }
+        ],
+        "receipts": [],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "option:10",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 41.5
+      },
+      "file": "scroll-opened-Dark.png",
+      "sha256": "a69be3215bf3dc7aba4550ef7facc7574a0ba7fe7af3b9fa942cc687936bd605"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "end",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "option:500",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 73,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 188,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-up\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\"></path></svg>"
+        },
+        "down": null
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 6,
+        "milliseconds": 79.5
+      },
+      "file": "scroll-end-Dark.png",
+      "sha256": "11e0d006e3ce287297e522a3d38d11a7f86c40e8c71c536dff10b5447a6446a2"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "home",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "option:1",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 7,
+        "milliseconds": 91.80000001192093
+      },
+      "file": "scroll-home-Dark.png",
+      "sha256": "64bb6fcc8b91650a4c8ae5915bd26287b4b1cdd4c98dfdd767b64a7f2c7264b3"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "hover-down-step",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 776
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 781.9000000357628
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 346
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 73,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 36,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-up\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\"></path></svg>"
+        },
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 361,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 44.89999997615814
+      },
+      "file": "scroll-hover-down-step-Dark.png",
+      "sha256": "2d187e59ab1eaa4bd5f2a255aa1e61387029d96504f4306ac0bcd6786fb0d9d1"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "hover-bottom",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 776
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 781.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 950.6000000238419
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 73,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 188,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-up\" aria-hidden=\"true\"><path d=\"m18 15-6-6-6 6\"></path></svg>"
+        },
+        "down": null
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 45.89999997615814
+      },
+      "file": "scroll-hover-bottom-Dark.png",
+      "sha256": "1f960c85a37ff69961f585d1e1a053d9ed07ab67f77a6d3125d16feb9727845b"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "hover-top",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 776
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 781.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 950.6000000238419
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1349.800000011921
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 46.69999998807907
+      },
+      "file": "scroll-hover-top-Dark.png",
+      "sha256": "13f4deca0f64faf38482b3e141fb71fae3abb60442f2d3bd55b3d24b924f2573"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "left-indicator",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 776
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 781.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 950.6000000238419
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1349.800000011921
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 950,
+            "y": 700,
+            "time": 1776.7000000476837
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "HTML"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 318
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 288
+          },
+          "scrollTop": 0,
+          "clientHeight": 288,
+          "scrollHeight": 476
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 333,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 50.30000001192093
+      },
+      "file": "scroll-left-indicator-Dark.png",
+      "sha256": "13f4deca0f64faf38482b3e141fb71fae3abb60442f2d3bd55b3d24b924f2573"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "shrink-open",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 776
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 781.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 950.6000000238419
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1349.800000011921
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 950,
+            "y": 700,
+            "time": 1776.7000000476837
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "HTML"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": true,
+        "displayed": "10",
+        "focused": "listbox",
+        "popup": {
+          "x": 473,
+          "y": 44,
+          "width": 80,
+          "height": 110
+        },
+        "viewport": {
+          "box": {
+            "x": 474,
+            "y": 45,
+            "width": 78,
+            "height": 80
+          },
+          "scrollTop": 0,
+          "clientHeight": 80,
+          "scrollHeight": 80
+        },
+        "up": null,
+        "down": {
+          "box": {
+            "x": 474,
+            "y": 125,
+            "width": 78,
+            "height": 28
+          },
+          "ariaHidden": "true",
+          "background": "rgb(24, 37, 51)",
+          "color": "rgb(184, 197, 214)",
+          "borderTop": "1px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderBottom": "0px solid oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevron-down\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg>"
+        }
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 4,
+        "milliseconds": 38.69999998807907
+      },
+      "file": "scroll-shrink-open-Dark.png",
+      "sha256": "740428b562337d9551659234633b907bcce785931ab84847f6fffe34adee51ea"
+    },
+    {
+      "scheme": "Dark",
+      "phase": "closed",
+      "state": {
+        "table": {
+          "name": "A",
+          "sameTable": true,
+          "sameRows": true,
+          "pagination": {
+            "pageIndex": 0,
+            "pageSize": 10
+          },
+          "selection": {},
+          "filters": [],
+          "sorting": [],
+          "pageCount": 5,
+          "pageOptions": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "canPrevious": false,
+          "canNext": true,
+          "filteredCount": 50,
+          "selectedCount": 0,
+          "columns": [
+            {
+              "id": "title",
+              "same": true
+            },
+            {
+              "id": "status",
+              "same": true
+            }
+          ],
+          "rows": [
+            {
+              "id": "row-001",
+              "title": "Coverage 001",
+              "same": true
+            },
+            {
+              "id": "row-002",
+              "title": "Coverage 002",
+              "same": true
+            },
+            {
+              "id": "row-003",
+              "title": "Coverage 003",
+              "same": true
+            },
+            {
+              "id": "row-004",
+              "title": "Coverage 004",
+              "same": true
+            },
+            {
+              "id": "row-005",
+              "title": "Coverage 005",
+              "same": true
+            },
+            {
+              "id": "row-006",
+              "title": "Coverage 006",
+              "same": true
+            },
+            {
+              "id": "row-007",
+              "title": "Coverage 007",
+              "same": true
+            },
+            {
+              "id": "row-008",
+              "title": "Coverage 008",
+              "same": true
+            },
+            {
+              "id": "row-009",
+              "title": "Coverage 009",
+              "same": true
+            },
+            {
+              "id": "row-010",
+              "title": "Coverage 010",
+              "same": true
+            }
+          ]
+        },
+        "events": [],
+        "inputEvents": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 320.9000000357628
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 322.9000000357628
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 350.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": " ",
+            "x": null,
+            "y": null,
+            "time": 352.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "10",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 463.10000002384186
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 464.4000000357628
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "End",
+            "x": null,
+            "y": null,
+            "time": 464.30000001192093
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 602.6000000238419
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "500",
+            "key": "Home",
+            "x": null,
+            "y": null,
+            "time": 603.3000000119209
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "option",
+            "text": "1",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 614.3000000119209
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 347,
+            "time": 776
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}123451020304050100200500",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 781.9000000357628
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 375,
+            "time": 950.6000000238419
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "svg",
+            "role": null,
+            "text": "",
+            "key": null,
+            "x": 513,
+            "y": 59,
+            "time": 1349.800000011921
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "tag": "HTML",
+            "role": null,
+            "text": null,
+            "key": null,
+            "x": 950,
+            "y": 700,
+            "time": 1776.7000000476837
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "tag": "DIV",
+            "role": "listbox",
+            "text": "[data-radix-select-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-select-viewport]::-webkit-scrollbar{display:none}1020",
+            "key": "Escape",
+            "x": null,
+            "y": null,
+            "time": 2008
+          },
+          {
+            "type": "keyup",
+            "trusted": true,
+            "tag": "BODY",
+            "role": null,
+            "text": null,
+            "key": "Escape",
+            "x": null,
+            "y": null,
+            "time": 2014
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "tag": "BUTTON",
+            "role": "combobox",
+            "text": "10",
+            "key": null,
+            "x": null,
+            "y": null,
+            "time": 2038.9000000357628
+          }
+        ],
+        "receipts": [
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "svg"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "scroll",
+            "trusted": true,
+            "target": "viewport"
+          },
+          {
+            "type": "pointermove",
+            "trusted": true,
+            "target": "HTML"
+          }
+        ],
+        "visibleRows": "Coverage 001|Coverage 002|Coverage 003|Coverage 004|Coverage 005|Coverage 006|Coverage 007|Coverage 008|Coverage 009|Coverage 010",
+        "popupOpen": false,
+        "displayed": "10",
+        "focused": "combobox",
+        "popup": null,
+        "viewport": null,
+        "up": null,
+        "down": null
+      },
+      "presentation": {
+        "stable": 3,
+        "frames": 6,
+        "milliseconds": 71.29999995231628
+      },
+      "file": "scroll-closed-Dark.png",
+      "sha256": "fc45142dfc5830f6920bc50d4c7faece61a89b6b951ed3e7419888431c352e0a"
+    }
+  ]
+}

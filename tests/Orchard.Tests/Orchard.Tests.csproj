@@ -30,6 +30,8 @@
         <None Include="../Reference/DataTablePagination.json" Link="Fixtures/DataTablePagination.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTablePaginationKeyboard.json" Link="Fixtures/DataTablePaginationKeyboard.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataTablePaginationOpenOptions.json" Link="Fixtures/DataTablePaginationOpenOptions.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DataTablePaginationScroll.json" Link="Fixtures/DataTablePaginationScroll.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-data-table-pagination-scroll.cjs" Link="Fixtures/CaptureDataTablePaginationScroll.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-pagination-open-options.cjs" Link="Fixtures/CaptureDataTablePaginationOpenOptions.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-pagination-keyboard.cjs" Link="Fixtures/CaptureDataTablePaginationKeyboard.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-table-pagination.cjs" Link="Fixtures/CaptureDataTablePagination.cjs" CopyToOutputDirectory="PreserveNewest" />

@@ -1354,7 +1354,9 @@
       ],
       "regressionTests": [
         "DataTablePaginationReferenceTests",
-        "DataTablePaginationKeyboardReferenceTests"
+        "DataTablePaginationKeyboardReferenceTests",
+        "DataTablePaginationOpenOptionsTests",
+        "DataTablePaginationScrollTests"
       ],
       "status": "in-progress",
       "remainingGaps": [

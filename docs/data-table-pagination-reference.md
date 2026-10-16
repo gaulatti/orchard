@@ -387,3 +387,46 @@ and native ARM64 acceptance remain open. The fixed inventory stays at 51 in
 progress, 61 pending and zero accepted. This is a native library with no backend
 or metrics surface. The public wiki remains unavailable, so the contract and
 evidence remain in-repository. Push-triggered Actions stay paused.
+
+## Scroll-control source regression
+
+`scripts/reference/capture-data-table-pagination-scroll.cjs` reuses the pinned
+React/TanStack/Radix bundle, browser, CSS and font hashes. Its 18 actual browser
+states are committed in `tests/Reference/DataTablePaginationScroll.json`, with
+composed captures at `artifacts/data-table-pagination-scroll-browser/capture-v3`.
+Both themes cover opening, End/Home, pointer hover in both directions, leaving
+the indicator, replacing options while open and Escape. Pointer/scroll receipts
+are trusted, the original table and rows remain unchanged and no pagination
+callback is emitted. `DataTablePaginationScrollTests` pins the collector and
+keyboard reference and checks those consumer-boundary invariants.
+
+The long source list has a 288px viewport, 476px content extent and a 188px
+maximum offset. At either endpoint one 28px scroll control is visible and the
+popup is 318px tall. A downward hover from the top advances 36px and reveals
+the upper control: the popup grows to 346px, moving the lower control away
+from the stationary pointer and stopping that hover. A subsequent move to the
+lower control reaches the bottom; hovering the upper control returns to zero.
+After replacing the options with `[10,20]` at offset zero, Radix retains its
+already-mounted lower control until a further scroll event. That observed
+popup is 110px tall and keeps focus on the listbox. This is captured source
+behavior, not an inferred availability policy.
+
+The native implementation remains an uncommitted prototype. The latest local
+run at `artifacts/smoke-pagination-scroll-visual-state` passes the first seven
+Light states, including source heights, painted row offsets, control visibility,
+focus, original rows and exact key owners. It fails the open options replacement:
+the native popup is clipped to 72px instead of 110px. Dark and final Escape are
+not reached in that run. These results do not replace the validated checkpoint
+above, and no new native artifact or component acceptance is claimed.
+
+The experiments establish two native constraints. CarouselPanel exposes row
+scroll units, while StackPanel exposes pixels. With StackPanel, ComboBox's own
+popup sizing rewrites the child height limits during layout and option changes.
+Synchronous limit callbacks caused a retained layout-cycle failure at
+`artifacts/smoke-pagination-scroll-hover-layout`; a held Opened-state limit also
+failed after the native sizing rewrite. Those approaches are removed from the
+prototype. The pinned WinUI 2.3.9 template and actual runtime reports remain
+authoritative; current upstream ComboBox source was consulted only as diagnostic
+context. The native popup sizing/ownership boundary must be resolved before
+shipping the scroll controls or claiming the complete 18-state native replay.
+The fixed inventory remains 51 in progress, 61 pending and zero accepted.
