@@ -37,7 +37,7 @@ tolerance. Exact raster and raw source event-route parity remain false.
   -Component select-shadow -ClientSize 1000,745 -ExpectedArchitecture X64 `
   -Output <native-output>
 node scripts/verify-select-shadow-pointer.mjs `
-  --source artifacts/select-shadow-pointer-browser/capture-v1 `
+  --source artifacts/select-shadow-pointer-browser/capture-v2 `
   --native <native-output> --output <audit-json>
 ```
 
@@ -58,3 +58,8 @@ differences from the preceding native artifact, totaling 26,982 changed
 pixels; these remain in the audit rather than being masked. Four existing
 missing-column focus differences and raw event-route differences remain
 explicit. Evidence: `artifacts/select-shadow-integrated-{source,rgba,pointer}-audit.json`.
+
+The clean-checkout test caught a CRLF/LF script provenance mismatch in the
+first new shadow reference. Capture v2 regenerates the same six source states
+from Git's normalized LF script. The failed clean test and capture v1 remain
+retained; the original Filters and live-update references are unchanged.

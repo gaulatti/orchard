@@ -7,7 +7,7 @@
   "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
   "sourceSha256": "83a7e5de0d5b0a63d42591e3d45b230243d0ee97d9797a2f9b6b87d4369334bb",
   "sourceLockGitBlob": "0b6113dd13d74b1023208cbf96e080915f3b47a2",
-  "scriptSha256": "911a49068b841c0681a32083092a15676234c1d11d2228a78f277fd1901293fb",
+  "scriptSha256": "afbad5bce7c061754466f47ec285e1c9f3fd991874b02ca48609655a8147069f",
   "clientSha256": "ae84d04a55a128c37cd18cd5b250c855a7bdb3973b36811c0742f5d3fc87aa67",
   "compiledCssSha256": "6eda85498bb18d3458513833cd27848e69a1c7190be867b87d02a6ab677bc766",
   "browser": "155.0.4283.45",
@@ -307,7 +307,7 @@
           "presentation": {
             "stable": 3,
             "frames": 4,
-            "milliseconds": 40
+            "milliseconds": 53.10000002384186
           },
           "state": {
             "shadowPointerEvents": [],
@@ -403,7 +403,7 @@
           "presentation": {
             "stable": 3,
             "frames": 5,
-            "milliseconds": 60.5
+            "milliseconds": 56.60000002384186
           },
           "state": {
             "shadowPointerEvents": [],
@@ -457,7 +457,7 @@
                 "role": null,
                 "text": "All",
                 "key": null,
-                "time": 696.1000000238419
+                "time": 576.8000000119209
               },
               {
                 "type": "focusin",
@@ -466,7 +466,7 @@
                 "role": "option",
                 "text": "All",
                 "key": null,
-                "time": 723.8999999761581
+                "time": 603.5
               },
               {
                 "type": "pointerup",
@@ -475,7 +475,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 696.3000000119209
+                "time": 576.8999999761581
               },
               {
                 "type": "click",
@@ -484,7 +484,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 696.3000000119209
+                "time": 576.8999999761581
               }
             ],
             "outsideClicks": 0,
@@ -642,7 +642,7 @@
           "presentation": {
             "stable": 3,
             "frames": 4,
-            "milliseconds": 47
+            "milliseconds": 46.89999997615814
           },
           "state": {
             "shadowPointerEvents": [
@@ -725,7 +725,7 @@
                 "role": null,
                 "text": "All",
                 "key": null,
-                "time": 696.1000000238419
+                "time": 576.8000000119209
               },
               {
                 "type": "focusin",
@@ -734,7 +734,7 @@
                 "role": "option",
                 "text": "All",
                 "key": null,
-                "time": 723.8999999761581
+                "time": 603.5
               },
               {
                 "type": "pointerup",
@@ -743,7 +743,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 696.3000000119209
+                "time": 576.8999999761581
               },
               {
                 "type": "click",
@@ -752,7 +752,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 696.3000000119209
+                "time": 576.8999999761581
               },
               {
                 "type": "pointerdown",
@@ -761,7 +761,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 867
+                "time": 730.5999999642372
               },
               {
                 "type": "pointerup",
@@ -770,7 +770,7 @@
                 "role": null,
                 "text": "",
                 "key": null,
-                "time": 867.1999999880791
+                "time": 730.6999999880791
               },
               {
                 "type": "click",
@@ -779,7 +779,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 867.1999999880791
+                "time": 730.6999999880791
               },
               {
                 "type": "focusin",
@@ -788,7 +788,7 @@
                 "role": "combobox",
                 "text": "All",
                 "key": null,
-                "time": 875.3000000119209
+                "time": 737.5999999642372
               }
             ],
             "outsideClicks": 0,
@@ -947,7 +947,7 @@
           "presentation": {
             "stable": 3,
             "frames": 4,
-            "milliseconds": 46.90000003576279
+            "milliseconds": 50.89999997615814
           },
           "state": {
             "shadowPointerEvents": [],
@@ -1001,7 +1001,7 @@
                 "role": null,
                 "text": "All",
                 "key": null,
-                "time": 681.8999999761581
+                "time": 649.7000000476837
               },
               {
                 "type": "focusin",
@@ -1010,7 +1010,7 @@
                 "role": "option",
                 "text": "All",
                 "key": null,
-                "time": 705.8000000119209
+                "time": 672.7000000476837
               },
               {
                 "type": "pointerup",
@@ -1019,7 +1019,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 681.8999999761581
+                "time": 649.9000000357628
               },
               {
                 "type": "click",
@@ -1028,7 +1028,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 681.8999999761581
+                "time": 649.9000000357628
               }
             ],
             "outsideClicks": 0,
@@ -1186,7 +1186,7 @@
           "presentation": {
             "stable": 3,
             "frames": 4,
-            "milliseconds": 43.69999998807907
+            "milliseconds": 42.09999996423721
           },
           "state": {
             "shadowPointerEvents": [
@@ -1269,7 +1269,7 @@
                 "role": null,
                 "text": "All",
                 "key": null,
-                "time": 681.8999999761581
+                "time": 649.7000000476837
               },
               {
                 "type": "focusin",
@@ -1278,7 +1278,7 @@
                 "role": "option",
                 "text": "All",
                 "key": null,
-                "time": 705.8000000119209
+                "time": 672.7000000476837
               },
               {
                 "type": "pointerup",
@@ -1287,7 +1287,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 681.8999999761581
+                "time": 649.9000000357628
               },
               {
                 "type": "click",
@@ -1296,7 +1296,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 681.8999999761581
+                "time": 649.9000000357628
               },
               {
                 "type": "pointerdown",
@@ -1305,7 +1305,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 823.6999999880791
+                "time": 794.9000000357628
               },
               {
                 "type": "pointerup",
@@ -1314,7 +1314,7 @@
                 "role": null,
                 "text": "",
                 "key": null,
-                "time": 823.6999999880791
+                "time": 794.9000000357628
               },
               {
                 "type": "click",
@@ -1323,7 +1323,7 @@
                 "role": null,
                 "text": null,
                 "key": null,
-                "time": 823.6999999880791
+                "time": 794.9000000357628
               },
               {
                 "type": "focusin",
@@ -1332,7 +1332,7 @@
                 "role": "combobox",
                 "text": "All",
                 "key": null,
-                "time": 831.6000000238419
+                "time": 801.8000000119209
               }
             ],
             "outsideClicks": 0,
