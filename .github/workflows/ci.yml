@@ -161,6 +161,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay accessibility audit failed.' }
           node scripts/test-loading-overlay-accessibility-audit.mjs --native artifacts/loading-overlay-accessibility --output artifacts/loading-overlay-accessibility-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay accessibility negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-template -ClientSize 640,480 -Output artifacts/loading-overlay-template -ExpectedArchitecture X64
+          node scripts/verify-loading-overlay-template.mjs --native artifacts/loading-overlay-template --output artifacts/loading-overlay-template/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay custom-template audit failed.' }
+          node scripts/test-loading-overlay-template-audit.mjs --native artifacts/loading-overlay-template --output artifacts/loading-overlay-template-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay custom-template negative audit failed.' }
       - name: Verify chart focus across native load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
@@ -382,6 +387,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay accessibility audit failed.' }
           node scripts/test-loading-overlay-accessibility-audit.mjs --native artifacts/loading-overlay-accessibility --output artifacts/loading-overlay-accessibility-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay accessibility negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-template -ClientSize 640,480 -Output artifacts/loading-overlay-template -ExpectedArchitecture Arm64
+          node scripts/verify-loading-overlay-template.mjs --native artifacts/loading-overlay-template --output artifacts/loading-overlay-template/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay custom-template audit failed.' }
+          node scripts/test-loading-overlay-template-audit.mjs --native artifacts/loading-overlay-template --output artifacts/loading-overlay-template-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay custom-template negative audit failed.' }
       - name: Verify native ARM64 chart focus across load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus

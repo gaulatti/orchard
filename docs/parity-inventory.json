@@ -1696,7 +1696,10 @@
         "samples/Orchard.Catalog/MainWindow.LoadingOverlayAccessibility.cs",
         "scripts/LoadingOverlayUiaProbe.cs",
         "scripts/verify-loading-overlay-accessibility.mjs",
-        "scripts/test-loading-overlay-accessibility-audit.mjs"
+        "scripts/test-loading-overlay-accessibility-audit.mjs",
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlayTemplate.cs",
+        "scripts/verify-loading-overlay-template.mjs",
+        "scripts/test-loading-overlay-template-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

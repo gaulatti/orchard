@@ -49,6 +49,37 @@ and border colors and suppress backdrop blur; actual contrast and Narrator
 verification remains required. Spinner motion follows the existing loading
 spinner's system animation preference.
 
+Replacement templates preserve the named part types and their layout
+relationships. `PART_Popup` is a non-dismissable `Popup`; `PART_Portal` is a
+`Canvas` containing the `Grid` backdrop, `Border` tint and
+`BleeckerOverlaySurface` card. The card contains the `PART_Body` Canvas, whose
+children are the large `BleeckerLoadingSpinner` and `PART_LabelHost` Canvas;
+the label host contains `PART_Label`, a `TextBlock`. The control positions these
+parts in viewport coordinates. Additional decoration belongs to the caller.
+Retain template bindings for brushes, padding, borders and corner radii.
+
+Instance `Resources.ThemeDictionaries` can override `BleeckerCardBrush`,
+`BleeckerTextPrimaryBrush`, `BleeckerLoadingOverlayBorderBrush` and
+`BleeckerLoadingOverlayTintBrush`. Existing brush objects remain shared, so
+color/opacity mutations reach open content. The dictionary-replacement fixture
+switches themes after replacement: WinUI reevaluates `ThemeResource` references
+on a theme change, as described by Microsoft's [resource contract](https://learn.microsoft.com/en-us/windows/apps/develop/platform/xaml/themeresource-markup-extension).
+Local dependency-property values retain priority; clearing them restores the
+active resource value.
+
+`-Component loading-overlay-template -ClientSize 640,480` validates ten phases:
+instance resources, decorated template replacement, Dark/Light changes, brush
+mutation, asymmetric geometry, typography/RTL and live names, local-value
+priority/restoration, dictionary replacement after a theme change and original
+template restoration. Every phase exercises a real pointer barrier. Forty focus
+observations distinguish a focus request from its presented result: the
+temporary root tab stop is released after focus is presented on the original
+action. Four negative audits reject stale replacement colors, missing custom
+visuals, missing physical pointer receipts and a retained root tab stop. The
+independent NuGet consumer also replaces its template and changes a caller label.
+This fixture preserves the documented part layout; it does not establish every
+possible caller template, cross-window transfer, display scaling or raster parity.
+
 `tests/Reference/LoadingOverlay.json` records 60 unmodified browser cases across
 1024×900, 640×480 and 320×240 in both themes, plus six real keyboard/pointer
 interaction probes. `scripts/reference/capture-loading-overlay.cjs` reproduces
@@ -121,8 +152,8 @@ Avatar presentation timeout remains retained; its cause is not established.
 The original release DLL is rejected by the same Page-root regression: the
 actual button receives Tab focus while the root incorrectly remains a tab stop.
 
-Acceptance remains open: exact raster parity, complete resource replacement,
-arbitrary custom-template/cross-window lifecycle, scaling,
+Acceptance remains open: exact raster parity, broader resource and
+custom-template/cross-window lifecycle, scaling,
 contrast, Narrator, motion and native ARM64
 runtime. A successful build or the presence of the catalog example is not
 component acceptance.
