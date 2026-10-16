@@ -25,6 +25,7 @@ public sealed partial class MainWindow : Window
         InitializePagination();
         InitializeDataList();
         InitializeTimeline();
+        InitializeFilterChips();
         PackageStepper.StepInvoked += (_, step) => { packageStepInvocations++; lastPackageStep = step; };
         PackageSunburstChart.Data = SunburstData();
         PackageCurrencyChart.Data = CurrencyData();
@@ -230,6 +231,7 @@ public sealed partial class MainWindow : Window
                 await VerifyStepperAsync();
                 await VerifyDataListAsync();
                 await VerifyTimelineAsync();
+                await VerifyFilterChipsAsync();
                 await VerifyLoadingOverlayAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();

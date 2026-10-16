@@ -1,0 +1,4841 @@
+{
+  "format": "orchard-filter-chip-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "e80e6fc2932baffa9c0471c5d1ff58d27593f6538070d7128a21ea6a84967525",
+  "scriptSha256": "b79c9c01a609360f2ac4916bd74b14d65c202a31fcb0d2360ec03c7580bbacf8",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "browser": "155.0.4283.45",
+  "react": "19.2.4",
+  "esbuild": "0.25.12",
+  "playwright": "1.62.1",
+  "snapshots": {
+    "animationsPaused": true,
+    "currentTime": 0
+  },
+  "cases": [
+    {
+      "id": "label",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "label",
+        "label": "Status"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 56.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-label-320-Light.png",
+      "pngSha256": "0120ce67c09c8910cd4759e7cee75a1ad7c94a445dfbef4d8b1898c06e460f8a"
+    },
+    {
+      "id": "value",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "value",
+        "label": "Status",
+        "value": "Draft"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 91.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-value-320-Light.png",
+      "pngSha256": "73a2fdd61c789ce42131966ae024b54763f34cce915257d42cd819118e68966c"
+    },
+    {
+      "id": "removable",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "removable",
+        "label": "Status",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-removable-320-Light.png",
+      "pngSha256": "5bf2183a66c7202e364374aa47e67e8fa001132184c2ce86189bfe608991492b"
+    },
+    {
+      "id": "remove-only",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "remove-only",
+        "label": "Status",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-remove-only-320-Light.png",
+      "pngSha256": "da2d08e588b05a89cdbe075623a3713742ff3045f9c2f5837b37cffe66704900"
+    },
+    {
+      "id": "empty-value",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "empty-value",
+        "label": "Status",
+        "value": "",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-value-320-Light.png",
+      "pngSha256": "da2d08e588b05a89cdbe075623a3713742ff3045f9c2f5837b37cffe66704900"
+    },
+    {
+      "id": "empty-label",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "empty-label",
+        "label": "",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.796875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "",
+                "box": {
+                  "x": 31,
+                  "y": 34,
+                  "width": 0,
+                  "height": 0
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": null
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 37,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.796875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove  filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-label-320-Light.png",
+      "pngSha256": "1f708a2d3ddd0ee56f215f5f36fe57f3a665d0e3cf61eda89a5060c0ed2ee3f3"
+    },
+    {
+      "id": "unicode",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "unicode",
+        "label": "Révision 日本語",
+        "value": "العربية",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 167.75,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Révision 日本語",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 84.671875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "العربية",
+                "box": {
+                  "x": 121.671875,
+                  "y": 25,
+                  "width": 33.078125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 160.75,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Révision 日本語 filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-unicode-320-Light.png",
+      "pngSha256": "a8a122e6d3c33dd24b3182162dbdc5d6af50d798b893f960b90898076a1abfcf"
+    },
+    {
+      "id": "long",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "long",
+        "label": "Publication workflow",
+        "value": "Awaiting the fictional editorial review",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 46
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 280,
+              "height": 46
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Publication workflow",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 81.78125,
+                  "height": 36
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Awaiting the fictional editorial review",
+                "box": {
+                  "x": 118.78125,
+                  "y": 25,
+                  "width": 148.21875,
+                  "height": 36
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 273,
+                "y": 35,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Publication workflow filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-long-320-Light.png",
+      "pngSha256": "a44ab7ba00c658dbc80cf174fec222b311f8aae1de815e2c005b96fea77698c5"
+    },
+    {
+      "id": "group-empty",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "group-empty",
+        "group": true,
+        "filters": [],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 0
+        },
+        "group": null,
+        "chips": [],
+        "clear": null
+      },
+      "file": "filter-chip-group-empty-320-Light.png",
+      "pngSha256": "1f92d8873b0eb695272d727a69f68070d078fa32086390d44e98d2a1746e69fc"
+    },
+    {
+      "id": "group",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "group",
+        "group": true,
+        "filters": [
+          {
+            "label": "Status",
+            "value": "Draft",
+            "removable": true
+          },
+          {
+            "label": "Desk",
+            "value": "Culture",
+            "removable": true
+          },
+          {
+            "label": "Language",
+            "value": "Português",
+            "removable": false
+          }
+        ],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 64
+        },
+        "group": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 64
+        },
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 141.421875,
+              "y": 20,
+              "width": 117.390625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Desk",
+                "box": {
+                  "x": 152.421875,
+                  "y": 25,
+                  "width": 26.953125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Culture",
+                "box": {
+                  "x": 185.375,
+                  "y": 25,
+                  "width": 40.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 231.8125,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Desk filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 20,
+              "y": 56,
+              "width": 139.34375,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Language",
+                "box": {
+                  "x": 31,
+                  "y": 61,
+                  "width": 53.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 74
+              },
+              {
+                "text": "Português",
+                "box": {
+                  "x": 90.4375,
+                  "y": 61,
+                  "width": 57.90625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 74
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": {
+          "box": {
+            "x": 167.34375,
+            "y": 62,
+            "width": 42.421875,
+            "height": 16
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(44, 87, 132)",
+            "border": "rgb(44, 87, 132)",
+            "radius": "0px",
+            "padding": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "font": "500 12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "gap": "normal"
+          }
+        }
+      },
+      "file": "filter-chip-group-320-Light.png",
+      "pngSha256": "7496fec7f6474f1c8bf27bf1856843357adeda1ffde770d4dd8c5636bb4e611a"
+    },
+    {
+      "id": "label",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "label",
+        "label": "Status"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 56.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-label-320-Dark.png",
+      "pngSha256": "bbc8a70036e7e70b515eb50656780168102fced7993e7a7e9e68e109fa1c7b90"
+    },
+    {
+      "id": "value",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "value",
+        "label": "Status",
+        "value": "Draft"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 91.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-value-320-Dark.png",
+      "pngSha256": "76946542317cef5914d9d5cd8f8b49fe9827db461999ca3c52aaee1651cbd0ca"
+    },
+    {
+      "id": "removable",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "removable",
+        "label": "Status",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-removable-320-Dark.png",
+      "pngSha256": "f00b6850bfbae1823f7c170904014116f99d343b511b20d8804958efc2ebb5e9"
+    },
+    {
+      "id": "remove-only",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "remove-only",
+        "label": "Status",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-remove-only-320-Dark.png",
+      "pngSha256": "7eab1595c49ccd7f8e0daeb3af35b4efbcc45fb0a7e22d57f8d41bb743ab258f"
+    },
+    {
+      "id": "empty-value",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "empty-value",
+        "label": "Status",
+        "value": "",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-value-320-Dark.png",
+      "pngSha256": "7eab1595c49ccd7f8e0daeb3af35b4efbcc45fb0a7e22d57f8d41bb743ab258f"
+    },
+    {
+      "id": "empty-label",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "empty-label",
+        "label": "",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.796875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "",
+                "box": {
+                  "x": 31,
+                  "y": 34,
+                  "width": 0,
+                  "height": 0
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": null
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 37,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.796875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove  filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-label-320-Dark.png",
+      "pngSha256": "fc074baf2c60ce1478fa9d2593911af7d1fd31a85c4acc1f66d1e7087b6cc20f"
+    },
+    {
+      "id": "unicode",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "unicode",
+        "label": "Révision 日本語",
+        "value": "العربية",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 167.75,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Révision 日本語",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 84.671875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "العربية",
+                "box": {
+                  "x": 121.671875,
+                  "y": 25,
+                  "width": 33.078125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 160.75,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Révision 日本語 filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-unicode-320-Dark.png",
+      "pngSha256": "e6aec7f1634d1334a2ef823a1d67ce2aa5b5653534a608b600b3a3415746837c"
+    },
+    {
+      "id": "long",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "long",
+        "label": "Publication workflow",
+        "value": "Awaiting the fictional editorial review",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 46
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 280,
+              "height": 46
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Publication workflow",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 81.78125,
+                  "height": 36
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Awaiting the fictional editorial review",
+                "box": {
+                  "x": 118.78125,
+                  "y": 25,
+                  "width": 148.21875,
+                  "height": 36
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 273,
+                "y": 35,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Publication workflow filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-long-320-Dark.png",
+      "pngSha256": "a2c2141540e7781edc4d3205c836b9c1893aa089f0a8bd8a040c758e22001bee"
+    },
+    {
+      "id": "group-empty",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "group-empty",
+        "group": true,
+        "filters": [],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 0
+        },
+        "group": null,
+        "chips": [],
+        "clear": null
+      },
+      "file": "filter-chip-group-empty-320-Dark.png",
+      "pngSha256": "7d76c9301e933d916d6bf908a553feed49c7cc75a759a3a1dd79552a81578b41"
+    },
+    {
+      "id": "group",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "group",
+        "group": true,
+        "filters": [
+          {
+            "label": "Status",
+            "value": "Draft",
+            "removable": true
+          },
+          {
+            "label": "Desk",
+            "value": "Culture",
+            "removable": true
+          },
+          {
+            "label": "Language",
+            "value": "Português",
+            "removable": false
+          }
+        ],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 64
+        },
+        "group": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 64
+        },
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 141.421875,
+              "y": 20,
+              "width": 117.390625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Desk",
+                "box": {
+                  "x": 152.421875,
+                  "y": 25,
+                  "width": 26.953125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Culture",
+                "box": {
+                  "x": 185.375,
+                  "y": 25,
+                  "width": 40.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 231.8125,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Desk filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 20,
+              "y": 56,
+              "width": 139.34375,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Language",
+                "box": {
+                  "x": 31,
+                  "y": 61,
+                  "width": 53.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 74
+              },
+              {
+                "text": "Português",
+                "box": {
+                  "x": 90.4375,
+                  "y": 61,
+                  "width": 57.90625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 74
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": {
+          "box": {
+            "x": 167.34375,
+            "y": 62,
+            "width": 42.421875,
+            "height": 16
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(91, 163, 245)",
+            "border": "rgb(91, 163, 245)",
+            "radius": "0px",
+            "padding": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "font": "500 12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "gap": "normal"
+          }
+        }
+      },
+      "file": "filter-chip-group-320-Dark.png",
+      "pngSha256": "97ac954c9d8532c38af067ba84494e4ac3f3819215f941d93171825b8152dec1"
+    },
+    {
+      "id": "label",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "label",
+        "label": "Status"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 56.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-label-640-Light.png",
+      "pngSha256": "d52a7b64109982f604bf780fd354c28b8845256787ec6a1709c09aebacde3e04"
+    },
+    {
+      "id": "value",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "value",
+        "label": "Status",
+        "value": "Draft"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 91.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-value-640-Light.png",
+      "pngSha256": "0b2673f8be1df696941b31ce381d541d6e6671b4f09f2cba5d8eed26af842b5b"
+    },
+    {
+      "id": "removable",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "removable",
+        "label": "Status",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-removable-640-Light.png",
+      "pngSha256": "9dba1d71a523e6a6537020dffbbe10d0d427ab41ebc78909eb7d91a195a8d163"
+    },
+    {
+      "id": "remove-only",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "remove-only",
+        "label": "Status",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-remove-only-640-Light.png",
+      "pngSha256": "0fa960675253421166473bbd923868c86c3bac1fe5c0ffac672e60f354996d1a"
+    },
+    {
+      "id": "empty-value",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "empty-value",
+        "label": "Status",
+        "value": "",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-value-640-Light.png",
+      "pngSha256": "0fa960675253421166473bbd923868c86c3bac1fe5c0ffac672e60f354996d1a"
+    },
+    {
+      "id": "empty-label",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "empty-label",
+        "label": "",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.796875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "",
+                "box": {
+                  "x": 31,
+                  "y": 34,
+                  "width": 0,
+                  "height": 0
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": null
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 37,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.796875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove  filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-label-640-Light.png",
+      "pngSha256": "5bb13c386e43f839197fc1019f1b2e037acbcf833310f20e5faacc827ce8027f"
+    },
+    {
+      "id": "unicode",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "unicode",
+        "label": "Révision 日本語",
+        "value": "العربية",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 167.75,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Révision 日本語",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 84.671875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "العربية",
+                "box": {
+                  "x": 121.671875,
+                  "y": 25,
+                  "width": 33.078125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 160.75,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Révision 日本語 filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-unicode-640-Light.png",
+      "pngSha256": "b9aaf901d6be4bbdd005dea804eb522bcb1ce0545d0911b8ac3cff419dfb2d6c"
+    },
+    {
+      "id": "long",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "long",
+        "label": "Publication workflow",
+        "value": "Awaiting the fictional editorial review",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 377.15625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Publication workflow",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 116.328125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Awaiting the fictional editorial review",
+                "box": {
+                  "x": 153.328125,
+                  "y": 25,
+                  "width": 210.828125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 370.15625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Publication workflow filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-long-640-Light.png",
+      "pngSha256": "5e67497fdd07a355e770a09f50f600fa0c0bfc9185c320b76537f7a326519763"
+    },
+    {
+      "id": "group-empty",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "group-empty",
+        "group": true,
+        "filters": [],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 0
+        },
+        "group": null,
+        "chips": [],
+        "clear": null
+      },
+      "file": "filter-chip-group-empty-640-Light.png",
+      "pngSha256": "2b6f5dadafc15613197994b2dc486e938b1e443d7520f1adcec05dd93a90f503"
+    },
+    {
+      "id": "group",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "group",
+        "group": true,
+        "filters": [
+          {
+            "label": "Status",
+            "value": "Draft",
+            "removable": true
+          },
+          {
+            "label": "Desk",
+            "value": "Culture",
+            "removable": true
+          },
+          {
+            "label": "Language",
+            "value": "Português",
+            "removable": false
+          }
+        ],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 141.421875,
+              "y": 20,
+              "width": 117.390625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Desk",
+                "box": {
+                  "x": 152.421875,
+                  "y": 25,
+                  "width": 26.953125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Culture",
+                "box": {
+                  "x": 185.375,
+                  "y": 25,
+                  "width": 40.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 231.8125,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Desk filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(89, 89, 89)",
+                "border": "rgb(89, 89, 89)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 266.8125,
+              "y": 20,
+              "width": 139.34375,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(255, 255, 255)",
+              "color": "rgb(45, 45, 45)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Language",
+                "box": {
+                  "x": 277.8125,
+                  "y": 25,
+                  "width": 53.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(89, 89, 89)",
+                  "border": "rgb(89, 89, 89)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Português",
+                "box": {
+                  "x": 337.25,
+                  "y": 25,
+                  "width": 57.90625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(45, 45, 45)",
+                  "border": "rgb(45, 45, 45)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": {
+          "box": {
+            "x": 414.15625,
+            "y": 26,
+            "width": 42.421875,
+            "height": 16
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(44, 87, 132)",
+            "border": "rgb(44, 87, 132)",
+            "radius": "0px",
+            "padding": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "font": "500 12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "gap": "normal"
+          }
+        }
+      },
+      "file": "filter-chip-group-640-Light.png",
+      "pngSha256": "b9d237ad0e6dce17a78a507161b8be8401a6f203bbbcf903671fe21dad1e574f"
+    },
+    {
+      "id": "label",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "label",
+        "label": "Status"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 56.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-label-640-Dark.png",
+      "pngSha256": "be6ceffb9c025bc04d8833b171d6ae1d27dbd9419b87f89302160eb437576387"
+    },
+    {
+      "id": "value",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "value",
+        "label": "Status",
+        "value": "Draft"
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 91.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-value-640-Dark.png",
+      "pngSha256": "0c3af76e433258febb8cfd383cedb2eacd1f457e88159cd4537a0e8403f04fc2"
+    },
+    {
+      "id": "removable",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "removable",
+        "label": "Status",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-removable-640-Dark.png",
+      "pngSha256": "9f0acead1004f71152a34812fcfd11fdbd01bd64ce6eea35f4b893342da90e2f"
+    },
+    {
+      "id": "remove-only",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "remove-only",
+        "label": "Status",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-remove-only-640-Dark.png",
+      "pngSha256": "0cf90cc1d6378da9471e108c800d04cc952796913440f86a141f8ac75729645b"
+    },
+    {
+      "id": "empty-value",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "empty-value",
+        "label": "Status",
+        "value": "",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-value-640-Dark.png",
+      "pngSha256": "0cf90cc1d6378da9471e108c800d04cc952796913440f86a141f8ac75729645b"
+    },
+    {
+      "id": "empty-label",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "empty-label",
+        "label": "",
+        "value": "Draft",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 78.796875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "",
+                "box": {
+                  "x": 31,
+                  "y": 34,
+                  "width": 0,
+                  "height": 0
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": null
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 37,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 71.796875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove  filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-empty-label-640-Dark.png",
+      "pngSha256": "a9abb06120e05f996e08bfdb81010b45159d617ce5ce166d9076bcd2d7e3478e"
+    },
+    {
+      "id": "unicode",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "unicode",
+        "label": "Révision 日本語",
+        "value": "العربية",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 167.75,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Révision 日本語",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 84.671875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "العربية",
+                "box": {
+                  "x": 121.671875,
+                  "y": 25,
+                  "width": 33.078125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 160.75,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Révision 日本語 filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-unicode-640-Dark.png",
+      "pngSha256": "db22e74b131aef4e1475b21bf8e819af990498efef3528a42f90574aeb25f414"
+    },
+    {
+      "id": "long",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "long",
+        "label": "Publication workflow",
+        "value": "Awaiting the fictional editorial review",
+        "removable": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": null,
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 377.15625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Publication workflow",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 116.328125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Awaiting the fictional editorial review",
+                "box": {
+                  "x": 153.328125,
+                  "y": 25,
+                  "width": 210.828125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 370.15625,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Publication workflow filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          }
+        ],
+        "clear": null
+      },
+      "file": "filter-chip-long-640-Dark.png",
+      "pngSha256": "f9d7cb75154535a60f49dfd51c42b5669eaa5b36bd0707a0ae68126da3802083"
+    },
+    {
+      "id": "group-empty",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "group-empty",
+        "group": true,
+        "filters": [],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 0
+        },
+        "group": null,
+        "chips": [],
+        "clear": null
+      },
+      "file": "filter-chip-group-empty-640-Dark.png",
+      "pngSha256": "2cb48e73319f2d751e80b9ce51e62bc7a2f0f803ad50179aa56b305566410202"
+    },
+    {
+      "id": "group",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "group",
+        "group": true,
+        "filters": [
+          {
+            "label": "Status",
+            "value": "Draft",
+            "removable": true
+          },
+          {
+            "label": "Desk",
+            "value": "Culture",
+            "removable": true
+          },
+          {
+            "label": "Language",
+            "value": "Português",
+            "removable": false
+          }
+        ],
+        "clear": true
+      },
+      "normal": {
+        "root": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "group": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 28
+        },
+        "chips": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 113.421875,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Status",
+                "box": {
+                  "x": 31,
+                  "y": 25,
+                  "width": 34.625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Draft",
+                "box": {
+                  "x": 71.625,
+                  "y": 25,
+                  "width": 28.796875,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 106.421875,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Status filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 141.421875,
+              "y": 20,
+              "width": 117.390625,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Desk",
+                "box": {
+                  "x": 152.421875,
+                  "y": 25,
+                  "width": 26.953125,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Culture",
+                "box": {
+                  "x": 185.375,
+                  "y": 25,
+                  "width": 40.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": {
+              "box": {
+                "x": 231.8125,
+                "y": 26,
+                "width": 16,
+                "height": 16
+              },
+              "name": "Remove Desk filter",
+              "paint": {
+                "background": "rgba(0, 0, 0, 0)",
+                "color": "rgb(184, 197, 214)",
+                "border": "rgb(184, 197, 214)",
+                "radius": "4px",
+                "padding": [
+                  "2px",
+                  "2px",
+                  "2px",
+                  "2px"
+                ],
+                "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                "gap": "normal"
+              }
+            }
+          },
+          {
+            "box": {
+              "x": 266.8125,
+              "y": 20,
+              "width": 139.34375,
+              "height": 28
+            },
+            "paint": {
+              "background": "rgb(24, 37, 51)",
+              "color": "rgb(240, 244, 248)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+              "radius": "6px",
+              "padding": [
+                "4px",
+                "10px",
+                "4px",
+                "10px"
+              ],
+              "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "gap": "6px"
+            },
+            "texts": [
+              {
+                "text": "Language",
+                "box": {
+                  "x": 277.8125,
+                  "y": 25,
+                  "width": 53.4375,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(184, 197, 214)",
+                  "border": "rgb(184, 197, 214)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "500 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              },
+              {
+                "text": "Português",
+                "box": {
+                  "x": 337.25,
+                  "y": 25,
+                  "width": 57.90625,
+                  "height": 18
+                },
+                "paint": {
+                  "background": "rgba(0, 0, 0, 0)",
+                  "color": "rgb(240, 244, 248)",
+                  "border": "rgb(240, 244, 248)",
+                  "radius": "0px",
+                  "padding": [
+                    "0px",
+                    "0px",
+                    "0px",
+                    "0px"
+                  ],
+                  "font": "600 12px / 18px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+                  "gap": "normal"
+                },
+                "baseline": 38
+              }
+            ],
+            "remove": null
+          }
+        ],
+        "clear": {
+          "box": {
+            "x": 414.15625,
+            "y": 26,
+            "width": 42.421875,
+            "height": 16
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(91, 163, 245)",
+            "border": "rgb(91, 163, 245)",
+            "radius": "0px",
+            "padding": [
+              "0px",
+              "0px",
+              "0px",
+              "0px"
+            ],
+            "font": "500 12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "gap": "normal"
+          }
+        }
+      },
+      "file": "filter-chip-group-640-Dark.png",
+      "pngSha256": "9ebf87ff2a8ba745b9a8525f37afc3a1bf6eaaf479a22541f4ef4cadcba0f8a5"
+    }
+  ],
+  "interactions": [
+    {
+      "width": 320,
+      "scheme": "Light",
+      "removeActions": 3,
+      "sourceDoesNotMutateConsumerFilters": true,
+      "clearActions": 1
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "removeActions": 3,
+      "sourceDoesNotMutateConsumerFilters": true,
+      "clearActions": 1
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "removeActions": 3,
+      "sourceDoesNotMutateConsumerFilters": true,
+      "clearActions": 1
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "removeActions": 3,
+      "sourceDoesNotMutateConsumerFilters": true,
+      "clearActions": 1
+    }
+  ]
+}

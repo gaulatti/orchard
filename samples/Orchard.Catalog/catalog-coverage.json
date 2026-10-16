@@ -27,6 +27,9 @@
     "BleeckerChartTheme": "ChartThemesFixture.xaml"
   },
   "controls": {
+    "BleeckerFilter": "FilterChipsFixture.xaml",
+    "BleeckerFilterChip": "FilterChipsFixture.xaml",
+    "BleeckerFilterGroup": "FilterChipsFixture.xaml",
     "BleeckerStepper": "SteppersFixture.xaml",
     "BleeckerDataList": "DataListsFixture.xaml",
     "BleeckerDataListItem": "DataListsFixture.xaml",

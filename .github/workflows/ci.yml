@@ -136,6 +136,15 @@ jobs:
           }
           node scripts/test-timeline-audit.mjs --native artifacts/timeline-1024 --viewport 1024 --output artifacts/timeline-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Timeline negative audit failed.' }
+      - name: Verify FilterChip geometry, native actions and lifecycle
+        run: |
+          foreach ($width in @(320,640)) {
+            ./scripts/smoke-catalog.ps1 -Component filter-chip -ClientSize $width,480 -Output "artifacts/filter-chip-$width" -ExpectedArchitecture X64
+            node scripts/verify-filter-chip.mjs --native "artifacts/filter-chip-$width" --width $width --output "artifacts/filter-chip-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'FilterChip source/native audit failed.' }
+          }
+          node scripts/test-filter-chip-audit.mjs --native artifacts/filter-chip-640 --width 640 --output artifacts/filter-chip-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'FilterChip negative audit failed.' }
       - name: Verify Loading Overlay viewport and native focus behavior
         if: ${{ !cancelled() && (steps.timeline_smoke.outcome == 'success' || steps.timeline_smoke.outcome == 'failure') }}
         id: loading_overlay_smoke
@@ -375,6 +384,15 @@ jobs:
           }
           node scripts/test-timeline-audit.mjs --native artifacts/timeline-1024 --viewport 1024 --output artifacts/timeline-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Timeline negative audit failed.' }
+      - name: Verify native ARM64 FilterChip geometry, actions and lifecycle
+        run: |
+          foreach ($width in @(320,640)) {
+            ./scripts/smoke-catalog.ps1 -Component filter-chip -ClientSize $width,480 -Output "artifacts/filter-chip-$width" -ExpectedArchitecture Arm64
+            node scripts/verify-filter-chip.mjs --native "artifacts/filter-chip-$width" --width $width --output "artifacts/filter-chip-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'ARM64 FilterChip source/native audit failed.' }
+          }
+          node scripts/test-filter-chip-audit.mjs --native artifacts/filter-chip-640 --width 640 --output artifacts/filter-chip-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 FilterChip negative audit failed.' }
       - name: Verify native ARM64 Loading Overlay viewport and focus behavior
         if: ${{ !cancelled() && (steps.timeline_smoke.outcome == 'success' || steps.timeline_smoke.outcome == 'failure') }}
         id: loading_overlay_smoke

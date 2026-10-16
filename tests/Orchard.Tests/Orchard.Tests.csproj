@@ -4,6 +4,9 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="../../src/Orchard/Controls/BleeckerFilter.cs" Link="BleeckerFilter.cs" />
+        <None Include="../Reference/FilterChip.json" Link="Fixtures/FilterChip.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-filter-chip.cjs" Link="Fixtures/CaptureFilterChip.cjs" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../samples/Orchard.Catalog/SelectFilterTable.cs" Link="SelectFilterTable.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerSelectOption.cs" Link="BleeckerSelectOption.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerSelectFilterValue.cs" Link="BleeckerSelectFilterValue.cs" />

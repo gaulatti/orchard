@@ -67,6 +67,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-loading-overlay-windows")) await RunLoadingOverlayWindowsAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-contrast")) await RunLoadingOverlayContrastAsync(folder, entryOnly: false);
             else if (args.Contains("--smoke-loading-overlay-contrast-entry")) await RunLoadingOverlayContrastAsync(folder, entryOnly: true);
+            else if (args.Contains("--smoke-filter-chip")) await RunFilterChipsAsync(folder);
             else if (args.Contains("--smoke-chart-load-focus")) await RunChartLoadFocusAsync(folder);
             else if (args.Contains("--smoke-timeline"))
             {
@@ -780,6 +781,9 @@ public sealed partial class MainWindow : Window
             await Timelines.VerifyAsync(scheme,folder,CatalogRoot,ComponentSearch);
             await SelectFixtureAsync(LoadingOverlays);
             await LoadingOverlays.VerifyCatalogAsync(folder,scheme);
+            await SelectFixtureAsync(FilterChips);
+            await FilterChips.VerifyAsync(folder,scheme);
+            await CaptureFixtureAsync(FilterChips,Path.Combine(folder,$"filter-chips-{scheme}.png"));
             await SelectFixtureAsync(DataTableToolbars);
             await DataTableToolbars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTablePaginations);

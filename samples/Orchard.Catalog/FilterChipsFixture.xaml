@@ -1,0 +1,13 @@
+<UserControl x:Class="Orchard.Catalog.FilterChipsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Filter chips" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Optional remove actions and a wrapping group. Callers own the filter data and decide what removal and Clear all do." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <orchard:BleeckerFilterChip Label="Read-only" Value="Culture" HorizontalAlignment="Left" />
+  <orchard:BleeckerFilterChip x:Name="Removable" Label="Status" Value="Draft" HorizontalAlignment="Left" />
+  <orchard:BleeckerFilterChip Label="Révision 日本語" Value="العربية" HorizontalAlignment="Left" />
+  <orchard:BleeckerFilterGroup HorizontalAlignment="Left"><orchard:BleeckerFilter Label="XAML model" Value="Consumer data" /></orchard:BleeckerFilterGroup>
+  <orchard:BleeckerFilterGroup x:Name="Filters" MaxWidth="360" HorizontalAlignment="Left" />
+  <orchard:BleeckerButton Content="Restore example filters" Click="RestoreFilters" HorizontalAlignment="Left" />
+  <TextBlock x:Name="Result" Text="The consumer controls each action." Style="{StaticResource BleeckerBodyStyle}" />
+ </StackPanel>
+</UserControl>

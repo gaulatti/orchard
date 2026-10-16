@@ -116,6 +116,11 @@ variants and sizes and requires a consumer-supplied accessible name.
 `BleeckerErrorState` provides consumer-owned title/description/icon content and
 an optional native retry command, with parameter and CanExecute support.
 Its complete visual and accessibility acceptance remains in progress.
+`BleeckerFilterChip` supplies a label/value and optional remove command/event.
+`BleeckerFilterGroup.Filters` holds observable `BleeckerFilter` records and an
+optional Clear all command/event. Each callback leaves collection changes to
+the consumer. Exact raster/motion, contrast, scaling and Narrator acceptance
+remain in progress; see the repository's `docs/filter-chip.md`.
 `BleeckerPageHeader` supplies a consumer-owned title/description, breadcrumb
 content/template and wrapping action content or observable collection. Its
 640px breakpoint follows the window viewport. `BackHref` remains exact

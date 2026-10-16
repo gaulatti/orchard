@@ -17,6 +17,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataList.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Timeline.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/LoadingOverlay.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/FilterChip.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTableToolbar.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTablePagination.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTableFilters.xaml" />

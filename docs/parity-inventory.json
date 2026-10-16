@@ -1784,14 +1784,33 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerFilter.cs",
+        "src/Orchard/Controls/BleeckerFilterChip.cs",
+        "src/Orchard/Controls/BleeckerFilterGroup.cs",
+        "src/Orchard/Controls/BleeckerFilterAction.cs",
+        "src/Orchard/Controls/BleeckerFilterText.cs",
+        "src/Orchard/Themes/FilterChip.xaml",
+        "src/Orchard/Themes/FilterActions.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/FilterChipsFixture.xaml",
+        "samples/Orchard.Catalog/FilterChipsFixture.xaml.cs"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/FilterChipContractTests.cs",
+        "tests/Reference/FilterChip.json",
+        "samples/Orchard.Catalog/MainWindow.FilterChips.cs",
+        "tests/PackageConsumer/MainWindow.FilterChips.cs",
+        "scripts/verify-filter-chip.mjs",
+        "scripts/test-filter-chip-audit.mjs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact source/native text and glyph raster parity",
+        "Enabled-motion timelines, cancellation and full lifecycle/resource customization",
+        "Complete RTL, text/display scaling, contrast, Narrator and external UI Automation",
+        "Native ARM64 runtime"
       ]
     },
     {
