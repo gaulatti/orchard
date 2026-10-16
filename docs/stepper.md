@@ -56,4 +56,7 @@ replacement, model replacement/reorder/removal, template replacement and
 unload/remount checks. x64 and ARM64 solution builds pass. The zero-tolerance
 unmasked screenshot audit currently differs in 42 of 44 cases; the two empty
 frames match exactly. Keep the component **in progress**. Local evidence is in
-`artifacts/smoke-stepper-v5` and `artifacts/stepper-v5-pixel-audit.json`.
+`artifacts/smoke-stepper-release-full` and
+`artifacts/stepper-release-full-pixel-audit.json`. The full catalog run retains
+all 1,034 earlier captures plus 46 Stepper captures; see
+[the current checkpoint](native-validation-checkpoint.md).

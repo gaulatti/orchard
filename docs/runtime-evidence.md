@@ -2055,3 +2055,14 @@ records hashes, failures, source observations and remaining work. This is
 local progress, with no successful full-runtime or throughput claim. The
 new commits remain unpushed; Actions remain paused and the public wiki is
 unavailable. No component is fully accepted.
+## Stepper continuation checkpoint
+
+The latest full x64 run at library/catalog source `14bc3ef` passes 1,080
+captures in 404.7333773 seconds. All previous 1,034 names and 174 protected
+glyph hashes are preserved. Clean x64/ARM64 builds, 102 unit tests, token
+generation and the fresh x64 NuGet consumer pass; the ARM64 consumer compiles
+without a runtime claim. Stepper stays in progress: 42 of 44 unmasked source
+images differ at zero tolerance. The fixed inventory now has 54 in progress,
+58 pending and zero accepted. See the
+[current checkpoint](native-validation-checkpoint.md) for artifact hashes,
+input audits and remaining acceptance. Earlier entries retain historical scope.
