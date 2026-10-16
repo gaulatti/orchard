@@ -310,3 +310,12 @@ visibly displays option 500. All 136 states pass with this additional check.
 open-value, observer, template and unload checks in both themes. The updated
 pointer/Escape regression is at `artifacts/smoke-pagination-popup-final2-input`.
 This native component has no backend or metrics surface.
+
+The first full published popup run at
+`artifacts/smoke-pagination-popup-published-full` stopped after 87.8152707
+seconds/226 captures on the light narrow Donut's Pie focus-payload gate. It
+does not establish full-suite success. A focused Pie run with added
+failure-only payload/focus/pointer diagnostics passes at
+`artifacts/smoke-pagination-popup-pie-diagnostic`; the cause of the sequence
+failure is not established. The original deadline and expected payload remain
+unchanged. The broader runtime criterion remains open while this is examined.

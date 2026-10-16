@@ -65,7 +65,14 @@ public sealed partial class PieChartsFixture : UserControl
                 });
                 if (id is "default" or "narrow" or "center" or "mixed-sign" or "long-labels" or "ring-large") await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"pie-chart-{id}-{donut}-{scheme}.png"));
                 Require(chart.Focus(FocusState.Keyboard), "Could not focus native Pie inspection.");
-                await AwaitAsync(() => InspectionText(chart) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Pie focus payload did not settle."); Check(() => Inspection(chart, item.GetProperty("focus")));
+                try { await AwaitAsync(() => InspectionText(chart) == item.GetProperty("focus").GetProperty("tooltip").GetString(), "Pie focus payload did not settle."); }
+                catch
+                {
+                    await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"pie-focus-failure-{scheme}.json"), JsonSerializer.Serialize(new { id, donut, expected = item.GetProperty("focus").GetProperty("tooltip").GetString(), actual = InspectionText(chart), chart.FocusState, focusedType = Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot)?.GetType().Name, pointer = input.ReadPointerPosition(), client = NativeScreenCapture.ClientBounds(input.Window), chart = input.ScreenBounds(chart), tooltip = Part<Border>(chart, "PART_Tooltip").Visibility.ToString() }, new JsonSerializerOptions { WriteIndented = true }));
+                    await NativeScreenCapture.CaptureClientAsync(input.Window, System.IO.Path.Combine(folder, $"pie-focus-failure-{scheme}.png"));
+                    throw;
+                }
+                Check(() => Inspection(chart, item.GetProperty("focus")));
                 foreach (var (state, key) in new[] { ("right", (ushort)0x27), ("left", (ushort)0x25), ("enter", (ushort)0x0D) }) { await input.KeyAsync(key, chart); await AwaitAsync(() => InspectionText(chart) == item.GetProperty(state).GetProperty("tooltip").GetString(), "Pie " + state + " payload did not settle."); Check(() => Inspection(chart, item.GetProperty(state))); }
                 reports.Add(new { id, donut, errors, sectors = paths.Length }); failures.AddRange(errors.Select(error => $"{id}/{donut}: {error}"));
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"pie-chart-{scheme}.json"), JsonSerializer.Serialize(new { passed = failures.Count == 0, reports }, new JsonSerializerOptions { WriteIndented = true }));
