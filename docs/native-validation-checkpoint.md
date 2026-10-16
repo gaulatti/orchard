@@ -1,5 +1,67 @@
 # Current native validation checkpoint
 
+Current library/catalog source: `05c5b2db48c8b02af2ddc5fb548cde73a8e65a55`.
+The published full x64 run passes in **404.2454108 seconds**, with all
+**1,080 captures**, all prior filenames and **174 protected glyph hashes**. Independent audits verify
+1,980 pointer moves and stable presentation gates, 1,744 owned key pairs and
+68 physical clicks, with zero failed gates. The maximum pointer gate is
+197.5917 ms under the unchanged two-second deadline. The full-suite watchdog
+remains eight minutes. No throughput or collection-performance claim is made.
+
+Clean x64 and ARM64 builds have zero warnings/errors; **104 unit tests** and
+token generation pass. The published Stepper motion check exercises the real
+Windows client-area animation setting in enabled/reduced modes and restores
+the original preference. All 42 status/theme transitions, 768 sampled native
+frames and four owned Space down/up pairs pass. Scale changes immediately;
+colors follow the source's 190 ms premium sRGB transition. The trajectory
+audit's maximum error is 0.936 channel values under its fixed 1.5 quantization
+bound. Callback removal preserves running color motion. The source capture,
+native fixture and independent verifier retain separate evidence.
+
+The failed full run at `ba1434b` remains in
+`artifacts/smoke-stepper-motion-full`. Its trace records BottomTip's delayed
+hover timer taking ownership while the programmatic check inspected LongTip.
+The fixture now establishes a genuine neutral pointer receipt before those
+checks. The final run passes all 28 Tooltip gates with the original deadline
+and stability requirement; production Tooltip behavior is unchanged.
+
+The zero-tolerance Stepper image audit still differs in **42/44 cases**
+(165,563 differing pixels). Exact raster, complete reversal/override matrices,
+scaling, contrast, Narrator and native ARM64 runtime remain open. The inventory
+stays **54 in progress, 58 pending, 0 accepted**; the goal remains active.
+
+Current local evidence:
+
+- `artifacts/smoke-stepper-motion-final` and `stepper-motion-final-audit.json`
+- `artifacts/smoke-stepper-motion-final-full`
+- `artifacts/stepper-motion-final-{full-audit,pixel-audit,full-timing}.json`
+- `artifacts/tests-stepper-motion-release`
+- `artifacts/catalog-stepper-motion-final-{x64,arm64}`
+- `artifacts/packages-stepper-motion-final/Gaulatti.Orchard.0.1.0.nupkg`
+- `artifacts/Orchard.Catalog.0.1.0-05c5b2d-{x64,arm64}.zip`
+
+The fresh independent x64 NuGet consumer passes both themes and native input.
+Its library DLL matches the validated catalog and package. ZIP audits compare
+every published entry byte-for-byte. The independent ARM64 consumer compiles
+and contains the same packaged DLL; its runtime remains unverified. Both
+isolated consumer caches are removed. Consumer evidence is in
+`artifacts/package-consumer-stepper-motion-{x64,arm64}` and byte correspondence
+is in `artifacts/stepper-motion-final-binary-correspondence.json`.
+Current artifact SHA-256 values:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| NuGet `0.1.0` | `5c258447279360969a7b26587a011c5b23e413fa3712ee29ad69185d868a413f` |
+| Packaged `Orchard.dll` | `8f701635a67093e586b62805887ea4043efecc71f5564c9ea912ab1429981dd8` |
+| x64 catalog ZIP | `630d5ee9c44439a790503072a1dd9e4b2a5f71c49819493dcc6d34c8bc9cc19e` |
+| ARM64 catalog ZIP (build only) | `49e9fb3aaaa8f72bb53650a68ed0bd5f5219507f5aa0ae2ba34b7960d20f7404` |
+
+Push-triggered Actions remain paused. The motion gate is registered for future
+manual/pull-request runs; no hosted runtime result is claimed. The public wiki
+is unavailable, so documentation remains in-repository.
+
+## Previous initial Stepper checkpoint
+
 Library/catalog source: `14bc3ef42549af8c7d61bf407cf0f9c8b2c55b1f`.
 Independent consumer harness: `5a72f66` (test assertions only).
 

@@ -2066,3 +2066,18 @@ images differ at zero tolerance. The fixed inventory now has 54 in progress,
 58 pending and zero accepted. See the
 [current checkpoint](native-validation-checkpoint.md) for artifact hashes,
 input audits and remaining acceptance. Earlier entries retain historical scope.
+
+## Stepper source motion checkpoint
+
+Source `05c5b2d` corrects immediate press scale, legacy sRGB interpolation and
+live theme/callback color-transition continuity. The pinned browser capture has
+42 status/theme cases, four trusted Space interactions and two callback-removal
+probes. The published native enabled/reduced matrix passes 768 frames, all four
+owned key pairs and restoration of the original Windows animation preference.
+All 104 unit tests, token generation, x64/ARM64 builds and the 1,080-capture
+x64 full sequence pass; full time is 404.2454108 seconds. All prior names and
+174 protected glyph hashes remain. Exact Stepper images still differ in 42/44
+cases, and the component remains in progress. The
+[current native checkpoint](native-validation-checkpoint.md) records the
+Tooltip competing-hover diagnosis, unchanged deadlines, package evidence and
+remaining desktop acceptance. Push-triggered Actions remain paused.

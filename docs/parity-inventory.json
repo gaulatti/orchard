@@ -1476,10 +1476,10 @@
       ],
       "windowsImplementation": ["src/Orchard/Controls/BleeckerStepper.cs", "src/Orchard/Controls/BleeckerStep.cs", "src/Orchard/Themes/Stepper.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/SteppersFixture.xaml"],
-      "regressionTests": ["tests/Orchard.Tests/StepperContractTests.cs", "tests/Reference/Stepper.json", "scripts/smoke-catalog.ps1 -Component stepper"],
+      "regressionTests": ["tests/Orchard.Tests/StepperContractTests.cs", "tests/Reference/Stepper.json", "scripts/smoke-catalog.ps1 -Component stepper", "tests/Orchard.Tests/StepperMotionTests.cs", "tests/Reference/StepperMotion.json", "scripts/smoke-stepper-motion.ps1"],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete exact source pixel, motion, scaling and contrast verification",
+        "Complete exact source pixels, reversal/override motion matrices, scaling and contrast verification",
         "Verify native ARM64 runtime and Narrator",
         "Final independent consumer and visual acceptance"
       ]

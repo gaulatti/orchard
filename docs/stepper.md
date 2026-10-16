@@ -47,7 +47,7 @@ Current runtime regression uses a 0.05-DIP geometry bound against the captured
 DOM. Browser canvas conversion of CSS OKLab can differ by up to two channel
 values; brush checks allow that conversion difference and one alpha value.
 These checks are not a claim of exact screenshot equality. Exact pixel parity,
-enabled-motion timelines, Windows contrast, text/display scaling, Narrator,
+complete reversal/override motion matrices, Windows contrast, text/display scaling, Narrator,
 native ARM64 runtime and final visual acceptance remain open.
 
 The x64 focused replay currently passes all 44 normal cases and both themes'
@@ -95,3 +95,10 @@ trajectory audit's maximum error is 0.893 channel values under the fixed 1.5
 quantization bound. The prior OKLab implementation fails the same audit. Source
 timeline regressions now pass 104 unit tests. Evidence is retained under
 `artifacts/smoke-stepper-motion-v2` and `artifacts/stepper-motion-v2-audit.json`.
+
+The final published replay at `05c5b2d` passes 768 native frames with maximum
+trajectory error 0.936. The complete 1,080-capture catalog regression passes in
+404.2454108 seconds. Current evidence is `artifacts/smoke-stepper-motion-final`,
+`artifacts/smoke-stepper-motion-final-full` and
+`artifacts/stepper-motion-final-audit.json`; artifact hashes and scope are in
+the current checkpoint linked above.
