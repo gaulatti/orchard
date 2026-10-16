@@ -27,8 +27,10 @@ exposes `Label`, `Value`, `RemoveCommand`, `RemoveCommandParameter` and
 retains model/action identity, visual order, tab order and focused actions.
 The optional group action uses `ClearAllCommand`, `ClearAllCommandParameter`,
 `ClearAllRequested` and localizable `ClearAllText` (default `Clear all`).
-Both command and event run when both are registered. Callbacks never remove
-models or clear the collection automatically; the consumer owns those changes.
+When both are registered, the command runs before the event. Group remove-event
+dispatch requires active model membership; a command that removes its model
+ends that model's action. Callbacks never remove models or clear the collection
+automatically; the consumer owns those changes.
 Empty groups have zero height and no native actions.
 
 The source layout has a 28-DIP minimum chip height, 10/4-DIP horizontal/vertical

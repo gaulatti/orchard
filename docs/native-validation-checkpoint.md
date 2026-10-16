@@ -1,5 +1,57 @@
 # Current native validation checkpoint
 
+## FilterChip and FilterGroup foundation
+
+Public implementation source: `e0cae0d`. Catalog/input evidence corrections:
+`9ffb912`. Push-triggered Actions remain paused; no hosted run was dispatched.
+
+The frozen and native matrices cover 40 cases in light/dark at 320/640 DIPs.
+All 72 first-line baselines, chip/text/action/group boxes and recorded normal
+text/fill/border colors pass. Maximum geometry error is 0.04425048828125 DIP,
+within the existing 0.05-DIP limit; baseline error is below 0.000001 DIP.
+The focused native runs retain eight owned Space/Enter pairs and twelve physical
+click receipts. Commands, original parameters, caller-owned collections, live
+metadata, inherited disabled state, reorder identity/focus, palette mutations,
+template replacement, unload/remount, empty groups and synchronous removal
+through native UI Automation pass. Five corruption audits reject shifted
+baselines, wrong names/opacity, missing lifecycle flags and missing click receipts.
+
+All 115 unit/contract tests and generated-token checks pass. A clean NuGet
+consumer passes x64 runtime in both themes with real native keyboard actions;
+its ARM64 build passes with runtime explicitly unverified. Both isolated
+temporary package caches were removed. The first full catalog run stopped at
+the new demo's synchronous removal and missing routed pointer-release receipt.
+The demo now queues its consumer mutation after native routing; its focused
+catalog mode passes. That failed evidence is retained. The revised complete
+catalog sequence passes with 1,132 PNGs, all 1,130 previous capture names retained
+and 174 protected glyph hashes unchanged. It verifies 2,010 pointer movements
+and presentation gates, 1,756 owned key actions and 76 physical clicks; maximum
+pointer readiness is 207.3863 ms under the unchanged two-second limit.
+
+The two architecture libraries have matching managed resources. Resolving all
+5,967 method bodies finds 5,965 identical methods and two unchanged Select
+constructors whose raw XAML strings differ only by checkout CRLF/LF endings;
+the parsed XML is identical. The strict byte/operand comparison remains recorded
+as failed. The package contains the same library bytes as the ARM64 catalog;
+the x64 catalog uses the equivalent XML-line-ending variant.
+
+All entries in the versioned x64/ARM64 catalog ZIPs are verified against their
+published directories. ARM64 artifacts represent cross-compilation only.
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `packages-filter-chip/Gaulatti.Orchard.0.1.0-filter-chip.e0cae0d.nupkg` | `9c8f754dc25088aaa056e1656b84a7165bdc7a63d91bca1d61fa35c7bb9cf012` |
+| `Orchard.Catalog.0.1.0-9ffb912-x64.zip` | `592bfad382be3c9f0cdf9e180f1d6fc308f95c793d04b5285e1c1b884ad7b56e` |
+| `Orchard.Catalog.0.1.0-9ffb912-ARM64.zip` | `5803ff5bb7cef8a52293981be917f0dcfbe9c24fc87a504facd82617da609025` |
+
+The unmodified source/native client comparison still finds 42,338 differing
+pixels and total absolute RGBA error 2,987,351. No masks or resampling are used;
+source pixel parity remains false. Exact raster, enabled motion, full resource
+and typography/RTL customization, text/display scaling, contrast, Narrator,
+external UI Automation and native ARM64 acceptance remain open. Inventory is
+**58 in progress, 54 pending, zero accepted** of 112: **51.8% started, 0%
+accepted**. The public wiki remains unavailable. See [API and acceptance](filter-chip.md).
+
 ## Loading Overlay guarded contrast preparation
 
 Catalog/test source: `9b4d7ba84157ef1f6e48014784b931e10b16559e`.

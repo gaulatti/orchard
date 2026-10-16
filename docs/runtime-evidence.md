@@ -2212,3 +2212,29 @@ The previous 346-second full viewport failure remains retained; the corrected
 run passes without changing bounds or deadlines. Actions stay paused, and the
 code push has zero hosted runs. Inventory remains 57 started, 55 pending,
 zero accepted.
+
+## FilterChip foundation and native input evidence (2026-10-16)
+
+Implementation `e0cae0d` adds caller-owned FilterChip/FilterGroup controls;
+`9ffb912` stabilizes catalog removal routing and focused input evidence. Forty
+source/native cases at 320/640 DIPs and both themes pass geometry, 72 baselines,
+normal colors, optional actions, empty output and wrapping. Live commands,
+parameters, disablement, collection reorder/focus, palette changes, template
+replacement, remounting and synchronous UIA removal pass. Five deliberately
+corrupted evidence sets are rejected. All 115 unit tests and token checks pass.
+
+The first full run's missing release receipt is retained. The corrected full
+sequence passes with 1,132 PNGs, no missing previous captures and 174 protected
+glyph hashes unchanged. Its 2,010 pointer gates, 1,756 owned key actions and 76
+clicks pass; maximum readiness is 207.3863 ms. A fresh x64 NuGet consumer passes
+both themes and real keyboard actions. ARM64 publication and an isolated package
+consumer build pass; native ARM64 runtime remains unverified. Both temporary
+package caches are removed. Every x64/ARM64 catalog ZIP entry is checked.
+
+The unmodified 40-case client pixel comparison finds 42,338 differing pixels,
+so raster parity and component acceptance remain false. Complete motion,
+customization, scaling, contrast/Narrator and native ARM64 acceptance remain
+open. Inventory is 58 started (51.8%), 54 pending and zero accepted of 112.
+Push-triggered Actions remain paused; no hosted run was dispatched. The public
+wiki is unavailable. See [checkpoint and artifact hashes](native-validation-checkpoint.md)
+and [FilterChip contract](filter-chip.md).
