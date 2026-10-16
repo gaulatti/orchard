@@ -65,3 +65,48 @@ cause is unestablished; the raw pixel report remains
 `artifacts/runtime-profile-sparkline-pixel-differences.json`. This is not an
 exact-raster pass. The PNG encoder source, Windows alpha conversion, source
 references and all input/presentation assertions remain unchanged.
+
+The full diagnostic run `artifacts/smoke-runtime-profile-full` times out
+after 936 captures at the original deadline. Its journal retains 114
+completed phases and identifies Dark Input as the unfinished phase.
+The summarizer reports no terminal profile/result and false full-runtime
+acceptance. The external wrapper records the terminal timeout separately
+in `artifacts/runtime-profile-full-timing.json`. All 174 protected glyph
+hashes match the last passing baseline; 98 baseline PNGs remain missing.
+
+Across those completed phases, 545 bitmap snapshots spend 24.077 seconds
+rendering and 0.971 seconds reading pixels. Saving 858 PNGs takes 11.326
+seconds: 4.773 converting, 1.888 encoding and 4.200 writing. These are
+nested wall-time spans, not additive CPU costs. The slowest complete
+phases include Light Input at 16.206 seconds, each Sankey theme at 15.556,
+each Alert theme at 11.952 and Light Checkbox at 10.519. Required Alert
+lifetimes and Skeleton motion observation windows remain intact.
+
+A resource-reuse experiment keeps one RenderTargetBitmap but calls
+RenderAsync for every snapshot. Its Sparkline render total is 632.9 ms
+versus 608.5 ms before; Input renders 140 snapshots in 5.869 seconds.
+Both focused runtime checks pass, but neither comparison establishes a
+rendering-cost improvement. The experiment is removed. Its decision,
+raw profile and exact patch remain at
+`artifacts/bitmap-reuse-candidate-decision.json`,
+`artifacts/bitmap-reuse-*-summary.json` and
+`artifacts/bitmap-reuse-rejected.patch`.
+
+Further save-pipeline work must first trace all consumers that open a
+just-written image. Every required reader must still wait for completed
+bytes; every snapshot must still be captured from the actual visual; all
+image writes must finish successfully before a runtime pass is emitted.
+No image cache, omitted capture, relaxed comparison or input-gate change
+is authorized by this profiling work.
+
+The retained profiler source `86fb9c6` builds cleanly for x64 and ARM64,
+passes all 100 unit tests and token generation, and passes the complete
+focused Input runtime from its clean checkout. That run records 140 bitmap
+snapshots, 164 PNG writes and a valid terminal profile in 32.178 seconds at
+`artifacts/smoke-runtime-profile-clean-input`. Its bitmap render total is
+5.511 seconds; this supports removing the resource-reuse experiment rather
+than retaining it as an optimization. The rejected primary build is renamed
+to `win-x64-rejected-bitmap-reuse-prototype` beside the usual primary Release
+output. Use the clean checkout's executable until the primary output is
+rebuilt. The exact generated-output location and preserved assembly hash
+are recorded in `artifacts/bitmap-reuse-prototype-location.json`.
