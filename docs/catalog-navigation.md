@@ -23,6 +23,12 @@ consumer templates, keyed expansion and actual native routing/input boundary;
 see [usage and acceptance gaps](sidebars.md). It does not replace the catalog's
 existing component list.
 
+The Alert keyboard regression walks the actual mounted native tab stops. Its
+finite traversal bound follows that tree, including the alert close action,
+so adding a navigation entry does not silently exhaust a fixed key count.
+The check still requires real forward entry, exit, full-cycle return, reverse
+exit and forward return to the close button.
+
 **Stepper** follows Sidebar. Choose a source case to inspect both orientations,
 all statuses, disabled/static actions, empty content, long labels and RTL.
 Focused `-Component stepper` replays the source cases and exercises native

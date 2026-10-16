@@ -110,19 +110,25 @@ public sealed partial class AlertsFixture : UserControl
                 else if (type == BleeckerAlertType.Warning)
                 {
                     Require(MessageBox.Focus(FocusState.Programmatic), "Alert could not establish its Tab entry anchor.");
+                    // This walk traverses the catalog navigation as well as the
+                    // fixture. Its bound must follow the mounted native controls.
+                    var tabWalkLimit = Descendants<Control>(XamlRoot.Content)
+                        .Append(close).Distinct().Count(control => control.IsLoaded && control.IsEnabled && control.IsTabStop && control.Visibility == Visibility.Visible) + 1;
                     var visited = new List<string>();
-                    for (var step = 0; step < 64 && !ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close); step++)
+                    for (var step = 0; step < tabWalkLimit && !ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close); step++)
                     {
                         input.Key(0x09); await Task.Delay(16);
                         visited.Add((FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name ?? "unnamed");
                     }
-                    samples.Add(new { phase = "physical-tab", visited });
+                    samples.Add(new { phase = "physical-tab", tabWalkLimit, visited });
                     Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close) && close.FocusState == FocusState.Keyboard,
                         "Physical Tab navigation did not reach the alert's close action.");
                     input.Key(0x09); await Task.Delay(16);
                     Require(!ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close), "Alert popup trapped forward Tab navigation.");
-                    for (var step = 0; step < 64 && !ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close); step++)
-                    { input.Key(0x09); await Task.Delay(16); }
+                    var revisited = new List<string>();
+                    for (var step = 0; step < tabWalkLimit && !ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close); step++)
+                    { input.Key(0x09); await Task.Delay(16); revisited.Add((FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name ?? "unnamed"); }
+                    samples.Add(new { phase = "physical-tab-return", tabWalkLimit, visited = revisited });
                     Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close), "Alert's close action could not be revisited with Tab.");
                     input.ShiftKey(0x09); await Task.Delay(16);
                     Require(!ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), close), "Alert popup trapped reverse Tab navigation.");
