@@ -1,6 +1,61 @@
 # Current native validation checkpoint
 
-## Loading Overlay caller-template checkpoint
+## Loading Overlay two-window checkpoint
+
+Catalog/test source: `c27b2a4b504f3fb807a22348050fe8fc89806a6b`.
+The public library source remains unchanged from `2e72e33`.
+
+The clean x64 catalog passes thirteen phases across two real native windows
+and distinct XamlRoots. Ten visible phases retain destination viewport coverage,
+palette, accessible name and original keyboard focus. Every visible phase
+blocks a physical pointer click and permits one owned Space press/release to
+activate the underlying action. Transfers cover detach/remount and immediate
+reparenting, including identical size/theme/scale inputs. Mutating the old
+root's size/theme leaves the destination portal unchanged. Closing the old
+secondary window preserves the returned portal; hiding removes the final one.
+Light and Dark captures use actual 640×480 and 320×240 clients.
+
+Four negative audits reject stale source portals, wrong destination window
+IDs, stale target palettes and missing keyboard releases. The existing library
+passes these checks without a product correction. The same NuGet consumer
+instance transfers its custom template to a second window and back in both
+themes. The fresh x64 consumer passes runtime; ARM64 builds only. Both isolated
+caches are removed. The unchanged package SHA-256 is
+`7074796d9b7f34f3daab4d7ee1cfea10987c140cafb1c0b00bb44d24de9ceea8`.
+
+Both clean catalog architectures, all 113 unit tests and token checks pass.
+Across architectures all 5,777 method definitions/IL records and managed
+resources match. Relative to the prior package release, a resolved-operand
+comparison verifies the method implementations and all 24 exposed-type
+mappings; fourteen generated provider targets use equivalent representative
+names. The x64 and ARM64 catalog library hashes are
+`058504b2dccfcc7088a899d9fd834bfb3b9ea73c325178102941cd831475cbf4` and
+`cb2236f4ddcc5815f1bb4342f826f0ce112b1f13d39c8f7e85f2cb6fe11924a1`.
+
+The versioned archives match every published file: 533 entries for x64 and
+529 for ARM64. The x64 archive has the focused two-window runtime evidence;
+the ARM64 archive has build-only scope.
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `Orchard.Catalog.0.1.0-c27b2a4-x64.zip` | `ec88eacb9bb129e92c70923f8c9c2d7f6de6b66c70b504ab15f55764df616726` |
+| `Orchard.Catalog.0.1.0-c27b2a4-arm64.zip` | `197b5ae0e5b0766d910b83ab1799240ca1eb37dfb8c29c817c4c60ba2e40717d` |
+
+Evidence is in `artifacts/loading-overlay-windows-validated-windows`,
+`artifacts/loading-overlay-windows-validated-negative-audit.json`,
+`artifacts/loading-overlay-windows-validated-archives.json`,
+`artifacts/loading-overlay-windows-{architecture-il,resolved-method}-audit.json`
+and `artifacts/package-consumer-loading-overlay-windows-{x64,arm64}`.
+Current catalog runtime evidence covers the new two-window mode. Earlier full
+catalog evidence remains at `2e72e33`; the earlier template checkpoint below
+retains its four focused modes. Display/text scale is 1, animations and high
+contrast disabled. Same-thread transfer coverage does not establish the
+remaining scaling, contrast, Narrator, motion, exact raster or broader lifecycle
+matrices. Native ARM64 execution remains unverified. Inventory stays 57 in
+progress, 55 pending and zero accepted. Push-triggered Actions remain paused,
+with zero runs for `c27b2a4`. The public wiki remains unavailable.
+
+## Previous Loading Overlay caller-template checkpoint
 
 Catalog/test source: `a660a365c435ae30ec0807c3c32582b77385d250`.
 The public library source is unchanged from `2e72e33`; this checkpoint adds
