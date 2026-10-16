@@ -95,10 +95,52 @@ actual Unloaded cleanup within the existing two-second readiness bound.
 This is an initial preview, not accepted pagination parity. The page-size
 chooser currently uses the existing native ComboBox foundation. Complete
 source-derived selector/popup appearance, keyboard selection/tab traversal,
-all constrained/RTL visual layouts, enabled-state input matrix,
-independent consumer, complete current-source runtime, ARM64 runtime,
+all constrained/RTL visual layouts, enabled-state input matrix, ARM64 runtime,
 contrast/Narrator/scaling and collection performance remain unverified. The
 new source consumer model regressions do not stand in for those UI checks.
-The new library/catalog changes have not yet been pushed or packaged; the
-last published held-input artifacts remain the current verified deliverable.
 Push-triggered Actions remain paused; no workflow dispatch was requested.
+
+## Packaged preview checkpoint
+
+The current artifact source is
+`f750f0d28c2f6c0dbe24d3be7f3693caf1e1a61c` (preview implementation
+`132576c100dacb9aad44bd984f96b257df1d6db4`, followed by package documentation).
+`artifacts/packages-pagination/Gaulatti.Orchard.0.1.0.nupkg` has SHA-256
+`3ed0bd4a178ef4dfc74a30bd7512a7ea17f4c0287bfec817de8a2fea95f8a8a5`.
+The runnable catalog is at `artifacts/catalog-pagination`.
+
+The full published x64 suite at `artifacts/smoke-pagination-published-full`
+passes in 353.667325 seconds, within the unchanged 360-second wrapper.
+It preserves all 1,028 previous PNG names and adds the two pagination renders.
+All 174 protected Sunburst/Radial Bar glyph hashes are unchanged. The audit
+also preserves 118 toolbar source cases, 28 tooltip gates and 16 final
+presentation gates. The native input audit passes 1,732 owned pointer gates,
+1,738 same-target key pairs and 62 clicks, with at least two stable frames
+for each presentation gate. These counts describe the complete catalog suite;
+the focused pagination pointer/Escape evidence is described above.
+
+The independent consumer at `artifacts/package-consumer-pagination` restores
+only the fresh package through an isolated feed/cache, then passes actual x64
+runtime checks in both themes, including original rows, navigation boundaries,
+size/top-row adjustment, selection summary and accessible roles/names. The
+separate ARM64 consumer builds at `artifacts/package-consumer-pagination-arm64`;
+its report explicitly records runtime unverified. Both generated caches are
+removed. Package, catalog and both consumer Orchard assemblies have the same
+SHA-256 `c5d8feda0bf2969d655333e406b07ad39f20a3e2dbb4026c168063096604c27b`
+and product version `0.1.0+f750f0d28c2f6c0dbe24d3be7f3693caf1e1a61c`.
+`artifacts/pagination-artifacts-report.json` records the correspondence.
+
+The published catalog also passes all 132 source-state checks at
+`artifacts/smoke-pagination-published-source`. Its exact pixel comparison is
+recorded separately in `artifacts/pagination-published-pixels.json`.
+All 132 pairs still differ: 513,050 differing pixels and the same 154 geometry
+differences, with no missing pixels, masks or tolerance. The programmatic
+source replay does not reproduce physical pointer positions or keyboard/focus
+states, and the surface crops do not establish popup appearance parity.
+The separate physical check at `artifacts/smoke-pagination-published-input`
+passes the same 12 owned clicks and two exact popup-to-selector Escape pairs.
+
+This checkpoint establishes packaged preview behavior, not completed parity.
+No inventory entry is accepted by this evidence. The remaining visual,
+keyboard, accessibility, scaling, motion, performance and ARM64 runtime
+criteria remain open.

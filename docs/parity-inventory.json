@@ -1359,7 +1359,7 @@
       "remainingGaps": [
         "Complete physical keyboard selection/tab traversal and the enabled-state input matrix; 132 source-state checks, 12 physical clicks and two Escape transfers pass",
         "Resolve 132 differing rendered-state pairs and 154 geometry differences, including selector/popup appearance, typography, icons and motion",
-        "Verify independent NuGet consumer, full current-source runtime suite and native ARM64 execution",
+        "Verify native ARM64 execution; fresh x64 package consumer and full current-source x64 suite pass",
         "Verify contrast, Narrator, text/display scaling and measured collection performance"
       ]
     },
