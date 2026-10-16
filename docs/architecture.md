@@ -20,11 +20,15 @@ coordinates and the passing sequence are documented in [Sparkline evidence](spar
 This does not change product cursor publication, expected cursor handles,
 pointer target bounds or settling deadlines.
 
-The catalog smoke process has a six-minute overall deadline for the registered
-Light/Dark suite, including the expanded physical Input corner matrix and shared
-cursor lifecycle checks. Per-state settling deadlines and architecture gates
-remain unchanged. A deadline expiry terminates that owned test process and fails
-verification; it does not count as runtime acceptance.
+The full catalog smoke process has an eight-minute overall watchdog for the
+registered Light/Dark suite, including 240 additional required Pie/Donut and
+Sparkline pointer actions. Focused modes retain their six-minute watchdog.
+Per-state settling deadlines, real-input/presentation gates and architecture
+checks remain unchanged. A deadline expiry terminates that owned test process
+and fails verification; it does not count as runtime acceptance. The suite
+watchdog grows with verification workload and is separate from the measured
+collection-performance budgets. Report actual elapsed runtime; the increased
+watchdog is not a speedup and does not reclassify earlier timed-out runs.
 
 The contextual-help keyboard-entry fixture settles its Breadcrumb target
 before physical pointer movement. It observes actual rendered geometry over
@@ -201,7 +205,7 @@ dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Plat
 ./scripts/smoke-catalog.ps1
 ```
 
-The full catalog process has a six-minute timeout. Run motion sampling without
+The full catalog process has an eight-minute watchdog. Run motion sampling without
 concurrent compilation; an overloaded UI thread can miss an entire short
 transition. Field-help checks retain intermediate-frame assertions and write
 per-frame color/scale evidence before requesting static captures.

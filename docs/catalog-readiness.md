@@ -1,5 +1,24 @@
 # Catalog condition scheduling
 
+## Current suite watchdog
+
+The full suite now has an eight-minute external watchdog; focused modes keep
+six minutes. Every per-state/input deadline and stable Rendering assertion
+remains unchanged. The expanded chart workflows add 240 required physical
+pointer actions and their presentation gates to the prior 1,034-capture
+sequence. Profiling records about seventeen additional seconds across
+common capture intervals, beyond the former six-minute watchdog.
+
+The original goal defines separate performance budgets for collection
+workloads. It does not impose a six-minute total test-suite budget. Git
+commit `7024b9e` previously grew the watchdog from three to six minutes when
+Input/cursor coverage expanded. Treating six minutes as immutable was an
+unnecessary constraint. The new watchdog allows the complete larger workload
+to run; it neither proves a performance improvement nor passes any of the
+retained earlier failures. Actual runtime and collection performance remain
+separate evidence. Historical six-minute checkpoints below keep their
+original results.
+
 `NativeReadiness` gives pending binding/callback chains two low-priority
 dispatcher turns before using the existing 16 ms poll. Each queued turn is
 still bounded by that poll. Callers retain their exact conditions, layout
@@ -19,7 +38,8 @@ audit in 19.7744603 seconds versus the preceding published run's 20.6130906.
 This single comparison does not establish a causal or whole-suite speedup.
 Both runs retain 84 cases, 180 pointer presentation gates, 268 owned key pairs
 and the same source-state expectations. Fresh published full verification
-under the unchanged 360-second limit remains required.
+under the then-current 360-second limit remained required. Current full-suite
+validation uses the coverage-scaled watchdog above.
 
 The published candidate's full run stops at the Tooltip geometry assertion
 after 323 captures (`artifacts/smoke-chart-readiness-validated-full`). A
@@ -110,3 +130,57 @@ to `win-x64-rejected-bitmap-reuse-prototype` beside the usual primary Release
 output. Use the clean checkout's executable until the primary output is
 rebuilt. The exact generated-output location and preserved assembly hash
 are recorded in `artifacts/bitmap-reuse-prototype-location.json`.
+
+## PNG persistence boundary
+
+Every direct `SavePngAsync` caller awaits its completion. Avatar,
+Dashboard Grid/Section, Input reading-direction and Skeleton helpers own
+their captured pixel arrays; the generic bitmap and screen-capture paths
+also finish reading pixels before saving. Several fixtures immediately
+open the saved PNG for pixel checks. Their file-completion contract stays
+required.
+
+`CapturePersistence.json` freezes four deterministic native inputs and their
+PNG/RGBA output before any worker change. The existing `brush-alpha` mode
+now verifies them and checks that a failed write propagates. The separate
+verifier decodes the actual PNGs and checks all bytes without masks or
+tolerance. These images add no captures to the measured full sequence.
+
+An experiment moves the existing Windows alpha conversion and unchanged
+PNG encoder onto a worker, then still awaits the completed file write.
+It uses no pending-write queue and takes no UI object onto the worker.
+Microsoft documents SoftwareBitmap as usable from both threading models;
+the actual runtime regression, rather than that metadata alone, must prove
+unchanged output. See the [SoftwareBitmap contract](https://learn.microsoft.com/en-us/uwp/api/windows.graphics.imaging.softwarebitmap?view=winrt-26100).
+All four native PNG/RGBA references, immediate reads and write-error checks
+pass, but neither Pie/Donut nor Input shows a saving-cost improvement.
+The worker is removed; `artifacts/png-worker-candidate-decision.json`
+retains the comparison and `artifacts/png-worker-rejected.patch` its source.
+
+Before that candidate was applied, the new baseline Input run at
+`artifacts/smoke-capture-persistence-baseline-input` fails the unchanged
+cross-editor brush assertion. It reaches no screen capture, and the PNG
+helper source is still unchanged. The failure is retained. A failure-only
+record now captures the other editor's before/after visual state, colors,
+brush identities and actual cursor; its original assertion remains intact.
+
+The independent pre-change Pie/Donut run passes in 17.507 seconds. Its
+twenty screen captures spend 540.1 ms in BitBlt, 352.6 ms flushing desktop
+composition, 10.6 ms reading pixels and 2.7 ms allocating GDI resources.
+The measured copy dominates readback/allocation, so replacing allocation
+alone is not established as a useful optimization.
+
+A subsequent direct-DIB target experiment passes the runtime and persistence
+checks but takes 1.123 seconds for the same twenty screen captures, versus
+1.162 before. That small single comparison does not establish a useful
+copy-cost improvement. The direct-DIB change is removed; the finer GDI
+timing scopes remain. Its raw profiles, pixel comparison and source patch
+remain under the `artifacts/capture-dib-` prefix.
+The comparison also records 13,212 changed pixels across all twenty-two
+Pie/Donut PNGs; no frame is byte-identical. This does not establish whether
+the capture target or a separate raster variation caused those differences.
+It is not an exact-raster pass.
+
+The persistence boundary is registered in both native CI jobs, including
+the independent PNG decoder audit. Native ARM64 execution remains pending
+while Actions are paused. Push/manual triggers are unchanged by that check.

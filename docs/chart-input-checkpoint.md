@@ -1,5 +1,10 @@
 # Chart input and overlay validation checkpoint
 
+This is the historical `ab2af53`/`ad40db5` checkpoint. Its six-minute
+watchdog instructions below describe that earlier workload. The current
+coverage-scaled watchdog is documented in [architecture](architecture.md)
+and [runtime diagnostics](catalog-readiness.md).
+
 The changes remain local. Push-triggered Actions remain paused; no workflow
 was dispatched and no commit was pushed for this checkpoint. Remote main is
 `6bb1a3756bd1a136429637d2a2de2566ac925e1f`, with zero runs recorded for that

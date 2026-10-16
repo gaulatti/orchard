@@ -18,7 +18,10 @@ if ($ClientSize) {
     $sizeArgument = " --smoke-client-size $($ClientSize[0]) $($ClientSize[1])"
 }
 $process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument$sizeArgument" -PassThru -WindowStyle Hidden
-if (-not $process.WaitForExit(360000)) {
+# The full sequence includes 240 additional required chart pointer actions.
+# This watchdog bounds the suite; per-state/input deadlines remain in the app.
+$timeoutMilliseconds = if ($Component -eq 'all') { 480000 } else { 360000 }
+if (-not $process.WaitForExit($timeoutMilliseconds)) {
     $process.Kill()
     throw 'Catalog runtime check timed out.'
 }
