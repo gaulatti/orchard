@@ -1538,9 +1538,10 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete exact source glyph/shape/alpha/shadow raster and live-theme/resource-override matrices",
+        "Complete interactive-icon/focus, arbitrary-content/template and lifecycle edge matrices",
+        "Verify complete text/display scaling, Windows contrast and Narrator behavior",
+        "Verify native ARM64 runtime and final independent consumer/platform acceptance"
       ]
     },
     {
@@ -1590,7 +1591,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete source text baselines, glyph/shape rasterization and alpha paint (66/72 exact images differ)",
+        "Complete source wrapped-line detail, glyph/shape rasterization and alpha paint (66/72 exact images differ; all396 scalar first-line baselines pass)",
         "Complete arbitrary-content/template and resource-override matrices, real scaling, contrast and Narrator checks",
         "Verify native ARM64 runtime and final component acceptance"
       ]

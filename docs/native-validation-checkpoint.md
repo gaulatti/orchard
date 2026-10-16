@@ -1,6 +1,59 @@
 # Current native validation checkpoint
 
-## DataList first-line baseline checkpoint
+## Timeline initial contract checkpoint
+
+Current library/catalog source: `1f85bbc263c112bd26a5ddbbba080eb46be01a7a`.
+The clean published full x64 sequence passes in **447.8767607 seconds**, retaining
+all **1,104 previous capture names**, **174 protected glyph hashes** and adding
+**24 Timeline captures**, for **1,128** total. Its audit verifies 2,006 pointer
+moves/presentation gates, 1,752 owned key pairs and 72 physical clicks. Maximum
+gate: 231.9245 ms under the unchanged two-second deadline. The full watchdog
+remains eight minutes. Collection performance remains a separate requirement.
+
+The published Timeline matrix passes **72 cases** and **534 library-owned
+first-line baselines** across both themes and widths 639, 640 and 1024.
+Maximum geometry error is 0.021729 DIP and baseline error is 0.000021 DIP at
+the original 0.05-DIP bound. All 66 nonempty screen crops match their retained
+client pixels exactly. Four negative audits reject fractional coordinates,
+an unrestored parent, a shifted baseline and wrong client pixels. Native
+pointer/Space/Enter actions, keyed updates, default/explicit status, original
+icon content/templates, signed zero, mutable shadow brushes, template/lifecycle
+and actual breakpoint resizing pass. See [the source contract](timeline.md).
+
+Both clean architecture builds/publications, **112 unit tests** and token
+generation pass. A fresh independent x64 package consumer passes both themes
+and native Timeline actions. The ARM64 consumer builds only. Both isolated
+caches are removed. All 324 Stepper and 132 wide DataList baselines retain
+their existing bounds. Exact Timeline images remain open: **66/72 differ**,
+with **438,044 pixels** and **34,943,600 absolute RGBA error**, using zero
+tolerance, no masks and no resampling. The published replay reproduces the
+prototype totals exactly. Complete focus/content/override/lifecycle matrices,
+scaling, contrast, Narrator, native ARM64, the remaining components and both
+compositions remain open. Inventory: **56 in progress, 56 pending, zero accepted**.
+
+Evidence is in `artifacts/timeline-release-matrix/{1024,639,640}`,
+`artifacts/smoke-timeline-release-full`,
+`artifacts/timeline-release-{1024,639,640}-audit.json`,
+`artifacts/timeline-release-{full-audit,full-source-audit,full-timing,pixel-audit,negative-audit,archives}.json`
+and `artifacts/package-consumer-timeline-{x64,arm64}`.
+`artifacts/timeline-release-binary-correspondence.json` verifies identical
+library bytes in the package, x64 catalog and both package consumers:
+
+- Library SHA-256: `ee9a23888ae6c350bfb5143891f7248a38c1fe5c990492f8cfe354d1e25d3e75`.
+- Package SHA-256: `0408790175fb80d6b77d9951342a161439de40a08fdee8e8d5cf0b32424f6505`.
+- x64 ZIP: 532 entries, SHA-256 `e1aceb990e62f0fc632767958c841c2912b7f01eddddb082d6f132717d0faf21`.
+- ARM64 ZIP: 528 entries, SHA-256 `f0b34a96be9a82d37fea469cffe7adc01d71781f98d49c68733d1e8fe4c77433`.
+
+Both ZIPs match every published entry. The separately built ARM64 library
+matches its clean architecture build, with SHA-256
+`af8c50e335635328a2a3a3789ec15799c6ef0a495cc040c37a00f49426d74616`.
+Its PE bytes differ from the portable package. The architecture audit verifies
+identical signatures and IL instruction records for all 5,739 methods, including
+93 Timeline methods, plus identical managed resources. Native ARM64 runtime
+remains unverified. Push-triggered Actions remain paused; no hosted result
+is claimed. The public wiki remains unavailable. The goal stays active.
+
+## Previous DataList first-line baseline checkpoint
 
 Current library/catalog source: `82d7d34137d2c76080a33c870e7e2a8a5b30c69d`.
 All **396 scalar first-line baselines** pass across **72 cases**, both themes

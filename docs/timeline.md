@@ -121,3 +121,24 @@ and wrapping scalar icons. These checks establish the current implementation
 boundary, while clean release/package/full-suite and final component acceptance
 remain separate evidence. The public wiki remains unavailable; documentation
 is maintained in this repository.
+
+The clean `1f85bbc` published matrix at
+`artifacts/timeline-release-matrix/{1024,639,640}` reproduces all 534 baselines,
+66 viewport crops and the exact initial image totals. The full published x64
+sequence passes in 447.8767607 seconds with 1,128 captures, preserving all 1,104
+previous names and 174 protected glyph hashes. Its audit verifies 2,006 pointer
+moves/presentation gates, 1,752 owned key pairs and 72 physical clicks. Maximum
+gate: 231.9245 ms under the unchanged two-second deadline. All 324 Stepper and
+132 wide DataList baselines remain within their original bounds. The full
+watchdog stays eight minutes. Collection performance is a separate acceptance
+requirement. Complete interactive-icon/focus, arbitrary-content/template,
+live-theme/resource-override, scaling, contrast/Narrator and native ARM64
+matrices remain open.
+
+The fresh independent `artifacts/package-consumer-timeline-x64` verifies both
+themes, original native icon activation, keyed updates and ordinal status.
+The ARM64 package consumer has build-only evidence. Both temporary consumer
+caches are removed. Versioned catalog ZIPs match every published file; the
+[current checkpoint](native-validation-checkpoint.md) records separate package,
+archive, architecture and runtime hashes/scope. Push-triggered Actions remain
+paused and the component remains in progress.

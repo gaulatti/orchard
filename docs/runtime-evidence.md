@@ -2148,3 +2148,25 @@ and rejects mismatched report modes. See the
 [current checkpoint](native-validation-checkpoint.md) for separate binary,
 archive and platform evidence. Inventory remains 55 in progress, 57 pending,
 zero accepted. Push-triggered Actions remain paused; the goal stays active.
+
+## Timeline implementation checkpoint
+
+Source `1f85bbc` adds the frozen Timeline contract, original icon content and
+templates, default/explicit statuses, responsive timestamps and keyed metadata.
+The published x64 matrix passes 72 cases and 534 scalar/ordinal baselines at
+the original 0.05-DIP bound. It verifies 66 exact crops of retained foreground
+client images, restoration and four rejected invalid-input cases. All 112 unit
+tests, token generation and clean x64/ARM64 builds pass. ARM64 package/runtime
+scope remains build-only. The fresh independent x64 package consumer passes
+both themes and original native Timeline actions; both consumer caches are removed.
+
+The complete published x64 sequence passes 1,128 captures in 447.8767607 seconds,
+retaining all 1,104 previous names and 174 protected glyph hashes. The audit
+verifies 2,006 pointer moves/presentation gates, 1,752 owned key pairs and
+72 physical clicks, plus the unchanged Stepper/DataList baseline checks. Exact
+Timeline images still differ in 66/72 cases: 438,044 pixels and 34,943,600 RGBA
+error with zero tolerance/masks and no resampling. Interactive-icon/focus,
+arbitrary-content/template, complete override/scaling, contrast/Narrator and
+native ARM64 matrices remain open. Inventory is now 56 in progress, 56 pending,
+zero accepted. See [the current checkpoint](native-validation-checkpoint.md)
+for package and release evidence. Push-triggered Actions stay paused.
