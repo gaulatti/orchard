@@ -55,6 +55,7 @@ public sealed partial class MainWindow : Window
         Directory.CreateDirectory(folder);
         try
         {
+            CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
             else if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
             else if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
@@ -483,12 +484,14 @@ public sealed partial class MainWindow : Window
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "contrast", environment = RuntimeEnvironment() }));
             }
             else await RunSmokeAsync(folder);
+            CatalogRuntimeProfile.Finish(true);
             Environment.Exit(0);
         }
         catch (Exception error)
         {
             await File.WriteAllTextAsync(Path.Combine(folder, "result.json"),
                 JsonSerializer.Serialize(new { passed = false, error = error.ToString(), environment = RuntimeEnvironment() }, new JsonSerializerOptions { WriteIndented = true }));
+            CatalogRuntimeProfile.Finish(false);
             Environment.Exit(1);
         }
     }
@@ -887,10 +890,12 @@ public sealed partial class MainWindow : Window
     private Task<SizeInt32> CaptureAsync(string path) => CaptureElementAsync(CatalogRoot, path);
     internal static async Task<SizeInt32> CaptureElementAsync(UIElement visual, string path)
     {
+        using var capture = CatalogRuntimeProfile.Measure("bitmap.total");
         var bitmap = new RenderTargetBitmap();
-        await bitmap.RenderAsync(visual);
+        using (CatalogRuntimeProfile.Measure("bitmap.render")) await bitmap.RenderAsync(visual);
         Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "The catalog did not render.");
-        var pixels = await bitmap.GetPixelsAsync();
+        Windows.Storage.Streams.IBuffer pixels;
+        using (CatalogRuntimeProfile.Measure("bitmap.read")) pixels = await bitmap.GetPixelsAsync();
         var bytes = new byte[checked((int)pixels.Length)];
         using (var reader = DataReader.FromBuffer(pixels)) reader.ReadBytes(bytes);
         Require(bytes.Where((_, offset) => offset % 4 != 3).Distinct().Take(9).Count() > 8, "The render is blank.");
@@ -900,13 +905,18 @@ public sealed partial class MainWindow : Window
 
     internal static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
     {
+        using var save = CatalogRuntimeProfile.Measure("png.total");
         // Use Windows' own conversion, including its premultiplied-alpha
         // rounding, then encode losslessly with faster Deflate compression.
-        using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
-        using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
         var rgba = new byte[pixels.Length];
-        straight.CopyToBuffer(rgba.AsBuffer());
-        var output = NativeCapturePng.Encode(rgba, width, height);
-        await File.WriteAllBytesAsync(path, output);
+        using (CatalogRuntimeProfile.Measure("png.convert"))
+        {
+            using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
+            using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
+            straight.CopyToBuffer(rgba.AsBuffer());
+        }
+        byte[] output;
+        using (CatalogRuntimeProfile.Measure("png.encode")) output = NativeCapturePng.Encode(rgba, width, height);
+        using (CatalogRuntimeProfile.Measure("png.write")) await File.WriteAllBytesAsync(path, output);
     }
 }

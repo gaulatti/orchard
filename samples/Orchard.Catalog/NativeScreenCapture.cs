@@ -121,6 +121,7 @@ internal static class NativeScreenCapture
 
     internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
     {
+        using var capture = CatalogRuntimeProfile.Measure("screen.total");
         GetWindowThreadProcessId(window, out var process);
         if (process != Environment.ProcessId || GetForegroundWindow() != window)
             throw new InvalidOperationException("Composed capture requires the catalog's own foreground window.");
@@ -137,7 +138,8 @@ internal static class NativeScreenCapture
             new ScreenPoint(origin.X + width - 2, origin.Y + height - 2), new ScreenPoint(origin.X + width / 2, origin.Y + height / 2) })
             if (GetAncestor(WindowFromPoint(point), 2) != window)
                 throw new InvalidOperationException("Catalog client is occluded or outside the interactive screen.");
-        if (DwmFlush() < 0) throw new InvalidOperationException("Desktop composition did not flush before capture.");
+        using (CatalogRuntimeProfile.Measure("screen.flush"))
+            if (DwmFlush() < 0) throw new InvalidOperationException("Desktop composition did not flush before capture.");
 
         var screen = GetDC(IntPtr.Zero);
         var memory = IntPtr.Zero;

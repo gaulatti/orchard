@@ -105,6 +105,8 @@ public sealed partial class MainWindow
 
     private async Task SelectFixtureAsync(FrameworkElement fixture)
     {
+        CatalogRuntimeProfile.EnterFixture(fixture.GetType().Name, CatalogRoot.RequestedTheme.ToString());
+        using var selection = CatalogRuntimeProfile.Measure("navigation.mount");
         ShowFixture(fixture);
         CatalogRoot.UpdateLayout();
         var elapsed = System.Diagnostics.Stopwatch.StartNew();
