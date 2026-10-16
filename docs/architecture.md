@@ -11,6 +11,25 @@ push validation, add `push: { branches: [main] }` under the workflow's `on` map.
 
 ## Platform ownership
 
+The shared chart renderer reconciles lifecycle events with current native
+focus. A quick reparent can route `GotFocus` before `Loaded`, and an old
+`LostFocus` can arrive after focus was reacquired. `Loaded` clears the previous
+connection's interaction state, then initializes the current focus owner before
+rendering. Blur notifications act only when `FocusState` is actually unfocused.
+The existing late-`Unloaded` guard protects a newly mounted connection's
+observers/effects. Data identity, real blur, remembered-key semantics, pointer
+priority and genuine-unload resets remain governed by their existing contracts.
+
+Focused `-Component chart-load-focus` checks Bar's category channel and Sankey's
+node channel in both themes. It requests native focus during Loading and after
+immediate reparent, records actual event order and verifies first-record UIA
+inspection plus owned physical Right navigation. Genuine blur is checked too.
+`scripts/verify-chart-load-focus.mjs --native <run> --output <audit.json>` audits
+all 24 cases and input ownership. Optional `--before <old-run>` verifies the
+captured 12 failing eager cases. This check uses the unchanged two-second
+presentation/input deadlines. The workflow registers it for both runtime
+architectures; push triggers remain paused.
+
 Native input sessions restore the original cursor position through one absolute
 virtual-desktop SendInput move, using the same coordinate calculation as fixture
 movement. SetCursorPos moved the Win32 cursor without updating WinUI's cached

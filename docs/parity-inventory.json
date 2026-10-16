@@ -598,7 +598,7 @@
       ],
       "windowsImplementation": ["src/Orchard/Charts/BleeckerBarChart.cs", "src/Orchard/Charts/BleeckerBarGeometry.cs", "src/Orchard/Charts/BleeckerLineChart.Bars.cs", "src/Orchard/Themes/BarChart.xaml", "src/Orchard/Themes/BarChartPalette.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/BarChartsFixture.xaml"],
-      "regressionTests": ["samples/Orchard.Catalog/BarChartsFixture.xaml.cs", "samples/Orchard.Catalog/BarChartsFixture.Mutation.cs", "tests/Reference/BarChartLayout.json", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["samples/Orchard.Catalog/BarChartsFixture.xaml.cs", "samples/Orchard.Catalog/BarChartsFixture.Mutation.cs", "tests/Reference/BarChartLayout.json", "tests/PackageConsumer/MainWindow.xaml.cs", "scripts/smoke-catalog.ps1 -Component chart-load-focus", "scripts/verify-chart-load-focus.mjs"],
       "status": "in-progress",
       "remainingGaps": [
         "Complete bar/glyph/legend/tooltip raster and normal/interrupted motion",
@@ -947,7 +947,7 @@
       ],
       "windowsImplementation": ["src/Orchard/Charts/BleeckerSankeyChart.cs", "src/Orchard/Charts/BleeckerSankeyChartData.cs", "src/Orchard/Charts/BleeckerSankeyGeometry.cs", "src/Orchard/Charts/BleeckerSankeyInteraction.cs", "src/Orchard/Charts/BleeckerLineChart.Sankey.cs", "src/Orchard/Themes/SankeyChart.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/SankeyChartsFixture.xaml"],
-      "regressionTests": ["samples/Orchard.Catalog/SankeyChartsFixture.xaml.cs", "samples/Orchard.Catalog/SankeyChartsFixture.Mutation.cs", "tests/PackageConsumer/MainWindow.SankeyChart.cs", "tests/Orchard.Tests/SankeyGeometryTests.cs", "tests/Orchard.Tests/SankeyInteractionTests.cs", "tests/Reference/SankeyChartLayout.json"],
+      "regressionTests": ["samples/Orchard.Catalog/SankeyChartsFixture.xaml.cs", "samples/Orchard.Catalog/SankeyChartsFixture.Mutation.cs", "tests/PackageConsumer/MainWindow.SankeyChart.cs", "tests/Orchard.Tests/SankeyGeometryTests.cs", "tests/Orchard.Tests/SankeyInteractionTests.cs", "tests/Reference/SankeyChartLayout.json", "scripts/smoke-catalog.ps1 -Component chart-load-focus", "scripts/verify-chart-load-focus.mjs"],
       "status": "in-progress",
       "remainingGaps": [
         "Complete source raster/motion, data/override/RTL and measured collection-performance coverage",

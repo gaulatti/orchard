@@ -57,6 +57,7 @@ public sealed partial class MainWindow : Window
         {
             CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            else if (args.Contains("--smoke-chart-load-focus")) await RunChartLoadFocusAsync(folder);
             else if (args.Contains("--smoke-data-list"))
             {
                 using var viewportInput = new NativeInputSession(CatalogRoot.XamlRoot, folder, "data-list-viewport");

@@ -1,15 +1,34 @@
 # Bar Chart source contract and evidence
 
-The DataList release's independent consumer exposes an intermittent remount/focus
-failure at the initial Bar Chart inspection assertion. The failed runtime
-`artifacts/package-consumer-data-list-x64-v2/runtime.json` records keyboard
-focus, valid original data, empty inspection text and no pointer events.
-Additional lifecycle/focus timestamps are retained in the consumer harness;
-the instrumented v3 attempt passes both themes, which does not resolve the
-earlier failures. Event ordering around `Loaded` and the focus-state reset
-needs a deterministic native boundary regression before changing the control
-or adding a readiness wait. Both failures and removed-cache reports remain
-available. This is an open acceptance gap.
+The DataList independent consumer exposed a shared remount/focus race. Its
+failed `artifacts/package-consumer-data-list-x64-v2/runtime.json` records actual
+keyboard focus, intact original data, empty inspection and no pointer events.
+An instrumented retry passed without a repair; that historical pass is not
+evidence that the earlier defect was resolved.
+
+The native `chart-load-focus` fixture distinguishes two real event orders.
+Requesting focus during `Loading` normally routes `GotFocus` after `Loaded`.
+Immediate remove/reinsert can instead route `GotFocus` first; the old `Loaded`
+reset then erased inspection while the chart still owned focus. The unchanged
+control fails all 12 eager-reparent cases across Bar/Sankey and both themes,
+losing both initial inspection and the next-record Right result. Those 24
+assertion failures remain at `artifacts/smoke-chart-load-focus-before-v2`.
+
+`BleeckerLineChart` now resets the old connection and initializes inspection
+from its actual `FocusState` before rendering. A second captured event order
+delivers an old `LostFocus` after focus has returned; the blur handler ignores
+that stale notification while the control is focused. Genuine blur still hides
+inspection and retains the source keyboard index; genuine unload still resets
+both channels. The initial fix's one remaining late-blur failure is preserved
+at `artifacts/smoke-chart-load-focus-fixed`.
+
+`artifacts/smoke-chart-load-focus-fixed-v2` passes all 24 focused cases, both
+event orders, genuine blur and 24 physical owned Right pairs. The independent
+`scripts/verify-chart-load-focus.mjs` audits the traces and original failures.
+No data, geometry, source navigation semantics, deadline, timer or public API
+changes. Full release/package and native ARM64 evidence must retain their own
+source revisions and scope; this focus check does not establish final visual
+or component acceptance.
 
 Independent package mutation checks subsequently exposed a shared chart
 remount defect: a delayed `Unloaded` ran after the new `Loaded` while the

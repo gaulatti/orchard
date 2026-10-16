@@ -398,22 +398,15 @@ public sealed partial class MainWindow : Window
     private async Task VerifyBarChartAsync()
     {
         var lifecycle = new List<object>();
-        var lifecycleClock = System.Diagnostics.Stopwatch.StartNew();
         object Snapshot(BleeckerLineChart item, string kind) {
             var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
             var observed = typeof(BleeckerLineChart).GetField("observedData", flags)!.GetValue(item);
-            var interaction = typeof(BleeckerLineChart).GetField("interaction", flags)!.GetValue(item)!;
-            return new { kind, milliseconds = lifecycleClock.Elapsed.TotalMilliseconds, item.IsLoaded, focusState = item.FocusState.ToString(),
-                focused = ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), item),
-                interaction = interaction.GetType().GetFields(flags).ToDictionary(field => field.Name, field => field.GetValue(interaction)),
-                sameData = ReferenceEquals(item.Data, PackageBarChart.Data), observedNull = observed is null, observedSame = ReferenceEquals(observed, item.Data) };
+            return new { kind, item.IsLoaded, sameData = ReferenceEquals(item.Data, PackageBarChart.Data), observedNull = observed is null, observedSame = ReferenceEquals(observed, item.Data) };
         }
         void Trace(BleeckerLineChart item) {
             lifecycle.Add(Snapshot(item, "attach"));
             item.Loaded += (_, _) => lifecycle.Add(Snapshot(item, "loaded"));
             item.Unloaded += (_, _) => lifecycle.Add(Snapshot(item, "unloaded"));
-            item.GotFocus += (_, _) => lifecycle.Add(Snapshot(item, "got-focus"));
-            item.LostFocus += (_, _) => lifecycle.Add(Snapshot(item, "lost-focus"));
             item.RegisterPropertyChangedCallback(BleeckerLineChart.DataProperty, (_, _) => lifecycle.Add(Snapshot(item, "data")));
             item.RegisterPropertyChangedCallback(BleeckerLineChart.SeriesProperty, (_, _) => lifecycle.Add(Snapshot(item, "series")));
         }
