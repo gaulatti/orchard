@@ -1961,3 +1961,22 @@ timing observations and source/native owner records are documented in the
 [rapid key-pair replay](data-table-pagination-reference.md#rapid-native-key-pair-replay).
 The validated library/package checkpoint is unchanged. Push-triggered Actions
 remain paused; the new regression is registered for future PR/manual runs.
+
+## Column Toggle artifact checkpoint
+
+Clean source `32e3200` builds both architectures without warnings/errors and
+passes 91 regressions and the token check. Its published x64 catalog passes
+all 1,032 captures in 356.0196733 seconds under the unchanged 360-second limit,
+preserving all 1,030 previous names and all 174 protected glyph hashes. Input
+and presentation audits report no failed gates. The actual published focused
+replay passes all 132 states, 44 key pairs and 48 pointer boundaries; raw
+source/native focus and pixel differences remain open.
+
+A fresh isolated x64 NuGet consumer passes both themes through original
+visibility actions and visible rows, with disabled rejection and no observers
+after unload. ARM64 builds only; its current runtime is unverified. Both
+consumer caches are removed and the fresh build worktree is archived. Package
+hashes, source correspondence, retained failures and artifacts are recorded in
+the [Column Toggle checkpoint](data-table-column-toggle.md#validated-artifact-checkpoint).
+The inventory remains 52 in progress, 60 pending and zero accepted. The public
+wiki remains unavailable. Push-triggered Actions remain paused.

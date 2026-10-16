@@ -93,7 +93,7 @@ pairs, four complete Shift/Tab modifier sequences and 48 pointer
 presentation/move/click boundaries. Exact popup pixel comparisons still
 differ across all 74 open-popup comparisons (292,724 differing pixels).
 Full raster, theme/override/motion, Narrator,
-contrast, scaling, performance, current package/full-catalog and ARM64 runtime
+contrast, scaling, performance and ARM64 runtime
 acceptance remain open.
 
 Reproduce the focused native replay with:
@@ -113,3 +113,60 @@ or platform parity.
 
 The public wiki is unavailable, so this contract stays in the repository.
 There is no backend or Prometheus surface. Push-triggered Actions remain paused.
+
+## Validated artifact checkpoint
+
+Clean source `32e32003e4fbbc5466acfdf9b367ea2abe4a7725` builds x64 and ARM64
+without warnings/errors and passes all 91 regressions. The token check passes.
+Published files match all 532 files in the fresh x64 build byte for byte. The
+package and catalog contain the same Orchard assembly, SHA-256
+`408bba0c9104fb943e207cf983d0518391938283567cf56a16d1e3509edc875c`.
+The 0.1.0 NuGet package SHA-256 is
+`67bbef598788ea48d80c0434df354575b82b42261c09ece0219bc8b9abcd0a79`.
+
+The published focused replay passes all 132 states and 136 captures, 44 real
+key pairs, four Shift/Tab sequences and 48 pointer presentation/move/click
+boundaries. It also verifies disabled/stale-template rejection, original
+record identity, replacement, remount and final observer counts of zero.
+Four source-body/native-dialog focus differences remain explicit. All 74
+open-popup pixel comparisons differ (292,545 differing pixels); this is not
+visual acceptance. The earlier v10 comparison remains separate.
+
+The same published x64 catalog passes the full sequence in **356.0196733s**
+under the unchanged **360s** deadline, with **1,032 PNGs**. All 1,030 previous
+names remain present; the only additions are both-theme Column Toggle
+captures. All 174 protected Sunburst/Radial Bar glyph hashes remain unchanged.
+The audit retains 1,732 pointer gates/moves, 1,738 keys, 62 clicks, 28 tooltip
+presentation gates, 16 final presentation gates and 118 Toolbar source cases,
+with no failed input/presentation gates. The earlier unexplained Pie/Donut
+focus failure is still retained; this passing sequence does not establish a
+causal fix for it.
+
+Fresh isolated NuGet consumers compile for both architectures. The actual
+x64 consumer passes both themes: native/UIA actions retain original columns
+and row objects, two original visibility requests change visible cells,
+external visibility emits no request, disabled expansion is rejected, and
+unload leaves zero observers. ARM64 is build-only, with no runtime claim.
+Both temporary consumer caches are removed. The clean validation worktree is
+archived after preserving published artifacts in the primary workspace.
+
+Evidence and artifacts:
+
+- Catalog: `artifacts/catalog-column-toggle-validated` and
+  `artifacts/catalog-column-toggle-validated-arm64` (ARM64 runtime unverified).
+- Package: `artifacts/packages-column-toggle-validated/Gaulatti.Orchard.0.1.0.nupkg`.
+- Published focused run/audit: `artifacts/smoke-column-toggle-published` and
+  `artifacts/column-toggle-published-audit.json`.
+- Full run/audits: `artifacts/smoke-column-toggle-validated-full`,
+  `artifacts/column-toggle-validated-full-audit.json`,
+  `artifacts/column-toggle-validated-full-input-audit.json` and
+  `artifacts/column-toggle-validated-full-timing.json`.
+- Correspondence: `artifacts/column-toggle-published-correspondence.json`.
+- Consumers: `artifacts/package-consumer-column-toggle-validated` and
+  `artifacts/package-consumer-column-toggle-validated-arm64`.
+- Versioned catalog ZIP metadata: `artifacts/column-toggle-catalog-archives.json`.
+
+The fixed 112-entry inventory now contains 52 in-progress and 60 pending
+entries, with zero accepted components. No completion or platform parity is
+claimed by this artifact checkpoint. Push-triggered Actions remain paused;
+no workflow was dispatched for these validations.

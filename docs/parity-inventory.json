@@ -1325,7 +1325,7 @@
         "Exact raster, typography, focus and release-owner parity; source body/native dialog focus remains different after eligibility removal",
         "Complete hover/pressed/disabled, theme/override, motion and mutation matrix",
         "Narrator, contrast, text/display scaling and collection performance",
-        "Current independent NuGet/full-catalog artifact checkpoint and ARM64 runtime"
+        "Native ARM64 runtime acceptance; current x64 independent NuGet/full-catalog checkpoint passes"
       ]
     },
     {

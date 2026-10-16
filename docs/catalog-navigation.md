@@ -29,6 +29,13 @@ filter and consumer action. Focused `-Component data-table-toolbar` checks the
 118 normal source cases, actual native search/reset and lifecycle ownership.
 See [the API and remaining acceptance](data-table-toolbar-reference.md).
 
+**Data table columns** follows Data table pagination. Its nonmodal picker
+changes the original consumer's eligible column visibility and visible-cell
+projection. Focused `-Component data-table-column-toggle` replays 132 frozen
+states and tests original-column ownership, real input, popup geometry,
+disabled rejection, table/template replacement, unload and remount. See
+[the source contract and open parity gaps](data-table-column-toggle.md).
+
 Section Headers follows Page Headers. It covers optional eyebrow/summary text,
 empty titles, constrained widths, RTL and multilingual content. Focused
 `-Component section-header` uses the same navigation path and verifies the
