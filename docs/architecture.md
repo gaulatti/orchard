@@ -15,7 +15,9 @@ The shared chart renderer reconciles lifecycle events with current native
 focus. A quick reparent can route `GotFocus` before `Loaded`, and an old
 `LostFocus` can arrive after focus was reacquired. `Loaded` clears the previous
 connection's interaction state, then initializes the current focus owner before
-rendering. Blur notifications act only when `FocusState` is actually unfocused.
+rendering. `FocusManager.GetFocusedElement(XamlRoot)` supplies that owner,
+matching the normal input-ownership boundary. Stale focus/blur notifications
+cannot activate or deactivate a chart against the current keyboard target.
 The existing late-`Unloaded` guard protects a newly mounted connection's
 observers/effects. Data identity, real blur, remembered-key semantics, pointer
 priority and genuine-unload resets remain governed by their existing contracts.

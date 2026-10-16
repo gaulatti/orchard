@@ -45,11 +45,15 @@ public sealed partial class BleeckerLineChart : Control
         SizeChanged += (_, _) => QueueRender(); ActualThemeChanged += (_, _) => QueueRender();
         RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => QueueRender());
         PointerMoved += OnPointerMoved; PointerExited += (_, args) => {if(scatterMode&&args.IsGenerated)return;scatterPointerAnchor=null;SetSankeyHover(null);if(sankeyMode)sankeyInteraction.Exit();else interaction.Exit();PaintInteraction();};
-        GotFocus+=(_,_)=>{if(sankeyMode)sankeyInteraction.Focus();else interaction.Focus();PaintInteraction();};
+        GotFocus+=(_,_)=>
+        {
+            if (!OwnsNativeFocus()) return;
+            if(sankeyMode)sankeyInteraction.Focus();else interaction.Focus();PaintInteraction();
+        };
         LostFocus += (_, _) =>
         {
             // A prior connection's blur can arrive after focus was reacquired.
-            if (FocusState != FocusState.Unfocused) return;
+            if (OwnsNativeFocus()) return;
             if(sankeyMode)sankeyInteraction.Blur();else interaction.Blur();PaintInteraction();
         };
         KeyDown += OnKeyDown;
@@ -78,12 +82,13 @@ public sealed partial class BleeckerLineChart : Control
         interaction.Reset(); sankeyInteraction.Reset(); scatterPointerAnchor=null; sankeyHoveredLink=null; sankeyMotions.Clear();
         // A quick reparent can accept and route focus before Loaded. Reset the
         // old connection, then initialize inspection for its actual focus owner.
-        if (FocusState != FocusState.Unfocused)
+        if (OwnsNativeFocus())
         {
             if (sankeyMode) sankeyInteraction.Focus(); else interaction.Focus();
         }
         DisconnectTooltipEffects(); Observe(); Render(); ConnectTooltipEffects();
     }
+    private bool OwnsNativeFocus() => XamlRoot is { } root && ReferenceEquals(FocusManager.GetFocusedElement(root), this);
     private void OnChartUnloaded(object sender, RoutedEventArgs args)
     {
         // A quick reparent can deliver the previous Unloaded after the new

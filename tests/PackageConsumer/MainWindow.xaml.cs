@@ -431,8 +431,12 @@ public sealed partial class MainWindow : Window
         catch (Exception error)
         {
             GetCursorPos(out var pointer); var bounds = chart.TransformToVisual(Root).TransformBounds(new Windows.Foundation.Rect(0, 0, chart.ActualWidth, chart.ActualHeight));
+            var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+            var interaction = typeof(BleeckerLineChart).GetField("interaction", flags)!.GetValue(chart)!;
+            var state = interaction.GetType().GetFields(flags).ToDictionary(field => field.Name, field => field.GetValue(interaction));
             throw new InvalidOperationException(error.Message + " " + ChartObservation(chart) + " " + System.Text.Json.JsonSerializer.Serialize(new {
-                focus = ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), chart), bounds, pointer.X, pointer.Y, pointerTrace, lifecycle }), error);
+                focus = ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), chart), focusState = chart.FocusState.ToString(),
+                Root.ActualTheme, chart.ActualWidth, chart.ActualHeight, chart.IsEnabled, chart.IsTabStop, state, bounds, pointer.X, pointer.Y, pointerTrace, lifecycle }), error);
         }
         var keys=new[]{new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27}}},new ConsumerInput{Type=1,Data=new ConsumerInputData{Keyboard=new ConsumerKeyboard{VirtualKey=0x27,Flags=2}}}};
         Require(SendInput(2,keys,Marshal.SizeOf<ConsumerInput>())==2,"Packaged Bar Chart key did not enter native input.");

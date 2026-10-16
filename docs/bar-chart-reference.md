@@ -15,12 +15,19 @@ losing both initial inspection and the next-record Right result. Those 24
 assertion failures remain at `artifacts/smoke-chart-load-focus-before-v2`.
 
 `BleeckerLineChart` now resets the old connection and initializes inspection
-from its actual `FocusState` before rendering. A second captured event order
+from the current `FocusManager` owner before rendering. A second captured event order
 delivers an old `LostFocus` after focus has returned; the blur handler ignores
 that stale notification while the control is focused. Genuine blur still hides
 inspection and retains the source keyboard index; genuine unload still resets
 both channels. The initial fix's one remaining late-blur failure is preserved
-at `artifacts/smoke-chart-load-focus-fixed`.
+at `artifacts/smoke-chart-load-focus-fixed`. The first property-based guard still
+failed one of three cold runs of the same consumer binary, with index 0 retained
+but inactive while the current focus manager owned the chart. Reconciliation
+now uses the same current-owner identity as the native keyboard input path,
+and also rejects stale `GotFocus`. The consumer IL is held unchanged in
+`artifacts/package-chart-focus-owner-prototype`; swapping only the working-tree
+library passes three cold runs. This prototype is separate from fresh-package
+release verification.
 
 `artifacts/smoke-chart-load-focus-fixed-v2` passes all 24 focused cases, both
 event orders, genuine blur and 24 physical owned Right pairs. The independent

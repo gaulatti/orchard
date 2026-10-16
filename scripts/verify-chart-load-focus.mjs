@@ -15,6 +15,7 @@ assert(runtime.passed); assert.equal(runtime.component, 'chart-load-focus'); ass
 const report = await read(path.join(directory, 'chart-load-focus.json'));
 assert.equal(report.reports.length, 24); assert.deepEqual(report.failures, []);
 assert.equal(report.traces.length, 4);
+let staleBlurAfterLoaded = 0, genuineBlurChecks = 0;
 for (const profile of ['bar','sankey']) for (const theme of ['Light','Dark']) {
     const cases = report.reports.filter(c => c.profile === profile && c.theme === theme);
     assert.equal(cases.length, 6);
@@ -27,10 +28,17 @@ for (const profile of ['bar','sankey']) for (const theme of ['Light','Dark']) {
         const events = trace.filter(e => e.cycle === point.cycle);
         const got = events.findIndex(e => e.phase === 'got-focus'), loaded = events.findIndex(e => e.phase === 'loaded');
         assert(got >= 0 && loaded >= 0);
-        assert(events[loaded].focused && events[loaded].focusState === 'Keyboard');
+        assert(events[loaded].focused);
         assert.equal(point.gotFocusBeforeLoaded, got < loaded);
         assert.equal(events[loaded].help, point.expectedFirstHelp);
         assert(['eager-reparent', 'loading'].includes(point.mode));
+        for (const event of events.slice(loaded + 1)) if (event.phase === 'lost-focus' && event.focused) {
+            staleBlurAfterLoaded++; assert.notEqual(event.help, '');
+        }
+        if (point.mode === 'loading') {
+            const blur = events.find(e => e.phase === 'after-blur'); assert(blur);
+            assert(!blur.focused && blur.focusState === 'Unfocused'); assert.equal(blur.help, ''); genuineBlurChecks++;
+        }
     }
 }
 const input = await read(path.join(directory, 'chart-load-focus-desktop.json'));
@@ -54,6 +62,7 @@ const gotFocusBeforeLoadedCases = report.reports.filter(c => c.gotFocusBeforeLoa
 assert(gotFocusBeforeLoadedCases > 0 && gotFocusBeforeLoadedCases < 24, 'Both native event orders must be exercised.');
 const audit = {passed: true, cases: 24, eagerCases: 12, loadingCases: 12, eagerBeforeLoadedCases,
     gotFocusBeforeLoadedCases, loadedBeforeGotFocusCases: 24 - gotFocusBeforeLoadedCases,
+    staleBlurAfterLoaded, genuineBlurChecks,
     ownedRightPairs: input.keyActions.length, profiles: ['bar','sankey'], themes: ['Light','Dark'], negative,
     nativeComponentAccepted: false, verifierSha256: crypto.createHash('sha256').update(await fs.readFile(new URL(import.meta.url))).digest('hex')};
 await fs.writeFile(output, JSON.stringify(audit, null, 2) + '\n'); console.log(JSON.stringify(audit, null, 2));
