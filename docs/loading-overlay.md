@@ -87,17 +87,20 @@ Exact unmasked pixel comparison remains required. The native fixture uses real
 native underlying buttons, whose own rendering also differs from the browser
 fixture. The checkerboard phase matches the source. No masks, resampling or
 pixel tolerances are applied.
-The published 60-case comparison retains 3,041,308 differing pixels and
-38,254,621 total RGBA channel error across the complete source/native frames.
+The published 60-case comparison retains 3,041,325 differing pixels and
+38,288,089 total RGBA channel error across the complete source/native frames.
 Every frame differs. These totals include underlying fixture differences.
 
-Clean release source is `d4067eaedf0ab6c9c0889c07c8c9c2389df6f44f`.
+Clean release source is `5550af051b3a0e93d0eca804a0774f6d76838f10`.
 Both architecture builds and all 113 unit tests pass. The full x64 catalog
-passes 1,130 captures in 463.9042732 seconds, retaining every prior capture
+passes 1,130 captures in 453.355999 seconds, retaining every prior capture
 and 174 protected glyph hashes. The independent x64 NuGet consumer passes
 both themes, viewport coverage, its original keyboard action, consumer label,
 spinner automation and omitted-label layout. The ARM64 consumer builds only;
 both isolated caches are removed. See [release evidence](native-validation-checkpoint.md).
+The published 14-phase lifecycle and 22-frame scroll/transform audits pass.
+The original release DLL is rejected by the same Page-root regression: the
+actual button receives Tab focus while the root incorrectly remains a tab stop.
 
 Acceptance remains open: exact raster parity, complete resource replacement,
 arbitrary custom-template/cross-window lifecycle, scaling,

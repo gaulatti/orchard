@@ -2193,3 +2193,22 @@ differ. Complete visual/motion, lifecycle/theme/overrides, scaling, contrast,
 Narrator and native ARM64 acceptance remain open. Inventory is 57 in progress,
 55 pending, zero accepted. See [release evidence](native-validation-checkpoint.md).
 Push-triggered Actions remain paused; no hosted job was dispatched.
+
+## Loading Overlay root and presentation correction
+
+Source `104203e` fixes Page-root tab-stop restoration; `5550af0` pins the portal
+during render-only ancestor motion. The new native regression rejects the
+original release DLL on the exact Page-default failure, while 14 lifecycle
+phases and a 22-frame scroll/transform check pass with the published correction.
+The clean x64 full suite passes 1,130 captures in 453.355999 seconds, preserving
+all prior names and 174 glyph hashes. It verifies 2,006 pointer moves/gates,
+1,754 owned key pairs and 72 clicks. Existing Timeline, Stepper and DataList
+baseline checks remain green. All 113 unit tests, the 60-case source matrix,
+clean architecture builds and fresh x64 package consumer pass. ARM64 consumers
+build only; both temporary caches are removed. Exact visual/motion, complete
+custom/cross-window/resource behavior, scaling, contrast, Narrator and native
+ARM64 acceptance remain open. See [release evidence](native-validation-checkpoint.md).
+The previous 346-second full viewport failure remains retained; the corrected
+run passes without changing bounds or deadlines. Actions stay paused, and the
+code push has zero hosted runs. Inventory remains 57 started, 55 pending,
+zero accepted.

@@ -1,6 +1,64 @@
 # Current native validation checkpoint
 
-## Loading Overlay initial contract checkpoint
+## Loading Overlay root and viewport checkpoint
+
+Current library/catalog source: `5550af051b3a0e93d0eca804a0774f6d76838f10`.
+The Page-root correction preserves the original effective `IsTabStop` value
+when `ClearValue` exposes Control's true default. The same native regression
+rejects the original `d4067ea` release DLL and passes with the corrected library.
+The native focus trace retains the original/after-Tab property values.
+
+Fourteen published lifecycle phases verify open Light/Dark/Light changes,
+original mutable brushes, asymmetric geometry, actual resizing, reparenting,
+template replacement, detach/remount, stacked callers and root focus restoration.
+The scroll/transform probe verifies **22 observed frames**, including the first
+frame after ancestor render motion. The portal follows presentation while
+visible and commits changed anchors before rendering. Three lifecycle negative
+audits and four source negative audits reject invalid evidence. Complete custom
+templates, cross-window transfers and remaining acceptance still require work.
+
+The clean full x64 suite passes **1,130 captures in 453.355999 seconds**, preserving
+every prior capture and **174 protected glyph hashes**. Its audit verifies 2,006
+pointer moves/presentation gates, 1,754 owned key pairs and 72 actual clicks.
+Maximum gate time is 222.9579 ms under the same two-second deadline. Timeline,
+Stepper and DataList baseline gates retain their original bounds.
+
+All **113 unit tests**, token checks and clean x64/ARM64 publications pass. The
+published source matrix retains **60 cases and 42 baselines**. The independent
+x64 NuGet consumer passes both themes and native actions; ARM64 consumption
+is build-only. Both isolated caches are removed. Exact source/native frames
+still differ in all 60 cases: **3,041,325 pixels and 38,288,089 RGBA error**,
+including underlying native/browser button differences, without masks,
+resampling or pixel tolerances. Component acceptance remains open.
+
+Evidence is in `artifacts/loading-overlay-motion-release-matrix`,
+`artifacts/loading-overlay-motion-release-{lifecycle,scroll}`,
+`artifacts/smoke-loading-overlay-motion-release-full`,
+`artifacts/loading-overlay-motion-release-{full-audit,full-timing,pixel-audit,archives,binary-correspondence}.json`
+and `artifacts/loading-overlay-old-library-negative-audit.json`.
+
+- Portable library SHA-256: `d62d9ca4256cc2e25d7e8dbdd8f43de2d0da21bf1788665eff934313d62d912c`.
+- NuGet SHA-256: `5e2f63a39f0504c5f3eb7b4af611968cc2f6e9c7247d663e356b8b40e201fcb0`.
+- x64 ZIP: 532 entries, SHA-256 `a6dc2185ce4bdf432661d2961a3031a6cbc55ac672b0fe1b08ab43191932c5ba`.
+- ARM64 ZIP: 528 entries, SHA-256 `2c9f5106c946ecb02e7083c8d334f81d6beafe4bbf21aa3941ef724829dd1dad`.
+
+The package, x64 catalog and both consumers contain identical library bytes.
+The separately built ARM64 catalog library has SHA-256
+`3d6011bdd22a268dd0f5704e2b2f9a275f5e3f3266e620963c5c0e3e65244c44` and
+matches its clean architecture build. All 5,774 managed method signatures/IL
+records, including 27 overlay methods, and resources match across architectures.
+Both ZIPs match every published file. Native ARM64 execution remains unverified.
+
+The earlier full run at `104203e` failed the Dark catalog viewport check after
+346.405805 seconds; its evidence is preserved. Separate motion probes reproduce
+persistent and first-frame offsets; the published correction passes all frames
+and the full sequence. No bounds or deadlines were relaxed.
+Push-triggered Actions remain paused; GitHub reports **zero runs for `5550af0`**.
+Inventory remains **57 in progress, 55 pending, zero accepted**. Full visuals,
+motion, accessibility/scaling, the remaining components and compositions remain
+open. The public wiki remains unavailable; the goal stays active.
+
+## Previous Loading Overlay initial contract checkpoint
 
 Current library/catalog source: `d4067eaedf0ab6c9c0889c07c8c9c2389df6f44f`.
 The clean published full x64 sequence passes in **463.9042732 seconds** with
