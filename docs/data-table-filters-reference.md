@@ -316,6 +316,59 @@ node scripts/verify-data-table-filters-live-native.mjs `
   --source <source-output> --native <native-output> --output <audit.json>
 ```
 
-The original 276-state replay, shared Pagination input/scroll boundaries,
-clean architecture/package builds and the full published sequence must pass
-again before this change replaces the validated artifact checkpoint above.
+## Validated live-update artifacts
+
+Clean product source `65b1dcbd32206282e3e1e0ec3f3af09579f618ea` builds x64 and
+ARM64 without warnings/errors, passes **97 regressions** and the token check,
+and produces the current validated artifacts. The 532 published x64 files
+match the clean build; the package and published library match byte for byte.
+Product version: `0.1.0+65b1dcbd32206282e3e1e0ec3f3af09579f618ea`.
+
+All seven focused modes pass on the actual published catalog:
+
+- Original Filters: 276 states, 80 key pairs, 118 clicks and two modal outside
+  clicks. Its four browser-body/native-next-control focus differences remain
+  explicitly recorded by the existing desktop contract.
+- Live Filters: 140 states, 44 key pairs, 32 updates, 32 clicks and 142 captures.
+  All update focus identities and all post-initial settled roles match; no
+  refresh writes occur. Both themes pass live original-object notifications
+  and source/template/unload lifecycle checks.
+- Pagination: 132 producer states; 136 held-key states and 136 rapid-pair states
+  with 120 pairs each; 36 scroll states with 20 pairs and 12 pointer boundaries;
+  12 physical clicks and two exact Escape focus transfers. Its 154 recorded
+  layout differences and raw release-owner differences remain open.
+
+The focused outputs are listed in
+`artifacts/filters-live-release-focused-results.json`. Independent source,
+mutation, held, paired, scroll, pointer-input and Pagination-source audits use
+the `artifacts/filters-live-release-*-audit.json` prefix. The live image audit
+compares all 76 open regions with zero tolerance and no masks: all differ,
+totaling **137,845 pixels**. Focus success does not establish visual acceptance.
+
+The full `artifacts/smoke-filters-live-validated-full` run passes **1,034
+captures in 358.3080684 seconds** under the unchanged 360-second limit. It
+preserves all 1,032 earlier capture names and 174 protected glyph hashes.
+The strengthened `--filters-live` audit verifies the new keyed/live lifecycle
+gates in both themes. All 1,732 input presentation gates, 1,738 keys, 62 clicks,
+28 tooltip gates, 18 final presentation gates and 118 Toolbar source cases
+pass. Evidence: `artifacts/filters-live-validated-full-{audit,input-audit,timing}.json`.
+
+`artifacts/package-consumer-filters-live-validated` passes x64 runtime in both
+themes through the restored package alone. It verifies six physical key pairs
+per theme, three intended requests, no external/refresh/unchanged-selection
+write, retained native identities, current metadata through retained providers,
+removed-key rejection and zero observers after unload. The ARM64 consumer
+builds only. Both temporary package caches are removed.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `artifacts/packages-filters-live-validated/Gaulatti.Orchard.0.1.0.nupkg` | `03ebd600b2b26aec9fe3016bce3fba73ad62c5310161996862436247202b3127` |
+| Published/package `Orchard.dll` | `362378b946c07cfa78f31d7da5f28ee0ee5995e885c1e23caa084d6ca0ca437c` |
+| `artifacts/Orchard.Catalog.0.1.0-65b1dcb-x64.zip` | `87e6d4e8ab2245557a2ad17841bef1945a93598359f710d79b29c83f828eb3c6` |
+| `artifacts/Orchard.Catalog.0.1.0-65b1dcb-ARM64.zip` | `53c1ac16675ae6f9ab74e6992e3d4d6b8aa6bb8664b80ca379d3d8b6513f2e1e` |
+
+Both archives' files are verified against their published directories in
+`artifacts/filters-live-catalog-archives.json`. ARM64 runtime, full visual/motion,
+content/override/RTL, accessibility/scaling and performance acceptance remain
+open. The inventory stays **53 in progress, 59 pending, zero accepted**.
+Push-triggered Actions remain paused and the public wiki remains unavailable.

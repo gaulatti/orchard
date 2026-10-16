@@ -2018,3 +2018,22 @@ remaining acceptance are recorded in the
 [Filters checkpoint](data-table-filters-reference.md#verified-artifact-checkpoint).
 The inventory is 53 in progress, 59 pending and zero accepted. The public wiki
 remains unavailable, and push-triggered Actions remain paused.
+
+## Keyed Select live-update checkpoint
+
+Clean source `65b1dcb` passes x64/ARM64 builds, 97 regressions, token checks,
+all seven focused published Select/Pagination modes and fresh isolated package
+consumers (ARM64 build only). The additional 140-state/32-update source replay
+matches both settled focus and retained-node identity with no refresh write;
+original Label/Value/disabled notifications and removed-key providers pass.
+The unchanged 276-state Filters and Pagination boundaries still pass.
+
+The actual published full run passes 1,034 captures in 358.3080684 seconds,
+preserving all 1,032 preceding names and 174 protected glyph hashes. Native
+input/presentation audits have no failed gates, and strengthened full checks
+verify both-theme keyed/live lifecycle behavior. Current artifact hashes,
+consumer evidence, image/route gaps and source correspondence are in the
+[live-update artifact checkpoint](data-table-filters-reference.md#validated-live-update-artifacts).
+No component is fully accepted; the inventory remains 53 in progress and
+59 pending. The public wiki is unavailable and push-triggered Actions remain
+paused.
