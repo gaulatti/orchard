@@ -1,7 +1,7 @@
 param(
     [string]$Executable = 'artifacts/catalog/Orchard.Catalog.exe',
     [string]$Output = 'artifacts/smoke',
-    [ValidateSet('all', 'brush-alpha', 'presentation', 'input', 'tooltips', 'breadcrumb', 'contrast', 'contrast-entry', 'alerts', 'brand', 'bauhaus', 'switches', 'checkboxes', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart', 'bar-chart', 'area-chart', 'pie-chart', 'donut-chart', 'scatter-chart', 'scatter-chart-sequence', 'radar-chart', 'radar-chart-sequence', 'radial-bar-chart', 'radial-bar-chart-sequence', 'funnel-chart', 'funnel-chart-sequence', 'sankey-chart', 'sankey-chart-sequence', 'sunburst-chart', 'sunburst-chart-sequence', 'currency-chart', 'currency-chart-sequence', 'bar-chart-sequence', 'error-state', 'error-state-contrast', 'error-state-after-chart', 'page-header', 'section-header', 'dashboard-section', 'dashboard-grid', 'sparkline', 'stat-card', 'sidebar', 'stepper', 'stepper-motion', 'stepper-raster', 'data-list', 'timeline', 'loading-overlay', 'loading-overlay-lifecycle', 'loading-overlay-scroll', 'loading-overlay-accessibility', 'loading-overlay-template', 'loading-overlay-windows', 'data-table-filters', 'select-shadow', 'menus', 'data-table-filters-native', 'data-table-filters-live', 'data-table-column-toggle', 'data-table-pagination', 'data-table-pagination-source', 'data-table-pagination-input', 'data-table-pagination-keyboard', 'data-table-pagination-paired', 'data-table-pagination-scroll', 'data-table-toolbar', 'data-table-toolbar-interactions', 'data-table-toolbar-press', 'font-audit', 'chart-load-focus')][string]$Component = 'all',
+    [ValidateSet('all', 'brush-alpha', 'presentation', 'input', 'tooltips', 'breadcrumb', 'contrast', 'contrast-entry', 'alerts', 'brand', 'bauhaus', 'switches', 'checkboxes', 'activity', 'attention', 'notifications', 'chart-theme', 'line-chart', 'bar-chart', 'area-chart', 'pie-chart', 'donut-chart', 'scatter-chart', 'scatter-chart-sequence', 'radar-chart', 'radar-chart-sequence', 'radial-bar-chart', 'radial-bar-chart-sequence', 'funnel-chart', 'funnel-chart-sequence', 'sankey-chart', 'sankey-chart-sequence', 'sunburst-chart', 'sunburst-chart-sequence', 'currency-chart', 'currency-chart-sequence', 'bar-chart-sequence', 'error-state', 'error-state-contrast', 'error-state-after-chart', 'page-header', 'section-header', 'dashboard-section', 'dashboard-grid', 'sparkline', 'stat-card', 'sidebar', 'stepper', 'stepper-motion', 'stepper-raster', 'data-list', 'timeline', 'loading-overlay', 'loading-overlay-lifecycle', 'loading-overlay-scroll', 'loading-overlay-accessibility', 'loading-overlay-template', 'loading-overlay-windows', 'loading-overlay-contrast', 'loading-overlay-contrast-entry', 'data-table-filters', 'select-shadow', 'menus', 'data-table-filters-native', 'data-table-filters-live', 'data-table-column-toggle', 'data-table-pagination', 'data-table-pagination-source', 'data-table-pagination-input', 'data-table-pagination-keyboard', 'data-table-pagination-paired', 'data-table-pagination-scroll', 'data-table-toolbar', 'data-table-toolbar-interactions', 'data-table-toolbar-press', 'font-audit', 'chart-load-focus')][string]$Component = 'all',
     [ValidateSet('X64', 'Arm64')][string]$ExpectedArchitecture,
     [ValidateCount(2,2)][int[]]$ClientSize
 )
@@ -35,7 +35,13 @@ if ($ExpectedArchitecture -and ($report.environment.processArchitecture -ne $Exp
     $report.environment.osArchitecture -ne $ExpectedArchitecture)) {
     throw "Catalog requires $ExpectedArchitecture process and OS; reported process=$($report.environment.processArchitecture), OS=$($report.environment.osArchitecture)."
 }
-if ($Component -eq 'loading-overlay-scroll') {
+if ($Component -eq 'loading-overlay-contrast') {
+    foreach ($theme in @('Light','Dark')) {
+        foreach ($phase in @('before','active','restored')) {
+            if (-not (Test-Path "$outputPath/contrast-$phase-$theme.png")) { throw "Missing loading contrast $phase $theme render." }
+        }
+    }
+} elseif ($Component -eq 'loading-overlay-scroll') {
     if (-not (Test-Path "$outputPath/scroll-portal.png")) { throw 'Missing scroll portal render.' }
 } elseif ($Component -in @('contrast','error-state-contrast')) {
     foreach ($phase in @('before', 'active', 'restored')) {

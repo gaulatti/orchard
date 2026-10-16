@@ -101,6 +101,22 @@ both themes. This coverage uses one UI thread, one display scale and the
 documented template layout; cross-thread UI ownership and broader scaling,
 template and lifecycle combinations are not established by it.
 
+`-Component loading-overlay-contrast-entry -ClientSize 640,480` checks the
+contrast workflow's ordinary Light/Dark entry without changing Windows settings.
+It verifies default palette/effect state, original keyboard focus and solid
+label ink in actual native captures. Its verifier reports `entryOnly: true` and
+`actualContrastVerified: false`; entry evidence cannot satisfy the live gate.
+
+`-Component loading-overlay-contrast -ClientSize 640,480` is the prepared live
+transition gate. It uses the existing hosted-runner-only contrast helper,
+checks opaque Window/WindowText/Highlight paint and suppressed blur/shadows,
+reuses the established label-ink mask, exercises pointer/Space behavior, then
+requires the original Windows state, palette and effects to return. It is
+registered for both native CI jobs, with push-triggered Actions still paused.
+The local route continues to refuse mutation before native stages begin.
+Live execution of this new gate remains unverified. See the
+[contrast safety contract](contrast-verification.md).
+
 `tests/Reference/LoadingOverlay.json` records 60 unmodified browser cases across
 1024×900, 640×480 and 320×240 in both themes, plus six real keyboard/pointer
 interaction probes. `scripts/reference/capture-loading-overlay.cjs` reproduces

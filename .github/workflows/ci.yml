@@ -171,6 +171,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay two-window audit failed.' }
           node scripts/test-loading-overlay-windows-audit.mjs --native artifacts/loading-overlay-windows --output artifacts/loading-overlay-windows-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay two-window negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast-entry -ClientSize 640,480 -Output artifacts/loading-overlay-contrast-entry -ExpectedArchitecture X64
+          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay contrast-entry audit failed.' }
+          node scripts/test-loading-overlay-contrast-entry-audit.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay contrast-entry negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast -ClientSize 640,480 -Output artifacts/loading-overlay-contrast -ExpectedArchitecture X64
+          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast --output artifacts/loading-overlay-contrast/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay Windows contrast audit failed.' }
       - name: Verify chart focus across native load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
@@ -402,6 +410,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay two-window audit failed.' }
           node scripts/test-loading-overlay-windows-audit.mjs --native artifacts/loading-overlay-windows --output artifacts/loading-overlay-windows-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay two-window negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast-entry -ClientSize 640,480 -Output artifacts/loading-overlay-contrast-entry -ExpectedArchitecture Arm64
+          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay contrast-entry audit failed.' }
+          node scripts/test-loading-overlay-contrast-entry-audit.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay contrast-entry negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast -ClientSize 640,480 -Output artifacts/loading-overlay-contrast -ExpectedArchitecture Arm64
+          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast --output artifacts/loading-overlay-contrast/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay Windows contrast audit failed.' }
       - name: Verify native ARM64 chart focus across load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus

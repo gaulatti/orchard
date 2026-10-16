@@ -1702,7 +1702,10 @@
         "scripts/test-loading-overlay-template-audit.mjs",
         "samples/Orchard.Catalog/MainWindow.LoadingOverlayWindows.cs",
         "scripts/verify-loading-overlay-windows.mjs",
-        "scripts/test-loading-overlay-windows-audit.mjs"
+        "scripts/test-loading-overlay-windows-audit.mjs",
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlayContrast.cs",
+        "scripts/verify-loading-overlay-contrast.mjs",
+        "scripts/test-loading-overlay-contrast-entry-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

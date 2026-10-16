@@ -1,5 +1,22 @@
 # Windows contrast verification
 
+The new Loading Overlay gate is prepared as
+`scripts/smoke-catalog.ps1 -Component loading-overlay-contrast -ClientSize 640,480`.
+It preserves the hosted-runner-only mutation boundary and requires live system
+colors, opaque paint, blur/shadow suppression, established glyph pixels,
+pointer/Space behavior and state restoration in both themes. Its actual
+transition remains unverified while Actions are paused and a local exception
+has not been authorized.
+
+The separate `loading-overlay-contrast-entry` mode changes no Windows setting.
+Its Light/Dark native captures each establish 217 solid label pixels and retain
+ordinary blur/shadows and original keyboard focus. The live entry point's
+local refusal is verified before native stages, and Win32 flags/scheme remain
+identical before and afterward. Three negative audits reject missing baseline
+shadows, incorrect ordinary text color and an attempt to present entry-only
+evidence as a live transition. This is preparation evidence, not an actual
+Windows contrast pass.
+
 At `9303b06`, the full x64 contextual-help entry failure has a different cause
 from the historical popup occlusion below: the unobscured Breadcrumb target
 moves 42px after input chooses its coordinates. The native report retains the
