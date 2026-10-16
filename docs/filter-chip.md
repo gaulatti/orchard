@@ -46,6 +46,8 @@ use system colors; live contrast acceptance still requires runtime evidence.
 
 `FilterChipsFixture` registers read-only, removable, multilingual and wrapping
 examples. Its consumer handlers demonstrate explicit collection removal/reset.
+The demo queues collection changes after native event routing; the focused
+regression separately verifies synchronous consumer removal through UI Automation.
 The focused `filter-chip` smoke mode compares 40 cases across light/dark and
 320/640-DIP clients, including empty labels/values, long wrapping and empty groups.
 `scripts/reference/capture-filter-chip.cjs` renders the unchanged frozen source
@@ -60,6 +62,11 @@ names, lifecycle records and input receipts.
 ./scripts/smoke-catalog.ps1 -Component filter-chip -ClientSize 320,480 -Output artifacts/filter-chip-320
 node scripts/verify-filter-chip.mjs --native artifacts/filter-chip-320 --width 320 --output artifacts/filter-chip-320-audit.json
 ```
+
+`scripts/compare-filter-chip-pixels.mjs` compares all unmodified client pixels,
+validates source PNG hashes and records differences without masks or resampling.
+Its completed comparison is separate from acceptance; differing pixels keep
+`sourcePixelParityVerified` false.
 
 Acceptance remains in progress. Exact source/native raster parity, enabled-motion
 timelines and cancellation, complete typography/RTL/resource customization,

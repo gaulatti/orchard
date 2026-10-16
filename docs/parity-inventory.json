@@ -1803,7 +1803,8 @@
         "samples/Orchard.Catalog/MainWindow.FilterChips.cs",
         "tests/PackageConsumer/MainWindow.FilterChips.cs",
         "scripts/verify-filter-chip.mjs",
-        "scripts/test-filter-chip-audit.mjs"
+        "scripts/test-filter-chip-audit.mjs",
+        "scripts/compare-filter-chip-pixels.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

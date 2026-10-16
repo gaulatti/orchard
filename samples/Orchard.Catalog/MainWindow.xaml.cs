@@ -68,6 +68,16 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-loading-overlay-contrast")) await RunLoadingOverlayContrastAsync(folder, entryOnly: false);
             else if (args.Contains("--smoke-loading-overlay-contrast-entry")) await RunLoadingOverlayContrastAsync(folder, entryOnly: true);
             else if (args.Contains("--smoke-filter-chip")) await RunFilterChipsAsync(folder);
+            else if (args.Contains("--smoke-filter-chip-catalog"))
+            {
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                {
+                    CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(FilterChips);
+                    await FilterChips.VerifyAsync(folder,theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark);
+                    await CaptureFixtureAsync(FilterChips,Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="filter-chip-catalog",environment=RuntimeEnvironment()}));
+            }
             else if (args.Contains("--smoke-chart-load-focus")) await RunChartLoadFocusAsync(folder);
             else if (args.Contains("--smoke-timeline"))
             {

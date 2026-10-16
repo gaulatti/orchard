@@ -11,14 +11,14 @@ public sealed partial class FilterChipsFixture : UserControl
     public FilterChipsFixture()
     {
         InitializeComponent();Removable.RemoveRequested+=(_,_)=>Result.Text=$"Removal requested {++requested} times; this standalone chip stays mounted.";
-        Filters.ClearAllRequested+=(_,_)=>{Filters.Filters.Clear();Result.Text="The consumer cleared its collection.";};Reset();
+        Filters.ClearAllRequested+=(_,_)=>DispatcherQueue.TryEnqueue(()=>{Filters.Filters.Clear();Result.Text="The consumer cleared its collection.";});Reset();
     }
     private void RestoreFilters(object sender,RoutedEventArgs args)=>Reset();
     private void Reset()
     {
         Filters.Filters.Clear();
         foreach(var(label,value,remove)in new[]{("Status","Draft",true),("Desk","Culture",true),("Language","Português",false)})
-        {var item=new BleeckerFilter(label,value);if(remove)item.RemoveRequested+=(_,_)=>{Filters.Filters.Remove(item);Result.Text="The consumer removed "+item.Label+".";};Filters.Filters.Add(item);}
+        {var item=new BleeckerFilter(label,value);if(remove)item.RemoveRequested+=(_,_)=>DispatcherQueue.TryEnqueue(()=>{Filters.Filters.Remove(item);Result.Text="The consumer removed "+item.Label+".";});Filters.Filters.Add(item);}
     }
     internal async Task VerifyAsync(string folder,BleeckerColorScheme scheme)
     {

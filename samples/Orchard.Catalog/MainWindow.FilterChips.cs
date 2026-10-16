@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
@@ -26,6 +27,7 @@ public sealed partial class MainWindow
             foreach(var scheme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {
                 page.RequestedTheme=scheme;canvas.Background=new SolidColorBrush(scheme==ElementTheme.Light?Microsoft.UI.Colors.White:Windows.UI.Color.FromArgb(255,13,24,33));
+                await input.MoveAsync(canvas,true,new Point(width-10,400));await AwaitPresentationAsync(page);
                 foreach(var reference in source.RootElement.GetProperty("cases").EnumerateArray().Where(item=>item.GetProperty("width").GetInt32()==width&&item.GetProperty("scheme").GetString()==scheme.ToString()))
                 {
                     var spec=reference.GetProperty("props");phase=reference.GetProperty("id").GetString()!;
@@ -65,6 +67,7 @@ public sealed partial class MainWindow
                 Require(removeButton.Focus(FocusState.Keyboard),"Filter action refused focus before reorder.");
                 groupInput.Filters.Move(0,1);await AwaitPresentationAsync(page);Require(ReferenceEquals(removeButton,Descendants<Button>(groupInput).Single(button=>AutomationProperties.GetName(button)=="Remove Updated label filter")),"Filter reorder replaced its native action.");
                 Require(Descendants<BleeckerFilterChip>(groupInput).Last().Label==modelInput.Label&&ReferenceEquals(FocusManager.GetFocusedElement(page.XamlRoot),removeButton),"Filter reorder lost visual/automation order or focus.");
+                await input.MoveAsync(canvas,true,new Point(width-10,400));await AwaitPresentationAsync(page);
                 var updatedChip=Descendants<BleeckerFilterChip>(groupInput).Last();var paletteText=Descendants<TextBlock>(updatedChip).Single(text=>text.Name=="PART_Secondary");var brush=(SolidColorBrush)paletteText.Foreground;var originalColor=brush.Color;var originalOpacity=brush.Opacity;
                 try{brush.Color=Microsoft.UI.Colors.Magenta;brush.Opacity=.6;await AwaitPresentationAsync(page);var line=Descendants<Microsoft.UI.Xaml.Shapes.Line>(removeButton).First();var painted=(SolidColorBrush)line.Stroke;Require(painted.Color.R==255&&painted.Color.B==255&&Math.Abs(painted.Opacity-.6)<.001,"Live source palette mutation did not reach the copied remove glyph paint.");}
                 finally{brush.Color=originalColor;brush.Opacity=originalOpacity;}
@@ -75,7 +78,10 @@ public sealed partial class MainWindow
                 Require(AutomationProperties.GetName(removeButton)=="Remove Remounted label filter"&&removeButton.IsEnabled,"Remounted group did not reconnect metadata or commands.");
                 groupInput.Filters.Remove(modelInput);await AwaitPresentationAsync(page);Require(!removeButton.IsLoaded,"Removed filter retained a loaded action.");
                 groupInput.Filters.Clear();await AwaitPresentationAsync(page);Require(groupInput.ActualHeight==0&&!Descendants<Button>(groupInput).Any(),"Empty filter group retained visual or interactive output.");
-                inputs.Add(new{scheme=scheme.ToString(),removed,cleared,executions,consumerOwnership=true,liveUpdates=true,canExecute=true,inheritedDisabled=true,reorderIdentity=true,reorderFocus=true,livePalette=true,templateReplacement=true,unloadRemount=true,emptyGroup=true});await SaveAsync();
+                var synchronous=0;var selfRemoving=new BleeckerFilter("Synchronous","Consumer removal");selfRemoving.RemoveRequested+=(_,_)=>{synchronous++;groupInput.Filters.Remove(selfRemoving);};groupInput.Filters.Add(selfRemoving);await AwaitPresentationAsync(page);
+                var selfAction=Descendants<Button>(groupInput).Single(button=>AutomationProperties.GetName(button)=="Remove Synchronous filter");((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(selfAction).GetPattern(PatternInterface.Invoke)).Invoke();await AwaitPresentationAsync(page);
+                Require(synchronous==1&&groupInput.Filters.Count==0&&!selfAction.IsLoaded,"Synchronous consumer removal retained or repeated its native action.");
+                inputs.Add(new{scheme=scheme.ToString(),removed,cleared,executions,consumerOwnership=true,liveUpdates=true,canExecute=true,inheritedDisabled=true,reorderIdentity=true,reorderFocus=true,livePalette=true,templateReplacement=true,unloadRemount=true,emptyGroup=true,synchronousRemoval=true});await SaveAsync();
             }
             passed=true;
         }

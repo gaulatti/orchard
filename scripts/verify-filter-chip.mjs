@@ -12,6 +12,7 @@ export async function auditFilterChip(native,width){
  const runtime=await read(path.join(native,'result.json')),report=await read(path.join(native,'filter-chip.json'));
  assert.equal(runtime.passed,true);assert.equal(runtime.component,'filter-chip');assert.equal(report.passed,true);assert.equal(report.originalContentRestored,true);
  assert.equal(runtime.environment.displayScale,1);assert.equal(runtime.environment.textScale,1);assert.equal(runtime.environment.highContrast,false);
+ assert.equal(runtime.environment.processArchitecture,runtime.environment.osArchitecture);assert(['X64','Arm64'].includes(runtime.environment.processArchitecture));
  const expected=reference.cases.filter(item=>item.width===width);assert.equal(expected.length,20);assert.equal(report.reports.length,expected.length);
  let maximumGeometryError=0,maximumBaselineError=0,baselines=0,context='';
  const near=(actual,target)=>{assert(Number.isFinite(actual),context);const delta=Math.abs(actual-target);maximumGeometryError=Math.max(maximumGeometryError,delta);assert(delta<=.05,`${context}: ${actual} differs from ${target} by ${delta}`);};
@@ -46,8 +47,10 @@ export async function auditFilterChip(native,width){
   const image=readRgbaPng(await fs.readFile(path.join(native,test.file)));assert.equal(image.width,width);assert.equal(image.height,480);
  }
  assert.equal(report.inputs.length,2);
- for(const input of report.inputs){assert.equal(input.removed,4);assert.equal(input.cleared,1);assert.equal(input.executions,1);for(const flag of ['consumerOwnership','liveUpdates','canExecute','inheritedDisabled','reorderIdentity','reorderFocus','livePalette','templateReplacement','unloadRemount','emptyGroup'])assert.equal(input[flag],true);}
+ for(const input of report.inputs){assert.equal(input.removed,4);assert.equal(input.cleared,1);assert.equal(input.executions,1);for(const flag of ['consumerOwnership','liveUpdates','canExecute','inheritedDisabled','reorderIdentity','reorderFocus','livePalette','templateReplacement','unloadRemount','emptyGroup','synchronousRemoval'])assert.equal(input[flag],true);}
  const desktop=await read(path.join(native,'filter-chip-desktop.json'));
+ for(const move of desktop.pointerMoves){assert.notEqual(move.deliveryFailed,true);assert.equal(move.positioned,true);assert(move.stationary||move.delivered);}
+ for(const gate of desktop.pointerPresentations){assert(gate.passed&&gate.stable>=2&&gate.milliseconds<2000);}
  for(const key of desktop.keyActions){assert.equal(key.downs,1);assert.equal(key.ups,1);assert.equal(key.targetRetained,true);}
  for(const click of desktop.pointerClicks){assert.equal(click.delivered,true);assert(click.receipts.some(receipt=>receipt.exact&&!receipt.IsGenerated));}
  assert.equal(desktop.keyActions.length,4);assert.equal(desktop.pointerClicks.length,6);
