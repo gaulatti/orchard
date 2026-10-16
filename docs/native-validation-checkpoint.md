@@ -1,6 +1,65 @@
 # Current native validation checkpoint
 
-## Loading Overlay accessible-name checkpoint
+## Loading Overlay caller-template checkpoint
+
+Catalog/test source: `a660a365c435ae30ec0807c3c32582b77385d250`.
+The public library source is unchanged from `2e72e33`; this checkpoint adds
+caller-template/resource coverage and documentation.
+
+Both clean catalog architectures build. The published x64 catalog passes
+four focused modes: ten custom-template/resource phases with ten real pointer
+barriers and forty focus observations; 22 external UIA trees; fourteen lifecycle
+phases; and 22 observed scroll/transform frames. The custom-template fixture
+verifies decoration, instance theme dictionaries, live brush identity, local
+property priority/clearing, dictionary replacement after a theme transition,
+typography/RTL, names and original-template restoration. Four negative audits
+reject stale palette data, missing decoration, missing physical pointer receipts
+and retained root tab stops. Both theme captures are retained.
+
+The first stronger fixture read `IsTabStop` immediately after requesting focus
+and failed. Its retained trace now distinguishes request from presentation:
+the original action receives focus immediately, while the root lease is
+released by presentation under the unchanged two-second boundary. The product
+code required no correction. See [the template contract](loading-overlay.md).
+
+All 113 unit tests and token checks pass. Fresh independent consumers use the
+unchanged `2e72e33` NuGet package: x64 runtime passes both themes, replacing the
+template and updating a caller label; ARM64 builds only. Both caches are removed.
+The package SHA-256 remains
+`7074796d9b7f34f3daab4d7ee1cfea10987c140cafb1c0b00bb44d24de9ceea8`.
+
+Across the two new architectures, all 5,777 method definitions/IL records and
+managed resources match. The earlier-release comparison has ten differing
+raw records, including two renamed generated provider types. A resolved-operand audit
+checks method implementations and all 24 exposed-type mappings; fourteen
+provider targets have new representative names but identical interface
+implementations. Raw differences remain recorded, rather than reported as
+identical bytes. The new x64/ARM64 library hashes are
+`e30cf501c063afc2fce9a7fa231c94b918ffc50e7c51ead6bb59cc2accb495b4` and
+`52206e612998dad1a49622e5a2ae6ea872ec61b2d69a4546293801c864bc30a1`.
+
+The new catalog archives match every published file. The x64 archive has
+533 entries and the four focused runtime checks above; ARM64 has 529 entries
+and build-only scope:
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `Orchard.Catalog.0.1.0-a660a36-x64.zip` | `e85bd479aec229d5ecf3ee8d60d24f0ac935c4bc79712d78e468b4048b85ec6c` |
+| `Orchard.Catalog.0.1.0-a660a36-arm64.zip` | `63caa7585d8cd28bbade02d2e42cae1b017a81b73382ab4e8255751326706896` |
+
+Evidence is in `artifacts/loading-overlay-template-validated-{template,accessibility,lifecycle,scroll}`,
+`artifacts/loading-overlay-template-{architecture-il,resolved-method,raw-token}-audit.json`,
+`artifacts/loading-overlay-template-validated-{negative-audit,archives}.json` and
+`artifacts/package-consumer-loading-overlay-template-{x64,arm64}`.
+The synchronous fixture failure remains in `artifacts/loading-overlay-template-v2`.
+Full-catalog evidence remains at `2e72e33` below; current catalog validation
+covers the four named modes. Display/text scale remains 1, animations and high
+contrast disabled. Broader templates, cross-window transfer, exact raster,
+motion, scaling, contrast, Narrator and native ARM64 runtime remain open.
+Actions remain paused for pushes, with zero runs for `a660a36`. Inventory stays
+57 in progress, 55 pending, zero accepted. The public wiki remains unavailable.
+
+## Previous Loading Overlay accessible-name checkpoint
 
 Current library/catalog source: `2e72e334c5b321f795a248ba3aef1dc3563233da`.
 The spinner now honors caller `AutomationProperties.Name` and `LabeledBy`
