@@ -175,8 +175,10 @@ CSS, fonts and tool versions; the new unit regression verifies that boundary.
 The native fixture performs both real pointer moves with the existing exact
 delivery and two-frame presentation gates, then checks hover and exit against
 the new source. Every move has a required observable result. It subsequently
-executes the original keyboard-only checks. The following action exists only
-after each original normal screenshot, preserving those capture compositions.
+executes the original keyboard-only checks. The following action is collapsed
+after its verified exit. The fixture then checks the original normal state
+and captures the original composition, without that action or an incidental
+hover tooltip.
 This tests pointer exit and keyboard ownership as one source-defined workflow.
 
 The new exit gate exposes stale hidden rows: the source empties tooltip text,

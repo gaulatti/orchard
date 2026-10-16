@@ -57,8 +57,7 @@ public sealed partial class SparklinesFixture:UserControl
                     Require(paths[i].StrokeThickness==2&&paths[i].Fill is null&&sourceCurves[i].GetProperty("fill").GetString()=="none","Sparkline changed the pinned source's unfilled 2px line.");
                     ComparePaint(paths[i].Stroke,sourceCurves[i].GetProperty("stroke").GetString()!,id);
                 }
-                if(id is "default" or "area" or "explicit" or "gaps" or "negative" or "narrow")await MainWindow.CaptureElementAsync(host,System.IO.Path.Combine(folder,$"sparkline-{id}-{scheme}.png"));
-                object? hoverInspection=null,exitInspection=null;
+                object? normalInspection=null,hoverInspection=null,exitInspection=null,focusInspection=null,rightInspection=null;
                 try
                 {
                     var pointerCase=pointerReference.RootElement.GetProperty("cases").EnumerateArray().Single(point=>point.GetProperty("id").GetString()==id&&point.GetProperty("scheme").GetString()==scheme.ToString());
@@ -73,10 +72,15 @@ public sealed partial class SparklinesFixture:UserControl
                     await VerifyInspectionAsync(chart,pointerCase.GetProperty("hover"),id+" pointer hover");hoverInspection=InspectionSnapshot(chart);
                     await input.MoveAsync(exitTarget);
                     await VerifyPointerExitAsync(chart,pointerCase.GetProperty("exit"),id);exitInspection=InspectionSnapshot(chart);
+                    exitTarget.Visibility=Visibility.Collapsed;
+                    await VerifyInspectionAsync(chart,expected,id+" normal after exit");normalInspection=InspectionSnapshot(chart);
+                    if(id is "default" or "area" or "explicit" or "gaps" or "negative" or "narrow")await MainWindow.CaptureElementAsync(host,System.IO.Path.Combine(folder,$"sparkline-{id}-{scheme}.png"));
                     Require(chart.Focus(FocusState.Keyboard),"Could not focus Sparkline inspection.");
                     await VerifyInspectionAsync(chart,item.GetProperty("focus"),id+" focus");
+                    focusInspection=InspectionSnapshot(chart);
                     await input.KeyAsync(0x27,chart);
                     await VerifyInspectionAsync(chart,item.GetProperty("right"),id+" right");
+                    rightInspection=InspectionSnapshot(chart);
                 }
                 catch
                 {
@@ -97,7 +101,7 @@ public sealed partial class SparklinesFixture:UserControl
                     }));
                     throw;
                 }
-                reports.Add(new{id,height=spark.ActualHeight,width=spark.ActualWidth,curves=paths.Length,showArea=spark.ShowArea,pointerReferenceSha256,hoverInspection,exitInspection,pointerTrace,tooltip=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(x=>x.Text).ToArray()});
+                reports.Add(new{id,height=spark.ActualHeight,width=spark.ActualWidth,curves=paths.Length,showArea=spark.ShowArea,pointerReferenceSha256,normalInspection,hoverInspection,exitInspection,focusInspection,rightInspection,pointerTrace,tooltip=Part<StackPanel>(chart,"PART_TooltipItems").Children.OfType<TextBlock>().Select(x=>x.Text).ToArray()});
                 await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-{scheme}.json"),JsonSerializer.Serialize(reports,new JsonSerializerOptions{WriteIndented=true}));
             }
             await VerifyNegativeAxesAsync(host);
