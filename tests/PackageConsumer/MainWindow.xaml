@@ -93,6 +93,12 @@
                     <orchard:BleeckerDashboardSpan Span="Full"><Border Height="40" /></orchard:BleeckerDashboardSpan>
                 </orchard:BleeckerDashboardGrid>
                 <orchard:BleeckerSparkline x:Name="PackageSparkline" DataKey="v" Width="320" Height="40" HorizontalAlignment="Left" ShowArea="True" AutomationProperties.Name="Independent compact series" />
+                <orchard:BleeckerStepper x:Name="PackageStepper" Width="320" ActiveStep="review" AutomationProperties.Name="Independent editorial stages">
+                    <orchard:BleeckerStepper.Steps>
+                        <orchard:BleeckerStep Id="draft" Label="Consumer draft" Description="Write a story" />
+                        <orchard:BleeckerStep Id="review" Label="Consumer review" Description="Check facts" />
+                    </orchard:BleeckerStepper.Steps>
+                </orchard:BleeckerStepper>
                 <orchard:BleeckerBarChart x:Name="PackageBarChart" XAxisKey="label" Width="320" Height="200" ShowLegend="False" HorizontalAlignment="Left" AutomationProperties.Name="Independent grouped bars">
                     <orchard:BleeckerBarChart.Series><orchard:BleeckerChartSeries Key="v" Name="Consumer" /></orchard:BleeckerBarChart.Series>
                 </orchard:BleeckerBarChart>

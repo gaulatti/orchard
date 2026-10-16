@@ -27,6 +27,8 @@
     "BleeckerChartTheme": "ChartThemesFixture.xaml"
   },
   "controls": {
+    "BleeckerStepper": "SteppersFixture.xaml",
+    "BleeckerStep": "SteppersFixture.xaml",
     "BleeckerScatterChart": "ScatterChartsFixture.xaml",
     "BleeckerScatterSeries": "ScatterChartsFixture.xaml",
     "BleeckerRadarChart": "RadarChartsFixture.xaml",

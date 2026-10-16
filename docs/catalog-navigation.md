@@ -23,7 +23,12 @@ consumer templates, keyed expansion and actual native routing/input boundary;
 see [usage and acceptance gaps](sidebars.md). It does not replace the catalog's
 existing component list.
 
-**Data Table Toolbars** follows Sidebar. It mounts the original consumer table,
+**Stepper** follows Sidebar. Choose a source case to inspect both orientations,
+all statuses, disabled/static actions, empty content, long labels and RTL.
+Focused `-Component stepper` replays the source cases and exercises native
+activation and consumer-owned state; see [the contract and open acceptance](stepper.md).
+
+**Data Table Toolbars** follows Stepper. It mounts the original consumer table,
 column callbacks and filtered row projection, with controlled search, status
 filter and consumer action. Focused `-Component data-table-toolbar` checks the
 118 normal source cases, actual native search/reset and lifecycle ownership.

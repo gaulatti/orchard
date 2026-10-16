@@ -1,0 +1,17 @@
+<UserControl x:Class="Orchard.Catalog.SteppersFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Stepper" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Consumer-controlled stages · native buttons · horizontal and vertical" Style="{StaticResource BleeckerBodyStyle}" />
+  <ComboBox x:Name="CasePicker" Header="Source case" AutomationProperties.Name="Stepper source case" Width="280" SelectionChanged="CaseChanged" />
+  <Canvas x:Name="Frame" Width="1024" Height="745" HorizontalAlignment="Left" Background="{ThemeResource BleeckerLightSandBrush}" UseLayoutRounding="False">
+   <orchard:BleeckerStepper x:Name="Stepper" Width="640" ActiveStep="review" Canvas.Left="20" Canvas.Top="20">
+    <orchard:BleeckerStepper.Steps>
+     <orchard:BleeckerStep Id="draft" Label="Draft" Description="Write a story" />
+     <orchard:BleeckerStep Id="review" Label="Review" Description="Check facts" />
+     <orchard:BleeckerStep Id="publish" Label="Publish" Description="Release edition" />
+    </orchard:BleeckerStepper.Steps>
+   </orchard:BleeckerStepper>
+  </Canvas>
+ </StackPanel>
+</UserControl>

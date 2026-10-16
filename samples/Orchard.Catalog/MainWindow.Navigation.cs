@@ -41,6 +41,7 @@ public sealed partial class MainWindow
             ("Dashboard sections",DashboardSections),
             ("Dashboard grids",DashboardGrids),
             ("Sidebar",Sidebars),
+            ("Stepper",Steppers),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),

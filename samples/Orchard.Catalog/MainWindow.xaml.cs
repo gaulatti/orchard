@@ -57,6 +57,16 @@ public sealed partial class MainWindow : Window
         {
             CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            else if (args.Contains("--smoke-stepper"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Steppers);
+                    await Steppers.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(Steppers, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "stepper", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-tooltips")) await RunTooltipSmokeAsync(folder);
             else if (args.Contains("--smoke-input")) await RunInputSmokeAsync(folder);
             else if (args.Contains("--smoke-sidebar"))
@@ -711,6 +721,8 @@ public sealed partial class MainWindow : Window
             await DashboardGrids.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Sidebars);
             await Sidebars.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(Steppers);
+            await Steppers.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTableToolbars);
             await DataTableToolbars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTablePaginations);

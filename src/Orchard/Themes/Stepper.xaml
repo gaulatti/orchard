@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerStepper">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="UseLayoutRounding" Value="False" />
+  <Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" /><Setter Property="FontSize" Value="14" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerStepper">
+   <Grid>
+    <Grid x:Name="PART_Items" FlowDirection="LeftToRight" />
+    <TextBlock x:Name="PART_Surface" Visibility="Collapsed" Foreground="{ThemeResource BleeckerStepperSurfaceBrush}" />
+    <TextBlock x:Name="PART_Accent" Visibility="Collapsed" Foreground="{ThemeResource BleeckerStepperAccentBrush}" />
+    <TextBlock x:Name="PART_OnAccent" Visibility="Collapsed" Foreground="{ThemeResource BleeckerStepperOnAccentBrush}" />
+    <TextBlock x:Name="PART_Error" Visibility="Collapsed" Foreground="{ThemeResource BleeckerStepperErrorBrush}" />
+    <TextBlock x:Name="PART_PendingRing" Visibility="Collapsed" Foreground="{ThemeResource BleeckerStepperPendingRingBrush}" />
+    <TextBlock x:Name="PART_Line" Visibility="Collapsed" Foreground="{ThemeResource BleeckerStepperLineBrush}" />
+    <TextBlock x:Name="PART_Primary" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTextPrimaryBrush}" />
+    <TextBlock x:Name="PART_Secondary" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

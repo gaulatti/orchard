@@ -105,8 +105,12 @@ jobs:
         if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
         id: pagination_paired_smoke
         run: ./scripts/smoke-catalog.ps1 -Component data-table-pagination-paired -ClientSize 1000,745 -Output artifacts/pagination-paired -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify native Stepper source states and input ownership
         if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
+        id: stepper_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component stepper -Output artifacts/stepper -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify PNG persistence and alpha conversion
@@ -263,8 +267,12 @@ jobs:
         if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
         id: pagination_paired_smoke
         run: ./scripts/smoke-catalog.ps1 -Component data-table-pagination-paired -ClientSize 1000,745 -Output artifacts/pagination-paired -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 Stepper source states and input ownership
         if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
+        id: stepper_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component stepper -Output artifacts/stepper -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify native ARM64 PNG persistence and alpha conversion

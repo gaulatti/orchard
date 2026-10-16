@@ -73,6 +73,7 @@
         <EmbeddedResource Include="../../tests/Reference/NegativeChartDomains.json" LogicalName="Orchard.Catalog.Reference.NegativeChartDomains.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
+        <EmbeddedResource Include="../../tests/Reference/Stepper.json" LogicalName="Orchard.Catalog.Reference.Stepper.json" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />
     </ItemGroup>
