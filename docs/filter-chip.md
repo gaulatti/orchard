@@ -46,6 +46,23 @@ easing; the remove press scale is immediately 0.9, matching CSS individual scale
 Reduced motion and Windows contrast disable color animation. Contrast resources
 use system colors; live contrast acceptance still requires runtime evidence.
 
+Caller font family, size, weight, style, stretch, spacing, reading direction and
+text-scale preference flow through the rendered text and intrinsic/baseline
+measurements. A live style/stretch change recomputes group wrapping and Clear all
+width while retaining existing native actions. The `filter-chip-typography` mode
+exercises bundled and Segoe UI fonts, genuine italics, 20-DIP text, tracking, RTL,
+constrained wrapping, multilingual content, restoration and unload/remount.
+Segoe UI supplies a distinct italic face for detecting stale measurement caches.
+These application typography overrides do not establish actual Windows text or
+display scaling acceptance; those checks remain open.
+The native regression records 20 live phases and 100 independently measured text
+paragraphs. Its four corruption checks reject an incorrect style, stale width,
+missing baseline or reversed RTL order. Before the fix, changing Segoe UI to
+italic left Clear all measured at 90.1600 DIPs while its displayed face required
+92.3267 DIPs. Rendered text, width probes and baseline probes now use the same
+style/stretch values. Run with `-Component filter-chip-typography -ClientSize 640,480`
+and inspect `scripts/verify-filter-chip-typography.mjs` for the evidence boundary.
+
 `FilterChipsFixture` registers read-only, removable, multilingual and wrapping
 examples. Its consumer handlers demonstrate explicit collection removal/reset.
 The demo queues collection changes after native event routing; the focused

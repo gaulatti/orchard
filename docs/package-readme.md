@@ -119,7 +119,8 @@ Its complete visual and accessibility acceptance remains in progress.
 `BleeckerFilterChip` supplies a label/value and optional remove command/event.
 `BleeckerFilterGroup.Filters` holds observable `BleeckerFilter` records and an
 optional Clear all command/event. Each callback leaves collection changes to
-the consumer. Exact raster/motion, contrast, scaling and Narrator acceptance
+the consumer. Live font style/stretch changes refresh label, value and Clear all
+measurements. Exact raster/motion, contrast, scaling and Narrator acceptance
 remain in progress; see the repository's `docs/filter-chip.md`.
 `BleeckerPageHeader` supplies a consumer-owned title/description, breadcrumb
 content/template and wrapping action content or observable collection. Its

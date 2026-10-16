@@ -1804,7 +1804,10 @@
         "tests/PackageConsumer/MainWindow.FilterChips.cs",
         "scripts/verify-filter-chip.mjs",
         "scripts/test-filter-chip-audit.mjs",
-        "scripts/compare-filter-chip-pixels.mjs"
+        "scripts/compare-filter-chip-pixels.mjs",
+        "samples/Orchard.Catalog/MainWindow.FilterChipTypography.cs",
+        "scripts/verify-filter-chip-typography.mjs",
+        "scripts/test-filter-chip-typography-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

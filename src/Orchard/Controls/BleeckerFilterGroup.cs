@@ -29,7 +29,7 @@ public sealed class BleeckerFilterGroup : Control
     {
         DefaultStyleKey=typeof(BleeckerFilterGroup);Filters=[];
         Loaded+=(_,_)=>{Observe();Render();};Unloaded+=(_,_)=>{if(IsLoaded)return;StopObserving();clear?.Detach();};ActualThemeChanged+=(_,_)=>Render();
-        foreach(var property in new[]{FontFamilyProperty,FontSizeProperty,FontWeightProperty,CharacterSpacingProperty,IsTextScaleFactorEnabledProperty,FlowDirectionProperty,IsEnabledProperty})RegisterPropertyChangedCallback(property,(_,_)=>Render());
+        foreach(var property in new[]{FontFamilyProperty,FontSizeProperty,FontWeightProperty,FontStyleProperty,FontStretchProperty,CharacterSpacingProperty,IsTextScaleFactorEnabledProperty,FlowDirectionProperty,IsEnabledProperty})RegisterPropertyChangedCallback(property,(_,_)=>Render());
         RegisterPropertyChangedCallback(TemplateProperty,(_,_)=>{if(Template is null)DetachTemplate();});
     }
     public static readonly DependencyProperty FiltersProperty=DependencyProperty.Register(nameof(Filters),typeof(object),typeof(BleeckerFilterGroup),new PropertyMetadata(null,Changed));
@@ -120,7 +120,7 @@ public sealed class BleeckerFilterGroup : Control
         internal void Update()
         {
             Chip.Label=Model.Label;Chip.Value=Model.Value;Chip.RemoveCommand=Model.RemoveCommand;Chip.RemoveCommandParameter=Model.RemoveCommandParameter;
-            Chip.FontFamily=owner.FontFamily;Chip.FontSize=owner.FontSize;Chip.FontWeight=owner.FontWeight;Chip.CharacterSpacing=owner.CharacterSpacing;Chip.IsTextScaleFactorEnabled=owner.IsTextScaleFactorEnabled;Chip.FlowDirection=owner.FlowDirection;
+            Chip.FontFamily=owner.FontFamily;Chip.FontSize=owner.FontSize;Chip.FontWeight=owner.FontWeight;Chip.FontStyle=owner.FontStyle;Chip.FontStretch=owner.FontStretch;Chip.CharacterSpacing=owner.CharacterSpacing;Chip.IsTextScaleFactorEnabled=owner.IsTextScaleFactorEnabled;Chip.FlowDirection=owner.FlowDirection;
             if(handler!=Model.HasRemoveHandler){if(handler)Chip.RemoveRequested-=Remove;handler=Model.HasRemoveHandler;if(handler)Chip.RemoveRequested+=Remove;}
         }
         private void Remove(object? sender,EventArgs args){if(owner.IsLoaded&&owner.IsEnabled&&owner.Filters.Contains(Model))Model.NotifyRemove();}

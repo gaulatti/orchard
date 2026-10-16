@@ -24,7 +24,7 @@ public sealed class BleeckerFilterChip : Control
     {
         DefaultStyleKey=typeof(BleeckerFilterChip);
         Loaded+=(_,_)=>{settings.TextScaleFactorChanged+=TextScaleChanged;Observe();Render();};Unloaded+=(_,_)=>{if(IsLoaded)return;settings.TextScaleFactorChanged-=TextScaleChanged;StopObserving();layout?.Detach();};ActualThemeChanged+=(_,_)=>Render();
-        foreach(var property in new[]{FontFamilyProperty,FontSizeProperty,FontWeightProperty,CharacterSpacingProperty,IsTextScaleFactorEnabledProperty,FlowDirectionProperty,IsEnabledProperty,ForegroundProperty,TabIndexProperty,AutomationProperties.NameProperty,AutomationProperties.LabeledByProperty})RegisterPropertyChangedCallback(property,(_,_)=>Render());
+        foreach(var property in new[]{FontFamilyProperty,FontSizeProperty,FontWeightProperty,FontStyleProperty,FontStretchProperty,CharacterSpacingProperty,IsTextScaleFactorEnabledProperty,FlowDirectionProperty,IsEnabledProperty,ForegroundProperty,TabIndexProperty,AutomationProperties.NameProperty,AutomationProperties.LabeledByProperty})RegisterPropertyChangedCallback(property,(_,_)=>Render());
         RegisterPropertyChangedCallback(TemplateProperty,(_,_)=>{if(Template is null)DetachTemplate();});
     }
     public static readonly DependencyProperty LabelProperty=DependencyProperty.Register(nameof(Label),typeof(string),typeof(BleeckerFilterChip),new PropertyMetadata("",Changed));

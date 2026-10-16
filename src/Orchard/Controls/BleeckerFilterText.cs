@@ -22,7 +22,7 @@ internal sealed class BleeckerFilterText : Panel
         var family=owner.FontFamily;
         if(semibold&&family.Source.Contains("EncodeSans-Medium.ttf",StringComparison.Ordinal))family=(FontFamily)Application.Current.Resources["BleeckerPrimarySemiboldFontFamily"];
         foreach(var text in new[]{Text,measure,metrics})
-        {text.FontFamily=family;text.FontSize=owner.FontSize;text.FontWeight=semibold?Microsoft.UI.Text.FontWeights.SemiBold:owner.FontWeight;text.CharacterSpacing=owner.CharacterSpacing;text.IsTextScaleFactorEnabled=owner.IsTextScaleFactorEnabled;text.FlowDirection=owner.FlowDirection;}
+        {text.FontFamily=family;text.FontSize=owner.FontSize;text.FontWeight=semibold?Microsoft.UI.Text.FontWeights.SemiBold:owner.FontWeight;text.FontStyle=owner.FontStyle;text.FontStretch=owner.FontStretch;text.CharacterSpacing=owner.CharacterSpacing;text.IsTextScaleFactorEnabled=owner.IsTextScaleFactorEnabled;text.FlowDirection=owner.FlowDirection;}
         Text.LineHeight=lineHeight*owner.FontSize/12;
         measure.Text=Text.Text;measure.Measure(new Size(double.PositiveInfinity,double.PositiveInfinity));PreferredWidth=measure.DesiredSize.Width;MinimumWidth=0;
         foreach(var word in Text.Text.Split(' ',StringSplitOptions.RemoveEmptyEntries))
