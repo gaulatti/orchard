@@ -100,9 +100,9 @@ contrast/Narrator/scaling and collection performance remain unverified. The
 new source consumer model regressions do not stand in for those UI checks.
 Push-triggered Actions remain paused; no workflow dispatch was requested.
 
-## Packaged preview checkpoint
+## Initial packaged preview checkpoint
 
-The current artifact source is
+The initial pagination artifact source is
 `f750f0d28c2f6c0dbe24d3be7f3693caf1e1a61c` (preview implementation
 `132576c100dacb9aad44bd984f96b257df1d6db4`, followed by package documentation).
 `artifacts/packages-pagination/Gaulatti.Orchard.0.1.0.nupkg` has SHA-256
@@ -193,3 +193,51 @@ targets are recorded separately and are not claimed to be identical.
 All 87 source/consumer regressions pass. Pixel parity, the complete disabled
 input matrix, accessibility/scaling/motion/performance and native ARM64
 execution remain open. The backend/metrics contract is unaffected.
+
+## Packaged keyboard checkpoint
+
+The keyboard artifact source is
+`cd3e7cf674167c625277578c43027e49e64e0b87`.
+The package at
+`artifacts/packages-pagination-keyboard/Gaulatti.Orchard.0.1.0.nupkg` has
+SHA-256 `2e51de0a9e142163ef407c86aee9413dccc25c9751e0e9b1115b4193a718faa9`.
+The runnable catalog is at `artifacts/catalog-pagination-keyboard`.
+
+The current full x64 run at
+`artifacts/smoke-pagination-keyboard-published-full` passes in 353.3632808
+seconds under the unchanged 360-second wrapper. Its 1,030 PNGs preserve all
+previous captures and all 174 protected glyph hashes. All 1,732 owned pointer
+gates, 1,738 same-target key pairs and 62 clicks pass, along with 118 toolbar
+source cases, 28 tooltip gates and 16 final presentation gates.
+The focused published keyboard replay at
+`artifacts/smoke-pagination-keyboard-published` separately passes 136 states,
+120 exact key pairs (118 held plus two Shift+Tab), 16 owned pointer gates and
+138 capture checks. Its audit continues to mark zero-delay keys and pixel
+parity unverified.
+
+The clean x64 consumer at `artifacts/package-consumer-pagination-keyboard`
+passes both themes, including eight physical held-key pairs through its own
+original rows and adapter: opening without mutation, popup Tab containment,
+highlighting without a commit and exactly one Enter size commit. The ARM64
+consumer at `artifacts/package-consumer-pagination-keyboard-arm64` builds;
+runtime remains explicitly unverified. Both generated feed/cache workspaces
+are removed. Package, catalog and both consumers have Orchard assembly SHA-256
+`e23749f58cb51660c00254cea32adbce7e7c56d112c561baa633f909a27a4d1a`, with product
+version `0.1.0+cd3e7cf674167c625277578c43027e49e64e0b87`.
+`artifacts/pagination-keyboard-artifacts-report.json` verifies that correspondence
+and the independent consumer's eight exact key owners.
+
+The same published catalog passes the previous 132-state producer replay at
+`artifacts/smoke-pagination-keyboard-published-source` and the 12 physical
+clicks/two exact Escape transfers at
+`artifacts/smoke-pagination-keyboard-published-input`. The current surface
+comparison still fails all 132 image pairs: 510,420 differing pixels, no
+missing pixels and 154 geometry differences, with zero masks and tolerance.
+An independent Pillow decoder agrees with every pair. The source replay's
+XAML-root crops continue to omit popup islands; the separate keyboard desktop
+captures are the evidence for the actual composed popup states.
+
+Both architecture builds are clean and 87 regressions pass. The fixed inventory
+remains 51 in progress, 61 pending and zero accepted. Push-triggered Actions
+remain paused. This is further preview evidence; it does not close the open
+visual, zero-delay input, disabled input, platform or performance criteria.
