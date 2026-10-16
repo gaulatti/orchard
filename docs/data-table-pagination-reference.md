@@ -319,3 +319,25 @@ failure-only payload/focus/pointer diagnostics passes at
 `artifacts/smoke-pagination-popup-pie-diagnostic`; the cause of the sequence
 failure is not established. The original deadline and expected payload remain
 unchanged. The broader runtime criterion remains open while this is examined.
+
+The local package preview source is
+`bd74a1bd1b6349469866eda198531d94833cf64d`, with the Pie failure diagnostics
+committed separately at `c900b32ebb04263cfe61bcf92432bdc58242e9be`.
+`artifacts/packages-pagination-popup/Gaulatti.Orchard.0.1.0.nupkg` has SHA-256
+`55671d397554d466cfde6d48409f0efff8227a8b54d6cbb990747181d3eb8c1b`.
+The runnable preview is at `artifacts/catalog-pagination-popup`.
+
+The clean x64 package consumer passes in both themes, including eight exact
+held-key pairs and measured 4px gap/80px width/visible current value checks.
+The independent ARM64 consumer builds with runtime explicitly unverified;
+both isolated caches are removed. Package, catalog and both consumers contain
+Orchard assembly SHA-256
+`34cc2a24560c35bfd9f248ae35d09a01e02cf95ceaf001661eb890e9e808467b`, product
+version `0.1.0+bd74a1bd1b6349469866eda198531d94833cf64d`. The correspondence and
+keyboard receipts are audited in `artifacts/pagination-popup-artifacts-report.json`.
+
+These preview artifacts do not replace the last fully checked catalog
+checkpoint: the current full-run Pie gate remains unresolved. No popup commits
+have been pushed. Remote main remains `42ca0a92e809c21826c025b573543856daad55df`;
+push-triggered Actions remain paused. All 112 inventory entries retain their
+existing status (51 in progress, 61 pending, zero accepted).
