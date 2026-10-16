@@ -24,6 +24,7 @@ public sealed partial class MainWindow : Window
         InitializeToolbar();
         InitializePagination();
         InitializeDataList();
+        InitializeTimeline();
         PackageStepper.StepInvoked += (_, step) => { packageStepInvocations++; lastPackageStep = step; };
         PackageSunburstChart.Data = SunburstData();
         PackageCurrencyChart.Data = CurrencyData();
@@ -228,6 +229,7 @@ public sealed partial class MainWindow : Window
                 await VerifySparklineAsync();
                 await VerifyStepperAsync();
                 await VerifyDataListAsync();
+                await VerifyTimelineAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();
                 await VerifyCircularChartsAsync();

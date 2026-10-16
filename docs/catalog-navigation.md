@@ -40,7 +40,13 @@ empty, raw scalar, long, narrow, RTL and embedded-action content. Focused
 keyed lifecycle and real window resizing at the 640-DIP breakpoint. See
 [the API and remaining acceptance](data-list.md).
 
-**Data Table Toolbars** follows Data list. It mounts the original consumer table,
+**Timeline** follows Data list. Its source-case picker includes explicit/default
+statuses, timestamp wrapping, narrow/RTL overflow, raw whitespace, scalar icons
+and original consumer icon actions. Focused `-Component timeline` checks source
+geometry/baselines, keyed updates, icon template ownership and the real viewport
+breakpoint. See [the contract and remaining acceptance](timeline.md).
+
+**Data Table Toolbars** follows Timeline. It mounts the original consumer table,
 column callbacks and filtered row projection, with controlled search, status
 filter and consumer action. Focused `-Component data-table-toolbar` checks the
 118 normal source cases, actual native search/reset and lifecycle ownership.

@@ -43,6 +43,7 @@ public sealed partial class MainWindow
             ("Sidebar",Sidebars),
             ("Stepper",Steppers),
             ("Data list",DataLists),
+            ("Timeline",Timelines),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),

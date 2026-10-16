@@ -16,6 +16,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SidebarPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StepperPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataListPalette.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/TimelinePalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatCardPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTablePaginationPalette.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Menus.g.xaml" />

@@ -23,6 +23,9 @@
         <PackageReference Include="MSTest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerStep.cs" Link="BleeckerStep.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerDataListItem.cs" Link="BleeckerDataListItem.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerTimelineItem.cs" Link="BleeckerTimelineItem.cs" />
+        <None Include="../Reference/Timeline.json" Link="Fixtures/Timeline.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-timeline.cjs" Link="Fixtures/CaptureTimeline.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataList.json" Link="Fixtures/DataList.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataListTypography.json" Link="Fixtures/DataListTypography.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-data-list-typography.cjs" Link="Fixtures/CaptureDataListTypography.cjs" CopyToOutputDirectory="PreserveNewest" />

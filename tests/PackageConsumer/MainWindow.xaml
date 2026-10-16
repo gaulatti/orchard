@@ -100,6 +100,7 @@
                     </orchard:BleeckerStepper.Steps>
                 </orchard:BleeckerStepper>
                 <orchard:BleeckerDataList x:Name="PackageDataList" Width="320" IsStriped="True" AutomationProperties.Name="Independent metadata" />
+                <orchard:BleeckerTimeline x:Name="PackageTimeline" Width="320" AutomationProperties.Name="Independent record history" />
                 <orchard:BleeckerBarChart x:Name="PackageBarChart" XAxisKey="label" Width="320" Height="200" ShowLegend="False" HorizontalAlignment="Left" AutomationProperties.Name="Independent grouped bars">
                     <orchard:BleeckerBarChart.Series><orchard:BleeckerChartSeries Key="v" Name="Consumer" /></orchard:BleeckerBarChart.Series>
                 </orchard:BleeckerBarChart>

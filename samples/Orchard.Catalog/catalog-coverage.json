@@ -30,6 +30,8 @@
     "BleeckerStepper": "SteppersFixture.xaml",
     "BleeckerDataList": "DataListsFixture.xaml",
     "BleeckerDataListItem": "DataListsFixture.xaml",
+    "BleeckerTimeline": "TimelinesFixture.xaml",
+    "BleeckerTimelineItem": "TimelinesFixture.xaml",
     "BleeckerStep": "SteppersFixture.xaml",
     "BleeckerScatterChart": "ScatterChartsFixture.xaml",
     "BleeckerScatterSeries": "ScatterChartsFixture.xaml",

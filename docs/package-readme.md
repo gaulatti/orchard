@@ -6,6 +6,13 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerTimeline` displays an observable `BleeckerTimelineItem` collection with
+consumer-owned titles, descriptions, opaque timestamps, statuses and icons.
+Null status follows ordinal position (first Active, later Pending). Null icons
+use ordinals; original native elements and `IconTemplate` models retain their
+own behavior. Headers stack below the 640-DIP window viewport and share a row
+at or above it. Full visual/platform acceptance remains in progress.
+
 Target .NET 10 and Windows SDK 10.0.26100.0. Use Windows App SDK 2.5.1.
 Add the package from the directory containing the downloaded `.nupkg` or your
 configured package feed:

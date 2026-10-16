@@ -58,6 +58,18 @@ public sealed partial class MainWindow : Window
             CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
             else if (args.Contains("--smoke-chart-load-focus")) await RunChartLoadFocusAsync(folder);
+            else if (args.Contains("--smoke-timeline"))
+            {
+                using var viewportInput = new NativeInputSession(CatalogRoot.XamlRoot, folder, "timeline-viewport");
+                await viewportInput.AcquireAsync(ComponentSearch);
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Timelines);
+                    await Timelines.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, CatalogRoot, ComponentSearch);
+                    await CaptureFixtureAsync(Timelines, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "timeline", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-data-list"))
             {
                 using var viewportInput = new NativeInputSession(CatalogRoot.XamlRoot, folder, "data-list-viewport");
@@ -754,6 +766,8 @@ public sealed partial class MainWindow : Window
             await Steppers.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataLists);
             await DataLists.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(Timelines);
+            await Timelines.VerifyAsync(scheme,folder,CatalogRoot,ComponentSearch);
             await SelectFixtureAsync(DataTableToolbars);
             await DataTableToolbars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTablePaginations);

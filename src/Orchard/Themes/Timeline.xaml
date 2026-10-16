@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerTimeline">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="UseLayoutRounding" Value="False" /><Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" /><Setter Property="FontSize" Value="14" />
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerTimeline"><Grid>
+   <StackPanel x:Name="PART_Rows" FlowDirection="LeftToRight" UseLayoutRounding="False" />
+   <TextBlock x:Name="PART_Primary" Visibility="Collapsed" Foreground="{TemplateBinding Foreground}" />
+   <TextBlock x:Name="PART_Secondary" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
+   <TextBlock x:Name="PART_Completed" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineCompletedBrush}" />
+   <TextBlock x:Name="PART_Active" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineActiveBrush}" />
+   <TextBlock x:Name="PART_Pending" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelinePendingBrush}" />
+   <TextBlock x:Name="PART_Error" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineErrorBrush}" />
+   <TextBlock x:Name="PART_OnStatus" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineOnStatusBrush}" />
+   <TextBlock x:Name="PART_Line" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineLineBrush}" />
+   <TextBlock x:Name="PART_Border" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineBorderBrush}" />
+   <TextBlock x:Name="PART_Shadow" Visibility="Collapsed" Foreground="{ThemeResource BleeckerTimelineShadowBrush}" />
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

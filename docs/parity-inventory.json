@@ -1516,10 +1516,27 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerTimeline.cs",
+        "src/Orchard/Controls/BleeckerTimeline.Entry.cs",
+        "src/Orchard/Controls/BleeckerTimeline.Paragraph.cs",
+        "src/Orchard/Controls/BleeckerTimeline.Shadow.cs",
+        "src/Orchard/Controls/BleeckerTimelineItem.cs",
+        "src/Orchard/Themes/Timeline.xaml",
+        "src/Orchard/Themes/TimelinePalette.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/TimelinesFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/TimelineContractTests.cs",
+        "tests/Reference/Timeline.json",
+        "scripts/reference/capture-timeline.cjs",
+        "scripts/smoke-catalog.ps1 -Component timeline",
+        "scripts/compare-timeline-pixels.mjs",
+        "tests/PackageConsumer/MainWindow.Timeline.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
         "Implement full pinned contract with native Windows conventions",
         "Register variants and applicable interactive states",

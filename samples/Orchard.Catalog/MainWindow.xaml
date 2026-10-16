@@ -110,6 +110,7 @@
                 <local:SidebarsFixture x:Name="Sidebars" />
                 <local:SteppersFixture x:Name="Steppers" />
                 <local:DataListsFixture x:Name="DataLists" />
+                <local:TimelinesFixture x:Name="Timelines" />
                 <local:DataTableToolbarsFixture x:Name="DataTableToolbars" />
                 <local:DataTablePaginationsFixture x:Name="DataTablePaginations" />
                 <local:DataTableColumnTogglesFixture x:Name="DataTableColumnToggles" />
