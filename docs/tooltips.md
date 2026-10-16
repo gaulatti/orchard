@@ -73,3 +73,19 @@ and all 1,028 catalog captures in 351.1146312 seconds at
 prior BottomTip timeout and earlier capture abort still have no established
 root cause. No tooltip behavior, retry, presentation deadline or stability
 requirement was changed.
+
+At source `ab2af53`, the full run
+`artifacts/smoke-chart-readiness-validated-full` fails the original live-theme
+visibility/geometry assertion on Light LongTip after 323 captures and
+153.2707435 seconds. The catalog now records the before/after open state,
+surface/text dimensions, font, inherited themes and focus for each live
+theme check. The assertion and presentation gates are unchanged, and theme
+restoration runs even if writing the diagnostic fails.
+
+The focused diagnostic run `artifacts/smoke-tooltip-theme-diagnostic` passes
+all twelve theme checks. The diagnostic full sequence
+`artifacts/smoke-tooltip-theme-diagnostic-full` also passes all twelve,
+including LongTip's exact 219 by 75 surface, but times out at the unchanged
+360-second limit after 934 captures. These passes do not establish the cause
+of the preceding LongTip failure or full-suite acceptance. Its diagnostic
+summary is `artifacts/tooltip-theme-diagnostic-full-summary.json`.

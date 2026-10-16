@@ -20,3 +20,10 @@ This single comparison does not establish a causal or whole-suite speedup.
 Both runs retain 84 cases, 180 pointer presentation gates, 268 owned key pairs
 and the same source-state expectations. Fresh published full verification
 under the unchanged 360-second limit remains required.
+
+The published candidate's full run stops at the Tooltip geometry assertion
+after 323 captures (`artifacts/smoke-chart-readiness-validated-full`). A
+primary diagnostic build passes all twelve Tooltip theme checks but times
+out after 934 captures (`artifacts/smoke-tooltip-theme-diagnostic-full`).
+The two-turn candidate therefore has no verified full-suite throughput
+benefit. Both failures remain retained; no deadline or gate was changed.

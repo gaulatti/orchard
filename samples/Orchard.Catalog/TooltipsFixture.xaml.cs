@@ -110,14 +110,37 @@ public sealed partial class TooltipsFixture : UserControl
         var changed = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
         var width = surface.ActualWidth;
         var height = surface.ActualHeight;
+        object Snapshot() => new
+        {
+            tip.Name, tip.IsOpen, tip.IsLoaded, tip.ActualWidth, tip.ActualHeight, tip.ActualTheme,
+            surfaceWidth = surface.ActualWidth, surfaceHeight = surface.ActualHeight,
+            textWidth = text.ActualWidth, textHeight = text.ActualHeight,
+            font = text.FontFamily.Source, text.FontSize, text.LineHeight, text.FontWeight.Weight,
+            root.RequestedTheme, rootTheme = root.ActualTheme,
+            ownerTheme = tip.PlacementTarget?.ActualTheme,
+            focused = (Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name
+        };
+        var before = Snapshot();
+        object? after = null;
+        var geometryPassed = false;
         try
         {
             root.RequestedTheme = changed == BleeckerColorScheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
             await AwaitVerificationAsync(() => VerifyPalette(changed));
+            after = Snapshot();
+            geometryPassed = tip.IsOpen && surface.ActualWidth == width && surface.ActualHeight == height;
             Require(tip.IsOpen && surface.ActualWidth == width && surface.ActualHeight == height, "Live appearance changed tooltip visibility or geometry.");
             await MainWindow.CaptureElementAsync(tip, System.IO.Path.Combine(folder, $"tooltip-live-{tip.Name}-{changed}.png"));
         }
-        finally { root.RequestedTheme = original; }
+        finally
+        {
+            try
+            {
+                await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"tooltip-theme-geometry-{tip.Name}-{scheme}.json"),
+                    System.Text.Json.JsonSerializer.Serialize(new { passed = geometryPassed, before, after = after ?? Snapshot() }));
+            }
+            finally { root.RequestedTheme = original; }
+        }
         await AwaitVerificationAsync(() => VerifyPalette(scheme));
 
         void VerifyPalette(BleeckerColorScheme expected)
