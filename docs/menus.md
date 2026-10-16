@@ -8,6 +8,11 @@ This is an unfinished foundation, not accepted DropdownMenu parity. The pinned B
 
 The presenter uses `BleeckerOverlaySurface`, a consumer-content surface with the canonical two-layer overlay shadow: `(0,24,64,-20)` at .28 opacity and `(0,4,14,0)` at .06, both RGB `(26,55,77)`. These values are generated from the pinned tokens. It uses the shared rounded-mask geometry also used by cards, updates on resizing/corner changes, clears composition visuals on unload, and suppresses the shadow in Windows contrast mode. Its default font is Encode Sans Regular, and it is not a keyboard stop.
 
+The [shared renderer](overlay-shadow.md) now maps CSS blur to explicit Gaussian
+standard deviation with a padded native effect graph. Root, nested and
+standalone preview checks inspect the actual graph's blur, color, opacity,
+spread and offsets. Exact menu shadow raster acceptance remains open.
+
 The surface background fills the rounded border box beneath its outline. This
 matches CSS background clipping and prevents the overlay shadow from tinting a
 translucent border differently on its upper and lower edges. Content padding,

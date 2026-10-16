@@ -71,17 +71,17 @@ internal sealed partial class BleeckerSelectSurface
     }
 
 
-    private void AttachScrollChrome(Border border, ScrollViewer scroll, Control focusHost)
+    private void AttachScrollChrome(BleeckerOverlaySurface surface, ScrollViewer scroll, Control focusHost)
     {
         popupScroll = scroll; popupFocus = focusHost; scrollInitialized = false;
         scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
         scroll.VerticalSnapPointsType = SnapPointsType.None;
         var column = new Grid { UseLayoutRounding = false };
         for (var row = 0; row < 3; row++) column.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        border.Child = null;
+        surface.Content = null;
         scrollUp = ScrollIndicator("PART_ScrollUp", true); scrollDown = ScrollIndicator("PART_ScrollDown", false);
         Grid.SetRow(focusHost, 1); Grid.SetRow(scrollDown, 2);
-        column.Children.Add(scrollUp); column.Children.Add(focusHost); column.Children.Add(scrollDown); border.Child = column;
+        column.Children.Add(scrollUp); column.Children.Add(focusHost); column.Children.Add(scrollDown); surface.Content = column;
         scroll.ViewChanged += PopupViewChanged;
         scrollTimer = DispatcherQueue.CreateTimer(); scrollTimer.Interval = TimeSpan.FromMilliseconds(50); scrollTimer.Tick += ScrollTick;
     }

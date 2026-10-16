@@ -57,7 +57,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                     var select = Select(view); select.TabIndex = 1;
                     Popup Popup() => VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Single(item => item.Child is Border { Name: "PopupBorder" });
                     string Focus(object? node) => node switch { Button option when select.Items.Contains(option) => "option:" + select.Items.IndexOf(option), _ when ReferenceEquals(node, select) => "trigger", Control { Name: "PART_Listbox" } => "listbox", _ when ReferenceEquals(node, outside) => "outside", null => "BODY", _ => node.GetType().Name };
-                    var index = 0; var removedFocusedColumn = false;
+                    var index = 0; var removedFocusedColumn = false; BleeckerOverlaySurface? lastShadowSurface = null;
                     foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
                     {
                         var phase = point.GetProperty("phase").GetString()!; var expected = point.GetProperty("state"); var errors = new List<string>(); object? receipt = null;
@@ -118,7 +118,12 @@ public sealed partial class DataTableFiltersFixture : UserControl
                         Equal(ReferenceEquals(view.Table, active) && probe.Text == active.VisibleText && active.VisibleText == expected.GetProperty("visibleRows").GetString(), "Original table/visible rows differ.");
                         Equal(a.Requests.Count + b.Requests.Count == expected.GetProperty("events").GetArrayLength() && outsideClicks == expected.GetProperty("outsideClicks").GetInt32(), "Original callback or modal outside-action count differs.");
                         Equal(a.Rows.Zip(originalRowsA).All(pair => ReferenceEquals(pair.First, pair.Second)) && b.Rows.Zip(originalRowsB).All(pair => ReferenceEquals(pair.First, pair.Second)), "Original row objects differ."); Equal(input.OwnsForeground, "Native filter lost its foreground boundary.");
-                        var sourceTrigger = expected.GetProperty("trigger"); object? geometry = null;
+                        var sourceTrigger = expected.GetProperty("trigger"); object? geometry = null; bool? shadowClosed = null;
+                        if (!open && lastShadowSurface is not null)
+                        {
+                            shadowClosed = ShadowIsCleared(lastShadowSurface);
+                            Equal(shadowClosed.Value, "Closed Select retained its loaded surface or Composition shadow.");
+                        }
                         if (sourceTrigger.ValueKind == JsonValueKind.Null) Equal(select.Visibility == Visibility.Collapsed, "Missing original column still exposes a selector.");
                         else
                         {
@@ -135,11 +140,12 @@ public sealed partial class DataTableFiltersFixture : UserControl
                                     var mark = Descendants<Viewbox>(item).Single(node => node.Name == "Checkmark"); Equal((mark.Visibility == Visibility.Visible) == (sourceItem.GetProperty("state").GetString() == "checked"), "Controlled checked paint differs.");
                                 }
                                 var scroll = Descendants<ScrollViewer>(Popup().Child).Single(); Near(scroll.VerticalOffset, expected.GetProperty("viewport").GetProperty("scrollTop").GetDouble(), "Source scroll offset"); Near(scroll.ActualHeight, expected.GetProperty("viewport").GetProperty("clientHeight").GetDouble(), "Source viewport height");
-                                geometry = new { trigger = triggerBox, popup = popupBox, viewport = Bounds(scroll, root), scroll.VerticalOffset, options = items.Select(item => new { text = item.Content?.ToString(), item.IsEnabled, box = Bounds(item, root) }).ToArray() };
+                                lastShadowSurface = Descendants<BleeckerOverlaySurface>(Popup().Child).Single(item => item.Name == "PopupSurface");
+                                geometry = new { trigger = triggerBox, popup = popupBox, viewport = Bounds(scroll, root), scroll.VerticalOffset, shadow = DescribeShadow((FrameworkElement)Popup().Child), options = items.Select(item => new { text = item.Content?.ToString(), item.IsEnabled, box = Bounds(item, root) }).ToArray() };
                             }
                             else geometry = new { trigger = triggerBox };
                         }
-                        var file = $"{reportName}-{id}-{index++:00}-{phase}-{scheme}.png"; await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, file)); reports.Add(new { id, phase, file, errors, receipt, focus = Focus(focused), sourceFocus, expectedFocus, nativeFocusPolicy, focusRetained = ReferenceEquals(previousFocus, focused), priorFocusLoaded = previousFocus is FrameworkElement { IsLoaded: true }, rawFocus = focused?.GetType().Name, callbacks = a.Requests.Count + b.Requests.Count, outsideClicks, rows = probe.Text, geometry }); failures.AddRange(errors.Select(error => id + "/" + phase + ": " + error));
+                        var file = $"{reportName}-{id}-{index++:00}-{phase}-{scheme}.png"; await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, file)); reports.Add(new { id, phase, file, errors, receipt, focus = Focus(focused), sourceFocus, expectedFocus, nativeFocusPolicy, focusRetained = ReferenceEquals(previousFocus, focused), priorFocusLoaded = previousFocus is FrameworkElement { IsLoaded: true }, rawFocus = focused?.GetType().Name, callbacks = a.Requests.Count + b.Requests.Count, outsideClicks, rows = probe.Text, shadowClosed, geometry }); failures.AddRange(errors.Select(error => id + "/" + phase + ": " + error));
                     }
                 }
                 catch (Exception error) { failures.Add(id + ": " + error); }

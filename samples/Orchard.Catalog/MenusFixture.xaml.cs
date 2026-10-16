@@ -210,20 +210,7 @@ public sealed partial class MenusFixture : UserControl
     private static void VerifyShadow(BleeckerOverlaySurface surface)
     {
         Require(!surface.IsTabStop && surface.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Overlay surface inherited Windows typography or keyboard focus.");
-        var root = (Grid)VisualTreeHelper.GetChild(surface, 0);
-        var layers = (ContainerVisual)ElementCompositionPreview.GetElementChildVisual((Grid)root.Children[1]);
-        var sprites = layers.Children.OfType<SpriteVisual>().ToArray();
-        Require(sprites.Length == 2, "Overlay did not render two shadow layers.");
-        foreach (var sprite in sprites)
-        {
-            var shadow = (DropShadow)sprite.Shadow;
-            var far = shadow.BlurRadius == 64;
-            Require((far || shadow.BlurRadius == 14) && shadow.Offset.Y == (far ? 24 : 4) &&
-                Math.Abs(shadow.Opacity - (far ? .28 : .06)) < .001 && shadow.Color.R == 26 && shadow.Color.G == 55 && shadow.Color.B == 77,
-                "Overlay shadow differs from the canonical recipe.");
-            Require(Math.Abs(sprite.Size.X - (surface.ActualWidth - (far ? 40 : 0))) < .01,
-                "Overlay shadow lost its negative spread.");
-        }
+        OverlayShadowProbe.Read(surface);
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
 }

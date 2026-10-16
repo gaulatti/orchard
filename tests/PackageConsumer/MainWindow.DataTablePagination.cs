@@ -75,6 +75,7 @@ public sealed partial class MainWindow
             var text = value.Content is TextBlock block ? block.Text : value.Content?.ToString();
             var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(item => item.Child is not null && BrandDescendants<Button>(item.Child).Any(option => size.Items.Contains(option)));
             var border = popup.Child is Border rootBorder && rootBorder.Name == "PopupBorder" ? rootBorder : BrandDescendants<Border>(popup.Child).Single(item => item.Name == "PopupBorder");
+            VerifyPackagedSelectShadow(border);
             var trigger = size.TransformToVisual(Root).TransformBounds(new Rect(0, 0, size.ActualWidth, size.ActualHeight)); var bounds = border.TransformToVisual(Root).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
             measuredGap = bounds.Top - trigger.Bottom; measuredWidth = bounds.Width;
             Require(text == "10" && value.Opacity == 1 && Math.Abs(measuredGap - 4) <= 1d / 32 && measuredWidth == 80 && Math.Abs(bounds.Left - trigger.Left) <= 1d / 32, $"Packaged popup did not preserve its controlled value, source gap, width or alignment: text={text}, opacity={value.Opacity:R}, gap={measuredGap:R}, width={measuredWidth:R}, trigger={trigger}, popup={bounds}, root={Root.ActualWidth:R}x{Root.ActualHeight:R}.");

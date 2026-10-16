@@ -38,7 +38,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         this.updating = updating; this.currentSource = currentSource; this.displayText = displayText; this.selectionMatches = selectionMatches; this.listboxName = listboxName; this.automationClassName = automationClassName; IsTabStop = true; UseSystemFocusVisuals = false;
         ItemsPanel = (ItemsPanelTemplate)XamlReader.Load("<ItemsPanelTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'><StackPanel /></ItemsPanelTemplate>");
         Template = (ControlTemplate)XamlReader.Load("""
-            <ControlTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" TargetType="ItemsControl">
+            <ControlTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard" TargetType="ItemsControl">
              <Grid UseLayoutRounding="False">
               <Border x:Name="Ring" Margin="-2" BorderThickness="2" CornerRadius="9" IsHitTestVisible="False" Visibility="Collapsed" />
               <Border x:Name="Trigger" BorderThickness="1" CornerRadius="{StaticResource BleeckerUiCornerRadius}" Control.IsTemplateFocusTarget="True">
@@ -48,8 +48,10 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
                </Grid>
               </Border>
               <Popup x:Name="Popup" IsLightDismissEnabled="True" ShouldConstrainToRootBounds="True">
-               <Border x:Name="PopupBorder" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerPaginationChooserBorderBrush}" BorderThickness="1" CornerRadius="{StaticResource BleeckerUiCornerRadius}" UseLayoutRounding="False">
-                <ScrollViewer x:Name="ScrollViewer" MaxHeight="288" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" ZoomMode="Disabled" IsTabStop="True" AutomationProperties.AccessibilityView="Raw"><ItemsPresenter Margin="4"/></ScrollViewer>
+               <Border x:Name="PopupBorder" UseLayoutRounding="False">
+                <local:BleeckerOverlaySurface x:Name="PopupSurface" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerPaginationChooserBorderBrush}" BorderThickness="1" CornerRadius="{StaticResource BleeckerUiCornerRadius}" Padding="0" UseLayoutRounding="False" AutomationProperties.AccessibilityView="Raw">
+                 <ScrollViewer x:Name="ScrollViewer" MaxHeight="288" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" ZoomMode="Disabled" IsTabStop="True" AutomationProperties.AccessibilityView="Raw"><ItemsPresenter Margin="4"/></ScrollViewer>
+                </local:BleeckerOverlaySurface>
                </Border>
               </Popup>
              </Grid>
@@ -99,9 +101,10 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         trigger = (Border)GetTemplateChild("Trigger"); ring = (Border)GetTemplateChild("Ring"); displayedPresenter = (ContentPresenter)GetTemplateChild("ContentPresenter");
         positionedPopup.PlacementTarget = trigger;
         var border = (Border)GetTemplateChild("PopupBorder"); border.Width = double.IsNaN(Width) ? ActualWidth : Width;
-        var scroll = (ScrollViewer)GetTemplateChild("ScrollViewer"); scroll.BringIntoViewOnFocusChange = false; scroll.IsTabStop = false; border.Child = null;
+        var surface = (BleeckerOverlaySurface)GetTemplateChild("PopupSurface");
+        var scroll = (ScrollViewer)GetTemplateChild("ScrollViewer"); scroll.BringIntoViewOnFocusChange = false; scroll.IsTabStop = false; surface.Content = null;
         var focusHost = new ChooserViewport(this) { Name = "PART_Listbox", Content = scroll, IsTabStop = true, UseSystemFocusVisuals = false, HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch };
-        AutomationProperties.SetName(focusHost,listboxName); border.Child = focusHost; AttachScrollChrome(border,scroll,focusHost);
+        AutomationProperties.SetName(focusHost,listboxName); surface.Content = focusHost; AttachScrollChrome(surface,scroll,focusHost);
         border.KeyDown += (_, args) => HandleOpenKey(args); border.CharacterReceived += Typeahead;
         RefreshOpenValue();
     }

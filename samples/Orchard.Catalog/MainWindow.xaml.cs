@@ -68,6 +68,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="sidebar",environment=RuntimeEnvironment()}));
             }
+            else if (args.Contains("--smoke-select-shadow"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DataTableFilters);
+                    await DataTableFilters.VerifyShadowPointerAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(DataTableFilters, Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new { passed = true, component = "select-shadow", environment = RuntimeEnvironment() }));
+            }
             else if(args.Contains("--smoke-data-table-filters") || args.Contains("--smoke-data-table-filters-native") || args.Contains("--smoke-data-table-filters-live"))
             {
                 var filterFailures = new List<string>();

@@ -372,3 +372,13 @@ Both archives' files are verified against their published directories in
 content/override/RTL, accessibility/scaling and performance acceptance remain
 open. The inventory stays **53 in progress, 59 pending, zero accepted**.
 Push-triggered Actions remain paused and the public wiki remains unavailable.
+
+## Popup shadow boundary
+
+The shared Select now uses `BleeckerOverlaySurface` for its original rounded
+background, border and content. The [overlay contract](overlay-shadow.md)
+describes its CSS Gaussian mapping, native resource cleanup and separate
+shadow-only outside-click reference. The original browser JSON and all
+276-state input/geometry/ownership gates remain unchanged. Full-client RGBA
+comparisons retain remaining source paint differences without masks or
+tolerance; complete component acceptance remains open.

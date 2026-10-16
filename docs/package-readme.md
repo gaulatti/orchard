@@ -209,6 +209,13 @@ Value changes the row key. Removed or changed keys invalidate old providers.
 Open controlled updates preserve logical focus and the existing viewport;
 removing or disabling the focused option transfers focus to the listbox.
 
+The Select popup uses the shared Bleecker overlay surface. Its two native
+Gaussian shadow layers paint outside the existing measured border without
+adding an input region. The library's pinned Win2D dependency supplies the
+effect graph; consumers need no separate renderer. Closing or unloading the
+surface detaches and releases its owned Composition resources. Exact source
+raster and full platform acceptance remain in progress.
+
 `BleeckerSunburstChart.Data` is a required original recursive record implementing
 `IReadOnlyDictionary<string, object?>`. `BleeckerSunburstNode` provides Name,
 optional Value/Fill and an original observable Children collection. Shared

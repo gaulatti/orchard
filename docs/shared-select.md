@@ -114,3 +114,9 @@ The original 276 Filters states and shared Pagination source, input,
 held/rapid-key and scroll modes remain required regression boundaries. See
 [the live-update evidence](data-table-filters-reference.md#live-option-updates)
 for the measured browser contract, native checks and remaining acceptance.
+
+The popup now paints through the [shared overlay shadow](overlay-shadow.md)
+inside its existing measured border. The rounded surface owns the original
+background, outline and content; its Composition shadow adds no input region.
+The shadow-only outside-click fixture verifies dismissal without a consumer
+write or an invocation behind the modal surface.

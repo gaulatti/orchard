@@ -1,0 +1,31 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const option=name=>{const i=process.argv.indexOf(name);assert.ok(i>=0&&process.argv[i+1],`Pass ${name} <path>.`);return path.resolve(process.argv[i+1]);};
+const source=option('--source'),native=option('--native'),output=option('--output'),hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const read=async file=>JSON.parse((await fs.readFile(file,'utf8')).replace(/^\uFEFF/,''));
+const bytes=await fs.readFile(new URL('../tests/Reference/SelectShadowPointer.json',import.meta.url)),reference=JSON.parse(bytes),referenceSha256=hash(bytes);
+assert.equal(hash(await fs.readFile(path.join(source,'reference.json'))),referenceSha256);assert.equal(reference.format,'orchard-select-shadow-pointer-v1');assert.deepEqual(reference.shadowPoint,{x:200,y:186});
+const baseline=await read(new URL('../tests/Reference/DataTableFilters.json',import.meta.url));for(const key of ['sourceCommit','sourceSha256','sourceLockGitBlob','clientSha256','compiledCssSha256','browser'])assert.equal(reference[key],baseline[key]);for(const key of ['toolVersions','fontFiles','dependencies','bundledRuntime'])assert.deepEqual(reference[key],baseline[key]);
+assert.equal(reference.scriptSha256,hash(await fs.readFile(new URL('./reference/capture-select-shadow-pointer.cjs',import.meta.url))));assert.equal(reference.clientSha256,hash(await fs.readFile(new URL('./reference/data-table-filters-client.tsx',import.meta.url))));
+const runtime=await read(path.join(native,'result.json'));assert.equal(runtime.passed,true);assert.equal(runtime.component,'select-shadow');for(const[key,value]of[['displayScale',1],['textScale',1],['animationsEnabled',false],['highContrast',false]])assert.equal(runtime.environment[key],value);
+const images=[],inputs=[],samples=[];let states=0;
+for(const scheme of ['Light','Dark']){
+ const sample=reference.cases.find(item=>item.scheme===scheme);assert.equal(sample.snapshots.length,3);const report=await read(path.join(native,`select-shadow-pointer-${scheme}.json`));assert.equal(report.passed,true);assert.equal(report.failure,null);assert.equal(report.referenceSha256,referenceSha256);assert.equal(report.finalObservers,0);assert.equal(report.reports.length,3);
+ const points=[];
+ for(const[index,point]of sample.snapshots.entries()){
+  const actual=report.reports[index],state=point.state;assert.equal(actual.phase,point.phase);assert.equal(actual.open,state.popupOpen);assert.equal(actual.rows,state.visibleRows);assert.equal(actual.requests,0);assert.equal(actual.outsideClicks,0);assert.equal(state.events.length,0);assert.equal(state.outsideClicks,0);assert.ok(state.inputEvents.every(item=>item.trusted));if(point.phase!=='closed')assert.equal(actual.focus,state.focused);
+  assert.deepEqual([actual.target.X,actual.target.Y,actual.target.Width,actual.target.Height],[192,178,16,16]);assert.ok(point.presentation.stable>=3&&point.presentation.milliseconds<2000);
+  const originalBytes=await fs.readFile(path.join(source,point.file)),nativeBytes=await fs.readFile(path.join(native,actual.file));assert.equal(hash(originalBytes),point.sha256);const a=readRgbaPng(originalBytes),b=readRgbaPng(nativeBytes);assert.deepEqual([a.width,a.height,b.width,b.height],[1000,745,1000,745]);const at=(186*1000+200)*4;points.push({phase:point.phase,source:[...a.rgba.slice(at,at+4)],native:[...b.rgba.slice(at,at+4)]});
+  if(state.popupOpen){const box=state.popup.box;assert.equal(200>=box.x&&200<box.x+box.width&&186>=box.y&&186<box.y+box.height,false);assert.equal(actual.shadow.layers.length,2);}else if(point.phase==='outside')assert.equal(actual.shadowClosed,true);
+  if(point.phase==='outside'){const events=state.shadowPointerEvents;assert.deepEqual(events.map(item=>item.type),['pointermove','pointerdown','pointerup','click']);assert.deepEqual(events.map(item=>item.tag),['HTML','HTML','BUTTON','HTML']);for(const event of events){assert.equal(event.trusted,true);assert.deepEqual([event.x,event.y],[200,186]);}}
+  images.push({scheme,phase:point.phase,sourceFile:point.file,sourceSha256:point.sha256,nativeFile:actual.file,nativeSha256:hash(nativeBytes)});states++;
+ }
+ assert.notDeepEqual(points[0].source,points[1].source);assert.notDeepEqual(points[0].native,points[1].native);assert.deepEqual(points[0].source,points[2].source);assert.deepEqual(points[0].native,points[2].native);samples.push({scheme,point:reference.shadowPoint,pixels:points});
+ const input=await read(path.join(native,`select-shadow-pointer-${scheme}-native-modal-input-source.json`));assert.equal(input.passed,true);assert.equal(input.handlersDetached,true);assert.equal(input.routedXamlReceiptsClaimed,false);assert.equal(input.layer,'winui-input-pointer-source');assert.deepEqual([input.moves,input.downs,input.ups],[1,1,1]);assert.deepEqual(input.order,['move','down','up']);assert.deepEqual(input.errors,[]);assert.deepEqual([input.x-report.client.X,input.y-report.client.Y],[200,186]);
+ let frame=0,time=0;for(const item of input.receipts){assert.equal(item.exact,true);assert.equal(item.exactSource,true);assert.equal(item.island,input.island);assert.equal(item.PointerId,input.receipts[0].PointerId);assert.ok(item.FrameId>frame&&item.Timestamp>=time&&item.milliseconds<2000);assert.deepEqual([item.actualX,item.actualY],[input.x,input.y]);assert.equal(item.IsLeftButtonPressed,item.kind==='down');assert.equal(item.IsInContact,item.kind==='down');frame=item.FrameId;time=item.Timestamp;}inputs.push({scheme,...input});
+}
+assert.equal(states,6);assert.equal(reference.cases.length,2);assert.equal((await fs.readdir(native)).filter(file=>file.endsWith('.png')).length,8);
+const report={format:'orchard-select-shadow-pointer-audit-v1',referenceSha256,verifierSha256:hash(await fs.readFile(new URL(import.meta.url))),checkedShadowPointerGatesPassed:true,nativeComponentAccepted:false,sourceRouteParityVerified:false,sourcePixelParityVerified:false,states,captures:8,outsideShadowActions:2,outsideCallbacks:0,consumerWrites:0,samples,inputs,images};await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,inputs:undefined,images:undefined}));
