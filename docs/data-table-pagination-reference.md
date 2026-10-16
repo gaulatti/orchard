@@ -336,8 +336,54 @@ Orchard assembly SHA-256
 version `0.1.0+bd74a1bd1b6349469866eda198531d94833cf64d`. The correspondence and
 keyboard receipts are audited in `artifacts/pagination-popup-artifacts-report.json`.
 
-These preview artifacts do not replace the last fully checked catalog
-checkpoint: the current full-run Pie gate remains unresolved. No popup commits
-have been pushed. Remote main remains `42ca0a92e809c21826c025b573543856daad55df`;
-push-triggered Actions remain paused. All 112 inventory entries retain their
-existing status (51 in progress, 61 pending, zero accepted).
+At this preview checkpoint, these artifacts did not replace the last fully
+checked catalog: the full-run Pie gate was unresolved and the popup commits
+were unpushed. Remote main was `42ca0a92e809c21826c025b573543856daad55df`.
+The subsequent full-run evidence is recorded below. Push-triggered Actions
+remain paused. All 112 inventory entries retain their existing status
+(51 in progress, 61 pending, zero accepted).
+
+## Validated popup checkpoint
+
+Clean source `27acbc47bbcc10d9c6510159edae815eb688807b` passes the complete
+Light/Dark native catalog at `artifacts/smoke-pagination-popup-full-diagnostic`
+in 355.1883746 seconds under the unchanged 360-second deadline. The added
+Pie diagnostics do not change chart behavior or the original assertions.
+The earlier narrow Donut focus failure remains unexplained; this later pass
+does not establish that its cause was fixed.
+
+The full audit retains every previous capture and both new Pagination captures
+(1,030 PNGs), all 174 Sunburst/Radial Bar glyph hashes, 118 Toolbar source
+cases, 28 tooltip presentation gates and 16 final presentation gates. The
+native input audit verifies 1,732 pointer gates/moves, 1,738 key actions and
+62 clicks with no failures and at least two stable Rendering transitions.
+Reports are `artifacts/pagination-popup-full-diagnostic-audit.json` and
+`artifacts/pagination-popup-full-diagnostic-input-audit.json`. Both architecture
+solution builds have zero warnings/errors; all 88 regressions and the generated
+token check pass.
+
+The runnable catalog is `artifacts/catalog-pagination-popup-validated`.
+All 532 published files exactly match the measured build, audited in
+`artifacts/pagination-popup-published-correspondence.json`. Package 0.1.0 at
+`artifacts/packages-pagination-popup-validated/Gaulatti.Orchard.0.1.0.nupkg`
+has SHA-256 `b823be3508fed228181676c040483dcc8936a3fa3992df6c2b6c13f8ed9bfb5d`.
+Its source ProductVersion is `0.1.0+27acbc47bbcc10d9c6510159edae815eb688807b`.
+The fresh x64 package consumer at
+`artifacts/package-consumer-pagination-popup-validated` passes both themes,
+including eight exact held-key actions, the 4px popup gap, 80px width, visible
+controlled value and original rows. Native ARM64 runtime remains unverified.
+The isolated ARM64 consumer build passes at
+`artifacts/package-consumer-pagination-popup-validated-arm64`; both consumers'
+temporary caches are removed. Package, catalog and both consumers contain
+Orchard assembly SHA-256
+`e1bc95454042ea8fa25895427ce73601a047f836b75c547237b1e779496df316`,
+audited in `artifacts/pagination-popup-validated-artifacts-report.json`.
+
+This checkpoint does not accept Pagination or any other inventory entry.
+The exact browser/native pixel comparison still fails, including the source
+scroll controls and long-popup height. Zero-delay keys, the complete disabled
+input/motion/lifecycle matrix, contrast/Narrator/scaling, collection performance
+and native ARM64 acceptance remain open. The fixed inventory stays at 51 in
+progress, 61 pending and zero accepted. This is a native library with no backend
+or metrics surface. The public wiki remains unavailable, so the contract and
+evidence remain in-repository. Push-triggered Actions stay paused.

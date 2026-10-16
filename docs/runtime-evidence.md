@@ -1917,3 +1917,16 @@ raster/motion, contrast/Narrator/scaling, collection performance and native
 ARM64 runtime remain open. There is no backend/Prometheus surface. The public
 wiki remains unavailable; documentation stays in the repository. Push-triggered
 Actions stay paused at the user's request.
+
+## Pagination popup validated checkpoint
+
+The full x64 catalog from clean source `27acbc4` passes in 355.1883746 seconds
+with all 1,030 expected PNGs, unchanged 174 protected glyph hashes and no failed
+native input/presentation gates. Both architecture builds, 88 regressions and
+the token check pass. The published catalog's 532 files match the measured
+build exactly, and a freshly restored x64 NuGet consumer passes both themes.
+The preceding Pie focus failure remains unexplained; the later passing run
+does not establish a causal fix. Component acceptance and native ARM64 runtime
+remain open. Artifact paths, hashes, audit counts and limitations are in the
+[Pagination checkpoint](data-table-pagination-reference.md#validated-popup-checkpoint).
+Push-triggered Actions remain paused at the user's request.

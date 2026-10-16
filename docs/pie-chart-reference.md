@@ -138,3 +138,13 @@ raster and effects, normal/interrupted motion, the complete data/key/radius/
 formatter/override and RTL matrix, actual contrast, Narrator, display/text
 scaling, collection performance and native ARM64 acceptance remain required.
 This native presentation change has no backend or metrics surface.
+
+The later Pagination checkpoint preserves an unexplained full-suite failure:
+`artifacts/smoke-pagination-popup-published-full` stopped at the light narrow
+Donut's expected focus payload after 87.8152707 seconds. Failure-only focus,
+pointer and payload diagnostics were added without changing the chart or its
+two-second readiness limit. The focused Pie replay and subsequent complete
+Light/Dark catalog at `artifacts/smoke-pagination-popup-full-diagnostic` pass.
+The latter saves all 1,030 expected captures in 355.1883746 seconds. No causal
+fix is claimed for the earlier failure; the evidence remains separate from
+component acceptance. See the [validated Pagination checkpoint](data-table-pagination-reference.md#validated-popup-checkpoint).
