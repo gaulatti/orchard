@@ -1948,3 +1948,16 @@ acceptance gaps are recorded in the
 [owned chooser checkpoint](data-table-pagination-reference.md#owned-chooser-artifact-checkpoint).
 Push-triggered Actions remain paused; native ARM64 runtime is unverified and no
 inventory entry is accepted.
+
+## Pagination rapid key-pair evidence
+
+The same frozen keyboard reference now passes a separate native two-event
+batch replay: 136 states, 120 rapid down/up pairs and 138 captures. The original
+held-key mode also passes all 136 states and its exact owner gates. Both
+architecture builds, 89 regressions and token checks pass. Raw release routes
+still differ from the browser; this evidence establishes the functional rapid
+path while leaving route equivalence and component acceptance open. Paths,
+timing observations and source/native owner records are documented in the
+[rapid key-pair replay](data-table-pagination-reference.md#rapid-native-key-pair-replay).
+The validated library/package checkpoint is unchanged. Push-triggered Actions
+remain paused; the new regression is registered for future PR/manual runs.

@@ -101,8 +101,12 @@ jobs:
         if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
         id: stat_card_smoke
         run: ./scripts/smoke-catalog.ps1 -Component stat-card -Output artifacts/stat-card -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify rapid native Pagination key pairs
         if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
+        id: pagination_paired_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component data-table-pagination-paired -ClientSize 1000,745 -Output artifacts/pagination-paired -ExpectedArchitecture X64
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify live Windows contrast transition
@@ -246,8 +250,12 @@ jobs:
         if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
         id: stat_card_smoke
         run: ./scripts/smoke-catalog.ps1 -Component stat-card -Output artifacts/stat-card -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify rapid native ARM64 Pagination key pairs
         if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
+        id: pagination_paired_smoke
+        run: ./scripts/smoke-catalog.ps1 -Component data-table-pagination-paired -ClientSize 1000,745 -Output artifacts/pagination-paired -ExpectedArchitecture Arm64
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify live Windows contrast transition

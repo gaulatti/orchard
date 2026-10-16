@@ -78,15 +78,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "data-table-pagination-scroll", environment = RuntimeEnvironment() }));
             }
-            else if(args.Contains("--smoke-data-table-pagination-keyboard"))
+            else if(args.Contains("--smoke-data-table-pagination-keyboard") || args.Contains("--smoke-data-table-pagination-paired"))
             {
+                var pairedKeys = args.Contains("--smoke-data-table-pagination-paired");
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
                 {
                     CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(DataTablePaginations);
-                    await DataTablePaginations.VerifyKeyboardAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await DataTablePaginations.VerifyKeyboardAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, pairedKeys);
                     await CaptureFixtureAsync(DataTablePaginations, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
-                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "data-table-pagination-keyboard", environment = RuntimeEnvironment() }));
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = pairedKeys ? "data-table-pagination-paired" : "data-table-pagination-keyboard", environment = RuntimeEnvironment() }));
             }
             else if(args.Contains("--smoke-data-table-pagination-input"))
             {

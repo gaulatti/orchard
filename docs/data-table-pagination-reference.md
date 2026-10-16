@@ -588,3 +588,72 @@ collection performance or native ARM64 runtime. All 112 inventory statuses
 remain unchanged (51 in progress, 61 pending, zero accepted). There is no backend
 or metrics change. The public wiki remains unavailable; push-triggered Actions
 remain paused at the user's request.
+
+## Rapid native key-pair replay
+
+The original frozen browser collector already uses `page.keyboard.press`, with
+no focus or presentation wait between down/up. Its trusted event records show
+that the release target can precede the final captured focus. The existing
+native held-key replay intentionally waits for an explicit release target;
+that test remains intact and does not establish the rapid-pair path.
+
+The additional `data-table-pagination-paired` catalog mode replays the same
+136 frozen states, eight cases in each theme, against the original native
+table and row objects. Its functional acceptance requires the same settled
+focus, popup state, displayed value, paging/counts, callback count and visible
+rows. Each ordinary key uses one actual two-event SendInput batch, and
+Shift+Tab uses one four-event batch. No focus, dispatcher, layout or Rendering
+wait occurs between those events. The test observes one real routed path,
+checks exactly one initial down owner and one actual focused release owner,
+checks event ordering and modifiers, and records both event timestamps.
+The original two-second bounds and real presentation/pointer gates remain.
+
+The initial replay at `artifacts/smoke-pagination-paired-initial` passes all
+136 states and 120 actions, including two Shift+Tab transfers. Its 138 PNGs,
+source pins, original rows/callbacks and input receipts are audited at
+`artifacts/pagination-paired-initial-audit.json`. The subsequent replay adds
+timestamp/order records at `artifacts/smoke-pagination-paired-final`, with audit
+`artifacts/pagination-paired-final-audit.json`. The original held-key mode is
+rerun separately at `artifacts/smoke-pagination-keyboard-final`, audited in
+`artifacts/pagination-keyboard-final-audit.json`.
+
+This adds evidence for functional rapid input; release-route equivalence is
+still open. The captured differences are explicit:
+
+| Phase | Browser release target | Native release target |
+| --- | --- | --- |
+| Open | Selected option | Popup, followed by selected-option focus |
+| Navigate | Previously focused option | Newly focused option |
+| Commit/cancel | Body, followed by chooser focus | Chooser |
+
+Each category occurs 16 times across the two themes. The verifier retains the
+raw source and native owner records and reports `sourceReleaseOwnerParityVerified`
+as false. It does not substitute final focus for the observed release target.
+The native functional assertions do not claim DOM/native route equivalence,
+pixel parity or component acceptance.
+
+Both architecture builds have zero warnings/errors; all 89 regressions and the
+token check pass. Final rapid and held audits each cover 138 PNGs, 16 original
+pointer presentation gates and two current-position clicks with zero moves.
+The rapid trace retains 120 exact down/up pairs, two exact Shift modifiers and
+the observed order; the held trace retains all 118 held receipts plus both
+Shift+Tab pairs. Measured native down/up delivery intervals in the rapid run
+range from 0.1267 to 8.6056ms; they are observations, not new acceptance limits.
+
+Run the new native mode with the usual executable/output arguments and
+`-Component data-table-pagination-paired -ClientSize 1000,745` in
+`scripts/smoke-catalog.ps1`. Audit it with
+`scripts/verify-data-table-pagination-paired.mjs --source <keyboard-capture-v3>
+--native <native-output> --output <audit.json>`. The existing keyboard verifier
+continues to require all original held receipts. The frozen source reference
+is unchanged at SHA-256
+`8952c025e5e2afc03823c6d1ac715182a51f030869d20aed9a68902972e5f248`.
+The workflow also registers this native regression for x64 and ARM64 runtime
+jobs when explicitly run or triggered by a pull request. Those hosted runs
+have not been dispatched for this checkpoint. Push runs remain disabled.
+
+Only catalog verification, workflow registration, tooling and documentation change. Library code,
+public API, reference data and the validated package/catalog checkpoint remain
+unchanged. There is no backend or metrics impact. The public wiki is still
+unavailable, push-triggered Actions stay paused, and all 112 inventory statuses
+remain unchanged (51 in progress, 61 pending, zero accepted).

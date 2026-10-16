@@ -1360,7 +1360,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify zero-delay key-release routing and the complete enabled-state input matrix; 136 held-key states, 132 source-state checks, 12 pointer clicks and two Escape transfers pass",
+        "Resolve rapid source/native release-route differences and verify the complete enabled-state input matrix; 136 rapid-pair functional states, 136 held-key states, 132 source-state checks, 12 pointer clicks and two Escape transfers pass",
         "Resolve 132 differing rendered-state pairs and 154 geometry differences, including selector/popup appearance, typography, icons and motion",
         "Verify native ARM64 execution; fresh x64 package consumer and full current-source x64 suite pass",
         "Verify contrast, Narrator, text/display scaling and measured collection performance"

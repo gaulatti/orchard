@@ -10,7 +10,7 @@ namespace Orchard.Catalog;
 
 public sealed partial class DataTablePaginationsFixture
 {
-    internal async Task VerifyKeyboardAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyKeyboardAsync(BleeckerColorScheme scheme, string folder, bool pairedKeys = false)
     {
         using var bytes = new MemoryStream(); await typeof(DataTablePaginationsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTablePaginationKeyboard.json")!.CopyToAsync(bytes);
         using var reference = JsonDocument.Parse(bytes.ToArray()); var reports = new List<object>(); var failures = new List<string>();
@@ -46,7 +46,7 @@ public sealed partial class DataTablePaginationsFixture
                         var phase = point.GetProperty("phase").GetString()!; var expected = point.GetProperty("state"); var expectedRole = expected.GetProperty("focused").GetString()!; var errors = new List<string>(); object? receipt = null;
                         if (point.GetProperty("key").ValueKind == JsonValueKind.String)
                         {
-                            try { receipt = await PaginationKeyAsync(input, Target(expectedRole), point.GetProperty("key").GetString()!, Describe, errors); }
+                            try { receipt = pairedKeys ? await PaginationPairedKeyAsync(input, point, Describe, errors) : await PaginationKeyAsync(input, Target(expectedRole), point.GetProperty("key").GetString()!, Describe, errors); }
                             catch (Exception error) { errors.Add(error.ToString()); }
                         }
                         await MainWindow.AwaitPresentationAsync(bar);
@@ -84,7 +84,7 @@ public sealed partial class DataTablePaginationsFixture
         finally
         {
             app.ResizeClient(original);
-            await File.WriteAllTextAsync(Path.Combine(folder, $"data-table-pagination-keyboard-{scheme}.json"), JsonSerializer.Serialize(new { format = "orchard-data-table-pagination-native-keyboard-v1", scheme = scheme.ToString(), passed = failures.Count == 0, nativeComponentAccepted = false, referenceSha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes.ToArray())).ToLowerInvariant(), failures, reports }, new JsonSerializerOptions { WriteIndented = true }));
+            await File.WriteAllTextAsync(Path.Combine(folder, $"data-table-pagination-keyboard-{scheme}.json"), JsonSerializer.Serialize(new { format = pairedKeys ? "orchard-data-table-pagination-native-paired-v1" : "orchard-data-table-pagination-native-keyboard-v1", scheme = scheme.ToString(), pairedKeys, passed = failures.Count == 0, nativeComponentAccepted = false, referenceSha256 = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes.ToArray())).ToLowerInvariant(), failures, reports }, new JsonSerializerOptions { WriteIndented = true }));
         }
     }
 
