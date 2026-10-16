@@ -29,6 +29,8 @@ and fails verification; it does not count as runtime acceptance. The suite
 watchdog grows with verification workload and is separate from the measured
 collection-performance budgets. Report actual elapsed runtime; the increased
 watchdog is not a speedup and does not reclassify earlier timed-out runs.
+The [current native checkpoint](native-validation-checkpoint.md) records the
+complete passing sequence and remaining acceptance gaps.
 
 The contextual-help keyboard-entry fixture settles its Breadcrumb target
 before physical pointer movement. It observes actual rendered geometry over

@@ -4,6 +4,8 @@ This is the historical `ab2af53`/`ad40db5` checkpoint. Its six-minute
 watchdog instructions below describe that earlier workload. The current
 coverage-scaled watchdog is documented in [architecture](architecture.md)
 and [runtime diagnostics](catalog-readiness.md).
+The later passing full sequence and fresh package bytes are recorded in
+the [current native checkpoint](native-validation-checkpoint.md).
 
 The changes remain local. Push-triggered Actions remain paused; no workflow
 was dispatched and no commit was pushed for this checkpoint. Remote main is
