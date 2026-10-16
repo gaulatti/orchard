@@ -156,6 +156,11 @@ jobs:
           ./scripts/smoke-catalog.ps1 -Component loading-overlay-scroll -ClientSize 640,480 -Output artifacts/loading-overlay-scroll -ExpectedArchitecture X64
           node scripts/verify-loading-overlay-scroll.mjs --native artifacts/loading-overlay-scroll --output artifacts/loading-overlay-scroll/audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay scroll/transform audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-accessibility -ClientSize 640,480 -Output artifacts/loading-overlay-accessibility -ExpectedArchitecture X64
+          node scripts/verify-loading-overlay-accessibility.mjs --native artifacts/loading-overlay-accessibility --output artifacts/loading-overlay-accessibility/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay accessibility audit failed.' }
+          node scripts/test-loading-overlay-accessibility-audit.mjs --native artifacts/loading-overlay-accessibility --output artifacts/loading-overlay-accessibility-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay accessibility negative audit failed.' }
       - name: Verify chart focus across native load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
@@ -372,6 +377,11 @@ jobs:
           ./scripts/smoke-catalog.ps1 -Component loading-overlay-scroll -ClientSize 640,480 -Output artifacts/loading-overlay-scroll -ExpectedArchitecture Arm64
           node scripts/verify-loading-overlay-scroll.mjs --native artifacts/loading-overlay-scroll --output artifacts/loading-overlay-scroll/audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay scroll/transform audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component loading-overlay-accessibility -ClientSize 640,480 -Output artifacts/loading-overlay-accessibility -ExpectedArchitecture Arm64
+          node scripts/verify-loading-overlay-accessibility.mjs --native artifacts/loading-overlay-accessibility --output artifacts/loading-overlay-accessibility/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay accessibility audit failed.' }
+          node scripts/test-loading-overlay-accessibility-audit.mjs --native artifacts/loading-overlay-accessibility --output artifacts/loading-overlay-accessibility-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay accessibility negative audit failed.' }
       - name: Verify native ARM64 chart focus across load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus

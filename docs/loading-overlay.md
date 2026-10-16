@@ -26,6 +26,22 @@ semantics should use a dialog contract. This component has no cancellation
 command or automatic timeout. The catalog's three-second example demonstrates
 caller-controlled visibility.
 
+The spinner exposes an indeterminate `ProgressBar` automation peer without a
+numeric range or keyboard stop. Its name follows Orchard's standard precedence:
+`AutomationProperties.Name`, then `AutomationProperties.LabeledBy`, then `Label`.
+Attached names and linked captions remain live while the portal is open and
+survive template replacement. Supply a localized accessible name when omitting
+the visible label; the control does not invent an operation name. This native
+accessibility contract extends the frozen source, which has no ARIA name or role.
+
+`-Component loading-overlay-accessibility -ClientSize 640,480` checks ten visible
+states and hidden-peer removal in both themes, preserving the original action's
+focus. A separate UI Automation client verifies the real out-of-process tree,
+including localized bindings, live labels, linked captions and explicit-name
+priority. The catalog compiles its bundled test client using Windows' .NET
+Framework compiler and UI Automation assemblies; no execution-policy change is
+required. These checks establish UI Automation exposure, not Narrator speech.
+
 The template exposes `PART_Popup`, `PART_Portal`, `PART_Backdrop`, `PART_Tint`,
 `PART_Card`, `PART_Body`, `PART_Spinner`, `PART_LabelHost` and `PART_Label`. Default brushes live in
 `Themes/LoadingOverlay.xaml`. Windows contrast colors replace translucent tint

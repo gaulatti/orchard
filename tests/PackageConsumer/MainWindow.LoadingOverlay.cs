@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 using Orchard;
 
@@ -29,8 +30,20 @@ public sealed partial class MainWindow
             Require(timelineActions == count + 1, "Packaged portal blocked the existing keyboard action.");
             PackageLoadingOverlay.Label = ""; Root.UpdateLayout();
             await AwaitAsync(() => BrandDescendants<BleeckerOverlaySurface>(portal).Single().ActualHeight == 98, "Packaged portal retained the omitted label gap.");
+            var peer = FrameworkElementAutomationPeer.CreatePeerForElement(spinner);
+            var nameSource = new TextBlock { Text = "Préparer le dossier 日本語" };
+            PackageLoadingOverlay.SetBinding(AutomationProperties.NameProperty, new Binding { Source = nameSource, Path = new PropertyPath(nameof(TextBlock.Text)), Mode = BindingMode.OneWay });
+            await AwaitAsync(() => peer.GetName() == nameSource.Text, "Packaged portal ignored its bound accessible name with an omitted label.");
+            nameSource.Text = "Updated consumer operation";
+            await AwaitAsync(() => peer.GetName() == nameSource.Text, "Packaged portal retained a stale accessible name.");
+            PackageLoadingOverlay.ClearValue(AutomationProperties.NameProperty);
+            AutomationProperties.SetLabeledBy(PackageLoadingOverlay, nameSource);
+            await AwaitAsync(() => peer.GetName() == nameSource.Text, "Packaged portal ignored its linked accessible caption.");
+            AutomationProperties.SetName(PackageLoadingOverlay, "Explicit consumer operation");
+            Require(peer.GetName() == "Explicit consumer operation" && peer.GetAutomationControlType() == AutomationControlType.ProgressBar && peer.GetPattern(PatternInterface.RangeValue) is null && !spinner.IsTabStop,
+                "Packaged portal lost accessible name priority or indeterminate progress semantics.");
         }
-        finally { PackageLoadingOverlay.IsVisible = false; PackageLoadingOverlay.Label = "Preparing consumer data"; Root.UpdateLayout(); }
+        finally { PackageLoadingOverlay.IsVisible = false; PackageLoadingOverlay.ClearValue(AutomationProperties.NameProperty); AutomationProperties.SetLabeledBy(PackageLoadingOverlay, null); PackageLoadingOverlay.Label = "Preparing consumer data"; Root.UpdateLayout(); }
         Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Any(p => p.Child is FrameworkElement child && child.Name == "PART_Portal"), "Packaged loading portal did not close.");
     }
 }

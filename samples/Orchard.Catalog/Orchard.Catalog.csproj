@@ -73,6 +73,7 @@
         <EmbeddedResource Include="../../tests/Reference/NegativeChartDomains.json" LogicalName="Orchard.Catalog.Reference.NegativeChartDomains.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
+        <Content Include="../../scripts/LoadingOverlayUiaProbe.cs" Link="LoadingOverlayUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../tests/Reference/Stepper.json" LogicalName="Orchard.Catalog.Reference.Stepper.json" />
         <EmbeddedResource Include="../../tests/Reference/DataList.json" LogicalName="Orchard.Catalog.Reference.DataList.json" />
         <EmbeddedResource Include="../../tests/Reference/DataListTypography.json" LogicalName="Orchard.Catalog.Reference.DataListTypography.json" />

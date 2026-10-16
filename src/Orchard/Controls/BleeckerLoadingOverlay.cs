@@ -42,6 +42,8 @@ public sealed class BleeckerLoadingOverlay : Control
         DefaultStyleKey = typeof(BleeckerLoadingOverlay);
         Loaded += OnLoaded; Unloaded += OnUnloaded; LayoutUpdated += (_, _) => Present();
         ActualThemeChanged += (_, _) => Present();
+        RegisterPropertyChangedCallback(AutomationProperties.NameProperty, (_, _) => UpdateAccessibleName());
+        RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty, (_, _) => UpdateAccessibleName());
         foreach (var property in new[] { FontFamilyProperty, FontSizeProperty, FontWeightProperty, CharacterSpacingProperty, IsTextScaleFactorEnabledProperty, FlowDirectionProperty, VisibilityProperty, PaddingProperty, BorderThicknessProperty })
             RegisterPropertyChangedCallback(property, (_, _) => Present());
     }
@@ -52,7 +54,10 @@ public sealed class BleeckerLoadingOverlay : Control
     public bool IsVisible { get => (bool)GetValue(IsVisibleProperty); set => SetValue(IsVisibleProperty, value); }
     public string? Label { get => (string?)GetValue(LabelProperty); set => SetValue(LabelProperty, value); }
     public Brush OverlayBrush { get => (Brush)GetValue(OverlayBrushProperty); set => SetValue(OverlayBrushProperty, value); }
-    private static void OnChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args) => ((BleeckerLoadingOverlay)owner).Present();
+    private static void OnChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args)
+    {
+        var overlay = (BleeckerLoadingOverlay)owner; overlay.UpdateAccessibleName(); overlay.Present();
+    }
 
     protected override void OnApplyTemplate()
     {
@@ -70,7 +75,16 @@ public sealed class BleeckerLoadingOverlay : Control
         labelHost = GetTemplateChild("PART_LabelHost") as Canvas;
         if (label is not null) label.RenderTransform = labelShift;
         if (portal is not null) { portal.RenderTransform = portalShift; portal.PointerPressed += OnPortalPointerPressed; }
+        UpdateAccessibleName();
         Present();
+    }
+
+    private void UpdateAccessibleName()
+    {
+        if (spinner is null) return;
+        var explicitName = AutomationProperties.GetName(this); var associatedLabel = AutomationProperties.GetLabeledBy(this);
+        AutomationProperties.SetLabeledBy(spinner, associatedLabel);
+        AutomationProperties.SetName(spinner, !string.IsNullOrEmpty(explicitName) ? explicitName : associatedLabel is not null ? "" : Label ?? "");
     }
 
     private void OnPortalPointerPressed(object sender, PointerRoutedEventArgs args)
@@ -197,7 +211,6 @@ public sealed class BleeckerLoadingOverlay : Control
             var ascent = Math.Floor(metrics.BaselineOffset * scale + .5) / scale;
             var descent = Math.Floor((metrics.DesiredSize.Height - metrics.BaselineOffset) * scale + .5) / scale;
             labelShift.Y = Math.Floor(((label.LineHeight * factor - ascent - descent) / 2 + ascent) * scale) / scale - label.BaselineOffset;
-            AutomationProperties.SetName(spinner, Label ?? "");
             popup.IsOpen = true;
             UpdateBlur(size);
             // Commit a changed native Popup anchor before this frame is drawn.
