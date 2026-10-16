@@ -510,3 +510,81 @@ and package checkpoint until that separate validation is recorded. No inventory
 entry is accepted; the fixed count remains 51 in progress, 61 pending and zero
 accepted. No backend/metrics surface changed. The public wiki remains unavailable
 and push-triggered Actions remain paused.
+
+## Owned chooser artifact checkpoint
+
+Clean checkout source `3a069144202719558ab13b2a58fef9b912840dce` builds x64 and
+ARM64 with zero warnings/errors. All 89 regressions and generated-token checks
+pass there. The published x64 catalog at
+`artifacts/catalog-pagination-owned-validated` passes the complete Light/Dark
+run in 356.4500522 seconds under the unchanged 360-second deadline:
+`artifacts/smoke-pagination-owned-validated-full`.
+
+The full audit preserves all 1,030 PNG names and all 174 protected
+Sunburst/Radial Bar glyph hashes. All 1,732 pointer gates/moves, 1,738 key
+actions, 62 clicks, 28 tooltip gates, 16 final presentation gates and 118
+Toolbar source cases pass. Reports are
+`artifacts/pagination-owned-validated-full-audit.json` and
+`artifacts/pagination-owned-validated-full-input-audit.json`.
+The source-sized scroll replay also passes against this published executable:
+`artifacts/smoke-pagination-owned-published-scroll`, audited in
+`artifacts/pagination-owned-published-scroll-audit.json` (36 states, 38 PNGs,
+20 exact held-key pairs and 12 genuine pointer moves).
+
+The 532 published files match their corresponding clean-build bytes in
+`artifacts/pagination-owned-validated-published-correspondence.json`.
+The build also contains 131 loose XAML/XBF intermediates omitted by normal
+publish; the audit records those separately. The actual Orchard PRI is dumped
+in `artifacts/pagination-owned-validated-pri.xml`: it contains the current
+pagination palette and no abandoned SDK ComboBox template. An automatic policy
+rejection prevented removing stale generated files from the original checkout,
+so these artifacts were built in a fresh managed checkout instead.
+
+Package 0.1.0 is
+`artifacts/packages-pagination-owned-validated/Gaulatti.Orchard.0.1.0.nupkg`,
+SHA-256 `175e0d1a262061a1cfef35922fd44d983228f6d1897c1084c18895a4a3e5c621`.
+The catalog/library source ProductVersion is
+`0.1.0+3a069144202719558ab13b2a58fef9b912840dce`, with Orchard assembly SHA-256
+`b17550248e19a7a2a110d74facdb388c5dd4d551ca3bbc46870d510e9921af6f`.
+
+The initial independent consumer at
+`artifacts/package-consumer-pagination-owned-validated` failed its popup
+placement assertion. The diagnostic at
+`artifacts/package-consumer-pagination-owned-placement-diagnostic` established
+that its original control was at Y=4,866 in a 721px-high window. Its long
+overview StackPanel has no scrolling ancestor, so StartBringIntoView did not
+make that test visible. The consumer now temporarily mounts the same
+pagination and row-projection controls in a visible root host, then restores
+their original parent/order. It preserves the source model and original rows.
+
+The first visible-host attempts at `artifacts/package-consumer-pagination-owned-visible`
+and `artifacts/package-consumer-pagination-owned-visible-input-diagnostic`
+failed the first key-focus gate and external selection summary respectively.
+`artifacts/package-consumer-pagination-owned-visible-ready` then passed the
+Light checks but failed to observe the source after restoration for Dark.
+Those failures are retained. The harness now checks actual source subscriber
+counts through both unmount/remount directions and two stable, visible native
+Rendering transitions before input. It retains the two-second bounds, exact
+held-key owners and all original popup/value/row assertions.
+
+The fresh x64 consumer at
+`artifacts/package-consumer-pagination-owned-visible-lifecycle` passes both
+themes, including eight exact held-key actions, the 4px popup gap, 80px width,
+visible original rows, ComboBox/List/ListItem/Scroll patterns and read-only
+controlled Value. Both themes retain exactly one view subscription and one
+consumer row-projection subscription. Its isolated cache is removed. No library
+or catalog code changed after the successful published full run.
+
+The fresh ARM64 consumer build at
+`artifacts/package-consumer-pagination-owned-visible-lifecycle-arm64` passes
+with native runtime explicitly unverified; its isolated cache is also removed.
+Package, catalog and both consumers contain the same stamped Orchard assembly.
+The correspondence, exact keyboard owners, visible presentation and cache
+cleanup are audited in `artifacts/pagination-owned-validated-artifacts-report.json`.
+
+This checkpoint does not establish exact paint, outside-popup pointer behavior,
+zero-delay keys, the full disabled/motion matrix, contrast/Narrator/scaling,
+collection performance or native ARM64 runtime. All 112 inventory statuses
+remain unchanged (51 in progress, 61 pending, zero accepted). There is no backend
+or metrics change. The public wiki remains unavailable; push-triggered Actions
+remain paused at the user's request.

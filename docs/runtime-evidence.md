@@ -1930,3 +1930,21 @@ does not establish a causal fix. Component acceptance and native ARM64 runtime
 remain open. Artifact paths, hashes, audit counts and limitations are in the
 [Pagination checkpoint](data-table-pagination-reference.md#validated-popup-checkpoint).
 Push-triggered Actions remain paused at the user's request.
+
+## Pagination owned chooser checkpoint
+
+Clean source `3a06914` builds both architectures without warnings/errors and
+passes 89 regressions and token checks. Its published x64 catalog passes all
+1,030 captures in 356.4500522 seconds under the unchanged 360-second limit,
+with all 174 protected glyph hashes unchanged and no failed input/presentation
+gates. The published 36-state scroll replay also passes.
+
+A fresh NuGet consumer passes both themes after its original pagination and
+row controls are made visible and their actual observer/rendering readiness is
+checked. Earlier offscreen placement, focus and observer failures remain
+retained. The library and catalog did not change after the full run. Package
+hashes, source correspondence, failure paths, consumer evidence and remaining
+acceptance gaps are recorded in the
+[owned chooser checkpoint](data-table-pagination-reference.md#owned-chooser-artifact-checkpoint).
+Push-triggered Actions remain paused; native ARM64 runtime is unverified and no
+inventory entry is accepted.
