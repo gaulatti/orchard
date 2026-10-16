@@ -56,7 +56,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | skeleton | `BleeckerSkeleton`, `BleeckerSkeletonCard`, `BleeckerSkeletonTable`: shapes, count-driven card/table compositions | Registered nine-case fixture; x64/ARM64 geometry, count/opacity bindings, rendered/empty pixels, ancestor visibility/lifecycle and clean consumers pass at `71a7fb8` | In progress: native/browser raster parity, exact pulse timing, contrast/Narrator/scaling; see [contract and usage](skeleton-reference.md) |
 | stepper | Pending | Pending | Full pinned contract |
 | timeline | Pending | Pending | Full pinned contract |
-| data-list | Pending | Pending | Full pinned contract |
+| data-list | `BleeckerDataList` and observable `BleeckerDataListItem`: consumer content/templates, stripes and viewport-responsive columns | Registered 72-case frozen matrix at widths 639, 640 and 1024; native action, binding, keyed lifecycle and real resize checks | In progress: [source contract and evidence](data-list.md); text baselines/raster, full content/override matrix, contrast/Narrator/scaling and ARM64 runtime |
 | error-state | `BleeckerErrorState`: consumer-owned summaries, icon content and optional retry commands | Registered normal/empty/long/RTL and native retry fixtures; x64/ARM64 runtime, contrast and independent consumers pass at `64f4f25` | In progress: complete glyph/icon raster comparison, scaling, Narrator, contrast schemes and lifecycle/template matrix; see [contract and evidence](error-states.md) |
 | loading-overlay | Pending | Pending | Full pinned contract |
 | date-range-picker | Pending | Pending | Full pinned contract |

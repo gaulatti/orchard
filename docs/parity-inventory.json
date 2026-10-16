@@ -1555,14 +1555,27 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerDataList.cs",
+        "src/Orchard/Controls/BleeckerDataList.Entry.cs",
+        "src/Orchard/Controls/BleeckerDataListItem.cs",
+        "src/Orchard/Themes/DataList.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/DataListsFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/DataListContractTests.cs",
+        "tests/Reference/DataList.json",
+        "scripts/smoke-catalog.ps1 -Component data-list",
+        "scripts/compare-data-list-pixels.mjs",
+        "tests/PackageConsumer/MainWindow.DataList.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete source text baselines, glyph/shape rasterization and alpha paint (66/72 exact images differ)",
+        "Complete arbitrary-content/template and resource-override matrices, real scaling, contrast and Narrator checks",
+        "Verify native ARM64 runtime and final component acceptance"
       ]
     },
     {

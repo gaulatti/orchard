@@ -116,8 +116,15 @@ jobs:
         if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: stepper_motion_smoke
         run: ./scripts/smoke-stepper-motion.ps1 -Output artifacts/stepper-motion -ExpectedArchitecture X64
-      - name: Exercise and render native controls
+      - name: Verify DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.stepper_motion_smoke.outcome == 'success' || steps.stepper_motion_smoke.outcome == 'failure') }}
+        id: data_list_smoke
+        run: |
+          foreach ($width in @(1024,639,640)) {
+            ./scripts/smoke-catalog.ps1 -Component data-list -ClientSize $width,900 -Output "artifacts/data-list-$width" -ExpectedArchitecture X64
+          }
+      - name: Exercise and render native controls
+        if: ${{ !cancelled() && (steps.data_list_smoke.outcome == 'success' || steps.data_list_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture X64
       - name: Verify PNG persistence and alpha conversion
@@ -285,8 +292,15 @@ jobs:
         if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: stepper_motion_smoke
         run: ./scripts/smoke-stepper-motion.ps1 -Output artifacts/stepper-motion -ExpectedArchitecture Arm64
-      - name: Exercise and render native ARM64 controls
+      - name: Verify native ARM64 DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.stepper_motion_smoke.outcome == 'success' || steps.stepper_motion_smoke.outcome == 'failure') }}
+        id: data_list_smoke
+        run: |
+          foreach ($width in @(1024,639,640)) {
+            ./scripts/smoke-catalog.ps1 -Component data-list -ClientSize $width,900 -Output "artifacts/data-list-$width" -ExpectedArchitecture Arm64
+          }
+      - name: Exercise and render native ARM64 controls
+        if: ${{ !cancelled() && (steps.data_list_smoke.outcome == 'success' || steps.data_list_smoke.outcome == 'failure') }}
         id: native_smoke
         run: ./scripts/smoke-catalog.ps1 -ExpectedArchitecture Arm64
       - name: Verify native ARM64 PNG persistence and alpha conversion

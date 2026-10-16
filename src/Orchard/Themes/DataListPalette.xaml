@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="BleeckerDataListStripeBrush" Color="#F9F6F2" Opacity=".4" /></ResourceDictionary>
+  <ResourceDictionary x:Key="Default"><SolidColorBrush x:Key="BleeckerDataListStripeBrush" Color="White" Opacity=".03" /></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="BleeckerDataListStripeBrush" Color="{ThemeResource SystemColorWindowColor}" /></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

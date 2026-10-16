@@ -28,6 +28,8 @@
   },
   "controls": {
     "BleeckerStepper": "SteppersFixture.xaml",
+    "BleeckerDataList": "DataListsFixture.xaml",
+    "BleeckerDataListItem": "DataListsFixture.xaml",
     "BleeckerStep": "SteppersFixture.xaml",
     "BleeckerScatterChart": "ScatterChartsFixture.xaml",
     "BleeckerScatterSeries": "ScatterChartsFixture.xaml",

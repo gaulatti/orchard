@@ -14,6 +14,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Breadcrumb.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Sidebar.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Stepper.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataList.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTableToolbar.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTablePagination.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTableFilters.xaml" />
