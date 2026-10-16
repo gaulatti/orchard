@@ -351,7 +351,9 @@ public sealed partial class MainWindow : Window
         var tooltip=BrandDescendants<Border>(chart).Single(item=>item.Name=="PART_Tooltip");var items=BrandDescendants<StackPanel>(chart).Single(item=>item.Name=="PART_TooltipItems");
         await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==0&&tooltip.Visibility==Visibility.Collapsed&&items.Children.Count==0&&AutomationProperties.GetHelpText(chart)=="","Packaged Sparkline retained an empty curve or stale inspection text.");
         PackageSparkline.Data=original;await AwaitAsync(()=>plot.Children.OfType<Microsoft.UI.Xaml.Shapes.Path>().Count()==1,"Packaged Sparkline did not restore consumer data.");
-        await File.WriteAllTextAsync(Path.Combine(output,$"consumer-sparkline-{Root.RequestedTheme}.json"),System.Text.Json.JsonSerializer.Serialize(new{passed=true,originalData=ReferenceEquals(chart.Data,original),emptyInspectionCleared=true,restored=true,key}));
+        var arguments = Environment.GetCommandLineArgs();
+        var folder = Path.GetDirectoryName(arguments[Array.IndexOf(arguments, "--verify-output") + 1])!;
+        await File.WriteAllTextAsync(Path.Combine(folder,$"consumer-sparkline-{Root.RequestedTheme}.json"),System.Text.Json.JsonSerializer.Serialize(new{passed=true,originalData=ReferenceEquals(chart.Data,original),emptyInspectionCleared=true,restored=true,key}));
     }
 
     private async Task VerifyAreaChartAsync()

@@ -199,3 +199,13 @@ node scripts/verify-sparkline-pointer.mjs --native <native-output> --output <aud
 
 Full-sequence runtime and performance, source raster, accessibility/scaling
 and current ARM64 runtime remain separate acceptance requirements.
+
+The independent x64 consumer at
+`artifacts/package-consumer-chart-readiness-verified` passes in both themes
+against package source `ab2af53`. Each `consumer-sparkline-*.json` confirms
+original data identity, cleared empty-data inspection, restored geometry and
+one owned Right down/up pair. The evidence writer uses the directory of the
+existing `--verify-output` result path. Its preceding compile failure and
+removed isolated cache remain recorded at
+`artifacts/package-consumer-chart-readiness-validated` and
+`artifacts/chart-readiness-consumer-x64.log`.
