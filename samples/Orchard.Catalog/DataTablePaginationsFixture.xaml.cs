@@ -25,7 +25,7 @@ public sealed partial class DataTablePaginationsFixture : UserControl
         Invoke(buttons["PART_Next"]); await ReadyAsync(() => table.PageIndex == 1 && Rows.Text == table.VisibleText); Require(table.VisibleRows[0] == table.Rows[10], "Navigation replaced the original consumer rows.");
         Invoke(buttons["PART_Last"]); await ReadyAsync(() => table.PageIndex == 4); Require(table.VisibleRows.Count == 7 && !buttons["PART_Last"].IsEnabled, "Last-page boundary differs.");
         table.SetPagination(2, 10); await MainWindow.AwaitPresentationAsync(Preview);
-        var size = Descendants<ComboBox>(Preview).Single(); size.SelectedItem = size.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 20);
+        var size = Chooser(Preview); SelectSize(size,20);
         await ReadyAsync(() => table.PageIndex == 1 && table.PageSize == 20); Require(table.VisibleRows[0] == table.Rows[20] && table.Requests[^1] == (nameof(PaginationTable.SetPageSize), 20), "Page size did not preserve the original top row.");
         table.SetSelection(["row-001", "row-002", "row-047"]); table.SetFilter(true); Require(table.FilteredSelectedRowCount == 2 && table.Selection.Count == 3 && table.FilteredRowCount == 24, "Filtering lost consumer selection.");
         table.SetSort(true); Require(ReferenceEquals(table.VisibleRows[0], table.Rows[46]), "Sorting replaced the original rows.");

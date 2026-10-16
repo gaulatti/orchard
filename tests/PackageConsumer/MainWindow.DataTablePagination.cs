@@ -29,7 +29,7 @@ public sealed partial class MainWindow
         Require(!actions["PART_First"].IsEnabled && actions["PART_Next"].IsEnabled, "Packaged pagination lost producer navigation flags.");
         Invoke("PART_Next"); await AwaitAsync(() => paginationSource.PageIndex == 1 && PackagePaginationRows.Text == "Story 11|Story 12|Story 13|Story 14|Story 15|Story 16|Story 17|Story 18|Story 19|Story 20", "Packaged pagination did not update original consumer rows.");
         Require(ReferenceEquals(paginationSource.VisibleRows.First(), paginationSource.Rows[10]), "Packaged paging replaced the original row.");
-        var size = BrandDescendants<ComboBox>(PackagePagination).Single(); size.SelectedItem = size.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 20);
+        var size = BrandDescendants<ItemsControl>(PackagePagination).Single(item => item.Name == "PART_PageSize"); ((ISelectionItemProvider)FrameworkElementAutomationPeer.CreatePeerForElement(size.Items.OfType<Button>().Single(item => (int)item.Tag == 20)).GetPattern(PatternInterface.SelectionItem)).Select();
         await AwaitAsync(() => paginationSource.PageIndex == 0 && paginationSource.PageSize == 20 && PackagePaginationRows.Text == paginationSource.VisibleText, "Packaged size change did not preserve the top row's page.");
         Invoke("PART_Last"); await AwaitAsync(() => paginationSource.PageIndex == 1 && !actions["PART_Next"].IsEnabled, "Packaged last-page boundary differs.");
         Require(ReferenceEquals(paginationSource.VisibleRows.Last(), paginationSource.Rows[22]) && ReferenceEquals(PackagePagination.Table, paginationSource), "Packaged pagination lost consumer identity.");
@@ -39,22 +39,23 @@ public sealed partial class MainWindow
         paginationSource.SelectedCount = 0; paginationSource.SetPageSize(10); paginationSource.SetPageIndex(0);
         await AcquireConsumerInputAsync(); PackagePagination.StartBringIntoView(); Require(size.Focus(FocusState.Keyboard), "Packaged page-size selector refused native focus.");
         var input = new List<object>(); var sizeRequests = paginationSource.SizeRequests;
+        bool SizeIsOpen() => ((IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(size).GetPattern(PatternInterface.ExpandCollapse)).ExpandCollapseState == Microsoft.UI.Xaml.Automation.ExpandCollapseState.Expanded;
         var measuredGap = double.NaN; var measuredWidth = double.NaN;
         void VerifyOpenPopup()
         {
             var value = BrandDescendants<ContentPresenter>(size).Single(item => item.Name == "ContentPresenter");
             var text = value.Content is TextBlock block ? block.Text : value.Content?.ToString();
-            var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(item => item.Child is not null && BrandDescendants<ComboBoxItem>(item.Child).Any(option => size.Items.Contains(option)));
-            var border = BrandDescendants<Border>(popup.Child).Single(item => item.Name == "PopupBorder");
+            var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(item => item.Child is not null && BrandDescendants<Button>(item.Child).Any(option => size.Items.Contains(option)));
+            var border = popup.Child is Border rootBorder && rootBorder.Name == "PopupBorder" ? rootBorder : BrandDescendants<Border>(popup.Child).Single(item => item.Name == "PopupBorder");
             var trigger = size.TransformToVisual(Root).TransformBounds(new Rect(0, 0, size.ActualWidth, size.ActualHeight)); var bounds = border.TransformToVisual(Root).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
             measuredGap = bounds.Top - trigger.Bottom; measuredWidth = bounds.Width;
             Require(text == "10" && value.Opacity == 1 && Math.Abs(measuredGap - 4) <= 1d / 32 && measuredWidth == 80 && Math.Abs(bounds.Left - trigger.Left) <= 1d / 32, "Packaged popup did not preserve its controlled value, source gap, width or alignment.");
         }
-        var ten = size.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 10); var twenty = size.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == 20);
-        input.Add(await PaginationConsumerKeyAsync(0x28, size, ten, () => { Require(size.IsDropDownOpen && paginationSource.SizeRequests == sizeRequests, "Packaged ArrowDown mutated the table instead of opening its options."); VerifyOpenPopup(); }));
-        input.Add(await PaginationConsumerKeyAsync(0x09, ten, ten, () => Require(size.IsDropDownOpen && paginationSource.SizeRequests == sizeRequests, "Packaged popup Tab escaped or changed paging.")));
+        var ten = size.Items.OfType<Button>().Single(item => (int)item.Tag == 10); var twenty = size.Items.OfType<Button>().Single(item => (int)item.Tag == 20);
+        input.Add(await PaginationConsumerKeyAsync(0x28, size, ten, () => { Require(SizeIsOpen() && paginationSource.SizeRequests == sizeRequests, "Packaged ArrowDown mutated the table instead of opening its options."); VerifyOpenPopup(); }));
+        input.Add(await PaginationConsumerKeyAsync(0x09, ten, ten, () => Require(SizeIsOpen() && paginationSource.SizeRequests == sizeRequests, "Packaged popup Tab escaped or changed paging.")));
         input.Add(await PaginationConsumerKeyAsync(0x28, ten, twenty, () => Require(paginationSource.PageSize == 10 && paginationSource.SizeRequests == sizeRequests, "Packaged highlight committed before selection.")));
-        input.Add(await PaginationConsumerKeyAsync(0x0D, twenty, size, () => Require(!size.IsDropDownOpen && paginationSource.PageSize == 20 && paginationSource.PageIndex == 0 && paginationSource.SizeRequests == sizeRequests + 1 && PackagePaginationRows.Text == paginationSource.VisibleText && ReferenceEquals(paginationSource.VisibleRows.First(), paginationSource.Rows[0]), "Packaged Enter did not commit exactly once through original consumer rows.")));
+        input.Add(await PaginationConsumerKeyAsync(0x0D, twenty, size, () => Require(!SizeIsOpen() && paginationSource.PageSize == 20 && paginationSource.PageIndex == 0 && paginationSource.SizeRequests == sizeRequests + 1 && PackagePaginationRows.Text == paginationSource.VisibleText && ReferenceEquals(paginationSource.VisibleRows.First(), paginationSource.Rows[0]), "Packaged Enter did not commit exactly once through original consumer rows.")));
         var args = Environment.GetCommandLineArgs(); var report = args[Array.IndexOf(args, "--verify-output") + 1];
         await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!, $"consumer-pagination-keyboard-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed = true, input, originalRows = true, oneSizeCommit = true, measuredGap, measuredWidth, controlledValue = "10" }));
         paginationSource.SetPageSize(10); paginationSource.SetPageIndex(0);

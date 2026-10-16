@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.Json;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
@@ -35,7 +36,7 @@ public sealed partial class DataTablePaginationsFixture
                 try
                 {
                     await ReadyAsync(() => bar.IsLoaded); bar.ApplyTemplate(); await MainWindow.AwaitPresentationAsync(bar);
-                    var buttons = Descendants<Button>(bar).Where(item => item.Name.StartsWith("PART_", StringComparison.Ordinal)).ToDictionary(item => item.Name); var combo = Descendants<ComboBox>(bar).Single();
+                    var buttons = Descendants<Button>(bar).Where(item => item.Name.StartsWith("PART_", StringComparison.Ordinal)).ToDictionary(item => item.Name); var combo = Chooser(bar);
                     var step = 0;
                     foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
                     {
@@ -49,7 +50,7 @@ public sealed partial class DataTablePaginationsFixture
                             case "replace-table": active = b; bar.Table = active; probe.Text = active.VisibleText; break;
                             case "stale-table": a.SetPageIndex(1); break; case "restore-table": active = a; bar.Table = active; probe.Text = active.VisibleText; break;
                             case "keyboard-size-20": SelectSize(combo, 20); break; case "keyboard-last": SelectSize(combo, 500); break;
-                            case "open": Expand(combo, true); await ReadyAsync(() => combo.IsDropDownOpen); break; case "open-escape": Expand(combo, false); break;
+                            case "open": Expand(combo, true); await ReadyAsync(() => ChooserIsOpen(combo)); break; case "open-escape": Expand(combo, false); break;
                             case "disabled-previous": Require(!buttons["PART_Previous"].IsEnabled, "Disabled previous unexpectedly became enabled."); break;
                             default: if (action.StartsWith("size-", StringComparison.Ordinal)) SelectSize(combo, int.Parse(action[5..], CultureInfo.InvariantCulture)); break;
                         }
@@ -78,13 +79,13 @@ public sealed partial class DataTablePaginationsFixture
                             CompareLayout(name, Bounds(button, bar), sourceButton.GetProperty("box"), layoutDifferences, visible);
                         }
                         var sourceCombo = Descendants(expected.GetProperty("surface")).Single(item => item.GetProperty("tag").GetString() == "BUTTON" && item.GetProperty("attributes").TryGetProperty("role", out var role) && role.GetString() == "combobox");
-                        Check("size-label", () => Require(((combo.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "") == sourceCombo.GetProperty("text").GetString(), "Controlled page-size text differs."));
+                        Check("size-label", () => Require((SelectedOption(combo)?.Content?.ToString() ?? "") == sourceCombo.GetProperty("text").GetString(), "Controlled page-size text differs."));
                         CompareLayout("surface", new Rect(0, 0, bar.ActualWidth, bar.ActualHeight), expected.GetProperty("surface").GetProperty("box"), layoutDifferences, true);
                         CompareLayout("summary", Bounds(texts["PART_Selection"], bar), children[0].GetProperty("box"), layoutDifferences, texts["PART_Selection"].Visibility == Visibility.Visible);
                         CompareLayout("page", Bounds(texts["PART_Page"], bar), rightChildren[1].GetProperty("box"), layoutDifferences, true);
                         CompareLayout("size", Bounds(combo, bar), sourceCombo.GetProperty("box"), layoutDifferences, true);
                         var file = $"data-table-pagination-source-{id}-{step:00}-{action}-{scheme}.png"; await MainWindow.CaptureElementAsync(root, Path.Combine(folder, file));
-                        var bounds = Bounds(bar, root); reports.Add(new { id, step, action, errors, layoutDifferences, file, surface = new { x = bounds.X, y = bounds.Y, width = bounds.Width, height = bounds.Height }, active = ReferenceEquals(active, a) ? "A" : "B", active.PageIndex, active.PageSize, active.PageCount, active.FilteredRowCount, active.FilteredSelectedRowCount, probe = probe.Text, popupOpen = combo.IsDropDownOpen }); failures.AddRange(errors.Select(error => id + "/" + action + ": " + error));
+                        var bounds = Bounds(bar, root); reports.Add(new { id, step, action, errors, layoutDifferences, file, surface = new { x = bounds.X, y = bounds.Y, width = bounds.Width, height = bounds.Height }, active = ReferenceEquals(active, a) ? "A" : "B", active.PageIndex, active.PageSize, active.PageCount, active.FilteredRowCount, active.FilteredSelectedRowCount, probe = probe.Text, popupOpen = ChooserIsOpen(combo) }); failures.AddRange(errors.Select(error => id + "/" + action + ": " + error));
                     }
                 }
                 finally { root.Children.Remove(host); a.Changed -= changed; b.Changed -= changed; }
@@ -102,8 +103,13 @@ public sealed partial class DataTablePaginationsFixture
         if (props.TryGetProperty("filters", out var filters) && filters.GetArrayLength() > 0) table.SetFilter(true); return table;
     }
     private static void Invoke(Button button) => ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(button).GetPattern(PatternInterface.Invoke)).Invoke();
-    private static void Expand(ComboBox combo, bool open) { var provider = (IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(combo).GetPattern(PatternInterface.ExpandCollapse); if (open) provider.Expand(); else provider.Collapse(); }
-    private static void SelectSize(ComboBox combo, int value) { combo.SelectedItem = combo.Items.OfType<ComboBoxItem>().Single(item => (int)item.Tag == value); if (combo.IsDropDownOpen) Expand(combo, false); }
+    private static ItemsControl Chooser(DependencyObject root) => Descendants<ItemsControl>(root).Single(item => item.Name == "PART_PageSize");
+    private static IExpandCollapseProvider ChooserProvider(ItemsControl combo) => (IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(combo).GetPattern(PatternInterface.ExpandCollapse);
+    private static bool ChooserIsOpen(ItemsControl combo) => ChooserProvider(combo).ExpandCollapseState == ExpandCollapseState.Expanded;
+    private static void Expand(ItemsControl combo, bool open) { var provider = ChooserProvider(combo); if (open) provider.Expand(); else provider.Collapse(); }
+    private static ISelectionItemProvider OptionProvider(Button item) => (ISelectionItemProvider)FrameworkElementAutomationPeer.CreatePeerForElement(item).GetPattern(PatternInterface.SelectionItem);
+    private static Button? SelectedOption(ItemsControl combo) => combo.Items.OfType<Button>().FirstOrDefault(item => OptionProvider(item).IsSelected);
+    private static void SelectSize(ItemsControl combo, int value) { OptionProvider(combo.Items.OfType<Button>().Single(item => (int)item.Tag == value)).Select(); if (ChooserIsOpen(combo)) Expand(combo, false); }
     private static IEnumerable<JsonElement> Elements(JsonElement node) => node.GetProperty("children").EnumerateArray().Where(item => item.GetProperty("tag").GetString() != "#text");
     private static IEnumerable<JsonElement> Descendants(JsonElement node) { yield return node; if (node.TryGetProperty("children", out var children)) foreach (var child in children.EnumerateArray()) foreach (var descendant in Descendants(child)) yield return descendant; }
     private static Rect Bounds(FrameworkElement element, UIElement relative) => element.TransformToVisual(relative).TransformBounds(new Rect(0, 0, element.ActualWidth, element.ActualHeight));

@@ -430,3 +430,83 @@ authoritative; current upstream ComboBox source was consulted only as diagnostic
 context. The native popup sizing/ownership boundary must be resolved before
 shipping the scroll controls or claiming the complete 18-state native replay.
 The fixed inventory remains 51 in progress, 61 pending and zero accepted.
+
+## Owned chooser and 36-state scroll replay
+
+The scroll regression now contains 36 actual browser states (18 per theme),
+collected in `artifacts/data-table-pagination-scroll-browser/capture-v5`.
+The reference SHA-256 is
+`cdca36b24ac2a8ef1304e368b9bd231f6c9d91c0be934ca365d10c3859875307`.
+The collector still pins the original keyboard reference, bundle, browser,
+CSS and fonts. Added paths cover open and closed typeahead, keyboard navigation
+after viewport hover, repeated hover, and restoring options after dismissal.
+Typing `5` from the closed value `10` selects `50` through the original table
+exactly once; the following `0` retains that value without another callback.
+This follows the captured Radix wrap/search ordering.
+
+The private page-size chooser now owns a WinUI Popup, ScrollViewer and option
+Buttons through an ItemsControl template. It replaces the earlier private
+ComboBox workaround, leaving the public pagination/table/options contract
+unchanged. This removes the native ComboBox height rewrite that clipped the
+short popup. No copied SDK ComboBox template is shipped. Option identities are
+reused for matching values; external table/options updates stay authoritative,
+including an empty display for an unlisted current size.
+
+The popup aligns to the painted trigger with a 4px gap. Its source-sized
+viewport, padding, 36px rows and 28px hover controls produce 318px endpoint,
+346px two-control and 110px short-list popup heights. Actual scrolling updates
+control availability; extent-only options changes preserve the mounted flags
+observed in Radix. Hover uses the native 50ms timer and selected row height.
+The timer stops when the indicator leaves the last genuine pointer position,
+on exit, disablement, dismissal or unload. First/last keyboard focus includes
+viewport padding; typeahead centers an out-of-view target as captured in the
+browser. Keyboard selection/dismissal finishes after the original routed event
+so the original down/up observers retain their node.
+
+The chooser exposes native UI Automation ComboBox/ExpandCollapse/Selection and
+read-only Value patterns, its viewport exposes List/Scroll, and its options
+expose ListItem/SelectionItem. Native disabled and detached selection requests
+are rejected. Lifecycle checks retain the original observer, template,
+unlisted-value, unload and reparent boundaries. These providers and tests do
+not establish Narrator acceptance.
+
+The clean targeted native outputs are:
+
+- `artifacts/smoke-pagination-owned-final-pagination-scroll`: all 36 scroll
+  states and 38 composed/final PNGs pass. The source/native audit at
+  `artifacts/pagination-owned-final-scroll-audit.json` checks every PNG hash,
+  source pin, focus/callback state, viewport measurement, 20 exact held-key
+  pairs and 12 owned, nongenerated pointer moves with stable presentation.
+- `artifacts/smoke-pagination-owned-final-pagination-keyboard`: the original
+  136 states and 120 key actions pass, including both Shift+Tab transfers and
+  two current-position clicks with no movement. All 34 popup widths, heights
+  and gaps match; absolute positions still differ with bar typography. Audits
+  are `artifacts/pagination-owned-final-keyboard-audit.json` and
+  `artifacts/pagination-owned-final-popup-layout.json`.
+- `artifacts/smoke-pagination-owned-final-pagination-input`,
+  `artifacts/smoke-pagination-owned-final-pagination` and
+  `artifacts/smoke-pagination-owned-final-pagination-source`: the original 12
+  clicks, two Escape transfers, both-theme lifecycle and 132 producer states
+  pass. Input audit: `artifacts/pagination-owned-final-input-audit.json`.
+
+The browser's leave-indicator gesture goes outside the popup. The native modal
+popup blocks delivery to the underlying bar, so its replay genuinely moves to
+the painted popup border to leave the indicator. This verifies indicator exit;
+outside-popup pointer behavior remains unverified. Readiness/input deadlines,
+held-key ownership, rendering stability and geometric tolerance are unchanged.
+The new verifier is `scripts/verify-data-table-pagination-scroll.mjs`.
+
+Visual review confirms the short popup and both long-list controls are painted.
+Exact pixel parity still fails: typography, source shadow and other paint/state
+details remain open. The current 132 surface pairs differ by 502,848 pixels and
+154 layout measurements. The independent Pillow audit agrees, with no masks
+or tolerance (`artifacts/pagination-owned-final-pixels.json` and
+`artifacts/pagination-owned-final-pillow.json`). Both architecture builds have
+zero warnings/errors; all 89 regressions and generated-token checks pass.
+Zero-delay key release, full disabled/motion coverage,
+contrast/Narrator/scaling, measured collection performance and native ARM64
+runtime are also open. These targeted outputs do not replace the full catalog
+and package checkpoint until that separate validation is recorded. No inventory
+entry is accepted; the fixed count remains 51 in progress, 61 pending and zero
+accepted. No backend/metrics surface changed. The public wiki remains unavailable
+and push-triggered Actions remain paused.

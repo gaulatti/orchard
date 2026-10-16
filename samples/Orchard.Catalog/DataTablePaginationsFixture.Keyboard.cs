@@ -37,9 +37,9 @@ public sealed partial class DataTablePaginationsFixture
                         using var currentPoint = new NativeInputSession(XamlRoot, folder, $"pagination-keyboard-current-point-{scheme}");
                         await currentPoint.ClickCurrentPositionAsync(before);
                     }
-                    var combo = Descendants<ComboBox>(bar).Single(); var buttons = Descendants<Button>(bar).ToDictionary(item => item.Name);
-                    Control Target(string role) => role switch { "before" => before, "after" => after, "combo" => combo, "first" => buttons["PART_First"], "previous" => buttons["PART_Previous"], "next" => buttons["PART_Next"], "last" => buttons["PART_Last"], _ when role.StartsWith("option:", StringComparison.Ordinal) => combo.Items.OfType<ComboBoxItem>().Single(item => item.Content.ToString() == role[7..]), _ => throw new InvalidOperationException("Unknown original focus role: " + role) };
-                    string Describe(object? node) => node switch { ComboBoxItem item => "option:" + item.Content, _ when ReferenceEquals(node, before) => "before", _ when ReferenceEquals(node, after) => "after", _ when ReferenceEquals(node, combo) => "combo", Button item => item.Name, null => "null", _ => node.GetType().Name };
+                    var combo = Chooser(bar); var buttons = Descendants<Button>(bar).ToDictionary(item => item.Name);
+                    Control Target(string role) => role switch { "before" => before, "after" => after, "combo" => combo, "first" => buttons["PART_First"], "previous" => buttons["PART_Previous"], "next" => buttons["PART_Next"], "last" => buttons["PART_Last"], _ when role.StartsWith("option:", StringComparison.Ordinal) => combo.Items.OfType<Button>().Single(item => item.Content.ToString() == role[7..]), _ => throw new InvalidOperationException("Unknown original focus role: " + role) };
+                    string Describe(object? node) => node switch { Button item when item.Tag is int => "option:" + item.Content, _ when ReferenceEquals(node, before) => "before", _ when ReferenceEquals(node, after) => "after", _ when ReferenceEquals(node, combo) => "combo", Button item => item.Name, null => "null", _ => node.GetType().Name };
                     var step = 0;
                     foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
                     {
@@ -51,28 +51,29 @@ public sealed partial class DataTablePaginationsFixture
                         }
                         await MainWindow.AwaitPresentationAsync(bar);
                         if (!ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Target(expectedRole))) errors.Add("Focus differs: " + Describe(FocusManager.GetFocusedElement(XamlRoot)) + "/" + expectedRole);
-                        if (combo.IsDropDownOpen != expected.GetProperty("popupOpen").GetBoolean()) errors.Add("Popup state differs.");
+                        if (ChooserIsOpen(combo) != expected.GetProperty("popupOpen").GetBoolean()) errors.Add("Popup state differs.");
                         var expectedTable = expected.GetProperty("table"); var pagination = expectedTable.GetProperty("pagination");
                         if (table.PageIndex != pagination.GetProperty("pageIndex").GetInt32() || table.PageSize != pagination.GetProperty("pageSize").GetInt32() || table.PageCount != expectedTable.GetProperty("pageCount").GetInt32()) errors.Add("Producer pagination differs.");
                         if (table.Requests.Count != expected.GetProperty("events").EnumerateArray().Count(item => item.GetProperty("kind").GetString() == "pagination")) errors.Add("Original pagination callback count differs.");
                         if (probe.Text != expected.GetProperty("visibleRows").GetString() || table.VisibleText != probe.Text || !ReferenceEquals(bar.Table, table) || !table.VisibleRows.All(row => table.Rows.Any(originalRow => ReferenceEquals(originalRow, row)))) errors.Add("Original consumer rows differ.");
                         Require(input.OwnsForeground, "Keyboard capture lost the catalog's foreground window.");
                         var file = $"data-table-pagination-keyboard-{id}-{step++:00}-{phase}-{scheme}.png"; var client = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, file));
-                        var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).SingleOrDefault(item => item.Child is not null && Descendants<ComboBoxItem>(item.Child).Any(option => combo.Items.Contains(option)));
+                        var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).SingleOrDefault(item => item.Child is not null && Descendants<Button>(item.Child).Any(option => combo.Items.Contains(option)));
                         var popupBorder = popup?.Child is FrameworkElement popupChild ? Descendants<FrameworkElement>(popupChild).Prepend(popupChild).Single(item => item.Name == "PopupBorder") : null;
                         var popupBounds = popupBorder is not null ? (Windows.Foundation.Rect?)Bounds(popupBorder, root) : null;
                         var focusBounds = FocusManager.GetFocusedElement(XamlRoot) is FrameworkElement focusedElement ? (Windows.Foundation.Rect?)Bounds(focusedElement, root) : null;
-                        if (expectedRole.StartsWith("option:", StringComparison.Ordinal) && popupBounds is { } viewport && focusBounds is { } focusedBox &&
+                        var scroller = popup is not null ? Descendants<ScrollViewer>(popup.Child).Single(item => item.Name == "ScrollViewer") : null;
+                        var viewportBounds = scroller is not null ? (Windows.Foundation.Rect?)Bounds(scroller, root) : null;
+                        if (expectedRole.StartsWith("option:", StringComparison.Ordinal) && viewportBounds is { } viewport && focusBounds is { } focusedBox &&
                             (focusedBox.Top < viewport.Top - 1d / 32 || focusedBox.Bottom > viewport.Bottom + 1d / 32))
                         {
-                            var scroller = Descendants<ScrollViewer>(popup!.Child).Single(item => item.Name == "ScrollViewer");
-                            errors.Add($"Focused option is outside the visible popup viewport: item={focusedBox}, popup={viewport}, offset={scroller.VerticalOffset}, viewport={scroller.ViewportHeight}, extent={scroller.ExtentHeight}, scrollable={scroller.ScrollableHeight}, actual={scroller.ActualHeight}.");
+                            errors.Add($"Focused option is outside the visible popup viewport: item={focusedBox}, popup={viewport}, offset={scroller!.VerticalOffset}, viewport={scroller.ViewportHeight}, extent={scroller.ExtentHeight}, scrollable={scroller.ScrollableHeight}, actual={scroller.ActualHeight}.");
                         }
                         var valuePresenter = Descendants<ContentPresenter>(combo).Single(item => item.Name == "ContentPresenter");
                         var displayed = valuePresenter.Content is TextBlock selectedText ? selectedText.Text : valuePresenter.Content?.ToString() ?? "";
-                        var controlledDisplay = combo.Items.OfType<ComboBoxItem>().FirstOrDefault(item => (int)item.Tag == table.PageSize)?.Content?.ToString() ?? "";
+                        var controlledDisplay = combo.Items.OfType<Button>().FirstOrDefault(item => (int)item.Tag == table.PageSize)?.Content?.ToString() ?? "";
                         if (displayed != controlledDisplay) errors.Add("Displayed chooser value differs from the original producer.");
-                        reports.Add(new { id, phase, file, errors, receipt, capture = "desktop-client", client, focus = Describe(FocusManager.GetFocusedElement(XamlRoot)), expectedRole, popupOpen = combo.IsDropDownOpen, table.PageIndex, table.PageSize, table.PageCount, callbacks = table.Requests.Count, surface = Bounds(bar, root), chooser = Bounds(combo, root), popup = popupBounds, popupChildType = popup?.Child.GetType().Name, placement = popup?.ActualPlacement.ToString(), horizontalOffset = popup?.HorizontalOffset, verticalOffset = popup?.VerticalOffset, displayedValue = valuePresenter.Content is TextBlock valueText ? valueText.Text : valuePresenter.Content?.ToString(), valueBox = Bounds(valuePresenter, root), valuePresenter.Opacity, probe = probe.Text }); failures.AddRange(errors.Select(error => id + "/" + phase + ": " + error));
+                        reports.Add(new { id, phase, file, errors, receipt, capture = "desktop-client", client, focus = Describe(FocusManager.GetFocusedElement(XamlRoot)), expectedRole, popupOpen = ChooserIsOpen(combo), table.PageIndex, table.PageSize, table.PageCount, callbacks = table.Requests.Count, surface = Bounds(bar, root), chooser = Bounds(combo, root), popup = popupBounds, popupChildType = popup?.Child.GetType().Name, placement = popup?.ActualPlacement.ToString(), horizontalOffset = popup?.HorizontalOffset, verticalOffset = popup?.VerticalOffset, displayedValue = valuePresenter.Content is TextBlock valueText ? valueText.Text : valuePresenter.Content?.ToString(), valueBox = Bounds(valuePresenter, root), valuePresenter.Opacity, probe = probe.Text }); failures.AddRange(errors.Select(error => id + "/" + phase + ": " + error));
                         Require(errors.Count == 0, "Pagination keyboard replay differs; see its exact native receipt and state report.");
                     }
                 }
@@ -91,7 +92,7 @@ public sealed partial class DataTablePaginationsFixture
     {
         var from = FocusManager.GetFocusedElement(XamlRoot) as Control ?? throw new InvalidOperationException("Keyboard phase has no focused native control."); var downs = 0; var ups = 0; var shiftDowns = 0; var shiftUps = 0; var downOwned = true; var upOwned = true; var shiftOwned = true;
         var released = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); var downTarget = ""; var upTarget = "";
-        var code = key switch { "Tab" or "Shift+Tab" => 0x09, "ArrowDown" => 0x28, "ArrowUp" => 0x26, "Home" => 0x24, "End" => 0x23, "Enter" => 0x0D, "Space" => 0x20, "Escape" => 0x1B, _ => throw new InvalidOperationException("Unknown original key: " + key) };
+        var code = key switch { "Tab" or "Shift+Tab" => 0x09, "ArrowDown" => 0x28, "ArrowUp" => 0x26, "Home" => 0x24, "End" => 0x23, "Enter" => 0x0D, "Space" => 0x20, "Escape" => 0x1B, "5" => 0x35, "0" => 0x30, _ => throw new InvalidOperationException("Unknown original key: " + key) };
         var down = new KeyEventHandler((_, args) => { if ((ushort)args.Key == code) { downs++; downOwned &= ReferenceEquals(args.OriginalSource, from); downTarget = describe(args.OriginalSource); } else if (args.Key == Windows.System.VirtualKey.Shift) { shiftDowns++; shiftOwned &= ReferenceEquals(args.OriginalSource, from); } });
         var up = new KeyEventHandler((_, args) => { if ((ushort)args.Key == code) { ups++; upOwned &= ReferenceEquals(args.OriginalSource, to); upTarget = describe(args.OriginalSource); released.TrySetResult(); } else if (args.Key == Windows.System.VirtualKey.Shift) { shiftUps++; shiftOwned &= ReferenceEquals(args.OriginalSource, to); } });
         // Observe the explicit original owners once. A constrained popup's key
