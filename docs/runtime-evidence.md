@@ -2081,3 +2081,17 @@ cases, and the component remains in progress. The
 [current native checkpoint](native-validation-checkpoint.md) records the
 Tooltip competing-hover diagnosis, unchanged deadlines, package evidence and
 remaining desktop acceptance. Push-triggered Actions remain paused.
+
+## Stepper text baseline checkpoint
+
+At `b59cef4`, all 324 nonempty paragraph/ordinal baselines match the captured
+browser across 44 cases, within 0.000016 DIP. Native nearest-pixel rounding had
+placed labels/descriptions one pixel low; floor placement and explicit ordinal
+line boxes correct this. The full published x64 sequence passes 1,080 captures
+in 406.1895514 seconds and preserves all previous names and 174 glyph hashes.
+All 105 unit tests, token generation and x64/ARM64 builds pass. Published motion
+passes both Windows preference modes and restores the original setting. The
+image comparison retains zero tolerance and no masks; 42/44 cases still differ,
+with 143,878 differing pixels and 11,026,803 absolute RGBA error. The component
+and overall goal remain in progress; see the
+[current checkpoint](native-validation-checkpoint.md) for artifacts and gaps.

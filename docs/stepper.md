@@ -126,3 +126,12 @@ improves from 165,563 to 143,875 differing pixels and from 27,086,663 to
 11,020,196 absolute RGBA error. It still differs in 42/44 cases. Font/shape
 rasterization, the remaining alpha-paint differences and broader desktop
 acceptance remain open; no pixel tolerance or comparison mask was added.
+
+The clean published full run at `b59cef4` passes all 1,080 captures in
+406.1895514 seconds, preserving every prior filename and 174 protected glyph
+hashes. The same 324 baseline assertions pass in the full sequence. Its
+zero-tolerance image audit records 143,878 differing pixels and 11,026,803
+absolute RGBA error; this is a separate capture from the focused result above.
+Published enabled/reduced motion remains verified. Current evidence is under
+`artifacts/smoke-stepper-baseline-full`, with the independent baseline audit at
+`artifacts/stepper-baseline-typography-audit.json`.

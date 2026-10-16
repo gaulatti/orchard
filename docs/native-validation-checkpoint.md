@@ -1,5 +1,70 @@
 # Current native validation checkpoint
 
+Current library/catalog source: `b59cef474ad95c94841cbfccd77059e85dcc06ad`.
+The clean published x64 full run passes in **406.1895514 seconds** with all
+**1,080 captures**, every prior filename and all **174 protected glyph hashes**.
+Its independent audits verify 1,980 pointer moves/presentation gates, 1,744
+owned key pairs and 68 physical clicks, with zero failures. The maximum pointer
+gate is 205.6012 ms under the unchanged two-second deadline. The full watchdog
+remains eight minutes; no throughput or collection-performance claim is made.
+
+The native Stepper now matches all **324 first-line text baselines** across
+44 pinned browser cases, including ordinals, both orientations, long/narrow
+labels and RTL. Maximum baseline error is 0.0000153 DIP under the existing
+0.05-DIP geometry bound. Label/description baselines move up one pixel from
+the previous implementation; ordinal line height is explicitly 20px. The
+source capture derives baselines from actual text ranges and measured font
+bounding boxes without altering the DOM. Empty text and check glyphs have no
+fabricated baseline. The prior nearest-pixel paint placement remains recorded
+in `artifacts/smoke-stepper-typography-before`.
+
+The unmasked zero-tolerance image audit improves from 165,563 to **143,878
+differing pixels**, and from 27,086,663 to **11,026,803 absolute RGBA error**.
+It still differs in 42/44 cases. Font/shape rasterization, alpha-paint details,
+scaling, contrast, Narrator, full override/reversal matrices and native ARM64
+runtime remain open. The inventory stays **54 in progress, 58 pending,
+0 accepted**, and the goal remains active.
+
+Clean x64 and ARM64 solution builds have zero warnings/errors. All **105 unit
+tests** and token generation pass. Published enabled/reduced Stepper motion
+passes 42 transitions, 776 sampled frames and four owned Space pairs, and
+restores the original Windows preference. The maximum sRGB trajectory error
+is 0.927 channel values under the unchanged 1.5 quantization bound.
+
+Evidence:
+
+- `artifacts/smoke-stepper-baseline-full`
+- `artifacts/stepper-baseline-{full-audit,typography-audit,pixel-audit,full-timing}.json`
+- `artifacts/smoke-stepper-baseline-motion` and `stepper-baseline-motion-audit.json`
+- `artifacts/tests-stepper-baseline-release`
+- `artifacts/catalog-stepper-baseline-{x64,arm64}`
+- `artifacts/packages-stepper-baseline/Gaulatti.Orchard.0.1.0.nupkg`
+- `artifacts/Orchard.Catalog.0.1.0-b59cef4-{x64,arm64}.zip`
+
+Push-triggered Actions remain paused. No new hosted CI/runtime result is
+claimed. The public wiki remains unavailable; this evidence is maintained
+in-repository.
+
+The fresh independent NuGet consumer passes its x64 native action, fonts,
+resources and light/dark checks. The independent ARM64 consumer builds;
+ARM64 runtime remains unverified. Both isolated restore caches are removed.
+The package library and both consumers match the published x64 `Orchard.dll`
+byte for byte. `artifacts/stepper-baseline-binary-correspondence.json` records
+library SHA-256 `55ce036ea2d226d849cd8b808723723289e9d16281ba6459d44389af753d1a5a`
+and package SHA-256 `3730495664c364cfc5a2f3e7418cf38b4c04ee285bc1655dbe131cee1260340f`.
+
+Both versioned catalog ZIPs match every published entry byte for byte:
+
+- x64: 532 files, SHA-256 `df119e829fcbdb8e45e2355e29181511d0102e510c1c4b7eabb5f49bdca0f33e`.
+- ARM64: 528 files, SHA-256 `326d7a59e7c3542af0aa01ae90a69c3380a5ceac00da31fa0347fe46e427ab9d`.
+
+The archive audit is `artifacts/stepper-baseline-archives.json`. The x64
+archive contains the runtime-verified publication; the ARM64 archive has build
+evidence only. These hashes identify artifacts and do not establish component
+visual acceptance.
+
+## Previous source-motion checkpoint
+
 Current library/catalog source: `05c5b2db48c8b02af2ddc5fb548cde73a8e65a55`.
 The published full x64 run passes in **404.2454108 seconds**, with all
 **1,080 captures**, all prior filenames and **174 protected glyph hashes**. Independent audits verify
