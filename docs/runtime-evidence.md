@@ -1980,3 +1980,22 @@ hashes, source correspondence, retained failures and artifacts are recorded in
 the [Column Toggle checkpoint](data-table-column-toggle.md#validated-artifact-checkpoint).
 The inventory remains 52 in progress, 60 pending and zero accepted. The public
 wiki remains unavailable. Push-triggered Actions remain paused.
+
+## Shared Select artifact checkpoint
+
+Clean source `f2ea231` extracts Pagination's native selector into a reusable
+internal surface and preserves the real trigger press/release across popup
+opening. Both architecture builds, 93 release regressions and token checks
+pass. The published catalog passes held/rapid keyboard, source scroll, all
+132 producer states, physical input and the full 1,032-capture sequence in
+354.7255073 seconds. All preceding capture names and 174 protected glyph
+hashes are preserved; native input/presentation audits have no failed gates.
+
+The fresh NuGet consumer passes x64 runtime in both themes and ARM64 builds.
+Package/source correspondence, hashes, artifact paths and outstanding exact
+layout/raster/release-route acceptance are recorded in the
+[shared Select checkpoint](shared-select.md#verified-artifact-checkpoint).
+The Filters prototype remains local with failed modal-input and missing-column
+focus verification, and is excluded from this released checkpoint. Inventory
+acceptance remains zero. The public wiki is unavailable and push-triggered
+Actions remain paused.
