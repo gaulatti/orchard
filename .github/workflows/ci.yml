@@ -108,7 +108,10 @@ jobs:
       - name: Verify native Stepper source states and input ownership
         if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
         id: stepper_smoke
-        run: ./scripts/smoke-catalog.ps1 -Component stepper -Output artifacts/stepper -ExpectedArchitecture X64
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component stepper -Output artifacts/stepper -ExpectedArchitecture X64
+          node scripts/verify-stepper-typography.mjs --native artifacts/stepper --output artifacts/stepper/typography-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Stepper baseline regression failed.' }
       - name: Verify Stepper enabled and reduced Windows motion
         if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: stepper_motion_smoke
@@ -274,7 +277,10 @@ jobs:
       - name: Verify native ARM64 Stepper source states and input ownership
         if: ${{ !cancelled() && (steps.pagination_paired_smoke.outcome == 'success' || steps.pagination_paired_smoke.outcome == 'failure') }}
         id: stepper_smoke
-        run: ./scripts/smoke-catalog.ps1 -Component stepper -Output artifacts/stepper -ExpectedArchitecture Arm64
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component stepper -Output artifacts/stepper -ExpectedArchitecture Arm64
+          node scripts/verify-stepper-typography.mjs --native artifacts/stepper --output artifacts/stepper/typography-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Stepper baseline regression failed.' }
       - name: Verify native ARM64 Stepper enabled and reduced Windows motion
         if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: stepper_motion_smoke

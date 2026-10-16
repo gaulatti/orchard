@@ -47,11 +47,13 @@ public sealed partial class SteppersFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         using var reference = JsonDocument.Parse(typeof(SteppersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Stepper.json")!);
+        using var typography = JsonDocument.Parse(typeof(SteppersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.StepperTypography.json")!);
         var cases = new List<object>(); var failures = new List<string>();
         foreach (var spec in reference.RootElement.GetProperty("cases").EnumerateArray().Where(item => item.GetProperty("scheme").GetString() == scheme.ToString()))
         {
             Apply(spec); await SettleAsync();
             var id = spec.GetProperty("id").GetString()!; var expected = spec.GetProperty("normal");
+            var expectedTypography = typography.RootElement.GetProperty("reports").EnumerateArray().Single(item => item.GetProperty("id").GetString() == id && item.GetProperty("scheme").GetString() == scheme.ToString()).GetProperty("rows");
             var rows = Descendants<Panel>(stepper).Where(item => item.Name == "StepEntry").ToArray();
             var errors = new List<string>();
             Near(stepper.ActualWidth, expected.GetProperty("box").GetProperty("width").GetDouble(), "root width");
@@ -66,6 +68,9 @@ public sealed partial class SteppersFixture : UserControl
                 var description = Descendants<Panel>(row).Single(item => item.Name == "DescriptionParagraph");
                 var labels = Descendants<StackPanel>(row).Single(item => item.Name == "Labels");
                 var circle = Descendants<Grid>(row).Single(item => item.Name == "Circle");
+                CheckBaseline(label, expectedTypography[i].GetProperty("label"), $"label {i}");
+                CheckBaseline(description, expectedTypography[i].GetProperty("description"), $"description {i}");
+                CheckBaseline(button, expectedTypography[i].GetProperty("button"), $"ordinal {i}");
                 var fill = Descendants<Border>(row).Single(item => item.Name == "CircleFill");
                 var connector = Descendants<Border>(row).Single(item => item.Name == "Connector");
                 CheckBox(row, source.GetProperty("box"), $"row {i}");
@@ -88,7 +93,7 @@ public sealed partial class SteppersFixture : UserControl
                 Require(peer.GetAutomationControlType() == AutomationControlType.Button && peer.GetPattern(PatternInterface.Invoke) is IInvokeProvider &&
                     peer.GetName() == stepper.Steps[i].Label && AutomationProperties.GetPositionInSet(button) == i + 1 && AutomationProperties.GetSizeOfSet(button) == rows.Length,
                     "Stepper lost native invocation, accessible label or ordinal metadata.");
-                actual.Add(new { row = Box(row), button = Box(button), labels = Box(labels), label = Box(label), description = Box(description), button.IsEnabled, circle.Opacity });
+                actual.Add(new { row = Box(row), button = Box(button), labels = Box(labels), label = Box(label), description = Box(description), labelTypography = Typography(label), descriptionTypography = Typography(description), buttonTypography = Typography(button), button.IsEnabled, circle.Opacity });
             }
             var file = Path.Combine(folder, $"stepper-{id}-{scheme}.png");
             if (rows.Length == 0)
@@ -105,6 +110,15 @@ public sealed partial class SteppersFixture : UserControl
             await File.WriteAllTextAsync(Path.Combine(folder, $"stepper-source-{scheme}.json"), JsonSerializer.Serialize(new { cases, failures }, new JsonSerializerOptions { WriteIndented = true }));
 
             void Near(double value, double target, string what) { if (Math.Abs(value - target) > .05) errors.Add($"{what}: actual={value:R}, source={target:R}"); }
+            void CheckBaseline(DependencyObject owner, JsonElement expectedText, string what)
+            {
+                if (expectedText.ValueKind == JsonValueKind.Null || expectedText.GetProperty("firstBaseline").ValueKind == JsonValueKind.Null) return;
+                var text = Descendants<TextBlock>(owner).Single();
+                var baseline = text.TransformToVisual(Frame).TransformPoint(new Point(0, text.BaselineOffset)).Y;
+                var root = stepper.TransformToVisual(Frame).TransformBounds(new Rect(0, 0, stepper.ActualWidth, stepper.ActualHeight));
+                Near(baseline - root.Y, expectedText.GetProperty("firstBaseline").GetDouble(), what + " baseline");
+                Near(text.LineHeight, double.Parse(expectedText.GetProperty("lineHeight").GetString()!.Replace("px", ""), System.Globalization.CultureInfo.InvariantCulture), what + " line height");
+            }
             void CheckColor(Brush brush, JsonElement rgba, string what)
             {
                 var solid = (SolidColorBrush)brush; var color = solid.Color;
@@ -220,6 +234,13 @@ public sealed partial class SteppersFixture : UserControl
     {
         var bounds = PhysicalBox(element);
         return new { x = bounds.X, y = bounds.Y, width = bounds.Width, height = bounds.Height };
+    }
+    private object Typography(DependencyObject paragraph)
+    {
+        var text = Descendants<TextBlock>(paragraph).Single();
+        var point = text.TransformToVisual(Frame).TransformPoint(new Point(0, text.BaselineOffset));
+        var root = stepper.TransformToVisual(Frame).TransformBounds(new Rect(0, 0, stepper.ActualWidth, stepper.ActualHeight));
+        return new { baseline = point.Y - root.Y, text.BaselineOffset, text.LineHeight, shift = (text.RenderTransform as TranslateTransform)?.Y ?? 0, text.FontSize, font = text.FontFamily.Source };
     }
     private Rect PhysicalBox(FrameworkElement element)
     {

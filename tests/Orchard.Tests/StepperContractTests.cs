@@ -9,6 +9,33 @@ namespace Orchard.Tests;
 public sealed class StepperContractTests
 {
     [TestMethod]
+    public void BrowserBaselinesCoverEveryNonemptyParagraphAndOrdinal()
+    {
+        using var typography = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "StepperTypography.json")));
+        using var normal = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "Stepper.json")));
+        var script = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "CaptureStepperTypography.cjs")).Replace("\r\n", "\n");
+        Assert.AreEqual(typography.RootElement.GetProperty("scriptSha256").GetString(), Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(script))));
+        Assert.AreEqual(normal.RootElement.GetProperty("sourceSha256").GetString(), typography.RootElement.GetProperty("sourceSha256").GetString());
+        var cases = 0; var baselines = 0;
+        foreach (var report in typography.RootElement.GetProperty("reports").EnumerateArray())
+        {
+            var source = normal.RootElement.GetProperty("cases").EnumerateArray().Single(item => item.GetProperty("id").GetString() == report.GetProperty("id").GetString() && item.GetProperty("scheme").GetString() == report.GetProperty("scheme").GetString());
+            var rows = report.GetProperty("rows"); Assert.AreEqual(source.GetProperty("normal").GetProperty("rows").GetArrayLength(), rows.GetArrayLength());
+            foreach (var row in rows.EnumerateArray())
+                foreach (var key in new[] { "label", "description", "button" })
+                {
+                    var text = row.GetProperty(key);
+                    if (text.ValueKind == JsonValueKind.Null || text.GetProperty("firstBaseline").ValueKind == JsonValueKind.Null) continue;
+                    Assert.IsGreaterThan(0, text.GetProperty("rangeAscent").GetDouble());
+                    Assert.IsGreaterThan(0, text.GetProperty("rangeDescent").GetDouble());
+                    Assert.IsTrue(text.GetProperty("rects").GetArrayLength() > 0);
+                    baselines++;
+                }
+            cases++;
+        }
+        Assert.AreEqual(44, cases); Assert.AreEqual(324, baselines);
+    }
+    [TestMethod]
     public void DerivedAndExplicitStatusesMatchAllFrozenBrowserRows()
     {
         using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "Stepper.json")));

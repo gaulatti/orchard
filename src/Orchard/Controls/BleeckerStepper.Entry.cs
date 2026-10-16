@@ -26,7 +26,9 @@ public sealed partial class BleeckerStepper
         private readonly Border ring = new() { CornerRadius = new CornerRadius(18), Margin = new Thickness(-2), BorderThickness = new Thickness(2) };
         private readonly Border focus = new() { CornerRadius = new CornerRadius(20), Margin = new Thickness(-4), BorderThickness = new Thickness(2) };
         private readonly Border offset = new() { CornerRadius = new CornerRadius(18), Margin = new Thickness(-2), BorderThickness = new Thickness(2) };
-        private readonly TextBlock number = new() { TextAlignment = TextAlignment.Center, VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false };
+        private readonly TextBlock number = new() { TextAlignment = TextAlignment.Center, VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false, LineStackingStrategy = LineStackingStrategy.BlockLineHeight };
+        private readonly TextBlock numberMetrics = new() { Text = "Mg", UseLayoutRounding = false };
+        private readonly TranslateTransform numberShift = new();
         private readonly Polyline check = new() { Points = new PointCollection { new(20, 6), new(9, 17), new(5, 13) }, StrokeThickness = 2, StrokeStartLineCap = PenLineCap.Round, StrokeEndLineCap = PenLineCap.Round, StrokeLineJoin = PenLineJoin.Round };
         private readonly Viewbox checkBox;
         private readonly StackPanel labels = new() { UseLayoutRounding = false };
@@ -52,7 +54,7 @@ public sealed partial class BleeckerStepper
             Button.Loaded += (_, _) => disabledPointer!.Update();
             Button.Unloaded += (_, _) => { disabledPointer!.Detach(); disabledPointer.ReconcileLifecycle(); };
             disabledPointer = new BleeckerDisabledPointer(Button, () => Step.IsDisabled ? Button : null, _ => { });
-            fill.Background = fillPaint; number.Foreground = foregroundPaint; check.Stroke = foregroundPaint;
+            fill.Background = fillPaint; number.Foreground = foregroundPaint; number.RenderTransform = numberShift; check.Stroke = foregroundPaint;
             var checkGrid = new Grid { Width = 24, Height = 24 }; checkGrid.Children.Add(check);
             checkBox = new Viewbox { Width = 16, Height = 16, Child = checkGrid, IsHitTestVisible = false };
             circle.RenderTransform = scale;
@@ -71,8 +73,13 @@ public sealed partial class BleeckerStepper
             var horizontal = owner.Orientation == Orientation.Horizontal;
             label.Text.TextAlignment = description.Text.TextAlignment = horizontal ? TextAlignment.Center : TextAlignment.Left;
             number.Text = (index + 1).ToString(CultureInfo.InvariantCulture);
-            number.FontFamily = owner.Font("BleeckerPrimarySemiboldFontFamily"); number.FontWeight = Microsoft.UI.Text.FontWeights.SemiBold;
-            number.FontSize = owner.FontSize; number.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; number.CharacterSpacing = owner.CharacterSpacing;
+            foreach (var text in new[] { number, numberMetrics })
+            {
+                text.FontFamily = owner.Font("BleeckerPrimarySemiboldFontFamily"); text.FontWeight = Microsoft.UI.Text.FontWeights.SemiBold;
+                text.FontSize = owner.FontSize; text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; text.CharacterSpacing = owner.CharacterSpacing;
+            }
+            number.LineHeight = 20 * owner.FontSize / 14;
+            numberMetrics.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             number.Visibility = state == BleeckerStepStatus.Completed ? Visibility.Collapsed : Visibility.Visible;
             checkBox.Visibility = state == BleeckerStepStatus.Completed ? Visibility.Visible : Visibility.Collapsed;
             Button.IsEnabled = owner.CanInvoke(step); circle.Opacity = step.IsDisabled ? .5 : 1;
@@ -162,7 +169,16 @@ public sealed partial class BleeckerStepper
             line.Arrange(horizontal ? new Rect(Math.Floor(final.Width / 2 * 64) / 64, 16, Math.Max(0, final.Width - 32), 2) : new Rect(16, 36, 2, Math.Max(0, height - 32)));
             return final;
         }
-        internal void AlignText() { label.Align(owner); description.Align(owner); }
+        internal void AlignText()
+        {
+            label.Align(owner); description.Align(owner);
+            if (owner.XamlRoot is null || number.Visibility != Visibility.Visible || number.ActualHeight <= 0) return;
+            var top = number.TransformToVisual(circle).TransformPoint(new Point()).Y - numberShift.Y;
+            var dpi = owner.XamlRoot.RasterizationScale;
+            var factor = number.IsTextScaleFactorEnabled ? owner.settings.TextScaleFactor : 1;
+            var baseline = top + (number.LineHeight * factor - numberMetrics.DesiredSize.Height) / 2 + numberMetrics.BaselineOffset;
+            numberShift.Y = Math.Floor(baseline * dpi) / dpi - top - number.BaselineOffset;
+        }
         internal void DetachPointer() => disabledPointer.Detach();
         public void Dispose() { disabledPointer.Detach(); Button.IsEnabled = false; }
     }
@@ -219,7 +235,9 @@ public sealed partial class BleeckerStepper
             var origin = TransformToVisual(owner.XamlRoot.Content).TransformPoint(new Point()).Y;
             var factor = Text.IsTextScaleFactorEnabled ? owner.settings.TextScaleFactor : 1;
             var scale = owner.XamlRoot.RasterizationScale;
-            var target = Math.Round((origin + (Text.LineHeight * factor - metrics.DesiredSize.Height) / 2 + metrics.BaselineOffset) * scale) / scale;
+            // Chromium floors the measured CSS line baseline onto the device
+            // grid. Rounding places the pinned 14/12px text one pixel too low.
+            var target = Math.Floor((origin + (Text.LineHeight * factor - metrics.DesiredSize.Height) / 2 + metrics.BaselineOffset) * scale) / scale;
             shift.Y = target - origin - Text.BaselineOffset;
         }
     }

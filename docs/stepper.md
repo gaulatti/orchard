@@ -102,3 +102,27 @@ trajectory error 0.936. The complete 1,080-capture catalog regression passes in
 `artifacts/smoke-stepper-motion-final-full` and
 `artifacts/stepper-motion-final-audit.json`; artifact hashes and scope are in
 the current checkpoint linked above.
+
+## Text baselines
+
+Stepper floors its measured line baseline onto the display grid. The previous
+nearest-pixel rounding placed the pinned label and description glyphs one pixel
+below the browser text. Ordinals now use an explicit 20px line box and align
+their measured semibold baseline in the 32px circle. This changes text painting;
+the source row, label, connector and circle geometry stays the same.
+
+`scripts/reference/capture-stepper-typography.cjs` measures the first glyph's DOM
+range and actual Canvas font bounding-box ascent. It verifies that the two font
+line-box measurements agree, uses the original text nodes and leaves the DOM
+unchanged. The frozen `StepperTypography.json` covers all 44 source cases, with
+324 nonempty label, description and ordinal baselines. Empty text and completed
+glyphs have no fabricated baseline. The native fixture and
+`scripts/verify-stepper-typography.mjs` independently compare the baseline and
+line height at the original 0.05-DIP geometry bound.
+
+The focused x64 replay passes all 324 baselines with a maximum error of
+0.000016 DIP, and 105 unit tests pass. The unmasked zero-tolerance image audit
+improves from 165,563 to 143,875 differing pixels and from 27,086,663 to
+11,020,196 absolute RGBA error. It still differs in 42/44 cases. Font/shape
+rasterization, the remaining alpha-paint differences and broader desktop
+acceptance remain open; no pixel tolerance or comparison mask was added.

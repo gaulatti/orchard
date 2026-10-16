@@ -1,0 +1,6746 @@
+{
+  "format": "orchard-stepper-typography-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "a0cea6e7cc8fcc541d0089682d64ed8589fc4983a482095785477cb01d646c29",
+  "normalReferenceSha256": "ef211ea3cafd8874e10d00e1d7798f3d625a8d48b9907e0e80c389f9b855f7a5",
+  "scriptSha256": "acaf43460be74c8e9e1c402c91dd3e6d5f7ca602dece4fc1ec3d07d45aa3508f",
+  "scriptNormalization": "lf",
+  "browser": "155.0.4283.45",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "reports": [
+    {
+      "id": "horizontal-default",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-statuses",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "pending",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 54.21875,
+                "y": 41,
+                "width": 51.546875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 1",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 61.359375,
+                "y": 62,
+                "width": 37.265625,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 77.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "active",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 221.125,
+                "y": 41,
+                "width": 37.734375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 2",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 220.59375,
+                "y": 62,
+                "width": 38.796875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 236.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "completed",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 366.984375,
+                "y": 41,
+                "width": 66.03125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 3",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 380.515625,
+                "y": 62,
+                "width": 38.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "error",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 544.515625,
+                "y": 41,
+                "width": 30.96875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 4",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 540.015625,
+                "y": 62,
+                "width": 39.96875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "4",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 555.65625,
+                "y": 7,
+                "width": 8.6875,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-static",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-disabled",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-long",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A long heading that wraps across multiple lines",
+            "lineHeight": "20px",
+            "lines": 7,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 10.515625,
+                "y": 41,
+                "width": 40.8125,
+                "height": 17
+              },
+              {
+                "x": 5.578125,
+                "y": 61,
+                "width": 50.703125,
+                "height": 17
+              },
+              {
+                "x": 17.6875,
+                "y": 81,
+                "width": 26.46875,
+                "height": 17
+              },
+              {
+                "x": 11.375,
+                "y": 101,
+                "width": 39.09375,
+                "height": 17
+              },
+              {
+                "x": 11.046875,
+                "y": 121,
+                "width": 39.75,
+                "height": 17
+              },
+              {
+                "x": 5.1875,
+                "y": 141,
+                "width": 51.46875,
+                "height": 17
+              },
+              {
+                "x": 16.484375,
+                "y": 161,
+                "width": 28.875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية",
+            "lineHeight": "16px",
+            "lines": 6,
+            "firstBaseline": 194,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 9.0625,
+                "y": 182,
+                "width": 43.734375,
+                "height": 15
+              },
+              {
+                "x": 0,
+                "y": 198,
+                "width": 61.859375,
+                "height": 15
+              },
+              {
+                "x": 5.8125,
+                "y": 214,
+                "width": 50.234375,
+                "height": 15
+              },
+              {
+                "x": 12.0625,
+                "y": 230,
+                "width": 37.71875,
+                "height": 15
+              },
+              {
+                "x": 1.984375,
+                "y": 246,
+                "width": 57.875,
+                "height": 15
+              },
+              {
+                "x": 0.921875,
+                "y": 262,
+                "width": 26.9375,
+                "height": 15
+              },
+              {
+                "x": 27.859375,
+                "y": 262,
+                "width": 33.078125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 28.125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabelThatExceedsTheSourceMaximum",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 61.859375,
+                "y": 41,
+                "width": 426.984375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 82.359375,
+                "y": 62,
+                "width": 87,
+                "height": 15
+              },
+              {
+                "x": 70.921875,
+                "y": 78,
+                "width": 109.875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 122.203125,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 191.671875,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 211.203125,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-rtl",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 517.015625,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 498.625,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.65625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.03125,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 83.421875,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 66.765625,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 102.953125,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-default",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-statuses",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "pending",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 51.546875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 1",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 37.265625,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 13.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "active",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 37.734375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 2",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 38.796875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "completed",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 66.03125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 3",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 38.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "error",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 161,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 147,
+                "width": 30.96875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 4",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 180,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 168,
+                "width": 39.96875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "4",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 159,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 11.65625,
+                "y": 145,
+                "width": 8.6875,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-static",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-disabled",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-long",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A long heading that wraps across multiple lines",
+            "lineHeight": "20px",
+            "lines": 2,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 36.1875,
+                "y": 9,
+                "width": 167.40625,
+                "height": 17
+              },
+              {
+                "x": 36.1875,
+                "y": 29,
+                "width": 126.984375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 62,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 36.1875,
+                "y": 50,
+                "width": 202.3125,
+                "height": 15
+              },
+              {
+                "x": 36.1875,
+                "y": 66,
+                "width": 84.8125,
+                "height": 15
+              },
+              {
+                "x": 121,
+                "y": 66,
+                "width": 33.078125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 7.296875,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabelThatExceedsTheSourceMaximum",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 105,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 91,
+                "width": 426.984375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 124,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 112,
+                "width": 199.796875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 103,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 89,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 151,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 137,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 149,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 135,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-rtl",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 522.578125,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 522.578125,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 532.046875,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 532.046875,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 620.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 512.1875,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 512.1875,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 620.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no-active",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "active-first",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "active-last",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-active",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty-active-id",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Blank key",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 129.328125,
+                "y": 41,
+                "width": 61.328125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 157.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Next",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 464.875,
+                "y": 41,
+                "width": 30.234375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 476.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "scheme": "Light",
+      "rows": []
+    },
+    {
+      "id": "single",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 303.671875,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 285.28125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 317.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty-labels",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "",
+            "lineHeight": "20px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "description": null,
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": " ",
+            "lineHeight": "20px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "description": {
+            "text": " ",
+            "lineHeight": "16px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "\n",
+            "lineHeight": "20px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "description": null,
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-narrow",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 3,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 1.296875,
+                "y": 62,
+                "width": 30.015625,
+                "height": 15
+              },
+              {
+                "x": 13.21875,
+                "y": 78,
+                "width": 6.1875,
+                "height": 15
+              },
+              {
+                "x": 2.625,
+                "y": 94,
+                "width": 27.359375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 32.625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 40.203125,
+                "y": 62,
+                "width": 31.546875,
+                "height": 15
+              },
+              {
+                "x": 43.234375,
+                "y": 78,
+                "width": 25.484375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 52.3125,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 79.328125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 82.390625,
+                "y": 62,
+                "width": 40.359375,
+                "height": 15
+              },
+              {
+                "x": 84.3125,
+                "y": 78,
+                "width": 36.53125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 98.859375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-narrow",
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 32,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 3,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 32,
+                "y": 30,
+                "width": 30.015625,
+                "height": 15
+              },
+              {
+                "x": 32,
+                "y": 46,
+                "width": 6.1875,
+                "height": 15
+              },
+              {
+                "x": 32,
+                "y": 62,
+                "width": 27.359375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 101,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 87,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 120,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 108,
+                "width": 31.546875,
+                "height": 15
+              },
+              {
+                "x": 23.3125,
+                "y": 124,
+                "width": 25.484375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 99,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 85,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 163,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.4375,
+                "y": 149,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 182,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.4375,
+                "y": 170,
+                "width": 40.359375,
+                "height": 15
+              },
+              {
+                "x": 23.4375,
+                "y": 186,
+                "width": 36.53125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 161,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 147,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-default",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-statuses",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "pending",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 54.21875,
+                "y": 41,
+                "width": 51.546875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 1",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 61.359375,
+                "y": 62,
+                "width": 37.265625,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 77.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "active",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 221.125,
+                "y": 41,
+                "width": 37.734375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 2",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 220.59375,
+                "y": 62,
+                "width": 38.796875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 236.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "completed",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 366.984375,
+                "y": 41,
+                "width": 66.03125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 3",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 380.515625,
+                "y": 62,
+                "width": 38.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "error",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 544.515625,
+                "y": 41,
+                "width": 30.96875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 4",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 540.015625,
+                "y": 62,
+                "width": 39.96875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "4",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 555.65625,
+                "y": 7,
+                "width": 8.6875,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-static",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-disabled",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-long",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A long heading that wraps across multiple lines",
+            "lineHeight": "20px",
+            "lines": 7,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 10.515625,
+                "y": 41,
+                "width": 40.8125,
+                "height": 17
+              },
+              {
+                "x": 5.578125,
+                "y": 61,
+                "width": 50.703125,
+                "height": 17
+              },
+              {
+                "x": 17.6875,
+                "y": 81,
+                "width": 26.46875,
+                "height": 17
+              },
+              {
+                "x": 11.375,
+                "y": 101,
+                "width": 39.09375,
+                "height": 17
+              },
+              {
+                "x": 11.046875,
+                "y": 121,
+                "width": 39.75,
+                "height": 17
+              },
+              {
+                "x": 5.1875,
+                "y": 141,
+                "width": 51.46875,
+                "height": 17
+              },
+              {
+                "x": 16.484375,
+                "y": 161,
+                "width": 28.875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية",
+            "lineHeight": "16px",
+            "lines": 6,
+            "firstBaseline": 194,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 9.0625,
+                "y": 182,
+                "width": 43.734375,
+                "height": 15
+              },
+              {
+                "x": 0,
+                "y": 198,
+                "width": 61.859375,
+                "height": 15
+              },
+              {
+                "x": 5.8125,
+                "y": 214,
+                "width": 50.234375,
+                "height": 15
+              },
+              {
+                "x": 12.0625,
+                "y": 230,
+                "width": 37.71875,
+                "height": 15
+              },
+              {
+                "x": 1.984375,
+                "y": 246,
+                "width": 57.875,
+                "height": 15
+              },
+              {
+                "x": 0.921875,
+                "y": 262,
+                "width": 26.9375,
+                "height": 15
+              },
+              {
+                "x": 27.859375,
+                "y": 262,
+                "width": 33.078125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 28.125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabelThatExceedsTheSourceMaximum",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 61.859375,
+                "y": 41,
+                "width": 426.984375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 82.359375,
+                "y": 62,
+                "width": 87,
+                "height": 15
+              },
+              {
+                "x": 70.921875,
+                "y": 78,
+                "width": 109.875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 122.203125,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 191.671875,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 211.203125,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-rtl",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 517.015625,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 498.625,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.65625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.03125,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 83.421875,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 66.765625,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 102.953125,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-default",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-statuses",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "pending",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 51.546875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 1",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 37.265625,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 13.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "active",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 37.734375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 2",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 38.796875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "completed",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 66.03125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 3",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 38.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "error",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 161,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 147,
+                "width": 30.96875,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Stage 4",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 180,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 168,
+                "width": 39.96875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "4",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 159,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 11.65625,
+                "y": 145,
+                "width": 8.6875,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-static",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-disabled",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-long",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A long heading that wraps across multiple lines",
+            "lineHeight": "20px",
+            "lines": 2,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 36.1875,
+                "y": 9,
+                "width": 167.40625,
+                "height": 17
+              },
+              {
+                "x": 36.1875,
+                "y": 29,
+                "width": 126.984375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 62,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 36.1875,
+                "y": 50,
+                "width": 202.3125,
+                "height": 15
+              },
+              {
+                "x": 36.1875,
+                "y": 66,
+                "width": 84.8125,
+                "height": 15
+              },
+              {
+                "x": 121,
+                "y": 66,
+                "width": 33.078125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 7.296875,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabelThatExceedsTheSourceMaximum",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 105,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 91,
+                "width": 426.984375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 124,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 112,
+                "width": 199.796875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 103,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 89,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 151,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 48,
+                "y": 137,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 149,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 12.28125,
+                "y": 135,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-rtl",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 522.578125,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 522.578125,
+                "y": 30,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 69,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 532.046875,
+                "y": 55,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 88,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 532.046875,
+                "y": 76,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 67,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 620.34375,
+                "y": 53,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 115,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 512.1875,
+                "y": 101,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 134,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 512.1875,
+                "y": 122,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 113,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 620.28125,
+                "y": 99,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "no-active",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "active-first",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "active-last",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-active",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 90.34375,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 71.953125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 296.640625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 290.015625,
+                "y": 62,
+                "width": 59.953125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 510.078125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 493.421875,
+                "y": 62,
+                "width": 79.8125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty-active-id",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Blank key",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 129.328125,
+                "y": 41,
+                "width": 61.328125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 157.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Next",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 464.875,
+                "y": 41,
+                "width": 30.234375,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": null,
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 476.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "scheme": "Dark",
+      "rows": []
+    },
+    {
+      "id": "single",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 303.671875,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 1,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 285.28125,
+                "y": 62,
+                "width": 69.421875,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 317.203125,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty-labels",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "",
+            "lineHeight": "20px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "description": null,
+          "button": {
+            "text": "1",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 103.859375,
+                "y": 7,
+                "width": 5.578125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": " ",
+            "lineHeight": "20px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "description": {
+            "text": " ",
+            "lineHeight": "16px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 316.34375,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "\n",
+            "lineHeight": "20px",
+            "firstBaseline": null,
+            "rects": []
+          },
+          "description": null,
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 529.609375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-narrow",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 41,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 3,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 1.296875,
+                "y": 62,
+                "width": 30.015625,
+                "height": 15
+              },
+              {
+                "x": 13.21875,
+                "y": 78,
+                "width": 6.1875,
+                "height": 15
+              },
+              {
+                "x": 2.625,
+                "y": 94,
+                "width": 27.359375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 32.625,
+                "y": 41,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 40.203125,
+                "y": 62,
+                "width": 31.546875,
+                "height": 15
+              },
+              {
+                "x": 43.234375,
+                "y": 78,
+                "width": 25.484375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 52.3125,
+                "y": 7,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 55,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 79.328125,
+                "y": 41,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 74,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 82.390625,
+                "y": 62,
+                "width": 40.359375,
+                "height": 15
+              },
+              {
+                "x": 84.3125,
+                "y": 78,
+                "width": 36.53125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 21,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 98.859375,
+                "y": 7,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertical-narrow",
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Draft",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 23,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 32,
+                "y": 9,
+                "width": 32.625,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Write a story",
+            "lineHeight": "16px",
+            "lines": 3,
+            "firstBaseline": 42,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 32,
+                "y": 30,
+                "width": 30.015625,
+                "height": 15
+              },
+              {
+                "x": 32,
+                "y": 46,
+                "width": 6.1875,
+                "height": 15
+              },
+              {
+                "x": 32,
+                "y": 62,
+                "width": 27.359375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": null
+        },
+        {
+          "label": {
+            "text": "Review",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 101,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 87,
+                "width": 46.703125,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Check facts",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 120,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.3125,
+                "y": 108,
+                "width": 31.546875,
+                "height": 15
+              },
+              {
+                "x": 23.3125,
+                "y": 124,
+                "width": 25.484375,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "2",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 99,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 85,
+                "width": 7.3125,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        },
+        {
+          "label": {
+            "text": "Publish",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 163,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.4375,
+                "y": 149,
+                "width": 46.5,
+                "height": 17
+              }
+            ],
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "500"
+          },
+          "description": {
+            "text": "Release edition",
+            "lineHeight": "16px",
+            "lines": 2,
+            "firstBaseline": 182,
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 23.4375,
+                "y": 170,
+                "width": 40.359375,
+                "height": 15
+              },
+              {
+                "x": 23.4375,
+                "y": 186,
+                "width": 36.53125,
+                "height": 15
+              }
+            ],
+            "font": "12px / 16px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "400"
+          },
+          "button": {
+            "text": "3",
+            "lineHeight": "20px",
+            "lines": 1,
+            "firstBaseline": 161,
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "rects": [
+              {
+                "x": 0,
+                "y": 147,
+                "width": 7.4375,
+                "height": 17
+              }
+            ],
+            "font": "600 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "fontWeight": "600"
+          }
+        }
+      ]
+    }
+  ]
+}
