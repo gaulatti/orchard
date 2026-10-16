@@ -46,7 +46,10 @@ and original consumer icon actions. Focused `-Component timeline` checks source
 geometry/baselines, keyed updates, icon template ownership and the real viewport
 breakpoint. See [the contract and remaining acceptance](timeline.md).
 
-**Data Table Toolbars** follows Timeline. It mounts the original consumer table,
+**Loading overlay** follows Timeline. The caller-owned demo shows its viewport
+portal for three seconds. See [the source contract and open acceptance](loading-overlay.md).
+
+**Data Table Toolbars** follows Loading overlay. It mounts the original consumer table,
 column callbacks and filtered row projection, with controlled search, status
 filter and consumer action. Focused `-Component data-table-toolbar` checks the
 118 normal source cases, actual native search/reset and lifecycle ownership.

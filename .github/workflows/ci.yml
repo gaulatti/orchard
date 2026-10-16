@@ -136,8 +136,20 @@ jobs:
           }
           node scripts/test-timeline-audit.mjs --native artifacts/timeline-1024 --viewport 1024 --output artifacts/timeline-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Timeline negative audit failed.' }
-      - name: Verify chart focus across native load boundaries
+      - name: Verify Loading Overlay viewport and native focus behavior
         if: ${{ !cancelled() && (steps.timeline_smoke.outcome == 'success' || steps.timeline_smoke.outcome == 'failure') }}
+        id: loading_overlay_smoke
+        run: |
+          foreach ($size in @(@(1024,900),@(640,480),@(320,240))) {
+            $width = $size[0]; $height = $size[1]
+            ./scripts/smoke-catalog.ps1 -Component loading-overlay -ClientSize $width,$height -Output "artifacts/loading-overlay-$width" -ExpectedArchitecture X64
+            node scripts/verify-loading-overlay.mjs --native "artifacts/loading-overlay-$width" --output "artifacts/loading-overlay-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay source/input audit failed.' }
+          }
+          node scripts/test-loading-overlay-audit.mjs --native artifacts/loading-overlay-640 --output artifacts/loading-overlay-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay negative audit failed.' }
+      - name: Verify chart focus across native load boundaries
+        if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
         run: |
           ./scripts/smoke-catalog.ps1 -Component chart-load-focus -Output artifacts/chart-load-focus -ExpectedArchitecture X64
@@ -332,8 +344,20 @@ jobs:
           }
           node scripts/test-timeline-audit.mjs --native artifacts/timeline-1024 --viewport 1024 --output artifacts/timeline-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Timeline negative audit failed.' }
-      - name: Verify native ARM64 chart focus across load boundaries
+      - name: Verify native ARM64 Loading Overlay viewport and focus behavior
         if: ${{ !cancelled() && (steps.timeline_smoke.outcome == 'success' || steps.timeline_smoke.outcome == 'failure') }}
+        id: loading_overlay_smoke
+        run: |
+          foreach ($size in @(@(1024,900),@(640,480),@(320,240))) {
+            $width = $size[0]; $height = $size[1]
+            ./scripts/smoke-catalog.ps1 -Component loading-overlay -ClientSize $width,$height -Output "artifacts/loading-overlay-$width" -ExpectedArchitecture Arm64
+            node scripts/verify-loading-overlay.mjs --native "artifacts/loading-overlay-$width" --output "artifacts/loading-overlay-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay source/input audit failed.' }
+          }
+          node scripts/test-loading-overlay-audit.mjs --native artifacts/loading-overlay-640 --output artifacts/loading-overlay-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay negative audit failed.' }
+      - name: Verify native ARM64 chart focus across load boundaries
+        if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
         run: |
           ./scripts/smoke-catalog.ps1 -Component chart-load-focus -Output artifacts/chart-load-focus -ExpectedArchitecture Arm64

@@ -230,6 +230,7 @@ public sealed partial class MainWindow : Window
                 await VerifyStepperAsync();
                 await VerifyDataListAsync();
                 await VerifyTimelineAsync();
+                await VerifyLoadingOverlayAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();
                 await VerifyCircularChartsAsync();

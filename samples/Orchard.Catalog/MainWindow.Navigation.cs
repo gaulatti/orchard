@@ -44,6 +44,7 @@ public sealed partial class MainWindow
             ("Stepper",Steppers),
             ("Data list",DataLists),
             ("Timeline",Timelines),
+            ("Loading overlay",LoadingOverlays),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),

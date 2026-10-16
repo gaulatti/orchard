@@ -1673,14 +1673,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerLoadingOverlay.cs",
+        "src/Orchard/Themes/LoadingOverlay.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/LoadingOverlaysFixture.xaml"
+      ],
+      "regressionTests": [
+        "samples/Orchard.Catalog/MainWindow.LoadingOverlay.cs",
+        "tests/Reference/LoadingOverlay.json",
+        "tests/Orchard.Tests/LoadingOverlayReferenceTests.cs",
+        "tests/PackageConsumer/MainWindow.LoadingOverlay.cs",
+        "scripts/verify-loading-overlay.mjs",
+        "scripts/test-loading-overlay-audit.mjs",
+        "scripts/compare-loading-overlay-pixels.mjs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete exact raster and motion comparison",
+        "Verify live theme/resource, resize/reparent/template and popup stacking lifecycle",
+        "Verify display/text scaling, Narrator and Windows contrast schemes",
+        "Verify independent package consumption and native ARM64 runtime"
       ]
     },
     {

@@ -111,6 +111,7 @@
                 <local:SteppersFixture x:Name="Steppers" />
                 <local:DataListsFixture x:Name="DataLists" />
                 <local:TimelinesFixture x:Name="Timelines" />
+                <local:LoadingOverlaysFixture x:Name="LoadingOverlays" />
                 <local:DataTableToolbarsFixture x:Name="DataTableToolbars" />
                 <local:DataTablePaginationsFixture x:Name="DataTablePaginations" />
                 <local:DataTableColumnTogglesFixture x:Name="DataTableColumnToggles" />

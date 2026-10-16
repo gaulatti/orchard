@@ -1,0 +1,4747 @@
+{
+  "format": "orchard-loading-overlay-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "9b4721d0cb08b99284bf0b59dc16ba2448cf8b065a926882f37b1099cea033da",
+  "spinnerSha256": "ba2a2a759b663ccece53d2d38963ece1e0e58565b4beaa4c7e36d8ad9a450125",
+  "scriptSha256": "f97e04eee7723ca59e3c5648edbf727b98e8f9392b96aaaf7ec75ce8d15bbba7",
+  "scriptNormalization": "lf",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "bundleSha256": "07b888407334020a63cd212b70ff7fff1a4b615359e898a247809f0963c90bcc",
+  "fontFiles": [
+    {
+      "family": "Encode Sans",
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    }
+  ],
+  "react": "19.2.4",
+  "esbuild": "0.25.12",
+  "playwright": "1.62.1",
+  "browser": "155.0.4283.45",
+  "snapshots": {
+    "animationsPaused": true,
+    "currentTime": 0
+  },
+  "cases": [
+    {
+      "id": "hidden",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": false
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": []
+      },
+      "file": "loading-overlay-hidden-1024x900-Light.png",
+      "pngSha256": "3503a7162f3b88e109fdbf4e8528f2137e7bfe3601a48c1c74944ff180f8a501"
+    },
+    {
+      "id": "default",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 452.53125,
+                "y": 385,
+                "width": 118.921875,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 487.984375,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 481.53125,
+                "y": 470,
+                "width": 60.921875,
+                "height": 20
+              },
+              "text": "Loading...",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-default-1024x900-Light.png",
+      "pngSha256": "bef122093a6b178afded549db5b984364b8c48d9fd22cd820f7c684ec0901550"
+    },
+    {
+      "id": "empty",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": ""
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 401,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 426,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-empty-1024x900-Light.png",
+      "pngSha256": "7f0d1479e2499610c82f7e74bf3365063b2bf7407a2b8a5cc9065a9845fe820d"
+    },
+    {
+      "id": "null",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": null
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 401,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 426,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-null-1024x900-Light.png",
+      "pngSha256": "7f0d1479e2499610c82f7e74bf3365063b2bf7407a2b8a5cc9065a9845fe820d"
+    },
+    {
+      "id": "space",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": " "
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 395,
+                "width": 106,
+                "height": 110
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 420,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 512,
+                "y": 480,
+                "width": 0,
+                "height": 0
+              },
+              "text": " ",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": null
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-space-1024x900-Light.png",
+      "pngSha256": "3e49b536b6601ea2b940d6b45f56c7572d7b737468d5ba181288e37ef025e8b3"
+    },
+    {
+      "id": "long",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Preparing the fictional editorial record and associated local preview material"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 243.703125,
+                "y": 385,
+                "width": 536.578125,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 487.984375,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 272.703125,
+                "y": 470,
+                "width": 478.578125,
+                "height": 20
+              },
+              "text": "Preparing the fictional editorial record and associated local preview material",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-long-1024x900-Light.png",
+      "pngSha256": "f423a08762d8b2f3da25179331ab3fc2ebfb09f6e0fef252b7e9ff62953d5f44"
+    },
+    {
+      "id": "unbroken",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "OneExtremelyLongUnbrokenLoadingLabel"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 348.890625,
+                "y": 385,
+                "width": 326.21875,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 377.890625,
+                "y": 470,
+                "width": 268.21875,
+                "height": 20
+              },
+              "text": "OneExtremelyLongUnbrokenLoadingLabel",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-unbroken-1024x900-Light.png",
+      "pngSha256": "0f78062111058f5df50021fbc7be90d6ff880eba17543eedc0da10e846e91074"
+    },
+    {
+      "id": "rtl",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "rtl",
+      "props": {
+        "visible": true,
+        "label": "Preparing revisão 日本語 العربية"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 383.953125,
+                "y": 385,
+                "width": 256.109375,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488.015625,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 412.953125,
+                "y": 470,
+                "width": 198.109375,
+                "height": 20
+              },
+              "text": "Preparing revisão 日本語 العربية",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-rtl-1024x900-Light.png",
+      "pngSha256": "d4f111a2cc55f107a4664e2972e1baf722b883fea330c8205274f566908b0f40"
+    },
+    {
+      "id": "clipped",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Outside parent bounds"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 410.671875,
+                "y": 385,
+                "width": 202.640625,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 487.984375,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 439.671875,
+                "y": 470,
+                "width": 144.640625,
+                "height": 20
+              },
+              "text": "Outside parent bounds",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-clipped-1024x900-Light.png",
+      "pngSha256": "b9bbadc9b45b837a769549d89eb49abd4b9a2f5e866b152f9bedb9420b9ed7d0"
+    },
+    {
+      "id": "stacked",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "First",
+        "second": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 385,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 497.71875,
+                "y": 470,
+                "width": 28.546875,
+                "height": 20
+              },
+              "text": "First",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          },
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 385,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 489.171875,
+                "y": 470,
+                "width": 45.65625,
+                "height": 20
+              },
+              "text": "Second",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-stacked-1024x900-Light.png",
+      "pngSha256": "5894f8e356b6fc2c6a7fbce46c16ea970b8e3cebb448f8619b82b779e672fd29"
+    },
+    {
+      "id": "hidden",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": false
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": []
+      },
+      "file": "loading-overlay-hidden-1024x900-Dark.png",
+      "pngSha256": "bc1494350b15d476295e736a942cd2f37a0d1b2c7b36edacde20fa3aa2f55698"
+    },
+    {
+      "id": "default",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 452.53125,
+                "y": 385,
+                "width": 118.921875,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 487.984375,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 481.53125,
+                "y": 470,
+                "width": 60.921875,
+                "height": 20
+              },
+              "text": "Loading...",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-default-1024x900-Dark.png",
+      "pngSha256": "5764d349744c29bafbb07abaf0f5c35ac93ceabb60f11abd0df0879e9960393a"
+    },
+    {
+      "id": "empty",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": ""
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 401,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 426,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-empty-1024x900-Dark.png",
+      "pngSha256": "55969877ee5f26daa46dbf23b6f124f6f529ac32f6010f9027e82bc6831552cc"
+    },
+    {
+      "id": "null",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": null
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 401,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 426,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-null-1024x900-Dark.png",
+      "pngSha256": "55969877ee5f26daa46dbf23b6f124f6f529ac32f6010f9027e82bc6831552cc"
+    },
+    {
+      "id": "space",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": " "
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 395,
+                "width": 106,
+                "height": 110
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 420,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 512,
+                "y": 480,
+                "width": 0,
+                "height": 0
+              },
+              "text": " ",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": null
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-space-1024x900-Dark.png",
+      "pngSha256": "e127cd4e103cbcb3efa4f818d3b33a4420d1e8dafda9e6fc7ec617bdcc768cc1"
+    },
+    {
+      "id": "long",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Preparing the fictional editorial record and associated local preview material"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 243.703125,
+                "y": 385,
+                "width": 536.578125,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 487.984375,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 272.703125,
+                "y": 470,
+                "width": 478.578125,
+                "height": 20
+              },
+              "text": "Preparing the fictional editorial record and associated local preview material",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-long-1024x900-Dark.png",
+      "pngSha256": "331f814f31c1f3e0c9e308b94a27e645ae9ba2f01469275c52c31008aa807087"
+    },
+    {
+      "id": "unbroken",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "OneExtremelyLongUnbrokenLoadingLabel"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 348.890625,
+                "y": 385,
+                "width": 326.21875,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 377.890625,
+                "y": 470,
+                "width": 268.21875,
+                "height": 20
+              },
+              "text": "OneExtremelyLongUnbrokenLoadingLabel",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-unbroken-1024x900-Dark.png",
+      "pngSha256": "249e8b09b1da3c815704dc716f0c879020986d6f60123cd0881bfd87401d0cdd"
+    },
+    {
+      "id": "rtl",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "rtl",
+      "props": {
+        "visible": true,
+        "label": "Preparing revisão 日本語 العربية"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 383.953125,
+                "y": 385,
+                "width": 256.109375,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488.015625,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 412.953125,
+                "y": 470,
+                "width": 198.109375,
+                "height": 20
+              },
+              "text": "Preparing revisão 日本語 العربية",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-rtl-1024x900-Dark.png",
+      "pngSha256": "9cc8c616ef210b254115f8267ab2626cd65fcbaf4ed15868d341bd9fc87bd66f"
+    },
+    {
+      "id": "clipped",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Outside parent bounds"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 410.671875,
+                "y": 385,
+                "width": 202.640625,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 487.984375,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 439.671875,
+                "y": 470,
+                "width": 144.640625,
+                "height": 20
+              },
+              "text": "Outside parent bounds",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-clipped-1024x900-Dark.png",
+      "pngSha256": "fd6f93f67fef66e51471a8ec9fbefcb73938409eff15de09b2961035299d5b86"
+    },
+    {
+      "id": "stacked",
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "First",
+        "second": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 385,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 497.71875,
+                "y": 470,
+                "width": 28.546875,
+                "height": 20
+              },
+              "text": "First",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          },
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 1024,
+              "height": 900
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 459,
+                "y": 385,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 488,
+                "y": 410,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 489.171875,
+                "y": 470,
+                "width": 45.65625,
+                "height": 20
+              },
+              "text": "Second",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 485
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-stacked-1024x900-Dark.png",
+      "pngSha256": "3e78dc5ae7c734b2ef0a10fc29ea76b4cd2111d194714049ee14a82020e71907"
+    },
+    {
+      "id": "hidden",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": false
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": []
+      },
+      "file": "loading-overlay-hidden-320x240-Light.png",
+      "pngSha256": "bdbad35000b12960b4c2854d5ecc9fa9f8217762d939500301c17c92f010727b"
+    },
+    {
+      "id": "default",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 100.53125,
+                "y": 55,
+                "width": 118.921875,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 135.984375,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 129.53125,
+                "y": 140,
+                "width": 60.921875,
+                "height": 20
+              },
+              "text": "Loading...",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-default-320x240-Light.png",
+      "pngSha256": "2a36d52119bc84679097eab09c81dc4a9b9186f269d74edc6dd8caf074283eb1"
+    },
+    {
+      "id": "empty",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": ""
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 71,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 96,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-empty-320x240-Light.png",
+      "pngSha256": "0ac50fade1070cb7d1d6ca542ba11c2558013050903a7abc879640f869a1caee"
+    },
+    {
+      "id": "null",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": null
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 71,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 96,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-null-320x240-Light.png",
+      "pngSha256": "0ac50fade1070cb7d1d6ca542ba11c2558013050903a7abc879640f869a1caee"
+    },
+    {
+      "id": "space",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": " "
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 65,
+                "width": 106,
+                "height": 110
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 90,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 160,
+                "y": 150,
+                "width": 0,
+                "height": 0
+              },
+              "text": " ",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": null
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-space-320x240-Light.png",
+      "pngSha256": "f000225cf8d8418039ffddae6a630e831a3c4c4e86489b40a7ff9de205d31b9d"
+    },
+    {
+      "id": "long",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Preparing the fictional editorial record and associated local preview material"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 0,
+                "y": 45,
+                "width": 320,
+                "height": 150
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 70,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 29,
+                "y": 130,
+                "width": 262,
+                "height": 40
+              },
+              "text": "Preparing the fictional editorial record and associated local preview material",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 145
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-long-320x240-Light.png",
+      "pngSha256": "329812219999830e760dbce112ef207b1982fbffcf9ce7d5b4fc4b3aa81c834b"
+    },
+    {
+      "id": "unbroken",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "OneExtremelyLongUnbrokenLoadingLabel"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": -3.109375,
+                "y": 55,
+                "width": 326.21875,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 25.890625,
+                "y": 140,
+                "width": 268.21875,
+                "height": 20
+              },
+              "text": "OneExtremelyLongUnbrokenLoadingLabel",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-unbroken-320x240-Light.png",
+      "pngSha256": "5e1b5a833d1c02c1d16b781deec39a8e26d6c8afaf7b52fefab7cb2e909c9bed"
+    },
+    {
+      "id": "rtl",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "rtl",
+      "props": {
+        "visible": true,
+        "label": "Preparing revisão 日本語 العربية"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 31.953125,
+                "y": 55,
+                "width": 256.109375,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136.015625,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 60.953125,
+                "y": 140,
+                "width": 198.109375,
+                "height": 20
+              },
+              "text": "Preparing revisão 日本語 العربية",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-rtl-320x240-Light.png",
+      "pngSha256": "a85457912bcce1eac6bfc912af6846c3e1b9de285981e4b335a0c0a8a3f67aab"
+    },
+    {
+      "id": "clipped",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Outside parent bounds"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 58.671875,
+                "y": 55,
+                "width": 202.640625,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 135.984375,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 87.671875,
+                "y": 140,
+                "width": 144.640625,
+                "height": 20
+              },
+              "text": "Outside parent bounds",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-clipped-320x240-Light.png",
+      "pngSha256": "8c9ffa5bce612a6b7fcc1e62bc7cff20104c715b7ee8aab5b034ccd8282aa0cf"
+    },
+    {
+      "id": "stacked",
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "First",
+        "second": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 55,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 145.71875,
+                "y": 140,
+                "width": 28.546875,
+                "height": 20
+              },
+              "text": "First",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 155
+            }
+          },
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 55,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 137.171875,
+                "y": 140,
+                "width": 45.65625,
+                "height": 20
+              },
+              "text": "Second",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-stacked-320x240-Light.png",
+      "pngSha256": "9f2c507c965e3d2c75ca5ae753664bd1752ed8d4e084e13d5e67d6f44ec6eed4"
+    },
+    {
+      "id": "hidden",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": false
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": []
+      },
+      "file": "loading-overlay-hidden-320x240-Dark.png",
+      "pngSha256": "e47ce9d6cdf18b2e5b1bc7928c918f5661521734901dfa129fdd6daf41539de4"
+    },
+    {
+      "id": "default",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 100.53125,
+                "y": 55,
+                "width": 118.921875,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 135.984375,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 129.53125,
+                "y": 140,
+                "width": 60.921875,
+                "height": 20
+              },
+              "text": "Loading...",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-default-320x240-Dark.png",
+      "pngSha256": "df2fc697721ee4fc3d6a49d4a3c73798a9867bb745d17415b241b841d8269f74"
+    },
+    {
+      "id": "empty",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": ""
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 71,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 96,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-empty-320x240-Dark.png",
+      "pngSha256": "450d8f7501ea0fcbd50b20e4eccf0cabc6003586414c1012933988ba6ed19dbb"
+    },
+    {
+      "id": "null",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": null
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 71,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 96,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-null-320x240-Dark.png",
+      "pngSha256": "450d8f7501ea0fcbd50b20e4eccf0cabc6003586414c1012933988ba6ed19dbb"
+    },
+    {
+      "id": "space",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": " "
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 65,
+                "width": 106,
+                "height": 110
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 90,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 160,
+                "y": 150,
+                "width": 0,
+                "height": 0
+              },
+              "text": " ",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": null
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-space-320x240-Dark.png",
+      "pngSha256": "bfce58c2e348d136e1c4d24ac9d7469fc037c9bf317e5137fe0eff088d2eed4d"
+    },
+    {
+      "id": "long",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Preparing the fictional editorial record and associated local preview material"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 0,
+                "y": 45,
+                "width": 320,
+                "height": 150
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 70,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 29,
+                "y": 130,
+                "width": 262,
+                "height": 40
+              },
+              "text": "Preparing the fictional editorial record and associated local preview material",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 145
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-long-320x240-Dark.png",
+      "pngSha256": "be614dc09ca91478607c791fa7f3f8ee2e4999b5a4b7a65c4a18d5a5317b8576"
+    },
+    {
+      "id": "unbroken",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "OneExtremelyLongUnbrokenLoadingLabel"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": -3.109375,
+                "y": 55,
+                "width": 326.21875,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 25.890625,
+                "y": 140,
+                "width": 268.21875,
+                "height": 20
+              },
+              "text": "OneExtremelyLongUnbrokenLoadingLabel",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-unbroken-320x240-Dark.png",
+      "pngSha256": "46a75f3b390d409ad838db6f9df55e1da6424dced8f67af4902a2230c1623e76"
+    },
+    {
+      "id": "rtl",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "rtl",
+      "props": {
+        "visible": true,
+        "label": "Preparing revisão 日本語 العربية"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 31.953125,
+                "y": 55,
+                "width": 256.109375,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136.015625,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 60.953125,
+                "y": 140,
+                "width": 198.109375,
+                "height": 20
+              },
+              "text": "Preparing revisão 日本語 العربية",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-rtl-320x240-Dark.png",
+      "pngSha256": "7a24fb8ced2bb8e8cd4adf8720a607c47f57410547b186a46c4b284a0ef02403"
+    },
+    {
+      "id": "clipped",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Outside parent bounds"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 58.671875,
+                "y": 55,
+                "width": 202.640625,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 135.984375,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 87.671875,
+                "y": 140,
+                "width": 144.640625,
+                "height": 20
+              },
+              "text": "Outside parent bounds",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-clipped-320x240-Dark.png",
+      "pngSha256": "c4a2ad9793f12bafae9e4eadde94e923579b7871edd8b225c7ad4f43acdf092b"
+    },
+    {
+      "id": "stacked",
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "First",
+        "second": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 55,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 145.71875,
+                "y": 140,
+                "width": 28.546875,
+                "height": 20
+              },
+              "text": "First",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 155
+            }
+          },
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 320,
+              "height": 240
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 107,
+                "y": 55,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 136,
+                "y": 80,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 137.171875,
+                "y": 140,
+                "width": 45.65625,
+                "height": 20
+              },
+              "text": "Second",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 155
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-stacked-320x240-Dark.png",
+      "pngSha256": "b4cad1ccdf39263b0fdd77d672a335ac03c60aa623717bb1005d28469f4f33f3"
+    },
+    {
+      "id": "hidden",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": false
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": []
+      },
+      "file": "loading-overlay-hidden-640x480-Light.png",
+      "pngSha256": "dc4f471b1bd65b39333d625cd3df00e173aced7076e0f9233afe73c04bc86902"
+    },
+    {
+      "id": "default",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 260.53125,
+                "y": 175,
+                "width": 118.921875,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 295.984375,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 289.53125,
+                "y": 260,
+                "width": 60.921875,
+                "height": 20
+              },
+              "text": "Loading...",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-default-640x480-Light.png",
+      "pngSha256": "e61e1454fcea171bcee086f753d148002c574605dad3585ae79958c0acff753d"
+    },
+    {
+      "id": "empty",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": ""
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 191,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 216,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-empty-640x480-Light.png",
+      "pngSha256": "512f16a38f899fee5f1e8c4e3507778931f85934d0448dec5a4db51046378695"
+    },
+    {
+      "id": "null",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": null
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 191,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 216,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-null-640x480-Light.png",
+      "pngSha256": "512f16a38f899fee5f1e8c4e3507778931f85934d0448dec5a4db51046378695"
+    },
+    {
+      "id": "space",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": " "
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 185,
+                "width": 106,
+                "height": 110
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 210,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 320,
+                "y": 270,
+                "width": 0,
+                "height": 0
+              },
+              "text": " ",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": null
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-space-640x480-Light.png",
+      "pngSha256": "a82c83ab0490cf658c10c23a01822b181aae218962ce36e8070ad1a39e43553c"
+    },
+    {
+      "id": "long",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Preparing the fictional editorial record and associated local preview material"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 51.703125,
+                "y": 175,
+                "width": 536.578125,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 295.984375,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 80.703125,
+                "y": 260,
+                "width": 478.578125,
+                "height": 20
+              },
+              "text": "Preparing the fictional editorial record and associated local preview material",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-long-640x480-Light.png",
+      "pngSha256": "efe3528aef791a59943b37cdb78c4d135182ddc6e408469ff046b05ff371df3c"
+    },
+    {
+      "id": "unbroken",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "OneExtremelyLongUnbrokenLoadingLabel"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 156.890625,
+                "y": 175,
+                "width": 326.21875,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 185.890625,
+                "y": 260,
+                "width": 268.21875,
+                "height": 20
+              },
+              "text": "OneExtremelyLongUnbrokenLoadingLabel",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-unbroken-640x480-Light.png",
+      "pngSha256": "f5010ebaa23cfc83fc18f134f47a5706d7d15b5154a3a85958869d1829d767ef"
+    },
+    {
+      "id": "rtl",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "rtl",
+      "props": {
+        "visible": true,
+        "label": "Preparing revisão 日本語 العربية"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 191.953125,
+                "y": 175,
+                "width": 256.109375,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296.015625,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 220.953125,
+                "y": 260,
+                "width": 198.109375,
+                "height": 20
+              },
+              "text": "Preparing revisão 日本語 العربية",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-rtl-640x480-Light.png",
+      "pngSha256": "8e88900146f6af7c5a8ef54b67d8292a2237bac9a0b53a33d4f5790f5ba53b17"
+    },
+    {
+      "id": "clipped",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Outside parent bounds"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 218.671875,
+                "y": 175,
+                "width": 202.640625,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 295.984375,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 247.671875,
+                "y": 260,
+                "width": 144.640625,
+                "height": 20
+              },
+              "text": "Outside parent bounds",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-clipped-640x480-Light.png",
+      "pngSha256": "57a26b903753a1fb6b40f13f05928092accfc629bdf54f261d8848503a12924b"
+    },
+    {
+      "id": "stacked",
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "First",
+        "second": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 175,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 305.71875,
+                "y": 260,
+                "width": 28.546875,
+                "height": 20
+              },
+              "text": "First",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          },
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 175,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(255, 255, 255)",
+              "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(44, 87, 132) rgb(44, 87, 132)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 297.171875,
+                "y": 260,
+                "width": 45.65625,
+                "height": 20
+              },
+              "text": "Second",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(45, 45, 45)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-stacked-640x480-Light.png",
+      "pngSha256": "985997cf89b5b5285f9d7007f1905e912adfe308f4e02f80ddd9bef5c183b9e6"
+    },
+    {
+      "id": "hidden",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": false
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": []
+      },
+      "file": "loading-overlay-hidden-640x480-Dark.png",
+      "pngSha256": "98a9785abb45c7ec6f23dcd9936bd28038b5844729cd41c548a2b09c92391c78"
+    },
+    {
+      "id": "default",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 260.53125,
+                "y": 175,
+                "width": 118.921875,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 295.984375,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 289.53125,
+                "y": 260,
+                "width": 60.921875,
+                "height": 20
+              },
+              "text": "Loading...",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-default-640x480-Dark.png",
+      "pngSha256": "f710f7001a41c1615e1053685cb059338c56ae4050930d55679f8b2e4da5b9da"
+    },
+    {
+      "id": "empty",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": ""
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 191,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 216,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-empty-640x480-Dark.png",
+      "pngSha256": "71af6718a812649eff256ce26fe12f571a02661180a80b703b69cd494e42f22b"
+    },
+    {
+      "id": "null",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": null
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 191,
+                "width": 106,
+                "height": 98
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 216,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": null
+          }
+        ]
+      },
+      "file": "loading-overlay-null-640x480-Dark.png",
+      "pngSha256": "71af6718a812649eff256ce26fe12f571a02661180a80b703b69cd494e42f22b"
+    },
+    {
+      "id": "space",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": " "
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 185,
+                "width": 106,
+                "height": 110
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 210,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 320,
+                "y": 270,
+                "width": 0,
+                "height": 0
+              },
+              "text": " ",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": null
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-space-640x480-Dark.png",
+      "pngSha256": "de2873a0e5b5a5b00e14a3e870073153dbc05c34f99b5e22dfdb3a2cd41d3b15"
+    },
+    {
+      "id": "long",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Preparing the fictional editorial record and associated local preview material"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 51.703125,
+                "y": 175,
+                "width": 536.578125,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 295.984375,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 80.703125,
+                "y": 260,
+                "width": 478.578125,
+                "height": 20
+              },
+              "text": "Preparing the fictional editorial record and associated local preview material",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-long-640x480-Dark.png",
+      "pngSha256": "57b34ae979eebd8e4e676465f23f88364fd71b991915b486c1493cffc7a34a44"
+    },
+    {
+      "id": "unbroken",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "OneExtremelyLongUnbrokenLoadingLabel"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 156.890625,
+                "y": 175,
+                "width": 326.21875,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 185.890625,
+                "y": 260,
+                "width": 268.21875,
+                "height": 20
+              },
+              "text": "OneExtremelyLongUnbrokenLoadingLabel",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-unbroken-640x480-Dark.png",
+      "pngSha256": "442707777542d8a2c3e842ec175007c254e82e98110995b91cd1d9cbbf1193a6"
+    },
+    {
+      "id": "rtl",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "rtl",
+      "props": {
+        "visible": true,
+        "label": "Preparing revisão 日本語 العربية"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 191.953125,
+                "y": 175,
+                "width": 256.109375,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296.015625,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 220.953125,
+                "y": 260,
+                "width": 198.109375,
+                "height": 20
+              },
+              "text": "Preparing revisão 日本語 العربية",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-rtl-640x480-Dark.png",
+      "pngSha256": "d5e091aa31dac5a545abfd1809042afc557ee666ef77b4e7cd1b742f0991f6c9"
+    },
+    {
+      "id": "clipped",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "Outside parent bounds"
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 218.671875,
+                "y": 175,
+                "width": 202.640625,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 295.984375,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 247.671875,
+                "y": 260,
+                "width": 144.640625,
+                "height": 20
+              },
+              "text": "Outside parent bounds",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-clipped-640x480-Dark.png",
+      "pngSha256": "165651d8d908531f6fe42355326bdcc24643136eace85ce2eacb1f0c7140a305"
+    },
+    {
+      "id": "stacked",
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "direction": "ltr",
+      "props": {
+        "visible": true,
+        "label": "First",
+        "second": true
+      },
+      "normal": {
+        "parent": {
+          "x": 101.25,
+          "y": 147.5,
+          "width": 100,
+          "height": 40
+        },
+        "overlays": [
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 175,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 305.71875,
+                "y": 260,
+                "width": 28.546875,
+                "height": 20
+              },
+              "text": "First",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          },
+          {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 480
+            },
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.72)",
+            "blur": "blur(2px)",
+            "zIndex": "50",
+            "card": {
+              "box": {
+                "x": 267,
+                "y": 175,
+                "width": 106,
+                "height": 130
+              },
+              "background": "rgb(24, 37, 51)",
+              "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+              "borderWidth": "1px",
+              "radius": "12px",
+              "padding": [
+                "24px",
+                "28px",
+                "24px",
+                "28px"
+              ],
+              "gap": "12px",
+              "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px"
+            },
+            "spinner": {
+              "box": {
+                "x": 296,
+                "y": 200,
+                "width": 48,
+                "height": 48
+              },
+              "borderWidth": "3px",
+              "borderColor": "rgba(0, 0, 0, 0) rgb(91, 163, 245) rgb(91, 163, 245)",
+              "duration": "1e-05s"
+            },
+            "label": {
+              "box": {
+                "x": 297.171875,
+                "y": 260,
+                "width": 45.65625,
+                "height": 20
+              },
+              "text": "Second",
+              "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+              "fontSize": "14px",
+              "lineHeight": "20px",
+              "fontWeight": "500",
+              "color": "rgb(240, 244, 248)",
+              "firstBaseline": 275
+            }
+          }
+        ]
+      },
+      "file": "loading-overlay-stacked-640x480-Dark.png",
+      "pngSha256": "2125ce5a2d52c1277ca1d5f7e2b1cf82b16cc0f8fabff2e3aacea119ce2b501e"
+    }
+  ],
+  "interactions": [
+    {
+      "width": 1024,
+      "height": 900,
+      "scheme": "Light",
+      "focusOnOpen": "underlying",
+      "keyboardActivations": 2,
+      "pointerBlocked": true,
+      "focusAfterPointer": {
+        "id": "",
+        "tag": "BODY"
+      },
+      "escapeDoesNotDismiss": true,
+      "focusAfterTab": "underlying",
+      "focusAfterHide": "underlying"
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "scheme": "Dark",
+      "focusOnOpen": "underlying",
+      "keyboardActivations": 2,
+      "pointerBlocked": true,
+      "focusAfterPointer": {
+        "id": "",
+        "tag": "BODY"
+      },
+      "escapeDoesNotDismiss": true,
+      "focusAfterTab": "underlying",
+      "focusAfterHide": "underlying"
+    },
+    {
+      "width": 320,
+      "height": 240,
+      "scheme": "Light",
+      "focusOnOpen": "underlying",
+      "keyboardActivations": 2,
+      "pointerBlocked": true,
+      "focusAfterPointer": {
+        "id": "",
+        "tag": "BODY"
+      },
+      "escapeDoesNotDismiss": true,
+      "focusAfterTab": "underlying",
+      "focusAfterHide": "underlying"
+    },
+    {
+      "width": 320,
+      "height": 240,
+      "scheme": "Dark",
+      "focusOnOpen": "underlying",
+      "keyboardActivations": 2,
+      "pointerBlocked": true,
+      "focusAfterPointer": {
+        "id": "",
+        "tag": "BODY"
+      },
+      "escapeDoesNotDismiss": true,
+      "focusAfterTab": "underlying",
+      "focusAfterHide": "underlying"
+    },
+    {
+      "width": 640,
+      "height": 480,
+      "scheme": "Light",
+      "focusOnOpen": "underlying",
+      "keyboardActivations": 2,
+      "pointerBlocked": true,
+      "focusAfterPointer": {
+        "id": "",
+        "tag": "BODY"
+      },
+      "escapeDoesNotDismiss": true,
+      "focusAfterTab": "underlying",
+      "focusAfterHide": "underlying"
+    },
+    {
+      "width": 640,
+      "height": 480,
+      "scheme": "Dark",
+      "focusOnOpen": "underlying",
+      "keyboardActivations": 2,
+      "pointerBlocked": true,
+      "focusAfterPointer": {
+        "id": "",
+        "tag": "BODY"
+      },
+      "escapeDoesNotDismiss": true,
+      "focusAfterTab": "underlying",
+      "focusAfterHide": "underlying"
+    }
+  ]
+}

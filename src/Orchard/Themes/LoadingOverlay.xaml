@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="BleeckerLoadingOverlayTintBrush" Color="White" Opacity=".72" /><SolidColorBrush x:Key="BleeckerLoadingOverlayBorderBrush" Color="#E6D5B8" Opacity=".25" /></ResourceDictionary>
+  <ResourceDictionary x:Key="Default"><SolidColorBrush x:Key="BleeckerLoadingOverlayTintBrush" Color="#0D1821" Opacity=".72" /><SolidColorBrush x:Key="BleeckerLoadingOverlayBorderBrush" Color="White" Opacity=".1" /></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="BleeckerLoadingOverlayTintBrush" Color="{ThemeResource SystemColorWindowColor}" /><SolidColorBrush x:Key="BleeckerLoadingOverlayBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" /></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style TargetType="local:BleeckerLoadingOverlay">
+  <Setter Property="IsTabStop" Value="False" /><Setter Property="UseLayoutRounding" Value="False" /><Setter Property="HighContrastAdjustment" Value="None" />
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}" /><Setter Property="FontSize" Value="14" /><Setter Property="FontWeight" Value="Medium" />
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" /><Setter Property="Background" Value="{ThemeResource BleeckerCardBrush}" />
+  <Setter Property="BorderBrush" Value="{ThemeResource BleeckerLoadingOverlayBorderBrush}" /><Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="12" /><Setter Property="Padding" Value="28,24" />
+  <Setter Property="OverlayBrush" Value="{ThemeResource BleeckerLoadingOverlayTintBrush}" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerLoadingOverlay"><Grid Width="0" Height="0" HorizontalAlignment="Left" VerticalAlignment="Top" FlowDirection="LeftToRight">
+   <Popup x:Name="PART_Popup" IsLightDismissEnabled="False" ShouldConstrainToRootBounds="True" FlowDirection="LeftToRight">
+    <Canvas x:Name="PART_Portal" UseLayoutRounding="False" Background="Transparent" FlowDirection="LeftToRight">
+     <Grid x:Name="PART_Backdrop" IsHitTestVisible="False" />
+     <Border x:Name="PART_Tint" Background="{TemplateBinding OverlayBrush}" />
+     <local:BleeckerOverlaySurface x:Name="PART_Card" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}" UseLayoutRounding="False">
+      <Canvas x:Name="PART_Body" UseLayoutRounding="False">
+       <local:BleeckerLoadingSpinner x:Name="PART_Spinner" Size="Large" IsHitTestVisible="False" UseLayoutRounding="False" />
+       <Canvas x:Name="PART_LabelHost" UseLayoutRounding="False"><TextBlock x:Name="PART_Label" Foreground="{TemplateBinding Foreground}" UseLayoutRounding="False" TextWrapping="WrapWholeWords" TextReadingOrder="UseFlowDirection" LineStackingStrategy="BlockLineHeight" /></Canvas>
+      </Canvas>
+     </local:BleeckerOverlaySurface>
+    </Canvas>
+   </Popup>
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

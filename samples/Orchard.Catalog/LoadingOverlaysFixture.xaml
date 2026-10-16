@@ -1,0 +1,10 @@
+<UserControl x:Class="Orchard.Catalog.LoadingOverlaysFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Loading overlay" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="A viewport portal blocks pointer input while preserving existing keyboard focus. The caller controls visibility." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <TextBox x:Name="DemoLabel" Header="Loading label" Text="Loading..." Width="320" HorizontalAlignment="Left" />
+  <orchard:BleeckerButton Content="Show for 3 seconds" Click="ShowOverlay" HorizontalAlignment="Left" />
+  <TextBlock x:Name="DemoStatus" Text="The overlay is hidden." Style="{StaticResource BleeckerBodyStyle}" />
+  <Border Width="100" Height="40" HorizontalAlignment="Left"><orchard:BleeckerLoadingOverlay x:Name="DemoOverlay" /></Border>
+ </StackPanel>
+</UserControl>

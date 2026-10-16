@@ -25,6 +25,8 @@
         <Compile Include="../../src/Orchard/Controls/BleeckerDataListItem.cs" Link="BleeckerDataListItem.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerTimelineItem.cs" Link="BleeckerTimelineItem.cs" />
         <None Include="../Reference/Timeline.json" Link="Fixtures/Timeline.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/LoadingOverlay.json" Link="Fixtures/LoadingOverlay.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-loading-overlay.cjs" Link="Fixtures/CaptureLoadingOverlay.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-timeline.cjs" Link="Fixtures/CaptureTimeline.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataList.json" Link="Fixtures/DataList.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DataListTypography.json" Link="Fixtures/DataListTypography.json" CopyToOutputDirectory="PreserveNewest" />

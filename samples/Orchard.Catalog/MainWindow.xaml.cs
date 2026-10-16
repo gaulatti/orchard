@@ -57,6 +57,8 @@ public sealed partial class MainWindow : Window
         {
             CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
+            else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
             else if (args.Contains("--smoke-chart-load-focus")) await RunChartLoadFocusAsync(folder);
             else if (args.Contains("--smoke-timeline"))
             {
@@ -768,6 +770,8 @@ public sealed partial class MainWindow : Window
             await DataLists.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Timelines);
             await Timelines.VerifyAsync(scheme,folder,CatalogRoot,ComponentSearch);
+            await SelectFixtureAsync(LoadingOverlays);
+            await LoadingOverlays.VerifyCatalogAsync(folder,scheme);
             await SelectFixtureAsync(DataTableToolbars);
             await DataTableToolbars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTablePaginations);

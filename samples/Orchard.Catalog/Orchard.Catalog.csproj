@@ -77,6 +77,7 @@
         <EmbeddedResource Include="../../tests/Reference/DataList.json" LogicalName="Orchard.Catalog.Reference.DataList.json" />
         <EmbeddedResource Include="../../tests/Reference/DataListTypography.json" LogicalName="Orchard.Catalog.Reference.DataListTypography.json" />
         <EmbeddedResource Include="../../tests/Reference/Timeline.json" LogicalName="Orchard.Catalog.Reference.Timeline.json" />
+        <EmbeddedResource Include="../../tests/Reference/LoadingOverlay.json" LogicalName="Orchard.Catalog.Reference.LoadingOverlay.json" />
         <EmbeddedResource Include="../../tests/Reference/StepperMotion.json" LogicalName="Orchard.Catalog.Reference.StepperMotion.json" />
         <EmbeddedResource Include="../../tests/Reference/StepperTypography.json" LogicalName="Orchard.Catalog.Reference.StepperTypography.json" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />

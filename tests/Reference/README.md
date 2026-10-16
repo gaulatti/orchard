@@ -1,5 +1,12 @@
 # Browser reference probes
 
+`LoadingOverlay.json` records 60 viewport-portal cases at three client sizes
+in Light/Dark and six physical browser input probes. The frozen source,
+dependencies, CSS, fonts, collector and PNGs have recorded hashes. Capture
+animations are paused at time zero. `scripts/verify-loading-overlay.mjs`
+checks actual native viewport geometry, baselines, images and owned input;
+successful geometry/input does not imply exact raster or motion parity.
+
 `DataTableFilters.json` records the actual frozen Select Filter and real
 TanStack consumer in 56 cases and 276 states. The collector/client live under
 `scripts/reference`; `scripts/verify-data-table-filters-reference.mjs` checks
