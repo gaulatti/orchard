@@ -27,6 +27,30 @@ public sealed class DataListContractTests
         Assert.AreEqual(6, root.GetProperty("interactions").GetArrayLength());
     }
     [TestMethod]
+    public void TypographyUsesOriginalSourceTextAcrossEveryViewportAndTheme()
+    {
+        var normal = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fixtures", "DataList.json"));
+        using var typography = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "DataListTypography.json")));
+        var root = typography.RootElement;
+        Assert.AreEqual(Convert.ToHexStringLower(SHA256.HashData(normal)), root.GetProperty("normalReferenceSha256").GetString());
+        var script = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "CaptureDataListTypography.cjs")).Replace("\r\n", "\n");
+        Assert.AreEqual(Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(script))), root.GetProperty("scriptSha256").GetString());
+        Assert.AreEqual(72, root.GetProperty("reports").GetArrayLength());
+        var text = root.GetProperty("reports").EnumerateArray().SelectMany(test => test.GetProperty("rows").EnumerateArray())
+            .SelectMany(row => row.EnumerateObject()).Select(property => property.Value)
+            .Where(value => value.ValueKind != JsonValueKind.Null && value.GetProperty("firstBaseline").ValueKind != JsonValueKind.Null).ToArray();
+        Assert.AreEqual(402, text.Length);
+        Assert.AreEqual(6, text.Count(value => value.GetProperty("rich").GetBoolean()));
+        var first = root.GetProperty("reports")[0].GetProperty("rows")[0];
+        Assert.AreEqual(28, first.GetProperty("label").GetProperty("firstBaseline").GetDouble());
+        Assert.AreEqual(29, first.GetProperty("value").GetProperty("firstBaseline").GetDouble());
+        Assert.AreEqual(52, first.GetProperty("description").GetProperty("firstBaseline").GetDouble());
+        var compact = root.GetProperty("reports").EnumerateArray().Single(test => test.GetProperty("id").GetString() == "default" &&
+            test.GetProperty("viewportWidth").GetInt32() == 639 && test.GetProperty("scheme").GetString() == "Light").GetProperty("rows");
+        Assert.AreEqual(54.5, compact[0].GetProperty("value").GetProperty("firstBaseline").GetDouble());
+        Assert.AreEqual(126.5, compact[1].GetProperty("label").GetProperty("firstBaseline").GetDouble());
+    }
+    [TestMethod]
     public void NumericZeroAndWhitespaceRetainTheirDistinctSourceBoundaries()
     {
         using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "DataList.json")));

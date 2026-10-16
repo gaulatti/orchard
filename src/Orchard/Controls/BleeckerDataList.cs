@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Windows.UI.ViewManagement;
 
 namespace Orchard;
 
@@ -20,6 +21,8 @@ public sealed partial class BleeckerDataList : Control
     private bool observedCompact;
     private readonly Dictionary<string, TextBlock> palette = [];
     private readonly List<(TextBlock Probe, long Token)> paletteObservers = [];
+    private readonly UISettings settings = new();
+    private double textScale = 1;
     internal bool Compact => XamlRoot is { } root && root.Size.Width < 640;
 
     public BleeckerDataList()
@@ -29,6 +32,12 @@ public sealed partial class BleeckerDataList : Control
         Loaded += (_, _) => { Observe(); Render(); };
         Unloaded += (_, _) => StopObserving();
         ActualThemeChanged += (_, _) => Render();
+        LayoutUpdated += (_, _) =>
+        {
+            if (!IsLoaded) return;
+            if (textScale != settings.TextScaleFactor) { textScale = settings.TextScaleFactor; Render(); }
+            foreach (var entry in entries) entry.AlignText();
+        };
         foreach (var property in new[] { FlowDirectionProperty, FontFamilyProperty, FontSizeProperty, CharacterSpacingProperty, IsTextScaleFactorEnabledProperty })
             RegisterPropertyChangedCallback(property, (_, _) => Render());
         RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });

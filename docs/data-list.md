@@ -38,6 +38,12 @@ rows, using light-sand/40 in Light and white/3 in Dark. Typography is Encode San
 Medium 13/19.5 for terms and 14/20 for values, with Libre Franklin 12/20 for
 summaries. The stripe palette has an explicit Windows contrast adaptation.
 
+Scalar text uses the selected font's measured natural ascent and descent,
+quantized at the current display scale, to place its baseline inside the CSS
+line box. Compact rows retain the half-DIP origins produced by the term's
+19.5-DIP line height. Font, font-size and text-scale changes refresh the
+measurement. Consumer `UIElement` and template content keeps its own layout.
+
 The native automation hierarchy exposes a list and ordinal list items, keeping
 embedded consumer controls reachable. Changes, reorder, removal, template
 replacement, unloading/remounting and theme changes preserve the relevant
@@ -86,6 +92,28 @@ The clean published `a7dc3ca` replay at
 Its pixel audit reproduces the initial totals exactly. The full published
 catalog passes 1,104 captures in 437.5147483 seconds, preserving all 1,080 prior
 names and 174 protected glyph hashes. The independent package consumer passes
-its DataList checks and an instrumented complete attempt; two earlier Bar Chart
-focus failures remain unresolved. See [the current checkpoint](native-validation-checkpoint.md)
+its DataList checks and an instrumented complete attempt; the two earlier Bar
+Chart focus failures were later repaired and verified separately. See
+[the current checkpoint](native-validation-checkpoint.md)
 for separate package failure/success evidence, artifact hashes and open gaps.
+
+`scripts/reference/capture-data-list-typography.cjs` measures original DOM text
+ranges and Canvas font bounds without inserting baseline markers or changing
+the frozen component. `tests/Reference/DataListTypography.json` records 402
+first-line baselines: 396 scalar baselines and six consumer-button baselines.
+The original native implementation fails all 396 scalar checks, by up to
+2.068001 DIPs. The corrected x64 matrix at
+`artifacts/data-list-baseline-local/{1024,639,640}` passes all 396 at the original
+0.05-DIP geometry bound; maximum error is 0.0000124 DIP. The native fixture
+asserts scalar baselines and line heights, and the independent
+`scripts/verify-data-list-typography.mjs` audit checks the same emitted values.
+Consumer-button measurements remain diagnostic and are not shifted by the
+library. Both native CI jobs register the audit; push runs remain paused.
+
+The unchanged zero-tolerance image comparison at
+`artifacts/data-list-baseline-local-pixel-audit.json` still finds 66/72 differing
+cases: 2,496,401 pixels and 76,288,483 absolute RGBA error. That is 39,867 fewer
+differing pixels and 38,454,635 less error than the initial matrix. Exact font,
+shape and alpha rasterization, wrapped-line detail, consumer/override coverage,
+scaling, contrast/Narrator and ARM64 runtime remain open. These baseline checks
+do not accept the component or its remaining platform requirements.

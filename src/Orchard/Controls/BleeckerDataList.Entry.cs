@@ -45,6 +45,7 @@ public sealed partial class BleeckerDataList
             InvalidateMeasure(); FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
         }
         internal void ReleaseContent() { Label.Release(); Value.Release(); Description.Release(); }
+        internal void AlignText() { Label.Align(owner); Value.Align(owner); Description.Align(owner); }
         protected override Size MeasureOverride(Size available)
         {
             var pad = stripe ? 12 : 0;
@@ -100,6 +101,8 @@ public sealed partial class BleeckerDataList
     private sealed class Slot : Panel
     {
         internal TextBlock Text { get; } = new() { UseLayoutRounding = false, TextWrapping = TextWrapping.WrapWholeWords, LineStackingStrategy = LineStackingStrategy.BlockLineHeight };
+        private readonly TextBlock metrics = new() { UseLayoutRounding = false, Text = "Mg" };
+        private readonly TranslateTransform shift = new();
         private readonly ContentPresenter rich = new();
         private readonly TextBlock suffix = new() { UseLayoutRounding = false };
         private readonly double fontSize, lineHeight;
@@ -109,7 +112,7 @@ public sealed partial class BleeckerDataList
         internal Slot(string name, double fontSize, double lineHeight, bool secondary)
         {
             Name = name; this.fontSize = fontSize; this.lineHeight = lineHeight; this.secondary = secondary;
-            UseLayoutRounding = false; Children.Add(Text); Children.Add(rich); Children.Add(suffix);
+            UseLayoutRounding = false; Text.RenderTransform = shift; Children.Add(Text); Children.Add(rich); Children.Add(suffix);
         }
         internal void Set(BleeckerDataList owner, object? content, DataTemplate? template, Brush foreground, string trailing = "")
         {
@@ -117,13 +120,15 @@ public sealed partial class BleeckerDataList
             if (!plain && template is null && content is not UIElement)
                 throw new InvalidOperationException("DataList object content requires a DataTemplate or UIElement.");
             FlowDirection = owner.FlowDirection;
-            foreach (var text in new[] { Text, suffix })
+            foreach (var text in new[] { Text, suffix, metrics })
             {
                 text.FontFamily = secondary ? owner.Font("BleeckerSecondaryFontFamily") : owner.FontFamily;
-                text.FontSize = owner.FontSize * fontSize / 14; text.LineHeight = owner.FontSize * lineHeight / 14;
+                text.FontSize = owner.FontSize * fontSize / 14;
                 text.FontWeight = secondary ? Microsoft.UI.Text.FontWeights.Normal : Microsoft.UI.Text.FontWeights.Medium;
                 text.Foreground = foreground; text.CharacterSpacing = owner.CharacterSpacing; text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled;
             }
+            Text.LineHeight = suffix.LineHeight = owner.FontSize * lineHeight / 14;
+            metrics.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             Text.Text = Regex.Replace(plain ? Scalar(content) + trailing : "", "[ \\t\\r\\n\\f]+", " ").Trim(' ');
             Text.Visibility = plain && Text.Text.Length != 0 ? Visibility.Visible : Visibility.Collapsed;
             suffix.Text = plain ? "" : trailing; suffix.Visibility = suffix.Text.Length == 0 ? Visibility.Collapsed : Visibility.Visible;
@@ -136,6 +141,21 @@ public sealed partial class BleeckerDataList
             InvalidateMeasure();
         }
         internal void Release() => rich.Content = null;
+        internal void Align(BleeckerDataList owner)
+        {
+            if (!plain || owner.XamlRoot is null || Text.Text.Length == 0) return;
+            var factor = Text.IsTextScaleFactorEnabled ? owner.settings.TextScaleFactor : 1;
+            var scale = owner.XamlRoot.RasterizationScale;
+            // Chromium quantizes the font ascent/descent before centering them
+            // in the CSS line box. Keeping fractional font metrics moves the
+            // pinned 13px term one pixel down even after flooring the baseline.
+            var ascent = Math.Floor(metrics.BaselineOffset * scale + .5) / scale;
+            var descent = Math.Floor((metrics.DesiredSize.Height - metrics.BaselineOffset) * scale + .5) / scale;
+            // Quantize within the line box; compact rows retain the half-pixel
+            // origins introduced by the source's 19.5px term line height.
+            var baseline = Math.Floor(((Text.LineHeight * factor - ascent - descent) / 2 + ascent) * scale) / scale;
+            shift.Y = baseline - Text.BaselineOffset;
+        }
         protected override Size MeasureOverride(Size available)
         {
             var alignment = AlignRight ? TextAlignment.Right : TextAlignment.Left;

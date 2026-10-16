@@ -1,0 +1,4963 @@
+{
+  "format": "orchard-data-list-typography-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "23da195177b59a57fb1031ba4c8fdd900f7484febc4d73d13b96770cc55bde5a",
+  "normalReferenceSha256": "1fe800390f90aa6920537707e8f947e1f8f68be7c1215095697ee68cc588dd2e",
+  "scriptSha256": "957820f87660d8d62b77edc873fea6d4da575679b6afb13a63dab6c3230bffa0",
+  "scriptNormalization": "lf",
+  "browser": "155.0.4283.45",
+  "fontFiles": [
+    {
+      "family": "Encode Sans",
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "family": "Libre Franklin",
+      "weight": 400,
+      "file": "LibreFranklin-Regular.ttf",
+      "sha256": "01e26222a56e141e3abae670ab22be77f063999fc4ef64c4a9651de19b7728a8"
+    }
+  ],
+  "reports": [
+    {
+      "id": "default",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "striped",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long-striped",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": []
+    },
+    {
+      "id": "raw",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw-striped",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl-striped",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow-striped",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "viewportWidth": 1024,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Headline",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Edit title",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": true
+          },
+          "description": {
+            "text": "Consumer action",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "striped",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long-striped",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": []
+    },
+    {
+      "id": "raw",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw-striped",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl-striped",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow-striped",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "viewportWidth": 1024,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Headline",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Edit title",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": true
+          },
+          "description": {
+            "text": "Consumer action",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "striped",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 97.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 166.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 193,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 216,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long-striped",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 74,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 117,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 186,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 212.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 235.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": []
+    },
+    {
+      "id": "raw",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 218.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 241.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw-striped",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 218.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 241.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl-striped",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 93.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 156.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 285.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 312,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 335,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow-striped",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 113,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 196,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 345,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 371.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 394.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "viewportWidth": 639,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Headline",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Edit title",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": true
+          },
+          "description": {
+            "text": "Consumer action",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "striped",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 97.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 166.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 193,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 216,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long-striped",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 74,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 117,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 186,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 212.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 235.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": []
+    },
+    {
+      "id": "raw",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 218.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 241.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw-striped",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 218.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 241.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl-striped",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 126.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 153,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 201,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 227.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 250.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 93.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 156.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 285.5,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 312,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 335,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow-striped",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 113,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 196,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 345,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 371.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 394.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "viewportWidth": 639,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Headline",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Edit title",
+            "firstBaseline": 54.5,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": true
+          },
+          "description": {
+            "text": "Consumer action",
+            "firstBaseline": 77.5,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "striped",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long-striped",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": []
+    },
+    {
+      "id": "raw",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw-striped",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl-striped",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow-striped",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "viewportWidth": 640,
+      "scheme": "Light",
+      "rows": [
+        {
+          "label": {
+            "text": "Headline",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Edit title",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": true
+          },
+          "description": {
+            "text": "Consumer action",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "default",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "striped",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "long-striped",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 92,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 181,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 182,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 205,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": []
+    },
+    {
+      "id": "raw",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw-striped",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "0",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "00",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": " ",
+            "firstBaseline": null
+          },
+          "description": {
+            "text": " ",
+            "firstBaseline": null
+          }
+        },
+        {
+          "label": {
+            "text": "",
+            "firstBaseline": null
+          },
+          "value": {
+            "text": "7",
+            "firstBaseline": 169,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "3",
+            "firstBaseline": 192,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "rtl-striped",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Title",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Harbor dispatch",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "A consumer-owned summary.",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "Status",
+            "firstBaseline": 101,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Ready",
+            "firstBaseline": 102,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": null
+        },
+        {
+          "label": {
+            "text": "Items",
+            "firstBaseline": 150,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "42",
+            "firstBaseline": 151,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Fictional records",
+            "firstBaseline": 174,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "narrow-striped",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "A longer metadata label wrapping across lines",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Editorial review and international distribution",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Detailed multilingual guidance: revisão editorial 日本語 العربية.",
+            "firstBaseline": 132,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        },
+        {
+          "label": {
+            "text": "OneExtremelyLongUnbrokenLabel",
+            "firstBaseline": 301,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "AnotherExtremelyLongUnbrokenValue",
+            "firstBaseline": 302,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "description": {
+            "text": "Description\nwith   repeated whitespace",
+            "firstBaseline": 325,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "viewportWidth": 640,
+      "scheme": "Dark",
+      "rows": [
+        {
+          "label": {
+            "text": "Headline",
+            "firstBaseline": 28,
+            "lineHeight": "19.5px",
+            "rangeAscent": 13,
+            "rangeDescent": 3,
+            "font": "500 13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          },
+          "value": {
+            "text": "Edit title",
+            "firstBaseline": 29,
+            "lineHeight": "20px",
+            "rangeAscent": 14,
+            "rangeDescent": 3,
+            "font": "500 14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "rich": true
+          },
+          "description": {
+            "text": "Consumer action",
+            "firstBaseline": 52,
+            "lineHeight": "20px",
+            "rangeAscent": 12,
+            "rangeDescent": 3,
+            "font": "12px / 20px \"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+            "rich": false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -61,6 +61,7 @@ public sealed partial class DataListsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         using var reference = ReadReference();
+        using var typography = JsonDocument.Parse(typeof(DataListsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataListTypography.json")!);
         var cases = new List<object>(); var failures = new List<string>();
         var viewport = Viewport;
         foreach (var spec in reference.RootElement.GetProperty("cases").EnumerateArray().Where(c => c.GetProperty("scheme").GetString() == scheme.ToString() && c.GetProperty("viewportWidth").GetInt32() == viewport))
@@ -69,6 +70,8 @@ public sealed partial class DataListsFixture : UserControl
             Apply(spec); await SettleAsync();
             await File.AppendAllTextAsync(Path.Combine(folder, "data-list-progress.jsonl"), JsonSerializer.Serialize(new { phase = "presented", id = spec.GetProperty("id").GetString(), scheme, viewport }) + "\n");
             var id = spec.GetProperty("id").GetString()!; var expected = spec.GetProperty("normal"); var errors = new List<string>();
+            var expectedText = typography.RootElement.GetProperty("reports").EnumerateArray().Single(test => test.GetProperty("id").GetString() == id &&
+                test.GetProperty("viewportWidth").GetInt32() == viewport && test.GetProperty("scheme").GetString() == scheme.ToString());
             var rows = Descendants<Panel>(List).Where(row => row.Name == "DataListRow").ToArray();
             Near(List.ActualWidth, expected.GetProperty("box").GetProperty("width").GetDouble(), "list width");
             Near(List.ActualHeight, expected.GetProperty("box").GetProperty("height").GetDouble(), "list height");
@@ -85,9 +88,20 @@ public sealed partial class DataListsFixture : UserControl
                 Near(valueBox.X, sourceValue.GetProperty("x").GetDouble(), "value x"); Near(valueBox.Y, sourceValue.GetProperty("y").GetDouble(), "value y"); Near(valueBox.Width, sourceValue.GetProperty("width").GetDouble(), "value width");
                 Near(value.ActualHeight + (source.GetProperty("description").ValueKind != JsonValueKind.Null ? 4 + description.ActualHeight : 0), sourceValue.GetProperty("height").GetDouble(), "value total height");
                 if (source.GetProperty("description").ValueKind != JsonValueKind.Null) CheckBox(description, source.GetProperty("description").GetProperty("box"), "description");
+                CheckTypography(label, "label"); CheckTypography(value, "value"); CheckTypography(description, "description");
                 var peer = FrameworkElementAutomationPeer.CreatePeerForElement(row);
                 Require(peer.GetAutomationControlType() == AutomationControlType.ListItem && AutomationProperties.GetPositionInSet(row) == i + 1 && AutomationProperties.GetSizeOfSet(row) == rows.Length, "DataList lost row semantics.");
-                measurements.Add(new { row = Box(row), label = Box(label), value = valueBox, description = Box(description), name = peer.GetName() });
+                measurements.Add(new { row = Box(row), label = Box(label), value = valueBox, description = Box(description), name = peer.GetName(),
+                    labelTypography = Typography(label), valueTypography = Typography(value), descriptionTypography = Typography(description) });
+                void CheckTypography(Panel slot, string key)
+                {
+                    var target = expectedText.GetProperty("rows")[i].GetProperty(key);
+                    if (target.ValueKind == JsonValueKind.Null || target.GetProperty("firstBaseline").ValueKind == JsonValueKind.Null || target.GetProperty("rich").GetBoolean()) return;
+                    var actual = Typography(slot);
+                    var baseline = actual.baseline ?? throw new InvalidOperationException("DataList lost a scalar text baseline.");
+                    Near(baseline, target.GetProperty("firstBaseline").GetDouble(), key + " baseline");
+                    Near(actual.LineHeight, double.Parse(target.GetProperty("lineHeight").GetString()![..^2], System.Globalization.CultureInfo.InvariantCulture), key + " line height");
+                }
             }
             var file = spec.GetProperty("file").GetString()!;
             if (rows.Length != 0) await MainWindow.CaptureElementAsync(Frame, Path.Combine(folder, file));
@@ -179,6 +193,12 @@ public sealed partial class DataListsFixture : UserControl
         var bounds = element.TransformToVisual(Frame).TransformBounds(new Rect(0, 0, element.ActualWidth, element.ActualHeight));
         var root = List.TransformToVisual(Frame).TransformBounds(new Rect(0, 0, List.ActualWidth, List.ActualHeight));
         return new Rect(bounds.X - root.X, bounds.Y - root.Y, bounds.Width, bounds.Height);
+    }
+    private sealed record TextTypography(string text, double? baseline, double LineHeight);
+    private TextTypography Typography(Panel slot)
+    {
+        var text = Descendants<TextBlock>(slot).FirstOrDefault(text => text.Visibility == Visibility.Visible && text.Text.Length != 0);
+        return text is null ? new("", null, 0) : new(text.Text, Box(text).Y + text.BaselineOffset, text.LineHeight);
     }
     private async Task SettleAsync() { UpdateLayout(); await MainWindow.AwaitPresentationAsync(List); UpdateLayout(); await MainWindow.AwaitPresentationAsync(List); }
     private static IEnumerable<T> Descendants<T>(DependencyObject root) where T : DependencyObject

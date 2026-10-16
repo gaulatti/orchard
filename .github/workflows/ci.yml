@@ -122,6 +122,8 @@ jobs:
         run: |
           foreach ($width in @(1024,639,640)) {
             ./scripts/smoke-catalog.ps1 -Component data-list -ClientSize $width,900 -Output "artifacts/data-list-$width" -ExpectedArchitecture X64
+            node scripts/verify-data-list-typography.mjs --native "artifacts/data-list-$width" --viewport $width --output "artifacts/data-list-$width/typography-audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'DataList baseline regression failed.' }
           }
       - name: Verify chart focus across native load boundaries
         if: ${{ !cancelled() && (steps.data_list_smoke.outcome == 'success' || steps.data_list_smoke.outcome == 'failure') }}
@@ -305,6 +307,8 @@ jobs:
         run: |
           foreach ($width in @(1024,639,640)) {
             ./scripts/smoke-catalog.ps1 -Component data-list -ClientSize $width,900 -Output "artifacts/data-list-$width" -ExpectedArchitecture Arm64
+            node scripts/verify-data-list-typography.mjs --native "artifacts/data-list-$width" --viewport $width --output "artifacts/data-list-$width/typography-audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'DataList baseline regression failed.' }
           }
       - name: Verify native ARM64 chart focus across load boundaries
         if: ${{ !cancelled() && (steps.data_list_smoke.outcome == 'success' || steps.data_list_smoke.outcome == 'failure') }}
