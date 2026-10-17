@@ -2137,7 +2137,7 @@
       "remainingGaps": [
         "Resolve complete-client raster differences; all 60 source/native layout and paint frames pass with zero geometry error",
         "Resolve motion raster and the complete customization/error/lifecycle matrix; expansion, hover, theme, successive reversals and eight collection/content operations pass numeric checks",
-        "Verify native ARM64 runtime, scaling, contrast, Narrator and performance; full x64 catalog and independent package/build delivery pass at ab030df"
+        "Verify native ARM64 runtime, scaling, contrast, Narrator and performance; full x64 catalog and independent package/build delivery pass at 48d8fd3"
       ]
     },
     {

@@ -1,12 +1,25 @@
 # Native Windows runtime evidence
 
+Source `48d8fd3` passes 177 tests, both catalog builds and the complete x64
+sequence: 156 phases and all 1,154 PNGs in 471.9537397 seconds, with 2,040 pointer
+gates, 1,778 key actions, 96 clicks and 174 unchanged protected glyph hashes.
+Fresh layout/lifecycle/motion/continuity/scalar checks and all negative audits
+pass. The four frozen PNG/RGBA cases, 36 opaque and 36 alternating-alpha Windows
+comparisons preserve exact bytes. Bounded buffer reuse reduces full GC
+collections from 366 to 227 across the same 146-phase prefix. Package
+`0.1.0-48d8fd3` passes the isolated x64 consumer in both themes and the ARM64
+build; temporary consumers are removed. Every entry in both versioned catalog
+ZIPs is byte-verified. Native ARM64 execution and full raster/platform acceptance
+remain open. Push-triggered Actions remain paused. See the current checkpoint
+for hashes and detailed counts.
+
 Source `5fc9c4e` passes 170 tests and native exact-byte persistence checks. Its
 first full replay stopped with a native WinUI stowed exception in dark Sunburst.
 Focused Sunburst and the broader chart sequence both passed afterward. One full
 repeat passed that transition, then expired at the unchanged 480-second
 watchdog after 144 phases. Animation preferences were restored after both runs.
-The bounded blank-frame scan and GC phase diagnostics are under verification;
-no new release archive is accepted. See the checkpoint for retained evidence.
+The later bounded blank-frame scan and GC phase diagnostics retain this failure
+as historical evidence. This source has no completed release archive.
 
 Source `e5fdbdc` passes all 168 tests, both catalog builds, 292 scalar cases and
 the existing layout/lifecycle/motion/continuity audits and corruption checks.

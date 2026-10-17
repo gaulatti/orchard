@@ -1,11 +1,59 @@
 # Current native validation checkpoint
 
-## Capture timing investigation
+## Current validated source
+
+Source `48d8fd3b16afe3c71d59b7e3b3428b62c40ab03b` passes 177 tests and both
+catalog architecture builds. The complete x64 sequence passes 156 phases in
+471,953.7397ms under the unchanged 480-second watchdog. It retains all 1,154
+PNGs, 2,040 owned pointer moves/presentation gates, 1,778 key actions, 96 clicks,
+both Date closing-pointer pairs and all 174 protected glyph hashes. The original
+Windows animation preference is restored.
+
+Fresh focused checks pass 292 scalar cases, four ink-presence cases and two
+overflow clicks; 60 layout frames/108 rows; 44 lifecycle phases; 48 motion
+timelines with 1,162 property samples, 169 intermediate background paints and
+six reversals; and 32 continuity cases with 237 samples, ten retained clocks
+and six resets. Geometry, height and angle error are zero. All 14
+layout/lifecycle, 23 motion, 20 continuity and 22 scalar corruptions are rejected.
+
+Capture persistence retains all four frozen PNG/RGBA cases, 36 opaque Windows
+comparisons and 36 changing opaque/transparent comparisons. Six corruptions are
+rejected. The PNG encoder, metadata, compression and byte comparisons are
+unchanged. Across the same 146-phase prefix as the previous timeout, buffer
+reuse reduces elapsed time from 477,883.9656ms to 469,168.9711ms, GC pause time
+from 28,316.388ms to 21,458.334ms and generation-2 collections from 366 to 227.
+The complete passing sequence records 21,636.067ms of GC pauses and 229
+generation-2 collections.
+
+Package `0.1.0-48d8fd3` passes the isolated x64 consumer in both themes, the
+ARM64 consumer build, Accordion/Radio full-catalog delivery and the Date
+regressions. Temporary consumer sources, feeds and caches are removed. The
+package SHA-256 is
+`5ab93e98446099e53b3b8b9a0f7eace48dc75045398c1ceb1b9ee97b4d08988d`;
+its byte-matched full-runtime library hash is
+`9b295a2a0fc0072f7ce71711d42e2cd98a4434fbb1d12b6de55197d2386220a0`.
+
+Versioned catalog ZIPs verify every published entry: x64 has 537 files,
+102,022,501 bytes and SHA-256
+`320df8929a9d9f54dec3dfab5a24d4a90dd0afe0aa2145e69b6303a98ce959d7`;
+ARM64 has 533 files, 99,109,632 bytes and SHA-256
+`7532eb2acf9eb1fabc6b4dd95aa39d2bfd635eeece8bc19cbe64a7270ed96ed1`.
+Receipts, captures, package and archives are under `artifacts/current`, with the
+release index in `capture-pool-release.json`.
+
+Native ARM64 runtime, exact static/motion raster, scaling, contrast, Narrator and
+the remaining customization/performance matrix remain open. Push-triggered
+Actions remain paused; no hosted run is substituted for these local results.
+The wiki remains unavailable, so documentation stays in the repository.
+Inventory remains 65 in progress, 47 pending and zero accepted of 112, with
+both catalog compositions unaccepted.
+
+## Capture timing history
 
 The uninterrupted `ef08273` replay expired at the unchanged watchdog after 146
 completed phases. It recorded 28.316 seconds of process-wide GC pauses and 366
 generation-2 collections. The original animation preference was restored.
-BGRA/RGBA buffer reuse is under verification, with at most one idle array per
+The later BGRA/RGBA buffer reuse retains at most one idle array per
 stage, independent overlapping rentals and no cache by dimension. The native
 persistence probe keeps its four frozen cases and 36 opaque Windows comparisons
 and adds 36 alternating opaque/transparent inputs to detect stale reused bytes.
@@ -20,16 +68,16 @@ sequence passed both themes. One full replay passed that transition but reached
 the unchanged 480-second watchdog after 144 phases. Neither run is release
 evidence. Receipts and Windows events are retained under `artifacts/current`.
 
-An optimized blank-frame scan is under native verification. It preserves the
+The optimized blank-frame scan preserves the
 same nine distinct non-alpha channel values and the separate exact-color empty
 canvas guard. Comparing all 1,156 PNGs from the interrupted full replay produced
 identical predicate results. Across five paired repetitions, the prior LINQ
 predicate took 8,373.47ms and the bounded scan 650.77ms. These are diagnostic
 corpus timings, not a completed full-suite result. The PNG encoder, pixels,
 metadata, masks, tolerances, input gates and watchdog remain unchanged. Phase
-GC pause/count diagnostics will distinguish collection time from capture work.
+GC pause/count diagnostics distinguish collection time from capture work.
 
-## Current scalar and delivery replay
+## Earlier scalar and delivery replay
 
 Source `e5fdbdc` retains the scalar/painted-overflow correction, exact-byte capture
 optimization and Activity cursor-failure diagnostics. All 168 tests and both

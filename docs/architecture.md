@@ -19,8 +19,8 @@ push validation, add `push: { branches: [main] }` under the workflow's `on` map.
 Catalog capture persistence swaps BGRA channels directly when every alpha byte
 is 255. The channel swap checks and processes four pixels at a time with the
 portable .NET 10 `Vector128` API when accelerated, and uses the same scalar
-operation for remaining pixels. Any transparency retains the existing Windows `SoftwareBitmap`
-conversion and its premultiplied-alpha rounding. The PNG encoder, metadata and
+operation for remaining pixels. Any transparency retains the existing Windows
+`SoftwareBitmap` conversion and its premultiplied-alpha rounding. The PNG encoder, metadata and
 compression remain unchanged. File writes finish synchronously before the
 capture task returns; input and presentation still use their explicit native
 gates.
@@ -43,12 +43,20 @@ dispatcher turn or input and do not change deadlines.
 The `brush-alpha` diagnostic retains all four frozen PNG/RGBA cases and adds
 36 opaque comparisons with the previous Windows conversion/write path, plus
 36 alternating opaque/transparent comparisons with changing pixels at each
-size to exercise reused storage. It
-checks complete files immediately after return, exact PNG bytes, decoded RGBA
+size to exercise reused storage. It checks complete files immediately after
+return, exact PNG bytes, decoded RGBA
 and write-error propagation. Run `scripts/verify-capture-persistence.mjs` against
 its output. Paired persistence timings are diagnostic; the complete native
 sequence must still pass its unchanged watchdog, input and protected-glyph
 checks before a release.
+
+The `48d8fd3` x64 replay passes all 156 phases in 471.9537397 seconds with every
+prior PNG, input gate and protected glyph hash retained. Across the same
+146-phase prefix as the preceding timeout, buffer reuse cuts generation-2
+collections from 366 to 227 and GC pauses from 28.316 to 21.458 seconds. Both
+architectures build and the isolated package consumer passes x64 runtime and
+ARM64 build checks; native ARM64 execution remains unverified. See the current
+validation checkpoint for immutable package/catalog hashes and remaining gaps.
 
 Native cursor acceptance requires a Windows session with an available mouse.
 On 2026-10-17, this host's `GetSystemMetrics(SM_MOUSEPRESENT)` and mouse-button

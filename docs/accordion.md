@@ -68,10 +68,10 @@ client pixels to the frozen source. Both architecture jobs register these checks
 push-triggered Actions remain paused. The independent x64 package consumer passes
 both themes, including native hold/release behavior, live metadata/templates,
 content retention, stale/disabled guards and independent actions. The ARM64
-consumer build passes. The current `0.1.0-e5fdbdc` package additionally verifies
+consumer build passes. The current `0.1.0-48d8fd3` package additionally verifies
 the scalar and overflow correction below; both catalog architecture builds pass
-and temporary consumers are removed. The previous `0.1.0-ab030df` full x64 catalog passed 156
-phases and 1,154 captures in 474.0696258 seconds, retaining all prior captures and
+and temporary consumers are removed. Its full x64 catalog passes 156
+phases and 1,154 captures in 471.9537397 seconds, retaining all prior captures and
 174 protected chart glyph hashes. See the current checkpoint for hashes.
 Native ARM64 execution and the remaining platform/motion/raster matrix must be
 verified before acceptance.
@@ -150,9 +150,10 @@ the additional ink check establishes presence, not pixel parity.
 The native pre-fix capture is retained at
 `artifacts/current/accordion-scalars-before`: 340 discrepancies included 156
 text/name mismatches and a 360px header-height error. The committed-source capture
-is `artifacts/current/accordion-cursor-runtime/scalars`. Both CI
+is `artifacts/current/capture-pool-runtime/scalars`. Both CI
 architecture jobs register the scalar capture and audits. Fresh package delivery
-passes at `e5fdbdc`; full-suite replay and archive verification remain pending.
+passes at `48d8fd3`, together with full-suite replay and both catalog archive
+verifications.
 
 Run the reference collector from the repository root:
 
