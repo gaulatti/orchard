@@ -6,7 +6,7 @@ Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
 resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
-Counts are 65 in progress, 47 pending and zero fully accepted: 58.0% of the
+Counts are 66 in progress, 46 pending and zero fully accepted: 58.9% of the
 fixed inventory has implementation started. This is not a completion percentage.
 
 The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):
@@ -119,7 +119,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | header-select | Pending | Pending | Full pinned contract |
 | hero-carousel | Pending | Pending | Full pinned contract |
 | field-help-tooltip | `BleeckerFieldHelpTooltip`, native button with explicit vector template | Inline label and empty text, branded state values, keyboard help, accessible name and live text | In progress: exact motion comparison, physical input, rendered parity, contrast/Narrator/scaling and ARM64; see [usage](field-help-tooltips.md) |
-| icon-badge | Pending | Pending | Full pinned contract |
+| icon-badge | `BleeckerIconBadge`: two sizes, three variants, passive rich/scalar content | 136 source/native frames, 52 child placements, 80 scalars and eight retained-child lifecycle phases; zero geometry error | In progress: [contract and gaps](icon-badge.md); exact raster, remaining customization/input/a11y, scaling/contrast and native ARM64 acceptance |
 | icon-button | `BleeckerIconButton`: three variants and three sizes | Nine registered combinations; x64 dimensions, names/roles, command and state checks; light/dark captures; package fixture; ARM64 build | In progress: physical input, tooltip, Narrator, contrast, scaling, motion and remaining ARM64 state checks; see [usage](icon-buttons.md) |
 | loading-spinner | `BleeckerLoadingSpinner`: three sizes, themed three-quarter ring | Registered fixture; x64 geometry, theme, UIA, reduced-motion and lifecycle checks; independent package consumer | In progress: normal/live motion, contrast, Narrator, scaling/composition, remaining ARM64 state checks; see [usage](loading-spinner.md) |
 | media-library | Pending | Pending | Full pinned contract |

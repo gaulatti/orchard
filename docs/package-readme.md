@@ -6,6 +6,13 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerIconBadge` is a passive content surface with `Medium`/`Large` sizes
+(56/64px), `Primary`/`Subtle`/`Outlined` variants and a 10px corner radius.
+It retains consumer UIElements, templates, explicit colors, styles and sizes.
+It adds no Tab stop or Invoke behavior; use its children for commands. Set an
+automation name for a named Windows group. Full visual/platform acceptance
+remains in progress.
+
 `BleeckerAccordion` displays an observable `BleeckerAccordionItem` collection with
 one internally expanded ID. `DefaultExpandedId` initializes state once; changing
 it after mount does not change expansion. Title, subtitle, content and independent

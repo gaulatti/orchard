@@ -4,6 +4,20 @@ namespace Orchard.Tests;
 public sealed class NativeCaptureValidationTests
 {
     [TestMethod]
+    public void ExactReferenceFramesRequireEveryChannelAndTheCompleteBuffer()
+    {
+        byte[] expected = [255, 255, 255, 255, 33, 24, 13, 255];
+        NativeCaptureValidation.VerifyExact(expected, expected.ToArray());
+        for (var at = 0; at < expected.Length; at++)
+        {
+            var altered = expected.ToArray(); altered[at] ^= 1;
+            Assert.ThrowsExactly<InvalidOperationException>(() => NativeCaptureValidation.VerifyExact(altered, expected));
+        }
+        Assert.ThrowsExactly<InvalidOperationException>(() => NativeCaptureValidation.VerifyExact(expected[..4], expected));
+        Assert.ThrowsExactly<InvalidOperationException>(() => NativeCaptureValidation.VerifyExact([], []));
+        Assert.ThrowsExactly<InvalidOperationException>(() => NativeCaptureValidation.VerifyExact([1, 2, 3], [1, 2, 3]));
+    }
+    [TestMethod]
     public void OrdinaryCapturesStillRejectBlankFrames()
     {
         Assert.ThrowsExactly<InvalidOperationException>(()=>NativeCaptureValidation.Verify(new byte[]{255,255,255,255}));

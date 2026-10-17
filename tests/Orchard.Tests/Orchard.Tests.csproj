@@ -4,6 +4,10 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/IconBadge.json" Link="Fixtures/IconBadge.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/IconBadge/*.png" Link="Fixtures/IconBadge/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-icon-badge.cjs" Link="Fixtures/CaptureIconBadge.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/icon-badge-client.tsx" Link="Fixtures/IconBadgeClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerAccordionItem.cs" Link="BleeckerAccordionItem.cs" />
         <Compile Include="../../src/Orchard/Text/BleeckerNumberText.cs" Link="BleeckerNumberText.cs" />
         <None Include="../Reference/AccordionScalars.json" Link="Fixtures/AccordionScalars.json" CopyToOutputDirectory="PreserveNewest" />

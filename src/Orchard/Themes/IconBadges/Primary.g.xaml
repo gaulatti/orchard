@@ -1,0 +1,20 @@
+<!-- Generated from pinned icon-badge.tsx; do not edit. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="IconBadgeBackground" Color="#FF1A374D" Opacity="1" />
+            <SolidColorBrush x:Key="IconBadgeBorderBrush" Color="#FF1A374D" Opacity="1" />
+            <SolidColorBrush x:Key="IconBadgeForeground" Color="#FFFFFFFF" Opacity="1" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="IconBadgeBackground" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="IconBadgeBorderBrush" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="IconBadgeForeground" Color="#FF182533" Opacity="1" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="IconBadgeBackground" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="IconBadgeBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="IconBadgeForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

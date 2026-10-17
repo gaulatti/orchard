@@ -142,6 +142,9 @@ for (const [role, family] of Object.entries(tokens.fontFamilies)) {
 for (const [key, value] of Object.entries(tokens.spacing)) xaml += `    <x:Double x:Key="BleeckerSpacing${pascal(key)}">${value}</x:Double>\n`;
 xaml += '    <FontFamily x:Key="BleeckerPrimaryMediumFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans</FontFamily>\n';
 for (const [key, value] of Object.entries(tokens.radii)) xaml += `    <CornerRadius x:Key="Bleecker${pascal(key)}CornerRadius">${value}</CornerRadius>\n`;
+xaml += '    <x:Double x:Key="BleeckerIconBadgeMediumExtent">56</x:Double>\n';
+xaml += '    <x:Double x:Key="BleeckerIconBadgeLargeExtent">64</x:Double>\n';
+xaml += '    <CornerRadius x:Key="BleeckerIconBadgeCornerRadius">10</CornerRadius>\n';
 xaml += '</ResourceDictionary>\n';
 
 const dictionary = (name, entries, type, format) => `    public static FrozenDictionary<string, ${type}> ${name} { get; } =\n        new Dictionary<string, ${type}>(StringComparer.Ordinal)\n        {\n${Object.entries(entries).map(([key, value]) => `            ["${key}"] = ${format(value)},`).join('\n')}\n        }.ToFrozenDictionary(StringComparer.Ordinal);\n`;
@@ -237,6 +240,23 @@ for (const variant of ['Surface', 'Outlined', 'Elevated', 'Subtle', 'Transparent
   }
   card += `    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n`;
   outputs[`src/Orchard/Themes/Cards/${variant}.g.xaml`] = card;
+}
+for (const variant of ['Primary', 'Subtle', 'Outlined']) {
+  let badge = `<!-- Generated from pinned icon-badge.tsx; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+  for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+    const dark = theme === 'Default', contrast = theme === 'HighContrast';
+    const primary = variant === 'Primary', subtle = variant === 'Subtle';
+    const tint = dark ? colors.accentBlue : colors.sea;
+    for (const [name, color, opacity] of [
+      ['Background', primary ? dark ? colors.accentBlue : colors.deepSea : subtle ? tint : dark ? colors.deepSea : '#ffffff', subtle ? dark ? .1 : .06 : 1],
+      ['BorderBrush', primary ? dark ? colors.accentBlue : colors.deepSea : subtle ? tint : dark ? '#ffffff' : colors.sand, primary ? 1 : subtle ? dark ? .15 : .1 : dark ? .15 : .4],
+      ['Foreground', primary ? dark ? colors.deepSea : '#ffffff' : subtle ? tint : colors.textPrimary, 1]]) {
+      if (name === 'Background') badge += `        <ResourceDictionary x:Key="${theme}">\n`;
+      badge += `            <SolidColorBrush x:Key="IconBadge${name}" Color="${contrast ? `{ThemeResource SystemColor${name === 'Background' ? 'Window' : 'WindowText'}Color}` : argb(color)}" Opacity="${contrast ? 1 : opacity}" />\n`;
+    }
+    badge += '        </ResourceDictionary>\n';
+  }
+  outputs[`src/Orchard/Themes/IconBadges/${variant}.g.xaml`] = badge + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 }
 // Tailwind 4.2.2 theme.css, pinned by the Bleecker component reference.
 // OKLCH -> linear sRGB -> encoded 8-bit sRGB for WinUI Color brushes.

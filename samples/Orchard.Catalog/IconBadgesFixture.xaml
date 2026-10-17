@@ -1,0 +1,20 @@
+<UserControl x:Class="Orchard.Catalog.IconBadgesFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Icon badges" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Passive markers: medium 56px and large 64px. Content keeps its own commands, focus, and explicit colors."
+                   Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+        <StackPanel x:Name="Matrix" Spacing="12" />
+        <TextBlock Text="Empty, scalar, named group, and consumer controls" Style="{StaticResource BleeckerBodyStyle}" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <orchard:BleeckerIconBadge x:Name="Empty" Variant="Outlined" />
+            <orchard:BleeckerIconBadge x:Name="Scalar" Variant="Subtle" Content="A" />
+            <orchard:BleeckerIconBadge x:Name="Named" AutomationProperties.Name="Consumer icon marker" Content="B" />
+            <orchard:BleeckerIconBadge x:Name="Interactive" Variant="Outlined">
+                <Button Content="A" AutomationProperties.Name="Child action" />
+            </orchard:BleeckerIconBadge>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

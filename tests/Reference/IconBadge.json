@@ -1,0 +1,7040 @@
+{
+  "format": "orchard-icon-badge-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceFile": "src/components/icon-badge.tsx",
+  "sourceSha256": "45701e66553a6c9b57e79dc0ec339adf6c6583abf75432fced09261bc7fefd0a",
+  "sourceCssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "clientSha256": "fbc9241ac115a9478a91cd60bfd59c2b8edde27820f702e1b9aa3249c2534dfc",
+  "scriptSha256": "fd4188763cb150ac1968e4a4ff0139685d9645945a02bc3468b16bc6025a9e9f",
+  "browser": "155.0.4283.62",
+  "fonts": [
+    {
+      "name": "EncodeSans-Regular",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "name": "LibreFranklin-Regular",
+      "sha256": "01e26222a56e141e3abae670ab22be77f063999fc4ef64c4a9651de19b7728a8"
+    }
+  ],
+  "cases": [
+    {
+      "id": "md-primary",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "md-primary",
+        "size": "md",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-primary-Light-reduce.png",
+      "pngSha256": "5ffd13b41c6e86a5cb363d496d2c93a30f4ef0056f598bcab47c31275f69f521"
+    },
+    {
+      "id": "md-subtle",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "md-subtle",
+        "size": "md",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(44, 87, 132)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.447932 -0.0282684 -0.0838237 / 0.06)",
+        "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(44, 87, 132)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-subtle-Light-reduce.png",
+      "pngSha256": "ea84ab157434b8021c048202c325ab5519726cea7d30da6f55c187058310b4c3"
+    },
+    {
+      "id": "md-outlined",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "md-outlined",
+        "size": "md",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(45, 45, 45)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(255, 255, 255)",
+        "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(45, 45, 45)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-outlined-Light-reduce.png",
+      "pngSha256": "3bbb14e31e183e940ac594aa0de588b9e484d870cc8b0783cf61d34f87c35d96"
+    },
+    {
+      "id": "lg-primary",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "lg-primary",
+        "size": "lg",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-primary-Light-reduce.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "lg-subtle",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "lg-subtle",
+        "size": "lg",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(44, 87, 132)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.447932 -0.0282684 -0.0838237 / 0.06)",
+        "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(44, 87, 132)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-subtle-Light-reduce.png",
+      "pngSha256": "5326b529cad953b33e424802532eb6fc4ec5b9e89aa3453a4df409d2393bc2d5"
+    },
+    {
+      "id": "lg-outlined",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "lg-outlined",
+        "size": "lg",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(45, 45, 45)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(255, 255, 255)",
+        "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(45, 45, 45)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-outlined-Light-reduce.png",
+      "pngSha256": "d39bab4e2fee9cbbbe5382d1537fe3dbfa525009a18b10e8c39a1c08b91c857e"
+    },
+    {
+      "id": "defaults",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "defaults"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-defaults-Light-reduce.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "empty",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "empty",
+        "child": "empty"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-empty-Light-reduce.png",
+      "pngSha256": "26d4e8d18d60923e6907a5eafedb6ee13615ac6a595d7555fb2fd6b5b51afa66"
+    },
+    {
+      "id": "named",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "named",
+        "named": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "group",
+            "name": "Consumer icon marker",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-named-Light-reduce.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "large-child",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "large-child",
+        "child": "large"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "SPAN",
+            "box": {
+              "x": 2,
+              "y": 12,
+              "width": 100,
+              "height": 80
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 80
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-large-child-Light-reduce.png",
+      "pngSha256": "dfabed62605d9e177ffddf1dd25885f3d743a2215f480a1f26ff3c8816852040"
+    },
+    {
+      "id": "child-color",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "child-color",
+        "childColor": "rgb(180, 55, 90)"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-child-color-Light-reduce.png",
+      "pngSha256": "7159a0801999024a172a5512917ba3770178d83010e1a109300df02e4a7489f7"
+    },
+    {
+      "id": "rich",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "rich",
+        "child": "rich"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "BUTTON",
+            "box": {
+              "x": 26.59375,
+              "y": 40,
+              "width": 10.796875,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          },
+          {
+            "tag": "INPUT",
+            "box": {
+              "x": 37.390625,
+              "y": 40,
+              "width": 40,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "A",
+        "textBox": {
+          "x": 26.59375,
+          "y": 40,
+          "width": 50.796875,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-rich-Light-reduce.png",
+      "pngSha256": "d1494a89c1fcd011e0c08b870ced25d2bceeec796c5175faade7eff060fe94c1"
+    },
+    {
+      "id": "text",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "text",
+        "child": "text",
+        "value": "A"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A",
+        "textBox": {
+          "x": 46.59375,
+          "y": 42,
+          "width": 10.796875,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-text-Light-reduce.png",
+      "pngSha256": "7a1f9983eb6bdfa7af9386c3289e22e11b2e085df5d1971764458752e97079d1"
+    },
+    {
+      "id": "mixed-text",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "mixed-text",
+        "child": "text",
+        "value": "A B C D E F G H"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A B C D E F G H",
+        "textBox": {
+          "x": 21,
+          "y": 30,
+          "width": 53.015625,
+          "height": 44
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-mixed-text-Light-reduce.png",
+      "pngSha256": "773e4c0efdb3b4d8f36b8937bf8bc28ac682a6beedaf1524af14c33416751428"
+    },
+    {
+      "id": "long-text",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "long-text",
+        "child": "text",
+        "value": "ConsumerBadgeOverflow"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "ConsumerBadgeOverflow",
+        "textBox": {
+          "x": -38.703125,
+          "y": 42,
+          "width": 181.40625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-long-text-Light-reduce.png",
+      "pngSha256": "0ee9850b36ab98b2e63495316eb3b66e4e8286a17d4641e0884fb78280dc9568"
+    },
+    {
+      "id": "whitespace",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "whitespace",
+        "child": "text",
+        "value": "  A\t B\n C  "
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "  A\t B\n C  ",
+        "textBox": {
+          "x": 33.046875,
+          "y": 42,
+          "width": 37.90625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-whitespace-Light-reduce.png",
+      "pngSha256": "ca88a6980fb38ff76dfd34e48e30feb940b602be10b38a6c20dcfb335c36b6e2"
+    },
+    {
+      "id": "narrow-block",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "narrow-block",
+        "parentWidth": 40
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-block-Light-reduce.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "narrow-flex",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "narrow-flex",
+        "parentWidth": 40,
+        "parentFlex": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 28,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 28,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-flex-Light-reduce.png",
+      "pngSha256": "ceab06b13c2c5e43e7087185097c792ee89bd2eeb1167aff9de7b901430fc228"
+    },
+    {
+      "id": "custom-style",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "custom-style",
+        "size": "md",
+        "variant": "outlined",
+        "style": {
+          "width": 88,
+          "height": 40,
+          "borderWidth": 2,
+          "borderRadius": 6,
+          "padding": 4,
+          "color": "rgb(180, 55, 90)",
+          "backgroundColor": "rgb(245, 237, 220)",
+          "borderColor": "rgb(33, 67, 99)"
+        }
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 88,
+          "height": 40
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 52,
+              "y": 28,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 52,
+          "y": 28,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(245, 237, 220)",
+        "border": "rgb(33, 67, 99)",
+        "borderWidth": "2px",
+        "radius": "6px",
+        "foreground": "rgb(180, 55, 90)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-custom-style-Light-reduce.png",
+      "pngSha256": "52df251f7d8ba574b1dea08aed69f49f3ffcc08f2650e5736a23ebb181bddbd8"
+    },
+    {
+      "id": "number-0",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-0",
+        "child": "number",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-0-Light-reduce.png",
+      "pngSha256": "4eb43c6872f7f16cd08b87b480254eba69b4af5d40d182a5bbdcadeacfcc0b16"
+    },
+    {
+      "id": "number--0",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number--0",
+        "child": "number",
+        "value": "-0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--0-Light-reduce.png",
+      "pngSha256": "4eb43c6872f7f16cd08b87b480254eba69b4af5d40d182a5bbdcadeacfcc0b16"
+    },
+    {
+      "id": "number--1.5",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number--1.5",
+        "child": "number",
+        "value": "-1.5"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-1.5",
+        "textBox": {
+          "x": 40.015625,
+          "y": 42,
+          "width": 23.953125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--1.5-Light-reduce.png",
+      "pngSha256": "ee86e8aa69b863fc60303a3307fdcc93f867b6f64ad1e7842d849edd95d0d242"
+    },
+    {
+      "id": "number-1e-7",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e-7",
+        "child": "number",
+        "value": "1e-7"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e-7",
+        "textBox": {
+          "x": 37.96875,
+          "y": 42,
+          "width": 28.0625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-7-Light-reduce.png",
+      "pngSha256": "f46e35f0e6567b3d6e4e2194b3541ac4b26d210c7f06df75c388467876d5a7ed"
+    },
+    {
+      "id": "number-1e-6",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e-6",
+        "child": "number",
+        "value": "1e-6"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0.000001",
+        "textBox": {
+          "x": 17.921875,
+          "y": 42,
+          "width": 68.15625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-6-Light-reduce.png",
+      "pngSha256": "0a6ce19064738cbb960cff3fc47e26a1da64aba661fd3d8b065b85d96102d3a0"
+    },
+    {
+      "id": "number-1e20",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e20",
+        "child": "number",
+        "value": "1e20"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "100000000000000000000",
+        "textBox": {
+          "x": -50.84375,
+          "y": 42,
+          "width": 205.703125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e20-Light-reduce.png",
+      "pngSha256": "fed39b2ed02b4e9d993e447ba0db2f706c75c4c751e8db14c742d792620d5ea5"
+    },
+    {
+      "id": "number-1e21",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e21",
+        "child": "number",
+        "value": "1e21"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e+21",
+        "textBox": {
+          "x": 34.0625,
+          "y": 42,
+          "width": 35.875,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e21-Light-reduce.png",
+      "pngSha256": "a6e11b537d3913e648166c6339b927302cea6dd2e1085d7612d07148151c0e25"
+    },
+    {
+      "id": "number-NaN",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-NaN",
+        "child": "number",
+        "value": "NaN"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "NaN",
+        "textBox": {
+          "x": 36.109375,
+          "y": 42,
+          "width": 31.765625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-NaN-Light-reduce.png",
+      "pngSha256": "aada91520ebd4d23667ae576b77658428f2cca9fd3478ebc23d1d5c6c9148af4"
+    },
+    {
+      "id": "number-Infinity",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-Infinity",
+        "child": "number",
+        "value": "Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "Infinity",
+        "textBox": {
+          "x": 27.140625,
+          "y": 42,
+          "width": 49.703125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-Infinity-Light-reduce.png",
+      "pngSha256": "1c5cf2528c7afc3f8d2e506b57f87a2c73ee85ecd7e75be306a3515d8611822b"
+    },
+    {
+      "id": "number--Infinity",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "number--Infinity",
+        "child": "number",
+        "value": "-Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-Infinity",
+        "textBox": {
+          "x": 23.796875,
+          "y": 42,
+          "width": 56.40625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--Infinity-Light-reduce.png",
+      "pngSha256": "a495b1740ecfa7237429f2075cc8c71caac5072c283e428ae355a43ee7690fe6"
+    },
+    {
+      "id": "bigint-0",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "bigint-0",
+        "child": "bigint",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-0-Light-reduce.png",
+      "pngSha256": "4eb43c6872f7f16cd08b87b480254eba69b4af5d40d182a5bbdcadeacfcc0b16"
+    },
+    {
+      "id": "bigint-12345678901234567890123456789",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "bigint-12345678901234567890123456789",
+        "child": "bigint",
+        "value": "12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "12345678901234567890123456789",
+        "textBox": {
+          "x": -69.515625,
+          "y": 42,
+          "width": 243.03125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-12345678901234567890123456789-Light-reduce.png",
+      "pngSha256": "5dfed59a92ac5d713af1a8aefccc8b1792978b3faa78cbd64b6b46738daeb328"
+    },
+    {
+      "id": "bigint--12345678901234567890123456789",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "bigint--12345678901234567890123456789",
+        "child": "bigint",
+        "value": "-12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-12345678901234567890123456789",
+        "textBox": {
+          "x": -72.53125,
+          "y": 42,
+          "width": 249.0625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint--12345678901234567890123456789-Light-reduce.png",
+      "pngSha256": "9c8775a5e8c7235475eb66f5d09a4e059d30737fce62a61d477fe4a734c7caaf"
+    },
+    {
+      "id": "boolean-false",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "boolean-false",
+        "child": "boolean",
+        "value": "false"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-false-Light-reduce.png",
+      "pngSha256": "26d4e8d18d60923e6907a5eafedb6ee13615ac6a595d7555fb2fd6b5b51afa66"
+    },
+    {
+      "id": "boolean-true",
+      "scheme": "Light",
+      "motion": "reduce",
+      "spec": {
+        "id": "boolean-true",
+        "child": "boolean",
+        "value": "true"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-true-Light-reduce.png",
+      "pngSha256": "26d4e8d18d60923e6907a5eafedb6ee13615ac6a595d7555fb2fd6b5b51afa66"
+    },
+    {
+      "id": "md-primary",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "md-primary",
+        "size": "md",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-primary-Dark-reduce.png",
+      "pngSha256": "65a7362c5374049646d64ecd5925f5824ac8031ea59f803a0a8f2a5a712a06cc"
+    },
+    {
+      "id": "md-subtle",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "md-subtle",
+        "size": "md",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(91, 163, 245)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.704643 -0.0410104 -0.134962 / 0.1)",
+        "border": "oklab(0.704643 -0.0410104 -0.134962 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(91, 163, 245)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-subtle-Dark-reduce.png",
+      "pngSha256": "76c3ce62a58212f2e58a2fda069c8169cc40ad9908d7f0cd15e04ac6264931d5"
+    },
+    {
+      "id": "md-outlined",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "md-outlined",
+        "size": "md",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(240, 244, 248)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(24, 37, 51)",
+        "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(240, 244, 248)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-outlined-Dark-reduce.png",
+      "pngSha256": "54d8bb35409109dbe904de5578988f207f4a666e86712c1f9b126fa9ab89fe99"
+    },
+    {
+      "id": "lg-primary",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "lg-primary",
+        "size": "lg",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-primary-Dark-reduce.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "lg-subtle",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "lg-subtle",
+        "size": "lg",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(91, 163, 245)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.704643 -0.0410104 -0.134962 / 0.1)",
+        "border": "oklab(0.704643 -0.0410104 -0.134962 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(91, 163, 245)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-subtle-Dark-reduce.png",
+      "pngSha256": "fd25ae4c55bb5413404c5c10f22816ae57e1b98225e64d644159792b92fa9ade"
+    },
+    {
+      "id": "lg-outlined",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "lg-outlined",
+        "size": "lg",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(240, 244, 248)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(24, 37, 51)",
+        "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(240, 244, 248)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-outlined-Dark-reduce.png",
+      "pngSha256": "4265dc9df097cf864b93469565d5de3b28d64cf96dc54cbfb279d7596f3db761"
+    },
+    {
+      "id": "defaults",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "defaults"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-defaults-Dark-reduce.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "empty",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "empty",
+        "child": "empty"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-empty-Dark-reduce.png",
+      "pngSha256": "5dce5f1b1b1bb990a42775c67126ecbde873e1262433b7c004eaf9621f333210"
+    },
+    {
+      "id": "named",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "named",
+        "named": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "group",
+            "name": "Consumer icon marker",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-named-Dark-reduce.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "large-child",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "large-child",
+        "child": "large"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "SPAN",
+            "box": {
+              "x": 2,
+              "y": 12,
+              "width": 100,
+              "height": 80
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 80
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-large-child-Dark-reduce.png",
+      "pngSha256": "dc4c301df7f2cba8339a60da2b8c24f90d178f30009d9b3c4a2dff16fc3737b7"
+    },
+    {
+      "id": "child-color",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "child-color",
+        "childColor": "rgb(180, 55, 90)"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-child-color-Dark-reduce.png",
+      "pngSha256": "60e1fddb22d459ffdc9409f9a606ae15d4a90a450f931c780589792c6e0e1c73"
+    },
+    {
+      "id": "rich",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "rich",
+        "child": "rich"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "BUTTON",
+            "box": {
+              "x": 26.59375,
+              "y": 40,
+              "width": 10.796875,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          },
+          {
+            "tag": "INPUT",
+            "box": {
+              "x": 37.390625,
+              "y": 40,
+              "width": 40,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "A",
+        "textBox": {
+          "x": 26.59375,
+          "y": 40,
+          "width": 50.796875,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-rich-Dark-reduce.png",
+      "pngSha256": "90359f69c90325c5fc9168edd1b988bdb7c6f6779ab2fe2eea7377b72446c8ab"
+    },
+    {
+      "id": "text",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "text",
+        "child": "text",
+        "value": "A"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A",
+        "textBox": {
+          "x": 46.59375,
+          "y": 42,
+          "width": 10.796875,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-text-Dark-reduce.png",
+      "pngSha256": "40eabf50ae1f4046aa2bf9ec45ffbc72b58a9453b88368ba4a59daa2c8063c7e"
+    },
+    {
+      "id": "mixed-text",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "mixed-text",
+        "child": "text",
+        "value": "A B C D E F G H"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A B C D E F G H",
+        "textBox": {
+          "x": 21,
+          "y": 30,
+          "width": 53.015625,
+          "height": 44
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-mixed-text-Dark-reduce.png",
+      "pngSha256": "353251589d95409159a01d82ceb54fa384b83ddfb6dd2252c8e0bdddcf3ff45f"
+    },
+    {
+      "id": "long-text",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "long-text",
+        "child": "text",
+        "value": "ConsumerBadgeOverflow"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "ConsumerBadgeOverflow",
+        "textBox": {
+          "x": -38.703125,
+          "y": 42,
+          "width": 181.40625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-long-text-Dark-reduce.png",
+      "pngSha256": "6b58b9f5d7cf37571a549b97d16f3277261373553a49a335512b9de30c89e0d6"
+    },
+    {
+      "id": "whitespace",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "whitespace",
+        "child": "text",
+        "value": "  A\t B\n C  "
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "  A\t B\n C  ",
+        "textBox": {
+          "x": 33.046875,
+          "y": 42,
+          "width": 37.90625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-whitespace-Dark-reduce.png",
+      "pngSha256": "e5eeeed4862f414c66192b4f99661332ea1db93a32f899eda0efbe7db4573d23"
+    },
+    {
+      "id": "narrow-block",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "narrow-block",
+        "parentWidth": 40
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-block-Dark-reduce.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "narrow-flex",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "narrow-flex",
+        "parentWidth": 40,
+        "parentFlex": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 28,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 28,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-flex-Dark-reduce.png",
+      "pngSha256": "051ff399286832bbcb79a21df8b1584e504b9d880bc292b6646a43fa0ceeff8f"
+    },
+    {
+      "id": "custom-style",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "custom-style",
+        "size": "md",
+        "variant": "outlined",
+        "style": {
+          "width": 88,
+          "height": 40,
+          "borderWidth": 2,
+          "borderRadius": 6,
+          "padding": 4,
+          "color": "rgb(180, 55, 90)",
+          "backgroundColor": "rgb(245, 237, 220)",
+          "borderColor": "rgb(33, 67, 99)"
+        }
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 88,
+          "height": 40
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 52,
+              "y": 28,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 52,
+          "y": 28,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(245, 237, 220)",
+        "border": "rgb(33, 67, 99)",
+        "borderWidth": "2px",
+        "radius": "6px",
+        "foreground": "rgb(180, 55, 90)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-custom-style-Dark-reduce.png",
+      "pngSha256": "23bc1e94bf0e701c6904dbb423f678de0c3bd2fb2e6da5246934c3f88fcaee78"
+    },
+    {
+      "id": "number-0",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-0",
+        "child": "number",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-0-Dark-reduce.png",
+      "pngSha256": "c6855b1e0f4402793df3c5e8c689b7157c764e60bf51e7a8fcfd0cac5a2bd34c"
+    },
+    {
+      "id": "number--0",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number--0",
+        "child": "number",
+        "value": "-0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--0-Dark-reduce.png",
+      "pngSha256": "c6855b1e0f4402793df3c5e8c689b7157c764e60bf51e7a8fcfd0cac5a2bd34c"
+    },
+    {
+      "id": "number--1.5",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number--1.5",
+        "child": "number",
+        "value": "-1.5"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-1.5",
+        "textBox": {
+          "x": 40.015625,
+          "y": 42,
+          "width": 23.953125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--1.5-Dark-reduce.png",
+      "pngSha256": "05af73c43783147fe772fe6aadbbd04668ec9b2b06593dea44cf5ea1a31d4af5"
+    },
+    {
+      "id": "number-1e-7",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e-7",
+        "child": "number",
+        "value": "1e-7"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e-7",
+        "textBox": {
+          "x": 37.96875,
+          "y": 42,
+          "width": 28.0625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-7-Dark-reduce.png",
+      "pngSha256": "e44939e5fd23197937a8c338f683fc933ecaab49ad4f4f3de0b6472c7ef06572"
+    },
+    {
+      "id": "number-1e-6",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e-6",
+        "child": "number",
+        "value": "1e-6"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0.000001",
+        "textBox": {
+          "x": 17.921875,
+          "y": 42,
+          "width": 68.15625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-6-Dark-reduce.png",
+      "pngSha256": "ef8e7e0b42ab0c858053e8a4e3568d11d2a0422eab4a039a21e690fc2e0e222a"
+    },
+    {
+      "id": "number-1e20",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e20",
+        "child": "number",
+        "value": "1e20"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "100000000000000000000",
+        "textBox": {
+          "x": -50.84375,
+          "y": 42,
+          "width": 205.703125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e20-Dark-reduce.png",
+      "pngSha256": "858750599678149a99377ea82581b39baaed17eba5a0b5d9e9a6d8ad6539ab94"
+    },
+    {
+      "id": "number-1e21",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-1e21",
+        "child": "number",
+        "value": "1e21"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e+21",
+        "textBox": {
+          "x": 34.0625,
+          "y": 42,
+          "width": 35.875,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e21-Dark-reduce.png",
+      "pngSha256": "3125f83fe85d46e8c4ad409fdfcb92319a15e780d31b0b3ba8b33b98bbd0fb43"
+    },
+    {
+      "id": "number-NaN",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-NaN",
+        "child": "number",
+        "value": "NaN"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "NaN",
+        "textBox": {
+          "x": 36.109375,
+          "y": 42,
+          "width": 31.765625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-NaN-Dark-reduce.png",
+      "pngSha256": "7e3a287eef6e206314aeb34bf820034cf9954e8bfd901f9b93c9f9b0ecf624cc"
+    },
+    {
+      "id": "number-Infinity",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number-Infinity",
+        "child": "number",
+        "value": "Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "Infinity",
+        "textBox": {
+          "x": 27.140625,
+          "y": 42,
+          "width": 49.703125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-Infinity-Dark-reduce.png",
+      "pngSha256": "00774c9729af79a3aa8b38086c8d797c564289f1e2e4b26a29734df3ae475efe"
+    },
+    {
+      "id": "number--Infinity",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "number--Infinity",
+        "child": "number",
+        "value": "-Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-Infinity",
+        "textBox": {
+          "x": 23.796875,
+          "y": 42,
+          "width": 56.40625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--Infinity-Dark-reduce.png",
+      "pngSha256": "1fb18b4aeabd0fc26a84f6c3d63f1d862b016842ec1e1b473a14c9b172565cae"
+    },
+    {
+      "id": "bigint-0",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "bigint-0",
+        "child": "bigint",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-0-Dark-reduce.png",
+      "pngSha256": "c6855b1e0f4402793df3c5e8c689b7157c764e60bf51e7a8fcfd0cac5a2bd34c"
+    },
+    {
+      "id": "bigint-12345678901234567890123456789",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "bigint-12345678901234567890123456789",
+        "child": "bigint",
+        "value": "12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "12345678901234567890123456789",
+        "textBox": {
+          "x": -69.515625,
+          "y": 42,
+          "width": 243.03125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-12345678901234567890123456789-Dark-reduce.png",
+      "pngSha256": "ace4d19ca9a2413fb449bea1f3fa439a08b4285ff5e6e0a1e1ae38ca4643ef1d"
+    },
+    {
+      "id": "bigint--12345678901234567890123456789",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "bigint--12345678901234567890123456789",
+        "child": "bigint",
+        "value": "-12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-12345678901234567890123456789",
+        "textBox": {
+          "x": -72.53125,
+          "y": 42,
+          "width": 249.0625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint--12345678901234567890123456789-Dark-reduce.png",
+      "pngSha256": "2c1d6ba0bf30f7e699ecf2a8a77be17b64fa4718a15ee2cafcbf7d98e9189d97"
+    },
+    {
+      "id": "boolean-false",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "boolean-false",
+        "child": "boolean",
+        "value": "false"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-false-Dark-reduce.png",
+      "pngSha256": "5dce5f1b1b1bb990a42775c67126ecbde873e1262433b7c004eaf9621f333210"
+    },
+    {
+      "id": "boolean-true",
+      "scheme": "Dark",
+      "motion": "reduce",
+      "spec": {
+        "id": "boolean-true",
+        "child": "boolean",
+        "value": "true"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-true-Dark-reduce.png",
+      "pngSha256": "5dce5f1b1b1bb990a42775c67126ecbde873e1262433b7c004eaf9621f333210"
+    },
+    {
+      "id": "md-primary",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "md-primary",
+        "size": "md",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-primary-Light-no-preference.png",
+      "pngSha256": "5ffd13b41c6e86a5cb363d496d2c93a30f4ef0056f598bcab47c31275f69f521"
+    },
+    {
+      "id": "md-subtle",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "md-subtle",
+        "size": "md",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(44, 87, 132)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.447932 -0.0282684 -0.0838237 / 0.06)",
+        "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(44, 87, 132)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-subtle-Light-no-preference.png",
+      "pngSha256": "ea84ab157434b8021c048202c325ab5519726cea7d30da6f55c187058310b4c3"
+    },
+    {
+      "id": "md-outlined",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "md-outlined",
+        "size": "md",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(45, 45, 45)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(255, 255, 255)",
+        "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(45, 45, 45)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-outlined-Light-no-preference.png",
+      "pngSha256": "3bbb14e31e183e940ac594aa0de588b9e484d870cc8b0783cf61d34f87c35d96"
+    },
+    {
+      "id": "lg-primary",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "lg-primary",
+        "size": "lg",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-primary-Light-no-preference.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "lg-subtle",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "lg-subtle",
+        "size": "lg",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(44, 87, 132)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.447932 -0.0282684 -0.0838237 / 0.06)",
+        "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(44, 87, 132)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-subtle-Light-no-preference.png",
+      "pngSha256": "5326b529cad953b33e424802532eb6fc4ec5b9e89aa3453a4df409d2393bc2d5"
+    },
+    {
+      "id": "lg-outlined",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "lg-outlined",
+        "size": "lg",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(45, 45, 45)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(255, 255, 255)",
+        "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(45, 45, 45)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-outlined-Light-no-preference.png",
+      "pngSha256": "d39bab4e2fee9cbbbe5382d1537fe3dbfa525009a18b10e8c39a1c08b91c857e"
+    },
+    {
+      "id": "defaults",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "defaults"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-defaults-Light-no-preference.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "empty",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "empty",
+        "child": "empty"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-empty-Light-no-preference.png",
+      "pngSha256": "26d4e8d18d60923e6907a5eafedb6ee13615ac6a595d7555fb2fd6b5b51afa66"
+    },
+    {
+      "id": "named",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "named",
+        "named": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "group",
+            "name": "Consumer icon marker",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-named-Light-no-preference.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "large-child",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "large-child",
+        "child": "large"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "SPAN",
+            "box": {
+              "x": 2,
+              "y": 12,
+              "width": 100,
+              "height": 80
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 80
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-large-child-Light-no-preference.png",
+      "pngSha256": "dfabed62605d9e177ffddf1dd25885f3d743a2215f480a1f26ff3c8816852040"
+    },
+    {
+      "id": "child-color",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "child-color",
+        "childColor": "rgb(180, 55, 90)"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-child-color-Light-no-preference.png",
+      "pngSha256": "7159a0801999024a172a5512917ba3770178d83010e1a109300df02e4a7489f7"
+    },
+    {
+      "id": "rich",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "rich",
+        "child": "rich"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "BUTTON",
+            "box": {
+              "x": 26.59375,
+              "y": 40,
+              "width": 10.796875,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          },
+          {
+            "tag": "INPUT",
+            "box": {
+              "x": 37.390625,
+              "y": 40,
+              "width": 40,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "A",
+        "textBox": {
+          "x": 26.59375,
+          "y": 40,
+          "width": 50.796875,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-rich-Light-no-preference.png",
+      "pngSha256": "d1494a89c1fcd011e0c08b870ced25d2bceeec796c5175faade7eff060fe94c1"
+    },
+    {
+      "id": "text",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "text",
+        "child": "text",
+        "value": "A"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A",
+        "textBox": {
+          "x": 46.59375,
+          "y": 42,
+          "width": 10.796875,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-text-Light-no-preference.png",
+      "pngSha256": "7a1f9983eb6bdfa7af9386c3289e22e11b2e085df5d1971764458752e97079d1"
+    },
+    {
+      "id": "mixed-text",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "mixed-text",
+        "child": "text",
+        "value": "A B C D E F G H"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A B C D E F G H",
+        "textBox": {
+          "x": 21,
+          "y": 30,
+          "width": 53.015625,
+          "height": 44
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-mixed-text-Light-no-preference.png",
+      "pngSha256": "773e4c0efdb3b4d8f36b8937bf8bc28ac682a6beedaf1524af14c33416751428"
+    },
+    {
+      "id": "long-text",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "long-text",
+        "child": "text",
+        "value": "ConsumerBadgeOverflow"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "ConsumerBadgeOverflow",
+        "textBox": {
+          "x": -38.703125,
+          "y": 42,
+          "width": 181.40625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-long-text-Light-no-preference.png",
+      "pngSha256": "0ee9850b36ab98b2e63495316eb3b66e4e8286a17d4641e0884fb78280dc9568"
+    },
+    {
+      "id": "whitespace",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "whitespace",
+        "child": "text",
+        "value": "  A\t B\n C  "
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "  A\t B\n C  ",
+        "textBox": {
+          "x": 33.046875,
+          "y": 42,
+          "width": 37.90625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-whitespace-Light-no-preference.png",
+      "pngSha256": "ca88a6980fb38ff76dfd34e48e30feb940b602be10b38a6c20dcfb335c36b6e2"
+    },
+    {
+      "id": "narrow-block",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "narrow-block",
+        "parentWidth": 40
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-block-Light-no-preference.png",
+      "pngSha256": "521e30a58400d5dd1f3d0af993cd7a3df0fdb9fd0b143bd719e36535e2728ea3"
+    },
+    {
+      "id": "narrow-flex",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "narrow-flex",
+        "parentWidth": 40,
+        "parentFlex": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 28,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 28,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-flex-Light-no-preference.png",
+      "pngSha256": "ceab06b13c2c5e43e7087185097c792ee89bd2eeb1167aff9de7b901430fc228"
+    },
+    {
+      "id": "custom-style",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "custom-style",
+        "size": "md",
+        "variant": "outlined",
+        "style": {
+          "width": 88,
+          "height": 40,
+          "borderWidth": 2,
+          "borderRadius": 6,
+          "padding": 4,
+          "color": "rgb(180, 55, 90)",
+          "backgroundColor": "rgb(245, 237, 220)",
+          "borderColor": "rgb(33, 67, 99)"
+        }
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 88,
+          "height": 40
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 52,
+              "y": 28,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 52,
+          "y": 28,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(245, 237, 220)",
+        "border": "rgb(33, 67, 99)",
+        "borderWidth": "2px",
+        "radius": "6px",
+        "foreground": "rgb(180, 55, 90)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-custom-style-Light-no-preference.png",
+      "pngSha256": "52df251f7d8ba574b1dea08aed69f49f3ffcc08f2650e5736a23ebb181bddbd8"
+    },
+    {
+      "id": "number-0",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-0",
+        "child": "number",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-0-Light-no-preference.png",
+      "pngSha256": "4eb43c6872f7f16cd08b87b480254eba69b4af5d40d182a5bbdcadeacfcc0b16"
+    },
+    {
+      "id": "number--0",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number--0",
+        "child": "number",
+        "value": "-0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--0-Light-no-preference.png",
+      "pngSha256": "4eb43c6872f7f16cd08b87b480254eba69b4af5d40d182a5bbdcadeacfcc0b16"
+    },
+    {
+      "id": "number--1.5",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number--1.5",
+        "child": "number",
+        "value": "-1.5"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-1.5",
+        "textBox": {
+          "x": 40.015625,
+          "y": 42,
+          "width": 23.953125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--1.5-Light-no-preference.png",
+      "pngSha256": "ee86e8aa69b863fc60303a3307fdcc93f867b6f64ad1e7842d849edd95d0d242"
+    },
+    {
+      "id": "number-1e-7",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e-7",
+        "child": "number",
+        "value": "1e-7"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e-7",
+        "textBox": {
+          "x": 37.96875,
+          "y": 42,
+          "width": 28.0625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-7-Light-no-preference.png",
+      "pngSha256": "f46e35f0e6567b3d6e4e2194b3541ac4b26d210c7f06df75c388467876d5a7ed"
+    },
+    {
+      "id": "number-1e-6",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e-6",
+        "child": "number",
+        "value": "1e-6"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0.000001",
+        "textBox": {
+          "x": 17.921875,
+          "y": 42,
+          "width": 68.15625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-6-Light-no-preference.png",
+      "pngSha256": "0a6ce19064738cbb960cff3fc47e26a1da64aba661fd3d8b065b85d96102d3a0"
+    },
+    {
+      "id": "number-1e20",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e20",
+        "child": "number",
+        "value": "1e20"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "100000000000000000000",
+        "textBox": {
+          "x": -50.84375,
+          "y": 42,
+          "width": 205.703125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e20-Light-no-preference.png",
+      "pngSha256": "fed39b2ed02b4e9d993e447ba0db2f706c75c4c751e8db14c742d792620d5ea5"
+    },
+    {
+      "id": "number-1e21",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e21",
+        "child": "number",
+        "value": "1e21"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e+21",
+        "textBox": {
+          "x": 34.0625,
+          "y": 42,
+          "width": 35.875,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e21-Light-no-preference.png",
+      "pngSha256": "a6e11b537d3913e648166c6339b927302cea6dd2e1085d7612d07148151c0e25"
+    },
+    {
+      "id": "number-NaN",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-NaN",
+        "child": "number",
+        "value": "NaN"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "NaN",
+        "textBox": {
+          "x": 36.109375,
+          "y": 42,
+          "width": 31.765625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-NaN-Light-no-preference.png",
+      "pngSha256": "aada91520ebd4d23667ae576b77658428f2cca9fd3478ebc23d1d5c6c9148af4"
+    },
+    {
+      "id": "number-Infinity",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-Infinity",
+        "child": "number",
+        "value": "Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "Infinity",
+        "textBox": {
+          "x": 27.140625,
+          "y": 42,
+          "width": 49.703125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-Infinity-Light-no-preference.png",
+      "pngSha256": "1c5cf2528c7afc3f8d2e506b57f87a2c73ee85ecd7e75be306a3515d8611822b"
+    },
+    {
+      "id": "number--Infinity",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number--Infinity",
+        "child": "number",
+        "value": "-Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-Infinity",
+        "textBox": {
+          "x": 23.796875,
+          "y": 42,
+          "width": 56.40625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--Infinity-Light-no-preference.png",
+      "pngSha256": "a495b1740ecfa7237429f2075cc8c71caac5072c283e428ae355a43ee7690fe6"
+    },
+    {
+      "id": "bigint-0",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "bigint-0",
+        "child": "bigint",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-0-Light-no-preference.png",
+      "pngSha256": "4eb43c6872f7f16cd08b87b480254eba69b4af5d40d182a5bbdcadeacfcc0b16"
+    },
+    {
+      "id": "bigint-12345678901234567890123456789",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "bigint-12345678901234567890123456789",
+        "child": "bigint",
+        "value": "12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "12345678901234567890123456789",
+        "textBox": {
+          "x": -69.515625,
+          "y": 42,
+          "width": 243.03125,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-12345678901234567890123456789-Light-no-preference.png",
+      "pngSha256": "5dfed59a92ac5d713af1a8aefccc8b1792978b3faa78cbd64b6b46738daeb328"
+    },
+    {
+      "id": "bigint--12345678901234567890123456789",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "bigint--12345678901234567890123456789",
+        "child": "bigint",
+        "value": "-12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-12345678901234567890123456789",
+        "textBox": {
+          "x": -72.53125,
+          "y": 42,
+          "width": 249.0625,
+          "height": 20
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint--12345678901234567890123456789-Light-no-preference.png",
+      "pngSha256": "9c8775a5e8c7235475eb66f5d09a4e059d30737fce62a61d477fe4a734c7caaf"
+    },
+    {
+      "id": "boolean-false",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "boolean-false",
+        "child": "boolean",
+        "value": "false"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-false-Light-no-preference.png",
+      "pngSha256": "26d4e8d18d60923e6907a5eafedb6ee13615ac6a595d7555fb2fd6b5b51afa66"
+    },
+    {
+      "id": "boolean-true",
+      "scheme": "Light",
+      "motion": "no-preference",
+      "spec": {
+        "id": "boolean-true",
+        "child": "boolean",
+        "value": "true"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(26, 55, 77)",
+        "border": "rgb(26, 55, 77)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(255, 255, 255)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-true-Light-no-preference.png",
+      "pngSha256": "26d4e8d18d60923e6907a5eafedb6ee13615ac6a595d7555fb2fd6b5b51afa66"
+    },
+    {
+      "id": "md-primary",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "md-primary",
+        "size": "md",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-primary-Dark-no-preference.png",
+      "pngSha256": "65a7362c5374049646d64ecd5925f5824ac8031ea59f803a0a8f2a5a712a06cc"
+    },
+    {
+      "id": "md-subtle",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "md-subtle",
+        "size": "md",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(91, 163, 245)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.704643 -0.0410104 -0.134962 / 0.1)",
+        "border": "oklab(0.704643 -0.0410104 -0.134962 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(91, 163, 245)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-subtle-Dark-no-preference.png",
+      "pngSha256": "76c3ce62a58212f2e58a2fda069c8169cc40ad9908d7f0cd15e04ac6264931d5"
+    },
+    {
+      "id": "md-outlined",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "md-outlined",
+        "size": "md",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 56,
+          "height": 56
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 36,
+              "y": 36,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(240, 244, 248)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 36,
+          "y": 36,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(24, 37, 51)",
+        "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(240, 244, 248)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-md-outlined-Dark-no-preference.png",
+      "pngSha256": "54d8bb35409109dbe904de5578988f207f4a666e86712c1f9b126fa9ab89fe99"
+    },
+    {
+      "id": "lg-primary",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "lg-primary",
+        "size": "lg",
+        "variant": "primary"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-primary-Dark-no-preference.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "lg-subtle",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "lg-subtle",
+        "size": "lg",
+        "variant": "subtle"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(91, 163, 245)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "oklab(0.704643 -0.0410104 -0.134962 / 0.1)",
+        "border": "oklab(0.704643 -0.0410104 -0.134962 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(91, 163, 245)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-subtle-Dark-no-preference.png",
+      "pngSha256": "fd25ae4c55bb5413404c5c10f22816ae57e1b98225e64d644159792b92fa9ade"
+    },
+    {
+      "id": "lg-outlined",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "lg-outlined",
+        "size": "lg",
+        "variant": "outlined"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(240, 244, 248)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(24, 37, 51)",
+        "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(240, 244, 248)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-lg-outlined-Dark-no-preference.png",
+      "pngSha256": "4265dc9df097cf864b93469565d5de3b28d64cf96dc54cbfb279d7596f3db761"
+    },
+    {
+      "id": "defaults",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "defaults"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-defaults-Dark-no-preference.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "empty",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "empty",
+        "child": "empty"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-empty-Dark-no-preference.png",
+      "pngSha256": "5dce5f1b1b1bb990a42775c67126ecbde873e1262433b7c004eaf9621f333210"
+    },
+    {
+      "id": "named",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "named",
+        "named": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "group",
+            "name": "Consumer icon marker",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-named-Dark-no-preference.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "large-child",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "large-child",
+        "child": "large"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "SPAN",
+            "box": {
+              "x": 2,
+              "y": 12,
+              "width": 100,
+              "height": 80
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 80
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-large-child-Dark-no-preference.png",
+      "pngSha256": "dc4c301df7f2cba8339a60da2b8c24f90d178f30009d9b3c4a2dff16fc3737b7"
+    },
+    {
+      "id": "child-color",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "child-color",
+        "childColor": "rgb(180, 55, 90)"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-child-color-Dark-no-preference.png",
+      "pngSha256": "60e1fddb22d459ffdc9409f9a606ae15d4a90a450f931c780589792c6e0e1c73"
+    },
+    {
+      "id": "rich",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "rich",
+        "child": "rich"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "BUTTON",
+            "box": {
+              "x": 26.59375,
+              "y": 40,
+              "width": 10.796875,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          },
+          {
+            "tag": "INPUT",
+            "box": {
+              "x": 37.390625,
+              "y": 40,
+              "width": 40,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "A",
+        "textBox": {
+          "x": 26.59375,
+          "y": 40,
+          "width": 50.796875,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-rich-Dark-no-preference.png",
+      "pngSha256": "90359f69c90325c5fc9168edd1b988bdb7c6f6779ab2fe2eea7377b72446c8ab"
+    },
+    {
+      "id": "text",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "text",
+        "child": "text",
+        "value": "A"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A",
+        "textBox": {
+          "x": 46.59375,
+          "y": 42,
+          "width": 10.796875,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-text-Dark-no-preference.png",
+      "pngSha256": "40eabf50ae1f4046aa2bf9ec45ffbc72b58a9453b88368ba4a59daa2c8063c7e"
+    },
+    {
+      "id": "mixed-text",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "mixed-text",
+        "child": "text",
+        "value": "A B C D E F G H"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "A B C D E F G H",
+        "textBox": {
+          "x": 21,
+          "y": 30,
+          "width": 53.015625,
+          "height": 44
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-mixed-text-Dark-no-preference.png",
+      "pngSha256": "353251589d95409159a01d82ceb54fa384b83ddfb6dd2252c8e0bdddcf3ff45f"
+    },
+    {
+      "id": "long-text",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "long-text",
+        "child": "text",
+        "value": "ConsumerBadgeOverflow"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "ConsumerBadgeOverflow",
+        "textBox": {
+          "x": -38.703125,
+          "y": 42,
+          "width": 181.40625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-long-text-Dark-no-preference.png",
+      "pngSha256": "6b58b9f5d7cf37571a549b97d16f3277261373553a49a335512b9de30c89e0d6"
+    },
+    {
+      "id": "whitespace",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "whitespace",
+        "child": "text",
+        "value": "  A\t B\n C  "
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "  A\t B\n C  ",
+        "textBox": {
+          "x": 33.046875,
+          "y": 42,
+          "width": 37.90625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-whitespace-Dark-no-preference.png",
+      "pngSha256": "e5eeeed4862f414c66192b4f99661332ea1db93a32f899eda0efbe7db4573d23"
+    },
+    {
+      "id": "narrow-block",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "narrow-block",
+        "parentWidth": 40
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 40,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 40,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-block-Dark-no-preference.png",
+      "pngSha256": "9ad0c6dbf83d22ffacead32c2a9c376b811e5cffdb8a486a9aae483f392ab55b"
+    },
+    {
+      "id": "narrow-flex",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "narrow-flex",
+        "parentWidth": 40,
+        "parentFlex": true
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 64
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 28,
+              "y": 40,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(24, 37, 51)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 28,
+          "y": 40,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-narrow-flex-Dark-no-preference.png",
+      "pngSha256": "051ff399286832bbcb79a21df8b1584e504b9d880bc292b6646a43fa0ceeff8f"
+    },
+    {
+      "id": "custom-style",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "custom-style",
+        "size": "md",
+        "variant": "outlined",
+        "style": {
+          "width": 88,
+          "height": 40,
+          "borderWidth": 2,
+          "borderRadius": 6,
+          "padding": 4,
+          "color": "rgb(180, 55, 90)",
+          "backgroundColor": "rgb(245, 237, 220)",
+          "borderColor": "rgb(33, 67, 99)"
+        }
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 88,
+          "height": 40
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "box": {
+              "x": 52,
+              "y": 28,
+              "width": 24,
+              "height": 24
+            },
+            "color": "rgb(180, 55, 90)"
+          }
+        ],
+        "text": "",
+        "textBox": {
+          "x": 52,
+          "y": 28,
+          "width": 24,
+          "height": 24
+        },
+        "background": "rgb(245, 237, 220)",
+        "border": "rgb(33, 67, 99)",
+        "borderWidth": "2px",
+        "radius": "6px",
+        "foreground": "rgb(180, 55, 90)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-custom-style-Dark-no-preference.png",
+      "pngSha256": "23bc1e94bf0e701c6904dbb423f678de0c3bd2fb2e6da5246934c3f88fcaee78"
+    },
+    {
+      "id": "number-0",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-0",
+        "child": "number",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-0-Dark-no-preference.png",
+      "pngSha256": "c6855b1e0f4402793df3c5e8c689b7157c764e60bf51e7a8fcfd0cac5a2bd34c"
+    },
+    {
+      "id": "number--0",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number--0",
+        "child": "number",
+        "value": "-0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--0-Dark-no-preference.png",
+      "pngSha256": "c6855b1e0f4402793df3c5e8c689b7157c764e60bf51e7a8fcfd0cac5a2bd34c"
+    },
+    {
+      "id": "number--1.5",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number--1.5",
+        "child": "number",
+        "value": "-1.5"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-1.5",
+        "textBox": {
+          "x": 40.015625,
+          "y": 42,
+          "width": 23.953125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--1.5-Dark-no-preference.png",
+      "pngSha256": "05af73c43783147fe772fe6aadbbd04668ec9b2b06593dea44cf5ea1a31d4af5"
+    },
+    {
+      "id": "number-1e-7",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e-7",
+        "child": "number",
+        "value": "1e-7"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e-7",
+        "textBox": {
+          "x": 37.96875,
+          "y": 42,
+          "width": 28.0625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-7-Dark-no-preference.png",
+      "pngSha256": "e44939e5fd23197937a8c338f683fc933ecaab49ad4f4f3de0b6472c7ef06572"
+    },
+    {
+      "id": "number-1e-6",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e-6",
+        "child": "number",
+        "value": "1e-6"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0.000001",
+        "textBox": {
+          "x": 17.921875,
+          "y": 42,
+          "width": 68.15625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e-6-Dark-no-preference.png",
+      "pngSha256": "ef8e7e0b42ab0c858053e8a4e3568d11d2a0422eab4a039a21e690fc2e0e222a"
+    },
+    {
+      "id": "number-1e20",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e20",
+        "child": "number",
+        "value": "1e20"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "100000000000000000000",
+        "textBox": {
+          "x": -50.84375,
+          "y": 42,
+          "width": 205.703125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e20-Dark-no-preference.png",
+      "pngSha256": "858750599678149a99377ea82581b39baaed17eba5a0b5d9e9a6d8ad6539ab94"
+    },
+    {
+      "id": "number-1e21",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-1e21",
+        "child": "number",
+        "value": "1e21"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "1e+21",
+        "textBox": {
+          "x": 34.0625,
+          "y": 42,
+          "width": 35.875,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-1e21-Dark-no-preference.png",
+      "pngSha256": "3125f83fe85d46e8c4ad409fdfcb92319a15e780d31b0b3ba8b33b98bbd0fb43"
+    },
+    {
+      "id": "number-NaN",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-NaN",
+        "child": "number",
+        "value": "NaN"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "NaN",
+        "textBox": {
+          "x": 36.109375,
+          "y": 42,
+          "width": 31.765625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-NaN-Dark-no-preference.png",
+      "pngSha256": "7e3a287eef6e206314aeb34bf820034cf9954e8bfd901f9b93c9f9b0ecf624cc"
+    },
+    {
+      "id": "number-Infinity",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number-Infinity",
+        "child": "number",
+        "value": "Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "Infinity",
+        "textBox": {
+          "x": 27.140625,
+          "y": 42,
+          "width": 49.703125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number-Infinity-Dark-no-preference.png",
+      "pngSha256": "00774c9729af79a3aa8b38086c8d797c564289f1e2e4b26a29734df3ae475efe"
+    },
+    {
+      "id": "number--Infinity",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "number--Infinity",
+        "child": "number",
+        "value": "-Infinity"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-Infinity",
+        "textBox": {
+          "x": 23.796875,
+          "y": 42,
+          "width": 56.40625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-number--Infinity-Dark-no-preference.png",
+      "pngSha256": "1fb18b4aeabd0fc26a84f6c3d63f1d862b016842ec1e1b473a14c9b172565cae"
+    },
+    {
+      "id": "bigint-0",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "bigint-0",
+        "child": "bigint",
+        "value": "0"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "0",
+        "textBox": {
+          "x": 47,
+          "y": 42,
+          "width": 10,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-0-Dark-no-preference.png",
+      "pngSha256": "c6855b1e0f4402793df3c5e8c689b7157c764e60bf51e7a8fcfd0cac5a2bd34c"
+    },
+    {
+      "id": "bigint-12345678901234567890123456789",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "bigint-12345678901234567890123456789",
+        "child": "bigint",
+        "value": "12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "12345678901234567890123456789",
+        "textBox": {
+          "x": -69.515625,
+          "y": 42,
+          "width": 243.03125,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint-12345678901234567890123456789-Dark-no-preference.png",
+      "pngSha256": "ace4d19ca9a2413fb449bea1f3fa439a08b4285ff5e6e0a1e1ae38ca4643ef1d"
+    },
+    {
+      "id": "bigint--12345678901234567890123456789",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "bigint--12345678901234567890123456789",
+        "child": "bigint",
+        "value": "-12345678901234567890123456789"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "-12345678901234567890123456789",
+        "textBox": {
+          "x": -72.53125,
+          "y": 42,
+          "width": 249.0625,
+          "height": 20
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-bigint--12345678901234567890123456789-Dark-no-preference.png",
+      "pngSha256": "2c1d6ba0bf30f7e699ecf2a8a77be17b64fa4718a15ee2cafcbf7d98e9189d97"
+    },
+    {
+      "id": "boolean-false",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "boolean-false",
+        "child": "boolean",
+        "value": "false"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-false-Dark-no-preference.png",
+      "pngSha256": "5dce5f1b1b1bb990a42775c67126ecbde873e1262433b7c004eaf9621f333210"
+    },
+    {
+      "id": "boolean-true",
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "spec": {
+        "id": "boolean-true",
+        "child": "boolean",
+        "value": "true"
+      },
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 64,
+          "height": 64
+        },
+        "children": [],
+        "text": "",
+        "textBox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "background": "rgb(91, 163, 245)",
+        "border": "rgb(91, 163, 245)",
+        "borderWidth": "1px",
+        "radius": "10px",
+        "foreground": "rgb(24, 37, 51)",
+        "font": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "animations": 0,
+        "tabIndex": -1,
+        "accessibility": [
+          {
+            "role": "generic",
+            "name": "",
+            "ignored": false
+          }
+        ]
+      },
+      "file": "icon-badge-boolean-true-Dark-no-preference.png",
+      "pngSha256": "5dce5f1b1b1bb990a42775c67126ecbde873e1262433b7c004eaf9621f333210"
+    }
+  ],
+  "interactions": [
+    {
+      "scheme": "Light",
+      "motion": "reduce",
+      "size": "md",
+      "variant": "outlined",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Light",
+      "motion": "reduce",
+      "size": "lg",
+      "variant": "subtle",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Light",
+      "motion": "reduce",
+      "size": "lg",
+      "variant": "primary",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Dark",
+      "motion": "reduce",
+      "size": "md",
+      "variant": "outlined",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Dark",
+      "motion": "reduce",
+      "size": "lg",
+      "variant": "subtle",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Dark",
+      "motion": "reduce",
+      "size": "lg",
+      "variant": "primary",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Light",
+      "motion": "no-preference",
+      "size": "md",
+      "variant": "outlined",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Light",
+      "motion": "no-preference",
+      "size": "lg",
+      "variant": "subtle",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Light",
+      "motion": "no-preference",
+      "size": "lg",
+      "variant": "primary",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "size": "md",
+      "variant": "outlined",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "size": "lg",
+      "variant": "subtle",
+      "childRetained": true,
+      "value": "Retained"
+    },
+    {
+      "scheme": "Dark",
+      "motion": "no-preference",
+      "size": "lg",
+      "variant": "primary",
+      "childRetained": true,
+      "value": "Retained"
+    }
+  ]
+}

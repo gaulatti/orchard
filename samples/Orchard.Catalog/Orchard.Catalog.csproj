@@ -22,6 +22,9 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="../../tests/Reference/IconBadge.json" LogicalName="Orchard.Catalog.Reference.IconBadge.json" />
+        <EmbeddedResource Include="../../tests/Reference/IconBadge/icon-badge-large-child-Light-reduce.png" LogicalName="Orchard.Catalog.Reference.IconBadgeLargeLight.png" />
+        <EmbeddedResource Include="../../tests/Reference/IconBadge/icon-badge-large-child-Dark-reduce.png" LogicalName="Orchard.Catalog.Reference.IconBadgeLargeDark.png" />
         <EmbeddedResource Include="../../tests/Reference/RadioGroup.json" LogicalName="Orchard.Catalog.Reference.RadioGroup.json" />
         <EmbeddedResource Include="../../tests/Reference/Accordion.json" LogicalName="Orchard.Catalog.Reference.Accordion.json" />
         <EmbeddedResource Include="../../tests/Reference/AccordionMotion.json" LogicalName="Orchard.Catalog.Reference.AccordionMotion.json" />

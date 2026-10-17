@@ -2,6 +2,11 @@ namespace Orchard.Catalog;
 
 internal static class NativeCaptureValidation
 {
+    internal static void VerifyExact(ReadOnlySpan<byte> bgra, ReadOnlySpan<byte> expectedBgra)
+    {
+        if (expectedBgra.Length == 0 || expectedBgra.Length % 4 != 0 || !bgra.SequenceEqual(expectedBgra))
+            throw new InvalidOperationException("The composed capture differs from its complete exact reference frame.");
+    }
     internal static void Verify(byte[] bgra,(byte R,byte G,byte B)? expectedEmptyCanvas=null)
     {
         if(bgra.Length==0||bgra.Length%4!=0)throw new InvalidOperationException("Composed capture has an invalid pixel buffer.");

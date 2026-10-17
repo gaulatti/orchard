@@ -3787,14 +3787,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerIconBadge.cs",
+        "src/Orchard/Themes/Generic.xaml",
+        "src/Orchard/Themes/IconBadges"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/IconBadgesFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/IconBadgeContractTests.cs",
+        "tests/Reference/IconBadge.json",
+        "scripts/reference/capture-icon-badge.cjs",
+        "samples/Orchard.Catalog/MainWindow.IconBadge.cs",
+        "scripts/verify-icon-badge.mjs",
+        "scripts/test-icon-badge-audit.mjs",
+        "tests/PackageConsumer/MainWindow.IconBadge.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Resolve exact native/browser raster differences; source-matched geometry, colors, scalar content and retained-child lifecycle checks pass for 136 source frames",
+        "Finish customization, RTL, disabled/overflow pointer and external UIA/Narrator acceptance in docs/icon-badge.md",
+        "Verify isolated contrast/scaling, native ARM64 runtime, full catalog integration and independently packaged consumer"
       ]
     },
     {

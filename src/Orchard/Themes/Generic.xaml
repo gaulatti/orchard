@@ -51,6 +51,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DashboardSection.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DashboardSpan.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/IconBadges/Primary.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SearchInput.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Textarea.xaml" />
@@ -464,6 +465,30 @@
         <Setter Property="Background" Value="{ThemeResource BleeckerSeparatorBrush}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSeparator">
             <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerIconBadge">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="HighContrastAdjustment" Value="None" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="{ThemeResource IconBadgeBackground}" />
+        <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
+        <Setter Property="BorderBrush" Value="{ThemeResource IconBadgeBorderBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource IconBadgeForeground}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerIconBadgeCornerRadius}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerIconBadge">
+            <Grid>
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" BackgroundSizing="{TemplateBinding BackgroundSizing}" />
+                <Grid x:Name="PART_ContentHost" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" />
+            </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
     <Style TargetType="local:BleeckerCard">
