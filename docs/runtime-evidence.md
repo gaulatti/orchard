@@ -1,5 +1,18 @@
 # Native Windows runtime evidence
 
+Diagnostic source `f2ceffd` passes 32 Accordion collection/content continuity
+cases in both themes and real motion preferences using the exact library DLL
+from package `0.1.0-ab030df`. Its 244 native samples verify ten retained clocks,
+six resets, body growth, actual labels/UIA and keyed lifecycle; height and
+float-angle errors are zero. All 20 damaged continuity receipts are rejected.
+All 164 unit tests pass, including 224 frozen source samples. Both diagnostic
+catalog architectures build; ARM64 execution is unverified. Library source and
+public API are unchanged. This extends focused evidence for the existing
+package; the full catalog and versioned delivery below remain at `ab030df`.
+Current publish directories contain the diagnostic build, while the retained
+archives remain immutable. Push-triggered Actions stay paused. See the current
+checkpoint for exact scope and provenance.
+
 Source `ab030df` uses 1/64-pixel Accordion reveal heights. The focused x64 capture
 passes 48 timelines and six reversal steps under both real Windows motion
 preferences, with zero height/float-angle error. Its 1,160 property samples

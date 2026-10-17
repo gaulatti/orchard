@@ -1,5 +1,36 @@
 # Current native validation checkpoint
 
+## Accordion collection and content continuity
+
+Diagnostic source `f2ceffd` verifies eight operations in both themes and real
+Windows motion preferences: both reorder directions, same-key replacement,
+collection replacement, body growth, changed default ID, removal/reinsertion and
+a new group. All 32 native cases pass with 244 property samples, ten retained
+normal-motion clocks and six resets. Measured height and float-angle errors are
+zero. Body growth retains the clock while natural height changes from 53px to
+113px. Rendered text, UIA names/expansion, keyed identity, load/unload events,
+stale-peer rejection and preference restoration are verified. All 20 damaged
+continuity receipts are rejected. All 164 unit tests pass, including 224 frozen
+source continuity samples and collector/client/reference hash checks.
+
+The diagnostic builds on x64 and ARM64. Its local x64 replay uses the exact DLL
+from the previously verified `0.1.0-ab030df` NuGet package, with SHA-256
+`12319db11740dec7909bcb25b1865965ce71989b1c406a0440c045566c77e8d7`;
+package bytes and both publish-directory DLLs are checked again after replay.
+No library source, public API or consumer contract changes. Raw output is
+`artifacts/current/accordion-continuity-native`; source/runtime provenance is
+`artifacts/current/accordion-continuity-provenance.json`. The versioned package,
+catalog archives and full-suite delivery remain the `ab030df` release below.
+Current publish directories contain the new diagnostic catalog and frozen
+package library; those directories are not the archived catalog build.
+
+Both CI architecture jobs register the focused continuity capture/audits.
+Push-triggered Actions remain paused and no workflow is dispatched. The change
+does not rerun or claim a new full-suite checkpoint. Native ARM64 execution,
+exact static/motion raster, complete customization/lifecycle, scaling, contrast,
+Narrator, performance and both compositions remain open. Inventory remains 65
+in progress, 47 pending and zero accepted.
+
 ## Accordion motion validation
 
 Source `ab030df` quantizes reveal height to Chromium's 1/64-pixel layout
