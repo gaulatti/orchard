@@ -122,8 +122,17 @@ jobs:
         if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: stepper_motion_smoke
         run: ./scripts/smoke-stepper-motion.ps1 -Output artifacts/stepper-motion -ExpectedArchitecture X64
-      - name: Verify DataList source and viewport boundaries
+      - name: Verify Radio Group enabled and reduced Windows motion
         if: ${{ !cancelled() && (steps.stepper_motion_smoke.outcome == 'success' || steps.stepper_motion_smoke.outcome == 'failure') }}
+        id: radio_motion_smoke
+        run: |
+          ./scripts/smoke-radio-motion.ps1 -Output artifacts/radio-motion -ExpectedArchitecture X64
+          node scripts/verify-radio-motion.mjs --native artifacts/radio-motion --output artifacts/radio-motion/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit failed.' }
+          node scripts/test-radio-motion-audit.mjs --native artifacts/radio-motion
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit regression failed.' }
+      - name: Verify DataList source and viewport boundaries
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
         run: |
           foreach ($width in @(1024,639,640)) {
@@ -406,8 +415,17 @@ jobs:
         if: ${{ !cancelled() && (steps.stepper_smoke.outcome == 'success' || steps.stepper_smoke.outcome == 'failure') }}
         id: stepper_motion_smoke
         run: ./scripts/smoke-stepper-motion.ps1 -Output artifacts/stepper-motion -ExpectedArchitecture Arm64
-      - name: Verify native ARM64 DataList source and viewport boundaries
+      - name: Verify Radio Group enabled and reduced Windows motion
         if: ${{ !cancelled() && (steps.stepper_motion_smoke.outcome == 'success' || steps.stepper_motion_smoke.outcome == 'failure') }}
+        id: radio_motion_smoke
+        run: |
+          ./scripts/smoke-radio-motion.ps1 -Output artifacts/radio-motion -ExpectedArchitecture Arm64
+          node scripts/verify-radio-motion.mjs --native artifacts/radio-motion --output artifacts/radio-motion/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit failed.' }
+          node scripts/test-radio-motion-audit.mjs --native artifacts/radio-motion
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit regression failed.' }
+      - name: Verify native ARM64 DataList source and viewport boundaries
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
         run: |
           foreach ($width in @(1024,639,640)) {

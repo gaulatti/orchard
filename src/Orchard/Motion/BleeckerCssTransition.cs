@@ -9,6 +9,9 @@ internal sealed class BleeckerCssTransition<T>(Func<T, T, double, T> interpolate
     private T from = default!, to = default!, reversingStart = default!;
     private double start, duration, reversingFactor = 1;
 
+    internal (double Start, double Duration) Timing => (start, duration);
+    internal (T From,T To) Endpoints => (from,to);
+
     internal bool IsRunning(double time) => initialized && duration > 0 && time - start < duration;
     internal T ValueAt(double time) => !IsRunning(time) ? to :
         interpolate(from, to, easing((time - start) / duration));

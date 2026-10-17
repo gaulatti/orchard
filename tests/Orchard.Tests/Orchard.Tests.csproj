@@ -5,6 +5,9 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="../../samples/Orchard.Catalog/NativeCaptureValidation.cs" Link="NativeCaptureValidation.cs" />
+        <Compile Include="../../src/Orchard/Colors/BleeckerCssColor.cs" Link="BleeckerCssColor.cs" />
+        <None Include="../Reference/RadioMotion.json" Link="Fixtures/RadioMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-radio-motion.cjs" Link="Fixtures/CaptureRadioMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerRadioOption.cs" Link="BleeckerRadioOption.cs" />
         <None Include="../Reference/RadioGroup.json" Link="Fixtures/RadioGroup.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-radio-group.cjs" Link="Fixtures/CaptureRadioGroup.cjs" CopyToOutputDirectory="PreserveNewest" />

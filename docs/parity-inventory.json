@@ -2996,7 +2996,7 @@
       ],
       "windowsImplementation": ["BleeckerRadioGroup", "BleeckerRadioOption"],
       "catalogFixtures": ["samples/Orchard.Catalog/RadioGroupsFixture.xaml"],
-      "regressionTests": ["tests/Orchard.Tests/RadioGroupContractTests.cs", "tests/Reference/RadioGroup.json", "samples/Orchard.Catalog/RadioGroupsFixture.xaml.cs", "samples/Orchard.Catalog/MainWindow.RadioGroups.cs", "scripts/reference/capture-radio-group.cjs", "scripts/verify-radio-group.mjs", "scripts/verify-radio-delivery.mjs", "scripts/test-radio-delivery-audit.mjs", "tests/PackageConsumer/MainWindow.RadioGroups.cs"],
+      "regressionTests": ["tests/Orchard.Tests/RadioGroupContractTests.cs", "tests/Reference/RadioGroup.json", "samples/Orchard.Catalog/RadioGroupsFixture.xaml.cs", "samples/Orchard.Catalog/MainWindow.RadioGroups.cs", "scripts/reference/capture-radio-group.cjs", "scripts/verify-radio-group.mjs", "tests/Orchard.Tests/RadioMotionReferenceTests.cs", "tests/Reference/RadioMotion.json", "scripts/reference/capture-radio-motion.cjs", "samples/Orchard.Catalog/MainWindow.RadioMotion.cs", "scripts/verify-radio-motion.mjs", "scripts/test-radio-motion-audit.mjs", "scripts/verify-radio-delivery.mjs", "scripts/test-radio-delivery-audit.mjs", "tests/PackageConsumer/MainWindow.RadioGroups.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Complete source customization/error/lifecycle and motion/reversal matrices; see docs/radio-group.md",

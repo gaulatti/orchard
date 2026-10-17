@@ -63,6 +63,34 @@ frames 147,819 pixels differ; exact raster parity remains unverified. The
 comparison uses the entire client, zero masks, zero pixel tolerance and no
 resampling. Normal motion is not verified by this reduced-motion run.
 
+The separate motion audit freezes 52 browser timelines and checks actual
+native ring/dot properties with Windows animations enabled and reduced. It
+verifies 190ms ring and 220ms dot timing, 156 frozen enabled-motion samples,
+state/theme transitions, two mid-transition disable cases and palette changes
+under both preferences. Disabling an option changes its whole-option opacity
+immediately and retains unchanged stroke/dot clocks. Theme changes preserve
+the ring transition; dot fill changes immediately, as in the source.
+
+Selected theme endpoints are legacy RGB CSS colors and interpolate in encoded
+sRGB. The source's translucent off/hover `color-mix(in oklab, ...)` endpoints
+promote mixed transitions to premultiplied Oklab. `BleeckerCssColor` retains that
+space through interruptions until the target is reached. Shared Oklab conversion
+uses Chromium/Skia's ICC 16.16 sRGB-to-XYZ D50 matrix and Bradford adaptation,
+rather than the direct-sRGB approximation. See the [color conversion notes](css-colors.md).
+
+`scripts/smoke-radio-motion.ps1` exercises both real Windows animation preferences
+and restores the original setting in `finally`, including on failure. It uses
+the same extracted preference helper as the Stepper harness. The `radio-motion`
+catalog mode records actual paint timestamps, transition clocks, ring brushes
+and dot transforms; it does not override the renderer's clock.
+`node scripts/verify-radio-motion.mjs --native <wrapper-output> --output <audit>`
+checks the browser recipe, native trajectory, retained clocks and palette tests.
+`scripts/test-radio-motion-audit.mjs --native <wrapper-output>` proves that
+altered color/scale, missing frames, lost clocks, failed palette updates and
+unrestored Windows preferences are rejected. Geometry/pixel tolerances are
+unchanged. Numeric motion verification does not establish frame-by-frame raster
+parity, full reversal/customization/lifecycle coverage or platform acceptance.
+
 The intrinsic text measure retains DirectWrite shaping, font fallback and
 consumer language. It converts nominal glyph advances to 16.16 fixed point,
 rounds OpenType positioning separately and allocates each shaped run in 1/64px

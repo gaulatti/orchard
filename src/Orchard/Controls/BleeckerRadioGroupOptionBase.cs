@@ -12,7 +12,7 @@ internal abstract class BleeckerRadioGroupOptionBase:Button
     private readonly UISettings settings=new();
     private readonly AccessibilitySettings accessibility=new();
     private readonly System.Diagnostics.Stopwatch clock=System.Diagnostics.Stopwatch.StartNew();
-    private readonly BleeckerCssTransition<(double L,double A,double B,double Alpha)> strokeMotion=new(BleeckerColorMix.MixPremultiplied);
+    private readonly BleeckerCssTransition<BleeckerCssColor> strokeMotion=new(BleeckerCssColor.Mix);
     private readonly BleeckerCssTransition<double> dotMotion=new((a,b,t)=>a+(b-a)*t);
     private readonly SolidColorBrush stroke=new();
     private readonly BleeckerDisabledPointer pointer;
@@ -25,14 +25,20 @@ internal abstract class BleeckerRadioGroupOptionBase:Button
     private string title="";
     private string? details;
     private bool selected,over,rendering;
+    internal double PaintedAt { get; private set; }
+    internal bool IsAnimating=>rendering;
+    internal (double Start,double Duration) StrokeTiming=>strokeMotion.Timing;
+    internal (double Start,double Duration) DotTiming=>dotMotion.Timing;
+    internal (BleeckerCssColor From,BleeckerCssColor To) StrokeEndpoints=>strokeMotion.Endpoints;
+    internal (double From,double To) DotEndpoints=>dotMotion.Endpoints;
     internal object TextMeasurements=>new{label= new{labelWidth.RawWidth,labelWidth.RegionWidths,labelWidth.GlyphRuns},description=new{descriptionWidth.RawWidth,descriptionWidth.RegionWidths,descriptionWidth.GlyphRuns}};
     internal BleeckerRadioGroupOptionBase()
     {
         pointer=new(this,()=>root,SetOver,observeEnabled:true);
         Loaded+=(_,_)=>{settings.ColorValuesChanged-=Colors;settings.ColorValuesChanged+=Colors; if(OperatingSystem.IsWindowsVersionAtLeast(10,0,19041)){settings.AnimationsEnabledChanged-=Animations;settings.AnimationsEnabledChanged+=Animations;} pointer.Update(); pointer.ReconcileLifecycle(); ObservePalette(); Paint(false);};
         Unloaded+=(_,_)=>{if(IsLoaded)return; settings.ColorValuesChanged-=Colors;if(OperatingSystem.IsWindowsVersionAtLeast(10,0,19041))settings.AnimationsEnabledChanged-=Animations;pointer.Detach();StopObservingPalette();Stop();};
-        ActualThemeChanged+=(_,_)=>Paint(false);
-        RegisterPropertyChangedCallback(IsEnabledProperty,(_,_)=>{pointer.Update();Paint(false);});
+        ActualThemeChanged+=(_,_)=>Paint(true);
+        RegisterPropertyChangedCallback(IsEnabledProperty,(_,_)=>{pointer.Update();Paint(true);});
         RegisterPropertyChangedCallback(TemplateProperty,(_,_)=>{if(Template is null){pointer.Detach();StopObservingPalette();Stop();root=null;ring=dot=null;label=description=null;probes=[];}});
     }
     protected override void OnApplyTemplate()
@@ -68,7 +74,7 @@ internal abstract class BleeckerRadioGroupOptionBase:Button
         var width=30+textWidth;var result=base.MeasureOverride(new(width,available.Height));return new(width,result.Height);
     }
     private void SetOver(bool value){if(over==value)return;over=value;Paint(true);}
-    private void Colors(UISettings sender,object args)=>DispatcherQueue.TryEnqueue(()=>Paint(false));
+    private void Colors(UISettings sender,object args)=>DispatcherQueue.TryEnqueue(()=>Paint(true));
     private void Animations(UISettings sender,UISettingsAnimationsEnabledChangedEventArgs args)=>DispatcherQueue.TryEnqueue(()=>Paint(false));
     private void Stop(){CompositionTarget.Rendering-=Frame;rendering=false;}
     private void ObservePalette()
@@ -88,13 +94,14 @@ internal abstract class BleeckerRadioGroupOptionBase:Button
         if(ring is null||dot is null||root is null||probes.Length!=3)return;
         var brush=(SolidColorBrush)probes[selected?2:over?1:0].Foreground;
         var time=clock.Elapsed.TotalMilliseconds;var moving=animate&&IsLoaded&&settings.AnimationsEnabled&&!accessibility.HighContrast;
-        strokeMotion.Retarget(BleeckerColorMix.Premultiply((brush.Color.R,brush.Color.G,brush.Color.B,brush.Color.A/255d*brush.Opacity)),time,BleeckerTokens.Durations["control"],moving);
+        strokeMotion.Retarget(BleeckerCssColor.FromRgba((brush.Color.R,brush.Color.G,brush.Color.B,brush.Color.A/255d*brush.Opacity),selected),time,BleeckerTokens.Durations["control"],moving);
         dotMotion.Retarget(selected?1:0,time,BleeckerTokens.Durations["surface"],moving);root.Opacity=IsEnabled?1:.5;Draw(time);
         if(strokeMotion.IsRunning(time)||dotMotion.IsRunning(time)){if(!rendering){CompositionTarget.Rendering+=Frame;rendering=true;}}else Stop();
     }
     private void Draw(double time)
     {
-        var color=BleeckerColorMix.EncodePremultiplied(strokeMotion.ValueAt(time));stroke.Color=Windows.UI.Color.FromArgb(255,color.R,color.G,color.B);stroke.Opacity=color.Alpha;
+        PaintedAt=time;
+        var color=strokeMotion.ValueAt(time).Encode();stroke.Color=Windows.UI.Color.FromArgb(255,color.R,color.G,color.B);stroke.Opacity=color.Alpha;
         if(dot is not null)dot.RenderTransform=new ScaleTransform{ScaleX=dotMotion.ValueAt(time),ScaleY=dotMotion.ValueAt(time)};
     }
     private void Frame(object? sender,object args){var time=clock.Elapsed.TotalMilliseconds;Draw(time);if(!strokeMotion.IsRunning(time)&&!dotMotion.IsRunning(time))Stop();}

@@ -23,6 +23,7 @@
     </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="../../tests/Reference/RadioGroup.json" LogicalName="Orchard.Catalog.Reference.RadioGroup.json" />
+        <EmbeddedResource Include="../../tests/Reference/RadioMotion.json" LogicalName="Orchard.Catalog.Reference.RadioMotion.json" />
         <EmbeddedResource Include="../../tests/Reference/DateControls.json" LogicalName="Orchard.Catalog.Reference.DateControls.json" />
         <EmbeddedResource Include="../../tests/Reference/Textarea.json" LogicalName="Orchard.Catalog.Reference.Textarea.json" />
         <EmbeddedResource Include="../../tests/Reference/TextareaResize.json" LogicalName="Orchard.Catalog.Reference.TextareaResize.json" />
