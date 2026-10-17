@@ -24,6 +24,14 @@ its null field. Native/direct-paste and initial font/layout failures are retaine
 Counts are **61 in progress, 51 pending, zero fully accepted** (54.5% started).
 Push-triggered Actions remain disabled; no hosted acceptance is claimed.
 
+Committed code `c8ac17f` builds for x64 and ARM64. Both libraries match all 6,286
+resolved methods from the runtime-tested candidate; x64 library PRI bytes also
+match. The versioned `0.1.0-textarea-readiness` package contains the committed
+library and is cross-built by a separate fresh ARM64 consumer. Both catalog ZIPs
+have every entry hash checked. See the [artifact identities](textarea-reference.md#versioned-preview-artifacts).
+The fresh x64 runtime predates this metadata-only rebuild and is linked through
+method/resource identity; no additional runtime execution is implied.
+
 ## Textarea source baseline before native implementation
 
 The pending Textarea now has a committed [source contract](textarea-reference.md),

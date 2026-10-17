@@ -21,9 +21,8 @@ There are 60 owned native key actions across the two widths. Each audit rejects
 ten deliberate corruptions of frames, font/paint/line spacing, input ownership,
 consumer binding, UIA text/read-only state and paste results.
 
-The raw comparison covers all 172 whole-client frames: **1,001,057 differing
-pixels** in the earlier paste checkpoint; the strengthened lifecycle run has
-**1,001,348 differing pixels**, absolute RGBA error 56,068,145, without masks or resampling. This is
+The raw comparison covers all 172 whole-client frames: **1,001,348 differing
+pixels**, absolute RGBA error 56,068,145, without masks or resampling. This is
 not raster acceptance. All 125 unit tests, generated tokens and the existing
 focused Input runtime pass. Eight external UIA snapshots cross the owned process boundary
 and expose the native Edit role, name, document text, selection and read-only
@@ -45,6 +44,31 @@ replacing its asset URI with the bare family name discards the custom collection
 The five-control `textarea-font` diagnostic compares both document APIs, the
 custom control, a system font and TextBox. It runs in Light only and is not
 theme acceptance. The ineffective process-private GDI font experiment was removed.
+
+## Versioned preview artifacts
+
+Code source `c8ac17f91206f074a3da1337c2c11178fb9083f9` builds on x64 and ARM64.
+All 6,286 resolved library methods, locals, handlers and exposed interfaces match
+the runtime-tested x64 candidate in both committed builds. The library PRI is
+byte-identical (`4fe2ad0f6dca01891750fae627e42f1d064fdf177b7124306484ce236e38e10a`).
+The fresh x64 consumer runtime above predates this metadata-only rebuild; this
+method/resource audit carries its evidence to the committed package rather than
+claiming another runtime execution.
+
+`artifacts/packages-textarea-readiness/Gaulatti.Orchard.0.1.0-textarea-readiness.nupkg`
+contains the committed library and PRI, with repository commit checked explicitly.
+Package SHA-256:
+`f0bf46559c15a8b1a371857caf1a04990075e3789860d4d520888555b8105b01`.
+A separate fresh ARM64 consumer builds against this final package; its cache is
+removed. It is a cross-build, not native ARM64 runtime evidence.
+
+The complete self-contained catalog directories are archived with every entry
+hash checked: `artifacts/Orchard.Catalog.0.1.0-c8ac17f-x64.zip` (537 entries,
+SHA-256 `5a4a212bb01521f14e7f1b933aa28c1d273e08606a008e7cf410006e626f8c1f`)
+and `artifacts/Orchard.Catalog.0.1.0-c8ac17f-ARM64.zip` (533 entries,
+SHA-256 `68869494d355ee8c5d2787242897792e51c6d0d24503a3359d6dc511d6a99bab`).
+The private receipts are `artifacts/textarea-final-artifact-manifest.json` and
+`artifacts/textarea-readiness-archives.json`. Push Actions remain disabled.
 
 Readiness now comes from the loaded `ContentElement`, rather than a cached flag.
 The independent consumer exposed a loaded control with a false cached flag after
