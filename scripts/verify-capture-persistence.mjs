@@ -33,11 +33,11 @@ for(const [id,width,height] of [['odd-size',17,3],['channel-grid',256,256],['cat
  const matches=actual.opaqueReports.filter(item=>item.id===id);assert.equal(matches.length,1);const sample=matches[0];
  assert.equal(sample.width,width);assert.equal(sample.height,height);assert.equal(sample.repetitions,12);assert.equal(sample.exactWindowsPng,true);
  assert.equal(sample.file,`capture-opaque-${id}.png`);assert.equal(sample.oracleFile,`capture-opaque-${id}-windows.png`);
- const png=await fs.readFile(path.join(native,sample.file)),oracle=await fs.readFile(path.join(native,sample.oracleFile));assert.deepEqual(png,oracle);
+ const png=await fs.readFile(path.join(native,sample.file)),oracle=await fs.readFile(path.join(native,sample.oracleFile));assert.equal(Buffer.compare(png,oracle),0,'Opaque PNG bytes differ from Windows conversion.');
  const image=readRgbaPng(png);assert.equal(image.width,width);assert.equal(image.height,height);
  const expected=Buffer.alloc(width*height*4);
  for(let y=0;y<height;y++)for(let x=0;x<width;x++){const at=(y*width+x)*4;expected[at]=(x*11+y*7)&255;expected[at+1]=(x*37+y*13)&255;expected[at+2]=x&255;expected[at+3]=255;}
- assert.deepEqual(image.rgba,expected);
+ assert.equal(Buffer.compare(image.rgba,expected),0,'Opaque RGBA bytes differ from the original pixels.');
  for(const field of ['windowsMilliseconds','captureMilliseconds'])assert.ok(Number.isFinite(sample[field])&&sample[field]>0);
  opaque.push({id,width,height,repetitions:12,exactWindowsPng:true,rgbaSha256:hash(image.rgba),windowsMilliseconds:sample.windowsMilliseconds,captureMilliseconds:sample.captureMilliseconds});
 }
