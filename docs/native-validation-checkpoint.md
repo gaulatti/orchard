@@ -1,5 +1,52 @@
 # Current native validation checkpoint
 
+## Complete catalog sequence after Input alpha and Metric
+
+Catalog source: `1abca74`. The x64 full sequence passes in **463.2165656 seconds**
+under the unchanged 480-second watchdog. Both appearances complete all 148
+profiled phases. All 1,132 prior PNG names remain, plus twelve Metric frames
+and two Search Input fixture frames: **1,146 PNGs** total. All 174 protected
+Radial Bar/Sunburst **glyph geometry hashes** match; this is not raster parity.
+The audit verifies 2,016 pointer presentation gates, 1,758 owned key actions and
+82 retained native clicks. Maximum presentation gate duration is 229.7422 ms;
+the original two-second per-state deadlines remain unchanged.
+
+The run exposed two stale integration assertions. Mixed-case `iNpUt` must
+return both Input and Search inputs, and all future matching entries, in the
+original registry order; activation now targets the actual Input fixture.
+The disabled Checkbox/Input cursor handover must inspect opaque border RGB
+and fractional opacity after Input's alpha migration. All six stationary
+remounts pass in Light/Dark, with maximum settled duration 122.3765 ms.
+Native No-cursor ownership and two stable rendered observations remain required.
+The original startup and Light remount failures are retained separately.
+
+Metric's 680 native cases, source interaction contract, slot placement/lifecycle
+checks and eight corruption negatives also pass inside the complete sequence.
+All 122 unit tests pass. The library's 6,137 resolved methods/exposed interfaces
+and PRI resource bytes are unchanged from the independently validated `8bc623c`
+package. These corrections affect catalog verification only; that package's
+fresh x64 runtime and ARM64 cross-build evidence remain applicable.
+
+The corrected catalog also cross-builds for ARM64; all 6,137 resolved methods
+and exposed interfaces match its x64 build. Every archive entry is verified.
+Native ARM64 runtime was not run.
+
+| Catalog artifact | SHA-256 |
+| --- | --- |
+| `Orchard.Catalog.0.1.0-1abca74-x64.zip` | `a3e29d66a684b81197132984da526254460ef76cb84fc60a9046b022942d3dd4` |
+| `Orchard.Catalog.0.1.0-1abca74-ARM64.zip` | `5308a8b914fa1d03a08eb43284972d67f7e88bb23366dab4d87805944c5cc10b` |
+
+Evidence: `artifacts/input-alpha-remount-full`,
+`input-alpha-remount-full-audit.json`, `input-alpha-remount-full-profile.json`,
+`metric-in-full-audit.json`, `checkbox-input-alpha-remount-audit.json` and
+`full-sequence-library-method-audit.json`, `full-sequence-architecture-audit.json`
+and `full-sequence-archives.json`. Earlier failed runs are
+`metric-published-full-x64` and `catalog-navigation-matches-full`.
+Full-suite success does not establish exact raster, actual scaling/contrast,
+Narrator, collection performance or native ARM64 acceptance. Inventory remains
+60 in progress, 52 pending and zero accepted. Actions remain paused on push;
+the goal stays active. The wiki remains unavailable.
+
 ## Metric formatting and stable consumer slots
 
 Code source: `8bc623c`. Metric now supplies source Number/Currency/Percent/Compact

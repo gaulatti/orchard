@@ -1,5 +1,13 @@
 # Native Windows runtime evidence
 
+The complete x64 catalog at `1abca74` passes both appearances in 463.2165656
+seconds, retaining all previous capture names and 174 protected glyph geometry
+hashes. It contains 1,146 PNGs, 2,016 stable pointer gates, 1,758 owned key actions
+and 82 native clicks. Metric's full integration audit also passes. The
+navigation multi-match and fractional Input alpha assertions are repaired;
+deadlines are unchanged. See [the current checkpoint](native-validation-checkpoint.md)
+for separate failures, scope, source/package correspondence and remaining gaps.
+
 ## Chart focus ownership repair
 
 Source `4d14c0e` passes the 24-case native Bar/Sankey load/focus regression,
