@@ -8,7 +8,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Shapes;
+using Ellipse=Microsoft.UI.Xaml.Shapes.Ellipse;
 using Orchard;
 
 namespace PackageConsumer;
