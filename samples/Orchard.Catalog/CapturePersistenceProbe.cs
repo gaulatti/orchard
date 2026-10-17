@@ -1,6 +1,8 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Text.Json;
+using Windows.Graphics.Imaging;
 
 namespace Orchard.Catalog;
 
@@ -52,6 +54,40 @@ internal static class CapturePersistenceProbe
             reports.Add(new { id, width, height, inputSha256, file,
                 pngSha256, milliseconds });
         }
+        var opaqueReports = new List<object>();
+        foreach (var (id, width, height) in new[] { ("odd-size", 17, 3), ("channel-grid", 256, 256), ("catalog-size", 1024, 745) })
+        {
+            var pixels = new byte[checked(width * height * 4)];
+            for (var y = 0; y < height; y++)
+            for (var x = 0; x < width; x++)
+            {
+                var at = (y * width + x) * 4;
+                pixels[at] = (byte)x; pixels[at + 1] = (byte)(x * 37 + y * 13);
+                pixels[at + 2] = (byte)(x * 11 + y * 7); pixels[at + 3] = 255;
+            }
+            var oracleFile = $"capture-opaque-{id}-windows.png"; var file = $"capture-opaque-{id}.png";
+            double windowsMilliseconds = 0, captureMilliseconds = 0;
+            const int repetitions = 12;
+            for (var iteration = 0; iteration < repetitions; iteration++)
+            {
+                // Keep the previous Windows conversion/write path as the real
+                // oracle. It cannot call the optimized conversion helper.
+                var watch = Stopwatch.StartNew();
+                var rgba = new byte[pixels.Length];
+                using (var bitmap = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied))
+                using (var straight = SoftwareBitmap.Convert(bitmap, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight))
+                    straight.CopyToBuffer(rgba.AsBuffer());
+                var expected = NativeCapturePng.Encode(rgba, width, height);
+                await File.WriteAllBytesAsync(Path.Combine(folder, oracleFile), expected);
+                windowsMilliseconds += watch.Elapsed.TotalMilliseconds;
+                watch.Restart();
+                await MainWindow.SavePngAsync(Path.Combine(folder, file), pixels, width, height);
+                captureMilliseconds += watch.Elapsed.TotalMilliseconds;
+                var actual = await File.ReadAllBytesAsync(Path.Combine(folder, file));
+                if (!expected.AsSpan().SequenceEqual(actual)) throw new InvalidOperationException($"Opaque capture changed Windows PNG bytes: {id}.");
+            }
+            opaqueReports.Add(new { id, width, height, file, oracleFile, repetitions, windowsMilliseconds, captureMilliseconds, exactWindowsPng = true });
+        }
         var failurePropagated = false;
         try { await MainWindow.SavePngAsync(folder, new byte[4], 1, 1); }
         catch (Exception error) when (error is IOException or UnauthorizedAccessException) { failurePropagated = true; }
@@ -60,7 +96,7 @@ internal static class CapturePersistenceProbe
         {
             format = "orchard-capture-persistence-v1", generator = "premultiplied-grid-v1",
             referenceSha256 = Convert.ToHexString(SHA256.HashData(referenceBytes)).ToLowerInvariant(),
-            matchedFrozenReference = true, immediateFilesRead = true, writeFailurePropagated = failurePropagated, reports
+                matchedFrozenReference = true, immediateFilesRead = true, writeFailurePropagated = failurePropagated, reports, opaqueReports
         }, new JsonSerializerOptions { WriteIndented = true }));
     }
 }

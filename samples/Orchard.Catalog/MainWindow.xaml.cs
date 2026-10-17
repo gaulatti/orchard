@@ -1054,20 +1054,26 @@ public sealed partial class MainWindow : Window
         return new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
     }
 
-    internal static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
+    internal static Task SavePngAsync(string path, byte[] pixels, int width, int height)
     {
         using var save = CatalogRuntimeProfile.Measure("png.total");
-        // Use Windows' own conversion, including its premultiplied-alpha
-        // rounding, then encode losslessly with faster Deflate compression.
+        // Opaque pixels need only a channel swap. Preserve Windows' exact
+        // premultiplied-alpha rounding whenever transparency is present.
         var rgba = new byte[pixels.Length];
         using (CatalogRuntimeProfile.Measure("png.convert"))
         {
-            using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
-            using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
-            straight.CopyToBuffer(rgba.AsBuffer());
+            if (!NativeCapturePixels.TryConvertOpaque(pixels, rgba))
+            {
+                using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
+                using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
+                straight.CopyToBuffer(rgba.AsBuffer());
+            }
         }
         byte[] output;
         using (CatalogRuntimeProfile.Measure("png.encode")) output = NativeCapturePng.Encode(rgba, width, height);
-        using (CatalogRuntimeProfile.Measure("png.write")) await File.WriteAllBytesAsync(path, output);
+        // Persist before returning; capture callers already own their explicit
+        // presentation gates and need no additional UI dispatcher turn here.
+        using (CatalogRuntimeProfile.Measure("png.write")) File.WriteAllBytes(path, output);
+        return Task.CompletedTask;
     }
 }

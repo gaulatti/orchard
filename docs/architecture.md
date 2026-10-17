@@ -14,6 +14,23 @@ new hosted verification evidence while this pause is active. Continue local
 validation and report native ARM64/hosted gaps explicitly. To restore automatic
 push validation, add `push: { branches: [main] }` under the workflow's `on` map.
 
+## Capture persistence
+
+Catalog capture persistence swaps BGRA channels directly when every alpha byte
+is 255. Any transparency retains the existing Windows `SoftwareBitmap`
+conversion and its premultiplied-alpha rounding. The PNG encoder, metadata and
+compression remain unchanged. File writes finish synchronously before the
+capture task returns; input and presentation still use their explicit native
+gates.
+
+The `brush-alpha` diagnostic retains all four frozen PNG/RGBA cases and adds
+36 opaque comparisons with the previous Windows conversion/write path. It
+checks complete files immediately after return, exact PNG bytes, decoded RGBA
+and write-error propagation. Run `scripts/verify-capture-persistence.mjs` against
+its output. Paired persistence timings are diagnostic; the complete native
+sequence must still pass its unchanged watchdog, input and protected-glyph
+checks before a release.
+
 ## Platform ownership
 
 The shared chart renderer reconciles lifecycle events with current native

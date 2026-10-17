@@ -96,6 +96,7 @@
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../samples/Orchard.Catalog/NativeAbsolutePointer.cs" Link="NativeAbsolutePointer.cs" />
         <Compile Include="../../samples/Orchard.Catalog/NativeCapturePng.cs" Link="NativeCapturePng.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/NativeCapturePixels.cs" Link="NativeCapturePixels.cs" />
         <Compile Include="../../src/Orchard/Controls/IBleeckerDataTableFilterSource.cs" Link="IBleeckerDataTableFilterSource.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerDataTableValue.cs" Link="BleeckerDataTableValue.cs" />
         <Compile Include="../../samples/Orchard.Catalog/ToolbarFilterTable.cs" Link="ToolbarFilterTable.cs" />
