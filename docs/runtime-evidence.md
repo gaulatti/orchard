@@ -1,12 +1,19 @@
 # Native Windows runtime evidence
 
-Accordion motion now uses 1/64-pixel reveal heights. The focused x64 capture
+Source `ab030df` uses 1/64-pixel Accordion reveal heights. The focused x64 capture
 passes 48 timelines and six reversal steps under both real Windows motion
-preferences, with zero height/float-angle error. Its 1,164 property samples
-include 168 intermediate background paints; all 768 frozen browser background
-samples and 22 negative audit mutations pass. All 162 unit tests pass.
-Fresh full-suite/package/ARM64 validation is pending for this candidate; the
-versioned delivery below is the previous verified source. Exact motion/static
+preferences, with zero height/float-angle error. Its 1,160 property samples
+include 169 intermediate background paints; all 768 frozen browser background
+samples and 23 negative audit mutations pass. All 162 unit tests pass.
+Both catalog architectures, the isolated x64 package runtime and the ARM64
+consumer build pass; temporary source/feed/cache cleanup is verified. The full
+x64 replay passes all 156 phases, 1,154 prior captures and 174 protected glyph
+hashes in 474.0696258 seconds under the unchanged 480-second watchdog. All input
+and delivery/integration audits pass; every entry in both versioned ZIPs matches
+publish output. The 60-frame layout audit retains zero geometry error and the
+same 951,926 differing source pixels. The first hover-readiness fixture failure is
+preserved and corrected by requiring delivered hover plus completed animation.
+The versioned delivery below is the previous verified source. Exact motion/static
 raster and complete platform acceptance remain open. See the current checkpoint.
 
 Source `5a115e5` passes 60 source/native Accordion layout frames and 108

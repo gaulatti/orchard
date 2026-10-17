@@ -2,20 +2,44 @@
 
 ## Accordion motion validation
 
-The motion change quantizes reveal height to Chromium's 1/64-pixel layout
+Source `ab030df` quantizes reveal height to Chromium's 1/64-pixel layout
 units. The retained pre-fix capture differs by up to 0.015625px. The corrected
-x64 capture at `artifacts/current/accordion-motion-native` passes 48 timelines,
-six successive reversal steps, 1,164 property samples and 168 intermediate
+x64 capture at `artifacts/current/accordion-motion-runtime/motion` passes 48 timelines,
+six successive reversal steps, 1,160 property samples and 169 intermediate
 background paints. Height and float-projected angle errors are zero. The audit
 also verifies 768 frozen browser background samples, source endpoints and clock
-durations; all 22 damaged motion receipts are rejected. All 162 unit tests pass,
+durations; all 23 damaged motion receipts are rejected. All 162 unit tests pass,
 including 384 frozen expansion samples and 42 reversal samples. Both real OS
 preferences are restored. The full acceptance inventory remains unchanged.
 
 The motion fixture is registered alongside the existing Accordion checks for
-both CI architectures. Push-triggered Actions remain paused. The candidate's
-fresh package, full catalog replay and ARM64 build still require validation;
-the versioned delivery below remains the previously verified baseline. Exact
+both CI architectures. Push-triggered Actions remain paused. Both catalog
+architectures build. Package `0.1.0-ab030df` passes the full isolated x64
+Light/Dark consumer and ARM64 consumer build, with matching library bytes,
+existing Date regressions and temporary source/feed/cache cleanup. Its package
+SHA-256 is `a7552d7217f7951692f6acbee909ef88cd2f3082a5fdee7238adb9e95c8341e2`;
+the package, both consumers and full x64 catalog library match at
+`12319db11740dec7909bcb25b1865965ce71989b1c406a0440c045566c77e8d7`.
+
+The full x64 replay at `artifacts/current/native-full-accordion-motion` passes
+all 156 phases and all 1,154 prior captures in 474.0696258 seconds under the
+unchanged 480-second limit. It retains 174 protected chart glyph hashes, 2,040
+pointer gates, 1,778 owned key actions, 96 routed clicks and both Date closing
+pairs. Accordion/Radio delivery and Textarea/Date integration audits pass; the
+original Windows preference is restored. The fresh 60-frame, 108-row source
+matrix retains zero geometry error and the same 951,926 differing pixels with
+zero masks/tolerance/resampling. Every ZIP entry matches publish output:
+
+| Artifact under `artifacts/current` | Files | SHA-256 |
+| --- | --- | --- |
+| `Orchard.Catalog.0.1.0-ab030df-x64.zip` | 537 | `d3977a4bdef43b080d3425f1df4b314826b257ede9130f63a389fcf812b25d28` |
+| `Orchard.Catalog.0.1.0-ab030df-ARM64.zip` | 533 | `628895cacb3b2efbabb609476990e2b8174de5ed0bfcac12110441bebacfeb32` |
+
+The first fresh motion replay caught a fixture
+baseline before the delivered hover state had settled; that receipt is retained
+at `artifacts/current/accordion-motion-first-replay`. The corrected fixture
+requires the requested hover state and stopped animation before and after
+presentation. No geometry, paint, input or watchdog threshold changed. Exact
 static/motion raster parity and the full platform/accessibility/performance
 matrix remain open.
 

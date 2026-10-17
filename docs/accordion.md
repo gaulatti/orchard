@@ -68,9 +68,9 @@ client pixels to the frozen source. Both architecture jobs register these checks
 push-triggered Actions remain paused. The independent x64 package consumer passes
 both themes, including native hold/release behavior, live metadata/templates,
 content retention, stale/disabled guards and independent actions. The ARM64
-consumer build passes. Version `0.1.0-5a115e5` and both catalog architecture builds
+consumer build passes. Version `0.1.0-ab030df` and both catalog architecture builds
 are verified; temporary consumers are removed. The full x64 catalog passes 156
-phases and 1,154 captures in 477.986485 seconds, retaining all prior captures and
+phases and 1,154 captures in 474.0696258 seconds, retaining all prior captures and
 174 protected chart glyph hashes. See the current checkpoint for hashes.
 Native ARM64 execution and the remaining platform/motion/raster matrix must be
 verified before acceptance.
@@ -104,6 +104,7 @@ Run the reference collector from the repository root:
 
 ```powershell
 node scripts/reference/capture-accordion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --output artifacts/current/accordion-source
+node scripts/reference/capture-accordion-motion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-motion-source
 ```
 
 The source directory is the pinned Bleecker archive with its `node_modules` and
