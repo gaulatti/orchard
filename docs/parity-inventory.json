@@ -1746,7 +1746,12 @@
       ],
       "windowsImplementation": [],
       "catalogFixtures": [],
-      "regressionTests": [],
+      "regressionTests": [
+        "tests/Orchard.Tests/DateControlsReferenceTests.cs",
+        "tests/Reference/DateControls.json",
+        "scripts/reference/capture-date-controls.cjs",
+        "scripts/reference/date-controls-client.tsx"
+      ],
       "status": "pending",
       "remainingGaps": [
         "Implement full pinned contract with native Windows conventions",
@@ -2344,7 +2349,12 @@
       ],
       "windowsImplementation": [],
       "catalogFixtures": [],
-      "regressionTests": [],
+      "regressionTests": [
+        "tests/Orchard.Tests/DateControlsReferenceTests.cs",
+        "tests/Reference/DateControls.json",
+        "scripts/reference/capture-date-controls.cjs",
+        "scripts/reference/date-controls-client.tsx"
+      ],
       "status": "pending",
       "remainingGaps": [
         "Implement full pinned contract with native Windows conventions",

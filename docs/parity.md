@@ -8,6 +8,10 @@ resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
 Counts are 61 in progress, 51 pending and zero fully accepted.
 
+The pending date controls now have a [pinned browser contract](date-controls-reference.md):
+Calendar, Date Picker and Date Range Picker share 188 measured states and 48
+trusted interaction sequences. Native implementation and acceptance remain open.
+
 Visual acceptance requires every component to match its Bleecker reference across every variant, size, theme and applicable interaction state. Compare typography, spacing, dimensions, colors, borders, radii, icons and motion against the rendered reference. Windows control defaults must not override the branded appearance, including nested popups and disabled/focus states. Preserve the explicitly required Windows contrast-color adaptation. A mismatch is an open acceptance gap, never an approved platform substitution.
 
 | Reference | Commit |

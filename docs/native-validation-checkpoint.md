@@ -1,5 +1,21 @@
 # Current native validation checkpoint
 
+## Date-control browser baseline
+
+The pending date controls have a [source contract](date-controls-reference.md)
+with 188 standards-mode Light/Dark frames at 320/640px and 48 trusted browser
+input sequences. These cover controlled selection, month retention/remount,
+timestamp bounds, disabled predicates, picker focus/dismissal, range clearing,
+presets and both DST boundaries. Six new reference tests bring the suite to
+136 passing tests; tokens pass. Every source PNG matches its frozen hash.
+Calendar, Date Picker and Date Range Picker have no native implementation yet;
+inventory remains 61 in progress, 51 pending and zero accepted.
+
+This changes reference tooling, tests and documentation. The library/catalog
+binaries and versioned `3a0e8e1` artifacts below remain the last runtime-verified
+deliverables; their source identity and previous verification scope are retained.
+Push-triggered Actions stay paused. Native date-control implementation is next.
+
 ## Regenerated deliverables after the 2026-10-17 reset
 
 Source `3a0e8e16f5f6c2ad18c3ba2448f2c81e803827a5` includes the chart

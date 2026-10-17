@@ -4,6 +4,10 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/DateControls.json" Link="Fixtures/DateControls.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-date-controls.cjs" Link="Fixtures/CaptureDateControls.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/date-controls-client.tsx" Link="Fixtures/DateControlsClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/date-controls-tooling-lock.json" Link="Fixtures/DateControlsToolingLock.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/Textarea.json" Link="Fixtures/Textarea.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/TextareaResize.json" Link="Fixtures/TextareaResize.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/TextareaLimits.json" Link="Fixtures/TextareaLimits.json" CopyToOutputDirectory="PreserveNewest" />
