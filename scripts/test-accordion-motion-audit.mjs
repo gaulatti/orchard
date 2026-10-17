@@ -24,6 +24,7 @@ try{
   ['enabled/accordion-motion.json',data=>hover(data).frames.find(rows=>rows[0].BackgroundOpacity>0&&rows[0].BackgroundOpacity<.3)[0].Background='#FF000000'],
   ['enabled/accordion-motion.json',data=>hover(data).immediate[0].BackgroundDuration=200],
   ['enabled/accordion-motion.json',data=>hover(data).before[0].BackgroundOpacity=.1],
+  ['enabled/accordion-motion.json',data=>data.reports.find(row=>row.kind==='hover'&&row.from==='first').before[0].Hovered=false],
   ['enabled/accordion-motion.json',data=>hover(data).frames=[]],
   ['enabled/accordion-motion.json',data=>expansion(data).frames=Array(4).fill(expansion(data).after)],
   ['enabled/accordion-motion.json',data=>data.reports[1]=data.reports[0]],

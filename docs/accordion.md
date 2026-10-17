@@ -84,6 +84,9 @@ the audit checks that exact float projection separately from the eased fraction.
 Three successive reversals per theme retain the CSS shortened durations and
 continuous values. The fixture records real presentation frames and actual
 layout, clip, transform and brush properties without substituting a test clock.
+Baseline readiness requires the delivered native hover state and completed
+animation, then rechecks both after presentation. The first fresh replay's
+readiness failure is retained at `artifacts/current/accordion-motion-first-replay`.
 
 `smoke-accordion.ps1` also runs `smoke-accordion-motion.ps1` under both real
 Windows preferences. `verify-accordion-motion.mjs` verifies all frozen browser
