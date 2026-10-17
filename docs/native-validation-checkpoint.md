@@ -1,20 +1,34 @@
 # Current native validation checkpoint
 
-## Date-control browser baseline
+## Native date-control preview
 
-The pending date controls have a [source contract](date-controls-reference.md)
+The date controls have a [native preview and source contract](date-controls-reference.md)
 with 188 standards-mode Light/Dark frames at 320/640px and 48 trusted browser
 input sequences. These cover controlled selection, month retention/remount,
 timestamp bounds, disabled predicates, picker focus/dismissal, range clearing,
-presets and both DST boundaries. Six new reference tests bring the suite to
-136 passing tests; tokens pass. Every source PNG matches its frozen hash.
-Calendar, Date Picker and Date Range Picker have no native implementation yet;
-inventory remains 61 in progress, 51 pending and zero accepted.
+presets and both DST boundaries. Reference/model/resource checks now total
+141 passing tests; tokens pass. Every source PNG matches its frozen hash.
+`BleeckerCalendar`, `BleeckerDatePicker` and `BleeckerDateRangePicker` implement
+controlled requests, timestamp bounds, local date strings and presets, native
+day Toggle/trigger ExpandCollapse automation, owned popup dismissal and focus.
+The registered Dates fixture follows Textareas. Inventory is 63 in progress,
+49 pending and zero accepted (56.3% started, not complete).
 
-This changes reference tooling, tests and documentation. The library/catalog
-binaries and versioned `3a0e8e1` artifacts below remain the last runtime-verified
-deliverables; their source identity and previous verification scope are retained.
-Push-triggered Actions stay paused. Native date-control implementation is next.
+The focused native runner checks 132 Calendar state frames at 320/640px in
+Light/Dark, plus controlled binding, four-row months, selection/clear, Escape,
+outside dismissal, rejected requests, live month retention/remount, range bounds
+and keyed preset replacement. Lifecycle checks cover disable, template replacement,
+stale automation and unmount. `scripts/verify-date-controls.mjs` independently
+audits geometry/state/names and real input receipts. Picker/Range's complete
+source geometry and paint matrix, exact raster/shadow/motion, remaining custom
+content/error paths, real contrast/Narrator/scaling and native ARM64 execution
+remain unaccepted.
+
+The normal project publish directories contain the current date candidate.
+The versioned `3a0e8e1` archives below retain their original source identity;
+they must not be confused with the newly built publish directories. Full catalog,
+independent consumer and versioned date-preview validation is tracked separately.
+Push-triggered Actions stay paused; no workflow is dispatched.
 
 ## Regenerated deliverables after the 2026-10-17 reset
 

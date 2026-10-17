@@ -4,6 +4,7 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="../../src/Orchard/Controls/BleeckerDates.cs" Link="BleeckerDates.cs" />
         <None Include="../Reference/DateControls.json" Link="Fixtures/DateControls.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-date-controls.cjs" Link="Fixtures/CaptureDateControls.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/date-controls-client.tsx" Link="Fixtures/DateControlsClient.tsx" CopyToOutputDirectory="PreserveNewest" />

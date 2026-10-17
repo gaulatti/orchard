@@ -1,5 +1,13 @@
 # Catalog navigation
 
+**Dates** follows Textareas and precedes Keyboard. It includes a controlled
+Calendar, normal and disabled Date Pickers, a Date Range Picker with presets,
+and the nine public date text/control styles. Its full-sequence check drives
+three consumer updates with native mouse input in each theme. The focused
+`-Component date-controls` runner covers the frozen Calendar state matrix and
+picker/range interaction and lifecycle contracts; see
+[date controls and acceptance gaps](date-controls-reference.md).
+
 **Metrics** follows Stat cards. It includes source number/currency/percent/compact
 formats, missing values, constrained text and original rich/template slots.
 Focused `-Component metric` compares rendered text and accessibility with the

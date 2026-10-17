@@ -22,7 +22,16 @@
     "BleeckerLargeToggleStyle": "TogglesFixture.xaml",
     "BleeckerOutlineToggleStyle": "TogglesFixture.xaml",
     "BleeckerSmallOutlineToggleStyle": "TogglesFixture.xaml",
-    "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml"
+    "BleeckerLargeOutlineToggleStyle": "TogglesFixture.xaml",
+    "BleeckerDatePrimaryTextStyle": "DateControlsFixture.xaml",
+    "BleeckerDateSecondaryTextStyle": "DateControlsFixture.xaml",
+    "BleeckerCalendarHeadingStyle": "DateControlsFixture.xaml",
+    "BleeckerCalendarWeekdayStyle": "DateControlsFixture.xaml",
+    "BleeckerDateRangeLabelStyle": "DateControlsFixture.xaml",
+    "BleeckerCalendarDayStyle": "DateControlsFixture.xaml",
+    "BleeckerDateTriggerStyle": "DateControlsFixture.xaml",
+    "BleeckerRangeDateTriggerStyle": "DateControlsFixture.xaml",
+    "BleeckerDateClearStyle": "DateControlsFixture.xaml"
   },
   "utilities": {
     "BleeckerChartTheme": "ChartThemesFixture.xaml"
@@ -120,6 +129,9 @@
     "BleeckerToggleGroup": "ToggleGroupsFixture.xaml",
     "BleeckerToggleGroupItem": "ToggleGroupsFixture.xaml",
     "BleeckerDataTableSelectFilter": "DataTableFiltersFixture.xaml",
-    "BleeckerSelectOption": "DataTableFiltersFixture.xaml"
+    "BleeckerSelectOption": "DataTableFiltersFixture.xaml",
+    "BleeckerCalendar": "DateControlsFixture.xaml",
+    "BleeckerDatePicker": "DateControlsFixture.xaml",
+    "BleeckerDateRangePicker": "DateControlsFixture.xaml"
   }
 }

@@ -1744,19 +1744,31 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
+      "windowsImplementation": [
+        "BleeckerDateRangePicker",
+        "BleeckerDateRange",
+        "BleeckerDatePreset",
+        "BleeckerDateRangeRequestedEventArgs"
+      ],
+      "catalogFixtures": [
+        "DateControlsFixture"
+      ],
       "regressionTests": [
         "tests/Orchard.Tests/DateControlsReferenceTests.cs",
         "tests/Reference/DateControls.json",
         "scripts/reference/capture-date-controls.cjs",
-        "scripts/reference/date-controls-client.tsx"
+        "scripts/reference/date-controls-client.tsx",
+        "tests/Orchard.Tests/DateModelTests.cs",
+        "samples/Orchard.Catalog/MainWindow.DateControls.cs",
+        "samples/Orchard.Catalog/DateControlsFixture.xaml.cs",
+        "scripts/verify-date-controls.mjs",
+        "tests/PackageConsumer/MainWindow.Dates.cs"
       ],
-      "status": "pending",
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Verify the complete Picker/Range source geometry and paint matrix, long content, constrained overflow, exact glyph raster, selected-day shadow and normal-motion timing",
+        "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
+        "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; independent package and full catalog evidence must match the final source revision"
       ]
     },
     {
@@ -2347,19 +2359,30 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
+      "windowsImplementation": [
+        "BleeckerCalendar",
+        "BleeckerDatePicker",
+        "BleeckerDateRequestedEventArgs"
+      ],
+      "catalogFixtures": [
+        "DateControlsFixture"
+      ],
       "regressionTests": [
         "tests/Orchard.Tests/DateControlsReferenceTests.cs",
         "tests/Reference/DateControls.json",
         "scripts/reference/capture-date-controls.cjs",
-        "scripts/reference/date-controls-client.tsx"
+        "scripts/reference/date-controls-client.tsx",
+        "tests/Orchard.Tests/DateModelTests.cs",
+        "samples/Orchard.Catalog/MainWindow.DateControls.cs",
+        "samples/Orchard.Catalog/DateControlsFixture.xaml.cs",
+        "scripts/verify-date-controls.mjs",
+        "tests/PackageConsumer/MainWindow.Dates.cs"
       ],
-      "status": "pending",
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Verify the complete Picker/Range source geometry and paint matrix, long content, constrained overflow, exact glyph raster, selected-day shadow and normal-motion timing",
+        "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
+        "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; independent package and full catalog evidence must match the final source revision"
       ]
     },
     {

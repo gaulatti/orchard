@@ -14,7 +14,9 @@ assert.equal(profile[0].kind,'start');assert.equal(profile.at(-1).kind,'end');as
 const starts=profile.filter(row=>row.kind==='phase-start');
 for(const theme of['Light','Dark']){
  const phases=starts.filter(row=>row.theme===theme).map(row=>row.phase),index=phases.indexOf('TextareasFixture');assert(index>0);
- assert.equal(phases[index-1],'InputsFixture');assert.equal(phases[index+1],'KeyboardFixture');assert.equal(phases.filter(p=>p==='TextareasFixture').length,1);
+ assert.equal(phases[index-1],'InputsFixture');assert.equal(phases[index+1],'DateControlsFixture');assert.equal(phases[index+2],'KeyboardFixture');assert.equal(phases.filter(p=>p==='TextareasFixture').length,1);
+ assert.equal(phases.filter(p=>p==='DateControlsFixture').length,1);
+ const dates=await read(native,`dates-catalog-${theme}.json`);assert.equal(dates.passed,true);assert.equal(dates.consumerUpdates,3);assert.equal(dates.popupClosed,true);assert(pngs.includes(`dates-${theme}.png`));
 }
 let moves=0,gates=0,keys=0,clicks=0;
 for(const file of files.filter(name=>name.endsWith('-desktop.json'))){

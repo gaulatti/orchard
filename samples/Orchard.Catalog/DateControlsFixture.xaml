@@ -1,0 +1,20 @@
+<UserControl x:Class="Orchard.Catalog.DateControlsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Dates" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Consumer-owned selection, local dates and calendar-day presets." Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerCalendar x:Name="CalendarSample" Width="280" HorizontalAlignment="Left" AutomationProperties.Name="Publication calendar"/>
+  <orchard:BleeckerDatePicker x:Name="PickerSample" Placeholder="Choose publication date" AutomationProperties.Name="Publication date"/>
+  <orchard:BleeckerDatePicker IsEnabled="False" Placeholder="Unavailable date"/>
+  <orchard:BleeckerDateRangePicker x:Name="RangeSample"/>
+  <TextBlock Text="Shared date styles" Style="{StaticResource BleeckerHeadingStyle}" FontSize="18"/>
+  <TextBlock Text="Primary date caption" Style="{StaticResource BleeckerDatePrimaryTextStyle}"/>
+  <TextBlock Text="Placeholder caption" Style="{StaticResource BleeckerDateSecondaryTextStyle}"/>
+  <TextBlock Text="October 2026" Style="{StaticResource BleeckerCalendarHeadingStyle}"/>
+  <TextBlock Text="SU" Style="{StaticResource BleeckerCalendarWeekdayStyle}"/>
+  <TextBlock Text="FROM" Style="{StaticResource BleeckerDateRangeLabelStyle}"/>
+  <ToggleButton Content="17" Width="40" Style="{StaticResource BleeckerCalendarDayStyle}"/>
+  <Button Content="Pick a date" Style="{StaticResource BleeckerDateTriggerStyle}"/>
+  <Button Content="Start date" Style="{StaticResource BleeckerRangeDateTriggerStyle}"/>
+  <Button Content="Clear date" Style="{StaticResource BleeckerDateClearStyle}"/>
+ </StackPanel>
+</UserControl>

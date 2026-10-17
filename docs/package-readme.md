@@ -6,6 +6,14 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerCalendar` and `BleeckerDatePicker` expose controlled `Value`, `MinDate`,
+`MaxDate` and `DisabledDates`. Handle `DateRequested` and update the consumer
+value to accept selection or clearing. `BleeckerDateRangePicker` exposes a
+`BleeckerDateRange` with local `From`/`To` strings, `Presets` and `RangeRequested`.
+Handle its request to accept a new record. The picker popup supports native
+keyboard input, Escape, outside dismissal and trigger focus restoration.
+Complete source visual and Windows accessibility/platform acceptance remains open.
+
 `BleeckerTextarea` previews native multiline plain-text editing with `Text`,
 `InputSize`, `Rows`, `IsReadOnly`, `IsError` and nullable `IsInvalid`. It retains
 the bundled font asset, native selection/undo and a vertically resizable layout.

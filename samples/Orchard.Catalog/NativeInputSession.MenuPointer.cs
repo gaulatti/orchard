@@ -12,6 +12,8 @@ internal sealed partial class NativeInputSession
     // MenuFlyoutItem can close its popup before XAML routes PointerReleased.
     // Observe the actual island's press/release without changing routed input.
     internal Task ClickMenuItemSourceAsync(FrameworkElement target,string id)=>PointerSourceClickAsync(target,id,false,null);
+    // Calendar selection and clear actions can also unmount during release.
+    internal Task ClickClosingSurfaceSourceAsync(FrameworkElement target,string id)=>PointerSourceClickAsync(target,id,false,null);
 
     internal async Task OpenContextPointerAsync(Control target,MenuFlyout menu,string id,Point position)
     {

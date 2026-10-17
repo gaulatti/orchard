@@ -1,8 +1,9 @@
 # Calendar and date-control source contract
 
-Date Picker and Date Range Picker remain **pending** in the fixed inventory.
-This checkpoint freezes their browser producer contract before native
-implementation. It does not establish Windows runtime or visual acceptance.
+`BleeckerCalendar`, `BleeckerDatePicker` and `BleeckerDateRangePicker` now have
+native controls and a registered Dates catalog fixture. Their browser producer
+contract remains the acceptance reference. Implementation and targeted runtime
+evidence do not establish complete visual or Windows platform acceptance.
 
 ## Authoritative feature path
 
@@ -114,9 +115,73 @@ Review successful output before replacing the committed reference JSON.
 `DateControlsReferenceTests` checks provenance, geometry/paint, timestamp
 bounds, dialog labels, trusted requests, focus and DST/preset behavior.
 
+## Native consumer API
+
+Calendar and Date Picker expose consumer-owned `DateTimeOffset? Value`,
+`MinDate`, `MaxDate` and a `Func<DateTimeOffset, bool>? DisabledDates` predicate.
+They raise `DateRequested`; the consumer decides whether to update `Value`.
+The control never replaces an existing value binding to accept its own request.
+For example:
+
+```csharp
+var picker = new BleeckerDatePicker { Placeholder = "Publication date" };
+picker.DateRequested += (_, request) => picker.Value = request.Value;
+```
+
+`BleeckerCalendar.ViewMonth` reports the currently viewed month. Changing
+`Value` retains that month; a genuinely unmounted calendar initializes again
+when loaded. Date Picker exposes `IsDropDownOpen` and mounts a fresh calendar
+for each opening. Its native trigger supplies Button and ExpandCollapse
+automation, and each day supplies Toggle automation with its full date name.
+Selection, clear and Escape return focus to the trigger; an outside click
+keeps the outside target's focus.
+
+Date Range Picker exposes a non-null `BleeckerDateRange Value`, containing
+nullable `From`/`To` strings, and raises `RangeRequested`. Assign the requested
+record in the consumer to accept it. Each endpoint uses the opposite endpoint
+as its timestamp bound. `Presets` accepts `IEnumerable<BleeckerDatePreset>`;
+observable collection changes are tracked. Presets with the same label retain
+their button on live replacement and read the current record when invoked.
+
+```csharp
+var range = new BleeckerDateRangePicker {
+    Value = new("2026-10-10", "2026-10-20"),
+    Presets = new[] { new BleeckerDatePreset("Seven days", 7) }
+};
+range.RangeRequested += (_, request) => range.Value = request.Value;
+```
+
+Date labels and range serialization use local calendar dates, with English
+display labels and `yyyy-MM-dd` request strings. Bounds compare timestamps,
+including the time of day. Existing range strings remain consumer-owned:
+their display follows the source numeric date constructor, including overflow
+(`2026-02-30` displays March 2) and years 0–99 (year 99 displays 1999).
+Empty strings display empty endpoints. Fractional preset days follow the
+source's local `setDate` truncation, rather than subtracting UTC durations.
+Malformed/nonfinite values and dates outside .NET's representable range fail
+explicitly. No Windows clock or production configuration is changed for tests;
+the catalog uses an internal, per-instance frozen clock.
+
+The model/reference/resource suite currently contains 141 tests. The
+`date-controls` native runner compares Calendar day geometry, selected/disabled
+state and names against the frozen reference at both viewport widths, and
+exercises consumer requests, focus, dismissal, remounting and live presets.
+Its output is `artifacts/current/dates-native-{320|640}-current`. Run it with:
+
+```powershell
+./scripts/smoke-catalog.ps1 -Executable '<x64 publish>/Orchard.Catalog.exe' `
+  -Output artifacts/current/dates-native-320-current `
+  -Component date-controls -ExpectedArchitecture X64 -ClientSize 320,640
+```
+
+Use `-ClientSize 640,640` and the corresponding output directory for the other
+width. A targeted native pass covers the reported checks only. The independent
+package consumer also mounts these public controls and drives them through
+native keyboard input; its reports are `consumer-dates-{Light|Dark}.json`.
+
 ## Native acceptance before completion
 
-Implementation must carry these contracts through public C# models/properties,
+Acceptance must carry these contracts through public C# models/properties,
 consumer-owned value requests, native templates, layout, min/max and disabled
 predicates, popup lifetime, keyboard/pointer focus, automation and package use.
 Creation, live updates, clear, rejected requests, callback failures, stale

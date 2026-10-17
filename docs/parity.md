@@ -6,11 +6,15 @@ Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
 resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
-Counts are 61 in progress, 51 pending and zero fully accepted.
+Counts are 63 in progress, 49 pending and zero fully accepted: 56.3% of the
+fixed inventory has implementation started. This is not a completion percentage.
 
-The pending date controls now have a [pinned browser contract](date-controls-reference.md):
+The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):
 Calendar, Date Picker and Date Range Picker share 188 measured states and 48
-trusted interaction sequences. Native implementation and acceptance remain open.
+trusted browser interaction sequences. Native Calendar checks cover 132 states;
+picker/range checks cover controlled requests, bounds, focus/dismissal, remounts
+and live presets. Complete Picker/Range geometry, raster/motion and Windows
+platform acceptance remain open.
 
 Visual acceptance requires every component to match its Bleecker reference across every variant, size, theme and applicable interaction state. Compare typography, spacing, dimensions, colors, borders, radii, icons and motion against the rendered reference. Windows control defaults must not override the branded appearance, including nested popups and disabled/focus states. Preserve the explicitly required Windows contrast-color adaptation. A mismatch is an open acceptance gap, never an approved platform substitution.
 

@@ -49,6 +49,7 @@ public sealed partial class MainWindow
             ("Filter chips",FilterChips),
             ("Search inputs",SearchInputs),
             ("Text areas",Textareas),
+            ("Dates",DateControls),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),
