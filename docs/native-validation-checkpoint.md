@@ -1,5 +1,61 @@
 # Current native validation checkpoint
 
+## Search Input activation, focus and theme states
+
+Source: `7df5542`. The frozen browser state matrix exposed Enter-on-release,
+lost pointer release at the pressed clear edge, an oversized/unscaled focus
+outline and a fixed Light sand hover color in Dark. Shared inline actions now
+invoke Enter on key-down through native Button Invoke, keep Space/pointer
+activation on release, retain the original transparent hit surface and render
+the keyboard cue inside the scaled visual. Search hover consumes the shared
+theme sand brush with the correct alpha and live brush/opacity observation.
+The catalog explicitly imports and renders its palette style.
+
+All 48 source/native state cases pass at 320/640 in Light/Dark. Geometry error
+is at most `.00006103515625` DIP under the unchanged `.05` bound. Source RGB,
+fractional alpha, focus and pressed artwork/outline bounds, key-down/release
+counts and consumer-owned text are verified. Twenty held key pairs and eight
+held pointer pairs retain real native delivery and exact owners. Four live
+palette checks cover source mutation, replacement, alpha changes, restoration
+and a theme round trip on the same control. Sixty-eight paint readiness gates
+require two matching rendered frames within two seconds; maximum observed
+duration is 37.044 ms on this reduced-motion host. Eight corruptions are
+rejected, including Enter-on-release, missing edge ownership and unscaled focus.
+
+The original 40-case Search Input matrix remains at zero geometry error and
+83,452 differing pixels. The new, separate 48-state whole-frame matrix records
+142,074 differing pixels. Both comparisons have zero masks and no resampling;
+neither establishes source raster parity. The real catalog fixture, all 118
+unit tests and token checks pass. FilterChip's 20-case geometry regression and
+28 property-event / 22 retained-invocation checks pass. Both architecture
+builds pass and all 6,062 resolved methods/exposed interfaces match.
+
+The fresh x64 package consumer passes both themes, including held Enter's
+key-down-only invocation and unpressed appearance. ARM64 consumer validation
+remains build-only. Both isolated temporary caches are removed. Package and
+tested x64 catalog library bytes match. Every entry in the 536-file x64 and
+532-file ARM64 catalog archives is verified.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `packages-search-input-states/Gaulatti.Orchard.0.1.0-search-states.7df5542.nupkg` | `e15c13072f06f0087f36b319f516f9dfc8dd2129f7fcb760c1dd052f87059faf` |
+| Package / x64 catalog `Orchard.dll` | `4f400d31ccf01731a50f0f6471558a615cdaf458390ba0209b4ce3b80811127a` |
+| ARM64 catalog `Orchard.dll` | `986148035e7a1b1b7dcd2767cde2c4326f0f8fc3be58603225fad763d199888e` |
+| `Orchard.Catalog.0.1.0-7df5542-x64.zip` | `be4b51a385412b73c4f9c881c729829bd926cdab8d95a629d9b991776aa4005d` |
+| `Orchard.Catalog.0.1.0-7df5542-ARM64.zip` | `caff8f6c2c1e4523d7ed678445542e70ee0eee171ff6e27cfdbebd8cf93c1e58` |
+
+Evidence is under `artifacts/search-input-states-*`,
+`search-input-state-core-*`, `search-input-state-filter-*` and
+`package-consumer-search-states-*`. Earlier lost-release, default focus, wrong
+Dark hover, style registration and resource-scope failures are retained as
+diagnostics. Exact raster, broader customization/pointer states, actual native
+enabled-motion timelines, Windows scaling/contrast, Narrator, collection
+performance and current native ARM64 runtime remain open. No Windows setting
+changed, no workflow was dispatched, and push-triggered Actions remain paused.
+The full catalog sequence was not rerun. Inventory remains 59 in progress,
+53 pending, zero accepted. The goal stays active. The wiki remains unavailable;
+see [Search Input](search-input.md) and [Filter chips](filter-chip.md).
+
 ## Input fractional alpha and OKLab paint transitions
 
 Source: `1aaf782`. Input retains CSS alpha in `Brush.Opacity`, with opaque RGB,

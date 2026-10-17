@@ -1,5 +1,12 @@
 # Search Input
 
+Checkpoint `7df5542` passes the real catalog, 118 unit tests, the original
+Search Input regression and shared FilterChip geometry/retained UIA checks.
+The versioned NuGet package passes a fresh x64 runtime consumer in both themes
+and an ARM64 consumer cross-build; temporary caches are removed. Both catalog
+archives are verified entry by entry. Current hashes and limits are in
+[the native checkpoint](native-validation-checkpoint.md).
+
 The 48-state native comparison passes at both viewport widths with maximum
 geometry error below `.000062` DIP under the existing `.05` bound. It includes
 20 exact held key pairs and eight exact held pointer/release pairs, source RGB

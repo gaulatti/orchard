@@ -2356,3 +2356,26 @@ workflow occurred. Native enabled-motion presentation, complete raster/state
 matrices, actual scaling/contrast, Narrator, collection performance and current
 native ARM64 acceptance remain open. The goal stays active at 59 in progress,
 53 pending and zero accepted. Push-triggered Actions remain paused.
+
+
+## Search Input activation and visual states
+
+Source `7df5542` fixes Enter timing/appearance, pressed-edge release ownership,
+scaled keyboard focus and Dark hover's shared sand color. Forty-eight frozen
+browser/native cases pass at both widths and themes, with maximum geometry
+error .00006103515625 DIP, exact source RGB and fractional alpha, 20 held key
+pairs, eight held pointer pairs, four live palette/theme checks and 68 rendered
+paint gates. Eight corrupted reports are rejected. The original 40 cases remain
+zero-error in geometry. The catalog, 118 unit tests, tokens, FilterChip geometry
+and its 28-event / 22-retained-invocation regression pass. Both architecture
+builds match across 6,062 resolved methods/interfaces. Fresh x64 NuGet runtime
+and ARM64 build-only consumers pass, and their temporary caches are removed.
+
+The new 48-state raster comparison retains 142,074 differing pixels; the
+separate original matrix retains 83,452. No masks/resampling are used. Full
+raster, native enabled-motion timelines, broader pointer/customization cases,
+actual scaling/contrast, Narrator, performance and current native ARM64 remain
+open. No full catalog rerun, Windows preference change or Actions dispatch
+occurred. Push-triggered Actions remain paused. Inventory is unchanged at 59
+in progress, 53 pending and zero accepted. Versioned hashes and evidence are
+in [the checkpoint](native-validation-checkpoint.md).
