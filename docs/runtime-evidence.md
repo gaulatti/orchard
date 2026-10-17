@@ -1,9 +1,11 @@
 # Native Windows runtime evidence
 
-The date preview at `48cca09` publishes for x64 and ARM64. Its focused native
-audit passes 132 Calendar frames, 4,060 day comparisons and 28 interaction/lifecycle
-phases. The independent package consumer passes its complete x64 Light/Dark
-runtime, including eight date keyboard pairs; ARM64 builds from the same package.
+The date presentation fixes at `c687e27` publish for x64 and ARM64. Native
+geometry covers all 188 reference frames: 132 Calendar states and 56 Picker/Range
+states with 964 box comparisons, 620 popup days and 132 basic paint checks.
+The independent package consumer passes its complete x64 Light/Dark runtime,
+including corrected packaged geometry and eight date keyboard pairs; ARM64
+builds from the same package. All 142 unit tests pass.
 Both consumers' library bytes match the package and their temporary workspaces
 are removed. Native ARM64 execution and full visual/platform acceptance remain
 open. See [the current checkpoint](native-validation-checkpoint.md) for full
@@ -12,7 +14,7 @@ Historical results below retain their original source and verification scope.
 
 The complete x64 sequence at that source passes 152 phases, 1,150 captures,
 2,032 stable pointer gates, 1,764 owned keyboard actions and 92 routed clicks
-in 469.1742111 seconds under the unchanged 480-second watchdog. Every previous
+in 467.1893479 seconds under the unchanged 480-second watchdog. Every previous
 capture name and all 174 protected chart glyph hashes are retained. Both Dates
 fixtures and their native closing-surface input pairs pass.
 

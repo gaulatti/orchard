@@ -194,7 +194,7 @@ after running `scripts/verify-package.ps1` for both architectures:
 
 ```powershell
 ./scripts/verify-date-package.ps1 `
-  -Package artifacts/current/packages/Gaulatti.Orchard.0.1.0-48cca09.nupkg `
+  -Package artifacts/current/packages/Gaulatti.Orchard.0.1.0-c687e27.nupkg `
   -X64 artifacts/current/consumer-dates-x64 `
   -Arm64 artifacts/current/consumer-dates-ARM64 `
   -Output artifacts/current/dates-package-audit.json
@@ -223,6 +223,15 @@ trigger caption text/font/line height, colors and alpha, border width/corners,
 disabled opacity, range-card and popup paint. All 56 native captures are saved.
 This supplements the original 132 Calendar frames; it is not a raster, shadow
 or normal-motion acceptance claim.
+
+Source `c687e27` and package `0.1.0-c687e27` carry these fixes. Both catalog
+architectures publish. The independent x64 consumer passes its complete
+Light/Dark runtime, including explicit checks for the corrected caption, clear
+action and intrinsic range fields; ARM64 builds from the same package, with
+both consumer libraries matching its bytes and both temporary workspaces removed.
+The complete x64 catalog passes 152 phases and 1,150 captures in 467.1893479
+seconds, preserving all previous capture names and 174 protected chart glyph
+hashes. Native ARM64 execution remains unverified.
 
 The fixes apply across normal and range triggers: intrinsic widths round up to
 the source's 1/64px layout units, action/preset slots retain those widths,

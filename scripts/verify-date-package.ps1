@@ -43,7 +43,9 @@ foreach ($theme in @('Light', 'Dark')) {
     Require ($calendar.Count -eq 1 -and $calendar[0].height -eq 252) 'Packaged calendar geometry differs.'
     Require (([DateTimeOffset]$calendar[0].value).Date -eq [datetime]'2026-10-19' -and ([DateTimeOffset]$picker[0].value).Date -eq [datetime]'2026-10-19') 'Packaged selected dates differ.'
     Require ($picker.Count -eq 1 -and $picker[0].focusRestored) 'Packaged picker lost focus restoration.'
+    Require ($picker[0].captionLineHeight -eq 20 -and $picker[0].clearWidth -eq 254 -and $picker[0].clearHeight -eq 31) 'Packaged picker resources lost source geometry.'
     Require ($range.Count -eq 1) 'Packaged range request is missing.'
+    Require ($range[0].fromWidth -eq 130.421875 -and $range[0].toWidth -eq 132.125) 'Packaged range intrinsic widths differ.'
     $fromDate = [DateOnly]::ParseExact($range[0].value.From, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture)
     $toDate = [DateOnly]::ParseExact($range[0].value.To, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture)
     Require (($toDate.DayNumber - $fromDate.DayNumber) -eq 7) 'Packaged preset lost calendar-day subtraction.'

@@ -37,17 +37,25 @@ public sealed partial class MainWindow
             await KeyAsync(0x20, day, day); Require(calendar.Value == Date(19), "Packaged calendar lost its controlled date request.");
             phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight });
             var trigger = DateChildren<Button>(picker).Single(x => x.Name == "PART_Trigger");
+            var caption = DateChildren<TextBlock>(trigger).Single(); Require(caption.LineHeight == 20, "Packaged picker lost the source caption line height.");
             await KeyAsync(0x20, trigger, null); await AwaitAsync(() => picker.IsDropDownOpen, "Packaged picker did not open through Space.");
             var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(x => x.Child is not null && DateChildren<BleeckerCalendar>(x.Child).Any());
+            var clearDate = DateChildren<Button>(popup.Child).Single(x => x.Content as string == "Clear date");
+            await PresentAsync(clearDate); var clearWidth = clearDate.ActualWidth; var clearHeight = clearDate.ActualHeight;
+            Require(clearWidth == 254 && clearHeight == 31, "Packaged picker lost its full-width clear action.");
             var chosen = DateChildren<ToggleButton>(popup.Child).Single(x => x.Content.ToString() == "19");
             await KeyAsync(0x0D, chosen, trigger); await AwaitAsync(() => !picker.IsDropDownOpen, "Packaged picker did not close after selection.");
             Require(picker.Value == Date(19) && ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), trigger), "Packaged picker lost selection or focus restoration.");
-            phases.Add(new { phase = "picker", value = picker.Value, focusRestored = true });
+            phases.Add(new { phase = "picker", value = picker.Value, focusRestored = true, captionLineHeight = caption.LineHeight, clearWidth, clearHeight });
+            var rangeFields = DateChildren<BleeckerDatePicker>(range).ToArray();
+            var fromWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "Start date").ActualWidth;
+            var toWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "End date").ActualWidth;
+            Require(fromWidth == 130.421875 && toWidth == 132.125, "Packaged range lost source intrinsic field widths.");
             var preset = DateChildren<BleeckerButton>(range).Single(x => x.Content as string == "Package seven days");
             var action = DateChildren<Button>(preset).Single(x => x.Name == "PART_Action");
             var today = DateTime.Now.Date; await KeyAsync(0x20, action, action);
             Require(range.Value == new BleeckerDateRange(today.AddDays(-7).ToString("yyyy-MM-dd"), today.ToString("yyyy-MM-dd")), "Packaged range preset lost local dates.");
-            phases.Add(new { phase = "range", value = range.Value }); Require(requests == 3, "Packaged date requests were missing or duplicated."); passed = true;
+            phases.Add(new { phase = "range", value = range.Value, fromWidth, toWidth }); Require(requests == 3, "Packaged date requests were missing or duplicated."); passed = true;
         }
         finally
         {

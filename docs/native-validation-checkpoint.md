@@ -18,6 +18,37 @@ own earlier validation scope. Exact raster/shadow/motion, remaining customized
 consumer paths and Windows platform acceptance remain open. Inventory stays
 63 in progress, 49 pending and zero accepted.
 
+The presentation fixes are committed as
+`c687e27f69f9dc467a965401178d600a3e91ff43`. Both catalog publishes pass.
+Package `Gaulatti.Orchard.0.1.0-c687e27.nupkg` has SHA-256
+`8b4690f665ffeb132923e8ab762106a3dc5db309666fd03e9ff39391f6e93df8`.
+Its independent x64 consumer passes its complete Light/Dark runtime and now
+asserts the 20px caption, 254×31px Clear date action and source intrinsic range
+widths. ARM64 builds from the same package. Both consumer library hashes match
+the packaged assembly SHA-256
+`509f5ab6a752c7b0d2ab5242dc0406dc428cb0495027fbd0193ada62a2b1abc3`;
+both temporary workspaces are removed. Native ARM64 execution is unverified.
+
+Every file in the source-identified catalog archives matches its publish output:
+
+- x64: 537 files, SHA-256
+  `640b4bb915e35e80ae5d9db2bcc78eac81d6718d7ecdab6b01ea5c89136f3553`.
+- ARM64: 533 files, SHA-256
+  `3218c0efc56f5d1d791adafab0dbc080cd2607015e25fe3b858a1eae3973a5df`.
+
+The complete x64 run at this source passes 152 phases and 1,150 captures in
+467.1893479 seconds under the unchanged 480-second watchdog. It retains all
+1,150 previous capture names and all 174 protected chart glyph hashes, with
+2,032 owned pointer gates, 1,764 owned keyboard actions, 92 routed clicks and
+both Dates closing-surface pointer pairs verified. Full output is
+`artifacts/current/native-full-date-presentation`; its audit is
+`native-full-date-presentation-audit.json`. The previous `native-full-dates`
+and original `native-full` raw comparison baselines are preserved.
+
+Automatic approval review rejected deletion of the four superseded source3a0e8e1
+and source48cca09 catalog ZIPs with “blocked by policy.” They remain present;
+this does not block current builds or runtime verification.
+
 ## Native date-control preview
 
 The date controls have a [native preview and source contract](date-controls-reference.md)
