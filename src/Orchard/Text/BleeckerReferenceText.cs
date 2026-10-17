@@ -73,7 +73,7 @@ internal static class BleeckerReferenceText
             public void DrawUnderline(Vector2 point,float width,float thickness,float offset,float height,CanvasTextDirection direction,object brush,CanvasTextMeasuringMode measuring,string locale,CanvasGlyphOrientation orientation) { }
             public void DrawStrikethrough(Vector2 point,float width,float thickness,float offset,CanvasTextDirection direction,object brush,CanvasTextMeasuringMode measuring,string locale,CanvasGlyphOrientation orientation) { }
         }
-        private static string Resolve(string family)
+        internal static string Resolve(string family)
         {
             var marker=family.IndexOf('#');if(marker<0||!Uri.TryCreate(family[..marker],UriKind.Absolute,out var uri))return family;
             if(uri.Scheme=="ms-appx"&&uri.Host.Length==0){uri=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));family=uri.AbsoluteUri+family[marker..];}

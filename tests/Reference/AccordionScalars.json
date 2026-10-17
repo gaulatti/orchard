@@ -4,8 +4,8 @@
   "sourceSha256": "5160176bd8dd07041af0c5dee9c6647fef47d132bac95384128a78822a6e0cc0",
   "normalReferenceSha256": "e3cadf505fbc83fe9b3635b9270cdda171009fc624019de35af520d3f5f4145e",
   "sourceCssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
-  "clientSha256": "fbb7088b482a385d3117ad9de93897513ef949aff84940c037af9a84f12fc8ea",
-  "scriptSha256": "5744568c4e8595514c1d676082cee22e47cfe9a0b490c51e19aa4ad1a5caf922",
+  "clientSha256": "a39f9615b289170cdb88c50c12f24a0b331f223a5f89151777853e969e4725d3",
+  "scriptSha256": "60beb5f36903c516574267749b7715b8ecca01dba64e466b4eaae6c10478f490",
   "browser": "155.0.4283.45",
   "values": [
     {
@@ -123,7 +123,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -148,7 +150,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-1",
@@ -191,7 +194,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -216,7 +221,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-2",
@@ -259,7 +265,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -284,7 +292,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-3",
@@ -327,7 +336,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -352,7 +363,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-4",
@@ -395,7 +407,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -420,7 +434,8 @@
         "name": "0 Consumer text"
       },
       "file": "accordion-scalar-title-4-320-Light.png",
-      "pngSha256": "bb5ce8fc1b40a09787c11eea27d7832bdc5dc0ee93436ad329a8b72e9eacaf9c"
+      "pngSha256": "bb5ce8fc1b40a09787c11eea27d7832bdc5dc0ee93436ad329a8b72e9eacaf9c",
+      "overflowClick": null
     },
     {
       "id": "title-5",
@@ -463,7 +478,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "NaN"
+          "text": "NaN",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -488,7 +505,8 @@
         "name": "NaN Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-6",
@@ -531,7 +549,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "Infinity"
+          "text": "Infinity",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -556,7 +576,8 @@
         "name": "Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-7",
@@ -599,7 +620,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-Infinity"
+          "text": "-Infinity",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -624,7 +647,8 @@
         "name": "-Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-8",
@@ -667,7 +691,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-1.5"
+          "text": "-1.5",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -692,7 +718,8 @@
         "name": "-1.5 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-9",
@@ -735,7 +762,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e-7"
+          "text": "1e-7",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -760,7 +789,8 @@
         "name": "1e-7 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-10",
@@ -803,7 +833,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0.000001"
+          "text": "0.000001",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -828,7 +860,8 @@
         "name": "0.000001 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-11",
@@ -871,7 +904,9 @@
             "width": 183.984375,
             "height": 20
           },
-          "text": "100000000000000000000"
+          "text": "100000000000000000000",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -896,7 +931,8 @@
         "name": "100000000000000000000 Consumer text"
       },
       "file": "accordion-scalar-title-11-320-Light.png",
-      "pngSha256": "005f69194e3d626a5f1c24bfde0001aa46db188d7211844d5d1d98ec2e0c5e61"
+      "pngSha256": "005f69194e3d626a5f1c24bfde0001aa46db188d7211844d5d1d98ec2e0c5e61",
+      "overflowClick": null
     },
     {
       "id": "title-12",
@@ -939,7 +975,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+21"
+          "text": "1e+21",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -964,7 +1002,8 @@
         "name": "1e+21 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-13",
@@ -1007,7 +1046,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+23"
+          "text": "1e+23",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1032,7 +1073,8 @@
         "name": "1e+23 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-14",
@@ -1075,7 +1117,9 @@
             "width": 162.359375,
             "height": 20
           },
-          "text": "1000000000000000100"
+          "text": "1000000000000000100",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1100,7 +1144,8 @@
         "name": "1000000000000000100 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-15",
@@ -1143,7 +1188,9 @@
             "width": 161.859375,
             "height": 20
           },
-          "text": "0.30000000000000004"
+          "text": "0.30000000000000004",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1168,7 +1215,8 @@
         "name": "0.30000000000000004 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-16",
@@ -1211,7 +1259,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1236,7 +1286,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-17",
@@ -1279,7 +1330,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1304,7 +1357,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-0",
@@ -1347,7 +1401,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -1364,7 +1420,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-1",
@@ -1407,7 +1464,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -1424,7 +1483,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-2",
@@ -1467,7 +1527,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1492,7 +1554,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-3",
@@ -1535,7 +1598,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -1552,7 +1617,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-4",
@@ -1595,7 +1661,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -1612,7 +1680,8 @@
         "name": "Scalar sample"
       },
       "file": "accordion-scalar-subtitle-4-320-Light.png",
-      "pngSha256": "61ce3d7c8ec242e975e685504507ec4d13fdb4617980b345ac1dee4e81107d17"
+      "pngSha256": "61ce3d7c8ec242e975e685504507ec4d13fdb4617980b345ac1dee4e81107d17",
+      "overflowClick": null
     },
     {
       "id": "subtitle-5",
@@ -1655,7 +1724,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -1672,7 +1743,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-6",
@@ -1715,7 +1787,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1740,7 +1814,8 @@
         "name": "Scalar sample Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-7",
@@ -1783,7 +1858,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1808,7 +1885,8 @@
         "name": "Scalar sample -Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-8",
@@ -1851,7 +1929,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1876,7 +1956,8 @@
         "name": "Scalar sample -1.5"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-9",
@@ -1919,7 +2000,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -1944,7 +2027,8 @@
         "name": "Scalar sample 1e-7"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-10",
@@ -1987,7 +2071,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2012,7 +2098,8 @@
         "name": "Scalar sample 0.000001"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-11",
@@ -2055,7 +2142,9 @@
             "width": 170.703125,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2080,7 +2169,8 @@
         "name": "Scalar sample 100000000000000000000"
       },
       "file": "accordion-scalar-subtitle-11-320-Light.png",
-      "pngSha256": "23d7891fbd18a707a6d96df2d7265f7a1e917bbffca01a36dd91fcd5fee008ea"
+      "pngSha256": "23d7891fbd18a707a6d96df2d7265f7a1e917bbffca01a36dd91fcd5fee008ea",
+      "overflowClick": null
     },
     {
       "id": "subtitle-12",
@@ -2123,7 +2213,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2148,7 +2240,8 @@
         "name": "Scalar sample 1e+21"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-13",
@@ -2191,7 +2284,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2216,7 +2311,8 @@
         "name": "Scalar sample 1e+23"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-14",
@@ -2259,7 +2355,9 @@
             "width": 151.515625,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2284,7 +2382,8 @@
         "name": "Scalar sample 1000000000000000100"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-15",
@@ -2327,7 +2426,9 @@
             "width": 150.09375,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2352,7 +2453,8 @@
         "name": "Scalar sample 0.30000000000000004"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-16",
@@ -2395,7 +2497,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -2412,7 +2516,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-17",
@@ -2455,7 +2560,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2480,7 +2587,8 @@
         "name": "Scalar sample 0"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-0",
@@ -2523,7 +2631,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2548,7 +2658,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-1",
@@ -2591,7 +2702,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2616,7 +2729,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-2",
@@ -2659,7 +2773,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2692,7 +2808,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-3",
@@ -2735,7 +2852,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2760,7 +2879,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-4",
@@ -2803,7 +2923,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2828,7 +2950,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-4-320-Light.png",
-      "pngSha256": "15e20988a250ab6f1eabeb26f393f67b1adbd99afa911ef561677a7c0738c2fb"
+      "pngSha256": "15e20988a250ab6f1eabeb26f393f67b1adbd99afa911ef561677a7c0738c2fb",
+      "overflowClick": null
     },
     {
       "id": "actions-5",
@@ -2871,7 +2994,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2896,7 +3021,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-6",
@@ -2939,7 +3065,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -2972,7 +3100,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-7",
@@ -3015,7 +3144,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3048,7 +3179,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-8",
@@ -3091,7 +3223,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3124,7 +3258,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-9",
@@ -3167,7 +3302,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3200,7 +3337,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-10",
@@ -3243,7 +3381,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3276,7 +3416,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-11",
@@ -3319,7 +3460,9 @@
             "width": 0,
             "height": 40
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3352,7 +3495,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-11-320-Light.png",
-      "pngSha256": "0ca2374d96799c810967440f399f8f3c8f1a9b73f8f4c3026942d805ab5aa076"
+      "pngSha256": "0ca2374d96799c810967440f399f8f3c8f1a9b73f8f4c3026942d805ab5aa076",
+      "overflowClick": null
     },
     {
       "id": "actions-12",
@@ -3395,7 +3539,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3428,7 +3574,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-13",
@@ -3471,7 +3618,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3504,7 +3653,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-14",
@@ -3547,7 +3697,9 @@
             "width": 20.640625,
             "height": 40
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3580,7 +3732,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-15",
@@ -3623,7 +3776,9 @@
             "width": 21.140625,
             "height": 40
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3656,7 +3811,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-16",
@@ -3699,7 +3855,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3724,7 +3882,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-17",
@@ -3767,7 +3926,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3800,7 +3961,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-0",
@@ -3843,7 +4005,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3868,7 +4032,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-1",
@@ -3911,7 +4076,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -3936,7 +4103,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-2",
@@ -3979,7 +4147,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4004,7 +4174,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-3",
@@ -4047,7 +4218,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4072,7 +4245,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-4",
@@ -4115,7 +4289,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4140,7 +4316,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-4-320-Light.png",
-      "pngSha256": "a6f9fadd4b2f48f23df2375a392202469a42b9ca954fe6716587b3d4fd14e723"
+      "pngSha256": "a6f9fadd4b2f48f23df2375a392202469a42b9ca954fe6716587b3d4fd14e723",
+      "overflowClick": null
     },
     {
       "id": "content-5",
@@ -4183,7 +4360,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4208,7 +4387,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-6",
@@ -4251,7 +4431,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4276,7 +4458,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-7",
@@ -4319,7 +4502,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4344,7 +4529,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-8",
@@ -4387,7 +4573,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4412,7 +4600,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-9",
@@ -4455,7 +4644,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4480,7 +4671,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-10",
@@ -4523,7 +4715,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4548,7 +4742,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-11",
@@ -4591,7 +4786,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4616,7 +4813,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-11-320-Light.png",
-      "pngSha256": "94557b7faded094966418f10970ee1f668dcd2bba7ea2b80d481682e05cbd3e4"
+      "pngSha256": "94557b7faded094966418f10970ee1f668dcd2bba7ea2b80d481682e05cbd3e4",
+      "overflowClick": null
     },
     {
       "id": "content-12",
@@ -4659,7 +4857,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4684,7 +4884,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-13",
@@ -4727,7 +4928,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4752,7 +4955,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-14",
@@ -4795,7 +4999,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4820,7 +5026,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-15",
@@ -4863,7 +5070,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4888,7 +5097,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-16",
@@ -4931,7 +5141,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -4956,7 +5168,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-17",
@@ -4999,7 +5212,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5024,7 +5239,93 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
+    },
+    {
+      "id": "actions-mixed",
+      "width": 320,
+      "scheme": "Light",
+      "slot": "actions",
+      "scalar": {
+        "kind": "number",
+        "value": "1e20"
+      },
+      "caption": "WWWWWW a b",
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 183
+        },
+        "row": {
+          "x": 21,
+          "y": 21,
+          "width": 278,
+          "height": 181
+        },
+        "header": {
+          "x": 21,
+          "y": 21,
+          "width": 278,
+          "height": 128
+        },
+        "button": {
+          "x": 21,
+          "y": 21,
+          "width": 56.296875,
+          "height": 128
+        },
+        "title": {
+          "box": {
+            "x": 65,
+            "y": 37,
+            "width": 0,
+            "height": 60
+          },
+          "text": "WWWWWW a b",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": {
+            "x": 65,
+            "y": 78,
+            "width": 8.125,
+            "height": 17
+          }
+        },
+        "subtitle": {
+          "box": {
+            "x": 65,
+            "y": 101,
+            "width": 0,
+            "height": 32
+          },
+          "text": "Consumer text"
+        },
+        "actions": {
+          "box": {
+            "x": 77.296875,
+            "y": 73,
+            "width": 205.703125,
+            "height": 24
+          },
+          "text": "100000000000000000000"
+        },
+        "body": {
+          "box": {
+            "x": 21,
+            "y": 149,
+            "width": 278,
+            "height": 53
+          },
+          "text": "Consumer body"
+        },
+        "expanded": true,
+        "name": "WWWWWW a b Consumer text"
+      },
+      "file": "accordion-scalar-actions-mixed-320-Light.png",
+      "pngSha256": "d1a1668aaa31e1b48a91335bbda685f470c083caf3ea610774f01e7d5fa0ec07",
+      "overflowClick": "false"
     },
     {
       "id": "title-0",
@@ -5067,7 +5368,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5092,7 +5395,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-1",
@@ -5135,7 +5439,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5160,7 +5466,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-2",
@@ -5203,7 +5510,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5228,7 +5537,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-3",
@@ -5271,7 +5581,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5296,7 +5608,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-4",
@@ -5339,7 +5652,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5364,7 +5679,8 @@
         "name": "0 Consumer text"
       },
       "file": "accordion-scalar-title-4-320-Dark.png",
-      "pngSha256": "cc7be6e97500693896ce000cc5888c1506ce045ac94a631e4d49d0ad49aae742"
+      "pngSha256": "cc7be6e97500693896ce000cc5888c1506ce045ac94a631e4d49d0ad49aae742",
+      "overflowClick": null
     },
     {
       "id": "title-5",
@@ -5407,7 +5723,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "NaN"
+          "text": "NaN",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5432,7 +5750,8 @@
         "name": "NaN Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-6",
@@ -5475,7 +5794,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "Infinity"
+          "text": "Infinity",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5500,7 +5821,8 @@
         "name": "Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-7",
@@ -5543,7 +5865,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-Infinity"
+          "text": "-Infinity",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5568,7 +5892,8 @@
         "name": "-Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-8",
@@ -5611,7 +5936,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-1.5"
+          "text": "-1.5",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5636,7 +5963,8 @@
         "name": "-1.5 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-9",
@@ -5679,7 +6007,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e-7"
+          "text": "1e-7",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5704,7 +6034,8 @@
         "name": "1e-7 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-10",
@@ -5747,7 +6078,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0.000001"
+          "text": "0.000001",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5772,7 +6105,8 @@
         "name": "0.000001 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-11",
@@ -5815,7 +6149,9 @@
             "width": 183.984375,
             "height": 20
           },
-          "text": "100000000000000000000"
+          "text": "100000000000000000000",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5840,7 +6176,8 @@
         "name": "100000000000000000000 Consumer text"
       },
       "file": "accordion-scalar-title-11-320-Dark.png",
-      "pngSha256": "e60aa34211a715bd022fd06b7458e1d8976af25b5b74ab18991873ba79773b33"
+      "pngSha256": "e60aa34211a715bd022fd06b7458e1d8976af25b5b74ab18991873ba79773b33",
+      "overflowClick": null
     },
     {
       "id": "title-12",
@@ -5883,7 +6220,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+21"
+          "text": "1e+21",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5908,7 +6247,8 @@
         "name": "1e+21 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-13",
@@ -5951,7 +6291,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+23"
+          "text": "1e+23",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -5976,7 +6318,8 @@
         "name": "1e+23 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-14",
@@ -6019,7 +6362,9 @@
             "width": 162.359375,
             "height": 20
           },
-          "text": "1000000000000000100"
+          "text": "1000000000000000100",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6044,7 +6389,8 @@
         "name": "1000000000000000100 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-15",
@@ -6087,7 +6433,9 @@
             "width": 161.859375,
             "height": 20
           },
-          "text": "0.30000000000000004"
+          "text": "0.30000000000000004",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6112,7 +6460,8 @@
         "name": "0.30000000000000004 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-16",
@@ -6155,7 +6504,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6180,7 +6531,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-17",
@@ -6223,7 +6575,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6248,7 +6602,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-0",
@@ -6291,7 +6646,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -6308,7 +6665,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-1",
@@ -6351,7 +6709,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -6368,7 +6728,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-2",
@@ -6411,7 +6772,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6436,7 +6799,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-3",
@@ -6479,7 +6843,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -6496,7 +6862,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-4",
@@ -6539,7 +6906,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -6556,7 +6925,8 @@
         "name": "Scalar sample"
       },
       "file": "accordion-scalar-subtitle-4-320-Dark.png",
-      "pngSha256": "5dc811cc069ca658c2e2fd932867bc37f8c61c7d84e53e70e0a9e72e538e7ddf"
+      "pngSha256": "5dc811cc069ca658c2e2fd932867bc37f8c61c7d84e53e70e0a9e72e538e7ddf",
+      "overflowClick": null
     },
     {
       "id": "subtitle-5",
@@ -6599,7 +6969,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -6616,7 +6988,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-6",
@@ -6659,7 +7032,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6684,7 +7059,8 @@
         "name": "Scalar sample Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-7",
@@ -6727,7 +7103,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6752,7 +7130,8 @@
         "name": "Scalar sample -Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-8",
@@ -6795,7 +7174,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6820,7 +7201,8 @@
         "name": "Scalar sample -1.5"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-9",
@@ -6863,7 +7245,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6888,7 +7272,8 @@
         "name": "Scalar sample 1e-7"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-10",
@@ -6931,7 +7316,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -6956,7 +7343,8 @@
         "name": "Scalar sample 0.000001"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-11",
@@ -6999,7 +7387,9 @@
             "width": 170.703125,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7024,7 +7414,8 @@
         "name": "Scalar sample 100000000000000000000"
       },
       "file": "accordion-scalar-subtitle-11-320-Dark.png",
-      "pngSha256": "7b9edaed7c7240e277fa069e96887dfd200f2f3135cb3a04a411eceee6cbfc3b"
+      "pngSha256": "7b9edaed7c7240e277fa069e96887dfd200f2f3135cb3a04a411eceee6cbfc3b",
+      "overflowClick": null
     },
     {
       "id": "subtitle-12",
@@ -7067,7 +7458,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7092,7 +7485,8 @@
         "name": "Scalar sample 1e+21"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-13",
@@ -7135,7 +7529,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7160,7 +7556,8 @@
         "name": "Scalar sample 1e+23"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-14",
@@ -7203,7 +7600,9 @@
             "width": 151.515625,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7228,7 +7627,8 @@
         "name": "Scalar sample 1000000000000000100"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-15",
@@ -7271,7 +7671,9 @@
             "width": 150.09375,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7296,7 +7698,8 @@
         "name": "Scalar sample 0.30000000000000004"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-16",
@@ -7339,7 +7742,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -7356,7 +7761,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-17",
@@ -7399,7 +7805,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7424,7 +7832,8 @@
         "name": "Scalar sample 0"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-0",
@@ -7467,7 +7876,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7492,7 +7903,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-1",
@@ -7535,7 +7947,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7560,7 +7974,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-2",
@@ -7603,7 +8018,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7636,7 +8053,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-3",
@@ -7679,7 +8097,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7704,7 +8124,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-4",
@@ -7747,7 +8168,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7772,7 +8195,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-4-320-Dark.png",
-      "pngSha256": "84e770051513f3c9f5088567828877f9cd58c7c29c1f175108c6de4b1be35e0b"
+      "pngSha256": "84e770051513f3c9f5088567828877f9cd58c7c29c1f175108c6de4b1be35e0b",
+      "overflowClick": null
     },
     {
       "id": "actions-5",
@@ -7815,7 +8239,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7840,7 +8266,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-6",
@@ -7883,7 +8310,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7916,7 +8345,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-7",
@@ -7959,7 +8389,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -7992,7 +8424,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-8",
@@ -8035,7 +8468,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8068,7 +8503,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-9",
@@ -8111,7 +8547,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8144,7 +8582,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-10",
@@ -8187,7 +8626,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8220,7 +8661,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-11",
@@ -8263,7 +8705,9 @@
             "width": 0,
             "height": 40
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8296,7 +8740,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-11-320-Dark.png",
-      "pngSha256": "ee02c89c251386c0068b683364d803da4838a204b615df8ff7e2669e43666ee1"
+      "pngSha256": "ee02c89c251386c0068b683364d803da4838a204b615df8ff7e2669e43666ee1",
+      "overflowClick": null
     },
     {
       "id": "actions-12",
@@ -8339,7 +8784,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8372,7 +8819,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-13",
@@ -8415,7 +8863,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8448,7 +8898,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-14",
@@ -8491,7 +8942,9 @@
             "width": 20.640625,
             "height": 40
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8524,7 +8977,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-15",
@@ -8567,7 +9021,9 @@
             "width": 21.140625,
             "height": 40
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8600,7 +9056,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-16",
@@ -8643,7 +9100,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8668,7 +9127,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-17",
@@ -8711,7 +9171,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8744,7 +9206,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-0",
@@ -8787,7 +9250,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8812,7 +9277,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-1",
@@ -8855,7 +9321,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8880,7 +9348,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-2",
@@ -8923,7 +9392,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -8948,7 +9419,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-3",
@@ -8991,7 +9463,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9016,7 +9490,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-4",
@@ -9059,7 +9534,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9084,7 +9561,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-4-320-Dark.png",
-      "pngSha256": "ddf533b2b4e3aa3a59ea10ef2ca83c5075244f51820e5053e6bd49a16034e7ae"
+      "pngSha256": "ddf533b2b4e3aa3a59ea10ef2ca83c5075244f51820e5053e6bd49a16034e7ae",
+      "overflowClick": null
     },
     {
       "id": "content-5",
@@ -9127,7 +9605,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9152,7 +9632,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-6",
@@ -9195,7 +9676,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9220,7 +9703,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-7",
@@ -9263,7 +9747,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9288,7 +9774,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-8",
@@ -9331,7 +9818,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9356,7 +9845,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-9",
@@ -9399,7 +9889,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9424,7 +9916,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-10",
@@ -9467,7 +9960,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9492,7 +9987,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-11",
@@ -9535,7 +10031,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9560,7 +10058,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-11-320-Dark.png",
-      "pngSha256": "99faffbac5f74aaab5017126e581137693c36c2dc5f2743ea47890f4ce51e96e"
+      "pngSha256": "99faffbac5f74aaab5017126e581137693c36c2dc5f2743ea47890f4ce51e96e",
+      "overflowClick": null
     },
     {
       "id": "content-12",
@@ -9603,7 +10102,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9628,7 +10129,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-13",
@@ -9671,7 +10173,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9696,7 +10200,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-14",
@@ -9739,7 +10244,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9764,7 +10271,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-15",
@@ -9807,7 +10315,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9832,7 +10342,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-16",
@@ -9875,7 +10386,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9900,7 +10413,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-17",
@@ -9943,7 +10457,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -9968,7 +10484,93 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
+    },
+    {
+      "id": "actions-mixed",
+      "width": 320,
+      "scheme": "Dark",
+      "slot": "actions",
+      "scalar": {
+        "kind": "number",
+        "value": "1e20"
+      },
+      "caption": "WWWWWW a b",
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 280,
+          "height": 183
+        },
+        "row": {
+          "x": 21,
+          "y": 21,
+          "width": 278,
+          "height": 181
+        },
+        "header": {
+          "x": 21,
+          "y": 21,
+          "width": 278,
+          "height": 128
+        },
+        "button": {
+          "x": 21,
+          "y": 21,
+          "width": 56.296875,
+          "height": 128
+        },
+        "title": {
+          "box": {
+            "x": 65,
+            "y": 37,
+            "width": 0,
+            "height": 60
+          },
+          "text": "WWWWWW a b",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": {
+            "x": 65,
+            "y": 78,
+            "width": 8.125,
+            "height": 17
+          }
+        },
+        "subtitle": {
+          "box": {
+            "x": 65,
+            "y": 101,
+            "width": 0,
+            "height": 32
+          },
+          "text": "Consumer text"
+        },
+        "actions": {
+          "box": {
+            "x": 77.296875,
+            "y": 73,
+            "width": 205.703125,
+            "height": 24
+          },
+          "text": "100000000000000000000"
+        },
+        "body": {
+          "box": {
+            "x": 21,
+            "y": 149,
+            "width": 278,
+            "height": 53
+          },
+          "text": "Consumer body"
+        },
+        "expanded": true,
+        "name": "WWWWWW a b Consumer text"
+      },
+      "file": "accordion-scalar-actions-mixed-320-Dark.png",
+      "pngSha256": "3c3db884be49421a5e06c271fed5eb0034837606379b267b60b6145feeef4200",
+      "overflowClick": "false"
     },
     {
       "id": "title-0",
@@ -10011,7 +10613,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10036,7 +10640,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-1",
@@ -10079,7 +10684,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10104,7 +10711,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-2",
@@ -10147,7 +10755,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10172,7 +10782,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-3",
@@ -10215,7 +10826,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10240,7 +10853,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-4",
@@ -10283,7 +10897,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10308,7 +10924,8 @@
         "name": "0 Consumer text"
       },
       "file": "accordion-scalar-title-4-640-Light.png",
-      "pngSha256": "14bbf5a023a301ea4509e0cf161871cbf2365a37231646a516372681b57dbbe9"
+      "pngSha256": "14bbf5a023a301ea4509e0cf161871cbf2365a37231646a516372681b57dbbe9",
+      "overflowClick": null
     },
     {
       "id": "title-5",
@@ -10351,7 +10968,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "NaN"
+          "text": "NaN",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10376,7 +10995,8 @@
         "name": "NaN Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-6",
@@ -10419,7 +11039,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "Infinity"
+          "text": "Infinity",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10444,7 +11066,8 @@
         "name": "Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-7",
@@ -10487,7 +11110,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-Infinity"
+          "text": "-Infinity",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10512,7 +11137,8 @@
         "name": "-Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-8",
@@ -10555,7 +11181,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-1.5"
+          "text": "-1.5",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10580,7 +11208,8 @@
         "name": "-1.5 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-9",
@@ -10623,7 +11252,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e-7"
+          "text": "1e-7",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10648,7 +11279,8 @@
         "name": "1e-7 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-10",
@@ -10691,7 +11323,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0.000001"
+          "text": "0.000001",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10716,7 +11350,8 @@
         "name": "0.000001 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-11",
@@ -10759,7 +11394,9 @@
             "width": 183.984375,
             "height": 20
           },
-          "text": "100000000000000000000"
+          "text": "100000000000000000000",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10784,7 +11421,8 @@
         "name": "100000000000000000000 Consumer text"
       },
       "file": "accordion-scalar-title-11-640-Light.png",
-      "pngSha256": "b3bfbaf939ffd5fb1d9d5f0c3dd56c9d970c92b7f1cf1ad000fb8747ebd9783d"
+      "pngSha256": "b3bfbaf939ffd5fb1d9d5f0c3dd56c9d970c92b7f1cf1ad000fb8747ebd9783d",
+      "overflowClick": null
     },
     {
       "id": "title-12",
@@ -10827,7 +11465,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+21"
+          "text": "1e+21",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10852,7 +11492,8 @@
         "name": "1e+21 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-13",
@@ -10895,7 +11536,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+23"
+          "text": "1e+23",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10920,7 +11563,8 @@
         "name": "1e+23 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-14",
@@ -10963,7 +11607,9 @@
             "width": 162.359375,
             "height": 20
           },
-          "text": "1000000000000000100"
+          "text": "1000000000000000100",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -10988,7 +11634,8 @@
         "name": "1000000000000000100 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-15",
@@ -11031,7 +11678,9 @@
             "width": 161.859375,
             "height": 20
           },
-          "text": "0.30000000000000004"
+          "text": "0.30000000000000004",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11056,7 +11705,8 @@
         "name": "0.30000000000000004 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-16",
@@ -11099,7 +11749,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11124,7 +11776,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-17",
@@ -11167,7 +11820,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11192,7 +11847,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-0",
@@ -11235,7 +11891,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -11252,7 +11910,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-1",
@@ -11295,7 +11954,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -11312,7 +11973,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-2",
@@ -11355,7 +12017,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11380,7 +12044,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-3",
@@ -11423,7 +12088,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -11440,7 +12107,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-4",
@@ -11483,7 +12151,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -11500,7 +12170,8 @@
         "name": "Scalar sample"
       },
       "file": "accordion-scalar-subtitle-4-640-Light.png",
-      "pngSha256": "489aa090911ba35002378a478d998cf70080d886d10c7e3af5749619fff3be15"
+      "pngSha256": "489aa090911ba35002378a478d998cf70080d886d10c7e3af5749619fff3be15",
+      "overflowClick": null
     },
     {
       "id": "subtitle-5",
@@ -11543,7 +12214,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -11560,7 +12233,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-6",
@@ -11603,7 +12277,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11628,7 +12304,8 @@
         "name": "Scalar sample Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-7",
@@ -11671,7 +12348,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11696,7 +12375,8 @@
         "name": "Scalar sample -Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-8",
@@ -11739,7 +12419,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11764,7 +12446,8 @@
         "name": "Scalar sample -1.5"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-9",
@@ -11807,7 +12490,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11832,7 +12517,8 @@
         "name": "Scalar sample 1e-7"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-10",
@@ -11875,7 +12561,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11900,7 +12588,8 @@
         "name": "Scalar sample 0.000001"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-11",
@@ -11943,7 +12632,9 @@
             "width": 170.703125,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -11968,7 +12659,8 @@
         "name": "Scalar sample 100000000000000000000"
       },
       "file": "accordion-scalar-subtitle-11-640-Light.png",
-      "pngSha256": "b869a4f90cbb24e860838d5e45f604c640cbe4e706157c0c0d0584ceea92db84"
+      "pngSha256": "b869a4f90cbb24e860838d5e45f604c640cbe4e706157c0c0d0584ceea92db84",
+      "overflowClick": null
     },
     {
       "id": "subtitle-12",
@@ -12011,7 +12703,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12036,7 +12730,8 @@
         "name": "Scalar sample 1e+21"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-13",
@@ -12079,7 +12774,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12104,7 +12801,8 @@
         "name": "Scalar sample 1e+23"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-14",
@@ -12147,7 +12845,9 @@
             "width": 151.515625,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12172,7 +12872,8 @@
         "name": "Scalar sample 1000000000000000100"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-15",
@@ -12215,7 +12916,9 @@
             "width": 150.09375,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12240,7 +12943,8 @@
         "name": "Scalar sample 0.30000000000000004"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-16",
@@ -12283,7 +12987,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -12300,7 +13006,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-17",
@@ -12343,7 +13050,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12368,7 +13077,8 @@
         "name": "Scalar sample 0"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-0",
@@ -12411,7 +13121,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12436,7 +13148,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-1",
@@ -12479,7 +13192,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12504,7 +13219,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-2",
@@ -12547,7 +13263,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12580,7 +13298,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-3",
@@ -12623,7 +13342,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12648,7 +13369,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-4",
@@ -12691,7 +13413,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12716,7 +13440,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-4-640-Light.png",
-      "pngSha256": "a50058b00ed2f4f1b331c08df7cece19b0ecda9c38604044b756fe3b5c00dd3a"
+      "pngSha256": "a50058b00ed2f4f1b331c08df7cece19b0ecda9c38604044b756fe3b5c00dd3a",
+      "overflowClick": null
     },
     {
       "id": "actions-5",
@@ -12759,7 +13484,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12784,7 +13511,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-6",
@@ -12827,7 +13555,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12860,7 +13590,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-7",
@@ -12903,7 +13634,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -12936,7 +13669,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-8",
@@ -12979,7 +13713,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13012,7 +13748,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-9",
@@ -13055,7 +13792,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13088,7 +13827,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-10",
@@ -13131,7 +13871,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13164,7 +13906,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-11",
@@ -13207,7 +13950,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13240,7 +13985,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-11-640-Light.png",
-      "pngSha256": "0c060e4d8d11089dd8f4de0eaebe4cfe986fc905cc3b0c5e3f4c6f7a25be7925"
+      "pngSha256": "0c060e4d8d11089dd8f4de0eaebe4cfe986fc905cc3b0c5e3f4c6f7a25be7925",
+      "overflowClick": null
     },
     {
       "id": "actions-12",
@@ -13283,7 +14029,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13316,7 +14064,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-13",
@@ -13359,7 +14108,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13392,7 +14143,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-14",
@@ -13435,7 +14187,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13468,7 +14222,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-15",
@@ -13511,7 +14266,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13544,7 +14301,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-16",
@@ -13587,7 +14345,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13612,7 +14372,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-17",
@@ -13655,7 +14416,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13688,7 +14451,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-0",
@@ -13731,7 +14495,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13756,7 +14522,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-1",
@@ -13799,7 +14566,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13824,7 +14593,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-2",
@@ -13867,7 +14637,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13892,7 +14664,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-3",
@@ -13935,7 +14708,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -13960,7 +14735,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-4",
@@ -14003,7 +14779,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14028,7 +14806,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-4-640-Light.png",
-      "pngSha256": "751cf1581e68aeb428905fa4e514e2dc04546a3df76aff51a1a1e248bd5f513d"
+      "pngSha256": "751cf1581e68aeb428905fa4e514e2dc04546a3df76aff51a1a1e248bd5f513d",
+      "overflowClick": null
     },
     {
       "id": "content-5",
@@ -14071,7 +14850,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14096,7 +14877,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-6",
@@ -14139,7 +14921,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14164,7 +14948,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-7",
@@ -14207,7 +14992,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14232,7 +15019,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-8",
@@ -14275,7 +15063,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14300,7 +15090,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-9",
@@ -14343,7 +15134,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14368,7 +15161,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-10",
@@ -14411,7 +15205,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14436,7 +15232,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-11",
@@ -14479,7 +15276,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14504,7 +15303,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-11-640-Light.png",
-      "pngSha256": "7033a4aa64adf92ed63da1bb9e9b984073bc60914fde6abc54fc6f0f3e783700"
+      "pngSha256": "7033a4aa64adf92ed63da1bb9e9b984073bc60914fde6abc54fc6f0f3e783700",
+      "overflowClick": null
     },
     {
       "id": "content-12",
@@ -14547,7 +15347,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14572,7 +15374,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-13",
@@ -14615,7 +15418,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14640,7 +15445,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-14",
@@ -14683,7 +15489,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14708,7 +15516,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-15",
@@ -14751,7 +15560,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14776,7 +15587,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-16",
@@ -14819,7 +15631,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14844,7 +15658,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-17",
@@ -14887,7 +15702,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14912,7 +15729,93 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
+    },
+    {
+      "id": "actions-mixed",
+      "width": 640,
+      "scheme": "Light",
+      "slot": "actions",
+      "scalar": {
+        "kind": "number",
+        "value": "1e20"
+      },
+      "caption": "WWWWWW a b",
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 127
+        },
+        "row": {
+          "x": 21,
+          "y": 21,
+          "width": 598,
+          "height": 125
+        },
+        "header": {
+          "x": 21,
+          "y": 21,
+          "width": 598,
+          "height": 72
+        },
+        "button": {
+          "x": 21,
+          "y": 21,
+          "width": 372.296875,
+          "height": 72
+        },
+        "title": {
+          "box": {
+            "x": 69,
+            "y": 37,
+            "width": 113.40625,
+            "height": 20
+          },
+          "text": "WWWWWW a b",
+          "color": "rgb(45, 45, 45)",
+          "lastWord": {
+            "x": 174.265625,
+            "y": 38,
+            "width": 8.140625,
+            "height": 17
+          }
+        },
+        "subtitle": {
+          "box": {
+            "x": 69,
+            "y": 61,
+            "width": 113.40625,
+            "height": 16
+          },
+          "text": "Consumer text"
+        },
+        "actions": {
+          "box": {
+            "x": 393.296875,
+            "y": 45,
+            "width": 205.703125,
+            "height": 24
+          },
+          "text": "100000000000000000000"
+        },
+        "body": {
+          "box": {
+            "x": 21,
+            "y": 93,
+            "width": 598,
+            "height": 53
+          },
+          "text": "Consumer body"
+        },
+        "expanded": true,
+        "name": "WWWWWW a b Consumer text"
+      },
+      "file": "accordion-scalar-actions-mixed-640-Light.png",
+      "pngSha256": "7ec9cd5756f3e87a1644d5160ebf95b25451fa0c9de45e50cb9cf483aba95e90",
+      "overflowClick": null
     },
     {
       "id": "title-0",
@@ -14955,7 +15858,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -14980,7 +15885,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-1",
@@ -15023,7 +15929,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15048,7 +15956,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-2",
@@ -15091,7 +16000,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15116,7 +16027,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-3",
@@ -15159,7 +16071,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15184,7 +16098,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-4",
@@ -15227,7 +16142,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15252,7 +16169,8 @@
         "name": "0 Consumer text"
       },
       "file": "accordion-scalar-title-4-640-Dark.png",
-      "pngSha256": "f6a4b73d13e6d395c23bc6e74b14a81d9fd3f1fb9ced158ef43d9efd448a1489"
+      "pngSha256": "f6a4b73d13e6d395c23bc6e74b14a81d9fd3f1fb9ced158ef43d9efd448a1489",
+      "overflowClick": null
     },
     {
       "id": "title-5",
@@ -15295,7 +16213,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "NaN"
+          "text": "NaN",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15320,7 +16240,8 @@
         "name": "NaN Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-6",
@@ -15363,7 +16284,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "Infinity"
+          "text": "Infinity",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15388,7 +16311,8 @@
         "name": "Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-7",
@@ -15431,7 +16355,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-Infinity"
+          "text": "-Infinity",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15456,7 +16382,8 @@
         "name": "-Infinity Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-8",
@@ -15499,7 +16426,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "-1.5"
+          "text": "-1.5",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15524,7 +16453,8 @@
         "name": "-1.5 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-9",
@@ -15567,7 +16497,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e-7"
+          "text": "1e-7",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15592,7 +16524,8 @@
         "name": "1e-7 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-10",
@@ -15635,7 +16568,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0.000001"
+          "text": "0.000001",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15660,7 +16595,8 @@
         "name": "0.000001 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-11",
@@ -15703,7 +16639,9 @@
             "width": 183.984375,
             "height": 20
           },
-          "text": "100000000000000000000"
+          "text": "100000000000000000000",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15728,7 +16666,8 @@
         "name": "100000000000000000000 Consumer text"
       },
       "file": "accordion-scalar-title-11-640-Dark.png",
-      "pngSha256": "a079668f912c46114ccaf7e687c369d052ec6a1306eab9d8d2d4de8da6c70ce2"
+      "pngSha256": "a079668f912c46114ccaf7e687c369d052ec6a1306eab9d8d2d4de8da6c70ce2",
+      "overflowClick": null
     },
     {
       "id": "title-12",
@@ -15771,7 +16710,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+21"
+          "text": "1e+21",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15796,7 +16737,8 @@
         "name": "1e+21 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-13",
@@ -15839,7 +16781,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "1e+23"
+          "text": "1e+23",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15864,7 +16808,8 @@
         "name": "1e+23 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-14",
@@ -15907,7 +16852,9 @@
             "width": 162.359375,
             "height": 20
           },
-          "text": "1000000000000000100"
+          "text": "1000000000000000100",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -15932,7 +16879,8 @@
         "name": "1000000000000000100 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-15",
@@ -15975,7 +16923,9 @@
             "width": 161.859375,
             "height": 20
           },
-          "text": "0.30000000000000004"
+          "text": "0.30000000000000004",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16000,7 +16950,8 @@
         "name": "0.30000000000000004 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-16",
@@ -16043,7 +16994,9 @@
             "width": 82.875,
             "height": 0
           },
-          "text": ""
+          "text": "",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16068,7 +17021,8 @@
         "name": "Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "title-17",
@@ -16111,7 +17065,9 @@
             "width": 82.875,
             "height": 20
           },
-          "text": "0"
+          "text": "0",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16136,7 +17092,8 @@
         "name": "0 Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-0",
@@ -16179,7 +17136,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -16196,7 +17155,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-1",
@@ -16239,7 +17199,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -16256,7 +17218,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-2",
@@ -16299,7 +17262,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16324,7 +17289,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-3",
@@ -16367,7 +17333,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -16384,7 +17352,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-4",
@@ -16427,7 +17396,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -16444,7 +17415,8 @@
         "name": "Scalar sample"
       },
       "file": "accordion-scalar-subtitle-4-640-Dark.png",
-      "pngSha256": "363c59a11741f0a06772233b4fe8d037517eea4557a6aa160e55cae7933c6ac8"
+      "pngSha256": "363c59a11741f0a06772233b4fe8d037517eea4557a6aa160e55cae7933c6ac8",
+      "overflowClick": null
     },
     {
       "id": "subtitle-5",
@@ -16487,7 +17459,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -16504,7 +17478,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-6",
@@ -16547,7 +17522,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16572,7 +17549,8 @@
         "name": "Scalar sample Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-7",
@@ -16615,7 +17593,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16640,7 +17620,8 @@
         "name": "Scalar sample -Infinity"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-8",
@@ -16683,7 +17664,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16708,7 +17691,8 @@
         "name": "Scalar sample -1.5"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-9",
@@ -16751,7 +17735,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16776,7 +17762,8 @@
         "name": "Scalar sample 1e-7"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-10",
@@ -16819,7 +17806,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16844,7 +17833,8 @@
         "name": "Scalar sample 0.000001"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-11",
@@ -16887,7 +17877,9 @@
             "width": 170.703125,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16912,7 +17904,8 @@
         "name": "Scalar sample 100000000000000000000"
       },
       "file": "accordion-scalar-subtitle-11-640-Dark.png",
-      "pngSha256": "c5870923968dee128da7ed42462aca9ffb7fbc61bbfa48fb60c6f4c6e270c9f8"
+      "pngSha256": "c5870923968dee128da7ed42462aca9ffb7fbc61bbfa48fb60c6f4c6e270c9f8",
+      "overflowClick": null
     },
     {
       "id": "subtitle-12",
@@ -16955,7 +17948,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -16980,7 +17975,8 @@
         "name": "Scalar sample 1e+21"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-13",
@@ -17023,7 +18019,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17048,7 +18046,8 @@
         "name": "Scalar sample 1e+23"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-14",
@@ -17091,7 +18090,9 @@
             "width": 151.515625,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17116,7 +18117,8 @@
         "name": "Scalar sample 1000000000000000100"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-15",
@@ -17159,7 +18161,9 @@
             "width": 150.09375,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17184,7 +18188,8 @@
         "name": "Scalar sample 0.30000000000000004"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-16",
@@ -17227,7 +18232,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": null,
         "actions": null,
@@ -17244,7 +18251,8 @@
         "name": "Scalar sample"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "subtitle-17",
@@ -17287,7 +18295,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17312,7 +18322,8 @@
         "name": "Scalar sample 0"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-0",
@@ -17355,7 +18366,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17380,7 +18393,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-1",
@@ -17423,7 +18437,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17448,7 +18464,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-2",
@@ -17491,7 +18508,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17524,7 +18543,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-3",
@@ -17567,7 +18587,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17592,7 +18614,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-4",
@@ -17635,7 +18658,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17660,7 +18685,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-4-640-Dark.png",
-      "pngSha256": "5d83981b4a5e983f06e25777a2774a923edf5590506ca8d12b089b4184557147"
+      "pngSha256": "5d83981b4a5e983f06e25777a2774a923edf5590506ca8d12b089b4184557147",
+      "overflowClick": null
     },
     {
       "id": "actions-5",
@@ -17703,7 +18729,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17728,7 +18756,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-6",
@@ -17771,7 +18800,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17804,7 +18835,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-7",
@@ -17847,7 +18879,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17880,7 +18914,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-8",
@@ -17923,7 +18958,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -17956,7 +18993,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-9",
@@ -17999,7 +19037,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18032,7 +19072,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-10",
@@ -18075,7 +19116,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18108,7 +19151,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-11",
@@ -18151,7 +19195,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18184,7 +19230,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-actions-11-640-Dark.png",
-      "pngSha256": "89295391fae20938ccf5dd1ef4066295e3985d8363cb40a10184a59705a18287"
+      "pngSha256": "89295391fae20938ccf5dd1ef4066295e3985d8363cb40a10184a59705a18287",
+      "overflowClick": null
     },
     {
       "id": "actions-12",
@@ -18227,7 +19274,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18260,7 +19309,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-13",
@@ -18303,7 +19353,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18336,7 +19388,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-14",
@@ -18379,7 +19432,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18412,7 +19467,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-15",
@@ -18455,7 +19511,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18488,7 +19546,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-16",
@@ -18531,7 +19590,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18556,7 +19617,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "actions-17",
@@ -18599,7 +19661,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18632,7 +19696,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-0",
@@ -18675,7 +19740,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18700,7 +19767,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-1",
@@ -18743,7 +19811,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18768,7 +19838,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-2",
@@ -18811,7 +19882,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18836,7 +19909,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-3",
@@ -18879,7 +19953,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18904,7 +19980,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-4",
@@ -18947,7 +20024,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -18972,7 +20051,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-4-640-Dark.png",
-      "pngSha256": "25dc2b025345913342c27d63c327aa48984be0ea11b76225c1806feec1dbea7f"
+      "pngSha256": "25dc2b025345913342c27d63c327aa48984be0ea11b76225c1806feec1dbea7f",
+      "overflowClick": null
     },
     {
       "id": "content-5",
@@ -19015,7 +20095,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19040,7 +20122,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-6",
@@ -19083,7 +20166,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19108,7 +20193,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-7",
@@ -19151,7 +20237,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19176,7 +20264,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-8",
@@ -19219,7 +20308,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19244,7 +20335,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-9",
@@ -19287,7 +20379,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19312,7 +20406,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-10",
@@ -19355,7 +20450,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19380,7 +20477,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-11",
@@ -19423,7 +20521,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19448,7 +20548,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": "accordion-scalar-content-11-640-Dark.png",
-      "pngSha256": "325d59047a0d79da60b3287bbf85b4e0491807d81320a96e127532db82e2dffe"
+      "pngSha256": "325d59047a0d79da60b3287bbf85b4e0491807d81320a96e127532db82e2dffe",
+      "overflowClick": null
     },
     {
       "id": "content-12",
@@ -19491,7 +20592,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19516,7 +20619,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-13",
@@ -19559,7 +20663,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19584,7 +20690,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-14",
@@ -19627,7 +20734,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19652,7 +20761,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-15",
@@ -19695,7 +20805,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19720,7 +20832,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-16",
@@ -19763,7 +20876,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19788,7 +20903,8 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
     },
     {
       "id": "content-17",
@@ -19831,7 +20947,9 @@
             "width": 85.96875,
             "height": 20
           },
-          "text": "Scalar sample"
+          "text": "Scalar sample",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": null
         },
         "subtitle": {
           "box": {
@@ -19856,7 +20974,93 @@
         "name": "Scalar sample Consumer text"
       },
       "file": null,
-      "pngSha256": null
+      "pngSha256": null,
+      "overflowClick": null
+    },
+    {
+      "id": "actions-mixed",
+      "width": 640,
+      "scheme": "Dark",
+      "slot": "actions",
+      "scalar": {
+        "kind": "number",
+        "value": "1e20"
+      },
+      "caption": "WWWWWW a b",
+      "measurement": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 600,
+          "height": 127
+        },
+        "row": {
+          "x": 21,
+          "y": 21,
+          "width": 598,
+          "height": 125
+        },
+        "header": {
+          "x": 21,
+          "y": 21,
+          "width": 598,
+          "height": 72
+        },
+        "button": {
+          "x": 21,
+          "y": 21,
+          "width": 372.296875,
+          "height": 72
+        },
+        "title": {
+          "box": {
+            "x": 69,
+            "y": 37,
+            "width": 113.40625,
+            "height": 20
+          },
+          "text": "WWWWWW a b",
+          "color": "rgb(240, 244, 248)",
+          "lastWord": {
+            "x": 174.265625,
+            "y": 38,
+            "width": 8.140625,
+            "height": 17
+          }
+        },
+        "subtitle": {
+          "box": {
+            "x": 69,
+            "y": 61,
+            "width": 113.40625,
+            "height": 16
+          },
+          "text": "Consumer text"
+        },
+        "actions": {
+          "box": {
+            "x": 393.296875,
+            "y": 45,
+            "width": 205.703125,
+            "height": 24
+          },
+          "text": "100000000000000000000"
+        },
+        "body": {
+          "box": {
+            "x": 21,
+            "y": 93,
+            "width": 598,
+            "height": 53
+          },
+          "text": "Consumer body"
+        },
+        "expanded": true,
+        "name": "WWWWWW a b Consumer text"
+      },
+      "file": "accordion-scalar-actions-mixed-640-Dark.png",
+      "pngSha256": "342516b3fc608d309045b79c94c33bf1b113191a6d0affd72dd679ef40ea2e08",
+      "overflowClick": null
     }
   ]
 }

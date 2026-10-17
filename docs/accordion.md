@@ -118,11 +118,12 @@ and negative audit. Local continuity evidence covers x64. Native ARM64 execution
 motion/static raster and the remaining customization/platform acceptance stay
 open. The diagnostic adds no library API or behavior change.
 
-The scalar reference adds 288 cases: eighteen null/boolean/number/string values
-in each of the four slots, both themes and 320/640px viewports. Its 32 full-client
+The scalar reference adds 292 cases: eighteen null/boolean/number/string values
+in each of the four slots, both themes and 320/640px viewports, plus mixed-word
+overflow specimens. Its 36 full-client
 source PNGs are committed under `tests/Reference/AccordionScalars`, with hashes
 and actual browser accessible names. Native text and geometry pass every case
-with zero geometry error. Eighteen damaged receipts/captures are rejected; exact
+with zero geometry error. Twenty-two damaged receipts/captures are rejected; exact
 pixel parity remains unproven under zero masks/tolerance/resampling.
 
 Numbers use the source's [decimal Number text](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-tostring):
@@ -138,10 +139,17 @@ zero/NaN versus the string `0`, and empty rendered content for booleans.
 Plain slot text uses [whole-word wrapping](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.textwrapping?view=windows-app-sdk-2.0)
 to match CSS when long action content leaves no text width in the header.
 Unbreakable words may overflow their line; consumer-owned rich controls keep
-their explicit wrapping settings. The native pre-fix capture is retained at
+their explicit wrapping settings. A bounded DirectWrite line plan preserves
+breaks before arranging overflow at its native unclipped paint width; merely
+widening a wrapping text block would combine short words. UIA names retain the
+logical text. The mixed-word specimen checks three rendered lines, visible
+last-word ink and native pointer activation beyond the header's logical bounds.
+Full-client raster comparison still uses no masks, tolerance or resampling;
+the additional ink check establishes presence, not pixel parity.
+The native pre-fix capture is retained at
 `artifacts/current/accordion-scalars-before`: 340 discrepancies included 156
 text/name mismatches and a 360px header-height error. The corrected capture is
-`artifacts/current/accordion-scalars-native`. Both CI architecture jobs register
+`artifacts/current/accordion-scalars-overflow-final`. Both CI architecture jobs register
 the scalar capture and audits. Fresh packaged/full-suite delivery remains
 pending for the scalar change; the versioned release above is the previous
 verified source.

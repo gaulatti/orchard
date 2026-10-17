@@ -18,6 +18,9 @@ try{
   ['320/accordion-scalars.json',data=>frame(data,'actions-11').actions.text='1E+20'],
   ['320/accordion-scalars.json',data=>frame(data,'actions-14').header.height=468],
   ['320/accordion-scalars.json',data=>frame(data,'actions-14').title.box.height+=20],
+  ['320/accordion-scalars.json',data=>frame(data,'actions-mixed').title.renderedLines=['WWWWWW','a b']],
+  ['320/accordion-scalars.json',data=>frame(data,'actions-mixed').title.paintHeight=40],
+  ['320/accordion-scalars.json',data=>data.frames.find(row=>row.scheme==='Light'&&row.id==='actions-mixed').overflowClick=false],
   ['320/accordion-scalars.json',data=>frame(data,'subtitle-3').subtitle=frame(data,'subtitle-11').subtitle],
   ['320/accordion-scalars.json',data=>frame(data,'content-10').body.text='1E-06'],
   ['320/accordion-scalars.json',data=>frame(data,'content-3').body.box.height=null],
@@ -32,5 +35,6 @@ try{
  ];
  for(const[index,[file,change]]of cases.entries()){await copy();const target=path.join(temporary,file),data=JSON.parse((await fs.readFile(target,'utf8')).replace(/^\uFEFF/,''));change(data);await fs.writeFile(target,JSON.stringify(data));assert.equal(run().status,1,'Corrupt scalar receipt passed: '+index+'/'+file);}
  await copy();await fs.unlink(path.join(temporary,'320/accordion-scalar-title-4-320-Light.png'));assert.equal(run().status,1,'Missing scalar capture passed.');
- console.log(JSON.stringify({passed:true,passingControls:1,rejectedMutations:cases.length+1}));
+ await copy();await fs.copyFile(path.join(temporary,'320/accordion-scalar-actions-4-320-Light.png'),path.join(temporary,'320/accordion-scalar-actions-mixed-320-Light.png'));assert.equal(run().status,1,'Missing painted word passed.');
+ console.log(JSON.stringify({passed:true,passingControls:1,rejectedMutations:cases.length+2}));
 }finally{assert.equal(path.dirname(temporary),path.resolve(os.tmpdir()));assert(/^orchard-accordion-scalars-audit-[A-Za-z0-9]+$/.test(path.basename(temporary)));assert.equal((await fs.lstat(temporary)).isSymbolicLink(),false);await fs.rm(temporary,{recursive:true,force:true});}
