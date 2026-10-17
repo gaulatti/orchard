@@ -131,6 +131,7 @@
                 <local:SwitchesFixture x:Name="Switches" />
                 <local:CheckboxesFixture x:Name="Checkboxes" />
                 <local:RadioGroupsFixture x:Name="RadioGroups" />
+                <local:AccordionsFixture x:Name="Accordions" />
                 <local:ContrastFixture x:Name="Contrast" />
             </StackPanel>
         </ScrollViewer>

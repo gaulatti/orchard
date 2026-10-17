@@ -6,6 +6,14 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerAccordion` displays an observable `BleeckerAccordionItem` collection with
+one internally expanded ID. `DefaultExpandedId` initializes state once; changing
+it after mount does not change expansion. Title, subtitle, content and independent
+action slots accept UI elements or data templates and retain consumer bindings,
+commands and input state across collapse. Header buttons expose Invoke and
+ExpandCollapse automation and ordinary Tab/Enter/Space navigation. Full
+visual/platform acceptance remains in progress.
+
 `BleeckerRadioGroup` exposes observable immutable `BleeckerRadioOption` entries,
 nullable string `Value` and horizontal/vertical `Orientation`. Handle
 `ValueRequested` and update your bound model to accept selection. Declining a

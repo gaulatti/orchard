@@ -1,0 +1,36 @@
+using System.Text.Json;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Markup;
+using Orchard;
+
+namespace PackageConsumer;
+public sealed partial class MainWindow
+{
+    private async Task VerifyAccordionsAsync()
+    {
+        var input=new TextBox{Text="Retained consumer value",Margin=new Thickness(16)};var action=new Button{Content="Edit preferences"};var actions=0;action.Click+=(_,_)=>actions++;
+        var firstItem=new BleeckerAccordionItem("first","Delivery schedule",input){Subtitle="Consumer content",Actions=action};var group=new BleeckerAccordion{DefaultExpandedId="first",Items=[firstItem,new("second","Reader preferences",new TextBlock{Text="Second content",Margin=new Thickness(16)})]};
+        var before=new Button{Content="Before packaged accordion"};var layout=new StackPanel{Width=320,Spacing=12};layout.Children.Add(before);layout.Children.Add(group);var host=new Border{Margin=new Thickness(32),Background=Root.Background,HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Child=layout};Root.Children.Add(host);var keys=new List<object>();var passed=false;
+        Button[] Headers()=>BrandDescendants<Button>(group).Where(button=>button.Name=="AccordionHeader").ToArray();
+        IExpandCollapseProvider Peer(Button button)=>(IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(button).GetPattern(PatternInterface.ExpandCollapse);
+        async Task PresentAsync(){var completion=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;void Rendering(object? sender,object args){if(group.IsLoaded&&group.ActualWidth>0&&group.ActualHeight>0&&++frames>=2)completion.TrySetResult();}Microsoft.UI.Xaml.Media.CompositionTarget.Rendering+=Rendering;try{await completion.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{Microsoft.UI.Xaml.Media.CompositionTarget.Rendering-=Rendering;}}
+        try
+        {
+            Root.UpdateLayout();await AwaitAsync(()=>group.IsLoaded&&Headers().Length==2,"Packaged accordion did not mount.");await AcquireConsumerInputAsync();var first=Headers()[0];var second=Headers()[1];Require(group.ExpandedId=="first"&&Peer(first).ExpandCollapseState==ExpandCollapseState.Expanded,"Packaged accordion lost initial expansion.");Require(FrameworkElementAutomationPeer.CreatePeerForElement(first).GetName()=="Delivery schedule Consumer content","Packaged accordion lost its accessible name.");
+            Require(second.Focus(FocusState.Keyboard),"Packaged accordion refused focus.");keys.Add(await PaginationConsumerKeyAsync(0x20,second,second,()=>Require(group.ExpandedId=="second","Packaged Space did not switch single expansion.")));
+            Peer(first).Expand();await PresentAsync();await AwaitAsync(()=>input.IsLoaded,"Packaged accordion did not restore its owned input.");((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(action).GetPattern(PatternInterface.Invoke)).Invoke();Require(actions==1&&group.ExpandedId=="first","Packaged action toggled expansion.");
+            Require(before.Focus(FocusState.Keyboard),"Packaged accordion predecessor refused focus.");keys.Add(await PaginationConsumerKeyAsync(0x09,before,first,()=>Require(group.ExpandedId=="first","Packaged Tab changed expansion.")));keys.Add(await PaginationConsumerKeyAsync(0x0D,first,first,()=>Require(group.ExpandedId is null,"Packaged Enter did not collapse.")));
+            Peer(first).Expand();await PresentAsync();await AwaitAsync(()=>input.IsLoaded,"Packaged input was not retained after collapse.");Require(input.Focus(FocusState.Keyboard),"Packaged input refused focus.");Peer(first).Collapse();Require(ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot),first),"Packaged collapse did not restore its header focus.");Peer(first).Expand();await PresentAsync();await AwaitAsync(()=>input.IsLoaded,"Packaged input did not reopen.");Require(input.Text=="Retained consumer value","Packaged accordion recreated consumer state.");
+            firstItem.Title="Updated schedule";group.Items=new(group.Items);Root.UpdateLayout();Require(ReferenceEquals(Headers()[0],first)&&FrameworkElementAutomationPeer.CreatePeerForElement(first).GetName()=="Updated schedule Consumer content","Packaged live model lost identity/name.");group.DefaultExpandedId="second";Require(group.ExpandedId=="first","Packaged default update changed mounted state.");
+            group.Items.RemoveAt(0);Root.UpdateLayout();Require(group.ExpandedId=="first"&&Peer(Headers()[0]).ExpandCollapseState==ExpandCollapseState.Collapsed,"Packaged removal invented expansion.");var rejected=false;try{Peer(first).Expand();}catch(ElementNotAvailableException){rejected=true;}Require(rejected,"Packaged stale accordion peer remained actionable.");group.Items.Insert(0,firstItem);Root.UpdateLayout();await AwaitAsync(()=>input.IsLoaded,"Packaged reinsert did not restore original content.");Require(group.ExpandedId=="first"&&input.Text=="Retained consumer value","Packaged reinsert changed state/content.");
+            group.IsEnabled=false;rejected=false;try{Peer(Headers()[1]).Expand();}catch(ElementNotEnabledException){rejected=true;}Require(rejected&&group.ExpandedId=="first","Packaged disabled accordion changed expansion.");
+            var template=(DataTemplate)XamlReader.Load("<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'><TextBlock Text='{Binding Title}'/></DataTemplate>");var data=new BleeckerAccordionItem("data","Template title",null);var templated=new BleeckerAccordion{TitleTemplate=template,Items=[new("template",data,null)]};layout.Children.Add(templated);Root.UpdateLayout();await AwaitAsync(()=>BrandDescendants<Button>(templated).Any(button=>button.Name=="AccordionHeader"),"Packaged title template did not mount.");var templateHeader=BrandDescendants<Button>(templated).Single(button=>button.Name=="AccordionHeader");await AwaitAsync(()=>FrameworkElementAutomationPeer.CreatePeerForElement(templateHeader).GetName()=="Template title","Packaged title template exposed model data instead of rendered text.");data.Title="Live template title";await AwaitAsync(()=>FrameworkElementAutomationPeer.CreatePeerForElement(templateHeader).GetName()=="Live template title","Packaged template lost its live consumer binding.");passed=true;
+        }
+        finally{Root.Children.Remove(host);var args=Environment.GetCommandLineArgs();var output=args[Array.IndexOf(args,"--verify-output")+1];await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!,"consumer-accordion-"+Root.RequestedTheme+".json"),JsonSerializer.Serialize(new{passed,actions,keys,singleExpansion=true,contentRetained=true,defaultIsInitialOnly=true,keyedIdentity=true,stalePeerRejected=true,disabledRejected=true}));}
+    }
+}

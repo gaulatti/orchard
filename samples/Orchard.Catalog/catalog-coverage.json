@@ -1,5 +1,6 @@
 {
   "styles": {
+    "BleeckerAccordionHeaderStyle": "AccordionsFixture.xaml",
     "BleeckerRadioOptionStyle": "RadioGroupsFixture.xaml",
     "SearchClearHoverPaletteStyle": "SearchInputsFixture.xaml",
     "BleeckerAttentionActionStyle": "AttentionSurfacesFixture.xaml",
@@ -39,6 +40,8 @@
     "BleeckerTextLayout": "DateControlsFixture.xaml"
   },
   "controls": {
+    "BleeckerAccordion": "AccordionsFixture.xaml",
+    "BleeckerAccordionItem": "AccordionsFixture.xaml",
     "BleeckerRadioGroup": "RadioGroupsFixture.xaml",
     "BleeckerMetric": "MetricsFixture.xaml",
     "BleeckerFilter": "FilterChipsFixture.xaml",

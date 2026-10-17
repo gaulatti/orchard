@@ -88,6 +88,12 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="radio-group",environment=RuntimeEnvironment()}));
             }
+            else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
+            else if(args.Contains("--smoke-accordion"))
+            {
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark}){CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(Accordions);await Accordions.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder);await CaptureFixtureAsync(Accordions,Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));}
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="accordion",environment=RuntimeEnvironment()}));
+            }
             else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-lifecycle")) await RunLoadingOverlayLifecycleAsync(folder);
@@ -900,6 +906,8 @@ public sealed partial class MainWindow : Window
             await Checkboxes.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(RadioGroups);
             await RadioGroups.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(Accordions);
+            await Accordions.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Switches);
             await Switches.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Contrast);

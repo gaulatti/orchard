@@ -4,6 +4,11 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="../../src/Orchard/Controls/BleeckerAccordionItem.cs" Link="BleeckerAccordionItem.cs" />
+        <None Include="../Reference/Accordion.json" Link="Fixtures/Accordion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Accordion/*.png" Link="Fixtures/Accordion/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-accordion.cjs" Link="Fixtures/CaptureAccordion.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/accordion-client.tsx" Link="Fixtures/AccordionClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../samples/Orchard.Catalog/NativeCaptureValidation.cs" Link="NativeCaptureValidation.cs" />
         <Compile Include="../../src/Orchard/Colors/BleeckerCssColor.cs" Link="BleeckerCssColor.cs" />
         <None Include="../Reference/RadioMotion.json" Link="Fixtures/RadioMotion.json" CopyToOutputDirectory="PreserveNewest" />

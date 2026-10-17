@@ -1,5 +1,24 @@
 # Current native validation checkpoint
 
+## Accordion candidate
+
+The current worktree implements the Accordion's keyed, single-section expansion,
+initial-only default ID, independent actions, rich content and four data-template
+slots. All 159 unit tests pass. Its 60 source/native frames cover 108 rows in
+Light/Dark at 320/639/640px with zero geometry error, exact text, numeric typography
+and paint. The full-client comparison retains zero masks/pixel tolerance and no
+resampling; 951,927 pixels differ and exact raster parity remains unproven.
+Source PNGs and font receipts are committed reference fixtures.
+
+Both real Windows motion preferences pass 44 native lifecycle phases, 16 owned
+key pairs and four pointer actions. Template checks verify actual rendered names,
+bound commands and native typing reaching the consumer model. Fourteen damaged
+layout/runtime receipts are rejected. Preferences are restored. Independent
+package delivery, fresh source-identified architecture builds and the complete
+catalog replay are pending. The published Radio release below remains the
+baseline. Inventory is now 65 in progress, 47 pending and zero accepted; both
+compositions remain unaccepted. See [Accordion usage and remaining acceptance](accordion.md).
+
 ## Radio continuity and repeated reversals
 
 Source `e73e626` corrects keyed Radio Group placement to match the pinned

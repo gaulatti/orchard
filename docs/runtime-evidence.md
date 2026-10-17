@@ -1,5 +1,13 @@
 # Native Windows runtime evidence
 
+The current Accordion candidate passes 60 source/native layout frames and 108
+rows with zero geometry error, plus 44 native lifecycle phases under both themes
+and Windows motion preferences. All 159 unit tests pass. Fourteen damaged audit
+receipts are rejected; template commands, bound typing and accessible names are
+verified. Fresh package/full-catalog/architecture delivery remains pending. Exact
+raster, motion trajectories and full platform acceptance remain open. Inventory
+is 65 in progress, 47 pending and zero accepted. See the current checkpoint.
+
 Source `e73e626` passes 28 source-derived Radio lifecycle cases
 and six live reversal steps with 116 native property samples in Light/Dark.
 It corrects the four move-direction clock mismatches in the preserved pre-fix

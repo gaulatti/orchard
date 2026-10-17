@@ -15,7 +15,7 @@ public sealed partial class MainWindow
     private void InitializeNavigation()
     {
         components.AddRange([
-            ("Foundation", Foundation), ("Toggles", Toggles), ("Buttons", Buttons),
+            ("Foundation", Foundation), ("Toggles", Toggles), ("Buttons", Buttons), ("Accordion", Accordions),
             ("Icon buttons", IconButtons), ("Toggle groups", ToggleGroups),
             ("Loading spinners", LoadingSpinners), ("Cards", Cards), ("Skeletons", Skeletons), ("Avatars", Avatars), ("Breadcrumbs", Breadcrumbs), ("Separators", Separators),
             ("Status badges", StatusBadges), ("Menus", Menus), ("Notifications", Notifications), ("Alerts", Alerts), ("Brand lockups", BrandLockups), ("Bauhaus backgrounds", BauhausBackgrounds),

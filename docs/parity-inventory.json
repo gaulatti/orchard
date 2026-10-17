@@ -2100,14 +2100,26 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "BleeckerAccordion",
+        "BleeckerAccordionItem"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/AccordionsFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/AccordionContractTests.cs",
+        "tests/Reference/Accordion.json",
+        "scripts/reference/capture-accordion.cjs",
+        "samples/Orchard.Catalog/AccordionsFixture.xaml.cs",
+        "samples/Orchard.Catalog/MainWindow.Accordions.cs",
+        "scripts/verify-accordion.mjs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete source/native geometry, paint and raster comparison for 60 source cases",
+        "Verify normal/reversed motion and the complete customization/error/lifecycle matrix",
+        "Verify independent package consumer, full catalog, native ARM64, scaling, contrast, Narrator and performance"
       ]
     },
     {

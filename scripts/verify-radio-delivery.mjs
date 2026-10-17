@@ -26,7 +26,7 @@ for(const theme of ['Light','Dark']){
 const full=runtime.component===undefined;
 if(full){
  const profile=(await fs.readFile(path.join(native,'catalog-runtime-profile.jsonl'),'utf8')).trim().split('\n').map(line=>JSON.parse(line));assert.equal(profile.at(-1).passed,true);assert(profile.at(-1).elapsedMilliseconds<480000);
- for(const theme of ['Light','Dark']){const phases=profile.filter(row=>row.kind==='phase-start'&&row.theme===theme).map(row=>row.phase);assert.equal(phases.filter(phase=>phase==='RadioGroupsFixture').length,1);const index=phases.indexOf('RadioGroupsFixture');assert.equal(phases[index-1],'CheckboxesFixture');assert.equal(phases[index+1],'SwitchesFixture');}
+ for(const theme of ['Light','Dark']){const phases=profile.filter(row=>row.kind==='phase-start'&&row.theme===theme).map(row=>row.phase);assert.equal(phases.filter(phase=>phase==='RadioGroupsFixture').length,1);const index=phases.indexOf('RadioGroupsFixture');assert.equal(phases[index-1],'CheckboxesFixture');assert.equal(phases[index+1],'AccordionsFixture');assert.equal(phases[index+2],'SwitchesFixture');}
 }else assert.equal(runtime.component,'radio-group');
 const result={passed:true,themes:2,fullCatalogIntegration:full,nativeRequests:16,consumerRequests:8,nativeKeyPairs,modifierPairs,packagedKeyPairs,temporaryConsumerRemoved:true,sourceRasterParityVerified:false,normalMotionVerified:false,nativeComponentAccepted:false};
 await fs.writeFile(option('--output'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
