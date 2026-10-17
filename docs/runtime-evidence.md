@@ -2327,7 +2327,7 @@ The shared FilterChip geometry and persistent UIA event regressions also pass.
 Fresh x64 NuGet runtime passes both themes; ARM64 remains build-only. Temporary
 isolated caches are removed. Versioned package and both runnable catalog ZIPs
 are verified, with hashes in [the checkpoint](native-validation-checkpoint.md).
-Strict full-frame comparison retains 107,752 differing pixels, so exact raster
+Corrected strict full-frame comparison retains 101,288 differing pixels, so exact raster
 parity remains false. Full state/motion/customization, broader accessibility,
 actual scaling/contrast, Narrator, collection performance and native ARM64 stay
 open. No full catalog rerun or workflow dispatch occurred. The fixed inventory

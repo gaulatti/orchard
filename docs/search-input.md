@@ -81,13 +81,22 @@ text in both themes. All 116 unit tests pass. x64 and ARM64 cross-builds pass;
 The shared FilterChip defaults retain their 20-case geometry and 28-event /
 22-retained-invocation regression results.
 
-The strict 40-frame source/native comparison reports **107,752 differing
+The strict 40-frame source/native comparison reports **101,288 differing
 pixels**, with zero masks and no resampling. Geometry success does not accept
 those raster differences. Evidence is retained under `artifacts/search-input-*`
 and `artifacts/catalog-search-input-final*`; these are local development paths,
 not committed image assets. An earlier in-process pattern assertion, a missing
 UIA fixture scope and the original mirrored-origin geometry measurement remain
 as failed diagnostics. Physical bounds use `TransformBounds`, including RTL.
+
+The first browser capture reused its DOM node and paused a transition at time
+zero, retaining the previous variant's paint in some states. That 107,752-pixel
+diagnostic is superseded by `artifacts/search-input-browser-fresh-mount` and
+`artifacts/search-input-fresh-reference-pixels.json`. Each baseline now mounts
+fresh source DOM; disabled opacity is explicitly checked as `.6`, and the
+imported Input source SHA is verified. State inputs and measured geometry did
+not change; the existing native frames and runtime receipts are re-audited
+against the corrected reference. No native library behavior changed.
 
 Checkpoint source is `1688886`. The independent
 `Gaulatti.Orchard.0.1.0-search-input.1688886.nupkg` consumer passes x64 runtime

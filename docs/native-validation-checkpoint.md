@@ -36,7 +36,7 @@ x64 catalog libraries have identical bytes. Versioned archives have 536 x64 /
 | `Orchard.Catalog.0.1.0-1688886-x64.zip` | `d460ebe2194cfdd0129229772111a322a1f63c7a3d09666dd22629077825aa97` |
 | `Orchard.Catalog.0.1.0-1688886-ARM64.zip` | `4bae7cf3c7890c361e1308a4e603cf4d63ba650515c19ebfed7a1781113f1b5e` |
 
-The strict 40 whole-frame comparison retains 107,752 differing pixels, without
+The corrected strict 40 whole-frame comparison retains 101,288 differing pixels, without
 masks or resampling; disabled editor backgrounds account for the largest
 differences. Source pixel parity is false. Full state/motion/customization,
 broader accessibility/IME/selection, actual Windows scaling/contrast, Narrator,
@@ -45,6 +45,13 @@ setting changed. Inventory is **59 in progress, 53 pending, zero accepted** of
 112. The goal remains active. Push-triggered Actions remain paused and no
 workflow was dispatched. The public wiki is still unavailable; documentation
 is maintained here. See [Search Input contract](search-input.md).
+
+Browser reference correction: each case now mounts fresh DOM. Reusing a prior
+case and pausing CSS transitions at time zero had retained its enabled opacity
+and other paint. The original 107,752-pixel comparison remains as a superseded
+diagnostic. The imported Input hash and disabled `.6` opacity are now checked.
+Existing native frames and input/UIA receipts are re-audited against the new
+reference; all geometry/state inputs and library behavior remain unchanged.
 
 ## FilterChip property events and retained clients
 

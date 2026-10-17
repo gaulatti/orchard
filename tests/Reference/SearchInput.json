@@ -2,7 +2,9 @@
   "format": "orchard-search-input-reference-v1",
   "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
   "sourceSha256": "0a9e5eafdbafdeffdb2e60859ecd5cd1eea4af3598eac712e03f5a6d01a2a038",
-  "scriptSha256": "2ee57566a9a4fc2262389bb15fc635112833b4a71c50e2b6987635073eba6d59",
+  "scriptSha256": "70fb7372de4a72ce3b2c6fe860d9e85124acea137ca0582d6bbfbe9fb4177a37",
+  "inputSourceSha256": "01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192",
+  "freshMountPerCase": true,
   "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
   "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
   "fontFiles": [
@@ -379,7 +381,7 @@
           "paint": {
             "background": "rgb(255, 255, 255)",
             "color": "rgb(45, 45, 45)",
-            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "border": "rgb(166, 93, 87)",
             "radius": "7px",
             "padding": [
               "0px",
@@ -434,7 +436,7 @@
         }
       },
       "file": "search-input-error-320-Light.png",
-      "pngSha256": "2c35edf9865f069372b8ca89ea2d9b01062f8270b9fb79ee310fc5d10dda1c68"
+      "pngSha256": "92540ba72c7212d9b5933624e08eff93dc1b58511da87e04522831fbf87a3011"
     },
     {
       "id": "disabled",
@@ -455,7 +457,7 @@
             "height": 40
           },
           "paint": {
-            "background": "oklab(0.999994 0.0000455678 0.0000200868)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.65)",
             "color": "rgb(45, 45, 45)",
             "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
             "radius": "7px",
@@ -466,7 +468,7 @@
               "40px"
             ],
             "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
-            "opacity": "1",
+            "opacity": "0.6",
             "direction": "ltr"
           },
           "value": "Culture",
@@ -512,7 +514,7 @@
         }
       },
       "file": "search-input-disabled-320-Light.png",
-      "pngSha256": "c771804dfc14791f7401d5ed18f9000f520c4f0eca0fa7c62616019fb0a7d6f6"
+      "pngSha256": "5711efddde04fc573556b88f87e7e762c6a2a019b117f49244ace4fc2ec7ada8"
     },
     {
       "id": "readonly",
@@ -1095,7 +1097,7 @@
           "paint": {
             "background": "rgb(24, 37, 51)",
             "color": "rgb(240, 244, 248)",
-            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "border": "rgb(212, 123, 117)",
             "radius": "7px",
             "padding": [
               "0px",
@@ -1150,7 +1152,7 @@
         }
       },
       "file": "search-input-error-320-Dark.png",
-      "pngSha256": "56a6dfda2fd4867b7ab7fad708d76372b8aa5a1b46274cfb11d0416ed6039537"
+      "pngSha256": "a6eb8aa573e220ac8ff72ed2224f31091021717a1a1ee843ea2e7be7bd7e825d"
     },
     {
       "id": "disabled",
@@ -1171,7 +1173,7 @@
             "height": 40
           },
           "paint": {
-            "background": "oklab(0.259435 -0.0104664 -0.030312)",
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.65)",
             "color": "rgb(240, 244, 248)",
             "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
             "radius": "7px",
@@ -1182,7 +1184,7 @@
               "40px"
             ],
             "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
-            "opacity": "1",
+            "opacity": "0.6",
             "direction": "ltr"
           },
           "value": "Culture",
@@ -1228,7 +1230,7 @@
         }
       },
       "file": "search-input-disabled-320-Dark.png",
-      "pngSha256": "c9aace2dcd87299b5ccdce728b613ab82a1c003d4b4d4788b1ff144310770830"
+      "pngSha256": "0ac46b2c53f0dc1d90420c970205e06cab6598bc3d6570fc6e278088f3ed6b88"
     },
     {
       "id": "readonly",
@@ -1811,7 +1813,7 @@
           "paint": {
             "background": "rgb(255, 255, 255)",
             "color": "rgb(45, 45, 45)",
-            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "border": "rgb(166, 93, 87)",
             "radius": "7px",
             "padding": [
               "0px",
@@ -1866,7 +1868,7 @@
         }
       },
       "file": "search-input-error-640-Light.png",
-      "pngSha256": "3f46605589c690c4bdee61db055577984345f8a3fdc7dfbf3a1bf24dd284615c"
+      "pngSha256": "c54d0014d01b623bf0aae4d218aa14c8edf8af754e721736b6a452634f0e5b1d"
     },
     {
       "id": "disabled",
@@ -1887,7 +1889,7 @@
             "height": 40
           },
           "paint": {
-            "background": "oklab(0.999994 0.0000455678 0.0000200868)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.65)",
             "color": "rgb(45, 45, 45)",
             "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
             "radius": "7px",
@@ -1898,7 +1900,7 @@
               "40px"
             ],
             "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
-            "opacity": "1",
+            "opacity": "0.6",
             "direction": "ltr"
           },
           "value": "Culture",
@@ -1944,7 +1946,7 @@
         }
       },
       "file": "search-input-disabled-640-Light.png",
-      "pngSha256": "bac7574a36f2830f2a2810430a715218e684ff9de0e2de8840dd8097cba11880"
+      "pngSha256": "33315bd5b68b2917b782ba14f440862c25ff5a5a3248dbc88acdbd5b1f14c5dc"
     },
     {
       "id": "readonly",
@@ -2527,7 +2529,7 @@
           "paint": {
             "background": "rgb(24, 37, 51)",
             "color": "rgb(240, 244, 248)",
-            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "border": "rgb(212, 123, 117)",
             "radius": "7px",
             "padding": [
               "0px",
@@ -2582,7 +2584,7 @@
         }
       },
       "file": "search-input-error-640-Dark.png",
-      "pngSha256": "a1a5b8bdecab09b3c672b925a3e86be1bf842f5688af1eb2b501b54cdfcb6da9"
+      "pngSha256": "744dea9ed1f73d6a784f3be2cdb745c2769154da4c376515bc9e62f2971fb002"
     },
     {
       "id": "disabled",
@@ -2603,7 +2605,7 @@
             "height": 40
           },
           "paint": {
-            "background": "oklab(0.259435 -0.0104664 -0.030312)",
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.65)",
             "color": "rgb(240, 244, 248)",
             "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
             "radius": "7px",
@@ -2614,7 +2616,7 @@
               "40px"
             ],
             "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
-            "opacity": "1",
+            "opacity": "0.6",
             "direction": "ltr"
           },
           "value": "Culture",
@@ -2660,7 +2662,7 @@
         }
       },
       "file": "search-input-disabled-640-Dark.png",
-      "pngSha256": "2412860b8263edb61aac40755ea3ae699c8be326186df9bc2e500f9ccaf8b112"
+      "pngSha256": "5573484a0a28cb45ac8bf45614b006a8a37fc62921896db3220d51290f2cb9e2"
     },
     {
       "id": "readonly",

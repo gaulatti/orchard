@@ -15,6 +15,8 @@ public sealed class SearchInputReferenceTests
         var script=File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","CaptureSearchInput.cjs")).Replace("\r\n","\n");
         Assert.AreEqual(root.GetProperty("scriptSha256").GetString(),Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(script))));
         Assert.AreEqual(40,root.GetProperty("cases").GetArrayLength());
+        Assert.IsTrue(root.GetProperty("freshMountPerCase").GetBoolean());
+        Assert.AreEqual("01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192",root.GetProperty("inputSourceSha256").GetString());
         foreach(var test in root.GetProperty("cases").EnumerateArray())
         {
             var id=test.GetProperty("id").GetString();var normal=test.GetProperty("normal");
@@ -23,6 +25,7 @@ public sealed class SearchInputReferenceTests
             Assert.AreEqual(16,normal.GetProperty("search").GetProperty("width").GetDouble());
             Assert.AreEqual("32px",normal.GetProperty("editor").GetProperty("paint").GetProperty("padding")[1].GetString());
             Assert.AreEqual("40px",normal.GetProperty("editor").GetProperty("paint").GetProperty("padding")[3].GetString());
+            Assert.AreEqual(id=="disabled"?"0.6":"1",normal.GetProperty("editor").GetProperty("paint").GetProperty("opacity").GetString(),"Paused transitions must not retain a prior case's enabled opacity.");
         }
         Assert.AreEqual(4,root.GetProperty("interactions").GetArrayLength());
         foreach(var input in root.GetProperty("interactions").EnumerateArray())

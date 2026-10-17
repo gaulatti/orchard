@@ -80,3 +80,6 @@ change value that an ignoring controlled consumer does not accept. Native
 verification uses actual editor input/binding and an independent external UIA
 client; zero geometry error does not imply exact raster parity. See
 `scripts/verify-search-input.mjs` and `docs/search-input.md`.
+Each baseline mounts a fresh component so paused time-zero transitions cannot
+retain another variant's paint. The imported Input SHA and disabled `.6`
+opacity are checked explicitly. Original captures remain diagnostic evidence.

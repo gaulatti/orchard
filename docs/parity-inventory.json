@@ -1874,7 +1874,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Strict raster parity: 107752 differing pixels in 40 whole client frames",
+        "Strict raster parity: 101288 differing pixels in 40 whole client frames",
         "Complete hover/focus/pressed and enabled-motion timelines, customization and accessibility-event coverage",
         "Actual Windows scaling/contrast, Narrator, broader IME/selection/clipboard and native ARM64 runtime"
       ]
