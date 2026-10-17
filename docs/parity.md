@@ -2,6 +2,10 @@
 
 The source commits below freeze this goal. Upstream updates require explicit scope review.
 
+Textarea's [measured source reference](textarea-reference.md) now covers 172 browser
+frames and trusted editing/resize input. It remains pending until native
+implementation and Windows acceptance evidence exist; inventory counts are unchanged.
+
 Visual acceptance requires every component to match its Bleecker reference across every variant, size, theme and applicable interaction state. Compare typography, spacing, dimensions, colors, borders, radii, icons and motion against the rendered reference. Windows control defaults must not override the branded appearance, including nested popups and disabled/focus states. Preserve the explicitly required Windows contrast-color adaptation. A mismatch is an open acceptance gap, never an approved platform substitution.
 
 | Reference | Commit |

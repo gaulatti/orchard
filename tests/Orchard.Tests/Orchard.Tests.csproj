@@ -4,6 +4,8 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/Textarea.json" Link="Fixtures/Textarea.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-textarea.cjs" Link="Fixtures/CaptureTextarea.cjs" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Text/BleeckerMetricFormatter.cs" Link="BleeckerMetricFormatter.cs" />
         <None Include="../Reference/Metric.json" Link="Fixtures/Metric.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/MetricRich.json" Link="Fixtures/MetricRich.json" CopyToOutputDirectory="PreserveNewest" />

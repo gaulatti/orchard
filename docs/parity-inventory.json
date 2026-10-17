@@ -3286,10 +3286,14 @@
       ],
       "windowsImplementation": [],
       "catalogFixtures": [],
-      "regressionTests": [],
+      "regressionTests": [
+        "tests/Orchard.Tests/TextareaReferenceTests.cs",
+        "tests/Reference/Textarea.json",
+        "scripts/reference/capture-textarea.cjs"
+      ],
       "status": "pending",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
+        "Implement full pinned contract with native Windows conventions from the measured 172-frame source baseline in docs/textarea-reference.md",
         "Register variants and applicable interactive states",
         "Verify runtime, accessibility and visuals"
       ]

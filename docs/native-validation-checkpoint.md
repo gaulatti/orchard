@@ -1,5 +1,17 @@
 # Current native validation checkpoint
 
+## Textarea source baseline before native implementation
+
+The pending Textarea now has a committed [source contract](textarea-reference.md),
+172 fresh browser state frames, and four trusted editing/undo/read-only/resize
+sequences containing 568 recorded input events. All 172 PNG hashes were verified.
+The reference preserves intrinsic rows sizing, the actual themed CSS cascade,
+the explicit accessibility override and the vertical resize minimum. All 125
+unit tests and token generation checks pass. No library, catalog or package
+behavior changed in this checkpoint, so the native evidence below remains at
+its stated source commits. Textarea is still pending; counts remain 60 in
+progress, 52 pending and zero fully accepted. Push Actions remain disabled.
+
 ## Complete catalog sequence after Input alpha and Metric
 
 Catalog source: `1abca74`. The x64 full sequence passes in **463.2165656 seconds**
