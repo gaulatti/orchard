@@ -1765,11 +1765,16 @@
         "tests/PackageConsumer/MainWindow.Dates.cs",
         "scripts/verify-date-package.ps1",
         "samples/Orchard.Catalog/MainWindow.DatePresentation.cs",
-        "scripts/verify-date-presentation.mjs"
+        "scripts/verify-date-presentation.mjs",
+        "tests/Orchard.Tests/DateTypographyReferenceTests.cs",
+        "tests/Reference/DateTypography.json",
+        "samples/Orchard.Catalog/MainWindow.DateTypography.cs",
+        "scripts/verify-date-typography.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Resolve exact glyph/raster, selected and surface shadows, normal-motion timing and remaining custom size/content/data boundaries; all 188 reference layout states now have targeted native geometry coverage, with 56 Picker/Range states independently audited for 964 boxes, 620 popup days and 132 basic paints",
+        "Retain the 6076 source text-entry checks across 188 frames, including actual baselines, line height, tracking and 4680 tabular day entries; horizontal glyph ink and subpixel raster placement remain unverified",
         "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
         "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; sourcec687e27 package passes the full independent x64 consumer with eight date key pairs and corrected packaged geometry, with matching ARM64 consumer builds; full x64 catalog passes 152 phases/1150 captures and retains all 174 protected glyph hashes"
       ]
@@ -2382,11 +2387,16 @@
         "tests/PackageConsumer/MainWindow.Dates.cs",
         "scripts/verify-date-package.ps1",
         "samples/Orchard.Catalog/MainWindow.DatePresentation.cs",
-        "scripts/verify-date-presentation.mjs"
+        "scripts/verify-date-presentation.mjs",
+        "tests/Orchard.Tests/DateTypographyReferenceTests.cs",
+        "tests/Reference/DateTypography.json",
+        "samples/Orchard.Catalog/MainWindow.DateTypography.cs",
+        "scripts/verify-date-typography.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Resolve exact glyph/raster, selected and surface shadows, normal-motion timing and remaining custom size/content/data boundaries; all 188 reference layout states now have targeted native geometry coverage, with 56 Picker/Range states independently audited for 964 boxes, 620 popup days and 132 basic paints",
+        "Retain the 6076 source text-entry checks across 188 frames, including actual baselines, line height, tracking and 4680 tabular day entries; horizontal glyph ink and subpixel raster placement remain unverified",
         "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
         "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; sourcec687e27 package passes the full independent x64 consumer with eight date key pairs and corrected packaged geometry, with matching ARM64 consumer builds; full x64 catalog passes 152 phases/1150 captures and retains all 174 protected glyph hashes"
       ]

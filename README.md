@@ -12,7 +12,9 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 Full component parity and platform acceptance remain in progress.
 The [Date controls preview](docs/date-controls-reference.md) supplies a controlled
 Calendar, Date Picker and Date Range Picker with local-date bounds, consumer
-requests, presets and native popup focus. Full visual/platform acceptance remains
+requests, presets and native popup focus. `BleeckerTextLayout.UseReferenceLineBox`
+provides opt-in branded text alignment for an explicit `LineHeight`; date styles
+apply it automatically, with tabular day numerals. Full visual/platform acceptance remains
 in progress.
 The [Skeleton preview](docs/skeleton-reference.md) supplies decorative shapes,
 loading cards and tables with the pinned Bleecker dimensions and pulse recipe.

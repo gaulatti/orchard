@@ -25,6 +25,16 @@ public sealed partial class DateControlsFixture : UserControl
         var initialCalendar = CalendarSample.Value; var initialPicker = PickerSample.Value; var initialRange = RangeSample.Value; var passed = false;
         try
         {
+            Require(BleeckerTextLayout.GetUseReferenceLineBox(LineBoxSample), "Catalog text line box was not enabled.");
+            BleeckerTextLayout.SetUseReferenceLineBox(LineBoxSample, false); await MainWindow.AwaitPresentationAsync(LineBoxSample);
+            Require(!(bool)LineBoxSample.GetValue(BleeckerTextLayout.UseReferenceLineBoxProperty), "Catalog text line box did not disable.");
+            Require(LineBoxSample.Parent is StackPanel && LineBoxSample.RenderTransform is null &&
+                LineBoxSample.HorizontalAlignment == HorizontalAlignment.Stretch && LineBoxSample.VerticalAlignment == VerticalAlignment.Stretch,
+                "Disabling the catalog text line box did not restore its parent, alignment and transform.");
+            BleeckerTextLayout.SetUseReferenceLineBox(LineBoxSample, true); await MainWindow.AwaitPresentationAsync(LineBoxSample);
+            var sampleParent = (FrameworkElement)LineBoxSample.Parent;
+            var sampleBaseline = LineBoxSample.TransformToVisual(sampleParent).TransformPoint(new Windows.Foundation.Point(0, LineBoxSample.BaselineOffset)).Y;
+            Require(Math.Abs(sampleBaseline - 14) < .001, "Catalog text line box lost the measured heading baseline.");
             CalendarSample.Value = BleeckerDates.Parse("2026-10-17");
             await MainWindow.AwaitPresentationAsync(CalendarSample);
             await input.ClickAsync(CalendarSample.DayButtons.Single(x => x.Content.ToString() == "19"));

@@ -107,6 +107,13 @@ the native regression, immediately reads every completed file and proves
 that a write failure propagates. Independently verify those actual files
 with `scripts/verify-capture-persistence.mjs --native <output> --output <audit>`.
 
+`DateTypography.json` adds the measured baseline, line-height, font, tracking
+and numeric features for 6,076 text entries in the 188 `DateControls.json`
+frames. DOM ranges and Canvas font bounding metrics do not modify the DOM;
+every PNG hash and existing layout measurement is checked before and after
+the optional `--typography` probe. Native alignment is checked separately by
+`scripts/verify-date-typography.mjs`; this does not establish glyph raster parity.
+
 `SearchInput.json` freezes 40 actual Bleecker browser cases at 320/640 in Light
 and Dark, including all sizes, empty/value, optional clear, error, disabled,
 read-only, RTL and non-Latin text. Capture uses the source component and pinned

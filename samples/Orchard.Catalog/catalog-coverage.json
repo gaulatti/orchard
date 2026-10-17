@@ -34,7 +34,8 @@
     "BleeckerDateClearStyle": "DateControlsFixture.xaml"
   },
   "utilities": {
-    "BleeckerChartTheme": "ChartThemesFixture.xaml"
+    "BleeckerChartTheme": "ChartThemesFixture.xaml",
+    "BleeckerTextLayout": "DateControlsFixture.xaml"
   },
   "controls": {
     "BleeckerMetric": "MetricsFixture.xaml",

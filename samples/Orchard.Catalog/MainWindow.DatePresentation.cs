@@ -42,7 +42,7 @@ public sealed partial class MainWindow
                 {
                     phase = source.GetProperty("file").GetString()!;
                     var id = source.GetProperty("id").GetString()!; var kind = source.GetProperty("kind").GetString()!; var state = source.GetProperty("state").GetString()!;
-                    BleeckerDatePicker active; FrameworkElement control; Border? card = null;
+                    BleeckerDatePicker active; FrameworkElement control; Border? card = null; BleeckerDateRangePicker? rangeControl = null;
                     var triggers = new List<Button>(); var buttons = new List<FrameworkElement>();
                     if (kind == "picker")
                     {
@@ -55,7 +55,7 @@ public sealed partial class MainWindow
                         var value = source.GetProperty("value");
                         var range = new BleeckerDateRangePicker(clock) { Width = width - 40, Value = new(Field(value, "from"), Field(value, "to")) };
                         if (id == "presets") range.Presets = new[] { new BleeckerDatePreset("Seven days", 7), new BleeckerDatePreset("Today", 0) };
-                        control = range; await Mount(control);
+                        rangeControl = range; control = range; await Mount(control);
                         card = DateDescendants<Border>(range).Single(item => item.MinWidth == 360);
                         canvas.Width = Math.Max(width, 40 + Math.Max(range.ActualWidth, card.ActualWidth)); await AwaitPresentationAsync(range);
                         active = id == "to-limit" ? range.ToPicker : range.FromPicker;
@@ -116,7 +116,8 @@ public sealed partial class MainWindow
                         calendar = active.Calendar is not { } popupCalendar ? null : new { box = Box(popupCalendar), month = popupCalendar.ViewMonth.ToString("MMMM yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-US")),
                             days = popupCalendar.DayButtons.Select(day => new { day = int.Parse(day.Content.ToString()!, System.Globalization.CultureInfo.InvariantCulture), box = Box(day), enabled = day.IsEnabled, selected = day.IsChecked, name = AutomationProperties.GetName(day) }).ToArray() },
                         clearAction = active.ClearButton is not { Visibility: Visibility.Visible } clearAction ? null : new { box = Box(clearAction), parent = Box((FrameworkElement)clearAction.Parent), bottomGap = Box((FrameworkElement)clearAction.Parent).Bottom - Box(clearAction).Bottom },
-                        buttons = buttons.Select(item => new { box = Box(item), name = AutomationProperties.GetName(item) }).ToArray(), errors = errors.Count - startErrors };
+                        buttons = buttons.Select(item => new { box = Box(item), name = AutomationProperties.GetName(item) }).ToArray(), errors = errors.Count - startErrors,
+                        typography = DateTypography(active.Calendar, triggers, rangeControl, active.ClearButton, page) };
                     frames.Add(actual); await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, phase)); await Save();
                     if (active.IsDropDownOpen) await input.HeldKeyAsync(0x1B, active.Calendar!.PreviousButton, () => active.Trigger, () => Until(() => !active.IsDropDownOpen, "Presentation popup did not close."));
                 }

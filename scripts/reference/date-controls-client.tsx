@@ -28,6 +28,33 @@ function render(){
 }
 w.show=(spec:any)=>{w.actions=[];w.inputEvents=[];w.spec={...spec,mount:++serial};render();};
 w.update=(patch:any)=>{Object.assign(w.spec,patch);render();};
+w.dateTypography=()=>{
+ const entries:any[]=[],canvas=document.createElement('canvas'),context=canvas.getContext('2d')!;
+ const add=(role:string,element:HTMLElement|null)=>{
+  if(!element)return;
+  const style=getComputedStyle(element),nodes=[...element.childNodes].filter(node=>node.nodeType===Node.TEXT_NODE&&node.textContent?.trim());
+  if(!nodes.length)return;
+  const rectangle=element.getBoundingClientRect(),range=document.createRange();range.setStart(nodes[0],0);range.setEnd(nodes.at(-1)!,nodes.at(-1)!.textContent!.length);
+  const textRectangle=range.getBoundingClientRect(),displayText=style.textTransform==='uppercase'?element.textContent!.trim().toUpperCase():element.textContent!.trim();
+  context.font=style.fontStyle+' '+style.fontWeight+' '+style.fontSize+' '+style.fontFamily;context.textBaseline='alphabetic';
+  const metrics=context.measureText(displayText),ascent=metrics.fontBoundingBoxAscent,descent=metrics.fontBoundingBoxDescent;
+  if(!Number.isFinite(ascent)||!Number.isFinite(descent)||ascent+descent<=0)throw Error('Missing browser font metrics: '+role);
+  const verticalScale=textRectangle.height/(ascent+descent);
+  entries.push({role,text:element.textContent!.trim(),displayText,baseline:textRectangle.y+ascent*verticalScale,ascent,descent,verticalScale,
+   box:{x:rectangle.x,y:rectangle.y,width:rectangle.width,height:rectangle.height},textBox:{x:textRectangle.x,y:textRectangle.y,width:textRectangle.width,height:textRectangle.height},
+   fontSize:parseFloat(style.fontSize),fontWeight:Number(style.fontWeight),lineHeight:parseFloat(style.lineHeight),letterSpacing:style.letterSpacing,numerals:style.fontVariantNumeric});
+ };
+ const days=[...document.querySelectorAll<HTMLButtonElement>('button[aria-pressed]')],calendar=days[0]?.parentElement?.parentElement;
+ if(calendar){add('heading',calendar.children[0].querySelector('span'));[...calendar.children[1].children].forEach((item,index)=>add('weekday-'+index,item as HTMLElement));for(const day of days)add('day-'+day.textContent,day);}
+ [...document.querySelectorAll<HTMLButtonElement>('#root button[data-state]')].forEach((button,index)=>add('trigger-'+index,button.querySelector('span')));
+ if(w.spec.kind==='range'){
+  const card=document.querySelector('#root>[role=group]')?.firstElementChild;
+  [...(card?.children??[])].filter(item=>item.tagName==='DIV').forEach((field,index)=>add('range-label-'+index,field.querySelector(':scope > span')));
+  [...document.querySelectorAll<HTMLButtonElement>('#root button:not([data-state])')].forEach((button,index)=>add('action-'+index,button));
+ }
+ add('clear',([...document.querySelectorAll<HTMLButtonElement>('[data-radix-popper-content-wrapper] button')].find(button=>button.textContent==='Clear date'))??null);
+ return entries;
+};
 w.measure=()=>{
  const box=(e:Element|null)=>{if(!e)return null;const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
  const paint=(e:Element|null)=>e?Object.fromEntries(['fontFamily','fontSize','fontWeight','lineHeight','letterSpacing','color','backgroundColor','borderColor','borderWidth','borderRadius','boxShadow','opacity','transform','paddingTop','paddingRight','paddingBottom','paddingLeft','rowGap','columnGap','direction','transitionDuration','transitionTimingFunction'].map(key=>[key,(getComputedStyle(e) as any)[key]])):null;

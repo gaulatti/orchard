@@ -61,7 +61,7 @@ public sealed partial class MainWindow
                             actualDays.Add(new { day = day.Content, rectangle, enabled = day.IsEnabled, selected = day.IsChecked, name = AutomationProperties.GetName(day) });
                         }
                         await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, phase));
-                        frames.Add(new { id, state, scheme = scheme.ToString(), width, calendar.ActualWidth, calendar.ActualHeight, month = calendar.ViewMonth.ToString("yyyy-MM"), days = actualDays }); await Save();
+                        frames.Add(new { id, state, scheme = scheme.ToString(), width, calendar.ActualWidth, calendar.ActualHeight, month = calendar.ViewMonth.ToString("yyyy-MM"), days = actualDays, typography = DateTypography(calendar, [], null, null, canvas) }); await Save();
                     }
                     finally { if (state == "pressed") input.PointerButton(false); }
                 }

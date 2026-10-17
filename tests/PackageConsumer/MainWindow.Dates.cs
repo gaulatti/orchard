@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Orchard;
@@ -34,10 +35,14 @@ public sealed partial class MainWindow
             await PresentAsync(host); await AcquireConsumerInputAsync();
             Require(calendar.ActualHeight == 252, "Packaged calendar lost its measured month height.");
             var day = DateChildren<ToggleButton>(calendar).Single(x => x.Content.ToString() == "19");
+            var dayText = DateChildren<TextBlock>(day).Single(x => x.Name == "DayText");
+            var dayBaseline = ReferenceBaseline(dayText, 14);
+            Require(Typography.GetNumeralAlignment(dayText) == Windows.UI.Text.FontNumeralAlignment.Tabular, "Packaged calendar lost tabular day numerals.");
             await KeyAsync(0x20, day, day); Require(calendar.Value == Date(19), "Packaged calendar lost its controlled date request.");
-            phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight });
+            phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight, dayBaseline, tabularNumerals = true });
             var trigger = DateChildren<Button>(picker).Single(x => x.Name == "PART_Trigger");
             var caption = DateChildren<TextBlock>(trigger).Single(); Require(caption.LineHeight == 20, "Packaged picker lost the source caption line height.");
+            var captionBaseline = ReferenceBaseline(caption, 15);
             await KeyAsync(0x20, trigger, null); await AwaitAsync(() => picker.IsDropDownOpen, "Packaged picker did not open through Space.");
             var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(x => x.Child is not null && DateChildren<BleeckerCalendar>(x.Child).Any());
             var clearDate = DateChildren<Button>(popup.Child).Single(x => x.Content as string == "Clear date");
@@ -46,16 +51,17 @@ public sealed partial class MainWindow
             var chosen = DateChildren<ToggleButton>(popup.Child).Single(x => x.Content.ToString() == "19");
             await KeyAsync(0x0D, chosen, trigger); await AwaitAsync(() => !picker.IsDropDownOpen, "Packaged picker did not close after selection.");
             Require(picker.Value == Date(19) && ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), trigger), "Packaged picker lost selection or focus restoration.");
-            phases.Add(new { phase = "picker", value = picker.Value, focusRestored = true, captionLineHeight = caption.LineHeight, clearWidth, clearHeight });
+            phases.Add(new { phase = "picker", value = picker.Value, focusRestored = true, captionLineHeight = caption.LineHeight, captionBaseline, clearWidth, clearHeight });
             var rangeFields = DateChildren<BleeckerDatePicker>(range).ToArray();
             var fromWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "Start date").ActualWidth;
             var toWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "End date").ActualWidth;
             Require(fromWidth == 130.421875 && toWidth == 132.125, "Packaged range lost source intrinsic field widths.");
             var preset = DateChildren<BleeckerButton>(range).Single(x => x.Content as string == "Package seven days");
+            var presetBaseline = ReferenceBaseline(DateChildren<TextBlock>(preset).Single(), 13);
             var action = DateChildren<Button>(preset).Single(x => x.Name == "PART_Action");
             var today = DateTime.Now.Date; await KeyAsync(0x20, action, action);
             Require(range.Value == new BleeckerDateRange(today.AddDays(-7).ToString("yyyy-MM-dd"), today.ToString("yyyy-MM-dd")), "Packaged range preset lost local dates.");
-            phases.Add(new { phase = "range", value = range.Value, fromWidth, toWidth }); Require(requests == 3, "Packaged date requests were missing or duplicated."); passed = true;
+            phases.Add(new { phase = "range", value = range.Value, fromWidth, toWidth, presetBaseline }); Require(requests == 3, "Packaged date requests were missing or duplicated."); passed = true;
         }
         finally
         {
@@ -64,6 +70,14 @@ public sealed partial class MainWindow
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!, $"consumer-dates-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed, requests, phases }));
         }
 
+        static double ReferenceBaseline(TextBlock text, double expected)
+        {
+            Require(BleeckerTextLayout.GetUseReferenceLineBox(text), "Packaged date text lost reference line-box alignment.");
+            var parent = (FrameworkElement)text.Parent;
+            var baseline = text.TransformToVisual(parent).TransformPoint(new Point(0, text.BaselineOffset)).Y;
+            Require(Math.Abs(baseline - expected) < .001, "Packaged date text lost the source baseline.");
+            return baseline;
+        }
         async Task KeyAsync(ushort key, Control target, Control? releaseTarget)
         {
             await PresentAsync(target); await AcquireConsumerInputAsync(); Require(target.Focus(FocusState.Keyboard), "Packaged date target refused native focus.");

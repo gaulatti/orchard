@@ -58,7 +58,8 @@ public sealed class BleeckerDateRangePicker : Control
         var dash = (Border)XamlReader.Load("<Border xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Width='12' Height='1' Margin='0,0,0,20' VerticalAlignment='Bottom' Background='{ThemeResource BleeckerDateRangeDashBrush}'/>"); Grid.SetColumn(dash, 1); columns.Children.Add(dash); layout.Children.Add(card);
         clear = new BleeckerButton { Size = BleeckerButtonSize.Small, Variant = BleeckerButtonVariant.Ghost, HorizontalAlignment = HorizontalAlignment.Stretch };
         var clearContent = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
-        var clearText = new TextBlock { Text = "Clear", VerticalAlignment = VerticalAlignment.Center };
+        var clearText = new TextBlock { Text = "Clear", VerticalAlignment = VerticalAlignment.Center, LineHeight = 19.5, LineStackingStrategy = LineStackingStrategy.BlockLineHeight, UseLayoutRounding = false };
+        BleeckerTextLayout.SetUseReferenceLineBox(clearText, true);
         clearContent.Children.Add(BleeckerDateVisual.Icon("M18 6L6 18 M6 6L18 18", 14, clearText, nameof(Foreground))); clearContent.Children.Add(clearText); clear.Content = clearContent;
         AutomationProperties.SetName(clear, "Clear date range"); clear.Click += ClearRequested; layout.Children.Add(clear);
         presetHost = new PresetPanel { VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false };
@@ -95,6 +96,7 @@ public sealed class BleeckerDateRangePicker : Control
             else
             {
                 button = new BleeckerButton { Size = BleeckerButtonSize.ExtraSmall, Variant = BleeckerButtonVariant.Ghost, HorizontalAlignment = HorizontalAlignment.Stretch };
+                button.ContentTemplate = (DataTemplate)XamlReader.Load("<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:local='using:Orchard'><Grid><TextBlock Text='{Binding}' FontFamily='{StaticResource BleeckerPrimaryMediumFontFamily}' FontSize='12' FontWeight='Medium' LineHeight='16' LineStackingStrategy='BlockLineHeight' UseLayoutRounding='False' local:BleeckerTextLayout.UseReferenceLineBox='True'/></Grid></DataTemplate>");
                 button.Click += (_, _) => { if (IsLoaded && IsEnabled && button.IsLoaded && presetHost is { } active && active.Children.Contains(button) && button.Tag is BleeckerDatePreset current && (Presets?.Any(item => ReferenceEquals(item, current)) ?? false)) Request(BleeckerDates.Preset(now(), current.Days)); };
             }
             button.Content = preset.Label; button.Tag = preset; ordered.Add(button);

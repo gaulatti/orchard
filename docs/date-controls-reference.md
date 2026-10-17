@@ -162,7 +162,7 @@ Malformed/nonfinite values and dates outside .NET's representable range fail
 explicitly. No Windows clock or production configuration is changed for tests;
 the catalog uses an internal, per-instance frozen clock.
 
-The model/reference/resource suite currently contains 142 tests. The
+The model/reference/resource suite currently contains 143 tests. The
 `date-controls` native runner compares Calendar day geometry, selected/disabled
 state and names against the frozen reference at both viewport widths, and
 exercises consumer requests, focus, dismissal, remounting and live presets.
@@ -254,6 +254,33 @@ node scripts/verify-date-presentation.mjs `
 ```
 
 ## Native acceptance before completion
+
+Typography measurements are now recorded separately in
+`tests/Reference/DateTypography.json`: 6,076 text entries across the same 188
+frames. The optional `--typography` collector mode combines live DOM text ranges
+with the browser's alphabetic font bounding metrics, without changing the DOM.
+It checks every screenshot and layout measurement before and after probing.
+The original component bytes, existing frame measurements and PNG hashes remain
+unchanged. The metric definitions follow the
+[HTML TextMetrics contract](https://html.spec.whatwg.org/multipage/canvas.html#textmetrics).
+
+The opt-in `BleeckerTextLayout.UseReferenceLineBox` attached property aligns
+branded TextBlocks with those reference line metrics. Set a positive explicit
+`LineHeight` before enabling it on single-line text under a Panel or Border.
+Other element/parent types fail explicitly. It preserves the original text element and
+bindings, uses the active font's measured ascent/descent, retains existing render
+transforms, and restores the original parent/alignment when disabled. Date styles
+enable it automatically; the Dates fixture explicitly exercises enable/disable.
+Calendar days request tabular numerals and the heading uses the source's normal
+letter spacing. Exact glyph raster, shadows and motion remain separate checks.
+
+The focused x64 audit matches all 6,076 source text entries, including 4,680
+tabular day entries, across all 188 frames. It checks actual transformed baselines,
+display text, size, weight, explicit line height, tracking and numeral alignment
+with the existing 0.001px numeric tolerance. Reproduce with
+`node scripts/verify-date-typography.mjs --native-root artifacts/current --output artifacts/current/date-typography-audit.json`
+after both native runners at both widths. This does not compare glyph ink or
+horizontal subpixel raster placement.
 
 Acceptance must carry these contracts through public C# models/properties,
 consumer-owned value requests, native templates, layout, min/max and disabled

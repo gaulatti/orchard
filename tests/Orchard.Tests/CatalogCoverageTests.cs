@@ -59,17 +59,19 @@ public sealed class CatalogCoverageTests
             .SelectMany(path => Regex.Matches(File.ReadAllText(path), @"public\s+(?:(?:sealed|abstract|partial|static)\s+)*class\s+(\w+)"))
             .Select(match => match.Groups[1].Value).Where(name => name != "BleeckerTokens").Distinct().ToArray();
         CollectionAssert.AreEquivalent(classes, registrations.EnumerateObject().Concat(utilities.EnumerateObject()).Select(item => item.Name).ToArray());
-        // The source chart theme is a static configuration module, not an
-        // instantiable control. Its dedicated native fixture must consume every
-        // public entry point and is exercised by the catalog runtime gate.
-        CollectionAssert.AreEquivalent(new[]{"BleeckerChartTheme"},utilities.EnumerateObject().Select(item=>item.Name).ToArray());
+        // Static configuration and attached-layout utilities are not controls.
+        // Dedicated fixtures consume their public entry points and the native
+        // catalog gate exercises the rendered consumers.
+        CollectionAssert.AreEquivalent(new[]{"BleeckerChartTheme","BleeckerTextLayout"},utilities.EnumerateObject().Select(item=>item.Name).ToArray());
         foreach(var utility in utilities.EnumerateObject())
         {
             var source=File.ReadAllText(Path.Combine(catalog,utility.Value.GetString()!+".cs"));
-            foreach(var member in new[]{"Colors","Palette","PickColor","Grid","Axis","Tooltip"})
+            var members = utility.Name == "BleeckerChartTheme" ? new[]{"Colors","Palette","PickColor","Grid","Axis","Tooltip"} : new[]{"GetUseReferenceLineBox","SetUseReferenceLineBox","UseReferenceLineBoxProperty"};
+            foreach(var member in members)
                 StringAssert.Contains(source,utility.Name+"."+member);
             var fixture=XDocument.Load(Path.Combine(catalog,utility.Value.GetString()!));
-            Assert.IsTrue(fixture.Descendants().Any(element=>element.Name.LocalName=="Grid"),"Chart theme fixture has no rendered consumer host.");
+            if(utility.Name == "BleeckerChartTheme") Assert.IsTrue(fixture.Descendants().Any(element=>element.Name.LocalName=="Grid"),"Chart theme fixture has no rendered consumer host.");
+            else Assert.IsTrue(fixture.Descendants().Attributes().Any(attribute=>attribute.Name.LocalName=="BleeckerTextLayout.UseReferenceLineBox"&&attribute.Value=="True"),"Text layout fixture does not render the attached behavior.");
         }
         foreach (var registration in registrations.EnumerateObject())
         {

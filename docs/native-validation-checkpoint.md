@@ -1,5 +1,23 @@
 # Current native validation checkpoint
 
+## Date typography alignment
+
+The current candidate matches 6,076 text entries across all 188 source frames:
+actual transformed baselines, display text, font size/weight, line height,
+tracking and numeral alignment. This includes 4,680 tabular day entries. The
+source typography probe preserves every earlier measurement and PNG hash.
+All 143 unit tests, token generation, both native date runners at both widths,
+and the independent geometry/basic-paint/typography audits pass.
+
+`BleeckerTextLayout.UseReferenceLineBox` retains authored TextBlocks and their
+bindings, and date templates opt in. Range presets retain their original string
+content, keyed identities and commands while using an explicit caption template.
+Diagnostic layout tracing has been removed. Full catalog, independent packaged
+consumer and ARM64 build checks for this newer candidate are pending; the
+source-identified results below remain evidence for their earlier source.
+Exact glyph raster/horizontal subpixel placement, shadows, motion and platform
+acceptance remain open. Counts stay 63 in progress, 49 pending and zero accepted.
+
 ## Picker and range geometry and basic paint
 
 The date presentation follow-up passes all remaining 56 Picker/Range source

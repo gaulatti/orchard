@@ -6,6 +6,7 @@
     <ItemGroup>
         <Compile Include="../../src/Orchard/Controls/BleeckerDates.cs" Link="BleeckerDates.cs" />
         <None Include="../Reference/DateControls.json" Link="Fixtures/DateControls.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DateTypography.json" Link="Fixtures/DateTypography.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-date-controls.cjs" Link="Fixtures/CaptureDateControls.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/date-controls-client.tsx" Link="Fixtures/DateControlsClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/date-controls-tooling-lock.json" Link="Fixtures/DateControlsToolingLock.json" CopyToOutputDirectory="PreserveNewest" />
@@ -148,5 +149,6 @@
         <None Include="../../samples/Orchard.Catalog/catalog-coverage.json" Link="Fixtures/Catalog/catalog-coverage.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/**/*.xaml" Exclude="../../samples/Orchard.Catalog/bin/**;../../samples/Orchard.Catalog/obj/**" Link="Fixtures/Catalog/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/ChartThemesFixture.xaml.cs" Link="Fixtures/Catalog/ChartThemesFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/DateControlsFixture.xaml.cs" Link="Fixtures/Catalog/DateControlsFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>

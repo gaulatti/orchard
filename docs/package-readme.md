@@ -12,6 +12,11 @@ value to accept selection or clearing. `BleeckerDateRangePicker` exposes a
 `BleeckerDateRange` with local `From`/`To` strings, `Presets` and `RangeRequested`.
 Handle its request to accept a new record. The picker popup supports native
 keyboard input, Escape, outside dismissal and trigger focus restoration.
+Date styles align branded text to the source line boxes and use tabular calendar
+numerals. For an authored `TextBlock` under a `Panel` or `Border`, opt in with
+`BleeckerTextLayout.UseReferenceLineBox="True"` and an explicit positive
+`LineHeight`. Disabling the property restores the original element alignment
+and render transform. This behavior is intended for single-line branded text.
 Complete source visual and Windows accessibility/platform acceptance remains open.
 
 `BleeckerTextarea` previews native multiline plain-text editing with `Text`,

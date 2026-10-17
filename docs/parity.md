@@ -13,7 +13,8 @@ The date controls now have a [native preview and pinned browser contract](date-c
 Calendar, Date Picker and Date Range Picker share 188 measured states and 48
 trusted browser interaction sequences. Native geometry covers all 188 states;
 the 56 Picker/Range states add 964 box comparisons, 620 popup days and 132 basic
-paint checks. Interaction checks cover controlled requests, bounds,
+paint checks. Typography compares 6,076 text entries, including transformed
+baselines, line heights, tracking and 4,680 tabular day entries. Interaction checks cover controlled requests, bounds,
 focus/dismissal, remounts and live presets. Exact raster/shadow/motion, remaining
 customization boundaries and Windows platform acceptance remain open.
 

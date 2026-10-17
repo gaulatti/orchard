@@ -34,7 +34,7 @@ const slash=value=>value.replaceAll('\\','/');
  execFileSync(process.execPath,[path.join(tooling,'node_modules/@tailwindcss/cli/dist/index.mjs'),'-i',inputPath,'-o',cssPath,'--minify'],{cwd:tooling,stdio:'pipe'});
  const cssBytes=await fs.readFile(cssPath);let css=cssBytes.toString();const fonts=[];
  for(const[weight,file]of [[400,'EncodeSans-Regular.ttf'],[500,'EncodeSans-Medium.ttf'],[600,'EncodeSans-SemiBold.ttf']]){const bytes=await fs.readFile(path.resolve('src/Orchard/Assets/Fonts',file));fonts.push({weight,file,sha256:hash(bytes)});css+='@font-face{font-family:"Encode Sans";font-weight:'+weight+';src:url(data:font/ttf;base64,'+bytes.toString('base64')+')}';}
- const browser=await require(playwrightPath).chromium.launch({headless:true,channel:'msedge'}),cases=[],interactions=[],paints={},paintKeys=new Map();
+ const browser=await require(playwrightPath).chromium.launch({headless:true,channel:'msedge'}),cases=[],interactions=[],paints={},paintKeys=new Map(),typography=[];
  const poolPaints=value=>{if(!value||typeof value!=='object')return;for(const[key,item]of Object.entries(value)){if(key==='paint'&&item){const serialized=JSON.stringify(item);let id=paintKeys.get(serialized);if(!id){id='paint-'+String(paintKeys.size+1).padStart(3,'0');paintKeys.set(serialized,id);paints[id]=item;}delete value.paint;value.paintRef=id;}else poolPaints(item);}};
  const calendarSpecs=[{id:'selected',value:'2026-10-17'},{id:'empty',value:null},{id:'leap',value:'2024-02-29'},{id:'six-rows',value:'2020-08-15'},{id:'bounded',value:'2026-10-17',minDate:'2026-10-15',maxDate:'2026-10-20'},{id:'min-noon',value:'2026-10-17',minDate:'2026-10-17T12:00:00'},{id:'weekends',value:'2026-10-17',blockWeekends:true},{id:'inverted',value:'2026-10-17',minDate:'2026-10-20',maxDate:'2026-10-10'},{id:'rtl',value:'2026-10-17',dir:'rtl'}];
  try{for(const width of [320,640])for(const scheme of ['Light','Dark']){
@@ -46,7 +46,17 @@ const slash=value=>value.replaceAll('\\','/');
    await page.evaluate(async()=>{for(const weight of [400,500,600])await document.fonts.load(weight+' 14px "Encode Sans"');await document.fonts.ready;});
    const settle=()=>page.evaluate(async()=>{for(const animation of document.getAnimations())animation.finish();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
    const mount=async spec=>{await page.mouse.move(0,0);await page.evaluate(spec=>{document.getElementById('root').dir=spec.dir??'ltr';window.show(spec);},spec);await settle();await page.evaluate(()=>window.scrollTo({left:0,top:0,behavior:'instant'}));await settle();};
-   const snap=async(id,kind,state)=>{await settle();const measurement=await page.evaluate(()=>window.measure()),file='date-'+kind+'-'+id+'-'+state+'-'+width+'-'+scheme+'.png';assert.equal(measurement.viewport.compatMode,'CSS1Compat');await page.screenshot({path:path.join(output,file)});poolPaints(measurement);cases.push({id,kind,state,width,scheme,...measurement,file,pngSha256:hash(await fs.readFile(path.join(output,file)))});return measurement;};
+   const snap=async(id,kind,state)=>{
+    await settle();const measurement=await page.evaluate(()=>window.measure()),file='date-'+kind+'-'+id+'-'+state+'-'+width+'-'+scheme+'.png';assert.equal(measurement.viewport.compatMode,'CSS1Compat');
+    const before=await page.screenshot({path:path.join(output,file)});
+    if(process.argv.includes('--typography')){
+     const texts=await page.evaluate(()=>window.dateTypography());await settle();const after=await page.screenshot();
+     assert(before.equals(after),'Typography measurement changed source pixels: '+file);
+     assert.deepEqual(await page.evaluate(()=>window.measure()),measurement,'Typography markers changed source layout: '+file);
+     typography.push({id,kind,state,width,scheme,file,pngSha256:hash(before),measurementPngSha256:hash(after),texts});
+    }
+    poolPaints(measurement);cases.push({id,kind,state,width,scheme,...measurement,file,pngSha256:hash(before)});return measurement;
+   };
    const day=number=>page.locator('button[aria-pressed]').filter({hasText:new RegExp('^'+number+'$')});
    const activeDay=()=>page.locator('button[aria-pressed]:not([disabled])').first();
    const close=async()=>{if(await page.locator('[data-radix-popper-content-wrapper]').count()){await page.keyboard.press('Escape');await settle();await page.waitForFunction(()=>!document.querySelector('[data-radix-popper-content-wrapper]'));}};
@@ -88,4 +98,5 @@ const slash=value=>value.replaceAll('\\','/');
  }}finally{await browser.close();}
  const report={format:'orchard-date-controls-reference-v1',sourceCommit:pin,sourceFiles:sourceFiles.sort((a,b)=>a.path.localeCompare(b.path)),frozenLockSha256:hash(lockBytes),globalCssSha256:hash(globalBytes),tokenCssSha256:hash(tokenCssBytes),cssSha256:hash(cssBytes),clientSha256:hash((await fs.readFile(client,'utf8')).replace(/\r\n/g,'\n')),scriptSha256:hash((await fs.readFile(__filename,'utf8')).replace(/\r\n/g,'\n')),compilerLockSha256:hash(await fs.readFile(path.join(tooling,'package-lock.json'))),fonts,browser:browser.version(),react:await moduleVersion('react'),radixPopover:await moduleVersion('@radix-ui/react-popover'),playwright:require(path.join(playwrightPath,'package.json')).version,esbuild:'0.25.12',tailwind:'4.2.2',locale:'en-US',timezone:'America/New_York',fixedTime:'2026-10-17T12:00:00Z',endpointMeasurementsOnly:true,freshMountPerState:true,paints,cases,interactions};
  await fs.writeFile(path.join(output,'reference.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({cases:cases.length,interactions:interactions.length,browser:report.browser,sourceFiles:sourceFiles.length}));
+ if(process.argv.includes('--typography'))await fs.writeFile(path.join(output,'typography.json'),JSON.stringify({format:'orchard-date-typography-v1',sourceCommit:pin,sourceFiles:report.sourceFiles,clientSha256:report.clientSha256,scriptSha256:report.scriptSha256,browser:report.browser,playwright:report.playwright,fonts,method:'live DOM ranges and browser font bounding metrics, no DOM mutations',measurementPixelsUnchanged:true,cases:typography},null,2)+'\n');
 })().catch(error=>{console.error(error);process.exitCode=1;});

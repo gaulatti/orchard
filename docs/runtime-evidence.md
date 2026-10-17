@@ -1,5 +1,12 @@
 # Native Windows runtime evidence
 
+The current date typography candidate passes both focused native runners at
+320/640px in Light/Dark and matches all 6,076 source text entries in 188 frames.
+It also retains the existing geometry, basic paint, consumer requests and native
+input checks. All 143 unit tests and generated-token checks pass. Full catalog,
+packaged-consumer and ARM64 build verification of this candidate are pending;
+the following source-identified evidence remains historical until rechecked.
+
 The date presentation fixes at `c687e27` publish for x64 and ARM64. Native
 geometry covers all 188 reference frames: 132 Calendar states and 56 Picker/Range
 states with 964 box comparisons, 620 popup days and 132 basic paint checks.
