@@ -2285,3 +2285,28 @@ Narrator, accessibility events, stale-client invocation, actual Windows scaling
 and contrast, full raster/motion/customization and native ARM64 acceptance stay
 open. Inventory remains 58 started, 54 pending and zero accepted. Push Actions
 remain paused. See [checkpoint and hashes](native-validation-checkpoint.md).
+
+## FilterChip property notifications and retained UIA patterns (2026-10-16)
+
+Source `b833a05` fixes missing resolved-name and effective enabled-state property
+notifications. Fresh UIA queries had returned the new values, but persistent
+clients received no event. The standard native button peer remains authoritative
+for names and states. Hidden controls keep lazy peers; linked-label observation
+ends on detach, and ordinary names require no layout observer.
+
+Two long-lived MTA clients pass 28 ordered event checks, including two reference
+transport checks. Maximum delivery is 66.6675 ms under the two-second deadline.
+Twenty-two original retained-pattern invocations pass: eight current invocations
+reach consumers once, while fourteen inactive invocations are rejected without
+writes. Tests span command/parent disablement, template replacement, model
+removal, empty groups, unload and remount. Five corruptions are rejected. The
+46-tree UIA, 28-Tab, 20-phase typography and 40-case source regressions pass,
+as do all 115 unit tests and token checks. Both architecture builds pass and
+5,977 resolved methods/interfaces match. A fresh x64 NuGet consumer passes;
+ARM64 remains build-only. Both isolated package caches are removed and both
+catalog ZIPs are verified entry by entry.
+
+Narrator speech, broader accessibility, full raster/motion/customization,
+Windows scaling/contrast, collection performance and native ARM64 acceptance
+stay open. No Windows setting changed. Inventory is 58 started, 54 pending,
+zero accepted. Actions remain paused for pushes. See [checkpoint and hashes](native-validation-checkpoint.md).

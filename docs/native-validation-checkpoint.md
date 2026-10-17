@@ -1,5 +1,47 @@
 # Current native validation checkpoint
 
+## FilterChip property events and retained clients
+
+Source: `b833a05`. A long-lived external UIA client reproduced missing name and
+effective enabled-state notifications even though fresh queries returned updated
+values. A deliberately raised event on a standard native reference button proved
+the client transport before component checks. Native filter actions now notify
+clients when the standard button peer's resolved name or enabled state changes.
+Peer creation remains lazy for hidden controls. Linked-caption metadata/layout
+subscriptions are released on detach, and ordinary explicit names avoid a layout
+observer. The first eager-peer startup failure is retained alongside the original
+missing-name and missing-enabled event evidence.
+
+Two persistent external clients pass 28 ordered property-event checks (26 from
+components and two reference health checks), with maximum delivery 66.6675 ms
+under the unchanged two-second deadline. Cases cover default, explicit, bound,
+linked-text and linked-metadata names, name priority, Clear all, command state
+and inherited group state. Twenty-two invocations use the original retained
+Invoke patterns: eight current actions execute exactly once; fourteen disabled,
+replaced, removed, empty-group or unloaded actions reject invocation without
+consumer writes. New template/remounted actions remain usable. Five corruption
+checks reject missing/reused events, switched clients/patterns and stale writes.
+
+The existing 46-tree UIA/28-Tab matrix, 20 typography phases/100 paragraph
+measurements, 40 default source cases/72 baselines, all 115 unit tests and token
+checks pass. Both architecture publications pass, with 5,977 resolved method
+bodies and exposed interfaces equivalent across architectures. A fresh x64 NuGet
+consumer passes both themes; its library bytes equal the current x64 catalog.
+The ARM64 consumer build passes with runtime unverified. Both temporary package
+caches are removed. Every entry in both catalog ZIPs matches its publication.
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `packages-filter-chip-events/Gaulatti.Orchard.0.1.0-filter-events.b833a05.nupkg` | `53244793c4e1adb2a7773c5fcf4875d854688f5b00162dd56220a9b23d5b2f66` |
+| `Orchard.Catalog.0.1.0-b833a05-x64.zip` | `cb1ebaa8de8721e0aa257938a334f413aee0b8220b3344f1bea8a45386f72d19` |
+| `Orchard.Catalog.0.1.0-b833a05-ARM64.zip` | `47dfaecc34818ca1740ceb438b1e22da48497ba8554a0ec00c5d6b54d4c9a502` |
+
+No Windows preference changed. Actual Narrator speech, broader accessibility,
+exact raster/motion, scaling/contrast, collection performance and native ARM64
+acceptance remain open. Inventory stays **58 in progress, 54 pending, zero
+accepted** (51.8% started). Push-triggered Actions remain paused; no hosted run
+was dispatched. The public wiki remains unavailable.
+
 ## FilterChip external UI Automation and focus
 
 Catalog/test source: `fd3c46b`. The public implementation remains `8fa91ab`.
