@@ -2310,3 +2310,26 @@ Narrator speech, broader accessibility, full raster/motion/customization,
 Windows scaling/contrast, collection performance and native ARM64 acceptance
 stay open. No Windows setting changed. Inventory is 58 started, 54 pending,
 zero accepted. Actions remain paused for pushes. See [checkpoint and hashes](native-validation-checkpoint.md).
+
+
+## Search Input initial native checkpoint
+
+Source `1688886` composes the retained editor and independent consumer-owned
+clear button. Forty source/native cases pass at 320/640 in Light/Dark with zero
+geometry error. Actual input covers 56 key pairs, four Tab transfers and 20
+clicks, including native clipboard, selection, maximum length, Escape and
+immediate two-way binding. Twenty-four independent external UIA snapshots
+verify Edit/Value/Text and Button/Invoke contracts. Six corruptions are rejected.
+The catalog consumer passes both themes; 116 unit tests and token checks pass.
+Both architecture builds pass and all 6,054 resolved methods/interfaces match.
+The shared FilterChip geometry and persistent UIA event regressions also pass.
+
+Fresh x64 NuGet runtime passes both themes; ARM64 remains build-only. Temporary
+isolated caches are removed. Versioned package and both runnable catalog ZIPs
+are verified, with hashes in [the checkpoint](native-validation-checkpoint.md).
+Strict full-frame comparison retains 107,752 differing pixels, so exact raster
+parity remains false. Full state/motion/customization, broader accessibility,
+actual scaling/contrast, Narrator, collection performance and native ARM64 stay
+open. No full catalog rerun or workflow dispatch occurred. The fixed inventory
+is 59 in progress, 53 pending, zero accepted. Push-triggered Actions remain
+paused. See [Search Input](search-input.md).

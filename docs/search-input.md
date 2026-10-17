@@ -89,6 +89,14 @@ not committed image assets. An earlier in-process pattern assertion, a missing
 UIA fixture scope and the original mirrored-origin geometry measurement remain
 as failed diagnostics. Physical bounds use `TransformBounds`, including RTL.
 
+Checkpoint source is `1688886`. The independent
+`Gaulatti.Orchard.0.1.0-search-input.1688886.nupkg` consumer passes x64 runtime
+in both themes and ARM64 build-only validation. Both temporary isolated
+consumer/cache directories are removed. The package's `Orchard.dll` exactly
+matches the tested x64 catalog library. Versioned x64 and ARM64 catalog ZIPs
+contain 536 and 532 files respectively, with every entry hash verified. The
+package and archive hashes are recorded in [the current native checkpoint](native-validation-checkpoint.md).
+
 Search Input remains **in progress**. Exact raster/typography/color parity,
 complete hover/focus/pressed and enabled-motion timeline comparisons, broader
 customization and clipboard/IME/selection/accessibility-event cases, actual

@@ -69,3 +69,14 @@ original raw hash as provenance. The existing `brush-alpha` diagnostic runs
 the native regression, immediately reads every completed file and proves
 that a write failure propagates. Independently verify those actual files
 with `scripts/verify-capture-persistence.mjs --native <output> --output <audit>`.
+
+`SearchInput.json` freezes 40 actual Bleecker browser cases at 320/640 in Light
+and Dark, including all sizes, empty/value, optional clear, error, disabled,
+read-only, RTL and non-Latin text. Capture uses the source component and pinned
+runtime/lock/fonts, with source SHA, script SHA and PNG hashes. Four browser
+interaction sequences establish that clear calls the consumer without editing
+text, disabled/read-only editors leave clear active, and Escape emits an empty
+change value that an ignoring controlled consumer does not accept. Native
+verification uses actual editor input/binding and an independent external UIA
+client; zero geometry error does not imply exact raster parity. See
+`scripts/verify-search-input.mjs` and `docs/search-input.md`.

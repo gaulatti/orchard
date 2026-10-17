@@ -1,5 +1,51 @@
 # Current native validation checkpoint
 
+## Search Input native editing and consumer-owned clear
+
+Source: `1688886`. `BleeckerSearchInput` composes the retained `BleeckerInput`
+editor and a separate native clear action. The frozen browser establishes
+consumer ownership, editor-only disabled/read-only behavior and Escape's native
+search change event. Internal Windows text binding uses PropertyChanged so
+edits reach the consumer immediately. The clear command/event never edits text
+or transfers focus automatically. RTL uses physical glyph/button insets and
+the editor's requested reading direction.
+
+All 40 source/native cases pass with zero geometry error at 320/640 in Light
+and Dark. Runtime evidence includes 56 native key pairs, four Tab transfers,
+20 clicks, live two-way binding, selection replacement, Backspace, Escape,
+copy/paste, maximum length, command parameters/CanExecute, independent editor
+disablement, parent disablement, label updates, template replacement and
+unload/remount. Twenty-four external MTA UIA snapshots prove the native
+Edit/Value/Text and Button/Invoke patterns, names, values and state. Six
+corrupted reports are rejected. The real catalog consumer passes both themes.
+All 116 unit tests and token generation checks pass. The shared FilterChip
+action's 20-case geometry, 28 property events and 22 retained invocations pass.
+Both architecture builds pass; 6,054 resolved methods and exposed interfaces
+match. The full catalog sequence was not rerun for this checkpoint.
+
+The fresh x64 NuGet consumer passes both themes. ARM64 consumer verification
+is build-only. Both isolated temporary caches are removed. Package and tested
+x64 catalog libraries have identical bytes. Versioned archives have 536 x64 /
+532 ARM64 entries, all verified individually.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `packages-search-input/Gaulatti.Orchard.0.1.0-search-input.1688886.nupkg` | `ee447bfcd7366b4b297bf997bc60adcd0793ab45e9f2808d26a5b6f516a9ef5e` |
+| Package / x64 catalog `Orchard.dll` | `50bba0edafbb8ef75c15dcfc43e847b66f8100d49a6d7fdb323df1af519d100e` |
+| ARM64 catalog `Orchard.dll` | `98eb7871c2a4cb707aefe54cec6a91ffa0da9582206289b78085fb921e296dcc` |
+| `Orchard.Catalog.0.1.0-1688886-x64.zip` | `d460ebe2194cfdd0129229772111a322a1f63c7a3d09666dd22629077825aa97` |
+| `Orchard.Catalog.0.1.0-1688886-ARM64.zip` | `4bae7cf3c7890c361e1308a4e603cf4d63ba650515c19ebfed7a1781113f1b5e` |
+
+The strict 40 whole-frame comparison retains 107,752 differing pixels, without
+masks or resampling; disabled editor backgrounds account for the largest
+differences. Source pixel parity is false. Full state/motion/customization,
+broader accessibility/IME/selection, actual Windows scaling/contrast, Narrator,
+collection performance and native ARM64 runtime remain open. No Windows
+setting changed. Inventory is **59 in progress, 53 pending, zero accepted** of
+112. The goal remains active. Push-triggered Actions remain paused and no
+workflow was dispatched. The public wiki is still unavailable; documentation
+is maintained here. See [Search Input contract](search-input.md).
+
 ## FilterChip property events and retained clients
 
 Source: `b833a05`. A long-lived external UIA client reproduced missing name and
