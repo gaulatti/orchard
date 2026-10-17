@@ -4,8 +4,8 @@ The source commits below freeze this goal. Upstream updates require explicit sco
 
 Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
-resizing, paste limits and real context commands. It is in progress; full
-integration and remaining visual/platform acceptance evidence are still open.
+resizing, paste limits and real context commands. Full catalog integration
+passes; remaining visual/platform acceptance evidence keeps it in progress.
 Counts are 61 in progress, 51 pending and zero fully accepted.
 
 Visual acceptance requires every component to match its Bleecker reference across every variant, size, theme and applicable interaction state. Compare typography, spacing, dimensions, colors, borders, radii, icons and motion against the rendered reference. Windows control defaults must not override the branded appearance, including nested popups and disabled/focus states. Preserve the explicitly required Windows contrast-color adaptation. A mismatch is an open acceptance gap, never an approved platform substitution.

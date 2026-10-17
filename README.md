@@ -121,6 +121,8 @@ platform acceptance.
 
 ## Consume the library
 
+For local build output, storage limits and cleanup, see [artifact storage](docs/artifacts.md).
+
 Build a local NuGet package and verify it independently:
 
 ```powershell

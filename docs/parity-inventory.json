@@ -3333,7 +3333,7 @@
       "remainingGaps": [
         "Complete remaining customization/validation boundaries; positive native length limits, selection, normalization and undo now match the measured source",
         "Verify provider errors and remaining customization/lifecycle paths; 20 live recipe/theme/validity phases, six independently packaged context phases, 56 length cases, 36 deferred-provider cases, four real menu paste invocations, 36 context command states, 28 context ownership/reset phases and pointer ownership matrices pass",
-        "Verify current versioned artifacts and remaining independent-consumer customization; the complete x64 catalog passes 150 phases, retains 1148 PNGs and includes the 20 live Textarea phases; the source751a309 package consumer passes six native context phases",
+    "Verify remaining independent-consumer customization; regenerated source3a0e8e1 versioned package and both catalog archives pass byte checks, the x64 package consumer passes full Light/Dark runtime and six native context phases, and its ARM64 consumer builds; the regenerated full x64 catalog passes 150 phases, 1148 captures and 20 live Textarea phases; prior-baseline retention was not reverified after the user-requested artifact reset",
         "Resolve exact raster/motion/scaling/contrast/Narrator and native ARM64 acceptance; external UIA validity remains unavailable in the legacy client"
       ]
     },

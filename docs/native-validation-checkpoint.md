@@ -1,5 +1,53 @@
 # Current native validation checkpoint
 
+## Regenerated deliverables after the 2026-10-17 reset
+
+Source `3a0e8e16f5f6c2ad18c3ba2448f2c81e803827a5` includes the chart
+early-key correction and live Textarea catalog/package regressions. Both x64
+and ARM64 catalog publishes pass. All 130 unit tests and the pinned token
+generation check pass. The independent x64 package consumer passes its complete
+Light/Dark runtime, including six real context-key phases. The independent
+ARM64 consumer builds from the same package; native ARM64 runtime remains
+unverified. Both isolated temporary source/feed/cache workspaces are removed.
+Both consumers' library bytes match the packaged library.
+
+The regenerated complete x64 catalog passes all 150 phases in
+467.3885367 seconds under the unchanged 480-second watchdog. Its 1,148 root
+captures, 2,024 owned pointer moves/presentation gates, 1,764 owned key actions,
+86 clicks and 174 valid chart glyph reports pass the current-state audit.
+The 20 live Textarea phases and six native editing keys pass. The committed
+Sparkline verifier passes all 36 source cases, 76 pointer gates and 38 owned
+Right pairs, including physical Right before asynchronous `GotFocus` in both
+themes. Reports are `artifacts/current/native-full-audit.json`,
+`sparkline-pointer-audit.json` and `native-capture-manifest.json`; raw output is
+in `native-full`. The original comparison baseline was deleted, so previous
+capture-name and glyph-hash retention are explicitly not reverified by this
+new audit. Current captures provide a new baseline for subsequent comparisons.
+
+The current package and archives are below `artifacts/current`:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `packages/Gaulatti.Orchard.0.1.0-3a0e8e1.nupkg` | `659e731326541f91203f78274792e4f2763fba59f5b2ba66c4abd2f8de8edb20` |
+| `Orchard.Catalog.0.1.0-3a0e8e1-x64.zip` | `b557071aec1fc72d1ac6723cfdd83cf7c378f3748eafe48c929181d56f38f94b` |
+| `Orchard.Catalog.0.1.0-3a0e8e1-ARM64.zip` | `fa31621b4dfad3d038c6f78512c54bc5869b75591698a521e81606d4da794f8e` |
+
+Every ZIP entry matches its published file: 537 for x64 and 533 for ARM64.
+PE headers confirm each native executable's architecture. `archives.json`
+records these checks. Consumer reports are in `consumer-x64` and
+`consumer-ARM64`; their runtime paths record the original staging location
+before the verified output set was moved into `artifacts/current`.
+
+The user reset removed the earlier local binaries, screenshots and reports.
+Older sections below are historical verification records; their paths no longer
+imply retained files. Source/reference JSON remains committed. See
+[artifact storage](artifacts.md) for the bounded working set and reset behavior.
+The inventory remains 61 in progress, 51 pending and zero accepted. Exact raster,
+complete motion/customization, scaling, contrast/Narrator, collection performance,
+both catalog compositions and current native ARM64 acceptance remain open.
+Push-triggered Actions remain paused; no hosted verification was started.
+The public wiki remains unavailable; documentation stays in this repository.
+
 ## Textarea live integration and early chart inspection
 
 The x64 complete catalog at `artifacts/textarea-catalog-integrated-fixed-full`

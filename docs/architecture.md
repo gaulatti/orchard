@@ -1,5 +1,10 @@
 # Architecture and verification
 
+Reuse project publish directories and the current consumer outputs as described
+in [artifact storage](artifacts.md). Older evidence paths may have been removed
+by the user-requested 2026-10-17 reset; consult the current checkpoint for
+regenerated deliverables rather than assuming historical files still exist.
+
 ## Temporary Actions trigger pause
 
 Automatic push runs are temporarily disabled at the user's request to conserve

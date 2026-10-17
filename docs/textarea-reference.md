@@ -106,6 +106,28 @@ theme acceptance. The ineffective process-private GDI font experiment was remove
 
 ## Versioned preview artifacts
 
+The current `0.1.0-3a0e8e1` package includes the subsequent shared-chart
+early-focus correction and live catalog/package regressions. It is at
+`artifacts/current/packages/Gaulatti.Orchard.0.1.0-3a0e8e1.nupkg`, SHA-256
+`659e731326541f91203f78274792e4f2763fba59f5b2ba66c4abd2f8de8edb20`.
+Both catalog architectures publish. A fresh independent x64 consumer passes
+its complete Light/Dark runtime and six actual context-key phases; the same
+package's ARM64 consumer builds, with native ARM64 execution unverified.
+The regenerated full x64 catalog also passes all 150 phases in 467.3885367
+seconds with 1,148 captures, including the 20 live Textarea phases and six
+native editing keys. Current-state audits pass; the deleted earlier baseline's
+capture-name and glyph-hash retention were not reverified.
+The normal verifier uses fresh isolated source, feed and NuGet cache directories
+and removes them after verification, including failures. Both consumer library
+files match the packaged assembly. Current runnable ZIPs, hashes and scope are
+in [the native checkpoint](native-validation-checkpoint.md).
+
+### Historical packages removed in the local reset
+
+The user-requested 2026-10-17 reset removed the older local packages and raw
+evidence below. These paragraphs retain their original results and source
+identities; see [artifact storage](artifacts.md) for availability limits.
+
 The newer `0.1.0-textarea-commands` package contains library source
 `751a3094ddef6f7b77961bb11610e5e28a2ae5c4`, including owned resize, paste limits
 and constrained context commands. It is at
