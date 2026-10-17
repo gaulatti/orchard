@@ -19,6 +19,8 @@ for(const theme of ['Light','Dark']){
  for(const gate of desktop.pointerPresentations){assert.equal(gate.passed,true);assert(gate.stable>=2&&gate.milliseconds<2000);}
  const external=await read(consumer,`consumer-radio-${theme}.json`);assert.equal(external.passed,true);assert.deepEqual(external.requests,['weekly','daily','daily','daily']);
  for(const field of ['binding','keyedIdentity','stalePeerRejected','disabledRejected'])assert.equal(external[field],true);
+ assert.deepEqual(external.keyedLifecycle.map(row=>row.kind),['move-last-to-first','move-first-to-last','replace-collection','orientation']);
+ for(const row of external.keyedLifecycle){assert.equal(row.sameNode,true);assert.equal(row.selected,true);assert.equal(row.loads,row.kind==='move-first-to-last'?1:0);assert.equal(row.unloads,row.loads);}
  assert.deepEqual(external.keys.map(row=>row.key),[9,40,9,32]);for(const key of external.keys){assert.equal(key.downs,1);assert.equal(key.ups,1);assert.equal(key.downOwned,true);assert.equal(key.upOwned,true);packagedKeyPairs++;}
 }
 const full=runtime.component===undefined;

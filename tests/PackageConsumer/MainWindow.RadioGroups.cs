@@ -17,7 +17,7 @@ public sealed partial class MainWindow
 {
     private async Task VerifyRadioGroupsAsync()
     {
-        var state=new ConsumerRadioState();var requests=new List<string>();var keys=new List<object>();var accept=true;var passed=false;
+        var state=new ConsumerRadioState();var requests=new List<string>();var keys=new List<object>();var keyedLifecycle=new List<object>();var accept=true;var passed=false;
         var group=new BleeckerRadioGroup { Width=280,Options=new(){new("daily","Daily","A morning digest."),new("weekly","Weekly","A weekly overview."),new("paused","Paused",Disabled:true)} };
         group.SetBinding(BleeckerRadioGroup.ValueProperty,new Binding{Source=state,Path=new PropertyPath(nameof(ConsumerRadioState.Value)),Mode=BindingMode.OneWay});
         group.ValueRequested+=(_,request)=>{requests.Add(request.Value);if(accept)state.Value=request.Value;};
@@ -45,7 +45,25 @@ public sealed partial class MainWindow
             daily.Select();Require(requests.Count==3&&!daily.IsSelected,"Packaged declined automation changed bound state.");
             accept=true;daily.Select();Require(requests.Count==4&&daily.IsSelected&&state.Value=="daily","Packaged accepted automation did not reach bound state.");
             state.Value="weekly";Root.UpdateLayout();Require(!daily.IsSelected&&group.Value=="weekly","Packaged model changes did not reach selection.");
-            var weekly=options[1];group.Options.Move(1,0);Root.UpdateLayout();Require(ReferenceEquals(BrandDescendants<Button>(group).First(),weekly),"Packaged reordering lost keyed option identity.");
+            var weekly=options[1];var loads=0;var unloads=0;weekly.Loaded+=(_,_)=>loads++;weekly.Unloaded+=(_,_)=>unloads++;
+            async Task PresentRadioAsync()
+            {
+                var ready=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);var frames=0;
+                void Rendering(object? sender,object args){if(group.IsLoaded&&group.ActualWidth>0&&group.ActualHeight>0&&++frames>=2)ready.TrySetResult();}
+                CompositionTarget.Rendering+=Rendering;try{await ready.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Rendering;}
+            }
+            async Task CheckLifecycle(string kind,Action mutation,int expectedLoads)
+            {
+                loads=0;unloads=0;mutation();Root.UpdateLayout();await PresentRadioAsync();var current=BrandDescendants<Button>(group).Single(button=>FrameworkElementAutomationPeer.CreatePeerForElement(button).GetName()=="Weekly");
+                var selected=((ISelectionItemProvider)FrameworkElementAutomationPeer.CreatePeerForElement(current).GetPattern(PatternInterface.SelectionItem)).IsSelected;
+                Require(ReferenceEquals(current,weekly)&&loads==expectedLoads&&unloads==expectedLoads&&selected&&state.Value=="weekly"&&requests.Count==4,"Packaged keyed lifecycle differs for "+kind);
+                keyedLifecycle.Add(new{kind,sameNode=ReferenceEquals(current,weekly),loads,unloads,selected});
+            }
+            await CheckLifecycle("move-last-to-first",()=>group.Options.Move(1,0),0);
+            await CheckLifecycle("move-first-to-last",()=>group.Options.Move(0,1),1);
+            await CheckLifecycle("replace-collection",()=>group.Options=new(group.Options.Select(option=>new BleeckerRadioOption(option.Value,option.Label,option.Description,option.Disabled))),0);
+            await CheckLifecycle("orientation",()=>group.Orientation=Orientation.Horizontal,0);
+            group.Options.Move(1,0);Root.UpdateLayout();Require(ReferenceEquals(BrandDescendants<Button>(group).First(),weekly),"Packaged reordering lost keyed option identity.");
             group.Options[0]=new("weekly","Updated weekly","Updated help");Root.UpdateLayout();Require(FrameworkElementAutomationPeer.CreatePeerForElement(weekly).GetName()=="Updated weekly","Packaged immutable option replacement lost live metadata.");
             var stale=(ISelectionItemProvider)FrameworkElementAutomationPeer.CreatePeerForElement(weekly).GetPattern(PatternInterface.SelectionItem);group.Options.RemoveAt(0);Root.UpdateLayout();
             Require(state.Value=="weekly"&&selection.GetSelection().Length==0,"Packaged selected removal invented replacement state.");
@@ -56,7 +74,7 @@ public sealed partial class MainWindow
         finally
         {
             Root.Children.Remove(host);var args=Environment.GetCommandLineArgs();var report=args[Array.IndexOf(args,"--verify-output")+1];
-            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!,"consumer-radio-"+Root.RequestedTheme+".json"),JsonSerializer.Serialize(new{passed,requests,keys,binding=true,keyedIdentity=true,stalePeerRejected=true,disabledRejected=true}));
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!,"consumer-radio-"+Root.RequestedTheme+".json"),JsonSerializer.Serialize(new{passed,requests,keys,keyedLifecycle,binding=true,keyedIdentity=true,stalePeerRejected=true,disabledRejected=true}));
         }
     }
     private sealed class ConsumerRadioState:INotifyPropertyChanged

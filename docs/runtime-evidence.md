@@ -1,5 +1,14 @@
 # Native Windows runtime evidence
 
+The current Radio continuity candidate passes 28 source-derived lifecycle cases
+and six live reversal steps with 116 native property samples in Light/Dark.
+It corrects the four move-direction clock mismatches in the preserved pre-fix
+capture, retains visible labels and UIA selection, and restores Windows motion
+preferences. All 155 unit tests pass, including 36 frozen reversal samples;
+17 damaged continuity receipts are rejected. Its 52 existing motion timelines
+also pass with 420 native samples. Fresh package/full-catalog/ARM64 delivery is
+pending; the published baseline below is retained. See the current checkpoint.
+
 Source `9594a5a` corrects Radio Group's interrupted and theme motion, CSS
 color-space selection and shared Chromium/Skia color conversion. All 152 unit
 tests pass. The enabled/reduced Windows harness passes 52 timelines, 417 native

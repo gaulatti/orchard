@@ -78,6 +78,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-date-presentation")) await RunDatePresentationAsync(folder);
             else if (args.Contains("--smoke-radio-reference")) await RunRadioGroupsAsync(folder);
             else if (args.Contains("--smoke-radio-motion")) await RunRadioMotionAsync(folder);
+            else if (args.Contains("--smoke-radio-continuity")) await RunRadioContinuityAsync(folder);
             else if (args.Contains("--smoke-radio-group"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })

@@ -11,7 +11,7 @@ try{
     foreach($enabled in @($true,$false)){
         [OrchardMotionPreference]::Set($enabled)
         $mode=if($enabled){'enabled'}else{'reduced'}
-        foreach($component in @('radio-motion','radio-group')){
+        foreach($component in @('radio-motion','radio-continuity','radio-group')){
             $arguments=@{Executable=$Executable;Output=(Join-Path $outputPath "$mode/$component");Component=$component;ClientSize=@(320,640)}
             if($component -eq 'radio-group'){$arguments.Remove('ClientSize')}
             if($ExpectedArchitecture){$arguments.ExpectedArchitecture=$ExpectedArchitecture}

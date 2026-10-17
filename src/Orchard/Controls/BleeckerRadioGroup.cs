@@ -66,13 +66,27 @@ public sealed partial class BleeckerRadioGroup : Control
         var current=++revision;
         var wanted=Options.Select(option=>option.Value).ToHashSet(StringComparer.Ordinal);
         foreach (var old in buttons.Keys.Where(key=>!wanted.Contains(key)).ToArray()) { panel.Children.Remove(buttons[old]); buttons.Remove(old); }
+        var previousPositions=panel.Children.Cast<OptionButton>().Select((button,index)=>(button,index)).ToDictionary(pair=>pair.button,pair=>pair.index);
+        var ordered=new List<OptionButton>();var stationary=new HashSet<OptionButton>();var highestPrevious=-1;
         panel.Orientation=Orientation;
         for (var index=0;index<Options.Count;index++)
         {
             var option=Options[index];
             if (!buttons.TryGetValue(option.Value,out var button)) { button=new OptionButton(this,option) { Style=(Style)palette["BleeckerRadioOptionStyle"] }; buttons.Add(option.Value,button); }
             button.Update(option); AutomationProperties.SetPositionInSet(button,index+1); AutomationProperties.SetSizeOfSet(button,Options.Count);
-            if (panel.Children.IndexOf(button)!=index) { panel.Children.Remove(button); panel.Children.Insert(index,button); }
+            ordered.Add(button);
+            if(previousPositions.TryGetValue(button,out var previous)&&previous>highestPrevious){stationary.Add(button);highestPrevious=previous;}
+        }
+        // Keep the pinned keyed source's stable subsequence. Reinsert only
+        // actual placements: moving a sibling must not reload a retained
+        // option, while the physically moved option resets its CSS transition.
+        var anchors=new OptionButton?[ordered.Count];OptionButton? nextStationary=null;
+        for(var index=ordered.Count-1;index>=0;index--){anchors[index]=nextStationary;if(stationary.Contains(ordered[index]))nextStationary=ordered[index];}
+        for(var index=0;index<ordered.Count;index++)
+        {
+            var button=ordered[index];if(stationary.Contains(button))continue;
+            panel.Children.Remove(button);
+            if(anchors[index] is {} anchor)panel.Children.Insert(panel.Children.IndexOf(anchor),button);else panel.Children.Add(button);
         }
         panel.InvalidateMeasure(); Synchronize();
         if (restore) DispatcherQueue.TryEnqueue(()=>

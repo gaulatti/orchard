@@ -89,7 +89,34 @@ checks the browser recipe, native trajectory, retained clocks and palette tests.
 altered color/scale, missing frames, lost clocks, failed palette updates and
 unrestored Windows preferences are rejected. Geometry/pixel tolerances are
 unchanged. Numeric motion verification does not establish frame-by-frame raster
-parity, full reversal/customization/lifecycle coverage or platform acceptance.
+parity, full customization/lifecycle coverage or platform acceptance.
+
+The continuity reference adds 28 cases across both themes and motion preferences:
+keyed moves in both directions, same-key metadata replacement, an equivalent new
+collection, orientation, removal/reinsertion and a fresh group remount. The
+pinned React 19.2.4 source retains the same keyed option in both move directions,
+but physically moves different nodes: moving the active first option to last
+resets its CSS transition; moving the last option to first retains its clocks
+because React moves its sibling. Native reconciliation follows that measured
+placement policy. Stable metadata, collection and orientation changes retain
+clocks; genuinely removed or recreated options start at their selected endpoint.
+These model changes do not issue consumer requests. Visible labels, accessible
+names and selection are checked after every mutation.
+
+Two three-step browser reversal sequences retain 36 frozen samples. The existing
+transition engine matches their shortened 190/220ms clocks and exact RGB bytes.
+The `radio-continuity` native mode records live presentation timestamps rather
+than imposing browser sample times. `scripts/verify-radio-continuity.mjs --native
+<wrapper-output> --output <audit>` independently checks actual clock continuity,
+CSS reversal shortening, ring paint, dot scale, lifecycle events and UIA state.
+The current x64 capture passes 28 lifecycle cases and six reversal steps with
+116 property samples. Its audit rejects 17 damaged receipts. The pre-fix native
+capture reproduces four clock-retention mismatches, one in each move direction
+and theme; the corrected capture resolves all four. The wrapper runs this mode
+under both real Windows preferences and restores the original setting.
+The isolated package consumer also verifies both physical move directions,
+collection replacement and orientation through public controls and UIA.
+Frame raster parity and the complete lifecycle/customization matrix remain open.
 
 The intrinsic text measure retains DirectWrite shaping, font fallback and
 consumer language. It converts nominal glyph advances to 16.16 fixed point,

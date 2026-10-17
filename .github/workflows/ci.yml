@@ -131,6 +131,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit failed.' }
           node scripts/test-radio-motion-audit.mjs --native artifacts/radio-motion
           if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit regression failed.' }
+          node scripts/verify-radio-continuity.mjs --native artifacts/radio-motion --output artifacts/radio-motion/continuity-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group continuity audit failed.' }
+          node scripts/test-radio-continuity-audit.mjs --native artifacts/radio-motion
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group continuity audit regression failed.' }
       - name: Verify DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
@@ -424,6 +428,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit failed.' }
           node scripts/test-radio-motion-audit.mjs --native artifacts/radio-motion
           if ($LASTEXITCODE -ne 0) { throw 'Radio Group motion audit regression failed.' }
+          node scripts/verify-radio-continuity.mjs --native artifacts/radio-motion --output artifacts/radio-motion/continuity-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group continuity audit failed.' }
+          node scripts/test-radio-continuity-audit.mjs --native artifacts/radio-motion
+          if ($LASTEXITCODE -ne 0) { throw 'Radio Group continuity audit regression failed.' }
       - name: Verify native ARM64 DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke

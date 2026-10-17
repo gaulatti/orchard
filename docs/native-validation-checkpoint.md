@@ -1,5 +1,24 @@
 # Current native validation checkpoint
 
+## Radio continuity candidate
+
+The current worktree corrects keyed Radio Group placement to match the pinned
+source's direction-dependent transition lifetime. The pre-fix x64 capture at
+`artifacts/current/radio-continuity-before` reproduces four mismatches; the
+corrected capture at `artifacts/current/radio-continuity-native` passes all 28
+lifecycle cases and six reversal steps across both themes and real Windows
+motion preferences. The independent audit verifies 116 native property samples,
+eight retained clocks, six reset clocks, visible labels and UIA selection.
+Maximum scale error is `0.00000006534452323680995`; RGB bytes remain exact.
+All 155 unit tests pass, including 36 source-frozen reversal samples. Seventeen
+altered continuity receipts and all eight existing motion mutations are rejected.
+The existing 52 motion timelines pass again with 420 native samples. Windows
+preferences are restored. Source raster parity and component acceptance remain
+unproven. Package delivery, both fresh architecture builds and a fresh full
+catalog run for this candidate are pending; the verified release below remains
+the published baseline. Inventory stays 64 in progress, 48 pending and zero
+accepted. Push-triggered Actions remain paused.
+
 ## Radio motion and CSS color spaces
 
 Source `9594a5a` preserves Radio Group's stroke/dot clocks when availability
