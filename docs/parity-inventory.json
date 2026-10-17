@@ -3303,12 +3303,21 @@
         "samples/Orchard.Catalog/MainWindow.TextareaResizeOwnership.cs",
         "scripts/verify-textarea-resize.mjs",
         "scripts/test-textarea-resize-audit.mjs",
+        "tests/Orchard.Tests/TextareaLimitsReferenceTests.cs",
+        "tests/Reference/TextareaLimits.json",
+        "scripts/reference/capture-textarea-limits.cjs",
+        "samples/Orchard.Catalog/MainWindow.TextareaLimits.cs",
+        "samples/Orchard.Catalog/MainWindow.TextareaDeferredPaste.cs",
+        "samples/Orchard.Catalog/MainWindow.TextareaMenuPaste.cs",
+        "samples/Orchard.Catalog/NativeInputSession.MenuPointer.cs",
+        "scripts/verify-textarea-limits.mjs",
+        "scripts/test-textarea-limits-audit.mjs",
         "tests/PackageConsumer/MainWindow.Textarea.cs"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete the pinned contract, maxlength/validation and remaining customization boundaries",
-        "Verify remaining menu invocation, clipboard-provider races, live theme/size/row/error changes and remaining lifecycle paths; 72 owned pointer resize cases and twelve ownership phases pass",
+        "Complete remaining customization/validation boundaries; positive native length limits, selection, normalization and undo now match the measured source",
+        "Verify provider errors, other menu invocation/opening, live theme/size/row/error changes and remaining lifecycle paths; 56 length cases, 36 deferred-provider cases, four real menu paste invocations and pointer ownership matrices pass",
         "Integrate and verify the complete catalog sequence; strengthened source states and fresh visible x64 package consumer pass with live template readiness",
         "Resolve exact raster/motion/scaling/contrast/Narrator and native ARM64 acceptance; external UIA validity remains unavailable in the legacy client"
       ]

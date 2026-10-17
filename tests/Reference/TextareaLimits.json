@@ -1,0 +1,5880 @@
+{
+  "format": "orchard-textarea-limits-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "b523ba0962a02492a5e5954957eede4e1ad683ee7ce7ac21c04097325eb82082",
+  "scriptSha256": "c75916553fa25fd9298830fe49619a98cee19950c17ddcf09f84a2706a11176e",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "browser": "155.0.4283.45",
+  "playwright": "1.62.1",
+  "esbuild": "0.25.12",
+  "freshMountPerCase": true,
+  "realClipboard": true,
+  "cases": [
+    {
+      "id": "typing",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "typing",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ]
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "abc",
+        "abcd",
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-typing-320-Light.png",
+      "pngSha256": "12fd12720126d509ad9f3c71db41c59756e07e5248eff89ba97b51d4a5b78998"
+    },
+    {
+      "id": "newline",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "newline",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "Enter",
+          "c",
+          "d",
+          "e"
+        ]
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "ab\n",
+        "ab\nc",
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertLineBreak"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-newline-320-Light.png",
+      "pngSha256": "aecea15b3c4241d7735b173c21482e501f378372db1b47d88721bd456f434694"
+    },
+    {
+      "id": "paste",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "paste",
+        "limit": 5,
+        "initial": "",
+        "paste": "abcdef"
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-320-Light.png",
+      "pngSha256": "f464bcdf66b19d882197b8e0c57296473df698c9a18dddb6940561c55ba7bcba"
+    },
+    {
+      "id": "paste-crlf",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "paste-crlf",
+        "limit": 5,
+        "initial": "",
+        "paste": "ab\r\ncde"
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-crlf-320-Light.png",
+      "pngSha256": "aecea15b3c4241d7735b173c21482e501f378372db1b47d88721bd456f434694"
+    },
+    {
+      "id": "surrogate-fit",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "surrogate-fit",
+        "limit": 3,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A😀",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-fit-320-Light.png",
+      "pngSha256": "1166929ee5764d5ad7b0129ae1f670885db6a8e6aae7b673e5a843c65400dd0f"
+    },
+    {
+      "id": "surrogate-boundary",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "surrogate-boundary",
+        "limit": 2,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A",
+        "length": 1,
+        "selection": [
+          1,
+          1
+        ],
+        "maxLength": 2,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-boundary-320-Light.png",
+      "pngSha256": "fa9a78c995ed5500920c85c78a8d57056d2b854a9255d959e3d50d3aaeb4ac0b"
+    },
+    {
+      "id": "selection",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "selection",
+        "limit": 5,
+        "initial": "ABCDE",
+        "selection": [
+          1,
+          4
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "AuvwE",
+        "length": 5,
+        "selection": [
+          4,
+          4
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "AuvwE"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-selection-320-Light.png",
+      "pngSha256": "f05fe797732f7938a4dd32dcdc9ba6903ed2131a5c4d5e1e6f28444cbf91de8e"
+    },
+    {
+      "id": "full",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "full",
+        "limit": 3,
+        "initial": "abc",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "abc",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-full-320-Light.png",
+      "pngSha256": "7a08277819494e49b09ffcd231f3fb36ad3048be4ea9ee80deb82467dddf6099"
+    },
+    {
+      "id": "programmatic-overflow",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "programmatic-overflow",
+        "limit": 3,
+        "initial": "ABCDE",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABCDE",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": false,
+        "tooLong": true
+      },
+      "undo": "ABCDE",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-programmatic-overflow-320-Light.png",
+      "pngSha256": "9e5893f28f551cd1c153edb2c7447baedffa825d70589b045f4b18d4358caf77"
+    },
+    {
+      "id": "overflow-replacement",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "overflow-replacement",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          0,
+          5
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "uvw",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "uvw"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-overflow-replacement-320-Light.png",
+      "pngSha256": "dccd098bed0c8377f66d06d41fc7e0d025da091b1a8e1854bae38d4586fafc26"
+    },
+    {
+      "id": "zero-capacity-selection",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "zero-capacity-selection",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          3,
+          5
+        ],
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABC",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "ABC"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-zero-capacity-selection-320-Light.png",
+      "pngSha256": "a9c929076035a22ef2920b992ab36c47f284183523fa63049a40af18854a8c2c"
+    },
+    {
+      "id": "live-limit",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "live-limit",
+        "limit": 5,
+        "liveLimit": 3,
+        "initial": "ab",
+        "paste": "cde"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ab",
+      "changes": [
+        "abc"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-live-limit-320-Light.png",
+      "pngSha256": "7a08277819494e49b09ffcd231f3fb36ad3048be4ea9ee80deb82467dddf6099"
+    },
+    {
+      "id": "unlimited",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "unlimited",
+        "limit": null,
+        "initial": "",
+        "paste": "Unlimited\r\nnotes 😀"
+      },
+      "actual": {
+        "text": "Unlimited\nnotes 😀",
+        "length": 18,
+        "selection": [
+          18,
+          18
+        ],
+        "maxLength": -1,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "Unlimited\nnotes 😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-unlimited-320-Light.png",
+      "pngSha256": "e0f8aa1fcd5517a3189fd9afc7cc069fa6ba3aa6c4c93d9fd9e94233061e83bb"
+    },
+    {
+      "id": "readonly",
+      "width": 320,
+      "scheme": "Light",
+      "spec": {
+        "id": "readonly",
+        "limit": 3,
+        "initial": "Read-only",
+        "readOnly": true,
+        "paste": "x"
+      },
+      "actual": {
+        "text": "Read-only",
+        "length": 9,
+        "selection": [
+          9,
+          9
+        ],
+        "maxLength": 3,
+        "readOnly": true,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "Read-only",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-readonly-320-Light.png",
+      "pngSha256": "e769b5d7e6935e3764a4847d0301e9f9987a92f25d5952c613cb86ea3a59bccd"
+    },
+    {
+      "id": "typing",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "typing",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ]
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "abc",
+        "abcd",
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-typing-320-Dark.png",
+      "pngSha256": "79733bd5658de00636e438a23384ac6b84fedad98ddfa5b062fcb8a663372ff1"
+    },
+    {
+      "id": "newline",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "newline",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "Enter",
+          "c",
+          "d",
+          "e"
+        ]
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "ab\n",
+        "ab\nc",
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertLineBreak"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-newline-320-Dark.png",
+      "pngSha256": "811222780bece31e8aab811e22f8fa92afef3933e9816da08ffc39ff9c97ea35"
+    },
+    {
+      "id": "paste",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "paste",
+        "limit": 5,
+        "initial": "",
+        "paste": "abcdef"
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-320-Dark.png",
+      "pngSha256": "923f293708a67776c0d9928f02a1f947bd404933a91a6ca414f6de072d9fc44e"
+    },
+    {
+      "id": "paste-crlf",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "paste-crlf",
+        "limit": 5,
+        "initial": "",
+        "paste": "ab\r\ncde"
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-crlf-320-Dark.png",
+      "pngSha256": "811222780bece31e8aab811e22f8fa92afef3933e9816da08ffc39ff9c97ea35"
+    },
+    {
+      "id": "surrogate-fit",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "surrogate-fit",
+        "limit": 3,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A😀",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-fit-320-Dark.png",
+      "pngSha256": "93a565829003a1dff665fbf30b6044ab9f8f888507e7d544fa87e993a2798205"
+    },
+    {
+      "id": "surrogate-boundary",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "surrogate-boundary",
+        "limit": 2,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A",
+        "length": 1,
+        "selection": [
+          1,
+          1
+        ],
+        "maxLength": 2,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-boundary-320-Dark.png",
+      "pngSha256": "1191946e5210ecaddcd77f4bbef38f4e4a50f333610b40dbe1405ea131f9f271"
+    },
+    {
+      "id": "selection",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "selection",
+        "limit": 5,
+        "initial": "ABCDE",
+        "selection": [
+          1,
+          4
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "AuvwE",
+        "length": 5,
+        "selection": [
+          4,
+          4
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "AuvwE"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-selection-320-Dark.png",
+      "pngSha256": "360be4d8547752894fad24ac59edf0149a2c0720243f819941507c95ed38091e"
+    },
+    {
+      "id": "full",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "full",
+        "limit": 3,
+        "initial": "abc",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "abc",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-full-320-Dark.png",
+      "pngSha256": "76d22436a46858a48817cc4cd5c65b85f86061339d9348fc1632bf20951eada2"
+    },
+    {
+      "id": "programmatic-overflow",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "programmatic-overflow",
+        "limit": 3,
+        "initial": "ABCDE",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABCDE",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": false,
+        "tooLong": true
+      },
+      "undo": "ABCDE",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-programmatic-overflow-320-Dark.png",
+      "pngSha256": "e1fdb28a4e96a2f113f2198e5f7d45b3cedee98b6f978405e4c2c6de555417f5"
+    },
+    {
+      "id": "overflow-replacement",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "overflow-replacement",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          0,
+          5
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "uvw",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "uvw"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-overflow-replacement-320-Dark.png",
+      "pngSha256": "809dde20c8b90d632e600490390c4e402fedb3f3630fc4f6e6fa0ceab4a743d2"
+    },
+    {
+      "id": "zero-capacity-selection",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "zero-capacity-selection",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          3,
+          5
+        ],
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABC",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "ABC"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-zero-capacity-selection-320-Dark.png",
+      "pngSha256": "f999d3e3a476fa151e0231b154a3126c6471d29a243d46caf3ed0d00c29f92d0"
+    },
+    {
+      "id": "live-limit",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "live-limit",
+        "limit": 5,
+        "liveLimit": 3,
+        "initial": "ab",
+        "paste": "cde"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ab",
+      "changes": [
+        "abc"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-live-limit-320-Dark.png",
+      "pngSha256": "76d22436a46858a48817cc4cd5c65b85f86061339d9348fc1632bf20951eada2"
+    },
+    {
+      "id": "unlimited",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "unlimited",
+        "limit": null,
+        "initial": "",
+        "paste": "Unlimited\r\nnotes 😀"
+      },
+      "actual": {
+        "text": "Unlimited\nnotes 😀",
+        "length": 18,
+        "selection": [
+          18,
+          18
+        ],
+        "maxLength": -1,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "Unlimited\nnotes 😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-unlimited-320-Dark.png",
+      "pngSha256": "10fead15542bfe044454eb432b190a6263e1a94b4c07fd9d0dfe767c7d0a46b5"
+    },
+    {
+      "id": "readonly",
+      "width": 320,
+      "scheme": "Dark",
+      "spec": {
+        "id": "readonly",
+        "limit": 3,
+        "initial": "Read-only",
+        "readOnly": true,
+        "paste": "x"
+      },
+      "actual": {
+        "text": "Read-only",
+        "length": 9,
+        "selection": [
+          9,
+          9
+        ],
+        "maxLength": 3,
+        "readOnly": true,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "Read-only",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-readonly-320-Dark.png",
+      "pngSha256": "aa7f85c3b29e4a4cda0e2d9de0c8d122e98f31da227efccbc3a644c632bf8772"
+    },
+    {
+      "id": "typing",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "typing",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ]
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "abc",
+        "abcd",
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-typing-640-Light.png",
+      "pngSha256": "4519c07b55e551820b2cf5437972d9de3e9e3ab7842a7d7849a2ab8602e2e3ab"
+    },
+    {
+      "id": "newline",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "newline",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "Enter",
+          "c",
+          "d",
+          "e"
+        ]
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "ab\n",
+        "ab\nc",
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertLineBreak"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-newline-640-Light.png",
+      "pngSha256": "d45d114129c025ef568b94c83e9a780d586768a11e0bdb17e4feecf1ac8658ee"
+    },
+    {
+      "id": "paste",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "paste",
+        "limit": 5,
+        "initial": "",
+        "paste": "abcdef"
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-640-Light.png",
+      "pngSha256": "be84fe31560cc1f1c91d98f3939b8c556b3afae0ce67bad87c90530b54d6f81b"
+    },
+    {
+      "id": "paste-crlf",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "paste-crlf",
+        "limit": 5,
+        "initial": "",
+        "paste": "ab\r\ncde"
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-crlf-640-Light.png",
+      "pngSha256": "d45d114129c025ef568b94c83e9a780d586768a11e0bdb17e4feecf1ac8658ee"
+    },
+    {
+      "id": "surrogate-fit",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "surrogate-fit",
+        "limit": 3,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A😀",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-fit-640-Light.png",
+      "pngSha256": "ea2453f5a5fe112c3d2d2ec134831faa4e7dc0a40513b80980f8e43132722e39"
+    },
+    {
+      "id": "surrogate-boundary",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "surrogate-boundary",
+        "limit": 2,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A",
+        "length": 1,
+        "selection": [
+          1,
+          1
+        ],
+        "maxLength": 2,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-boundary-640-Light.png",
+      "pngSha256": "3254b4f6f551f7670f89f176e2026f36ff1da5d850a7b7c1a65ee448481a3ffe"
+    },
+    {
+      "id": "selection",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "selection",
+        "limit": 5,
+        "initial": "ABCDE",
+        "selection": [
+          1,
+          4
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "AuvwE",
+        "length": 5,
+        "selection": [
+          4,
+          4
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "AuvwE"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-selection-640-Light.png",
+      "pngSha256": "a0d9a1bee5c01220bf4ca07fc438758833337a1c36a699a3fb6f8842ba1a70ec"
+    },
+    {
+      "id": "full",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "full",
+        "limit": 3,
+        "initial": "abc",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "abc",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-full-640-Light.png",
+      "pngSha256": "6847f4a3e606211404e224763c43bdf43450c7bc541490e06b55efca28ca8710"
+    },
+    {
+      "id": "programmatic-overflow",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "programmatic-overflow",
+        "limit": 3,
+        "initial": "ABCDE",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABCDE",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": false,
+        "tooLong": true
+      },
+      "undo": "ABCDE",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-programmatic-overflow-640-Light.png",
+      "pngSha256": "e4c86e2b71d1eb0afae49f342bcb6328e79595a9539c04cf6e449e824951bb4c"
+    },
+    {
+      "id": "overflow-replacement",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "overflow-replacement",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          0,
+          5
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "uvw",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "uvw"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-overflow-replacement-640-Light.png",
+      "pngSha256": "eb399f5a7f997d5156f617d6e5f2d50419f4b19eb64ac2ae78ab77868e14213d"
+    },
+    {
+      "id": "zero-capacity-selection",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "zero-capacity-selection",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          3,
+          5
+        ],
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABC",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "ABC"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-zero-capacity-selection-640-Light.png",
+      "pngSha256": "4e37d3a4d5b7b0229b5c9dc28e754daaf935703dccd5f746cf478020f3b333b6"
+    },
+    {
+      "id": "live-limit",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "live-limit",
+        "limit": 5,
+        "liveLimit": 3,
+        "initial": "ab",
+        "paste": "cde"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ab",
+      "changes": [
+        "abc"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-live-limit-640-Light.png",
+      "pngSha256": "6847f4a3e606211404e224763c43bdf43450c7bc541490e06b55efca28ca8710"
+    },
+    {
+      "id": "unlimited",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "unlimited",
+        "limit": null,
+        "initial": "",
+        "paste": "Unlimited\r\nnotes 😀"
+      },
+      "actual": {
+        "text": "Unlimited\nnotes 😀",
+        "length": 18,
+        "selection": [
+          18,
+          18
+        ],
+        "maxLength": -1,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "Unlimited\nnotes 😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-unlimited-640-Light.png",
+      "pngSha256": "4a5d12e36181461cf0bde5274a35c4bfbea76ae2676aa0726c191b3d4acf368a"
+    },
+    {
+      "id": "readonly",
+      "width": 640,
+      "scheme": "Light",
+      "spec": {
+        "id": "readonly",
+        "limit": 3,
+        "initial": "Read-only",
+        "readOnly": true,
+        "paste": "x"
+      },
+      "actual": {
+        "text": "Read-only",
+        "length": 9,
+        "selection": [
+          9,
+          9
+        ],
+        "maxLength": 3,
+        "readOnly": true,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "Read-only",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-readonly-640-Light.png",
+      "pngSha256": "202ff2837b27724eb2b4690e3cd861bafff7c21a0573d203137b7705606c255f"
+    },
+    {
+      "id": "typing",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "typing",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ]
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "abc",
+        "abcd",
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "f",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-typing-640-Dark.png",
+      "pngSha256": "bdd8c25e57606be0fda9f9f7ed4d1e35997ccc8b9d1950440b991db852c9f6ee"
+    },
+    {
+      "id": "newline",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "newline",
+        "limit": 5,
+        "initial": "",
+        "keys": [
+          "a",
+          "b",
+          "Enter",
+          "c",
+          "d",
+          "e"
+        ]
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": null,
+      "changes": [
+        "a",
+        "ab",
+        "ab\n",
+        "ab\nc",
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "b",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertLineBreak"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Enter",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertText"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "d",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "e",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-newline-640-Dark.png",
+      "pngSha256": "8caa748ea1cf0781ee4944db9106f8c72f1ea3c127bfb93ee4fb91e1236b7217"
+    },
+    {
+      "id": "paste",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "paste",
+        "limit": 5,
+        "initial": "",
+        "paste": "abcdef"
+      },
+      "actual": {
+        "text": "abcde",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "abcde"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-640-Dark.png",
+      "pngSha256": "6c91a85ece7402f03f09913d01d60934405589adb0fb8bc5b1590e0cbc549408"
+    },
+    {
+      "id": "paste-crlf",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "paste-crlf",
+        "limit": 5,
+        "initial": "",
+        "paste": "ab\r\ncde"
+      },
+      "actual": {
+        "text": "ab\ncd",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "ab\ncd"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-paste-crlf-640-Dark.png",
+      "pngSha256": "8caa748ea1cf0781ee4944db9106f8c72f1ea3c127bfb93ee4fb91e1236b7217"
+    },
+    {
+      "id": "surrogate-fit",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "surrogate-fit",
+        "limit": 3,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A😀",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-fit-640-Dark.png",
+      "pngSha256": "e68520a27a5999001ddcfbbaa2302225f37081b29c483146c89f6999a83d88b4"
+    },
+    {
+      "id": "surrogate-boundary",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "surrogate-boundary",
+        "limit": 2,
+        "initial": "",
+        "paste": "A😀B"
+      },
+      "actual": {
+        "text": "A",
+        "length": 1,
+        "selection": [
+          1,
+          1
+        ],
+        "maxLength": 2,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "A"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-surrogate-boundary-640-Dark.png",
+      "pngSha256": "5bd2f364261410c1f422c1db2b09080c34f7fd2ae5febeac375a83572aeb5de7"
+    },
+    {
+      "id": "selection",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "selection",
+        "limit": 5,
+        "initial": "ABCDE",
+        "selection": [
+          1,
+          4
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "AuvwE",
+        "length": 5,
+        "selection": [
+          4,
+          4
+        ],
+        "maxLength": 5,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "AuvwE"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-selection-640-Dark.png",
+      "pngSha256": "bdd05dcf86411a1cd940799059b13447d8d1ea412ee3a6b6dbab12a42c7ff0a6"
+    },
+    {
+      "id": "full",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "full",
+        "limit": 3,
+        "initial": "abc",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "abc",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-full-640-Dark.png",
+      "pngSha256": "f962d97e0bd4eadbefb4eea4ce74f797d1840f7ebd98aab1cb28f415fd8175bd"
+    },
+    {
+      "id": "programmatic-overflow",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "programmatic-overflow",
+        "limit": 3,
+        "initial": "ABCDE",
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABCDE",
+        "length": 5,
+        "selection": [
+          5,
+          5
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": false,
+        "tooLong": true
+      },
+      "undo": "ABCDE",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-programmatic-overflow-640-Dark.png",
+      "pngSha256": "a6240a07aefef0d0e10b7b36f7530f6e8f779807d00ecb6a05f2dfd5adcb1646"
+    },
+    {
+      "id": "overflow-replacement",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "overflow-replacement",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          0,
+          5
+        ],
+        "paste": "uvwxyz"
+      },
+      "actual": {
+        "text": "uvw",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "uvw"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-overflow-replacement-640-Dark.png",
+      "pngSha256": "3d2571009712e0e5990e4d6adaa316757d99302535430a535694cb9cd995c3af"
+    },
+    {
+      "id": "zero-capacity-selection",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "zero-capacity-selection",
+        "limit": 3,
+        "initial": "ABCDE",
+        "selection": [
+          3,
+          5
+        ],
+        "paste": "x"
+      },
+      "actual": {
+        "text": "ABC",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ABCDE",
+      "changes": [
+        "ABC"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-zero-capacity-selection-640-Dark.png",
+      "pngSha256": "6ffe8dbe614981681ac7512e9f0c0fb657810a57d077c4c360dd3078de925462"
+    },
+    {
+      "id": "live-limit",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "live-limit",
+        "limit": 5,
+        "liveLimit": 3,
+        "initial": "ab",
+        "paste": "cde"
+      },
+      "actual": {
+        "text": "abc",
+        "length": 3,
+        "selection": [
+          3,
+          3
+        ],
+        "maxLength": 3,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "ab",
+      "changes": [
+        "abc"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-live-limit-640-Dark.png",
+      "pngSha256": "f962d97e0bd4eadbefb4eea4ce74f797d1840f7ebd98aab1cb28f415fd8175bd"
+    },
+    {
+      "id": "unlimited",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "unlimited",
+        "limit": null,
+        "initial": "",
+        "paste": "Unlimited\r\nnotes 😀"
+      },
+      "actual": {
+        "text": "Unlimited\nnotes 😀",
+        "length": 18,
+        "selection": [
+          18,
+          18
+        ],
+        "maxLength": -1,
+        "readOnly": false,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "",
+      "changes": [
+        "Unlimited\nnotes 😀"
+      ],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "insertFromPaste"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null,
+          "inputType": "historyUndo"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-unlimited-640-Dark.png",
+      "pngSha256": "7df01d5ea136afa6114eaf340ef50476ede90ec398d622f081cc459b534b52c7"
+    },
+    {
+      "id": "readonly",
+      "width": 640,
+      "scheme": "Dark",
+      "spec": {
+        "id": "readonly",
+        "limit": 3,
+        "initial": "Read-only",
+        "readOnly": true,
+        "paste": "x"
+      },
+      "actual": {
+        "text": "Read-only",
+        "length": 9,
+        "selection": [
+          9,
+          9
+        ],
+        "maxLength": 3,
+        "readOnly": true,
+        "ariaInvalid": null,
+        "valid": true,
+        "tooLong": false
+      },
+      "undo": "Read-only",
+      "changes": [],
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null,
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z",
+          "inputType": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control",
+          "inputType": null
+        }
+      ],
+      "file": "textarea-limits-readonly-640-Dark.png",
+      "pngSha256": "1670a4ad9f9bba6eefc041fc550a81dbb5e1859657bddbfc0875d479f32259c4"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ public sealed partial class BleeckerTextarea
         Add("Redo", () => TextDocument.Redo(), () => !IsReadOnly && TextDocument.CanRedo());
         Add("Cut", () => TextDocument.Selection.Cut(), () => !IsReadOnly && TextDocument.Selection.Length > 0);
         Add("Copy", () => TextDocument.Selection.Copy(), () => TextDocument.Selection.Length > 0);
-        Add("Paste", async () => await PastePlainTextAsync(), () => !IsReadOnly && Clipboard.GetContent().Contains(StandardDataFormats.Text));
+        Add("Paste", async () => await StartPlainTextPasteAsync(), () => !IsReadOnly && Clipboard.GetContent().Contains(StandardDataFormats.Text));
         Add("Select all", () => TextDocument.Selection.SetRange(0, Text.Length), () => Text.Length > 0);
         menu.Opening += (_, _) => { foreach (var (item, enabled) in items) item.IsEnabled = IsEnabled && enabled(); };
         ContextFlyout = SelectionFlyout = menu;

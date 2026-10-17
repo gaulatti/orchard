@@ -37,6 +37,65 @@ their text with explicit newline normalization. Use
 `Mode=TwoWay, UpdateSourceTrigger=PropertyChanged` when a consumer wants updates
 on every edit. A single-line TextBox is an unsuitable multiline data model.
 
+## User-input length and asynchronous clipboard ownership
+
+`MaxLength` retains the inherited Windows contract: a positive value limits
+user input and `0` is unlimited. This matches Orchard's other native editors;
+it maps the browser's omitted `maxLength` attribute to the Windows default.
+An HTML attribute of `maxLength=0` has different semantics. Programmatic `Text`
+and consumer binding updates may exceed a positive limit and are preserved;
+typing and paste must not add text beyond the current capacity. The pinned
+WinUI `2.3.9` metadata (resolved by Windows App SDK `2.5.1`) defines this
+zero-means-unlimited user-input property. Public Learn's available view is
+older; the pinned package's XML and real runtime establish the versioned
+contract used here.
+
+`scripts/reference/capture-textarea-limits.cjs` records 56 fresh frozen-source
+cases across both widths and themes, using the real clipboard, trusted keys,
+consumer change records and one-step undo. It covers typed characters and Enter,
+plain paste, CRLF normalization, UTF-16 surrogate boundaries, selection
+replacement, full fields, programmatic overflow, replacing overflow, zero
+insertion capacity with a selected suffix, live limits, unlimited and read-only.
+The committed reference is `tests/Reference/TextareaLimits.json`. HTML constraint
+validity and `aria-invalid` are distinct: exceeding a limit does not implicitly
+set the forwarded accessibility attribute. Orchard keeps its explicit
+`IsError` / `IsInvalid` consumer contract rather than inventing a form validator.
+
+The original native paste path bypassed the editor's user-input limit because
+it wrote directly through the document API. Its retained 640px baseline has
+18 failures across both themes. The shared keyboard/menu paste path now
+normalizes CRLF and CR to LF, computes capacity after the current selection,
+truncates without splitting a surrogate pair and applies one native edit.
+A native Select All range can include RichEdit's immutable final paragraph; it
+adds no capacity because it is excluded from the public text. The native matrix
+uses real Ctrl+A for full replacement. A full field with an empty selection
+produces no edit. A selection can still
+be deleted when capacity is zero, matching the browser. Read-only/disabled
+guards remain active, and the caret follows the inserted text.
+
+Clipboard text can arrive asynchronously. The insertion uses the current limit
+after retrieval and rejects stale content, selection, template, disabled,
+read-only or view ownership. Every load advances the view version, including
+rapid remounts. Native delayed-provider checks hold the actual data request,
+mutate the owning editor, release the data and await the exact operation started
+by the real paste key. This distinguishes completed cancellation from an edit
+that simply has not arrived yet. The final native runs pass all 56 length cases
+and 36 delayed-provider cases across both widths/themes, with 188 owned key
+actions including Select All and menu undo. Both audits reject twelve corruptions; all 129
+unit tests and generated tokens pass. Both architectures build, with native
+ARM64 execution still unverified.
+The final original 172-state regression also passes, including four editing
+sequences, eight external UIA/grip snapshots and 60 owned key actions.
+
+Four physical menu-Paste invocations also pass limit, consumer binding, popup
+closure and one-step undo checks. Read-only menu editing actions are disabled
+and Copy stays enabled for a selection. The test opens the actual ContextFlyout,
+then observes the menu click's exact native input-source press/release because
+popup closure can remove its routed XAML release event. These are explicitly
+native-source receipts. Context-menu opening gestures and the other menu
+invocations, plus clipboard-provider failure reporting, still need separate
+acceptance evidence. The registered fixture includes a 12-character editor.
+
 Exact native paragraph spacing uses the SDK's point units: 15pt for a 20px line,
 18pt for 24px. Document initialization waits until the native view has loaded.
 Keep XAML's existing private font-face binding when configuring character format;

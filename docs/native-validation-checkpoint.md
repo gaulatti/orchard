@@ -1,5 +1,53 @@
 # Current native validation checkpoint
 
+## Textarea length limits and delayed paste
+
+The new frozen browser and x64 native matrix passes all 56 cases at 320/640px in
+Light/Dark: typing, Enter, paste, CRLF, surrogate boundaries, selection capacity,
+programmatic overflow, replacing overflow, zero-capacity selection deletion,
+live limits, unlimited and read-only. Native `MaxLength=0` retains the Windows
+unlimited convention. The former direct document paste exceeded the limit in
+18 baseline cases; that failure is retained. Paste now applies the current limit
+after normalizing LF and preserves a complete surrogate pair at the boundary.
+One undo restores the original consumer value, including blocked paste cases.
+
+Thirty-six delayed-provider cases hold the actual clipboard request and verify
+current limits plus content, selection, read-only, disabled, template and
+normal/rapid-remount ownership. Checks await the exact task started by real
+Ctrl+V before accepting cancellation. Each load advances the view version.
+Four real menu clicks prove that branded Paste uses the same limit and binding,
+closes its popup and remains one undo edit; read-only editing items are disabled
+while Copy remains available. Menu press/release is observed at the exact native
+input source because closing a popup can suppress routed XAML release; no routed
+release claim is made. All native key actions retain their original target.
+Native Ctrl+A is used for full replacement; its immutable final paragraph is
+excluded when computing user capacity. Together the new runs contain 188 owned
+key actions. Both audits reject twelve corruptions. All 129 unit tests and
+generated tokens pass. Both architectures
+build; native ARM64 runtime is unverified.
+The final original Textarea regression also passes all 172 state frames, four
+editing sequences, eight external UIA/grip snapshots and 60 owned keys. Its
+existing geometry, native font, border paint and consumer-binding audit passes.
+
+Evidence: `artifacts/textarea-limits-final-runtime-{320,640}`,
+`artifacts/textarea-limits-final-{320,640}-audit.json`, corresponding negative
+audits, and `artifacts/textarea-limits-final-tests`. Browser reference, source hashes
+and trusted clipboard/key events are committed in
+`tests/Reference/TextareaLimits.json`. The `TextareasFixture` adds a 12-character
+editor. A first-click receipt failure at an unchanged restored pointer position
+is retained; the fixture now establishes a real owned move first. Existing input
+deadlines and receipt checks are unchanged.
+Final editing evidence is in `artifacts/textarea-limits-final-editing-{320,640}`
+and its corresponding audit files.
+
+This remains an in-progress component. Provider-error handling, other menu
+invocation/opening paths, remaining customization, full catalog integration,
+exact raster/motion, scaling, contrast/Narrator and native ARM64 remain open.
+Previous versioned preview packages predate this change. Inventory is still
+**61 in progress, 51 pending, zero accepted**. Push Actions stay disabled; no
+hosted validation is claimed. There is no backend or metrics impact, and the
+unavailable public wiki remains documented in-repository.
+
 ## Textarea pointer resizing
 
 The separate frozen browser reference and native x64 matrix both pass all 72

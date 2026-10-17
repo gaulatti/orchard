@@ -8,6 +8,7 @@
   <orchard:BleeckerTextarea IsError="True" PlaceholderText="Review required" AutomationProperties.Name="Notes with an error" />
   <orchard:BleeckerTextarea IsEnabled="False" Text="Unavailable notes" AutomationProperties.Name="Disabled notes" />
   <orchard:BleeckerTextarea IsReadOnly="True" Text="Read-only notes&#10;Selection and copy remain available." AutomationProperties.Name="Read-only notes" />
+  <orchard:BleeckerTextarea MaxLength="12" Text="Short notes" AutomationProperties.Name="Notes limited to twelve characters" />
   <orchard:BleeckerTextarea Rows="1" Text="One row retains the recipe minimum." AutomationProperties.Name="One-row notes" />
   <orchard:BleeckerTextarea Rows="10" Text="Ten explicit rows" AutomationProperties.Name="Ten-row notes" />
   <orchard:BleeckerTextarea Width="240" FlowDirection="RightToLeft" Text="ملاحظات التحرير&#10;السطر الثاني" AutomationProperties.Name="Arabic notes" HorizontalAlignment="Left" />

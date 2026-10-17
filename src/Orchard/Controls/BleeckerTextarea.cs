@@ -21,6 +21,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
     private bool editorReady => IsLoaded && GetTemplateChild("ContentElement") is FrameworkElement { IsLoaded: true };
     private int documentEditDepth;
     private int contentVersion;
+    private Task pasteOperation = Task.CompletedTask;
     private Control? resizeGrip;
     private Grid? resizeHost;
 
@@ -43,7 +44,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
         foreach (var property in new[] { FontFamilyProperty, FontSizeProperty, FontWeightProperty, FontStyleProperty, ForegroundProperty, FlowDirectionProperty, TextAlignmentProperty })
             RegisterPropertyChangedCallback(property, (_, _) => ApplyParagraphFormat());
         RegisterPropertyChangedCallback(FlowDirectionProperty, (_, _) => UpdateResizeGripDirection());
-        Loaded += (_, _) => DispatcherQueue.TryEnqueue(() => { if (!IsLoaded) return; UpdateGeometry(); WriteNativeText(); UpdateAppearance(false); });
+        Loaded += (_, _) => { contentVersion++; DispatcherQueue.TryEnqueue(() => { if (!IsLoaded) return; UpdateGeometry(); WriteNativeText(); UpdateAppearance(false); }); };
         Unloaded += (_, _) => { if (IsLoaded) return; contentVersion++; CancelResize(); };
     }
 
@@ -183,8 +184,9 @@ public sealed partial class BleeckerTextarea : RichEditBox
     private async void OnPlainTextPaste(object sender, TextControlPasteEventArgs args)
     {
         args.Handled = true;
-        await PastePlainTextAsync();
+        await StartPlainTextPasteAsync();
     }
+    private Task StartPlainTextPasteAsync() => pasteOperation = PastePlainTextAsync();
     private async Task PastePlainTextAsync()
     {
         if (!editorReady || !IsLoaded || IsReadOnly || !IsEnabled) return;
@@ -199,7 +201,9 @@ public sealed partial class BleeckerTextarea : RichEditBox
         // a remounted view, a new selection or a newly read-only editor.
         if (!IsLoaded || IsReadOnly || !IsEnabled || version != contentVersion || !ReferenceEquals(root, XamlRoot) ||
             TextDocument.Selection.StartPosition != start || TextDocument.Selection.EndPosition != end) return;
-        TextDocument.Selection.SetText(TextSetOptions.None, text);
+        var insertion = BleeckerTextareaInsertion.Prepare(text, Text, start, end, MaxLength);
+        if (insertion.Length == 0 && start == end) return;
+        TextDocument.Selection.SetText(TextSetOptions.None, insertion);
         var caret = TextDocument.Selection.EndPosition;
         TextDocument.Selection.SetRange(caret, caret);
     }

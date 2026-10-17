@@ -24,6 +24,7 @@
     <ItemGroup>
         <EmbeddedResource Include="../../tests/Reference/Textarea.json" LogicalName="Orchard.Catalog.Reference.Textarea.json" />
         <EmbeddedResource Include="../../tests/Reference/TextareaResize.json" LogicalName="Orchard.Catalog.Reference.TextareaResize.json" />
+        <EmbeddedResource Include="../../tests/Reference/TextareaLimits.json" LogicalName="Orchard.Catalog.Reference.TextareaLimits.json" />
         <None Include="../../scripts/TextareaUiaProbe.cs" Link="TextareaUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../tests/Reference/Metric.json" LogicalName="Orchard.Catalog.Reference.Metric.json" />
         <Manifest Include="$(ApplicationManifest)" />
