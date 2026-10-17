@@ -1807,13 +1807,17 @@
         "scripts/compare-filter-chip-pixels.mjs",
         "samples/Orchard.Catalog/MainWindow.FilterChipTypography.cs",
         "scripts/verify-filter-chip-typography.mjs",
-        "scripts/test-filter-chip-typography-audit.mjs"
+        "scripts/test-filter-chip-typography-audit.mjs",
+        "samples/Orchard.Catalog/MainWindow.FilterChipAccessibility.cs",
+        "scripts/FilterChipUiaProbe.cs",
+        "scripts/verify-filter-chip-accessibility.mjs",
+        "scripts/test-filter-chip-accessibility-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Exact source/native text and glyph raster parity",
         "Enabled-motion timelines, cancellation and full lifecycle/resource customization",
-        "Complete RTL, text/display scaling, contrast, Narrator and external UI Automation",
+        "Complete RTL, actual Windows scaling/contrast, Narrator and broader accessibility-event/stale-peer coverage",
         "Native ARM64 runtime"
       ]
     },

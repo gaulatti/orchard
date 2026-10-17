@@ -63,6 +63,22 @@ italic left Clear all measured at 90.1600 DIPs while its displayed face required
 style/stretch values. Run with `-Component filter-chip-typography -ClientSize 640,480`
 and inspect `scripts/verify-filter-chip-typography.mjs` for the evidence boundary.
 
+`filter-chip-accessibility` verifies the published Control view through a separate
+Microsoft UI Automation client restricted to the catalog's window/process and
+fixture scope. Its 46 snapshots cover default/live/bound/linked names, explicit
+name priority, native Button roles, Invoke, disabled commands/groups, localized
+Clear all, focus-preserving reorder, template replacement, collection replacement,
+empty groups and unload/remount. Read-only label/value text stays exposed without
+remove actions. Native Tab/Shift+Tab traversal retains press/release ownership;
+external Invoke reaches original callbacks/command parameters and rejects disabled
+actions. The consumer still owns collection mutation. Five corrupted evidence
+sets must be rejected by `scripts/test-filter-chip-accessibility-audit.mjs`.
+The probe source is shipped beside the catalog and compiled into the requested
+smoke output using the Windows .NET Framework compiler, following the existing
+Loading Overlay probe workflow. Normal catalog usage does not launch it.
+This verifies the external UIA query/invocation matrix; Narrator speech,
+accessibility-event delivery and stale-client invocation remain separate checks.
+
 `FilterChipsFixture` registers read-only, removable, multilingual and wrapping
 examples. Its consumer handlers demonstrate explicit collection removal/reset.
 The demo queues collection changes after native event routing; the focused
@@ -89,6 +105,6 @@ Its completed comparison is separate from acceptance; differing pixels keep
 
 Acceptance remains in progress. Exact source/native raster parity, enabled-motion
 timelines and cancellation, complete typography/RTL/resource customization,
-text/display scaling, contrast schemes, Narrator, external UI Automation and
+text/display scaling, contrast schemes, Narrator, broader UI Automation and
 native ARM64 runtime must be evidenced before acceptance. ARM64 cross-compilation
 does not establish native runtime behavior.
