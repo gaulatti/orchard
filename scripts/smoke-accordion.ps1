@@ -23,6 +23,9 @@ try{
  $accordionContinuity=@{Executable=$Executable;Output=(Join-Path $accordionRoot 'continuity')}
  if($ExpectedArchitecture){$accordionContinuity.ExpectedArchitecture=$ExpectedArchitecture}
  & "$PSScriptRoot/smoke-accordion-continuity.ps1" @accordionContinuity
+ $accordionScalars=@{Executable=$Executable;Output=(Join-Path $accordionRoot 'scalars')}
+ if($ExpectedArchitecture){$accordionScalars.ExpectedArchitecture=$ExpectedArchitecture}
+ & "$PSScriptRoot/smoke-accordion-scalars.ps1" @accordionScalars
 }finally{
  [OrchardMotionPreference]::Set($accordionOriginal)
  @{original=$accordionOriginal;restored=[OrchardMotionPreference]::Read();passed=([OrchardMotionPreference]::Read() -eq $accordionOriginal)}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $accordionRoot 'preference-restored.json')

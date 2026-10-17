@@ -118,12 +118,41 @@ and negative audit. Local continuity evidence covers x64. Native ARM64 execution
 motion/static raster and the remaining customization/platform acceptance stay
 open. The diagnostic adds no library API or behavior change.
 
+The scalar reference adds 288 cases: eighteen null/boolean/number/string values
+in each of the four slots, both themes and 320/640px viewports. Its 32 full-client
+source PNGs are committed under `tests/Reference/AccordionScalars`, with hashes
+and actual browser accessible names. Native text and geometry pass every case
+with zero geometry error. Eighteen damaged receipts/captures are rejected; exact
+pixel parity remains unproven under zero masks/tolerance/resampling.
+
+Numbers use the source's [decimal Number text](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-tostring):
+negative zero displays as `0`, `1e-6` as `0.000001`, `1e20` as
+`100000000000000000000` and `1e21` as `1e+21`. The shared text helper is extracted
+from the existing DataTable filter conversion without changing that conversion.
+Floats follow the existing Stat Card adaptation through their shortest decimal
+representation; integer/decimal values retain invariant formatting, with zero
+normalized to `0`. Consumer model objects and values are unchanged. Subtitle and
+action truthiness remains independent of rendered scalar text, including numeric
+zero/NaN versus the string `0`, and empty rendered content for booleans.
+
+Plain slot text uses [whole-word wrapping](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.textwrapping?view=windows-app-sdk-2.0)
+to match CSS when long action content leaves no text width in the header.
+Unbreakable words may overflow their line; consumer-owned rich controls keep
+their explicit wrapping settings. The native pre-fix capture is retained at
+`artifacts/current/accordion-scalars-before`: 340 discrepancies included 156
+text/name mismatches and a 360px header-height error. The corrected capture is
+`artifacts/current/accordion-scalars-native`. Both CI architecture jobs register
+the scalar capture and audits. Fresh packaged/full-suite delivery remains
+pending for the scalar change; the versioned release above is the previous
+verified source.
+
 Run the reference collector from the repository root:
 
 ```powershell
 node scripts/reference/capture-accordion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --output artifacts/current/accordion-source
 node scripts/reference/capture-accordion-motion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-motion-source
 node scripts/reference/capture-accordion-continuity.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-continuity-source
+node scripts/reference/capture-accordion-scalars.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-scalars-source
 ```
 
 The source directory is the pinned Bleecker archive with its `node_modules` and

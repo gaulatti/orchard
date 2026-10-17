@@ -1,0 +1,23 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const option=name=>{const at=process.argv.indexOf(name);assert(at>=0&&process.argv[at+1]);return path.resolve(process.argv[at+1]);};
+const read=async file=>JSON.parse((await fs.readFile(file,'utf8')).replace(/^\uFEFF/,'')),source=await read(new URL('../tests/Reference/AccordionScalars.json',import.meta.url)),native=option('--native'),sourcePngs=option('--source'),errors=[],raster=[];
+let frames=0,maximumGeometryError=0;
+function near(actual,expected,context){assert(Number.isFinite(actual)&&Number.isFinite(expected),context);const error=Math.abs(actual-expected);maximumGeometryError=Math.max(maximumGeometryError,error);if(error>=.001)errors.push({context,actual,expected,error});}
+function box(actual,expected,context){assert(actual&&expected,context);for(const field of ['x','y','width','height'])near(actual[field],expected[field],context+'/'+field);}
+function same(actual,expected,context){if(actual!==expected)errors.push({context,actual,expected});}
+for(const width of [320,640]){
+ const folder=path.join(native,String(width)),runtime=await read(path.join(folder,'result.json')),report=await read(path.join(folder,'accordion-scalars.json')),references=source.cases.filter(row=>row.width===width);assert(runtime.passed&&report.passed);assert.equal(runtime.component,'accordion-scalars');for(const[field,value]of Object.entries({displayScale:1,textScale:1,highContrast:false,animationsEnabled:false}))assert.equal(runtime.environment[field],value);
+ assert.equal(report.frames.length,144);assert.equal(references.length,144);const key=row=>[row.id,row.scheme].join('/');assert.deepEqual(report.frames.map(key).sort(),references.map(key).sort());
+ for(const reference of references){
+  const measured=report.frames.find(row=>key(row)===key(reference));assert.equal(measured.width,width);const found=measured.measurement,wanted=reference.measurement,context=width+'/'+key(reference);assert.equal(found.expanded,true);same(found.name,wanted.name,context+'/accessible-name');for(const field of ['box','row','header','button'])box(found[field],wanted[field],context+'/'+field);
+  for(const slot of ['title','subtitle','actions','body']){assert.equal(found[slot]===null,wanted[slot]===null,context+'/'+slot+'/presence');if(wanted[slot]){same(found[slot].text,wanted[slot].text,context+'/'+slot+'/text');box(found[slot].box,wanted[slot].box,context+'/'+slot);}}
+  if(reference.file){const expectedBytes=await fs.readFile(path.join(sourcePngs,reference.file));assert.equal(crypto.createHash('sha256').update(expectedBytes).digest('hex'),reference.pngSha256);const expected=readRgbaPng(expectedBytes),actual=readRgbaPng(await fs.readFile(path.join(folder,reference.file)));assert.deepEqual([actual.width,actual.height],[expected.width,expected.height]);let differingPixels=0,absoluteRgbaError=0,maximumChannelDifference=0;for(let at=0;at<actual.rgba.length;at+=4){let different=false;for(let channel=0;channel<4;channel++){const error=Math.abs(actual.rgba[at+channel]-expected.rgba[at+channel]);different||=error!==0;absoluteRgbaError+=error;maximumChannelDifference=Math.max(maximumChannelDifference,error);}differingPixels+=Number(different);}raster.push({file:reference.file,differingPixels,absoluteRgbaError,maximumChannelDifference});}
+  frames++;
+ }
+}
+assert.equal(frames,288);assert.equal(raster.length,32);const preference=await read(path.join(native,'preference-restored.json'));assert(preference.passed);assert.equal(typeof preference.original,'boolean');assert.equal(preference.original,preference.restored);
+const report={passed:errors.length===0,frames,maximumGeometryError,errors,raster,masks:0,pixelTolerance:0,resampling:false,preferencesRestored:true,sourceRasterParityVerified:raster.every(row=>row.differingPixels===0),nativeComponentAccepted:false};await fs.writeFile(option('--output'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,raster:undefined,errors:errors.slice(0,12)}));assert(report.passed,'Accordion scalar contract differs.');

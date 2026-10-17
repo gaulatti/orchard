@@ -13,10 +13,10 @@ public sealed partial class BleeckerAccordion
 {
     private static bool Numeric(object? value)=>value is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal;
     private static bool Present(object? value)=>value switch{null or false=>false,string text=>text.Length>0,_ when Numeric(value)=>Convert.ToDouble(value,CultureInfo.InvariantCulture) is var number&&number!=0&&!double.IsNaN(number),_=>true};
-    private static string Scalar(object? value)=>value switch{null or bool=>"",string text=>text,IFormattable number when Numeric(value)=>number.ToString(null,CultureInfo.InvariantCulture),_=>""};
+    private static string Scalar(object? value)=>value switch{null or bool=>"",string text=>text,double number=>BleeckerNumberText.Format(number),float number=>BleeckerNumberText.Format(double.Parse(number.ToString("R",CultureInfo.InvariantCulture),CultureInfo.InvariantCulture)),decimal number when number==0=>"0",IFormattable number when Numeric(value)=>number.ToString(null,CultureInfo.InvariantCulture),_=>""};
     private sealed class Slot:Panel
     {
-        private readonly TextBlock text=new(){UseLayoutRounding=false,TextWrapping=TextWrapping.Wrap,LineStackingStrategy=LineStackingStrategy.BlockLineHeight};
+        private readonly TextBlock text=new(){UseLayoutRounding=false,TextWrapping=TextWrapping.WrapWholeWords,LineStackingStrategy=LineStackingStrategy.BlockLineHeight};
         private readonly ContentPresenter rich=new(){UseLayoutRounding=false,HorizontalContentAlignment=HorizontalAlignment.Stretch};
         private readonly BleeckerReferenceText.IntrinsicWidth intrinsic=new();
         private readonly double fontSize,lineHeight;

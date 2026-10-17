@@ -41,6 +41,8 @@ is empty. Non-string filter values reach the browser input as `0`, `false`,
 `42`, `Harbor,Reed`, `[object Object]` and `NaN`; null/undefined display empty.
 Number/undefined descriptors preserve these values in JSON without losing
 NaN or negative zero through ordinary JSON number serialization.
+The numeric conversion is shared with Accordion through `BleeckerNumberText`;
+its input coercion and truthiness behavior are unchanged.
 
 Consumer filter/action nodes pass through directly. Fragments produce sibling
 flex items; the toolbar does not wrap each slot or disable consumer content.

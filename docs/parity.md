@@ -6,7 +6,7 @@ Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
 resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
-Counts are 64 in progress, 48 pending and zero fully accepted: 57.1% of the
+Counts are 65 in progress, 47 pending and zero fully accepted: 58.0% of the
 fixed inventory has implementation started. This is not a completion percentage.
 
 The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):
@@ -82,7 +82,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | dropdown-menu | `BleeckerDropdownMenu`, native item styles and focus behavior | Registered root/selection/submenu fixture; light/dark x64 geometry, selection, invocation and popup captures | In progress: rich rows, shadow/motion, full physical input, contrast/scaling/Narrator and remaining ARM64 state checks; see [menu gaps](menus.md) |
 | metric | `BleeckerMetric`: source number/currency/percent/compact formatting and consumer inline slots | 680 frozen browser cases across four locales/two themes; Windows ICU regression; registered native fixture and independent consumer | In progress: [contract and open acceptance](metric-reference.md); exact raster/baselines, full customization/lifecycle, scaling/contrast/Narrator and native ARM64 |
 | notification-badge | `BleeckerNotificationBadge` and consumer-owned notification items | Registered populated/empty/count/long-content fixtures; x64 light/dark popup geometry, command/collection updates, live appearance and physical keyboard checks; independent package consumer | In progress: full state/input matrix, shadow/motion, contrast/Narrator/scaling and remaining ARM64 state checks; see [evidence and gaps](notifications.md) |
-| accordion | Pending | Pending | Full pinned contract |
+| accordion | `BleeckerAccordion`, keyed consumer content and four template slots | Source/native layout, motion, continuity, scalar, physical input and package checks | In progress: exact raster, complete customization/lifecycle and platform acceptance; see [contract and evidence](accordion.md) |
 | alert | `BleeckerAlert`, `BleeckerAlertContainer`: window-owned typed notifications and shared stream | Registered four-type fixture; x64 native paint/position, Tab/Shift+Tab/Space, held/cancelled press, duration and lifecycle checks; clean package consumer | In progress: [contract and usage](alert-reference.md); rendered reference, premium hover easing, full motion, disabled/contrast/Narrator/scaling and ARM64 |
 | alert-dialog | Pending | Pending | Full pinned contract |
 | avatar | `BleeckerAvatar`, `BleeckerAvatarGroup`, `BleeckerAvatarData`: five sizes, images/initials/silhouettes and consumer collections | Registered Avatars fixture; source Light/Dark audit; x64/ARM64 geometry, rendered pixels, collection/lifecycle and independent package checks pass at `2f265e3` | In progress: native/browser raster parity, contrast/Narrator/scaling, constrained widths and overrides; see [contract and usage](avatar-reference.md) |

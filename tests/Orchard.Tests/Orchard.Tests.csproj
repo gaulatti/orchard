@@ -5,6 +5,11 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="../../src/Orchard/Controls/BleeckerAccordionItem.cs" Link="BleeckerAccordionItem.cs" />
+        <Compile Include="../../src/Orchard/Text/BleeckerNumberText.cs" Link="BleeckerNumberText.cs" />
+        <None Include="../Reference/AccordionScalars.json" Link="Fixtures/AccordionScalars.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AccordionScalars/*.png" Link="Fixtures/AccordionScalars/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-accordion-scalars.cjs" Link="Fixtures/CaptureAccordionScalars.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/accordion-scalars-client.tsx" Link="Fixtures/AccordionScalarsClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Motion/BleeckerAccordionMotion.cs" Link="BleeckerAccordionMotion.cs" />
         <None Include="../Reference/AccordionMotion.json" Link="Fixtures/AccordionMotion.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/AccordionContinuity.json" Link="Fixtures/AccordionContinuity.json" CopyToOutputDirectory="PreserveNewest" />
