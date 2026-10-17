@@ -75,7 +75,9 @@ public sealed partial class MainWindow
                 bound.SetBinding(BleeckerTextarea.TextProperty,new Binding {Source=model,Path=new PropertyPath("Text"),Mode=BindingMode.TwoWay,UpdateSourceTrigger=UpdateSourceTrigger.PropertyChanged});
                 Canvas.SetLeft(bound,20);Canvas.SetTop(bound,20);canvas.Children.Add(bound); await AwaitPresentationAsync(page);
                 await input.ClickAsync(bound); bound.TextDocument.Selection.SetRange(5,5);
-                await input.KeyAsync(0x0D,bound); await input.KeyAsync(0x41,bound); await AwaitPresentationAsync(bound);
+                await input.KeyAsync(0x0D,bound);await AwaitPresentationAsync(bound);
+                Require(bound.Text=="First\n"&&Normalize(model.Text)=="First\n","Native Enter lost the user-owned trailing newline.");
+                await input.KeyAsync(0x41,bound); await AwaitPresentationAsync(bound);
                 Require(bound.Text=="First\na"&&Normalize(model.Text)==bound.Text,"Native multiline edit did not cross consumer two-way binding: "+JsonSerializer.Serialize(new{bound.Text,consumer=model.Text,bindingRetained=bound.GetBindingExpression(BleeckerTextarea.TextProperty)is not null}));
                 var editorAfterEnter=bound.Text;var nativeConsumerAfterEnter=model.Text;
                 foreach(var shortcut in new ushort[]{0x42,0x49,0x55}){phase=scheme+"-format-shortcut-"+shortcut;await SaveAsync();await input.ModifiedPreviewKeyAsync(0x11,shortcut,bound);}
@@ -87,6 +89,7 @@ public sealed partial class MainWindow
                 phase=scheme+"-clipboard-select";await SaveAsync();await input.ModifiedKeyAsync(0x11,0x41,bound);
                 phase=scheme+"-clipboard-paste";await SaveAsync();await input.ModifiedKeyAsync(0x11,0x56,bound);await AwaitPresentationAsync(bound);
                 Require(bound.Text=="Pasted\nnotes"&&Normalize(model.Text)==bound.Text&&bound.TextDocument.GetRange(0,6).CharacterFormat.Bold==FormatEffect.Off,"Rich clipboard data escaped Unicode plain-text paste or binding.");
+                Require(bound.TextDocument.Selection.StartPosition==bound.Text.Length&&bound.TextDocument.Selection.EndPosition==bound.Text.Length,"Plain-text paste did not collapse its caret after the inserted text.");
                 phase=scheme+"-clipboard-undo";await SaveAsync();await input.ModifiedKeyAsync(0x11,0x5A,bound);await AwaitPresentationAsync(bound);Require(bound.Text=="First\na","Plain-text paste did not retain one native undo transaction.");
                 await input.ModifiedKeyAsync(0x11,0x41,bound); await input.KeyAsync(0x42,bound); await AwaitPresentationAsync(bound);
                 Require(bound.Text=="b"&&model.Text=="b","Native selection replacement failed.");
@@ -106,7 +109,10 @@ public sealed partial class MainWindow
                 var template=bound.Template;bound.Template=null;bound.ApplyTemplate();bound.Template=template;bound.ApplyTemplate();await AwaitPresentationAsync(bound);
                 Require(bound.Text=="First\na"&&Normalize(model.Text)==bound.Text,"Template replacement reset consumer text.");
                 canvas.Children.Remove(bound);await AwaitPresentationAsync(page);canvas.Children.Add(bound);await AwaitPresentationAsync(bound);
-                model.Text="Consumer update\n";await AwaitPresentationAsync(bound);Require(Normalize(bound.Text)==Normalize(model.Text),"Remount lost binding or trailing newline.");
+                model.Text="Consumer update\n";await AwaitPresentationAsync(bound);Require(Normalize(bound.Text)=="Consumer update\n"&&Normalize(model.Text)=="Consumer update\n","Remount lost binding or the requested trailing newline.");
+                bound.IsReadOnly=true;model.Text="Read-only consumer update\n";await AwaitPresentationAsync(bound);
+                bound.TextDocument.GetText(TextGetOptions.AllowFinalEop|TextGetOptions.UseLf,out var readonlyDocument);
+                Require(Normalize(bound.Text)=="Read-only consumer update\n"&&readonlyDocument=="Read-only consumer update\n\n"&&((RichEditBox)bound).IsReadOnly,"Remounted read-only document lost its consumer update, final newline or native guard.");
                 interactions.Add(new{scheme=scheme.ToString(),nativeEnter=true,selectionReplacement=true,undo=true,readOnlySelection=true,twoWayBinding=true,keyboardResize=true,templateReplacement=true,unloadRemount=true,trailingNewline=true,formattingShortcutsBlocked=true,plainTextCommandSurfaces=true,richClipboardRejected=true,pasteUndo=true,editorAfterEnter,nativeConsumerAfterEnter,editableUia,readonlyUia}); await SaveAsync();
                 await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,$"catalog-{scheme.ToString().ToLowerInvariant()}.png"));
             }

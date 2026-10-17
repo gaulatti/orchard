@@ -9,8 +9,8 @@ No component acceptance is claimed.
 
 ## Native preview and boundaries
 
-The x64 runs at `artifacts/textarea-unicode-paste-runtime-320` and
-`artifacts/textarea-unicode-paste-runtime-640` pass all 172 source-sized native frames
+The x64 runs at `artifacts/textarea-live-readiness-runtime-320` and
+`artifacts/textarea-live-readiness-runtime-640` pass all 172 source-sized native frames
 and four editing sequences. They exercise physical Enter and selection
 replacement, native undo, read-only selection and rejected editing, two-way
 consumer binding, keyboard resize, template replacement, unload/remount and
@@ -22,7 +22,8 @@ ten deliberate corruptions of frames, font/paint/line spacing, input ownership,
 consumer binding, UIA text/read-only state and paste results.
 
 The raw comparison covers all 172 whole-client frames: **1,001,057 differing
-pixels**, absolute RGBA error 56,028,527, without masks or resampling. This is
+pixels** in the earlier paste checkpoint; the strengthened lifecycle run has
+**1,001,348 differing pixels**, absolute RGBA error 56,068,145, without masks or resampling. This is
 not raster acceptance. All 125 unit tests, generated tokens and the existing
 focused Input runtime pass. Eight external UIA snapshots cross the owned process boundary
 and expose the native Edit role, name, document text, selection and read-only
@@ -45,6 +46,15 @@ The five-control `textarea-font` diagnostic compares both document APIs, the
 custom control, a system font and TextBox. It runs in Light only and is not
 theme acceptance. The ineffective process-private GDI font experiment was removed.
 
+Readiness now comes from the loaded `ContentElement`, rather than a cached flag.
+The independent consumer exposed a loaded control with a false cached flag after
+reparenting, which skipped native writes. The regression now moves the original
+packaged control into a visible host, waits for its own presentation, updates
+read-only content and checks the exact native document and final newline. Its
+fresh x64 build and full Light/Dark runtime pass after deleting the isolated cache
+before launch (`artifacts/package-consumer-textarea-live-x64`). Initial stale
+document and unrelated-pagination visibility failures remain retained.
+
 The consumer's `IsReadOnly` dependency property stays stable while a synchronous
 UI-thread transaction updates native text/formatting. The internal RichEdit guard
 is restored before input can dispatch. Native read-only editing and external
@@ -57,8 +67,9 @@ The resize grip adds Up/Down resizing for keyboard access, a deliberate Windows
 accessibility extension to the source's vertical pointer grip. Pointer drag,
 minimum clamping/cursor, disabled/read-only resize, live theme/customization,
 remaining form constraints and complete menu invocation still need verification.
-Delayed clipboard-provider races/cancellation, paste caret positioning, menu
-invocation and the fresh package-consumer fixture need further runtime evidence.
+Immediate Enter, requested trailing newlines, read-only updates after remount and
+the caret after paste are checked explicitly. Delayed clipboard-provider
+races/cancellation and menu invocation need further runtime evidence.
 The direct native `ITextRange.Paste` experiment stowed-crashed at the clipboard
 boundary and is retained as a failure. The implementation instead retrieves
 plain text asynchronously and applies a selection edit after checking content,

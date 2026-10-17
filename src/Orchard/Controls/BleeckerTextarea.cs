@@ -18,7 +18,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
     private string? appearanceState;
     private bool applyingAppearance;
     private bool synchronizingText;
-    private bool editorReady;
+    private bool editorReady => IsLoaded && GetTemplateChild("ContentElement") is FrameworkElement { IsLoaded: true };
     private int documentEditDepth;
     private int contentVersion;
     private Thumb? resizeGrip;
@@ -43,8 +43,8 @@ public sealed partial class BleeckerTextarea : RichEditBox
         RegisterPropertyChangedCallback(FocusStateProperty, (_, _) => UpdateAppearance());
         foreach (var property in new[] { FontFamilyProperty, FontSizeProperty, FontWeightProperty, FontStyleProperty, ForegroundProperty, FlowDirectionProperty, TextAlignmentProperty })
             RegisterPropertyChangedCallback(property, (_, _) => ApplyParagraphFormat());
-        Loaded += (_, _) => DispatcherQueue.TryEnqueue(() => { if (!IsLoaded) return; editorReady = true; UpdateGeometry(); WriteNativeText(); UpdateAppearance(false); });
-        Unloaded += (_, _) => { contentVersion++; editorReady = false; resizeGrip?.CancelDrag(); };
+        Loaded += (_, _) => DispatcherQueue.TryEnqueue(() => { if (!IsLoaded) return; UpdateGeometry(); WriteNativeText(); UpdateAppearance(false); });
+        Unloaded += (_, _) => { if (IsLoaded) return; contentVersion++; resizeGrip?.CancelDrag(); };
     }
 
     public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(BleeckerTextarea),
@@ -74,9 +74,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
     {
         DetachResizeGrip();
         contentVersion++;
-        editorReady = false;
         base.OnApplyTemplate();
-        editorReady = IsLoaded;
         ApplyShadowTemplate();
         ApplyMotionTemplate();
         resizeHost = GetTemplateChild("Editor") as Grid;
@@ -168,8 +166,9 @@ public sealed partial class BleeckerTextarea : RichEditBox
     }
     private string ReadDocument()
     {
-        TextDocument.GetText(TextGetOptions.None, out var value);
-        value = value.Replace("\r\n", "\n").Replace('\r', '\n');
+        // Request the immutable final paragraph explicitly so only that
+        // sentinel is removed; a consumer's trailing newline must survive.
+        TextDocument.GetText(TextGetOptions.AllowFinalEop | TextGetOptions.UseLf, out var value);
         return value.EndsWith('\n') ? value[..^1] : value;
     }
     private void ReadNativeText()
@@ -189,7 +188,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
     }
     private async Task PastePlainTextAsync()
     {
-        if (!IsLoaded || IsReadOnly || !IsEnabled) return;
+        if (!editorReady || !IsLoaded || IsReadOnly || !IsEnabled) return;
         var data = Clipboard.GetContent();
         if (!data.Contains(StandardDataFormats.Text)) return;
         var version = contentVersion;
@@ -202,6 +201,8 @@ public sealed partial class BleeckerTextarea : RichEditBox
         if (!IsLoaded || IsReadOnly || !IsEnabled || version != contentVersion || !ReferenceEquals(root, XamlRoot) ||
             TextDocument.Selection.StartPosition != start || TextDocument.Selection.EndPosition != end) return;
         TextDocument.Selection.SetText(TextSetOptions.None, text);
+        var caret = TextDocument.Selection.EndPosition;
+        TextDocument.Selection.SetRange(caret, caret);
     }
     private void UpdateAccessibility() => AutomationProperties.SetIsDataValidForForm(this, !(IsInvalid ?? IsError));
     private void UpdateNativeReadOnly()

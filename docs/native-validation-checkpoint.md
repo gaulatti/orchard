@@ -10,10 +10,15 @@ override, editing/undo/read-only selection, two-way consumer data, plain-text
 shortcut/paste behavior, keyboard resize, template replacement and remounting.
 All 125 tests, token generation and the existing Input runtime pass.
 
-The raw 172-frame comparison has 1,001,057 differing pixels, without masks or
+The strengthened 172-frame comparison has 1,001,348 differing pixels, without masks or
 resampling. Pointer resizing/cursor, clipboard-provider races/caret behavior,
-menu invocation, remaining constraints/customization, full catalog integration,
-fresh consumer packaging and architecture/runtime acceptance are still open.
+menu invocation, remaining constraints/customization, full catalog integration
+and architecture/runtime acceptance are still open. A fresh x64 package consumer
+passes its full Light/Dark suite with the original Textarea visibly reparented,
+exact read-only document updates, rows and native bound editing; its isolated
+cache was removed before launch. This exposed and fixed a stale readiness flag.
+Readiness now follows the loaded native template part. Enter, trailing newlines
+and the paste caret also have direct assertions. Failed consumer runs are retained.
 The legacy external UIA client cannot query validity; no success is inferred from
 its null field. Native/direct-paste and initial font/layout failures are retained.
 Counts are **61 in progress, 51 pending, zero fully accepted** (54.5% started).
