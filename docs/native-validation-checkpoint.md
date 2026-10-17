@@ -1,5 +1,53 @@
 # Current native validation checkpoint
 
+## Metric formatting and stable consumer slots
+
+Code source: `8bc623c`. Metric now supplies source Number/Currency/Percent/Compact
+formatting, nullable and numeric data bindings, culture/precision updates and
+original consumer prefix/suffix content. All 680 frozen/native text and name
+cases pass across four locales and both themes; all 122 unit tests and token
+checks pass. Twenty source browser interaction states establish stable button
+identity and zero focus/lifecycle events across updates and outside focus.
+
+Rich controls remain mounted in a sibling slot plane while noninteractive
+inline spacers follow their actual arranged sizes. This avoids WinUI's native
+inline-child unload during text mutation, without restoring focus or adding
+pending input handlers. Real Space/pointer input, 27 batched values, format and
+prefix updates, original content, template replacement and remounts pass.
+Eight constrained/RTL placement cases and six native-template/fractional-font
+cases pass with zero geometry error under the unchanged .05-DIP bound. Eight
+corruption negatives are rejected. The twelve raw frame comparisons still
+record 12,286 differing pixels; there are no masks or resampling.
+
+Both architectures build and all 6,137 resolved methods/exposed interfaces
+match. The fresh x64 package consumer passes its complete suite in both themes,
+including rich slot presentation and zero update focus/lifecycle events. The
+ARM64 consumer passes cross-build validation only. Both isolated caches are
+removed. Package, tested x64 catalog and fresh consumer library bytes match;
+every entry in the 536-file x64 and 532-file ARM64 archives is hash-verified.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `packages-metric-rounded/Gaulatti.Orchard.0.1.0-metric-rounded.nupkg` | `467fa34cb0bef318eb6387c33b2968174aac981e25cbcff3af569102d01ed96b` |
+| Package / x64 catalog `Orchard.dll` | `5d94fb35210c7b650a562b7094e9282892a43611026ed8c8093746129bf3f99f` |
+| ARM64 catalog `Orchard.dll` | `b0dcbe78537dda8378dea594b745052eb1ee13fbf8490ba516fd5c589d50f129` |
+| `Orchard.Catalog.0.1.0-8bc623c-x64.zip` | `b9760039351a1fc56c235f34a9b15135fb3a1f208f45ac183d474bc16a8c3b49` |
+| `Orchard.Catalog.0.1.0-8bc623c-ARM64.zip` | `0939eebb26ec55711d9ca6d952e8ecd28d0e2e3f958f8f8a4c0b5ae6a4155e30` |
+
+Evidence is under `artifacts/metric-rounded-*`, `metric-native-rounded-x64`,
+`package-consumer-metric-rounded-*`, `metric-rich-browser` and `metric-archives.json`.
+Earlier focus-restoration prototypes and the first fresh-consumer timeout are
+retained; neither is presented as a passing result. The corrected consumer
+passes the original timeout. No Windows setting changed and no workflow was
+dispatched. Push-triggered Actions remain paused. The full catalog sequence was
+not rerun. Exact raster, full rich/customization/lifecycle/accessibility matrices,
+actual scaling/contrast, Narrator and native ARM64 runtime remain open.
+Inventory remains 60 in progress, 52 pending and zero accepted of 112. The goal
+stays active. The wiki is unavailable; see [Metric](metric-reference.md).
+
+The previous cleanup attempt was rejected by automatic approval review with
+“blocked by policy.” Its ten intermediate build paths were not retried.
+
 ## Search Input activation, focus and theme states
 
 Source: `7df5542`. The frozen browser state matrix exposed Enter-on-release,
