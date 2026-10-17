@@ -2113,7 +2113,13 @@
         "scripts/reference/capture-accordion.cjs",
         "samples/Orchard.Catalog/AccordionsFixture.xaml.cs",
         "samples/Orchard.Catalog/MainWindow.Accordions.cs",
-        "scripts/verify-accordion.mjs"
+        "scripts/verify-accordion.mjs",
+        "tests/Orchard.Tests/AccordionMotionReferenceTests.cs",
+        "tests/Reference/AccordionMotion.json",
+        "scripts/reference/capture-accordion-motion.cjs",
+        "samples/Orchard.Catalog/MainWindow.AccordionMotion.cs",
+        "scripts/verify-accordion-motion.mjs",
+        "scripts/test-accordion-motion-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

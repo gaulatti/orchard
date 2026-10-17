@@ -12,7 +12,7 @@ using ShapePath=Microsoft.UI.Xaml.Shapes.Path;
 namespace Orchard;
 public sealed partial class BleeckerAccordion
 {
-    private sealed class Entry:StackPanel
+    private sealed partial class Entry:StackPanel
     {
         private readonly BleeckerAccordion owner;
         internal string Key {get;}
@@ -27,7 +27,7 @@ public sealed partial class BleeckerAccordion
         private readonly SolidColorBrush hover=new();
         private readonly RotateTransform angle=new(){CenterX=8,CenterY=8};
         private readonly Stopwatch clock=Stopwatch.StartNew();
-        private readonly BleeckerCssTransition<double> expansion=new((a,b,t)=>a+(b-a)*t,Expo);
+        private readonly BleeckerCssTransition<double> expansion=new((a,b,t)=>a+(b-a)*t,BleeckerAccordionMotion.Expo);
         private readonly BleeckerCssTransition<BleeckerCssColor> background=new(BleeckerCssColor.Mix);
         private bool expanded,hovered,rendering;
         internal Entry(BleeckerAccordion owner,BleeckerAccordionItem item)
@@ -66,7 +66,7 @@ public sealed partial class BleeckerAccordion
         }
         private void Paint()
         {
-            var time=clock.Elapsed.TotalMilliseconds;var fraction=expansion.ValueAt(time);reveal.Fraction=fraction;angle.Angle=-90*(1-fraction);if(!expanded&&!expansion.IsRunning(time))content.Visibility=Visibility.Collapsed;
+            var time=clock.Elapsed.TotalMilliseconds;paintedAt=time;var fraction=expansion.ValueAt(time);reveal.Fraction=fraction;angle.Angle=-90*(1-fraction);if(!expanded&&!expansion.IsRunning(time))content.Visibility=Visibility.Collapsed;
             var color=background.ValueAt(time).Encode();hover.Color=Windows.UI.Color.FromArgb(255,color.R,color.G,color.B);hover.Opacity=color.Alpha;
             if(expansion.IsRunning(time)||background.IsRunning(time)){if(!rendering){CompositionTarget.Rendering+=Frame;rendering=true;}}else Stop();
         }
@@ -74,7 +74,6 @@ public sealed partial class BleeckerAccordion
         internal void Stop(){if(rendering)CompositionTarget.Rendering-=Frame;rendering=false;}
         internal void Release(){Stop();title.Release();subtitle.Release();actions.Release();body.Release();}
         internal string AccessibleName=>string.Join(" ",new[]{title.AccessibleName,lead.HasSubtitle?subtitle.AccessibleName:""}.Where(text=>text.Length!=0));
-        private static double Expo(double x){if(x<=0)return 0;if(x>=1)return 1;double low=0,high=1;for(var i=0;i<28;i++){var t=(low+high)/2;var sample=3*(1-t)*(1-t)*t*.16+3*(1-t)*t*t*.3+t*t*t;if(sample<x)low=t;else high=t;}return 1-Math.Pow(1-(low+high)/2,3);}
         internal sealed class HeaderButton(Entry entry):Button
         {
             protected override AutomationPeer OnCreateAutomationPeer()=>new Peer(this,entry);
@@ -110,8 +109,9 @@ public sealed partial class BleeckerAccordion
     private sealed class RevealPanel:ContentControl
     {
         private double fraction,fullHeight;
+        internal double NaturalHeight=>fullHeight;
         internal double Fraction {get=>fraction;set{if(fraction==value)return;fraction=value;InvalidateMeasure();}}
-        protected override Size MeasureOverride(Size available){var size=base.MeasureOverride(new(available.Width,double.PositiveInfinity));fullHeight=size.Height;return new(size.Width,size.Height*fraction);}
+        protected override Size MeasureOverride(Size available){var size=base.MeasureOverride(new(available.Width,double.PositiveInfinity));fullHeight=size.Height;return new(size.Width,BleeckerAccordionMotion.RevealHeight(size.Height,fraction));}
         protected override Size ArrangeOverride(Size final){base.ArrangeOverride(new(final.Width,fullHeight));Clip=new RectangleGeometry{Rect=new(0,0,final.Width,final.Height)};return final;}
     }
 }

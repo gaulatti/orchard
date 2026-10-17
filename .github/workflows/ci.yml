@@ -146,6 +146,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Accordion source layout audit failed.' }
           node scripts/test-accordion-audit.mjs --native artifacts/accordion
           if ($LASTEXITCODE -ne 0) { throw 'Accordion audit regression failed.' }
+          node scripts/verify-accordion-motion.mjs --native artifacts/accordion/motion --output artifacts/accordion/motion-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion motion audit failed.' }
+          node scripts/test-accordion-motion-audit.mjs --native artifacts/accordion/motion
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion motion audit regression failed.' }
       - name: Verify DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
@@ -454,6 +458,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Accordion source layout audit failed.' }
           node scripts/test-accordion-audit.mjs --native artifacts/accordion
           if ($LASTEXITCODE -ne 0) { throw 'Accordion audit regression failed.' }
+          node scripts/verify-accordion-motion.mjs --native artifacts/accordion/motion --output artifacts/accordion/motion-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion motion audit failed.' }
+          node scripts/test-accordion-motion-audit.mjs --native artifacts/accordion/motion
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion motion audit regression failed.' }
       - name: Verify native ARM64 DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke

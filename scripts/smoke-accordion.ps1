@@ -17,6 +17,9 @@ try{
  $accordionReference=@{Executable=$Executable;Output=(Join-Path $accordionRoot 'reference')}
  if($ExpectedArchitecture){$accordionReference.ExpectedArchitecture=$ExpectedArchitecture}
  & "$PSScriptRoot/smoke-accordion-reference.ps1" @accordionReference
+ $accordionMotion=@{Executable=$Executable;Output=(Join-Path $accordionRoot 'motion')}
+ if($ExpectedArchitecture){$accordionMotion.ExpectedArchitecture=$ExpectedArchitecture}
+ & "$PSScriptRoot/smoke-accordion-motion.ps1" @accordionMotion
 }finally{
  [OrchardMotionPreference]::Set($accordionOriginal)
  @{original=$accordionOriginal;restored=[OrchardMotionPreference]::Read();passed=([OrchardMotionPreference]::Read() -eq $accordionOriginal)}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $accordionRoot 'preference-restored.json')

@@ -24,6 +24,7 @@
     <ItemGroup>
         <EmbeddedResource Include="../../tests/Reference/RadioGroup.json" LogicalName="Orchard.Catalog.Reference.RadioGroup.json" />
         <EmbeddedResource Include="../../tests/Reference/Accordion.json" LogicalName="Orchard.Catalog.Reference.Accordion.json" />
+        <EmbeddedResource Include="../../tests/Reference/AccordionMotion.json" LogicalName="Orchard.Catalog.Reference.AccordionMotion.json" />
         <EmbeddedResource Include="../../tests/Reference/RadioMotion.json" LogicalName="Orchard.Catalog.Reference.RadioMotion.json" />
         <EmbeddedResource Include="../../tests/Reference/DateControls.json" LogicalName="Orchard.Catalog.Reference.DateControls.json" />
         <EmbeddedResource Include="../../tests/Reference/Textarea.json" LogicalName="Orchard.Catalog.Reference.Textarea.json" />

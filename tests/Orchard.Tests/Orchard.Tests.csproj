@@ -5,6 +5,9 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="../../src/Orchard/Controls/BleeckerAccordionItem.cs" Link="BleeckerAccordionItem.cs" />
+        <Compile Include="../../src/Orchard/Motion/BleeckerAccordionMotion.cs" Link="BleeckerAccordionMotion.cs" />
+        <None Include="../Reference/AccordionMotion.json" Link="Fixtures/AccordionMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-accordion-motion.cjs" Link="Fixtures/CaptureAccordionMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/Accordion.json" Link="Fixtures/Accordion.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/Accordion/*.png" Link="Fixtures/Accordion/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-accordion.cjs" Link="Fixtures/CaptureAccordion.cjs" CopyToOutputDirectory="PreserveNewest" />

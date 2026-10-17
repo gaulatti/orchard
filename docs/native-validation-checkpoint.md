@@ -1,5 +1,24 @@
 # Current native validation checkpoint
 
+## Accordion motion validation
+
+The motion change quantizes reveal height to Chromium's 1/64-pixel layout
+units. The retained pre-fix capture differs by up to 0.015625px. The corrected
+x64 capture at `artifacts/current/accordion-motion-native` passes 48 timelines,
+six successive reversal steps, 1,164 property samples and 168 intermediate
+background paints. Height and float-projected angle errors are zero. The audit
+also verifies 768 frozen browser background samples, source endpoints and clock
+durations; all 22 damaged motion receipts are rejected. All 162 unit tests pass,
+including 384 frozen expansion samples and 42 reversal samples. Both real OS
+preferences are restored. The full acceptance inventory remains unchanged.
+
+The motion fixture is registered alongside the existing Accordion checks for
+both CI architectures. Push-triggered Actions remain paused. The candidate's
+fresh package, full catalog replay and ARM64 build still require validation;
+the versioned delivery below remains the previously verified baseline. Exact
+static/motion raster parity and the full platform/accessibility/performance
+matrix remain open.
+
 ## Accordion preview delivery
 
 Source `5a115e5` implements the Accordion's keyed, single-section expansion,

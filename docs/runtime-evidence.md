@@ -1,5 +1,14 @@
 # Native Windows runtime evidence
 
+Accordion motion now uses 1/64-pixel reveal heights. The focused x64 capture
+passes 48 timelines and six reversal steps under both real Windows motion
+preferences, with zero height/float-angle error. Its 1,164 property samples
+include 168 intermediate background paints; all 768 frozen browser background
+samples and 22 negative audit mutations pass. All 162 unit tests pass.
+Fresh full-suite/package/ARM64 validation is pending for this candidate; the
+versioned delivery below is the previous verified source. Exact motion/static
+raster and complete platform acceptance remain open. See the current checkpoint.
+
 Source `5a115e5` passes 60 source/native Accordion layout frames and 108
 rows with zero geometry error, plus 44 native lifecycle phases under both themes
 and Windows motion preferences. All 159 unit tests pass. Fourteen damaged audit

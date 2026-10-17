@@ -75,6 +75,28 @@ phases and 1,154 captures in 477.986485 seconds, retaining all prior captures an
 Native ARM64 execution and the remaining platform/motion/raster matrix must be
 verified before acceptance.
 
+The motion fixture captures 48 source timelines: six expansion changes, three
+hover changes and three theme changes in each theme and motion preference.
+Native rendering uses the source's 200ms `cubic-bezier(.16,1,.3,1)` expansion
+and chevron clock, and its 220ms premium hover-color clock. Reveal heights use
+Chromium's 1/64-pixel layout units. WinUI stores the chevron angle as a float;
+the audit checks that exact float projection separately from the eased fraction.
+Three successive reversals per theme retain the CSS shortened durations and
+continuous values. The fixture records real presentation frames and actual
+layout, clip, transform and brush properties without substituting a test clock.
+
+`smoke-accordion.ps1` also runs `smoke-accordion-motion.ps1` under both real
+Windows preferences. `verify-accordion-motion.mjs` verifies all frozen browser
+background samples, source endpoints/durations, intermediate native paints,
+height/clip/angle trajectories, reversal clocks and preference restoration.
+`test-accordion-motion-audit.mjs` rejects damaged and missing receipts. The
+source's reduced CSS uses a 0.01ms transition; the frozen source tests include
+its paused initial sample, while Windows reduced motion suppresses animation
+and verifies the rendered final state. Source and native motion raster parity
+remain unverified. The source's rendered title/arrow colors change immediately
+on theme changes; its inherited header color transition does not animate those
+explicitly styled children.
+
 Run the reference collector from the repository root:
 
 ```powershell
