@@ -115,6 +115,7 @@
                 <local:LoadingOverlaysFixture x:Name="LoadingOverlays" />
                 <local:FilterChipsFixture x:Name="FilterChips" />
                 <local:SearchInputsFixture x:Name="SearchInputs" />
+                <local:TextareasFixture x:Name="Textareas" />
                 <local:DataTableToolbarsFixture x:Name="DataTableToolbars" />
                 <local:DataTablePaginationsFixture x:Name="DataTablePaginations" />
                 <local:DataTableColumnTogglesFixture x:Name="DataTableColumnToggles" />

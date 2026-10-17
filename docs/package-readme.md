@@ -6,6 +6,13 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerTextarea` previews native multiline plain-text editing with `Text`,
+`InputSize`, `Rows`, `IsReadOnly`, `IsError` and nullable `IsInvalid`. It retains
+the bundled font asset, native selection/undo and a vertically resizable layout.
+Use `Text="{Binding Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"`
+for a consumer model that updates on each edit. Pointer resize, remaining form
+constraints, full visual/platform and accessibility acceptance are in progress.
+
 `BleeckerMetric` displays nullable consumer values using Number, Currency,
 Percent or Compact formats. `Language`, `Currency` and nullable `Decimals`
 control culture and precision. Original prefix/suffix elements and templates

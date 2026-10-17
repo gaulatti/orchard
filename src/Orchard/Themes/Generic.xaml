@@ -50,6 +50,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SearchInput.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Textarea.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="local:BleeckerInput" BasedOn="{StaticResource DefaultTextBoxStyle}">
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />

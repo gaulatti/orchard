@@ -3284,18 +3284,27 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
+      "windowsImplementation": [
+        "BleeckerTextarea"
+      ],
+      "catalogFixtures": [
+        "TextareasFixture"
+      ],
       "regressionTests": [
         "tests/Orchard.Tests/TextareaReferenceTests.cs",
         "tests/Reference/Textarea.json",
-        "scripts/reference/capture-textarea.cjs"
+        "scripts/reference/capture-textarea.cjs",
+        "samples/Orchard.Catalog/MainWindow.Textareas.cs",
+        "scripts/verify-textarea.mjs",
+        "scripts/test-textarea-audit.mjs",
+        "tests/PackageConsumer/MainWindow.Textarea.cs"
       ],
-      "status": "pending",
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions from the measured 172-frame source baseline in docs/textarea-reference.md",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete the pinned contract, maxlength/validation and remaining customization boundaries",
+        "Verify owned pointer resizing, resize cursor/minimum, disabled/read-only resizing, menu invocation, clipboard, live theme/size/row/error changes and all lifecycle paths",
+        "Integrate and verify the complete catalog sequence and fresh independent package consumer",
+        "Resolve exact raster/motion/scaling/contrast/Narrator and native ARM64 acceptance; external UIA validity remains unavailable in the legacy client"
       ]
     },
     {

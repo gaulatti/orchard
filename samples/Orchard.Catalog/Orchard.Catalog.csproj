@@ -22,6 +22,8 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="../../tests/Reference/Textarea.json" LogicalName="Orchard.Catalog.Reference.Textarea.json" />
+        <None Include="../../scripts/TextareaUiaProbe.cs" Link="TextareaUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../tests/Reference/Metric.json" LogicalName="Orchard.Catalog.Reference.Metric.json" />
         <Manifest Include="$(ApplicationManifest)" />
         <EmbeddedResource Include="Reference/InputTypography.json" />

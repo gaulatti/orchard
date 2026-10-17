@@ -1,5 +1,24 @@
 # Current native validation checkpoint
 
+## Textarea native multiline preview
+
+The x64 Textarea preview passes both 320/640px viewport suites: 172 source-sized
+native frames, four editing/lifecycle sequences, eight external UIA snapshots
+and 60 owned key actions. The audits reject ten corruptions per viewport. This
+covers rows sizing, native paragraph spacing, font asset binding, error validity
+override, editing/undo/read-only selection, two-way consumer data, plain-text
+shortcut/paste behavior, keyboard resize, template replacement and remounting.
+All 125 tests, token generation and the existing Input runtime pass.
+
+The raw 172-frame comparison has 1,001,057 differing pixels, without masks or
+resampling. Pointer resizing/cursor, clipboard-provider races/caret behavior,
+menu invocation, remaining constraints/customization, full catalog integration,
+fresh consumer packaging and architecture/runtime acceptance are still open.
+The legacy external UIA client cannot query validity; no success is inferred from
+its null field. Native/direct-paste and initial font/layout failures are retained.
+Counts are **61 in progress, 51 pending, zero fully accepted** (54.5% started).
+Push-triggered Actions remain disabled; no hosted acceptance is claimed.
+
 ## Textarea source baseline before native implementation
 
 The pending Textarea now has a committed [source contract](textarea-reference.md),

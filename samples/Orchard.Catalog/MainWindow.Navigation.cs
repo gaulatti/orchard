@@ -48,6 +48,7 @@ public sealed partial class MainWindow
             ("Loading overlay",LoadingOverlays),
             ("Filter chips",FilterChips),
             ("Search inputs",SearchInputs),
+            ("Text areas",Textareas),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),

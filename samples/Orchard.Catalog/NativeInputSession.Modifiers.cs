@@ -5,7 +5,9 @@ namespace Orchard.Catalog;
 
 internal sealed partial class NativeInputSession
 {
-    internal async Task ModifiedKeyAsync(ushort modifier,ushort key,FrameworkElement target)
+    internal Task ModifiedKeyAsync(ushort modifier,ushort key,FrameworkElement target)=>ModifiedKeyCoreAsync(modifier,key,target,false);
+    internal Task ModifiedPreviewKeyAsync(ushort modifier,ushort key,FrameworkElement target)=>ModifiedKeyCoreAsync(modifier,key,target,true);
+    private async Task ModifiedKeyCoreAsync(ushort modifier,ushort key,FrameworkElement target,bool preview)
     {
         await RequireForegroundAsync();
         Require(ReferenceEquals(FocusManager.GetFocusedElement(root),target),"Modified keyboard target does not own XAML focus.");
@@ -21,7 +23,8 @@ internal sealed partial class NativeInputSession
             if((ushort)args.Key!=key&&(ushort)args.Key!=modifier)return;
             targetRetained&=ReferenceEquals(args.OriginalSource,target);if((ushort)args.Key==key)ups++;else{modifierUps++;released.TrySetResult();}
         });
-        root.Content.AddHandler(UIElement.KeyDownEvent,down,true);root.Content.AddHandler(UIElement.KeyUpEvent,up,true);
+        var downEvent=preview?UIElement.PreviewKeyDownEvent:UIElement.KeyDownEvent;
+        root.Content.AddHandler(downEvent,down,true);root.Content.AddHandler(UIElement.KeyUpEvent,up,true);
         try
         {
             Send([new NativeInput{Type=1,Data=new InputData{Keyboard=new KeyboardInput{Key=modifier}}},
@@ -33,8 +36,8 @@ internal sealed partial class NativeInputSession
         }
         finally
         {
-            root.Content.RemoveHandler(UIElement.KeyDownEvent,down);root.Content.RemoveHandler(UIElement.KeyUpEvent,up);
-            keyActions.Add(new{key,target=target.Name,downs,ups,targetRetained,modifier,modifierDowns,modifierUps});
+            root.Content.RemoveHandler(downEvent,down);root.Content.RemoveHandler(UIElement.KeyUpEvent,up);
+            keyActions.Add(new{key,target=target.Name,downs,ups,targetRetained,modifier,modifierDowns,modifierUps,preview});
         }
     }
 }

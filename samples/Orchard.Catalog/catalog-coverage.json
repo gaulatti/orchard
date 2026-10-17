@@ -90,6 +90,7 @@
     "BleeckerEyebrow": "EyebrowsFixture.xaml",
     "BleeckerKbd": "KeyboardFixture.xaml",
     "BleeckerInput": "InputsFixture.xaml",
+    "BleeckerTextarea": "TextareasFixture.xaml",
     "BleeckerLabel": "LabelsFixture.xaml",
     "BleeckerFieldHelpTooltip": "FieldHelpFixture.xaml",
     "BleeckerTooltip": "TooltipsFixture.xaml",

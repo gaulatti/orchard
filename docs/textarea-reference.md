@@ -1,8 +1,72 @@
 # Textarea source reference
 
-Textarea remains pending in the fixed parity inventory. This checkpoint establishes
-the actual browser contract before native implementation; it does not accept a
-Windows control or increase the completed component count.
+Textarea is in progress in the fixed parity inventory. `BleeckerTextarea` is a
+native `RichEditBox` with consumer-owned `Text`, `InputSize`, `Rows`, `IsError`
+and nullable `IsInvalid`. The latter maps an explicit accessibility override to
+`AutomationProperties.IsDataValidForForm`. The registered `TextareasFixture`
+shows sizes, rows, empty/error, disabled/read-only, constrained and Arabic examples.
+No component acceptance is claimed.
+
+## Native preview and boundaries
+
+The x64 runs at `artifacts/textarea-unicode-paste-runtime-320` and
+`artifacts/textarea-unicode-paste-runtime-640` pass all 172 source-sized native frames
+and four editing sequences. They exercise physical Enter and selection
+replacement, native undo, read-only selection and rejected editing, two-way
+consumer binding, keyboard resize, template replacement, unload/remount and
+trailing newlines. They also reject Ctrl+B/I/U in the preview-key phase, expose
+plain editing actions through branded menus, paste text from a mixed text/HTML
+clipboard without bold formatting, and restore the prior value with one undo.
+There are 60 owned native key actions across the two widths. Each audit rejects
+ten deliberate corruptions of frames, font/paint/line spacing, input ownership,
+consumer binding, UIA text/read-only state and paste results.
+
+The raw comparison covers all 172 whole-client frames: **1,001,057 differing
+pixels**, absolute RGBA error 56,028,527, without masks or resampling. This is
+not raster acceptance. All 125 unit tests, generated tokens and the existing
+focused Input runtime pass. Eight external UIA snapshots cross the owned process boundary
+and expose the native Edit role, name, document text, selection and read-only
+state through TextPattern. RichEditBox does not expose ValuePattern here. The
+legacy .NET client cannot query UIA validity property 30103; its report keeps
+`valid=null`, and external validity acceptance stays open. The native attached
+validity property is checked for each source state and explicit override.
+
+Native edits publish LF line breaks. A bound WinUI multiline `TextBox` source
+canonicalizes these to CR; the regression retains both raw strings and compares
+their text with explicit newline normalization. Use
+`Mode=TwoWay, UpdateSourceTrigger=PropertyChanged` when a consumer wants updates
+on every edit. A single-line TextBox is an unsuitable multiline data model.
+
+Exact native paragraph spacing uses the SDK's point units: 15pt for a 20px line,
+18pt for 24px. Document initialization waits until the native view has loaded.
+Keep XAML's existing private font-face binding when configuring character format;
+replacing its asset URI with the bare family name discards the custom collection.
+The five-control `textarea-font` diagnostic compares both document APIs, the
+custom control, a system font and TextBox. It runs in Light only and is not
+theme acceptance. The ineffective process-private GDI font experiment was removed.
+
+The consumer's `IsReadOnly` dependency property stays stable while a synchronous
+UI-thread transaction updates native text/formatting. The internal RichEdit guard
+is restored before input can dispatch. Native read-only editing and external
+provider behavior are exercised; transient UIA event behavior still needs coverage.
+The source palette, fractional-alpha painter, premium transition, shadow clipping
+and disabled pointer ownership follow Input's existing implementation. Input's
+single-line source is unchanged.
+
+The resize grip adds Up/Down resizing for keyboard access, a deliberate Windows
+accessibility extension to the source's vertical pointer grip. Pointer drag,
+minimum clamping/cursor, disabled/read-only resize, live theme/customization,
+remaining form constraints and complete menu invocation still need verification.
+Delayed clipboard-provider races/cancellation, paste caret positioning, menu
+invocation and the fresh package-consumer fixture need further runtime evidence.
+The direct native `ITextRange.Paste` experiment stowed-crashed at the clipboard
+boundary and is retained as a failure. The implementation instead retrieves
+plain text asynchronously and applies a selection edit after checking content,
+selection, view, enabled and read-only ownership. Complete-catalog integration, exact whole-frame
+raster equality, enabled motion, Windows scaling/contrast, Narrator and native
+ARM64 remain open. Cross-builds do not establish native ARM64 runtime acceptance.
+
+## Frozen browser contract
 
 The collector mounts the frozen Bleecker `Textarea` at commit
 `a86059013cd59684ce452849278ea81e734f2066`, source SHA-256

@@ -1,0 +1,15 @@
+<UserControl x:Class="Orchard.Catalog.TextareasFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Text areas" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Plain text, native multiline editing and consumer-owned content. Drag the corner vertically; the resize handle also accepts Up and Down." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <orchard:BleeckerTextarea Text="First line&#10;Second line" PlaceholderText="Write editorial notes" AutomationProperties.Name="Editorial notes" />
+  <orchard:BleeckerTextarea InputSize="Small" Text="Small notes" AutomationProperties.Name="Small notes" />
+  <orchard:BleeckerTextarea InputSize="Large" Text="Large notes" AutomationProperties.Name="Large notes" />
+  <orchard:BleeckerTextarea IsError="True" PlaceholderText="Review required" AutomationProperties.Name="Notes with an error" />
+  <orchard:BleeckerTextarea IsEnabled="False" Text="Unavailable notes" AutomationProperties.Name="Disabled notes" />
+  <orchard:BleeckerTextarea IsReadOnly="True" Text="Read-only notes&#10;Selection and copy remain available." AutomationProperties.Name="Read-only notes" />
+  <orchard:BleeckerTextarea Rows="1" Text="One row retains the recipe minimum." AutomationProperties.Name="One-row notes" />
+  <orchard:BleeckerTextarea Rows="10" Text="Ten explicit rows" AutomationProperties.Name="Ten-row notes" />
+  <orchard:BleeckerTextarea Width="240" FlowDirection="RightToLeft" Text="ملاحظات التحرير&#10;السطر الثاني" AutomationProperties.Name="Arabic notes" HorizontalAlignment="Left" />
+ </StackPanel>
+</UserControl>

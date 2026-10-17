@@ -141,6 +141,7 @@
                 </orchard:BleeckerStatCard>
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
                 <orchard:BleeckerSearchInput x:Name="PackageSearch" Text="Independent search" PlaceholderText="Search catalogue" ClearRequested="ClearPackageSearch" AutomationProperties.Name="Independent search" />
+                <orchard:BleeckerTextarea x:Name="PackageTextarea" Text="Independent notes&#10;Second line" PlaceholderText="Write notes" AutomationProperties.Name="Independent notes" />
                 <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon">
                     <orchard:BleeckerTooltipService.ToolTip><orchard:BleeckerTooltip x:Name="PackageTooltip" Content="Save with icon" /></orchard:BleeckerTooltipService.ToolTip>
                     <ContentControl x:Name="SaveVector" Style="{StaticResource SaveIcon}" />
