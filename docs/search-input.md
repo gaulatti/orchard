@@ -1,5 +1,40 @@
 # Search Input
 
+The 48-state native comparison passes at both viewport widths with maximum
+geometry error below `.000062` DIP under the existing `.05` bound. It includes
+20 exact held key pairs and eight exact held pointer/release pairs, source RGB
+and fractional alpha, focused/pressed outlines and live palette/theme checks.
+Eight corruptions are rejected. The separate 48 whole-frame comparison still
+has 142,074 differing pixels, with no masks or resampling; this state matrix is
+distinct from the original 40-frame normal/variant comparison. Exact source
+raster parity and native enabled-motion presentation remain unaccepted.
+
+The state regression now includes frozen browser cases for editor hover/focus,
+error hover/focus, disabled hover, read-only focus, clear hover/keyboard focus,
+pointer press, held Space/Enter and a press at the clear action's left edge.
+Normal, Small/Large, RTL and other variants remain in the separate initial
+matrix below. State collectors retain complete frames, source hashes, actual
+native key/pointer receipts and two matching rendered observations within the
+unchanged two-second deadline.
+
+Shared inline actions preserve HTML button timing: Enter invokes on key-down
+through the native Button Invoke path without a pressed scale; Space and
+pointer activation invoke on release. A transparent, unscaled hit surface
+retains release ownership when the artwork shrinks. Keyboard focus is drawn
+inside that same visual, so its rounded outline scales with held Space. The
+normal outline uses the measured source color and the contrast theme uses the
+Windows highlight color. Exact outline raster parity remains unaccepted.
+
+Clear hover consumes the existing `BleeckerSandBrush`, including live color and
+opacity changes, multiplied by the theme's `.10` / `.15` factor. Dark therefore
+uses `#1A2332`; the earlier fixed Light sand value was incorrect there.
+Replacing the palette brush or changing its opacity is observed, and the
+native state harness exercises live mutation, restoration and a theme round
+trip on the same loaded control. `SearchClearHoverPaletteStyle` can be previewed
+by importing `Themes/SearchInput.xaml`; the catalog imports it explicitly in
+the fixture's resources. Style coverage accepts actual StaticResource and
+ThemeResource references, keeping theme-dependent style selection live.
+
 The current Input paint correction preserves fractional CSS brush alpha and
 uses the shared premultiplied OKLab transition clock. All 40 native frames
 retain zero geometry error and now record source RGB, effective brush alpha

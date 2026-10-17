@@ -21,6 +21,7 @@ public sealed partial class MainWindow
         await AcquireConsumerInputAsync();Require(clear.Focus(FocusState.Keyboard),"Packaged search clear refused focus.");var before=searchClears;
         await PaginationConsumerKeyAsync(0x20,clear,clear,()=>Require(searchClears==before,"Packaged search clear invoked before Space release."));
         Require(searchClears==before+1&&PackageSearch.Text=="Independent search","Packaged clear changed consumer-owned text.");
+        before=searchClears;await PaginationConsumerKeyAsync(0x0D,clear,clear,()=>Require(searchClears==before+1&&!clear.IsPressed,"Packaged Enter did not invoke on key-down without a pressed scale."));Require(searchClears==before+1,"Packaged Enter invoked again on release.");
         PackageSearch.IsEditorEnabled=false;Root.UpdateLayout();Require(!editor.IsEnabled&&clear.IsEnabled,"Packaged search disabled sibling clear.");
         await AwaitAsync(()=>chrome.Background is SolidColorBrush background&&background.Color.A==255&&Math.Abs(background.Opacity-.65)<.000001&&background.Color.R==(dark?13:249)&&background.Color.G==(dark?24:246)&&background.Color.B==(dark?33:242),"Packaged input rounded its disabled background alpha or changed its color.");
         before=searchClears;await PaginationConsumerKeyAsync(0x20,clear,clear,()=>Require(searchClears==before,"Packaged disabled-editor clear invoked early."));Require(searchClears==before+1,"Packaged disabled editor blocked clear.");

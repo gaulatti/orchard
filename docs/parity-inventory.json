@@ -1870,6 +1870,12 @@
         "scripts/test-search-input-audit.mjs",
         "scripts/compare-search-input-pixels.mjs",
         "scripts/SearchInputUiaProbe.cs",
+        "samples/Orchard.Catalog/MainWindow.SearchInputStates.cs",
+        "tests/Reference/SearchInputStates.json",
+        "tests/Orchard.Tests/SearchInputStateReferenceTests.cs",
+        "scripts/verify-search-input-states.mjs",
+        "scripts/test-search-input-states-audit.mjs",
+        "scripts/compare-search-input-states-pixels.mjs",
         "tests/PackageConsumer/MainWindow.SearchInput.cs"
       ],
       "status": "in-progress",

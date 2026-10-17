@@ -1,5 +1,6 @@
 {
   "styles": {
+    "SearchClearHoverPaletteStyle": "SearchInputsFixture.xaml",
     "BleeckerAttentionActionStyle": "AttentionSurfacesFixture.xaml",
     "BleeckerMenuContentItemStyle": "MenusFixture.xaml",
     "BleeckerMenuInsetItemStyle": "MenusFixture.xaml",

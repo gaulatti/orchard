@@ -3,10 +3,14 @@ using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
+using Windows.System;
 using Windows.UI.ViewManagement;
 
 namespace Orchard;
@@ -20,7 +24,8 @@ internal sealed class BleeckerFilterAction : Button
     private readonly Func<bool> canInvoke;
     private readonly Func<Brush> normal,hover,hoverBackground;
     private readonly Func<string>? textValue;
-    private readonly Border chrome=new();
+    private readonly Border chrome=new(){Name="InlineActionChrome"};
+    private readonly Border keyboardFocus=new(){Name="InlineActionFocus",Margin=new Thickness(-1),BorderThickness=new Thickness(2),IsHitTestVisible=false,Visibility=Visibility.Collapsed};
     private readonly Grid visual=new(){RenderTransformOrigin=new Point(.5,.5),UseLayoutRounding=false};
     private readonly ScaleTransform scale=new();
     private readonly BleeckerFilterText? text;
@@ -41,6 +46,7 @@ internal sealed class BleeckerFilterAction : Button
         this.owner=owner;this.remove=remove;this.pressedScale=pressedScale;this.invoke=invoke;this.canInvoke=canInvoke;this.normal=normal;this.hover=hover;this.hoverBackground=hoverBackground;this.textValue=textValue;
         var resources=new ResourceDictionary{Source=new Uri("ms-appx:///Orchard/Themes/FilterActions.xaml")};Style=(Style)resources[typeof(Button)];
         ProtectedCursor=InputSystemCursor.Create(InputSystemCursorShape.Hand);visual.RenderTransform=scale;
+        CornerRadius=new CornerRadius(remove?4:0);
         chrome.Background=background;chrome.CornerRadius=new CornerRadius(remove?4:0);chrome.Padding=new Thickness(remove?2:0);visual.Children.Add(chrome);
         if(remove)
         {
@@ -51,10 +57,12 @@ internal sealed class BleeckerFilterAction : Button
         }
         else{text=new BleeckerFilterText{Name="ClearFilterText"};text.Text.Foreground=foreground;chrome.Child=text;}
         Content=visual;
+        keyboardFocus.CornerRadius=new CornerRadius(remove?5:1);keyboardFocus.SetBinding(Border.BorderBrushProperty,new Binding{Source=this,Path=new PropertyPath(nameof(FocusVisualPrimaryBrush))});AutomationProperties.SetAccessibilityView(keyboardFocus,AccessibilityView.Raw);visual.Children.Add(keyboardFocus);
         PointerEntered+=(_,_)=>{if(!attached)return;pointer=true;Update();};PointerExited+=(_,_)=>{if(!attached)return;pointer=false;Update();};IsEnabledChanged+=(_,_)=>{UpdateScale();disabledPointer?.Update();PublishResolvedEnabled();};
         RegisterPropertyChangedCallback(IsPressedProperty,(_,_)=>UpdateScale());Loaded+=(_,_)=>{Attach();StartNameObservation();};Unloaded+=(_,_)=>{if(!IsLoaded)Detach();};
         RegisterPropertyChangedCallback(AutomationProperties.NameProperty,(_,_)=>PublishResolvedName());
         RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty,(_,_)=>{ObserveLabels();PublishResolvedName();});
+        RegisterPropertyChangedCallback(FocusStateProperty,(_,_)=>UpdateFocus());
         disabledPointer=new BleeckerDisabledPointer(this,()=>IsEnabled?null:this,_=>{});
     }
     internal void Attach()
@@ -110,6 +118,19 @@ internal sealed class BleeckerFilterAction : Button
         if(previous.HasValue&&previous.Value!=next)peer.RaisePropertyChangedEvent(AutomationElementIdentifiers.IsEnabledProperty,previous.Value,next);
     }
     private void Clicked(object sender,RoutedEventArgs args){if(attached&&IsLoaded&&canInvoke())invoke();}
+    protected override void OnKeyDown(KeyRoutedEventArgs args)
+    {
+        if(args.Key!=VirtualKey.Enter){base.OnKeyDown(args);return;}
+        args.Handled=true;
+        if(!attached||!IsLoaded||!canInvoke())return;
+        // HTML buttons invoke Enter on key-down without entering :active.
+        // Use the normal native Invoke path so Click, UIA and guards stay shared.
+        var peer=FrameworkElementAutomationPeer.CreatePeerForElement(this);
+        if(peer.GetPattern(PatternInterface.Invoke)is not IInvokeProvider provider)throw new InvalidOperationException("Inline actions require the native Button Invoke pattern.");
+        provider.Invoke();
+    }
+    protected override void OnKeyUp(KeyRoutedEventArgs args)
+    {if(args.Key==VirtualKey.Enter){args.Handled=true;return;}base.OnKeyUp(args);}
     private void ColorsChanged(UISettings sender,object args)=>DispatcherQueue.TryEnqueue(()=>{if(attached&&IsLoaded)Update(false);});
     private void MotionChanged(UISettings sender,UISettingsAnimationsEnabledChangedEventArgs args)=>DispatcherQueue.TryEnqueue(()=>{if(attached&&IsLoaded)Update(false);});
     internal void Update(bool animate=true)
@@ -123,7 +144,8 @@ internal sealed class BleeckerFilterAction : Button
         if(foregroundMotion.IsRunning(now)||backgroundMotion.IsRunning(now)){if(!rendering){rendering=true;CompositionTarget.Rendering+=Frame;}}
         else StopRendering();
     }
-    private void UpdateScale()=>scale.ScaleX=scale.ScaleY=remove&&IsPressed&&IsEnabled ? pressedScale : 1;
+    private void UpdateScale(){scale.ScaleX=scale.ScaleY=remove&&IsPressed&&IsEnabled ? pressedScale : 1;UpdateFocus();}
+    private void UpdateFocus()=>keyboardFocus.Visibility=attached&&IsLoaded&&IsEnabled&&FocusState==FocusState.Keyboard?Visibility.Visible:Visibility.Collapsed;
     private void Frame(object? sender,object args){var now=clock.Elapsed.TotalMilliseconds;Paint(now);if(!foregroundMotion.IsRunning(now)&&!backgroundMotion.IsRunning(now))StopRendering();}
     private void StopRendering(){if(rendering)CompositionTarget.Rendering-=Frame;rendering=false;}
     private void Paint(double now){Set(foreground,foregroundMotion.ValueAt(now));Set(background,backgroundMotion.ValueAt(now));}

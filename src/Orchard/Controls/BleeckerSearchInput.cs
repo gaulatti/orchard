@@ -18,6 +18,7 @@ public sealed class BleeckerSearchInput : Control
     private EventHandler? clearRequested;
     private ICommand? observedCommand;
     private readonly Dictionary<string,TextBlock> palette=[];
+    private readonly SolidColorBrush clearHoverBackground=new();
     private readonly List<(DependencyObject Owner,DependencyProperty Property,long Token)> observers=[];
     private bool applyingPadding;
     public BleeckerSearchInput()
@@ -81,7 +82,7 @@ public sealed class BleeckerSearchInput : Control
         host=GetTemplateChild("PART_Content")as Grid??throw new InvalidOperationException("SearchInput requires PART_Content.");
         foreach(var key in new[]{"Secondary","Hover","HoverBackground"})palette[key]=GetTemplateChild("PART_"+key)as TextBlock??throw new InvalidOperationException("SearchInput requires PART_"+key+".");
         Editor.StartIcon=CreateSearchIcon();host.Children.Add(Editor);
-        clear=new BleeckerFilterAction(this,true,InvokeClear,()=>CanClear&&host is not null,()=>palette["Secondary"].Foreground,()=>palette["Hover"].Foreground,()=>palette["HoverBackground"].Foreground,iconSize:14,pressedScale:.92)
+        clear=new BleeckerFilterAction(this,true,InvokeClear,()=>CanClear&&host is not null,()=>palette["Secondary"].Foreground,()=>palette["Hover"].Foreground,ClearHoverBackground,iconSize:14,pressedScale:.92)
         {Name="ClearSearch",HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Center,Margin=new Thickness(0,0,10,0),Width=18,Height=18};
         host.Children.Add(clear);if(IsLoaded)Observe();Update(false);
     }
@@ -111,11 +112,18 @@ public sealed class BleeckerSearchInput : Control
         foreach(var item in palette.Values)
         {
             observers.Add((item,TextBlock.ForegroundProperty,item.RegisterPropertyChangedCallback(TextBlock.ForegroundProperty,(_,_)=>{Observe();Update(false);})));
+            observers.Add((item,OpacityProperty,item.RegisterPropertyChangedCallback(OpacityProperty,(_,_)=>Update(false))));
             if(item.Foreground is SolidColorBrush brush)foreach(var property in new[]{SolidColorBrush.ColorProperty,Brush.OpacityProperty})observers.Add((brush,property,brush.RegisterPropertyChangedCallback(property,(_,_)=>Update(false))));
         }
         clear?.Attach();
     }
     private void StopObserving(){if(observedCommand is not null)observedCommand.CanExecuteChanged-=CommandChanged;observedCommand=null;foreach(var item in observers)item.Owner.UnregisterPropertyChangedCallback(item.Property,item.Token);observers.Clear();}
+    private Brush ClearHoverBackground()
+    {
+        var part=palette["HoverBackground"];
+        if(part.Foreground is not SolidColorBrush source)throw new InvalidOperationException("Search clear hover requires a solid theme brush.");
+        clearHoverBackground.Color=source.Color;clearHoverBackground.Opacity=source.Opacity*part.Opacity;return clearHoverBackground;
+    }
     private void CommandChanged(object? sender,EventArgs args)=>DispatcherQueue.TryEnqueue(()=>Update());
     private void InvokeClear(){if(!CanClear)return;var command=ClearCommand;var callback=clearRequested;command?.Execute(ClearCommandParameter);callback?.Invoke(this,EventArgs.Empty);}
     private void EditorKeyDown(object sender,KeyRoutedEventArgs args)

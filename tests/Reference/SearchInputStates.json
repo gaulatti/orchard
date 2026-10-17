@@ -1,0 +1,5126 @@
+{
+  "format": "orchard-search-input-states-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "0a9e5eafdbafdeffdb2e60859ecd5cd1eea4af3598eac712e03f5a6d01a2a038",
+  "inputSourceSha256": "01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192",
+  "scriptSha256": "b572aa5b26564f1ee7ae240f5c69de342841e8cb33fe6c941c3fdb229747045b",
+  "freshMountPerCase": true,
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "browser": "155.0.4283.45",
+  "cases": [
+    {
+      "id": "editor-hover",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "editor-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-editor-hover-320-Light.png",
+      "pngSha256": "93af03c0fdc3c258c3f42086ccdb69069affc1e7085268d1518fc95da48e3d27"
+    },
+    {
+      "id": "editor-focus",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "editor-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.447932 -0.0282684 -0.0838237 / 0.1) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-editor-focus-320-Light.png",
+      "pngSha256": "c09320f078d586415e0b51841f8bdec34df6703558b9e0e5d99c366bf09003ba"
+    },
+    {
+      "id": "error-hover",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "error-hover",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-error-hover-320-Light.png",
+      "pngSha256": "93af03c0fdc3c258c3f42086ccdb69069affc1e7085268d1518fc95da48e3d27"
+    },
+    {
+      "id": "error-focus",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "error-focus",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(166, 93, 87)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.560937 0.0870632 0.0416276 / 0.15) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-error-focus-320-Light.png",
+      "pngSha256": "c80fbc19cb7a606213f1bb7d8d8f8b53ca42b290de01111a94736d51a7f50597"
+    },
+    {
+      "id": "disabled-hover",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "disabled-hover",
+        "disabled": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.65)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 0.6,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-disabled-hover-320-Light.png",
+      "pngSha256": "cab99b0edafec8c074c3654a05512d19281ca10e0968f9a327e19a287bd853b7"
+    },
+    {
+      "id": "readonly-focus",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "readonly-focus",
+        "readOnly": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.447932 -0.0282684 -0.0838237 / 0.1) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-readonly-focus-320-Light.png",
+      "pngSha256": "c09320f078d586415e0b51841f8bdec34df6703558b9e0e5d99c366bf09003ba"
+    },
+    {
+      "id": "clear-hover",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(45, 45, 45)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-hover-320-Light.png",
+      "pngSha256": "4a0ec755f9a7df8e09b5a232fbbc8bed6fe08079dd340af3672b777534ada440"
+    },
+    {
+      "id": "clear-focus",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-focus-320-Light.png",
+      "pngSha256": "6d1c1b7f5a45036b95ac16fccce11c50d32b459d5765ccbe31427f07fdb4c00a"
+    },
+    {
+      "id": "clear-pointer-pressed",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-pointer-pressed",
+        "hold": "pointer"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272.7200012207031,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(45, 45, 45)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274.55999755859375,
+            "y": 33.560001373291016,
+            "width": 12.8800048828125,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 281,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-pointer-pressed-320-Light.png",
+      "pngSha256": "25321806f1d4b9caecd0539305c2029fc49edbb4e02c99cc7804542a064d2191"
+    },
+    {
+      "id": "clear-space-pressed",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-space-pressed",
+        "hold": "Space"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272.7200012207031,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274.55999755859375,
+            "y": 33.560001373291016,
+            "width": 12.8800048828125,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-space-pressed-320-Light.png",
+      "pngSha256": "2bc6082f576e76bad1abe2d93abd2a76e834bd79218b489939ff4e04faef391e"
+    },
+    {
+      "id": "clear-enter-pressed",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-enter-pressed",
+        "hold": "Enter"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 1,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-enter-pressed-320-Light.png",
+      "pngSha256": "6d1c1b7f5a45036b95ac16fccce11c50d32b459d5765ccbe31427f07fdb4c00a"
+    },
+    {
+      "id": "clear-edge-pressed",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-edge-pressed",
+        "hold": "edge"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272.7200012207031,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(45, 45, 45)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274.55999755859375,
+            "y": 33.560001373291016,
+            "width": 12.8800048828125,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 272,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 272,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-edge-pressed-320-Light.png",
+      "pngSha256": "25321806f1d4b9caecd0539305c2029fc49edbb4e02c99cc7804542a064d2191"
+    },
+    {
+      "id": "editor-hover",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "editor-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-editor-hover-320-Dark.png",
+      "pngSha256": "1e89f8ddd9ee8f1943682b0f097752f4f9562f725b260e2ed0d43c3ba02b41db"
+    },
+    {
+      "id": "editor-focus",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "editor-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(91, 163, 245)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.704643 -0.0410104 -0.134962 / 0.12) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-editor-focus-320-Dark.png",
+      "pngSha256": "b52425228e5478784c825724558a569fad2553f5d3711d74db7185563c74874f"
+    },
+    {
+      "id": "error-hover",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "error-hover",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-error-hover-320-Dark.png",
+      "pngSha256": "1e89f8ddd9ee8f1943682b0f097752f4f9562f725b260e2ed0d43c3ba02b41db"
+    },
+    {
+      "id": "error-focus",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "error-focus",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(91, 163, 245)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.704643 -0.0410104 -0.134962 / 0.12) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-error-focus-320-Dark.png",
+      "pngSha256": "b52425228e5478784c825724558a569fad2553f5d3711d74db7185563c74874f"
+    },
+    {
+      "id": "disabled-hover",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "disabled-hover",
+        "disabled": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.65)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 0.6,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 160,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-disabled-hover-320-Dark.png",
+      "pngSha256": "880f8dc9a3f74b27d8bc2237d959820d19a675d70ab305648acbccf09417ee0f"
+    },
+    {
+      "id": "readonly-focus",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "readonly-focus",
+        "readOnly": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(91, 163, 245)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.704643 -0.0410104 -0.134962 / 0.12) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-readonly-focus-320-Dark.png",
+      "pngSha256": "b52425228e5478784c825724558a569fad2553f5d3711d74db7185563c74874f"
+    },
+    {
+      "id": "clear-hover",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(240, 244, 248)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-hover-320-Dark.png",
+      "pngSha256": "187e57082e9f47ac434d8942d2067bbf58a9b660bd741c194c086b1e8a62c885"
+    },
+    {
+      "id": "clear-focus",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-focus-320-Dark.png",
+      "pngSha256": "1dbaa1c86ccb825718314824d6c71535e5355b0a07bf0c465a7cc112cb66f146"
+    },
+    {
+      "id": "clear-pointer-pressed",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-pointer-pressed",
+        "hold": "pointer"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272.7200012207031,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(240, 244, 248)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274.55999755859375,
+            "y": 33.560001373291016,
+            "width": 12.8800048828125,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 281,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 281,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-pointer-pressed-320-Dark.png",
+      "pngSha256": "ac9efadebd6afa1d927f275c34d6d6154456dc0d76816b8b0420536d2008cd5b"
+    },
+    {
+      "id": "clear-space-pressed",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-space-pressed",
+        "hold": "Space"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272.7200012207031,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274.55999755859375,
+            "y": 33.560001373291016,
+            "width": 12.8800048828125,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-space-pressed-320-Dark.png",
+      "pngSha256": "4135bba6580880488724ccd8e63ad71b768414b752da06308fc2a7c0d20abb3b"
+    },
+    {
+      "id": "clear-enter-pressed",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-enter-pressed",
+        "hold": "Enter"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 1,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-enter-pressed-320-Dark.png",
+      "pngSha256": "1dbaa1c86ccb825718314824d6c71535e5355b0a07bf0c465a7cc112cb66f146"
+    },
+    {
+      "id": "clear-edge-pressed",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-edge-pressed",
+        "hold": "edge"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "140px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 272.7200012207031,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(240, 244, 248)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 274.55999755859375,
+            "y": 33.560001373291016,
+            "width": 12.8800048828125,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 272,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 272,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 272,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-edge-pressed-320-Dark.png",
+      "pngSha256": "ac9efadebd6afa1d927f275c34d6d6154456dc0d76816b8b0420536d2008cd5b"
+    },
+    {
+      "id": "editor-hover",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "editor-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-editor-hover-640-Light.png",
+      "pngSha256": "deadf4ca69028cea4e692fb9be99aa15803c8bb5ec7433f2e41eb5503448ba2f"
+    },
+    {
+      "id": "editor-focus",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "editor-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.447932 -0.0282684 -0.0838237 / 0.1) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-editor-focus-640-Light.png",
+      "pngSha256": "d0b93529aefa98c8935c2c45513bfd0d572ae2ec760571f4d2adcdf941d262e5"
+    },
+    {
+      "id": "error-hover",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "error-hover",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-error-hover-640-Light.png",
+      "pngSha256": "deadf4ca69028cea4e692fb9be99aa15803c8bb5ec7433f2e41eb5503448ba2f"
+    },
+    {
+      "id": "error-focus",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "error-focus",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(166, 93, 87)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.560937 0.0870632 0.0416276 / 0.15) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-error-focus-640-Light.png",
+      "pngSha256": "c2c1b38bb50d4a0a332f031c1026446c5663ea99e2db0adda958b97d838c455b"
+    },
+    {
+      "id": "disabled-hover",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "disabled-hover",
+        "disabled": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.65)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 0.6,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-disabled-hover-640-Light.png",
+      "pngSha256": "125507e709ebcb1fe4dcc1f9f8359762175da5a15d4bbc29d256efdb09e3a3d7"
+    },
+    {
+      "id": "readonly-focus",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "readonly-focus",
+        "readOnly": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.447932 -0.0282684 -0.0838237 / 0.1) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(89, 89, 89) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-readonly-focus-640-Light.png",
+      "pngSha256": "d0b93529aefa98c8935c2c45513bfd0d572ae2ec760571f4d2adcdf941d262e5"
+    },
+    {
+      "id": "clear-hover",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(45, 45, 45)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-hover-640-Light.png",
+      "pngSha256": "16d249a03fa65e44711281da20f4079cb9dc51a8f29cbb4d4d4abc089640df82"
+    },
+    {
+      "id": "clear-focus",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-focus-640-Light.png",
+      "pngSha256": "4c76ab4b9d6d39241acf822a1b734a4be870f0a9200ed33d11f5ebd032492229"
+    },
+    {
+      "id": "clear-pointer-pressed",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-pointer-pressed",
+        "hold": "pointer"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592.719970703125,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 591.9999694824219,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(45, 45, 45)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594.5599975585938,
+            "y": 33.560001373291016,
+            "width": 12.87994384765625,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 601,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-pointer-pressed-640-Light.png",
+      "pngSha256": "64a997243d9a58042a50435bcb1f3f26cc5b2e2d4fbb4889bd47d4bc77b275f2"
+    },
+    {
+      "id": "clear-space-pressed",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-space-pressed",
+        "hold": "Space"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592.719970703125,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 591.9999694824219,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594.5599975585938,
+            "y": 33.560001373291016,
+            "width": 12.87994384765625,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-space-pressed-640-Light.png",
+      "pngSha256": "2d9ceb82bba805fd1e693368902955d02d284021c25198885389212ebb6b1225"
+    },
+    {
+      "id": "clear-enter-pressed",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-enter-pressed",
+        "hold": "Enter"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 1,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-enter-pressed-640-Light.png",
+      "pngSha256": "4c76ab4b9d6d39241acf822a1b734a4be870f0a9200ed33d11f5ebd032492229"
+    },
+    {
+      "id": "clear-edge-pressed",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "clear-edge-pressed",
+        "hold": "edge"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592.719970703125,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 591.9999694824219,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+            "color": "rgb(45, 45, 45)",
+            "border": "rgb(45, 45, 45)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(45, 45, 45) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594.5599975585938,
+            "y": 33.560001373291016,
+            "width": 12.87994384765625,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 592,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 592,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 592,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 592,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 592,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-edge-pressed-640-Light.png",
+      "pngSha256": "64a997243d9a58042a50435bcb1f3f26cc5b2e2d4fbb4889bd47d4bc77b275f2"
+    },
+    {
+      "id": "editor-hover",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "editor-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-editor-hover-640-Dark.png",
+      "pngSha256": "5ef79a808300fef675f243746fd36ee8f24621be65d86e69db701968b0a94659"
+    },
+    {
+      "id": "editor-focus",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "editor-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(91, 163, 245)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.704643 -0.0410104 -0.134962 / 0.12) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-editor-focus-640-Dark.png",
+      "pngSha256": "50fe7614b41efb9bf2279640e23eb2fcbc9d42b62fb435dbeeaa138fe12d6a5b"
+    },
+    {
+      "id": "error-hover",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "error-hover",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-error-hover-640-Dark.png",
+      "pngSha256": "5ef79a808300fef675f243746fd36ee8f24621be65d86e69db701968b0a94659"
+    },
+    {
+      "id": "error-focus",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "error-focus",
+        "error": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(91, 163, 245)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.704643 -0.0410104 -0.134962 / 0.12) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-error-focus-640-Dark.png",
+      "pngSha256": "50fe7614b41efb9bf2279640e23eb2fcbc9d42b62fb435dbeeaa138fe12d6a5b"
+    },
+    {
+      "id": "disabled-hover",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "disabled-hover",
+        "disabled": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.2032 -0.0105396 -0.0216702 / 0.65)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.25) 0px 3px 10px -8px",
+            "opacity": 0.6,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "INPUT",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 320,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-disabled-hover-640-Dark.png",
+      "pngSha256": "d223922b88a9161ef925f2c6e2891e47b4edcb046326319b7ef3721e1a956ac0"
+    },
+    {
+      "id": "readonly-focus",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "readonly-focus",
+        "readOnly": true
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(91, 163, 245)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.704643 -0.0410104 -0.134962 / 0.12) 0px 0px 0px 2px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(16, 16, 16) none 1px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": true,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(184, 197, 214) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": []
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": []
+      },
+      "file": "search-input-state-readonly-focus-640-Dark.png",
+      "pngSha256": "50fe7614b41efb9bf2279640e23eb2fcbc9d42b62fb435dbeeaa138fe12d6a5b"
+    },
+    {
+      "id": "clear-hover",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-hover"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(240, 244, 248)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": false,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-hover-640-Dark.png",
+      "pngSha256": "314e831ca58812fb29b7e5213af2b5313ffe41af889a821b31fdf8894a98da07"
+    },
+    {
+      "id": "clear-focus",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-focus"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 0,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-focus-640-Dark.png",
+      "pngSha256": "c80b08d0a63a8030fb575d704bd275c8d4716e3e3ccbb0d5e046f1e0746f9c56"
+    },
+    {
+      "id": "clear-pointer-pressed",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-pointer-pressed",
+        "hold": "pointer"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592.719970703125,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 591.9999694824219,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(240, 244, 248)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594.5599975585938,
+            "y": 33.560001373291016,
+            "width": 12.87994384765625,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 601,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "path",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 601,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-pointer-pressed-640-Dark.png",
+      "pngSha256": "263dae7d640bc96ef8464e6bc08f7c2baaf079ceb99d17d133cc4ea5ec902817"
+    },
+    {
+      "id": "clear-space-pressed",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-space-pressed",
+        "hold": "Space"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592.719970703125,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 591.9999694824219,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594.5599975585938,
+            "y": 33.560001373291016,
+            "width": 12.87994384765625,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": " ",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-space-pressed-640-Dark.png",
+      "pngSha256": "ddafab0d518e9cce24ab9f58510f0f5b51dd715e838a27f8c013d3e31c8341b2"
+    },
+    {
+      "id": "clear-enter-pressed",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-enter-pressed",
+        "hold": "Enter"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "layoutBox": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "1",
+            "outline": "rgb(16, 16, 16) auto 1px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": true,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        },
+        "clearActions": 1,
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "keydown",
+            "target": "INPUT",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Tab",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keydown",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          },
+          {
+            "type": "keyup",
+            "target": "BUTTON",
+            "key": "Enter",
+            "trusted": true,
+            "buttons": null,
+            "x": null,
+            "y": null
+          }
+        ]
+      },
+      "file": "search-input-state-clear-enter-pressed-640-Dark.png",
+      "pngSha256": "c80b08d0a63a8030fb575d704bd275c8d4716e3e3ccbb0d5e046f1e0746f9c56"
+    },
+    {
+      "id": "clear-edge-pressed",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "clear-edge-pressed",
+        "hold": "edge"
+      },
+      "state": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.024) 0px 1px 2px 0px",
+            "opacity": 1,
+            "scale": "none",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "7px",
+            "transformOrigin": "300px 20px"
+          },
+          "focused": false,
+          "hover": false
+        },
+        "clear": {
+          "box": {
+            "x": 592.719970703125,
+            "y": 31.720001220703125,
+            "width": 16.55999755859375,
+            "height": 16.55999755859375
+          },
+          "layoutBox": {
+            "x": 591.9999694824219,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+            "color": "rgb(240, 244, 248)",
+            "border": "rgb(240, 244, 248)",
+            "boxShadow": "none",
+            "opacity": 1,
+            "scale": "0.92",
+            "outline": "rgb(240, 244, 248) none 3px",
+            "outlineOffset": "0px",
+            "radius": "4px",
+            "transformOrigin": "9px 9px"
+          },
+          "focused": true,
+          "focusVisible": false,
+          "hover": false,
+          "active": false,
+          "icon": {
+            "x": 594.5599975585938,
+            "y": 33.560001373291016,
+            "width": 12.87994384765625,
+            "height": 12.880001068115234
+          }
+        },
+        "clearActions": 0,
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 592,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 592,
+            "y": 40
+          }
+        ]
+      },
+      "released": {
+        "clearActions": 1,
+        "value": "Culture",
+        "inputEvents": [
+          {
+            "type": "pointermove",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 592,
+            "y": 40
+          },
+          {
+            "type": "pointerdown",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 1,
+            "x": 592,
+            "y": 40
+          },
+          {
+            "type": "pointerup",
+            "target": "BUTTON",
+            "key": null,
+            "trusted": true,
+            "buttons": 0,
+            "x": 592,
+            "y": 40
+          }
+        ]
+      },
+      "file": "search-input-state-clear-edge-pressed-640-Dark.png",
+      "pngSha256": "263dae7d640bc96ef8464e6bc08f7c2baaf079ceb99d17d133cc4ea5ec902817"
+    }
+  ]
+}

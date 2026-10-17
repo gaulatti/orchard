@@ -260,3 +260,10 @@ Input palette brushes retain exact CSS alpha through `Brush.Opacity` alongside
 opaque RGB colors. Combine `Color.A / 255` and `Opacity` when inspecting a
 brush. Background/border paint transitions use the existing premium CSS clock
 and premultiplied OKLab interpolation; disabled editor opacity remains separate.
+
+Inline clear/remove actions invoke Enter on key-down through the native Button
+Invoke path. Space and pointer clicks invoke on release. Their original hit
+surface remains available while the artwork shrinks, and the keyboard outline
+scales with the artwork. Search clear hover uses the shared theme sand brush,
+including live color/opacity changes. Full source raster and platform acceptance
+remain in progress.

@@ -1,5 +1,15 @@
 # Filter chips
 
+The shared native action now invokes Enter on key-down through its Button
+Invoke pattern, preserving Click/UIA guards and avoiding an extra key-up
+invocation or pressed scale. Space and pointer activation still invoke on
+release. Its unscaled transparent template surface retains the press target
+while the visible remove artwork shrinks. The keyboard outline is drawn in
+the same scaled visual with source color/radius and a Windows contrast brush.
+These corrections are exercised by the Search Input state matrix because it
+uses this same action implementation; FilterChip's own geometry, native actions
+and retained external UIA patterns remain separate regression gates.
+
 `BleeckerFilterChip`, `BleeckerFilterGroup` and observable `BleeckerFilter`
 implement the frozen Bleecker FilterChip/FilterGroup source at
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256

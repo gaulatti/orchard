@@ -142,9 +142,14 @@ jobs:
             ./scripts/smoke-catalog.ps1 -Component search-input -ClientSize $width,480 -Output "artifacts/search-input-$width" -ExpectedArchitecture X64
             node scripts/verify-search-input.mjs --native "artifacts/search-input-$width" --width $width --output "artifacts/search-input-$width/audit.json"
             if ($LASTEXITCODE -ne 0) { throw 'SearchInput source/native audit failed.' }
+            ./scripts/smoke-catalog.ps1 -Component search-input-states -ClientSize $width,480 -Output "artifacts/search-input-states-$width" -ExpectedArchitecture X64
+            node scripts/verify-search-input-states.mjs --native "artifacts/search-input-states-$width" --width $width --output "artifacts/search-input-states-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'SearchInput state audit failed.' }
           }
           node scripts/test-search-input-audit.mjs --native artifacts/search-input-640 --width 640 --output artifacts/search-input-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'SearchInput negative audit failed.' }
+          node scripts/test-search-input-states-audit.mjs --native artifacts/search-input-states-640 --width 640 --output artifacts/search-input-states-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'SearchInput state negative audit failed.' }
           ./scripts/smoke-catalog.ps1 -Component search-input-catalog -Output artifacts/search-input-catalog -ExpectedArchitecture X64
       - name: Verify FilterChip geometry, native actions and lifecycle
         run: |
@@ -415,9 +420,14 @@ jobs:
             ./scripts/smoke-catalog.ps1 -Component search-input -ClientSize $width,480 -Output "artifacts/search-input-$width" -ExpectedArchitecture Arm64
             node scripts/verify-search-input.mjs --native "artifacts/search-input-$width" --width $width --output "artifacts/search-input-$width/audit.json"
             if ($LASTEXITCODE -ne 0) { throw 'ARM64 SearchInput source/native audit failed.' }
+            ./scripts/smoke-catalog.ps1 -Component search-input-states -ClientSize $width,480 -Output "artifacts/search-input-states-$width" -ExpectedArchitecture Arm64
+            node scripts/verify-search-input-states.mjs --native "artifacts/search-input-states-$width" --width $width --output "artifacts/search-input-states-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'ARM64 SearchInput state audit failed.' }
           }
           node scripts/test-search-input-audit.mjs --native artifacts/search-input-640 --width 640 --output artifacts/search-input-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 SearchInput negative audit failed.' }
+          node scripts/test-search-input-states-audit.mjs --native artifacts/search-input-states-640 --width 640 --output artifacts/search-input-states-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 SearchInput state negative audit failed.' }
           ./scripts/smoke-catalog.ps1 -Component search-input-catalog -Output artifacts/search-input-catalog -ExpectedArchitecture Arm64
       - name: Verify native ARM64 FilterChip geometry, actions and lifecycle
         run: |

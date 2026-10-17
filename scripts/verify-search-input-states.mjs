@@ -1,0 +1,32 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {assertNativePaint} from './reference/css-paint.mjs';
+import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const read=async file=>JSON.parse((await fs.readFile(file,'utf8')).replace(/^\uFEFF/,''));
+export async function auditSearchInputStates(native,width){
+ const reference=await read(new URL('../tests/Reference/SearchInputStates.json',import.meta.url));const script=(await fs.readFile(new URL('./reference/capture-search-input-states.cjs',import.meta.url),'utf8')).replace(/\r\n/g,'\n');assert.equal(crypto.createHash('sha256').update(script).digest('hex'),reference.scriptSha256);assert.equal(reference.freshMountPerCase,true);
+ const result=await read(path.join(native,'result.json')),report=await read(path.join(native,'search-input-states.json'));assert.equal(result.passed,true);assert.equal(result.component,'search-input-states');assert.equal(report.passed,true);assert.equal(report.originalContentRestored,true);assert.equal(result.environment.displayScale,1);assert.equal(result.environment.textScale,1);assert.equal(result.environment.highContrast,false);assert.equal(result.environment.processArchitecture,result.environment.osArchitecture);
+ const expected=reference.cases.filter(c=>c.width===width);assert.equal(expected.length,24);assert.equal(report.reports.length,24);let maximumGeometryError=0,context='';
+ const box=(actual,target)=>{for(const key of['x','y','width','height']){assert(Number.isFinite(actual[key]));const delta=Math.abs(actual[key]-target[key]);maximumGeometryError=Math.max(maximumGeometryError,delta);assert(delta<=.05,`${context}/${key}: ${actual[key]} differs from ${target[key]}`);}};
+ for(const[index,test]of expected.entries()){
+  const actual=report.reports[index];context=test.scheme+'/'+test.id;assert.equal(actual.id,test.id);assert.equal(actual.scheme,test.scheme);assert.equal(actual.width,width);const a=actual.state,e=test.state;
+  box(a.editor.box,e.editor.box);box(a.clear.box,e.clear.layoutBox);box(a.clear.paintedBox,e.clear.box);box(a.clear.icon,e.clear.icon);
+  assertNativePaint(a.editor.background,e.editor.paint.background,context+'/editor-background');assertNativePaint(a.editor.border,e.editor.paint.border,context+'/editor-border');assert(Math.abs(a.editor.editorOpacity-e.editor.paint.opacity)<.000001);
+  assertNativePaint(a.clear.background,e.clear.paint.background,context+'/clear-background');assertNativePaint(a.clear.foreground,e.clear.paint.color,context+'/clear-foreground');assert.equal(a.clear.IsEnabled,true);assert.equal(a.clear.focus!=='Unfocused',e.clear.focused);assert.equal(a.editor.focus!=='Unfocused',e.editor.focused);
+  assert.equal(a.editor.ring.Opacity,e.editor.focused?1:0);if(e.editor.focused)box(a.editor.ring.box,{x:18,y:18,width:width-36,height:44});
+  assert.equal(a.clear.IsPressed,Number(e.clear.paint.scale)<1);assert.equal(a.clearActions,e.clearActions,context+'/key-down invocation');assert.equal(actual.released.clearActions,test.released.clearActions,context+'/release invocation');assert.equal(actual.released.value,test.released.value);
+  assert.equal(a.clear.focusCue.visible,e.clear.focusVisible);assert.equal(a.clear.UseSystemFocusVisuals,false);if(e.clear.focusVisible){const scale=Number(e.clear.paint.scale);box(a.clear.focusCue.box,{x:e.clear.box.x-scale,y:e.clear.box.y-scale,width:e.clear.box.width+2*scale,height:e.clear.box.height+2*scale});assertNativePaint(a.clear.focusCue.paint,'rgb(16, 16, 16)',context+'/focus-outline');}
+  const png=readRgbaPng(await fs.readFile(path.join(native,test.file)));assert.equal(png.width,width);assert.equal(png.height,480);
+ }
+ const held=await read(path.join(native,'search-input-states-held-keys.json'));assert.equal(held.length,10);for(const key of held){assert.equal(key.downs,1);assert.equal(key.ups,1);assert(key.downOwned&&key.upOwned);assert.equal(key.upTarget,'ClearSearch');assert.equal(key.downTarget,key.key===9?'SearchEditor':'ClearSearch');}
+ const pointers=await read(path.join(native,'search-input-states-held-pointer.json'));assert.equal(pointers.length,4);for(const press of pointers){assert.equal(press.target,'ClearSearch');assert(press.downDelivered&&press.upDelivered);assert.equal(press.receipts.length,2);assert.equal(press.receipts[0].pressed,true);assert.equal(press.receipts[1].pressed,false);for(const receipt of press.receipts)assert(receipt.owned&&receipt.exact&&!receipt.IsGenerated);}
+ const desktop=await read(path.join(native,'search-input-states-desktop.json'));for(const gate of desktop.pointerPresentations)assert(gate.passed&&gate.stable>=2&&gate.milliseconds<2000);for(const move of desktop.pointerMoves){assert(move.positioned);assert.notEqual(move.deliveryFailed,true);assert(move.stationary||move.delivered);}for(const click of desktop.pointerClicks){assert.equal(click.target,'SearchInputStateSurface');assert(click.delivered&&click.receipts.some(r=>r.exact&&!r.IsGenerated));}assert(desktop.pointerClicks.length<=1);
+ assert.equal(report.paletteChecks.length,2);for(const check of report.paletteChecks)for(const flag of['sourceMutation','brushReplacement','opacityMutation','sourceBrushRestored','themeRoundtrip'])assert.equal(check[flag],true);
+ assert.equal(report.paintGates.filter(g=>g.kind==='capture').length,24);for(const gate of report.paintGates){assert(gate.passed&&gate.stable>=2&&gate.milliseconds<2000);assert(gate.frames.length>=2);assert(gate.frames.slice(-2).every(f=>f.matches));}
+ for(const theme of['Light','Dark'])assert.deepEqual(await fs.readFile(path.join(native,'catalog-'+theme.toLowerCase()+'.png')),await fs.readFile(path.join(native,`search-input-state-clear-hover-${width}-${theme}.png`)));
+ return{passed:true,width,cases:24,maximumGeometryError,geometryTolerance:.05,ownedHeldKeyPairs:held.length,ownedHeldPointerPairs:pointers.length,enterInvokesOnDown:true,spaceInvokesOnRelease:true,pressedEdgeRetainsOwner:true,sourcePixelParityVerified:false,nativeEnabledMotionVerified:false,nativeComponentAccepted:false};
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){const option=name=>{const i=process.argv.indexOf(name);assert(i>=0&&process.argv[i+1]);return process.argv[i+1];};const report=await auditSearchInputStates(path.resolve(option('--native')),Number(option('--width')));await fs.writeFile(option('--output'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));}

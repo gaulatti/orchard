@@ -1,5 +1,16 @@
 # Browser reference probes
 
+`SearchInputStates.json` records 48 actual browser states: editor/error hover
+and focus, disabled hover, read-only focus, clear hover/focus, held pointer,
+Space, Enter and left-edge presses, in both themes at 320/640. Fresh DOM avoids
+stale transition paint. CSS-computed paint, unscaled layout and scaled visual
+bounds, trusted input receipts, invocation counts before/after release and
+whole PNG hashes are retained. Enter invokes on key-down at scale 1; Space
+invokes on release at scale .92. The edge case exposed lost native release
+ownership. Source focus uses a rounded, tightly fitted outline that scales with
+the pressed visual. Pseudo-selector query flags are diagnostic; paint, focus,
+trusted input and actual invocations establish the measured state.
+
 `InputPaintMotion.json` records 40 transitions from the actual frozen Input
 component in Light/Dark with enabled/reduced motion. It retains source, tool,
 CSS, lock and collector provenance, independent keyframes/timing definitions,

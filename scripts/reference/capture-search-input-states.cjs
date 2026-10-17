@@ -1,0 +1,44 @@
+const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const option=name=>{const at=process.argv.indexOf(name);assert(at>=0&&process.argv[at+1]);return path.resolve(process.argv[at+1]);};
+const output=option('--output'),esbuildPath=option('--esbuild-module'),playwrightPath=option('--playwright-module'),hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+(async()=>{
+ await fs.mkdir(output,{recursive:true});const source=path.resolve('artifacts/line-chart-browser/frozen-source/src/components/search-input.tsx'),runtime=path.resolve('artifacts/line-chart-browser/node_modules');
+ assert.equal(hash(await fs.readFile(source)),'0a9e5eafdbafdeffdb2e60859ecd5cd1eea4af3598eac712e03f5a6d01a2a038');
+ const inputSource=path.join(path.dirname(source),'input.tsx');assert.equal(hash(await fs.readFile(inputSource)),'01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192');
+ const lockBytes=await fs.readFile('artifacts/chart-theme-reference/bleecker-package-lock.json'),lock=JSON.parse(lockBytes),installed=JSON.parse(await fs.readFile('artifacts/line-chart-browser/package-lock.json'));
+ for(const[key,value]of Object.entries(installed.packages))if(key){assert.equal(value.version,lock.packages[key]?.version);assert.equal(value.integrity,lock.packages[key]?.integrity);}
+ assert.equal(require(path.join(esbuildPath,'package.json')).version,'0.25.12');assert.equal(require(path.join(playwrightPath,'package.json')).version,'1.62.1');
+ const lucide=path.resolve('artifacts/error-state-browser/node_modules/lucide-react');assert.equal(require(path.join(lucide,'package.json')).version,'0.563.0');
+ const lucideLock=JSON.parse(await fs.readFile('artifacts/error-state-browser/package-lock.json')).packages['node_modules/lucide-react'];assert.equal(lucideLock.version,lock.packages['node_modules/lucide-react'].version);assert.equal(lucideLock.integrity,lock.packages['node_modules/lucide-react'].integrity);
+ const bundle=await require(esbuildPath).build({alias:{react:path.join(runtime,'react'),'react-dom':path.join(runtime,'react-dom'),'lucide-react':lucide},stdin:{contents:`import React from'react';import{createRoot}from'react-dom/client';import{flushSync}from'react-dom';import{SearchInput}from ${JSON.stringify(source)};const root=createRoot(document.getElementById('root'));window.actions=[];window.show=p=>flushSync(()=>root.render(<SearchInput key={p.id??"interactive"} {...p} aria-label='Search catalogue' onChange={e=>window.actions.push({kind:'change',text:e.target.value})} onClear={p.clear?()=>window.actions.push({kind:'clear'}):undefined}/>));`,loader:'tsx',resolveDir:process.cwd()},bundle:true,write:false,platform:'browser',jsx:'automatic',nodePaths:[runtime],define:{'process.env.NODE_ENV':'"production"'}});
+ const cssBytes=await fs.readFile('artifacts/line-chart-browser/styles.css');let css=cssBytes.toString().replace(/@import url\([^\r\n]*\);/g,''),fonts=[];
+ for(const[weight,file]of[[400,'EncodeSans-Regular.ttf'],[500,'EncodeSans-Medium.ttf'],[600,'EncodeSans-SemiBold.ttf']]){const bytes=await fs.readFile('src/Orchard/Assets/Fonts/'+file);fonts.push({weight,file,sha256:hash(bytes)});css+=`@font-face{font-family:'Encode Sans';font-weight:${weight};src:url(data:font/ttf;base64,${bytes.toString('base64')})}`;}
+ const specs=[{id:'editor-hover'},{id:'editor-focus'},{id:'error-hover',error:true},{id:'error-focus',error:true},{id:'disabled-hover',disabled:true},{id:'readonly-focus',readOnly:true},{id:'clear-hover'},{id:'clear-focus'},{id:'clear-pointer-pressed',hold:'pointer'},{id:'clear-space-pressed',hold:'Space'},{id:'clear-enter-pressed',hold:'Enter'},{id:'clear-edge-pressed',hold:'edge'}];
+ const browser=await require(playwrightPath).chromium.launch({headless:true,channel:'msedge'});assert.equal(browser.version(),'155.0.4283.45');const cases=[];
+ try{for(const width of[320,640])for(const scheme of['Light','Dark']){
+  const page=await browser.newPage({viewport:{width,height:480},deviceScaleFactor:1,reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  try{
+   await page.setContent(`<html class="${scheme==='Dark'?'dark':''}"><head><style>${css}body{margin:0;background:${scheme==='Dark'?'#0D1821':'white'}}#root{position:absolute;left:20px;top:20px;width:${width-40}px}</style></head><body><div id='root'></div><script>${bundle.outputFiles[0].text};window.inputEvents=[];for(const type of['pointermove','pointerdown','pointerup','keydown','keyup'])document.addEventListener(type,e=>window.inputEvents.push({type,target:e.target.tagName,key:e.key??null,trusted:e.isTrusted,buttons:e.buttons??null,x:e.clientX??null,y:e.clientY??null}),true);</script></body></html>`);
+   await page.evaluate(async()=>{await document.fonts.load('400 14px "Encode Sans"');await document.fonts.ready;});
+   for(const spec of specs){
+    await page.mouse.move(0,0);await page.evaluate(p=>{window.actions=[];window.inputEvents=[];window.show({...p,value:'Culture',clear:true});},spec);
+    const editor=page.getByRole('searchbox'),clear=page.getByRole('button',{name:'Clear search'});let held=false;
+    try{
+     if(spec.id.endsWith('hover'))await(spec.id.startsWith('clear')?clear:editor).hover();
+     else if(spec.id.endsWith('focus')){await editor.focus();if(spec.id==='clear-focus')await page.keyboard.press('Tab');}
+     if(spec.hold==='pointer'){await clear.hover();await page.mouse.down();held=true;}
+     else if(spec.hold==='edge'){const b=await clear.boundingBox();await page.mouse.move(b.x,b.y+b.height/2);await page.mouse.down();held=true;}
+     else if(spec.hold){await editor.focus();await page.keyboard.press('Tab');await page.keyboard.down(spec.hold);held=true;}
+     await page.evaluate(async()=>{for(const animation of document.getAnimations())animation.finish();await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+     const state=await page.evaluate(()=>{const box=e=>{const b=e.getBoundingClientRect();return{x:b.x,y:b.y,width:b.width,height:b.height}},paint=e=>{const s=getComputedStyle(e);return{background:s.backgroundColor,color:s.color,border:s.borderColor,boxShadow:s.boxShadow,opacity:Number(s.opacity),scale:s.scale,outline:s.outline,outlineOffset:s.outlineOffset,radius:s.borderRadius,transformOrigin:s.transformOrigin};};const editor=document.querySelector('input'),clear=document.querySelector('button');return{editor:{box:box(editor),paint:paint(editor),focused:document.activeElement===editor,hover:editor.matches(':hover')},clear:{box:box(clear),layoutBox:{x:clear.getBoundingClientRect().x+(clear.getBoundingClientRect().width-clear.offsetWidth)/2,y:clear.getBoundingClientRect().y+(clear.getBoundingClientRect().height-clear.offsetHeight)/2,width:clear.offsetWidth,height:clear.offsetHeight},paint:paint(clear),focused:document.activeElement===clear,focusVisible:clear.matches(':focus-visible'),hover:clear.matches(':hover'),active:clear.matches(':active'),icon:box(clear.querySelector('svg'))},clearActions:window.actions.length,inputEvents:[...window.inputEvents]};});
+     const file=`search-input-state-${spec.id}-${width}-${scheme}.png`;await page.screenshot({path:path.join(output,file)});
+     if(spec.hold==='pointer'||spec.hold==='edge'){await page.mouse.up();held=false;}else if(spec.hold){await page.keyboard.up(spec.hold);held=false;}
+     const released=await page.evaluate(()=>({clearActions:window.actions.length,value:document.querySelector('input').value,inputEvents:window.inputEvents}));
+     assert.equal(released.value,'Culture');assert(state.inputEvents.every(e=>e.trusted));cases.push({id:spec.id,width,scheme,props:spec,state,released,file,pngSha256:hash(await fs.readFile(path.join(output,file)))});
+    }finally{if(held){if(spec.hold==='pointer'||spec.hold==='edge')await page.mouse.up();else await page.keyboard.up(spec.hold);}}
+   }
+   assert.deepEqual(errors,[]);
+  }finally{await page.close();}
+ }}finally{await browser.close();}
+ const report={format:'orchard-search-input-states-v1',sourceCommit:'a86059013cd59684ce452849278ea81e734f2066',sourceSha256:hash(await fs.readFile(source)),inputSourceSha256:hash(await fs.readFile(inputSource)),scriptSha256:hash((await fs.readFile(__filename,'utf8')).replace(/\r\n/g,'\n')),freshMountPerCase:true,cssSha256:hash(cssBytes),frozenLockSha256:hash(lockBytes),fontFiles:fonts,browser:browser.version(),cases};await fs.writeFile(path.join(output,'reference.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({cases:cases.length,held:cases.filter(c=>c.props.hold).map(c=>({id:c.id,width:c.width,scheme:c.scheme,scale:c.state.clear.paint.scale,active:c.state.clear.active,hover:c.state.clear.hover,clearBefore:c.state.clearActions,clearAfter:c.released.clearActions}))}));
+})().catch(error=>{console.error(error);process.exitCode=1});

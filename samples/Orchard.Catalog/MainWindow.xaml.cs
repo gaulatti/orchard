@@ -68,6 +68,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-loading-overlay-contrast")) await RunLoadingOverlayContrastAsync(folder, entryOnly: false);
             else if (args.Contains("--smoke-loading-overlay-contrast-entry")) await RunLoadingOverlayContrastAsync(folder, entryOnly: true);
             else if (args.Contains("--smoke-search-input")) await RunSearchInputsAsync(folder);
+            else if (args.Contains("--smoke-search-input-states")) await RunSearchInputStatesAsync(folder);
             else if (args.Contains("--smoke-search-input-catalog"))
             {
                 foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
