@@ -65,5 +65,24 @@ then captures the source matrix at 320/639/640 and restores the original setting
 `scripts/verify-accordion-runtime.mjs` checks the lifecycle/input/command/binding
 receipts. `scripts/verify-accordion.mjs` compares actual layout, paint and full
 client pixels to the frozen source. Both architecture jobs register these checks;
-push-triggered Actions remain paused. The independent package, full catalog and
-remaining platform/motion/raster work must be verified before acceptance.
+push-triggered Actions remain paused. The independent x64 package consumer passes
+both themes, including native hold/release behavior, live metadata/templates,
+content retention, stale/disabled guards and independent actions. The ARM64
+consumer build passes. Version `0.1.0-5a115e5` and both catalog architecture builds
+are verified; temporary consumers are removed. The full x64 catalog passes 156
+phases and 1,154 captures in 477.986485 seconds, retaining all prior captures and
+174 protected chart glyph hashes. See the current checkpoint for hashes.
+Native ARM64 execution and the remaining platform/motion/raster matrix must be
+verified before acceptance.
+
+Run the reference collector from the repository root:
+
+```powershell
+node scripts/reference/capture-accordion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --output artifacts/current/accordion-source
+```
+
+The source directory is the pinned Bleecker archive with its `node_modules` and
+a sibling `bleecker.git` bare repository. The collector checks its source/CSS/lock
+bytes against that commit. Tooling pins are esbuild 0.25.12, Tailwind 4.2.2 and
+React/React DOM 19.2.4, with Edge 155.0.4283.45. Review the resulting JSON and PNG
+hashes together when updating the frozen reference.

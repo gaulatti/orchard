@@ -1,12 +1,17 @@
 # Native Windows runtime evidence
 
-The current Accordion candidate passes 60 source/native layout frames and 108
+Source `5a115e5` passes 60 source/native Accordion layout frames and 108
 rows with zero geometry error, plus 44 native lifecycle phases under both themes
 and Windows motion preferences. All 159 unit tests pass. Fourteen damaged audit
 receipts are rejected; template commands, bound typing and accessible names are
-verified. Fresh package/full-catalog/architecture delivery remains pending. Exact
-raster, motion trajectories and full platform acceptance remain open. Inventory
-is 65 in progress, 47 pending and zero accepted. See the current checkpoint.
+verified. Both catalog architectures and the independent ARM64 consumer build
+pass. The complete isolated x64 package consumer passes Light/Dark, including
+held/released activation checks and the existing Date regressions. The full x64
+catalog passes 156 phases, 1,154 PNGs and all 174 protected chart glyph hashes in
+477.986485 seconds under the unchanged 480-second limit. Every entry in both
+versioned catalog ZIPs matches publish output. Exact raster, source motion
+trajectories and full platform acceptance remain open. Inventory is 65 in
+progress, 47 pending and zero accepted. See the current checkpoint.
 
 Source `e73e626` passes 28 source-derived Radio lifecycle cases
 and six live reversal steps with 116 native property samples in Light/Dark.

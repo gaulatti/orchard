@@ -2117,9 +2117,9 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete source/native geometry, paint and raster comparison for 60 source cases",
+        "Resolve complete-client raster differences; all 60 source/native layout and paint frames pass with zero geometry error",
         "Verify normal/reversed motion and the complete customization/error/lifecycle matrix",
-        "Verify independent package consumer, full catalog, native ARM64, scaling, contrast, Narrator and performance"
+        "Verify native ARM64 runtime, scaling, contrast, Narrator and performance; full x64 catalog and independent package/build delivery pass at 5a115e5"
       ]
     },
     {

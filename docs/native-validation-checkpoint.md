@@ -1,23 +1,51 @@
 # Current native validation checkpoint
 
-## Accordion candidate
+## Accordion preview delivery
 
-The current worktree implements the Accordion's keyed, single-section expansion,
+Source `5a115e5` implements the Accordion's keyed, single-section expansion,
 initial-only default ID, independent actions, rich content and four data-template
 slots. All 159 unit tests pass. Its 60 source/native frames cover 108 rows in
 Light/Dark at 320/639/640px with zero geometry error, exact text, numeric typography
 and paint. The full-client comparison retains zero masks/pixel tolerance and no
-resampling; 951,927 pixels differ and exact raster parity remains unproven.
+resampling; 951,926 pixels differ and exact raster parity remains unproven.
 Source PNGs and font receipts are committed reference fixtures.
 
 Both real Windows motion preferences pass 44 native lifecycle phases, 16 owned
 key pairs and four pointer actions. Template checks verify actual rendered names,
 bound commands and native typing reaching the consumer model. Fourteen damaged
-layout/runtime receipts are rejected. Preferences are restored. Independent
-package delivery, fresh source-identified architecture builds and the complete
-catalog replay are pending. The published Radio release below remains the
-baseline. Inventory is now 65 in progress, 47 pending and zero accepted; both
-compositions remain unaccepted. See [Accordion usage and remaining acceptance](accordion.md).
+layout/runtime receipts are rejected. Preferences are restored. Both catalog
+architectures build. Package `0.1.0-5a115e5` passes the complete independent x64
+Light/Dark consumer and the independent ARM64 consumer build. Temporary source,
+feed and package caches are removed. Its SHA-256 is
+`68e096357b1d3fd43dcb270feaf50c185ff7183f14a8a7f029f0e6aec1861acf`;
+the package, both consumers and the full x64 catalog library match at
+`07f01b3bc5736783b7d9321a2570f3c7df3559771a116d76dfad730f2e01b1be`.
+Existing Date checks retain eight native key pairs and six requests. The
+independent Accordion consumer checks held Space/Enter state and activation
+after release. The first two fixture attempts had asserted activation while
+held; those receipts remain at `artifacts/current/accordion-first-package-runtime.json`
+and `artifacts/current/accordion-second-package-runtime.json`. Product key
+behavior and exact press/release ownership checks are unchanged.
+
+The full x64 catalog passes in 477.986485 seconds under the unchanged
+480-second watchdog: 156 phases, all 1,152 prior captures plus two Accordion
+captures, all 174 protected chart glyph hashes, 2,040 pointer gates, 1,778 owned
+key actions, 96 routed clicks and both Date closing pairs. Accordion and Radio
+delivery plus existing Textarea/Date integration audits pass. The full output is
+`artifacts/current/native-full-accordion`. The added Accordion phases sit between
+Radio Group and Switch in both themes. Every archive entry matches publish:
+
+| Artifact under `artifacts/current` | Files | SHA-256 |
+| --- | --- | --- |
+| `Orchard.Catalog.0.1.0-5a115e5-x64.zip` | 537 | `028464b4720e9871677fc061e34498650cfac530c679f162fab7160585b18364` |
+| `Orchard.Catalog.0.1.0-5a115e5-ARM64.zip` | 533 | `af4a2625c7f50da8b92252ddb3a6f0cca426ec4ac7f3883cffc541f7aea3ad75` |
+
+Inventory is 65 in progress, 47 pending and zero accepted; both compositions
+remain unaccepted. Exact raster, source motion trajectories and the complete
+customization/lifecycle/platform matrices remain open. Native ARM64 execution,
+contrast/scaling, Narrator and collection performance are unverified. Hosted
+checks are registered for both architectures; push-triggered Actions remain
+paused and no workflow is dispatched. See [Accordion usage and remaining acceptance](accordion.md).
 
 ## Radio continuity and repeated reversals
 
