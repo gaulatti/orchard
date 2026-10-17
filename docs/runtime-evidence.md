@@ -1,13 +1,19 @@
 # Native Windows runtime evidence
 
-The current Radio continuity candidate passes 28 source-derived lifecycle cases
+Source `e73e626` passes 28 source-derived Radio lifecycle cases
 and six live reversal steps with 116 native property samples in Light/Dark.
 It corrects the four move-direction clock mismatches in the preserved pre-fix
 capture, retains visible labels and UIA selection, and restores Windows motion
 preferences. All 155 unit tests pass, including 36 frozen reversal samples;
 17 damaged continuity receipts are rejected. Its 52 existing motion timelines
-also pass with 420 native samples. Fresh package/full-catalog/ARM64 delivery is
-pending; the published baseline below is retained. See the current checkpoint.
+also pass with 418 native samples. Both catalog architectures and the independent
+ARM64 consumer build pass. The isolated x64 package consumer passes both themes,
+including public keyed lifecycle checks and the existing Date regressions.
+The full x64 catalog passes all 154 phases, 1,152 prior PNGs and 174 protected
+chart glyph hashes in 473.0093278 seconds under the unchanged 480-second limit.
+All entries in both versioned catalog ZIPs match publish output. Native ARM64
+runtime, exact raster and full platform acceptance remain open. Push-triggered
+Actions remain paused. See the current checkpoint for hashes and raw evidence.
 
 Source `9594a5a` corrects Radio Group's interrupted and theme motion, CSS
 color-space selection and shared Chromium/Skia color conversion. All 152 unit

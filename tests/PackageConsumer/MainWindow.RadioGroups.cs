@@ -63,7 +63,7 @@ public sealed partial class MainWindow
             await CheckLifecycle("move-first-to-last",()=>group.Options.Move(0,1),1);
             await CheckLifecycle("replace-collection",()=>group.Options=new(group.Options.Select(option=>new BleeckerRadioOption(option.Value,option.Label,option.Description,option.Disabled))),0);
             await CheckLifecycle("orientation",()=>group.Orientation=Orientation.Horizontal,0);
-            group.Options.Move(1,0);Root.UpdateLayout();Require(ReferenceEquals(BrandDescendants<Button>(group).First(),weekly),"Packaged reordering lost keyed option identity.");
+            group.Options.Move(1,0);Root.UpdateLayout();await PresentRadioAsync();Require(ReferenceEquals(BrandDescendants<Button>(group).First(),weekly),"Packaged reordering lost keyed option identity.");
             group.Options[0]=new("weekly","Updated weekly","Updated help");Root.UpdateLayout();Require(FrameworkElementAutomationPeer.CreatePeerForElement(weekly).GetName()=="Updated weekly","Packaged immutable option replacement lost live metadata.");
             var stale=(ISelectionItemProvider)FrameworkElementAutomationPeer.CreatePeerForElement(weekly).GetPattern(PatternInterface.SelectionItem);group.Options.RemoveAt(0);Root.UpdateLayout();
             Require(state.Value=="weekly"&&selection.GetSelection().Length==0,"Packaged selected removal invented replacement state.");

@@ -1,23 +1,55 @@
 # Current native validation checkpoint
 
-## Radio continuity candidate
+## Radio continuity and repeated reversals
 
-The current worktree corrects keyed Radio Group placement to match the pinned
+Source `e73e626` corrects keyed Radio Group placement to match the pinned
 source's direction-dependent transition lifetime. The pre-fix x64 capture at
 `artifacts/current/radio-continuity-before` reproduces four mismatches; the
 corrected capture at `artifacts/current/radio-continuity-native` passes all 28
 lifecycle cases and six reversal steps across both themes and real Windows
 motion preferences. The independent audit verifies 116 native property samples,
 eight retained clocks, six reset clocks, visible labels and UIA selection.
-Maximum scale error is `0.00000006534452323680995`; RGB bytes remain exact.
+Maximum continuity scale error is `0.00000006420920883876136`; RGB bytes remain exact.
 All 155 unit tests pass, including 36 source-frozen reversal samples. Seventeen
 altered continuity receipts and all eight existing motion mutations are rejected.
-The existing 52 motion timelines pass again with 420 native samples. Windows
-preferences are restored. Source raster parity and component acceptance remain
-unproven. Package delivery, both fresh architecture builds and a fresh full
-catalog run for this candidate are pending; the verified release below remains
-the published baseline. Inventory stays 64 in progress, 48 pending and zero
-accepted. Push-triggered Actions remain paused.
+The existing 52 motion timelines pass again with 418 native samples and 204
+distinct intermediate ring paints. Windows preferences are restored. The fresh
+56-frame, 136-option layout audit retains zero geometry error and 147,819
+differing source pixels under unchanged zero-mask/zero-tolerance comparisons.
+Source raster parity and component acceptance remain unproven.
+
+Both catalog architectures build. Package `0.1.0-e73e626` passes the complete
+isolated x64 Light/Dark consumer and the independent ARM64 consumer build.
+Both physical reorder directions, collection replacement and orientation retain
+the intended public-control identity, load/unload events and UIA selection.
+The consumer awaits presentation after moving a sibling before invoking its
+automation peer; the first attempt's premature invocation remains recorded at
+`artifacts/current/radio-continuity-first-package-runtime.json`. The library's
+availability guard is unchanged. Date regression checks retain eight native key
+pairs and six requests. Both temporary consumer caches are removed.
+Package SHA-256 is
+`8915026a31c67a4d07b7845b99df70e95b8b9b6fe077e171f5be344ad37adc16`;
+its library matches the full x64 runtime and both consumers at
+`813719f51f4a60216e8fefe6b79f486023bd75aeef7d8ec4a373d740843f8856`.
+
+The complete x64 catalog passes 154 phases and all 1,152 prior PNG captures in
+473.0093278 seconds under the unchanged 480-second watchdog. The independent
+audit retains all 174 protected chart glyph hashes, 2,038 pointer gates, 1,772
+owned key actions, 94 routed clicks and both Date closing pairs. Radio delivery
+and Textarea/Date integration pass. Output is
+`artifacts/current/native-full-radio-continuity`. Every entry in both catalog
+archives matches its architecture's publish directory:
+
+| Artifact under `artifacts/current` | Files | SHA-256 |
+| --- | --- | --- |
+| `Orchard.Catalog.0.1.0-e73e626-x64.zip` | 537 | `260b734d865f0b49be7cade0584730e81ea22f475a446535e87522ba70f604da` |
+| `Orchard.Catalog.0.1.0-e73e626-ARM64.zip` | 533 | `3288043301fdb2954cecf7fbc35311108c93fdbe7138262e30075231f1c28c9f` |
+
+Inventory stays 64 in progress, 48 pending and zero accepted; both compositions
+remain unaccepted. Exact raster, complete customization/error/lifecycle matrices,
+native ARM64 execution, scaling, contrast, Narrator and measured collection
+performance remain open. Hosted checks are registered for both architectures;
+push-triggered Actions remain paused and no workflow is dispatched.
 
 ## Radio motion and CSS color spaces
 
