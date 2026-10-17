@@ -37,7 +37,7 @@ public sealed partial class MainWindow
             var day = DateChildren<ToggleButton>(calendar).Single(x => x.Content.ToString() == "19");
             var dayText = DateChildren<TextBlock>(day).Single(x => x.Name == "DayText");
             var dayBaseline = ReferenceBaseline(dayText, 14);
-            Require(Typography.GetNumeralAlignment(dayText) == Windows.UI.Text.FontNumeralAlignment.Tabular, "Packaged calendar lost tabular day numerals.");
+            Require(Typography.GetNumeralAlignment(dayText) == FontNumeralAlignment.Tabular, "Packaged calendar lost tabular day numerals.");
             await KeyAsync(0x20, day, day); Require(calendar.Value == Date(19), "Packaged calendar lost its controlled date request.");
             phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight, dayBaseline, tabularNumerals = true });
             var trigger = DateChildren<Button>(picker).Single(x => x.Name == "PART_Trigger");
@@ -57,7 +57,7 @@ public sealed partial class MainWindow
             var toWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "End date").ActualWidth;
             Require(fromWidth == 130.421875 && toWidth == 132.125, "Packaged range lost source intrinsic field widths.");
             var preset = DateChildren<BleeckerButton>(range).Single(x => x.Content as string == "Package seven days");
-            var presetBaseline = ReferenceBaseline(DateChildren<TextBlock>(preset).Single(), 13);
+            var presetBaseline = ReferenceBaseline(DateChildren<TextBlock>(preset).Single(), 12);
             var action = DateChildren<Button>(preset).Single(x => x.Name == "PART_Action");
             var today = DateTime.Now.Date; await KeyAsync(0x20, action, action);
             Require(range.Value == new BleeckerDateRange(today.AddDays(-7).ToString("yyyy-MM-dd"), today.ToString("yyyy-MM-dd")), "Packaged range preset lost local dates.");
@@ -75,7 +75,7 @@ public sealed partial class MainWindow
             Require(BleeckerTextLayout.GetUseReferenceLineBox(text), "Packaged date text lost reference line-box alignment.");
             var parent = (FrameworkElement)text.Parent;
             var baseline = text.TransformToVisual(parent).TransformPoint(new Point(0, text.BaselineOffset)).Y;
-            Require(Math.Abs(baseline - expected) < .001, "Packaged date text lost the source baseline.");
+            Require(Math.Abs(baseline - expected) < .001, $"Packaged date baseline {baseline} differs from source {expected} for {text.Text}.");
             return baseline;
         }
         async Task KeyAsync(ushort key, Control target, Control? releaseTarget)

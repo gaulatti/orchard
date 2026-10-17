@@ -194,7 +194,7 @@ after running `scripts/verify-package.ps1` for both architectures:
 
 ```powershell
 ./scripts/verify-date-package.ps1 `
-  -Package artifacts/current/packages/Gaulatti.Orchard.0.1.0-c687e27.nupkg `
+  -Package artifacts/current/packages/Gaulatti.Orchard.0.1.0-0758f03.nupkg `
   -X64 artifacts/current/consumer-dates-x64 `
   -Arm64 artifacts/current/consumer-dates-ARM64 `
   -Output artifacts/current/dates-package-audit.json
@@ -285,6 +285,21 @@ with the existing 0.001px numeric tolerance. Reproduce with
 `node scripts/verify-date-typography.mjs --native-root artifacts/current --output artifacts/current/date-typography-audit.json`
 after both native runners at both widths. This does not compare glyph ink or
 horizontal subpixel raster placement.
+
+Source `0758f03` passes the complete x64 catalog after the typography and
+re-enable corrections: 152 phases, 1,150 captures and 469.5629669 seconds under
+the unchanged 480-second watchdog. All prior capture names and 174 protected
+chart glyph hashes remain. The focused Calendar runner now includes the
+shared restoration fixture at both widths/themes, giving 312 pointer gates;
+its original 4,060 day comparisons and 28 interaction/lifecycle phases remain.
+
+Package `0.1.0-0758f03` passes the full independent x64 consumer runtime in both
+themes, including the source's local 14px day, 15px caption and 12px preset
+baselines, tabular day numerals, eight native date key pairs and six requests.
+The ARM64 consumer builds from that package. Both consumers and the full x64
+catalog use identical library bytes; temporary consumer workspaces are removed.
+Both catalog architectures publish and their source-identified ZIPs are verified
+file by file. Native ARM64 execution remains unverified.
 
 Acceptance must carry these contracts through public C# models/properties,
 consumer-owned value requests, native templates, layout, min/max and disabled

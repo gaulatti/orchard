@@ -2,7 +2,7 @@
 
 ## Date typography alignment
 
-The current candidate matches 6,076 text entries across all 188 source frames:
+Source `0758f03` matches 6,076 text entries across all 188 source frames:
 actual transformed baselines, display text, font size/weight, line height,
 tracking and numeral alignment. This includes 4,680 tabular day entries. The
 source typography probe preserves every earlier measurement and PNG hash.
@@ -12,9 +12,31 @@ and the independent geometry/basic-paint/typography audits pass.
 `BleeckerTextLayout.UseReferenceLineBox` retains authored TextBlocks and their
 bindings, and date templates opt in. Range presets retain their original string
 content, keyed identities and commands while using an explicit caption template.
-Diagnostic layout tracing has been removed. Full catalog, independent packaged
-consumer and ARM64 build checks for this newer candidate are pending; the
-source-identified results below remain evidence for their earlier source.
+Diagnostic layout tracing has been removed. Source `0758f03` passes the complete
+x64 catalog: 152 phases and 1,150 captures in 469.5629669 seconds under the
+unchanged 480-second watchdog. Every prior capture name and all 174 protected
+chart glyph hashes remain, with 2,032 pointer gates, 1,764 owned key actions,
+92 routed clicks and both Dates closing-surface pointer pairs. Both themes
+pass restoration, re-enabling and three consumer updates.
+
+Package `Gaulatti.Orchard.0.1.0-0758f03.nupkg` passes the complete independent
+x64 Light/Dark consumer runtime and an independent ARM64 consumer build. Dates
+verify tabular numerals, 14px day / 15px caption / 12px preset local baselines,
+eight native key pairs and six consumer updates. Package and full-catalog library
+bytes are identical, with SHA-256
+`18cfa5a5832698f0d4714f50d6c5d40bc76ae4bb183cad7d41730ecc154a37be`.
+Both isolated temporary source/feed/cache directories are removed. Native ARM64
+execution remains unverified. The package SHA-256 is
+`758680323b0dead9855872c89f7f140836103682829e42b48402f69b1cd2082a`.
+
+Both catalog publishes pass. Every archive file matches its publish output:
+
+- x64: 537 files; SHA-256
+  `bc9d64f8b55f87cdf9c6a22b24aa1c19fb5edfa60e70c19d161ed9ead3e10dad`.
+- ARM64: 533 files; SHA-256
+  `ee6d7bb4c7f3831837bd521518106fa9cbbda7100652e17b1a125cd44977e26d`.
+
+The source-identified results below retain their earlier verification scope.
 The first full run stopped at the new restoration assertion: the fixture had
 assumed the default transform was null, while WinUI returned an identity
 MatrixTransform. The fixture now uses a known explicit transform and alignments,
@@ -23,6 +45,10 @@ That regression exposed a real re-enable issue: a temporarily unloaded TextBlock
 already had its restored Panel parent, but the helper's IsLoaded gate skipped
 wrapping it. Enabling now uses an available parent immediately; a missing parent
 still waits for Loaded, and stale Loaded events still honor the attached value.
+The first consumer attempts exposed two assertion errors: the numeral-alignment
+enum belongs to Microsoft.UI.Xaml, and the frozen preset's local baseline is
+12px. Both assertions now follow the pinned SDK/source measurements. Failed
+attempts and cleanup evidence remain under `artifacts/current/date-typography-failures`.
 Exact glyph raster/horizontal subpixel placement, shadows, motion and platform
 acceptance remain open. Counts stay 63 in progress, 49 pending and zero accepted.
 

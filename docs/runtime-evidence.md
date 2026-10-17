@@ -1,11 +1,20 @@
 # Native Windows runtime evidence
 
-The current date typography candidate passes both focused native runners at
+The date typography fixes at `0758f03` pass both focused native runners at
 320/640px in Light/Dark and matches all 6,076 source text entries in 188 frames.
 It also retains the existing geometry, basic paint, consumer requests and native
-input checks. All 143 unit tests and generated-token checks pass. Full catalog,
-packaged-consumer and ARM64 build verification of this candidate are pending;
-the following source-identified evidence remains historical until rechecked.
+input checks. All 143 unit tests and generated-token checks pass. Source
+`0758f03` passes the full x64 catalog: 152 phases and 1,150 captures in
+469.5629669 seconds, retaining all prior names and 174 protected chart glyph
+hashes. The enable/disable/re-enable regression and native consumer requests
+pass in both themes. Both catalog architectures publish, and package
+`0.1.0-0758f03` passes the complete independent x64 Light/Dark runtime and an
+independent ARM64 build. Packaged typography, eight native date key pairs and
+six consumer updates pass. Both consumers' library bytes match the package and
+the full-catalog library; both temporary workspaces are removed. Native ARM64
+runtime, exact raster/shadows/motion and full Windows platform acceptance remain
+open. Current archive/package hashes are in the checkpoint. Historical results
+below retain their original source and verification scope.
 
 The date presentation fixes at `c687e27` publish for x64 and ARM64. Native
 geometry covers all 188 reference frames: 132 Calendar states and 56 Picker/Range
