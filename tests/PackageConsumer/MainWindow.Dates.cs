@@ -31,14 +31,14 @@ public sealed partial class MainWindow
         Root.Children.Add(host);
         try
         {
-            await AwaitTextareaPresentationAsync(); await AcquireConsumerInputAsync();
+            await PresentAsync(host); await AcquireConsumerInputAsync();
             Require(calendar.ActualHeight == 252, "Packaged calendar lost its measured month height.");
             var day = DateChildren<ToggleButton>(calendar).Single(x => x.Content.ToString() == "19");
             await KeyAsync(0x20, day, day); Require(calendar.Value == Date(19), "Packaged calendar lost its controlled date request.");
             phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight });
             var trigger = DateChildren<Button>(picker).Single(x => x.Name == "PART_Trigger");
             await KeyAsync(0x20, trigger, null); await AwaitAsync(() => picker.IsDropDownOpen, "Packaged picker did not open through Space.");
-            var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(x => DateChildren<BleeckerCalendar>(x.Child).Any());
+            var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(x => x.Child is not null && DateChildren<BleeckerCalendar>(x.Child).Any());
             var chosen = DateChildren<ToggleButton>(popup.Child).Single(x => x.Content.ToString() == "19");
             await KeyAsync(0x0D, chosen, trigger); await AwaitAsync(() => !picker.IsDropDownOpen, "Packaged picker did not close after selection.");
             Require(picker.Value == Date(19) && ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), trigger), "Packaged picker lost selection or focus restoration.");
@@ -51,14 +51,14 @@ public sealed partial class MainWindow
         }
         finally
         {
-            Root.Children.Remove(host); await AwaitTextareaPresentationAsync();
+            Root.Children.Remove(host);
             var args = Environment.GetCommandLineArgs(); var report = args[Array.IndexOf(args, "--verify-output") + 1];
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!, $"consumer-dates-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed, requests, phases }));
         }
 
         async Task KeyAsync(ushort key, Control target, Control? releaseTarget)
         {
-            await AcquireConsumerInputAsync(); Require(target.Focus(FocusState.Keyboard), "Packaged date target refused native focus.");
+            await PresentAsync(target); await AcquireConsumerInputAsync(); Require(target.Focus(FocusState.Keyboard), "Packaged date target refused native focus.");
             var island = ContentIsland.FindAllForCurrentThread().Single(x => ReferenceEquals(x.Environment, Root.XamlRoot.ContentIslandEnvironment));
             var source = InputKeyboardSource.GetForIsland(island) ?? throw new InvalidOperationException("Packaged date input source unavailable.");
             var downs = 0; var ups = 0; var exact = true;
@@ -74,12 +74,25 @@ public sealed partial class MainWindow
             {
                 var inputs = new[] { new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = key } } }, new ConsumerInput { Type = 1, Data = new ConsumerInputData { Keyboard = new ConsumerKeyboard { VirtualKey = key, Flags = 2 } } } };
                 Require(SendInput(2, inputs, Marshal.SizeOf<ConsumerInput>()) == 2, "Packaged date key was not injected.");
-                await AwaitAsync(() => downs == 1 && ups == 1, "Packaged date key lost native press/release."); await AwaitTextareaPresentationAsync();
+                await AwaitAsync(() => downs == 1 && ups == 1, "Packaged date key lost native press/release."); await PresentAsync(host);
                 Require(exact, "Packaged date key lost source or window ownership.");
                 if (releaseTarget is not null) Require(ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), releaseTarget), "Packaged date key ended on the wrong focus owner.");
                 phases.Add(new { phase = "native-key", key, downs, ups, exact });
             }
             finally { source.KeyDown -= down; source.KeyUp -= up; }
+        }
+        async Task PresentAsync(FrameworkElement target)
+        {
+            var ready = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); Rect? previous = null; var stable = 0;
+            void Rendering(object? sender, object args)
+            {
+                var box = target.TransformToVisual(Root).TransformBounds(new Rect(0, 0, target.ActualWidth, target.ActualHeight));
+                var visible = target.IsLoaded && box.Width > 0 && box.Height > 0 && box.Left >= 0 && box.Top >= 0 && box.Right <= Root.ActualWidth && box.Bottom <= Root.ActualHeight;
+                stable = visible && previous == box ? stable + 1 : 0; previous = box; if (stable >= 2) ready.TrySetResult();
+            }
+            CompositionTarget.Rendering += Rendering;
+            try { await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); }
+            finally { CompositionTarget.Rendering -= Rendering; }
         }
     }
     private static IEnumerable<T> DateChildren<T>(DependencyObject root) where T : DependencyObject

@@ -1762,13 +1762,14 @@
         "samples/Orchard.Catalog/MainWindow.DateControls.cs",
         "samples/Orchard.Catalog/DateControlsFixture.xaml.cs",
         "scripts/verify-date-controls.mjs",
-        "tests/PackageConsumer/MainWindow.Dates.cs"
+        "tests/PackageConsumer/MainWindow.Dates.cs",
+        "scripts/verify-date-package.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Verify the complete Picker/Range source geometry and paint matrix, long content, constrained overflow, exact glyph raster, selected-day shadow and normal-motion timing",
         "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
-        "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; independent package and full catalog evidence must match the final source revision"
+        "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; source48cca09 package passes the full independent x64 consumer with eight date key pairs and matching ARM64 consumer builds; full x64 catalog passes 152 phases/1150 captures and retains all 174 protected glyph hashes"
       ]
     },
     {
@@ -2376,13 +2377,14 @@
         "samples/Orchard.Catalog/MainWindow.DateControls.cs",
         "samples/Orchard.Catalog/DateControlsFixture.xaml.cs",
         "scripts/verify-date-controls.mjs",
-        "tests/PackageConsumer/MainWindow.Dates.cs"
+        "tests/PackageConsumer/MainWindow.Dates.cs",
+        "scripts/verify-date-package.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Verify the complete Picker/Range source geometry and paint matrix, long content, constrained overflow, exact glyph raster, selected-day shadow and normal-motion timing",
         "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
-        "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; independent package and full catalog evidence must match the final source revision"
+        "Verify real Windows contrast, Narrator, scaling and native ARM64 runtime; source48cca09 package passes the full independent x64 consumer with eight date key pairs and matching ARM64 consumer builds; full x64 catalog passes 152 phases/1150 captures and retains all 174 protected glyph hashes"
       ]
     },
     {

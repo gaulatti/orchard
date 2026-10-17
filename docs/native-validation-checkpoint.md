@@ -30,6 +30,44 @@ they must not be confused with the newly built publish directories. Full catalog
 independent consumer and versioned date-preview validation is tracked separately.
 Push-triggered Actions stay paused; no workflow is dispatched.
 
+Source `48cca09c146e7bf4159d650f142700edc7957a77` publishes successfully for
+x64 and ARM64. The focused date audit passes 132 frames, 4,060 day comparisons,
+28 interaction/lifecycle phases, 16 closing-surface pointer pairs, 308 stable
+pointer gates and 36 owned keyboard transfers. Its machine report is
+`artifacts/current/dates-native-audit.json`.
+
+Package `Gaulatti.Orchard.0.1.0-48cca09.nupkg` has SHA-256
+`f59b9c673b12b8cb69a6be0122a2ab50a02f4d69933673e33a6dcf39f98f81e0`.
+Its independent x64 consumer passes the complete Light/Dark runtime, including
+eight date key pairs and six date requests. The ARM64 consumer builds; native
+ARM64 runtime is unverified. Both consumer libraries match the packaged library
+SHA-256 `a8d92169053b61a420450dd58b896f625cc5cc898d21c76a92ac50fee19b56b8`.
+Both temporary source/feed/cache workspaces were removed. The first package
+attempt failed because the new date check reused the unrelated off-screen
+Textarea presentation predicate. The repaired check requires visible stable
+bounds for the actual date target and preserves its report on failure.
+`dates-package-audit.json` records the passing result.
+
+The source-identified catalog archives contain 537 x64 and 533 ARM64 files.
+Every archived file's bytes match the normal publish directories. Archive SHA-256
+values are:
+
+- x64: `24c2eda34fa6c736256b4aabcf1c27d4b57ae9d7181866b72002f6e9c10b02a6`.
+- ARM64: `76944f1e419ae04f335acb3bf2e52618eb2ea9d7a8e9be47f456c6fdd378732c`.
+
+`artifacts/current/dates-catalog-archives.json` retains paths and file counts.
+
+The complete x64 catalog at this source passes 152 phases and 1,150 captures in
+469.1742111 seconds under the unchanged 480-second watchdog. It retains all
+1,148 prior capture names and all 174 protected chart glyph hashes. The audit
+verifies 2,032 owned pointer moves/presentation gates, 1,764 owned keyboard
+actions, 92 routed clicks, the two native Dates selection press/release pairs,
+and all 20 existing live Textarea phases. The new Dates fixtures each verify
+three consumer updates and restore their original sample values before capture.
+Reports are `artifacts/current/native-full-dates-audit.json` and
+`native-full-dates`; the retained `native-full` directory is the comparison
+baseline. This is runtime/integration evidence, not full component acceptance.
+
 ## Regenerated deliverables after the 2026-10-17 reset
 
 Source `3a0e8e16f5f6c2ad18c3ba2448f2c81e803827a5` includes the chart

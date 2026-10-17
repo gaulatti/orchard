@@ -1,12 +1,20 @@
 # Native Windows runtime evidence
 
-The complete x64 catalog at `1abca74` passes both appearances in 463.2165656
-seconds, retaining all previous capture names and 174 protected glyph geometry
-hashes. It contains 1,146 PNGs, 2,016 stable pointer gates, 1,758 owned key actions
-and 82 native clicks. Metric's full integration audit also passes. The
-navigation multi-match and fractional Input alpha assertions are repaired;
-deadlines are unchanged. See [the current checkpoint](native-validation-checkpoint.md)
-for separate failures, scope, source/package correspondence and remaining gaps.
+The date preview at `48cca09` publishes for x64 and ARM64. Its focused native
+audit passes 132 Calendar frames, 4,060 day comparisons and 28 interaction/lifecycle
+phases. The independent package consumer passes its complete x64 Light/Dark
+runtime, including eight date keyboard pairs; ARM64 builds from the same package.
+Both consumers' library bytes match the package and their temporary workspaces
+are removed. Native ARM64 execution and full visual/platform acceptance remain
+open. See [the current checkpoint](native-validation-checkpoint.md) for full
+catalog integration, source/package correspondence, artifact hashes and limits.
+Historical results below retain their original source and verification scope.
+
+The complete x64 sequence at that source passes 152 phases, 1,150 captures,
+2,032 stable pointer gates, 1,764 owned keyboard actions and 92 routed clicks
+in 469.1742111 seconds under the unchanged 480-second watchdog. Every previous
+capture name and all 174 protected chart glyph hashes are retained. Both Dates
+fixtures and their native closing-surface input pairs pass.
 
 ## Chart focus ownership repair
 

@@ -179,6 +179,33 @@ width. A targeted native pass covers the reported checks only. The independent
 package consumer also mounts these public controls and drives them through
 native keyboard input; its reports are `consumer-dates-{Light|Dark}.json`.
 
+Source `48cca09c146e7bf4159d650f142700edc7957a77` passes the focused native
+audit: 132 Calendar frames, 4,060 day geometry/state/name comparisons, 28
+interaction/lifecycle phases, 16 native pointer press/release pairs, 308 stable
+pointer gates and 36 owned keyboard transfers. This covers Calendar geometry;
+it does not claim the other 56 Picker/Range reference frames have matched.
+
+The `0.1.0-48cca09` package passes the independent x64 consumer's complete
+Light/Dark runtime. Its dates contribute eight owned native key pairs and six
+consumer updates. The ARM64 consumer builds from that same package; both
+consumers' library bytes match it, and both isolated temporary workspaces are
+removed. Actual ARM64 execution remains unverified. Recheck the packaged dates
+after running `scripts/verify-package.ps1` for both architectures:
+
+```powershell
+./scripts/verify-date-package.ps1 `
+  -Package artifacts/current/packages/Gaulatti.Orchard.0.1.0-48cca09.nupkg `
+  -X64 artifacts/current/consumer-dates-x64 `
+  -Arm64 artifacts/current/consumer-dates-ARM64 `
+  -Output artifacts/current/dates-package-audit.json
+```
+
+The same library source passes the complete x64 catalog: 152 phases and 1,150
+captures in 469.1742111 seconds, preserving all prior capture names and 174
+protected chart glyph hashes. Dates contributes two new captures and three
+consumer updates per theme. The independent integration audit also checks the
+actual native pointer press/release receipts for both popup selections.
+
 ## Native acceptance before completion
 
 Acceptance must carry these contracts through public C# models/properties,

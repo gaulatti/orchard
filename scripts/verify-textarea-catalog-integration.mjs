@@ -17,6 +17,7 @@ for(const theme of['Light','Dark']){
  assert.equal(phases[index-1],'InputsFixture');assert.equal(phases[index+1],'DateControlsFixture');assert.equal(phases[index+2],'KeyboardFixture');assert.equal(phases.filter(p=>p==='TextareasFixture').length,1);
  assert.equal(phases.filter(p=>p==='DateControlsFixture').length,1);
  const dates=await read(native,`dates-catalog-${theme}.json`);assert.equal(dates.passed,true);assert.equal(dates.consumerUpdates,3);assert.equal(dates.popupClosed,true);assert(pngs.includes(`dates-${theme}.png`));
+ const datePointer=await read(native,`dates-catalog-${theme}-menu-pointer-selection.json`);assert.equal(datePointer.passed,true);assert.equal(datePointer.layer,'winui-input-pointer-source');assert.equal(datePointer.downs,1);assert.equal(datePointer.ups,1);assert.equal(datePointer.handlersDetached,true);assert.deepEqual(datePointer.errors,[]);assert.equal(datePointer.receipts.length,2);for(const receipt of datePointer.receipts){assert.equal(receipt.exactSource,true);assert.equal(receipt.exact,true);}
 }
 let moves=0,gates=0,keys=0,clicks=0;
 for(const file of files.filter(name=>name.endsWith('-desktop.json'))){
@@ -33,5 +34,5 @@ for(const component of['radial-bar-chart','sunburst-chart'])for(const theme of['
  for(const expected of previous.reports){const found=current.reports.find(row=>row.id===expected.id);assert(found);assert.deepEqual(found.errors,[]);assert.equal(found.glyphSha256,expected.glyphSha256);retainedGlyphs++;}
 }
 assert.equal(retainedGlyphs,174);const textarea=await auditTextareaCatalog(native);assert.equal(textarea.catalogIntegrationVerified,true);
-const report={passed:true,priorPngs:prior.length,pngs:pngs.length,newPngs:pngs.filter(name=>!prior.includes(name)),elapsedMilliseconds:profile.at(-1).elapsedMilliseconds,completedPhases:profile.filter(row=>row.kind==='phase').length,ownedPointerMoves:moves,pointerGates:gates,ownedKeyActions:keys,ownedClicks:clicks,retainedGlyphHashes:retainedGlyphs,textarea,sourceRasterParityVerified:false,nativeComponentAccepted:false};
+const report={passed:true,priorPngs:prior.length,pngs:pngs.length,newPngs:pngs.filter(name=>!prior.includes(name)),elapsedMilliseconds:profile.at(-1).elapsedMilliseconds,completedPhases:profile.filter(row=>row.kind==='phase').length,ownedPointerMoves:moves,pointerGates:gates,ownedKeyActions:keys,ownedClicks:clicks,dateClosingPointerPairs:2,retainedGlyphHashes:retainedGlyphs,textarea,sourceRasterParityVerified:false,nativeComponentAccepted:false};
 await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
