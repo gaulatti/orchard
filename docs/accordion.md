@@ -100,11 +100,30 @@ remain unverified. The source's rendered title/arrow colors change immediately
 on theme changes; its inherited header color transition does not animate those
 explicitly styled children.
 
+`AccordionContinuity.json` captures eight collection/content operations per theme
+and motion preference. Moving the expanding first row to the end preserves its
+keyed header but cancels its transition. Moving the last row to the beginning
+moves its sibling instead and retains the active clock. Same-key replacement,
+collection replacement, body growth and a changed default ID retain the clock;
+removal/reinsertion and a new group reset it. Body growth changes the natural
+height from 53px to 113px without changing the running fraction. These are
+measurements of the original React component and browser, not a native-only
+placement policy.
+
+`smoke-accordion-continuity.ps1` records real native layout/clip/angle samples,
+header identity, load/unload events, rendered content, accessible names and stale
+peer rejection in both themes and real motion preferences. It is included in
+`smoke-accordion.ps1`; both architecture jobs register the continuity verifier
+and negative audit. Local continuity evidence covers x64. Native ARM64 execution,
+motion/static raster and the remaining customization/platform acceptance stay
+open. The diagnostic adds no library API or behavior change.
+
 Run the reference collector from the repository root:
 
 ```powershell
 node scripts/reference/capture-accordion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --output artifacts/current/accordion-source
 node scripts/reference/capture-accordion-motion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-motion-source
+node scripts/reference/capture-accordion-continuity.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-continuity-source
 ```
 
 The source directory is the pinned Bleecker archive with its `node_modules` and

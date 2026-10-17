@@ -89,6 +89,7 @@ public sealed partial class MainWindow : Window
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="radio-group",environment=RuntimeEnvironment()}));
             }
             else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
+            else if(args.Contains("--smoke-accordion-continuity"))await RunAccordionContinuityAsync(folder);
             else if(args.Contains("--smoke-accordion-motion"))await RunAccordionMotionAsync(folder);
             else if(args.Contains("--smoke-accordion"))
             {

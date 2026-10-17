@@ -1,0 +1,6372 @@
+{
+  "format": "orchard-accordion-continuity-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "5160176bd8dd07041af0c5dee9c6647fef47d132bac95384128a78822a6e0cc0",
+  "normalReferenceSha256": "e3cadf505fbc83fe9b3635b9270cdda171009fc624019de35af520d3f5f4145e",
+  "sourceCssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "clientSha256": "658ad9be84e0eb6b9cb683968549d2f944075bedd6c6f935c92e192db1cb98f3",
+  "scriptSha256": "3dc54f777bea488f7b4fd1ffd67cf4fb0d4c3f8a47656d1c76cde9f43b4be86a",
+  "browser": "155.0.4283.45",
+  "lifecycle": [
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "move-first-to-last",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          },
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": false,
+      "order": [
+        "second",
+        "first"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "move-last-to-first",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "same-key-replacement",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Updated schedule",
+            "subtitle": "Changed details",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "replace-collection",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "content-grow",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 91.484375,
+        "naturalHeight": 113,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 91.484375,
+          "naturalHeight": 113,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 104.078125,
+          "naturalHeight": 113,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 109.46875,
+          "naturalHeight": 113,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 112.6875,
+          "naturalHeight": 113,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 112.984375,
+          "naturalHeight": 113,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 113,
+        "naturalHeight": 113,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "default-change",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ],
+        "expanded": "second"
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "remove-reinsert",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "kind": "group-remount",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "move-first-to-last",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          },
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": false,
+      "order": [
+        "second",
+        "first"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "move-last-to-first",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "same-key-replacement",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Updated schedule",
+            "subtitle": "Changed details",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "replace-collection",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "content-grow",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 113,
+        "naturalHeight": 113,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 113,
+        "naturalHeight": 113,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "default-change",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ],
+        "expanded": "second"
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "remove-reinsert",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "kind": "group-remount",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "move-first-to-last",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          },
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": false,
+      "order": [
+        "second",
+        "first"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "move-last-to-first",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "same-key-replacement",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Updated schedule",
+            "subtitle": "Changed details",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "replace-collection",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "content-grow",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 91.484375,
+        "naturalHeight": 113,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 91.484375,
+          "naturalHeight": 113,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 104.078125,
+          "naturalHeight": 113,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 109.46875,
+          "naturalHeight": 113,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 112.6875,
+          "naturalHeight": 113,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 112.984375,
+          "naturalHeight": 113,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 113,
+        "naturalHeight": 113,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "default-change",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ],
+        "expanded": "second"
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 42.90625,
+          "naturalHeight": 53,
+          "angle": -17.1323,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 47.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 48.8125,
+          "naturalHeight": 53,
+          "angle": -7.10561,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 72.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 51.34375,
+          "naturalHeight": 53,
+          "angle": -2.80355,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 97.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 52.84375,
+          "naturalHeight": 53,
+          "angle": -0.24644,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 147.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 52.984375,
+          "naturalHeight": 53,
+          "angle": -0.0000192553,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": [
+            {
+              "target": "grid",
+              "property": "grid-template-rows",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            },
+            {
+              "target": "chevron",
+              "property": "rotate",
+              "currentTime": 197.5,
+              "timing": {
+                "delay": 0,
+                "direction": "normal",
+                "duration": 200,
+                "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+                "endDelay": 0,
+                "fill": "backwards",
+                "iterationStart": 0,
+                "iterations": 1
+              }
+            }
+          ]
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "remove-reinsert",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "kind": "group-remount",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 42.90625,
+        "naturalHeight": 53,
+        "angle": -17.1323,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": [
+          {
+            "target": "grid",
+            "property": "grid-template-rows",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          },
+          {
+            "target": "chevron",
+            "property": "rotate",
+            "currentTime": 47.5,
+            "timing": {
+              "delay": 0,
+              "direction": "normal",
+              "duration": 200,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "endDelay": 0,
+              "fill": "backwards",
+              "iterationStart": 0,
+              "iterations": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "move-first-to-last",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          },
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": false,
+      "order": [
+        "second",
+        "first"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "move-last-to-first",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "same-key-replacement",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Updated schedule",
+            "subtitle": "Changed details",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Updated schedule",
+          "subtitle": "Changed details",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Updated schedule",
+        "subtitle": "Changed details",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "replace-collection",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "content-grow",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 113,
+        "naturalHeight": 113,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 113,
+          "naturalHeight": 113,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 113,
+        "naturalHeight": 113,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest. A morning digest.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "default-change",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ],
+        "expanded": "second"
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": true,
+      "retained": true,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "remove-reinsert",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "kind": "group-remount",
+      "spec": {
+        "id": "collapsed",
+        "items": [
+          {
+            "id": "first",
+            "title": "Delivery schedule",
+            "subtitle": "Choose when updates arrive.",
+            "content": "Daily updates arrive each morning."
+          },
+          {
+            "id": "second",
+            "title": "Reader preferences",
+            "content": "Your choices stay with this view."
+          }
+        ]
+      },
+      "before": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "after": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      },
+      "sameNode": false,
+      "retained": false,
+      "order": [
+        "first",
+        "second"
+      ],
+      "samples": [
+        {
+          "milliseconds": 47.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 72.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 97.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 147.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 197.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        },
+        {
+          "milliseconds": 247.5,
+          "expanded": true,
+          "height": 53,
+          "naturalHeight": 53,
+          "angle": 0,
+          "title": "Delivery schedule",
+          "subtitle": "Choose when updates arrive.",
+          "content": "Daily updates arrive each morning.",
+          "animations": []
+        }
+      ],
+      "final": {
+        "expanded": true,
+        "height": 53,
+        "naturalHeight": 53,
+        "angle": 0,
+        "title": "Delivery schedule",
+        "subtitle": "Choose when updates arrive.",
+        "content": "Daily updates arrive each morning.",
+        "animations": []
+      }
+    }
+  ]
+}
