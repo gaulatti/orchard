@@ -10,6 +10,7 @@ public readonly record struct BleeckerDateRangeRequestedEventArgs(BleeckerDateRa
 
 internal static class BleeckerDates
 {
+    internal static double LayoutWidth(double value) => Math.Ceiling(value * 64) / 64;
     // The frozen browser uses a single-precision fractional track followed by
     // cumulative 1/64 CSS layout-unit boundaries, including the final track.
     internal static double[] Columns(double width)

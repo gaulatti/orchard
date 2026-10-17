@@ -7,6 +7,9 @@ three consumer updates with native mouse input in each theme. The focused
 `-Component date-controls` runner covers the frozen Calendar state matrix and
 picker/range interaction and lifecycle contracts; see
 [date controls and acceptance gaps](date-controls-reference.md).
+Focused `-Component date-presentation` mounts the 56 Picker/Range source states
+in a horizontally scrollable host and verifies viewport geometry, popup days,
+basic paint and Clear date's complete border box and hit area.
 
 **Metrics** follows Stat cards. It includes source number/currency/percent/compact
 formats, missing values, constrained text and original rich/template slots.

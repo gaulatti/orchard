@@ -35,7 +35,7 @@
   "globalCssSha256": "fa7278f1107d946977c474002a09047be1e83858631f93b056435a3bbf038d96",
   "tokenCssSha256": "74468d6dd3516687e3f8b96aef47e10bdcce206e31edc912abe985c45b83bf3e",
   "cssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
-  "clientSha256": "2c3bd856c9ad7b7c3f891b076b5be8811102c7e8a540cbc91de13ef4c9a56d33",
+  "clientSha256": "698fa05dfd67f28eccb324c8223c92810b52c45cb18549f2f9a54d957efdede3",
   "scriptSha256": "0b419f05233c3eb9872957eb4409dd0738492a62468f8d5e0a3c4576f512808f",
   "compilerLockSha256": "a76d0da24a1b3a95a04befdb81c927595858263168fcdf88b89bb7c9e5c0c8fc",
   "fonts": [
@@ -34629,6 +34629,21 @@
         }
       ],
       "rangeCard": null,
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 345,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 81,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": null,
@@ -36632,6 +36647,21 @@
         },
         "paintRef": "paint-028"
       },
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": "Start date",
@@ -37319,6 +37349,21 @@
           "height": 87
         },
         "paintRef": "paint-028"
+      },
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
       },
       "buttons": [
         {
@@ -70416,6 +70461,21 @@
         }
       ],
       "rangeCard": null,
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 345,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 81,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": null,
@@ -72419,6 +72479,21 @@
         },
         "paintRef": "paint-060"
       },
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": "Start date",
@@ -73106,6 +73181,21 @@
           "height": 87
         },
         "paintRef": "paint-060"
+      },
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
       },
       "buttons": [
         {
@@ -106203,6 +106293,21 @@
         }
       ],
       "rangeCard": null,
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 345,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 81,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": null,
@@ -108206,6 +108311,21 @@
         },
         "paintRef": "paint-028"
       },
+      "clearAction": {
+        "box": {
+          "x": 50,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 50,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": "Start date",
@@ -108893,6 +109013,21 @@
           "height": 87
         },
         "paintRef": "paint-028"
+      },
+      "clearAction": {
+        "box": {
+          "x": 304,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 304,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
       },
       "buttons": [
         {
@@ -141990,6 +142125,21 @@
         }
       ],
       "rangeCard": null,
+      "clearAction": {
+        "box": {
+          "x": 37,
+          "y": 345,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 37,
+          "y": 81,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": null,
@@ -143993,6 +144143,21 @@
         },
         "paintRef": "paint-060"
       },
+      "clearAction": {
+        "box": {
+          "x": 50,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 50,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
+      },
       "buttons": [
         {
           "name": "Start date",
@@ -144680,6 +144845,21 @@
           "height": 87
         },
         "paintRef": "paint-060"
+      },
+      "clearAction": {
+        "box": {
+          "x": 304,
+          "y": 379,
+          "width": 254,
+          "height": 31
+        },
+        "parent": {
+          "x": 304,
+          "y": 115,
+          "width": 254,
+          "height": 296
+        },
+        "bottomGap": 1
       },
       "buttons": [
         {

@@ -162,7 +162,7 @@ Malformed/nonfinite values and dates outside .NET's representable range fail
 explicitly. No Windows clock or production configuration is changed for tests;
 the catalog uses an internal, per-instance frozen clock.
 
-The model/reference/resource suite currently contains 141 tests. The
+The model/reference/resource suite currently contains 142 tests. The
 `date-controls` native runner compares Calendar day geometry, selected/disabled
 state and names against the frozen reference at both viewport widths, and
 exercises consumer requests, focus, dismissal, remounting and live presets.
@@ -206,22 +206,56 @@ protected chart glyph hashes. Dates contributes two new captures and three
 consumer updates per theme. The independent integration audit also checks the
 actual native pointer press/release receipts for both popup selections.
 
+## Picker and range presentation follow-up
+
+The `date-presentation` native runner now covers the other 56 reference frames,
+at 320/640px in Light/Dark. It mounts fresh native consumers, uses real mouse
+input to open each popup and real Escape input to close it, and retains source
+selection/bounds state. Its horizontal ScrollViewer models the browser host's
+overflow and device-pixel scroll offsets; scroll extent comes from actual native
+content. Comparisons use viewport coordinates, including the source's nonzero
+scroll positions, with the existing 0.001px geometry tolerance unchanged.
+
+The independent `scripts/verify-date-presentation.mjs` audit passes 964 box
+comparisons, 620 popup day geometry/state/name checks, 132 basic paint checks,
+80 owned pointer presentation gates and 20 owned Escape transfers. It compares
+trigger caption text/font/line height, colors and alpha, border width/corners,
+disabled opacity, range-card and popup paint. All 56 native captures are saved.
+This supplements the original 132 Calendar frames; it is not a raster, shadow
+or normal-motion acceptance claim.
+
+The fixes apply across normal and range triggers: intrinsic widths round up to
+the source's 1/64px layout units, action/preset slots retain those widths,
+two-column range tracks use cumulative layout-unit boundaries, and popup offsets
+snap to device pixels. Captions use the source's 20px line height. The popup's
+Clear date action now spans its complete 254px inner width. An added source
+measurement proves its 31px border box, 296px parent and one-pixel trailing line
+descent in all twelve selected popup frames. Every previous measurement and all
+188 PNG hashes remain unchanged after adding this observation; the seven source
+component files are unchanged. A source regression test preserves that boundary.
+
+Run `-Component date-presentation -ClientSize 320,640` and `640,640` with the
+same executable/output pattern shown above, then audit both outputs:
+
+```powershell
+node scripts/verify-date-presentation.mjs `
+  --native-320 artifacts/current/dates-presentation-320 `
+  --native-640 artifacts/current/dates-presentation-640 `
+  --output artifacts/current/dates-presentation-audit.json
+```
+
 ## Native acceptance before completion
 
 Acceptance must carry these contracts through public C# models/properties,
 consumer-owned value requests, native templates, layout, min/max and disabled
 predicates, popup lifetime, keyboard/pointer focus, automation and package use.
-Creation, live updates, clear, rejected requests, callback failures, stale
-actions, disabled state, template replacement, unmount/remount and open-theme
-changes all require explicit coverage. Further source/runtime edge matrices,
-including four-row months and remaining custom content/data cases, remain open.
+Targeted runs cover consumer requests/binding, clear, rejected values, stale
+actions, disabled state, template replacement, unmount/remount and four-row
+months. Callback failures, remaining customization/data/live-theme boundaries,
+additional date/content matrices and enabled-motion behavior remain open.
 
-Register Calendar, Date Picker and Date Range Picker fixtures with all relevant
-variants and constrained widths. Verify actual native input and accessibility
-against the frozen source, including meaningful dialog/day names and disabled
-selection. Compare raw visuals, enabled/reduced motion and theme changes;
-exercise scaling, Windows contrast, Narrator and native ARM64. Verify independent
-NuGet consumption and both architecture builds. These are unfulfilled acceptance
-criteria, not implementation claims. Existing source controls and backend
-telemetry are unchanged. The public wiki remains unavailable, so this contract
-is maintained here.
+The Dates fixture and independent NuGet tests are registered. Acceptance still
+requires exact glyph/raster/shadow and enabled/reduced-motion comparisons, the
+remaining customization/lifecycle matrices, real scaling, Windows contrast,
+Narrator and native ARM64 execution. The public wiki remains unavailable, so
+this contract is maintained here.

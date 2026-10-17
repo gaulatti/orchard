@@ -14,7 +14,7 @@ public sealed partial class BleeckerDatePicker
     private PointerEventHandler? outsidePress;
     private KeyEventHandler? keys;
     private RoutedEventHandler? focus;
-    private (Rect Anchor, double Width, double Height, double RootWidth, double RootHeight)? position;
+    private (Rect Anchor, double Width, double Height, double RootWidth, double RootHeight, double Scale)? position;
     private void Opened(object? sender, object args)
     {
         if (!ReferenceEquals(sender, popup) || calendar is null) return;
@@ -80,12 +80,15 @@ public sealed partial class BleeckerDatePicker
         if (!IsDropDownOpen || surface is null || host is null || trigger is null) return;
         var root = XamlRoot.Content; var anchor = trigger.TransformToVisual(root).TransformBounds(new Rect(0, 0, trigger.ActualWidth, trigger.ActualHeight));
         var width = surface.ActualWidth; var height = surface.ActualHeight; if (width <= 0 || height <= 0) return;
-        var state = (anchor, width, height, XamlRoot.Size.Width, XamlRoot.Size.Height); if (position == state) return; position = state;
+        var state = (anchor, width, height, XamlRoot.Size.Width, XamlRoot.Size.Height, XamlRoot.RasterizationScale); if (position == state) return; position = state;
         var x = FlowDirection == FlowDirection.RightToLeft ? anchor.Right - width : anchor.Left;
         x = Math.Max(12, Math.Min(x, XamlRoot.Size.Width - 12 - width));
         var y = anchor.Bottom + 4;
         if (y + height > XamlRoot.Size.Height - 12 && anchor.Top - 4 > XamlRoot.Size.Height - anchor.Bottom - 4) y = anchor.Top - 4 - height;
         y = Math.Max(12, Math.Min(y, XamlRoot.Size.Height - 12 - height));
+        var scale = XamlRoot.RasterizationScale;
+        x = Math.Round(x * scale, MidpointRounding.AwayFromZero) / scale;
+        y = Math.Round(y * scale, MidpointRounding.AwayFromZero) / scale;
         var origin = host.TransformToVisual(root).TransformPoint(new Point());
         popup!.HorizontalOffset = x - origin.X; popup.VerticalOffset = y - origin.Y;
     }

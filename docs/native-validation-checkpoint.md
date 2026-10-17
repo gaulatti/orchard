@@ -1,5 +1,23 @@
 # Current native validation checkpoint
 
+## Picker and range geometry and basic paint
+
+The date presentation follow-up passes all remaining 56 Picker/Range source
+states at 320/640px in Light/Dark. The independent audit checks 964 boxes,
+620 popup days, 132 basic paints, 80 owned pointer gates and 20 Escape transfers.
+Source measurements expose and verify intrinsic/action width rounding, equal
+range tracks, pixel-aligned popup offsets, 20px caption line height and the full
+254px Clear date action. All 142 unit tests pass. Adding the inline clear-action
+measurement preserves every earlier source measurement and all 188 PNG hashes.
+
+Reports are `artifacts/current/dates-presentation-audit.json`,
+`dates-presentation-320`, `dates-presentation-640` and
+`date-clear-source-audit.json`. Normal project publish directories now contain
+this newer candidate; the versioned source48cca09 artifacts below retain their
+own earlier validation scope. Exact raster/shadow/motion, remaining customized
+consumer paths and Windows platform acceptance remain open. Inventory stays
+63 in progress, 49 pending and zero accepted.
+
 ## Native date-control preview
 
 The date controls have a [native preview and source contract](date-controls-reference.md)

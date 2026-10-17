@@ -7,6 +7,21 @@ namespace Orchard.Tests;
 [TestClass]
 public sealed class DateControlsReferenceTests
 {
+    [TestMethod]
+    public void SelectedPopupsRetainInlineClearActionDescent()
+    {
+        using var document = Read();
+        var frames = document.RootElement.GetProperty("cases").EnumerateArray().Where(frame => frame.TryGetProperty("clearAction", out _)).ToArray();
+        Assert.AreEqual(12, frames.Length);
+        foreach (var frame in frames)
+        {
+            var action = frame.GetProperty("clearAction");
+            Assert.AreEqual(31d, action.GetProperty("box").GetProperty("height").GetDouble());
+            Assert.AreEqual(296d, action.GetProperty("parent").GetProperty("height").GetDouble());
+            Assert.AreEqual(1d, action.GetProperty("bottomGap").GetDouble());
+            Assert.AreEqual(330d, frame.GetProperty("popup").GetProperty("box").GetProperty("height").GetDouble());
+        }
+    }
     private static JsonDocument Read() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "DateControls.json")));
     private static JsonElement[] Cases(JsonElement root, string kind) => root.GetProperty("cases").EnumerateArray().Where(x => x.GetProperty("kind").GetString() == kind).ToArray();
     private static string Digest(string fixture) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", fixture)).Replace("\r\n", "\n"))));

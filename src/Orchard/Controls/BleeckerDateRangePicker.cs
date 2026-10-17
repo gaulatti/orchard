@@ -17,7 +17,7 @@ public sealed class BleeckerDateRangePicker : Control
     private BleeckerDatePicker? from, to;
     private BleeckerButton? clear;
     private Border? presetBorder;
-    private StackPanel? presetHost;
+    private PresetPanel? presetHost;
     private INotifyCollectionChanged? observed;
     private readonly ResourceDictionary palette = BleeckerDateVisual.Palette();
     private readonly Func<DateTimeOffset> now;
@@ -46,17 +46,22 @@ public sealed class BleeckerDateRangePicker : Control
         var card = (Border)XamlReader.Load("<Border xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' MinWidth='360' Padding='12' BorderThickness='1' CornerRadius='12' Background='{ThemeResource BleeckerDateSurfaceBrush}' BorderBrush='{ThemeResource BleeckerDateRangeBorderBrush}' UseLayoutRounding='False'/>");
         card.Resources.MergedDictionaries.Add(palette);
         var columns = new Grid { ColumnSpacing = 8, UseLayoutRounding = false }; columns.ColumnDefinitions.Add(new()); columns.ColumnDefinitions.Add(new() { Width = GridLength.Auto }); columns.ColumnDefinitions.Add(new()); card.Child = columns;
+        columns.SizeChanged += (_, _) =>
+        {
+            var tracks = Math.Max(0, columns.ActualWidth - 28); var first = Math.Floor(tracks * 32) / 64;
+            columns.ColumnDefinitions[0].Width = new GridLength(first); columns.ColumnDefinitions[2].Width = new GridLength(tracks - first);
+        };
         from = new BleeckerDatePicker(now) { Placeholder = "Start date", RangeAppearance = true }; to = new BleeckerDatePicker(now) { Placeholder = "End date", RangeAppearance = true };
         AutomationProperties.SetName(from, "Start date"); AutomationProperties.SetName(to, "End date");
         from.DateRequested += FromRequested; to.DateRequested += ToRequested;
         columns.Children.Add(Field("FROM", from)); var second = Field("TO", to); Grid.SetColumn(second, 2); columns.Children.Add(second);
         var dash = (Border)XamlReader.Load("<Border xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Width='12' Height='1' Margin='0,0,0,20' VerticalAlignment='Bottom' Background='{ThemeResource BleeckerDateRangeDashBrush}'/>"); Grid.SetColumn(dash, 1); columns.Children.Add(dash); layout.Children.Add(card);
-        clear = new BleeckerButton { Size = BleeckerButtonSize.Small, Variant = BleeckerButtonVariant.Ghost };
+        clear = new BleeckerButton { Size = BleeckerButtonSize.Small, Variant = BleeckerButtonVariant.Ghost, HorizontalAlignment = HorizontalAlignment.Stretch };
         var clearContent = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
         var clearText = new TextBlock { Text = "Clear", VerticalAlignment = VerticalAlignment.Center };
         clearContent.Children.Add(BleeckerDateVisual.Icon("M18 6L6 18 M6 6L18 18", 14, clearText, nameof(Foreground))); clearContent.Children.Add(clearText); clear.Content = clearContent;
         AutomationProperties.SetName(clear, "Clear date range"); clear.Click += ClearRequested; layout.Children.Add(clear);
-        presetHost = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 4, VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false };
+        presetHost = new PresetPanel { VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false };
         presetBorder = (Border)XamlReader.Load("<Border xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Height='40' Padding='4' BorderThickness='1' CornerRadius='7' Background='{ThemeResource BleeckerDateSurfaceBrush}' BorderBrush='{ThemeResource BleeckerDatePresetBorderBrush}' UseLayoutRounding='False'/>");
         presetBorder.Resources.MergedDictionaries.Add(BleeckerDateVisual.Palette()); presetBorder.Child = presetHost; layout.Children.Add(presetBorder);
         Observe(); RenderPresets(); Refresh();
@@ -89,7 +94,7 @@ public sealed class BleeckerDateRangePicker : Control
             if (previous.TryGetValue(preset.Label, out var available) && available.Count > 0) button = available.Dequeue();
             else
             {
-                button = new BleeckerButton { Size = BleeckerButtonSize.ExtraSmall, Variant = BleeckerButtonVariant.Ghost };
+                button = new BleeckerButton { Size = BleeckerButtonSize.ExtraSmall, Variant = BleeckerButtonVariant.Ghost, HorizontalAlignment = HorizontalAlignment.Stretch };
                 button.Click += (_, _) => { if (IsLoaded && IsEnabled && button.IsLoaded && presetHost is { } active && active.Children.Contains(button) && button.Tag is BleeckerDatePreset current && (Presets?.Any(item => ReferenceEquals(item, current)) ?? false)) Request(BleeckerDates.Preset(now(), current.Days)); };
             }
             button.Content = preset.Label; button.Tag = preset; ordered.Add(button);
@@ -120,20 +125,34 @@ public sealed class BleeckerDateRangePicker : Control
             arranged.Clear(); var visible = Children.OfType<FrameworkElement>().Where(x => x.Visibility == Visibility.Visible).ToArray();
             if (visible.Length == 0) return new();
             foreach (var child in visible) child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            var width = double.IsFinite(availableSize.Width) ? availableSize.Width : visible.Sum(child => child.DesiredSize.Width) + 12 * (visible.Length - 1);
+            var width = double.IsFinite(availableSize.Width) ? availableSize.Width : visible.Sum(child => BleeckerDates.LayoutWidth(child.DesiredSize.Width)) + 12 * (visible.Length - 1);
             var rows = new List<List<FrameworkElement>> { new() }; var occupied = 0d;
-            foreach (var child in visible) { var minimum = ReferenceEquals(child, visible[0]) ? 360 : child.DesiredSize.Width; if (rows[^1].Count > 0 && occupied + 12 + minimum > width) { rows.Add([]); occupied = 0; } rows[^1].Add(child); occupied += (occupied == 0 ? 0 : 12) + minimum; }
+            foreach (var child in visible) { var minimum = ReferenceEquals(child, visible[0]) ? 360 : BleeckerDates.LayoutWidth(child.DesiredSize.Width); if (rows[^1].Count > 0 && occupied + 12 + minimum > width) { rows.Add([]); occupied = 0; } rows[^1].Add(child); occupied += (occupied == 0 ? 0 : 12) + minimum; }
             var y = 0d;
             foreach (var row in rows)
             {
-                var cardInRow = ReferenceEquals(row[0], visible[0]); var cardWidth = cardInRow ? Math.Max(360, width - row.Skip(1).Sum(x => x.DesiredSize.Width + 12)) : 0;
+                var cardInRow = ReferenceEquals(row[0], visible[0]); var cardWidth = cardInRow ? Math.Max(360, width - row.Skip(1).Sum(x => BleeckerDates.LayoutWidth(x.DesiredSize.Width) + 12)) : 0;
                 if (cardInRow) row[0].Measure(new Size(cardWidth, double.PositiveInfinity));
                 var height = row.Max(x => x.DesiredSize.Height); var x = 0d;
-                foreach (var child in row) { var itemWidth = ReferenceEquals(child, visible[0]) ? cardWidth : child.DesiredSize.Width; arranged.Add((child, new Rect(x, y + height - child.DesiredSize.Height, itemWidth, child.DesiredSize.Height))); x += itemWidth + 12; }
+                foreach (var child in row) { var itemWidth = ReferenceEquals(child, visible[0]) ? cardWidth : BleeckerDates.LayoutWidth(child.DesiredSize.Width); arranged.Add((child, new Rect(x, y + height - child.DesiredSize.Height, itemWidth, child.DesiredSize.Height))); x += itemWidth + 12; }
                 y += height + 12;
             }
             return new Size(width, Math.Max(0, y - 12));
         }
         protected override Size ArrangeOverride(Size finalSize) { foreach (var (child, bounds) in arranged) child.Arrange(bounds); return finalSize; }
+    }
+    private sealed class PresetPanel : Panel
+    {
+        protected override Size MeasureOverride(Size availableSize)
+        {
+            foreach (var child in Children) child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            return new Size(Children.Sum(child => BleeckerDates.LayoutWidth(child.DesiredSize.Width)) + Math.Max(0, Children.Count - 1) * 4, Children.Select(child => child.DesiredSize.Height).DefaultIfEmpty(0).Max());
+        }
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            var x = 0d;
+            foreach (var child in Children) { var width = BleeckerDates.LayoutWidth(child.DesiredSize.Width); child.Arrange(new Rect(x, 0, width, finalSize.Height)); x += width + 4; }
+            return finalSize;
+        }
     }
 }

@@ -37,6 +37,7 @@ w.measure=()=>{
  const dialog=document.querySelector('[role=dialog]');
  const popup=document.querySelector('[data-radix-popper-content-wrapper]');
  const rangeCard=document.querySelector('#root>[role=group]')?.firstElementChild??null;
+ const clearAction=[...(popup?.querySelectorAll<HTMLButtonElement>('button')??[])].find(button=>button.textContent==='Clear date');
  return{
   viewport:{compatMode:document.compatMode,innerWidth,innerHeight,scrollX,scrollY,scrollWidth:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)},
   kind:w.spec.kind,value:w.spec.value??null,actions:[...w.actions],root:{box:box(document.querySelector('#root>div')),paint:paint(document.querySelector('#root>div'))},
@@ -47,6 +48,7 @@ w.measure=()=>{
   dialog:dialog?{label:dialog.getAttribute('aria-label'),box:box(dialog)}:null,
   dialogs:[...document.querySelectorAll('[role=dialog]')].map(e=>({label:e.getAttribute('aria-label'),box:box(e)})),
   rangeCard:rangeCard?{box:box(rangeCard),paint:paint(rangeCard)}:null,
+  ...(clearAction?{clearAction:{box:box(clearAction),parent:box(clearAction.parentElement),bottomGap:clearAction.parentElement!.getBoundingClientRect().bottom-clearAction.getBoundingClientRect().bottom}}:{}),
   buttons:[...document.querySelectorAll<HTMLButtonElement>('#root button')].map(e=>({name:e.getAttribute('aria-label'),text:e.textContent,disabled:e.disabled,box:box(e),paint:paint(e)})),
   focused:{tag:document.activeElement?.tagName,label:document.activeElement?.getAttribute('aria-label'),text:document.activeElement instanceof HTMLButtonElement?document.activeElement.textContent:null,id:document.activeElement?.id},
   horizontalOverflow:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth,

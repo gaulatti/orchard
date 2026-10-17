@@ -17,7 +17,7 @@
    <SolidColorBrush x:Key="BleeckerDateRangeDashBrush" Color="#E6D5B8" Opacity=".55"/>
    <SolidColorBrush x:Key="BleeckerDatePresetBorderBrush" Color="#E6D5B8" Opacity=".25"/>
    <SolidColorBrush x:Key="BleeckerDateRangeFieldBrush" Color="#F9F6F2" Opacity=".45"/>
-   <SolidColorBrush x:Key="BleeckerDateRangeFieldBorderBrush" Color="Transparent"/>
+   <SolidColorBrush x:Key="BleeckerDateRangeFieldBorderBrush" Color="#00000000"/>
   </ResourceDictionary>
   <ResourceDictionary x:Key="Default">
    <SolidColorBrush x:Key="BleeckerDateSurfaceBrush" Color="#182533"/>
@@ -57,7 +57,7 @@
   </ResourceDictionary>
  </ResourceDictionary.ThemeDictionaries>
  <Style x:Key="BleeckerDatePrimaryTextStyle" TargetType="TextBlock">
-  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="FontSize" Value="14"/><Setter Property="LineHeight" Value="21"/><Setter Property="LineStackingStrategy" Value="BlockLineHeight"/><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="FontSize" Value="14"/><Setter Property="LineHeight" Value="20"/><Setter Property="LineStackingStrategy" Value="BlockLineHeight"/><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="UseLayoutRounding" Value="False"/>
  </Style>
  <Style x:Key="BleeckerDateSecondaryTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BleeckerDatePrimaryTextStyle}"><Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}"/></Style>
  <Style x:Key="BleeckerCalendarHeadingStyle" TargetType="TextBlock" BasedOn="{StaticResource BleeckerDatePrimaryTextStyle}"><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimarySemiboldFontFamily}"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="FontSize" Value="13"/><Setter Property="LineHeight" Value="19.5"/><Setter Property="CharacterSpacing" Value="10"/></Style>
@@ -109,7 +109,9 @@
  </Style>
  <Style x:Key="BleeckerRangeDateTriggerStyle" TargetType="Button" BasedOn="{StaticResource BleeckerDateTriggerStyle}"><Setter Property="MinWidth" Value="0"/><Setter Property="Background" Value="{ThemeResource BleeckerDateRangeFieldBrush}"/><Setter Property="BorderBrush" Value="{ThemeResource BleeckerDateRangeFieldBorderBrush}"/></Style>
  <Style x:Key="BleeckerDateClearStyle" TargetType="Button">
-  <Setter Property="MinWidth" Value="0"/><Setter Property="MinHeight" Value="0"/><Setter Property="Padding" Value="0,12,0,0"/><Setter Property="Margin" Value="0,12,0,0"/><Setter Property="FontSize" Value="12"/><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/><Setter Property="FontWeight" Value="Medium"/><Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}"/><Setter Property="BorderBrush" Value="{ThemeResource BleeckerDateClearBorderBrush}"/>
+  <!-- The source inline button retains one pixel of line-box descent below its border box. -->
+  <Setter Property="HorizontalAlignment" Value="Stretch"/>
+  <Setter Property="MinWidth" Value="0"/><Setter Property="MinHeight" Value="0"/><Setter Property="Padding" Value="0,12,0,0"/><Setter Property="Margin" Value="0,12,0,1"/><Setter Property="FontSize" Value="12"/><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/><Setter Property="FontWeight" Value="Medium"/><Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}"/><Setter Property="BorderBrush" Value="{ThemeResource BleeckerDateClearBorderBrush}"/>
   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,0" Padding="{TemplateBinding Padding}" Background="Transparent"><TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="12" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center" UseLayoutRounding="False"/></Border></ControlTemplate></Setter.Value></Setter>
  </Style>
  <Style TargetType="local:BleeckerCalendar"><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerCalendar"><Grid x:Name="PART_Root" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter></Style>

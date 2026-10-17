@@ -75,6 +75,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-textarea-commands")) await RunTextareaCommandsAsync(folder);
             else if (args.Contains("--smoke-textarea-catalog")) await RunTextareaCatalogAsync(folder);
             else if (args.Contains("--smoke-date-controls")) await RunDateControlsAsync(folder);
+            else if (args.Contains("--smoke-date-presentation")) await RunDatePresentationAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-lifecycle")) await RunLoadingOverlayLifecycleAsync(folder);

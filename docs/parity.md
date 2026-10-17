@@ -11,10 +11,11 @@ fixed inventory has implementation started. This is not a completion percentage.
 
 The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):
 Calendar, Date Picker and Date Range Picker share 188 measured states and 48
-trusted browser interaction sequences. Native Calendar checks cover 132 states;
-picker/range checks cover controlled requests, bounds, focus/dismissal, remounts
-and live presets. Complete Picker/Range geometry, raster/motion and Windows
-platform acceptance remain open.
+trusted browser interaction sequences. Native geometry covers all 188 states;
+the 56 Picker/Range states add 964 box comparisons, 620 popup days and 132 basic
+paint checks. Interaction checks cover controlled requests, bounds,
+focus/dismissal, remounts and live presets. Exact raster/shadow/motion, remaining
+customization boundaries and Windows platform acceptance remain open.
 
 Visual acceptance requires every component to match its Bleecker reference across every variant, size, theme and applicable interaction state. Compare typography, spacing, dimensions, colors, borders, radii, icons and motion against the rendered reference. Windows control defaults must not override the branded appearance, including nested popups and disabled/focus states. Preserve the explicitly required Windows contrast-color adaptation. A mismatch is an open acceptance gap, never an approved platform substitution.
 

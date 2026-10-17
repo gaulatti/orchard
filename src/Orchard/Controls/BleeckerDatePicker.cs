@@ -54,11 +54,16 @@ public sealed partial class BleeckerDatePicker : Control
     internal Button Trigger => trigger ?? throw new InvalidOperationException("Date picker is not templated.");
     internal BleeckerCalendar? Calendar => calendar;
     internal Button? ClearButton => clear;
+    protected override Windows.Foundation.Size MeasureOverride(Windows.Foundation.Size availableSize)
+    {
+        var measured = base.MeasureOverride(availableSize);
+        return new(Math.Min(availableSize.Width, BleeckerDates.LayoutWidth(measured.Width)), measured.Height);
+    }
     protected override void OnApplyTemplate()
     {
         Detach(); base.OnApplyTemplate();
         host = GetTemplateChild("PART_Root") as Grid ?? throw new InvalidOperationException("Date picker requires PART_Root.");
-        trigger = new TriggerButton(this) { Name = "PART_Trigger", Style = (Style)palette["BleeckerDateTriggerStyle"], UseLayoutRounding = false };
+        trigger = new TriggerButton(this) { Name = "PART_Trigger", Style = (Style)palette["BleeckerDateTriggerStyle"], HorizontalAlignment = HorizontalAlignment.Stretch, UseLayoutRounding = false };
         if (RangeAppearance) trigger.Style = (Style)palette["BleeckerRangeDateTriggerStyle"];
         trigger.SetBinding(FontFamilyProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontFamily)) });
         var row = new Grid { ColumnSpacing = 10, UseLayoutRounding = false }; row.ColumnDefinitions.Add(new() { Width = GridLength.Auto }); row.ColumnDefinitions.Add(new());
