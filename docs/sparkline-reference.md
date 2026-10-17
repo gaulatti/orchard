@@ -1,5 +1,26 @@
 # Sparkline source contract and acceptance
 
+Keyboard inspection uses the actual XAML-root focus owner before applying an
+inspection key. Pinned WinUI 2.3.9 documents `GotFocus` as asynchronous; a
+physical Right can therefore arrive after Tab assigns focus but before
+`GotFocus` initializes the first index. The retained full-sequence failure at
+`artifacts/textarea-catalog-integrated-full` records that ordering and the wrong
+first value (10 rather than 30). Initialization before key handling is
+idempotent, so a later focus event preserves the advanced selection. The native
+mutation trace records preview/down/up, focus and interaction state. This
+changes no backend or metrics contract.
+
+The focused reproduction is deterministic: `NativeInputSession.FocusEntry`
+injects a real Right when native Tab changes the chart's FocusState. The
+preview receipt must occur before `GotFocus`. The same current catalog harness
+fails against the previous packaged library at
+`artifacts/chart-early-key-boundary-baseline` (inspection 10) and passes against
+the corrected library at `artifacts/chart-early-key-boundary-fixed` (inspection
+30). Both themes retain all 36 pointer cases, 76 pointer moves/presentation
+gates and 38 owned Right pairs. The verifier also checks the early-key receipts
+and observer teardown. The baseline library swap is restored and hash-checked
+before the fixed run; no source or test expectation changes between those runs.
+
 `BleeckerSparkline` implements the pinned Bleecker
 [`Sparkline`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/sparkline.tsx).
 Source SHA-256: `7e143cfb557045bfad591be820c28b3bcb29e77469261f51723317f4ffef0ed5`.

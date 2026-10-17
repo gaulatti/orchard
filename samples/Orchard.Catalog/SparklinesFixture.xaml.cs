@@ -179,17 +179,18 @@ public sealed partial class SparklinesFixture:UserControl
         void LoadedAgain(object sender,RoutedEventArgs args)=>events.Add(Snapshot("loaded"));
         void Pointer(object sender,Microsoft.UI.Xaml.Input.PointerRoutedEventArgs args)=>events.Add(new{snapshot=Snapshot("pointer"),position=args.GetCurrentPoint(chart).Position});
         var keyDown=new Microsoft.UI.Xaml.Input.KeyEventHandler((_,args)=>events.Add(new{snapshot=Snapshot("keyDown"),key=args.Key.ToString()}));
+        var previewDown=new Microsoft.UI.Xaml.Input.KeyEventHandler((_,args)=>events.Add(new{snapshot=Snapshot("previewKeyDown"),key=args.Key.ToString()}));
         var keyUp=new Microsoft.UI.Xaml.Input.KeyEventHandler((_,args)=>events.Add(new{snapshot=Snapshot("keyUp"),key=args.Key.ToString()}));
-        chart.GotFocus+=Focused;chart.Loaded+=LoadedAgain;chart.PointerMoved+=Pointer;chart.AddHandler(UIElement.KeyDownEvent,keyDown,true);chart.AddHandler(UIElement.KeyUpEvent,keyUp,true);
+        chart.GotFocus+=Focused;chart.Loaded+=LoadedAgain;chart.PointerMoved+=Pointer;chart.AddHandler(UIElement.PreviewKeyDownEvent,previewDown,true);chart.AddHandler(UIElement.KeyDownEvent,keyDown,true);chart.AddHandler(UIElement.KeyUpEvent,keyUp,true);
         var verified=false;
         try
         {
-            Require(first.Focus(FocusState.Keyboard),"Could not focus preceding action.");input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Tab did not enter Sparkline inspection.");
-            events.Add(Snapshot("beforeRight"));await input.KeyAsync(0x27,chart);await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Sparkline did not inspect consumer data through physical Right.");verified=true;
+            await input.EnterWithInspectionKeyAsync(first,chart,0x27);
+            await AwaitAsync(()=>AutomationProperties.GetHelpText(chart)==" : 30","Sparkline did not inspect consumer data through physical Right.");verified=true;
         }
         finally
         {
-            events.Add(Snapshot("result"));chart.GotFocus-=Focused;chart.Loaded-=LoadedAgain;chart.PointerMoved-=Pointer;chart.RemoveHandler(UIElement.KeyDownEvent,keyDown);chart.RemoveHandler(UIElement.KeyUpEvent,keyUp);
+            events.Add(Snapshot("result"));chart.GotFocus-=Focused;chart.Loaded-=LoadedAgain;chart.PointerMoved-=Pointer;chart.RemoveHandler(UIElement.PreviewKeyDownEvent,previewDown);chart.RemoveHandler(UIElement.KeyDownEvent,keyDown);chart.RemoveHandler(UIElement.KeyUpEvent,keyUp);
             await File.WriteAllTextAsync(System.IO.Path.Combine(folder,$"sparkline-mutation-input-{scheme}.json"),JsonSerializer.Serialize(new{passed=verified,events},new JsonSerializerOptions{WriteIndented=true}));
         }
         input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),last),"Tab did not leave Sparkline.");input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Reverse Tab skipped Sparkline.");

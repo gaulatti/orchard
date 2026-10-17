@@ -274,6 +274,9 @@ public sealed partial class BleeckerLineChart : Control
         if (args.Key is VirtualKey.Left or VirtualKey.Right or VirtualKey.Enter)
         {
             if (sankeyMode) { sankeyInteraction.Key(args.Key == VirtualKey.Enter ? 0 : args.Key == VirtualKey.Right ? 1 : -1, sankeyLayout.Nodes.Length, sankeyLayout.Links.Length); PaintInteraction(); args.Handled = true; return; }
+            // GotFocus is asynchronous. A real key can arrive after native
+            // focus moves but before that event initializes inspection.
+            if (OwnsNativeFocus()) interaction.Focus();
             var direction = args.Key==VirtualKey.Enter?0:args.Key==VirtualKey.Right?1:-1;
             if (barMode && VerticalBars) direction = -direction;
             interaction.Key(direction,InspectionCount);PaintInteraction();args.Handled=true;

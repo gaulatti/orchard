@@ -1,5 +1,16 @@
 # Line Chart frozen contract and acceptance
 
+Ordinary chart inspection initializes from the current XAML-root focus owner
+before handling Left, Right or Enter. Pinned WinUI 2.3.9 raises `GotFocus`
+asynchronously, so a key can precede that notification after Tab assigns focus.
+Initialization is idempotent and retains the existing pointer-priority and
+remembered keyboard-index contracts. The native Sparkline regression injects
+real Right at the focus-state transition and verifies its preview precedes
+`GotFocus`: the prior library selects 10, the corrected library selects 30.
+Both native press/release events must retain the chart owner. See
+[the Sparkline evidence](sparkline-reference.md). Sankey's separate interaction
+model is unchanged by this correction.
+
 The shared chart renderer now preserves its current observers/effects when a
 previous `Unloaded` arrives after a quick remount's `Loaded`. The current load
 resets inspection and reconnects the live consumer data and tooltip effects.
