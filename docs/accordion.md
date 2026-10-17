@@ -68,8 +68,9 @@ client pixels to the frozen source. Both architecture jobs register these checks
 push-triggered Actions remain paused. The independent x64 package consumer passes
 both themes, including native hold/release behavior, live metadata/templates,
 content retention, stale/disabled guards and independent actions. The ARM64
-consumer build passes. Version `0.1.0-ab030df` and both catalog architecture builds
-are verified; temporary consumers are removed. The full x64 catalog passes 156
+consumer build passes. The current `0.1.0-36d1c44` package additionally verifies
+the scalar and overflow correction below; both catalog architecture builds pass
+and temporary consumers are removed. The previous `0.1.0-ab030df` full x64 catalog passed 156
 phases and 1,154 captures in 474.0696258 seconds, retaining all prior captures and
 174 protected chart glyph hashes. See the current checkpoint for hashes.
 Native ARM64 execution and the remaining platform/motion/raster matrix must be
@@ -148,11 +149,10 @@ Full-client raster comparison still uses no masks, tolerance or resampling;
 the additional ink check establishes presence, not pixel parity.
 The native pre-fix capture is retained at
 `artifacts/current/accordion-scalars-before`: 340 discrepancies included 156
-text/name mismatches and a 360px header-height error. The corrected capture is
-`artifacts/current/accordion-scalars-overflow-final`. Both CI architecture jobs register
-the scalar capture and audits. Fresh packaged/full-suite delivery remains
-pending for the scalar change; the versioned release above is the previous
-verified source.
+text/name mismatches and a 360px header-height error. The committed-source capture
+is `artifacts/current/accordion-capture-retry-runtime/scalars`. Both CI
+architecture jobs register the scalar capture and audits. Fresh package delivery
+passes at `36d1c44`; full-suite replay and archive verification remain pending.
 
 Run the reference collector from the repository root:
 

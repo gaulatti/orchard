@@ -1,5 +1,30 @@
 # Native Windows runtime evidence
 
+Source `36d1c44` passes 168 tests, both catalog builds, all 292 scalar cases and
+the existing layout/lifecycle/motion/continuity audits. A native persistence
+probe retains four frozen PNG/RGBA cases and 36 byte-for-byte opaque comparisons
+with the previous Windows path. Four corruptions are rejected. Fresh package
+`0.1.0-36d1c44` passes the isolated x64 consumer in both themes and the ARM64
+consumer build; temporary sources, feeds and caches are removed. The full
+replay stops at Activity Item's actual Hand-cursor assertion: Windows reports
+no mouse and a hidden/null cursor while WinUI selects Hand. Focused replay
+reproduces this, with exact owned pointer receipts. The ineffective UI-thread
+visibility experiment was removed. Full native integration and archives remain pending. Exact raster and full platform
+acceptance remain open, and push-triggered Actions stay paused. See the current
+checkpoint for hashes and retained failures.
+
+Source `1eaebd9` passes all 292 scalar/painted-overflow cases with zero geometry
+error, including visible last-word ink, preserved mixed-word lines and native
+pointer activation beyond the logical header. All 166 tests and all existing
+Accordion layout/lifecycle/motion/continuity audits pass. Both catalog
+architectures build. The isolated `0.1.0-1eaebd9` package passes the full x64
+consumer in both themes, numeric values/names, original negative-zero retention,
+whole-word geometry and existing Date regressions; the ARM64 consumer build
+passes. Temporary consumers are removed. Two full-suite attempts expired at the
+unchanged 480-second watchdog; this source has no completed release archive.
+The later capture optimization above retains the fix. Exact raster and full platform acceptance remain open.
+Push-triggered Actions stay paused. See the current checkpoint.
+
 Diagnostic source `f2ceffd` passes 32 Accordion collection/content continuity
 cases in both themes and real motion preferences using the exact library DLL
 from package `0.1.0-ab030df`. Its 244 native samples verify ten retained clocks,
@@ -9,8 +34,8 @@ All 164 unit tests pass, including 224 frozen source samples. Both diagnostic
 catalog architectures build; ARM64 execution is unverified. Library source and
 public API are unchanged. This extends focused evidence for the existing
 package; the full catalog and versioned delivery below remain at `ab030df`.
-Current publish directories contain the diagnostic build, while the retained
-archives remain immutable. Push-triggered Actions stay paused. See the current
+That iteration's publish directories contained the diagnostic build, while the
+retained archives remained immutable. Push-triggered Actions stay paused. See the current
 checkpoint for exact scope and provenance.
 
 Source `ab030df` uses 1/64-pixel Accordion reveal heights. The focused x64 capture

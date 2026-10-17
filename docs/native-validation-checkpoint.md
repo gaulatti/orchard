@@ -1,5 +1,111 @@
 # Current native validation checkpoint
 
+## Capture persistence candidate
+
+Source `36d1c44` retains the Accordion correction below and reduces screenshot
+persistence work. Opaque captures swap BGRA/RGBA channels directly; transparency
+keeps Windows conversion. Writes complete before returning. The PNG encoder and
+all watchdog, pointer, key and glyph gates remain unchanged.
+
+All 168 tests and both catalog builds pass. The committed native diagnostic
+retains the four frozen PNG/RGBA cases and passes 36 byte-for-byte opaque
+comparisons against the previous Windows path, including immediate file reads
+and write errors. Its paired timing totals are 405.8756 ms for the Windows path
+and 325.7727 ms for the candidate; these are persistence diagnostics, not a
+full-suite performance result. Four corrupted receipts/images are rejected with
+compact exact-byte diagnostics. The first corruption assertion exhausted Node
+while formatting an image difference; a concurrent motion run recorded a
+presentation timeout. Causality was not established. Both terminal failures and
+the restored preference are retained in
+`artifacts/current/accordion-capture-first-focused-failure.json`.
+
+The sequential committed-binary replay passes all 292 scalar cases, 60 layout
+frames/108 rows, 44 lifecycle phases, 48 motion timelines/1,166 property samples,
+169 intermediate background paints, six reversals and 32 continuity cases/233
+samples. Geometry, height and float-angle errors are zero. All 14 layout, 23
+motion, 20 continuity and 22 scalar corruption checks pass. Both real animation
+preferences are restored.
+
+Fresh package `0.1.0-36d1c44` passes the complete isolated x64 consumer in both
+themes, including scalar values, accessibility names, original negative-zero
+retention, whole-word layout and the Date regressions. The ARM64 consumer builds;
+native ARM64 execution remains unverified. Temporary consumer sources, feeds and
+caches are removed. Package SHA-256 is
+`fc24f171d7bed76fb9a3f894929a54fb45eb089dced432cd0b6c1c0ca19d73f2`;
+the matching library hash is
+`bfbcaabe66dc5bedb5227eb4b3350e7ebee64b9d38ee7a9f7b9a314db069cfea`.
+The full replay stopped after 44.5865469 seconds at Light Activity Item's
+unchanged global Hand-cursor assertion. A focused replay reproduced it. All five
+mouse moves reached the exact prior passing coordinates, but the displayed
+cursor was hidden/null before and during the catalog. Windows reports no mouse
+and zero mouse buttons; the WinUI pointer source selects Hand, with both source
+and root dispatcher access on the same window thread. See
+`artifacts/current/pointer-device-observation.json`,
+`artifacts/current/capture-opaque-activity-cursor-observation` and
+`artifacts/current/cursor-visibility-activity-diagnostic/activity-cursor-failure-Light.json`.
+
+A test-only display-count experiment changed the UI-thread count from -1 to 0
+and restored -1, but did not make the global cursor visible. That ineffective
+scope and its four temporary tests are removed; the retained source passes 168
+tests. Activity Item now records the actual native/source cursor on failure.
+No cursor shape, input event, deadline or acceptance gate was replaced. A
+physical/virtual mouse must be available before this runtime boundary can be
+verified. Full-suite and archive validation remain pending. Push-triggered
+Actions remain paused and full component acceptance remains open.
+
+## Accordion scalar text and painted overflow
+
+Source `1eaebd9` corrects number text across title, subtitle, action and content
+slots, including negative zero and decimal/exponent boundaries. It extracts
+the existing DataTable numeric conversion into a dependency-light text helper
+without changing DataTable coercion. Plain slots retain CSS whole-word line
+breaks and visible overflow at zero remaining width. The first geometry-only
+candidate still clipped words; the final line plan preserves the logical slot
+size, the separate paint extent and each original line. Temporary probing code
+is removed.
+
+All 166 unit tests pass. The committed-source replay passes 292 scalar frames
+with zero geometry error, four source-derived last-word ink checks and native
+clicks beyond the logical header in both themes. The mixed phrase retains three
+lines and 60px height instead of combining its short words. Thirty-six hashed
+source PNGs are committed; full-client comparisons retain zero masks, pixel
+tolerance and resampling, while exact raster remains unproven. Twenty-two
+damaged scalar receipts/captures are rejected.
+
+Existing Accordion checks also pass: 60 layout frames/108 rows with zero geometry
+error; 44 lifecycle phases with 16 owned key pairs/four pointer actions; 48 motion
+timelines with six reversal steps, 1,156 property samples and 170 intermediate
+background paints; and 32 continuity cases with 240 samples, ten retained clocks
+and six resets. Fourteen layout/lifecycle, 23 motion and 20 continuity mutations
+are rejected. Both real OS preferences are restored.
+
+Both catalog architectures build. Package `0.1.0-1eaebd9` passes the complete
+isolated x64 consumer in both themes and the ARM64 consumer build. Scalar checks
+verify `0`, `0.000001`, `1e+21`, the full `1e20` decimal string, the accessible
+name, preservation of the original negative-zero value and a 108px narrow
+header. Date checks retain eight native key pairs and six consumer requests.
+Temporary consumers/feed/caches are removed. Package SHA-256 is
+`cbafb24bc2013a74f94b3a6debc82ce9570ecd8cb5c512ade8b5c89dd916999c`;
+the package and consumer library hash is
+`b730a23eee1f4183f96b95fd9055a2fed9d0b930eab16bbac3dd099a52473cb8`.
+The fresh full catalog replay and versioned archive verification are pending.
+Push-triggered Actions remain paused. Inventory and all remaining full
+acceptance requirements remain unchanged.
+
+The first full replay reached Dark `LoadingSpinnersFixture` before the unchanged
+480-second watchdog expired; its last recorded phase ended at 478.0158782 seconds.
+The failed profile and restored-preference receipt are retained under
+`artifacts/current/native-full-accordion-scalars` and
+`artifacts/current/accordion-scalars-first-full-timeout.json`. A separate replay
+used the exact same verified binaries and gates and also timed out, after 152
+completed phases, before Dark `IconButtonsFixture`. Its last recorded elapsed
+time is 477.9350572 seconds; the profile and timeout receipt are retained at
+`artifacts/current/native-full-accordion-scalars-repeat` and
+`artifacts/current/accordion-scalars-repeat-full-timeout.json`. Both processes
+are terminal and both preferences were restored. No timeout or pixel/input
+threshold was relaxed. The capture candidate above addresses actual persistence
+cost before another full replay.
+
 ## Accordion collection and content continuity
 
 Diagnostic source `f2ceffd` verifies eight operations in both themes and real
