@@ -2,7 +2,10 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Data;
 using System.Globalization;
+using Windows.Foundation;
 
 namespace Orchard;
 
@@ -16,10 +19,13 @@ public sealed class BleeckerMetric : Control
     private object? renderedPrefix, renderedSuffix;
     private DataTemplate? renderedPrefixTemplate, renderedSuffixTemplate;
     private string accessibleText = string.Empty;
+    private Canvas? slots;
+    private ContentPresenter? prefixHost, suffixHost;
 
     public BleeckerMetric()
     {
         DefaultStyleKey = typeof(BleeckerMetric);
+        LayoutUpdated += (_, _) => AlignSlots();
         RegisterPropertyChangedCallback(LanguageProperty, (_, _) => Update());
         RegisterPropertyChangedCallback(FontSizeProperty, (_, _) => UpdateLineHeight());
     }
@@ -37,10 +43,20 @@ public sealed class BleeckerMetric : Control
     public static readonly DependencyProperty SuffixTemplateProperty = Register(nameof(SuffixTemplate), typeof(DataTemplate), null);
     public static readonly DependencyProperty LineHeightProperty = DependencyProperty.Register(nameof(LineHeight), typeof(double), typeof(BleeckerMetric), new PropertyMetadata(0d, (owner, _) => ((BleeckerMetric)owner).UpdateLineHeight()));
 
-    public double? Value { get => (double?)GetValue(ValueProperty); set => SetValue(ValueProperty, value); }
+    public double? Value { get => ReadNumber(GetValue(ValueProperty)); set => SetValue(ValueProperty, value); }
     public BleeckerMetricFormat Format { get => (BleeckerMetricFormat)GetValue(FormatProperty); set => SetValue(FormatProperty, value); }
     public string Currency { get => (string)GetValue(CurrencyProperty); set => SetValue(CurrencyProperty, value); }
-    public int? Decimals { get => (int?)GetValue(DecimalsProperty); set => SetValue(DecimalsProperty, value); }
+    public int? Decimals
+    {
+        get
+        {
+            var value = ReadNumber(GetValue(DecimalsProperty));
+            if (value is null) return null;
+            if (!double.IsFinite(value.Value) || value < int.MinValue || value > int.MaxValue || value != Math.Truncate(value.Value)) throw new ArgumentOutOfRangeException(nameof(Decimals));
+            return (int)value.Value;
+        }
+        set => SetValue(DecimalsProperty, value);
+    }
     public object? Prefix { get => GetValue(PrefixProperty); set => SetValue(PrefixProperty, value); }
     public object? Suffix { get => GetValue(SuffixProperty); set => SetValue(SuffixProperty, value); }
     public DataTemplate? PrefixTemplate { get => (DataTemplate?)GetValue(PrefixTemplateProperty); set => SetValue(PrefixTemplateProperty, value); }
@@ -52,13 +68,25 @@ public sealed class BleeckerMetric : Control
     private static DependencyProperty Register(string name, Type type, object? initial) =>
         DependencyProperty.Register(name, type, typeof(BleeckerMetric), new PropertyMetadata(initial, (owner, _) => ((BleeckerMetric)owner).Update()));
 
+    private static double? ReadNumber(object? value) => value switch
+    {
+        null => null,
+        byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal => Convert.ToDouble(value, CultureInfo.InvariantCulture),
+        _ => throw new ArgumentException("Metric values and precision require numeric data.")
+    };
+
     protected override void OnApplyTemplate()
     {
+        if (prefixHost is not null) prefixHost.Content = null;
+        if (suffixHost is not null) suffixHost.Content = null;
+        slots?.Children.Clear(); prefixHost = suffixHost = null;
         if (paragraph is not null) foreach (var inline in paragraph.Inlines.OfType<InlineUIContainer>()) inline.Child = null;
         if (paragraph is not null) paragraph.Inlines.Clear();
         if (text is not null) text.Blocks.Clear();
         base.OnApplyTemplate();
         text = GetTemplateChild("PART_Text") as RichTextBlock;
+        slots = GetTemplateChild("PART_Slots") as Canvas;
+        if ((text is null) != (slots is null)) throw new InvalidOperationException("Metric templates require PART_Text and PART_Slots together.");
         paragraph = text is null ? null : new Paragraph();
         prefixInline = suffixInline = null;
         valueRun = new Run();
@@ -81,6 +109,28 @@ public sealed class BleeckerMetric : Control
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
 
+    private void AlignSlots()
+    {
+        if (!IsLoaded || slots is null) return;
+        Align(prefixHost, prefixInline); Align(suffixHost, suffixInline);
+    }
+
+    private void Align(ContentPresenter? host, Inline? inline)
+    {
+        if (host is null || inline is not InlineUIContainer { Child: Border spacer }) return;
+        var size = host.DesiredSize;
+        if (spacer.Width != size.Width || spacer.Height != size.Height)
+        {
+            spacer.Width = size.Width; spacer.Height = size.Height;
+            return;
+        }
+        if (!spacer.IsLoaded || spacer.ActualWidth != size.Width || spacer.ActualHeight != size.Height) return;
+        var position = spacer.TransformToVisual(slots).TransformPoint(new Point());
+        if (Canvas.GetLeft(host) != position.X) Canvas.SetLeft(host, position.X);
+        if (Canvas.GetTop(host) != position.Y) Canvas.SetTop(host, position.Y);
+        host.Opacity = 1; host.IsHitTestVisible = true;
+    }
+
     private void UpdateLineHeight()
     {
         if (!double.IsFinite(LineHeight) || LineHeight < 0) throw new ArgumentOutOfRangeException(nameof(LineHeight));
@@ -93,14 +143,29 @@ public sealed class BleeckerMetric : Control
         if (previous is not null && ReferenceEquals(content, prefix ? renderedPrefix : renderedSuffix) && ReferenceEquals(template, prefix ? renderedPrefixTemplate : renderedSuffixTemplate)) return;
         if (previous is not null)
         {
+            var oldHost = prefix ? prefixHost : suffixHost;
+            if (oldHost is not null) { oldHost.Content = null; slots!.Children.Remove(oldHost); }
+            if (prefix) prefixHost = null; else suffixHost = null;
             if (previous is InlineUIContainer container) container.Child = null;
             paragraph!.Inlines.Remove(previous);
         }
         Inline next;
         if (template is not null || content is UIElement)
         {
-            var child = template is null ? (UIElement)content! : new ContentPresenter { Content = content, ContentTemplate = template };
-            next = new InlineUIContainer { Child = child };
+            // Document mutations unload InlineUIContainer children. Only a
+            // noninteractive spacer belongs to the document; original consumer
+            // controls stay mounted in the sibling slot plane.
+            var host = new ContentPresenter { Content = content, ContentTemplate = template, Opacity = 0, IsHitTestVisible = false };
+            foreach (var (target, property) in new[] { (ContentPresenter.FontFamilyProperty, nameof(FontFamily)), (ContentPresenter.FontSizeProperty, nameof(FontSize)),
+                (ContentPresenter.FontWeightProperty, nameof(FontWeight)), (ContentPresenter.FontStyleProperty, nameof(FontStyle)), (ContentPresenter.FontStretchProperty, nameof(FontStretch)),
+                (ContentPresenter.ForegroundProperty, nameof(Foreground)), (ContentPresenter.CharacterSpacingProperty, nameof(CharacterSpacing)) })
+                host.SetBinding(target, new Binding { Source = this, Path = new PropertyPath(property) });
+            Microsoft.UI.Xaml.Automation.AutomationProperties.SetAccessibilityView(host, Microsoft.UI.Xaml.Automation.Peers.AccessibilityView.Raw);
+            slots!.Children.Add(host);
+            if (prefix) prefixHost = host; else suffixHost = host;
+            var spacer = new Border { IsHitTestVisible = false };
+            Microsoft.UI.Xaml.Automation.AutomationProperties.SetAccessibilityView(spacer, Microsoft.UI.Xaml.Automation.Peers.AccessibilityView.Raw);
+            next = new InlineUIContainer { Child = spacer };
         }
         else next = new Run { Text = Scalar(content) };
         if (prefix)

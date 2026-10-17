@@ -12,7 +12,7 @@ public sealed partial class MainWindow
     {
         PackageMetric.Language = "en-US"; PackageMetric.Value = 1234567;
         PackageMetric.ApplyTemplate(); Root.UpdateLayout();
-        var text = (RichTextBlock)VisualTreeHelper.GetChild(PackageMetric, 0);
+        var text = ((Grid)VisualTreeHelper.GetChild(PackageMetric, 0)).Children.OfType<RichTextBlock>().Single();
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageMetric);
         Require(PackageMetric.FormattedValue == "1.2M" && peer.GetName() == "1.2M reviews" && peer.GetAutomationControlType() == AutomationControlType.Text && !PackageMetric.IsTabStop, "Packaged metric lost compact format, source slots or text accessibility.");
         Require(text.CharacterSpacing == -20 && Typography.GetNumeralAlignment(text) == FontNumeralAlignment.Tabular && text.FontFamily.Source.Contains("EncodeSans-Regular.ttf"), "Packaged metric lost bundled type or tabular digits.");
@@ -30,5 +30,18 @@ public sealed partial class MainWindow
         await AwaitAsync(() => peer.GetName() == "84 reviews", "Packaged metric lost a live bound value.");
         PackageMetric.ClearValue(Orchard.BleeckerMetric.ValueProperty);
         PackageMetric.Language = "en-US"; PackageMetric.Format = Orchard.BleeckerMetricFormat.Compact; PackageMetric.Value = 1234567;
+        var consumerButton = new Button { Content = "Consumer details" };
+        PackageMetric.Suffix = consumerButton; Root.UpdateLayout();
+        PackageMetric.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
+        await AwaitAsync(() => consumerButton.IsLoaded, "Packaged metric did not mount the consumer control.");
+        Require(consumerButton.Focus(FocusState.Keyboard), "Packaged metric consumer focus precondition failed.");
+        var events = new List<string>();
+        RoutedEventHandler got = (_, _) => events.Add("got"), lost = (_, _) => events.Add("lost"), unloaded = (_, _) => events.Add("unloaded");
+        consumerButton.GotFocus += got; consumerButton.LostFocus += lost; consumerButton.Unloaded += unloaded;
+        PackageMetric.Value = 2480; Root.UpdateLayout();
+        await AwaitAsync(() => PackageMetric.FormattedValue == "2.5K", "Packaged rich metric did not update its numeric value.");
+        Require(events.Count == 0 && consumerButton.IsLoaded && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(Root.XamlRoot), consumerButton), "Packaged metric disturbed consumer focus/lifecycle during an update.");
+        consumerButton.GotFocus -= got; consumerButton.LostFocus -= lost; consumerButton.Unloaded -= unloaded;
+        PackageMetric.Suffix = " reviews"; PackageMetric.Value = 1234567;
     }
 }

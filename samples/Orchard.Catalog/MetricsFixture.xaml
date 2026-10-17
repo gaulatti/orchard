@@ -13,6 +13,7 @@
    <orchard:BleeckerMetric.Prefix><TextBlock Text="Reviewed: " /></orchard:BleeckerMetric.Prefix>
    <orchard:BleeckerMetric.Suffix><Button x:Name="Details" Content="Details" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></orchard:BleeckerMetric.Suffix>
   </orchard:BleeckerMetric>
+  <Button x:Name="OutsideMetricFocus" Content="Outside metric action" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
   <orchard:BleeckerMetric x:Name="Templated" Value="24" Language="en-US" Prefix="Local: ">
    <orchard:BleeckerMetric.PrefixTemplate><DataTemplate><TextBlock Text="{Binding}" /></DataTemplate></orchard:BleeckerMetric.PrefixTemplate>
   </orchard:BleeckerMetric>

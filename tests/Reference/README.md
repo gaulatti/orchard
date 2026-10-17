@@ -1,5 +1,12 @@
 # Browser reference probes
 
+`MetricRich.json` records 20 actual source interaction states at 320/640 in both
+themes. Real Tab/Space input precedes value, batched-value, format and prefix
+updates. The original button remains focused, with zero focus/mount events;
+deliberate outside focus is preserved. This guards against WinUI's temporary
+inline-child unload during document mutation and against repairs that restore
+focus while still emitting consumer-visible lifecycle events.
+
 `Metric.json` records 680 strings from the actual frozen Metric component:
 85 inputs × en-US/de-DE/ja-JP/ar-EG × Light/Dark. It retains source/helper,
 CSS/font/lock/collector hashes and 12 whole-frame PNG hashes. Inputs include

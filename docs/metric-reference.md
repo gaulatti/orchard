@@ -65,11 +65,26 @@ template replacement and unload/remount. Value and precision retain nullable
 CLR types with boxed dependency-property storage: nullable-typed custom DPs
 rejected primitive XAML bindings in the initial runtime regression.
 
-Value updates retain the original prefix/suffix inline hosts, including a
-consumer button's keyboard focus. Slot replacement affects only that slot.
+Value, format, culture and scalar-prefix updates keep original rich controls
+mounted, without focus or lifecycle events. The source browser verifies this
+in 20 interaction states. WinUI unloads actual `InlineUIContainer` children
+when a text run changes. The rendered template therefore uses noninteractive
+inline spacers measured from the original consumer content, with the original
+controls in a stable sibling Canvas. Their native input/accessibility path
+remains active. No focus restoration or deferred input handler is needed.
 
-All 121 unit tests and token checks pass. Seven corrupted native reports fail
-the audit. Twelve raw whole-frame comparisons still show 12,286 differing
+Custom rendered templates require `PART_Text` (`RichTextBlock`) and `PART_Slots`
+(`Canvas`) together, with the slot plane above the text. Spacers are raw and
+noninteractive; original controls retain their normal automation peers.
+Slot hosts inherit Metric typography while respecting explicit child values.
+
+All 122 unit tests and token checks pass. The native matrix passes 680
+text/name comparisons plus real Space/pointer actions, 27 batched value updates,
+format/culture/prefix updates and deliberate outside focus, with zero consumer
+focus/load/unload events. Eight slot-layout checks cover 140/320-DIP widths and
+both directions/themes with zero placement error. The expanded audit rejects
+eight corruptions, including lost focus and missing lifecycle verification.
+Twelve raw whole-frame comparisons show 12,286 differing
 pixels with zero masks/resampling. Exact baseline/glyph/wrapping parity is open;
 the browser canvas uses the pinned source's actual background variables.
 Earlier rich-slot startup, small-glyph capture and nullable-binding failures

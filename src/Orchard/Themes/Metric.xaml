@@ -7,7 +7,10 @@
   <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
   <Setter Property="HorizontalAlignment" Value="Left" />
   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerMetric">
-   <RichTextBlock x:Name="PART_Text" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" Foreground="{TemplateBinding Foreground}" CharacterSpacing="{TemplateBinding CharacterSpacing}" IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" IsTextSelectionEnabled="False" AutomationProperties.AccessibilityView="Raw" />
+   <Grid>
+    <RichTextBlock x:Name="PART_Text" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" Foreground="{TemplateBinding Foreground}" CharacterSpacing="{TemplateBinding CharacterSpacing}" IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" IsTextSelectionEnabled="False" AutomationProperties.AccessibilityView="Raw" />
+    <Canvas x:Name="PART_Slots" />
+   </Grid>
   </ControlTemplate></Setter.Value></Setter>
  </Style>
 </ResourceDictionary>

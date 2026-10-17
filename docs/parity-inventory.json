@@ -1980,7 +1980,9 @@
       "regressionTests": [
         "tests/Orchard.Tests/MetricReferenceTests.cs",
         "tests/Reference/Metric.json",
+        "tests/Reference/MetricRich.json",
         "scripts/reference/capture-metric.cjs",
+        "scripts/reference/capture-metric-rich.cjs",
         "scripts/verify-metric.mjs",
         "samples/Orchard.Catalog/MetricsFixture.xaml.cs",
         "tests/PackageConsumer/MainWindow.Metric.cs"

@@ -1,0 +1,332 @@
+{
+  "format": "orchard-metric-rich-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "2aeb702dc6a115a9b24ff62842d564a9fcd92f1069925b3e07929532daca47c7",
+  "scriptSha256": "a0d2141b599765f823c741081babefa5c8d2d924179650e2e396cf17e4d56edb",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "fontSha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "browser": "155.0.4283.45",
+  "cases": [
+    {
+      "width": 320,
+      "scheme": "Light",
+      "id": "value",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 13Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Light",
+      "id": "batch",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 40Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Light",
+      "id": "format",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: €40.00Details",
+        "button": {
+          "x": 143.671875,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Light",
+      "id": "prefix",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Updated 40Details",
+        "button": {
+          "x": 100.09375,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Light",
+      "id": "outside-focus",
+      "state": {
+        "outsideFocusRetained": true
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "id": "value",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 13Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "id": "batch",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 40Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "id": "format",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: €40.00Details",
+        "button": {
+          "x": 143.671875,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "id": "prefix",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Updated 40Details",
+        "button": {
+          "x": 100.09375,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "id": "outside-focus",
+      "state": {
+        "outsideFocusRetained": true
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "id": "value",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 13Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "id": "batch",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 40Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "id": "format",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: €40.00Details",
+        "button": {
+          "x": 143.671875,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "id": "prefix",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Updated 40Details",
+        "button": {
+          "x": 100.09375,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "id": "outside-focus",
+      "state": {
+        "outsideFocusRetained": true
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "id": "value",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 13Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "id": "batch",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: 40Details",
+        "button": {
+          "x": 112.5625,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "id": "format",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Reviewed: €40.00Details",
+        "button": {
+          "x": 143.671875,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "id": "prefix",
+      "state": {
+        "focused": true,
+        "sameNode": true,
+        "events": [],
+        "lifecycle": [],
+        "text": "Updated 40Details",
+        "button": {
+          "x": 100.09375,
+          "y": 20,
+          "width": 46,
+          "height": 24
+        }
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "id": "outside-focus",
+      "state": {
+        "outsideFocusRetained": true
+      }
+    }
+  ]
+}
