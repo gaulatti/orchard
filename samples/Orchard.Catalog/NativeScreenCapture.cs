@@ -141,11 +141,12 @@ internal static class NativeScreenCapture
         using (CatalogRuntimeProfile.Measure("screen.flush"))
             if (DwmFlush() < 0) throw new InvalidOperationException("Desktop composition did not flush before capture.");
 
+        using var pixelLease = NativeCaptureBufferPool.Bgra.Rent(checked(width * height * 4));
+        var pixels = pixelLease.Buffer;
         var screen = GetDC(IntPtr.Zero);
         var memory = IntPtr.Zero;
         var bitmap = IntPtr.Zero;
         var previous = IntPtr.Zero;
-        var pixels = new byte[checked(width * height * 4)];
         try
         {
             using (CatalogRuntimeProfile.Measure("screen.allocate"))

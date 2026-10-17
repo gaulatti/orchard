@@ -1047,7 +1047,8 @@ public sealed partial class MainWindow : Window
         Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "The catalog did not render.");
         Windows.Storage.Streams.IBuffer pixels;
         using (CatalogRuntimeProfile.Measure("bitmap.read")) pixels = await bitmap.GetPixelsAsync();
-        var bytes = new byte[checked((int)pixels.Length)];
+        using var pixelLease = NativeCaptureBufferPool.Bgra.Rent(checked((int)pixels.Length));
+        var bytes = pixelLease.Buffer;
         using (var reader = DataReader.FromBuffer(pixels)) reader.ReadBytes(bytes);
         using (CatalogRuntimeProfile.Measure("bitmap.validation"))
             Require(NativeCaptureValidation.HasColorVariation(bytes), "The render is blank.");
@@ -1060,7 +1061,8 @@ public sealed partial class MainWindow : Window
         using var save = CatalogRuntimeProfile.Measure("png.total");
         // Opaque pixels need only a channel swap. Preserve Windows' exact
         // premultiplied-alpha rounding whenever transparency is present.
-        var rgba = new byte[pixels.Length];
+        using var rgbaLease = NativeCaptureBufferPool.Rgba.Rent(pixels.Length);
+        var rgba = rgbaLease.Buffer;
         using (CatalogRuntimeProfile.Measure("png.convert"))
         {
             if (!NativeCapturePixels.TryConvertOpaque(pixels, rgba))

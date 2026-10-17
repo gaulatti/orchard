@@ -25,6 +25,13 @@ compression remain unchanged. File writes finish synchronously before the
 capture task returns; input and presentation still use their explicit native
 gates.
 
+BGRA readback and RGBA conversion each retain at most one idle, exact-size byte
+buffer. Scoped rentals keep overlapping captures independent and return storage
+on errors. Readback and conversion fill every byte before validation or encoding;
+no pixel data escapes the rental. Size changes replace the idle buffer instead
+of accumulating a cache by dimension. The unchanged PNG encoder receives the
+same complete arrays.
+
 Bitmap and composed-screen blank checks share a bounded byte lookup. The check
 still requires nine distinct non-alpha channel values, exactly matching the
 previous LINQ predicate. Empty reference canvases retain their separate exact
@@ -34,7 +41,9 @@ collection counts and cumulative pause-time deltas; these diagnostics add no
 dispatcher turn or input and do not change deadlines.
 
 The `brush-alpha` diagnostic retains all four frozen PNG/RGBA cases and adds
-36 opaque comparisons with the previous Windows conversion/write path. It
+36 opaque comparisons with the previous Windows conversion/write path, plus
+36 alternating opaque/transparent comparisons with changing pixels at each
+size to exercise reused storage. It
 checks complete files immediately after return, exact PNG bytes, decoded RGBA
 and write-error propagation. Run `scripts/verify-capture-persistence.mjs` against
 its output. Paired persistence timings are diagnostic; the complete native

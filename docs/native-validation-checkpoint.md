@@ -2,6 +2,14 @@
 
 ## Capture timing investigation
 
+The uninterrupted `ef08273` replay expired at the unchanged watchdog after 146
+completed phases. It recorded 28.316 seconds of process-wide GC pauses and 366
+generation-2 collections. The original animation preference was restored.
+BGRA/RGBA buffer reuse is under verification, with at most one idle array per
+stage, independent overlapping rentals and no cache by dimension. The native
+persistence probe keeps its four frozen cases and 36 opaque Windows comparisons
+and adds 36 alternating opaque/transparent inputs to detect stale reused bytes.
+
 Source `5fc9c4e` passes 170 tests, including accelerated and scalar conversion
 paths, all four frozen PNG/RGBA cases and 36 exact Windows comparisons. Its
 first full run stopped after 128 phases with native WinUI stowed exception

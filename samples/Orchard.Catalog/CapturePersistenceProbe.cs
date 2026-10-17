@@ -88,6 +88,39 @@ internal static class CapturePersistenceProbe
             }
             opaqueReports.Add(new { id, width, height, file, oracleFile, repetitions, windowsMilliseconds, captureMilliseconds, exactWindowsPng = true });
         }
+        var reuseReports = new List<object>();
+        foreach (var (id, width, height) in new[] { ("odd-size", 17, 3), ("channel-grid", 256, 256), ("catalog-size", 1024, 745) })
+        {
+            var pixels = new byte[checked(width * height * 4)];
+            var file = $"capture-reuse-{id}.png"; var oracleFile = $"capture-reuse-{id}-windows.png";
+            const int repetitions = 12;
+            for (var iteration = 0; iteration < repetitions; iteration++)
+            {
+                var alpha = iteration % 2 == 0 ? 255 : 23 + iteration * 13;
+                for (var y = 0; y < height; y++)
+                for (var x = 0; x < width; x++)
+                {
+                    var at = (y * width + x) * 4;
+                    pixels[at] = (byte)Math.Min((x + iteration * 17) & 255, alpha);
+                    pixels[at + 1] = (byte)Math.Min((x * 37 + y * 13 + iteration * 7) & 255, alpha);
+                    pixels[at + 2] = (byte)Math.Min((x * 11 + y * 7 + iteration * 19) & 255, alpha);
+                    pixels[at + 3] = (byte)alpha;
+                }
+                // Alternate fully changed opaque/transparent inputs at one size
+                // so reused storage cannot hide an incomplete channel write.
+                var rgba = new byte[pixels.Length];
+                using (var bitmap = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied))
+                using (var straight = SoftwareBitmap.Convert(bitmap, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight))
+                    straight.CopyToBuffer(rgba.AsBuffer());
+                var expected = NativeCapturePng.Encode(rgba, width, height);
+                await File.WriteAllBytesAsync(Path.Combine(folder, oracleFile), expected);
+                await MainWindow.SavePngAsync(Path.Combine(folder, file), pixels, width, height);
+                var actual = await File.ReadAllBytesAsync(Path.Combine(folder, file));
+                if (!expected.AsSpan().SequenceEqual(actual)) throw new InvalidOperationException($"Reused capture changed Windows PNG bytes: {id}/{iteration}.");
+            }
+            reuseReports.Add(new { id, width, height, file, oracleFile, repetitions, opaqueInputs = 6, transparentInputs = 6,
+                inputSha256 = Convert.ToHexString(SHA256.HashData(pixels)).ToLowerInvariant(), exactWindowsPng = true });
+        }
         var failurePropagated = false;
         try { await MainWindow.SavePngAsync(folder, new byte[4], 1, 1); }
         catch (Exception error) when (error is IOException or UnauthorizedAccessException) { failurePropagated = true; }
@@ -96,7 +129,7 @@ internal static class CapturePersistenceProbe
         {
             format = "orchard-capture-persistence-v1", generator = "premultiplied-grid-v1",
             referenceSha256 = Convert.ToHexString(SHA256.HashData(referenceBytes)).ToLowerInvariant(),
-                matchedFrozenReference = true, immediateFilesRead = true, writeFailurePropagated = failurePropagated, reports, opaqueReports
+                matchedFrozenReference = true, immediateFilesRead = true, writeFailurePropagated = failurePropagated, reports, opaqueReports, reuseReports
         }, new JsonSerializerOptions { WriteIndented = true }));
     }
 }

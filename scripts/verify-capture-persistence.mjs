@@ -41,5 +41,19 @@ for(const [id,width,height] of [['odd-size',17,3],['channel-grid',256,256],['cat
  for(const field of ['windowsMilliseconds','captureMilliseconds'])assert.ok(Number.isFinite(sample[field])&&sample[field]>0);
  opaque.push({id,width,height,repetitions:12,exactWindowsPng:true,rgbaSha256:hash(image.rgba),windowsMilliseconds:sample.windowsMilliseconds,captureMilliseconds:sample.captureMilliseconds});
 }
-const report={passed:true,diagnosticOnly:true,referenceSha256:hash(bytes),cases:reports,opaque,immediateFilesComplete:true,writeFailurePropagated:true,pngEncoderUnchanged:true,masks:0,tolerance:0};
+assert.equal(actual.reuseReports.length,3);
+const reuse=[];
+for(const [id,width,height] of [['odd-size',17,3],['channel-grid',256,256],['catalog-size',1024,745]]){
+ const matches=actual.reuseReports.filter(item=>item.id===id);assert.equal(matches.length,1);const sample=matches[0];
+ for(const [field,value] of Object.entries({width,height,repetitions:12,opaqueInputs:6,transparentInputs:6,exactWindowsPng:true}))assert.equal(sample[field],value);
+ assert.equal(sample.file,`capture-reuse-${id}.png`);assert.equal(sample.oracleFile,`capture-reuse-${id}-windows.png`);
+ const input=Buffer.alloc(width*height*4),iteration=11,alpha=23+iteration*13;
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){const at=(y*width+x)*4;input[at]=Math.min((x+iteration*17)&255,alpha);input[at+1]=Math.min((x*37+y*13+iteration*7)&255,alpha);input[at+2]=Math.min((x*11+y*7+iteration*19)&255,alpha);input[at+3]=alpha;}
+ assert.equal(sample.inputSha256,hash(input));
+ const png=await fs.readFile(path.join(native,sample.file)),oracle=await fs.readFile(path.join(native,sample.oracleFile));
+ assert.equal(Buffer.compare(png,oracle),0,'Reused PNG bytes differ from Windows conversion.');
+ const image=readRgbaPng(png);assert.equal(image.width,width);assert.equal(image.height,height);
+ reuse.push({id,width,height,repetitions:12,opaqueInputs:6,transparentInputs:6,exactWindowsPng:true,inputSha256:hash(input),rgbaSha256:hash(image.rgba)});
+}
+const report={passed:true,diagnosticOnly:true,referenceSha256:hash(bytes),cases:reports,opaque,reuse,immediateFilesComplete:true,writeFailurePropagated:true,pngEncoderUnchanged:true,masks:0,tolerance:0};
 await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
