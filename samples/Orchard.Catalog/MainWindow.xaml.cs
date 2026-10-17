@@ -70,6 +70,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-filter-chip")) await RunFilterChipsAsync(folder);
             else if (args.Contains("--smoke-filter-chip-typography")) await RunFilterChipTypographyAsync(folder);
             else if (args.Contains("--smoke-filter-chip-accessibility")) await RunFilterChipAccessibilityAsync(folder);
+            else if (args.Contains("--smoke-filter-chip-accessibility-session")) await RunFilterChipAccessibilitySessionAsync(folder);
             else if (args.Contains("--smoke-filter-chip-catalog"))
             {
                 foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})

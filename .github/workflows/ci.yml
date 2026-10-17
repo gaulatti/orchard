@@ -155,6 +155,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'FilterChip external accessibility audit failed.' }
           node scripts/test-filter-chip-accessibility-audit.mjs --native artifacts/filter-chip-accessibility --output artifacts/filter-chip-accessibility-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'FilterChip accessibility negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component filter-chip-accessibility-session -ClientSize 640,480 -Output artifacts/filter-chip-accessibility-session -ExpectedArchitecture X64
+          node scripts/verify-filter-chip-accessibility-session.mjs --native artifacts/filter-chip-accessibility-session --output artifacts/filter-chip-accessibility-session/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'FilterChip persistent accessibility audit failed.' }
+          node scripts/test-filter-chip-accessibility-session-audit.mjs --native artifacts/filter-chip-accessibility-session --output artifacts/filter-chip-accessibility-session-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'FilterChip persistent accessibility negative audit failed.' }
       - name: Verify Loading Overlay viewport and native focus behavior
         if: ${{ !cancelled() && (steps.timeline_smoke.outcome == 'success' || steps.timeline_smoke.outcome == 'failure') }}
         id: loading_overlay_smoke
@@ -413,6 +418,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 FilterChip external accessibility audit failed.' }
           node scripts/test-filter-chip-accessibility-audit.mjs --native artifacts/filter-chip-accessibility --output artifacts/filter-chip-accessibility-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 FilterChip accessibility negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component filter-chip-accessibility-session -ClientSize 640,480 -Output artifacts/filter-chip-accessibility-session -ExpectedArchitecture Arm64
+          node scripts/verify-filter-chip-accessibility-session.mjs --native artifacts/filter-chip-accessibility-session --output artifacts/filter-chip-accessibility-session/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 FilterChip persistent accessibility audit failed.' }
+          node scripts/test-filter-chip-accessibility-session-audit.mjs --native artifacts/filter-chip-accessibility-session --output artifacts/filter-chip-accessibility-session-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 FilterChip persistent accessibility negative audit failed.' }
       - name: Verify native ARM64 Loading Overlay viewport and focus behavior
         if: ${{ !cancelled() && (steps.timeline_smoke.outcome == 'success' || steps.timeline_smoke.outcome == 'failure') }}
         id: loading_overlay_smoke

@@ -75,6 +75,7 @@
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <Content Include="../../scripts/LoadingOverlayUiaProbe.cs" Link="LoadingOverlayUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Content Include="../../scripts/FilterChipUiaProbe.cs" Link="FilterChipUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="../../scripts/FilterChipUiaSession.cs" Link="FilterChipUiaSession.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../tests/Reference/Stepper.json" LogicalName="Orchard.Catalog.Reference.Stepper.json" />
         <EmbeddedResource Include="../../tests/Reference/DataList.json" LogicalName="Orchard.Catalog.Reference.DataList.json" />
         <EmbeddedResource Include="../../tests/Reference/DataListTypography.json" LogicalName="Orchard.Catalog.Reference.DataListTypography.json" />

@@ -1811,7 +1811,11 @@
         "samples/Orchard.Catalog/MainWindow.FilterChipAccessibility.cs",
         "scripts/FilterChipUiaProbe.cs",
         "scripts/verify-filter-chip-accessibility.mjs",
-        "scripts/test-filter-chip-accessibility-audit.mjs"
+        "scripts/test-filter-chip-accessibility-audit.mjs",
+        "samples/Orchard.Catalog/MainWindow.FilterChipAccessibilitySession.cs",
+        "scripts/FilterChipUiaSession.cs",
+        "scripts/verify-filter-chip-accessibility-session.mjs",
+        "scripts/test-filter-chip-accessibility-session-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [

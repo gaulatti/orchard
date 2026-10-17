@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
@@ -28,6 +30,11 @@ internal sealed class BleeckerFilterAction : Button
     private readonly BleeckerCssTransition<(double R,double G,double B,double Alpha)> foregroundMotion=new(BleeckerSrgbColorMix.MixPremultiplied),backgroundMotion=new(BleeckerSrgbColorMix.MixPremultiplied);
     private readonly BleeckerDisabledPointer disabledPointer;
     private bool pointer,attached,rendering;
+    private bool observingName;
+    private bool observingNameLayout;
+    private string? resolvedName;
+    private bool? resolvedEnabled;
+    private readonly List<(DependencyObject Owner,DependencyProperty Property,long Token)> labelObservers=[];
     internal BleeckerFilterAction(Control owner,bool remove,Action invoke,Func<bool> canInvoke,Func<Brush> normal,Func<Brush> hover,Func<Brush> hoverBackground,Func<string>? textValue=null)
     {
         this.owner=owner;this.remove=remove;this.invoke=invoke;this.canInvoke=canInvoke;this.normal=normal;this.hover=hover;this.hoverBackground=hoverBackground;this.textValue=textValue;
@@ -43,8 +50,10 @@ internal sealed class BleeckerFilterAction : Button
         }
         else{text=new BleeckerFilterText{Name="ClearFilterText"};text.Text.Foreground=foreground;chrome.Child=text;}
         Content=visual;
-        PointerEntered+=(_,_)=>{if(!attached)return;pointer=true;Update();};PointerExited+=(_,_)=>{if(!attached)return;pointer=false;Update();};IsEnabledChanged+=(_,_)=>{UpdateScale();disabledPointer?.Update();};
-        RegisterPropertyChangedCallback(IsPressedProperty,(_,_)=>UpdateScale());Loaded+=(_,_)=>Attach();Unloaded+=(_,_)=>{if(!IsLoaded)Detach();};
+        PointerEntered+=(_,_)=>{if(!attached)return;pointer=true;Update();};PointerExited+=(_,_)=>{if(!attached)return;pointer=false;Update();};IsEnabledChanged+=(_,_)=>{UpdateScale();disabledPointer?.Update();PublishResolvedEnabled();};
+        RegisterPropertyChangedCallback(IsPressedProperty,(_,_)=>UpdateScale());Loaded+=(_,_)=>{Attach();StartNameObservation();};Unloaded+=(_,_)=>{if(!IsLoaded)Detach();};
+        RegisterPropertyChangedCallback(AutomationProperties.NameProperty,(_,_)=>PublishResolvedName());
+        RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty,(_,_)=>{ObserveLabels();PublishResolvedName();});
         disabledPointer=new BleeckerDisabledPointer(this,()=>IsEnabled?null:this,_=>{});
     }
     internal void Attach()
@@ -52,11 +61,52 @@ internal sealed class BleeckerFilterAction : Button
         if(attached)return;attached=true;Click+=Clicked;settings.ColorValuesChanged+=ColorsChanged;
         if(OperatingSystem.IsWindowsVersionAtLeast(10,0,19041))settings.AnimationsEnabledChanged+=MotionChanged;
         Update(false);
+        StartNameObservation();
     }
     internal void Detach()
     {
         if(attached){Click-=Clicked;settings.ColorValuesChanged-=ColorsChanged;if(OperatingSystem.IsWindowsVersionAtLeast(10,0,19041))settings.AnimationsEnabledChanged-=MotionChanged;}
-        attached=false;pointer=false;StopRendering();IsEnabled=false;disabledPointer.Detach();
+        StopNameObservation();attached=false;pointer=false;StopRendering();IsEnabled=false;disabledPointer.Detach();
+    }
+    private void StartNameObservation()
+    {
+        if(observingName||!attached||!IsLoaded)return;
+        observingName=true;ObserveLabels();
+        resolvedName=FrameworkElementAutomationPeer.FromElement(this)?.GetName();
+    }
+    protected override AutomationPeer OnCreateAutomationPeer()
+    {
+        var peer=new ButtonAutomationPeer(this);resolvedName=peer.GetName();resolvedEnabled=peer.IsEnabled();return peer;
+    }
+    private void StopNameObservation()
+    {
+        LayoutUpdated-=NameLayoutUpdated;observingNameLayout=false;observingName=false;resolvedName=null;
+        foreach(var item in labelObservers)item.Owner.UnregisterPropertyChangedCallback(item.Property,item.Token);labelObservers.Clear();
+    }
+    private void ObserveLabels()
+    {
+        foreach(var item in labelObservers)item.Owner.UnregisterPropertyChangedCallback(item.Property,item.Token);labelObservers.Clear();
+        var monitorLayout=observingName&&AutomationProperties.GetLabeledBy(this)is not null;
+        if(monitorLayout!=observingNameLayout){if(monitorLayout)LayoutUpdated+=NameLayoutUpdated;else LayoutUpdated-=NameLayoutUpdated;observingNameLayout=monitorLayout;}
+        if(!observingName)return;
+        var seen=new HashSet<UIElement>();
+        for(var label=AutomationProperties.GetLabeledBy(this);label is not null&&seen.Add(label);label=AutomationProperties.GetLabeledBy(label))
+            foreach(var property in new[]{AutomationProperties.NameProperty,AutomationProperties.LabeledByProperty})
+                labelObservers.Add((label,property,label.RegisterPropertyChangedCallback(property,(_,_)=>{ObserveLabels();PublishResolvedName();})));
+    }
+    private void NameLayoutUpdated(object? sender,object args)=>PublishResolvedName();
+    private void PublishResolvedName()
+    {
+        if(!observingName||!attached||!IsLoaded)return;
+        var peer=FrameworkElementAutomationPeer.FromElement(this);if(peer is null)return;
+        var next=peer.GetName();var previous=resolvedName;resolvedName=next;
+        if(previous is not null&&!string.Equals(previous,next,StringComparison.Ordinal))peer.RaisePropertyChangedEvent(AutomationElementIdentifiers.NameProperty,previous,next);
+    }
+    private void PublishResolvedEnabled()
+    {
+        var peer=FrameworkElementAutomationPeer.FromElement(this);if(peer is null)return;
+        var next=peer.IsEnabled();var previous=resolvedEnabled;resolvedEnabled=next;
+        if(previous.HasValue&&previous.Value!=next)peer.RaisePropertyChangedEvent(AutomationElementIdentifiers.IsEnabledProperty,previous.Value,next);
     }
     private void Clicked(object sender,RoutedEventArgs args){if(attached&&IsLoaded&&canInvoke())invoke();}
     private void ColorsChanged(UISettings sender,object args)=>DispatcherQueue.TryEnqueue(()=>{if(attached&&IsLoaded)Update(false);});

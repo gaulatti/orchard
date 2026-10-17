@@ -78,8 +78,21 @@ behavior. Fixture-only automation IDs identify targets inside the owned scope.
 The probe source is shipped beside the catalog and compiled into the requested
 smoke output using the Windows .NET Framework compiler, following the existing
 Loading Overlay probe workflow. Normal catalog usage does not launch it.
-This verifies the external UIA query/invocation matrix; Narrator speech,
-accessibility-event delivery and stale-client invocation remain separate checks.
+`filter-chip-accessibility-session` keeps one external MTA client and its original
+Invoke patterns alive across mutations. Name and effective enabled-state changes
+raise native UIA property events. Names come from the standard button peer, so
+default labels, explicit/bound names, linked text, linked automation metadata and
+Clear all follow the same resolution as fresh queries. Linked-label layout and
+metadata observers are removed on detach; ordinary explicit names need no layout
+observer. Automation peers remain lazy for hidden/read-only controls.
+
+The persistent client verifies event delivery before invoking retained live,
+disabled, replaced, removed and unloaded actions. A native reference event checks
+the client transport; component events originate in the library. It registers
+and removes handlers on the same external MTA thread, following
+[Microsoft's UIA threading guidance](https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/ui-automation-threading-issues).
+Narrator speech, broader accessibility events and additional stale-client
+workflows remain separate acceptance checks.
 
 `FilterChipsFixture` registers read-only, removable, multilingual and wrapping
 examples. Its consumer handlers demonstrate explicit collection removal/reset.
