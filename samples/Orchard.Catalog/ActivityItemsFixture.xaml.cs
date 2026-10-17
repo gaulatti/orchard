@@ -65,7 +65,20 @@ public sealed partial class ActivityItemsFixture : UserControl
         Require(Hex((SolidColorBrush)surface.Background) == (scheme == BleeckerColorScheme.Light ? "#FFF9F6F2" : "#FFFFFFFF"), "Activity hover changed its source RGB.");
         foreach (var part in new FrameworkElement[] { Find<BleeckerAvatar>(Normal, "PART_Avatar"), Find<TextBlock>(Normal, "PART_Title"), Find<TextBlock>(Normal, "PART_Time") })
         { await input.MoveAsync(part); Require(Math.Abs(((SolidColorBrush)surface.Background).Opacity - alpha) < 1e-7, "Moving within an activity row dropped hover."); }
-        await AwaitAsync(HandCursor, "Activity did not display the global Windows Hand cursor.");
+        try { await AwaitAsync(HandCursor, "Activity did not display the global Windows Hand cursor."); }
+        catch
+        {
+            var island = Microsoft.UI.Content.ContentIsland.FindAllForCurrentThread().Single(item => item.Environment.Equals(XamlRoot.ContentIslandEnvironment));
+            var source = Microsoft.UI.Input.InputPointerSource.GetForIsland(island);
+            var selected = source.Cursor as Microsoft.UI.Input.InputSystemCursor;
+            await File.WriteAllTextAsync(Path.Combine(folder, $"activity-cursor-failure-{scheme}.json"), JsonSerializer.Serialize(new
+            {
+                native = NativeInputSession.DescribeCursor(), sourceCursorType = source.Cursor?.GetType().Name,
+                sourceCursorShape = selected?.CursorShape.ToString(), sourceQueueHasThreadAccess = source.DispatcherQueue.HasThreadAccess,
+                rootQueueHasThreadAccess = DispatcherQueue.HasThreadAccess, Normal.IsEnabled, Normal.IsLoaded
+            }, new JsonSerializerOptions { WriteIndented = true }));
+            throw;
+        }
         var tapped = 0; void Tap(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs args) => tapped++;
         Rows.Tapped += Tap; try { await input.ClickAsync(Normal); Require(tapped == 1, "Activity intercepted or duplicated consumer ancestor pointer activation."); } finally { Rows.Tapped -= Tap; }
         await input.RequireForegroundAsync();

@@ -31,6 +31,15 @@ its output. Paired persistence timings are diagnostic; the complete native
 sequence must still pass its unchanged watchdog, input and protected-glyph
 checks before a release.
 
+Native cursor acceptance requires a Windows session with an available mouse.
+On the current host, `GetSystemMetrics(SM_MOUSEPRESENT)` and the mouse-button
+count both report zero. Routed mouse input arrives and WinUI selects Hand,
+but `GetCursorInfo` reports a hidden global cursor with a null handle. An
+experimental balanced UI-thread display-count scope did not restore the native
+cursor and was removed. Connect or enable a physical/virtual mouse before
+rerunning the unchanged cursor assertions. Activity Item failures now retain
+both the global observation and the actual WinUI pointer-source selection.
+
 ## Platform ownership
 
 The shared chart renderer reconciles lifecycle events with current native
