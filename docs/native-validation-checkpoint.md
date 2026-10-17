@@ -1,5 +1,45 @@
 # Current native validation checkpoint
 
+## Textarea pointer resizing
+
+The separate frozen browser reference and native x64 matrix both pass all 72
+cases: 320/640px, Light/Dark, three sizes, editable/read-only/disabled and LTR/RTL.
+Real mouse drags preserve text, width, disabled/read-only state and editor focus;
+they match the 48px enlargement, recipe minimum and overshoot/reversal anchor.
+The actual Windows cursor is checked before and during each drag. Root capture
+is released on pointer release, capture loss, template replacement and unload.
+Twelve additional Light/Dark ownership phases verify occlusion, clipping,
+stationary unload, live direction changes and cursor restoration. The audits
+reject ten corruptions per width. All 126 unit tests, token generation and the
+existing Input runtime pass. Both catalog architectures build; native ARM64
+runtime remains unverified.
+
+The final explicit resize-grip automation peer is checked from a separate UIA
+process in both widths/themes and editable/read-only modes: eight named,
+focusable `ControlType.Thumb` snapshots. The strengthened original Textarea
+suite passes all 172 states, four editing sequences and 60 owned keys; its audits
+reject eleven corruptions per width, including a lost resize provider. The final
+peer build also passes all twelve pointer ownership phases.
+
+Evidence is in `artifacts/textarea-resize-direction-runtime-{320,640}`, the
+corresponding `textarea-resize-{320,640}-audit.json` and negative audits,
+`artifacts/textarea-resize-ownership-runtime`, and
+`artifacts/textarea-resize-input-regression`. Final peer evidence is in
+`artifacts/textarea-resize-peer-runtime-{320,640}` and
+`artifacts/textarea-resize-peer-ownership-runtime`. The earlier RTL cursor failure is
+retained: the editor's mirrored local coordinates concealed a physically right
+grip in its LTR chrome. Native hit testing now transforms to the rendered grip;
+live RTL moves that grip to the physical left edge.
+
+This closes the measured pointer resize boundary, not complete Textarea
+acceptance. Exact raster/motion, remaining constraints and clipboard/menu paths,
+full catalog integration, scaling, contrast/Narrator and native ARM64 remain
+open. The previous preview packages below predate this resize change. Counts
+remain **61 in progress, 51 pending, zero fully accepted**. Push-triggered
+Actions remain disabled and no hosted validation is claimed. The public wiki
+remote is unavailable; documentation remains in this repository. There is no
+backend or telemetry impact.
+
 ## Textarea native multiline preview
 
 The x64 Textarea preview passes both 320/640px viewport suites: 172 source-sized

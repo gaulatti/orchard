@@ -150,6 +150,52 @@ raster comparisons without masks or resampling, actual Windows scaling, enabled
 and reduced motion, contrast, Narrator, x64 and native ARM64. Source geometry or
 a successful build alone does not satisfy these criteria.
 
+## Pointer resize contract
+
+`scripts/reference/capture-textarea-resize.cjs` collects a separate 72-case
+trusted-input browser reference in `tests/Reference/TextareaResize.json`:
+320/640px, Light/Dark, Small/Medium/Large, editable/read-only/disabled and LTR/RTL.
+Each case is freshly mounted. The browser's disabled and read-only fields retain
+their resize affordance. RTL places the grip at the bottom left. A 48px vertical
+drag increases height by exactly 48px without changing width, text, disabled
+state, read-only state or textarea focus. A subsequent 240px upward drag clamps
+to the recipe minimum. Reversing 20px while still held retains that minimum:
+clamping must not replace the original pointer anchor.
+
+The native control uses a keyboard-accessible grip and an enabled XAML-root
+pointer capture so that the editor itself stays disabled throughout a disabled
+resize. The grip consumes its leaf press before RichEdit can focus or select
+text. Pointer observation preserves the existing rounded hit, clipping, native
+window ownership and occlusion checks; only the grip region is exempt from the
+disabled body cursor. The vertical resize cursor follows Chromium's
+`EResize::kVertical` / `NorthSouthResizeCursor` implementation in
+[`EventHandler`](https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/input/event_handler.cc).
+The browser reference's computed CSS `cursor` is the text-area style and does
+not expose that UA resize-corner cursor.
+
+Run the dedicated native check with `scripts/smoke-catalog.ps1 -Component
+textarea-resize -ClientSize 640,600` (and 320,600), using an absolute executable
+and output path. The test translates the field to y=280 during drag so the
+upward overshoot stays within the owned HWND. Horizontal movement points inward
+for LTR and rightward for RTL; the browser's positive LTR movement leaves its
+viewport. Both signs must leave width unchanged. Final captures restore y=20.
+`scripts/verify-textarea-resize.mjs` checks every measured case against the
+frozen source. This does not establish raster, motion, accessibility or complete
+Textarea acceptance.
+
+The 72 native cases pass with real routed pointer receipts, root capture and
+actual Windows cursor checks before and during drag. Ten corrupted reports per
+width are rejected by `scripts/test-textarea-resize-audit.mjs`. The separate
+`textarea-resize-ownership` mode passes twelve Light/Dark phases: overlay
+occlusion, clipping, stationary unload, live RTL changes and cursor restoration.
+Disabled Large RTL cases additionally verify cancellation on capture loss,
+template replacement and unload. Existing Input runtime and all 126 unit tests
+pass; both architectures cross-build. Native ARM64 runtime is still pending.
+The explicit grip peer retains the resize name, focusability and thumb role in
+eight independent UIA snapshots across widths, themes and editable/read-only
+states. The final 172-state editing regression passes with 60 owned key actions;
+its audits reject eleven corruptions per width, including a lost resize provider.
+
 The existing Input implementation already matches the measured color cascade,
 fractional alpha, source shadow and transition endpoints. Native reuse must keep
 the existing single-line Input contract and regression evidence intact; its

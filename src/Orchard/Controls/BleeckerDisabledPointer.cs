@@ -11,7 +11,8 @@ using Windows.Foundation;
 namespace Orchard;
 
 /// <summary>Observes Input hover and disabled cursor geometry without enabling disabled input.</summary>
-internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkElement?> bounds, Action<bool> changed, bool observeEnabled = false)
+internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkElement?> bounds, Action<bool> changed, bool observeEnabled = false,
+    Func<Point, bool>? hitRegion = null, bool blockDisabledCursor = true)
 {
     private static readonly ConditionalWeakTable<UIElement, RootObserver> roots = new();
     private RootObserver? observer;
@@ -56,7 +57,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     private void SetOver(bool value, bool mouse, UIElement? root)
     {
         if (IsOver != value) { IsOver = value; changed(value); }
-        if (value && mouse && !owner.IsEnabled && root is not null) BleeckerPointerCursor.Block(this, root);
+        if (blockDisabledCursor && value && mouse && !owner.IsEnabled && root is not null) BleeckerPointerCursor.Block(this, root);
         else if (root is not null) BleeckerPointerCursor.Release(this);
     }
 
@@ -64,6 +65,7 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
     {
         if (!owner.IsLoaded || (!observeEnabled && owner.IsEnabled) || bounds() is not FrameworkElement target) return false;
         var point = root.TransformToVisual(target).TransformPoint(position);
+        if (hitRegion is not null && !hitRegion(point)) return false;
         if (target is Border or Control)
         {
             var radius = target is Border border ? border.CornerRadius : ((Control)target).CornerRadius;

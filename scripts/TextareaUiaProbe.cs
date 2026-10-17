@@ -20,6 +20,9 @@ internal static class TextareaUiaProbe
         [DataMember(Name="text")] public string Text;
         [DataMember(Name="readOnly")] public bool ReadOnly;
         [DataMember(Name="selectionCount")] public int SelectionCount;
+        [DataMember(Name="resizeName")] public string ResizeName;
+        [DataMember(Name="resizeType")] public string ResizeType;
+        [DataMember(Name="resizeFocusable")] public bool ResizeFocusable;
     }
     [MTAThread] private static int Main(string[] args)
     {
@@ -36,6 +39,9 @@ internal static class TextareaUiaProbe
             var validity=AutomationProperty.LookupById(30103); // UIA_IsDataValidForFormPropertyId.
             if(validity!=null)report.Valid=(bool)editor.GetCurrentPropertyValue(validity);
             if(report.HasText){var text=(TextPattern)editor.GetCurrentPattern(TextPattern.Pattern);report.Text=text.DocumentRange.GetText(-1);report.ReadOnly=(bool)text.DocumentRange.GetAttributeValue(TextPattern.IsReadOnlyAttribute);report.SelectionCount=text.GetSelection().Length;}
+            var grip=root.FindFirst(TreeScope.Descendants,new PropertyCondition(AutomationElement.NameProperty,"Resize text area"));
+            if(grip==null||grip.Current.ProcessId!=process)throw new InvalidOperationException("Owned resize grip is missing from UIA.");
+            report.ResizeName=grip.Current.Name;report.ResizeType=grip.Current.ControlType.ProgrammaticName;report.ResizeFocusable=grip.Current.IsKeyboardFocusable;
             using(var stream=File.Create(args[2]))new DataContractJsonSerializer(typeof(Report)).WriteObject(stream,report);return 0;
         }
         catch(Exception error){Console.Error.WriteLine(error);return 1;}

@@ -3297,12 +3297,18 @@
         "samples/Orchard.Catalog/MainWindow.Textareas.cs",
         "scripts/verify-textarea.mjs",
         "scripts/test-textarea-audit.mjs",
+        "tests/Reference/TextareaResize.json",
+        "scripts/reference/capture-textarea-resize.cjs",
+        "samples/Orchard.Catalog/MainWindow.TextareaResize.cs",
+        "samples/Orchard.Catalog/MainWindow.TextareaResizeOwnership.cs",
+        "scripts/verify-textarea-resize.mjs",
+        "scripts/test-textarea-resize-audit.mjs",
         "tests/PackageConsumer/MainWindow.Textarea.cs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Complete the pinned contract, maxlength/validation and remaining customization boundaries",
-        "Verify owned pointer resizing, resize cursor/minimum, disabled/read-only resizing, menu invocation, clipboard, live theme/size/row/error changes and all lifecycle paths",
+        "Verify remaining menu invocation, clipboard-provider races, live theme/size/row/error changes and remaining lifecycle paths; 72 owned pointer resize cases and twelve ownership phases pass",
         "Integrate and verify the complete catalog sequence; strengthened source states and fresh visible x64 package consumer pass with live template readiness",
         "Resolve exact raster/motion/scaling/contrast/Narrator and native ARM64 acceptance; external UIA validity remains unavailable in the legacy client"
       ]

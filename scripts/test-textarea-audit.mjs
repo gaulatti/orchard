@@ -8,7 +8,7 @@ await auditTextarea(native,width);
 const workspace=path.join(path.dirname(output),'textarea-negative-'+Date.now());await fs.cp(native,workspace,{recursive:true,errorOnExist:true});
 const original=JSON.parse(await fs.readFile(path.join(native,'textarea.json'),'utf8')),desktop=JSON.parse(await fs.readFile(path.join(native,'textarea-desktop.json'),'utf8'));
 const negatives=[];
-for(const id of['missing-frame','wrong-height','wrong-border-alpha','wrong-font','wrong-line-spacing','lost-readonly-provider','wrong-uia-text','lost-key-owner','lost-consumer-binding','rich-paste-retained']){
+for(const id of['missing-frame','wrong-height','wrong-border-alpha','wrong-font','wrong-line-spacing','lost-readonly-provider','wrong-uia-text','lost-resize-provider','lost-key-owner','lost-consumer-binding','rich-paste-retained']){
  const changed=structuredClone(original),input=structuredClone(desktop);
  if(id==='missing-frame')changed.frames.pop();
  if(id==='wrong-height')changed.frames[0].height++;
@@ -17,6 +17,7 @@ for(const id of['missing-frame','wrong-height','wrong-border-alpha','wrong-font'
  if(id==='wrong-line-spacing')changed.frames[0].lineSpacing=16;
  if(id==='lost-readonly-provider')changed.interactions[0].readonlyUia.readOnly=false;
  if(id==='wrong-uia-text')changed.interactions[0].editableUia.text='Wrong document';
+ if(id==='lost-resize-provider')changed.interactions[0].editableUia.resizeFocusable=false;
  if(id==='lost-key-owner')input.keyActions[0].targetRetained=false;
  if(id==='lost-consumer-binding')changed.interactions[0].twoWayBinding=false;
  if(id==='rich-paste-retained')changed.interactions[0].richClipboardRejected=false;

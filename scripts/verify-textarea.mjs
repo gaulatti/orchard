@@ -31,10 +31,11 @@ export async function auditTextarea(native,width){
   const uia=item[key];assert.equal(uia.process,report.ownerProcess);assert.notEqual(uia.clientProcess,uia.process);
   assert.equal(uia.name,'Editorial notes');assert.equal(uia.hasText,true);assert.equal(uia.readOnly,readonly);assert.equal(uia.enabled,true);
   assert.equal(uia.type,'ControlType.Edit');assert.equal(uia.text.replace(/\r\n?/g,'\n'),'First\na');assert.equal(uia.selectionCount,1);
+  assert.equal(uia.resizeName,'Resize text area');assert.equal(uia.resizeType,'ControlType.Thumb');assert.equal(uia.resizeFocusable,true);
  }
  const desktop=await read(path.join(native,'textarea-desktop.json')),keys=desktop.keyActions;assert(keys.length>=18);
  for(const key of keys){assert.equal(key.downs,1);assert.equal(key.ups,1);assert.equal(key.targetRetained,true);}
- return {width,frames:expected.length,interactionSequences:report.interactions.length,nativeKeyActions:keys.length,geometryAndBorderPaintVerified:true,sourceRasterParityVerified:false,nativeComponentAccepted:false};
+ return {width,frames:expected.length,interactionSequences:report.interactions.length,nativeKeyActions:keys.length,externalResizeProviders:4,geometryAndBorderPaintVerified:true,sourceRasterParityVerified:false,nativeComponentAccepted:false};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const report=await auditTextarea(path.resolve(option('--native')),Number(option('--width')));await fs.writeFile(path.resolve(option('--output')),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

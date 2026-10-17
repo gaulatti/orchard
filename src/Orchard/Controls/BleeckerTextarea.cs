@@ -21,9 +21,8 @@ public sealed partial class BleeckerTextarea : RichEditBox
     private bool editorReady => IsLoaded && GetTemplateChild("ContentElement") is FrameworkElement { IsLoaded: true };
     private int documentEditDepth;
     private int contentVersion;
-    private Thumb? resizeGrip;
+    private Control? resizeGrip;
     private Grid? resizeHost;
-    private double dragHeight;
 
     public BleeckerTextarea()
     {
@@ -43,8 +42,9 @@ public sealed partial class BleeckerTextarea : RichEditBox
         RegisterPropertyChangedCallback(FocusStateProperty, (_, _) => UpdateAppearance());
         foreach (var property in new[] { FontFamilyProperty, FontSizeProperty, FontWeightProperty, FontStyleProperty, ForegroundProperty, FlowDirectionProperty, TextAlignmentProperty })
             RegisterPropertyChangedCallback(property, (_, _) => ApplyParagraphFormat());
+        RegisterPropertyChangedCallback(FlowDirectionProperty, (_, _) => UpdateResizeGripDirection());
         Loaded += (_, _) => DispatcherQueue.TryEnqueue(() => { if (!IsLoaded) return; UpdateGeometry(); WriteNativeText(); UpdateAppearance(false); });
-        Unloaded += (_, _) => { if (IsLoaded) return; contentVersion++; resizeGrip?.CancelDrag(); };
+        Unloaded += (_, _) => { if (IsLoaded) return; contentVersion++; CancelResize(); };
     }
 
     public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(BleeckerTextarea),
@@ -80,14 +80,13 @@ public sealed partial class BleeckerTextarea : RichEditBox
         resizeHost = GetTemplateChild("Editor") as Grid;
         if (resizeHost is not null)
         {
-            resizeGrip = new Thumb { Name = "TextareaResizeGrip", Width = 12, Height = 12, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, IsTabStop = true,
+            resizeGrip = new TextareaResizeGrip { Name = "TextareaResizeGrip", Width = 12, Height = 12, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, IsTabStop = true,
                 Template = (ControlTemplate)XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'><Grid Background='Transparent'><Path Stroke='{ThemeResource BleeckerTextSecondaryBrush}' StrokeThickness='1' Data='M 3,10 L 10,3 M 7,10 L 10,7' /></Grid></ControlTemplate>") };
             AutomationProperties.SetName(resizeGrip, "Resize text area");
             AutomationProperties.SetHelpText(resizeGrip, "Drag vertically or use Up and Down arrows to resize.");
-            resizeGrip.DragStarted += OnResizeStarted;
-            resizeGrip.DragDelta += OnResizeDelta;
             resizeGrip.KeyDown += OnResizeKey;
             resizeHost.Children.Add(resizeGrip);
+            UpdateResizeGripDirection();
         }
         appearanceState = null;
         UpdateGeometry();
@@ -230,12 +229,6 @@ public sealed partial class BleeckerTextarea : RichEditBox
         if (changed || !animate) RequestMotion(animate);
         UpdateShadow(animate);
     }
-    private void OnResizeStarted(object sender, DragStartedEventArgs args) => dragHeight = ActualHeight;
-    private void OnResizeDelta(object sender, DragDeltaEventArgs args)
-    {
-        dragHeight = Math.Clamp(dragHeight + args.VerticalChange, MinHeight, MaxHeight);
-        Height = dragHeight;
-    }
     private void OnResizeKey(object sender, KeyRoutedEventArgs args)
     {
         if (args.Key is not (Windows.System.VirtualKey.Up or Windows.System.VirtualKey.Down)) return;
@@ -245,9 +238,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
     private void DetachResizeGrip()
     {
         if (resizeGrip is null) return;
-        resizeGrip.CancelDrag();
-        resizeGrip.DragStarted -= OnResizeStarted;
-        resizeGrip.DragDelta -= OnResizeDelta;
+        CancelResize();
         resizeGrip.KeyDown -= OnResizeKey;
         resizeHost?.Children.Remove(resizeGrip);
         resizeGrip = null; resizeHost = null;

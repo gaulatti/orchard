@@ -7,6 +7,40 @@ namespace Orchard.Tests;
 [TestClass]
 public sealed class TextareaReferenceTests
 {
+    [TestMethod]
+    public void TrustedResizeRetainsDisabledReadonlyDirectionMinimumAndPointerAnchor()
+    {
+        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "TextareaResize.json")));
+        var root = document.RootElement;
+        Assert.AreEqual("b523ba0962a02492a5e5954957eede4e1ad683ee7ce7ac21c04097325eb82082", root.GetProperty("sourceSha256").GetString());
+        Assert.AreEqual("a86059013cd59684ce452849278ea81e734f2066", root.GetProperty("sourceCommit").GetString());
+        var script = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "CaptureTextareaResize.cjs")).Replace("\r\n", "\n");
+        Assert.AreEqual(root.GetProperty("scriptSha256").GetString(), Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(script))));
+        var cases = root.GetProperty("cases").EnumerateArray().ToArray();
+        Assert.AreEqual(72, cases.Length);
+        Assert.AreEqual(72, cases.Select(c => c.GetProperty("file").GetString()).Distinct().Count());
+        Assert.AreEqual(24, cases.Count(c => c.GetProperty("mode").GetString() == "disabled"));
+        Assert.AreEqual(24, cases.Count(c => c.GetProperty("mode").GetString() == "readonly"));
+        foreach (var frame in cases)
+        {
+            var initial = frame.GetProperty("initial"); var enlarged = frame.GetProperty("enlargedHeld");
+            Assert.AreEqual(initial.GetProperty("height").GetDouble() + 48, enlarged.GetProperty("height").GetDouble());
+            foreach (var state in new[] { "initial", "enlargedHeld", "minimumHeld", "reverseAboveMinimum" })
+            {
+                var actual = frame.GetProperty(state);
+                Assert.AreEqual(initial.GetProperty("width").GetDouble(), actual.GetProperty("width").GetDouble());
+                Assert.AreEqual(initial.GetProperty("value").GetString(), actual.GetProperty("value").GetString());
+                Assert.AreEqual(frame.GetProperty("dir").GetString(), actual.GetProperty("direction").GetString());
+                Assert.IsFalse(actual.GetProperty("focused").GetBoolean());
+                Assert.AreEqual(frame.GetProperty("mode").GetString() == "disabled", actual.GetProperty("disabled").GetBoolean());
+                Assert.AreEqual(frame.GetProperty("mode").GetString() == "readonly", actual.GetProperty("readOnly").GetBoolean());
+            }
+            Assert.AreEqual(initial.GetProperty("minHeight").GetDouble(), frame.GetProperty("minimumHeld").GetProperty("height").GetDouble());
+            Assert.AreEqual(initial.GetProperty("minHeight").GetDouble(), frame.GetProperty("reverseAboveMinimum").GetProperty("height").GetDouble());
+            Assert.IsTrue(frame.GetProperty("events").EnumerateArray().All(e => e.GetProperty("trusted").GetBoolean()));
+        }
+    }
+
     private static JsonDocument Reference() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "Textarea.json")));
 
     [TestMethod]

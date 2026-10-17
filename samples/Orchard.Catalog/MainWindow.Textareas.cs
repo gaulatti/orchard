@@ -97,12 +97,13 @@ public sealed partial class MainWindow
                 Require(bound.Text=="First\na"&&Normalize(model.Text)==bound.Text,"Native undo did not restore both lines.");
                 var editableUia=await ProbeTextareaAsync(folder,input.Window,scheme+"-editable");
                 Require(editableUia.GetProperty("hasText").GetBoolean()&&!editableUia.GetProperty("readOnly").GetBoolean()&&editableUia.GetProperty("name").GetString()=="Editorial notes","External editable text provider differs.");
+                Require(editableUia.GetProperty("resizeName").GetString()=="Resize text area"&&editableUia.GetProperty("resizeType").GetString()=="ControlType.Thumb"&&editableUia.GetProperty("resizeFocusable").GetBoolean(),"Resize grip lost its named, focusable external automation provider.");
                 bound.IsReadOnly=true; await input.ModifiedKeyAsync(0x11,0x41,bound); await input.KeyAsync(0x43,bound); await AwaitPresentationAsync(bound);
                 Require(bound.Text=="First\na"&&bound.TextDocument.Selection.Length>0,"Native read-only selection/editing semantics differ.");
                 var readonlyUia=await ProbeTextareaAsync(folder,input.Window,scheme+"-readonly");
                 Require(readonlyUia.GetProperty("hasText").GetBoolean()&&readonlyUia.GetProperty("readOnly").GetBoolean()&&readonlyUia.GetProperty("selectionCount").GetInt32()==1,"External read-only text provider differs.");
                 bound.IsReadOnly=false;
-                var grip=Descendants<Microsoft.UI.Xaml.Controls.Primitives.Thumb>(bound).Single(e=>e.Name=="TextareaResizeGrip");
+                var grip=Descendants<Control>(bound).Single(e=>e.Name=="TextareaResizeGrip");
                 grip.Focus(FocusState.Keyboard); await input.KeyAsync(0x28,grip); await AwaitPresentationAsync(bound);
                 Require(bound.ActualHeight==132&&bound.ActualWidth==280,"Keyboard vertical resize changed width or wrong height.");
                 await input.KeyAsync(0x26,grip); await AwaitPresentationAsync(bound); Require(bound.ActualHeight==112,"Resize minimum differs.");
