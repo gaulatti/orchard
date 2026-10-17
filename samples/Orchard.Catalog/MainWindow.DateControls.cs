@@ -32,6 +32,7 @@ public sealed partial class MainWindow
             foreach (var scheme in new[] { ElementTheme.Light, ElementTheme.Dark })
             {
                 page.RequestedTheme = scheme; page.Background = canvas.Background = new SolidColorBrush(scheme == ElementTheme.Light ? Microsoft.UI.Colors.White : Windows.UI.Color.FromArgb(255, 13, 24, 33));
+                var fixture = new DateControlsFixture(); await Mount(fixture); await fixture.VerifyTextLayoutAsync();
                 foreach (var source in reference.RootElement.GetProperty("cases").EnumerateArray().Where(x => x.GetProperty("kind").GetString() == "calendar" && x.GetProperty("width").GetInt32() == width && x.GetProperty("scheme").GetString() == scheme.ToString()))
                 {
                     phase = source.GetProperty("file").GetString()!; var id = source.GetProperty("id").GetString()!; var state = source.GetProperty("state").GetString()!;

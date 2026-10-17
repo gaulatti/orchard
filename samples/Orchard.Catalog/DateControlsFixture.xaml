@@ -7,7 +7,7 @@
   <orchard:BleeckerDatePicker IsEnabled="False" Placeholder="Unavailable date"/>
   <orchard:BleeckerDateRangePicker x:Name="RangeSample"/>
   <TextBlock Text="Shared date styles" Style="{StaticResource BleeckerHeadingStyle}" FontSize="18"/>
-  <TextBlock x:Name="LineBoxSample" Text="October 2026" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontSize="13" FontWeight="SemiBold" LineHeight="19.5" LineStackingStrategy="BlockLineHeight" UseLayoutRounding="False" orchard:BleeckerTextLayout.UseReferenceLineBox="True"/>
+  <TextBlock x:Name="LineBoxSample" Text="October 2026" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}" FontSize="13" FontWeight="SemiBold" LineHeight="19.5" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Left" VerticalAlignment="Center" UseLayoutRounding="False" orchard:BleeckerTextLayout.UseReferenceLineBox="True"><TextBlock.RenderTransform><TranslateTransform x:Name="LineBoxOriginalTransform" X="0.25"/></TextBlock.RenderTransform></TextBlock>
   <TextBlock Text="Primary date caption" Style="{StaticResource BleeckerDatePrimaryTextStyle}"/>
   <TextBlock Text="Placeholder caption" Style="{StaticResource BleeckerDateSecondaryTextStyle}"/>
   <TextBlock Text="October 2026" Style="{StaticResource BleeckerCalendarHeadingStyle}"/>

@@ -271,6 +271,10 @@ Other element/parent types fail explicitly. It preserves the original text eleme
 bindings, uses the active font's measured ascent/descent, retains existing render
 transforms, and restores the original parent/alignment when disabled. Date styles
 enable it automatically; the Dates fixture explicitly exercises enable/disable.
+Re-enabling uses an already available Panel/Border parent even during a temporary
+unload. Elements without a parent wait for Loaded; stale Loaded events honor the
+current attached value. The focused runner exercises the fixture's same restoration
+check with a known original transform and alignments in both themes and widths.
 Calendar days request tabular numerals and the heading uses the source's normal
 letter spacing. Exact glyph raster, shadows and motion remain separate checks.
 

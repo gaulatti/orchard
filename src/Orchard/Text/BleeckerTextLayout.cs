@@ -24,13 +24,15 @@ public static class BleeckerTextLayout
     {
         if (owner is not TextBlock text) throw new ArgumentException("Reference line boxes require a TextBlock.");
         text.Loaded -= Loaded;
-        if ((bool)args.NewValue) { text.Loaded += Loaded; if (text.IsLoaded) Wrap(text); }
+        // Reparenting can temporarily clear IsLoaded while the logical parent
+        // already exists. Re-enabling must wrap that parent immediately.
+        if ((bool)args.NewValue) { text.Loaded += Loaded; Wrap(text); }
         else if (text.Parent is ReferenceLineBox box) Replace(box, text, () => box.Release());
     }
     private static void Loaded(object sender, RoutedEventArgs args) => Wrap((TextBlock)sender);
     private static void Wrap(TextBlock text)
     {
-        if (!GetUseReferenceLineBox(text) || !text.IsLoaded || text.Parent is null) return;
+        if (!GetUseReferenceLineBox(text) || text.Parent is null) return;
         if (text.Parent is ReferenceLineBox) return;
         var horizontal = text.HorizontalAlignment; var vertical = text.VerticalAlignment;
         var box = new ReferenceLineBox(text, horizontal, vertical);

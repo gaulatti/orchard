@@ -15,6 +15,14 @@ content, keyed identities and commands while using an explicit caption template.
 Diagnostic layout tracing has been removed. Full catalog, independent packaged
 consumer and ARM64 build checks for this newer candidate are pending; the
 source-identified results below remain evidence for their earlier source.
+The first full run stopped at the new restoration assertion: the fixture had
+assumed the default transform was null, while WinUI returned an identity
+MatrixTransform. The fixture now uses a known explicit transform and alignments,
+and the focused date runner also exercises the same enable/disable regression.
+That regression exposed a real re-enable issue: a temporarily unloaded TextBlock
+already had its restored Panel parent, but the helper's IsLoaded gate skipped
+wrapping it. Enabling now uses an available parent immediately; a missing parent
+still waits for Loaded, and stale Loaded events still honor the attached value.
 Exact glyph raster/horizontal subpixel placement, shadows, motion and platform
 acceptance remain open. Counts stay 63 in progress, 49 pending and zero accepted.
 
