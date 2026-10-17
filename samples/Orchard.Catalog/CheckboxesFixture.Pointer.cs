@@ -310,11 +310,13 @@ public sealed partial class CheckboxesFixture
                 var remountSettled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); var remountFrames = 0;
                 void ObserveRemount(object? sender, object args)
                 {
-                    var cursor = CurrentCheckboxCursor(); var border = Hex(Find<Border>(editor, "BorderElement").BorderBrush);
+                    var cursor = CurrentCheckboxCursor(); var borderBrush = (SolidColorBrush)Find<Border>(editor, "BorderElement").BorderBrush;
+                    var border = Hex(borderBrush); var expectedBorder = scheme == BleeckerColorScheme.Dark ? "#FFFFFFFF" : "#FFE6D5B8";
+                    var expectedOpacity = scheme == BleeckerColorScheme.Dark ? .25 : .7;
                     var publishing = NativeCursorDiagnostics.Flag(editor, "republishQueued");
-                    var ready = editor.IsLoaded && input.OwnsForeground && NativeCursorDiagnostics.OwnsCursor(editor) && !publishing && cursor == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) && border == (scheme == BleeckerColorScheme.Dark ? "#40FFFFFF" : "#B3E6D5B8");
+                    var ready = editor.IsLoaded && input.OwnsForeground && NativeCursorDiagnostics.OwnsCursor(editor) && !publishing && cursor == CheckboxSystemCursor(IntPtr.Zero, new IntPtr(32648)) && border == expectedBorder && Math.Abs(borderBrush.Opacity - expectedOpacity) < .000001;
                     remountFrames = ready ? remountFrames + 1 : 0;
-                    remountTrace.Add(new { milliseconds = remountWatch.Elapsed.TotalMilliseconds, ready, editor.IsLoaded, input.OwnsForeground, publishing, remountFrames, cursor = cursor.ToInt64(), border });
+                    remountTrace.Add(new { milliseconds = remountWatch.Elapsed.TotalMilliseconds, ready, editor.IsLoaded, input.OwnsForeground, publishing, remountFrames, cursor = cursor.ToInt64(), border, borderBrush.Opacity, expectedBorder, expectedOpacity });
                     if (remountFrames >= 2) remountSettled.TrySetResult();
                 }
                 CompositionTarget.Rendering += ObserveRemount;

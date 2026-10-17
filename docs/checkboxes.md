@@ -1,5 +1,12 @@
 # Checkbox
 
+The shared Input cursor handover regression verifies hovered border RGB and
+fractional brush opacity separately during all three stationary remounts:
+opaque sand with `.7` in Light, opaque white with `.25` in Dark. The prior
+8-bit `#B3`/`#40` assertion predates Input's source-alpha migration and no longer
+represents its paint contract. Native No-cursor ownership, two settled rendered
+observations and the original two-second deadline remain required.
+
 Run `38597371241` at `17b0e1b` fails the full ARM64 forced-publication setup:
 the restored-owner check finishes, then `QueueOwnedRepublish` correctly refuses
 an inactive owner. Its report records Arrow after that check's rejected focus
