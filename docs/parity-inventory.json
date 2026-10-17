@@ -1874,7 +1874,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Strict raster parity: 101288 differing pixels in 40 whole client frames",
+        "Strict raster parity: 83452 differing pixels in 40 whole client frames",
         "Complete hover/focus/pressed and enabled-motion timelines, customization and accessibility-event coverage",
         "Actual Windows scaling/contrast, Narrator, broader IME/selection/clipboard and native ARM64 runtime"
       ]
@@ -2559,7 +2559,7 @@
       ],
       "windowsImplementation": ["src/Orchard/Controls/BleeckerInput.cs", "src/Orchard/Themes/Inputs.xaml", "src/Orchard/Themes/Generic.xaml"],
       "catalogFixtures": ["samples/Orchard.Catalog/InputsFixture.xaml"],
-      "regressionTests": ["samples/Orchard.Catalog/InputsFixture.xaml.cs", "samples/Orchard.Catalog/InputsFixture.RoundedPointer.cs", "tests/Orchard.Tests/InputRoundedHitTests.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
+      "regressionTests": ["samples/Orchard.Catalog/InputsFixture.xaml.cs", "samples/Orchard.Catalog/InputsFixture.RoundedPointer.cs", "tests/Orchard.Tests/InputRoundedHitTests.cs", "tests/Orchard.Tests/InputPaintMotionTests.cs", "tests/Reference/InputPaintMotion.json", "samples/Orchard.Catalog/MainWindow.SearchInputs.cs", "scripts/verify-search-input.mjs", "tests/PackageConsumer/MainWindow.SearchInput.cs", "tests/PackageConsumer/MainWindow.xaml.cs"],
       "status": "in-progress",
       "remainingGaps": [
         "Finish appearance, shadows, motion and input-type contracts documented in docs/inputs.md",

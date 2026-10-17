@@ -387,8 +387,12 @@ public sealed partial class InputsFixture : UserControl
 
     private static string Hex(Brush brush)
     {
-        var color = ((SolidColorBrush)brush).Color;
-        return $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
+        var solid=(SolidColorBrush)brush;var color=solid.Color;
+        // WinUI stores brush opacity as a float. Keep this legacy byte-format
+        // diagnostic in that arithmetic; precise opacity and rendered pixels
+        // are verified separately by the source paint regression.
+        var alpha=(byte)MathF.Round(color.A*(float)solid.Opacity,MidpointRounding.AwayFromZero);
+        return $"#{alpha:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
     }
 
     private static T Find<T>(DependencyObject root, string name) where T : FrameworkElement

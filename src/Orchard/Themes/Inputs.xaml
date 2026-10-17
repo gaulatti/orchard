@@ -2,27 +2,27 @@
 <ResourceDictionary.ThemeDictionaries>
 <ResourceDictionary x:Key="Light">
 <SolidColorBrush x:Key="BleeckerInputBackgroundBrush" Color="#FFFFFF" />
-<SolidColorBrush x:Key="BleeckerInputBorderBrush" Color="#66E6D5B8" />
-<SolidColorBrush x:Key="BleeckerInputHoverBrush" Color="#B3E6D5B8" />
-<SolidColorBrush x:Key="BleeckerInputFocusBrush" Color="#B32C5784" />
-<SolidColorBrush x:Key="BleeckerInputRingBrush" Color="#1A2C5784" />
+<SolidColorBrush x:Key="BleeckerInputBorderBrush" Color="#E6D5B8" Opacity=".4" />
+<SolidColorBrush x:Key="BleeckerInputHoverBrush" Color="#E6D5B8" Opacity=".7" />
+<SolidColorBrush x:Key="BleeckerInputFocusBrush" Color="#2C5784" Opacity=".7" />
+<SolidColorBrush x:Key="BleeckerInputRingBrush" Color="#2C5784" Opacity=".1" />
 <SolidColorBrush x:Key="BleeckerInputErrorBrush" Color="#A65D57" />
 <SolidColorBrush x:Key="BleeckerInputErrorFocusBrush" Color="#A65D57" />
-<SolidColorBrush x:Key="BleeckerInputErrorRingBrush" Color="#26A65D57" />
-<SolidColorBrush x:Key="BleeckerInputPlaceholderBrush" Color="#8C595959" />
-<SolidColorBrush x:Key="BleeckerInputDisabledBrush" Color="#A6F9F6F2" />
+<SolidColorBrush x:Key="BleeckerInputErrorRingBrush" Color="#A65D57" Opacity=".15" />
+<SolidColorBrush x:Key="BleeckerInputPlaceholderBrush" Color="#595959" Opacity=".55" />
+<SolidColorBrush x:Key="BleeckerInputDisabledBrush" Color="#F9F6F2" Opacity=".65" />
 </ResourceDictionary>
 <ResourceDictionary x:Key="Default">
 <SolidColorBrush x:Key="BleeckerInputBackgroundBrush" Color="#182533" />
-<SolidColorBrush x:Key="BleeckerInputBorderBrush" Color="#26FFFFFF" />
-<SolidColorBrush x:Key="BleeckerInputHoverBrush" Color="#40FFFFFF" />
+<SolidColorBrush x:Key="BleeckerInputBorderBrush" Color="#FFFFFF" Opacity=".15" />
+<SolidColorBrush x:Key="BleeckerInputHoverBrush" Color="#FFFFFF" Opacity=".25" />
 <SolidColorBrush x:Key="BleeckerInputFocusBrush" Color="#5BA3F5" />
-<SolidColorBrush x:Key="BleeckerInputRingBrush" Color="#1F5BA3F5" />
+<SolidColorBrush x:Key="BleeckerInputRingBrush" Color="#5BA3F5" Opacity=".12" />
 <SolidColorBrush x:Key="BleeckerInputErrorBrush" Color="#D47B75" />
 <SolidColorBrush x:Key="BleeckerInputErrorFocusBrush" Color="#5BA3F5" />
-<SolidColorBrush x:Key="BleeckerInputErrorRingBrush" Color="#1F5BA3F5" />
+<SolidColorBrush x:Key="BleeckerInputErrorRingBrush" Color="#5BA3F5" Opacity=".12" />
 <SolidColorBrush x:Key="BleeckerInputPlaceholderBrush" Color="#B8C5D6" />
-<SolidColorBrush x:Key="BleeckerInputDisabledBrush" Color="#A60D1821" />
+<SolidColorBrush x:Key="BleeckerInputDisabledBrush" Color="#0D1821" Opacity=".65" />
 </ResourceDictionary>
 <ResourceDictionary x:Key="HighContrast">
 <SolidColorBrush x:Key="BleeckerInputBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />

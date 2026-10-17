@@ -1,8 +1,7 @@
+using System.Diagnostics;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Animation;
-using Windows.Foundation;
 using Windows.UI.ViewManagement;
 
 namespace Orchard;
@@ -15,7 +14,13 @@ public sealed partial class BleeckerInput
     private Border? chrome;
     private Border? focusRing;
     private Grid? editor;
-    private Storyboard? motion;
+    private readonly Stopwatch paintClock = Stopwatch.StartNew();
+    private readonly BleeckerCssTransition<(double L,double A,double B,double Alpha)> backgroundMotion = new(BleeckerColorMix.MixPremultiplied);
+    private readonly BleeckerCssTransition<(double L,double A,double B,double Alpha)> borderMotion = new(BleeckerColorMix.MixPremultiplied);
+    private readonly BleeckerCssTransition<(double L,double A,double B,double Alpha)> ringMotion = new(BleeckerColorMix.MixPremultiplied);
+    private readonly BleeckerCssTransition<double> editorOpacityMotion = new((from,to,progress)=>from+(to-from)*progress);
+    private readonly BleeckerCssTransition<double> ringOpacityMotion = new((from,to,progress)=>from+(to-from)*progress);
+    private bool paintRendering;
     private int motionRequestVersion;
     private readonly List<(SolidColorBrush Brush, long Color, long Opacity)> observedBrushes = [];
     private readonly List<(DependencyObject Owner, DependencyProperty Property, long Token)> paletteSubscriptions = [];
@@ -56,8 +61,7 @@ public sealed partial class BleeckerInput
 
     private void ApplyMotionTemplate()
     {
-        motion?.Stop();
-        motion = null;
+        StopPaintRendering();
         ClearObservedBrushes();
         foreach (var (owner, property, token) in paletteSubscriptions) owner.UnregisterPropertyChangedCallback(property, token);
         paletteSubscriptions.Clear();
@@ -98,60 +102,51 @@ public sealed partial class BleeckerInput
     private void UpdateMotion(bool animate)
     {
         if (palette is null || ringPalette is null || chrome is null || focusRing is null || editor is null) return;
-        var fromBackground = Snapshot(chrome.Background);
-        var fromBorder = Snapshot(chrome.BorderBrush);
-        var fromRing = Snapshot(focusRing.BorderBrush);
-        var fromOpacity = editor.Opacity;
-        var fromRingOpacity = focusRing.Opacity;
-        motion?.Stop();
-        motion = null;
-        var duration = TimeSpan.FromMilliseconds(BleeckerTokens.Durations["control"]);
-        var storyboard = new Storyboard { Duration = duration };
+        var now = paintClock.Elapsed.TotalMilliseconds;
+        var duration = BleeckerTokens.Durations["control"];
         var enabled = animate && IsLoaded && motionSettings.AnimationsEnabled && !shadowAccessibility.HighContrast;
-        Paint(chrome, Border.BackgroundProperty, palette.Background, fromBackground);
-        Paint(chrome, Border.BorderBrushProperty, palette.BorderBrush, fromBorder);
-        Paint(focusRing, Border.BorderBrushProperty, ringPalette.BorderBrush, fromRing);
-        Fade(editor, fromOpacity, palette.Opacity);
-        Fade(focusRing, fromRingOpacity, ringPalette.Opacity);
+        Retarget(chrome, Border.BackgroundProperty, palette.Background, backgroundMotion);
+        Retarget(chrome, Border.BorderBrushProperty, palette.BorderBrush, borderMotion);
+        Retarget(focusRing, Border.BorderBrushProperty, ringPalette.BorderBrush, ringMotion);
+        editorOpacityMotion.Retarget(palette.Opacity,now,duration,enabled);
+        ringOpacityMotion.Retarget(ringPalette.Opacity,now,duration,enabled);
         ClearObservedBrushes();
         if (IsLoaded)
             foreach (var brush in new[] { palette.Background, palette.BorderBrush, ringPalette.BorderBrush }.OfType<SolidColorBrush>().Distinct())
                 observedBrushes.Add((brush,
                     brush.RegisterPropertyChangedCallback(SolidColorBrush.ColorProperty, (_, _) => RequestMotion(false)),
                     brush.RegisterPropertyChangedCallback(Brush.OpacityProperty, (_, _) => RequestMotion(false))));
-        if (storyboard.Children.Count == 0) return;
-        storyboard.Completed += (_, _) => { if (ReferenceEquals(motion, storyboard)) { storyboard.Stop(); motion = null; } };
-        motion = storyboard;
-        storyboard.Begin();
+        PaintFrame(now);
+        if (PaintIsRunning(now)) { if (!paintRendering) { paintRendering=true; CompositionTarget.Rendering+=OnPaintFrame; } }
+        else StopPaintRendering();
 
-        void Paint(Border target, DependencyProperty property, Brush source, Windows.UI.Color? from)
+        void Retarget(Border target, DependencyProperty property, Brush source, BleeckerCssTransition<(double L,double A,double B,double Alpha)> transition)
         {
-            if (source is not SolidColorBrush solid) { target.SetValue(property, source); return; }
-            var color = Snapshot(solid)!.Value;
-            var brush = new SolidColorBrush(color);
-            target.SetValue(property, brush);
-            if (!enabled || from is null || from == color) return;
-            var animation = new ColorAnimationUsingKeyFrames { Duration = duration, EnableDependentAnimation = true };
-            animation.KeyFrames.Add(new DiscreteColorKeyFrame { KeyTime = TimeSpan.Zero, Value = from.Value });
-            animation.KeyFrames.Add(new SplineColorKeyFrame { KeyTime = duration, Value = color, KeySpline = InputSpline() });
-            Storyboard.SetTarget(animation, brush);
-            Storyboard.SetTargetProperty(animation, "Color");
-            storyboard.Children.Add(animation);
-        }
-        void Fade(UIElement target, double from, double to)
-        {
-            target.Opacity = to;
-            if (!enabled || Math.Abs(from - to) < .000001) return;
-            var animation = new DoubleAnimationUsingKeyFrames { Duration = duration };
-            animation.KeyFrames.Add(new DiscreteDoubleKeyFrame { KeyTime = TimeSpan.Zero, Value = from });
-            animation.KeyFrames.Add(new SplineDoubleKeyFrame { KeyTime = duration, Value = to, KeySpline = InputSpline() });
-            Storyboard.SetTarget(animation, target);
-            Storyboard.SetTargetProperty(animation, "Opacity");
-            storyboard.Children.Add(animation);
+            if (source is not SolidColorBrush solid) { target.SetValue(property,source); transition.Retarget((0,0,0,0),now,duration,false); return; }
+            var canAnimate=enabled&&target.GetValue(property)is SolidColorBrush;
+            if (target.GetValue(property)is not SolidColorBrush) target.SetValue(property,new SolidColorBrush());
+            var color=solid.Color;
+            transition.Retarget(BleeckerColorMix.Premultiply((color.R,color.G,color.B,color.A/255d*solid.Opacity)),now,duration,canAnimate);
         }
     }
-
-    private static Windows.UI.Color? Snapshot(Brush brush) => brush is SolidColorBrush solid
-        ? Windows.UI.Color.FromArgb((byte)Math.Round(solid.Color.A * solid.Opacity), solid.Color.R, solid.Color.G, solid.Color.B) : null;
-    private static KeySpline InputSpline() => new() { ControlPoint1 = new Point(.22, 1), ControlPoint2 = new Point(.36, 1) };
+    private bool PaintIsRunning(double now)=>backgroundMotion.IsRunning(now)||borderMotion.IsRunning(now)||ringMotion.IsRunning(now)||editorOpacityMotion.IsRunning(now)||ringOpacityMotion.IsRunning(now);
+    private void OnPaintFrame(object? sender,object args)
+    {
+        var now=paintClock.Elapsed.TotalMilliseconds;PaintFrame(now);if(!PaintIsRunning(now))StopPaintRendering();
+    }
+    private void StopPaintRendering(){if(paintRendering)CompositionTarget.Rendering-=OnPaintFrame;paintRendering=false;}
+    private void PaintFrame(double now)
+    {
+        if(palette is null||ringPalette is null||chrome is null||focusRing is null||editor is null)return;
+        Paint(chrome,Border.BackgroundProperty,palette.Background,backgroundMotion);
+        Paint(chrome,Border.BorderBrushProperty,palette.BorderBrush,borderMotion);
+        Paint(focusRing,Border.BorderBrushProperty,ringPalette.BorderBrush,ringMotion);
+        editor.Opacity=editorOpacityMotion.ValueAt(now);focusRing.Opacity=ringOpacityMotion.ValueAt(now);
+        void Paint(Border target,DependencyProperty property,Brush source,BleeckerCssTransition<(double L,double A,double B,double Alpha)> transition)
+        {
+            if(source is not SolidColorBrush)return;
+            var brush=(SolidColorBrush)target.GetValue(property);var color=BleeckerColorMix.EncodePremultiplied(transition.ValueAt(now));
+            brush.Color=Windows.UI.Color.FromArgb(255,color.R,color.G,color.B);brush.Opacity=color.Alpha;
+        }
+    }
 }

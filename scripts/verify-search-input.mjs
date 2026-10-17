@@ -20,6 +20,12 @@ export async function auditSearchInput(native,width){
   const actual=report.reports[index];context=`${test.id}/${test.scheme}`;assert.equal(actual.id,test.id);assert.equal(actual.scheme,test.scheme);assert.equal(actual.width,width);
   box(actual.editor.box,test.normal.editor.box);box(actual.search,test.normal.search);assert.equal(actual.editor.value,test.normal.editor.value);assert.equal(actual.editor.IsEnabled,!test.normal.editor.disabled);assert.equal(actual.editor.IsReadOnly,test.normal.editor.readOnly);
   assert.equal(actual.editor.role,'Edit');assert.equal(actual.editor.name,'Search catalogue');assert.deepEqual(Object.values(actual.editor.Padding),[40,0,32,0]);assert.equal(actual.editor.FontSize,test.props.inputSize==='sm'?13:test.props.inputSize==='lg'?15:14);
+  for(const key of ['background','border']){
+   const css=test.normal.editor.paint[key],lab=css.match(/^oklab\(([^)]+)\)$/)?.[1].split(/[\s/]+/).map(Number);let channels=css.match(/^rgba?\(([^)]+)\)$/)?.[1].split(',').map(Number);assert(lab||channels);
+   if(lab){const[L,a,b,alpha=1]=lab,l=(L+.3963377774*a+.2158037573*b)**3,m=(L-.1055613458*a-.0638541728*b)**3,s=(L-.0894841775*a-1.2914855480*b)**3;const encode=v=>Math.max(0,Math.min(255,Math.round((v<=.0031308?12.92*v:1.055*v**(1/2.4)-.055)*255)));channels=[encode(4.0767416621*l-3.3077115913*m+.2309699292*s),encode(-1.2684380046*l+2.6097574011*m-.3413193965*s),encode(-.0041960863*l-.7034186147*m+1.7076147010*s),alpha];}
+   const paint=actual.editor[key];assert(paint,`${context}/${key}: missing native paint evidence`);assert.equal(paint.color.slice(3).toLowerCase(),channels.slice(0,3).map(v=>v.toString(16).padStart(2,'0')).join(''));assert(Math.abs(parseInt(paint.color.slice(1,3),16)/255*paint.opacity-(channels[3]??1))<.000001,`${context}/${key}: fractional source alpha differs`);
+  }
+  assert(Math.abs(actual.editor.editorOpacity-Number(test.normal.editor.paint.opacity))<.000001);
   if(test.normal.clear){box(actual.clear.box,test.normal.clear.box);assert.equal(actual.clear.role,'Button');assert.equal(actual.clear.name,test.normal.clear.name);assert.equal(actual.clear.IsEnabled,true);}else assert.equal(actual.clear,null);
   const image=readRgbaPng(await fs.readFile(path.join(native,test.file)));assert.equal(image.width,width);assert.equal(image.height,480);
  }
@@ -30,7 +36,7 @@ export async function auditSearchInput(native,width){
  for(const gate of desktop.pointerPresentations){assert(gate.passed&&gate.stable>=2&&gate.milliseconds<2000);}
  for(const key of desktop.keyActions){assert.equal(key.downs,1);assert.equal(key.ups,1);assert.equal(key.targetRetained,true);}
  for(const click of desktop.pointerClicks){assert.equal(click.delivered,true);assert(click.receipts.some(receipt=>receipt.exact&&!receipt.IsGenerated));}
- assert.equal(desktop.keyActions.length,28);assert.equal(desktop.pointerClicks.length,10);
+ assert.equal(desktop.keyActions.length,28);const clearClicks=desktop.pointerClicks.filter(click=>click.target==='ClearSearch'),acquisitionClicks=desktop.pointerClicks.filter(click=>click.target==='SearchInputCaptureSurface');assert.equal(clearClicks.length,10);assert(acquisitionClicks.length<=1);assert.equal(desktop.pointerClicks.length,clearClicks.length+acquisitionClicks.length);if(acquisitionClicks.length)assert.equal(desktop.pointerClicks[0],acquisitionClicks[0]);
  const held=await read(path.join(native,'search-input-held-keys.json'));assert.equal(held.length,2);for(const key of held){assert.equal(key.key,9);assert.equal(key.downs,1);assert.equal(key.ups,1);assert(key.downOwned&&key.upOwned&&key.focusTransferred);assert.equal(key.downTarget,'SearchEditor');assert.equal(key.upTarget,'ClearSearch');}
  for(const input of report.inputs)for(const flag of ['clipboard','maxLength','tabOrder'])assert.equal(input[flag],true);
  assert.equal(desktop.keyActions.filter(key=>key.modifier===17&&key.modifierDowns===1&&key.modifierUps===1).length,4);
@@ -39,7 +45,7 @@ export async function auditSearchInput(native,width){
   const checks=report.accessibility.filter(item=>item.scheme===theme&&item.id===id);assert.equal(checks.length,1);const tree=checks[0].tree;assert.notEqual(tree.process,tree.clientProcess);assert.equal(tree.editors.length,1);const edit=tree.editors[0];assert.equal(edit.type,'ControlType.Edit');assert(edit.hasText&&edit.hasValue);assert.equal(edit.name,['updated','remounted'].includes(id)?'Updated search name':'Search catalogue');assert.equal(edit.enabled,id!=='disabled');assert.equal(edit.readOnly,id==='readonly');assert.equal(edit.value,id==='empty'?'':id==='updated'?'External update':id==='remounted'?'Remounted text':'Culture');
   assert.equal(tree.buttons.length,id==='empty'?0:1);if(tree.buttons.length){const button=tree.buttons[0];assert.equal(button.type,'ControlType.Button');assert(button.hasInvoke&&button.enabled&&button.focusable);assert.equal(button.name,['updated','remounted'].includes(id)?'Limpar pesquisa':'Clear search');}
  }
- return{passed:true,width,cases:expected.length,maximumGeometryError,geometryTolerance:.05,ownedKeyPairs:desktop.keyActions.length,ownedTabTransfers:held.length,physicalClicks:desktop.pointerClicks.length,externalUiaSnapshots:report.accessibility.length,sourcePixelParityVerified:false,nativeComponentAccepted:false};
+ return{passed:true,width,cases:expected.length,maximumGeometryError,geometryTolerance:.05,ownedKeyPairs:desktop.keyActions.length,ownedTabTransfers:held.length,physicalClicks:clearClicks.length,foregroundAcquisitionClicks:acquisitionClicks.length,externalUiaSnapshots:report.accessibility.length,sourcePixelParityVerified:false,nativeComponentAccepted:false};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const option=name=>{const index=process.argv.indexOf(name);assert(index>=0&&process.argv[index+1],`Pass ${name}.`);return process.argv[index+1];};

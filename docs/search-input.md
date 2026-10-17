@@ -1,5 +1,15 @@
 # Search Input
 
+The current Input paint correction preserves fractional CSS brush alpha and
+uses the shared premultiplied OKLab transition clock. All 40 native frames
+retain zero geometry error and now record source RGB, effective brush alpha
+and editor opacity explicitly. Eight corrupted reports are rejected, including
+altered paint alpha and extra consumer clicks. Foreground acquisition may use
+one separately named, receipt-verified surface click before the ten required
+clear clicks per viewport. The strict comparison improves from 101,288 to
+83,452 differing pixels; exact raster parity stays false. All 117 unit tests
+pass, including 40 frozen browser paint timelines. See [Input paint](inputs.md).
+
 `BleeckerSearchInput` composes the existing `BleeckerInput` native `TextBox` and
 a native clear `Button`. Its source is Bleecker `search-input.tsx` at
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256

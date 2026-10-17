@@ -1,5 +1,39 @@
 # Input editing preview
 
+## Fractional paint alpha and source color interpolation
+
+Input's translucent palette brushes now store the opaque source RGB color and
+their exact CSS `Opacity`, including `.65` disabled background, `.7` hover,
+`.4` / `.15` normal border and `.55` Light placeholder. The older `#A6...`
+notation below is an 8-bit diagnostic representation of the 65% brush, not
+the current storage contract. Consumers that inspect or customize a brush must
+combine `Color.A / 255` with `Opacity` to obtain its effective alpha.
+
+The former painter flattened brush alpha to a byte, losing fractional values
+before compositing. The painter now retains alpha separately and uses the
+existing CSS transition clock with premultiplied OKLab colors, 190 ms premium
+timing, interrupted retargeting and reversal shortening. Forty actual frozen
+browser transitions cover enabled/reduced motion, both themes, disabled/error,
+hover and focus paint. The numeric regression uses the browser's computed
+color values, including alpha; canvas readback at low alpha introduces an
+additional premultiply/unpremultiply rounding step and is kept as a diagnostic.
+
+The acceptance boundary for this correction is actual source RGB/alpha and
+editor opacity across the 40 Search Input frames, native editing/pointer/theme/
+template behavior, and source background/border/opacity timeline samples.
+The x64 focused Input suite and both Search Input viewport suites pass;
+the toolbar consumer also passes. All 117 unit tests pass. Native frames now
+record brush color and opacity explicitly. The legacy fixture's hexadecimal
+display uses native float arithmetic; the new audit checks full fractional
+values independently with a one-millionth bound for native float storage.
+
+Strict whole-frame raster parity remains open: the 40 Search Input frames
+improve from 101,288 to 83,452 differing pixels without masks or resampling.
+This does not accept compositing, antialiasing, typography, focus-ring spread
+or shadow differences. Native enabled-motion presentation, actual Windows
+scaling/contrast, Narrator and current native ARM64 runtime remain unverified.
+No Windows preference changed and push-triggered Actions remain paused.
+
 At `17b0e1b`, run `38597371241` passes the entire x64 job and ARM64 cross-build.
 Native ARM64 passes Section Header, contrast and the independent consumer, but
 focused Input fails Small/invalid/top-left 0,0 outside the rounded shape:

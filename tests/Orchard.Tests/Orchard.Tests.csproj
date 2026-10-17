@@ -5,6 +5,8 @@
     </PropertyGroup>
     <ItemGroup>
         <None Include="../Reference/SearchInput.json" Link="Fixtures/SearchInput.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/InputPaintMotion.json" Link="Fixtures/InputPaintMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-input-paint-motion.cjs" Link="Fixtures/CaptureInputPaintMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-search-input.cjs" Link="Fixtures/CaptureSearchInput.cjs" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerFilter.cs" Link="BleeckerFilter.cs" />
         <None Include="../Reference/FilterChip.json" Link="Fixtures/FilterChip.json" CopyToOutputDirectory="PreserveNewest" />

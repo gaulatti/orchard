@@ -255,3 +255,8 @@ disables both. Escape edits the native value without invoking clear. Sizes,
 themes, RTL geometry, editing/binding and external UIA are exercised in the
 catalog. Exact raster, complete state/motion and platform acceptance remain in
 progress; see `docs/search-input.md` in the repository.
+
+Input palette brushes retain exact CSS alpha through `Brush.Opacity` alongside
+opaque RGB colors. Combine `Color.A / 255` and `Opacity` when inspecting a
+brush. Background/border paint transitions use the existing premium CSS clock
+and premultiplied OKLab interpolation; disabled editor opacity remains separate.

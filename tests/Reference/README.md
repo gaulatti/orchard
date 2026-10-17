@@ -1,5 +1,15 @@
 # Browser reference probes
 
+`InputPaintMotion.json` records 40 transitions from the actual frozen Input
+component in Light/Dark with enabled/reduced motion. It retains source, tool,
+CSS, lock and collector provenance, independent keyframes/timing definitions,
+and five sampled points for background/border/editor opacity. The regression
+compares computed CSS colors with the native premultiplied OKLab clock while
+preserving fractional alpha. Canvas RGBA diagnostics remain in the capture;
+they are not the authoritative color when low-alpha unpremultiplication adds
+rounding. These samples verify paint interpolation, not native enabled-motion
+presentation, focus-ring spread, shadows or complete raster parity.
+
 `LoadingOverlay.json` records 60 viewport-portal cases at three client sizes
 in Light/Dark and six physical browser input probes. The frozen source,
 dependencies, CSS, fonts, collector and PNGs have recorded hashes. Capture

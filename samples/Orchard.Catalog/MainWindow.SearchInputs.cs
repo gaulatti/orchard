@@ -19,7 +19,7 @@ public sealed partial class MainWindow
     {
         using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.SearchInput.json")??throw new InvalidOperationException("Missing SearchInput reference.");
         using var source=await JsonDocument.ParseAsync(stream);
-        var original=Content;var page=new Page();var canvas=new Canvas();var scope=new ScrollViewer{Content=canvas,IsTabStop=false,HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled,VerticalScrollBarVisibility=ScrollBarVisibility.Disabled};AutomationProperties.SetAutomationId(scope,"SearchA11y-Scope");page.Content=scope;
+        var original=Content;var page=new Page();var canvas=new Canvas{Name="SearchInputCaptureSurface"};var scope=new ScrollViewer{Content=canvas,IsTabStop=false,HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled,VerticalScrollBarVisibility=ScrollBarVisibility.Disabled};AutomationProperties.SetAutomationId(scope,"SearchA11y-Scope");page.Content=scope;
         var reports=new List<object>();var inputs=new List<object>();var accessibility=new List<object>();var phase="mount";var passed=false;NativeInputSession? input=null;
         try
         {
@@ -36,7 +36,8 @@ public sealed partial class MainWindow
                     AutomationProperties.SetName(search,"Search catalogue");Canvas.SetLeft(search,20);Canvas.SetTop(search,20);canvas.Children.Add(search);
                     await input.MoveAsync(canvas,true,new Point(width-10,400));await AwaitPresentationAsync(page);
                     var editor=search.Editor;var clear=Children<Button>(search).SingleOrDefault(button=>button.Visibility==Visibility.Visible);var icon=(FrameworkElement)editor.StartIcon!;
-                    reports.Add(new{id=phase,width,scheme=scheme.ToString(),editor=new{box=Box(editor),value=editor.Text,editor.IsEnabled,editor.IsReadOnly,editor.Padding,editor.FontSize,name=FrameworkElementAutomationPeer.CreatePeerForElement(editor).GetName(),role=FrameworkElementAutomationPeer.CreatePeerForElement(editor).GetAutomationControlType().ToString()},search=Box(icon),clear=clear is null?null:new{box=Box(clear),name=FrameworkElementAutomationPeer.CreatePeerForElement(clear).GetName(),clear.IsEnabled,role=FrameworkElementAutomationPeer.CreatePeerForElement(clear).GetAutomationControlType().ToString()}});
+                    var chrome=Children<Border>(editor).Single(border=>border.Name=="BorderElement");var editorLayer=Children<Grid>(editor).Single(grid=>grid.Name=="Editor");
+                    reports.Add(new{id=phase,width,scheme=scheme.ToString(),editor=new{box=Box(editor),value=editor.Text,editor.IsEnabled,editor.IsReadOnly,editor.Padding,editor.FontSize,background=BrushPaint(chrome.Background),border=BrushPaint(chrome.BorderBrush),editorOpacity=editorLayer.Opacity,name=FrameworkElementAutomationPeer.CreatePeerForElement(editor).GetName(),role=FrameworkElementAutomationPeer.CreatePeerForElement(editor).GetAutomationControlType().ToString()},search=Box(icon),clear=clear is null?null:new{box=Box(clear),name=FrameworkElementAutomationPeer.CreatePeerForElement(clear).GetName(),clear.IsEnabled,role=FrameworkElementAutomationPeer.CreatePeerForElement(clear).GetAutomationControlType().ToString()}});
                     await SaveAsync();await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,reference.GetProperty("file").GetString()!));
                     if(phase=="value")await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,$"catalog-{scheme.ToString().ToLowerInvariant()}.png"));
                 }
@@ -90,6 +91,7 @@ public sealed partial class MainWindow
         finally{input?.Dispose();Content=original;await AwaitPresentationAsync(CatalogRoot);await SaveAsync();}
         await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="search-input",environment=RuntimeEnvironment()}));
         static bool Flag(JsonElement value,string key)=>value.TryGetProperty(key,out var flag)&&flag.GetBoolean();
+        static object BrushPaint(Brush brush){var solid=(SolidColorBrush)brush;return new{color=ColorHex(solid.Color),opacity=solid.Opacity};}
         object Box(FrameworkElement element){var bounds=element.TransformToVisual(page).TransformBounds(new Rect(0,0,element.ActualWidth,element.ActualHeight));return new{x=bounds.X,y=bounds.Y,width=bounds.Width,height=bounds.Height};}
         Task SaveAsync()=>File.WriteAllTextAsync(Path.Combine(folder,"search-input.json"),JsonSerializer.Serialize(new{passed,phase,reports,inputs,accessibility,originalContentRestored=ReferenceEquals(Content,original)},new JsonSerializerOptions{WriteIndented=true}));
         static IEnumerable<T> Children<T>(DependencyObject parent)where T:DependencyObject
