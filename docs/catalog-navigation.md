@@ -1,5 +1,11 @@
 # Catalog navigation
 
+**Metrics** follows Stat cards. It includes source number/currency/percent/compact
+formats, missing values, constrained text and original rich/template slots.
+Focused `-Component metric` compares rendered text and accessibility with the
+frozen source matrix and exercises bindings, nested input and remounts.
+See [the contract and remaining acceptance](metric-reference.md).
+
 The left component list filters titles case-insensitively as the user types.
 Choose a result to show that fixture. Clearing the search restores the full list.
 An unmatched query shows an explicit message and leaves the current fixture

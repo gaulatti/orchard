@@ -56,7 +56,17 @@ public sealed partial class MainWindow : Window
         try
         {
             CatalogRuntimeProfile.Start(folder);
-            if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            if (args.Contains("--smoke-metric"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Metrics);
+                    await Metrics.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await CaptureFixtureAsync(Metrics, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "metric", environment = RuntimeEnvironment() }));
+            }
+            else if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-lifecycle")) await RunLoadingOverlayLifecycleAsync(folder);
@@ -845,6 +855,8 @@ public sealed partial class MainWindow : Window
             await Sparklines.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(StatCards);
             await StatCards.VerifyAsync(scheme,folder);
+            await SelectFixtureAsync(Metrics);
+            await Metrics.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Tooltips);
             await Tooltips.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(FieldHelp);

@@ -233,6 +233,7 @@ public sealed partial class MainWindow : Window
                 await VerifyTimelineAsync();
                 await VerifyFilterChipsAsync();
                 await VerifySearchInputAsync();
+                await VerifyMetricAsync();
                 await VerifyLoadingOverlayAsync();
                 await VerifyBarChartAsync();
                 await VerifyAreaChartAsync();

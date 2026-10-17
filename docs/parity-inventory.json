@@ -1970,14 +1970,27 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "BleeckerMetric",
+        "BleeckerMetricFormat"
+      ],
+      "catalogFixtures": [
+        "MetricsFixture"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/MetricReferenceTests.cs",
+        "tests/Reference/Metric.json",
+        "scripts/reference/capture-metric.cjs",
+        "scripts/verify-metric.mjs",
+        "samples/Orchard.Catalog/MetricsFixture.xaml.cs",
+        "tests/PackageConsumer/MainWindow.Metric.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Exact native/browser raster and inline baseline/wrapping parity",
+        "Full rich-content, customization and lifecycle matrix",
+        "Actual scaling, Windows contrast and Narrator",
+        "Current native ARM64 runtime and independent consumer evidence"
       ]
     },
     {

@@ -1,5 +1,14 @@
 # Browser reference probes
 
+`Metric.json` records 680 strings from the actual frozen Metric component:
+85 inputs × en-US/de-DE/ja-JP/ar-EG × Light/Dark. It retains source/helper,
+CSS/font/lock/collector hashes and 12 whole-frame PNG hashes. Inputs include
+null/NaN, signed zero/infinity, half rounding, four formats, currency minor
+units/unknown codes, fixed precision and consumer prefix/suffix strings.
+The Windows regression formats with the actual system ICU API and compares
+every captured string. Rendered native text/accessibility is audited separately;
+matching formatted strings does not establish raster or platform acceptance.
+
 `SearchInputStates.json` records 48 actual browser states: editor/error hover
 and focus, disabled hover, read-only focus, clear hover/focus, held pointer,
 Space, Enter and left-edge presses, in both themes at 320/640. Fresh DOM avoids

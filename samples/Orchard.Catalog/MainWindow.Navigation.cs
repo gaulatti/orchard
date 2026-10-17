@@ -35,6 +35,7 @@ public sealed partial class MainWindow
             ("Currency chart",CurrencyCharts),
             ("Sparklines",Sparklines),
             ("Stat cards",StatCards),
+            ("Metrics",Metrics),
             ("Error states",ErrorStates),
             ("Page headers",PageHeaders),
             ("Section headers",SectionHeaders),

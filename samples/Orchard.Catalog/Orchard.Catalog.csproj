@@ -22,6 +22,7 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="../../tests/Reference/Metric.json" LogicalName="Orchard.Catalog.Reference.Metric.json" />
         <Manifest Include="$(ApplicationManifest)" />
         <EmbeddedResource Include="Reference/InputTypography.json" />
         <EmbeddedResource Include="../../tests/Reference/SearchInput.json" LogicalName="Orchard.Catalog.Reference.SearchInput.json" />

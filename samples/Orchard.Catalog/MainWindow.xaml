@@ -102,6 +102,7 @@
                     <local:CurrencyChartsFixture x:Name="CurrencyCharts" />
                 <local:SparklinesFixture x:Name="Sparklines" />
                 <local:StatCardsFixture x:Name="StatCards" />
+                <local:MetricsFixture x:Name="Metrics" />
                 <local:ErrorStatesFixture x:Name="ErrorStates" />
                 <local:PageHeadersFixture x:Name="PageHeaders" />
                 <local:SectionHeadersFixture x:Name="SectionHeaders" />

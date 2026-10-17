@@ -6,6 +6,13 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerMetric` displays nullable consumer values using Number, Currency,
+Percent or Compact formats. `Language`, `Currency` and nullable `Decimals`
+control culture and precision. Original prefix/suffix elements and templates
+remain consumer-owned; the metric is non-tabbable accessible text. Null/NaN
+leave its numeric text empty. Source-format regression covers 680 browser
+cases; exact visual/platform acceptance remains in progress.
+
 `BleeckerTimeline` displays an observable `BleeckerTimelineItem` collection with
 consumer-owned titles, descriptions, opaque timestamps, statuses and icons.
 Null status follows ordinal position (first Active, later Pending). Null icons

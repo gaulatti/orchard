@@ -101,8 +101,14 @@ jobs:
         if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
         id: stat_card_smoke
         run: ./scripts/smoke-catalog.ps1 -Component stat-card -Output artifacts/stat-card -ExpectedArchitecture X64
-      - name: Verify rapid native Pagination key pairs
+      - name: Verify Metric formatting and consumer content
         if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
+        id: metric_smoke
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component metric -Output artifacts/metric -ExpectedArchitecture X64
+          node scripts/verify-metric.mjs --native artifacts/metric --output artifacts/metric/audit.json
+      - name: Verify rapid native Pagination key pairs
+        if: ${{ !cancelled() && (steps.metric_smoke.outcome == 'success' || steps.metric_smoke.outcome == 'failure') }}
         id: pagination_paired_smoke
         run: ./scripts/smoke-catalog.ps1 -Component data-table-pagination-paired -ClientSize 1000,745 -Output artifacts/pagination-paired -ExpectedArchitecture X64
       - name: Verify native Stepper source states and input ownership
@@ -379,8 +385,14 @@ jobs:
         if: ${{ !cancelled() && (steps.sparkline_smoke.outcome == 'success' || steps.sparkline_smoke.outcome == 'failure') }}
         id: stat_card_smoke
         run: ./scripts/smoke-catalog.ps1 -Component stat-card -Output artifacts/stat-card -ExpectedArchitecture Arm64
-      - name: Verify rapid native ARM64 Pagination key pairs
+      - name: Verify Metric formatting and consumer content
         if: ${{ !cancelled() && (steps.stat_card_smoke.outcome == 'success' || steps.stat_card_smoke.outcome == 'failure') }}
+        id: metric_smoke
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component metric -Output artifacts/metric -ExpectedArchitecture Arm64
+          node scripts/verify-metric.mjs --native artifacts/metric --output artifacts/metric/audit.json
+      - name: Verify rapid native ARM64 Pagination key pairs
+        if: ${{ !cancelled() && (steps.metric_smoke.outcome == 'success' || steps.metric_smoke.outcome == 'failure') }}
         id: pagination_paired_smoke
         run: ./scripts/smoke-catalog.ps1 -Component data-table-pagination-paired -ClientSize 1000,745 -Output artifacts/pagination-paired -ExpectedArchitecture Arm64
       - name: Verify native ARM64 Stepper source states and input ownership

@@ -1,0 +1,23 @@
+<UserControl x:Class="Orchard.Catalog.MetricsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Metrics" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Applications own the values, content and culture. Null and NaN leave the formatted value empty." Style="{StaticResource BleeckerBodyStyle}" />
+  <orchard:BleeckerMetric x:Name="Specimen" Value="1248" Language="en-US" Prefix="~ " Suffix=" reviews" />
+  <orchard:BleeckerMetric Value="1234.567" Format="Currency" Currency="EUR" Language="de-DE" />
+  <orchard:BleeckerMetric Value="0.125" Format="Percent" Decimals="2" Language="en-US" />
+  <orchard:BleeckerMetric Value="1234567" Format="Compact" Language="en-US" />
+  <orchard:BleeckerMetric Value="-2.5" Decimals="0" Language="en-US" IsEnabled="False" />
+  <orchard:BleeckerMetric Prefix="[" Suffix="]" />
+  <orchard:BleeckerMetric Width="140" Value="123456789" Suffix=" consumer-owned reviews and local checks" />
+  <orchard:BleeckerMetric x:Name="Rich" Value="12" Language="en-US">
+   <orchard:BleeckerMetric.Prefix><TextBlock Text="Reviewed: " /></orchard:BleeckerMetric.Prefix>
+   <orchard:BleeckerMetric.Suffix><Button x:Name="Details" Content="Details" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></orchard:BleeckerMetric.Suffix>
+  </orchard:BleeckerMetric>
+  <orchard:BleeckerMetric x:Name="Templated" Value="24" Language="en-US" Prefix="Local: ">
+   <orchard:BleeckerMetric.PrefixTemplate><DataTemplate><TextBlock Text="{Binding}" /></DataTemplate></orchard:BleeckerMetric.PrefixTemplate>
+  </orchard:BleeckerMetric>
+  <Border x:Name="CaptureHost" Width="320" Height="120" Background="{ThemeResource BleeckerBackgroundBrush}" HorizontalAlignment="Left" Padding="20">
+   <orchard:BleeckerMetric x:Name="CaptureMetric" Language="en-US" VerticalAlignment="Top" />
+  </Border>
+ </StackPanel>
+</UserControl>

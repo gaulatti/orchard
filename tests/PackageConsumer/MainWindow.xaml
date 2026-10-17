@@ -150,6 +150,7 @@
                     <orchard:BleeckerToggleGroupItem x:Name="PackageGridItem" Value="grid" Content="Grid" />
                 </orchard:BleeckerToggleGroup>
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
+                <orchard:BleeckerMetric x:Name="PackageMetric" Value="1234567" Format="Compact" Language="en-US" Suffix=" reviews" />
                 <orchard:BleeckerKbd x:Name="PackageKeyboard" Content="Esc" />
                 <orchard:BleeckerEyebrow x:Name="PackageEyebrow" Content="Straße" Rule="True" />
                 <orchard:BleeckerProgress x:Name="PackageProgress" Value="65" ShowLabel="True" AutomationProperties.Name="Package progress" />
