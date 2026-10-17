@@ -21,6 +21,8 @@ public sealed class BleeckerMetric : Control
     private string accessibleText = string.Empty;
     private Canvas? slots;
     private ContentPresenter? prefixHost, suffixHost;
+    private readonly Dictionary<ContentPresenter, Size> appliedSizes = [];
+    private readonly Dictionary<ContentPresenter, Point> appliedPositions = [];
 
     public BleeckerMetric()
     {
@@ -80,6 +82,7 @@ public sealed class BleeckerMetric : Control
         if (prefixHost is not null) prefixHost.Content = null;
         if (suffixHost is not null) suffixHost.Content = null;
         slots?.Children.Clear(); prefixHost = suffixHost = null;
+        appliedSizes.Clear(); appliedPositions.Clear();
         if (paragraph is not null) foreach (var inline in paragraph.Inlines.OfType<InlineUIContainer>()) inline.Child = null;
         if (paragraph is not null) paragraph.Inlines.Clear();
         if (text is not null) text.Blocks.Clear();
@@ -118,17 +121,25 @@ public sealed class BleeckerMetric : Control
     private void Align(ContentPresenter? host, Inline? inline)
     {
         if (host is null || inline is not InlineUIContainer { Child: Border spacer }) return;
-        var size = host.DesiredSize;
-        if (spacer.Width != size.Width || spacer.Height != size.Height)
+        // Use the original content's arranged size, including native rounding.
+        // Cache writes rather than comparing a requested double with WinUI's
+        // float readback, which can invalidate layout indefinitely.
+        var size = new Size(host.ActualWidth, host.ActualHeight);
+        if (!appliedSizes.TryGetValue(host, out var previousSize) || previousSize != size)
         {
+            appliedSizes[host] = size;
             spacer.Width = size.Width; spacer.Height = size.Height;
             return;
         }
-        if (!spacer.IsLoaded || spacer.ActualWidth != size.Width || spacer.ActualHeight != size.Height) return;
+        if (!spacer.IsLoaded) return;
         var position = spacer.TransformToVisual(slots).TransformPoint(new Point());
-        if (Canvas.GetLeft(host) != position.X) Canvas.SetLeft(host, position.X);
-        if (Canvas.GetTop(host) != position.Y) Canvas.SetTop(host, position.Y);
-        host.Opacity = 1; host.IsHitTestVisible = true;
+        if (!appliedPositions.TryGetValue(host, out var previousPosition) || previousPosition != position)
+        {
+            appliedPositions[host] = position;
+            Canvas.SetLeft(host, position.X); Canvas.SetTop(host, position.Y);
+        }
+        if (host.Opacity != 1) host.Opacity = 1;
+        if (!host.IsHitTestVisible) host.IsHitTestVisible = true;
     }
 
     private void UpdateLineHeight()
@@ -144,7 +155,7 @@ public sealed class BleeckerMetric : Control
         if (previous is not null)
         {
             var oldHost = prefix ? prefixHost : suffixHost;
-            if (oldHost is not null) { oldHost.Content = null; slots!.Children.Remove(oldHost); }
+            if (oldHost is not null) { appliedSizes.Remove(oldHost); appliedPositions.Remove(oldHost); oldHost.Content = null; slots!.Children.Remove(oldHost); }
             if (prefix) prefixHost = null; else suffixHost = null;
             if (previous is InlineUIContainer container) container.Child = null;
             paragraph!.Inlines.Remove(previous);

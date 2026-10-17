@@ -42,6 +42,8 @@ for(const scheme of['Light','Dark']){
  assert.equal(new Set(row.slotGeometry.map(g=>`${g.direction}/${g.width}`)).size,4);
  for(const g of row.slotGeometry){assert(['LeftToRight','RightToLeft'].includes(g.direction));assert([140,320].includes(g.width));assert(g.error<=.05);for(const key of['X','Y','Width','Height'])assert(Math.abs(g.expected[key]-g.actual[key])<=.05);}
  lifecycle.push({scheme,consumerEvents:row.updateEvents.length,geometryCases:row.slotGeometry.length});
+ const native=JSON.parse(await fs.readFile(path.join(input,`metric-native-template-${scheme}.json`),'utf8'));assert.equal(native.passed,true);assert.equal(native.nativeGeometry.length,3);
+ for(const geometry of native.nativeGeometry){assert(geometry.error<=.05);for(const key of['X','Y','Width','Height'])assert(Math.abs(geometry.expected[key]-geometry.actual[key])<=.05);}
 }
 for(const test of reference.cases.filter(c=>c.file)){const bytes=await fs.readFile(path.join(input,test.file));assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');}
 const report={...audit,negativeCases,richSourceCases:rich.cases.length,lifecycle};await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

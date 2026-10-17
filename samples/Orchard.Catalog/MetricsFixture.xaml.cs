@@ -147,6 +147,19 @@ public sealed partial class MetricsFixture : UserControl
             Require(detailsActions == before + 1, "Metric swallowed the nested action's real pointer input.");
             Details.LosingFocus -= OnLosingFocus;
         }
+        var originalSuffix = Rich.Suffix;
+        OutsideMetricFocus.Focus(FocusState.Keyboard);
+        var nativeButton = new Button { Content = "Consumer details" };
+        Rich.Prefix = "Native "; Rich.Suffix = nativeButton; Rich.Width = 240;
+        var nativeGeometry = new List<object>();
+        foreach (var fontSize in new[] { 13.3, 17.75, 12.1 })
+        {
+            nativeButton.FontSize = fontSize;
+            await MainWindow.AwaitPresentationAsync(nativeButton);
+            nativeGeometry.Add(VerifySlotPlacement(Rich, FlowDirection.LeftToRight, 240));
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, $"metric-native-template-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, nativeGeometry }));
+        Rich.Suffix = originalSuffix; Rich.Prefix = prefix; Rich.ClearValue(WidthProperty);
         var panel = (StackPanel)Content; var position = panel.Children.IndexOf(Rich);
         panel.Children.RemoveAt(position); await MainWindow.AwaitPresentationAsync(this); Require(!Rich.IsLoaded, "Metric did not unload.");
         panel.Children.Insert(position, Rich); await MainWindow.AwaitPresentationAsync(Rich);

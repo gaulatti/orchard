@@ -10,6 +10,12 @@ public sealed partial class MainWindow
 {
     private async Task VerifyMetricAsync()
     {
+        var args = Environment.GetCommandLineArgs(); var outputIndex = Array.IndexOf(args, "--verify-output");
+        async Task Stage(string stage)
+        {
+            if (outputIndex >= 0) await File.WriteAllTextAsync(args[outputIndex + 1] + ".metric-stage.json", System.Text.Json.JsonSerializer.Serialize(new { stage, theme = Root.ActualTheme.ToString() }));
+        }
+        await Stage("formatting");
         PackageMetric.Language = "en-US"; PackageMetric.Value = 1234567;
         PackageMetric.ApplyTemplate(); Root.UpdateLayout();
         var text = ((Grid)VisualTreeHelper.GetChild(PackageMetric, 0)).Children.OfType<RichTextBlock>().Single();
@@ -31,9 +37,12 @@ public sealed partial class MainWindow
         PackageMetric.ClearValue(Orchard.BleeckerMetric.ValueProperty);
         PackageMetric.Language = "en-US"; PackageMetric.Format = Orchard.BleeckerMetricFormat.Compact; PackageMetric.Value = 1234567;
         var consumerButton = new Button { Content = "Consumer details" };
+        await Stage("mount-rich-control");
         PackageMetric.Suffix = consumerButton; Root.UpdateLayout();
         PackageMetric.StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
-        await AwaitAsync(() => consumerButton.IsLoaded, "Packaged metric did not mount the consumer control.");
+        var host = ((Grid)VisualTreeHelper.GetChild(PackageMetric, 0)).Children.OfType<Canvas>().Single().Children.OfType<ContentPresenter>().Single();
+        await AwaitAsync(() => consumerButton.IsLoaded && host.Opacity == 1 && host.IsHitTestVisible && host.ActualWidth > 0 && host.ActualHeight > 0, "Packaged metric did not present the consumer control.");
+        await Stage("rich-control-presented");
         Require(consumerButton.Focus(FocusState.Keyboard), "Packaged metric consumer focus precondition failed.");
         var events = new List<string>();
         RoutedEventHandler got = (_, _) => events.Add("got"), lost = (_, _) => events.Add("lost"), unloaded = (_, _) => events.Add("unloaded");
@@ -43,5 +52,6 @@ public sealed partial class MainWindow
         Require(events.Count == 0 && consumerButton.IsLoaded && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(Root.XamlRoot), consumerButton), "Packaged metric disturbed consumer focus/lifecycle during an update.");
         consumerButton.GotFocus -= got; consumerButton.LostFocus -= lost; consumerButton.Unloaded -= unloaded;
         PackageMetric.Suffix = " reviews"; PackageMetric.Value = 1234567;
+        await Stage("passed");
     }
 }
