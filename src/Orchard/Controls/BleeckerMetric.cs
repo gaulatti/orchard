@@ -11,6 +11,10 @@ public sealed class BleeckerMetric : Control
 {
     private RichTextBlock? text;
     private Paragraph? paragraph;
+    private Run? valueRun;
+    private Inline? prefixInline, suffixInline;
+    private object? renderedPrefix, renderedSuffix;
+    private DataTemplate? renderedPrefixTemplate, renderedSuffixTemplate;
     private string accessibleText = string.Empty;
 
     public BleeckerMetric()
@@ -56,6 +60,9 @@ public sealed class BleeckerMetric : Control
         base.OnApplyTemplate();
         text = GetTemplateChild("PART_Text") as RichTextBlock;
         paragraph = text is null ? null : new Paragraph();
+        prefixInline = suffixInline = null;
+        valueRun = new Run();
+        if (paragraph is not null) paragraph.Inlines.Add(valueRun);
         if (text is not null) { text.Blocks.Clear(); text.Blocks.Add(paragraph!); Typography.SetNumeralAlignment(text, FontNumeralAlignment.Tabular); }
         UpdateLineHeight();
         Update();
@@ -67,11 +74,9 @@ public sealed class BleeckerMetric : Control
         accessibleText = (PrefixTemplate is null ? Scalar(Prefix) : "") + formatted + (SuffixTemplate is null ? Scalar(Suffix) : "");
         if (text is not null)
         {
-            foreach (var inline in paragraph!.Inlines.OfType<InlineUIContainer>()) inline.Child = null;
-            paragraph.Inlines.Clear();
-            AddSlot(Prefix, PrefixTemplate);
-            paragraph.Inlines.Add(new Run { Text = formatted });
-            AddSlot(Suffix, SuffixTemplate);
+            SyncSlot(Prefix, PrefixTemplate, true);
+            valueRun!.Text = formatted;
+            SyncSlot(Suffix, SuffixTemplate, false);
         }
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
@@ -82,14 +87,32 @@ public sealed class BleeckerMetric : Control
         if (text is not null) text.LineHeight = LineHeight == 0 ? FontSize * 1.5 : LineHeight;
     }
 
-    private void AddSlot(object? content, DataTemplate? template)
+    private void SyncSlot(object? content, DataTemplate? template, bool prefix)
     {
+        var previous = prefix ? prefixInline : suffixInline;
+        if (previous is not null && ReferenceEquals(content, prefix ? renderedPrefix : renderedSuffix) && ReferenceEquals(template, prefix ? renderedPrefixTemplate : renderedSuffixTemplate)) return;
+        if (previous is not null)
+        {
+            if (previous is InlineUIContainer container) container.Child = null;
+            paragraph!.Inlines.Remove(previous);
+        }
+        Inline next;
         if (template is not null || content is UIElement)
         {
             var child = template is null ? (UIElement)content! : new ContentPresenter { Content = content, ContentTemplate = template };
-            paragraph!.Inlines.Add(new InlineUIContainer { Child = child });
+            next = new InlineUIContainer { Child = child };
         }
-        else paragraph!.Inlines.Add(new Run { Text = Scalar(content) });
+        else next = new Run { Text = Scalar(content) };
+        if (prefix)
+        {
+            paragraph!.Inlines.Insert(0, next); prefixInline = next;
+            renderedPrefix = content; renderedPrefixTemplate = template;
+        }
+        else
+        {
+            paragraph!.Inlines.Add(next); suffixInline = next;
+            renderedSuffix = content; renderedSuffixTemplate = template;
+        }
     }
 
     private static string Scalar(object? value) => value switch

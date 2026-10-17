@@ -13,7 +13,7 @@ export function auditMetric(reference,reports){
  let count=0;
  for(const scheme of['Light','Dark']){
   const report=reports[scheme];assert.equal(report.passed,true);assert.equal(report.scheme,scheme);
-  for(const flag of['liveUpdates','templateReplacement','retainedRichContent','bindingUpdates','nativeSlotInput','remount'])assert.equal(report[flag],true);
+  for(const flag of['liveUpdates','templateReplacement','retainedRichContent','bindingUpdates','nativeSlotInput','focusedSlotRetained','remount'])assert.equal(report[flag],true);
   const expected=reference.cases.filter(c=>c.scheme===scheme);assert.equal(report.cases.length,expected.length);
   const keys=new Set();for(const receipt of report.cases){const key=`${receipt.id}/${receipt.locale}`;assert(!keys.has(key));keys.add(key);
    const test=expected.find(c=>c.id===receipt.id&&c.locale===receipt.locale);assert(test,key);
@@ -27,7 +27,7 @@ const audit=auditMetric(reference,reports),negativeCases=[];
 for(const[name,mutate]of[
  ['wrong-value',r=>r.Light.cases[0].rendered='invented'],['lost-name',r=>r.Light.cases[0].automationName='invented'],
  ['missing-case',r=>r.Dark.cases.pop()],['duplicate-case',r=>r.Dark.cases[1]=structuredClone(r.Dark.cases[0])],
- ['template-not-verified',r=>r.Dark.templateReplacement=false],['rich-content-not-retained',r=>r.Light.retainedRichContent=false]
+ ['template-not-verified',r=>r.Dark.templateReplacement=false],['rich-content-not-retained',r=>r.Light.retainedRichContent=false],['focused-slot-lost',r=>r.Light.focusedSlotRetained=false]
 ]){const copy=structuredClone(reports);mutate(copy);assert.throws(()=>auditMetric(reference,copy),undefined,name);negativeCases.push(name);}
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const script=await fs.readFile(new URL('./reference/capture-metric.cjs',import.meta.url),'utf8');assert.equal(hash(script.replace(/\r\n/g,'\n')),reference.scriptSha256);

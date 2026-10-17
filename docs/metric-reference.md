@@ -65,7 +65,10 @@ template replacement and unload/remount. Value and precision retain nullable
 CLR types with boxed dependency-property storage: nullable-typed custom DPs
 rejected primitive XAML bindings in the initial runtime regression.
 
-All 121 unit tests and token checks pass. Six corrupted native reports fail
+Value updates retain the original prefix/suffix inline hosts, including a
+consumer button's keyboard focus. Slot replacement affects only that slot.
+
+All 121 unit tests and token checks pass. Seven corrupted native reports fail
 the audit. Twelve raw whole-frame comparisons still show 12,286 differing
 pixels with zero masks/resampling. Exact baseline/glyph/wrapping parity is open;
 the browser canvas uses the pinned source's actual background variables.

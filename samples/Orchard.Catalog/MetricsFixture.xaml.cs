@@ -86,6 +86,11 @@ public sealed partial class MetricsFixture : UserControl
             var before = detailsActions; await input.KeyAsync(0x20, Details);
             await MainWindow.AwaitPresentationAsync(Details);
             Require(detailsActions == before + 1, "Metric swallowed the nested action's real Space key.");
+            var originalInlines = ((Paragraph)((RichTextBlock)VisualTreeHelper.GetChild(Rich, 0)).Blocks[0]).Inlines.ToArray();
+            Rich.Value = 13; await MainWindow.AwaitPresentationAsync(Details);
+            var currentInlines = ((Paragraph)((RichTextBlock)VisualTreeHelper.GetChild(Rich, 0)).Blocks[0]).Inlines.ToArray();
+            Require(ReferenceEquals(originalInlines[0], currentInlines[0]) && ReferenceEquals(originalInlines[2], currentInlines[2]) && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Details), "Metric value updates remounted a consumer slot or lost its keyboard focus.");
+            Rich.Value = 12;
             before = detailsActions; await input.ClickAsync(Details);
             await MainWindow.AwaitPresentationAsync(Details);
             Require(detailsActions == before + 1, "Metric swallowed the nested action's real pointer input.");
@@ -94,7 +99,7 @@ public sealed partial class MetricsFixture : UserControl
         panel.Children.RemoveAt(position); await MainWindow.AwaitPresentationAsync(this); Require(!Rich.IsLoaded, "Metric did not unload.");
         panel.Children.Insert(position, Rich); await MainWindow.AwaitPresentationAsync(Rich);
         Require(Rich.IsLoaded && ReferenceEquals(Rich.Prefix, prefix) && Rich.FormattedValue == "12", "Metric remount lost consumer content.");
-        await File.WriteAllTextAsync(Path.Combine(folder, $"metric-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, scheme = scheme.ToString(), cases = receipts, liveUpdates = true, templateReplacement = true, retainedRichContent = true, bindingUpdates = true, nativeSlotInput = true, remount = true }, new JsonSerializerOptions { WriteIndented = true }));
+        await File.WriteAllTextAsync(Path.Combine(folder, $"metric-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, scheme = scheme.ToString(), cases = receipts, liveUpdates = true, templateReplacement = true, retainedRichContent = true, bindingUpdates = true, nativeSlotInput = true, focusedSlotRetained = true, remount = true }, new JsonSerializerOptions { WriteIndented = true }));
     }
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
 
