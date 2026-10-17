@@ -1855,14 +1855,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerSearchInput.cs",
+        "src/Orchard/Themes/SearchInput.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/SearchInputsFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/SearchInputReferenceTests.cs",
+        "tests/Reference/SearchInput.json",
+        "samples/Orchard.Catalog/MainWindow.SearchInputs.cs",
+        "scripts/verify-search-input.mjs",
+        "scripts/test-search-input-audit.mjs",
+        "scripts/compare-search-input-pixels.mjs",
+        "scripts/SearchInputUiaProbe.cs",
+        "tests/PackageConsumer/MainWindow.SearchInput.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Strict raster parity: 107752 differing pixels in 40 whole client frames",
+        "Complete hover/focus/pressed and enabled-motion timelines, customization and accessibility-event coverage",
+        "Actual Windows scaling/contrast, Narrator, broader IME/selection/clipboard and native ARM64 runtime"
       ]
     },
     {

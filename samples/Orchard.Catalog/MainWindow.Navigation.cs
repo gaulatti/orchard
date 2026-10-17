@@ -46,6 +46,7 @@ public sealed partial class MainWindow
             ("Timeline",Timelines),
             ("Loading overlay",LoadingOverlays),
             ("Filter chips",FilterChips),
+            ("Search inputs",SearchInputs),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
             ("Data table columns",DataTableColumnToggles),

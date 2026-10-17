@@ -15,6 +15,7 @@ internal sealed class BleeckerFilterAction : Button
 {
     private readonly Control owner;
     private readonly bool remove;
+    private readonly double pressedScale;
     private readonly Action invoke;
     private readonly Func<bool> canInvoke;
     private readonly Func<Brush> normal,hover,hoverBackground;
@@ -35,17 +36,17 @@ internal sealed class BleeckerFilterAction : Button
     private string? resolvedName;
     private bool? resolvedEnabled;
     private readonly List<(DependencyObject Owner,DependencyProperty Property,long Token)> labelObservers=[];
-    internal BleeckerFilterAction(Control owner,bool remove,Action invoke,Func<bool> canInvoke,Func<Brush> normal,Func<Brush> hover,Func<Brush> hoverBackground,Func<string>? textValue=null)
+    internal BleeckerFilterAction(Control owner,bool remove,Action invoke,Func<bool> canInvoke,Func<Brush> normal,Func<Brush> hover,Func<Brush> hoverBackground,Func<string>? textValue=null,double iconSize=12,double pressedScale=.9)
     {
-        this.owner=owner;this.remove=remove;this.invoke=invoke;this.canInvoke=canInvoke;this.normal=normal;this.hover=hover;this.hoverBackground=hoverBackground;this.textValue=textValue;
+        this.owner=owner;this.remove=remove;this.pressedScale=pressedScale;this.invoke=invoke;this.canInvoke=canInvoke;this.normal=normal;this.hover=hover;this.hoverBackground=hoverBackground;this.textValue=textValue;
         var resources=new ResourceDictionary{Source=new Uri("ms-appx:///Orchard/Themes/FilterActions.xaml")};Style=(Style)resources[typeof(Button)];
         ProtectedCursor=InputSystemCursor.Create(InputSystemCursorShape.Hand);visual.RenderTransform=scale;
         chrome.Background=background;chrome.CornerRadius=new CornerRadius(remove?4:0);chrome.Padding=new Thickness(remove?2:0);visual.Children.Add(chrome);
         if(remove)
         {
-            var icon=new Canvas{Width=12,Height=12};
-            foreach(var line in new[]{new Line{X1=9,Y1=3,X2=3,Y2=9},new Line{X1=3,Y1=3,X2=9,Y2=9}})
-            {line.Stroke=foreground;line.StrokeThickness=1;line.StrokeStartLineCap=line.StrokeEndLineCap=PenLineCap.Round;icon.Children.Add(line);}
+            var icon=new Canvas{Width=iconSize,Height=iconSize};
+            foreach(var line in new[]{new Line{X1=iconSize*.75,Y1=iconSize*.25,X2=iconSize*.25,Y2=iconSize*.75},new Line{X1=iconSize*.25,Y1=iconSize*.25,X2=iconSize*.75,Y2=iconSize*.75}})
+            {line.Stroke=foreground;line.StrokeThickness=iconSize/12;line.StrokeStartLineCap=line.StrokeEndLineCap=PenLineCap.Round;icon.Children.Add(line);}
             chrome.Child=icon;
         }
         else{text=new BleeckerFilterText{Name="ClearFilterText"};text.Text.Foreground=foreground;chrome.Child=text;}
@@ -122,7 +123,7 @@ internal sealed class BleeckerFilterAction : Button
         if(foregroundMotion.IsRunning(now)||backgroundMotion.IsRunning(now)){if(!rendering){rendering=true;CompositionTarget.Rendering+=Frame;}}
         else StopRendering();
     }
-    private void UpdateScale()=>scale.ScaleX=scale.ScaleY=remove&&IsPressed&&IsEnabled ? .9 : 1;
+    private void UpdateScale()=>scale.ScaleX=scale.ScaleY=remove&&IsPressed&&IsEnabled ? pressedScale : 1;
     private void Frame(object? sender,object args){var now=clock.Elapsed.TotalMilliseconds;Paint(now);if(!foregroundMotion.IsRunning(now)&&!backgroundMotion.IsRunning(now))StopRendering();}
     private void StopRendering(){if(rendering)CompositionTarget.Rendering-=Frame;rendering=false;}
     private void Paint(double now){Set(foreground,foregroundMotion.ValueAt(now));Set(background,backgroundMotion.ValueAt(now));}

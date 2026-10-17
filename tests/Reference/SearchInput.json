@@ -1,0 +1,2969 @@
+{
+  "format": "orchard-search-input-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "0a9e5eafdbafdeffdb2e60859ecd5cd1eea4af3598eac712e03f5a6d01a2a038",
+  "scriptSha256": "2ee57566a9a4fc2262389bb15fc635112833b4a71c50e2b6987635073eba6d59",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "browser": "155.0.4283.45",
+  "react": "19.2.4",
+  "esbuild": "0.25.12",
+  "playwright": "1.62.1",
+  "snapshots": {
+    "animationsPaused": true,
+    "currentTime": 0
+  },
+  "cases": [
+    {
+      "id": "empty",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "empty",
+        "value": "",
+        "placeholder": "Search catalogue",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-empty-320-Light.png",
+      "pngSha256": "4520db3e5eef8745e4b869f3989495a16904665d946fcc0e742f8eba36ce83d6"
+    },
+    {
+      "id": "value",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "value",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-value-320-Light.png",
+      "pngSha256": "2c35edf9865f069372b8ca89ea2d9b01062f8270b9fb79ee310fc5d10dda1c68"
+    },
+    {
+      "id": "no-callback",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "no-callback",
+        "value": "Culture"
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-no-callback-320-Light.png",
+      "pngSha256": "f794cf7437b49278f5d6db2026f18dea520fd8808dd475712bf0b3fe33014be9"
+    },
+    {
+      "id": "small",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "small",
+        "inputSize": "sm",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 36
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 30,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 29,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 31,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-small-320-Light.png",
+      "pngSha256": "b88b6da493ab5d59333d097e6add904ab85cc358d58c05ddf9a0a734b43987c6"
+    },
+    {
+      "id": "large",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "large",
+        "inputSize": "lg",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 44
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "15px / 22.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 34,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 33,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 35,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-large-320-Light.png",
+      "pngSha256": "09c4daec7a4de927c2b132b81f15dcfafd8d81baf0c9271e5584f62e736a0d73"
+    },
+    {
+      "id": "error",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "error",
+        "error": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-error-320-Light.png",
+      "pngSha256": "2c35edf9865f069372b8ca89ea2d9b01062f8270b9fb79ee310fc5d10dda1c68"
+    },
+    {
+      "id": "disabled",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "disabled",
+        "disabled": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.999994 0.0000455678 0.0000200868)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": true,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-disabled-320-Light.png",
+      "pngSha256": "c771804dfc14791f7401d5ed18f9000f520c4f0eca0fa7c62616019fb0a7d6f6"
+    },
+    {
+      "id": "readonly",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "readonly",
+        "readOnly": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": true
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-readonly-320-Light.png",
+      "pngSha256": "2c35edf9865f069372b8ca89ea2d9b01062f8270b9fb79ee310fc5d10dda1c68"
+    },
+    {
+      "id": "rtl",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "rtl",
+        "dir": "rtl",
+        "value": "العربية",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "rtl"
+          },
+          "value": "العربية",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-rtl-320-Light.png",
+      "pngSha256": "bbfa73f821381ebe7a2eeda2335c6c0384c06a6e1341db06166d265d21451837"
+    },
+    {
+      "id": "unicode",
+      "width": 320,
+      "scheme": "Light",
+      "props": {
+        "id": "unicode",
+        "value": "Révision 日本語",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Révision 日本語",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-unicode-320-Light.png",
+      "pngSha256": "9510bb2a086ea4aa2519e84820dff11e93a8ee4133246dcb8bcad34de23c0f4b"
+    },
+    {
+      "id": "empty",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "empty",
+        "value": "",
+        "placeholder": "Search catalogue",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-empty-320-Dark.png",
+      "pngSha256": "fe32581de4aa0472ac7c793989b8c0306b24f9f7342e61aabf7a870f5eb57cca"
+    },
+    {
+      "id": "value",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "value",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-value-320-Dark.png",
+      "pngSha256": "56a6dfda2fd4867b7ab7fad708d76372b8aa5a1b46274cfb11d0416ed6039537"
+    },
+    {
+      "id": "no-callback",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "no-callback",
+        "value": "Culture"
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-no-callback-320-Dark.png",
+      "pngSha256": "daf1cfa8a8b676e17868f42195e2f486de7de34555e94eb75828f5131419bbed"
+    },
+    {
+      "id": "small",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "small",
+        "inputSize": "sm",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 36
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 30,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 29,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 31,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-small-320-Dark.png",
+      "pngSha256": "2d20bd172b850176b96f0b9f0c271d4177b829ee2517570bf1be7561bebdb4c4"
+    },
+    {
+      "id": "large",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "large",
+        "inputSize": "lg",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 44
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "15px / 22.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 34,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 33,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 35,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-large-320-Dark.png",
+      "pngSha256": "64838decfdf33dc18d839f207771bd403c472c87842e3ab4734bfa4592eb62ff"
+    },
+    {
+      "id": "error",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "error",
+        "error": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-error-320-Dark.png",
+      "pngSha256": "56a6dfda2fd4867b7ab7fad708d76372b8aa5a1b46274cfb11d0416ed6039537"
+    },
+    {
+      "id": "disabled",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "disabled",
+        "disabled": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.259435 -0.0104664 -0.030312)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": true,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-disabled-320-Dark.png",
+      "pngSha256": "c9aace2dcd87299b5ccdce728b613ab82a1c003d4b4d4788b1ff144310770830"
+    },
+    {
+      "id": "readonly",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "readonly",
+        "readOnly": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": true
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-readonly-320-Dark.png",
+      "pngSha256": "56a6dfda2fd4867b7ab7fad708d76372b8aa5a1b46274cfb11d0416ed6039537"
+    },
+    {
+      "id": "rtl",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "rtl",
+        "dir": "rtl",
+        "value": "العربية",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "rtl"
+          },
+          "value": "العربية",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-rtl-320-Dark.png",
+      "pngSha256": "433d58829b7f3becf78e1590abd21f07d94730e31b88408b8ea4857b53f88269"
+    },
+    {
+      "id": "unicode",
+      "width": 320,
+      "scheme": "Dark",
+      "props": {
+        "id": "unicode",
+        "value": "Révision 日本語",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 280,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Révision 日本語",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 272,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 274,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-unicode-320-Dark.png",
+      "pngSha256": "cd10de196acb7babe8c5767abb86a499a174d7f195c6866b3e98e74f300dfbcd"
+    },
+    {
+      "id": "empty",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "empty",
+        "value": "",
+        "placeholder": "Search catalogue",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-empty-640-Light.png",
+      "pngSha256": "2fa43492a6c441bf538c5ae2813f62bffea840347d39951dcf643c6e51bcf2f9"
+    },
+    {
+      "id": "value",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "value",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-value-640-Light.png",
+      "pngSha256": "3f46605589c690c4bdee61db055577984345f8a3fdc7dfbf3a1bf24dd284615c"
+    },
+    {
+      "id": "no-callback",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "no-callback",
+        "value": "Culture"
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-no-callback-640-Light.png",
+      "pngSha256": "3498ddf6616af8d5645978652bd2ba2f6c9536f9c9d935dd64c0c3c8119f53dd"
+    },
+    {
+      "id": "small",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "small",
+        "inputSize": "sm",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 36
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 30,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 29,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 31,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-small-640-Light.png",
+      "pngSha256": "ad332e88b4f8168d9869d8857a2fc083307b92a20168ce842bc95e7d81afa691"
+    },
+    {
+      "id": "large",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "large",
+        "inputSize": "lg",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 44
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "15px / 22.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 34,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 33,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 35,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-large-640-Light.png",
+      "pngSha256": "7245ae4fe83df72e720ccb370a0bb9e94a056c86e0e94f8f07206501bd1d384a"
+    },
+    {
+      "id": "error",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "error",
+        "error": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-error-640-Light.png",
+      "pngSha256": "3f46605589c690c4bdee61db055577984345f8a3fdc7dfbf3a1bf24dd284615c"
+    },
+    {
+      "id": "disabled",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "disabled",
+        "disabled": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.999994 0.0000455678 0.0000200868)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": true,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-disabled-640-Light.png",
+      "pngSha256": "bac7574a36f2830f2a2810430a715218e684ff9de0e2de8840dd8097cba11880"
+    },
+    {
+      "id": "readonly",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "readonly",
+        "readOnly": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": true
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-readonly-640-Light.png",
+      "pngSha256": "3f46605589c690c4bdee61db055577984345f8a3fdc7dfbf3a1bf24dd284615c"
+    },
+    {
+      "id": "rtl",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "rtl",
+        "dir": "rtl",
+        "value": "العربية",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "rtl"
+          },
+          "value": "العربية",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-rtl-640-Light.png",
+      "pngSha256": "06334aa749c609c04c7b0e568c18926bb2a45239a01c7f97172366c7676baca6"
+    },
+    {
+      "id": "unicode",
+      "width": 640,
+      "scheme": "Light",
+      "props": {
+        "id": "unicode",
+        "value": "Révision 日本語",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(45, 45, 45)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.4)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Révision 日本語",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(89, 89, 89)",
+            "border": "rgb(89, 89, 89)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-unicode-640-Light.png",
+      "pngSha256": "a3a667ac135305a36edcb688de38f73b8898973211322cd1acdc83a241307ca9"
+    },
+    {
+      "id": "empty",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "empty",
+        "value": "",
+        "placeholder": "Search catalogue",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-empty-640-Dark.png",
+      "pngSha256": "ec3e556160e337468549ce1563ca06b9d6a01edcf39e5742eb8993a8b30b895e"
+    },
+    {
+      "id": "value",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "value",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-value-640-Dark.png",
+      "pngSha256": "a1a5b8bdecab09b3c672b925a3e86be1bf842f5688af1eb2b501b54cdfcb6da9"
+    },
+    {
+      "id": "no-callback",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "no-callback",
+        "value": "Culture"
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": null
+      },
+      "file": "search-input-no-callback-640-Dark.png",
+      "pngSha256": "4bf0357e59a50d9cb201ad43cd3a0f06464243c5d0ab2d332c5585ecc5846dad"
+    },
+    {
+      "id": "small",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "small",
+        "inputSize": "sm",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 36
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "13px / 19.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 30,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 29,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 31,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-small-640-Dark.png",
+      "pngSha256": "0fc155557c636d82992a11e38bffbe72062b30936b1baef2863047bdc5db2ce2"
+    },
+    {
+      "id": "large",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "large",
+        "inputSize": "lg",
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 44
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "15px / 22.5px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 34,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 33,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 35,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-large-640-Dark.png",
+      "pngSha256": "4071353c4315afae8891ed5f8dc7b96dee61a1f2a068086f7583816a045634a3"
+    },
+    {
+      "id": "error",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "error",
+        "error": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-error-640-Dark.png",
+      "pngSha256": "a1a5b8bdecab09b3c672b925a3e86be1bf842f5688af1eb2b501b54cdfcb6da9"
+    },
+    {
+      "id": "disabled",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "disabled",
+        "disabled": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "oklab(0.259435 -0.0104664 -0.030312)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": true,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-disabled-640-Dark.png",
+      "pngSha256": "2412860b8263edb61aac40755ea3ae699c8be326186df9bc2e500f9ccaf8b112"
+    },
+    {
+      "id": "readonly",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "readonly",
+        "readOnly": true,
+        "value": "Culture",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Culture",
+          "disabled": false,
+          "readOnly": true
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-readonly-640-Dark.png",
+      "pngSha256": "a1a5b8bdecab09b3c672b925a3e86be1bf842f5688af1eb2b501b54cdfcb6da9"
+    },
+    {
+      "id": "rtl",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "rtl",
+        "dir": "rtl",
+        "value": "العربية",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "rtl"
+          },
+          "value": "العربية",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-rtl-640-Dark.png",
+      "pngSha256": "40c85f73bf526128ac4a87e013dab17a0d3fb758c5f3ab5124b20a9afed98933"
+    },
+    {
+      "id": "unicode",
+      "width": 640,
+      "scheme": "Dark",
+      "props": {
+        "id": "unicode",
+        "value": "Révision 日本語",
+        "clear": true
+      },
+      "normal": {
+        "editor": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 600,
+            "height": 40
+          },
+          "paint": {
+            "background": "rgb(24, 37, 51)",
+            "color": "rgb(240, 244, 248)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+            "radius": "7px",
+            "padding": [
+              "0px",
+              "32px",
+              "0px",
+              "40px"
+            ],
+            "font": "14px / 20px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "value": "Révision 日本語",
+          "disabled": false,
+          "readOnly": false
+        },
+        "search": {
+          "x": 32,
+          "y": 32,
+          "width": 16,
+          "height": 16
+        },
+        "clear": {
+          "box": {
+            "x": 592,
+            "y": 31,
+            "width": 18,
+            "height": 18
+          },
+          "paint": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(184, 197, 214)",
+            "border": "rgb(184, 197, 214)",
+            "radius": "4px",
+            "padding": [
+              "2px",
+              "2px",
+              "2px",
+              "2px"
+            ],
+            "font": "16px / 24px \"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+            "opacity": "1",
+            "direction": "ltr"
+          },
+          "name": "Clear search",
+          "disabled": false,
+          "icon": {
+            "x": 594,
+            "y": 33,
+            "width": 14,
+            "height": 14
+          }
+        }
+      },
+      "file": "search-input-unicode-640-Dark.png",
+      "pngSha256": "12015aeeb1c57907d3e57463e43a1eb72acf9642128c0ed27bb3b6c7e260985c"
+    }
+  ],
+  "interactions": [
+    {
+      "width": 320,
+      "scheme": "Light",
+      "clearActions": 3,
+      "clearRetainsConsumerText": true,
+      "disabledEditorAllowsClear": true,
+      "readOnlyEditorAllowsClear": true,
+      "escape": {
+        "value": "Culture",
+        "actions": [
+          {
+            "kind": "change",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "scheme": "Dark",
+      "clearActions": 3,
+      "clearRetainsConsumerText": true,
+      "disabledEditorAllowsClear": true,
+      "readOnlyEditorAllowsClear": true,
+      "escape": {
+        "value": "Culture",
+        "actions": [
+          {
+            "kind": "change",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Light",
+      "clearActions": 3,
+      "clearRetainsConsumerText": true,
+      "disabledEditorAllowsClear": true,
+      "readOnlyEditorAllowsClear": true,
+      "escape": {
+        "value": "Culture",
+        "actions": [
+          {
+            "kind": "change",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "width": 640,
+      "scheme": "Dark",
+      "clearActions": 3,
+      "clearRetainsConsumerText": true,
+      "disabledEditorAllowsClear": true,
+      "readOnlyEditorAllowsClear": true,
+      "escape": {
+        "value": "Culture",
+        "actions": [
+          {
+            "kind": "change",
+            "text": ""
+          }
+        ]
+      }
+    }
+  ]
+}

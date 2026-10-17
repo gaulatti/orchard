@@ -136,6 +136,16 @@ jobs:
           }
           node scripts/test-timeline-audit.mjs --native artifacts/timeline-1024 --viewport 1024 --output artifacts/timeline-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Timeline negative audit failed.' }
+      - name: Verify SearchInput editing, clear ownership and external UIA
+        run: |
+          foreach ($width in @(320,640)) {
+            ./scripts/smoke-catalog.ps1 -Component search-input -ClientSize $width,480 -Output "artifacts/search-input-$width" -ExpectedArchitecture X64
+            node scripts/verify-search-input.mjs --native "artifacts/search-input-$width" --width $width --output "artifacts/search-input-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'SearchInput source/native audit failed.' }
+          }
+          node scripts/test-search-input-audit.mjs --native artifacts/search-input-640 --width 640 --output artifacts/search-input-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'SearchInput negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component search-input-catalog -Output artifacts/search-input-catalog -ExpectedArchitecture X64
       - name: Verify FilterChip geometry, native actions and lifecycle
         run: |
           foreach ($width in @(320,640)) {
@@ -399,6 +409,16 @@ jobs:
           }
           node scripts/test-timeline-audit.mjs --native artifacts/timeline-1024 --viewport 1024 --output artifacts/timeline-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Timeline negative audit failed.' }
+      - name: Verify native ARM64 SearchInput editing, clear ownership and external UIA
+        run: |
+          foreach ($width in @(320,640)) {
+            ./scripts/smoke-catalog.ps1 -Component search-input -ClientSize $width,480 -Output "artifacts/search-input-$width" -ExpectedArchitecture Arm64
+            node scripts/verify-search-input.mjs --native "artifacts/search-input-$width" --width $width --output "artifacts/search-input-$width/audit.json"
+            if ($LASTEXITCODE -ne 0) { throw 'ARM64 SearchInput source/native audit failed.' }
+          }
+          node scripts/test-search-input-audit.mjs --native artifacts/search-input-640 --width 640 --output artifacts/search-input-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 SearchInput negative audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component search-input-catalog -Output artifacts/search-input-catalog -ExpectedArchitecture Arm64
       - name: Verify native ARM64 FilterChip geometry, actions and lifecycle
         run: |
           foreach ($width in @(320,640)) {

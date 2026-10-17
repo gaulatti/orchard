@@ -24,6 +24,7 @@
     <ItemGroup>
         <Manifest Include="$(ApplicationManifest)" />
         <EmbeddedResource Include="Reference/InputTypography.json" />
+        <EmbeddedResource Include="../../tests/Reference/SearchInput.json" LogicalName="Orchard.Catalog.Reference.SearchInput.json" />
         <EmbeddedResource Include="Reference/BauhausPixels.json" />
         <EmbeddedResource Include="Reference/BauhausNarrow.json" />
         <EmbeddedResource Include="Reference/BauhausRaster.json" />
@@ -75,6 +76,7 @@
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <Content Include="../../scripts/LoadingOverlayUiaProbe.cs" Link="LoadingOverlayUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Content Include="../../scripts/FilterChipUiaProbe.cs" Link="FilterChipUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="../../scripts/SearchInputUiaProbe.cs" Link="SearchInputUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Content Include="../../scripts/FilterChipUiaSession.cs" Link="FilterChipUiaSession.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../tests/Reference/Stepper.json" LogicalName="Orchard.Catalog.Reference.Stepper.json" />
         <EmbeddedResource Include="../../tests/Reference/DataList.json" LogicalName="Orchard.Catalog.Reference.DataList.json" />

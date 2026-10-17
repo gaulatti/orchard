@@ -244,3 +244,14 @@ Set the chart's automation name for its noninteractive Image role. Tab skips it;
 hover/click adds no visible inspection. Help text supplies ancestor paths and
 values. Cycles and malformed child collections fail explicitly. See the
 Sunburst contract for source quirks and outstanding visual/platform acceptance.
+
+
+`BleeckerSearchInput` composes Orchard's native editor with an optional clear
+action. Bind `Text` in TwoWay mode. `ClearRequested` / `ClearCommand` keep
+text changes consumer-owned; `ClearLabel` localizes the action. `Editor`
+exposes native selection, clipboard and text events. `IsEditorEnabled=false`
+disables only editing, preserving the sibling clear button; `IsEnabled=false`
+disables both. Escape edits the native value without invoking clear. Sizes,
+themes, RTL geometry, editing/binding and external UIA are exercised in the
+catalog. Exact raster, complete state/motion and platform acceptance remain in
+progress; see `docs/search-input.md` in the repository.

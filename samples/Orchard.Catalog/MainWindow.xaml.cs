@@ -67,6 +67,17 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-loading-overlay-windows")) await RunLoadingOverlayWindowsAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-contrast")) await RunLoadingOverlayContrastAsync(folder, entryOnly: false);
             else if (args.Contains("--smoke-loading-overlay-contrast-entry")) await RunLoadingOverlayContrastAsync(folder, entryOnly: true);
+            else if (args.Contains("--smoke-search-input")) await RunSearchInputsAsync(folder);
+            else if (args.Contains("--smoke-search-input-catalog"))
+            {
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                {
+                    CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(SearchInputs);
+                    await SearchInputs.VerifyAsync(folder,theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark);
+                    await CaptureFixtureAsync(SearchInputs,Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="search-input-catalog",environment=RuntimeEnvironment()}));
+            }
             else if (args.Contains("--smoke-filter-chip")) await RunFilterChipsAsync(folder);
             else if (args.Contains("--smoke-filter-chip-typography")) await RunFilterChipTypographyAsync(folder);
             else if (args.Contains("--smoke-filter-chip-accessibility")) await RunFilterChipAccessibilityAsync(folder);
@@ -797,6 +808,9 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(FilterChips);
             await FilterChips.VerifyAsync(folder,scheme);
             await CaptureFixtureAsync(FilterChips,Path.Combine(folder,$"filter-chips-{scheme}.png"));
+            await SelectFixtureAsync(SearchInputs);
+            await SearchInputs.VerifyAsync(folder,scheme);
+            await CaptureFixtureAsync(SearchInputs,Path.Combine(folder,$"search-inputs-{scheme}.png"));
             await SelectFixtureAsync(DataTableToolbars);
             await DataTableToolbars.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(DataTablePaginations);

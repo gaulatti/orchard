@@ -1,0 +1,13 @@
+<UserControl x:Class="Orchard.Catalog.SearchInputsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Search inputs" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+  <TextBlock Text="Native text editing with a consumer-owned clear action. Escape edits the value; the clear button requests a consumer action." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <orchard:BleeckerSearchInput x:Name="Search" PlaceholderText="Search fictional catalogue" Text="Culture" ClearRequested="ClearSearch" AutomationProperties.Name="Search catalogue" />
+  <orchard:BleeckerSearchInput InputSize="Small" Text="Small search" AutomationProperties.Name="Small search" />
+  <orchard:BleeckerSearchInput InputSize="Large" Text="Large search" AutomationProperties.Name="Large search" />
+  <orchard:BleeckerSearchInput x:Name="DisabledEditor" IsEditorEnabled="False" Text="Disabled editor; clear stays available" ClearRequested="ClearDisabled" AutomationProperties.Name="Disabled search editor" />
+  <orchard:BleeckerSearchInput IsReadOnly="True" Text="Read-only search" ClearRequested="KeepSearch" AutomationProperties.Name="Read-only search" />
+  <orchard:BleeckerSearchInput IsError="True" PlaceholderText="Error state" AutomationProperties.Name="Search with error" />
+  <TextBlock x:Name="Result" Text="The consumer owns text and clear behavior." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+ </StackPanel>
+</UserControl>
