@@ -69,6 +69,22 @@ All eleven deliberately corrupted geometry, child color, paint, semantics,
 scalar and completeness reports are rejected by the audit. Four full PNGs
 match exactly; the other 132 retain reported raster differences, including
 rounded-edge antialiasing, translucent compositing and text/native child paint.
+Geometry assertions cover the badge and explicit child boxes. Text ink/line
+layout and native editor appearance remain part of the raster acceptance gap.
+
+Version `0.1.0-b8aa2de` is built from
+`b8aa2de56d11d7f23773196a4b722d0c2fd36df9`. Both catalog architectures build;
+the independent x64 NuGet consumer passes both themes, including all six
+variants/sizes, retained focus, names/colors and five scalar boundaries. Its
+ARM64 consumer builds with runtime explicitly unverified. Both isolated
+consumer workspaces and package caches are removed. The x64/ARM64 catalog
+archives verify all 537/533 entries against their published files.
+
+The current full x64 attempt stopped at the unchanged Activity Hand-cursor
+gate after 44,195.8564ms. Windows reports no present mouse and no visible
+global cursor, while WinUI selects Hand. This is not a complete full-suite
+pass. The last complete passing source remains `48d8fd3`; the new candidate
+still needs the unchanged full test with a connected mouse.
 
 Acceptance remains in progress. Required evidence includes exact raster parity,
 remaining customization/RTL/disabled/overflow pointer cases, external UIA and

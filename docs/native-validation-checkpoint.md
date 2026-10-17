@@ -1,5 +1,31 @@
 # Current native validation checkpoint
 
+## IconBadge candidate
+
+Source `b8aa2de56d11d7f23773196a4b722d0c2fd36df9` passes 181 tests and both
+catalog builds. Its [IconBadge preview](icon-badge.md) passes 136 source/native
+frames, 52 child placements, 80 scalar cases and eight retained-child lifecycle
+phases with zero asserted geometry error. All eleven audit corruptions are
+rejected. Four complete PNGs match; the other 132 retain explicit raster gaps.
+The audit snapshots now copy their images independently so a later native
+rerun cannot mutate earlier evidence through hard links.
+
+Fresh version `0.1.0-b8aa2de` passes an independent x64 NuGet consumer in both
+themes. The ARM64 consumer builds; native ARM64 runtime remains unverified.
+Both isolated consumer workspaces/caches are removed. Every entry in the
+x64/ARM64 catalog ZIPs matches its corresponding publish (537/533 files).
+
+The full x64 candidate attempt stopped at 44,195.8564ms on Activity's existing
+global Windows Hand-cursor requirement. WinUI selects Hand, but Windows has
+no present mouse (`SM_MOUSEPRESENT = 0`) and reports a hidden global cursor.
+No cursor requirement or deadline was changed. A complete candidate run is
+still required; the previous complete passing source is retained below.
+Push-triggered Actions remain paused and no hosted CI run is implied.
+
+Inventory: 66 in progress, 46 pending, zero accepted out of 112 (58.9% started).
+Both required compositions remain unaccepted. The public wiki remains
+unavailable; the implementation and checkpoint are documented in this repo.
+
 ## Current validated source
 
 Source `48d8fd3b16afe3c71d59b7e3b3428b62c40ab03b` passes 177 tests and both

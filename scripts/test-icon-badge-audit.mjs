@@ -7,7 +7,7 @@ const native=option('--native'),source=option('--source'),output=option('--outpu
 const report=JSON.parse(await fs.readFile(path.join(native,'icon-badge.json'),'utf8'));
 await fs.mkdir(output,{recursive:true});const fixture=await fs.mkdtemp(path.join(output,'fixture-'));
 await fs.copyFile(path.join(native,'result.json'),path.join(fixture,'result.json'));
-for(const file of await fs.readdir(native))if(file.endsWith('.png'))await fs.link(path.join(native,file),path.join(fixture,file));
+for(const file of await fs.readdir(native))if(file.endsWith('.png'))await fs.copyFile(path.join(native,file),path.join(fixture,file));
 const run=()=>spawnSync(process.execPath,['scripts/verify-icon-badge.mjs','--native',fixture,'--source',source,'--output',path.join(fixture,'audit.json')],{encoding:'utf8'});
 await fs.writeFile(path.join(fixture,'icon-badge.json'),JSON.stringify(report));const baseline=run();assert.equal(baseline.status,0,baseline.stderr+baseline.stdout);
 const mutations=[
