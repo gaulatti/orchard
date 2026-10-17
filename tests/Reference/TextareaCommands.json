@@ -1,0 +1,1885 @@
+{
+  "format": "orchard-textarea-commands-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "b523ba0962a02492a5e5954957eede4e1ad683ee7ce7ac21c04097325eb82082",
+  "scriptSha256": "5f2f09ba4a67b9754736f4cacd2fedc36aefb01f29b3b01c574d3003529841f1",
+  "frozenLockSha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437",
+  "cssSha256": "f8b9a106443c748cd6ad8ce19c63cc20f291437e533c3be71bc5d66ab2e70ce3",
+  "fontFiles": [
+    {
+      "weight": 400,
+      "file": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "weight": 500,
+      "file": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "weight": 600,
+      "file": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    }
+  ],
+  "browser": "155.0.4283.45",
+  "realClipboard": true,
+  "cases": [
+    {
+      "id": "select-all",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+a",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Command clipboard",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Command clipboard"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-select-all-320-Light.png",
+      "pngSha256": "641ce929c49ee9f5b04ac03592239b4a5ca21a30a106713af63e78b4e998eb50"
+    },
+    {
+      "id": "copy",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-copy-320-Light.png",
+      "pngSha256": "641ce929c49ee9f5b04ac03592239b4a5ca21a30a106713af63e78b4e998eb50"
+    },
+    {
+      "id": "cut",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+x",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-cut-320-Light.png",
+      "pngSha256": "b9c986d6830491b8de1d4f044bb5b2f1b02e2ecbf78988b381b59ca39daa672c"
+    },
+    {
+      "id": "undo",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+z",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-undo-320-Light.png",
+      "pngSha256": "641ce929c49ee9f5b04ac03592239b4a5ca21a30a106713af63e78b4e998eb50"
+    },
+    {
+      "id": "redo",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+y",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-redo-320-Light.png",
+      "pngSha256": "b9c986d6830491b8de1d4f044bb5b2f1b02e2ecbf78988b381b59ca39daa672c"
+    },
+    {
+      "id": "paste",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          12,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-paste-320-Light.png",
+      "pngSha256": "f10f49ce373aa07cd2353c0c944774df36a142957d8f62c2a1d71b73e933221b"
+    },
+    {
+      "id": "readonly-copy",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-copy-320-Light.png",
+      "pngSha256": "641ce929c49ee9f5b04ac03592239b4a5ca21a30a106713af63e78b4e998eb50"
+    },
+    {
+      "id": "readonly-cut",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+x",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-cut-320-Light.png",
+      "pngSha256": "641ce929c49ee9f5b04ac03592239b4a5ca21a30a106713af63e78b4e998eb50"
+    },
+    {
+      "id": "readonly-paste",
+      "width": 320,
+      "scheme": "Light",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Rejected",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Rejected"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-paste-320-Light.png",
+      "pngSha256": "641ce929c49ee9f5b04ac03592239b4a5ca21a30a106713af63e78b4e998eb50"
+    },
+    {
+      "id": "select-all",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+a",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Command clipboard",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Command clipboard"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-select-all-320-Dark.png",
+      "pngSha256": "3504f4ab11f660639dbf1862fdbd0f598e9836f251157e6a1b84f8e7d8429417"
+    },
+    {
+      "id": "copy",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-copy-320-Dark.png",
+      "pngSha256": "3504f4ab11f660639dbf1862fdbd0f598e9836f251157e6a1b84f8e7d8429417"
+    },
+    {
+      "id": "cut",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+x",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-cut-320-Dark.png",
+      "pngSha256": "3117697c127aa262a433eb5491f5aca354ae1878aae7c7c6c6f5a3c19e9c6a76"
+    },
+    {
+      "id": "undo",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+z",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-undo-320-Dark.png",
+      "pngSha256": "3504f4ab11f660639dbf1862fdbd0f598e9836f251157e6a1b84f8e7d8429417"
+    },
+    {
+      "id": "redo",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+y",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-redo-320-Dark.png",
+      "pngSha256": "3117697c127aa262a433eb5491f5aca354ae1878aae7c7c6c6f5a3c19e9c6a76"
+    },
+    {
+      "id": "paste",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          12,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-paste-320-Dark.png",
+      "pngSha256": "a624962a273270fd410cb947f7ce4a7da84c82e102395aebaf3db57cc25cae21"
+    },
+    {
+      "id": "readonly-copy",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-copy-320-Dark.png",
+      "pngSha256": "3504f4ab11f660639dbf1862fdbd0f598e9836f251157e6a1b84f8e7d8429417"
+    },
+    {
+      "id": "readonly-cut",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+x",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-cut-320-Dark.png",
+      "pngSha256": "3504f4ab11f660639dbf1862fdbd0f598e9836f251157e6a1b84f8e7d8429417"
+    },
+    {
+      "id": "readonly-paste",
+      "width": 320,
+      "scheme": "Dark",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Rejected",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Rejected"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-paste-320-Dark.png",
+      "pngSha256": "3504f4ab11f660639dbf1862fdbd0f598e9836f251157e6a1b84f8e7d8429417"
+    },
+    {
+      "id": "select-all",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+a",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Command clipboard",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Command clipboard"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-select-all-640-Light.png",
+      "pngSha256": "4e0657cce3e133e1019f9e147906e50465d2d6c2d4f993ded51014fc85bcbd2f"
+    },
+    {
+      "id": "copy",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-copy-640-Light.png",
+      "pngSha256": "4e0657cce3e133e1019f9e147906e50465d2d6c2d4f993ded51014fc85bcbd2f"
+    },
+    {
+      "id": "cut",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+x",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-cut-640-Light.png",
+      "pngSha256": "fdcff4b6c3998316a5930d5e5afe67add7787a4dcfdee93a5c6e0d83bfafea18"
+    },
+    {
+      "id": "undo",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+z",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-undo-640-Light.png",
+      "pngSha256": "4e0657cce3e133e1019f9e147906e50465d2d6c2d4f993ded51014fc85bcbd2f"
+    },
+    {
+      "id": "redo",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+y",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-redo-640-Light.png",
+      "pngSha256": "fdcff4b6c3998316a5930d5e5afe67add7787a4dcfdee93a5c6e0d83bfafea18"
+    },
+    {
+      "id": "paste",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          12,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-paste-640-Light.png",
+      "pngSha256": "d10bd27c2655c8f6dcd3be80831d19e46a79ae226e050c4b77a9948490678b71"
+    },
+    {
+      "id": "readonly-copy",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-copy-640-Light.png",
+      "pngSha256": "4e0657cce3e133e1019f9e147906e50465d2d6c2d4f993ded51014fc85bcbd2f"
+    },
+    {
+      "id": "readonly-cut",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+x",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-cut-640-Light.png",
+      "pngSha256": "4e0657cce3e133e1019f9e147906e50465d2d6c2d4f993ded51014fc85bcbd2f"
+    },
+    {
+      "id": "readonly-paste",
+      "width": 640,
+      "scheme": "Light",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Rejected",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Rejected"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-paste-640-Light.png",
+      "pngSha256": "4e0657cce3e133e1019f9e147906e50465d2d6c2d4f993ded51014fc85bcbd2f"
+    },
+    {
+      "id": "select-all",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+a",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Command clipboard",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Command clipboard"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "a"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-select-all-640-Dark.png",
+      "pngSha256": "3e94cd10bfd68529469241e820d9c5509cd74cb5a70821b319318da018ec236e"
+    },
+    {
+      "id": "copy",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-copy-640-Dark.png",
+      "pngSha256": "3e94cd10bfd68529469241e820d9c5509cd74cb5a70821b319318da018ec236e"
+    },
+    {
+      "id": "cut",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+x",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-cut-640-Dark.png",
+      "pngSha256": "2040324adfab58d97360ceec8c23bb567c866a9ce78e6cb68c954dce5090c6fe"
+    },
+    {
+      "id": "undo",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+z",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "z"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-undo-640-Dark.png",
+      "pngSha256": "3e94cd10bfd68529469241e820d9c5509cd74cb5a70821b319318da018ec236e"
+    },
+    {
+      "id": "redo",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+y",
+      "actual": {
+        "text": "",
+        "selection": [
+          0,
+          0
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "y"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-redo-640-Dark.png",
+      "pngSha256": "2040324adfab58d97360ceec8c23bb567c866a9ce78e6cb68c954dce5090c6fe"
+    },
+    {
+      "id": "paste",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          12,
+          12
+        ],
+        "readOnly": false,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "input",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-paste-640-Dark.png",
+      "pngSha256": "2b429541b1271b3fae1cb39e12b72799a2778ce48931150606953f0eb12a3661"
+    },
+    {
+      "id": "readonly-copy",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+c",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "copy",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "c"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-copy-640-Dark.png",
+      "pngSha256": "3e94cd10bfd68529469241e820d9c5509cd74cb5a70821b319318da018ec236e"
+    },
+    {
+      "id": "readonly-cut",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+x",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "First\r\nSecond",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "First\nSecond"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "cut",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "x"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-cut-640-Dark.png",
+      "pngSha256": "3e94cd10bfd68529469241e820d9c5509cd74cb5a70821b319318da018ec236e"
+    },
+    {
+      "id": "readonly-paste",
+      "width": 640,
+      "scheme": "Dark",
+      "key": "Control+v",
+      "actual": {
+        "text": "First\nSecond",
+        "selection": [
+          0,
+          12
+        ],
+        "readOnly": true,
+        "focused": true
+      },
+      "clipboard": {
+        "text": "Rejected",
+        "types": [
+          "text/plain"
+        ],
+        "normalizedText": "Rejected"
+      },
+      "events": [
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "Control"
+        },
+        {
+          "type": "keydown",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "paste",
+          "trusted": true,
+          "key": null
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "v"
+        },
+        {
+          "type": "keyup",
+          "trusted": true,
+          "key": "Control"
+        }
+      ],
+      "file": "textarea-commands-readonly-paste-640-Dark.png",
+      "pngSha256": "3e94cd10bfd68529469241e820d9c5509cd74cb5a70821b319318da018ec236e"
+    }
+  ]
+}

@@ -73,6 +73,7 @@ public sealed partial class BleeckerTextarea : RichEditBox
 
     protected override void OnApplyTemplate()
     {
+        plainTextMenu?.Hide();
         DetachResizeGrip();
         contentVersion++;
         base.OnApplyTemplate();

@@ -83,7 +83,7 @@ public sealed partial class MainWindow
                 foreach(var shortcut in new ushort[]{0x42,0x49,0x55}){phase=scheme+"-format-shortcut-"+shortcut;await SaveAsync();await input.ModifiedPreviewKeyAsync(0x11,shortcut,bound);}
                 var insertion=bound.TextDocument.Selection.CharacterFormat;
                 Require(insertion.Bold==FormatEffect.Off&&insertion.Italic==FormatEffect.Off&&insertion.Underline==UnderlineType.None,"Rich formatting shortcuts escaped the plain-text editor: "+JsonSerializer.Serialize(new{insertion.Bold,insertion.Italic,insertion.Underline}));
-                Require(bound.ContextFlyout is BleeckerDropdownMenu plainMenu&&plainMenu.Items.Count==6&&ReferenceEquals(bound.ContextFlyout,bound.SelectionFlyout),"Plain-text command surfaces expose the rich editor toolbar.");
+                Require(bound.ContextFlyout is null&&bound.SelectionFlyout is BleeckerDropdownMenu plainMenu&&plainMenu.Items.Count==6,"Plain-text command surfaces expose the rich editor toolbar.");
                 phase=scheme+"-clipboard-payload";await SaveAsync();
                 var clipboard=new DataPackage();clipboard.SetText("Pasted\nnotes");clipboard.SetHtmlFormat(HtmlFormatHelper.CreateHtmlFormat("<b>Pasted<br>notes</b>"));Clipboard.SetContent(clipboard);
                 phase=scheme+"-clipboard-select";await SaveAsync();await input.ModifiedKeyAsync(0x11,0x41,bound);

@@ -209,6 +209,65 @@ raster comparisons without masks or resampling, actual Windows scaling, enabled
 and reduced motion, contrast, Narrator, x64 and native ARM64. Source geometry or
 a successful build alone does not satisfy these criteria.
 
+## Native context commands and consumer ownership
+
+The default menu offers Undo, Redo, Cut, Copy, Paste and Select all. Apps,
+Shift+F10 and right click open it through the real context-request path. Copy
+and Cut export plain text only; Paste uses the same asynchronous ownership and
+length checks as keyboard paste. Read-only editors allow Copy and Select all
+while disabling the four editing commands. Commands restore focus to the editor.
+Windows clipboard text may contain CRLF; reference comparisons retain the raw
+clipboard and explicitly normalize line breaks to LF.
+
+The default `ContextFlyout` property is unset. Orchard handles an unhandled
+`ContextRequested` event and opens its branded menu at the pointer or selection
+edge, within the owner's XAML root. Set a local `ContextFlyout=null` to disable
+this default context menu, or supply/bind a custom flyout to use normal WinUI
+dispatch. `ClearValue(UIElement.ContextFlyoutProperty)` restores Orchard's
+default behavior. Consumer bindings remain attached. `SelectionFlyout` exposes
+the default six-command menu; it can also be customized independently.
+
+The standalone Textarea style deliberately omits the stock RichEditBox context
+flyout. In pinned WinUI `2.3.9`, its automatic MenuFlyout dispatch and both
+positioned `ShowAt` overloads create a separate popup HWND even when root
+constraint is requested. Orchard uses a layout anchor with the unpositioned
+overload. The keyboard anchor follows the selection's trailing edge in LTR and
+leading edge in RTL. Template replacement and unload close the owned menu.
+An explicit null style setter was rejected: clearing a local override throws
+`E_FAIL`, reproduced in a plain RichEditBox with the same setter. Leaving the
+property unset avoids that failure and preserves consumer reset semantics.
+The pinned package's `generic.xaml` establishes the inherited stock flyout;
+[WinUI's MenuFlyout implementation](https://github.com/microsoft/microsoft-ui-xaml/blob/main/dxaml/xcp/dxaml/lib/MenuFlyout_Partial.cpp)
+and [FlyoutBase implementation](https://github.com/microsoft/microsoft-ui-xaml/blob/main/dxaml/xcp/dxaml/lib/FlyoutBase_partial.cpp)
+explain the overload distinction. Current upstream code is supporting context;
+the actual pinned runtime is the verification boundary.
+
+`scripts/reference/capture-textarea-commands.cjs` records 36 frozen-source
+states in `tests/Reference/TextareaCommands.json`, across both widths/themes:
+Select all, Copy, Cut, Undo, Redo, Paste and read-only Copy/Cut/Paste. The
+collector seeds its own clipboard, uses trusted key events and records clipboard
+formats and screenshot hashes. Native checks use actual Apps/Shift+F10/right
+click input and native source press/release receipts, followed by actual menu
+item presses. A popup can close before XAML routes release; these receipts
+explicitly claim the WinUI input-source boundary, not retained routed release.
+Run `scripts/smoke-catalog.ps1 -Component textarea-commands` at 320x600 and
+640x600, then `scripts/verify-textarea-commands.mjs` and its negative audit.
+The final runs at `artifacts/textarea-commands-final-runtime-320` and
+`artifacts/textarea-commands-final-runtime-640` pass all 36 command states and
+28 ownership/reset phases. Their audits reject 15 deliberate corruptions per
+width, including missing input receipts and missing ownership verification.
+The affected regression reruns retain all 172 source-sized frames, four editing
+sequences, eight external UIA snapshots and 60 native key actions. The separate
+length suite retains 56 source cases, 36 delayed-provider cases, four real menu
+paste checks and 188 native key actions. All 130 unit tests, generated tokens,
+and x64/ARM64 builds pass. Native ARM64 execution remains pending. The latest
+raw comparison (`artifacts/textarea-commands-regression-pixels.json`) reports
+1,001,652 differing pixels and absolute RGBA error 56,022,878 across 172 complete
+frames, with no masks or resampling; visual parity is still open.
+Menu screenshots are evidence of the native result, not raw source raster
+acceptance. Clipboard-provider errors, remaining customization, enabled motion,
+scaling, contrast, Narrator and native ARM64 still require verification.
+
 ## Pointer resize contract
 
 `scripts/reference/capture-textarea-resize.cjs` collects a separate 72-case

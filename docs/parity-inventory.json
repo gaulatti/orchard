@@ -3312,12 +3312,20 @@
         "samples/Orchard.Catalog/NativeInputSession.MenuPointer.cs",
         "scripts/verify-textarea-limits.mjs",
         "scripts/test-textarea-limits-audit.mjs",
+        "tests/Orchard.Tests/TextareaCommandsReferenceTests.cs",
+        "tests/Reference/TextareaCommands.json",
+        "scripts/reference/capture-textarea-commands.cjs",
+        "samples/Orchard.Catalog/MainWindow.TextareaCommands.cs",
+        "samples/Orchard.Catalog/MainWindow.TextareaCommandOwnership.cs",
+        "samples/Orchard.Catalog/NativeInputSession.ContextMenu.cs",
+        "scripts/verify-textarea-commands.mjs",
+        "scripts/test-textarea-commands-audit.mjs",
         "tests/PackageConsumer/MainWindow.Textarea.cs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Complete remaining customization/validation boundaries; positive native length limits, selection, normalization and undo now match the measured source",
-        "Verify provider errors, other menu invocation/opening, live theme/size/row/error changes and remaining lifecycle paths; 56 length cases, 36 deferred-provider cases, four real menu paste invocations and pointer ownership matrices pass",
+        "Verify provider errors, live theme/size/row/error changes and remaining customization/lifecycle paths; 56 length cases, 36 deferred-provider cases, four real menu paste invocations, 36 context command states, 28 context ownership/reset phases and pointer ownership matrices pass",
         "Integrate and verify the complete catalog sequence; strengthened source states and fresh visible x64 package consumer pass with live template readiness",
         "Resolve exact raster/motion/scaling/contrast/Narrator and native ARM64 acceptance; external UIA validity remains unavailable in the legacy client"
       ]

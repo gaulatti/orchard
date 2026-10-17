@@ -7,6 +7,8 @@
         <None Include="../Reference/Textarea.json" Link="Fixtures/Textarea.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/TextareaResize.json" Link="Fixtures/TextareaResize.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/TextareaLimits.json" Link="Fixtures/TextareaLimits.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/TextareaCommands.json" Link="Fixtures/TextareaCommands.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-textarea-commands.cjs" Link="Fixtures/CaptureTextareaCommands.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-textarea-limits.cjs" Link="Fixtures/CaptureTextareaLimits.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-textarea-resize.cjs" Link="Fixtures/CaptureTextareaResize.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-textarea.cjs" Link="Fixtures/CaptureTextarea.cjs" CopyToOutputDirectory="PreserveNewest" />

@@ -72,6 +72,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-textarea-resize")) await RunTextareaResizeAsync(folder);
             else if (args.Contains("--smoke-textarea-resize-ownership")) await RunTextareaResizeOwnershipAsync(folder);
             else if (args.Contains("--smoke-textarea-limits")) await RunTextareaLimitsAsync(folder);
+            else if (args.Contains("--smoke-textarea-commands")) await RunTextareaCommandsAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-lifecycle")) await RunLoadingOverlayLifecycleAsync(folder);

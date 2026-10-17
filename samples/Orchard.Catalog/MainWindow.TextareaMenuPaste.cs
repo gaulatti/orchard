@@ -16,7 +16,7 @@ public sealed partial class MainWindow
         Canvas.SetLeft(editor,20);Canvas.SetTop(editor,20);canvas.Children.Add(editor);await AwaitPresentationAsync(editor);
         await input.ClickAsync(editor);editor.TextDocument.Selection.SetRange(2,2);
         var data=new DataPackage();data.SetText("cde");Clipboard.SetContent(data);
-        var menu=(BleeckerDropdownMenu)editor.ContextFlyout;var paste=menu.Items.OfType<BleeckerMenuContentItem>().Single(item=>item.Text=="Paste");
+        var menu=(BleeckerDropdownMenu)editor.SelectionFlyout;var paste=menu.Items.OfType<BleeckerMenuContentItem>().Single(item=>item.Text=="Paste");
         paste.Name="TextareaMenuPaste";var clicked=false;paste.Click+=(_,_)=>clicked=true;
         menu.ShowAt(editor);await AwaitPresentationAsync(paste);Require(paste.IsEnabled,"Editable menu paste is unavailable.");
         await input.ClickMenuItemSourceAsync(paste,scheme.ToString());
