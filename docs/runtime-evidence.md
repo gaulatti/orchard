@@ -1,5 +1,13 @@
 # Native Windows runtime evidence
 
+Source `5fc9c4e` passes 170 tests and native exact-byte persistence checks. Its
+first full replay stopped with a native WinUI stowed exception in dark Sunburst.
+Focused Sunburst and the broader chart sequence both passed afterward. One full
+repeat passed that transition, then expired at the unchanged 480-second
+watchdog after 144 phases. Animation preferences were restored after both runs.
+The bounded blank-frame scan and GC phase diagnostics are under verification;
+no new release archive is accepted. See the checkpoint for retained evidence.
+
 Source `e5fdbdc` passes all 168 tests, both catalog builds, 292 scalar cases and
 the existing layout/lifecycle/motion/continuity audits and corruption checks.
 The isolated `0.1.0-e5fdbdc` package passes both x64 themes and the ARM64 build;

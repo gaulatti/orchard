@@ -25,6 +25,14 @@ compression remain unchanged. File writes finish synchronously before the
 capture task returns; input and presentation still use their explicit native
 gates.
 
+Bitmap and composed-screen blank checks share a bounded byte lookup. The check
+still requires nine distinct non-alpha channel values, exactly matching the
+previous LINQ predicate. Empty reference canvases retain their separate exact
+opaque-color validation. Bitmap profiling records `bitmap.validation` separately
+from rendering and persistence. Phase receipts also record process-wide garbage
+collection counts and cumulative pause-time deltas; these diagnostics add no
+dispatcher turn or input and do not change deadlines.
+
 The `brush-alpha` diagnostic retains all four frozen PNG/RGBA cases and adds
 36 opaque comparisons with the previous Windows conversion/write path. It
 checks complete files immediately after return, exact PNG bytes, decoded RGBA

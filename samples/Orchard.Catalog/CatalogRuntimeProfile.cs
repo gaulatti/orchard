@@ -10,6 +10,8 @@ internal static class CatalogRuntimeProfile
     private static readonly Dictionary<string, Measurement> measurements = [];
     private static string? output;
     private static long started, phaseStarted;
+    private static TimeSpan pauseStarted;
+    private static int generation0, generation1, generation2;
     private static string phase = "startup";
     private static string theme = "Default";
 
@@ -18,6 +20,7 @@ internal static class CatalogRuntimeProfile
         if (output is not null) throw new InvalidOperationException("Catalog profiling already started.");
         output = Path.Combine(folder, "catalog-runtime-profile.jsonl");
         started = phaseStarted = Stopwatch.GetTimestamp();
+        BeginCollections();
         File.WriteAllText(output, JsonSerializer.Serialize(new { kind = "start", format = "orchard-catalog-runtime-profile-v1" }) + "\n");
     }
 
@@ -28,6 +31,7 @@ internal static class CatalogRuntimeProfile
         phase = name;
         theme = requestedTheme;
         phaseStarted = Stopwatch.GetTimestamp();
+        BeginCollections();
         File.AppendAllText(output, JsonSerializer.Serialize(new { kind = "phase-start", phase, theme, elapsedMilliseconds = Elapsed(started) }) + "\n");
     }
 
@@ -70,8 +74,21 @@ internal static class CatalogRuntimeProfile
         File.AppendAllText(output!, JsonSerializer.Serialize(new
         {
             kind = "phase", phase, theme, milliseconds = Elapsed(phaseStarted),
-            elapsedMilliseconds = Elapsed(started), measurements = samples
+            elapsedMilliseconds = Elapsed(started), measurements = samples,
+            garbageCollection = new
+            {
+                pauseMilliseconds = (GC.GetTotalPauseDuration() - pauseStarted).TotalMilliseconds,
+                generation0 = GC.CollectionCount(0) - generation0,
+                generation1 = GC.CollectionCount(1) - generation1,
+                generation2 = GC.CollectionCount(2) - generation2
+            }
         }) + "\n");
+    }
+
+    private static void BeginCollections()
+    {
+        pauseStarted = GC.GetTotalPauseDuration();
+        generation0 = GC.CollectionCount(0); generation1 = GC.CollectionCount(1); generation2 = GC.CollectionCount(2);
     }
 
     private static double Elapsed(long timestamp) => Stopwatch.GetElapsedTime(timestamp).TotalMilliseconds;

@@ -1,5 +1,26 @@
 # Current native validation checkpoint
 
+## Capture timing investigation
+
+Source `5fc9c4e` passes 170 tests, including accelerated and scalar conversion
+paths, all four frozen PNG/RGBA cases and 36 exact Windows comparisons. Its
+first full run stopped after 128 phases with native WinUI stowed exception
+`C000027B` (`8000FFFF` in Windows Error Reporting) during dark Sunburst. The
+process ended and the original animation preference was restored. Focused
+Sunburst then passed all 47 source cases in each theme, and the broader chart
+sequence passed both themes. One full replay passed that transition but reached
+the unchanged 480-second watchdog after 144 phases. Neither run is release
+evidence. Receipts and Windows events are retained under `artifacts/current`.
+
+An optimized blank-frame scan is under native verification. It preserves the
+same nine distinct non-alpha channel values and the separate exact-color empty
+canvas guard. Comparing all 1,156 PNGs from the interrupted full replay produced
+identical predicate results. Across five paired repetitions, the prior LINQ
+predicate took 8,373.47ms and the bounded scan 650.77ms. These are diagnostic
+corpus timings, not a completed full-suite result. The PNG encoder, pixels,
+metadata, masks, tolerances, input gates and watchdog remain unchanged. Phase
+GC pause/count diagnostics will distinguish collection time from capture work.
+
 ## Current scalar and delivery replay
 
 Source `e5fdbdc` retains the scalar/painted-overflow correction, exact-byte capture
