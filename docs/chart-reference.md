@@ -160,3 +160,11 @@ All twelve complete currency rasters still differ by 769–5,761 pixels, maximum
 channel difference 239, with zero masks/tolerance. Inventory remains 48 in
 progress, 64 pending, none accepted; all documented platform, data, visual and
 performance acceptance gaps remain. Push-triggered Actions remain paused.
+
+The currency lifecycle fixture now observes both native focus departure and
+the resulting hidden/empty inspection before issuing reverse Tab. FocusManager
+can report the next native owner before routed LostFocus finishes; immediately
+returning focus then suppresses that stale blur in the chart. The fixture also
+requires Enter to restore the updated record's visible inspection before
+reordering the collection. The existing reorder/removal, record subscription,
+template, resize and cleanup assertions and two-second deadlines remain.

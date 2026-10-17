@@ -113,7 +113,13 @@ public sealed partial class CurrencyChartsFixture : UserControl
         Require(before.Focus(FocusState.Keyboard), "Before Chart refused focus."); input.Key(0x09);
         await AwaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), inner), "Physical Tab did not enter the Chart's single inspection stop."); record["name"] = "Updated"; record["total"] = "10.00";
         await AwaitAsync(() => string.Concat(items.Children.OfType<TextBlock>().Select(t => t.Text)) == "UpdatedTotal : $10.00", "Original record notifications did not reach inspection.");
-        input.Key(0x09); await AwaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), after), "Physical Tab did not leave Chart inspection."); input.ShiftKey(0x09); await AwaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), inner), "Reverse Tab skipped Chart inspection."); await input.KeyAsync(0x0D, inner);
+        input.Key(0x09);
+        // Native focus can move before the routed blur updates inspection. A
+        // reverse Tab issued in that gap can correctly suppress the stale blur.
+        // Observe the complete departure before testing re-entry and Enter.
+        await AwaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), after) && popup.Visibility == Visibility.Collapsed && items.Children.Count == 0, "Physical Tab did not finish leaving Chart inspection.");
+        input.ShiftKey(0x09); await AwaitAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), inner), "Reverse Tab skipped Chart inspection."); await input.KeyAsync(0x0D, inner);
+        await AwaitAsync(() => popup.Visibility == Visibility.Visible && string.Concat(items.Children.OfType<TextBlock>().Select(t => t.Text)) == "UpdatedTotal : $10.00", "Enter did not reactivate Chart inspection before collection changes.");
         records.Move(0, 1); await AwaitAsync(() => items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "B", "Record reorder did not reach active inspection."); records.RemoveAt(0); await AwaitAsync(() => items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Updated", "Record removal did not reach inspection.");
         var replacement = DefaultData(); owner.Data = replacement; await AwaitAsync(() => items.Children.OfType<TextBlock>().FirstOrDefault()?.Text == "Harbor", "Root collection replacement did not reach inspection."); Require(record.Subscribers == 0, "Old records retained subscriptions.");
         replacement.Clear(); await AwaitAsync(() => !plot.Children.OfType<ShapePath>().Any() && popup.Visibility == Visibility.Collapsed && !items.Children.Any(), "Empty reset retained live output.");
