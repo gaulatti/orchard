@@ -1,5 +1,40 @@
 # Current native validation checkpoint
 
+## Textarea live integration and early chart inspection
+
+The x64 complete catalog at `artifacts/textarea-catalog-integrated-fixed-full`
+passes all 150 phases in 469.1074913 seconds under the unchanged 480-second
+watchdog. It retains all 1,146 prior PNG names and adds Light/Dark Textarea
+fixtures, for 1,148 total. The integration audit verifies 2,024 owned pointer
+moves/presentation gates, 1,764 owned key actions, 86 native clicks and all 174
+protected Radial Bar/Sunburst glyph geometry hashes. This is glyph retention,
+not raw raster acceptance.
+
+The actual catalog sequence now exercises Textarea after Input and before
+Keyboard shortcuts. Its 20 live phases cover size/rows, native paragraph
+spacing, real Enter/character editing through two-way binding, read-only
+consumer updates and rejected editing, owner theme changes, validity overrides
+and restoration. The focused verifier rejects 12 deliberately corrupted
+reports. Full-sequence integration and source-sized Textarea raster acceptance
+remain distinct: the latter is still open.
+
+The first full attempt exposed physical Right arriving after native Sparkline
+focus but before asynchronous `GotFocus`. Ordinary chart inspection now
+initializes from the actual focus owner before applying the key. The same
+deterministic native harness fails with the old library (10) and passes with
+the corrected library (30), with preview before `GotFocus` in both themes.
+Its 36 pointer cases, 76 pointer moves/gates and 38 owned Right pairs pass.
+The failed full run and focused before/after evidence are retained. All 130
+unit tests pass. The later chart correction still needs a current ARM64 build
+and current versioned artifacts; native ARM64 execution remains unverified.
+
+The versioned `0.1.0-textarea-commands` package is explicitly library source
+`751a309`, predating that later chart correction. An independent x64 consumer
+passes full Light/Dark runtime and six real context-key phases after removing
+its temporary source and restored Orchard cache entry. External SDK dependency
+caches are reused. See [Textarea artifact identities](textarea-reference.md#versioned-preview-artifacts).
+Push Actions remain disabled; no workflow was dispatched.
+
 ## Textarea length limits and delayed paste
 
 The new frozen browser and x64 native matrix passes all 56 cases at 320/640px in

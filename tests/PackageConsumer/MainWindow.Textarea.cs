@@ -65,6 +65,7 @@ public sealed partial class MainWindow
         PackageTextarea.TextDocument.Selection.SetRange(0,PackageTextarea.Text.Length);
         await PaginationConsumerKeyAsync(0x41,PackageTextarea,PackageTextarea,()=>{});
         await AwaitAsync(()=>PackageTextarea.Text=="a"&&consumer.Text=="a","Packaged native editing lost consumer two-way binding.");
+        await VerifyTextareaContextAsync();
         PackageTextarea.ClearValue(BleeckerTextarea.TextProperty);PackageTextarea.Text="Independent notes\nSecond line";
     }
 

@@ -106,6 +106,23 @@ theme acceptance. The ineffective process-private GDI font experiment was remove
 
 ## Versioned preview artifacts
 
+The newer `0.1.0-textarea-commands` package contains library source
+`751a3094ddef6f7b77961bb11610e5e28a2ae5c4`, including owned resize, paste limits
+and constrained context commands. It is at
+`artifacts/packages-textarea-commands/Gaulatti.Orchard.0.1.0-textarea-commands.nupkg`,
+SHA-256 `5f9dd52a44cfa5910d92286636f744822ed1c76103a6d1af8b663675ef3782d1`.
+The independent x64 consumer in `artifacts/package-consumer-textarea-commands-x64`
+passes its full Light/Dark runtime and six real Apps-key context phases:
+default, local-null disabled and ClearValue restored in each theme. The exact
+published assembly matches the package; its PRI is merged into application
+`resources.pri`, so the two resource-container hashes are recorded separately.
+The consumer source is outside the repository and uses no ProjectReference.
+Orchard starts uncached and its restored cache entry plus temporary source are
+removed before launch. External SDK dependency caches are reused. The audit is
+`artifacts/textarea-package-context-audit.json`. This package predates the
+subsequent shared-chart early-focus correction; its source identity remains
+explicit rather than claiming that later change.
+
 Code source `c8ac17f91206f074a3da1337c2c11178fb9083f9` builds on x64 and ARM64.
 All 6,286 resolved library methods, locals, handlers and exposed interfaces match
 the runtime-tested x64 candidate in both committed builds. The library PRI is
@@ -267,6 +284,42 @@ frames, with no masks or resampling; visual parity is still open.
 Menu screenshots are evidence of the native result, not raw source raster
 acceptance. Clipboard-provider errors, remaining customization, enabled motion,
 scaling, contrast, Narrator and native ARM64 still require verification.
+
+## Live catalog integration
+
+`TextareasFixture.VerifyAsync` keeps the original XAML editor mounted while
+changing Small/Medium/Large recipes and rows 1/4/10. Its measured heights are
+96, 98, 266, 226 and 112px, with native paragraph spacing updated to 15 or 18pt.
+Real Enter and character keys cross the original two-way binding. A subsequent
+read-only consumer update reaches the native document, preserves the trailing
+newline and native read-only guard, and rejects a physical edit.
+
+The same editor switches its owner between Dark and Light, checking native
+brush color and opacity separately against the frozen reference. WinUI stores
+brush opacity at single precision despite projecting a double property; the
+runtime check uses the exact native representations of 0.15 and 0.4. Explicit
+`IsInvalid=false` overrides a live error's accessibility state; clearing it
+restores error-derived invalidity. Text, properties and owner theme are restored
+after each run.
+
+Run `scripts/smoke-catalog.ps1 -Component textarea-catalog`. The standalone
+`artifacts/textarea-catalog-live-verified-runtime` passes 20 live phases and six
+owned native keys across Light/Dark. `scripts/verify-textarea-catalog.mjs`
+checks source geometry/paint and the native input reports; its negative audit
+rejects 12 corrupted results. The complete catalog sequence now invokes this
+fixture after Input and before Keyboard shortcuts. The separate integration
+audit additionally checks prior capture retention, native input ownership,
+chart glyph hashes and the full-sequence deadline. Standalone success alone
+does not establish that integration boundary.
+
+The complete x64 run at `artifacts/textarea-catalog-integrated-fixed-full`
+passes in 469.1074913 seconds under the unchanged 480-second watchdog, with
+150 completed phases. All 1,146 previous PNG names are retained, plus the two
+Textarea fixtures (1,148 PNGs). The audit verifies 2,024 owned pointer moves and
+presentation gates, 1,764 owned key actions, 86 native clicks and 174 retained
+Radial Bar/Sunburst glyph geometry hashes. The 20 live Textarea phases and six
+native editing keys pass within that sequence. These checks establish catalog
+integration; exact raster and platform/accessibility acceptance remain open.
 
 ## Pointer resize contract
 

@@ -3320,13 +3320,20 @@
         "samples/Orchard.Catalog/NativeInputSession.ContextMenu.cs",
         "scripts/verify-textarea-commands.mjs",
         "scripts/test-textarea-commands-audit.mjs",
+        "samples/Orchard.Catalog/TextareasFixture.xaml.cs",
+        "samples/Orchard.Catalog/MainWindow.TextareaCatalog.cs",
+        "scripts/verify-textarea-catalog.mjs",
+        "scripts/test-textarea-catalog-audit.mjs",
+        "scripts/verify-textarea-catalog-integration.mjs",
+        "scripts/verify-textarea-package-context.mjs",
+        "tests/PackageConsumer/MainWindow.TextareaCommands.cs",
         "tests/PackageConsumer/MainWindow.Textarea.cs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Complete remaining customization/validation boundaries; positive native length limits, selection, normalization and undo now match the measured source",
-        "Verify provider errors, live theme/size/row/error changes and remaining customization/lifecycle paths; 56 length cases, 36 deferred-provider cases, four real menu paste invocations, 36 context command states, 28 context ownership/reset phases and pointer ownership matrices pass",
-        "Integrate and verify the complete catalog sequence; strengthened source states and fresh visible x64 package consumer pass with live template readiness",
+        "Verify provider errors and remaining customization/lifecycle paths; 20 live recipe/theme/validity phases, six independently packaged context phases, 56 length cases, 36 deferred-provider cases, four real menu paste invocations, 36 context command states, 28 context ownership/reset phases and pointer ownership matrices pass",
+        "Verify current versioned artifacts and remaining independent-consumer customization; the complete x64 catalog passes 150 phases, retains 1148 PNGs and includes the 20 live Textarea phases; the source751a309 package consumer passes six native context phases",
         "Resolve exact raster/motion/scaling/contrast/Narrator and native ARM64 acceptance; external UIA validity remains unavailable in the legacy client"
       ]
     },
