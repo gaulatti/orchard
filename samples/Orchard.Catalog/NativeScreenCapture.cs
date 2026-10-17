@@ -119,7 +119,7 @@ internal static class NativeScreenCapture
         finally { CloseHandle(handle); }
     }
 
-    internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path)
+    internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path, (byte R,byte G,byte B)? expectedEmptyCanvas = null)
     {
         using var capture = CatalogRuntimeProfile.Measure("screen.total");
         GetWindowThreadProcessId(window, out var process);
@@ -177,8 +177,7 @@ internal static class NativeScreenCapture
         }
         // BI_RGB reserves the fourth byte; the copied screen is fully opaque.
         for (var offset = 3; offset < pixels.Length; offset += 4) pixels[offset] = 255;
-        if (pixels.Where((_, offset) => offset % 4 != 3).Distinct().Take(9).Count() <= 8)
-            throw new InvalidOperationException("Composed catalog capture is blank.");
+        NativeCaptureValidation.Verify(pixels,expectedEmptyCanvas);
         await MainWindow.SavePngAsync(path, pixels, width, height);
         return new Rect(origin.X, origin.Y, width, height);
     }

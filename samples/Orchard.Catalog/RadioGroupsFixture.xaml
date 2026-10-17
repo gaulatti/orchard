@@ -1,0 +1,15 @@
+<UserControl x:Class="Orchard.Catalog.RadioGroupsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Radio group" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <Button Style="{StaticResource BleeckerRadioOptionStyle}" IsEnabled="False" AutomationProperties.Name="Radio style specimen"/>
+  <TextBlock Text="Consumer-controlled selection" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerRadioGroup x:Name="Vertical" AutomationProperties.Name="Digest frequency" Value="daily"/>
+  <TextBlock x:Name="SelectionStatus" Style="{StaticResource BleeckerBodyStyle}"/>
+  <TextBlock Text="Horizontal / wraps at the available width" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerRadioGroup x:Name="Horizontal" Orientation="Horizontal" Value="weekly" AutomationProperties.Name="Horizontal digest frequency"/>
+  <TextBlock Text="Disabled group" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerRadioGroup x:Name="Disabled" IsEnabled="False" Value="daily" AutomationProperties.Name="Disabled digest frequency"/>
+  <TextBlock Text="A declined request retains the consumer's value" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerRadioGroup x:Name="Declined" Value="daily" AutomationProperties.Name="Read-only digest frequency"/>
+ </StackPanel>
+</UserControl>

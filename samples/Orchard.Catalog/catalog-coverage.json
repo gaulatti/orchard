@@ -1,5 +1,6 @@
 {
   "styles": {
+    "BleeckerRadioOptionStyle": "RadioGroupsFixture.xaml",
     "SearchClearHoverPaletteStyle": "SearchInputsFixture.xaml",
     "BleeckerAttentionActionStyle": "AttentionSurfacesFixture.xaml",
     "BleeckerMenuContentItemStyle": "MenusFixture.xaml",
@@ -38,6 +39,7 @@
     "BleeckerTextLayout": "DateControlsFixture.xaml"
   },
   "controls": {
+    "BleeckerRadioGroup": "RadioGroupsFixture.xaml",
     "BleeckerMetric": "MetricsFixture.xaml",
     "BleeckerFilter": "FilterChipsFixture.xaml",
     "BleeckerFilterChip": "FilterChipsFixture.xaml",

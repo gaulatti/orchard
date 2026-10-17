@@ -6,6 +6,14 @@ button and icon-button components, connected button groups, toggle styles and
 groups, loading spinners, cards, transient alerts, brand lockups, attention
 surfaces and initial input styles. Full component parity is in progress.
 
+`BleeckerRadioGroup` exposes observable immutable `BleeckerRadioOption` entries,
+nullable string `Value` and horizontal/vertical `Orientation`. Handle
+`ValueRequested` and update your bound model to accept selection. Declining a
+request retains selection. Value-keyed option controls survive moves and
+same-value metadata replacement. The group supports Windows keyboard navigation
+and Selection/SelectionItem automation. Full visual/platform acceptance remains
+in progress.
+
 `BleeckerCalendar` and `BleeckerDatePicker` expose controlled `Value`, `MinDate`,
 `MaxDate` and `DisabledDates`. Handle `DateRequested` and update the consumer
 value to accept selection or clearing. `BleeckerDateRangePicker` exposes a

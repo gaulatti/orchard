@@ -6,7 +6,7 @@ Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
 resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
-Counts are 63 in progress, 49 pending and zero fully accepted: 56.3% of the
+Counts are 64 in progress, 48 pending and zero fully accepted: 57.1% of the
 fixed inventory has implementation started. This is not a completion percentage.
 
 The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):

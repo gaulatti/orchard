@@ -76,6 +76,16 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-textarea-catalog")) await RunTextareaCatalogAsync(folder);
             else if (args.Contains("--smoke-date-controls")) await RunDateControlsAsync(folder);
             else if (args.Contains("--smoke-date-presentation")) await RunDatePresentationAsync(folder);
+            else if (args.Contains("--smoke-radio-reference")) await RunRadioGroupsAsync(folder);
+            else if (args.Contains("--smoke-radio-group"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(RadioGroups);await RadioGroups.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder);
+                    await CaptureFixtureAsync(RadioGroups,Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="radio-group",environment=RuntimeEnvironment()}));
+            }
             else if (args.Contains("--smoke-loading-overlay-probe")) await RunLoadingOverlayProbeAsync(folder);
             else if (args.Contains("--smoke-loading-overlay")) await RunLoadingOverlayAsync(folder);
             else if (args.Contains("--smoke-loading-overlay-lifecycle")) await RunLoadingOverlayLifecycleAsync(folder);
@@ -886,6 +896,8 @@ public sealed partial class MainWindow : Window
             await Progress.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Checkboxes);
             await Checkboxes.VerifyAsync(scheme, folder);
+            await SelectFixtureAsync(RadioGroups);
+            await RadioGroups.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Switches);
             await Switches.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Contrast);

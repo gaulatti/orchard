@@ -4,6 +4,11 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="../../samples/Orchard.Catalog/NativeCaptureValidation.cs" Link="NativeCaptureValidation.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerRadioOption.cs" Link="BleeckerRadioOption.cs" />
+        <None Include="../Reference/RadioGroup.json" Link="Fixtures/RadioGroup.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-radio-group.cjs" Link="Fixtures/CaptureRadioGroup.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/radio-group-client.tsx" Link="Fixtures/RadioGroupClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerDates.cs" Link="BleeckerDates.cs" />
         <None Include="../Reference/DateControls.json" Link="Fixtures/DateControls.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/DateTypography.json" Link="Fixtures/DateTypography.json" CopyToOutputDirectory="PreserveNewest" />

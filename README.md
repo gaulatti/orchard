@@ -10,6 +10,9 @@ variants, connected button groups, toggle styles, a native switch preview and
 initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
+The [Radio Group preview](docs/radio-group.md) supplies consumer-controlled
+value-keyed options, descriptions, disabled states and wrapping horizontal or
+vertical layout, with Windows keyboard navigation and selection automation.
 The [Date controls preview](docs/date-controls-reference.md) supplies a controlled
 Calendar, Date Picker and Date Range Picker with local-date bounds, consumer
 requests, presets and native popup focus. `BleeckerTextLayout.UseReferenceLineBox`
