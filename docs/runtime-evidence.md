@@ -1,5 +1,19 @@
 # Native Windows runtime evidence
 
+Source `9594a5a` corrects Radio Group's interrupted and theme motion, CSS
+color-space selection and shared Chromium/Skia color conversion. All 152 unit
+tests pass. The enabled/reduced Windows harness passes 52 timelines, 417 native
+samples and 206 distinct intermediate ring paints, with exact RGB comparisons,
+two retained-clock disable cases and restored preferences. The independent
+x64 consumer and ARM64 builds pass. The full x64 replay passes 154 phases,
+1,152 PNGs and all 174 protected chart glyph hashes in 473.9255674 seconds under
+the unchanged 480-second watchdog. Its first failed pointer-boundary attempt
+is preserved; the focused 27-case Funnel replay passes in both themes with
+unchanged binaries/gates. See [the current checkpoint](native-validation-checkpoint.md)
+and [color conversion notes](css-colors.md). Motion raster, reversal/customization,
+native ARM64 runtime and full accessibility/scaling/performance acceptance
+remain open. Push-triggered Actions remain paused.
+
 Source `405cea2` adds the controlled Radio Group preview. Both catalog
 architectures build and all 149 unit regressions pass. All 56 source/native
 frames and 136 options have zero measured geometry error; exact raster and

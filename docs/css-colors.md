@@ -27,3 +27,6 @@ source-derived off/hover colors additionally verify premultiplied Oklab
 coordinates and exact RGB round trips. Native captures independently read
 actual ring brushes, dot transforms, paint timestamps and clocks; whole-client
 pixel and animated-raster acceptance remains separate.
+
+These changes affect native rendering and local verification. They add no
+backend, configuration, service, database or metrics surface.

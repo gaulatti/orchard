@@ -3001,7 +3001,7 @@
       "remainingGaps": [
         "Complete source customization/error/lifecycle and motion/reversal matrices; see docs/radio-group.md",
         "Resolve complete-client glyph/raster differences; current 56-frame geometry and paint audit passes",
-        "Verify native ARM64 runtime, real contrast/scaling, Narrator and performance; full x64 catalog and independent package/build delivery pass at 405cea2"
+        "Verify native ARM64 runtime, real contrast/scaling, Narrator and performance; full x64 catalog, independent package/build delivery and 52 numeric motion timelines pass at 9594a5a"
       ]
     },
     {

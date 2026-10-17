@@ -119,9 +119,9 @@ The passing independent x64 package consumer has an application-owned notifying 
 to `Value`; it exercises physical Tab/arrow/Space, declined/accepted requests,
 UIA, keyed identity, metadata replacement, removal and disabled/stale peers.
 Both consumer themes pass, and the independent ARM64 consumer builds. The full
-x64 catalog passes 154 phases and 1,152 PNG captures in 473.6823716 seconds,
+x64 catalog passes 154 phases and 1,152 PNG captures in 473.9255674 seconds,
 retaining all 1,150 prior captures and 174 protected chart glyph hashes. Both
-catalog architectures build. Version `0.1.0-405cea2` and its independent consumers
+catalog architectures build. Version `0.1.0-9594a5a` and its independent consumers
 use the same package; temporary consumer workspaces are removed. See the
 [current native checkpoint](native-validation-checkpoint.md) for provenance.
 `scripts/verify-radio-delivery.mjs --native <focused-or-full-run> --consumer

@@ -1,5 +1,56 @@
 # Current native validation checkpoint
 
+## Radio motion and CSS color spaces
+
+Source `9594a5a` preserves Radio Group's stroke/dot clocks when availability
+changes and animates its theme ring changes. Legacy selected RGB theme colors
+interpolate in encoded sRGB; mixed off/hover colors retain premultiplied Oklab.
+The shared Oklab converter now follows Chromium/Skia's ICC/Bradford path. The
+palette fixture awaits the actual visible color within its existing two-second
+deadline instead of assuming two presentation frames finish a 190ms transition.
+
+The real Windows preference harness passes enabled and reduced modes, restoring
+the original setting. Its 52 timelines include 417 native property samples,
+206 distinct intermediate ring paints, two retained-clock disable transitions
+and palette checks under both preferences. RGB-byte comparisons are exact;
+maximum dot scale error is `0.00000007404324287030306`. Eight altered reports,
+including missing timestamps and duplicate cases, are rejected. All 152 unit
+tests pass, including 156 frozen browser timeline samples and four source-derived
+color-conversion cases. Motion raster parity, reversals and the full remaining
+customization/lifecycle/platform matrix remain open.
+
+Both catalog architectures and the independent ARM64 consumer build pass.
+Package `0.1.0-9594a5a` passes the complete isolated x64 Light/Dark consumer,
+retaining the existing Date checks. Its SHA-256 is
+`74e8a3a5b46fceeb505f7caf90d5c7b8316a2f28976f28e273483e81fb0aae73`;
+the verified package and x64 catalog library match at
+`a000a7ff1b567b381bd9b5b74be383f3653792f0ddcdaf0408045c4efd273111`.
+Both temporary consumer caches are removed. The fresh 56-frame source layout
+audit retains zero geometry error and its strict whole-client pixel comparison.
+The complete x64 replay passes in 473.9255674 seconds under the unchanged
+480-second watchdog: 154 phases, all 1,152 prior PNGs, all 174 protected chart
+glyph hashes, 2,038 pointer gates, 1,772 owned key actions and 94 routed clicks.
+The passing output is `artifacts/current/native-full-radio-motion-replay`.
+Full Radio Group delivery and existing Textarea/Date integration audits pass.
+Hosted motion checks are registered for both architectures; push-triggered
+Actions remain paused.
+Inventory stays 64 in progress, 48 pending and zero accepted.
+
+Every file in both versioned catalog archives matches the corresponding publish
+output (537 x64 files and 533 ARM64 files):
+
+| Artifact under `artifacts/current` | SHA-256 |
+| --- | --- |
+| `Orchard.Catalog.0.1.0-9594a5a-x64.zip` | `f09a8d9ef91035986ba946d8c8389bed3ad42483a2ee2fdd8bbb4586de81aea4` |
+| `Orchard.Catalog.0.1.0-9594a5a-ARM64.zip` | `2d6d525aec1f810df2b3cbca36113c4ac7f70a0faaeed06865de1d4d1419a393` |
+
+The first complete-catalog attempt stops at Funnel Chart's exact physical
+pointer boundary: injected receipts are x=86,y=276 while the subsequent cursor
+read is x=88,y=276; the same Orchard process still owns foreground. That failed
+run remains at `artifacts/current/native-full-radio-motion`. A focused replay
+passes all 27 Funnel cases in both themes with unchanged binary hashes, pointer
+gates, tolerances and deadlines. The full replay is recorded separately.
+
 ## Radio Group preview
 
 Product source `405cea2` adds consumer-controlled value-keyed radio options,

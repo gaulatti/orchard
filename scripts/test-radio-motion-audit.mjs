@@ -17,6 +17,8 @@ try{
   ['enabled/radio-motion/radio-motion.json',data=>data.reports[0].frames[0].Scale=2],
   ['enabled/radio-motion/radio-motion.json',data=>data.reports[0].frames=[]],
   ['enabled/radio-motion/radio-motion.json',data=>data.availability[0].retained=false],
+  ['enabled/radio-motion/radio-motion.json',data=>data.reports[0].frames[0].PaintedAt=null],
+  ['enabled/radio-motion/radio-motion.json',data=>data.reports[1]=data.reports[0]],
   ['reduced/radio-group/radio-runtime-Light.json',data=>data.livePalette=false],
   ['preference-restored.json',data=>data.passed=false]
  ];
