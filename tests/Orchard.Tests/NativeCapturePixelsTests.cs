@@ -32,4 +32,46 @@ public sealed class NativeCapturePixelsTests
         Assert.ThrowsExactly<ArgumentException>(() => NativeCapturePixels.TryConvertOpaque(new byte[3], new byte[3]));
         Assert.ThrowsExactly<ArgumentException>(() => NativeCapturePixels.TryConvertOpaque(new byte[4], new byte[8]));
     }
+
+    [TestMethod]
+    public void UnalignedVectorBoundariesAndTailsPreserveOnlyTheDestinationSlice()
+    {
+        foreach (var count in new[] { 1, 3, 4, 5, 7, 8, 9, 15, 16, 17, 257 })
+        for (var offset = 0; offset < 16; offset++)
+        {
+            var source = Enumerable.Repeat((byte)0xa5, offset + count * 4 + 17).ToArray();
+            var destination = Enumerable.Repeat((byte)0x5a, source.Length).ToArray();
+            for (var pixel = 0; pixel < count; pixel++)
+            {
+                var at = offset + pixel * 4;
+                source[at] = (byte)pixel; source[at + 1] = (byte)(pixel * 37);
+                source[at + 2] = (byte)(pixel * 11); source[at + 3] = 255;
+            }
+            var original = source.ToArray();
+            Assert.IsTrue(NativeCapturePixels.TryConvertOpaque(source.AsSpan(offset, count * 4), destination.AsSpan(offset, count * 4)));
+            CollectionAssert.AreEqual(original, source);
+            for (var at = 0; at < destination.Length; at++)
+            {
+                if (at < offset || at >= offset + count * 4) Assert.AreEqual((byte)0x5a, destination[at]);
+                else
+                {
+                    var channel = (at - offset) % 4;
+                    var sourceAt = at + (channel == 0 ? 2 : channel == 2 ? -2 : 0);
+                    Assert.AreEqual(source[sourceAt], destination[at]);
+                }
+            }
+        }
+    }
+
+    [TestMethod]
+    public void TransparencyInEveryVectorLaneAndTailRequiresWindowsConversion()
+    {
+        for (var pixel = 0; pixel < 17; pixel++)
+        for (var alpha = 0; alpha < 255; alpha++)
+        {
+            var source = Enumerable.Repeat((byte)255, 17 * 4).ToArray();
+            source[pixel * 4 + 3] = (byte)alpha;
+            Assert.IsFalse(NativeCapturePixels.TryConvertOpaque(source, new byte[source.Length]));
+        }
+    }
 }

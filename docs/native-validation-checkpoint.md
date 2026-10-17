@@ -1,5 +1,48 @@
 # Current native validation checkpoint
 
+## Current scalar and delivery replay
+
+Source `e5fdbdc` retains the scalar/painted-overflow correction, exact-byte capture
+optimization and Activity cursor-failure diagnostics. All 168 tests and both
+catalog architectures build. Fresh native checks pass 292 scalar cases with
+zero geometry error, four exact-color ink-presence cases and two overflow
+clicks; 60 layout frames/108 rows; 44 lifecycle phases; 48 motion timelines with
+1,156 property samples, 168 intermediate background paints and six reversals;
+and 32 continuity cases with 235 samples, ten retained clocks and six resets.
+Fourteen layout/lifecycle, 23 motion, 20 continuity and 22 scalar corruptions are
+rejected. The unquantized-height corruption now selects a sample whose change
+exceeds the existing 0.001-pixel bound; the previous first-frame choice could
+occasionally fall within that unchanged bound.
+
+Package `0.1.0-e5fdbdc` passes the isolated x64 consumer in both themes and the
+ARM64 consumer build, including scalar values/names, original negative-zero
+retention, narrow whole-word layout and the Date regressions. Temporary sources,
+feeds and caches are removed. Package SHA-256 is
+`636a8d1095a8e88d6317e5f4ee4108f928efcbc44a7ad5106cb07091df4e4228`;
+the matching library hash is
+`5e23a5fa0741a2f995b86c4e29d873540397f33da6302700956aeceb2397344d`.
+The persistence probe retains all four frozen PNG/RGBA cases and 36 opaque
+Windows comparisons, with unchanged encoder bytes and four rejected corruptions.
+
+The user identified a power-saving Bluetooth mouse. After it became available,
+Windows reported an installed mouse and the unchanged Activity Item fixture
+passed both themes. A one-minute idle heartbeat moves the pointer three pixels
+and returns it only outside native input checks. Native checks already move it
+frequently; software movement does not establish that Bluetooth hardware remains
+awake. No failed visibility-scope code is retained.
+
+The full native replay at `artifacts/current/native-full-accordion-cursor`
+reached 142 completed phases before the unchanged 480-second watchdog expired.
+The process exited and its original animation preference was restored. Across
+the identical completed prefix, PNG persistence took 8.367 seconds longer than
+the last passing full run, including 4.089 seconds more in pixel conversion.
+The retained comparison is `accordion-cursor-timeout-comparison.json`. A
+vectorized opaque-channel conversion is under verification; full integration
+and versioned archive verification remain pending. Push-triggered Actions remain
+paused. The wiki is unavailable, so these records remain in the repository.
+Inventory remains 65 started/in progress, 47 pending and zero accepted of 112,
+with both compositions still requiring full acceptance.
+
 ## Capture persistence candidate
 
 Source `36d1c44` retains the Accordion correction below and reduces screenshot

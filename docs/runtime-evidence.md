@@ -1,5 +1,15 @@
 # Native Windows runtime evidence
 
+Source `e5fdbdc` passes all 168 tests, both catalog builds, 292 scalar cases and
+the existing layout/lifecycle/motion/continuity audits and corruption checks.
+The isolated `0.1.0-e5fdbdc` package passes both x64 themes and the ARM64 build;
+temporary consumers are removed. The mouse is available again and the unchanged
+Activity Item cursor checks pass both themes. The full replay timed out at its
+unchanged 480-second watchdog after 142 phases; animation preferences were
+restored. Full native integration and versioned archives remain pending while
+capture timing is investigated. Push-triggered Actions remain paused and full
+platform/visual acceptance remains open. See the current checkpoint.
+
 Source `36d1c44` passes 168 tests, both catalog builds, all 292 scalar cases and
 the existing layout/lifecycle/motion/continuity audits. A native persistence
 probe retains four frozen PNG/RGBA cases and 36 byte-for-byte opaque comparisons

@@ -17,7 +17,9 @@ push validation, add `push: { branches: [main] }` under the workflow's `on` map.
 ## Capture persistence
 
 Catalog capture persistence swaps BGRA channels directly when every alpha byte
-is 255. Any transparency retains the existing Windows `SoftwareBitmap`
+is 255. The channel swap checks and processes four pixels at a time with the
+portable .NET 10 `Vector128` API when accelerated, and uses the same scalar
+operation for remaining pixels. Any transparency retains the existing Windows `SoftwareBitmap`
 conversion and its premultiplied-alpha rounding. The PNG encoder, metadata and
 compression remain unchanged. File writes finish synchronously before the
 capture task returns; input and presentation still use their explicit native
@@ -32,12 +34,13 @@ sequence must still pass its unchanged watchdog, input and protected-glyph
 checks before a release.
 
 Native cursor acceptance requires a Windows session with an available mouse.
-On the current host, `GetSystemMetrics(SM_MOUSEPRESENT)` and the mouse-button
-count both report zero. Routed mouse input arrives and WinUI selects Hand,
+On 2026-10-17, this host's `GetSystemMetrics(SM_MOUSEPRESENT)` and mouse-button
+count both reported zero. Routed mouse input arrived and WinUI selected Hand,
 but `GetCursorInfo` reports a hidden global cursor with a null handle. An
 experimental balanced UI-thread display-count scope did not restore the native
-cursor and was removed. Connect or enable a physical/virtual mouse before
-rerunning the unchanged cursor assertions. Activity Item failures now retain
+cursor and was removed. After the user enabled the Bluetooth mouse, the
+unchanged Activity Item cursor assertions passed both themes. Connect or enable
+a physical/virtual mouse before cursor acceptance. Activity Item failures now retain
 both the global observation and the actual WinUI pointer-source selection.
 
 ## Platform ownership
