@@ -43,10 +43,12 @@ foreach ($theme in @('Light', 'Dark')) {
     $range = @($dates.phases | Where-Object phase -EQ 'range')
     Require ($calendar.Count -eq 1 -and $calendar[0].height -eq 252) 'Packaged calendar geometry differs.'
     Require ((Near $calendar[0].dayBaseline 14) -and $calendar[0].tabularNumerals) 'Packaged day typography differs.'
+    Require $calendar[0].dayShadowTransferred 'Packaged selection shadow did not transfer.'
     Require (([DateTimeOffset]$calendar[0].value).Date -eq [datetime]'2026-10-19' -and ([DateTimeOffset]$picker[0].value).Date -eq [datetime]'2026-10-19') 'Packaged selected dates differ.'
     Require ($picker.Count -eq 1 -and $picker[0].focusRestored) 'Packaged picker lost focus restoration.'
     Require ($picker[0].captionLineHeight -eq 20 -and $picker[0].clearWidth -eq 254 -and $picker[0].clearHeight -eq 31) 'Packaged picker resources lost source geometry.'
     Require (Near $picker[0].captionBaseline 15) 'Packaged picker caption baseline differs.'
+    Require $picker[0].triggerShadowVerified 'Packaged picker shadow was not verified.'
     Require ($range.Count -eq 1) 'Packaged range request is missing.'
     Require (Near $range[0].presetBaseline 12) 'Packaged range action baseline differs.'
     Require ($range[0].fromWidth -eq 130.421875 -and $range[0].toWidth -eq 132.125) 'Packaged range intrinsic widths differ.'

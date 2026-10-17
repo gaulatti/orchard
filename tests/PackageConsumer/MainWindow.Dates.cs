@@ -1,12 +1,14 @@
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using Microsoft.UI.Content;
+using Microsoft.UI.Composition;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Orchard;
@@ -35,14 +37,20 @@ public sealed partial class MainWindow
             await PresentAsync(host); await AcquireConsumerInputAsync();
             Require(calendar.ActualHeight == 252, "Packaged calendar lost its measured month height.");
             var day = DateChildren<ToggleButton>(calendar).Single(x => x.Content.ToString() == "19");
+            var previousDay = DateChildren<ToggleButton>(calendar).Single(x => x.Content.ToString() == "17");
+            VerifySelectedShadow(previousDay);
             var dayText = DateChildren<TextBlock>(day).Single(x => x.Name == "DayText");
             var dayBaseline = ReferenceBaseline(dayText, 14);
             Require(Typography.GetNumeralAlignment(dayText) == FontNumeralAlignment.Tabular, "Packaged calendar lost tabular day numerals.");
             await KeyAsync(0x20, day, day); Require(calendar.Value == Date(19), "Packaged calendar lost its controlled date request.");
-            phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight, dayBaseline, tabularNumerals = true });
+            Require(Shadow(previousDay) is null, "Packaged calendar retained its former selection shadow."); VerifySelectedShadow(day);
+            phases.Add(new { phase = "calendar", value = calendar.Value, height = calendar.ActualHeight, dayBaseline, tabularNumerals = true, dayShadowTransferred = true });
             var trigger = DateChildren<Button>(picker).Single(x => x.Name == "PART_Trigger");
             var caption = DateChildren<TextBlock>(trigger).Single(); Require(caption.LineHeight == 20, "Packaged picker lost the source caption line height.");
             var captionBaseline = ReferenceBaseline(caption, 15);
+            var triggerShadow = Shadow(trigger) ?? throw new InvalidOperationException("Packaged picker lost its native shadow.");
+            Require(triggerShadow.R == 26 && triggerShadow.G == 55 && triggerShadow.B == 77 &&
+                triggerShadow.A == 255 && ((triggerShadow.Sigma == 1 && triggerShadow.Opacity == .025f) || (triggerShadow.Sigma == 5 && triggerShadow.Opacity == .25f)), "Packaged picker lost its source shadow colour/alpha.");
             await KeyAsync(0x20, trigger, null); await AwaitAsync(() => picker.IsDropDownOpen, "Packaged picker did not open through Space.");
             var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(x => x.Child is not null && DateChildren<BleeckerCalendar>(x.Child).Any());
             var clearDate = DateChildren<Button>(popup.Child).Single(x => x.Content as string == "Clear date");
@@ -51,7 +59,7 @@ public sealed partial class MainWindow
             var chosen = DateChildren<ToggleButton>(popup.Child).Single(x => x.Content.ToString() == "19");
             await KeyAsync(0x0D, chosen, trigger); await AwaitAsync(() => !picker.IsDropDownOpen, "Packaged picker did not close after selection.");
             Require(picker.Value == Date(19) && ReferenceEquals(FocusManager.GetFocusedElement(Root.XamlRoot), trigger), "Packaged picker lost selection or focus restoration.");
-            phases.Add(new { phase = "picker", value = picker.Value, focusRestored = true, captionLineHeight = caption.LineHeight, captionBaseline, clearWidth, clearHeight });
+            phases.Add(new { phase = "picker", value = picker.Value, focusRestored = true, captionLineHeight = caption.LineHeight, captionBaseline, clearWidth, clearHeight, triggerShadowVerified = true });
             var rangeFields = DateChildren<BleeckerDatePicker>(range).ToArray();
             var fromWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "Start date").ActualWidth;
             var toWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "End date").ActualWidth;
@@ -70,6 +78,25 @@ public sealed partial class MainWindow
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(report)!, $"consumer-dates-{Root.RequestedTheme}.json"), JsonSerializer.Serialize(new { passed, requests, phases }));
         }
 
+        static (float Sigma, byte R, byte G, byte B, byte A, float Opacity)? Shadow(Control control)
+        {
+            var host = DateChildren<Grid>(control).Single(x => x.Name == "DateShadowHost");
+            var visual = ElementCompositionPreview.GetElementChildVisual(host);
+            if (visual is null) return null;
+            Require(visual is SpriteVisual, "Packaged date shadow lost its sprite."); var sprite = (SpriteVisual)visual;
+            Require(sprite.Brush is CompositionMaskBrush { Source: CompositionColorBrush, Mask: CompositionSurfaceBrush }, "Packaged date shadow lost its coloured output mask.");
+            var outputMask = (CompositionMaskBrush)sprite.Brush;
+            var color = ((CompositionColorBrush)outputMask.Source).Color;
+            var filtered = (CompositionVisualSurface)((CompositionSurfaceBrush)outputMask.Mask).Surface;
+            var brush = (CompositionEffectBrush)((SpriteVisual)filtered.SourceVisual).Brush;
+            Require(brush.Properties.TryGetScalar("cssBlur.BlurAmount", out var sigma) == CompositionGetValueStatus.Succeeded && color.A == 255, "Packaged date shadow lost its blur/opaque colour.");
+            return (sigma,color.R,color.G,color.B,color.A,sprite.Opacity);
+        }
+        static void VerifySelectedShadow(Control control)
+        {
+            var shadow = Shadow(control) ?? throw new InvalidOperationException("Packaged selection lost its native shadow.");
+            Require(shadow == (1f,(byte)21,(byte)48,(byte)66,(byte)255,.12f), "Packaged selected-day shadow differs from the frozen source.");
+        }
         static double ReferenceBaseline(TextBlock text, double expected)
         {
             Require(BleeckerTextLayout.GetUseReferenceLineBox(text), "Packaged date text lost reference line-box alignment.");

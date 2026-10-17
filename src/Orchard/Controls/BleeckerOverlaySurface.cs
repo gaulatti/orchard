@@ -86,7 +86,9 @@ public sealed class BleeckerOverlaySurface : ContentControl
                 var factory = compositor.CreateEffectFactory(colored, ["cssBlur.BlurAmount", "shadowTint.Color"]);
                 var brush = factory.CreateBrush(); brush.SetSourceParameter("mask", sourceBrush);
                 var sprite = compositor.CreateSpriteVisual(); sprite.Opacity = layer.Opacity; sprite.Brush = brush;
-                shadowVisual.Children.InsertAtTop(sprite);
+                // CSS lists shadows front to back; later recipes belong behind
+                // the first layer, even when their colours happen to match.
+                shadowVisual.Children.InsertAtBottom(sprite);
                 shadowResources.Add(caster); shadowResources.Add(source); shadowResources.Add(sourceBrush); shadowResources.Add(factory); shadowResources.Add(brush); shadowResources.Add(sprite);
                 shadowLayers.Add(new(caster,source,sprite));
             }

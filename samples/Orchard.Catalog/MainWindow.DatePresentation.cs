@@ -17,9 +17,10 @@ public sealed partial class MainWindow
         using var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.DateControls.json") ?? throw new InvalidOperationException("Missing dates reference.");
         using var reference = await JsonDocument.ParseAsync(resource);
         var original = Content;
-        var canvas = new Canvas { Width = 640, Height = 640, Background = new SolidColorBrush(Microsoft.UI.Colors.White) };
+        var canvas = new Canvas { Width = 640, Height = 640, Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent) };
+        var bodyBackground = new Border { IsHitTestVisible = false };
         var scroll = new ScrollViewer { Content = canvas, HorizontalScrollMode = ScrollMode.Enabled, HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden, VerticalScrollMode = ScrollMode.Disabled, VerticalScrollBarVisibility = ScrollBarVisibility.Hidden, ZoomMode = ZoomMode.Disabled };
-        var page = new Page { Content = scroll };
+        var page = new Page { Content = scroll, Background = new SolidColorBrush(Microsoft.UI.Colors.White) };
         scroll.ViewChanged += (_, args) =>
         {
             if (args.IsIntermediate || page.XamlRoot is null) return;
@@ -37,7 +38,7 @@ public sealed partial class MainWindow
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
             {
                 page.RequestedTheme = theme;
-                page.Background = canvas.Background = new SolidColorBrush(theme == ElementTheme.Light ? Microsoft.UI.Colors.White : Windows.UI.Color.FromArgb(255, 13, 24, 33));
+                bodyBackground.Background = new SolidColorBrush(theme == ElementTheme.Light ? Microsoft.UI.Colors.White : Windows.UI.Color.FromArgb(255, 13, 24, 33));
                 foreach (var source in reference.RootElement.GetProperty("cases").EnumerateArray().Where(row => row.GetProperty("kind").GetString() != "calendar" && row.GetProperty("width").GetInt32() == width && row.GetProperty("scheme").GetString() == theme.ToString()))
                 {
                     phase = source.GetProperty("file").GetString()!;
@@ -110,11 +111,12 @@ public sealed partial class MainWindow
                         }
                     }
                     var actual = new { id, kind, state, width, scheme = theme.ToString(), root = Box(control), scrollX = scroll.HorizontalOffset, rangeCard = card is null ? (Rect?)null : Box(card), popup = surface is null ? (Rect?)null : Box(surface),
-                        triggers = triggers.Select(item => new { box = Box(item), item.IsEnabled, item.FontWeight.Weight, chrome = Chrome(item), texts = DateDescendants<TextBlock>(item).Select(text => new { text.Text, text.FontFamily.Source, text.FontSize, weight = text.FontWeight.Weight, text.LineHeight, foreground = Brush(text.Foreground) }).ToArray() }).ToArray(),
+                        triggers = triggers.Select(item => new { box = Box(item), item.IsEnabled, item.FontWeight.Weight, chrome = Chrome(item), shadow = DateShadowProbe.Read(item), texts = DateDescendants<TextBlock>(item).Select(text => new { text.Text, text.FontFamily.Source, text.FontSize, weight = text.FontWeight.Weight, text.LineHeight, foreground = Brush(text.Foreground) }).ToArray() }).ToArray(),
                         rangePaint = card is null ? null : new { background = Brush(card.Background), border = Brush(card.BorderBrush), radius = card.CornerRadius.TopLeft, borderWidth = card.BorderThickness.Left },
                         popupPaint = surface is null ? null : new { background = Brush(((BleeckerOverlaySurface)surface).Background), border = Brush(((BleeckerOverlaySurface)surface).BorderBrush), radius = ((BleeckerOverlaySurface)surface).CornerRadius.TopLeft, borderWidth = ((BleeckerOverlaySurface)surface).BorderThickness.Left },
+                        popupShadow = surface is null ? null : OverlayShadowProbe.Read((BleeckerOverlaySurface)surface),
                         calendar = active.Calendar is not { } popupCalendar ? null : new { box = Box(popupCalendar), month = popupCalendar.ViewMonth.ToString("MMMM yyyy", System.Globalization.CultureInfo.GetCultureInfo("en-US")),
-                            days = popupCalendar.DayButtons.Select(day => new { day = int.Parse(day.Content.ToString()!, System.Globalization.CultureInfo.InvariantCulture), box = Box(day), enabled = day.IsEnabled, selected = day.IsChecked, name = AutomationProperties.GetName(day) }).ToArray() },
+                            days = popupCalendar.DayButtons.Select(day => new { day = int.Parse(day.Content.ToString()!, System.Globalization.CultureInfo.InvariantCulture), box = Box(day), enabled = day.IsEnabled, selected = day.IsChecked, name = AutomationProperties.GetName(day), shadow = DateShadowProbe.Read(day) }).ToArray() },
                         clearAction = active.ClearButton is not { Visibility: Visibility.Visible } clearAction ? null : new { box = Box(clearAction), parent = Box((FrameworkElement)clearAction.Parent), bottomGap = Box((FrameworkElement)clearAction.Parent).Bottom - Box(clearAction).Bottom },
                         buttons = buttons.Select(item => new { box = Box(item), name = AutomationProperties.GetName(item) }).ToArray(), errors = errors.Count - startErrors,
                         typography = DateTypography(active.Calendar, triggers, rangeControl, active.ClearButton, page) };
@@ -135,7 +137,11 @@ public sealed partial class MainWindow
         void CompareNumber(string name, string property, double actual, double expected) { if (Math.Abs(actual - expected) >= .001) errors.Add(new { phase, element = name, property, actual, expected }); }
         async Task Mount(FrameworkElement item)
         {
-            canvas.Children.Clear(); canvas.Width = (int)page.XamlRoot.Size.Width; Canvas.SetLeft(item, 20); Canvas.SetTop(item, 20); canvas.Children.Add(item);
+            canvas.Children.Clear(); canvas.Width = (int)page.XamlRoot.Size.Width;
+            // Match the browser body's viewport-wide paint while its overflowing
+            // document scrolls. The underlying browser canvas remains white.
+            bodyBackground.Width = page.XamlRoot.Size.Width; bodyBackground.Height = page.XamlRoot.Size.Height; canvas.Children.Add(bodyBackground);
+            Canvas.SetLeft(item, 20); Canvas.SetTop(item, 20); canvas.Children.Add(item);
             Canvas.SetLeft(outside, 20); Canvas.SetTop(outside, 606); canvas.Children.Add(outside); scroll.ChangeView(0, 0, null, true); await AwaitPresentationAsync(item);
             canvas.Width = Math.Max(canvas.Width, item.ActualWidth + 40); await AwaitPresentationAsync(item); await input!.MoveAsync(outside);
         }

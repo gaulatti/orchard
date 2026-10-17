@@ -116,6 +116,7 @@ public sealed partial class BleeckerDatePicker : Control
     private sealed class TriggerButton : Button
     {
         private readonly BleeckerDatePicker owner; private bool over;
+        private BleeckerDateShadow? shadow;
         internal TriggerButton(BleeckerDatePicker owner)
         {
             this.owner = owner; PointerEntered += (_, _) => { over = true; RefreshState(); }; PointerExited += (_, _) => { over = false; RefreshState(); };
@@ -123,8 +124,17 @@ public sealed partial class BleeckerDatePicker : Control
             PointerPressed += (_, _) => owner.keyboardOpening = false;
             KeyDown += (_, args) => { if (args.Key is Windows.System.VirtualKey.Enter or Windows.System.VirtualKey.Space) owner.keyboardOpening = true; };
         }
-        protected override void OnApplyTemplate() { base.OnApplyTemplate(); RefreshState(); }
-        internal void RefreshState() => VisualStateManager.GoToState(this, !IsEnabled ? "TriggerDisabled" : owner.IsDropDownOpen || FocusState == FocusState.Keyboard ? "TriggerFocused" : over ? "TriggerHovered" : "TriggerRest", false);
+        protected override void OnApplyTemplate()
+        {
+            shadow?.Dispose(); base.OnApplyTemplate();
+            shadow = new(this, (Grid)GetTemplateChild("DateShadowHost"), (Microsoft.UI.Xaml.Shapes.Path)GetTemplateChild("DateShadowMask"), (Microsoft.UI.Xaml.Shapes.Path)GetTemplateChild("DateShadowExteriorMask"));
+            RefreshState();
+        }
+        internal void RefreshState()
+        {
+            VisualStateManager.GoToState(this, !IsEnabled ? "TriggerDisabled" : owner.IsDropDownOpen || FocusState == FocusState.Keyboard ? "TriggerFocused" : over ? "TriggerHovered" : "TriggerRest", false);
+            shadow?.Set(over ? BleeckerDateShadow.Hover : owner.RangeAppearance ? null : BleeckerDateShadow.Rest);
+        }
         protected override AutomationPeer OnCreateAutomationPeer() => new Peer(this, owner);
         private sealed class Peer(TriggerButton button, BleeckerDatePicker owner) : ButtonAutomationPeer(button), IExpandCollapseProvider
         {

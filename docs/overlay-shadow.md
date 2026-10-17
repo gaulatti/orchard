@@ -9,7 +9,12 @@ keyboard stops, modal ownership and consumer callbacks retain their contracts.
 
 CSS defines Gaussian standard deviation as half the box-shadow blur value.
 The renderer therefore uses Win2D `GaussianBlurEffect` at 32 and 7 pixels,
-with soft transparent borders and quality optimization. Each rounded caster
+with soft transparent borders and quality optimization. The renderer
+preserves CSS's front-to-back recipe order: the far (64px) layer is above the
+near (14px) layer. Composition collections enumerate bottom to top, so the
+native and independent consumer probes check `[14,64]` before sorting reports.
+See [CSS shadow layering](https://www.w3.org/TR/css-backgrounds-3/#shadow-layers).
+Each rounded caster
 retains its token spread, and its Composition visual surface includes the
 complete three-sigma margin on every side. A SourceIn color effect and the
 sprite's scalar opacity apply the token color without quantizing its opacity

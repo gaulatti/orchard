@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 
@@ -59,7 +60,7 @@ public sealed partial class MainWindow
                             Require(Math.Abs(rectangle.X - expectedBox.GetProperty("x").GetDouble()) < .001 && Math.Abs(rectangle.Y - expectedBox.GetProperty("y").GetDouble()) < .001 && Math.Abs(rectangle.Width - expectedBox.GetProperty("width").GetDouble()) < .001 && Math.Abs(rectangle.Height - expectedBox.GetProperty("height").GetDouble()) < .001, phase + ": day geometry differs: " + day.Content + " " + rectangle);
                             Require(AutomationProperties.GetName(day) == expected.GetProperty("label").GetString(), "Calendar day name differs.");
                             var peer = FrameworkElementAutomationPeer.CreatePeerForElement(day); Require(peer.GetPattern(PatternInterface.Toggle) is IToggleProvider, "Calendar day lost native Toggle semantics.");
-                            actualDays.Add(new { day = day.Content, rectangle, enabled = day.IsEnabled, selected = day.IsChecked, name = AutomationProperties.GetName(day) });
+                            actualDays.Add(new { day = day.Content, rectangle, enabled = day.IsEnabled, selected = day.IsChecked, name = AutomationProperties.GetName(day), shadow = DateShadowProbe.Read(day) });
                         }
                         await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, phase));
                         frames.Add(new { id, state, scheme = scheme.ToString(), width, calendar.ActualWidth, calendar.ActualHeight, month = calendar.ViewMonth.ToString("yyyy-MM"), days = actualDays, typography = DateTypography(calendar, [], null, null, canvas) }); await Save();
@@ -95,13 +96,15 @@ public sealed partial class MainWindow
                 await input.ClickAsync(lifecycle.Trigger); await Until(() => lifecycle.Calendar?.IsLoaded == true, "Lifecycle popup did not open.");
                 lifecycle.IsEnabled = false; Require(!lifecycle.IsDropDownOpen, "Disabling left a date popup open."); lifecycle.IsEnabled = true;
                 var staleTrigger = lifecycle.Trigger; var staleProvider = (IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(staleTrigger).GetPattern(PatternInterface.ExpandCollapse);
+                var staleShadowHost = DateDescendants<Grid>(staleTrigger).Single(item => item.Name == "DateShadowHost");
                 await input.ClickAsync(lifecycle.Trigger); await Until(() => lifecycle.Calendar?.IsLoaded == true, "Template popup did not open.");
                 lifecycle.Template = (ControlTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml' TargetType='Control'><Grid x:Name='PART_Root'/></ControlTemplate>");
                 lifecycle.ApplyTemplate(); await AwaitPresentationAsync(lifecycle); Require(!lifecycle.IsDropDownOpen && !ReferenceEquals(staleTrigger, lifecycle.Trigger), "Template replacement retained its date popup or trigger.");
+                Require(ElementCompositionPreview.GetElementChildVisual(staleShadowHost) is null && DateShadowProbe.Read(lifecycle.Trigger) is not null, "Template replacement retained an old date shadow or lost the current one.");
                 var staleRejected = false; try { staleProvider.Expand(); } catch (ElementNotAvailableException) { staleRejected = true; } Require(staleRejected, "Stale date trigger still expanded.");
                 await input.ClickAsync(lifecycle.Trigger); await Until(() => lifecycle.Calendar?.IsLoaded == true, "Unmount popup did not open."); await Mount(new BleeckerCalendar(clock) { Width = width - 40 });
                 Require(!lifecycle.IsDropDownOpen && VisualTreeHelper.GetOpenPopupsForXamlRoot(page.XamlRoot).Count == 0, "Unmount retained a date popup.");
-                phases.Add(new { phase, disableClosed = true, templateClosed = true, staleProviderRejected = true, unmountClosed = true });
+                phases.Add(new { phase, disableClosed = true, templateClosed = true, staleProviderRejected = true, unmountClosed = true, staleShadowReleased = true });
                 phase = scheme + "-range";
                 var range = new BleeckerDateRangePicker(clock) { Width = width - 40, Value = new("2026-10-10", "2026-10-20"), Presets = new[] { new BleeckerDatePreset("Seven days", 7) } };
                 range.RangeRequested += (_, args) => range.Value = args.Value; await Mount(range); await input.ClickAsync(range.FromPicker.Trigger); await Until(() => range.FromPicker.Calendar?.IsLoaded == true, "Range start did not open.");

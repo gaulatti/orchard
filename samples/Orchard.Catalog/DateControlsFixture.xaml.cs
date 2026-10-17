@@ -28,8 +28,11 @@ public sealed partial class DateControlsFixture : UserControl
             await VerifyTextLayoutAsync();
             CalendarSample.Value = BleeckerDates.Parse("2026-10-17");
             await MainWindow.AwaitPresentationAsync(CalendarSample);
+            var previousDay = CalendarSample.DayButtons.Single(x => x.Content.ToString() == "17");
+            Require(DateShadowProbe.Read(previousDay) is not null, "Catalog selected day lost its native shadow.");
             await input.ClickAsync(CalendarSample.DayButtons.Single(x => x.Content.ToString() == "19"));
             Require(BleeckerDates.Serialize(CalendarSample.Value) == "2026-10-19", "Catalog calendar did not reach its consumer.");
+            Require(DateShadowProbe.Read(previousDay) is null && DateShadowProbe.Read(CalendarSample.DayButtons.Single(x => x.Content.ToString() == "19")) is not null, "Catalog selection did not transfer its native shadow.");
             await input.ClickAsync(PickerSample.Trigger); await Until(() => PickerSample.Calendar?.IsLoaded == true);
             await input.ClickClosingSurfaceSourceAsync(PickerSample.Calendar!.DayButtons.Single(x => x.Content.ToString() == "19"), "selection");
             Require(!PickerSample.IsDropDownOpen && PickerSample.Value is not null, "Catalog picker did not update and close.");

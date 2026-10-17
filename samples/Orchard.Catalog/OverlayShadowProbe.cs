@@ -27,7 +27,11 @@ internal static class OverlayShadowProbe
             var extent = MathF.Ceiling(sigma * 3);
             Require(source.SourceOffset.X == -extent && source.SourceOffset.Y == -extent && source.SourceSize == caster.Size + new System.Numerics.Vector2(extent * 2) && sprite.Size == source.SourceSize, "Overlay clipped its three-sigma Gaussian kernel.");
             return new Layer(sigma * 2, sigma, sprite.Offset.X - source.SourceOffset.X - insetX, sprite.Offset.Y - source.SourceOffset.Y - insetY, sprite.Opacity, color.R, color.G, color.B, color.A, caster.Brush is not null, caster.Size.X, caster.Size.Y, insetX, insetY);
-        }).OrderByDescending(item => item.BlurRadius).ToArray();
+        }).ToArray();
+        // VisualCollection enumerates bottom to top; CSS's first recipe is
+        // foremost. Inspect this before sorting the report by recipe identity.
+        Require(layers.Select(layer => layer.BlurRadius).SequenceEqual(new[] { 14f, 64f }), "Overlay reversed the source's front-to-back shadow order.");
+        layers = layers.OrderByDescending(item => item.BlurRadius).ToArray();
         // Independently assert the pinned public recipe, without accessing library internals.
         (float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)[] expectedLayers = [(0,24,64,-20,.28f,26,55,77),(0,4,14,0,.06f,26,55,77)];
         foreach (var (actual, expected) in layers.Zip(expectedLayers))

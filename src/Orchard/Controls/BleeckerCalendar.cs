@@ -114,6 +114,7 @@ public sealed class BleeckerCalendar : Control
     private sealed class Day : ToggleButton
     {
         private readonly BleeckerCalendar owner;
+        private BleeckerDateShadow? shadow;
         internal DateTimeOffset Date { get; }
         internal bool Today { get; set; }
         internal Day(BleeckerCalendar owner, DateTimeOffset date)
@@ -123,8 +124,17 @@ public sealed class BleeckerCalendar : Control
             AutomationProperties.SetName(this, date.Date.ToString("ddd MMM dd yyyy", CultureInfo.GetCultureInfo("en-US")));
         }
         protected override void OnToggle() => owner.Request(this);
-        protected override void OnApplyTemplate() { base.OnApplyTemplate(); UpdateSelection(); }
-        internal void UpdateSelection() => VisualStateManager.GoToState(this, IsChecked == true ? "DaySelected" : Today ? "DayToday" : "DayOrdinary", false);
+        protected override void OnApplyTemplate()
+        {
+            shadow?.Dispose(); base.OnApplyTemplate();
+            shadow = new(this, (Grid)GetTemplateChild("DateShadowHost"), (Microsoft.UI.Xaml.Shapes.Path)GetTemplateChild("DateShadowMask"), (Microsoft.UI.Xaml.Shapes.Path)GetTemplateChild("DateShadowExteriorMask"));
+            UpdateSelection();
+        }
+        internal void UpdateSelection()
+        {
+            VisualStateManager.GoToState(this, IsChecked == true ? "DaySelected" : Today ? "DayToday" : "DayOrdinary", false);
+            shadow?.Set(IsChecked == true ? BleeckerDateShadow.Selected : null);
+        }
     }
 }
 

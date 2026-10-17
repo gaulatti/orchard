@@ -8,6 +8,26 @@ namespace Orchard.Tests;
 public sealed class DateControlsReferenceTests
 {
     [TestMethod]
+    public void FrozenDateShadowsRetainSelectedDaysAndRangeHoverOverride()
+    {
+        using var document = Read(); var root = document.RootElement;
+        foreach (var frame in root.GetProperty("cases").EnumerateArray())
+        {
+            if (frame.TryGetProperty("calendar", out var calendar) && calendar.ValueKind == JsonValueKind.Object)
+                foreach (var day in calendar.GetProperty("days").EnumerateArray().Where(day => day.GetProperty("pressed").GetBoolean()))
+                    StringAssert.Contains(Paint(root, day).GetProperty("boxShadow").GetString()!, "rgba(21, 48, 66, 0.12) 0px 1px 2px 0px");
+            if (frame.GetProperty("kind").GetString() != "range") continue;
+            var triggers = frame.GetProperty("triggers").EnumerateArray().ToArray();
+            foreach (var (trigger, index) in triggers.Select((trigger, index) => (trigger, index)))
+            {
+                var shadow = Paint(root, trigger).GetProperty("boxShadow").GetString()!;
+                var active = frame.GetProperty("state").GetString() == "open" && index == (frame.GetProperty("id").GetString() == "to-limit" ? 1 : 0);
+                Assert.AreEqual(active, shadow.Contains("rgba(26, 55, 77, 0.25) 0px 3px 10px -8px", StringComparison.Ordinal));
+                Assert.IsFalse(shadow.Contains("rgba(26, 55, 77, 0.024) 0px 1px 2px", StringComparison.Ordinal));
+            }
+        }
+    }
+    [TestMethod]
     public void SelectedPopupsRetainInlineClearActionDescent()
     {
         using var document = Read();

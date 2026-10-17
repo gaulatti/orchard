@@ -17,11 +17,17 @@ if ($ClientSize) {
     if ($ClientSize[0] -le 0 -or $ClientSize[1] -le 0) { throw 'ClientSize width and height must be positive.' }
     $sizeArgument = " --smoke-client-size $($ClientSize[0]) $($ClientSize[1])"
 }
+if ($ClientSize) { . (Join-Path $PSScriptRoot 'Set-CatalogCaptureWindow.ps1') }
+$timeoutMilliseconds = if ($Component -eq 'all') { 480000 } else { 360000 }
+$runtimeClock = [Diagnostics.Stopwatch]::StartNew()
 $process = Start-Process -FilePath $executablePath -ArgumentList "--smoke-output `"$outputPath`"$componentArgument$sizeArgument" -PassThru -WindowStyle Hidden
+if ($ClientSize) {
+    try { Set-CatalogCaptureWindow -Process $process -Output $outputPath -RuntimeClock $runtimeClock -TimeoutMilliseconds $timeoutMilliseconds }
+    catch { if (-not $process.HasExited) { $process.Kill() }; throw }
+}
 # The full sequence includes 240 additional required chart pointer actions.
 # This watchdog bounds the suite; per-state/input deadlines remain in the app.
-$timeoutMilliseconds = if ($Component -eq 'all') { 480000 } else { 360000 }
-if (-not $process.WaitForExit($timeoutMilliseconds)) {
+if (-not $process.WaitForExit([math]::Max(1, $timeoutMilliseconds - $runtimeClock.ElapsedMilliseconds))) {
     $process.Kill()
     throw 'Catalog runtime check timed out.'
 }

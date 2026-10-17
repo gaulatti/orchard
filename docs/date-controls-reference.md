@@ -255,6 +255,65 @@ node scripts/verify-date-presentation.mjs `
 
 ## Native acceptance before completion
 
+### Shadow rendering and rectangular reference captures
+
+Calendar selected days now use the source's `0 1px 2px rgba(21,48,66,.12)`
+shadow. Standalone triggers use `0 1px 2px rgba(26,55,77,.025)` at rest and
+`0 3px 10px -8px rgba(26,55,77,.25)` on hover. Range fields suppress only the
+resting shadow; their inherited hover shadow remains. Open/focus rings are
+separate visual layers. Popup surfaces retain the shared two-layer overlay
+renderer. These endpoint changes do not establish enabled-motion timing.
+
+The date renderer uses a Gaussian standard deviation of half the CSS blur,
+pads the complete three-sigma kernel, and masks the complete rounded border
+box after blurring and offsetting. This prevents outer shadows from tinting
+translucent field interiors. Unload/template replacement releases the graph;
+Windows contrast mode suppresses it. The catalog tests inspect the actual
+compositor properties, source surfaces and masks, independently of recipe fields.
+The frozen `.025` resting opacity is serialized by Edge as `.024`; the audit
+checks that both represent the same 8-bit alpha while retaining the authored
+native scalar value. The white caster is filtered and clipped before the
+opaque colour and scalar opacity are applied, avoiding premultiplication of
+the faint caster colour before filtering. Full rendered pixel comparisons
+remain separate evidence. Popup shadows preserve CSS's front-to-back order,
+which the live graph and independent consumer inspect before sorting reports.
+
+Fixed-client runs now set `DWMWCP_DONOTROUND` on their own newly launched
+fixture window on Windows 11, using the documented
+[per-window corner preference](https://learn.microsoft.com/en-us/windows/apps/desktop/modernize/ui/apply-rounded-corners).
+This leaves the entire rectangular browser viewport comparable: earlier
+rounded native corners included changing desktop pixels. `capture-window.json`
+records the observed native preference. Window discovery observes the same
+process under the existing 360-second focused / 480-second full watchdog;
+there is no separate short startup deadline. The interactive catalog's window
+policy is unchanged, and Windows 10 predates the rounding API.
+
+The source's long picker at 320px scrolls the document by 20px when opened.
+The native reference scene now scrolls its viewport-wide body paint over a
+white canvas, retaining the exposed source canvas strip. This corrects the
+fixture background without changing the component or frozen source images.
+The pixel audit compares every client pixel, checks complete square native
+corners against their own adjacent background, and checks the current top
+background row against the source. It applies no bitmap masks, resampling or
+pixel tolerances. Source geometry, basic paint and typography keep their
+existing independent checks and 0.001px numeric bound.
+
+```powershell
+node scripts/verify-date-shadows.mjs `
+  --source artifacts/current/date-controls-browser `
+  --before artifacts/current/dates-shadow-before-square `
+  --after artifacts/current `
+  --output artifacts/current/dates-shadow-audit.json
+```
+
+The before captures are recaptured from the verified `0.1.0-0758f03` catalog
+archive with the same square-window preparation. The original rounded captures
+and failed comparison remain available as diagnostic evidence. Real Windows
+contrast transitions remain gated to isolated hosted runners by the existing
+`NativeContrastSession`; no local guard or hosted-runner identity is bypassed.
+
+### Text metrics and remaining acceptance
+
 Typography measurements are now recorded separately in
 `tests/Reference/DateTypography.json`: 6,076 text entries across the same 188
 frames. The optional `--typography` collector mode combines live DOM text ranges
@@ -314,3 +373,17 @@ requires exact glyph/raster/shadow and enabled/reduced-motion comparisons, the
 remaining customization/lifecycle matrices, real scaling, Windows contrast,
 Narrator and native ARM64 execution. The public wiki remains unavailable, so
 this contract is maintained here.
+
+The shadow checkpoint passes 144 regression tests and the four focused x64
+runs at 320/640px in both themes. Its independent whole-client audit checks
+4,680 days, 128 selected-day shadow graphs, 84 triggers, 36 trigger shadow
+graphs, 40 popup layers and four stale-graph releases. Of 152 frames with
+added shadows, 144 improve and eight retain the same full-frame source error;
+none regress. All 188 source PNG hashes remain unchanged. The 150 shadow
+frames with unchanged viewport backgrounds reduce absolute RGBA error from
+76,359,806 to 75,731,841. The two corrected scrolling backdrops are reported
+separately, so their larger improvement is not attributed to shadow rendering.
+Masks, resampling and pixel tolerance remain zero. The independent geometry,
+basic-paint and 6,076-entry typography audits also pass. These results establish
+recipe/graph verification and measured raster improvement; exact raster,
+enabled motion and the other acceptance requirements above remain open.
