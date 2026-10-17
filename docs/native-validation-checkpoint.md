@@ -1,5 +1,60 @@
 # Current native validation checkpoint
 
+## Input fractional alpha and OKLab paint transitions
+
+Source: `1aaf782`. Input retains CSS alpha in `Brush.Opacity`, with opaque RGB,
+instead of flattening it to an 8-bit color channel. Its background/border/ring
+paint now uses the existing premium CSS clock and premultiplied OKLab color
+interpolation. Disabled editor opacity remains a separate presentation value.
+Rendering/brush subscriptions stop on unload or template replacement.
+
+Forty independently captured browser transitions in both themes and both motion
+preferences verify 360 background/border samples plus 180 opacity samples.
+Computed CSS is authoritative for these color samples; canvas readback adds
+another rounding step at low alpha. All 117 unit tests and token checks pass.
+The focused Input runtime suite passes both themes, including theme and brush
+isolation, editing/selection, typography, adornments, pointer ownership, rounded
+boundaries, shadows and remounts. The toolbar consumer passes. Both Search Input
+viewports pass their native input/UIA/lifecycle suite with zero geometry error,
+and now record source RGB, fractional brush alpha and editor opacity directly.
+Eight corruptions are rejected, including changed alpha and extra clear clicks.
+An optional foreground acquisition click must be on the named capture surface,
+have real native receipts and precede the ten required clear clicks.
+
+The 40 whole-frame comparison improves from 101,288 to **83,452 differing
+pixels** (17.6% fewer), without masking or resampling. This is partial visual
+progress. Source pixel parity remains false; native compositing, glyphs,
+focus-ring spread and shadow differences remain open. The full catalog sequence
+was not rerun. Enabled-motion numeric samples are not native presentation proof.
+The host remained at reduced motion, 100% text/display scale, normal contrast.
+No Windows setting changed. Actual enabled-motion presentation, scaling,
+contrast, Narrator, collection performance and current native ARM64 runtime
+still require evidence. The inventory stays 59 in progress, 53 pending, zero
+accepted of 112. Push-triggered Actions remain paused; nothing was dispatched.
+
+Both architecture builds pass, with all 6,057 resolved methods and exposed
+interfaces matching. The fresh isolated x64 NuGet consumer passes both themes,
+including normal-border and disabled-background fractional-alpha checks. ARM64
+consumer validation is build-only. Both temporary consumer caches are removed.
+The package contains the same library bytes as the tested x64 catalog. Catalog
+ZIPs contain 536 x64 / 532 ARM64 files, all verified entry by entry.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `packages-input-paint/Gaulatti.Orchard.0.1.0-input-paint.1aaf782.nupkg` | `a19431c42f6a708bf0cda54a7db16df7499fb6ab14180a0a74ea36798d22ba06` |
+| Package / x64 catalog `Orchard.dll` | `bf529286a350a0124114a571ef35ddd99d04c7c64d82262bddba3a11d6d17d66` |
+| ARM64 catalog `Orchard.dll` | `4407c6af49e12d32bf590954d7f06df8de32c4f81586923c4d2996e52551f854` |
+| `Orchard.Catalog.0.1.0-1aaf782-x64.zip` | `6a6a569e3f4a2ae18e125fd047513268e7c01a5c79862ccc6ef8057b7f8eb67a` |
+| `Orchard.Catalog.0.1.0-1aaf782-ARM64.zip` | `ee87b8c92f12811515cb5b1550fbd5e8e3c5a3469c6b1288c68dd902d4e81161` |
+
+Local evidence: `input-alpha-measured-*`, `input-alpha-architecture-audit.json`,
+`input-alpha-deliverable-audit.json`, `input-alpha-archives.json`,
+`input-alpha-measured-regression`, `input-alpha-toolbar-regression` and
+`package-consumer-input-paint-*` under `artifacts`. The original canvas-color
+comparison, byte-format hover rejection and unclassified foreground-click
+rejection remain diagnostic evidence. The public wiki remains unavailable;
+the contract is maintained in [Input](inputs.md) and [Search Input](search-input.md).
+
 ## Search Input native editing and consumer-owned clear
 
 Source: `1688886`. `BleeckerSearchInput` composes the retained `BleeckerInput`

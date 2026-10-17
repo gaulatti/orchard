@@ -2333,3 +2333,26 @@ actual scaling/contrast, Narrator, collection performance and native ARM64 stay
 open. No full catalog rerun or workflow dispatch occurred. The fixed inventory
 is 59 in progress, 53 pending, zero accepted. Push-triggered Actions remain
 paused. See [Search Input](search-input.md).
+
+
+## Input fractional alpha and source paint timing
+
+Source `1aaf782` preserves fractional CSS brush alpha and uses the shared
+premultiplied OKLab transition clock. Forty frozen browser transitions supply
+360 background/border and 180 opacity samples. All 117 unit tests and token
+checks pass. Native Input, Search Input at both widths, and the toolbar consumer
+pass. The new Search Input audit requires exact source RGB and fractional
+alpha/opacity values within native float precision, retaining zero geometry
+error, all input/UIA/lifecycle evidence and eight corruption checks. Strict
+40-frame raster error improves from 101,288 to 83,452 differing pixels with
+zero masks/resampling. Exact raster remains false.
+
+Both architecture builds pass; all 6,057 resolved methods/interfaces match.
+Fresh x64 NuGet runtime passes both themes and ARM64 consumer build passes;
+both temporary isolated caches are removed. Package and tested x64 library
+bytes match, and every catalog archive entry is verified. See [checkpoint
+hashes](native-validation-checkpoint.md). No full catalog rerun or hosted
+workflow occurred. Native enabled-motion presentation, complete raster/state
+matrices, actual scaling/contrast, Narrator, collection performance and current
+native ARM64 acceptance remain open. The goal stays active at 59 in progress,
+53 pending and zero accepted. Push-triggered Actions remain paused.

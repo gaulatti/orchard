@@ -9,6 +9,10 @@ one separately named, receipt-verified surface click before the ten required
 clear clicks per viewport. The strict comparison improves from 101,288 to
 83,452 differing pixels; exact raster parity stays false. All 117 unit tests
 pass, including 40 frozen browser paint timelines. See [Input paint](inputs.md).
+The `1aaf782` versioned package passes a fresh x64 runtime consumer in both
+themes and an ARM64 consumer cross-build; both isolated caches are removed.
+The tested x64 library and package are byte-identical. Current hashes and
+versioned catalog archives are in [the checkpoint](native-validation-checkpoint.md).
 
 `BleeckerSearchInput` composes the existing `BleeckerInput` native `TextBox` and
 a native clear `Button`. Its source is Bleecker `search-input.tsx` at

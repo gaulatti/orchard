@@ -53,9 +53,9 @@ public sealed partial class BleeckerInput
             UpdateMotion(false);
             return;
         }
-        // Coalesce changes from one input event before starting a storyboard.
-        // Otherwise a second same-frame change can sample its predecessor's
-        // destination before the compositor has presented the first keyframe.
+        // Coalesce palette changes from one input event before retargeting.
+        // Sampling transient destinations in the same frame would present a
+        // state the source browser never painted.
         DispatcherQueue.TryEnqueue(() => { if (version == motionRequestVersion) UpdateMotion(true); });
     }
 
