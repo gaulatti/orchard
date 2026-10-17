@@ -63,13 +63,16 @@ public sealed partial class RadioGroupsFixture:UserControl
             await input.KeyAsync(0x20,group.OptionButtons[0]);Require(group.Value=="weekly"&&requests.Count==7,"Space did not select the focused radio.");
             await input.KeyAsync(0x20,group.OptionButtons[0]);Require(requests.Count==7,"Space requested an already selected value.");
             await input.HeldKeyAsync(0x09,group.OptionButtons[0],()=>after,()=>MainWindow.AwaitPresentationAsync(group));
+            Require(group.OptionButtons[2].Focus(FocusState.Keyboard)&&ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot),group.OptionButtons[2]),"Explicit keyboard focus was redirected to the selected radio.");
+            accept=false;await input.KeyAsync(0x20,group.OptionButtons[2]);Require(group.Value=="weekly"&&requests.Count==8&&requests[^1]=="new","Declined Space changed selection after explicit focus.");accept=true;
+            Require(after.Focus(FocusState.Keyboard),"Radio successor refused focus before reverse Tab.");
             await input.HeldKeyAsync(0x09,after,()=>group.OptionButtons[0],()=>MainWindow.AwaitPresentationAsync(group),0x10);
-            Require(group.Value=="weekly"&&requests.Count==7,"Reverse Tab changed selection or missed the selected radio.");
+            Require(group.Value=="weekly"&&requests.Count==8,"Reverse Tab changed selection or missed the selected radio.");
             var selected=MainWindow.Desc<Microsoft.UI.Xaml.Controls.TextBlock>(group.OptionButtons[0]).Single(text=>text.Name=="OnProbe");var palette=(Microsoft.UI.Xaml.Media.SolidColorBrush)selected.Foreground;var saved=palette.Color;
             try{palette.Color=Microsoft.UI.Colors.Magenta;await MainWindow.AwaitPresentationAsync(group);var stroke=(Microsoft.UI.Xaml.Media.SolidColorBrush)MainWindow.Desc<Microsoft.UI.Xaml.Shapes.Ellipse>(group.OptionButtons[0]).Single(shape=>shape.Name=="RadioRing").Stroke;Require(stroke.Color==palette.Color,"Live palette mutation did not reach the radio stroke.");}
             finally{palette.Color=saved;}
             await MainWindow.AwaitPresentationAsync(group);await NativeScreenCapture.CaptureClientAsync(input.Window,System.IO.Path.Combine(folder,"radio-runtime-"+scheme+".png"));
-            await File.WriteAllTextAsync(System.IO.Path.Combine(folder,"radio-runtime-"+scheme+".json"),JsonSerializer.Serialize(new{passed=true,requests,consumerControlled=true,disabledRejected=true,stalePeerRejected=true,keyedReorder=true,remount=true,templateReplacement=true,homeEnd=true,controlArrow=true,space=true,reverseTab=true,nonFirstSelectionEntry=true,livePalette=true}));
+            await File.WriteAllTextAsync(System.IO.Path.Combine(folder,"radio-runtime-"+scheme+".json"),JsonSerializer.Serialize(new{passed=true,requests,consumerControlled=true,disabledRejected=true,stalePeerRejected=true,keyedReorder=true,remount=true,templateReplacement=true,homeEnd=true,controlArrow=true,space=true,reverseTab=true,nonFirstSelectionEntry=true,explicitKeyboardFocus=true,livePalette=true}));
         }
         finally{await File.WriteAllTextAsync(System.IO.Path.Combine(folder,"radio-final-state-"+scheme+".json"),JsonSerializer.Serialize(new{group.Value,requests,focused=FocusManager.GetFocusedElement(XamlRoot)?.GetType().FullName,buttons=group.OptionButtons.Select(button=>new{button.IsEnabled,button.IsTabStop,button.FocusState}).ToArray()}));root.Children.Remove(host);}
     }

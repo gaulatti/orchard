@@ -26,7 +26,7 @@ public sealed partial class BleeckerRadioGroup : Control
         Unloaded += (_, _) => { if (!IsLoaded) StopObserving(); };
         GettingFocus+=(_,args)=>
         {
-            if(args.FocusState!=FocusState.Keyboard || args.NewFocusedElement is not OptionButton target || !ReferenceEquals(target.Group,this))return;
+            if(args.FocusState!=FocusState.Keyboard || args.Direction is not (FocusNavigationDirection.Next or FocusNavigationDirection.Previous) || args.NewFocusedElement is not OptionButton target || !ReferenceEquals(target.Group,this))return;
             if(args.OldFocusedElement is OptionButton previous && ReferenceEquals(previous.Group,this))return;
             if(Entry() is {} entry && !ReferenceEquals(entry,target))args.TrySetNewFocusedElement(entry);
         };

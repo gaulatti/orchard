@@ -32,7 +32,8 @@ There is one keyboard entry at the selected enabled option, or the first enabled
 option when no enabled selection exists. Windows arrow navigation selects the
 next enabled item and retains focus at group boundaries. Ctrl+arrow moves focus
 without selecting; Home/End reach the first/last enabled item. Space activates
-the focused option. The native group exposes Selection and each option exposes
+the focused option. Explicit programmatic keyboard focus retains the requested
+enabled option; only Tab entry redirects to the current selection. The native group exposes Selection and each option exposes
 SelectionItem with RadioButton role, label, help text and set position/size.
 Unlike the browser's native-radio arrow wrap, group boundaries follow Windows
 radio navigation. Native keyboard focus uses an explicit system focus visual;
@@ -80,7 +81,10 @@ Home/End, Ctrl+arrow without selection, Space on a focused item and repeated
 Space on the selected item. Every injected key retains exact press/release
 owners, including modifiers. It also exercises live resource-brush mutation,
 keyed moves/replacement/removal, stale peers, template replacement and unmounted
-collection changes. These checks pass in both themes with seven requests each.
+collection changes. The independent consumer exposed an overly broad entry
+redirect; the added regression explicitly focuses an unselected option from
+outside the group, then declines its Space request. The expanded fixture has
+eight requests per theme.
 Live palette observers detach on unload/template changes and reattach on load.
 
 The independent package consumer has an application-owned notifying model bound
