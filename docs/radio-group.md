@@ -87,11 +87,23 @@ outside the group, then declines its Space request. The expanded fixture has
 eight requests per theme.
 Live palette observers detach on unload/template changes and reattach on load.
 
-The independent package consumer has an application-owned notifying model bound
+The passing independent x64 package consumer has an application-owned notifying model bound
 to `Value`; it exercises physical Tab/arrow/Space, declined/accepted requests,
 UIA, keyed identity, metadata replacement, removal and disabled/stale peers.
-Its execution and the full catalog/ARM64 build are required deliverable checks;
-their results are recorded in the current native checkpoint when available.
+Both consumer themes pass, and the independent ARM64 consumer builds. The full
+x64 catalog passes 154 phases and 1,152 PNG captures in 473.6823716 seconds,
+retaining all 1,150 prior captures and 174 protected chart glyph hashes. Both
+catalog architectures build. Version `0.1.0-405cea2` and its independent consumers
+use the same package; temporary consumer workspaces are removed. See the
+[current native checkpoint](native-validation-checkpoint.md) for provenance.
+`scripts/verify-radio-delivery.mjs --native <focused-or-full-run> --consumer
+<independent-x64-output> --output <audit.json>` checks both theme reports,
+16 native requests, eight packaged requests, 26 native key pairs, four modifier
+pairs and eight packaged key pairs. With a full run it also checks fixture order
+and the unchanged 480-second watchdog. `scripts/test-radio-delivery-audit.mjs`
+uses the same `--native` and `--consumer` paths to prove that six altered focus,
+request, key-owner, modifier or scale reports fail the audit. Its temporary
+JSON-only workspace is removed after the test.
 Remaining acceptance includes the complete customization/error/lifecycle matrix,
 normal-motion and reversal raster comparisons, real contrast/text/display
 scaling, Narrator, collection performance and native ARM64 execution.

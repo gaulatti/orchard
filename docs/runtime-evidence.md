@@ -1,5 +1,20 @@
 # Native Windows runtime evidence
 
+Source `405cea2` adds the controlled Radio Group preview. Both catalog
+architectures build and all 149 unit regressions pass. All 56 source/native
+frames and 136 options have zero measured geometry error; exact raster and
+normal motion remain open. Physical navigation, explicit focus, controlled
+requests, UIA, keyed identity, lifecycle and live palette checks pass in both
+themes. The complete x64 catalog passes 154 phases and 1,152 PNGs in
+473.6823716 seconds under the unchanged 480-second limit, retaining all 1,150
+prior captures and 174 protected chart glyph hashes. Package `0.1.0-405cea2`
+passes the complete isolated x64 Light/Dark consumer; ARM64 consumer build
+passes and temporary caches are removed. Every file in both catalog ZIPs
+matches publish output. The [current checkpoint](native-validation-checkpoint.md)
+records hashes and exact scope. Inventory is 64 in progress, 48 pending and
+zero accepted; two compositions and full Windows platform acceptance remain
+open. Push-triggered Actions stay paused by user request.
+
 Source `2c315c3` builds both catalog architectures and passes 144 regressions,
 tokens and all 188 focused date frames. The live shadow graph and complete-client
 comparison pass with 144 improved shadow frames, eight equal and none regressing.

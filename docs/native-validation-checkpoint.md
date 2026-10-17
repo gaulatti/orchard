@@ -1,5 +1,51 @@
 # Current native validation checkpoint
 
+## Radio Group preview
+
+Product source `405cea2` adds consumer-controlled value-keyed radio options,
+descriptions, disabled groups/options, vertical layout and horizontal wrapping.
+The 56-frame source/native audit covers 136 options with zero geometry error,
+numeric typography/paint checks and all four empty canvases matching every
+pixel. It retains zero masks, zero pixel tolerance and no resampling. There are
+147,819 differing pixels across the full matrix; exact raster and enabled motion
+remain unverified. The source's RTL widths require separate nominal-glyph and
+positioning quantization before 1/64px run allocation.
+
+Both x64 and ARM64 catalogs build. The focused x64 fixture passes both themes,
+including physical Home/End, Ctrl+arrow, Space, forward/reverse Tab, selected entry,
+explicit focus, controlled requests, UIA, disabled/stale peers, keyed metadata,
+remount/template replacement and live palette updates. The independent consumer
+found an overly broad focus-entry redirect; it now redirects only Tab entry and
+retains explicit keyboard targets. The regression is exercised in both the
+catalog and independent consumer. The focused delivery audit checks 26 native
+key pairs, four modifier pairs and eight packaged key pairs. Six altered audit
+reports are rejected. All 149 unit tests and token generation checks pass.
+
+Package `0.1.0-405cea2` passes the complete independent x64 Light/Dark consumer,
+including the existing Date shadow/typography checks. The independent ARM64
+consumer build passes, and both temporary consumer source/feed/cache directories
+are removed. Package SHA-256 is
+`a82d15e372f2566c4593842a84a0da95ab2f19a827323b41ea1a4da63a59ad9b`;
+the package and x64 catalog library match at
+`5b2fc7172f84fbf8453a47cfdf44852c43fd772718e1823ff948c0085498585d`.
+The complete x64 catalog passes in 473.6823716 seconds under the unchanged
+480-second watchdog: 154 phases, all 1,150 prior PNGs plus two Radio Group
+captures, 2,038 pointer gates, 1,772 owned key actions, 94 routed clicks, both
+Date closing pairs and all 174 protected chart glyph hashes. Full Radio Group
+integration checks the same request/input boundaries as the focused fixture.
+The verified output is `artifacts/current/native-full-radio`; its library bytes
+match the package above. Every archive entry was checked against publish output:
+
+| Artifact under `artifacts/current` | SHA-256 |
+| --- | --- |
+| `Orchard.Catalog.0.1.0-405cea2-x64.zip` (537 files) | `d607986dd098f6e9cc3bf3b152f9b645bdc4919e5b7470ac5abd6e41e6180268` |
+| `Orchard.Catalog.0.1.0-405cea2-ARM64.zip` (533 files) | `af888da2739a1b48180c8be0bc9aa0b3f74ed89253721a00d4d058574ee28602` |
+
+Native ARM64 runtime, complete visual/motion and
+customization/error matrices, scaling, contrast, Narrator and measured performance
+remain open. Inventory is 64 in progress, 48 pending and zero accepted; both
+compositions remain unaccepted. Push-triggered Actions remain paused.
+
 ## Date shadows and overlay paint order
 
 Source `2c315c3` adds the selected-day and trigger shadow recipes and corrects
