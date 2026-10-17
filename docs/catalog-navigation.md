@@ -12,6 +12,11 @@ An unmatched query shows an explicit message and leaves the current fixture
 visible. The selected entry is highlighted; selecting it again preserves its
 scroll position and current keyboard focus.
 
+The runtime regression searches for mixed-case `iNpUt`, verifies every matching
+title and original fixture in registry order, then invokes the Input result
+explicitly. Both Input and Search inputs must remain present; adding another
+matching fixture does not silently narrow the expected results.
+
 Only the selected fixture is mounted in the content host. Switching fixtures
 unloads the previous visual tree, resets the content scroll position and loads
 the selected fixture. Fixture objects are retained, so local example text and

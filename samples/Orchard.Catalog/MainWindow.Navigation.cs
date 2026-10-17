@@ -158,10 +158,18 @@ public sealed partial class MainWindow
         await SelectFixtureAsync(Foundation);
         HeadlineInput.Text = "Preserved while browsing";
         ComponentSearch.Text = "iNpUt";
-        await AwaitNavigationAsync(() => ComponentNavigation.Children.Count == 1, "Component search did not filter case-insensitively.");
+        var expected = components.Where(entry => entry.Title.Contains("iNpUt", StringComparison.OrdinalIgnoreCase)).ToArray();
+        Require(expected.Any(entry => ReferenceEquals(entry.Fixture, Inputs)) && expected.Any(entry => ReferenceEquals(entry.Fixture, SearchInputs)), "Navigation regression must cover both input fixtures.");
+        bool Matches()
+        {
+            var actual = ComponentNavigation.Children.OfType<BleeckerButton>().ToArray();
+            return actual.Length == ComponentNavigation.Children.Count && actual.Length == expected.Length &&
+                actual.Zip(expected).All(pair => Equals(pair.First.Content, pair.Second.Title) && ReferenceEquals(pair.First.Tag, pair.Second.Fixture));
+        }
+        await AwaitNavigationAsync(Matches, "Component search did not return every matching fixture in registry order.");
         CatalogRoot.UpdateLayout();
-        Require(ComponentNavigation.Children.Count == 1, "Component search did not filter case-insensitively.");
-        var button = (BleeckerButton)ComponentNavigation.Children[0];
+        Require(Matches(), "Component search changed its matching fixtures or labels after layout.");
+        var button = ComponentNavigation.Children.OfType<BleeckerButton>().Single(entry => ReferenceEquals(entry.Tag, Inputs));
         button.ApplyTemplate();
         var native = (Button)((FrameworkElement)VisualTreeHelper.GetChild(button, 0)).FindName("PART_Action");
         ((IInvokeProvider)new ButtonAutomationPeer(native).GetPattern(PatternInterface.Invoke)).Invoke();
