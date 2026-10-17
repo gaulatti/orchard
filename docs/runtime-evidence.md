@@ -2260,3 +2260,28 @@ contrast/Narrator and native ARM64 acceptance remain open. The earlier full
 1,132-capture result is scoped to the previous candidate. Inventory remains
 58 started, 54 pending, zero accepted. Push-triggered Actions remain paused.
 See [current checkpoint and artifact hashes](native-validation-checkpoint.md).
+
+## FilterChip external UIA and keyboard order (2026-10-16)
+
+Catalog/test source `fd3c46b` adds a separate process/window-scoped Microsoft UI
+Automation client. Forty-six external Control-view snapshots pass across both
+themes: native names/roles, live bindings and labels, explicit-name priority,
+Invoke, disabled commands/groups, localized Clear all, reorder focus/order,
+template and collection replacement, empty output and unload/remount. Read-only
+content remains exposed without remove actions. Twenty-eight physical Tab
+transfers retain owned press/release pairs, including four Shift+Tab transfers.
+Six external invocations reach original consumers; six disabled invocations are
+rejected. Five deliberately corrupted evidence sets fail verification.
+
+Both architecture builds, all 115 unit tests and token checks pass. All 5,967
+resolved public-library methods/interfaces match the previous typography
+candidate and across architectures, allowing equivalent generated WinRT provider
+aliases. The public implementation remains `8fa91ab`; its existing versioned
+NuGet and independent consumer evidence remain applicable. ARM64 runtime remains
+unverified. Current populated and post-lifecycle screenshots are retained, and
+every versioned catalog ZIP entry is verified.
+
+Narrator, accessibility events, stale-client invocation, actual Windows scaling
+and contrast, full raster/motion/customization and native ARM64 acceptance stay
+open. Inventory remains 58 started, 54 pending and zero accepted. Push Actions
+remain paused. See [checkpoint and hashes](native-validation-checkpoint.md).

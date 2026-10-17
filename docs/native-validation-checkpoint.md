@@ -1,5 +1,49 @@
 # Current native validation checkpoint
 
+## FilterChip external UI Automation and focus
+
+Catalog/test source: `fd3c46b`. The public implementation remains `8fa91ab`.
+The new `filter-chip-accessibility` mode queries the public Control view through
+a separate Microsoft UI Automation client restricted to the catalog process,
+window and fixture ScrollViewer. Standard native before/after buttons provide
+reference behavior; target automation IDs belong to the fixture.
+
+Both themes pass 46 external snapshots covering default/live/bound/linked names,
+name priority, native Button roles, Invoke availability, command/group disabled
+states, localized Clear all, reorder focus/order, template replacement, collection
+replacement, empty output and unload/remount. Read-only label/value content stays
+exposed without remove buttons. All 28 physical Tab transfers retain exactly one
+owned press/release, including four Shift+Tab transfers. Six external invocations
+reach original event/command consumers; six disabled invocations are rejected.
+No callback automatically removes or clears caller records. Five corruptions are
+rejected: stale names, enabled disabled-actions, accepted disabled Invoke, missing
+read-only text and lost Tab release ownership.
+
+All 115 unit tests, both architecture publications and the token check pass.
+The current public library has the same 5,967 resolved method bodies and exposed
+interfaces as the prior typography candidate, including equivalent generated
+WinRT provider aliases. Current x64/ARM64 library implementations also match.
+The earlier `8fa91ab` NuGet package and independent consumer evidence remain
+scoped to that unchanged public implementation. Current ARM64 evidence is a
+cross-build; no native ARM64 runtime claim is made.
+
+Light/dark populated-scene captures and post-lifecycle captures are retained.
+The early transparent-background fixture is preserved; final captures use
+explicit theme backgrounds so the linked caption is visible. Every entry in
+both versioned catalog ZIPs matches its publication directory.
+
+| Artifact below `artifacts/` | SHA-256 |
+| --- | --- |
+| `Orchard.Catalog.0.1.0-fd3c46b-x64.zip` | `e6255fc11e7ec52dda3bbec0a59dffb03c6ea59c3fa9684dca7d4ea159b8342c` |
+| `Orchard.Catalog.0.1.0-fd3c46b-ARM64.zip` | `f72f831f59b2e27c60f1e44aa78f18ceee20aaa1c403ed259f5ee3f3fcdabdfd` |
+
+This closes the basic external query/invocation and keyboard-order matrix.
+Narrator speech, accessibility-event delivery, stale-client invocation,
+actual Windows scaling/contrast, broader lifecycle/customization, exact raster,
+enabled motion and native ARM64 acceptance remain open. Inventory stays **58
+in progress, 54 pending, zero accepted** (51.8% started). Push-triggered Actions
+remain paused; no hosted run was dispatched. The public wiki is unavailable.
+
 ## FilterChip live font measurements
 
 Source: `8fa91ab`. Switching a mounted Segoe UI filter group to italic reproduced

@@ -73,6 +73,8 @@ remove actions. Native Tab/Shift+Tab traversal retains press/release ownership;
 external Invoke reaches original callbacks/command parameters and rejects disabled
 actions. The consumer still owns collection mutation. Five corrupted evidence
 sets must be rejected by `scripts/test-filter-chip-accessibility-audit.mjs`.
+Standard native before/after buttons provide reference roles and disabled Invoke
+behavior. Fixture-only automation IDs identify targets inside the owned scope.
 The probe source is shipped beside the catalog and compiled into the requested
 smoke output using the Windows .NET Framework compiler, following the existing
 Loading Overlay probe workflow. Normal catalog usage does not launch it.
