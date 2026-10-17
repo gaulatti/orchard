@@ -387,3 +387,20 @@ Masks, resampling and pixel tolerance remain zero. The independent geometry,
 basic-paint and 6,076-entry typography audits also pass. These results establish
 recipe/graph verification and measured raster improvement; exact raster,
 enabled motion and the other acceptance requirements above remain open.
+
+Validation source `c64f5ec` passes the complete x64 catalog in 471.6649986
+seconds: 152 phases, 1,150 captures, 2,032 pointer gates, 1,764 owned key
+actions, 92 routed clicks and both Dates closing pairs. All prior capture names
+and 174 protected chart glyph hashes remain. The Currency Chart fixture now
+observes blur's hidden inspection before refocusing and restores visible
+inspection before collection mutation; the original assertions and deadlines
+remain. Date product and focused-run source is `2c315c3`, unchanged in this
+validation source.
+
+Package `0.1.0-c64f5ec` passes the complete independent x64 Light/Dark consumer:
+selected-day shadow transfer, actual trigger blur/colour/opacity, popup layer
+order, source typography, eight native date key pairs and six consumer requests.
+The independent ARM64 consumer builds, both isolated temporary workspaces are
+removed, and both consumers use the same package library bytes as the full x64
+catalog. Both source-identified catalog ZIPs are verified file by file. Native
+ARM64 runtime and full component acceptance remain unverified.

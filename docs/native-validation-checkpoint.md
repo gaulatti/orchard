@@ -1,5 +1,42 @@
 # Current native validation checkpoint
 
+## Date shadows and overlay paint order
+
+Source `2c315c3` adds the selected-day and trigger shadow recipes and corrects
+the shared overlay's CSS layer order. Both catalog architectures build, all
+144 regression tests and token checks pass, and the 188 focused date frames
+retain their source geometry, paint and 6,076 typography checks. The live graph
+audit checks 128 selected-day shadows, 36 trigger shadows, 40 popup layers and
+four stale-graph releases. Its complete-client comparison has 144 improving
+shadow frames, eight equal and zero regressing; masks, resampling and pixel
+tolerance are zero. Two corrected scrolling backdrops are reported separately.
+Validation source `c64f5ec` also waits for observable inspection blur in the
+Currency Chart lifecycle fixture before reverse Tab, then requires Enter to
+restore inspection before collection mutation. It passes the complete x64
+catalog: 152 phases, all 1,150 prior captures and all 174 protected chart glyph
+hashes in 471.6649986 seconds under the unchanged 480-second watchdog. There
+are 2,032 pointer gates, 1,764 owned key actions, 92 routed clicks and both
+Dates closing-surface pairs. The first failed full run remains at
+`artifacts/current/native-full-date-shadows`; the passing run is
+`artifacts/current/native-full-date-shadows-validated`.
+Package `0.1.0-c64f5ec` passes the complete independent x64 Light/Dark consumer,
+including selected-day shadow transfer, trigger shadow graphs, popup layer order,
+eight date key pairs and six consumer updates. The independent ARM64 consumer
+build passes; both temporary source/feed/cache directories are removed. The
+package and full-catalog library bytes match with SHA-256
+`dc14966096cfaa9e4f2a381d9b025184db95b474251a8b92a3b55b0630637778`.
+Every archive entry matches its architecture's publish output:
+
+| Artifact under `artifacts/current` | SHA-256 |
+| --- | --- |
+| `packages/Gaulatti.Orchard.0.1.0-c64f5ec.nupkg` | `78646a8e4032d9dc09f5de8fbc284f934019bc6fdbd755ee7c0ed0e6b715e53d` |
+| `Orchard.Catalog.0.1.0-c64f5ec-x64.zip` (537 files) | `cc76abfc2b1984cc04bebe29cdd1a656f6ba1d4f6724ffbbcb065628c67ae765` |
+| `Orchard.Catalog.0.1.0-c64f5ec-ARM64.zip` (533 files) | `b305cfbbdc4d57f6f7b55e4832039fc4a03ebc402e94b5608a489aa5d2d06b28` |
+
+Exact raster, enabled motion,
+native ARM64, scaling, contrast, Narrator and complete platform acceptance remain
+open. The complete prior artifact checkpoint is retained below.
+
 ## Date typography alignment
 
 Source `0758f03` matches 6,076 text entries across all 188 source frames:

@@ -1,5 +1,21 @@
 # Native Windows runtime evidence
 
+Source `2c315c3` builds both catalog architectures and passes 144 regressions,
+tokens and all 188 focused date frames. The live shadow graph and complete-client
+comparison pass with 144 improved shadow frames, eight equal and none regressing.
+The audit preserves every source PNG and uses zero masks/resampling/tolerance.
+Its 40 popup layers also verify CSS paint order before report sorting. Geometry,
+basic paint and all 6,076 typography entries remain verified. Validation source
+`c64f5ec` passes all 152 full-catalog phases, 1,150 captures and 174 protected
+chart glyph hashes in 471.6649986 seconds under the unchanged 480-second limit.
+The Currency Chart fixture observes blur before refocusing; all original
+collection, input and lifecycle checks remain. Package `0.1.0-c64f5ec` passes the
+complete independent x64 Light/Dark runtime, including date selection/trigger
+shadows and popup layer order, and the ARM64 consumer build. Temporary consumers
+are removed; package and full-runtime library bytes match. Both catalog ZIPs
+are verified file by file; their hashes are in the checkpoint. Exact raster,
+motion and platform acceptance remain open. See the current checkpoint.
+
 The date typography fixes at `0758f03` pass both focused native runners at
 320/640px in Light/Dark and matches all 6,076 source text entries in 188 frames.
 It also retains the existing geometry, basic paint, consumer requests and native
