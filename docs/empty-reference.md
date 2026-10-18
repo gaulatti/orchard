@@ -39,6 +39,18 @@ with zero asserted geometry error: live consumer input/focus, detach/commands,
 explicit minimum/style ownership, and original models through templates and
 selectors. Complete PNG comparisons retain zero tolerance, no masks and no
 resampling; they still report raster differences rather than accepting them.
+All twelve corrupted layout, heading, content-presence, paint and completeness
+reports are rejected. Version `0.1.0-4d820a9` passes both catalog builds and a
+fresh independent x64 NuGet consumer in both themes; the ARM64 consumer builds
+with runtime explicitly unverified. Both generated consumer workspaces and
+package caches are removed. Both catalog ZIPs verify every published entry
+(537 x64 files and 533 ARM64 files).
+
+Remaining acceptance includes complete raster/typography/shadows, arbitrary
+Unicode and remaining template/override behavior, isolated scaling and contrast,
+external UIA/Narrator, collection measurements and native ARM64 runtime. The
+current complete catalog run also needs a connected mouse for its unchanged
+global cursor checks. Push-triggered Actions remain paused.
 
 `tests/Reference/Empty.json` freezes Bleecker
 `a86059013cd59684ce452849278ea81e734f2066`, component hash

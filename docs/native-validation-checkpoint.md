@@ -1,5 +1,36 @@
 # Current native validation checkpoint
 
+## Current Empty and IconBadge candidate
+
+Source `4d820a9b0483578ac0da2c8ed1bdc5694aae7c33` passes 184 tests and both
+catalog architecture builds. The [Empty preview](empty-reference.md) passes
+120 source/native states and twelve lifecycle phases with zero asserted
+geometry error; all twelve audit corruptions are rejected. It covers source
+presence/whitespace, padding minima and overflow, refined heading tracking,
+signed centering, RTL bounds, retained input/focus, consumer minimum/style
+ownership and original template models. IconBadge's 136 source/native cases
+and eight lifecycle phases remain part of the candidate checks.
+
+Fresh version `0.1.0-4d820a9` passes the independent x64 NuGet consumer in both
+themes, including Empty and IconBadge. The ARM64 consumer builds; its runtime
+is explicitly unverified. Both generated consumer workspaces/package caches
+are removed. All 537/533 x64/ARM64 catalog ZIP entries match the publish files.
+The package SHA-256 is
+`f8c74ee3276293002348241add9f11c136a97b4cdbdf39e07537cfc0c71c1541`.
+
+A complete current full-suite run remains unverified. Windows still reports
+no present mouse; the previous candidate stopped at Activity's unchanged
+global Hand-cursor gate as recorded below. A temporary Windows Bluetooth
+session requests a connection to the already-paired mouse until the guaranteed
+desktop window ends at 10 p.m.; it has not established a connection. No cursor
+requirement, visibility flag or test deadline is changed. Hosted Actions remain
+paused for pushes. Source commits are local while the complete run is pending.
+
+Inventory: 67 in progress, 45 pending, zero accepted out of 112 (59.8% started).
+Both required compositions remain unaccepted. The complete passing baseline
+remains `48d8fd3`. The public wiki remains unavailable, so documentation stays
+in this repository.
+
 ## IconBadge candidate
 
 Source `b8aa2de56d11d7f23773196a4b722d0c2fd36df9` passes 181 tests and both
