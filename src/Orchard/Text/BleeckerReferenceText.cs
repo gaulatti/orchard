@@ -30,6 +30,15 @@ internal static class BleeckerReferenceText
     }
     internal sealed class IntrinsicWidth(bool joinWhitespace = false)
     {
+        // These five package assets are immutable for the running application.
+        // Cache their validated locations, not text metrics or consumer fonts.
+        private static readonly IReadOnlyDictionary<string,Lazy<string>> bundledFonts =
+            new[]{"EncodeSans-Regular.ttf","EncodeSans-Medium.ttf","EncodeSans-SemiBold.ttf","LibreFranklin-Regular.ttf","LibreFranklin-SemiBold.ttf"}
+                .ToDictionary(name=>"/Orchard/Assets/Fonts/"+name,name=>new Lazy<string>(()=>
+                {
+                    var file=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,"Orchard","Assets","Fonts",name)));
+                    Validate(file);return file.AbsoluteUri;
+                }),StringComparer.Ordinal);
         private object? key;
         private double width;
         internal double RawWidth { get; private set; }
@@ -103,8 +112,13 @@ internal static class BleeckerReferenceText
         internal static string Resolve(string family)
         {
             var marker=family.IndexOf('#');if(marker<0||!Uri.TryCreate(family[..marker],UriKind.Absolute,out var uri))return family;
-            if(uri.Scheme=="ms-appx"&&uri.Host.Length==0){uri=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));family=uri.AbsoluteUri+family[marker..];}
-            using var fonts=new CanvasFontSet(uri);if(fonts.Fonts.Count==0)throw new InvalidOperationException("The requested text font contains no faces.");return family;
+            if(uri.Scheme=="ms-appx"&&uri.Host.Length==0)
+            {
+                if(bundledFonts.TryGetValue(uri.AbsolutePath,out var asset))return asset.Value+family[marker..];
+                uri=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));family=uri.AbsoluteUri+family[marker..];
+            }
+            Validate(uri);return family;
         }
+        private static void Validate(Uri uri){using var fonts=new CanvasFontSet(uri);if(fonts.Fonts.Count==0)throw new InvalidOperationException("The requested text font contains no faces.");}
     }
 }
