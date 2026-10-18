@@ -383,3 +383,21 @@ end-to-end contract.
 <!-- END BASTILLE MANAGED RULES -->
 
 <!-- Repository-specific instructions below are maintained locally. -->
+
+## Orchard scope: component library only
+
+- Orchard is exclusively a reusable C# / WinUI 3 UI component library. Work must
+  directly support its components, public APIs, tokens/themes, component behavior,
+  catalog fixtures and demos, regression coverage, documentation, or NuGet delivery.
+- Monitoring and editorial screens remain in scope as demonstrations of library
+  components using fictional local data. Do not remove them merely because they
+  resemble applications. Do not expand them into product implementations or add
+  product services, APIs, authentication, CMS logic, or production workflows.
+- Narrator and Windows/OS high-contrast test campaigns are excluded from the
+  goal. Do not launch Narrator or change system accessibility settings for this
+  work. Existing component accessibility metadata and theme support stay intact.
+- This explicit user correction supersedes older goal/checkpoint/documentation
+  language requiring Narrator or OS contrast verification. See
+  [the current library scope](docs/library-scope.md).
+- The user resumed the component-library goal on 2026-10-18. The pointer
+  heartbeat stays paused; continuing library work does not restart it.
