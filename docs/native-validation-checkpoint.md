@@ -1,6 +1,51 @@
 # Current native validation checkpoint
+## Current font-cache and ProgressStack candidate
 
-## Current Empty and IconBadge candidate
+Product source `77f387af95a31c3c996b9a1fbf7a46cf070703b7` passes 187 tests,
+both catalog architecture builds and the complete x64 native suite in
+477,000.5398ms under the unchanged 480-second watchdog. All 168 phases pass:
+1,160 PNGs retain every one of the 1,154 prior captures, with six new Empty,
+IconBadge and ProgressStack previews. The input audit retains 2,040 owned
+pointer moves/gates, 1,778 key actions, 96 clicks and both Date closing-pointer
+pairs. All 174 protected radial/sunburst glyph hashes match the prior complete
+`48d8fd3` baseline.
+
+Windows MouseKeys supplies a real OS virtual mouse before each native process
+starts. The unchanged Activity cursor checks pass in both themes, followed by
+the complete replay. Each scope records and restores configurable MouseKeys
+flags/speeds and the pointer position; Windows owns read-only button-selection
+and mode fields. No product code changes cursor visibility or shape. The
+Bluetooth session is still disconnected and is not claimed as hardware evidence.
+
+The preceding `a7f94fb` full replay reached the final captures but timed out.
+The retained performance fix validates the five immutable package font assets
+once per process and caches their file locations. Other font URIs keep their
+existing validation; shaping and the old per-run metric path remain unchanged.
+ProgressStack separately joins compatible whitespace fragments before rounding,
+with source/native receipts proving the 57.53125px nonbreaking-space span.
+
+Version `0.1.0-77f387a` passes a fresh independent x64 NuGet consumer in both
+themes, including Empty, IconBadge and ProgressStack. The isolated ARM64 consumer
+builds with runtime explicitly unverified. Both generated consumer workspaces
+and package caches are removed and their absence is checked. Every ZIP entry
+matches its architecture's published files: 537 x64 entries and 533 ARM64 entries.
+Package SHA-256:
+`40b229d89a720af2c34ef80948632f32374b1ff802884a0ef352144cc8c1a904`.
+Catalog ZIP hashes are
+`12ef3637f96502105615ec8c0c59aec650dbac1cd2542b99fb4ebb0853654026`
+(x64) and
+`2fea45d8288bdd1bc4b2e9cc730980b07ba7a0ec975a3c94471b8c0974d780b6`
+(ARM64).
+
+The final packaged binaries pass all focused matrices: 120 Empty states and twelve lifecycle phases, 136 IconBadge states and eight lifecycle phases, and 140 ProgressStack states and twelve lifecycle phases. Every asserted geometry error is zero. All 12/11/13 corresponding audit corruptions are rejected. All five desktop scopes restore configurable MouseKeys settings and the exact pointer position.
+Complete source raster parity, remaining source/customization boundaries,
+Narrator/external accessibility, isolated scaling/contrast, measured collection
+acceptance and current native ARM64 runtime remain open. Inventory is 68 in
+progress, 44 pending and zero accepted out of 112 (60.7% started); both required
+compositions remain unaccepted. Push-triggered Actions remain paused. The public
+wiki is unavailable, so documentation stays in this repository.
+
+## Previous Empty and IconBadge candidate
 
 Source `4d820a9b0483578ac0da2c8ed1bdc5694aae7c33` passes 184 tests and both
 catalog architecture builds. The [Empty preview](empty-reference.md) passes

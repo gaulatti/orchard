@@ -90,3 +90,5 @@ Acceptance remains in progress. Required evidence includes exact raster parity,
 remaining customization/RTL/disabled/overflow pointer cases, external UIA and
 Narrator, isolated text/display scaling and contrast, native ARM64 runtime,
 and the full catalog and independent package consumer. See [parity](parity.md).
+
+The current version `0.1.0-77f387a` passes the full 477-second x64 replay using a scoped Windows MouseKeys virtual mouse, plus a fresh x64 consumer in both themes. MouseKeys configuration is restored after each scope. This supersedes the earlier missing-mouse replay failure; see the [current checkpoint](native-validation-checkpoint.md).

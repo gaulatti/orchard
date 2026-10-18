@@ -88,3 +88,5 @@ Acceptance criteria for the native implementation:
 
 The frozen source tests verify these distinctions and every PNG/collector hash.
 They establish the intended behavior for implementation, not native parity.
+
+The current version `0.1.0-77f387a` also passes the full 477-second x64 replay and a fresh x64 consumer in both themes. Native ARM64 runtime and complete component acceptance remain open; see the [current checkpoint](native-validation-checkpoint.md).

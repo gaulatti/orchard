@@ -3016,7 +3016,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete independent package checks and the remaining source/native acceptance in docs/progress-stack.md",
+        "Finish complete source/native parity acceptance in docs/progress-stack.md",
         "Verify complete raster, arbitrary Unicode and item/bar override behavior",
         "Verify native tooltip interaction, external UIA/Narrator, scaling, contrast, measured collections and native ARM64 runtime"
       ]

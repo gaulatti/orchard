@@ -51,7 +51,7 @@ frames and sixteen live update receipts from the original source, with exact
 collector, fonts and complete PNG hashes. The native 140-state matrix and
 twelve lifecycle phases pass with zero asserted geometry error. Complete
 PNG comparisons still report raster differences, with no masks, tolerance
-or resampling. Independent package validation is being established. No component is
+or resampling. Version `0.1.0-77f387a` passes a fresh independent x64 consumer in both themes and an ARM64 consumer build; native ARM64 runtime is unverified. No component is
 accepted from a build or a geometry report alone. Complete raster parity,
 arbitrary Unicode, remaining item/bar style overrides, external UIA/Narrator,
 scaling, contrast, collection measurements and native ARM64 runtime remain

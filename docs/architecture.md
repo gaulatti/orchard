@@ -68,6 +68,19 @@ unchanged Activity Item cursor assertions passed both themes. Connect or enable
 a physical/virtual mouse before cursor acceptance. Activity Item failures now retain
 both the global observation and the actual WinUI pointer-source selection.
 
+Reference text resolves and validates each of Orchard's five immutable bundled
+font assets once per application process. The bounded cache stores validated
+file locations; it does not cache shaping results or consumer-supplied fonts.
+Font fragments, metric calculations and glyph allocation remain unchanged.
+Other font URIs retain validation on each resolution.
+
+On a desktop without an attached mouse, Windows MouseKeys can provide the
+virtual mouse before a new catalog process starts. The 2026-10-17 scoped
+Activity replay passes both unchanged native cursor gates in this environment.
+Validation snapshots/restores the configurable MouseKeys flags and speed
+settings, while Windows owns the read-only button-selection/mode flags. The
+library itself does not alter this OS setting. See Microsoft's
+[MouseKeys contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-mousekeys).
 ## Platform ownership
 
 The shared chart renderer reconciles lifecycle events with current native
