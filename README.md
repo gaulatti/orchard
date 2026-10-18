@@ -197,3 +197,5 @@ the contract tests and catalog. Do not edit generated files directly.
 Encode Sans and Libre Franklin are bundled under the SIL Open Font License.
 Attribution and license texts are adjacent to the fonts. The vendored Bleecker
 source retains its MIT license under `tokens/LICENSE-Bleecker.txt`.
+
+The passive [ProgressStack preview](docs/progress-stack.md) adds consumer-owned segments and a wrapping legend; acceptance remains in progress.

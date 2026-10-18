@@ -267,6 +267,11 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
   emptyPalette += '        </ResourceDictionary>\n';
 }
 outputs['src/Orchard/Themes/EmptyPalette.g.xaml'] = emptyPalette + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
+let progressStackPalette = `<!-- Generated from pinned progress-stack.tsx; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+for (const [theme,colors] of [['Light',tokens.themes.light],['Default',tokens.themes.dark],['HighContrast',tokens.themes.light]]) {
+  progressStackPalette += `        <ResourceDictionary x:Key="${theme}">\n            <SolidColorBrush x:Key="ProgressStackTrack" Color="${theme==='HighContrast'?'{ThemeResource SystemColorWindowTextColor}':argb(colors.sand)}" Opacity="${theme==='HighContrast'?1:.2}" />\n        </ResourceDictionary>\n`;
+}
+outputs['src/Orchard/Themes/ProgressStackPalette.g.xaml'] = progressStackPalette + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 // Tailwind 4.2.2 theme.css, pinned by the Bleecker component reference.
 // OKLCH -> linear sRGB -> encoded 8-bit sRGB for WinUI Color brushes.
 const emerald = (lightness, chroma, hue) => {

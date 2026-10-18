@@ -2997,14 +2997,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerProgressStack.cs",
+        "src/Orchard/Controls/BleeckerProgressStackItem.cs",
+        "src/Orchard/Text/BleeckerReferenceText.cs",
+        "src/Orchard/Themes/ProgressStackPalette.g.xaml",
+        "src/Orchard/Themes/Generic.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/ProgressStacksFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/ProgressStackReferenceTests.cs",
+        "samples/Orchard.Catalog/MainWindow.ProgressStacks.cs",
+        "tests/PackageConsumer/MainWindow.ProgressStack.cs",
+        "scripts/verify-progress-stack.mjs",
+        "scripts/test-progress-stack-audit.mjs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Complete independent package checks and the remaining source/native acceptance in docs/progress-stack.md",
+        "Verify complete raster, arbitrary Unicode and item/bar override behavior",
+        "Verify native tooltip interaction, external UIA/Narrator, scaling, contrast, measured collections and native ARM64 runtime"
       ]
     },
     {

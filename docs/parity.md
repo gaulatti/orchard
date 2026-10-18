@@ -6,7 +6,7 @@ Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
 resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
-Counts are 67 in progress, 45 pending and zero fully accepted: 59.8% of the
+Counts are 68 in progress, 44 pending and zero fully accepted: 60.7% of the
 fixed inventory has implementation started. This is not a completion percentage.
 
 The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):
@@ -91,6 +91,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | date-picker | `BleeckerDatePicker`: controlled local-date values and native popup requests | Registered Date Controls fixture; frozen source/native geometry, typography, popup, bounds, focus and independent consumer regressions | In progress: [contract and evidence](date-controls-reference.md); exact raster/motion, remaining customization and full platform acceptance |
 | dialog-close-button | Pending | Pending | Full pinned contract |
 | drawer | Pending | Pending | Full pinned contract |
+| progress-stack | `BleeckerProgressStack`: consumer values/brushes and wrapping legend | 140 source/native frames and twelve lifecycle phases; zero asserted geometry error | In progress: [contract and remaining acceptance](progress-stack.md) |
 | empty | `BleeckerEmpty`: passive title/description, default or consumer icon, and consumer action | 120 source/native states and twelve live, detach, minimum/style ownership and template/model phases; zero asserted geometry error | In progress: [source/native contract](empty-reference.md); full raster/typography/shadows, remaining customization, platform/a11y and integration acceptance |
 | eyebrow | `BleeckerEyebrow`: three tones and optional rule | Registered Eyebrows fixture and independent consumer; runtime verification pending | In progress: [usage and gaps](eyebrows.md); Unicode/rich casing, exact rendering, accessibility, isolated scaling and ARM64 runtime |
 | hover-card | Pending | Pending | Full pinned contract |
@@ -102,7 +103,6 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | otp-input | Pending | Pending | Full pinned contract |
 | popover | Pending | Pending | Full pinned contract |
 | progress | `BleeckerProgress`: three sizes, four variants and optional label | Registered size/variant matrix and independent consumer; runtime verification pending | In progress: [usage and gaps](progress.md); exact rendering, motion, lifecycle, edge values, accessibility, scaling and ARM64 runtime |
-| progress-stack | Pending | Pending | Full pinned contract |
 | radio-group | `BleeckerRadioGroup` and immutable `BleeckerRadioOption` | Registered native fixture; 56 source/native frames and 136 options have zero geometry error; physical keyboard, controlled requests, UIA and lifecycle checks in both themes | In progress: [contract and evidence](radio-group.md); full raster/motion, customization/error matrix and Windows platform acceptance |
 | checkbox | `BleeckerCheckbox`: native selection with consumer label/description content | Registered Checkboxes fixture and independent package consumer; runtime verification pending | In progress: [usage and gaps](checkboxes.md); exact rendering, input/cursor/focus, lifecycle, accessibility, scaling, motion and x64/ARM64 runtime |
 | scroll-area | Pending | Pending | Full pinned contract |

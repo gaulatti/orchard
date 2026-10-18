@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Orchard">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/ProgressStackPalette.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Accordion.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadioGroup.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DateControls.xaml" />
@@ -466,6 +467,23 @@
         <Setter Property="Background" Value="{ThemeResource BleeckerSeparatorBrush}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSeparator">
             <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerProgressStack">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="HighContrastAdjustment" Value="None" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Background" Value="{ThemeResource ProgressStackTrack}" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerProgressStack">
+            <Grid>
+                <TextBlock x:Name="PART_Secondary" Width="0" Height="0" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" />
+                <Grid x:Name="PART_LayoutHost" />
+            </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
     <Style TargetType="local:BleeckerEmpty">

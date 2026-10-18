@@ -90,6 +90,7 @@ public sealed partial class MainWindow : Window
             }
             else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
             else if(args.Contains("--smoke-empty"))await RunEmptiesAsync(folder);
+            else if(args.Contains("--smoke-progress-stack"))await RunProgressStacksAsync(folder);
             else if(args.Contains("--smoke-icon-badge"))await RunIconBadgeAsync(folder);
             else if(args.Contains("--smoke-accordion-scalars"))await RunAccordionScalarsAsync(folder);
             else if(args.Contains("--smoke-accordion-continuity"))await RunAccordionContinuityAsync(folder);
@@ -798,6 +799,8 @@ public sealed partial class MainWindow : Window
             await IconBadges.VerifyAsync(scheme);
             await SelectFixtureAsync(Empties);
             await Empties.VerifyAsync();
+            await SelectFixtureAsync(ProgressStacks);
+            await ProgressStacks.VerifyAsync();
             await SelectFixtureAsync(ToggleGroups);
             await ToggleGroups.VerifyAsync();
             await SelectFixtureAsync(LoadingSpinners);
@@ -925,7 +928,7 @@ public sealed partial class MainWindow : Window
             {
                 (StatusBadges, "status-badges"), (Separators, "separators"), (Cards, "cards"),
                 (LoadingSpinners, "loading-spinners"), (ToggleGroups, "toggle-groups"),
-                (Empties, "empty"), (IconBadges, "icon-badges"), (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
+                (ProgressStacks, "progress-stack"), (Empties, "empty"), (IconBadges, "icon-badges"), (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
             })
                 await CaptureFixtureAsync(fixture, Path.Combine(folder, $"{name}-{theme.ToString().ToLowerInvariant()}.png"));
             await SelectFixtureAsync(Foundation);

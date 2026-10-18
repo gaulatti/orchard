@@ -75,6 +75,7 @@
                 <local:IconButtonsFixture x:Name="IconButtons" />
                 <local:IconBadgesFixture x:Name="IconBadges" />
                 <local:EmptiesFixture x:Name="Empties" />
+                <local:ProgressStacksFixture x:Name="ProgressStacks" />
                 <local:ToggleGroupsFixture x:Name="ToggleGroups" />
                 <local:LoadingSpinnersFixture x:Name="LoadingSpinners" />
                 <local:CardsFixture x:Name="Cards" />

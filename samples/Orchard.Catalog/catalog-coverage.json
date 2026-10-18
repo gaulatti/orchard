@@ -140,6 +140,8 @@
     "BleeckerSelectOption": "DataTableFiltersFixture.xaml",
     "BleeckerCalendar": "DateControlsFixture.xaml",
     "BleeckerDatePicker": "DateControlsFixture.xaml",
-    "BleeckerDateRangePicker": "DateControlsFixture.xaml"
+    "BleeckerDateRangePicker": "DateControlsFixture.xaml",
+    "BleeckerProgressStack": "ProgressStacksFixture.xaml",
+    "BleeckerProgressStackItem": "ProgressStacksFixture.xaml"
   }
 }

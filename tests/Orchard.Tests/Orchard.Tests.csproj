@@ -4,6 +4,10 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/ProgressStack.json" Link="Fixtures/ProgressStack.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStack/*.png" Link="Fixtures/ProgressStack/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-progress-stack.cjs" Link="Fixtures/CaptureProgressStack.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/progress-stack-client.tsx" Link="Fixtures/ProgressStackClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/Empty.json" Link="Fixtures/Empty.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/Empty/*.png" Link="Fixtures/Empty/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-empty.cjs" Link="Fixtures/CaptureEmpty.cjs" CopyToOutputDirectory="PreserveNewest" />

@@ -324,3 +324,5 @@ surface remains available while the artwork shrinks, and the keyboard outline
 scales with the artwork. Search clear hover uses the shared theme sand brush,
 including live color/opacity changes. Full source raster and platform acceptance
 remain in progress.
+
+`BleeckerProgressStack` provides observable consumer-owned `Items`, optional `Max` and `ShowLegend`. Each `BleeckerProgressStackItem` retains its label, numeric value and optional brush. This preview has remaining visual and platform acceptance work.
