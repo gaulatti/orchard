@@ -16,7 +16,7 @@ public sealed partial class MainWindow
     {
         components.AddRange([
             ("Foundation", Foundation), ("Toggles", Toggles), ("Buttons", Buttons), ("Accordion", Accordions),
-            ("Icon buttons", IconButtons), ("Icon badges", IconBadges), ("Toggle groups", ToggleGroups),
+            ("Icon buttons", IconButtons), ("Icon badges", IconBadges), ("Empty states", Empties), ("Toggle groups", ToggleGroups),
             ("Loading spinners", LoadingSpinners), ("Cards", Cards), ("Skeletons", Skeletons), ("Avatars", Avatars), ("Breadcrumbs", Breadcrumbs), ("Separators", Separators),
             ("Status badges", StatusBadges), ("Menus", Menus), ("Notifications", Notifications), ("Alerts", Alerts), ("Brand lockups", BrandLockups), ("Bauhaus backgrounds", BauhausBackgrounds),
             ("Activity items",ActivityItems),

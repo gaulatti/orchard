@@ -52,6 +52,7 @@
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DashboardSpan.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Cards/Surface.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/IconBadges/Primary.g.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/EmptyPalette.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/StatusBadges/Default.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/SearchInput.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Textarea.xaml" />
@@ -465,6 +466,27 @@
         <Setter Property="Background" Value="{ThemeResource BleeckerSeparatorBrush}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSeparator">
             <Border Background="{TemplateBinding Background}" />
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerEmpty">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HighContrastAdjustment" Value="None" />
+        <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Padding" Value="32,64" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{StaticResource BleeckerCardCornerRadius}" />
+        <Setter Property="Background" Value="{ThemeResource EmptyBackground}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource EmptyBorderBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerEmpty">
+            <Grid>
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}" BackgroundSizing="OuterBorderEdge" />
+                <Grid x:Name="PART_LayoutHost" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" />
+            </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
     <Style TargetType="local:BleeckerIconBadge">

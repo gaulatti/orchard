@@ -6,7 +6,7 @@ Textarea's [source contract and native preview](textarea-reference.md) cover 172
 browser and native state frames, multiline editing, consumer binding, pointer
 resizing, paste limits and real context commands. Full catalog integration
 passes; remaining visual/platform acceptance evidence keeps it in progress.
-Counts are 66 in progress, 46 pending and zero fully accepted: 58.9% of the
+Counts are 67 in progress, 45 pending and zero fully accepted: 59.8% of the
 fixed inventory has implementation started. This is not a completion percentage.
 
 The date controls now have a [native preview and pinned browser contract](date-controls-reference.md):
@@ -91,7 +91,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | date-picker | `BleeckerDatePicker`: controlled local-date values and native popup requests | Registered Date Controls fixture; frozen source/native geometry, typography, popup, bounds, focus and independent consumer regressions | In progress: [contract and evidence](date-controls-reference.md); exact raster/motion, remaining customization and full platform acceptance |
 | dialog-close-button | Pending | Pending | Full pinned contract |
 | drawer | Pending | Pending | Full pinned contract |
-| empty | Pending | Pending | Full pinned contract |
+| empty | `BleeckerEmpty`: passive title/description, default or consumer icon, and consumer action | 120 source/native states and twelve live, detach, minimum/style ownership and template/model phases; zero asserted geometry error | In progress: [source/native contract](empty-reference.md); full raster/typography/shadows, remaining customization, platform/a11y and integration acceptance |
 | eyebrow | `BleeckerEyebrow`: three tones and optional rule | Registered Eyebrows fixture and independent consumer; runtime verification pending | In progress: [usage and gaps](eyebrows.md); Unicode/rich casing, exact rendering, accessibility, isolated scaling and ARM64 runtime |
 | hover-card | Pending | Pending | Full pinned contract |
 | input | `BleeckerInput`: three sizes, adornments, validation and native editing | Registered light/dark fixtures; native editing, motion, typography, 24 reading-direction and 72 physical-adornment cases; independent consumer | In progress: [reference comparison](input-reference.md), fallback typography, scaling (225% Japanese viewport failure), contrast/Narrator, full motion parity and remaining ARM64 state checks; see [usage](inputs.md) |

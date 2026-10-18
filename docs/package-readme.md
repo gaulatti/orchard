@@ -13,6 +13,13 @@ It adds no Tab stop or Invoke behavior; use its children for commands. Set an
 automation name for a named Windows group. Full visual/platform acceptance
 remains in progress.
 
+`BleeckerEmpty` supplies nullable title/description strings, a default or
+consumer-owned icon, and optional consumer action content. Icons/actions accept
+UIElements, scalar content, templates and selectors. The parent adds no command
+or Tab stop; its title exposes heading level 3. Explicit minimum values and
+styles keep ownership when padding changes. Full visual/platform acceptance
+remains in progress.
+
 `BleeckerAccordion` displays an observable `BleeckerAccordionItem` collection with
 one internally expanded ID. `DefaultExpandedId` initializes state once; changing
 it after mount does not change expansion. Title, subtitle, content and independent

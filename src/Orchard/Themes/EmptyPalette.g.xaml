@@ -1,0 +1,32 @@
+<!-- Generated from pinned empty.tsx; do not edit. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="EmptyBackground" Color="#FFF9F6F2" Opacity="0.25" />
+            <SolidColorBrush x:Key="EmptyBorderBrush" Color="#FFE6D5B8" Opacity="0.3" />
+            <SolidColorBrush x:Key="EmptyIconBackground" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyIconBorderBrush" Color="#FFE6D5B8" Opacity="0.25" />
+            <SolidColorBrush x:Key="EmptyIconForeground" Color="#FF595959" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyDefaultIconForeground" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyDescriptionForeground" Color="#FF595959" Opacity="1" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="EmptyBackground" Color="#FFFFFFFF" Opacity="0.025" />
+            <SolidColorBrush x:Key="EmptyBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="EmptyIconBackground" Color="#FF182533" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyIconBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="EmptyIconForeground" Color="#FFF0F4F8" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyDefaultIconForeground" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyDescriptionForeground" Color="#FFB8C5D6" Opacity="1" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="EmptyBackground" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyIconBackground" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyIconBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyIconForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyDefaultIconForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="EmptyDescriptionForeground" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

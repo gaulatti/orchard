@@ -12,6 +12,8 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 Full component parity and platform acceptance remain in progress.
 The [IconBadge preview](docs/icon-badge.md) supplies a passive, themed surface
 with two sizes, three variants and retained consumer content or templates.
+The [Empty preview](docs/empty-reference.md) supplies a passive empty state with
+consumer title, description, icon and action content, including native templates.
 The [Accordion preview](docs/accordion.md) supplies single-section expansion,
 independent actions, rich content/templates and retained consumer input state.
 The [Radio Group preview](docs/radio-group.md) supplies consumer-controlled

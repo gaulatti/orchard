@@ -17,7 +17,7 @@ public sealed partial class MainWindow
                 var heading = (FrameworkElement)((Microsoft.UI.Xaml.Controls.StackPanel)Buttons.Content).Children[0];
                 await input.AcquireAsync(heading); await input.MoveAsync(heading); await Buttons.VerifyAsync(scheme);
             }),
-            (IconButtons, scheme => IconButtons.VerifyAsync(scheme)), (IconBadges, scheme => IconBadges.VerifyAsync(scheme)), (ToggleGroups, _ => ToggleGroups.VerifyAsync()),
+            (IconButtons, scheme => IconButtons.VerifyAsync(scheme)), (IconBadges, scheme => IconBadges.VerifyAsync(scheme)), (Empties, _ => Empties.VerifyAsync()), (ToggleGroups, _ => ToggleGroups.VerifyAsync()),
             (Cards, scheme => Cards.VerifyAsync(scheme)), (Separators, scheme => Separators.VerifyAsync(scheme)),
             (StatusBadges, scheme => StatusBadges.VerifyAsync(scheme)), (Menus, scheme => Menus.VerifyAsync(scheme, folder)),
             (Notifications, scheme => Notifications.VerifyAsync(scheme, folder)), (ActivityItems, scheme => ActivityItems.VerifyAsync(scheme, folder)),

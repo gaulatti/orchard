@@ -89,6 +89,7 @@ public sealed partial class MainWindow : Window
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="radio-group",environment=RuntimeEnvironment()}));
             }
             else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
+            else if(args.Contains("--smoke-empty"))await RunEmptiesAsync(folder);
             else if(args.Contains("--smoke-icon-badge"))await RunIconBadgeAsync(folder);
             else if(args.Contains("--smoke-accordion-scalars"))await RunAccordionScalarsAsync(folder);
             else if(args.Contains("--smoke-accordion-continuity"))await RunAccordionContinuityAsync(folder);
@@ -795,6 +796,8 @@ public sealed partial class MainWindow : Window
             await IconButtons.VerifyAsync(scheme);
             await SelectFixtureAsync(IconBadges);
             await IconBadges.VerifyAsync(scheme);
+            await SelectFixtureAsync(Empties);
+            await Empties.VerifyAsync();
             await SelectFixtureAsync(ToggleGroups);
             await ToggleGroups.VerifyAsync();
             await SelectFixtureAsync(LoadingSpinners);
@@ -922,7 +925,7 @@ public sealed partial class MainWindow : Window
             {
                 (StatusBadges, "status-badges"), (Separators, "separators"), (Cards, "cards"),
                 (LoadingSpinners, "loading-spinners"), (ToggleGroups, "toggle-groups"),
-                (IconBadges, "icon-badges"), (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
+                (Empties, "empty"), (IconBadges, "icon-badges"), (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
             })
                 await CaptureFixtureAsync(fixture, Path.Combine(folder, $"{name}-{theme.ToString().ToLowerInvariant()}.png"));
             await SelectFixtureAsync(Foundation);

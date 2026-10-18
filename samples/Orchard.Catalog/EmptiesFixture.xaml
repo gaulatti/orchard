@@ -1,0 +1,17 @@
+<UserControl x:Class="Orchard.Catalog.EmptiesFixture"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:orchard="using:Orchard">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Empty states" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
+        <TextBlock Text="Consumer title, description, icon, and action. The surface adds no focus stop or command."
+                   Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+        <orchard:BleeckerEmpty x:Name="DefaultEmpty" Title="No items" Width="360" HorizontalAlignment="Left" />
+        <orchard:BleeckerEmpty x:Name="ActionEmpty" Title="Nothing published yet" Description="Create an item to get started." Width="360" HorizontalAlignment="Left">
+            <orchard:BleeckerEmpty.Action><Button Content="Create item" AutomationProperties.Name="Create item" /></orchard:BleeckerEmpty.Action>
+        </orchard:BleeckerEmpty>
+        <orchard:BleeckerEmpty x:Name="CustomEmpty" Title="Consumer icon" Description="The icon keeps its explicit color." Width="360" HorizontalAlignment="Left">
+            <orchard:BleeckerEmpty.Icon><Border Width="24" Height="24" Background="DarkRed" /></orchard:BleeckerEmpty.Icon>
+        </orchard:BleeckerEmpty>
+    </StackPanel>
+</UserControl>

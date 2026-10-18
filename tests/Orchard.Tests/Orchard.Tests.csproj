@@ -4,6 +4,10 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/Empty.json" Link="Fixtures/Empty.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Empty/*.png" Link="Fixtures/Empty/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-empty.cjs" Link="Fixtures/CaptureEmpty.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/empty-client.tsx" Link="Fixtures/EmptyClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/IconBadge.json" Link="Fixtures/IconBadge.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/IconBadge/*.png" Link="Fixtures/IconBadge/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-icon-badge.cjs" Link="Fixtures/CaptureIconBadge.cjs" CopyToOutputDirectory="PreserveNewest" />
