@@ -142,6 +142,9 @@ for (const [role, family] of Object.entries(tokens.fontFamilies)) {
 for (const [key, value] of Object.entries(tokens.spacing)) xaml += `    <x:Double x:Key="BleeckerSpacing${pascal(key)}">${value}</x:Double>\n`;
 xaml += '    <FontFamily x:Key="BleeckerPrimaryMediumFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans</FontFamily>\n';
 for (const [key, value] of Object.entries(tokens.radii)) xaml += `    <CornerRadius x:Key="Bleecker${pascal(key)}CornerRadius">${value}</CornerRadius>\n`;
+xaml += '    <x:Double x:Key="BleeckerIconBadgeMediumExtent">56</x:Double>\n';
+xaml += '    <x:Double x:Key="BleeckerIconBadgeLargeExtent">64</x:Double>\n';
+xaml += '    <CornerRadius x:Key="BleeckerIconBadgeCornerRadius">10</CornerRadius>\n';
 xaml += '</ResourceDictionary>\n';
 
 const dictionary = (name, entries, type, format) => `    public static FrozenDictionary<string, ${type}> ${name} { get; } =\n        new Dictionary<string, ${type}>(StringComparer.Ordinal)\n        {\n${Object.entries(entries).map(([key, value]) => `            ["${key}"] = ${format(value)},`).join('\n')}\n        }.ToFrozenDictionary(StringComparer.Ordinal);\n`;
@@ -150,7 +153,7 @@ for (const name of ['fontFamilies', 'fontWeights']) cs += dictionary(pascal(name
 for (const name of ['spacing', 'radii', 'durations', 'letterSpacing']) cs += dictionary(pascal(name), tokens[name], 'double', value => value.toString());
 cs += dictionary('LightColors', tokens.themes.light, 'string', value => JSON.stringify(argb(value)));
 cs += dictionary('DarkColors', tokens.themes.dark, 'string', value => JSON.stringify(argb(value)));
-for (const [shadowName, recipe] of [['raised', tokens.shadows.raised], ['overlay', tokens.shadows.overlay]]) {
+for (const [shadowName, recipe] of [['surface', tokens.shadows.surface], ['raised', tokens.shadows.raised], ['overlay', tokens.shadows.overlay]]) {
 const shadowLayers = [...recipe.matchAll(/(-?\d+) (-?\d+)px (\d+)px(?: (-?\d+)px)? rgb\((\d+) (\d+) (\d+) \/ ([.\d]+)\)/g)];
 if (shadowLayers.length !== 2) throw new Error('Shadow recipes must contain two recognized layers.');
 cs += `    internal static IReadOnlyList<(float X, float Y, float Blur, float Spread, float Opacity, byte R, byte G, byte B)> ${pascal(shadowName)}Shadows { get; } =\n        Array.AsReadOnly(new (float, float, float, float, float, byte, byte, byte)[]\n        {\n${shadowLayers.map(m => `            (${m[1]}f, ${m[2]}f, ${m[3]}f, ${m[4] ?? 0}f, ${m[8]}f, ${m[5]}, ${m[6]}, ${m[7]}),`).join('\n')}\n        });\n`;
@@ -238,6 +241,37 @@ for (const variant of ['Surface', 'Outlined', 'Elevated', 'Subtle', 'Transparent
   card += `    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n`;
   outputs[`src/Orchard/Themes/Cards/${variant}.g.xaml`] = card;
 }
+for (const variant of ['Primary', 'Subtle', 'Outlined']) {
+  let badge = `<!-- Generated from pinned icon-badge.tsx; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+  for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+    const dark = theme === 'Default', contrast = theme === 'HighContrast';
+    const primary = variant === 'Primary', subtle = variant === 'Subtle';
+    const tint = dark ? colors.accentBlue : colors.sea;
+    for (const [name, color, opacity] of [
+      ['Background', primary ? dark ? colors.accentBlue : colors.deepSea : subtle ? tint : dark ? colors.deepSea : '#ffffff', subtle ? dark ? .1 : .06 : 1],
+      ['BorderBrush', primary ? dark ? colors.accentBlue : colors.deepSea : subtle ? tint : dark ? '#ffffff' : colors.sand, primary ? 1 : subtle ? dark ? .15 : .1 : dark ? .15 : .4],
+      ['Foreground', primary ? dark ? colors.deepSea : '#ffffff' : subtle ? tint : colors.textPrimary, 1]]) {
+      if (name === 'Background') badge += `        <ResourceDictionary x:Key="${theme}">\n`;
+      badge += `            <SolidColorBrush x:Key="IconBadge${name}" Color="${contrast ? `{ThemeResource SystemColor${name === 'Background' ? 'Window' : 'WindowText'}Color}` : argb(color)}" Opacity="${contrast ? 1 : opacity}" />\n`;
+    }
+    badge += '        </ResourceDictionary>\n';
+  }
+  outputs[`src/Orchard/Themes/IconBadges/${variant}.g.xaml`] = badge + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
+}
+let emptyPalette = `<!-- Generated from pinned empty.tsx; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
+  const dark = theme === 'Default', contrast = theme === 'HighContrast';
+  emptyPalette += `        <ResourceDictionary x:Key="${theme}">\n`;
+  for (const [name,color,opacity] of [['Background',dark?'#ffffff':colors.lightSand,dark?.025:.25],['BorderBrush',dark?'#ffffff':colors.sand,dark?.1:.3],['IconBackground',dark?colors.deepSea:'#ffffff',1],['IconBorderBrush',dark?'#ffffff':colors.sand,dark?.1:.25],['IconForeground',dark?colors.textPrimary:colors.textSecondary,1],['DefaultIconForeground',dark?colors.accentBlue:colors.sea,1],['DescriptionForeground',colors.textSecondary,1]])
+    emptyPalette += `            <SolidColorBrush x:Key="Empty${name}" Color="${contrast?`{ThemeResource SystemColor${name.endsWith('Background')?'Window':'WindowText'}Color}`:argb(color)}" Opacity="${contrast?1:opacity}" />\n`;
+  emptyPalette += '        </ResourceDictionary>\n';
+}
+outputs['src/Orchard/Themes/EmptyPalette.g.xaml'] = emptyPalette + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
+let progressStackPalette = `<!-- Generated from pinned progress-stack.tsx; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
+for (const [theme,colors] of [['Light',tokens.themes.light],['Default',tokens.themes.dark],['HighContrast',tokens.themes.light]]) {
+  progressStackPalette += `        <ResourceDictionary x:Key="${theme}">\n            <SolidColorBrush x:Key="ProgressStackTrack" Color="${theme==='HighContrast'?'{ThemeResource SystemColorWindowTextColor}':argb(colors.sand)}" Opacity="${theme==='HighContrast'?1:.2}" />\n        </ResourceDictionary>\n`;
+}
+outputs['src/Orchard/Themes/ProgressStackPalette.g.xaml'] = progressStackPalette + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 // Tailwind 4.2.2 theme.css, pinned by the Bleecker component reference.
 // OKLCH -> linear sRGB -> encoded 8-bit sRGB for WinUI Color brushes.
 const emerald = (lightness, chroma, hue) => {

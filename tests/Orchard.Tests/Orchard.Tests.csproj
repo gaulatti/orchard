@@ -4,7 +4,24 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/ProgressStack.json" Link="Fixtures/ProgressStack.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStack/*.png" Link="Fixtures/ProgressStack/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-progress-stack.cjs" Link="Fixtures/CaptureProgressStack.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/progress-stack-client.tsx" Link="Fixtures/ProgressStackClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Empty.json" Link="Fixtures/Empty.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Empty/*.png" Link="Fixtures/Empty/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-empty.cjs" Link="Fixtures/CaptureEmpty.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/empty-client.tsx" Link="Fixtures/EmptyClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/IconBadge.json" Link="Fixtures/IconBadge.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/IconBadge/*.png" Link="Fixtures/IconBadge/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-icon-badge.cjs" Link="Fixtures/CaptureIconBadge.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/icon-badge-client.tsx" Link="Fixtures/IconBadgeClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Controls/BleeckerAccordionItem.cs" Link="BleeckerAccordionItem.cs" />
+        <Compile Include="../../src/Orchard/Text/BleeckerNumberText.cs" Link="BleeckerNumberText.cs" />
+        <None Include="../Reference/AccordionScalars.json" Link="Fixtures/AccordionScalars.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AccordionScalars/*.png" Link="Fixtures/AccordionScalars/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-accordion-scalars.cjs" Link="Fixtures/CaptureAccordionScalars.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/accordion-scalars-client.tsx" Link="Fixtures/AccordionScalarsClient.tsx" CopyToOutputDirectory="PreserveNewest" />
         <Compile Include="../../src/Orchard/Motion/BleeckerAccordionMotion.cs" Link="BleeckerAccordionMotion.cs" />
         <None Include="../Reference/AccordionMotion.json" Link="Fixtures/AccordionMotion.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/AccordionContinuity.json" Link="Fixtures/AccordionContinuity.json" CopyToOutputDirectory="PreserveNewest" />
@@ -91,6 +108,8 @@
         <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
         <Compile Include="../../samples/Orchard.Catalog/NativeAbsolutePointer.cs" Link="NativeAbsolutePointer.cs" />
         <Compile Include="../../samples/Orchard.Catalog/NativeCapturePng.cs" Link="NativeCapturePng.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/NativeCapturePixels.cs" Link="NativeCapturePixels.cs" />
+        <Compile Include="../../samples/Orchard.Catalog/NativeCaptureBufferPool.cs" Link="NativeCaptureBufferPool.cs" />
         <Compile Include="../../src/Orchard/Controls/IBleeckerDataTableFilterSource.cs" Link="IBleeckerDataTableFilterSource.cs" />
         <Compile Include="../../src/Orchard/Controls/BleeckerDataTableValue.cs" Link="BleeckerDataTableValue.cs" />
         <Compile Include="../../samples/Orchard.Catalog/ToolbarFilterTable.cs" Link="ToolbarFilterTable.cs" />

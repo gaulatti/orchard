@@ -12,10 +12,15 @@ const run=()=>spawnSync(process.execPath,[verifier,'--native',temporary,'--outpu
 const expansion=data=>data.reports.find(row=>row.kind==='expansion'&&row.from==='none'&&row.to==='first');
 const hover=data=>data.reports.find(row=>row.kind==='hover'&&row.from==='none'&&row.to==='first');
 const moving=data=>expansion(data).frames.find(rows=>rows[0].Fraction>0&&rows[0].Fraction<1)[0];
+const unquantized=data=>{
+ const rows=expansion(data).frames.map(rows=>rows[0]).filter(row=>row.Fraction>0&&row.Fraction<1);
+ rows.sort((a,b)=>Math.abs(b.NaturalHeight*b.Fraction-b.Height)-Math.abs(a.NaturalHeight*a.Fraction-a.Height));
+ const row=rows[0];assert(row&&Math.abs(row.NaturalHeight*row.Fraction-row.Height)>=.001,'Capture has no measurable unquantized-height corruption.');return row;
+};
 try{
  await copy();assert.equal(run().status,0,'Unmodified motion receipt failed.');
  const cases=[
-  ['enabled/accordion-motion.json',data=>moving(data).Height=moving(data).NaturalHeight*moving(data).Fraction],
+  ['enabled/accordion-motion.json',data=>{const row=unquantized(data);row.Height=row.NaturalHeight*row.Fraction;}],
   ['enabled/accordion-motion.json',data=>moving(data).ClipHeight+=1],
   ['enabled/accordion-motion.json',data=>moving(data).Angle+=.0001],
   ['enabled/accordion-motion.json',data=>moving(data).Fraction+=.001],

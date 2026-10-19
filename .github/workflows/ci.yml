@@ -154,6 +154,34 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Accordion continuity audit failed.' }
           node scripts/test-accordion-continuity-audit.mjs --native artifacts/accordion/continuity
           if ($LASTEXITCODE -ne 0) { throw 'Accordion continuity audit regression failed.' }
+          node scripts/verify-accordion-scalars.mjs --native artifacts/accordion/scalars --source tests/Reference/AccordionScalars --output artifacts/accordion/scalars-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion scalar audit failed.' }
+          node scripts/test-accordion-scalars-audit.mjs --native artifacts/accordion/scalars --source tests/Reference/AccordionScalars
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion scalar audit regression failed.' }
+      - name: Verify IconBadge source and native content lifecycle
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component icon-badge -ClientSize 320,240 -Output artifacts/icon-badge -ExpectedArchitecture X64
+          node scripts/verify-icon-badge.mjs --native artifacts/icon-badge --source tests/Reference/IconBadge --output artifacts/icon-badge/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'IconBadge source audit failed.' }
+          node scripts/test-icon-badge-audit.mjs --native artifacts/icon-badge --source tests/Reference/IconBadge --output artifacts/icon-badge-negative
+          if ($LASTEXITCODE -ne 0) { throw 'IconBadge audit regression failed.' }
+      - name: Verify Empty source and native content lifecycle
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component empty -ClientSize 640,640 -Output artifacts/empty -ExpectedArchitecture X64
+          node scripts/verify-empty.mjs --native artifacts/empty --source tests/Reference/Empty --output artifacts/empty/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Empty source audit failed.' }
+          node scripts/test-empty-audit.mjs --native artifacts/empty --source tests/Reference/Empty --output artifacts/empty-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Empty audit regression failed.' }
+      - name: Verify ProgressStack source and native lifecycle
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component progress-stack -ClientSize 640,400 -Output artifacts/progress-stack -ExpectedArchitecture X64
+          node scripts/verify-progress-stack.mjs --native artifacts/progress-stack --source tests/Reference/ProgressStack --output artifacts/progress-stack/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack source audit failed.' }
+          node scripts/test-progress-stack-audit.mjs --native artifacts/progress-stack --source tests/Reference/ProgressStack --output artifacts/progress-stack-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack audit regression failed.' }
       - name: Verify DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
@@ -470,6 +498,34 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Accordion continuity audit failed.' }
           node scripts/test-accordion-continuity-audit.mjs --native artifacts/accordion/continuity
           if ($LASTEXITCODE -ne 0) { throw 'Accordion continuity audit regression failed.' }
+          node scripts/verify-accordion-scalars.mjs --native artifacts/accordion/scalars --source tests/Reference/AccordionScalars --output artifacts/accordion/scalars-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion scalar audit failed.' }
+          node scripts/test-accordion-scalars-audit.mjs --native artifacts/accordion/scalars --source tests/Reference/AccordionScalars
+          if ($LASTEXITCODE -ne 0) { throw 'Accordion scalar audit regression failed.' }
+      - name: Verify IconBadge source and native content lifecycle
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component icon-badge -ClientSize 320,240 -Output artifacts/icon-badge -ExpectedArchitecture Arm64
+          node scripts/verify-icon-badge.mjs --native artifacts/icon-badge --source tests/Reference/IconBadge --output artifacts/icon-badge/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'IconBadge source audit failed.' }
+          node scripts/test-icon-badge-audit.mjs --native artifacts/icon-badge --source tests/Reference/IconBadge --output artifacts/icon-badge-negative
+          if ($LASTEXITCODE -ne 0) { throw 'IconBadge audit regression failed.' }
+      - name: Verify Empty source and native content lifecycle
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component empty -ClientSize 640,640 -Output artifacts/empty -ExpectedArchitecture Arm64
+          node scripts/verify-empty.mjs --native artifacts/empty --source tests/Reference/Empty --output artifacts/empty/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Empty source audit failed.' }
+          node scripts/test-empty-audit.mjs --native artifacts/empty --source tests/Reference/Empty --output artifacts/empty-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Empty audit regression failed.' }
+      - name: Verify ProgressStack source and native lifecycle
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component progress-stack -ClientSize 640,400 -Output artifacts/progress-stack -ExpectedArchitecture Arm64
+          node scripts/verify-progress-stack.mjs --native artifacts/progress-stack --source tests/Reference/ProgressStack --output artifacts/progress-stack/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack source audit failed.' }
+          node scripts/test-progress-stack-audit.mjs --native artifacts/progress-stack --source tests/Reference/ProgressStack --output artifacts/progress-stack-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack audit regression failed.' }
       - name: Verify native ARM64 DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke

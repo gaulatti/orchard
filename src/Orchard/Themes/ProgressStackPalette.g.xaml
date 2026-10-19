@@ -1,0 +1,14 @@
+<!-- Generated from pinned progress-stack.tsx; do not edit. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="ProgressStackTrack" Color="#FFE6D5B8" Opacity="0.2" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <SolidColorBrush x:Key="ProgressStackTrack" Color="#FF1A2332" Opacity="0.2" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <SolidColorBrush x:Key="ProgressStackTrack" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

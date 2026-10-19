@@ -119,7 +119,13 @@ internal static class NativeScreenCapture
         finally { CloseHandle(handle); }
     }
 
-    internal static async Task<Rect> CaptureClientAsync(IntPtr window, string path, (byte R,byte G,byte B)? expectedEmptyCanvas = null)
+    internal static Task<Rect> CaptureClientAsync(IntPtr window, string path, (byte R,byte G,byte B)? expectedEmptyCanvas = null)
+        => CaptureClientCoreAsync(window, path, expectedEmptyCanvas, null);
+
+    internal static Task<Rect> CaptureExactClientAsync(IntPtr window, string path, byte[] expectedBgra)
+        => CaptureClientCoreAsync(window, path, null, expectedBgra ?? throw new ArgumentNullException(nameof(expectedBgra)));
+
+    private static async Task<Rect> CaptureClientCoreAsync(IntPtr window, string path, (byte R,byte G,byte B)? expectedEmptyCanvas, byte[]? exactReference)
     {
         using var capture = CatalogRuntimeProfile.Measure("screen.total");
         GetWindowThreadProcessId(window, out var process);
@@ -141,11 +147,12 @@ internal static class NativeScreenCapture
         using (CatalogRuntimeProfile.Measure("screen.flush"))
             if (DwmFlush() < 0) throw new InvalidOperationException("Desktop composition did not flush before capture.");
 
+        using var pixelLease = NativeCaptureBufferPool.Bgra.Rent(checked(width * height * 4));
+        var pixels = pixelLease.Buffer;
         var screen = GetDC(IntPtr.Zero);
         var memory = IntPtr.Zero;
         var bitmap = IntPtr.Zero;
         var previous = IntPtr.Zero;
-        var pixels = new byte[checked(width * height * 4)];
         try
         {
             using (CatalogRuntimeProfile.Measure("screen.allocate"))
@@ -177,7 +184,8 @@ internal static class NativeScreenCapture
         }
         // BI_RGB reserves the fourth byte; the copied screen is fully opaque.
         for (var offset = 3; offset < pixels.Length; offset += 4) pixels[offset] = 255;
-        NativeCaptureValidation.Verify(pixels,expectedEmptyCanvas);
+        if (exactReference is null) NativeCaptureValidation.Verify(pixels,expectedEmptyCanvas);
+        else NativeCaptureValidation.VerifyExact(pixels,exactReference);
         await MainWindow.SavePngAsync(path, pixels, width, height);
         return new Rect(origin.X, origin.Y, width, height);
     }

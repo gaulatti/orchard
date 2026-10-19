@@ -13,10 +13,13 @@ public sealed partial class BleeckerAccordion
 {
     private static bool Numeric(object? value)=>value is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal;
     private static bool Present(object? value)=>value switch{null or false=>false,string text=>text.Length>0,_ when Numeric(value)=>Convert.ToDouble(value,CultureInfo.InvariantCulture) is var number&&number!=0&&!double.IsNaN(number),_=>true};
-    private static string Scalar(object? value)=>value switch{null or bool=>"",string text=>text,IFormattable number when Numeric(value)=>number.ToString(null,CultureInfo.InvariantCulture),_=>""};
+    private static string Scalar(object? value)=>value switch{null or bool=>"",string text=>text,double number=>BleeckerNumberText.Format(number),float number=>BleeckerNumberText.Format(double.Parse(number.ToString("R",CultureInfo.InvariantCulture),CultureInfo.InvariantCulture)),decimal number when number==0=>"0",IFormattable number when Numeric(value)=>number.ToString(null,CultureInfo.InvariantCulture),_=>""};
     private sealed class Slot:Panel
     {
-        private readonly TextBlock text=new(){UseLayoutRounding=false,TextWrapping=TextWrapping.Wrap,LineStackingStrategy=LineStackingStrategy.BlockLineHeight};
+        private readonly TextBlock text=new(){UseLayoutRounding=false,TextWrapping=TextWrapping.WrapWholeWords,LineStackingStrategy=LineStackingStrategy.BlockLineHeight};
+        private readonly TextBlock measure=new(){UseLayoutRounding=false};
+        private readonly WrapPlan wrapping=new();
+        private string logicalText="";
         private readonly ContentPresenter rich=new(){UseLayoutRounding=false,HorizontalContentAlignment=HorizontalAlignment.Stretch};
         private readonly BleeckerReferenceText.IntrinsicWidth intrinsic=new();
         private readonly double fontSize,lineHeight;
@@ -25,7 +28,7 @@ public sealed partial class BleeckerAccordion
         private TextBlock? richText;
         private readonly List<(TextBlock Probe,BleeckerReferenceText.IntrinsicWidth Width)> richMeasures=[];
         internal Slot(string name,double fontSize,double lineHeight,bool secondary=false){Name=name;this.fontSize=fontSize;this.lineHeight=lineHeight;this.secondary=secondary;UseLayoutRounding=false;Children.Add(text);Children.Add(rich);}
-        internal string AccessibleName=>plain?text.Text:ReadName(rich);
+        internal string AccessibleName=>plain?logicalText:ReadName(rich);
         private static string ReadName(UIElement element)
         {
             var specified=AutomationProperties.GetName(element);if(specified.Length>0)return specified;
@@ -38,16 +41,17 @@ public sealed partial class BleeckerAccordion
             plain=template is null&&(value is null or bool or string||Numeric(value));if(!plain&&template is null&&value is not UIElement)throw new ArgumentException("Accordion object content requires a DataTemplate or UIElement.");
             FlowDirection=owner.FlowDirection;var family=secondary?owner.Font("BleeckerSecondaryFontFamily"):fontSize==14&&owner.FontFamily.Source==owner.Font("BleeckerPrimaryFontFamily").Source?owner.Font("BleeckerPrimaryMediumFontFamily"):owner.FontFamily;var size=owner.FontSize*fontSize/14;
             text.FontFamily=rich.FontFamily=family;text.FontSize=rich.FontSize=size;text.FontWeight=rich.FontWeight=secondary?Microsoft.UI.Text.FontWeights.Normal:fontSize==14?Microsoft.UI.Text.FontWeights.Medium:Microsoft.UI.Text.FontWeights.Normal;text.Foreground=rich.Foreground=foreground;text.CharacterSpacing=rich.CharacterSpacing=owner.CharacterSpacing;text.IsTextScaleFactorEnabled=rich.IsTextScaleFactorEnabled=owner.IsTextScaleFactorEnabled;text.LineHeight=owner.FontSize*lineHeight/14;
-            BleeckerReferenceText.Set(text,Regex.Replace(plain?Scalar(value):"","[ \\t\\r\\n\\f]+"," ").Trim(' '));text.Visibility=plain&&text.Text.Length>0?Visibility.Visible:Visibility.Collapsed;rich.Visibility=plain?Visibility.Collapsed:Visibility.Visible;
+            logicalText=Regex.Replace(plain?Scalar(value):"","[ \\t\\r\\n\\f]+"," ").Trim(' ');BleeckerReferenceText.Set(text,logicalText);text.Visibility=plain&&logicalText.Length>0?Visibility.Visible:Visibility.Collapsed;rich.Visibility=plain?Visibility.Collapsed:Visibility.Visible;
             var content=plain?null:value;richText=template is null?content as TextBlock:null;if(!ReferenceEquals(rich.Content,content)||!ReferenceEquals(rich.ContentTemplate,template)){rich.Content=null;rich.ContentTemplate=template;rich.Content=content;}InvalidateMeasure();
         }
         internal void Release()=>rich.Content=null;
         protected override Size MeasureOverride(Size available)
         {
             if(!plain){if(richText is not null){var richWidth=Math.Min(available.Width,RichWidth(richText));rich.Measure(new(richWidth,available.Height));return new(richWidth,rich.DesiredSize.Height);}rich.Measure(available);return rich.DesiredSize;}if(text.Text.Length==0)return new(0,0);
-            var width=Math.Min(available.Width,intrinsic.Measure(text,text.Text));text.Measure(new(width,double.PositiveInfinity));return new(width,text.DesiredSize.Height);
+            measure.FontFamily=text.FontFamily;measure.FontSize=text.FontSize;measure.FontWeight=text.FontWeight;measure.FontStyle=text.FontStyle;measure.FontStretch=text.FontStretch;measure.CharacterSpacing=text.CharacterSpacing;measure.IsTextScaleFactorEnabled=text.IsTextScaleFactorEnabled;measure.FlowDirection=text.FlowDirection;measure.Language=text.Language;BleeckerReferenceText.Set(measure,logicalText);
+            var width=Math.Min(available.Width,intrinsic.Measure(measure,logicalText));var rendered=wrapping.Render(measure,width);text.TextWrapping=rendered.Overflow?TextWrapping.NoWrap:TextWrapping.WrapWholeWords;if(text.Text!=rendered.Text)BleeckerReferenceText.Set(text,rendered.Text);text.Measure(new(width,double.PositiveInfinity));return new(width,text.DesiredSize.Height);
         }
-        protected override Size ArrangeOverride(Size final){text.Arrange(new(0,0,final.Width,final.Height));rich.Arrange(new(0,0,final.Width,final.Height));return final;}
+        protected override Size ArrangeOverride(Size final){text.Arrange(new(0,0,final.Width,final.Height));if(plain&&text.ActualWidth>final.Width)text.Arrange(new(0,0,text.ActualWidth,final.Height));rich.Arrange(new(0,0,final.Width,final.Height));return final;}
         private double RichWidth(TextBlock target)
         {
             var initial=new TextStyle(target.FontFamily,target.FontSize,target.FontWeight,target.FontStyle,target.FontStretch,target.CharacterSpacing);

@@ -1,4 +1,332 @@
 # Current native validation checkpoint
+## Current font-cache and ProgressStack candidate
+
+Product source `77f387af95a31c3c996b9a1fbf7a46cf070703b7` passes 187 tests,
+both catalog architecture builds and the complete x64 native suite in
+477,000.5398ms under the unchanged 480-second watchdog. All 168 phases pass:
+1,160 PNGs retain every one of the 1,154 prior captures, with six new Empty,
+IconBadge and ProgressStack previews. The input audit retains 2,040 owned
+pointer moves/gates, 1,778 key actions, 96 clicks and both Date closing-pointer
+pairs. All 174 protected radial/sunburst glyph hashes match the prior complete
+`48d8fd3` baseline.
+
+Windows MouseKeys supplies a real OS virtual mouse before each native process
+starts. The unchanged Activity cursor checks pass in both themes, followed by
+the complete replay. Each scope records and restores configurable MouseKeys
+flags/speeds and the pointer position; Windows owns read-only button-selection
+and mode fields. No product code changes cursor visibility or shape. The
+Bluetooth session is still disconnected and is not claimed as hardware evidence.
+
+The preceding `a7f94fb` full replay reached the final captures but timed out.
+The retained performance fix validates the five immutable package font assets
+once per process and caches their file locations. Other font URIs keep their
+existing validation; shaping and the old per-run metric path remain unchanged.
+ProgressStack separately joins compatible whitespace fragments before rounding,
+with source/native receipts proving the 57.53125px nonbreaking-space span.
+
+Version `0.1.0-77f387a` passes a fresh independent x64 NuGet consumer in both
+themes, including Empty, IconBadge and ProgressStack. The isolated ARM64 consumer
+builds with runtime explicitly unverified. Both generated consumer workspaces
+and package caches are removed and their absence is checked. Every ZIP entry
+matches its architecture's published files: 537 x64 entries and 533 ARM64 entries.
+Package SHA-256:
+`40b229d89a720af2c34ef80948632f32374b1ff802884a0ef352144cc8c1a904`.
+Catalog ZIP hashes are
+`12ef3637f96502105615ec8c0c59aec650dbac1cd2542b99fb4ebb0853654026`
+(x64) and
+`2fea45d8288bdd1bc4b2e9cc730980b07ba7a0ec975a3c94471b8c0974d780b6`
+(ARM64).
+
+The final packaged binaries pass all focused matrices: 120 Empty states and twelve lifecycle phases, 136 IconBadge states and eight lifecycle phases, and 140 ProgressStack states and twelve lifecycle phases. Every asserted geometry error is zero. All 12/11/13 corresponding audit corruptions are rejected. All five desktop scopes restore configurable MouseKeys settings and the exact pointer position.
+Complete source raster parity, remaining source/customization boundaries,
+Narrator/external accessibility, isolated scaling/contrast, measured collection
+acceptance and current native ARM64 runtime remain open. Inventory is 68 in
+progress, 44 pending and zero accepted out of 112 (60.7% started); both required
+compositions remain unaccepted. Push-triggered Actions remain paused. The public
+wiki is unavailable, so documentation stays in this repository.
+
+## Previous Empty and IconBadge candidate
+
+Source `4d820a9b0483578ac0da2c8ed1bdc5694aae7c33` passes 184 tests and both
+catalog architecture builds. The [Empty preview](empty-reference.md) passes
+120 source/native states and twelve lifecycle phases with zero asserted
+geometry error; all twelve audit corruptions are rejected. It covers source
+presence/whitespace, padding minima and overflow, refined heading tracking,
+signed centering, RTL bounds, retained input/focus, consumer minimum/style
+ownership and original template models. IconBadge's 136 source/native cases
+and eight lifecycle phases remain part of the candidate checks.
+
+Fresh version `0.1.0-4d820a9` passes the independent x64 NuGet consumer in both
+themes, including Empty and IconBadge. The ARM64 consumer builds; its runtime
+is explicitly unverified. Both generated consumer workspaces/package caches
+are removed. All 537/533 x64/ARM64 catalog ZIP entries match the publish files.
+The package SHA-256 is
+`f8c74ee3276293002348241add9f11c136a97b4cdbdf39e07537cfc0c71c1541`.
+
+A complete current full-suite run remains unverified. Windows still reports
+no present mouse; the previous candidate stopped at Activity's unchanged
+global Hand-cursor gate as recorded below. A temporary Windows Bluetooth
+session requests a connection to the already-paired mouse until the guaranteed
+desktop window ends at 10 p.m.; it has not established a connection. No cursor
+requirement, visibility flag or test deadline is changed. Hosted Actions remain
+paused for pushes. Source commits are local while the complete run is pending.
+
+Inventory: 67 in progress, 45 pending, zero accepted out of 112 (59.8% started).
+Both required compositions remain unaccepted. The complete passing baseline
+remains `48d8fd3`. The public wiki remains unavailable, so documentation stays
+in this repository.
+
+## IconBadge candidate
+
+Source `b8aa2de56d11d7f23773196a4b722d0c2fd36df9` passes 181 tests and both
+catalog builds. Its [IconBadge preview](icon-badge.md) passes 136 source/native
+frames, 52 child placements, 80 scalar cases and eight retained-child lifecycle
+phases with zero asserted geometry error. All eleven audit corruptions are
+rejected. Four complete PNGs match; the other 132 retain explicit raster gaps.
+The audit snapshots now copy their images independently so a later native
+rerun cannot mutate earlier evidence through hard links.
+
+Fresh version `0.1.0-b8aa2de` passes an independent x64 NuGet consumer in both
+themes. The ARM64 consumer builds; native ARM64 runtime remains unverified.
+Both isolated consumer workspaces/caches are removed. Every entry in the
+x64/ARM64 catalog ZIPs matches its corresponding publish (537/533 files).
+
+The full x64 candidate attempt stopped at 44,195.8564ms on Activity's existing
+global Windows Hand-cursor requirement. WinUI selects Hand, but Windows has
+no present mouse (`SM_MOUSEPRESENT = 0`) and reports a hidden global cursor.
+No cursor requirement or deadline was changed. A complete candidate run is
+still required; the previous complete passing source is retained below.
+Push-triggered Actions remain paused and no hosted CI run is implied.
+
+Inventory: 66 in progress, 46 pending, zero accepted out of 112 (58.9% started).
+Both required compositions remain unaccepted. The public wiki remains
+unavailable; the implementation and checkpoint are documented in this repo.
+
+## Current validated source
+
+Source `48d8fd3b16afe3c71d59b7e3b3428b62c40ab03b` passes 177 tests and both
+catalog architecture builds. The complete x64 sequence passes 156 phases in
+471,953.7397ms under the unchanged 480-second watchdog. It retains all 1,154
+PNGs, 2,040 owned pointer moves/presentation gates, 1,778 key actions, 96 clicks,
+both Date closing-pointer pairs and all 174 protected glyph hashes. The original
+Windows animation preference is restored.
+
+Fresh focused checks pass 292 scalar cases, four ink-presence cases and two
+overflow clicks; 60 layout frames/108 rows; 44 lifecycle phases; 48 motion
+timelines with 1,162 property samples, 169 intermediate background paints and
+six reversals; and 32 continuity cases with 237 samples, ten retained clocks
+and six resets. Geometry, height and angle error are zero. All 14
+layout/lifecycle, 23 motion, 20 continuity and 22 scalar corruptions are rejected.
+
+Capture persistence retains all four frozen PNG/RGBA cases, 36 opaque Windows
+comparisons and 36 changing opaque/transparent comparisons. Six corruptions are
+rejected. The PNG encoder, metadata, compression and byte comparisons are
+unchanged. Across the same 146-phase prefix as the previous timeout, buffer
+reuse reduces elapsed time from 477,883.9656ms to 469,168.9711ms, GC pause time
+from 28,316.388ms to 21,458.334ms and generation-2 collections from 366 to 227.
+The complete passing sequence records 21,636.067ms of GC pauses and 229
+generation-2 collections.
+
+Package `0.1.0-48d8fd3` passes the isolated x64 consumer in both themes, the
+ARM64 consumer build, Accordion/Radio full-catalog delivery and the Date
+regressions. Temporary consumer sources, feeds and caches are removed. The
+package SHA-256 is
+`5ab93e98446099e53b3b8b9a0f7eace48dc75045398c1ceb1b9ee97b4d08988d`;
+its byte-matched full-runtime library hash is
+`9b295a2a0fc0072f7ce71711d42e2cd98a4434fbb1d12b6de55197d2386220a0`.
+
+Versioned catalog ZIPs verify every published entry: x64 has 537 files,
+102,022,501 bytes and SHA-256
+`320df8929a9d9f54dec3dfab5a24d4a90dd0afe0aa2145e69b6303a98ce959d7`;
+ARM64 has 533 files, 99,109,632 bytes and SHA-256
+`7532eb2acf9eb1fabc6b4dd95aa39d2bfd635eeece8bc19cbe64a7270ed96ed1`.
+Receipts, captures, package and archives are under `artifacts/current`, with the
+release index in `capture-pool-release.json`.
+
+Native ARM64 runtime, exact static/motion raster, scaling, contrast, Narrator and
+the remaining customization/performance matrix remain open. Push-triggered
+Actions remain paused; no hosted run is substituted for these local results.
+The wiki remains unavailable, so documentation stays in the repository.
+Inventory remains 65 in progress, 47 pending and zero accepted of 112, with
+both catalog compositions unaccepted.
+
+## Capture timing history
+
+The uninterrupted `ef08273` replay expired at the unchanged watchdog after 146
+completed phases. It recorded 28.316 seconds of process-wide GC pauses and 366
+generation-2 collections. The original animation preference was restored.
+The later BGRA/RGBA buffer reuse retains at most one idle array per
+stage, independent overlapping rentals and no cache by dimension. The native
+persistence probe keeps its four frozen cases and 36 opaque Windows comparisons
+and adds 36 alternating opaque/transparent inputs to detect stale reused bytes.
+
+Source `5fc9c4e` passes 170 tests, including accelerated and scalar conversion
+paths, all four frozen PNG/RGBA cases and 36 exact Windows comparisons. Its
+first full run stopped after 128 phases with native WinUI stowed exception
+`C000027B` (`8000FFFF` in Windows Error Reporting) during dark Sunburst. The
+process ended and the original animation preference was restored. Focused
+Sunburst then passed all 47 source cases in each theme, and the broader chart
+sequence passed both themes. One full replay passed that transition but reached
+the unchanged 480-second watchdog after 144 phases. Neither run is release
+evidence. Receipts and Windows events are retained under `artifacts/current`.
+
+The optimized blank-frame scan preserves the
+same nine distinct non-alpha channel values and the separate exact-color empty
+canvas guard. Comparing all 1,156 PNGs from the interrupted full replay produced
+identical predicate results. Across five paired repetitions, the prior LINQ
+predicate took 8,373.47ms and the bounded scan 650.77ms. These are diagnostic
+corpus timings, not a completed full-suite result. The PNG encoder, pixels,
+metadata, masks, tolerances, input gates and watchdog remain unchanged. Phase
+GC pause/count diagnostics distinguish collection time from capture work.
+
+## Earlier scalar and delivery replay
+
+Source `e5fdbdc` retains the scalar/painted-overflow correction, exact-byte capture
+optimization and Activity cursor-failure diagnostics. All 168 tests and both
+catalog architectures build. Fresh native checks pass 292 scalar cases with
+zero geometry error, four exact-color ink-presence cases and two overflow
+clicks; 60 layout frames/108 rows; 44 lifecycle phases; 48 motion timelines with
+1,156 property samples, 168 intermediate background paints and six reversals;
+and 32 continuity cases with 235 samples, ten retained clocks and six resets.
+Fourteen layout/lifecycle, 23 motion, 20 continuity and 22 scalar corruptions are
+rejected. The unquantized-height corruption now selects a sample whose change
+exceeds the existing 0.001-pixel bound; the previous first-frame choice could
+occasionally fall within that unchanged bound.
+
+Package `0.1.0-e5fdbdc` passes the isolated x64 consumer in both themes and the
+ARM64 consumer build, including scalar values/names, original negative-zero
+retention, narrow whole-word layout and the Date regressions. Temporary sources,
+feeds and caches are removed. Package SHA-256 is
+`636a8d1095a8e88d6317e5f4ee4108f928efcbc44a7ad5106cb07091df4e4228`;
+the matching library hash is
+`5e23a5fa0741a2f995b86c4e29d873540397f33da6302700956aeceb2397344d`.
+The persistence probe retains all four frozen PNG/RGBA cases and 36 opaque
+Windows comparisons, with unchanged encoder bytes and four rejected corruptions.
+
+The user identified a power-saving Bluetooth mouse. After it became available,
+Windows reported an installed mouse and the unchanged Activity Item fixture
+passed both themes. A one-minute idle heartbeat moves the pointer three pixels
+and returns it only outside native input checks. Native checks already move it
+frequently; software movement does not establish that Bluetooth hardware remains
+awake. No failed visibility-scope code is retained.
+
+The full native replay at `artifacts/current/native-full-accordion-cursor`
+reached 142 completed phases before the unchanged 480-second watchdog expired.
+The process exited and its original animation preference was restored. Across
+the identical completed prefix, PNG persistence took 8.367 seconds longer than
+the last passing full run, including 4.089 seconds more in pixel conversion.
+The retained comparison is `accordion-cursor-timeout-comparison.json`. A
+vectorized opaque-channel conversion is under verification; full integration
+and versioned archive verification remain pending. Push-triggered Actions remain
+paused. The wiki is unavailable, so these records remain in the repository.
+Inventory remains 65 started/in progress, 47 pending and zero accepted of 112,
+with both compositions still requiring full acceptance.
+
+## Capture persistence candidate
+
+Source `36d1c44` retains the Accordion correction below and reduces screenshot
+persistence work. Opaque captures swap BGRA/RGBA channels directly; transparency
+keeps Windows conversion. Writes complete before returning. The PNG encoder and
+all watchdog, pointer, key and glyph gates remain unchanged.
+
+All 168 tests and both catalog builds pass. The committed native diagnostic
+retains the four frozen PNG/RGBA cases and passes 36 byte-for-byte opaque
+comparisons against the previous Windows path, including immediate file reads
+and write errors. Its paired timing totals are 405.8756 ms for the Windows path
+and 325.7727 ms for the candidate; these are persistence diagnostics, not a
+full-suite performance result. Four corrupted receipts/images are rejected with
+compact exact-byte diagnostics. The first corruption assertion exhausted Node
+while formatting an image difference; a concurrent motion run recorded a
+presentation timeout. Causality was not established. Both terminal failures and
+the restored preference are retained in
+`artifacts/current/accordion-capture-first-focused-failure.json`.
+
+The sequential committed-binary replay passes all 292 scalar cases, 60 layout
+frames/108 rows, 44 lifecycle phases, 48 motion timelines/1,166 property samples,
+169 intermediate background paints, six reversals and 32 continuity cases/233
+samples. Geometry, height and float-angle errors are zero. All 14 layout, 23
+motion, 20 continuity and 22 scalar corruption checks pass. Both real animation
+preferences are restored.
+
+Fresh package `0.1.0-36d1c44` passes the complete isolated x64 consumer in both
+themes, including scalar values, accessibility names, original negative-zero
+retention, whole-word layout and the Date regressions. The ARM64 consumer builds;
+native ARM64 execution remains unverified. Temporary consumer sources, feeds and
+caches are removed. Package SHA-256 is
+`fc24f171d7bed76fb9a3f894929a54fb45eb089dced432cd0b6c1c0ca19d73f2`;
+the matching library hash is
+`bfbcaabe66dc5bedb5227eb4b3350e7ebee64b9d38ee7a9f7b9a314db069cfea`.
+The full replay stopped after 44.5865469 seconds at Light Activity Item's
+unchanged global Hand-cursor assertion. A focused replay reproduced it. All five
+mouse moves reached the exact prior passing coordinates, but the displayed
+cursor was hidden/null before and during the catalog. Windows reports no mouse
+and zero mouse buttons; the WinUI pointer source selects Hand, with both source
+and root dispatcher access on the same window thread. See
+`artifacts/current/pointer-device-observation.json`,
+`artifacts/current/capture-opaque-activity-cursor-observation` and
+`artifacts/current/cursor-visibility-activity-diagnostic/activity-cursor-failure-Light.json`.
+
+A test-only display-count experiment changed the UI-thread count from -1 to 0
+and restored -1, but did not make the global cursor visible. That ineffective
+scope and its four temporary tests are removed; the retained source passes 168
+tests. Activity Item now records the actual native/source cursor on failure.
+No cursor shape, input event, deadline or acceptance gate was replaced. A
+physical/virtual mouse must be available before this runtime boundary can be
+verified. Full-suite and archive validation remain pending. Push-triggered
+Actions remain paused and full component acceptance remains open.
+
+## Accordion scalar text and painted overflow
+
+Source `1eaebd9` corrects number text across title, subtitle, action and content
+slots, including negative zero and decimal/exponent boundaries. It extracts
+the existing DataTable numeric conversion into a dependency-light text helper
+without changing DataTable coercion. Plain slots retain CSS whole-word line
+breaks and visible overflow at zero remaining width. The first geometry-only
+candidate still clipped words; the final line plan preserves the logical slot
+size, the separate paint extent and each original line. Temporary probing code
+is removed.
+
+All 166 unit tests pass. The committed-source replay passes 292 scalar frames
+with zero geometry error, four source-derived last-word ink checks and native
+clicks beyond the logical header in both themes. The mixed phrase retains three
+lines and 60px height instead of combining its short words. Thirty-six hashed
+source PNGs are committed; full-client comparisons retain zero masks, pixel
+tolerance and resampling, while exact raster remains unproven. Twenty-two
+damaged scalar receipts/captures are rejected.
+
+Existing Accordion checks also pass: 60 layout frames/108 rows with zero geometry
+error; 44 lifecycle phases with 16 owned key pairs/four pointer actions; 48 motion
+timelines with six reversal steps, 1,156 property samples and 170 intermediate
+background paints; and 32 continuity cases with 240 samples, ten retained clocks
+and six resets. Fourteen layout/lifecycle, 23 motion and 20 continuity mutations
+are rejected. Both real OS preferences are restored.
+
+Both catalog architectures build. Package `0.1.0-1eaebd9` passes the complete
+isolated x64 consumer in both themes and the ARM64 consumer build. Scalar checks
+verify `0`, `0.000001`, `1e+21`, the full `1e20` decimal string, the accessible
+name, preservation of the original negative-zero value and a 108px narrow
+header. Date checks retain eight native key pairs and six consumer requests.
+Temporary consumers/feed/caches are removed. Package SHA-256 is
+`cbafb24bc2013a74f94b3a6debc82ce9570ecd8cb5c512ade8b5c89dd916999c`;
+the package and consumer library hash is
+`b730a23eee1f4183f96b95fd9055a2fed9d0b930eab16bbac3dd099a52473cb8`.
+The fresh full catalog replay and versioned archive verification are pending.
+Push-triggered Actions remain paused. Inventory and all remaining full
+acceptance requirements remain unchanged.
+
+The first full replay reached Dark `LoadingSpinnersFixture` before the unchanged
+480-second watchdog expired; its last recorded phase ended at 478.0158782 seconds.
+The failed profile and restored-preference receipt are retained under
+`artifacts/current/native-full-accordion-scalars` and
+`artifacts/current/accordion-scalars-first-full-timeout.json`. A separate replay
+used the exact same verified binaries and gates and also timed out, after 152
+completed phases, before Dark `IconButtonsFixture`. Its last recorded elapsed
+time is 477.9350572 seconds; the profile and timeout receipt are retained at
+`artifacts/current/native-full-accordion-scalars-repeat` and
+`artifacts/current/accordion-scalars-repeat-full-timeout.json`. Both processes
+are terminal and both preferences were restored. No timeout or pixel/input
+threshold was relaxed. The capture candidate above addresses actual persistence
+cost before another full replay.
 
 ## Accordion collection and content continuity
 

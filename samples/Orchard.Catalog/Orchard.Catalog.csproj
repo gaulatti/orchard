@@ -22,9 +22,15 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="../../tests/Reference/ProgressStack.json" LogicalName="Orchard.Catalog.Reference.ProgressStack.json" />
+        <EmbeddedResource Include="../../tests/Reference/Empty.json" LogicalName="Orchard.Catalog.Reference.Empty.json" />
+        <EmbeddedResource Include="../../tests/Reference/IconBadge.json" LogicalName="Orchard.Catalog.Reference.IconBadge.json" />
+        <EmbeddedResource Include="../../tests/Reference/IconBadge/icon-badge-large-child-Light-reduce.png" LogicalName="Orchard.Catalog.Reference.IconBadgeLargeLight.png" />
+        <EmbeddedResource Include="../../tests/Reference/IconBadge/icon-badge-large-child-Dark-reduce.png" LogicalName="Orchard.Catalog.Reference.IconBadgeLargeDark.png" />
         <EmbeddedResource Include="../../tests/Reference/RadioGroup.json" LogicalName="Orchard.Catalog.Reference.RadioGroup.json" />
         <EmbeddedResource Include="../../tests/Reference/Accordion.json" LogicalName="Orchard.Catalog.Reference.Accordion.json" />
         <EmbeddedResource Include="../../tests/Reference/AccordionMotion.json" LogicalName="Orchard.Catalog.Reference.AccordionMotion.json" />
+        <EmbeddedResource Include="../../tests/Reference/AccordionScalars.json" LogicalName="Orchard.Catalog.Reference.AccordionScalars.json" />
         <EmbeddedResource Include="../../tests/Reference/RadioMotion.json" LogicalName="Orchard.Catalog.Reference.RadioMotion.json" />
         <EmbeddedResource Include="../../tests/Reference/DateControls.json" LogicalName="Orchard.Catalog.Reference.DateControls.json" />
         <EmbeddedResource Include="../../tests/Reference/Textarea.json" LogicalName="Orchard.Catalog.Reference.Textarea.json" />

@@ -68,9 +68,10 @@ client pixels to the frozen source. Both architecture jobs register these checks
 push-triggered Actions remain paused. The independent x64 package consumer passes
 both themes, including native hold/release behavior, live metadata/templates,
 content retention, stale/disabled guards and independent actions. The ARM64
-consumer build passes. Version `0.1.0-ab030df` and both catalog architecture builds
-are verified; temporary consumers are removed. The full x64 catalog passes 156
-phases and 1,154 captures in 474.0696258 seconds, retaining all prior captures and
+consumer build passes. The current `0.1.0-48d8fd3` package additionally verifies
+the scalar and overflow correction below; both catalog architecture builds pass
+and temporary consumers are removed. Its full x64 catalog passes 156
+phases and 1,154 captures in 471.9537397 seconds, retaining all prior captures and
 174 protected chart glyph hashes. See the current checkpoint for hashes.
 Native ARM64 execution and the remaining platform/motion/raster matrix must be
 verified before acceptance.
@@ -118,12 +119,49 @@ and negative audit. Local continuity evidence covers x64. Native ARM64 execution
 motion/static raster and the remaining customization/platform acceptance stay
 open. The diagnostic adds no library API or behavior change.
 
+The scalar reference adds 292 cases: eighteen null/boolean/number/string values
+in each of the four slots, both themes and 320/640px viewports, plus mixed-word
+overflow specimens. Its 36 full-client
+source PNGs are committed under `tests/Reference/AccordionScalars`, with hashes
+and actual browser accessible names. Native text and geometry pass every case
+with zero geometry error. Twenty-two damaged receipts/captures are rejected; exact
+pixel parity remains unproven under zero masks/tolerance/resampling.
+
+Numbers use the source's [decimal Number text](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-tostring):
+negative zero displays as `0`, `1e-6` as `0.000001`, `1e20` as
+`100000000000000000000` and `1e21` as `1e+21`. The shared text helper is extracted
+from the existing DataTable filter conversion without changing that conversion.
+Floats follow the existing Stat Card adaptation through their shortest decimal
+representation; integer/decimal values retain invariant formatting, with zero
+normalized to `0`. Consumer model objects and values are unchanged. Subtitle and
+action truthiness remains independent of rendered scalar text, including numeric
+zero/NaN versus the string `0`, and empty rendered content for booleans.
+
+Plain slot text uses [whole-word wrapping](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.textwrapping?view=windows-app-sdk-2.0)
+to match CSS when long action content leaves no text width in the header.
+Unbreakable words may overflow their line; consumer-owned rich controls keep
+their explicit wrapping settings. A bounded DirectWrite line plan preserves
+breaks before arranging overflow at its native unclipped paint width; merely
+widening a wrapping text block would combine short words. UIA names retain the
+logical text. The mixed-word specimen checks three rendered lines, visible
+last-word ink and native pointer activation beyond the header's logical bounds.
+Full-client raster comparison still uses no masks, tolerance or resampling;
+the additional ink check establishes presence, not pixel parity.
+The native pre-fix capture is retained at
+`artifacts/current/accordion-scalars-before`: 340 discrepancies included 156
+text/name mismatches and a 360px header-height error. The committed-source capture
+is `artifacts/current/capture-pool-runtime/scalars`. Both CI
+architecture jobs register the scalar capture and audits. Fresh package delivery
+passes at `48d8fd3`, together with full-suite replay and both catalog archive
+verifications.
+
 Run the reference collector from the repository root:
 
 ```powershell
 node scripts/reference/capture-accordion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --output artifacts/current/accordion-source
 node scripts/reference/capture-accordion-motion.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-motion-source
 node scripts/reference/capture-accordion-continuity.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-continuity-source
+node scripts/reference/capture-accordion-scalars.cjs --source-root <frozen-source-root> --tooling-root <locked-tooling-root> --playwright-module <playwright-module-directory> --source-css artifacts/current/accordion-source --output artifacts/current/accordion-scalars-source
 ```
 
 The source directory is the pinned Bleecker archive with its `node_modules` and

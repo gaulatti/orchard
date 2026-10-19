@@ -2125,13 +2125,19 @@
         "scripts/reference/capture-accordion-continuity.cjs",
         "samples/Orchard.Catalog/MainWindow.AccordionContinuity.cs",
         "scripts/verify-accordion-continuity.mjs",
-        "scripts/test-accordion-continuity-audit.mjs"
+        "scripts/test-accordion-continuity-audit.mjs",
+        "tests/Orchard.Tests/AccordionScalarReferenceTests.cs",
+        "tests/Reference/AccordionScalars.json",
+        "scripts/reference/capture-accordion-scalars.cjs",
+        "samples/Orchard.Catalog/MainWindow.AccordionScalars.cs",
+        "scripts/verify-accordion-scalars.mjs",
+        "scripts/test-accordion-scalars-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Resolve complete-client raster differences; all 60 source/native layout and paint frames pass with zero geometry error",
         "Resolve motion raster and the complete customization/error/lifecycle matrix; expansion, hover, theme, successive reversals and eight collection/content operations pass numeric checks",
-        "Verify native ARM64 runtime, scaling, contrast, Narrator and performance; full x64 catalog and independent package/build delivery pass at ab030df"
+        "Verify native ARM64 runtime, scaling, contrast, Narrator and performance; full x64 catalog and independent package/build delivery pass at 48d8fd3"
       ]
     },
     {
@@ -2533,14 +2539,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerEmpty.cs",
+        "src/Orchard/Themes/EmptyPalette.g.xaml",
+        "src/Orchard/Themes/Generic.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/EmptiesFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/EmptyReferenceTests.cs",
+        "tests/Reference/Empty.json",
+        "scripts/reference/capture-empty.cjs",
+        "samples/Orchard.Catalog/MainWindow.Empties.cs",
+        "scripts/verify-empty.mjs",
+        "scripts/test-empty-audit.mjs",
+        "tests/PackageConsumer/MainWindow.Empty.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Resolve complete unmasked raster/typography/shadow parity; 120 source/native states and 12 lifecycle phases pass with zero asserted geometry error",
+        "Complete Unicode/remaining overrides, isolated scaling/contrast and external UIA/Narrator acceptance",
+        "Verify current independent package delivery and complete full/native ARM64 integration"
       ]
     },
     {
@@ -2977,14 +2997,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerProgressStack.cs",
+        "src/Orchard/Controls/BleeckerProgressStackItem.cs",
+        "src/Orchard/Text/BleeckerReferenceText.cs",
+        "src/Orchard/Themes/ProgressStackPalette.g.xaml",
+        "src/Orchard/Themes/Generic.xaml"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/ProgressStacksFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/ProgressStackReferenceTests.cs",
+        "samples/Orchard.Catalog/MainWindow.ProgressStacks.cs",
+        "tests/PackageConsumer/MainWindow.ProgressStack.cs",
+        "scripts/verify-progress-stack.mjs",
+        "scripts/test-progress-stack-audit.mjs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Finish complete source/native parity acceptance in docs/progress-stack.md",
+        "Verify complete raster, arbitrary Unicode and item/bar override behavior",
+        "Verify native tooltip interaction, external UIA/Narrator, scaling, contrast, measured collections and native ARM64 runtime"
       ]
     },
     {
@@ -3781,14 +3815,28 @@
         "catalog variants and edge cases",
         "Windows runtime and visual evidence"
       ],
-      "windowsImplementation": [],
-      "catalogFixtures": [],
-      "regressionTests": [],
-      "status": "pending",
+      "windowsImplementation": [
+        "src/Orchard/Controls/BleeckerIconBadge.cs",
+        "src/Orchard/Themes/Generic.xaml",
+        "src/Orchard/Themes/IconBadges"
+      ],
+      "catalogFixtures": [
+        "samples/Orchard.Catalog/IconBadgesFixture.xaml"
+      ],
+      "regressionTests": [
+        "tests/Orchard.Tests/IconBadgeContractTests.cs",
+        "tests/Reference/IconBadge.json",
+        "scripts/reference/capture-icon-badge.cjs",
+        "samples/Orchard.Catalog/MainWindow.IconBadge.cs",
+        "scripts/verify-icon-badge.mjs",
+        "scripts/test-icon-badge-audit.mjs",
+        "tests/PackageConsumer/MainWindow.IconBadge.cs"
+      ],
+      "status": "in-progress",
       "remainingGaps": [
-        "Implement full pinned contract with native Windows conventions",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Resolve exact native/browser raster differences; source-matched geometry, colors, scalar content and retained-child lifecycle checks pass for 136 source frames",
+        "Finish customization, RTL, disabled/overflow pointer and external UIA/Narrator acceptance in docs/icon-badge.md",
+        "Verify isolated contrast/scaling, native ARM64 runtime, full catalog integration and independently packaged consumer"
       ]
     },
     {

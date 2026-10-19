@@ -14,6 +14,73 @@ new hosted verification evidence while this pause is active. Continue local
 validation and report native ARM64/hosted gaps explicitly. To restore automatic
 push validation, add `push: { branches: [main] }` under the workflow's `on` map.
 
+## Capture persistence
+
+Catalog capture persistence swaps BGRA channels directly when every alpha byte
+is 255. The channel swap checks and processes four pixels at a time with the
+portable .NET 10 `Vector128` API when accelerated, and uses the same scalar
+operation for remaining pixels. Any transparency retains the existing Windows
+`SoftwareBitmap` conversion and its premultiplied-alpha rounding. The PNG encoder, metadata and
+compression remain unchanged. File writes finish synchronously before the
+capture task returns; input and presentation still use their explicit native
+gates.
+
+BGRA readback and RGBA conversion each retain at most one idle, exact-size byte
+buffer. Scoped rentals keep overlapping captures independent and return storage
+on errors. Readback and conversion fill every byte before validation or encoding;
+no pixel data escapes the rental. Size changes replace the idle buffer instead
+of accumulating a cache by dimension. The unchanged PNG encoder receives the
+same complete arrays.
+
+Bitmap and composed-screen blank checks share a bounded byte lookup. The check
+still requires nine distinct non-alpha channel values, exactly matching the
+previous LINQ predicate. Empty reference canvases retain their separate exact
+opaque-color validation. Bitmap profiling records `bitmap.validation` separately
+from rendering and persistence. Phase receipts also record process-wide garbage
+collection counts and cumulative pause-time deltas; these diagnostics add no
+dispatcher turn or input and do not change deadlines.
+
+The `brush-alpha` diagnostic retains all four frozen PNG/RGBA cases and adds
+36 opaque comparisons with the previous Windows conversion/write path, plus
+36 alternating opaque/transparent comparisons with changing pixels at each
+size to exercise reused storage. It checks complete files immediately after
+return, exact PNG bytes, decoded RGBA
+and write-error propagation. Run `scripts/verify-capture-persistence.mjs` against
+its output. Paired persistence timings are diagnostic; the complete native
+sequence must still pass its unchanged watchdog, input and protected-glyph
+checks before a release.
+
+The `48d8fd3` x64 replay passes all 156 phases in 471.9537397 seconds with every
+prior PNG, input gate and protected glyph hash retained. Across the same
+146-phase prefix as the preceding timeout, buffer reuse cuts generation-2
+collections from 366 to 227 and GC pauses from 28.316 to 21.458 seconds. Both
+architectures build and the isolated package consumer passes x64 runtime and
+ARM64 build checks; native ARM64 execution remains unverified. See the current
+validation checkpoint for immutable package/catalog hashes and remaining gaps.
+
+Native cursor acceptance requires a Windows session with an available mouse.
+On 2026-10-17, this host's `GetSystemMetrics(SM_MOUSEPRESENT)` and mouse-button
+count both reported zero. Routed mouse input arrived and WinUI selected Hand,
+but `GetCursorInfo` reports a hidden global cursor with a null handle. An
+experimental balanced UI-thread display-count scope did not restore the native
+cursor and was removed. After the user enabled the Bluetooth mouse, the
+unchanged Activity Item cursor assertions passed both themes. Connect or enable
+a physical/virtual mouse before cursor acceptance. Activity Item failures now retain
+both the global observation and the actual WinUI pointer-source selection.
+
+Reference text resolves and validates each of Orchard's five immutable bundled
+font assets once per application process. The bounded cache stores validated
+file locations; it does not cache shaping results or consumer-supplied fonts.
+Font fragments, metric calculations and glyph allocation remain unchanged.
+Other font URIs retain validation on each resolution.
+
+On a desktop without an attached mouse, Windows MouseKeys can provide the
+virtual mouse before a new catalog process starts. The 2026-10-17 scoped
+Activity replay passes both unchanged native cursor gates in this environment.
+Validation snapshots/restores the configurable MouseKeys flags and speed
+settings, while Windows owns the read-only button-selection/mode flags. The
+library itself does not alter this OS setting. See Microsoft's
+[MouseKeys contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-mousekeys).
 ## Platform ownership
 
 The shared chart renderer reconciles lifecycle events with current native

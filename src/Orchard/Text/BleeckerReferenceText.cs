@@ -28,11 +28,21 @@ internal static class BleeckerReferenceText
         if(!runs.Any(run=>run.Family is not null))return;
         target.Inlines.Clear();foreach(var item in runs){var run=new Run{Text=item.Text.ToString()};if(item.Family is not null)run.FontFamily=new FontFamily(item.Family);target.Inlines.Add(run);}
     }
-    internal sealed class IntrinsicWidth
+    internal sealed class IntrinsicWidth(bool joinWhitespace = false)
     {
+        // These five package assets are immutable for the running application.
+        // Cache their validated locations, not text metrics or consumer fonts.
+        private static readonly IReadOnlyDictionary<string,Lazy<string>> bundledFonts =
+            new[]{"EncodeSans-Regular.ttf","EncodeSans-Medium.ttf","EncodeSans-SemiBold.ttf","LibreFranklin-Regular.ttf","LibreFranklin-SemiBold.ttf"}
+                .ToDictionary(name=>"/Orchard/Assets/Fonts/"+name,name=>new Lazy<string>(()=>
+                {
+                    var file=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,"Orchard","Assets","Fonts",name)));
+                    Validate(file);return file.AbsoluteUri;
+                }),StringComparer.Ordinal);
         private object? key;
         private double width;
         internal double RawWidth { get; private set; }
+        internal double WhitespaceJoinedWidth { get; private set; }
         internal double[] RegionWidths { get; private set; }=[];
         internal object[] GlyphRuns { get; private set; }=[];
         private readonly UISettings settings=new();
@@ -41,19 +51,31 @@ internal static class BleeckerReferenceText
             var scale=target.IsTextScaleFactorEnabled?settings.TextScaleFactor:1;
             var next=new{text,target.FontFamily.Source,target.FontSize,weight=target.FontWeight.Weight,target.FontStyle,target.FontStretch,target.FlowDirection,target.Language,scale,target.CharacterSpacing};
             if(Equals(key,next))return width;
-            if(text.Length==0){key=next;RawWidth=0;RegionWidths=[];GlyphRuns=[];return width=0;}
+            if(text.Length==0){key=next;RawWidth=0;WhitespaceJoinedWidth=0;RegionWidths=[];GlyphRuns=[];return width=0;}
             using var format=new CanvasTextFormat{FontFamily=Resolve(target.FontFamily.Source),FontSize=(float)(target.FontSize*scale),FontWeight=target.FontWeight,FontStyle=target.FontStyle,FontStretch=target.FontStretch,LocaleName=target.Language,Direction=target.FlowDirection==FlowDirection.RightToLeft?CanvasTextDirection.RightToLeftThenTopToBottom:CanvasTextDirection.LeftToRightThenTopToBottom,HorizontalAlignment=CanvasHorizontalAlignment.Left,WordWrapping=CanvasWordWrapping.NoWrap};
             using var layout=new CanvasTextLayout(CanvasDevice.GetSharedDevice(),text,format,float.MaxValue,float.MaxValue);
             layout.SetPairKerning(0,text.Length,true);layout.SetCharacterSpacing(0,text.Length,0,(float)(target.CharacterSpacing*target.FontSize*scale/1000),0);
             var start=0;foreach(var run in target.Inlines.OfType<Run>()){if(run.ReadLocalValue(TextElement.FontFamilyProperty)!=DependencyProperty.UnsetValue)layout.SetFontFamily(start,run.Text.Length,Resolve(run.FontFamily.Source));start+=run.Text.Length;}
             RegionWidths=layout.GetCharacterRegions(0,text.Length).Select(region=>region.LayoutBounds.Width).ToArray();RawWidth=RegionWidths.Sum();
-            var renderer=new WidthRenderer();layout.DrawToTextRenderer(renderer,Vector2.Zero);GlyphRuns=renderer.Runs.ToArray();
-            width=renderer.Width;key=next;return width;
+            var renderer=new WidthRenderer(joinWhitespace);layout.DrawToTextRenderer(renderer,Vector2.Zero);GlyphRuns=renderer.Runs.ToArray();
+            width=renderer.Width;WhitespaceJoinedWidth=renderer.WhitespaceJoinedWidth;key=next;return width;
         }
-        private sealed class WidthRenderer:ICanvasTextRenderer
+        private sealed class WidthRenderer(bool joinWhitespace):ICanvasTextRenderer
         {
             internal List<object> Runs { get; }=[];
             internal double Width { get; private set; }
+            private CanvasFontFace? previousFace;
+            private float previousSize;
+            private uint previousBidi;
+            private CanvasGlyphOrientation previousOrientation;
+            private bool previousSideways, previousWhitespace;
+            private double completedWhitespaceGroups, whitespaceGroupAdvance;
+            internal double WhitespaceJoinedWidth => joinWhitespace ? completedWhitespaceGroups + Math.Ceiling(whitespaceGroupAdvance*64)/64 : Width;
+            private static object FontIdentity(CanvasFontFace face)
+            {
+                static string Names(IEnumerable<KeyValuePair<string,string>> values)=>string.Join('\n',values.OrderBy(pair=>pair.Key,StringComparer.Ordinal).Select(pair=>pair.Key+"="+pair.Value));
+                return new{family=Names(face.FamilyNames),name=Names(face.FaceNames),postscript=Names(face.GetInformationalStrings(CanvasFontInformation.PostscriptName)),version=Names(face.GetInformationalStrings(CanvasFontInformation.VersionStrings)),face.GlyphCount,weight=face.Weight.Weight,face.Stretch,face.Style,face.Simulations};
+            }
             public float Dpi=>96;
             public bool PixelSnappingDisabled=>true;
             public Matrix3x2 Transform=>Matrix3x2.Identity;
@@ -67,17 +89,36 @@ internal static class BleeckerReferenceText
                 var advance=0d;
                 for(var i=0;i<glyphs.Length;i++)advance+=(Math.Truncate(nominal[i]*65536d)+Math.Floor(((double)glyphs[i].Advance-nominal[i])*65536+.5))/65536;
                 Width+=Math.Ceiling(advance*64)/64;
+                // DirectWrite can split trailing whitespace from an otherwise
+                // continuous browser span. Keep the ordinary per-run result,
+                // and separately round compatible whitespace fragments together.
+                if(joinWhitespace)
+                {
+                    var whitespace=text.Length>0&&text.All(char.IsWhiteSpace);
+                    var compatible=previousFace is not null&&previousSize==size&&previousBidi==bidiLevel&&previousOrientation==orientation&&previousSideways==sideways&&(previousWhitespace||whitespace);
+                    // Win2D can return distinct wrappers for the same typeface.
+                    // Match its authoritative face metadata, including version,
+                    // weight, stretch and simulations, rather than wrapper identity.
+                    if(compatible)compatible=previousFace!.Equals(face)||FontIdentity(previousFace).Equals(FontIdentity(face));
+                    if(!compatible){completedWhitespaceGroups+=Math.Ceiling(whitespaceGroupAdvance*64)/64;whitespaceGroupAdvance=0;}
+                    whitespaceGroupAdvance+=advance;previousFace=face;previousSize=size;previousBidi=bidiLevel;previousOrientation=orientation;previousSideways=sideways;previousWhitespace=whitespace;
+                }
                 Runs.Add(new{text,characterIndex,bidiLevel,advances=glyphs.Select(g=>g.Advance).ToArray(),nominal,allocatedWidth=Math.Ceiling(advance*64)/64});
             }
             public void DrawInlineObject(Vector2 point,ICanvasTextInlineObject inlineObject,bool sideways,bool rtl,object brush,CanvasGlyphOrientation orientation)=>throw new NotSupportedException("Intrinsic text cannot contain inline objects.");
             public void DrawUnderline(Vector2 point,float width,float thickness,float offset,float height,CanvasTextDirection direction,object brush,CanvasTextMeasuringMode measuring,string locale,CanvasGlyphOrientation orientation) { }
             public void DrawStrikethrough(Vector2 point,float width,float thickness,float offset,CanvasTextDirection direction,object brush,CanvasTextMeasuringMode measuring,string locale,CanvasGlyphOrientation orientation) { }
         }
-        private static string Resolve(string family)
+        internal static string Resolve(string family)
         {
             var marker=family.IndexOf('#');if(marker<0||!Uri.TryCreate(family[..marker],UriKind.Absolute,out var uri))return family;
-            if(uri.Scheme=="ms-appx"&&uri.Host.Length==0){uri=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));family=uri.AbsoluteUri+family[marker..];}
-            using var fonts=new CanvasFontSet(uri);if(fonts.Fonts.Count==0)throw new InvalidOperationException("The requested text font contains no faces.");return family;
+            if(uri.Scheme=="ms-appx"&&uri.Host.Length==0)
+            {
+                if(bundledFonts.TryGetValue(uri.AbsolutePath,out var asset))return asset.Value+family[marker..];
+                uri=new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory,Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/'))));family=uri.AbsoluteUri+family[marker..];
+            }
+            Validate(uri);return family;
         }
+        private static void Validate(Uri uri){using var fonts=new CanvasFontSet(uri);if(fonts.Fonts.Count==0)throw new InvalidOperationException("The requested text font contains no faces.");}
     }
 }

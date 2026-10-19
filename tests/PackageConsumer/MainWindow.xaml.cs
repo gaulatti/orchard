@@ -237,6 +237,9 @@ public sealed partial class MainWindow : Window
                 await VerifyDatesAsync();
                 await VerifyRadioGroupsAsync();
                 await VerifyAccordionsAsync();
+                await VerifyIconBadgeAsync();
+                await VerifyEmptyAsync();
+                await VerifyProgressStackAsync();
                 await VerifyMetricAsync();
                 await VerifyLoadingOverlayAsync();
                 await VerifyBarChartAsync();

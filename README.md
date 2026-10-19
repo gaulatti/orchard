@@ -10,6 +10,10 @@ variants, connected button groups, toggle styles, a native switch preview and
 initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
+The [IconBadge preview](docs/icon-badge.md) supplies a passive, themed surface
+with two sizes, three variants and retained consumer content or templates.
+The [Empty preview](docs/empty-reference.md) supplies a passive empty state with
+consumer title, description, icon and action content, including native templates.
 The [Accordion preview](docs/accordion.md) supplies single-section expansion,
 independent actions, rich content/templates and retained consumer input state.
 The [Radio Group preview](docs/radio-group.md) supplies consumer-controlled
@@ -193,3 +197,5 @@ the contract tests and catalog. Do not edit generated files directly.
 Encode Sans and Libre Franklin are bundled under the SIL Open Font License.
 Attribution and license texts are adjacent to the fonts. The vendored Bleecker
 source retains its MIT license under `tokens/LICENSE-Bleecker.txt`.
+
+The passive [ProgressStack preview](docs/progress-stack.md) adds consumer-owned segments and a wrapping legend; acceptance remains in progress.

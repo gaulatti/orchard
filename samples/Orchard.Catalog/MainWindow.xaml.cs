@@ -89,6 +89,10 @@ public sealed partial class MainWindow : Window
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="radio-group",environment=RuntimeEnvironment()}));
             }
             else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
+            else if(args.Contains("--smoke-empty"))await RunEmptiesAsync(folder);
+            else if(args.Contains("--smoke-progress-stack"))await RunProgressStacksAsync(folder);
+            else if(args.Contains("--smoke-icon-badge"))await RunIconBadgeAsync(folder);
+            else if(args.Contains("--smoke-accordion-scalars"))await RunAccordionScalarsAsync(folder);
             else if(args.Contains("--smoke-accordion-continuity"))await RunAccordionContinuityAsync(folder);
             else if(args.Contains("--smoke-accordion-motion"))await RunAccordionMotionAsync(folder);
             else if(args.Contains("--smoke-accordion"))
@@ -791,6 +795,12 @@ public sealed partial class MainWindow : Window
             }
             await SelectFixtureAsync(IconButtons);
             await IconButtons.VerifyAsync(scheme);
+            await SelectFixtureAsync(IconBadges);
+            await IconBadges.VerifyAsync(scheme);
+            await SelectFixtureAsync(Empties);
+            await Empties.VerifyAsync();
+            await SelectFixtureAsync(ProgressStacks);
+            await ProgressStacks.VerifyAsync();
             await SelectFixtureAsync(ToggleGroups);
             await ToggleGroups.VerifyAsync();
             await SelectFixtureAsync(LoadingSpinners);
@@ -918,7 +928,7 @@ public sealed partial class MainWindow : Window
             {
                 (StatusBadges, "status-badges"), (Separators, "separators"), (Cards, "cards"),
                 (LoadingSpinners, "loading-spinners"), (ToggleGroups, "toggle-groups"),
-                (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
+                (ProgressStacks, "progress-stack"), (Empties, "empty"), (IconBadges, "icon-badges"), (IconButtons, "icon-buttons"), (Buttons, "buttons"), (Toggles, "toggles")
             })
                 await CaptureFixtureAsync(fixture, Path.Combine(folder, $"{name}-{theme.ToString().ToLowerInvariant()}.png"));
             await SelectFixtureAsync(Foundation);
@@ -1046,27 +1056,36 @@ public sealed partial class MainWindow : Window
         Require(bitmap.PixelWidth > 0 && bitmap.PixelHeight > 0, "The catalog did not render.");
         Windows.Storage.Streams.IBuffer pixels;
         using (CatalogRuntimeProfile.Measure("bitmap.read")) pixels = await bitmap.GetPixelsAsync();
-        var bytes = new byte[checked((int)pixels.Length)];
+        using var pixelLease = NativeCaptureBufferPool.Bgra.Rent(checked((int)pixels.Length));
+        var bytes = pixelLease.Buffer;
         using (var reader = DataReader.FromBuffer(pixels)) reader.ReadBytes(bytes);
-        Require(bytes.Where((_, offset) => offset % 4 != 3).Distinct().Take(9).Count() > 8, "The render is blank.");
+        using (CatalogRuntimeProfile.Measure("bitmap.validation"))
+            Require(NativeCaptureValidation.HasColorVariation(bytes), "The render is blank.");
         await SavePngAsync(path, bytes, bitmap.PixelWidth, bitmap.PixelHeight);
         return new SizeInt32(bitmap.PixelWidth, bitmap.PixelHeight);
     }
 
-    internal static async Task SavePngAsync(string path, byte[] pixels, int width, int height)
+    internal static Task SavePngAsync(string path, byte[] pixels, int width, int height)
     {
         using var save = CatalogRuntimeProfile.Measure("png.total");
-        // Use Windows' own conversion, including its premultiplied-alpha
-        // rounding, then encode losslessly with faster Deflate compression.
-        var rgba = new byte[pixels.Length];
+        // Opaque pixels need only a channel swap. Preserve Windows' exact
+        // premultiplied-alpha rounding whenever transparency is present.
+        using var rgbaLease = NativeCaptureBufferPool.Rgba.Rent(pixels.Length);
+        var rgba = rgbaLease.Buffer;
         using (CatalogRuntimeProfile.Measure("png.convert"))
         {
-            using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
-            using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
-            straight.CopyToBuffer(rgba.AsBuffer());
+            if (!NativeCapturePixels.TryConvertOpaque(pixels, rgba))
+            {
+                using var source = SoftwareBitmap.CreateCopyFromBuffer(pixels.AsBuffer(), BitmapPixelFormat.Bgra8, width, height, BitmapAlphaMode.Premultiplied);
+                using var straight = SoftwareBitmap.Convert(source, BitmapPixelFormat.Rgba8, BitmapAlphaMode.Straight);
+                straight.CopyToBuffer(rgba.AsBuffer());
+            }
         }
         byte[] output;
         using (CatalogRuntimeProfile.Measure("png.encode")) output = NativeCapturePng.Encode(rgba, width, height);
-        using (CatalogRuntimeProfile.Measure("png.write")) await File.WriteAllBytesAsync(path, output);
+        // Persist before returning; capture callers already own their explicit
+        // presentation gates and need no additional UI dispatcher turn here.
+        using (CatalogRuntimeProfile.Measure("png.write")) File.WriteAllBytes(path, output);
+        return Task.CompletedTask;
     }
 }
