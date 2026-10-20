@@ -31,6 +31,20 @@ public sealed partial class ContrastFixture
         await MainWindow.AwaitPresentationAsync(text);
         var baseline = await ReadScreenInkAsync(input, text, folder, name + "-baseline");
         var baselineGeometry = GeometryWithoutPaint(baseline.Geometry);
+        // Preserve the first baseline as the acceptance reference. Consecutive
+        // untouched observations distinguish settling from paint-induced change.
+        var untouched = new List<object>();
+        for (var index = 1; index <= 2; index++)
+        {
+            await MainWindow.AwaitPresentationAsync(text);
+            var observation = await ReadScreenInkAsync(input, text, folder, name + "-untouched-" + index);
+            untouched.Add(new { index,
+                geometryUnchanged = GeometryWithoutPaint(observation.Geometry) == baselineGeometry,
+                originalRaster = observation.Width == baseline.Width && observation.Height == baseline.Height &&
+                    observation.Pixels.SequenceEqual(baseline.Pixels) });
+        }
+        await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"contrast-ink-{name}-untouched.json"),
+            JsonSerializer.Serialize(new { diagnosticOnly = true, originalBaselineRetained = true, untouched }));
         var black = Color.FromArgb(255, 0, 0, 0); var white = Color.FromArgb(255, 255, 255, 255);
         var onWhite = await PaintAsync(black, white, "black-on-white");
         var onBlack = await PaintAsync(white, black, "white-on-black");
@@ -90,7 +104,16 @@ public sealed partial class ContrastFixture
                 var exactRestoration = restored.Width == baseline.Width && restored.Height == baseline.Height &&
                     GeometryWithoutPaint(restored.Geometry) == baselineGeometry && restored.Pixels.SequenceEqual(baseline.Pixels);
                 if (!exactRestoration || unstablePaint)
-                    await DiagnoseInterventionsAsync();
+                {
+                    try { await DiagnoseInterventionsAsync(); }
+                    catch (Exception diagnosticError)
+                    {
+                        var primaryFailure = !exactRestoration
+                            ? "Calibration did not restore the exact original composed glyph raster."
+                            : "Calibration paint was not stable across presented captures.";
+                        throw new InvalidOperationException(primaryFailure + " Failure diagnostics also failed.", diagnosticError);
+                    }
+                }
                 Require(exactRestoration, "Calibration did not restore the exact original composed glyph raster.");
             }
         }
@@ -99,6 +122,15 @@ public sealed partial class ContrastFixture
             // Run only after failure. These observations cannot replace the
             // baseline, retry calibration, or turn the failed check into a pass.
             var observations = new List<object>();
+            for (var index = 1; index <= 2; index++)
+            {
+                await MainWindow.AwaitPresentationAsync(text);
+                var stopped = await ReadScreenInkAsync(input, text, folder, name + "-diagnostic-stopped-" + index);
+                observations.Add(new { intervention = "none", index,
+                    geometryUnchanged = GeometryWithoutPaint(stopped.Geometry) == baselineGeometry,
+                    restoredOriginalRaster = stopped.Width == baseline.Width && stopped.Height == baseline.Height &&
+                        stopped.Pixels.SequenceEqual(baseline.Pixels) });
+            }
             foreach (var intervention in new[] { "foreground-only", "backdrop-only" })
             {
                 var before = await ReadScreenInkAsync(input, text, folder, name + "-diagnostic-" + intervention + "-before");

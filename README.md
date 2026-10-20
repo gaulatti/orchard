@@ -278,3 +278,11 @@ bounded cover-window settling check as contrast entry. These changes retain
 native target ownership, recovery limits, exact pixels and input assertions.
 A packaged notification theme failure now records owner, trigger, presenter and
 brush state after the original deadline, without changing the theme assertion.
+
+Sidebar lifecycle verification waits for the exact final foreground through its
+existing bounded readiness check, including the control's normal color
+transition. Loading Overlay accessibility establishes an owned pointer target
+and applies the existing foreground guard before its composed capture.
+ErrorState calibration records consecutive untouched and stopped rasters while
+retaining its first baseline and original exact restoration assertion; these
+observations do not establish a contrast-mode result or recover a failed check.
