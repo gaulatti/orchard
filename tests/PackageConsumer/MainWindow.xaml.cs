@@ -1113,7 +1113,18 @@ public sealed partial class MainWindow : Window
         bool Matches()=>presenter.ActualTheme==theme&&Paint(surface.Background)==colors[theme==ElementTheme.Light?"card":"deepSea"]&&
             Paint(title.Foreground)==colors["textPrimary"];
         var elapsed=System.Diagnostics.Stopwatch.StartNew();while(!Matches()&&elapsed.Elapsed<TimeSpan.FromSeconds(1))await Task.Delay(16);
-        Require(Matches(),"Packaged open notification surface/text did not follow its consumer owner's current theme.");
+        if(!Matches())
+        {
+            var trigger=(BleeckerIconButton)PackageNotifications.FindName("Trigger");
+            object Theme(FrameworkElement element)=>new { element.Name, requested=element.RequestedTheme.ToString(), actual=element.ActualTheme.ToString(),
+                sameRoot=ReferenceEquals(element.XamlRoot,Root.XamlRoot), element.IsLoaded };
+            var state=new { expected=theme.ToString(), root=Theme(Root), owner=Theme(PackageNotifications), trigger=Theme(trigger),
+                presenter=Theme(presenter), surface=Theme(surface), title=Theme(title), background=Paint(surface.Background),
+                expectedBackground=colors[theme==ElementTheme.Light?"card":"deepSea"], foreground=Paint(title.Foreground),
+                expectedForeground=colors["textPrimary"], popupCount=VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Count };
+            throw new InvalidOperationException("Packaged open notification surface/text did not follow its consumer owner's current theme. " +
+                System.Text.Json.JsonSerializer.Serialize(state));
+        }
     }
 
     private static bool HasReferenceSpinner(DependencyObject owner)

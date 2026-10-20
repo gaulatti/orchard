@@ -270,3 +270,11 @@ independent package consumer waits for its original column checkbox to load
 before invoking UIA and records the state before/after that action. Calibration
 paint instability also collects failure-only foreground/backdrop interventions,
 then retains the original failed assertion.
+
+The hosted fixtures establish an owned neutral pointer target before Accordion
+continuity input, and check guarded foreground recovery at Section Header capture
+and Stepper Tab boundaries. Loading Overlay contrast restoration uses the same
+bounded cover-window settling check as contrast entry. These changes retain
+native target ownership, recovery limits, exact pixels and input assertions.
+A packaged notification theme failure now records owner, trigger, presenter and
+brush state after the original deadline, without changing the theme assertion.

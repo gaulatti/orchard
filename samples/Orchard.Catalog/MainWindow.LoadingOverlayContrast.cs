@@ -69,6 +69,7 @@ public sealed partial class MainWindow
                             Brush(tint.Background) == initial.Tint && Brush(card.Background) == initial.Card && Brush(card.BorderBrush) == initial.Border &&
                             Brush(label.Foreground) == initial.Text && Brush(arc.Stroke) == initial.Spinner && HasBlur() && HasShadow(), "Loading portal did not restore its original palette and effects.");
                         Record("restored-" + theme); await SaveAsync();
+                        await ContrastFixture.AwaitRecoveryTargetAsync(input, folder, page);
                         await input.RequireForegroundAsync();
                         await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"contrast-restored-{theme}.png"));
                     }

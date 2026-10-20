@@ -85,6 +85,7 @@ public sealed partial class SectionHeadersFixture : UserControl
                 if (actualHeight > 0) await MainWindow.CaptureElementAsync(control, Path.Combine(folder, $"section-header-{id}-{scheme}.png"));
                 if (id == "full")
                 {
+                    await input.RequireForegroundAsync();
                     var client = await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"section-header-composed-{scheme}.png"));
                     await File.WriteAllTextAsync(Path.Combine(folder, $"section-header-composed-{scheme}.json"), JsonSerializer.Serialize(new { client, bounds = input.ScreenBounds(control) }));
                     await VerifyInkRowsAsync(Path.Combine(folder, $"section-header-composed-{scheme}.png"), client, input.ScreenBounds(control), expected.GetProperty("descriptionInk"), scheme, folder);
