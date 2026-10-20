@@ -50,6 +50,7 @@ public sealed partial class ContrastFixture
 
         async Task<InkRaster> PaintAsync(Color foreground, Color background, string phase)
         {
+            var unstablePaint = false;
             var paint = new Storyboard();
             Override(paint, text, "Foreground", new SolidColorBrush(foreground));
             Override(paint, backdrop, "Background", new SolidColorBrush(background));
@@ -66,7 +67,8 @@ public sealed partial class ContrastFixture
                     second.Width == baseline.Width && second.Height == baseline.Height &&
                     GeometryWithoutPaint(first.Geometry) == baselineGeometry && GeometryWithoutPaint(second.Geometry) == baselineGeometry,
                     "Calibration moved or reconfigured the actual glyphs.");
-                Require(first.Pixels.SequenceEqual(second.Pixels), "Calibration paint was not stable across presented captures.");
+                unstablePaint = !first.Pixels.SequenceEqual(second.Pixels);
+                Require(!unstablePaint, "Calibration paint was not stable across presented captures.");
                 await SaveInkRasterAsync(first.Width, first.Height, first.Pixels,
                     System.IO.Path.Combine(folder, $"contrast-ink-{name}-{phase}.png"));
                 return first;
@@ -87,7 +89,7 @@ public sealed partial class ContrastFixture
                 var restored = await ReadScreenInkAsync(input, text, folder, name + "-" + phase + "-restored");
                 var exactRestoration = restored.Width == baseline.Width && restored.Height == baseline.Height &&
                     GeometryWithoutPaint(restored.Geometry) == baselineGeometry && restored.Pixels.SequenceEqual(baseline.Pixels);
-                if (!exactRestoration)
+                if (!exactRestoration || unstablePaint)
                     await DiagnoseInterventionsAsync();
                 Require(exactRestoration, "Calibration did not restore the exact original composed glyph raster.");
             }

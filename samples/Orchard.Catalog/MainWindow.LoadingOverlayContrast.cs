@@ -33,10 +33,14 @@ public sealed partial class MainWindow
                 var backdrop = Part<Grid>(portal, "PART_Backdrop"); var tint = Part<Border>(portal, "PART_Tint");
                 var spinner = Part<BleeckerLoadingSpinner>(portal, "PART_Spinner"); var arc = Part<Microsoft.UI.Xaml.Shapes.Path>(spinner, "PART_Arc");
                 var shadow = Part<Grid>(card, "PART_ShadowHost"); var initial = Snapshot();
+                // AcquireAsync establishes foreground, not a physical pointer target.
+                // Keep the pointer on the nonactivating portal before the OS cover appears.
+                await input.MoveAsync(portal, localPoint: new Windows.Foundation.Point(90,36));
                 phase = "before-" + theme; Record(phase); await SaveAsync();
                 Require(!NativeContrastSession.Read().Enabled && !new AccessibilitySettings().HighContrast && HasBlur() && HasShadow(), "Loading contrast baseline did not have the ordinary effects enabled.");
                 Require(ReferenceEquals(FocusManager.GetFocusedElement(page.XamlRoot), action), "Opening the loading contrast specimen moved keyboard focus.");
                 var mask = await ContrastFixture.ReadInkAsync(input, label, folder, "loading-label-" + theme);
+                await input.RequireForegroundAsync();
                 await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, entryOnly ? $"catalog-{theme.ToString().ToLowerInvariant()}.png" : $"contrast-before-{theme}.png"));
                 if (!entryOnly)
                 {
@@ -51,6 +55,7 @@ public sealed partial class MainWindow
                         Require(ReferenceEquals(FocusManager.GetFocusedElement(page.XamlRoot), action), "Contrast transition moved the logical loading action focus.");
                         await ContrastFixture.VerifyInkAsync(input, label, 8, mask, folder, "loading-label-" + theme);
                         phase = "active-" + theme; Record(phase); await SaveAsync();
+                        await input.RequireForegroundAsync();
                         await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"contrast-active-{theme}.png"));
                         var before = activations; await input.ClickAsync(portal, localPoint: new Windows.Foundation.Point(90,36));
                         Require(activations == before, "Contrast loading portal passed a pointer click to its underlying action.");
@@ -64,6 +69,7 @@ public sealed partial class MainWindow
                             Brush(tint.Background) == initial.Tint && Brush(card.Background) == initial.Card && Brush(card.BorderBrush) == initial.Border &&
                             Brush(label.Foreground) == initial.Text && Brush(arc.Stroke) == initial.Spinner && HasBlur() && HasShadow(), "Loading portal did not restore its original palette and effects.");
                         Record("restored-" + theme); await SaveAsync();
+                        await input.RequireForegroundAsync();
                         await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"contrast-restored-{theme}.png"));
                     }
                 }

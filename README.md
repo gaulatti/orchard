@@ -261,3 +261,12 @@ snapshot, then records physical visits to the existing neutral heading and
 read-only Input. These diagnostic comparisons distinguish a global displayed
 cursor anomaly from disabled-input ownership; the original failed assertion
 and polling deadline remain unchanged.
+
+Native fixture readiness: Loading Overlay contrast places a real pointer on the
+open portal before the Windows transition. Accordion and Loading Overlay
+captures invoke the existing guarded foreground check immediately before
+capture; its recovery limit and strict owned-window checks are unchanged. The
+independent package consumer waits for its original column checkbox to load
+before invoking UIA and records the state before/after that action. Calibration
+paint instability also collects failure-only foreground/backdrop interventions,
+then retains the original failed assertion.
