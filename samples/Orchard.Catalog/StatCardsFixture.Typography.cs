@@ -33,6 +33,7 @@ public sealed partial class StatCardsFixture
             await AwaitAsync(() => card.IsLoaded, "Typography Stat Card did not mount.");
             card.ApplyTemplate(); UpdateLayout(); await FrameAsync(); UpdateLayout();
             var path = System.IO.Path.Combine(folder, $"stat-typography-{id}-{scheme}.png");
+            await input.RequireForegroundAsync();
             var client = await NativeScreenCapture.CaptureClientAsync(input.Window, path);
             var origin = input.ScreenBounds(card);
             using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
