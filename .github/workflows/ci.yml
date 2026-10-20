@@ -667,3 +667,18 @@ jobs:
           name: orchard-windows-arm64-runtime
           path: artifacts/
           if-no-files-found: warn
+
+  native-contrast-restoration-probe:
+    name: Native contrast restore probe (${{ matrix.restore-mode }})
+    runs-on: windows-2025
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        restore-mode: [broadcast, persist-broadcast, silent, persist]
+    env:
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v5
+      - name: Probe exact native state restoration on an isolated runner
+        run: ./scripts/Probe-NativeContrastRoundTrip.ps1 -RestoreMode '${{ matrix.restore-mode }}'

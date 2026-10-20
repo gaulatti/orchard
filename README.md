@@ -316,3 +316,13 @@ Each contrast caller also retains its primary component exception when the nativ
 restoration helper fails: that helper reports both exceptions together. This preserves a failing glyph,
 focus or palette assertion alongside a native restore failure. It changes no
 acceptance comparison, time limit, mask or recovery policy.
+
+A temporary four-job Windows diagnostic compares the native restore call's
+broadcast/profile flags on separate fresh hosted runners. It uses the exact
+captured flags and scheme, observes real contrast colors before restoration,
+and reports both immediate and settled native state without substituting a
+default scheme. Every failed roundtrip remains a failed job; the regular
+component jobs and their strict whole-state verifier remain unchanged. These
+Win32-only experiments do not establish WinUI component acceptance or ARM64
+behavior. Remove the alternative-API diagnostic matrix after its evidence has
+identified a repair, while retaining the component regression checks.
