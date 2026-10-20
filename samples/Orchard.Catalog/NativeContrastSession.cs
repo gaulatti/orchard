@@ -34,17 +34,18 @@ internal sealed class NativeContrastSession : IDisposable
 
     internal void Enable()
     {
-        Trace("enable-before");
-        Write(Original with { Flags = Original.Flags | 1 });
-        Trace("enable-after");
+        var requested = Original with { Flags = Original.Flags | 1 };
+        Trace("enable-before", requested);
+        Write(requested);
+        Trace("enable-after", requested, Read());
     }
     internal void Restore()
     {
         if (restored) return;
-        Trace("restore-before");
+        Trace("restore-before", Original);
         Write(Original);
         restored = true;
-        Trace("restore-after");
+        Trace("restore-after", Original, Read());
     }
     public void Dispose() => Restore();
 
@@ -76,7 +77,8 @@ internal sealed class NativeContrastSession : IDisposable
     [StructLayout(LayoutKind.Sequential)] private struct HighContrast { public uint Size, Flags; public IntPtr Scheme; }
     [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SystemParametersInfo(uint action, uint size, ref HighContrast value, uint flags);
-    private void Trace(string phase) => File.AppendAllText(stages,
-        System.Text.Json.JsonSerializer.Serialize(new { phase }) + Environment.NewLine);
+    private void Trace(string phase, State? requested = null, State? observed = null) => File.AppendAllText(stages,
+        System.Text.Json.JsonSerializer.Serialize(new { phase, requested, observed,
+            timestamp = System.Diagnostics.Stopwatch.GetTimestamp() }) + Environment.NewLine);
     [DllImport("user32.dll")] private static extern uint GetSysColor(int index);
 }

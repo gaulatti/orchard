@@ -292,3 +292,10 @@ invoke the existing guarded foreground check at their physical boundary. The
 strict capture and input ownership assertions, one-recovery limit, geometry,
 pixel comparisons and keyboard outcomes remain unchanged. These readiness fixes
 do not resolve the separately recorded ErrorState calibration or cursor failure.
+
+The hosted Windows contrast helper records requested and immediately observed
+full native states around its existing enable and restore calls. These records
+help locate the first scheme-name change when an initially empty scheme remains
+`High Contrast Black` after disabling contrast. Native setters, flags, restoration
+attempts, presentation deadlines and the verifier's exact whole-state equality
+remain unchanged. This adds diagnostics and does not establish a restoration fix.
