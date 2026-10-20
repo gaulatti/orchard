@@ -199,3 +199,15 @@ Attribution and license texts are adjacent to the fonts. The vendored Bleecker
 source retains its MIT license under `tokens/LICENSE-Bleecker.txt`.
 
 The passive [ProgressStack preview](docs/progress-stack.md) adds consumer-owned segments and a wrapping legend; acceptance remains in progress.
+
+
+### Native CI display requirements
+
+The x64 and ARM64 runtime jobs require enough real desktop space for the frozen
+1280-pixel client fixtures and the catalog window. `scripts/Set-CiDisplayMode.ps1`
+runs only in GitHub-hosted Windows CI, enumerates the primary display's advertised
+modes, prefers 1920×1080, tests support, and applies an adequate mode dynamically.
+It verifies the observed physical dimensions and saves `artifacts/display-session.json`.
+No registry, driver, system DPI, fixture viewport, capture containment check, or
+pixel comparison is changed. A runner without an adequate supported mode fails
+explicitly before the native tests.
