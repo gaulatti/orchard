@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('broadcast','persist-broadcast','silent','persist')]
+    [ValidateSet('broadcast','persist-broadcast','silent','persist','broadcast-registry')]
     [string]$RestoreMode = 'broadcast',
     [switch]$ReadOnly,
     [string]$Output = 'artifacts/native-contrast-probe/result.json'
@@ -53,7 +53,7 @@ function Read-ContrastRegistry {
     try {
         foreach ($name in @('Flags','High Contrast Scheme')) {
             $present=@($key.GetValueNames()) -contains $name
-            $values[$name]=[ordered]@{ present=$present; value=if ($present) { $key.GetValue($name) } else { $null } }
+            $values[$name]=[ordered]@{ present=$present; kind=if ($present) { $key.GetValueKind($name).ToString() } else { $null }; value=if ($present) { $key.GetValue($name) } else { $null } }
         }
     } finally { $key.Dispose() }
     return $values
@@ -72,7 +72,7 @@ function Same-Palette([uint[]]$First,[uint[]]$Second) {
     for ($index=0; $index -lt $First.Length; $index++) { if ($First[$index] -ne $Second[$index]) { return $false } }
     return $true
 }
-$flags = @{ broadcast=2u; 'persist-broadcast'=3u; silent=0u; persist=1u }[$RestoreMode]
+$flags = @{ broadcast=2u; 'persist-broadcast'=3u; silent=0u; persist=1u; 'broadcast-registry'=2u }[$RestoreMode]
 $original = [NativeContrastProbe]::Read()
 $originalPalette = [NativeContrastProbe]::Palette()
 if ($original.Enabled -or ($original.Flags -band 2u) -eq 0) { throw 'Contrast must be available and initially disabled.' }
@@ -108,6 +108,23 @@ try {
     # No default scheme, null conversion, theme normalization or mask is used.
     [NativeContrastProbe]::Write($original,$flags)
     $report.immediateRestore=[NativeContrastProbe]::Read()
+    if ($RestoreMode -eq 'broadcast-registry') {
+        $preference=$report.originalFreshProcess.registry.'High Contrast Scheme'
+        $observed=[NativeContrastProbe]::Read()
+        $current=(Read-ContrastRegistry).'High Contrast Scheme'
+        # This tests exact rollback of the observed empty-string preference.
+        # It never sets a default scheme or changes the stored flags.
+        if ($original.Scheme -cne '' -or -not $preference.present -or $preference.kind -cne 'String' -or $preference.value -cne '' -or
+            $observed.Enabled -or $observed.Flags -ne $original.Flags -or -not $current.present -or $current.kind -cne 'String' -or $current.value -cne $observed.Scheme) {
+            throw 'Registry rollback preconditions did not match the captured empty preference and disabled native state.'
+        }
+        $report.registryRollbackBefore=$current
+        $key=[Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Control Panel\Accessibility\HighContrast',$true)
+        try { $key.SetValue('High Contrast Scheme',[string]$preference.value,[Microsoft.Win32.RegistryValueKind]::String) }
+        finally { $key.Dispose() }
+        $report.registryRollbackAfter=(Read-ContrastRegistry).'High Contrast Scheme'
+        $report.nativeAfterRegistryRollback=[NativeContrastProbe]::Read()
+    }
     $clock.Restart()
     do {
         $restored = [NativeContrastProbe]::Read()
@@ -121,7 +138,10 @@ try {
     $report.settledFreshProcess=Read-FreshProcess
     $report.paletteRestored=$paletteRestored
     $report.exactStateRestored=$exactRestored
-    $report.passed=$paletteRestored -and $report.exactStateRestored
+    $report.freshStateRestored=$report.settledFreshProcess.native.Flags -eq $original.Flags -and $report.settledFreshProcess.native.Scheme -ceq $original.Scheme
+    $report.freshPaletteRestored=Same-Palette $originalPalette $report.settledFreshProcess.palette
+    $report.registryRestored=($report.originalFreshProcess.registry | ConvertTo-Json -Depth 8 -Compress) -ceq ($report.settledFreshProcess.registry | ConvertTo-Json -Depth 8 -Compress)
+    $report.passed=$paletteRestored -and $report.exactStateRestored -and $report.freshStateRestored -and $report.freshPaletteRestored -and $report.registryRestored
 } catch {
     $report.error=$_.Exception.ToString()
 } finally {

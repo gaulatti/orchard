@@ -317,8 +317,10 @@ restoration helper fails: that helper reports both exceptions together. This pre
 focus or palette assertion alongside a native restore failure. It changes no
 acceptance comparison, time limit, mask or recovery policy.
 
-A temporary four-job Windows diagnostic compares the native restore call's
-broadcast/profile flags on separate fresh hosted runners. It uses the exact
+A temporary Windows diagnostic compares ordinary broadcast restoration with
+exact registry-preference rollback on separate fresh hosted runners. Earlier
+standalone experiments with all four broadcast/profile flag combinations failed
+exact empty-scheme restoration despite recovering the native colors. It uses the exact
 captured flags and scheme, observes real contrast colors before restoration,
 and reports both immediate and settled native state without substituting a
 default scheme. Every failed roundtrip remains a failed job; the regular
@@ -331,4 +333,10 @@ The probe also records read-only native and registry observations from a fresh
 PowerShell process before enabling contrast and after the measured restore.
 These compare same-process scheme readback with another process and the two
 observed preference values. They do not establish reboot persistence, rewrite
-registry values or change the exact-state comparison.
+registry values or change the exact-state comparison. The separate
+`broadcast-registry` case additionally tests rolling back only the captured empty
+`High Contrast Scheme` string after the ordinary API has disabled contrast. It
+requires matching original/current registry types and exact native flags before
+writing that one captured value, then retains all same-process, fresh-process,
+registry and palette comparisons. It is an isolated diagnostic, not an accepted
+component repair.

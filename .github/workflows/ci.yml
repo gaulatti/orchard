@@ -675,7 +675,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        restore-mode: [broadcast, persist-broadcast, silent, persist]
+        restore-mode: [broadcast, broadcast-registry]
     env:
       CI: 'true'
     steps:
