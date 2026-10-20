@@ -326,3 +326,9 @@ component jobs and their strict whole-state verifier remain unchanged. These
 Win32-only experiments do not establish WinUI component acceptance or ARM64
 behavior. Remove the alternative-API diagnostic matrix after its evidence has
 identified a repair, while retaining the component regression checks.
+
+The probe also records read-only native and registry observations from a fresh
+PowerShell process before enabling contrast and after the measured restore.
+These compare same-process scheme readback with another process and the two
+observed preference values. They do not establish reboot persistence, rewrite
+registry values or change the exact-state comparison.

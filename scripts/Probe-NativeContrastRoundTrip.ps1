@@ -1,6 +1,7 @@
 param(
     [ValidateSet('broadcast','persist-broadcast','silent','persist')]
     [string]$RestoreMode = 'broadcast',
+    [switch]$ReadOnly,
     [string]$Output = 'artifacts/native-contrast-probe/result.json'
 )
 $ErrorActionPreference = 'Stop'
@@ -44,6 +45,28 @@ public static class NativeContrastProbe {
     public static uint[] Palette() => new uint[] { GetSysColor(5),GetSysColor(8),GetSysColor(13),GetSysColor(14) };
 }
 '@
+function Read-ContrastRegistry {
+    $path='HKCU:\Control Panel\Accessibility\HighContrast'
+    $values=[ordered]@{}
+    if (-not (Test-Path $path)) { return $values }
+    $key=Get-Item $path
+    try {
+        foreach ($name in @('Flags','High Contrast Scheme')) {
+            $present=@($key.GetValueNames()) -contains $name
+            $values[$name]=[ordered]@{ present=$present; value=if ($present) { $key.GetValue($name) } else { $null } }
+        }
+    } finally { $key.Dispose() }
+    return $values
+}
+if ($ReadOnly) {
+    [ordered]@{ native=[NativeContrastProbe]::Read(); palette=[NativeContrastProbe]::Palette(); registry=Read-ContrastRegistry } | ConvertTo-Json -Depth 8 -Compress
+    return
+}
+function Read-FreshProcess {
+    $raw=& (Join-Path $PSHOME 'pwsh.exe') -NoLogo -NoProfile -NonInteractive -File $PSCommandPath -ReadOnly 2>&1
+    if ($LASTEXITCODE -ne 0) { throw "Fresh-process native read failed: $raw" }
+    return ([string]::Join([Environment]::NewLine,[string[]]$raw) | ConvertFrom-Json)
+}
 function Same-Palette([uint[]]$First,[uint[]]$Second) {
     if ($First.Length -ne $Second.Length) { return $false }
     for ($index=0; $index -lt $First.Length; $index++) { if ($First[$index] -ne $Second[$index]) { return $false } }
@@ -68,6 +91,7 @@ $report = [ordered]@{
 }
 $changed = $false
 try {
+    $report.originalFreshProcess=Read-FreshProcess
     $changed = $true
     [NativeContrastProbe]::Enable($original)
     $clock = [Diagnostics.Stopwatch]::StartNew()
@@ -94,6 +118,7 @@ try {
         Start-Sleep -Milliseconds 50
     } while ($clock.ElapsedMilliseconds -lt 5000)
     $report.settledRestore=$restored; $report.restoredPalette=$restoredPalette
+    $report.settledFreshProcess=Read-FreshProcess
     $report.paletteRestored=$paletteRestored
     $report.exactStateRestored=$exactRestored
     $report.passed=$paletteRestored -and $report.exactStateRestored
