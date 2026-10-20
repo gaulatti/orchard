@@ -191,6 +191,7 @@ public sealed partial class ErrorStatesFixture : UserControl
         var titleInk=await ContrastFixture.ReadCalibratedInkAsync(input,title,textBackdrop,folder,"error-title");
         var descriptionInk=await ContrastFixture.ReadCalibratedInkAsync(input,description,textBackdrop,folder,"error-description");
         await MainWindow.CaptureElementAsync(Default,System.IO.Path.Combine(folder,"contrast-before.png"));
+        Exception? primaryFailure = null;
         try
         {
             contrast.Enable();
@@ -212,9 +213,10 @@ public sealed partial class ErrorStatesFixture : UserControl
             await MainWindow.CaptureElementAsync(Default,System.IO.Path.Combine(folder,"contrast-active.png"));
             await File.WriteAllTextAsync(System.IO.Path.Combine(folder,"error-state-contrast.json"),JsonSerializer.Serialize(new{passed=true,backgroundOpacity=background.Opacity,iconBackgroundOpacity=iconBackground.Opacity,titleInk=titleInk.Pixels.Length,descriptionInk=descriptionInk.Pixels.Length}));
         }
+        catch (Exception error) { primaryFailure = error; throw; }
         finally
         {
-            contrast.Restore();
+            contrast.Restore(primaryFailure);
             await AwaitAsync(()=>!NativeContrastSession.Read().Enabled&&background.Opacity==originalBackgroundOpacity&&iconBackground.Opacity==originalIconOpacity&&
                 ((SolidColorBrush)title.Foreground).Color==originalTitle&&((SolidColorBrush)description.Foreground).Color==originalDescription,
                 "Error State did not restore its original palette after contrast mode.");

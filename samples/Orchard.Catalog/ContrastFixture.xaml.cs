@@ -155,6 +155,7 @@ public sealed partial class ContrastFixture : UserControl
         var labelInk = await ReadInkAsync(input,Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"),folder,"action-label");
         var attentionInk = await ReadInkAsync(input,attentionText,folder,"attention-label");
         var passed = false;
+        Exception? primaryFailure = null;
         try
         {
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-before.png"));
@@ -238,13 +239,14 @@ public sealed partial class ContrastFixture : UserControl
         }
         catch (Exception error)
         {
+            primaryFailure = error;
             samples.Add(new { phase = "failure", error = error.Message, state = Snapshot() });
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-failure.png"));
             throw;
         }
         finally
         {
-            contrast.Restore();
+            contrast.Restore(primaryFailure);
             await AwaitAsync(() => !accessibility.HighContrast && !NativeContrastSession.Read().Enabled &&
                 Hex(root.Background) == originalBackground && Hex(Heading.Foreground) == originalHeading,
                 "Windows mode or the original live palette did not restore.");

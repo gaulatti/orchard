@@ -299,3 +299,20 @@ help locate the first scheme-name change when an initially empty scheme remains
 `High Contrast Black` after disabling contrast. Native setters, flags, restoration
 attempts, presentation deadlines and the verifier's exact whole-state equality
 remain unchanged. This adds diagnostics and does not establish a restoration fix.
+
+The Windows restoration candidate retains the ordinary contrast-off write first.
+If its immediate readback has the original flags with contrast disabled but a
+different scheme, it makes one metadata-only write with
+`HCF_OPTION_NOTHEMECHANGE`. A fresh native getter guards that both requested and
+current modes are disabled; the flag is never used for the mode toggle. Final
+flags and scheme must match exactly, and the later whole-state verifier remains.
+The per-session restore guard prevents disposal from repeating either write.
+This responds to the hosted trace where the ordinary restore immediately changed
+an empty original scheme to `High Contrast Black`; Windows execution is still
+required to establish whether the metadata write repairs that behavior.
+See [Microsoft's HIGHCONTRASTW flag contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-highcontrastw).
+
+Each contrast caller also retains its primary component exception when the native
+restoration helper fails: that helper reports both exceptions together. This preserves a failing glyph,
+focus or palette assertion alongside a native restore failure. It changes no
+acceptance comparison, time limit, mask or recovery policy.

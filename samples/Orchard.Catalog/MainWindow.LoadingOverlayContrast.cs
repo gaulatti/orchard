@@ -44,6 +44,7 @@ public sealed partial class MainWindow
                 await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, entryOnly ? $"catalog-{theme.ToString().ToLowerInvariant()}.png" : $"contrast-before-{theme}.png"));
                 if (!entryOnly)
                 {
+                    Exception? primaryFailure = null;
                     try
                     {
                         phase = "enable-" + theme; await SaveAsync(); contrast!.Enable();
@@ -62,9 +63,10 @@ public sealed partial class MainWindow
                         Require(action.Focus(FocusState.Keyboard), "Could not restore contrast loading action focus."); await AwaitPresentationAsync(page);
                         await input.KeyAsync(0x20, action); await AwaitPresentationAsync(page); Require(activations == before + 1 && !page.IsTabStop, "Contrast loading portal changed keyboard activation or root restoration.");
                     }
+                    catch (Exception error) { primaryFailure = error; throw; }
                     finally
                     {
-                        phase = "restore-" + theme; contrast!.Restore();
+                        phase = "restore-" + theme; contrast!.Restore(primaryFailure);
                         await AwaitAsync(() => !NativeContrastSession.Read().Enabled && !new AccessibilitySettings().HighContrast &&
                             Brush(tint.Background) == initial.Tint && Brush(card.Background) == initial.Card && Brush(card.BorderBrush) == initial.Border &&
                             Brush(label.Foreground) == initial.Text && Brush(arc.Stroke) == initial.Spinner && HasBlur() && HasShadow(), "Loading portal did not restore its original palette and effects.");
