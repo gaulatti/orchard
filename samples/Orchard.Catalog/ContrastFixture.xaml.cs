@@ -433,7 +433,10 @@ public sealed partial class ContrastFixture : UserControl
                 Windows.Graphics.Imaging.BitmapAlphaMode.Straight, new Windows.Graphics.Imaging.BitmapTransform(),
                 Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
             matched = true;
-            foreach (var (fraction, system) in new[] { (.125, 8), (.875, 5) })
+            // The final source texel is transparent. Probe inside its clamped
+            // half, beyond the bilinear transition at its centre; rounding the
+            // transition coordinate can still sample the preceding alpha ramp.
+            foreach (var (fraction, system) in new[] { (.125, 8), (.9375, 5) })
             {
                 var x = (int)Math.Round((origin.X + image.ActualWidth * fraction) * XamlRoot.RasterizationScale);
                 var y = (int)Math.Round((origin.Y + image.ActualHeight / 2) * XamlRoot.RasterizationScale);

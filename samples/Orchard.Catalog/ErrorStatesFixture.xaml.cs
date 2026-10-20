@@ -187,8 +187,9 @@ public sealed partial class ErrorStatesFixture : UserControl
         var iconBackground=Part<Border>(Default,"PART_IconBackground");var iconBorder=Part<Border>(Default,"PART_IconBorder");
         var originalBackgroundOpacity=background.Opacity;var originalIconOpacity=iconBackground.Opacity;
         var originalTitle=((SolidColorBrush)title.Foreground).Color;var originalDescription=((SolidColorBrush)description.Foreground).Color;
-        var titleInk=await ContrastFixture.ReadInkAsync(input,title,folder,"error-title");
-        var descriptionInk=await ContrastFixture.ReadInkAsync(input,description,folder,"error-description");
+        var textBackdrop=Part<StackPanel>(Default,"PART_Text");
+        var titleInk=await ContrastFixture.ReadCalibratedInkAsync(input,title,textBackdrop,folder,"error-title");
+        var descriptionInk=await ContrastFixture.ReadCalibratedInkAsync(input,description,textBackdrop,folder,"error-description");
         await MainWindow.CaptureElementAsync(Default,System.IO.Path.Combine(folder,"contrast-before.png"));
         try
         {

@@ -211,3 +211,26 @@ It verifies the observed physical dimensions and saves `artifacts/display-sessio
 No registry, driver, system DPI, fixture viewport, capture containment check, or
 pixel comparison is changed. A runner without an adequate supported mode fails
 explicitly before the native tests.
+
+Explicit client-size fixtures move the restored catalog window to the primary
+screen origin and await presentation before physical input. Maximized fixtures
+retain the operating system's placement. Runtime jobs have a bounded 60-minute
+budget for the complete native, mutation-audit and package-consumer sequence;
+individual fixture deadlines and all capture/pixel assertions remain unchanged.
+
+The Brand contrast fixture samples the interior of its transparent source texel
+rather than a rounded bilinear transition boundary. Exact system-color equality
+remains required; the image interpolation and product palette are unchanged.
+
+The chart load/focus fixture now holds focus on the preceding native button until
+the late cases have actually loaded, then uses a physical Tab pair to enter the
+chart. The eager cases still focus before Loaded. The report requires exactly
+12 cases of each observed order, all 24 physical Right pairs and all first/next
+inspection, blur and accessibility-help assertions.
+
+ErrorState's native contrast mask is calibrated on the same live text with
+opposite opaque paints at XAML animation precedence. Every captured byte and
+original property/binding source must be restored after each paint. The mask is
+fixed before changing Windows contrast mode; every selected pixel must still
+match the real system foreground exactly. Failed calibration or restoration
+fails the fixture, rather than establishing a contrast result.

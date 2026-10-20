@@ -62,7 +62,12 @@ internal sealed partial class NativeInputSession : IDisposable
             Require(appWindow.ClientSize.Width == width && appWindow.ClientSize.Height == height,
                 "Catalog did not adopt the explicitly requested client size.");
         }
-        Require(SetWindowPos(Window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the catalog for physical input.");
+        // Preserve OS placement for maximized fixtures. Explicit client sizes
+        // restore the window, so apply the requested origin instead of retaining
+        // a stale centered location that can put a 900px client off screen.
+        var exposureFlags = sizeIndex < 0 ? 0x0043u : 0x0041u; // NOSIZE | SHOWWINDOW; NOMOVE only when maximized.
+        Require(SetWindowPos(Window, new IntPtr(-1), 0, 0, 0, 0, exposureFlags), "Could not expose the catalog for physical input.");
+        if (sizeIndex >= 0) await MainWindow.AwaitPresentationAsync(foregroundTarget);
         if (GetForegroundWindow() != Window) { SetForegroundWindow(Window); await Task.Delay(100); }
         if (GetForegroundWindow() != Window)
         {

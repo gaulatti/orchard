@@ -10,7 +10,7 @@ permissions:
 jobs:
   windows:
     runs-on: windows-2025
-    timeout-minutes: 25
+    timeout-minutes: 60
     env:
       CI: 'true'
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
@@ -353,7 +353,7 @@ jobs:
 
   arm64-runtime:
     runs-on: windows-11-arm
-    timeout-minutes: 25
+    timeout-minutes: 60
     env:
       CI: 'true'
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
