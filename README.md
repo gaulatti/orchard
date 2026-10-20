@@ -286,3 +286,9 @@ and applies the existing foreground guard before its composed capture.
 ErrorState calibration records consecutive untouched and stopped rasters while
 retaining its first baseline and original exact restoration assertion; these
 observations do not establish a contrast-mode result or recover a failed check.
+
+Stat Card typography captures and Loading Overlay direct Escape/Tab input now
+invoke the existing guarded foreground check at their physical boundary. The
+strict capture and input ownership assertions, one-recovery limit, geometry,
+pixel comparisons and keyboard outcomes remain unchanged. These readiness fixes
+do not resolve the separately recorded ErrorState calibration or cursor failure.
