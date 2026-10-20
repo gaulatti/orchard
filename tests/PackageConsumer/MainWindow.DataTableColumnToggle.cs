@@ -28,8 +28,27 @@ public sealed partial class MainWindow
             await AwaitAsync(() => Popup() is { } popup && BrandDescendants<BleeckerCheckbox>(popup.Child).Count() == 2, "Packaged original visibility columns did not render.");
             var checks = BrandDescendants<BleeckerCheckbox>(Popup()!.Child).ToArray(); var first = checks.Single(item => ReferenceEquals(item.Tag, source.Columns[0]));
             Require(checks.All(item => item.Tag is ConsumerColumnSource.Column column && column.HasAccessor && column.CanHide) && checks.All(item => item.IsChecked == true), "Packaged picker fabricated eligibility or checked state.");
+            // Visual-tree presence precedes Loaded; the real control rejects
+            // an unloaded row. Establish that precondition before invoking UIA.
+            await AwaitAsync(() => first.IsLoaded, "Packaged column checkbox did not load before its UIA action.");
+            object ToggleState() => new { first.IsLoaded, first.IsChecked, pickerLoaded = picker.IsLoaded,
+                pickerEnabled = picker.IsEnabled, popupOpen = Popup()?.IsOpen, requests = source.Requests,
+                visible = source.Columns[0].IsVisible, cells = cells.Text };
+            var toggleArguments = Environment.GetCommandLineArgs();
+            var toggleOutput = toggleArguments[Array.IndexOf(toggleArguments, "--verify-output") + 1];
+            var beforeToggle = ToggleState();
             var toggle = (IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(first).GetPattern(PatternInterface.Toggle); toggle.Toggle();
-            await AwaitAsync(() => source.Requests == 1 && !source.Columns[0].IsVisible && cells.Text == "Draft|Ready", "Packaged column toggle did not change the original visible cells exactly once.");
+            var afterToggle = ToggleState();
+            try
+            {
+                await AwaitAsync(() => source.Requests == 1 && !source.Columns[0].IsVisible && cells.Text == "Draft|Ready", "Packaged column toggle did not change the original visible cells exactly once.");
+            }
+            finally
+            {
+                // Persist after the timed assertion, including on failure.
+                await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(toggleOutput)!, $"consumer-column-toggle-uia-{Root.RequestedTheme}.json"),
+                    JsonSerializer.Serialize(new { before = beforeToggle, after = afterToggle }));
+            }
             Require(ReferenceEquals(source.LastColumn, source.Columns[0]) && ReferenceEquals(picker.Table, source), "Packaged picker replaced its original table or column.");
             source.SetExternal(true); await AwaitAsync(() => first.IsChecked == true && cells.Text == "Harbor:Draft|Reed:Ready", "External visibility did not update packaged original rows."); Require(source.Requests == 1, "External visibility created a consumer request.");
             picker.Label = "Fields"; Root.UpdateLayout(); Require(peer.GetName() == "Fields", "Packaged trigger label did not update while open.");

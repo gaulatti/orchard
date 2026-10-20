@@ -34,17 +34,40 @@ internal sealed class NativeContrastSession : IDisposable
 
     internal void Enable()
     {
-        Trace("enable-before");
-        Write(Original with { Flags = Original.Flags | 1 });
-        Trace("enable-after");
+        var requested = Original with { Flags = Original.Flags | 1 };
+        Trace("enable-before", requested);
+        Write(requested);
+        Trace("enable-after", requested, Read());
     }
-    internal void Restore()
+    internal void Restore(Exception? primaryFailure = null)
+    {
+        try { RestoreOriginal(); }
+        catch (Exception restorationFailure) when (primaryFailure is not null)
+        {
+            throw new AggregateException("Component verification and Windows contrast restoration both failed.",
+                primaryFailure, restorationFailure);
+        }
+    }
+    private void RestoreOriginal()
     {
         if (restored) return;
-        Trace("restore-before");
+        Trace("restore-before", Original);
         Write(Original);
         restored = true;
-        Trace("restore-after");
+        var observed = Read();
+        Trace("restore-transition-after", Original, observed);
+        if (!Original.Enabled && !observed.Enabled && observed.Flags == Original.Flags && observed.Scheme != Original.Scheme)
+        {
+            // The ordinary mode transition has already disabled contrast. A
+            // metadata-only call must not trigger another theme transition.
+            Trace("restore-metadata-before", Original, observed);
+            Write(Original, preventThemeChange: true);
+            observed = Read();
+            Trace("restore-metadata-after", Original, observed);
+        }
+        Trace("restore-after", Original, observed);
+        if (observed != Original)
+            throw new InvalidOperationException("Windows contrast restoration did not recover the exact original flags and scheme.");
     }
     public void Dispose() => Restore();
 
@@ -57,12 +80,14 @@ internal sealed class NativeContrastSession : IDisposable
         // retained allocation on the next query/theme operation.
         return new State(value.Flags, value.Scheme == IntPtr.Zero ? null : Marshal.PtrToStringUni(value.Scheme));
     }
-    private static void Write(State state)
+    private static void Write(State state, bool preventThemeChange = false)
     {
+        if (preventThemeChange && (state.Enabled || Read().Enabled))
+            throw new InvalidOperationException("A metadata-only contrast write requires both modes disabled.");
         var pointer = state.Scheme is null ? IntPtr.Zero : Marshal.StringToHGlobalUni(state.Scheme);
         try
         {
-            var value = new HighContrast { Size = (uint)Marshal.SizeOf<HighContrast>(), Flags = state.Flags & ~0x1000u, Scheme = pointer };
+            var value = new HighContrast { Size = (uint)Marshal.SizeOf<HighContrast>(), Flags = (state.Flags & ~0x1000u) | (preventThemeChange ? 0x1000u : 0), Scheme = pointer };
             // Broadcast the real mode change without requesting a profile write.
             if (!SystemParametersInfo(0x43, value.Size, ref value, 2)) throw new Win32Exception(Marshal.GetLastWin32Error());
         }
@@ -76,7 +101,8 @@ internal sealed class NativeContrastSession : IDisposable
     [StructLayout(LayoutKind.Sequential)] private struct HighContrast { public uint Size, Flags; public IntPtr Scheme; }
     [DllImport("user32.dll", EntryPoint = "SystemParametersInfoW", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)] private static extern bool SystemParametersInfo(uint action, uint size, ref HighContrast value, uint flags);
-    private void Trace(string phase) => File.AppendAllText(stages,
-        System.Text.Json.JsonSerializer.Serialize(new { phase }) + Environment.NewLine);
+    private void Trace(string phase, State? requested = null, State? observed = null) => File.AppendAllText(stages,
+        System.Text.Json.JsonSerializer.Serialize(new { phase, requested, observed,
+            timestamp = System.Diagnostics.Stopwatch.GetTimestamp() }) + Environment.NewLine);
     [DllImport("user32.dll")] private static extern uint GetSysColor(int index);
 }

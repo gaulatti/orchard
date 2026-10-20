@@ -62,7 +62,12 @@ internal sealed partial class NativeInputSession : IDisposable
             Require(appWindow.ClientSize.Width == width && appWindow.ClientSize.Height == height,
                 "Catalog did not adopt the explicitly requested client size.");
         }
-        Require(SetWindowPos(Window, new IntPtr(-1), 0, 0, 0, 0, 0x0043), "Could not expose the catalog for physical input.");
+        // Preserve OS placement for maximized fixtures. Explicit client sizes
+        // restore the window, so apply the requested origin instead of retaining
+        // a stale centered location that can put a 900px client off screen.
+        var exposureFlags = sizeIndex < 0 ? 0x0043u : 0x0041u; // NOSIZE | SHOWWINDOW; NOMOVE only when maximized.
+        Require(SetWindowPos(Window, new IntPtr(-1), 0, 0, 0, 0, exposureFlags), "Could not expose the catalog for physical input.");
+        if (sizeIndex >= 0) await MainWindow.AwaitPresentationAsync(foregroundTarget);
         if (GetForegroundWindow() != Window) { SetForegroundWindow(Window); await Task.Delay(100); }
         if (GetForegroundWindow() != Window)
         {
@@ -177,7 +182,9 @@ internal sealed partial class NativeInputSession : IDisposable
         }
         var receiptWatch = Stopwatch.StartNew(); var receipts = new List<object>();
         var delivered = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
-        var stationary = GetCursorPos(out var before) && before.X == x && before.Y == y && lastDeliveredPointer is CursorPoint known && known.X == x && known.Y == y;
+        var positionKnown = GetCursorPos(out var before);
+        var stationary = positionKnown && before.X == x && before.Y == y && lastDeliveredPointer is CursorPoint known && known.X == x && known.Y == y;
+        var receiptX = x; var receiptY = y; var receiptStage = "target";
         var receiptRoots = new HashSet<UIElement> { root.Content, target };
         foreach (var popup in Microsoft.UI.Xaml.Media.VisualTreeHelper.GetOpenPopupsForXamlRoot(root)) if (popup.Child is UIElement child) receiptRoots.Add(child);
         var receipt = new Microsoft.UI.Xaml.Input.PointerEventHandler((_, args) =>
@@ -185,13 +192,28 @@ internal sealed partial class NativeInputSession : IDisposable
             var position = args.GetCurrentPoint(root.Content).Position;
             var client = NativeScreenCapture.ClientBounds(Window);
             var screenX = client.X + position.X * scale; var screenY = client.Y + position.Y * scale;
-            var exact = !args.IsGenerated && args.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse && Math.Abs(screenX - x) < .001 && Math.Abs(screenY - y) < .001;
-            receipts.Add(new { milliseconds = receiptWatch.Elapsed.TotalMilliseconds, args.IsGenerated, position, screenX, screenY, exact });
-            if (exact) { lastDeliveredPointer = new CursorPoint { X = x, Y = y }; delivered.TrySetResult(); }
+            var exact = !args.IsGenerated && args.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse && Math.Abs(screenX - receiptX) < .001 && Math.Abs(screenY - receiptY) < .001;
+            receipts.Add(new { milliseconds = receiptWatch.Elapsed.TotalMilliseconds, stage = receiptStage, args.IsGenerated, position, screenX, screenY, exact });
+            if (exact) { lastDeliveredPointer = new CursorPoint { X = receiptX, Y = receiptY }; delivered.TrySetResult(); }
         });
         foreach (var element in receiptRoots) element.AddHandler(UIElement.PointerMovedEvent, receipt, true);
         try
         {
+            if (!stationary && positionKnown && before.X == x && before.Y == y)
+            {
+                // A new XamlRoot can appear under the existing screen point.
+                // Establish a real move in this root before returning to the
+                // target; Windows need not route an unchanged absolute move.
+                var departure = new[] { (X: x + 1, Y: y), (X: x - 1, Y: y), (X: x, Y: y + 1), (X: x, Y: y - 1) }
+                    .Where(point => bounds.Contains(new Point(point.X, point.Y)) && NativeScreenCapture.OwnsScreenPoint(Window, point.X, point.Y))
+                    .Take(1).ToArray();
+                Require(departure.Length == 1, "Pointer target has no owned departure pixel for a new root receipt.");
+                receiptX = departure[0].X; receiptY = departure[0].Y; receiptStage = "departure";
+                SendPointerMovement(receiptX, receiptY);
+                await delivered.Task.WaitAsync(TimeSpan.FromSeconds(2));
+                delivered = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+                receiptX = x; receiptY = y; receiptStage = "target";
+            }
             SendPointerMovement(x, y);
             // Windows need not emit PointerMoved for an unchanged position.
             // Reuse only an actual prior receipt at that exact current point;

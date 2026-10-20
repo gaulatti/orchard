@@ -22,6 +22,7 @@ public sealed partial class MainWindow
         try
         {
             Content = page; await AwaitPresentationAsync(page); input = new NativeInputSession(page.XamlRoot, folder, "loading-overlay-accessibility"); await input.AcquireAsync(action);
+            await input.MoveAsync(action);
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
             {
                 page.RequestedTheme = theme; Require(action.Focus(FocusState.Keyboard), "Could not focus original accessibility action.");
@@ -34,6 +35,7 @@ public sealed partial class MainWindow
                 overlay.SetBinding(AutomationProperties.NameProperty, new Binding { Source = nameSource, Path = new PropertyPath(nameof(TextBlock.Text)), Mode = BindingMode.OneWay });
                 await SettleAsync(); await CheckAsync("bound-name", nameSource.Text);
                 nameSource.Text = "Live consumer operation"; await SettleAsync(); await CheckAsync("live-bound-name", nameSource.Text);
+                await input.RequireForegroundAsync();
                 await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 overlay.ClearValue(AutomationProperties.NameProperty); AutomationProperties.SetLabeledBy(overlay, caption); await SettleAsync(); await CheckAsync("linked-caption", caption.Text);
                 caption.Text = "Updated linked operation"; await SettleAsync(); await CheckAsync("live-linked-caption", caption.Text);

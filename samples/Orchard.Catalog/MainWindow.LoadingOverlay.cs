@@ -98,9 +98,11 @@ public sealed partial class MainWindow
                 var neutralRootFocused = ReferenceEquals(FocusManager.GetFocusedElement(root), root.Content);
                 if (neutralRootFocused) await input.KeyAsync(0x20, CatalogRoot);
                 var pointerClearedActivation = actions == keyboardActivations;
-                if (neutralRootFocused) await input.KeyAsync(0x1B, CatalogRoot); else input.Key(0x1B);
+                if (neutralRootFocused) await input.KeyAsync(0x1B, CatalogRoot);
+                else { await input.RequireForegroundAsync(); input.Key(0x1B); }
                 await AwaitPresentationAsync(host);
                 var escapeDoesNotDismiss = VisualTreeHelper.GetOpenPopupsForXamlRoot(root).Any(p => p.Child is FrameworkElement element && element.Name == "PART_Portal");
+                await input.RequireForegroundAsync();
                 input.Key(0x09); await AwaitPresentationAsync(host); var focusAfterTab = (FocusManager.GetFocusedElement(root) as FrameworkElement)?.Name;
                 var rootTabStopRestored = !CatalogRoot.IsTabStop;
                 var rootBindingRestored = scheme == ElementTheme.Light ? ReferenceEquals(CatalogRoot.ReadLocalValue(UIElement.IsTabStopProperty), originalTabStop) : ReferenceEquals(CatalogRoot.GetBindingExpression(UIElement.IsTabStopProperty)?.ParentBinding, tabBinding);

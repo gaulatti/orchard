@@ -181,6 +181,7 @@ public sealed partial class SteppersFixture : UserControl
         replacement.IsDisabled = false; stepper.StepInvoked -= Invoked; await SettleAsync();
         Require(Buttons().All(button => !button.IsEnabled), "Stepper retained input after callback removal.");
         stepper.StepInvoked += Invoked; await SettleAsync();
+        await input.RequireForegroundAsync();
         before.Focus(FocusState.Keyboard); input.Key(0x09); await MainWindow.AwaitPresentationAsync(retained);
         Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), retained), "Native Tab did not enter the first step.");
         stepper.Steps.Move(0, 2); await SettleAsync();

@@ -155,6 +155,7 @@ public sealed partial class ContrastFixture : UserControl
         var labelInk = await ReadInkAsync(input,Descendants<TextBlock>(Action()).First(item => item.Text == "Contrast action"),folder,"action-label");
         var attentionInk = await ReadInkAsync(input,attentionText,folder,"attention-label");
         var passed = false;
+        Exception? primaryFailure = null;
         try
         {
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-before.png"));
@@ -238,13 +239,14 @@ public sealed partial class ContrastFixture : UserControl
         }
         catch (Exception error)
         {
+            primaryFailure = error;
             samples.Add(new { phase = "failure", error = error.Message, state = Snapshot() });
             await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, "contrast-failure.png"));
             throw;
         }
         finally
         {
-            contrast.Restore();
+            contrast.Restore(primaryFailure);
             await AwaitAsync(() => !accessibility.HighContrast && !NativeContrastSession.Read().Enabled &&
                 Hex(root.Background) == originalBackground && Hex(Heading.Foreground) == originalHeading,
                 "Windows mode or the original live palette did not restore.");
@@ -433,7 +435,10 @@ public sealed partial class ContrastFixture : UserControl
                 Windows.Graphics.Imaging.BitmapAlphaMode.Straight, new Windows.Graphics.Imaging.BitmapTransform(),
                 Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
             matched = true;
-            foreach (var (fraction, system) in new[] { (.125, 8), (.875, 5) })
+            // The final source texel is transparent. Probe inside its clamped
+            // half, beyond the bilinear transition at its centre; rounding the
+            // transition coordinate can still sample the preceding alpha ramp.
+            foreach (var (fraction, system) in new[] { (.125, 8), (.9375, 5) })
             {
                 var x = (int)Math.Round((origin.X + image.ActualWidth * fraction) * XamlRoot.RasterizationScale);
                 var y = (int)Math.Round((origin.Y + image.ActualHeight / 2) * XamlRoot.RasterizationScale);

@@ -199,3 +199,144 @@ Attribution and license texts are adjacent to the fonts. The vendored Bleecker
 source retains its MIT license under `tokens/LICENSE-Bleecker.txt`.
 
 The passive [ProgressStack preview](docs/progress-stack.md) adds consumer-owned segments and a wrapping legend; acceptance remains in progress.
+
+
+### Native CI display requirements
+
+The x64 and ARM64 runtime jobs require enough real desktop space for the frozen
+1280-pixel client fixtures and the catalog window. `scripts/Set-CiDisplayMode.ps1`
+runs only in GitHub-hosted Windows CI, enumerates the primary display's advertised
+modes, prefers 1920×1080, tests support, and applies an adequate mode dynamically.
+It verifies the observed physical dimensions and saves `artifacts/display-session.json`.
+No registry, driver, system DPI, fixture viewport, capture containment check, or
+pixel comparison is changed. A runner without an adequate supported mode fails
+explicitly before the native tests.
+
+Explicit client-size fixtures move the restored catalog window to the primary
+screen origin and await presentation before physical input. Maximized fixtures
+retain the operating system's placement. Runtime jobs have a bounded 60-minute
+budget for the complete native, mutation-audit and package-consumer sequence;
+individual fixture deadlines and all capture/pixel assertions remain unchanged.
+
+The Brand contrast fixture samples the interior of its transparent source texel
+rather than a rounded bilinear transition boundary. Exact system-color equality
+remains required; the image interpolation and product palette are unchanged.
+
+The chart load/focus fixture now holds focus on the preceding native button until
+the late cases have actually loaded, then uses a physical Tab pair to enter the
+chart. The eager cases still focus before Loaded. The report requires exactly
+12 cases of each observed order, all 24 physical Right pairs and all first/next
+inspection, blur and accessibility-help assertions.
+
+ErrorState's native contrast mask is calibrated on the same live text with
+opposite opaque paints at XAML animation precedence. Every captured byte and
+original property/binding source must be restored after each paint. The mask is
+fixed before changing Windows contrast mode; every selected pixel must still
+match the real system foreground exactly. Failed calibration or restoration
+fails the fixture, rather than establishing a contrast result.
+Calibration uses the catalog's shared layout/compositor commit barrier before
+baseline, opposite-paint, stability and restoration captures. Dashboard overflow
+captures also verify foreground ownership at the capture boundary.
+
+The Accordion scalar mutation audit copies its frozen corpus once, restores each
+mutated receipt or image in `finally`, and still requires all 22 negative cases to
+fail. Each verifier child has a 60-second deadline and emits its case, status and
+elapsed time so a hung audit fails with evidence instead of consuming the job.
+
+The native input verifier requires real routed pointer receipts per XAML root.
+When a transferred window places a target at the cursor's existing screen
+position, it first moves one owned pixel away and waits for that real receipt,
+then returns and requires the target receipt. It never treats an unchanged
+`SendInput` position as proof of delivery to the new root. The two-window
+Loading Overlay lifecycle scenario exercises this boundary.
+
+A failed exact glyph-raster restoration now records separate foreground-only
+and backdrop-only calibration interventions. These run after the failure and
+retain it; they neither retry the acceptance check nor replace its baseline.
+They distinguish paint-induced raster changes from a product contrast-mode
+failure before a further repair is chosen.
+
+A rounded Input cursor mismatch retains its original native/SDK/publication
+snapshot, then records physical visits to the existing neutral heading and
+read-only Input. These diagnostic comparisons distinguish a global displayed
+cursor anomaly from disabled-input ownership; the original failed assertion
+and polling deadline remain unchanged.
+
+Native fixture readiness: Loading Overlay contrast places a real pointer on the
+open portal before the Windows transition. Accordion and Loading Overlay
+captures invoke the existing guarded foreground check immediately before
+capture; its recovery limit and strict owned-window checks are unchanged. The
+independent package consumer waits for its original column checkbox to load
+before invoking UIA and records the state before/after that action. Calibration
+paint instability also collects failure-only foreground/backdrop interventions,
+then retains the original failed assertion.
+
+The hosted fixtures establish an owned neutral pointer target before Accordion
+continuity input, and check guarded foreground recovery at Section Header capture
+and Stepper Tab boundaries. Loading Overlay contrast restoration uses the same
+bounded cover-window settling check as contrast entry. These changes retain
+native target ownership, recovery limits, exact pixels and input assertions.
+A packaged notification theme failure now records owner, trigger, presenter and
+brush state after the original deadline, without changing the theme assertion.
+
+Sidebar lifecycle verification waits for the exact final foreground through its
+existing bounded readiness check, including the control's normal color
+transition. Loading Overlay accessibility establishes an owned pointer target
+and applies the existing foreground guard before its composed capture.
+ErrorState calibration records consecutive untouched and stopped rasters while
+retaining its first baseline and original exact restoration assertion; these
+observations do not establish a contrast-mode result or recover a failed check.
+
+Stat Card typography captures and Loading Overlay direct Escape/Tab input now
+invoke the existing guarded foreground check at their physical boundary. The
+strict capture and input ownership assertions, one-recovery limit, geometry,
+pixel comparisons and keyboard outcomes remain unchanged. These readiness fixes
+do not resolve the separately recorded ErrorState calibration or cursor failure.
+
+The hosted Windows contrast helper records requested and immediately observed
+full native states around its existing enable and restore calls. These records
+help locate the first scheme-name change when an initially empty scheme remains
+`High Contrast Black` after disabling contrast. Native setters, flags, restoration
+attempts, presentation deadlines and the verifier's exact whole-state equality
+remain unchanged. This adds diagnostics and does not establish a restoration fix.
+
+The Windows restoration candidate retains the ordinary contrast-off write first.
+If its immediate readback has the original flags with contrast disabled but a
+different scheme, it makes one metadata-only write with
+`HCF_OPTION_NOTHEMECHANGE`. A fresh native getter guards that both requested and
+current modes are disabled; the flag is never used for the mode toggle. Final
+flags and scheme must match exactly, and the later whole-state verifier remains.
+The per-session restore guard prevents disposal from repeating either write.
+This responds to the hosted trace where the ordinary restore immediately changed
+an empty original scheme to `High Contrast Black`; Windows execution is still
+required to establish whether the metadata write repairs that behavior.
+See [Microsoft's HIGHCONTRASTW flag contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-highcontrastw).
+
+Each contrast caller also retains its primary component exception when the native
+restoration helper fails: that helper reports both exceptions together. This preserves a failing glyph,
+focus or palette assertion alongside a native restore failure. It changes no
+acceptance comparison, time limit, mask or recovery policy.
+
+A temporary Windows diagnostic compares ordinary broadcast restoration with
+exact registry-preference rollback on separate fresh hosted runners. Earlier
+standalone experiments with all four broadcast/profile flag combinations failed
+exact empty-scheme restoration despite recovering the native colors. It uses the exact
+captured flags and scheme, observes real contrast colors before restoration,
+and reports both immediate and settled native state without substituting a
+default scheme. Every failed roundtrip remains a failed job; the regular
+component jobs and their strict whole-state verifier remain unchanged. These
+Win32-only experiments do not establish WinUI component acceptance or ARM64
+behavior. Remove the alternative-API diagnostic matrix after its evidence has
+identified a repair, while retaining the component regression checks.
+
+The probe also records read-only native and registry observations from a fresh
+PowerShell process before enabling contrast and after the measured restore.
+These compare same-process scheme readback with another process and the two
+observed preference values. They do not establish reboot persistence, rewrite
+registry values or change the exact-state comparison. The separate
+`broadcast-registry` case additionally tests rolling back only the captured empty
+`High Contrast Scheme` string after the ordinary API has disabled contrast. It
+requires matching original/current registry types and exact native flags before
+writing that one captured value, then retains all same-process, fresh-process,
+registry and palette comparisons. It is an isolated diagnostic, not an accepted
+component repair.

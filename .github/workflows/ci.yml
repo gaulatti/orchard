@@ -10,13 +10,15 @@ permissions:
 jobs:
   windows:
     runs-on: windows-2025
-    timeout-minutes: 25
+    timeout-minutes: 60
     env:
       CI: 'true'
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
       DOTNET_NOLOGO: '1'
     steps:
       - uses: actions/checkout@v5
+      - name: Prepare the physical CI desktop
+        run: ./scripts/Set-CiDisplayMode.ps1
       - uses: actions/setup-dotnet@v5
         with:
           global-json-file: global.json
@@ -351,13 +353,15 @@ jobs:
 
   arm64-runtime:
     runs-on: windows-11-arm
-    timeout-minutes: 25
+    timeout-minutes: 60
     env:
       CI: 'true'
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
       DOTNET_NOLOGO: '1'
     steps:
       - uses: actions/checkout@v5
+      - name: Prepare the physical CI desktop
+        run: ./scripts/Set-CiDisplayMode.ps1
       - uses: actions/setup-dotnet@v5
         with:
           global-json-file: global.json
@@ -663,3 +667,18 @@ jobs:
           name: orchard-windows-arm64-runtime
           path: artifacts/
           if-no-files-found: warn
+
+  native-contrast-restoration-probe:
+    name: Native contrast restore probe (${{ matrix.restore-mode }})
+    runs-on: windows-2025
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        restore-mode: [broadcast, broadcast-registry]
+    env:
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v5
+      - name: Probe exact native state restoration on an isolated runner
+        run: ./scripts/Probe-NativeContrastRoundTrip.ps1 -RestoreMode '${{ matrix.restore-mode }}'

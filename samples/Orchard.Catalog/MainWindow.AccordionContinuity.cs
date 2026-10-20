@@ -13,7 +13,7 @@ public sealed partial class MainWindow
 {
     private async Task RunAccordionContinuityAsync(string folder)
     {
-        var enabled=new UISettings().AnimationsEnabled;var original=Content;var canvas=new Canvas();var lifecycle=new List<object>();
+        var enabled=new UISettings().AnimationsEnabled;var original=Content;var canvas=new Canvas();var lifecycle=new List<object>();var pointerEstablished=false;
         try
         {
             Content=canvas;await AwaitPresentationAsync(canvas);using var input=new NativeInputSession(canvas.XamlRoot,folder,"accordion-continuity");await input.AcquireAsync(canvas);
@@ -28,7 +28,16 @@ public sealed partial class MainWindow
                 canvas.RequestedTheme=theme;canvas.Background=new SolidColorBrush(theme==ElementTheme.Light?Microsoft.UI.Colors.White:Windows.UI.Color.FromArgb(255,13,24,33));
                 foreach(var kind in new[]{"move-first-to-last","move-last-to-first","same-key-replacement","replace-collection","content-grow","default-change","remove-reinsert","group-remount"})
                 {
-                    canvas.Children.Clear();var group=NewGroup(kind=="move-last-to-first");canvas.Children.Add(group);canvas.Children.Add(outside);await AwaitPresentationAsync(group);var button=Target(group);await input.MoveAsync(button);await Wait(()=>Read(group).Hovered,"Accordion continuity pointer did not enter.");await input.MoveAsync(outside);await Wait(()=>!Read(group).Hovered&&!Read(group).Animating,"Accordion continuity baseline did not settle.");await AwaitPresentationAsync(group);Require(!Read(group).Hovered&&!Read(group).Animating,"Accordion continuity baseline changed after presentation.");Expand(button).Expand();
+                    canvas.Children.Clear();var group=NewGroup(kind=="move-last-to-first");canvas.Children.Add(group);canvas.Children.Add(outside);await AwaitPresentationAsync(group);var button=Target(group);
+                    if(!pointerEstablished)
+                    {
+                        // AcquireAsync leaves the hosted cursor where it was.
+                        // Move only: the native target must already belong to us;
+                        // no button is pressed on a foreign foreground window.
+                        await input.MoveAsync(outside,requireForeground:false);
+                        await input.RequireForegroundAsync();pointerEstablished=true;
+                    }
+                    await input.MoveAsync(button);await Wait(()=>Read(group).Hovered,"Accordion continuity pointer did not enter.");await input.MoveAsync(outside);await Wait(()=>!Read(group).Hovered&&!Read(group).Animating,"Accordion continuity baseline did not settle.");await AwaitPresentationAsync(group);Require(!Read(group).Hovered&&!Read(group).Animating,"Accordion continuity baseline changed after presentation.");Expand(button).Expand();
                     if(enabled)await Wait(()=>Read(group).PaintedAt-Read(group).ExpansionStart>=47.5&&Read(group).Animating,"Accordion continuity missed its intermediate paint.");else await AwaitPresentationAsync(group);
                     var before=Read(group);var loads=0;var unloads=0;button.Loaded+=(_,_)=>loads++;button.Unloaded+=(_,_)=>unloads++;var oldPeer=Expand(button);var staleRejected=false;
                     if(kind.StartsWith("move-",StringComparison.Ordinal))group.Items.Move(0,1);
