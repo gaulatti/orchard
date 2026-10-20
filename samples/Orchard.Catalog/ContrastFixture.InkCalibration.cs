@@ -85,11 +85,50 @@ public sealed partial class ContrastFixture
                     ReferenceEquals(backdrop.GetAnimationBaseValue(Panel.BackgroundProperty), backgroundBase),
                     "Calibration did not restore the original live property sources.");
                 var restored = await ReadScreenInkAsync(input, text, folder, name + "-" + phase + "-restored");
-                Require(restored.Width == baseline.Width && restored.Height == baseline.Height &&
-                    GeometryWithoutPaint(restored.Geometry) == baselineGeometry && restored.Pixels.SequenceEqual(baseline.Pixels),
-                    "Calibration did not restore the exact original composed glyph raster.");
+                var exactRestoration = restored.Width == baseline.Width && restored.Height == baseline.Height &&
+                    GeometryWithoutPaint(restored.Geometry) == baselineGeometry && restored.Pixels.SequenceEqual(baseline.Pixels);
+                if (!exactRestoration)
+                    await DiagnoseInterventionsAsync();
+                Require(exactRestoration, "Calibration did not restore the exact original composed glyph raster.");
             }
         }
+        async Task DiagnoseInterventionsAsync()
+        {
+            // Run only after failure. These observations cannot replace the
+            // baseline, retry calibration, or turn the failed check into a pass.
+            var observations = new List<object>();
+            foreach (var intervention in new[] { "foreground-only", "backdrop-only" })
+            {
+                var before = await ReadScreenInkAsync(input, text, folder, name + "-diagnostic-" + intervention + "-before");
+                var diagnostic = new Storyboard();
+                if (intervention == "foreground-only") Override(diagnostic, text, "Foreground", new SolidColorBrush(black));
+                else Override(diagnostic, backdrop, "Background", new SolidColorBrush(white));
+                try
+                {
+                    diagnostic.Begin(); await MainWindow.AwaitPresentationAsync(text);
+                    await ReadScreenInkAsync(input, text, folder, name + "-diagnostic-" + intervention + "-painted");
+                }
+                finally
+                {
+                    diagnostic.Stop(); await MainWindow.AwaitPresentationAsync(text);
+                }
+                var after = await ReadScreenInkAsync(input, text, folder, name + "-diagnostic-" + intervention + "-restored");
+                var identityRestored = ReferenceEquals(text.Foreground, originalForeground) && ReferenceEquals(backdrop.Background, originalBackground) &&
+                    ReferenceEquals(text.ReadLocalValue(TextBlock.ForegroundProperty), foregroundLocal) &&
+                    ReferenceEquals(backdrop.ReadLocalValue(Panel.BackgroundProperty), backgroundLocal) &&
+                    ReferenceEquals(text.GetBindingExpression(TextBlock.ForegroundProperty), foregroundBinding) &&
+                    ReferenceEquals(backdrop.GetBindingExpression(Panel.BackgroundProperty), backgroundBinding) &&
+                    ReferenceEquals(text.GetAnimationBaseValue(TextBlock.ForegroundProperty), foregroundBase) &&
+                    ReferenceEquals(backdrop.GetAnimationBaseValue(Panel.BackgroundProperty), backgroundBase);
+                observations.Add(new { intervention, identityRestored,
+                    geometryUnchanged = GeometryWithoutPaint(before.Geometry) == GeometryWithoutPaint(after.Geometry),
+                    restoredPhaseRaster = before.Pixels.SequenceEqual(after.Pixels),
+                    restoredOriginalRaster = after.Pixels.SequenceEqual(baseline.Pixels) });
+            }
+            await File.WriteAllTextAsync(System.IO.Path.Combine(folder, $"contrast-ink-{name}-failed-interventions.json"),
+                JsonSerializer.Serialize(new { diagnosticOnly = true, originalFailureRetained = true, observations }));
+        }
+
     }
     private static void Override(Storyboard storyboard, DependencyObject target, string property, object value)
     {

@@ -21,6 +21,7 @@ public sealed partial class InputsFixture
         BleeckerInput? activeControl = null;
         object? failedCursor = null;
         var cursorTrace = new List<object>();
+        var failedProducerComparisons = new List<object>();
         var controls = new[] { SmallInput, MediumInput, LargeInput };
         var originals = controls.Select(control => (control.IsEnabled, control.IsError, Transform: control.ReadLocalValue(UIElement.RenderTransformProperty))).ToArray();
         try
@@ -112,6 +113,25 @@ public sealed partial class InputsFixture
         {
             error = exception.ToString();
             if (activeControl is not null) failedCursor = DescribeRoundedCursor(activeControl);
+            // Diagnostic controls run only after the strict displayed-cursor
+            // check has failed. Preserve that failure and its original sample.
+            try
+            {
+                foreach (var target in new FrameworkElement[] { (FrameworkElement)((StackPanel)Content).Children[0], ReadOnlyInput })
+                {
+                    await input.MoveAsync(target);
+                    failedProducerComparisons.Add(new { target.Name,
+                        nativeCursor = NativeInputSession.DescribeCursor(),
+                        selectedCursor = InputPointerSource.GetForIsland(ContentIsland.FindAllForCurrentThread()
+                            .Single(item => item.Environment.Equals(XamlRoot.ContentIslandEnvironment))).Cursor is InputSystemCursor producer
+                            ? producer.CursorShape.ToString() : null,
+                        failedPublisher = activeControl is null ? null : NativeCursorDiagnostics.Describe(activeControl) });
+                }
+            }
+            catch (Exception diagnosticError)
+            {
+                failedProducerComparisons.Add(new { diagnosticError = diagnosticError.ToString() });
+            }
             throw;
         }
         finally
@@ -125,7 +145,7 @@ public sealed partial class InputsFixture
             }
             UpdateLayout();
             await File.WriteAllTextAsync(Path.Combine(folder, $"input-rounded-pointer-{scheme}.json"),
-                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, cursorTrace, scale = XamlRoot.RasterizationScale, alignments, samples, windowCaptures },
+                JsonSerializer.Serialize(new { passed, scheme, error, failedCursor, cursorTrace, failedProducerComparisons, scale = XamlRoot.RasterizationScale, alignments, samples, windowCaptures },
                     new JsonSerializerOptions { WriteIndented = true }));
         }
 

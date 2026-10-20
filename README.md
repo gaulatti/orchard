@@ -242,3 +242,22 @@ The Accordion scalar mutation audit copies its frozen corpus once, restores each
 mutated receipt or image in `finally`, and still requires all 22 negative cases to
 fail. Each verifier child has a 60-second deadline and emits its case, status and
 elapsed time so a hung audit fails with evidence instead of consuming the job.
+
+The native input verifier requires real routed pointer receipts per XAML root.
+When a transferred window places a target at the cursor's existing screen
+position, it first moves one owned pixel away and waits for that real receipt,
+then returns and requires the target receipt. It never treats an unchanged
+`SendInput` position as proof of delivery to the new root. The two-window
+Loading Overlay lifecycle scenario exercises this boundary.
+
+A failed exact glyph-raster restoration now records separate foreground-only
+and backdrop-only calibration interventions. These run after the failure and
+retain it; they neither retry the acceptance check nor replace its baseline.
+They distinguish paint-induced raster changes from a product contrast-mode
+failure before a further repair is chosen.
+
+A rounded Input cursor mismatch retains its original native/SDK/publication
+snapshot, then records physical visits to the existing neutral heading and
+read-only Input. These diagnostic comparisons distinguish a global displayed
+cursor anomaly from disabled-input ownership; the original failed assertion
+and polling deadline remain unchanged.
