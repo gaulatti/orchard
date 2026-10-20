@@ -234,3 +234,11 @@ original property/binding source must be restored after each paint. The mask is
 fixed before changing Windows contrast mode; every selected pixel must still
 match the real system foreground exactly. Failed calibration or restoration
 fails the fixture, rather than establishing a contrast result.
+Calibration uses the catalog's shared layout/compositor commit barrier before
+baseline, opposite-paint, stability and restoration captures. Dashboard overflow
+captures also verify foreground ownership at the capture boundary.
+
+The Accordion scalar mutation audit copies its frozen corpus once, restores each
+mutated receipt or image in `finally`, and still requires all 22 negative cases to
+fail. Each verifier child has a 60-second deadline and emits its case, status and
+elapsed time so a hung audit fails with evidence instead of consuming the job.

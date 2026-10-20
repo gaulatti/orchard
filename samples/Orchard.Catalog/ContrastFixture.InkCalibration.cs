@@ -28,7 +28,7 @@ public sealed partial class ContrastFixture
         var backgroundBase = backdrop.GetAnimationBaseValue(Panel.BackgroundProperty);
         Require(ReferenceEquals(foregroundBase, originalForeground) && ReferenceEquals(backgroundBase, originalBackground),
             "An existing paint animation makes the calibration producer ambiguous.");
-        await PresentedAsync();
+        await MainWindow.AwaitPresentationAsync(text);
         var baseline = await ReadScreenInkAsync(input, text, folder, name + "-baseline");
         var baselineGeometry = GeometryWithoutPaint(baseline.Geometry);
         var black = Color.FromArgb(255, 0, 0, 0); var white = Color.FromArgb(255, 255, 255, 255);
@@ -55,12 +55,12 @@ public sealed partial class ContrastFixture
             Override(paint, backdrop, "Background", new SolidColorBrush(background));
             try
             {
-                paint.Begin(); await PresentedAsync();
+                paint.Begin(); await MainWindow.AwaitPresentationAsync(text);
                 Require(text.Foreground is SolidColorBrush ink && ink.Color == foreground && ink.Opacity == 1 &&
                     backdrop.Background is SolidColorBrush paper && paper.Color == background && paper.Opacity == 1,
                     "Calibration animation did not establish the requested opaque paints.");
                 var first = await ReadScreenInkAsync(input, text, folder, name + "-" + phase + "-first");
-                await PresentedAsync();
+                await MainWindow.AwaitPresentationAsync(text);
                 var second = await ReadScreenInkAsync(input, text, folder, name + "-" + phase + "-second");
                 Require(first.Width == baseline.Width && first.Height == baseline.Height &&
                     second.Width == baseline.Width && second.Height == baseline.Height &&
@@ -75,7 +75,7 @@ public sealed partial class ContrastFixture
             {
                 // Stop releases only animation precedence. Base expressions,
                 // including ThemeResource/TemplateBinding, were never replaced.
-                paint.Stop(); await PresentedAsync();
+                paint.Stop(); await MainWindow.AwaitPresentationAsync(text);
                 Require(ReferenceEquals(text.Foreground, originalForeground) && ReferenceEquals(backdrop.Background, originalBackground) &&
                     ReferenceEquals(text.ReadLocalValue(TextBlock.ForegroundProperty), foregroundLocal) &&
                     ReferenceEquals(backdrop.ReadLocalValue(Panel.BackgroundProperty), backgroundLocal) &&
@@ -96,13 +96,6 @@ public sealed partial class ContrastFixture
         var animation = new ObjectAnimationUsingKeyFrames { Duration = TimeSpan.FromSeconds(1), RepeatBehavior = RepeatBehavior.Forever };
         animation.KeyFrames.Add(new DiscreteObjectKeyFrame { KeyTime = TimeSpan.Zero, Value = value });
         Storyboard.SetTarget(animation, target); Storyboard.SetTargetProperty(animation, property); storyboard.Children.Add(animation);
-    }
-    private static async Task PresentedAsync()
-    {
-        var ready = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); var frames = 0;
-        void Frame(object? sender, object args) { if (++frames == 2) ready.TrySetResult(); }
-        CompositionTarget.Rendering += Frame;
-        try { await ready.Task.WaitAsync(TimeSpan.FromSeconds(2)); } finally { CompositionTarget.Rendering -= Frame; }
     }
     private static bool Exact(byte[] pixels, int index, Color color) => pixels[index * 4] == color.B &&
         pixels[index * 4 + 1] == color.G && pixels[index * 4 + 2] == color.R && pixels[index * 4 + 3] == 255;

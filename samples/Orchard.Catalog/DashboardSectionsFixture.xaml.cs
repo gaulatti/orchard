@@ -169,6 +169,8 @@ public sealed partial class DashboardSectionsFixture : UserControl
     private static async Task VerifyComposedOverflowAsync(NativeInputSession input,BleeckerDashboardSection control,Border action,string folder,string specimen)
     {
         var path=Path.Combine(folder,$"dashboard-section-overflow-{specimen}.png");
+        await input.RequireForegroundAsync();
+        await MainWindow.AwaitPresentationAsync(control);
         var client=await NativeScreenCapture.CaptureClientAsync(input.Window,path);
         var section=input.ScreenBounds(control);var bounds=input.ScreenBounds(action);
         Require(bounds.Right>section.Right,"Dashboard overflow fixture did not cross the section edge.");
