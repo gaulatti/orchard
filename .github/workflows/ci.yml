@@ -1,4 +1,4 @@
-name: Windows null-scheme diagnostic
+name: Windows null-scheme activation diagnostic
 on:
   workflow_dispatch:
 permissions:
@@ -8,8 +8,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2025]
-        mode: [metadata-null]
+        os: [windows-2025, windows-11-arm]
+        mode: [activation-null-original-restore]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     env:

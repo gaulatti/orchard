@@ -362,3 +362,15 @@ x64 metadata precondition failure. The follow-up dispatch is restricted to that
 unexecuted x64 metadata case. It waits at most five seconds for the ordinary
 restoration palette before making the single experimental call; its initial
 ordinary-restoration observation and all original failure evidence are retained.
+
+A subsequent, distinct activation experiment supplies a real null scheme pointer
+when enabling contrast, then restores the original captured empty string through
+the ordinary API. It tests whether the scheme change can be avoided before the
+failed restoration boundary. It must still observe actual enabled contrast and
+changed native colors, and must restore the exact flags/string, palette and typed
+registry state in both processes. Its two architecture jobs do not repeat any
+of the four previously executed restore-pointer alternatives. The official
+[HIGHCONTRASTW contract](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-highcontrastw)
+does not establish that null activation will preserve the scheme; only the
+recorded native result can resolve this hypothesis. Product acceptance remains
+separate and the original PR validation is unchanged.

@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('direct-null','metadata-null')]
+    [ValidateSet('direct-null','metadata-null','activation-null-original-restore')]
     [string]$RestoreMode = 'direct-null',
     [switch]$ReadOnly,
     [string]$Output = 'artifacts/native-null-scheme-probe/result.json'
@@ -94,7 +94,14 @@ $changed = $false
 try {
     $report.originalFreshProcess=Read-FreshProcess
     $changed = $true
-    [NativeContrastProbe]::Enable($original)
+    if ($RestoreMode -eq 'activation-null-original-restore') {
+        # Distinct experiment: avoid supplying an empty scheme pointer during
+        # activation. The later restore still requests the captured exact
+        # original string. No expected-state normalization is permitted.
+        [NativeContrastProbe]::WriteNullScheme(($original.Flags -bor 1u))
+    } else {
+        [NativeContrastProbe]::Enable($original)
+    }
     $clock = [Diagnostics.Stopwatch]::StartNew()
     do {
         $active = [NativeContrastProbe]::Read()
@@ -108,7 +115,9 @@ try {
     # Experimental request representation only. Keep the actual original empty
     # string as the immutable expected state; null is never a passing alias.
     $report.experimentalNullPointer=$true
-    if ($RestoreMode -eq 'metadata-null') {
+    if ($RestoreMode -eq 'activation-null-original-restore') {
+        [NativeContrastProbe]::Write($original,2u)
+    } elseif ($RestoreMode -eq 'metadata-null') {
         [NativeContrastProbe]::Write($original,2u)
         $report.ordinaryEmptyStringImmediate=[NativeContrastProbe]::Read()
         $clock.Restart()
