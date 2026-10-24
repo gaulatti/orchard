@@ -384,3 +384,15 @@ native-state check, original baseline or normal component path is replaced.
 See [Microsoft's property-path targeting example](https://learn.microsoft.com/en-us/windows/apps/develop/motion/storyboarded-animations).
 Accessible documentation describes1.8/2.0 APIs; exact2.5 views were unavailable,
 so actual pinned compilation/native behavior remains necessary evidence.
+
+The00a6895 property-path probe also failed on both architectures: it produced
+foreground#FE000000 for requested#FF000000, replaced brush identity and did not
+restore the original foreground/shared property sources after Stop. The original
+brush still reported#FFB8C5D6 and the clock was Active. Exact original raster
+restoration passed in these two cases, which does not waive the source failures.
+Tagged ColorAnimation interpolation splits/truncates channel products; the
+observed alpha254 is consistent with its opaque constant From/To calculation,
+but this is not native-binary path equivalence proof. The second bounded repair
+uses a discrete Color keyframe at time zero, directly on the original brush, to
+avoid interpolation and the failed indirect cloning route. All existing guards
+and negative evidence remain; only the two foreground cases are dispatched.

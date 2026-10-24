@@ -73,11 +73,12 @@ public sealed partial class ContrastFixture
                 var paint = new Storyboard();
                 if (mode == "foreground-color")
                 {
-                    var animation = new ColorAnimation { From = endpoint, To = endpoint,
+                    var animation = new ColorAnimationUsingKeyFrames {
                         Duration = TimeSpan.FromSeconds(1), RepeatBehavior = RepeatBehavior.Forever,
                         EnableDependentAnimation = true };
-                    Storyboard.SetTarget(animation, text);
-                    Storyboard.SetTargetProperty(animation, "(TextBlock.Foreground).(SolidColorBrush.Color)");
+                    animation.KeyFrames.Add(new DiscreteColorKeyFrame { KeyTime = TimeSpan.Zero, Value = endpoint });
+                    Storyboard.SetTarget(animation, brush);
+                    Storyboard.SetTargetProperty(animation, "Color");
                     paint.Children.Add(animation);
                 }
                 else Override(paint, backdrop, "Background", new SolidColorBrush(endpoint));
@@ -163,7 +164,7 @@ public sealed partial class ContrastFixture
             {
                 diagnosticOnly = true, componentAcceptance = false, mode, passed, failure,
                 originalBaselineRetained = true, untouched, phases, paintStates, nativeBefore = native,
-                colorTarget = "mounted-TextBlock-foreground-Color-property-path",
+                colorTarget = "original-brush-direct-discrete-Color-keyframe",
                 originalSolidPixels = originalSolidPixels.Length,
                 nativeAfter = NativeContrastSession.Read(), baseline.Width, baseline.Height, baseline.Geometry,
                 nativePaletteBefore = nativePalette, nativePaletteAfter = Palette(),
