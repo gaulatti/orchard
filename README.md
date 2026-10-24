@@ -340,3 +340,33 @@ requires matching original/current registry types and exact native flags before
 writing that one captured value, then retains all same-process, fresh-process,
 registry and palette comparisons. It is an isolated diagnostic, not an accepted
 component repair.
+
+
+## Temporary glyph-source diagnostics
+
+The `probe/preserve-ink-brush-20261024` branch provides a dispatch-only native
+experiment, separate from PR1 and its unchanged required Windows validation.
+Four fresh hosted jobs compare foreground Color animation with backdrop-only
+object animation on x64/ARM64. Each preserves its first untouched description
+raster, both untouched observations, original source/binding identities, Color
+local/base/effective values, geometry, exact pixel equality and native Windows
+state. Original `ReadCalibratedInkAsync` and component contrast checks are not
+changed; these probes never return an accepted InkSample or toggle contrast.
+
+Foreground Color animation can affect shared brush consumers. The experiment
+records matching mounted visual properties and checks their original sources
+after Stop; it does not claim all possible resource consumers are enumerated.
+Dependent animation fallback is allowed and the compositor path is unproved.
+An originally null backdrop remains a separate object-replacement factor. A
+combined calibration is not tested until both isolated factors are understood.
+Each phase must visibly change the composed raster, establish new exact opaque
+endpoint pixels, and preserve the first raster's nonempty solid-glyph samples at
+the expected paint. A stale or non-observable renderer cannot pass by returning
+unchanged pixels. No accepted ink mask is derived from these observations.
+
+Both a successful and failed diagnostic retain bounded JSON and cropped PNG
+evidence in job logs. No artifacts are uploaded and no component acceptance,
+PR qualification or exact empty-scheme repair is implied. The original native
+restoration failure and every historical raster failure remain outstanding.
+The public wiki remote was unavailable at startup; this in-repository record
+documents only the diagnostic branch.

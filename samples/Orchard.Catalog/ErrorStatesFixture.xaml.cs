@@ -177,6 +177,13 @@ public sealed partial class ErrorStatesFixture : UserControl
     }
     private async Task AwaitAsync(Func<bool> condition,string message)
     { var timer=Stopwatch.StartNew(); var readiness = new NativeReadiness(DispatcherQueue); while(!condition()&&timer.ElapsedMilliseconds<2000){UpdateLayout();if (condition()) break; await readiness.WaitAsync();}Require(condition(),message); }
+    internal async Task ProbeInkSourceAsync(string folder, string mode)
+    {
+        using var input = new NativeInputSession(XamlRoot, folder, "error-state-ink-source-probe");
+        await input.AcquireAsync(Heading); Default.ApplyTemplate(); await input.MoveAsync(Default);
+        await ContrastFixture.ProbeInkSourceAsync(input, Part<TextBlock>(Default, "PART_Description"),
+            Part<StackPanel>(Default, "PART_Text"), folder, mode);
+    }
     internal async Task VerifyContrastAsync(string folder)
     {
         using var contrast = new NativeContrastSession(folder);
