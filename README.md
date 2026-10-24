@@ -340,3 +340,19 @@ requires matching original/current registry types and exact native flags before
 writing that one captured value, then retains all same-process, fresh-process,
 registry and palette comparisons. It is an isolated diagnostic, not an accepted
 component repair.
+
+## Temporary null-scheme native diagnostic
+
+The probe/null-scheme-restore-20261024 branch is a diagnostic-only branch. Its
+manual Windows workflow tests a null HIGHCONTRASTW scheme pointer either during
+mode restoration or in a metadata-only call after ordinary restoration. It
+requires a fresh isolated GitHub-hosted runner with an originally empty scheme;
+all original flags, exact string value, native palette and typed registry values
+must compare exactly in both the caller and a fresh process. Null is an
+experimental setter representation, never a normalized expected value.
+
+The script preserves the original failed result and safety-cleanup observations.
+Its JSON is printed to job logs. No component or product acceptance follows,
+even if this native-only experiment passes. This branch's workflow runs only by
+manual dispatch; it is not a replacement for PR1's unchanged full validation.
+The normal repository wiki is unavailable, as recorded by the startup updater.
