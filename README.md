@@ -356,3 +356,9 @@ Its JSON is printed to job logs. No component or product acceptance follows,
 even if this native-only experiment passes. This branch's workflow runs only by
 manual dispatch; it is not a replacement for PR1's unchanged full validation.
 The normal repository wiki is unavailable, as recorded by the startup updater.
+
+The first four-case run retained three executed null-pointer failures and one
+x64 metadata precondition failure. The follow-up dispatch is restricted to that
+unexecuted x64 metadata case. It waits at most five seconds for the ordinary
+restoration palette before making the single experimental call; its initial
+ordinary-restoration observation and all original failure evidence are retained.

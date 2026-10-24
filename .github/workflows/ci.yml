@@ -8,8 +8,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2025, windows-11-arm]
-        mode: [direct-null, metadata-null]
+        os: [windows-2025]
+        mode: [metadata-null]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     env:

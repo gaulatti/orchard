@@ -110,9 +110,18 @@ try {
     $report.experimentalNullPointer=$true
     if ($RestoreMode -eq 'metadata-null') {
         [NativeContrastProbe]::Write($original,2u)
-        $ordinary=[NativeContrastProbe]::Read()
+        $report.ordinaryEmptyStringImmediate=[NativeContrastProbe]::Read()
+        $clock.Restart()
+        do {
+            $ordinary=[NativeContrastProbe]::Read()
+            $ordinaryPalette=[NativeContrastProbe]::Palette()
+            $ready=-not $ordinary.Enabled -and $ordinary.Flags -eq $original.Flags -and (Same-Palette $originalPalette $ordinaryPalette)
+            if ($ready) { break }
+            Start-Sleep -Milliseconds 50
+        } while ($clock.ElapsedMilliseconds -lt 5000)
         $report.ordinaryEmptyStringRestore=$ordinary
-        if ($ordinary.Enabled -or $ordinary.Flags -ne $original.Flags -or -not (Same-Palette $originalPalette ([NativeContrastProbe]::Palette()))) {
+        $report.ordinaryEmptyStringPalette=$ordinaryPalette
+        if (-not $ready) {
             throw 'Metadata-null probe requires the ordinary mode/palette restoration to finish first.'
         }
         [NativeContrastProbe]::WriteNullScheme(($original.Flags -bor 0x1000u))
