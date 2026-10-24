@@ -10,9 +10,7 @@ jobs:
       matrix:
         include:
           - {os: windows-2025, platform: x64, expected: X64, mode: foreground-color}
-          - {os: windows-2025, platform: x64, expected: X64, mode: backdrop-object}
           - {os: windows-11-arm, platform: ARM64, expected: Arm64, mode: foreground-color}
-          - {os: windows-11-arm, platform: ARM64, expected: Arm64, mode: backdrop-object}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     env:

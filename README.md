@@ -370,3 +370,17 @@ PR qualification or exact empty-scheme repair is implied. The original native
 restoration failure and every historical raster failure remain outstanding.
 The public wiki remote was unavailable at startup; this in-repository record
 documents only the diagnostic branch.
+
+The first91afc112 run passed backdrop-only restoration on both architectures.
+Foreground Color setup failed on both; ARM64 also failed exact original raster
+restoration, while x64 restored exactly. System animations were disabled on x64
+but enabled on ARM64. Those negatives remain; zero initialized paint counts do
+not prove absence of compositor paint because setup stopped before its capture.
+A follow-up targets Color through the mounted TextBlock's foreground property
+path and records effective paint/identity/clock plus a painted crop before the
+unchanged setup assertion. Only the two foreground cases run again with this
+different target and added evidence. No backdrop pass, source/raster assertion,
+native-state check, original baseline or normal component path is replaced.
+See [Microsoft's property-path targeting example](https://learn.microsoft.com/en-us/windows/apps/develop/motion/storyboarded-animations).
+Accessible documentation describes1.8/2.0 APIs; exact2.5 views were unavailable,
+so actual pinned compilation/native behavior remains necessary evidence.

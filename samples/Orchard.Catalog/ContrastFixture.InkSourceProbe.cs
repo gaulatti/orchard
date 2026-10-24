@@ -45,6 +45,7 @@ public sealed partial class ContrastFixture
             "An existing property animation makes source attribution ambiguous.");
         var consumers = ProbeBrushConsumers(text.XamlRoot.Content, brush);
         var phases = new List<object>();
+        var paintStates = new List<object>();
         var untouched = new List<object>();
         var passed = false;
         string? failure = null;
@@ -75,8 +76,8 @@ public sealed partial class ContrastFixture
                     var animation = new ColorAnimation { From = endpoint, To = endpoint,
                         Duration = TimeSpan.FromSeconds(1), RepeatBehavior = RepeatBehavior.Forever,
                         EnableDependentAnimation = true };
-                    Storyboard.SetTarget(animation, brush);
-                    Storyboard.SetTargetProperty(animation, "Color");
+                    Storyboard.SetTarget(animation, text);
+                    Storyboard.SetTargetProperty(animation, "(TextBlock.Foreground).(SolidColorBrush.Color)");
                     paint.Children.Add(animation);
                 }
                 else Override(paint, backdrop, "Background", new SolidColorBrush(endpoint));
@@ -89,14 +90,19 @@ public sealed partial class ContrastFixture
                 {
                     paint.Begin();
                     await MainWindow.AwaitPresentationAsync(text);
+                    var first = await ReadScreenInkAsync(input, text, folder, "ink-source-" + name + "-first");
+                    await SaveInkRasterAsync(first.Width, first.Height, first.Pixels,
+                        System.IO.Path.Combine(folder, "ink-probe-" + name + "-painted.png"));
+                    paintStates.Add(new { endpoint = name, requested = ColorHex(endpoint),
+                        foreground = Hex(text.Foreground), originalBrushColor = ColorHex(brush.Color),
+                        foregroundIdentity = ReferenceEquals(text.Foreground, brush),
+                        backdropIdentity = ReferenceEquals(backdrop.Background, background),
+                        backdrop = Hex(backdrop.Background), clock = paint.GetCurrentState().ToString() });
                     Require(ReferenceEquals(text.Foreground, brush), "Foreground brush identity changed.");
                     Require(mode == "foreground-color"
                         ? brush.Color == endpoint && ReferenceEquals(backdrop.Background, background)
                         : brush.Color == color && backdrop.Background is SolidColorBrush paper && paper.Color == endpoint && paper.Opacity == 1,
                         "Probe did not establish its isolated opaque paint intervention.");
-                    var first = await ReadScreenInkAsync(input, text, folder, "ink-source-" + name + "-first");
-                    await SaveInkRasterAsync(first.Width, first.Height, first.Pixels,
-                        System.IO.Path.Combine(folder, "ink-probe-" + name + "-painted.png"));
                     await MainWindow.AwaitPresentationAsync(text);
                     var second = await ReadScreenInkAsync(input, text, folder, "ink-source-" + name + "-second");
                     Require(GeometryWithoutPaint(first.Geometry) == geometry && GeometryWithoutPaint(second.Geometry) == geometry &&
@@ -156,7 +162,8 @@ public sealed partial class ContrastFixture
             await File.WriteAllTextAsync(System.IO.Path.Combine(folder, "ink-source-probe.json"), JsonSerializer.Serialize(new
             {
                 diagnosticOnly = true, componentAcceptance = false, mode, passed, failure,
-                originalBaselineRetained = true, untouched, phases, nativeBefore = native,
+                originalBaselineRetained = true, untouched, phases, paintStates, nativeBefore = native,
+                colorTarget = "mounted-TextBlock-foreground-Color-property-path",
                 originalSolidPixels = originalSolidPixels.Length,
                 nativeAfter = NativeContrastSession.Read(), baseline.Width, baseline.Height, baseline.Geometry,
                 nativePaletteBefore = nativePalette, nativePaletteAfter = Palette(),
