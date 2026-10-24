@@ -401,3 +401,6 @@ end-to-end contract.
   [the current library scope](docs/library-scope.md).
 - The user resumed the component-library goal on 2026-10-18. The pointer
   heartbeat stays paused; continuing library work does not restart it.
+- The user requires fully unattended work and recommended choices. Resolve
+  optional component decisions with the recommended choice and continue;
+  preserve existing scope, desktop and external-action restrictions.
