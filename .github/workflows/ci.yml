@@ -1,10 +1,10 @@
-name: Windows highlight ink diagnostic
+name: Windows glyph runtime inventory
 on:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  highlight-ink:
+  glyph-runtime:
     strategy:
       fail-fast: false
       matrix:
@@ -28,21 +28,21 @@ jobs:
       - name: Publish the exact diagnostic catalog
         shell: pwsh
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=${{ matrix.platform }} -o artifacts/catalog
-      - name: Probe both actual error labels with the first original rasters retained
+      - name: Inspect the pinned rendering runtime and native debugger tools
         shell: pwsh
-        run: ./scripts/Probe-HighlightInkSources.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/highlight-ink-probe
+        run: ./scripts/Inspect-GlyphRuntime.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/glyph-runtime
       - name: Retain bounded diagnostic JSON and cropped PNGs in logs
         if: always()
         shell: pwsh
         run: |
-          if (Test-Path artifacts/highlight-ink-probe) {
-            $root = (Resolve-Path artifacts/highlight-ink-probe).Path
-            Get-ChildItem $root -Recurse -File | Where-Object { $_.Extension -in @('.json','.jsonl') -or $_.Name -like 'highlight-ink-*.png' } | Sort-Object FullName | ForEach-Object {
+          if (Test-Path artifacts/glyph-runtime) {
+            $root = (Resolve-Path artifacts/glyph-runtime).Path
+            Get-ChildItem $root -Recurse -File | Where-Object { $_.Extension -eq '.json' } | Sort-Object FullName | ForEach-Object {
               if ($_.Length -gt 524288) { throw 'Diagnostic file exceeds the bounded log evidence limit.' }
               $bytes = [IO.File]::ReadAllBytes($_.FullName)
               $sha = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
               $name = [IO.Path]::GetRelativePath($root,$_.FullName).Replace('\','/')
               $entry = [ordered]@{ name=$name; bytes=$bytes.Length; sha256=$sha; base64=[Convert]::ToBase64String($bytes) }
-              Write-Host ('HIGHLIGHTPROBE_FILE ' + ($entry | ConvertTo-Json -Compress))
+              Write-Host ('GLYPHRUNTIME_FILE ' + ($entry | ConvertTo-Json -Compress))
             }
           }
