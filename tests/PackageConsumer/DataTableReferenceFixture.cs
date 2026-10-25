@@ -33,6 +33,19 @@ internal static partial class DataTableReferenceFixture
     private static void Toggle(BleeckerCheckbox checkbox)=>((IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(checkbox).GetPattern(PatternInterface.Toggle)).Toggle();
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
+        try { await RunCoreAsync(window,output,hostAssembly); }
+        catch(Exception error)
+        {
+            Console.Error.WriteLine(error);
+            try
+            {
+                await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-data-table-reference-native-v1",passed=false,error=error.ToString()}));
+            }
+            finally { Environment.Exit(1); }
+        }
+    }
+    private static async Task RunCoreAsync(Window window,string output,string hostAssembly)
+    {
         using var reference=JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!,"source-reference.json")));
         var root=(Grid)XamlReader.Load("<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Width='900' Height='1000' Background='{ThemeResource BleeckerBackgroundBrush}'/>");
         root.Clip=new RectangleGeometry{Rect=new Rect(0,0,900,1000)};
@@ -79,6 +92,6 @@ internal static partial class DataTableReferenceFixture
             }
             await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-data-table-reference-native-v1",passed=true,settledMotionEndpoints=!Environment.GetCommandLineArgs().Contains("--capture-early"),controlDurationMilliseconds=BleeckerTokens.Durations["control"],compositionShadowRasterVerified=false,shadowLifecycleContracts,shadowUnloadedContexts,captureViewportClipped=true,cases,histories,pngs,guards,focus,activations,activateCalled=false,showWindowCalled=false,focusCalled=false,hardwareInputSent=false,physicalInputVerified=false,completeSourceGeometryVerified=false,sourceRasterParityVerified=false,nativeComponentAccepted=false,publicApisOnly=true,librarySha256=Hash(typeof(BleeckerDataTable).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-data-table-reference-native-v1",passed=false,stage,error=error.ToString(),cases,histories,guards,focus,activations},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(1);}
+        catch(Exception error){throw new InvalidOperationException("Data Table reference failed at "+stage,error);}
     }
 }

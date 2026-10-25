@@ -1,16 +1,35 @@
 # Data Table
 
-The current `0.1.0-menu-toast-modal-v1-local` NuGet library has a fresh full
-performance baseline under `artifacts/current/data-table-current-dae-budget-v1`.
+The published `0.1.0-menubar-peer-metadata-v1-local` NuGet library has a fresh full
+performance baseline under `artifacts/current/data-table-container-reuse-full-baseline-v1`
+through `v3`, summarized by `data-table-container-reuse-full-baseline-budget-v1.json`.
 Three independent sequential x64 processes pass all 120 functional profiles
 apiece (360 measurements), with matching semantic snapshots and unload contracts.
-The unchanged three-process-median budgets still fail 24 timing profiles; all
+The unchanged three-process-median budgets fail 25 timing profiles; all
 allocation budgets pass. At 16,384 rows and page size 100, next-page processing
-takes 1,715.0988 ms median (1,698.1093–1,759.9290), above the 1,000 ms limit.
+takes 1,622.3328 ms median (1,522.4139–1,753.6471), above the 1,000 ms limit.
 This is current evidence for library SHA-256
-`dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d`;
+`c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483`;
 older results below retain their original binary scope. The different failure
 count does not establish a controlled latency improvement.
+
+An unadopted row-container reuse experiment, library SHA-256
+`1db5bbb3129801f5a2cd356f6887750056a31cc33bc4e2359be97556775fc819`,
+matches the baseline's 120 semantic/lifecycle snapshots. Its three-process
+median for that paging case is 1,361.4763 ms, with 31.79% less managed allocation.
+Twelve timing profiles still fail, including a newly failing 2,048-row,
+10-row-page next-page case (376.0366 ms against 200 ms). These results do not
+establish performance acceptance or authorize replacing the published package.
+The raw comparison, budget failures and image differences remain in
+`artifacts/current/data-table-container-reuse-full-results-v1.json`.
+
+The current source's hidden reference fixture writes a small failure report
+and exits with code 1 when capture, input or report generation fails. If the
+failure report itself cannot be written, it still exits with code 1 and writes
+the original error to stderr. The older October 25 catalog ZIP does not include
+this test-host repair. Verify both failure paths with
+`scripts/test-data-table-reference-failure.ps1 -AppDirectory <current-catalog> -Output <fresh-directory>`.
+An incomplete report or a still-running process cannot count as a passing run.
 
 A separate focused diagnostic trace is retained under
 `artifacts/current/data-table-current-dae-profile-v1`. It again identifies shared
