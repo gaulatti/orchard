@@ -48,13 +48,46 @@ selectors, input values and native events remain with the consumer. Unknown enum
 values fail explicitly. Standard native background, border, alignment and
 template properties remain available.
 
+Caller font properties retain native inheritance. A `FontSize` binding on the
+frame reaches an original child TextBlock without replacing that child. Larger
+fonts remeasure wrapped content and grow the frame vertically; they do not scale
+the DIP-based gutter/width recipes. A local font value on the child takes
+precedence, and clearing it restores inheritance. Explicit oversized child
+dimensions remain caller-owned while the frame retains its width cap. Native
+horizontal alignment positions a narrower frame within its parent.
+
+The shared `PageFrameOverridesFixture` checks these boundaries at 16, 24 and
+32 DIP fonts, two host widths, both themes and both flow directions. It also
+checks an 11 DIP child override, restoration to a live 40 DIP parent font,
+1,200 DIP caller content, left/center/right frame alignment and passive metadata.
+The fixture's 80 checks run through
+`--probe-hidden-page-frame-overrides --verify-output <report.json>` in either
+the catalog or independent package consumer built from this source checkout.
+This test entry point is newer than the October 25 preview catalog ZIP; do not
+pass it to that older executable. The current fixture never shows or focuses its
+window. Audit the report with `scripts/verify-page-frame-overrides.mjs`, passing
+`--report`, `--app` and `--output`; add `--host-assembly PackageConsumer.dll` for
+the independent consumer. `scripts/test-page-frame-overrides-audit.mjs` verifies
+that incorrect fonts, clipping, replacement, sizing, alignment, missing cases,
+foreground input and stale binaries are rejected.
+
+These are component font overrides, not Windows text/display scaling. System
+scaling, physical input and native ARM64 runtime remain separate requirements.
+The added checks pass in the x64 catalog and an independent x64 consumer of the
+published `0.1.0-menubar-peer-metadata-v1-local` package: 80 checks per host and
+nine incorrect reports rejected per host. The consumer also builds for ARM64;
+that is compile evidence only. The runs retain the published library's
+`c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483`
+SHA-256 and report zero focus or activation events. No production component or
+theme code changes are needed for these passing boundaries.
+
 The Page frames catalog entry uses fictional local input and an independent
 consumer action. The source reference retains 792 layout states and 40 original
 PNGs from the pinned source, covering every width/gutter/vertical-spacing
 combination around both viewport breakpoints, empty content, fractional and
 narrow hosts, semantic elements and explicit padding/size overrides.
 
-The current x64 runtime matches all 792 measured layouts with zero geometry
+Earlier x64 runtime evidence matches all 792 measured layouts with zero geometry
 error and all 40 complete source screenshots with zero differing pixels. Twenty
 corrupted reports/images are rejected. Both themes exercise real child editing,
 pointer/Space actions, live viewport changes of an existing narrow frame,
@@ -64,13 +97,16 @@ parts to represent the browser's fractional box and opaque background; PageFrame
 leaves its caller's rendering intact. Raw exact-comparison failures are retained
 for diagnosis without accepting them.
 
-Both catalog architectures build without warnings/errors. The local package
-passes a fresh independent x64 consumer in both themes and an ARM64 consumer
+For that earlier preview, both catalog architectures built without warnings/errors. Its local package
+passed a fresh independent x64 consumer in both themes and an ARM64 consumer
 build, with both temporary source/package caches removed. The new dictionary
 also passes the existing Field runtime and all 44 measured Field states.
 
-Broader platform acceptance remains open. Broader caller override
-boundaries, actual display/text scaling and native ARM64 execution must be
+The full 792-layout and 40-image suite was not rerun for the focused font/size
+checks above. Its earlier results retain their original scope.
+
+Broader platform acceptance remains open. Remaining style/template/metadata
+override combinations, actual display/text scaling and native ARM64 execution must be
 supported by current evidence before this component can be accepted. See
 [runtime evidence](runtime-evidence.md) and the governing
 [component-library scope](library-scope.md).

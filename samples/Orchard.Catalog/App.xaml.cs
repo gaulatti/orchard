@@ -37,6 +37,13 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        if (Environment.GetCommandLineArgs().Contains("--probe-hidden-page-frame-overrides"))
+        {
+            var arguments = Environment.GetCommandLineArgs(); var output = Array.IndexOf(arguments, "--verify-output");
+            if (output < 0 || output + 1 >= arguments.Length) { Environment.Exit(2); return; }
+            _window = new Window();
+            _ = Orchard.Testing.PageFrameOverridesFixture.RunAsync(_window, Path.GetFullPath(arguments[output + 1]), typeof(App).Assembly.Location); return;
+        }
         var resourceArguments = Environment.GetCommandLineArgs();
         if (resourceArguments.Contains("--verify-catalog-reference-resources"))
         {

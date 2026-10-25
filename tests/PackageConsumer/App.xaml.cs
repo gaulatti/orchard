@@ -31,6 +31,13 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        if (Environment.GetCommandLineArgs().Contains("--probe-hidden-page-frame-overrides"))
+        {
+            var overrideArguments = Environment.GetCommandLineArgs(); var overrideOutput = Array.IndexOf(overrideArguments, "--verify-output");
+            if (overrideOutput < 0 || overrideOutput + 1 >= overrideArguments.Length) { Environment.Exit(2); return; }
+            window = new Window();
+            _ = Orchard.Testing.PageFrameOverridesFixture.RunAsync(window, Path.GetFullPath(overrideArguments[overrideOutput + 1]), typeof(App).Assembly.Location); return;
+        }
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-render-owner-lifetime")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();RunRenderOwnerLifetimeAsync(window,Path.GetFullPath(a[o+1]));return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-chart-theme-consumers")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.ChartThemeConsumersFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-button-lifecycle")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();RunButtonLifecycleAsync(window,Path.GetFullPath(a[o+1]));return;}

@@ -26,6 +26,7 @@
         <Content Include="Assets/MediaLibrary/*.svg" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Compile Include="../../tests/PackageConsumer/BrandMarkFixture.cs" Link="BrandMarkFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/MenubarFixture.cs" Link="MenubarFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/PageFrameOverridesFixture.cs" Link="PageFrameOverridesFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/NavigationMenuFixture.cs" Link="NavigationMenuFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/HeroCarouselFixture.cs" Link="HeroCarouselFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/FileInputFixture.cs" Link="FileInputFixture.cs" />

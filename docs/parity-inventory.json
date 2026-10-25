@@ -7779,14 +7779,42 @@
         "samples/Orchard.Catalog/MainWindow.PageFrames.cs",
         "scripts/verify-page-frame.mjs",
         "scripts/test-page-frame-audit.mjs",
-        "tests/PackageConsumer/MainWindow.PageFrame.cs"
+        "tests/PackageConsumer/MainWindow.PageFrame.cs",
+        "tests/PackageConsumer/PageFrameOverridesFixture.cs",
+        "scripts/verify-page-frame-overrides.mjs",
+        "scripts/test-page-frame-overrides-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Broader oversized-content/alignment, styling and metadata override boundaries",
-        "Broader native consumer overrides and actual display/text scaling",
-        "Native ARM64 runtime and final integration acceptance"
-      ]
+        "Remaining custom style/template and metadata override combinations beyond the font/size/alignment checks",
+        "Actual Windows display/text scaling; component FontSize overrides are verified separately",
+        "Native ARM64 runtime and final visual/integration acceptance"
+      ],
+      "fontAndLayoutOverridesVerification": {
+        "source": {
+          "report": "artifacts/current/page-frame-overrides-catalog-native-v1/page-frame-overrides.json",
+          "audit": "artifacts/current/page-frame-overrides-catalog-native-v1/audit.json"
+        },
+        "independentConsumer": {
+          "report": "artifacts/current/page-frame-overrides-package-native-v1/page-frame-overrides.json",
+          "audit": "artifacts/current/page-frame-overrides-package-native-v1/audit.json"
+        },
+        "librarySha256": "c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483",
+        "packageVersion": "0.1.0-menubar-peer-metadata-v1-local",
+        "checksPerHost": 80,
+        "negativeCasesRejectedPerHost": 9,
+        "consumerBuilds": [
+          "x64",
+          "ARM64"
+        ],
+        "componentFontOverridesVerified": true,
+        "oversizedContentVerified": true,
+        "horizontalAlignmentVerified": true,
+        "systemTextScalingVerified": false,
+        "displayScalingVerified": false,
+        "nativeARM64RuntimeVerified": false,
+        "fullComponentAccepted": false
+      }
     },
     {
       "id": "panel-layout",
