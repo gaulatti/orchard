@@ -47,5 +47,18 @@ The loaded XAML image SHA and CodeView identity must match the captured inventor
 before querying. That binding does not claim source-tag or original failing-run
 binary equivalence.
 
+The initial symbol probe at 9c3855f completed on both architectures. The actual
+logs report private symbols and type layouts, but two rendering signatures differ
+from the previously retained source tag. That tag cannot supply register/stack
+capture positions. The DLL resource's embedded commit was not found through the
+public source repository's commit API; it is not an established source binding.
+
+The next metadata probe enumerates the loaded PDB's glyph, realization, render
+parameter and matrix types, then disassembles only the first 0x40 instructions of
+five named rendering functions. It still supplies no object address to a type
+query, reads no arbitrary process data and runs no glyph case. Missing type/code
+output remains a limitation even if the query transport completes. This evidence
+must be inspected before constructing any targeted native data trace.
+
 The public repository wiki was unavailable at startup; this document records the
 diagnostic's scope and limits in the repository.

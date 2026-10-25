@@ -1,4 +1,4 @@
-name: Windows glyph symbol diagnostic
+name: Windows glyph binary metadata diagnostic
 on:
   workflow_dispatch:
 permissions:
@@ -28,10 +28,10 @@ jobs:
       - name: Publish the exact diagnostic catalog
         shell: pwsh
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=${{ matrix.platform }} -o artifacts/catalog
-      - name: Query pinned native symbols without running a glyph case
+      - name: Query pinned native types and bounded code without running a glyph case
         shell: pwsh
         run: ./scripts/Probe-GlyphSymbols.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/glyph-symbols
-      - name: Retain bounded diagnostic JSON and cropped PNGs in logs
+      - name: Retain complete bounded native metadata logs
         if: always()
         shell: pwsh
         run: |

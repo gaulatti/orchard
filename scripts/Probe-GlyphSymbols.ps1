@@ -29,12 +29,40 @@ function New-ScopedProcessInfo([string]$File,[string]$Directory) {
     return $info
 }
 
-$commands = '.echo GLYPH_SYMBOL_QUERY_BEGIN; .reload /f Microsoft.UI.Xaml.dll; lmvm Microsoft_UI_Xaml; x Microsoft_UI_Xaml!*DWriteTextRenderer*; x Microsoft_UI_Xaml!*D2DTextDrawingContext*; dt Microsoft_UI_Xaml!D2DTextDrawingContext; dt Microsoft_UI_Xaml!CTextBlock; .echo GLYPH_SYMBOL_QUERY_END; qd'
+# Metadata and code-entry queries only: no addresses are supplied to dt, and
+# each disassembly is bounded to 0x40 instructions from a named image function.
+# Loaded PDB signatures differ from the previously retained source tag. Capture
+# the actual type layouts and entry code before assigning register/stack fields.
+$queryCommands = @(
+    '.echo GLYPH_SYMBOL_QUERY_BEGIN'
+    '.reload /f Microsoft.UI.Xaml.dll'
+    'lmvm Microsoft_UI_Xaml'
+    'x Microsoft_UI_Xaml!*DWriteTextRenderer*'
+    'x Microsoft_UI_Xaml!*D2DTextDrawingContext*'
+)
+foreach ($type in @('DWriteTextRenderer','DWRITE_GLYPH_RUN','DWRITE_GLYPH_RUN_DESCRIPTION',
+    'DWRITE_GLYPH_OFFSET','PALText::GlyphRun','PALText::GlyphOffset','DWriteFontFace','D2DTextDrawingContext',
+    'D2DTextDrawingContext::GlyphRunData','D2DTextDrawingContext::GlyphRunRealization',
+    'DynamicArray<D2DTextDrawingContext::GlyphRunData>',
+    'HWTextRealization','HWRenderParams','CMILMatrix','CLayoutStorage','CTextBlock')) {
+    $queryCommands += ".echo TYPE_METADATA $type"
+    $queryCommands += "dt -v Microsoft_UI_Xaml!$type"
+}
+foreach ($function in @('DWriteTextRenderer::DrawGlyphRun',
+    'D2DTextDrawingContext::GetGlyphRunTransformAndBounds',
+    'D2DTextDrawingContext::RasterizeGlyphRunToD2DOrRawBuffer',
+    'D2DTextDrawingContext::HWBuildGlyphRunSingleTexture','D2DTextDrawingContext::HWRender')) {
+    $queryCommands += ".echo IMAGE_ENTRY_CODE $function"
+    $queryCommands += "u Microsoft_UI_Xaml!$function L40"
+}
+$queryCommands += @('.echo GLYPH_SYMBOL_QUERY_END','qd')
+$commands = $queryCommands -join '; '
 $nativeLog = Join-Path $work 'native-symbols.log'
 $report = [ordered]@{
     diagnosticOnly=$true; componentAcceptance=$false; glyphCaseExecuted=$false; probeComplete=$false
+    probeKind='binary-type-and-entry-metadata'
     head=$env:GITHUB_SHA; expectedArchitecture=$ExpectedArchitecture
-    scope='Owned catalog startup and noninvasive non-suspending native symbol/type queries only. No memory/environment/heap dumps, glyph case, repair or SDK replacement.'
+    scope='Owned catalog startup and noninvasive non-suspending type metadata plus bounded image-code queries only. No data-memory/environment/heap dumps, glyph case, repair or SDK replacement.'
     commands=$commands; symbolServer='https://msdl.microsoft.com/download/symbols'
     nativeLogEncoding='UTF-16LE from explicit CDB -logou'
 }
