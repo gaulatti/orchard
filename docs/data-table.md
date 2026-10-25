@@ -41,6 +41,11 @@ presentation/context. Caller-controlled presentations must retain their existing
 container lifecycle. Both the catalog and independent consumer compile this
 fixture; the published baseline passes all five checks. The audit rejects
 missing modes, lost edits, loaded retired content and recycled custom containers.
+The independent x64 consumer of the exact published NuGet package also passes
+all five cases and the 20-operation focused paging replay. Its evidence is under
+`artifacts/current/data-table-caller-contracts-package-native-v1`. This verifies
+caller-content behavior through the package boundary; it does not qualify the
+full 120-profile performance matrix or establish passing timing budgets.
 
 The current source's hidden reference fixture writes a small failure report
 and exits with code 1 when capture, input or report generation fails. If the

@@ -2,9 +2,11 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text.Json;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 
@@ -92,9 +94,72 @@ internal static class PageFrameOverridesFixture
                 var peer = FrameworkElementAutomationPeer.CreatePeerForElement(frame);
                 Check(prefix + "/passive-metadata", !frame.IsTabStop && peer.GetAutomationControlType() == AutomationControlType.Group, new { tabStop = frame.IsTabStop, role = peer.GetAutomationControlType().ToString() });
                 root.Children.Remove(host); await Layout();
+
+                var original = new TextBlock { Text = "Original caller content" };
+                var custom = new BleeckerPageFrame { FrameWidth = BleeckerPageFrameWidth.Reading, Gutter = BleeckerPageFrameGutter.None,
+                    VerticalSpacing = BleeckerPageFrameVerticalSpacing.None, Content = original };
+                var customHost = new Grid { Width = width }; customHost.Children.Add(custom); root.Children.Add(customHost); await Layout();
+                var originalStyle = custom.Style; var originalFont = custom.FontSize;
+                var style = new Style(typeof(BleeckerPageFrame)) { BasedOn = originalStyle };
+                style.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(7, 5, 7, 5)));
+                style.Setters.Add(new Setter(FrameworkElement.MaxWidthProperty, 180d));
+                style.Setters.Add(new Setter(Control.FontSizeProperty, 26d));
+                custom.Style = style; custom.FrameWidth = BleeckerPageFrameWidth.Content; await Layout();
+                Check(prefix + "/style-recipe-precedence", custom.Padding == new Thickness(7, 5, 7, 5) && custom.MaxWidth == 180 &&
+                    custom.ActualWidth == 180 && original.FontSize == 26 && ReferenceEquals(custom.Style, style) && ReferenceEquals(custom.Content, original),
+                    new { paddingLeft = custom.Padding.Left, paddingTop = custom.Padding.Top, maximum = custom.MaxWidth,
+                        width = custom.ActualWidth, childFont = original.FontSize, styleRetained = ReferenceEquals(custom.Style, style), contentRetained = ReferenceEquals(custom.Content, original) });
+                custom.Style = originalStyle; await Layout();
+                Check(prefix + "/clear-style-restores-recipe", custom.Padding == new Thickness(0) && custom.MaxWidth == 1152 &&
+                    custom.ActualWidth == width && original.FontSize == originalFont && ReferenceEquals(custom.Content, original),
+                    new { padding = custom.Padding.Left, maximum = custom.MaxWidth, width = custom.ActualWidth,
+                        originalFont, childFont = original.FontSize, contentRetained = ReferenceEquals(custom.Content, original) });
+                var originalTemplate = custom.Template;
+                var replacement = (ControlTemplate)XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:local='using:Orchard' TargetType='local:BleeckerPageFrame'><Border x:Name='CallerFrameBorder' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml' Padding='{TemplateBinding Padding}'><ContentPresenter Content='{TemplateBinding Content}'/></Border></ControlTemplate>");
+                custom.Template = replacement; await Layout();
+                var replacementApplied = ReferenceEquals(custom.Template, replacement) && VisualTreeHelper.GetChildrenCount(custom) == 1 &&
+                    VisualTreeHelper.GetChild(custom, 0) is Border { Name: "CallerFrameBorder" } && original.IsLoaded && ReferenceEquals(custom.Content, original);
+                custom.Template = originalTemplate; await Layout();
+                Check(prefix + "/replacement-template", replacementApplied && ReferenceEquals(custom.Template, originalTemplate) &&
+                    original.IsLoaded && ReferenceEquals(custom.Content, original),
+                    new { replacementApplied, originalTemplateRestored = ReferenceEquals(custom.Template, originalTemplate),
+                        originalContentLoaded = original.IsLoaded, contentRetained = ReferenceEquals(custom.Content, original) });
+                var metadataStyle = new Style(typeof(BleeckerPageFrame)) { BasedOn = originalStyle };
+                metadataStyle.Setters.Add(new Setter(AutomationProperties.NameProperty, "Styled section"));
+                metadataStyle.Setters.Add(new Setter(AutomationProperties.LandmarkTypeProperty, AutomationLandmarkType.None));
+                metadataStyle.Setters.Add(new Setter(AutomationProperties.LocalizedLandmarkTypeProperty, "Styled landmark"));
+                metadataStyle.Setters.Add(new Setter(AutomationProperties.ItemTypeProperty, "styled-item"));
+                custom.Element = BleeckerPageFrameElement.Section; custom.Style = metadataStyle; await Layout();
+                var customPeer = FrameworkElementAutomationPeer.CreatePeerForElement(custom);
+                Check(prefix + "/style-metadata", customPeer.GetName() == "Styled section" && customPeer.GetLandmarkType() == AutomationLandmarkType.None &&
+                    customPeer.GetLocalizedLandmarkType() == "Styled landmark" && customPeer.GetItemType() == "styled-item",
+                    new { name = customPeer.GetName(), landmark = customPeer.GetLandmarkType().ToString(), localized = customPeer.GetLocalizedLandmarkType(), itemType = customPeer.GetItemType() });
+                var nameProducer = new TextBlock { Tag = "First local name" };
+                custom.SetBinding(AutomationProperties.NameProperty, new Binding { Source = nameProducer, Path = new PropertyPath("Tag"), Mode = BindingMode.OneWay });
+                AutomationProperties.SetLandmarkType(custom, AutomationLandmarkType.Custom);
+                AutomationProperties.SetLocalizedLandmarkType(custom, "Local landmark"); AutomationProperties.SetItemType(custom, "local-item");
+                await Layout(); var initialBindingName = customPeer.GetName();
+                nameProducer.Tag = "Updated local name"; custom.Element = BleeckerPageFrameElement.Main; await Layout();
+                Check(prefix + "/live-metadata-precedence", initialBindingName == "First local name" && customPeer.GetName() == "Updated local name" &&
+                    customPeer.GetLandmarkType() == AutomationLandmarkType.Custom && customPeer.GetLocalizedLandmarkType() == "Local landmark" &&
+                    customPeer.GetItemType() == "local-item" && custom.GetBindingExpression(AutomationProperties.NameProperty) is not null,
+                    new { initialBindingName, name = customPeer.GetName(), landmark = customPeer.GetLandmarkType().ToString(),
+                        localized = customPeer.GetLocalizedLandmarkType(), itemType = customPeer.GetItemType(), bindingRetained = custom.GetBindingExpression(AutomationProperties.NameProperty) is not null });
+                foreach (var property in new[] { AutomationProperties.NameProperty, AutomationProperties.LandmarkTypeProperty,
+                    AutomationProperties.LocalizedLandmarkTypeProperty, AutomationProperties.ItemTypeProperty }) custom.ClearValue(property);
+                await Layout();
+                var restoredStyleMetadata = customPeer.GetName() == "Styled section" && customPeer.GetLandmarkType() == AutomationLandmarkType.None &&
+                    customPeer.GetLocalizedLandmarkType() == "Styled landmark" && customPeer.GetItemType() == "styled-item";
+                custom.Style = originalStyle; custom.Element = BleeckerPageFrameElement.Section; AutomationProperties.SetName(custom, "Restored section"); await Layout();
+                Check(prefix + "/clear-metadata-restores-source", restoredStyleMetadata && customPeer.GetName() == "Restored section" &&
+                    customPeer.GetLandmarkType() == AutomationLandmarkType.Custom && customPeer.GetLocalizedLandmarkType() == "region" && customPeer.GetItemType() == "section",
+                    new { restoredStyleMetadata, name = customPeer.GetName(), landmark = customPeer.GetLandmarkType().ToString(),
+                        localized = customPeer.GetLocalizedLandmarkType(), itemType = customPeer.GetItemType() });
+                root.Children.Remove(customHost); await Layout();
             }
             Guard();
-            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-page-frame-overrides-v1", passed = true, checks, guards, focus, activations,
+            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-page-frame-overrides-v2", passed = true, checks, guards, focus, activations,
+                callerStylesVerified = true, replacementTemplateVerified = true, callerMetadataVerified = true,
                 componentFontOverridesVerified = true, systemTextScalingVerified = false, displayScalingVerified = false, physicalInputVerified = false,
                 nativeArm64RuntimeVerified = false, nativeComponentAccepted = false, focusCalled = false, showWindowCalled = false, hardwareInputSent = false,
                 osSettingsChanged = false, processArchitecture = RuntimeInformation.ProcessArchitecture.ToString(),
@@ -104,7 +169,7 @@ internal static class PageFrameOverridesFixture
         }
         catch (Exception error)
         {
-            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-page-frame-overrides-v1", passed = false, error = error.ToString(), checks, guards, focus, activations }, new JsonSerializerOptions { WriteIndented = true }));
+            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-page-frame-overrides-v2", passed = false, error = error.ToString(), checks, guards, focus, activations }, new JsonSerializerOptions { WriteIndented = true }));
             window.Close(); Environment.Exit(1);
         }
     }

@@ -60,7 +60,7 @@ The shared `PageFrameOverridesFixture` checks these boundaries at 16, 24 and
 32 DIP fonts, two host widths, both themes and both flow directions. It also
 checks an 11 DIP child override, restoration to a live 40 DIP parent font,
 1,200 DIP caller content, left/center/right frame alignment and passive metadata.
-The fixture's 80 checks run through
+The fixture's 128 checks run through
 `--probe-hidden-page-frame-overrides --verify-output <report.json>` in either
 the catalog or independent package consumer built from this source checkout.
 This test entry point is newer than the October 25 preview catalog ZIP; do not
@@ -69,16 +69,33 @@ window. Audit the report with `scripts/verify-page-frame-overrides.mjs`, passing
 `--report`, `--app` and `--output`; add `--host-assembly PackageConsumer.dll` for
 the independent consumer. `scripts/test-page-frame-overrides-audit.mjs` verifies
 that incorrect fonts, clipping, replacement, sizing, alignment, missing cases,
-foreground input and stale binaries are rejected.
+foreground input and stale binaries are rejected. Version 2 adds 48 checks for
+caller style precedence, restoration of live recipes after clearing a style,
+replacement control templates, and style/local/bound automation metadata.
+The auditor still supports historical version 1 reports with their original
+80-check scope.
+
+A caller style's padding, maximum width and inherited font survive a live
+`FrameWidth` change. Clearing that style restores the current recipe. A complete
+replacement control template receives the original content; restoring the
+original template preserves that same loaded object. Explicit landmark type,
+localized landmark description, item type and name take precedence over
+`Element` defaults. A live name binding continues to follow its producer;
+clearing local metadata reveals the style, then clearing the style restores the
+appropriate component defaults. The localized landmark string follows the
+[native metadata precedence contract](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties.localizedlandmarktype?view=windows-app-sdk-2.0).
 
 These are component font overrides, not Windows text/display scaling. System
 scaling, physical input and native ARM64 runtime remain separate requirements.
 The added checks pass in the x64 catalog and an independent x64 consumer of the
-published `0.1.0-menubar-peer-metadata-v1-local` package: 80 checks per host and
-nine incorrect reports rejected per host. The consumer also builds for ARM64;
+published `0.1.0-menubar-peer-metadata-v1-local` package: 128 checks per host and
+15 incorrect reports rejected per host. The consumer also builds for ARM64;
 that is compile evidence only. The runs retain the published library's
 `c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483`
-SHA-256 and report zero focus or activation events. No production component or
+SHA-256 and report 801 background-isolation guards per host, with zero focus or
+activation events. Evidence is under
+`artifacts/current/page-frame-additional-overrides-catalog-native-v1` and
+`page-frame-additional-overrides-package-native-v1`. No production component or
 theme code changes are needed for these passing boundaries.
 
 The Page frames catalog entry uses fictional local input and an independent
@@ -105,8 +122,9 @@ also passes the existing Field runtime and all 44 measured Field states.
 The full 792-layout and 40-image suite was not rerun for the focused font/size
 checks above. Its earlier results retain their original scope.
 
-Broader platform acceptance remains open. Remaining style/template/metadata
-override combinations, actual display/text scaling and native ARM64 execution must be
-supported by current evidence before this component can be accepted. See
+Broader platform acceptance remains open. Actual Windows display/text scaling,
+native ARM64 execution and final visual/integration acceptance still need
+current evidence. The caller override cases above do not establish those
+platform outcomes. See
 [runtime evidence](runtime-evidence.md) and the governing
 [component-library scope](library-scope.md).

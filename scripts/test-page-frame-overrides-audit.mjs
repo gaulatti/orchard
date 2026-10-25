@@ -17,6 +17,14 @@ const mutations = {
   'foreground input': x => { x.focus = 1; },
   'stale binary': x => { x.librarySha256 = '0'.repeat(64); },
 };
+if (report.format === 'orchard-page-frame-overrides-v2') Object.assign(mutations, {
+  'recipe replaces caller style': x => { x.checks.find(c => c.id.endsWith('/style-recipe-precedence')).observed.paddingLeft = 0; },
+  'cleared style remains applied': x => { x.checks.find(c => c.id.endsWith('/clear-style-restores-recipe')).observed.maximum = 180; },
+  'caller template ignored': x => { x.checks.find(c => c.id.endsWith('/replacement-template')).observed.replacementApplied = false; },
+  'default replaces style metadata': x => { x.checks.find(c => c.id.endsWith('/style-metadata')).observed.landmark = 'Custom'; },
+  'live name binding goes stale': x => { x.checks.find(c => c.id.endsWith('/live-metadata-precedence')).observed.name = 'First local name'; },
+  'cleared metadata never restores style': x => { x.checks.find(c => c.id.endsWith('/clear-metadata-restores-source')).observed.restoredStyleMetadata = false; },
+});
 for (const [name, mutate] of Object.entries(mutations)) { const candidate = structuredClone(report); mutate(candidate); assert.throws(() => verifyPageFrameOverrides(candidate, identity), undefined, name); }
 const audit = {passed: true, negativeCasesRejected: Object.keys(mutations).length};
 await fs.writeFile(option('--output'), JSON.stringify(audit, null, 2) + '\n'); console.log(JSON.stringify(audit));

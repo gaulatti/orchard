@@ -5,7 +5,9 @@ import crypto from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 
 export function verifyPageFrameOverrides(report, identity) {
-  assert.equal(report.format, 'orchard-page-frame-overrides-v1');
+  assert(['orchard-page-frame-overrides-v1', 'orchard-page-frame-overrides-v2'].includes(report.format));
+  const additional = report.format === 'orchard-page-frame-overrides-v2';
+  if (additional) for (const flag of ['callerStylesVerified', 'replacementTemplateVerified', 'callerMetadataVerified']) assert.equal(report[flag], true, flag);
   assert.equal(report.passed, true);
   assert.equal(report.librarySha256, identity.librarySha256);
   assert.equal(report.hostSha256, identity.hostSha256);
@@ -32,10 +34,29 @@ export function verifyPageFrameOverrides(report, identity) {
       assert.equal(x.expected, expected); assert(Math.abs(x.x - expected) < .01); assert(Math.abs(x.width - 200) < .01);
     }
     const peer = check(prefix + '/passive-metadata'); assert.equal(peer.tabStop, false); assert.equal(peer.role, 'Group');
+    if (additional) {
+      const style = check(prefix + '/style-recipe-precedence');
+      assert.equal(style.paddingLeft, 7); assert.equal(style.paddingTop, 5); assert.equal(style.maximum, 180); assert.equal(style.width, 180);
+      assert.equal(style.childFont, 26); assert.equal(style.styleRetained, true); assert.equal(style.contentRetained, true);
+      const cleared = check(prefix + '/clear-style-restores-recipe');
+      assert.equal(cleared.padding, 0); assert.equal(cleared.maximum, 1152); assert.equal(cleared.width, width);
+      assert(cleared.originalFont > 0 && Number.isFinite(cleared.originalFont)); assert.equal(cleared.childFont, cleared.originalFont); assert.equal(cleared.contentRetained, true);
+      const template = check(prefix + '/replacement-template');
+      for (const key of ['replacementApplied', 'originalTemplateRestored', 'originalContentLoaded', 'contentRetained']) assert.equal(template[key], true, key);
+      const metadata = check(prefix + '/style-metadata');
+      assert.equal(metadata.name, 'Styled section'); assert.equal(metadata.landmark, 'None'); assert.equal(metadata.localized, 'Styled landmark'); assert.equal(metadata.itemType, 'styled-item');
+      const live = check(prefix + '/live-metadata-precedence');
+      assert.equal(live.initialBindingName, 'First local name'); assert.equal(live.name, 'Updated local name'); assert.equal(live.landmark, 'Custom');
+      assert.equal(live.localized, 'Local landmark'); assert.equal(live.itemType, 'local-item'); assert.equal(live.bindingRetained, true);
+      const restored = check(prefix + '/clear-metadata-restores-source');
+      assert.equal(restored.restoredStyleMetadata, true); assert.equal(restored.name, 'Restored section'); assert.equal(restored.landmark, 'Custom');
+      assert.equal(restored.localized, 'region'); assert.equal(restored.itemType, 'section');
+    }
   }
   assert.deepEqual(report.checks.map(x => x.id).sort(), ids.sort());
   return {passed: true, checks: ids.length, themes: 2, directions: 2, hostWidths: 2, inheritedFontSizes: [16, 24, 32],
     originalContentRetained: true, localFontPrecedence: true, oversizedContentVerified: true, alignmentVerified: true,
+    callerStylesVerified: additional, replacementTemplateVerified: additional, callerMetadataVerified: additional,
     systemTextScalingVerified: false, displayScalingVerified: false, nativeComponentAccepted: false};
 }
 
