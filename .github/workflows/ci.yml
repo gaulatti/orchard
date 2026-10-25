@@ -1,10 +1,10 @@
-name: Windows glyph runtime inventory
+name: Windows glyph symbol diagnostic
 on:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  glyph-runtime:
+  glyph-symbols:
     strategy:
       fail-fast: false
       matrix:
@@ -28,21 +28,21 @@ jobs:
       - name: Publish the exact diagnostic catalog
         shell: pwsh
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=${{ matrix.platform }} -o artifacts/catalog
-      - name: Inspect the pinned rendering runtime and native debugger tools
+      - name: Query pinned native symbols without running a glyph case
         shell: pwsh
-        run: ./scripts/Inspect-GlyphRuntime.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/glyph-runtime
+        run: ./scripts/Probe-GlyphSymbols.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/glyph-symbols
       - name: Retain bounded diagnostic JSON and cropped PNGs in logs
         if: always()
         shell: pwsh
         run: |
-          if (Test-Path artifacts/glyph-runtime) {
-            $root = (Resolve-Path artifacts/glyph-runtime).Path
-            Get-ChildItem $root -Recurse -File | Where-Object { $_.Extension -eq '.json' } | Sort-Object FullName | ForEach-Object {
+          if (Test-Path artifacts/glyph-symbols) {
+            $root = (Resolve-Path artifacts/glyph-symbols).Path
+            Get-ChildItem $root -File | Where-Object { $_.Name -eq 'symbols.json' -or $_.Name -match '^symbol-log-[0-9]{3}\.json$' } | Sort-Object FullName | ForEach-Object {
               if ($_.Length -gt 524288) { throw 'Diagnostic file exceeds the bounded log evidence limit.' }
               $bytes = [IO.File]::ReadAllBytes($_.FullName)
               $sha = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
               $name = [IO.Path]::GetRelativePath($root,$_.FullName).Replace('\','/')
               $entry = [ordered]@{ name=$name; bytes=$bytes.Length; sha256=$sha; base64=[Convert]::ToBase64String($bytes) }
-              Write-Host ('GLYPHRUNTIME_FILE ' + ($entry | ConvertTo-Json -Compress))
+              Write-Host ('GLYPHSYMBOL_FILE ' + ($entry | ConvertTo-Json -Compress))
             }
           }

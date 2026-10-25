@@ -1,0 +1,19 @@
+{
+  "inventoryRun": 40156695480,
+  "inventoryHead": "a9e66d1c0d463342cc49e584464324e047719218",
+  "scope": "Captured runtime image identities for symbol-query binding only. Does not establish source-tag or original failing-run binary equivalence.",
+  "images": {
+    "X64": {
+      "sha256": "aad12524765e6fb63f0ae26a45a9ba3104f24fde66413d8a3036fbed74a1e990",
+      "machine": "Amd64",
+      "pdbGuid": "4acdbe85d668192eb8b6a9334ac91b79",
+      "pdbAge": 1
+    },
+    "Arm64": {
+      "sha256": "a5948921c694709642eaef4197a99b4489639884d67709cc390b2f6adf55269e",
+      "machine": "Arm64",
+      "pdbGuid": "06bb01d69c0f06d09a5562e9e3b07d3f",
+      "pdbAge": 1
+    }
+  }
+}

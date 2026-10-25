@@ -31,12 +31,21 @@ specified source/native checks still matched. Independent decoding reproduced
 the prior discrete-color probe's identical original and restored rasters. This
 version is not qualified for the unchanged full contrast/OS-restoration suite.
 
-The current manual workflow inventories the pinned rendering DLLs, PE CodeView
-symbol identities and installed native debugging tools on both architectures.
-It starts and closes only its own published catalog, without a smoke or contrast
-command. It reads font preferences and rendering-module metadata; it performs no
-repair and does not rerun the failed glyph case. Bounded JSON is retained in logs
-without Actions artifact storage. A successful inventory is not a native pass.
+Runtime inventory at `a9e66d1c` completed on both architectures and found matching
+CDB/symchk plus the loaded rendering DLLs' exact PE CodeView identities. The
+package number and DLL product version do not alone establish source equivalence.
+
+The current manual workflow queries symbols on its own published catalog, without
+a smoke/contrast command. CDB attaches noninvasively without suspending the target,
+uses the explicit Microsoft public symbol server, and queries module/function/type
+metadata. It detaches before the owned processes are closed. It makes no dumps,
+runs no glyph case and performs no repair or SDK replacement. The complete native
+log is retained in bounded hash-bound JSON parts, avoiding Actions artifact quota
+and long-line truncation. Query transport completion does not prove symbol
+availability or native acceptance; the actual query output must be inspected.
+The loaded XAML image SHA and CodeView identity must match the captured inventory
+before querying. That binding does not claim source-tag or original failing-run
+binary equivalence.
 
 The public repository wiki was unavailable at startup; this document records the
 diagnostic's scope and limits in the repository.
