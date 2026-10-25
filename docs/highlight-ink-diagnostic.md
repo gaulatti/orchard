@@ -48,10 +48,11 @@ before querying. That binding does not claim source-tag or original failing-run
 binary equivalence.
 
 The initial symbol probe at 9c3855f completed on both architectures. The actual
-logs report private symbols and type layouts, but two rendering signatures differ
-from the previously retained source tag. That tag cannot supply register/stack
-capture positions. The DLL resource's embedded commit was not found through the
-public source repository's commit API; it is not an established source binding.
+logs report private symbols and type layouts. Two displayed argument lists differ
+from the previously retained source declarations, but that display alone does
+not establish different calling conventions or source. The DLL resource's
+embedded commit was not found through the public source repository's commit API;
+it is not an established source binding.
 
 The next metadata probe enumerates the loaded PDB's glyph, realization, render
 parameter and matrix types, then disassembles only the first 0x40 instructions of
@@ -59,6 +60,14 @@ five named rendering functions. It still supplies no object address to a type
 query, reads no arbitrary process data and runs no glyph case. Missing type/code
 output remains a limitation even if the query transport completes. This evidence
 must be inspected before constructing any targeted native data trace.
+
+The metadata probe at 886b822 completed on both architectures: all 16 requested
+types and five 64-instruction entries are present. The inspected entry code agrees
+with the retained argument locations, correcting the initial signature-mismatch
+inference. For example, x64 Rasterize reads tile offsets at entry RSP+0x30/+0x38
+and the device context at +0x40; ARM64 retains the bounds in x3/x4, tile offsets in
+s0/s1 and device context in x5. Exact loaded code and types remain the capture
+authority. No complete source equivalence, glyph result or acceptance follows.
 
 The public repository wiki was unavailable at startup; this document records the
 diagnostic's scope and limits in the repository.

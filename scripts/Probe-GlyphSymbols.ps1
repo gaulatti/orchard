@@ -31,8 +31,8 @@ function New-ScopedProcessInfo([string]$File,[string]$Directory) {
 
 # Metadata and code-entry queries only: no addresses are supplied to dt, and
 # each disassembly is bounded to 0x40 instructions from a named image function.
-# Loaded PDB signatures differ from the previously retained source tag. Capture
-# the actual type layouts and entry code before assigning register/stack fields.
+# Displayed PDB argument lists alone cannot establish calling-convention or
+# source differences. Inspect actual layouts/code before assigning capture fields.
 $queryCommands = @(
     '.echo GLYPH_SYMBOL_QUERY_BEGIN'
     '.reload /f Microsoft.UI.Xaml.dll'
