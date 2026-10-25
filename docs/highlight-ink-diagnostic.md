@@ -69,5 +69,28 @@ and the device context at +0x40; ARM64 retains the bounds in x3/x4, tile offsets
 s0/s1 and device context in x5. Exact loaded code and types remain the capture
 authority. No complete source equivalence, glyph result or acceptance follows.
 
+The targeted trace launches only this catalog under CDB, with credential-bearing
+environment names removed and the debug heap disabled. Its fresh output directory
+receives an atomic process registration. The runner verifies executable path,
+creation time, architecture and the actual loaded XAML SHA/CodeView identity
+before releasing startup and enabling target-data breakpoints. It never attaches
+to or terminates an independently selected process.
+
+The native binding compares all 45 UTF-16 characters of the unique fictional
+Default description, then follows that renderer's drawing context. Managed phase
+markers additionally require the actual named description. Snapshots retain at
+most four runs, each at most 128 glyphs; native hook and capture counts are capped.
+Stored glyph data, font-face identity, baseline, incoming matrix, tile matrix and
+the six words at the observed final matrix call site are retained. The first
+baseline, title-before-description order and every existing pixel/source/native
+assertion remain. Marker failure cannot skip owned highlighter/backdrop cleanup.
+
+This is an invasive diagnostic: breakpoint stops can change timing. A missing
+initial target capture, command/memory error, bound violation, timeout or failure
+to reproduce the original restoration difference makes the corresponding causal
+comparison incomplete. A successful trace transport is not a passing glyph case.
+The runner retains the original failing result and fails its step when that
+result fails. No accepted calibration or Windows contrast transition is added.
+
 The public repository wiki was unavailable at startup; this document records the
 diagnostic's scope and limits in the repository.

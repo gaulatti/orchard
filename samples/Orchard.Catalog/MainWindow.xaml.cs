@@ -55,6 +55,7 @@ public sealed partial class MainWindow : Window
         Directory.CreateDirectory(folder);
         try
         {
+            await GlyphNativeTrace.BeginAsync(folder);
             CatalogRuntimeProfile.Start(folder);
             if (args.Contains("--smoke-metric"))
             {

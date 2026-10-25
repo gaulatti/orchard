@@ -21,6 +21,13 @@ public sealed partial class ContrastFixture
             "Highlight ink probing requires an isolated GitHub-hosted runner.");
         Require(!string.IsNullOrWhiteSpace(text.Text) && text.SelectedText.Length == 0,
             "The actual live label must be nonempty and have no overriding text selection.");
+        void Trace(int phase)
+        {
+            if (label != "error-description") return;
+            Require(text.Name == "PART_Description" && text.Text == "We couldn't load this data. Please try again.",
+                "Native trace must retain the actual Default description.");
+            GlyphNativeTrace.Mark(phase);
+        }
         Require(text.Foreground is SolidColorBrush { Opacity: 1 } &&
             ((SolidColorBrush)text.Foreground).Color.A == 255 && IsDescendantOf(text, backdrop),
             "The actual glyphs require an opaque semantic foreground and containing backdrop.");
@@ -54,14 +61,17 @@ public sealed partial class ContrastFixture
         var mask = Array.Empty<int>();
         // Do not access TextHighlighters before the first untouched baseline:
         // its getter installs native collection/view state and changes rendering.
+        Trace(1);
         await MainWindow.AwaitPresentationAsync(text);
         var baseline = await ReadScreenInkAsync(input, text, folder, "highlight-baseline");
+        Trace(2);
         var geometry = GeometryWithoutPaint(baseline.Geometry);
         await Save("baseline", baseline);
         try
         {
             for (var index = 1; index <= 2; index++)
                 await ObserveOriginal("untouched-" + index);
+            Trace(3);
             collection = text.TextHighlighters;
             originals = collection.Select(item => new HighlightProbeOriginal(item, item.Foreground,
                 item.Background, item.Ranges.ToArray(), Hex(item.Foreground), Hex(item.Background))).ToArray();
@@ -132,6 +142,9 @@ public sealed partial class ContrastFixture
             var state = NativeUnchanged(); var items = CollectionUnchanged();
             observations.Add(new { phase = name, originalRasterRestored = exact, sourcesRestored = sources,
                 sharedSourcesRestored = shared, nativeUnchanged = state, collectionContentsRestored = items });
+            if (name == "getter-only") Trace(4);
+            else if (name == "black-on-white-restored") Trace(8);
+            else if (name == "white-on-black-restored") Trace(12);
             Require(exact && sources && shared && state && items,
                 "Highlight initialization/cleanup changed the first original raster or specified sources: " + name);
         }
@@ -148,6 +161,7 @@ public sealed partial class ContrastFixture
             var initialSolidAtEndpoint = 0;
             try
             {
+                Trace(name == "black-on-white" ? 5 : 9);
                 collection!.Add(owned);
                 paint.Begin();
                 await MainWindow.AwaitPresentationAsync(text);
@@ -158,6 +172,7 @@ public sealed partial class ContrastFixture
                     "Highlight producer is not the requested opaque live paint with preserved original foreground sources.");
                 var first = await ReadScreenInkAsync(input, text, folder, "highlight-" + name + "-first");
                 await Save(name + "-first", first);
+                Trace(name == "black-on-white" ? 6 : 10);
                 await MainWindow.AwaitPresentationAsync(text);
                 var second = await ReadScreenInkAsync(input, text, folder, "highlight-" + name + "-second");
                 await Save(name + "-second", second);
@@ -178,6 +193,8 @@ public sealed partial class ContrastFixture
             finally
             {
                 var restorationErrors = new List<Exception>();
+                try { Trace(name == "black-on-white" ? 7 : 11); }
+                catch (Exception error) { restorationErrors.Add(error); }
                 try
                 {
                     for (var index = collection!.Count - 1; index >= 0; index--)

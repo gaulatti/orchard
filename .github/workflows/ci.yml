@@ -1,4 +1,4 @@
-name: Windows glyph binary metadata diagnostic
+name: Windows target glyph restoration trace
 on:
   workflow_dispatch:
 permissions:
@@ -22,27 +22,43 @@ jobs:
       - name: Prepare the isolated physical CI desktop
         shell: pwsh
         run: ./scripts/Set-CiDisplayMode.ps1
+      - name: Parse trace scripts and check generated command bounds
+        shell: pwsh
+        run: |
+          foreach ($script in @('New-GlyphTraceCommands.ps1','Trace-GlyphRestoration.ps1')) {
+            $astTokens = $null; $parseErrors = $null
+            $null = [Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD "scripts/$script"),[ref]$astTokens,[ref]$parseErrors)
+            if ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }
+          }
+          New-Item -ItemType Directory -Path artifacts/command-preflight | Out-Null
+          ./scripts/New-GlyphTraceCommands.ps1 -Architecture '${{ matrix.expected }}' -Output artifacts/command-preflight/trace.cdb
+          $lines = Get-Content artifacts/command-preflight/trace.cdb
+          if (@($lines | Where-Object { $_.Length -gt 4096 }).Count -gt 0) { throw 'CDB command line exceeds4096characters.' }
       - uses: actions/setup-dotnet@v5
         with:
           global-json-file: global.json
       - name: Publish the exact diagnostic catalog
         shell: pwsh
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=${{ matrix.platform }} -o artifacts/catalog
-      - name: Query pinned native types and bounded code without running a glyph case
+      - name: Trace the actual description without relaxing the original glyph assertions
         shell: pwsh
-        run: ./scripts/Probe-GlyphSymbols.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/glyph-symbols
-      - name: Retain complete bounded native metadata logs
+        run: ./scripts/Trace-GlyphRestoration.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/glyph-trace
+      - name: Retain bounded target trace and original cropped raster evidence
         if: always()
         shell: pwsh
         run: |
-          if (Test-Path artifacts/glyph-symbols) {
-            $root = (Resolve-Path artifacts/glyph-symbols).Path
-            Get-ChildItem $root -File | Where-Object { $_.Name -eq 'symbols.json' -or $_.Name -match '^symbol-log-[0-9]{3}\.json$' } | Sort-Object FullName | ForEach-Object {
+          if (Test-Path artifacts/glyph-trace) {
+            $root = (Resolve-Path artifacts/glyph-trace).Path
+            $files = @(Get-ChildItem $root -File | Where-Object { $_.Name -eq 'trace.json' -or $_.Name -match '^trace-log-[0-9]{3}\.json$' })
+            if (Test-Path (Join-Path $root 'glyph-case')) {
+              $files += @(Get-ChildItem (Join-Path $root 'glyph-case') -File -Recurse | Where-Object { $_.Extension -in @('.json','.png') })
+            }
+            $files | Sort-Object FullName | ForEach-Object {
               if ($_.Length -gt 524288) { throw 'Diagnostic file exceeds the bounded log evidence limit.' }
               $bytes = [IO.File]::ReadAllBytes($_.FullName)
               $sha = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
               $name = [IO.Path]::GetRelativePath($root,$_.FullName).Replace('\','/')
               $entry = [ordered]@{ name=$name; bytes=$bytes.Length; sha256=$sha; base64=[Convert]::ToBase64String($bytes) }
-              Write-Host ('GLYPHSYMBOL_FILE ' + ($entry | ConvertTo-Json -Compress))
+              Write-Host ('GLYPHTRACE_FILE ' + ($entry | ConvertTo-Json -Compress))
             }
           }
