@@ -105,6 +105,8 @@ try {
     $text = [IO.File]::ReadAllText($nativeLog,[Text.Encoding]::Unicode)
     $report.targetBindings = [regex]::Matches($text,'(?m)^GLYPH_TRACE_BIND old=').Count
     $report.runCaptures = [regex]::Matches($text,'(?m)^GLYPH_TRACE_RUN phase=').Count
+    $report.baselineRunCaptures = [regex]::Matches($text,'(?m)^GLYPH_TRACE_RUN phase=2 ').Count
+    $report.restoredRunCaptures = [regex]::Matches($text,'(?m)^GLYPH_TRACE_RUN phase=8 ').Count
     $report.finalMatrixCaptures = [regex]::Matches($text,'(?m)^GLYPH_TRACE_FINAL phase=').Count
     $report.phases = @([regex]::Matches($text,'(?m)^GLYPH_TRACE_PHASE ([0-9a-f]+)\r?$') | ForEach-Object { [Convert]::ToInt32($_.Groups[1].Value,16) })
     $report.limitOrBindingError = [regex]::IsMatch($text,'(?m)^GLYPH_TRACE_(?:.*_LIMIT|NULL_RUN|TARGET_NOT_BOUND)\r?$')
@@ -116,6 +118,7 @@ try {
     $report.glyphCaseError = $result.error
     $report.traceComplete = $report.runtimeIdentityMatched -and $report.targetBindings -gt 0 -and
         $report.runCaptures -gt 0 -and $report.finalMatrixCaptures -gt 0 -and
+        $report.baselineRunCaptures -gt 0 -and $report.restoredRunCaptures -gt 0 -and
         $report.phases -contains 2 -and $report.phases -contains 8 -and
         -not $report.limitOrBindingError -and -not $report.commandOrMemoryError
     if (-not $report.traceComplete) { throw 'Target trace incomplete; inspect raw evidence without a glyph verdict.' }

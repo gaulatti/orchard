@@ -92,5 +92,25 @@ comparison incomplete. A successful trace transport is not a passing glyph case.
 The runner retains the original failing result and fails its step when that
 result fails. No accepted calibration or Windows contrast transition is added.
 
+Initial target run af2c527 captured one target context, 17 glyph records and five
+final matrices per architecture, without command/memory errors or cleanup errors.
+Forwarded debug strings lacked newlines and prefixed some later marker lines;
+the complete raw logs retain those boundaries. The reader decodes only the exact
+source-defined OGT:A..M prefix and preserves each removed literal separately.
+Future messages include newlines. Transport completion also requires nonempty
+baseline/restored glyph records; the reader validates each complete run set.
+
+Under the debugger ARM64 restored exactly, while x64's white-on-black cleanup
+changed the same 19 pixels and produced the same restored RGBA hash as the prior
+ARM64 failure. This reproduces the failure pattern on another architecture but
+does not reproduce the original ARM64 failure under instrumentation. Glyph
+indices/advances/offsets, font-face identity and baseline offsets match. Internal
+line bounds change on both architectures; final atlas translations vary. These
+observations do not yet establish the cause or supply a component repair.
+
+Backdrop-only invariance was considered and rejected as an equivalent mask:
+occlusion and RGBA8 quantization can admit pixels that fail the original opposite
+foreground endpoint contract. No weaker mask or relaxed restoration is adopted.
+
 The public repository wiki was unavailable at startup; this document records the
 diagnostic's scope and limits in the repository.

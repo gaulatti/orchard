@@ -43,7 +43,7 @@ internal static class GlyphNativeTrace
         {
             if (phase is < 0 or > 12 || !IsDebuggerPresent())
                 throw new InvalidOperationException("Invalid or detached native glyph trace phase.");
-            OutputDebugStringW("OGT:" + (char)('A' + phase));
+            OutputDebugStringW("OGT:" + (char)('A' + phase) + "\n");
         }
     }
 
