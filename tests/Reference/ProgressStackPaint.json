@@ -1,0 +1,181 @@
+{
+  "format": "orchard-progress-stack-paint-reference-v1",
+  "scope": "square paint-only diagnostic using unchanged frozen track CSS in the canonical 640x400 context; not component raster acceptance",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "101df66952162d978a45935604e468e7b465e8a57afdf873a48e0867a46b6254",
+  "trackReferenceSha256": "b8d628ed7f492ef1304d7c76a42aa033a7772d2af0911f980159e1e287154e08",
+  "scriptSha256": "1b36d1b95b4bb577529899d2682379a3604131addd9a4bd4fb5d4804df193d2d",
+  "browser": "155.0.4283.62",
+  "cases": [
+    {
+      "id": "transparent",
+      "scheme": "Light",
+      "backdrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "paint": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-transparent-Light.png",
+      "pngSha256": "7d125d2b549a5f62bd3be92448706d23763721c5d97577312498b9f7dbc121cd"
+    },
+    {
+      "id": "white",
+      "scheme": "Light",
+      "backdrop": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "paint": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-white-Light.png",
+      "pngSha256": "af0e13d80737d5d4481a1f71719d4382c2845611ca93ce8978e78086a8b34718"
+    },
+    {
+      "id": "black",
+      "scheme": "Light",
+      "backdrop": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "paint": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-black-Light.png",
+      "pngSha256": "b2068d54886db6bebd090521decf333684a3bd699d0c7bcb54fd35fd0129ae54"
+    },
+    {
+      "id": "dark",
+      "scheme": "Light",
+      "backdrop": [
+        13,
+        24,
+        33,
+        255
+      ],
+      "paint": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-dark-Light.png",
+      "pngSha256": "7ac06206b08eb565f7b6af9b659babb4ece91342d0b4158b74d7fef4c77c0c39"
+    },
+    {
+      "id": "blue",
+      "scheme": "Light",
+      "backdrop": [
+        44,
+        87,
+        132,
+        255
+      ],
+      "paint": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-blue-Light.png",
+      "pngSha256": "73da70be29c8510008937c11acaab189113d217e878962a18cd783c7b9b3edf7"
+    },
+    {
+      "id": "transparent",
+      "scheme": "Dark",
+      "backdrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "paint": "oklab(0.254879 -0.00520422 -0.0308993 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-transparent-Dark.png",
+      "pngSha256": "792940a327e2f70b762c958e28a3c6718578f4058963e8b84a8f60cc7f68750f"
+    },
+    {
+      "id": "white",
+      "scheme": "Dark",
+      "backdrop": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "paint": "oklab(0.254879 -0.00520422 -0.0308993 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-white-Dark.png",
+      "pngSha256": "41c693c5cedb7c2668ce86a93bb2dbf3160a6e86c3dd17e7312b66358f77d6e8"
+    },
+    {
+      "id": "black",
+      "scheme": "Dark",
+      "backdrop": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "paint": "oklab(0.254879 -0.00520422 -0.0308993 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-black-Dark.png",
+      "pngSha256": "a2bb22d8e19e1a89791ddf3e5245002d301a487325b4669ebe0c66c0bf6941c2"
+    },
+    {
+      "id": "dark",
+      "scheme": "Dark",
+      "backdrop": [
+        13,
+        24,
+        33,
+        255
+      ],
+      "paint": "oklab(0.254879 -0.00520422 -0.0308993 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-dark-Dark.png",
+      "pngSha256": "c1fdc9099bec26b88323fe31e34c66f2fc480a4a9e6222b00473a242f28990c3"
+    },
+    {
+      "id": "blue",
+      "scheme": "Dark",
+      "backdrop": [
+        44,
+        87,
+        132,
+        255
+      ],
+      "paint": "oklab(0.254879 -0.00520422 -0.0308993 / 0.2)",
+      "width": 40,
+      "height": 40,
+      "viewportWidth": 640,
+      "viewportHeight": 400,
+      "file": "progress-stack-paint-blue-Dark.png",
+      "pngSha256": "3608feb83d2d9a73ac08a5ef6b83bdf25dd0e1421abd8bc703cf7fbe5eff0ab2"
+    }
+  ]
+}

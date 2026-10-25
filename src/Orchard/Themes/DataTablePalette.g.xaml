@@ -1,0 +1,17 @@
+<!-- Generated from canonical Bleecker tokens by scripts/generate-data-table-palette.mjs. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="BleeckerDataTableHeaderFill" Color="#F9F6F2" Opacity="0.5"/>
+   <SolidColorBrush x:Key="BleeckerDataTableCardStroke" Color="#E6D5B8" Opacity="0.25"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Dark">
+   <SolidColorBrush x:Key="BleeckerDataTableHeaderFill" Color="#FFFFFF" Opacity="0.035"/>
+   <SolidColorBrush x:Key="BleeckerDataTableCardStroke" Color="#FFFFFF" Opacity="0.1"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="BleeckerDataTableHeaderFill" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="BleeckerDataTableCardStroke" Color="{ThemeResource SystemColorWindowTextColor}"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

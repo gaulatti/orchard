@@ -191,8 +191,8 @@ internal sealed class BleeckerDisabledPointer(Control owner, Func<FrameworkEleme
         internal void Refresh()
         {
             refreshCalls++;
-            if (root.XamlRoot is not XamlRoot xamlRoot) { Clear(); return; }
-            var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(xamlRoot.ContentIslandEnvironment.AppWindowId);
+            if (root.XamlRoot is not XamlRoot xamlRoot || xamlRoot.ContentIslandEnvironment is not { } environment) { Clear(); return; }
+            var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(environment.AppWindowId);
             if (!GetCursorPos(out var screen) || GetAncestor(WindowFromPoint(screen), 2) != window || !ScreenToClient(window, ref screen)) { Clear(); return; }
             var position = new Point(screen.X / xamlRoot.RasterizationScale, screen.Y / xamlRoot.RasterizationScale);
             // All observed controls share one native pointer query and one hit

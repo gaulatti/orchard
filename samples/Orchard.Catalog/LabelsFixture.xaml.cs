@@ -14,6 +14,25 @@ public sealed partial class LabelsFixture : UserControl
         InitializeComponent();
         NestedAction.Click += OnNestedAction;
         PointerAction.Click += OnNestedAction;
+        AssociationEnabled.Toggled += (_, _) => UpdateAssociationDemo();
+        AssociationProducer.RegisterPropertyChangedCallback(TagProperty, (_, _) => UpdateAssociationDemo());
+        AssociationChange.Click += (_, _) =>
+        {
+            AssociationProducer.Tag = ReferenceEquals(AssociationProducer.Tag, AssociationOriginal) ? AssociationAlternate : AssociationOriginal;
+            UpdateAssociationDemo();
+        };
+        UpdateAssociationDemo();
+    }
+
+    private void UpdateAssociationDemo()
+    {
+        AssociationLabel.Target = AssociationEnabled.IsOn ? AssociationInput : null;
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var current = AutomationProperties.GetLabeledBy(AssociationInput);
+            var text = current is BleeckerLabel label ? label.Content as string : (current as TextBlock)?.Text;
+            AssociationResult.Text = "Input label: " + text;
+        });
     }
 
     private void OnNestedAction(object sender, RoutedEventArgs args)

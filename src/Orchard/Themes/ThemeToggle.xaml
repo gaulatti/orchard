@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="BleeckerThemeToggleIconBrush" Color="#4A5565"/></ResourceDictionary>
+  <ResourceDictionary x:Key="Default"><SolidColorBrush x:Key="BleeckerThemeToggleIconBrush" Color="#D1D5DC"/></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="BleeckerThemeToggleIconBrush" Color="{ThemeResource SystemColorWindowTextColor}"/></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <ControlTemplate x:Key="ThemeToggleIconTemplate" TargetType="ContentControl">
+   <ContentPresenter Content="{TemplateBinding Content}"/>
+ </ControlTemplate>
+</ResourceDictionary>

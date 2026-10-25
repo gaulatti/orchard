@@ -1,5 +1,10 @@
 # Menu foundation (in progress)
 
+The [current component-library scope](library-scope.md) governs this work.
+Narrator and Windows/OS contrast campaigns are excluded. Historical captures
+below describe earlier runs; they do not authorize foreground tests or changes
+to system settings. Existing native metadata and theme resources remain intact.
+
 Use `BleeckerDropdownMenu` with native menu items styled using `BleeckerMenuItemStyle`, `BleeckerMenuCheckboxStyle`, `BleeckerMenuRadioStyle`, `BleeckerMenuSubmenuStyle` and `BleeckerMenuSeparatorStyle`. It supplies a 176px root minimum and a 144px submenu minimum, matching the reference's distinct popup sizes. Consumer code owns labels, checked values, radio groups, command handlers and shortcuts. `KeyboardAcceleratorTextOverride` only displays a hint; it does not register an accelerator.
 
 The generated `Menus.g.xaml` dictionary is merged by Orchard's resource entry point. Existing native integrations can apply `BleeckerMenuPresenterStyle` directly to `MenuFlyout.MenuFlyoutPresenterStyle`; that single style gives both levels a 176px minimum. The wrapper supplies the distinct defaults through root and shared presenter styles, without setting a local minimum on the presenter. An explicitly assigned `MenuFlyoutPresenterStyle` owns both levels' appearance and dimensions. Returning to the wrapper's original style restores its distinct defaults. Open/close animation remains disabled until the reference motion is implemented.
@@ -42,7 +47,7 @@ actual/expected color to isolate that boundary before changing library behavior.
 
 `MenusFixture` is registered in catalog coverage. Published x64 checks open real root and nested popups in both themes, inspect geometry and font selection, exercise checkbox and radio state, invoke a command and verify dismissal. Captures are retained as `menu-light/dark.png` and `submenu-light/dark.png`. Radio-group checks run while the items are loaded; native checkbox activation dismisses the popup asynchronously, so the harness waits before reopening it. Passing these checks does not establish the remaining visual and interaction contracts.
 
-`BleeckerMenuLabel Text="Visible fields"` supplies a non-actionable section heading: Encode Sans Semibold 10px/15px, 0.09em tracking, uppercase display, secondary foreground and 8/6px padding (27px single-line height). `Inset="True"` adds 24px before the text, producing the reference's 32px left inset without replacing consumer padding or its style. Casing follows `Language`, updates live and preserves the original `Text` as the accessible name. Explicit automation names remain consumer-owned. The control uses a native menu-item host with hit testing and keyboard focus disabled. Its custom peer exposes text with no invoke/toggle pattern. This avoids WinUI filtering separator-derived items out of the presenter child tree. Both the catalog and isolated package consumer verify the label through the presenter, and external Windows UI Automation inspection confirms both section labels appear as text. The catalog also checks nested-label tree inclusion, live casing and consumer padding. Physical label clicks leave the menu open and execute no action. Final light/dark root and nested captures are retained in `artifacts/smoke-menu-label-tree-nested`. Narrator and the broader accessibility matrix remain unverified.
+`BleeckerMenuLabel Text="Visible fields"` supplies a non-actionable section heading: Encode Sans Semibold 10px/15px, 0.09em tracking, uppercase display, secondary foreground and 8/6px padding (27px single-line height). `Inset="True"` adds 24px before the text, producing the reference's 32px left inset without replacing consumer padding or its style. Casing follows `Language`, updates live and preserves the original `Text` as the accessible name. Explicit automation names remain consumer-owned. The control uses a native menu-item host with hit testing and keyboard focus disabled. Its custom peer exposes text with no invoke/toggle pattern. This avoids WinUI filtering separator-derived items out of the presenter child tree. Both the catalog and isolated package consumer verify the label through the presenter, and external Windows UI Automation inspection confirms both section labels appear as text. The catalog also checks nested-label tree inclusion, live casing and consumer padding. Physical label clicks leave the menu open and execute no action. Final light/dark root and nested captures are retained in `artifacts/smoke-menu-label-tree-nested`. Component accessibility metadata still requires final acceptance. Narrator and OS contrast campaigns are excluded by the current library scope.
 
 Use `BleeckerMenuInsetItemStyle` or `BleeckerMenuInsetSubmenuStyle` for the reference inset variants. They inherit the complete regular item/submenu templates and set padding to `32,6,8,6`, aligning text with selection-row labels while retaining 32px single-line height. Catalog checks cover root actions, submenu triggers and nested actions in light/dark, including normal invocation and dismissal. Consumer styles can derive from these keys and own their padding.
 
@@ -52,10 +57,59 @@ Shortcut templates follow native visibility states and have no fixed left margin
 
 Remaining requirements:
 
+The frozen browser reference in `tests/Reference/Menu.json` and
+`tests/Reference/Menu/` contains 32 light/dark open states and 12 action
+histories from Bleecker commit `a86059013cd59684ce452849278ea81e734f2066`.
+Two independent headless captures produced identical JSON and PNG bytes. The
+histories reopen the same React instance and verify caller acceptance/refusal
+of checkbox and radio changes, submenu invocation, dismissal and trigger focus.
+These are source observations; they do not establish native interaction parity.
+
+ContextMenu has its own source recipe: 160px minimum width, 36px action rows,
+13px text with 19.5px line height, 10/6px padding and 5px action corners. Its
+disabled opacity is .4; DropdownMenu uses 176px minimum root width, 32px rows,
+14px/20px text, 8/6px padding, 7px action corners and .5 disabled opacity.
+The source ContextMenu surface is white in light mode and deep sea in dark
+mode. The [Context Menu native foundation](context-menu.md) now supplies this
+distinct recipe. Its public shared modal adapter preserves original native
+actions and uses native layout for placement. Its bindable `IsModal` option
+retains caller objects and owner shielding in both modes; see its scoped runtime
+evidence and remaining physical input/focus requirements.
+
+Run the portable frozen-reference checks with:
+
+```powershell
+node scripts/reference/verify-menu-source.mjs --reference tests/Reference/Menu.json --frames tests/Reference/Menu --output artifacts/menu-source-audit.json
+node scripts/reference/test-menu-source-audit.mjs --reference tests/Reference/Menu.json --frames tests/Reference/Menu --output artifacts/menu-source-negative-audit.json
+```
+
+DropdownMenu shared modal placement remains unresolved. SDK probes investigated native
+presenter ownership using software invokes and background isolation guards. Moving an
+already-open presenter caused extra lifecycle events and unloaded its rows.
+Returning a stable empty native marker and retaining the original presenter
+preserved one open event; assigning its original items restored loaded rows,
+but native invocation failed to dismiss the menu. The investigation receipts
+explicitly state `menuAdapterImplemented=false`. Their `passed` flag describes
+probe execution and desktop isolation, not adapter acceptance.
+
+A subsequent primitive retained the original native presenter and moved only
+its template's `ItemsPresenter` into the shared plane. The original row remained
+loaded and native invocation dismissed the inherited flyout with exactly one
+open and one close event. The expanded submenu trial failed the background
+isolation guard and exited; that receipt is a failure, not native acceptance.
+Submenu runtime checks are deferred until foreground desktop testing is
+authorized again. The root-only follow-up covers original command parameter
+identity and Click/Command/Closed order, checkbox dismissal and retained state,
+reopening, and inherited `FlyoutBase.Hide`. These use a minimal SDK test template;
+the Bleecker visual template, source placement, inactive-modal input guards,
+focus and submenu behavior still require implementation and verification.
+No such adapter has been installed in `BleeckerDropdownMenu`; its existing
+native ownership and public `MenuFlyout` contract remain unchanged.
+
 - Exact overlay shadow rasterization, 220ms entry, exit animation and 190ms item transitions remain open. Catalog open/close animations are disabled rather than using Windows motion.
-- Complete notification/rich-row compositions, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented. Label wrapping, text scaling, RTL and Narrator behavior still need full acceptance.
+- Complete notification/rich-row compositions, indeterminate selection, empty/error and constrained-content fixtures remain unimplemented. Label wrapping, text scaling and RTL still need full acceptance.
 - Shortcut spacing, text baselines, overflow/scrolling, placement offset and all pointer/keyboard/focus states need rendered comparison.
 - Verify radio selection persistence when values change while the popup is closed, theme changes while open, nested dismissal, focus restoration and modal ownership.
-- Contrast hover foregrounds, actual contrast settings, Narrator, text/display scaling and ARM64 runtime still require implementation or verification. ARM64 hardware is unavailable on this Intel host.
+- Component theme foregrounds, text/display scaling and ARM64 runtime remain unverified. Existing contrast-theme resources stay supported without an OS contrast campaign. ARM64 hardware is unavailable on this Intel host.
 
 The rendered Bleecker selection-controls fixture confirms 32px rows, 16px check vectors, 8px radio vectors and a separator reaching the popup's inner border. The radio uses a filled Lucide circle with radius 10 and stroke 2 in a 24-unit viewbox; its visible extent is 22/24 of the 8px icon box. Indicator alignment uses the reference 14px slot, including the check icon's 1px overhang.

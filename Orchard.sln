@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchard.Tests", "tests\Orchard.Tests\Orchard.Tests.csproj", "{1D81B4FF-52E1-4F2F-BA54-8BB0AA472640}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchard.Text.Tests", "tests\Orchard.Text.Tests\Orchard.Text.Tests.csproj", "{B11E4BD9-A314-4EF1-8B1D-C18249017710}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -22,6 +24,14 @@ Global
 		Release|ARM64 = Release|ARM64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Debug|x64.ActiveCfg = Debug|x64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Debug|x64.Build.0 = Debug|x64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Debug|ARM64.Build.0 = Debug|ARM64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Release|x64.ActiveCfg = Release|x64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Release|x64.Build.0 = Release|x64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Release|ARM64.ActiveCfg = Release|ARM64
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710}.Release|ARM64.Build.0 = Release|ARM64
 		{8A8A05CF-DDD5-44C7-852A-5DD55484F01C}.Debug|x64.ActiveCfg = Debug|x64
 		{8A8A05CF-DDD5-44C7-852A-5DD55484F01C}.Debug|x64.Build.0 = Debug|x64
 		{8A8A05CF-DDD5-44C7-852A-5DD55484F01C}.Debug|ARM64.ActiveCfg = Debug|ARM64
@@ -51,6 +61,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B11E4BD9-A314-4EF1-8B1D-C18249017710} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{8A8A05CF-DDD5-44C7-852A-5DD55484F01C} = {5D20AA90-6969-D8BD-9DCD-8634F4692FDA}
 		{B9968BA3-9E81-4133-8445-973787CF70A3} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{1D81B4FF-52E1-4F2F-BA54-8BB0AA472640} = {0AB3BF05-4346-4AA6-1389-037BE0695223}

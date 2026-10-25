@@ -4,7 +4,8 @@ namespace Orchard;
 // so native rendering and deterministic browser-timeline regressions agree.
 internal sealed class BleeckerCssTransition<T>(Func<T, T, double, T> interpolate, Func<double, double>? timing = null)
 {
-    private readonly Func<double, double> easing = timing ?? BleeckerColorMix.Premium;
+    private readonly Func<double, double> defaultEasing = timing ?? BleeckerColorMix.Premium;
+    private Func<double, double> easing = timing ?? BleeckerColorMix.Premium;
     private bool initialized;
     private T from = default!, to = default!, reversingStart = default!;
     private double start, duration, reversingFactor = 1;
@@ -16,13 +17,14 @@ internal sealed class BleeckerCssTransition<T>(Func<T, T, double, T> interpolate
     internal T ValueAt(double time) => !IsRunning(time) ? to :
         interpolate(from, to, easing((time - start) / duration));
 
-    internal void Retarget(T destination, double time, double fullDuration, bool animate)
+    internal void Retarget(T destination, double time, double fullDuration, bool animate, Func<double, double>? nextTiming = null)
     {
         if (!initialized || !animate)
         {
             initialized = true;
             from = to = reversingStart = destination;
             start = time; duration = 0; reversingFactor = 1;
+            easing = nextTiming ?? defaultEasing;
             return;
         }
         if (EqualityComparer<T>.Default.Equals(destination, to)) return;
@@ -33,5 +35,8 @@ internal sealed class BleeckerCssTransition<T>(Func<T, T, double, T> interpolate
         reversingStart = reversing ? to : current;
         from = current; to = destination; start = time;
         duration = fullDuration * factor; reversingFactor = factor;
+        // The interrupted presentation and shortening factor use the OLD
+        // transition's curve. Only the new transition adopts after-change CSS.
+        easing = nextTiming ?? defaultEasing;
     }
 }

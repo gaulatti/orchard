@@ -177,9 +177,11 @@ The bundled font investigation retains the canonical typographic family names.
 Native Medium/Semibold samples retain the same glyphs at Normal weight; explicit
 Segoe UI and missing-family samples differ. Legacy aliases change baseline
 metrics without improving glyph selection. No shared font resources changed.
-`-Component font-audit` captures all five bundled faces with these diagnostic
+`-Component font-audit` captures the five original bundled faces with these diagnostic
 comparisons. Its result explicitly reports `captureOnly: true` and
 `parityVerified: false`; capture completion is not acceptance evidence.
+The later App Tab Bar preview adds Encode Sans Bold as a sixth bundled face,
+with dedicated badge and windowless font verification.
 
 `tests/Reference/StatCardTypography.json` freezes 16 additional rendered source
 specimens from the unchanged pinned component, React and Recharts versions.

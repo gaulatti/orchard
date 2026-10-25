@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ControlTemplate x:Key="SelectSurfaceTemplate" TargetType="ItemsControl">
+  <Grid x:Name="SelectRoot" UseLayoutRounding="False" FlowDirection="LeftToRight">
+   <Grid x:Name="ShadowHost" IsHitTestVisible="False" UseLayoutRounding="False"/>
+   <Border x:Name="Ring" Margin="-2" BorderThickness="2" IsHitTestVisible="False" Visibility="Collapsed" UseLayoutRounding="False"/>
+   <Border x:Name="Trigger" BorderThickness="{TemplateBinding BorderThickness}" Control.IsTemplateFocusTarget="True" BackgroundSizing="OuterBorderEdge" UseLayoutRounding="False">
+    <Grid x:Name="TriggerLayout" Margin="{TemplateBinding Padding}" UseLayoutRounding="False">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="0"/><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="17"/></Grid.ColumnDefinitions>
+     <ContentPresenter x:Name="StartIcon" Grid.Column="0" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw"/>
+     <ContentPresenter x:Name="ContentPresenter" Grid.Column="2" VerticalAlignment="Center"/>
+     <Viewbox x:Name="SelectArrow" Grid.Column="4" Width="17" Height="17" IsHitTestVisible="False" VerticalAlignment="Center"><Canvas Width="24" Height="24"><Path Data="M6 9L12 15L18 9" Stroke="{ThemeResource BleeckerTextSecondaryBrush}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/></Canvas></Viewbox>
+    </Grid>
+   </Border>
+   <Path x:Name="ShadowMask" Visibility="Collapsed" Fill="White"/><Path x:Name="ShadowExterior" Visibility="Collapsed" Fill="White"/>
+   <Popup x:Name="Popup" IsLightDismissEnabled="True" ShouldConstrainToRootBounds="True">
+    <Border x:Name="PopupBorder" UseLayoutRounding="False">
+     <local:BleeckerOverlaySurface x:Name="PopupSurface" Background="{ThemeResource SelectPopupBackground}" BorderBrush="{ThemeResource SelectPopupBorder}" BorderThickness="1" CornerRadius="7" Padding="0" UseLayoutRounding="False" AutomationProperties.AccessibilityView="Raw">
+      <ScrollViewer x:Name="ScrollViewer" MaxHeight="288" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" ZoomMode="Disabled" IsTabStop="True" AutomationProperties.AccessibilityView="Raw"><ItemsPresenter Margin="4"/></ScrollViewer>
+     </local:BleeckerOverlaySurface>
+    </Border>
+   </Popup>
+  </Grid>
+ </ControlTemplate>
+ <ControlTemplate x:Key="SelectOptionTemplate" TargetType="Button">
+  <Grid Background="{TemplateBinding Background}" CornerRadius="5" Padding="{TemplateBinding Padding}" UseLayoutRounding="False">
+   <ContentPresenter x:Name="OptionContent" VerticalAlignment="Center" UseLayoutRounding="False"/>
+   <Viewbox x:Name="Checkmark" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-24,0" IsHitTestVisible="False"><Canvas Width="24" Height="24"><Path Data="M20 6L9 17L4 12" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/></Canvas></Viewbox>
+  </Grid>
+ </ControlTemplate>
+</ResourceDictionary>

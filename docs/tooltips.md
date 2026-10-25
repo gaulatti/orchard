@@ -1,5 +1,43 @@
 # Tooltip preview
 
+Current scope is the [component library and its fictional-data demos](library-scope.md).
+Narrator and OS accessibility/contrast campaigns are excluded. Historical
+desktop reports below do not authorize new foreground tests.
+
+Inside `BleeckerModalHost`, Tooltip and Field Help Tooltip now use the shared
+portal plane. Their original control, consumer content, template/selector,
+description relationship and requested theme stay intact. Outside that host,
+the application-constrained native Popup path remains available. A private
+wrapper gates pointer input without changing caller enabled values or bindings.
+Unowned tooltips keep source z-index 180; modal-owned help uses overlay+1.
+Newer modals or Select scopes suspend older help. Help declared inside a Select
+option belongs to that active logical scope; owner unloading closes it once.
+The host's peer tree follows the same active popup scope and logical branches.
+
+Escape dismisses active help before its modal, Popover or Select owner. The
+source browser histories verify tooltip-only dismissal and retained trigger
+focus. Hidden native checks verify the dismissal decision and ownership;
+physical keyboard delivery and native focus remain unverified.
+
+The default style disables layout rounding, and the shared text renderer uses
+the pinned CSS layout-unit metrics. This prevents the popup container from
+changing body and arrow geometry. Placement snaps body coordinates to the
+actual raster scale; arrow alignment uses Floating UI's integer client extent.
+The default content slot supports original model data with `ContentTemplate`
+or `ContentTemplateSelector`, assigning the model before selecting its template.
+Live content, typography and foreground changes update that presentation.
+Replacement control templates can supply the built-in `PART_ContentHost` panel;
+templates that render their own content keep ownership of that rendering.
+
+`TooltipsFixture` includes a fictional Popover containing an original tooltip
+trigger. The frozen `tests/Reference/Tooltip.json` contains 40 light/dark states
+and four Escape histories, with two independent JSON/PNG captures matching byte
+for byte. The shared placement model matches all 40 source states. Current
+background native validation compares both popup paths, modal ownership,
+Select scope changes, field-help removal and loaded-window teardown.
+These checks do not establish full raster, normal motion, hover timing,
+physical input/focus, scaling or native ARM64 acceptance.
+
 The programmatic appearance checks establish a genuine neutral pointer receipt
 at the fixture heading before opening tooltip specimens. At source `ba1434b`,
 `artifacts/smoke-stepper-motion-full` records LongTip closing after a delayed

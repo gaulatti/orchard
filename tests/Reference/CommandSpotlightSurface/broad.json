@@ -1,0 +1,8419 @@
+{
+  "format": "orchard-command-spotlight-surface-source-v2",
+  "passed": true,
+  "diagnosticOnly": true,
+  "layer": "rounded-border",
+  "browser": "155.0.4283.62",
+  "width": 600,
+  "height": 800,
+  "columns": 15,
+  "cell": 40,
+  "cases": [
+    {
+      "id": "endpoint-0",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 0%,transparent)",
+      "index": 0,
+      "x": 20,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-1",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 10%,transparent)",
+      "index": 1,
+      "x": 60,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-2",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 30%,transparent)",
+      "index": 2,
+      "x": 100,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-3",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 50%,transparent)",
+      "index": 3,
+      "x": 140,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-4",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 100%,transparent)",
+      "index": 4,
+      "x": 180,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-5",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 0%,transparent)",
+      "index": 5,
+      "x": 220,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-6",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 10%,transparent)",
+      "index": 6,
+      "x": 260,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.012549)",
+      "pixel": [
+        252,
+        252,
+        252,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-7",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 30%,transparent)",
+      "index": 7,
+      "x": 300,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.0376471)",
+      "pixel": [
+        245,
+        245,
+        245,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-8",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 50%,transparent)",
+      "index": 8,
+      "x": 340,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.0627451)",
+      "pixel": [
+        239,
+        239,
+        239,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-9",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 100%,transparent)",
+      "index": 9,
+      "x": 380,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.12549)",
+      "pixel": [
+        223,
+        223,
+        223,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-10",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 0%,transparent)",
+      "index": 10,
+      "x": 420,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-11",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 10%,transparent)",
+      "index": 11,
+      "x": 460,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.0501961)",
+      "pixel": [
+        242,
+        242,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-12",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 30%,transparent)",
+      "index": 12,
+      "x": 500,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.150588)",
+      "pixel": [
+        217,
+        217,
+        217,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-13",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 50%,transparent)",
+      "index": 13,
+      "x": 540,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.25098)",
+      "pixel": [
+        191,
+        191,
+        191,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-14",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 100%,transparent)",
+      "index": 14,
+      "x": 580,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.501961)",
+      "pixel": [
+        127,
+        127,
+        127,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-15",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 0%,transparent)",
+      "index": 15,
+      "x": 20,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-16",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 10%,transparent)",
+      "index": 16,
+      "x": 60,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        229,
+        229,
+        229,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-17",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 30%,transparent)",
+      "index": 17,
+      "x": 100,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        178,
+        178,
+        178,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-18",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 50%,transparent)",
+      "index": 18,
+      "x": 140,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        127,
+        127,
+        127,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-19",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 100%,transparent)",
+      "index": 19,
+      "x": 180,
+      "y": 60,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-20",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 0%,transparent)",
+      "index": 20,
+      "x": 220,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-21",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 10%,transparent)",
+      "index": 21,
+      "x": 260,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-22",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 30%,transparent)",
+      "index": 22,
+      "x": 300,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-23",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 50%,transparent)",
+      "index": 23,
+      "x": 340,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-24",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 100%,transparent)",
+      "index": 24,
+      "x": 380,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-25",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 0%,transparent)",
+      "index": 25,
+      "x": 420,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-26",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 10%,transparent)",
+      "index": 26,
+      "x": 460,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.012549)",
+      "pixel": [
+        253,
+        253,
+        254,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-27",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 30%,transparent)",
+      "index": 27,
+      "x": 500,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0376471)",
+      "pixel": [
+        247,
+        248,
+        250,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-28",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 50%,transparent)",
+      "index": 28,
+      "x": 540,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0627451)",
+      "pixel": [
+        242,
+        244,
+        247,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-29",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 100%,transparent)",
+      "index": 29,
+      "x": 580,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12549)",
+      "pixel": [
+        229,
+        234,
+        240,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-30",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 0%,transparent)",
+      "index": 30,
+      "x": 20,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-31",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 10%,transparent)",
+      "index": 31,
+      "x": 60,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0501961)",
+      "pixel": [
+        244,
+        246,
+        249,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-32",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 30%,transparent)",
+      "index": 32,
+      "x": 100,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.150588)",
+      "pixel": [
+        224,
+        230,
+        237,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-33",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 50%,transparent)",
+      "index": 33,
+      "x": 140,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25098)",
+      "pixel": [
+        202,
+        213,
+        224,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-34",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 100%,transparent)",
+      "index": 34,
+      "x": 180,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.501961)",
+      "pixel": [
+        149,
+        171,
+        193,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-35",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 0%,transparent)",
+      "index": 35,
+      "x": 220,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-36",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 10%,transparent)",
+      "index": 36,
+      "x": 260,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        233,
+        238,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-37",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 30%,transparent)",
+      "index": 37,
+      "x": 300,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        191,
+        204,
+        218,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-38",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 50%,transparent)",
+      "index": 38,
+      "x": 340,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        149,
+        170,
+        193,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-39",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 100%,transparent)",
+      "index": 39,
+      "x": 380,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-40",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 0%,transparent)",
+      "index": 40,
+      "x": 420,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-41",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 10%,transparent)",
+      "index": 41,
+      "x": 460,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-42",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 30%,transparent)",
+      "index": 42,
+      "x": 500,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-43",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 50%,transparent)",
+      "index": 43,
+      "x": 540,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-44",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 100%,transparent)",
+      "index": 44,
+      "x": 580,
+      "y": 100,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-45",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 0%,transparent)",
+      "index": 45,
+      "x": 20,
+      "y": 140,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-46",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 10%,transparent)",
+      "index": 46,
+      "x": 60,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.012549)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-47",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 30%,transparent)",
+      "index": 47,
+      "x": 100,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0376471)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-48",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 50%,transparent)",
+      "index": 48,
+      "x": 140,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0627451)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-49",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 100%,transparent)",
+      "index": 49,
+      "x": 180,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12549)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-50",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 0%,transparent)",
+      "index": 50,
+      "x": 220,
+      "y": 140,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-51",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 10%,transparent)",
+      "index": 51,
+      "x": 260,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0501961)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-52",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 30%,transparent)",
+      "index": 52,
+      "x": 300,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.150588)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-53",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 50%,transparent)",
+      "index": 53,
+      "x": 340,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25098)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-54",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 100%,transparent)",
+      "index": 54,
+      "x": 380,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.501961)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-55",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 0%,transparent)",
+      "index": 55,
+      "x": 420,
+      "y": 140,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-56",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 10%,transparent)",
+      "index": 56,
+      "x": 460,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-57",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 30%,transparent)",
+      "index": 57,
+      "x": 500,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        255,
+        254,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-58",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 50%,transparent)",
+      "index": 58,
+      "x": 540,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        255,
+        254,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-59",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 100%,transparent)",
+      "index": 59,
+      "x": 580,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-60",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 0%,transparent)",
+      "index": 60,
+      "x": 20,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-61",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 10%,transparent)",
+      "index": 61,
+      "x": 60,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-62",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 30%,transparent)",
+      "index": 62,
+      "x": 100,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-63",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 50%,transparent)",
+      "index": 63,
+      "x": 140,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-64",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 100%,transparent)",
+      "index": 64,
+      "x": 180,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-65",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 0%,transparent)",
+      "index": 65,
+      "x": 220,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-66",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 10%,transparent)",
+      "index": 66,
+      "x": 260,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.012549)",
+      "pixel": [
+        24,
+        37,
+        50,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-67",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 30%,transparent)",
+      "index": 67,
+      "x": 300,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.0376471)",
+      "pixel": [
+        23,
+        36,
+        49,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-68",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 50%,transparent)",
+      "index": 68,
+      "x": 340,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.0627451)",
+      "pixel": [
+        22,
+        35,
+        48,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-69",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 100%,transparent)",
+      "index": 69,
+      "x": 380,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.12549)",
+      "pixel": [
+        21,
+        32,
+        45,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-70",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 0%,transparent)",
+      "index": 70,
+      "x": 420,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-71",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 10%,transparent)",
+      "index": 71,
+      "x": 460,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.0501961)",
+      "pixel": [
+        23,
+        35,
+        48,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-72",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 30%,transparent)",
+      "index": 72,
+      "x": 500,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.150588)",
+      "pixel": [
+        20,
+        31,
+        43,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-73",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 50%,transparent)",
+      "index": 73,
+      "x": 540,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.25098)",
+      "pixel": [
+        18,
+        28,
+        38,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-74",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 100%,transparent)",
+      "index": 74,
+      "x": 580,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.501961)",
+      "pixel": [
+        12,
+        18,
+        25,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-75",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 0%,transparent)",
+      "index": 75,
+      "x": 20,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-76",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 10%,transparent)",
+      "index": 76,
+      "x": 60,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        22,
+        33,
+        46,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-77",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 30%,transparent)",
+      "index": 77,
+      "x": 100,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        17,
+        26,
+        36,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-78",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 50%,transparent)",
+      "index": 78,
+      "x": 140,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        12,
+        18,
+        25,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-79",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 100%,transparent)",
+      "index": 79,
+      "x": 180,
+      "y": 220,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-80",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 0%,transparent)",
+      "index": 80,
+      "x": 220,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-81",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 10%,transparent)",
+      "index": 81,
+      "x": 260,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-82",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 30%,transparent)",
+      "index": 82,
+      "x": 300,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-83",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 50%,transparent)",
+      "index": 83,
+      "x": 340,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-84",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 100%,transparent)",
+      "index": 84,
+      "x": 380,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-85",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 0%,transparent)",
+      "index": 85,
+      "x": 420,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-86",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 10%,transparent)",
+      "index": 86,
+      "x": 460,
+      "y": 220,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.012549)",
+      "pixel": [
+        25,
+        38,
+        52,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-87",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 30%,transparent)",
+      "index": 87,
+      "x": 500,
+      "y": 220,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0376471)",
+      "pixel": [
+        25,
+        39,
+        54,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-88",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 50%,transparent)",
+      "index": 88,
+      "x": 540,
+      "y": 220,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0627451)",
+      "pixel": [
+        25,
+        40,
+        56,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-89",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 100%,transparent)",
+      "index": 89,
+      "x": 580,
+      "y": 220,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12549)",
+      "pixel": [
+        27,
+        43,
+        62,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-90",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 0%,transparent)",
+      "index": 90,
+      "x": 20,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-91",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 10%,transparent)",
+      "index": 91,
+      "x": 60,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0501961)",
+      "pixel": [
+        25,
+        39,
+        55,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-92",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 30%,transparent)",
+      "index": 92,
+      "x": 100,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.150588)",
+      "pixel": [
+        27,
+        44,
+        63,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-93",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 50%,transparent)",
+      "index": 93,
+      "x": 140,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25098)",
+      "pixel": [
+        29,
+        50,
+        71,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-94",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 100%,transparent)",
+      "index": 94,
+      "x": 180,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.501961)",
+      "pixel": [
+        34,
+        62,
+        91,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-95",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 0%,transparent)",
+      "index": 95,
+      "x": 220,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-96",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 10%,transparent)",
+      "index": 96,
+      "x": 260,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        26,
+        42,
+        59,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-97",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 30%,transparent)",
+      "index": 97,
+      "x": 300,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        30,
+        52,
+        76,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-98",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 50%,transparent)",
+      "index": 98,
+      "x": 340,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        34,
+        61,
+        91,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-99",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 100%,transparent)",
+      "index": 99,
+      "x": 380,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-100",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 0%,transparent)",
+      "index": 100,
+      "x": 420,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-101",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 10%,transparent)",
+      "index": 101,
+      "x": 460,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-102",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 30%,transparent)",
+      "index": 102,
+      "x": 500,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-103",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 50%,transparent)",
+      "index": 103,
+      "x": 540,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-104",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 100%,transparent)",
+      "index": 104,
+      "x": 580,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-105",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 0%,transparent)",
+      "index": 105,
+      "x": 20,
+      "y": 300,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-106",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 10%,transparent)",
+      "index": 106,
+      "x": 60,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.012549)",
+      "pixel": [
+        27,
+        40,
+        53,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-107",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 30%,transparent)",
+      "index": 107,
+      "x": 100,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0376471)",
+      "pixel": [
+        33,
+        46,
+        59,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-108",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 50%,transparent)",
+      "index": 108,
+      "x": 140,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0627451)",
+      "pixel": [
+        38,
+        51,
+        64,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-109",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 100%,transparent)",
+      "index": 109,
+      "x": 180,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12549)",
+      "pixel": [
+        53,
+        64,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-110",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 0%,transparent)",
+      "index": 110,
+      "x": 220,
+      "y": 300,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-111",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 10%,transparent)",
+      "index": 111,
+      "x": 260,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0501961)",
+      "pixel": [
+        36,
+        48,
+        61,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-112",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 30%,transparent)",
+      "index": 112,
+      "x": 300,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.150588)",
+      "pixel": [
+        58,
+        69,
+        81,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-113",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 50%,transparent)",
+      "index": 113,
+      "x": 340,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25098)",
+      "pixel": [
+        82,
+        92,
+        102,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-114",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 100%,transparent)",
+      "index": 114,
+      "x": 380,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.501961)",
+      "pixel": [
+        140,
+        146,
+        153,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-115",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 0%,transparent)",
+      "index": 115,
+      "x": 420,
+      "y": 300,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        24,
+        37,
+        51,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-116",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 10%,transparent)",
+      "index": 116,
+      "x": 460,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        48,
+        59,
+        72,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-117",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 30%,transparent)",
+      "index": 117,
+      "x": 500,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        94,
+        102,
+        113,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-118",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 50%,transparent)",
+      "index": 118,
+      "x": 540,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        140,
+        145,
+        153,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-119",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 100%,transparent)",
+      "index": 119,
+      "x": 580,
+      "y": 300,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-120",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 0%,transparent)",
+      "index": 120,
+      "x": 20,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-121",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 10%,transparent)",
+      "index": 121,
+      "x": 60,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-122",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 30%,transparent)",
+      "index": 122,
+      "x": 100,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-123",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 50%,transparent)",
+      "index": 123,
+      "x": 140,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-124",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 100%,transparent)",
+      "index": 124,
+      "x": 180,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-125",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 0%,transparent)",
+      "index": 125,
+      "x": 220,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-126",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 10%,transparent)",
+      "index": 126,
+      "x": 260,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.012549)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-127",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 30%,transparent)",
+      "index": 127,
+      "x": 300,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.0376471)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-128",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 50%,transparent)",
+      "index": 128,
+      "x": 340,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.0627451)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-129",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 100%,transparent)",
+      "index": 129,
+      "x": 380,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.12549)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-130",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 0%,transparent)",
+      "index": 130,
+      "x": 420,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-131",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 10%,transparent)",
+      "index": 131,
+      "x": 460,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.0501961)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-132",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 30%,transparent)",
+      "index": 132,
+      "x": 500,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.150588)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-133",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 50%,transparent)",
+      "index": 133,
+      "x": 540,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.25098)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-134",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 100%,transparent)",
+      "index": 134,
+      "x": 580,
+      "y": 340,
+      "computedCss": "oklab(0 0 0 / 0.501961)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-135",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 0%,transparent)",
+      "index": 135,
+      "x": 20,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-136",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 10%,transparent)",
+      "index": 136,
+      "x": 60,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-137",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 30%,transparent)",
+      "index": 137,
+      "x": 100,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-138",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 50%,transparent)",
+      "index": 138,
+      "x": 140,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-139",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 100%,transparent)",
+      "index": 139,
+      "x": 180,
+      "y": 380,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-140",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 0%,transparent)",
+      "index": 140,
+      "x": 220,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-141",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 10%,transparent)",
+      "index": 141,
+      "x": 260,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-142",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 30%,transparent)",
+      "index": 142,
+      "x": 300,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-143",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 50%,transparent)",
+      "index": 143,
+      "x": 340,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-144",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 100%,transparent)",
+      "index": 144,
+      "x": 380,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-145",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 0%,transparent)",
+      "index": 145,
+      "x": 420,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-146",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 10%,transparent)",
+      "index": 146,
+      "x": 460,
+      "y": 380,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.012549)",
+      "pixel": [
+        1,
+        1,
+        2,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-147",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 30%,transparent)",
+      "index": 147,
+      "x": 500,
+      "y": 380,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0376471)",
+      "pixel": [
+        2,
+        3,
+        5,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-148",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 50%,transparent)",
+      "index": 148,
+      "x": 540,
+      "y": 380,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0627451)",
+      "pixel": [
+        3,
+        5,
+        8,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-149",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 100%,transparent)",
+      "index": 149,
+      "x": 580,
+      "y": 380,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12549)",
+      "pixel": [
+        6,
+        11,
+        17,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-150",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 0%,transparent)",
+      "index": 150,
+      "x": 20,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-151",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 10%,transparent)",
+      "index": 151,
+      "x": 60,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0501961)",
+      "pixel": [
+        2,
+        4,
+        7,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-152",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 30%,transparent)",
+      "index": 152,
+      "x": 100,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.150588)",
+      "pixel": [
+        7,
+        13,
+        20,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-153",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 50%,transparent)",
+      "index": 153,
+      "x": 140,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25098)",
+      "pixel": [
+        11,
+        22,
+        33,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-154",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 100%,transparent)",
+      "index": 154,
+      "x": 180,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.501961)",
+      "pixel": [
+        22,
+        44,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-155",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 0%,transparent)",
+      "index": 155,
+      "x": 220,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-156",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 10%,transparent)",
+      "index": 156,
+      "x": 260,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        4,
+        9,
+        13,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-157",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 30%,transparent)",
+      "index": 157,
+      "x": 300,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        13,
+        26,
+        40,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-158",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 50%,transparent)",
+      "index": 158,
+      "x": 340,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        22,
+        43,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-159",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 100%,transparent)",
+      "index": 159,
+      "x": 380,
+      "y": 420,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-160",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 0%,transparent)",
+      "index": 160,
+      "x": 420,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-161",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 10%,transparent)",
+      "index": 161,
+      "x": 460,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-162",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 30%,transparent)",
+      "index": 162,
+      "x": 500,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-163",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 50%,transparent)",
+      "index": 163,
+      "x": 540,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-164",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 100%,transparent)",
+      "index": 164,
+      "x": 580,
+      "y": 420,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-165",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 0%,transparent)",
+      "index": 165,
+      "x": 20,
+      "y": 460,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-166",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 10%,transparent)",
+      "index": 166,
+      "x": 60,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.012549)",
+      "pixel": [
+        3,
+        3,
+        3,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-167",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 30%,transparent)",
+      "index": 167,
+      "x": 100,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0376471)",
+      "pixel": [
+        10,
+        10,
+        10,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-168",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 50%,transparent)",
+      "index": 168,
+      "x": 140,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0627451)",
+      "pixel": [
+        16,
+        16,
+        16,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-169",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 100%,transparent)",
+      "index": 169,
+      "x": 180,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12549)",
+      "pixel": [
+        32,
+        32,
+        32,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-170",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 0%,transparent)",
+      "index": 170,
+      "x": 220,
+      "y": 460,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-171",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 10%,transparent)",
+      "index": 171,
+      "x": 260,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0501961)",
+      "pixel": [
+        13,
+        13,
+        13,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-172",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 30%,transparent)",
+      "index": 172,
+      "x": 300,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.150588)",
+      "pixel": [
+        38,
+        38,
+        38,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-173",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 50%,transparent)",
+      "index": 173,
+      "x": 340,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25098)",
+      "pixel": [
+        64,
+        64,
+        64,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-174",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 100%,transparent)",
+      "index": 174,
+      "x": 380,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.501961)",
+      "pixel": [
+        128,
+        128,
+        128,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-175",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 0%,transparent)",
+      "index": 175,
+      "x": 420,
+      "y": 460,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-176",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 10%,transparent)",
+      "index": 176,
+      "x": 460,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        26,
+        26,
+        26,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-177",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 30%,transparent)",
+      "index": 177,
+      "x": 500,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        77,
+        76,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-178",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 50%,transparent)",
+      "index": 178,
+      "x": 540,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        128,
+        127,
+        128,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-179",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        0,
+        0,
+        0
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 100%,transparent)",
+      "index": 179,
+      "x": 580,
+      "y": 460,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-180",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 0%,transparent)",
+      "index": 180,
+      "x": 20,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-181",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 10%,transparent)",
+      "index": 181,
+      "x": 60,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-182",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 30%,transparent)",
+      "index": 182,
+      "x": 100,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-183",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 50%,transparent)",
+      "index": 183,
+      "x": 140,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-184",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 100%,transparent)",
+      "index": 184,
+      "x": 180,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-185",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 0%,transparent)",
+      "index": 185,
+      "x": 220,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-186",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 10%,transparent)",
+      "index": 186,
+      "x": 260,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.012549)",
+      "pixel": [
+        3,
+        198,
+        65,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-187",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 30%,transparent)",
+      "index": 187,
+      "x": 300,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.0376471)",
+      "pixel": [
+        3,
+        192,
+        63,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-188",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 50%,transparent)",
+      "index": 188,
+      "x": 340,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.0627451)",
+      "pixel": [
+        3,
+        187,
+        62,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-189",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 100%,transparent)",
+      "index": 189,
+      "x": 380,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.12549)",
+      "pixel": [
+        3,
+        175,
+        58,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-190",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 0%,transparent)",
+      "index": 190,
+      "x": 420,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-191",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 10%,transparent)",
+      "index": 191,
+      "x": 460,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.0501961)",
+      "pixel": [
+        3,
+        190,
+        63,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-192",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 30%,transparent)",
+      "index": 192,
+      "x": 500,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.150588)",
+      "pixel": [
+        3,
+        170,
+        56,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-193",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 50%,transparent)",
+      "index": 193,
+      "x": 540,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.25098)",
+      "pixel": [
+        2,
+        150,
+        49,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-194",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 100%,transparent)",
+      "index": 194,
+      "x": 580,
+      "y": 500,
+      "computedCss": "oklab(0 0 0 / 0.501961)",
+      "pixel": [
+        1,
+        100,
+        33,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-195",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 0%,transparent)",
+      "index": 195,
+      "x": 20,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-196",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 10%,transparent)",
+      "index": 196,
+      "x": 60,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        3,
+        180,
+        59,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-197",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 30%,transparent)",
+      "index": 197,
+      "x": 100,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        2,
+        140,
+        46,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-198",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 50%,transparent)",
+      "index": 198,
+      "x": 140,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        1,
+        100,
+        33,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-199",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 100%,transparent)",
+      "index": 199,
+      "x": 180,
+      "y": 540,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-200",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 0%,transparent)",
+      "index": 200,
+      "x": 220,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-201",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 10%,transparent)",
+      "index": 201,
+      "x": 260,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-202",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 30%,transparent)",
+      "index": 202,
+      "x": 300,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-203",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 50%,transparent)",
+      "index": 203,
+      "x": 340,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-204",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 100%,transparent)",
+      "index": 204,
+      "x": 380,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-205",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 0%,transparent)",
+      "index": 205,
+      "x": 420,
+      "y": 540,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-206",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 10%,transparent)",
+      "index": 206,
+      "x": 460,
+      "y": 540,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.012549)",
+      "pixel": [
+        4,
+        199,
+        67,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-207",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 30%,transparent)",
+      "index": 207,
+      "x": 500,
+      "y": 540,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0376471)",
+      "pixel": [
+        5,
+        195,
+        68,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-208",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 50%,transparent)",
+      "index": 208,
+      "x": 540,
+      "y": 540,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0627451)",
+      "pixel": [
+        6,
+        192,
+        70,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-209",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 100%,transparent)",
+      "index": 209,
+      "x": 580,
+      "y": 540,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12549)",
+      "pixel": [
+        9,
+        186,
+        75,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-210",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 0%,transparent)",
+      "index": 210,
+      "x": 20,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-211",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 10%,transparent)",
+      "index": 211,
+      "x": 60,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0501961)",
+      "pixel": [
+        5,
+        194,
+        70,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-212",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 30%,transparent)",
+      "index": 212,
+      "x": 100,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.150588)",
+      "pixel": [
+        10,
+        183,
+        76,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-213",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 50%,transparent)",
+      "index": 213,
+      "x": 140,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25098)",
+      "pixel": [
+        13,
+        172,
+        82,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-214",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 100%,transparent)",
+      "index": 214,
+      "x": 180,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.501961)",
+      "pixel": [
+        23,
+        144,
+        99,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-215",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 0%,transparent)",
+      "index": 215,
+      "x": 220,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-216",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 10%,transparent)",
+      "index": 216,
+      "x": 260,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        7,
+        189,
+        72,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-217",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 30%,transparent)",
+      "index": 217,
+      "x": 300,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        15,
+        166,
+        86,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-218",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 50%,transparent)",
+      "index": 218,
+      "x": 340,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        23,
+        143,
+        99,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-219",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 100%,transparent)",
+      "index": 219,
+      "x": 380,
+      "y": 580,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-220",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 0%,transparent)",
+      "index": 220,
+      "x": 420,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-221",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 10%,transparent)",
+      "index": 221,
+      "x": 460,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-222",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 30%,transparent)",
+      "index": 222,
+      "x": 500,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-223",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 50%,transparent)",
+      "index": 223,
+      "x": 540,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-224",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 100%,transparent)",
+      "index": 224,
+      "x": 580,
+      "y": 580,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-225",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 0%,transparent)",
+      "index": 225,
+      "x": 20,
+      "y": 620,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-226",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 10%,transparent)",
+      "index": 226,
+      "x": 60,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.012549)",
+      "pixel": [
+        6,
+        201,
+        68,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-227",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 30%,transparent)",
+      "index": 227,
+      "x": 100,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0376471)",
+      "pixel": [
+        13,
+        202,
+        73,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-228",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 50%,transparent)",
+      "index": 228,
+      "x": 140,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0627451)",
+      "pixel": [
+        19,
+        203,
+        78,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-229",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 100%,transparent)",
+      "index": 229,
+      "x": 180,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12549)",
+      "pixel": [
+        35,
+        207,
+        90,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-230",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 0%,transparent)",
+      "index": 230,
+      "x": 220,
+      "y": 620,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-231",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 10%,transparent)",
+      "index": 231,
+      "x": 260,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0501961)",
+      "pixel": [
+        16,
+        203,
+        76,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-232",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 30%,transparent)",
+      "index": 232,
+      "x": 300,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.150588)",
+      "pixel": [
+        41,
+        208,
+        94,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-233",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 50%,transparent)",
+      "index": 233,
+      "x": 340,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25098)",
+      "pixel": [
+        66,
+        214,
+        113,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-234",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 100%,transparent)",
+      "index": 234,
+      "x": 380,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.501961)",
+      "pixel": [
+        129,
+        228,
+        161,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-235",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 0%,transparent)",
+      "index": 235,
+      "x": 420,
+      "y": 620,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        3,
+        200,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-236",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 10%,transparent)",
+      "index": 236,
+      "x": 460,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        29,
+        206,
+        85,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-237",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 30%,transparent)",
+      "index": 237,
+      "x": 500,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        79,
+        216,
+        123,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-238",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 50%,transparent)",
+      "index": 238,
+      "x": 540,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        129,
+        227,
+        161,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-239",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        3,
+        200,
+        66
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 100%,transparent)",
+      "index": 239,
+      "x": 580,
+      "y": 620,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-240",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 0%,transparent)",
+      "index": 240,
+      "x": 20,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-241",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 10%,transparent)",
+      "index": 241,
+      "x": 60,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-242",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 30%,transparent)",
+      "index": 242,
+      "x": 100,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-243",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 50%,transparent)",
+      "index": 243,
+      "x": 140,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-244",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0) 100%,transparent)",
+      "index": 244,
+      "x": 180,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-245",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 0%,transparent)",
+      "index": 245,
+      "x": 220,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-246",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 10%,transparent)",
+      "index": 246,
+      "x": 260,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.012549)",
+      "pixel": [
+        248,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-247",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 30%,transparent)",
+      "index": 247,
+      "x": 300,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.0376471)",
+      "pixel": [
+        241,
+        20,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-248",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 50%,transparent)",
+      "index": 248,
+      "x": 340,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.0627451)",
+      "pixel": [
+        235,
+        20,
+        11,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-249",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.12549019607843137) 100%,transparent)",
+      "index": 249,
+      "x": 380,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.12549)",
+      "pixel": [
+        220,
+        18,
+        10,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-250",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 0%,transparent)",
+      "index": 250,
+      "x": 420,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-251",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 10%,transparent)",
+      "index": 251,
+      "x": 460,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.0501961)",
+      "pixel": [
+        238,
+        20,
+        11,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-252",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 30%,transparent)",
+      "index": 252,
+      "x": 500,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.150588)",
+      "pixel": [
+        214,
+        18,
+        10,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-253",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 50%,transparent)",
+      "index": 253,
+      "x": 540,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.25098)",
+      "pixel": [
+        188,
+        16,
+        9,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-254",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 0.5019607843137255) 100%,transparent)",
+      "index": 254,
+      "x": 580,
+      "y": 660,
+      "computedCss": "oklab(0 0 0 / 0.501961)",
+      "pixel": [
+        125,
+        10,
+        6,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-255",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 0%,transparent)",
+      "index": 255,
+      "x": 20,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-256",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 10%,transparent)",
+      "index": 256,
+      "x": 60,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        225,
+        19,
+        11,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-257",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 30%,transparent)",
+      "index": 257,
+      "x": 100,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        175,
+        15,
+        8,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-258",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 50%,transparent)",
+      "index": 258,
+      "x": 140,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        125,
+        10,
+        6,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-259",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(0 0 0 / 1) 100%,transparent)",
+      "index": 259,
+      "x": 180,
+      "y": 700,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-260",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 0%,transparent)",
+      "index": 260,
+      "x": 220,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-261",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 10%,transparent)",
+      "index": 261,
+      "x": 260,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-262",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 30%,transparent)",
+      "index": 262,
+      "x": 300,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-263",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 50%,transparent)",
+      "index": 263,
+      "x": 340,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-264",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0) 100%,transparent)",
+      "index": 264,
+      "x": 380,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-265",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 0%,transparent)",
+      "index": 265,
+      "x": 420,
+      "y": 700,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-266",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 10%,transparent)",
+      "index": 266,
+      "x": 460,
+      "y": 700,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.012549)",
+      "pixel": [
+        249,
+        22,
+        14,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-267",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 30%,transparent)",
+      "index": 267,
+      "x": 500,
+      "y": 700,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0376471)",
+      "pixel": [
+        243,
+        23,
+        17,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-268",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 50%,transparent)",
+      "index": 268,
+      "x": 540,
+      "y": 700,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0627451)",
+      "pixel": [
+        238,
+        25,
+        19,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-269",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.12549019607843137) 100%,transparent)",
+      "index": 269,
+      "x": 580,
+      "y": 700,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12549)",
+      "pixel": [
+        226,
+        29,
+        27,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-270",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 0%,transparent)",
+      "index": 270,
+      "x": 20,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-271",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 10%,transparent)",
+      "index": 271,
+      "x": 60,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.0501961)",
+      "pixel": [
+        240,
+        24,
+        18,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-272",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 30%,transparent)",
+      "index": 272,
+      "x": 100,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.150588)",
+      "pixel": [
+        221,
+        31,
+        30,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-273",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 50%,transparent)",
+      "index": 273,
+      "x": 140,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25098)",
+      "pixel": [
+        199,
+        38,
+        42,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-274",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 0.5019607843137255) 100%,transparent)",
+      "index": 274,
+      "x": 180,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.501961)",
+      "pixel": [
+        147,
+        54,
+        72,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-275",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 0%,transparent)",
+      "index": 275,
+      "x": 220,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-276",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 10%,transparent)",
+      "index": 276,
+      "x": 260,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        229,
+        28,
+        24,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-277",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 30%,transparent)",
+      "index": 277,
+      "x": 300,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        188,
+        41,
+        48,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-278",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 50%,transparent)",
+      "index": 278,
+      "x": 340,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        147,
+        53,
+        72,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-279",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(44 87 132 / 1) 100%,transparent)",
+      "index": 279,
+      "x": 380,
+      "y": 740,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-280",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 0%,transparent)",
+      "index": 280,
+      "x": 420,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-281",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 10%,transparent)",
+      "index": 281,
+      "x": 460,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-282",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 30%,transparent)",
+      "index": 282,
+      "x": 500,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-283",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 50%,transparent)",
+      "index": 283,
+      "x": 540,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-284",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 0,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0) 100%,transparent)",
+      "index": 284,
+      "x": 580,
+      "y": 740,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-285",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 0%,transparent)",
+      "index": 285,
+      "x": 20,
+      "y": 780,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-286",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 10%,transparent)",
+      "index": 286,
+      "x": 60,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.012549)",
+      "pixel": [
+        251,
+        24,
+        15,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-287",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 30%,transparent)",
+      "index": 287,
+      "x": 100,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0376471)",
+      "pixel": [
+        251,
+        30,
+        22,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-288",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 50%,transparent)",
+      "index": 288,
+      "x": 140,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0627451)",
+      "pixel": [
+        251,
+        36,
+        27,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-289",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 32,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.12549019607843137) 100%,transparent)",
+      "index": 289,
+      "x": 180,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12549)",
+      "pixel": [
+        252,
+        50,
+        42,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-290",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 0%,transparent)",
+      "index": 290,
+      "x": 220,
+      "y": 780,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-291",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 10%,transparent)",
+      "index": 291,
+      "x": 260,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.0501961)",
+      "pixel": [
+        251,
+        33,
+        24,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-292",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 30%,transparent)",
+      "index": 292,
+      "x": 300,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.150588)",
+      "pixel": [
+        252,
+        56,
+        48,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-293",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 50%,transparent)",
+      "index": 293,
+      "x": 340,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25098)",
+      "pixel": [
+        252,
+        80,
+        73,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-294",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 128,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 0.5019607843137255) 100%,transparent)",
+      "index": 294,
+      "x": 380,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.501961)",
+      "pixel": [
+        253,
+        138,
+        134,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-295",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 0%,transparent)",
+      "index": 295,
+      "x": 420,
+      "y": 780,
+      "computedCss": "oklab(0 0 0 / 0)",
+      "pixel": [
+        251,
+        21,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-296",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 10%,transparent)",
+      "index": 296,
+      "x": 460,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        251,
+        45,
+        37,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-297",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 30%,transparent)",
+      "index": 297,
+      "x": 500,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        252,
+        91,
+        85,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-298",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 50%,transparent)",
+      "index": 298,
+      "x": 540,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        253,
+        137,
+        134,
+        255
+      ]
+    },
+    {
+      "id": "endpoint-299",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "sourceAlphaByte": 255,
+      "background": [
+        251,
+        21,
+        12
+      ],
+      "css": "color-mix(in oklab,rgb(255 255 255 / 1) 100%,transparent)",
+      "index": 299,
+      "x": 580,
+      "y": 780,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    }
+  ],
+  "externalRequests": 0,
+  "pngSha256": "7c8e661904e684958d1b0af4e90a500abf3ec6c172501bb0b8f05fb9fb3e7fc6",
+  "scriptSha256": "b71ed27b9d712a51c51681afd667aba5fd4ba244f4f032357a700bf3f9985241",
+  "stableFrames": 2,
+  "attempts": 2,
+  "nativeComponentAccepted": false
+}

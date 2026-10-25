@@ -21,16 +21,29 @@ public sealed class BleeckerButton : ContentControl
     private Border? linkUnderline;
     private ResourceDictionary? palette;
     private bool pointerOver;
+    private bool templateCleared;
     private readonly UISettings uiSettings = new();
     private Storyboard? spinnerAnimation;
     private RotateTransform? spinnerRotation;
+    private Grid? linkTextHost;
+    private TextBlock? linkText;
+    private ContentPresenter? consumerContent;
+    private readonly BleeckerReferenceText.Presentation linkPresentation = new();
+    private readonly BleeckerReferenceText.IntrinsicWidth linkWidth = new();
 
     public BleeckerButton()
     {
         DefaultStyleKey = typeof(BleeckerButton);
-        RegisterPropertyChangedCallback(ContentProperty, (_, _) => UpdateAccessibleName());
+        RegisterPropertyChangedCallback(ContentProperty, (_, _) => { UpdateAccessibleName(); UpdateLinkText(); });
+        RegisterPropertyChangedCallback(ContentTemplateProperty, (_, _) => UpdateLinkText());
+        RegisterPropertyChangedCallback(ContentTemplateSelectorProperty, (_, _) => UpdateLinkText());
         RegisterPropertyChangedCallback(AutomationProperties.NameProperty, (_, _) => UpdateAccessibleName());
         RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty, (_, _) => UpdateAccessibleName());
+        RegisterPropertyChangedCallback(TemplateProperty, (_, _) =>
+        {
+            templateCleared = Template is null;
+            if (templateCleared) DetachTemplate();
+        });
         Loaded += (_, _) =>
         {
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041))
@@ -71,6 +84,32 @@ public sealed class BleeckerButton : ContentControl
 
     protected override void OnApplyTemplate()
     {
+        DetachTemplate();
+        // ContentControl can synthesize a text-only template after an explicit
+        // null without another Template-property notification. It has no action
+        // parts; keep the caller's cleared state until a new template is set.
+        if (templateCleared || Template is null) return;
+        base.OnApplyTemplate();
+        action = GetTemplateChild("PART_Action") as Button
+            ?? throw new InvalidOperationException("BleeckerButton requires a native Button named PART_Action.");
+        progress = GetTemplateChild("PART_Progress") as ProgressRing
+            ?? throw new InvalidOperationException("BleeckerButton requires a ProgressRing named PART_Progress.");
+        linkUnderline = GetTemplateChild("PART_LinkUnderline") as Border;
+        linkTextHost = GetTemplateChild("PART_LinkTextHost") as Grid;
+        linkText = GetTemplateChild("PART_LinkText") as TextBlock;
+        consumerContent = GetTemplateChild("PART_Content") as ContentPresenter;
+        if (linkText is not null && linkTextHost is not null) BleeckerTextLayout.SetUseReferenceLineBox(linkText, true);
+        action.Click += OnClick;
+        action.PointerEntered += OnPointerEntered;
+        action.PointerExited += OnPointerExited;
+        action.IsEnabledChanged += OnActionEnabledChanged;
+        action.Loaded += OnActionLoaded;
+        UpdateAccessibleName();
+        ApplyVariant();
+    }
+
+    private void DetachTemplate()
+    {
         StopSpinnerMotion();
         if (action is not null)
         {
@@ -81,20 +120,14 @@ public sealed class BleeckerButton : ContentControl
             action.Loaded -= OnActionLoaded;
             if (palette is not null) action.Resources.MergedDictionaries.Remove(palette);
         }
-        base.OnApplyTemplate();
-        action = GetTemplateChild("PART_Action") as Button
-            ?? throw new InvalidOperationException("BleeckerButton requires a native Button named PART_Action.");
-        progress = GetTemplateChild("PART_Progress") as ProgressRing
-            ?? throw new InvalidOperationException("BleeckerButton requires a ProgressRing named PART_Progress.");
-        linkUnderline = GetTemplateChild("PART_LinkUnderline") as Border;
-        action.Click += OnClick;
+        action = null;
+        progress = null;
+        palette = null;
+        linkUnderline = null;
+        linkTextHost = null;
+        linkText = null;
+        consumerContent = null;
         pointerOver = false;
-        action.PointerEntered += OnPointerEntered;
-        action.PointerExited += OnPointerExited;
-        action.IsEnabledChanged += OnActionEnabledChanged;
-        action.Loaded += OnActionLoaded;
-        UpdateAccessibleName();
-        ApplyVariant();
     }
 
     private static void OnVariantChanged(DependencyObject owner, DependencyPropertyChangedEventArgs args) => ((BleeckerButton)owner).ApplyVariant();
@@ -146,10 +179,25 @@ public sealed class BleeckerButton : ContentControl
         UpdateSpinnerMotion();
         UpdateLinkUnderline();
         AutomationProperties.SetItemStatus(action, IsLoading ? LoadingText : "");
+        UpdateLinkText();
+    }
+
+    private void UpdateLinkText()
+    {
+        if (action is null || linkTextHost is null || linkText is null || consumerContent is null) return;
+        var plain = Variant == BleeckerButtonVariant.Link && Content is string && ContentTemplate is null && ContentTemplateSelector is null;
+        linkTextHost.Visibility = plain ? Visibility.Visible : Visibility.Collapsed;
+        consumerContent.Visibility = plain ? Visibility.Collapsed : Visibility.Visible;
+        if (!plain) return;
+        linkText.FontFamily = action.FontFamily; linkText.FontSize = action.FontSize; linkText.FontWeight = action.FontWeight;
+        linkText.IsTextScaleFactorEnabled = IsTextScaleFactorEnabled; linkText.FlowDirection = FlowDirection; linkText.Language = Language;
+        linkPresentation.Update(linkText, (string)Content);
+        var width = Math.Ceiling(linkWidth.Measure(linkText, (string)Content) * 64) / 64;
+        linkText.Width = width; linkTextHost.Width = width;
     }
 
     private void OnPointerEntered(object sender, PointerRoutedEventArgs args) { pointerOver = true; UpdateLinkUnderline(); }
-    private void OnActionLoaded(object sender, RoutedEventArgs args) { BindLinkUnderline(); UpdateSpinnerMotion(); }
+    private void OnActionLoaded(object sender, RoutedEventArgs args) { BindLinkUnderline(); UpdateSpinnerMotion(); UpdateLinkText(); }
     private void OnAnimationsChanged(UISettings sender, UISettingsAnimationsEnabledChangedEventArgs args) =>
         DispatcherQueue.TryEnqueue(UpdateSpinnerMotion);
     private void StopSpinnerMotion()
@@ -192,6 +240,7 @@ public sealed class BleeckerButton : ContentControl
         {
             linkUnderline?.SetBinding(Border.BackgroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
             progress?.SetBinding(Control.ForegroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
+            linkText?.SetBinding(TextBlock.ForegroundProperty, new Binding { Source = presenter, Path = new PropertyPath("Foreground") });
         }
     }
     private static ContentPresenter? FindPresenter(DependencyObject root)

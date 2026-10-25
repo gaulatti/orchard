@@ -1,0 +1,13 @@
+<StackPanel x:Class="Orchard.Catalog.CollectionFiltersFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="16">
+ <TextBlock Text="Collection filters" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Filter and sort a collection through requests. The caller decides which changes to apply." Style="{StaticResource BleeckerBodyStyle}"/>
+ <TextBlock Text="Expanded surfaces, active chips and borders follow the pinned Light and Dark CSS paint tokens." Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerCollectionFilters x:Name="Accepted" DefaultExpanded="True" FiltersRequested="AcceptFilters" SortRequested="AcceptSort"/>
+ <TextBlock x:Name="Status" Text="Three active filters" Style="{StaticResource BleeckerBodyStyle}"/>
+ <TextBlock Text="Declined requests" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerCollectionFilters x:Name="Declined" FiltersRequested="DeclineFilters" SortRequested="DeclineSort"/>
+ <orchard:BleeckerCollectionFilters x:Name="Constrained" Width="320" HorizontalAlignment="Left" DefaultExpanded="True" FlowDirection="RightToLeft"/>
+ <TextBlock Text="Numbered filters" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerCollectionFilters x:Name="Numeric" DefaultExpanded="True" FiltersRequested="AcceptNumericFilters"/>
+ <orchard:BleeckerCollectionFilters x:Name="Empty"/>
+</StackPanel>

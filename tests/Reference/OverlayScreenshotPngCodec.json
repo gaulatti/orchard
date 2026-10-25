@@ -1,0 +1,19 @@
+{
+  "format": "orchard-reference-screenshot-png-codec-v1",
+  "diagnosticOnly": true,
+  "componentRendererInput": false,
+  "browser": "155.0.4283.62",
+  "browserRevision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+  "captureMethod": "Playwright page.screenshot omitBackground true",
+  "captureAudit": "artifacts/current/overlay-shadow-far-screenshot-palette-audit-v1.json",
+  "legalChannelAlphaPairs": 32896,
+  "crossPaletteChannelComparisons": 296064,
+  "table": "tests/PackageConsumer/ScreenshotPngCodec.u8",
+  "sha256": "70687f71ba2fda25459eec921f249115865e5dafd86cdad5d22658df1179154c",
+  "bytes": 65536,
+  "index": "alpha*256+premultipliedChannel; reject channel>alpha",
+  "allMappingsRecoverPremultipliedByte": true,
+  "mappingInjectiveForEveryAlpha": true,
+  "differentMappingsFromCanvasCodec": 148,
+  "sourceImagePixelsUsedToGenerateTable": false
+}

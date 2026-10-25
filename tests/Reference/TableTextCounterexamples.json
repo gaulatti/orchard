@@ -1,0 +1,797 @@
+{
+  "format": "orchard-table-text-counterexamples-v1",
+  "librarySha256": "a50a9d17bc0c860bddd53ea037fa8a3bc26c825ffcf431ac11a7ac5d6463ceb9",
+  "report": "artifacts/current/table-text-native-baseline-v1/table-text.json",
+  "cases": [
+    {
+      "scheme": "Light",
+      "name": "expansions",
+      "passed": true,
+      "snapshot": {
+        "language": "en-US",
+        "header": [
+          {
+            "raw": "Straße ﬃ ΐ և Café 東京 👩🏽‍💻",
+            "display": "STRAßE ﬃ ΐ և CAFÉ 東京 👩🏽‍💻",
+            "originalAccessibleLabel": "Straße ﬃ ΐ և Café 東京 👩🏽‍💻"
+          },
+          {
+            "raw": "Straße ﬃ ΐ և Café 東京 👩🏽‍💻",
+            "display": "STRAßE ﬃ ΐ և CAFÉ 東京 👩🏽‍💻",
+            "originalAccessibleLabel": "Straße ﬃ ΐ և Café 東京 👩🏽‍💻"
+          },
+          {
+            "raw": "Straße ﬃ ΐ և Café 東京 👩🏽‍💻",
+            "display": "STRAßE ﬃ ΐ և CAFÉ 東京 👩🏽‍💻",
+            "originalAccessibleLabel": "Straße ﬃ ΐ և Café 東京 👩🏽‍💻"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "name": "lithuanian",
+      "passed": true,
+      "snapshot": {
+        "language": "lt-LT",
+        "header": [
+          {
+            "raw": "i̇́ j̇̀ į̇",
+            "display": "İ́ J̇̀ Į̇",
+            "originalAccessibleLabel": "i̇́ j̇̀ į̇"
+          },
+          {
+            "raw": "i̇́ j̇̀ į̇",
+            "display": "İ́ J̇̀ Į̇",
+            "originalAccessibleLabel": "i̇́ j̇̀ į̇"
+          },
+          {
+            "raw": "i̇́ j̇̀ į̇",
+            "display": "İ́ J̇̀ Į̇",
+            "originalAccessibleLabel": "i̇́ j̇̀ į̇"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "name": "greek",
+      "passed": true,
+      "snapshot": {
+        "language": "el-GR",
+        "header": [
+          {
+            "raw": "ή ήχος άυλος Μαΐου Παΐσιος ᾀ",
+            "display": "Ή ΉΧΟΣ ΆΥΛΟΣ ΜΑΐΟΥ ΠΑΐΣΙΟΣ ᾈ",
+            "originalAccessibleLabel": "ή ήχος άυλος Μαΐου Παΐσιος ᾀ"
+          },
+          {
+            "raw": "ή ήχος άυλος Μαΐου Παΐσιος ᾀ",
+            "display": "Ή ΉΧΟΣ ΆΥΛΟΣ ΜΑΐΟΥ ΠΑΐΣΙΟΣ ᾈ",
+            "originalAccessibleLabel": "ή ήχος άυλος Μαΐου Παΐσιος ᾀ"
+          },
+          {
+            "raw": "ή ήχος άυλος Μαΐου Παΐσιος ᾀ",
+            "display": "Ή ΉΧΟΣ ΆΥΛΟΣ ΜΑΐΟΥ ΠΑΐΣΙΟΣ ᾈ",
+            "originalAccessibleLabel": "ή ήχος άυλος Μαΐου Παΐσιος ᾀ"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "name": "greek-decomposed",
+      "passed": true,
+      "snapshot": {
+        "language": "el-GR",
+        "header": [
+          {
+            "raw": "ά ΰ ή",
+            "display": "Ά Ϋ́ Ή",
+            "originalAccessibleLabel": "ά ΰ ή"
+          },
+          {
+            "raw": "ά ΰ ή",
+            "display": "Ά Ϋ́ Ή",
+            "originalAccessibleLabel": "ά ΰ ή"
+          },
+          {
+            "raw": "ά ΰ ή",
+            "display": "Ά Ϋ́ Ή",
+            "originalAccessibleLabel": "ά ΰ ή"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "name": "dutch",
+      "passed": true,
+      "snapshot": {
+        "language": "nl-NL",
+        "header": [
+          {
+            "raw": "ijssel ﬃ Straße",
+            "display": "IJSSEL ﬃ STRAßE",
+            "originalAccessibleLabel": "ijssel ﬃ Straße"
+          },
+          {
+            "raw": "ijssel ﬃ Straße",
+            "display": "IJSSEL ﬃ STRAßE",
+            "originalAccessibleLabel": "ijssel ﬃ Straße"
+          },
+          {
+            "raw": "ijssel ﬃ Straße",
+            "display": "IJSSEL ﬃ STRAßE",
+            "originalAccessibleLabel": "ijssel ﬃ Straße"
+          }
+        ]
+      }
+    }
+  ],
+  "histories": [
+    {
+      "scheme": "Light",
+      "name": "ordinal-keys",
+      "passed": true,
+      "retainedNativeInstance": true,
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "body": [
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Lower",
+                  "1"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Title",
+                  "2"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Latin i",
+                  "3"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotless",
+                  "4"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotted",
+                  "5"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Composed",
+                  "6"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Decomposed",
+                  "7"
+                ]
+              }
+            ],
+            "checkboxes": [
+              {
+                "name": "Select all",
+                "checked": false,
+                "indeterminate": true
+              },
+              {
+                "name": "Select row cedar",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row Cedar",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row i",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row ı",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row İ",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": false,
+                "indeterminate": false
+              }
+            ],
+            "events": []
+          },
+          "callerSetUnchanged": true,
+          "originalItemsRetained": true
+        },
+        {
+          "stage": "rejected-request",
+          "snapshot": {
+            "body": [
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Lower",
+                  "1"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Title",
+                  "2"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Latin i",
+                  "3"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotless",
+                  "4"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotted",
+                  "5"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Composed",
+                  "6"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Decomposed",
+                  "7"
+                ]
+              }
+            ],
+            "checkboxes": [
+              {
+                "name": "Select all",
+                "checked": false,
+                "indeterminate": true
+              },
+              {
+                "name": "Select row cedar",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row Cedar",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row i",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row ı",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row İ",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": false,
+                "indeterminate": false
+              }
+            ],
+            "events": [
+              {
+                "kind": "selection",
+                "keys": [
+                  "CEDAR",
+                  "i",
+                  "é"
+                ]
+              }
+            ]
+          },
+          "callerSetUnchanged": true,
+          "originalItemsRetained": true
+        },
+        {
+          "stage": "released-control",
+          "snapshot": {
+            "body": [
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Lower",
+                  "1"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Title",
+                  "2"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Latin i",
+                  "3"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotless",
+                  "4"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotted",
+                  "5"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Composed",
+                  "6"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Decomposed",
+                  "7"
+                ]
+              }
+            ],
+            "checkboxes": [
+              {
+                "name": "Select all",
+                "checked": false,
+                "indeterminate": true
+              },
+              {
+                "name": "Select row cedar",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row Cedar",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row i",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row ı",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row İ",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": false,
+                "indeterminate": false
+              }
+            ],
+            "events": [
+              {
+                "kind": "selection",
+                "keys": [
+                  "CEDAR",
+                  "i",
+                  "é"
+                ]
+              }
+            ]
+          },
+          "callerSetUnchanged": true,
+          "originalItemsRetained": true
+        },
+        {
+          "stage": "all-selected",
+          "snapshot": {
+            "body": [
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Lower",
+                  "1"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Title",
+                  "2"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Latin i",
+                  "3"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Dotless",
+                  "4"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Dotted",
+                  "5"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Composed",
+                  "6"
+                ]
+              },
+              {
+                "selected": "true",
+                "cells": [
+                  "",
+                  "Decomposed",
+                  "7"
+                ]
+              }
+            ],
+            "checkboxes": [
+              {
+                "name": "Select all",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row cedar",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row Cedar",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row i",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row ı",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row İ",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": true,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": true,
+                "indeterminate": false
+              }
+            ],
+            "events": [
+              {
+                "kind": "selection",
+                "keys": [
+                  "CEDAR",
+                  "i",
+                  "é"
+                ]
+              },
+              {
+                "kind": "selection",
+                "keys": [
+                  "cedar",
+                  "Cedar",
+                  "i",
+                  "ı",
+                  "İ",
+                  "é",
+                  "é"
+                ]
+              }
+            ]
+          },
+          "callerSetUnchanged": true,
+          "originalItemsRetained": true
+        },
+        {
+          "stage": "none-selected",
+          "snapshot": {
+            "body": [
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Lower",
+                  "1"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Title",
+                  "2"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Latin i",
+                  "3"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotless",
+                  "4"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Dotted",
+                  "5"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Composed",
+                  "6"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Decomposed",
+                  "7"
+                ]
+              }
+            ],
+            "checkboxes": [
+              {
+                "name": "Select all",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row cedar",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row Cedar",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row i",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row ı",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row İ",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row é",
+                "checked": false,
+                "indeterminate": false
+              }
+            ],
+            "events": [
+              {
+                "kind": "selection",
+                "keys": [
+                  "CEDAR",
+                  "i",
+                  "é"
+                ]
+              },
+              {
+                "kind": "selection",
+                "keys": [
+                  "cedar",
+                  "Cedar",
+                  "i",
+                  "ı",
+                  "İ",
+                  "é",
+                  "é"
+                ]
+              },
+              {
+                "kind": "selection",
+                "keys": []
+              }
+            ]
+          },
+          "callerSetUnchanged": true,
+          "originalItemsRetained": true
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "name": "dictionary-key-case",
+      "passed": true,
+      "retainedNativeInstance": true,
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "body": [
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Upper-only",
+                  "1"
+                ]
+              },
+              {
+                "selected": "false",
+                "cells": [
+                  "",
+                  "Lower original",
+                  "2"
+                ]
+              }
+            ],
+            "checkboxes": [
+              {
+                "name": "Select all",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row upper",
+                "checked": false,
+                "indeterminate": false
+              },
+              {
+                "name": "Select row lower",
+                "checked": false,
+                "indeterminate": false
+              }
+            ],
+            "events": []
+          },
+          "callerSetUnchanged": true,
+          "originalItemsRetained": true
+        }
+      ]
+    }
+  ]
+}

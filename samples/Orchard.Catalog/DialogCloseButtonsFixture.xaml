@@ -1,0 +1,14 @@
+<UserControl x:Class="Orchard.Catalog.DialogCloseButtonsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Dialog close button" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="The consumer names the action and decides whether to dismiss its content." Style="{StaticResource BleeckerBodyStyle}"/>
+  <StackPanel Orientation="Horizontal" Spacing="16">
+   <orchard:BleeckerDialogCloseButton AutomationProperties.Name="Close component preview" Click="CloseRequested"/>
+   <orchard:BleeckerDialogCloseButton IconSize="24" AutomationProperties.Name="Close large-icon preview" Click="CloseRequested"/>
+   <orchard:BleeckerDialogCloseButton IconSize="0" AutomationProperties.Name="Close zero-icon preview" Click="CloseRequested"/>
+   <orchard:BleeckerDialogCloseButton IsEnabled="False" AutomationProperties.Name="Unavailable close action"/>
+  </StackPanel>
+  <TextBlock x:Name="Status" Text="The preview remains open until the consumer accepts a close request." Style="{StaticResource BleeckerBodyStyle}"/>
+ </StackPanel>
+</UserControl>

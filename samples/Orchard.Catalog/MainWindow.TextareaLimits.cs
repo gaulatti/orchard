@@ -14,7 +14,7 @@ public sealed partial class MainWindow
 {
     private async Task RunTextareaLimitsAsync(string folder)
     {
-        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.TextareaLimits.json")??throw new InvalidOperationException("Missing Textarea limits reference.");
+        using var stream=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.TextareaLimits.json")??throw new InvalidOperationException("Missing Textarea limits reference.");
         using var reference=await JsonDocument.ParseAsync(stream);
         var original=Content;var canvas=new Canvas{Height=600};var page=new Page{Content=canvas};
         NativeInputSession? input=null;var frames=new List<object>();var mismatches=new List<string>();var phase="mount";var passed=false;

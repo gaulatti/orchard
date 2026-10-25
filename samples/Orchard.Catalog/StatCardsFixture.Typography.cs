@@ -9,7 +9,7 @@ public sealed partial class StatCardsFixture
 {
     private async Task VerifyTypographyAsync(Grid host, NativeInputSession input, string folder, BleeckerColorScheme scheme)
     {
-        using var reference = JsonDocument.Parse(typeof(StatCardsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.StatCardTypography.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(StatCardsFixture).Assembly, "Orchard.Catalog.Reference.StatCardTypography.json")!);
         var reports = new List<object>();
         var failures = new List<string>();
         foreach (var sample in reference.RootElement.GetProperty("cases").EnumerateArray().Where(item => item.GetProperty("scheme").GetString() == scheme.ToString()))

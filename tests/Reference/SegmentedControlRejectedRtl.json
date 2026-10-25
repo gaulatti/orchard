@@ -1,0 +1,73 @@
+{
+  "format": "orchard-rejected-native-rtl-v1",
+  "originalInProcessReportPassed": true,
+  "librarySha256": "9984b8e4c15c6bdb6e885299ce5c3971f45423d8641791c389deddf3c12d2e67",
+  "hostSha256": "50d31c9f947cc4e5ec2cead86427c9d07fb23ca7ae3afed68bed33679053c148",
+  "reason": "The custom panel reversed logical RTL coordinates a second time, while its self-check used the mirrored control coordinate system.",
+  "captures": [
+    {
+      "file": "SegmentedControlRejectedRtl-Light.png",
+      "sha256": "e5a44813fdb6ce4b56c4115003e9acc0098442548bbc5ebb5ed8f3252a43c247",
+      "layout": {
+        "scheme": "Light",
+        "mode": "rtl",
+        "passed": true,
+        "width": 188.18199157714844,
+        "height": 40,
+        "font": 13,
+        "gap": 2,
+        "frameInset": 4,
+        "frameRadius": 9,
+        "buttonRadius": 7,
+        "frameOpacity": 0.6499999761581421,
+        "selectedColor": "#ff2c5784",
+        "bounds": [
+          {
+            "x": 130.56149291992188,
+            "y": 4,
+            "width": 53.62049865722656,
+            "height": 32
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "width": 124.56149291992188,
+            "height": 32
+          }
+        ]
+      }
+    },
+    {
+      "file": "SegmentedControlRejectedRtl-Dark.png",
+      "sha256": "fa19e00e70d2ff352c128efbc4fd3695434b1a755f7aec62f34918153136587c",
+      "layout": {
+        "scheme": "Dark",
+        "mode": "rtl",
+        "passed": true,
+        "width": 188.18199157714844,
+        "height": 40,
+        "font": 13,
+        "gap": 2,
+        "frameInset": 4,
+        "frameRadius": 9,
+        "buttonRadius": 7,
+        "frameOpacity": 0.6499999761581421,
+        "selectedColor": "#ff5ba3f5",
+        "bounds": [
+          {
+            "x": 130.56149291992188,
+            "y": 4,
+            "width": 53.62049865722656,
+            "height": 32
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "width": 124.56149291992188,
+            "height": 32
+          }
+        ]
+      }
+    }
+  ]
+}

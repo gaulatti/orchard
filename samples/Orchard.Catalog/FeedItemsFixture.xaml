@@ -1,0 +1,14 @@
+<UserControl x:Class="Orchard.Catalog.FeedItemsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Feed items" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Fictional local metadata, normalized display categories and consumer-owned source requests." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <TextBlock x:Name="Status" Text="No source requested." Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerFeedColumn Title="Fictional local feed" Count="3" Height="480">
+   <StackPanel>
+    <orchard:BleeckerFeedItem x:Name="First" Author="Ada Example" Content="A fictional local story demonstrates reusable metadata and source navigation." LanguageCode="en" Relevance="87.5" SourceUrl="https://news.example/story" SourceRequested="SourceRequested"/>
+    <orchard:BleeckerFeedItem x:Name="Second" Author="Straße 東京" Content="Straße 東京 é العربية: another fictional local update." LanguageCode="pt-br" Relevance="42.5" SourceUrl="https://local.example/story" SourceRequested="SourceRequested"/>
+    <orchard:BleeckerFeedItem Author="" Content="AReallyLongUnbrokenLocalCoverageWordThatMustWrapAcrossMultipleLinesAtTheBoundary" LanguageCode="" PostedAt="bad timestamp" Relevance="0" SourceUrl="" SourceRequested="SourceRequested"/>
+   </StackPanel>
+  </orchard:BleeckerFeedColumn>
+ </StackPanel>
+</UserControl>

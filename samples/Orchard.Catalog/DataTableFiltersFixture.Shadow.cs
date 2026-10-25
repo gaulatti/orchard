@@ -17,7 +17,7 @@ public sealed partial class DataTableFiltersFixture
 {
     internal async Task VerifyShadowPointerAsync(BleeckerColorScheme scheme, string folder)
     {
-        using var stream = typeof(DataTableFiltersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SelectShadowPointer.json")!;
+        using var stream = CatalogReferenceResources.Open(typeof(DataTableFiltersFixture).Assembly, "Orchard.Catalog.Reference.SelectShadowPointer.json")!;
         using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var document = JsonDocument.Parse(bytes);
         var sample = document.RootElement.GetProperty("cases").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString());
         var root = (Grid)XamlRoot.Content; var table = new SelectFilterTable();

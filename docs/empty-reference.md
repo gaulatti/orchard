@@ -90,3 +90,9 @@ The frozen source tests verify these distinctions and every PNG/collector hash.
 They establish the intended behavior for implementation, not native parity.
 
 The current version `0.1.0-77f387a` also passes the full 477-second x64 replay and a fresh x64 consumer in both themes. Native ARM64 runtime and complete component acceptance remain open; see the [current checkpoint](native-validation-checkpoint.md).
+
+The current local candidate refreshes unchanged title/description text when
+`FontFamily` changes, clearing old Orchard script faces for a consumer font
+and restoring them when Encode Sans returns. The registered custom example
+uses Arial with mixed CJK/Arabic text. Live transitions run in the hidden
+package diagnostic; visible runtime/raster replay remains required.

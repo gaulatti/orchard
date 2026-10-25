@@ -39,7 +39,7 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         using var input = new NativeInputSession(XamlRoot,folder,$"attention-{scheme}");
         await input.AcquireAsync(Heading); await MoveToHeadingAsync(input);
         await VerifyViewportReturnAsync(input, scheme, folder);
-        using var stream = typeof(AttentionSurfacesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.AttentionLayout.json")!;
+        using var stream = CatalogReferenceResources.Open(typeof(AttentionSurfacesFixture).Assembly, "Orchard.Catalog.Reference.AttentionLayout.json")!;
         using var reference = JsonDocument.Parse(stream);
         var source = reference.RootElement.GetProperty("schemes").EnumerateArray().Single(value=>value.GetProperty("scheme").GetString()==scheme.ToString());
         var measurements = new List<object>();

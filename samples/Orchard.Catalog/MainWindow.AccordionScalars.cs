@@ -12,7 +12,7 @@ public sealed partial class MainWindow
 {
     private async Task RunAccordionScalarsAsync(string folder)
     {
-        using var stream=typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.AccordionScalars.json")??throw new InvalidOperationException("Accordion scalar reference missing.");using var document=await JsonDocument.ParseAsync(stream);
+        using var stream=CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.AccordionScalars.json")??throw new InvalidOperationException("Accordion scalar reference missing.");using var document=await JsonDocument.ParseAsync(stream);
         var original=Content;var canvas=new Canvas();var frames=new List<object>();
         try{
             Content=canvas;await AwaitPresentationAsync(canvas);using var input=new NativeInputSession(canvas.XamlRoot,folder,"accordion-scalars");await input.AcquireAsync(canvas);var width=(int)Math.Round(canvas.XamlRoot.Size.Width);

@@ -1,0 +1,288 @@
+{
+  "format": "orchard-overlay-combined-source-v1",
+  "sourceManifestFile": "OverlayCombined.source.json",
+  "sourceManifestSha256": "0f2e2aa4ac5ba4da4e48d0ad4050a29879bd26a0e2673add5bf2464452226cb9",
+  "sourceBrowser": "155.0.4283.62",
+  "sourceReferenceSha256": "12b264b46566b389eff73d6b21e7f32feb465cdc52f2c86ab8379555a49a075e",
+  "cases": [
+    {
+      "id": "fixture/token-combined-Light",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Light.png",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-combined-Dark",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Dark.png",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-combined-Transparent",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Transparent.png",
+      "sha256": "852ee726e5531417afc7d66b755788f513d9e96cf3bb5a850035298836537489",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 38796
+    },
+    {
+      "id": "dialog/token-combined-Light",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Light.png",
+      "sha256": "7453d3ce9089744ed853bc0cc018c34a9f6d052c40d6bfb8dda83d3ba5285a30",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-combined-Dark",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Dark.png",
+      "sha256": "0ff65473b816eabdf0749eecd0301bd3c32b08798dd7883757df47767a544436",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-combined-Transparent",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Transparent.png",
+      "sha256": "625321ac006ae5c72f9f42fbc9664758c9753175cbeef4e29a4bdaa272f25dde",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 140822
+    }
+  ],
+  "sourcePixelsModified": false,
+  "allowedChannelDifference": 0,
+  "nativeComponentAccepted": false
+}

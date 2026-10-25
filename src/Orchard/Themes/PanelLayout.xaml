@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+    <Style TargetType="local:BleeckerPanelLayout">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerPanelLayout">
+            <Grid x:Name="PART_Root" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" UseLayoutRounding="False" />
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="local:BleeckerPanelColumn">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerPanelColumn">
+            <Grid x:Name="PART_Root" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" UseLayoutRounding="False" />
+        </ControlTemplate></Setter.Value></Setter>
+    </Style>
+</ResourceDictionary>

@@ -139,11 +139,15 @@ public sealed class BleeckerToggleGroup : ItemsControl
     {
         if (synchronizing) return;
         var item = (BleeckerToggleGroupItem)sender;
+        if (!Owns(item)) return;
         SetSelected(item, item.IsChecked == true, exclusive: false);
     }
 
+    internal bool Owns(BleeckerToggleGroupItem item) => IsLoaded && item.IsLoaded && ReferenceEquals(item.Group, this) && containers.Contains(item);
+
     internal void SetSelected(BleeckerToggleGroupItem item, bool selected, bool exclusive)
     {
+        if (!Owns(item)) throw new Microsoft.UI.Xaml.Automation.ElementNotAvailableException();
         if (SelectionMode == BleeckerSelectionMode.Single)
             SelectedValue = selected ? item.Value : SelectedValue == item.Value ? null : SelectedValue;
         else

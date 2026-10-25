@@ -115,7 +115,7 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
         stream.Seek(0);
         var decoder = await BitmapDecoder.CreateAsync(stream); var bytes = (await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, new BitmapTransform(), ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage)).DetachPixelData();
         var samples = new List<object>(); var scale = XamlRoot.RasterizationScale;
-        using var referenceStream = typeof(BauhausBackgroundsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.BauhausPixels.json") ?? throw new InvalidOperationException("Missing pinned browser pixel reference.");
+        using var referenceStream = CatalogReferenceResources.Open(typeof(BauhausBackgroundsFixture).Assembly, "Orchard.Catalog.Reference.BauhausPixels.json") ?? throw new InvalidOperationException("Missing pinned browser pixel reference.");
         using var reference = JsonDocument.Parse(referenceStream); var matching = true;
         foreach (var control in new[] { Nazca, Autostrada, Pompeii, Monitor })
         {
@@ -140,12 +140,12 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
     private async Task VerifyRectangularRastersAsync(byte[] native,uint nativeWidth,BleeckerColorScheme scheme,string folder)
     {
         Require(XamlRoot.RasterizationScale==1,"The full Bauhaus raster reference currently requires display scale 1; scaling acceptance remains open.");
-        using var curveStream=typeof(BauhausBackgroundsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.BauhausRaster.json")??throw new InvalidOperationException("Missing frozen curve pixel reference.");
+        using var curveStream=CatalogReferenceResources.Open(typeof(BauhausBackgroundsFixture).Assembly, "Orchard.Catalog.Reference.BauhausRaster.json")??throw new InvalidOperationException("Missing frozen curve pixel reference.");
         using var curves=JsonDocument.Parse(curveStream);
         var reports=new List<object>();var passed=true;
         foreach(var control in new[]{Autostrada,Pompeii})
         {
-            using var reference=typeof(BauhausBackgroundsFixture).Assembly.GetManifestResourceStream($"Orchard.Catalog.Reference.Bauhaus{control.Type}.png")??throw new InvalidOperationException("Missing full frozen browser raster.");
+            using var reference=CatalogReferenceResources.Open(typeof(BauhausBackgroundsFixture).Assembly, $"Orchard.Catalog.Reference.Bauhaus{control.Type}.png")??throw new InvalidOperationException("Missing full frozen browser raster.");
             using var stream=new InMemoryRandomAccessStream();using(var reader=new MemoryStream()){reference.CopyTo(reader);await stream.WriteAsync(reader.ToArray().AsBuffer());}stream.Seek(0);
             var decoder=await BitmapDecoder.CreateAsync(stream);var expected=(await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8,BitmapAlphaMode.Straight,new BitmapTransform(),ExifOrientationMode.IgnoreExifOrientation,ColorManagementMode.DoNotColorManage)).DetachPixelData();
             var origin=control.TransformToVisual(XamlRoot.Content).TransformPoint(new Point());var left=(int)Math.Round(origin.X+.5);var top=(int)Math.Round(origin.Y+.5);
@@ -170,7 +170,7 @@ public sealed partial class BauhausBackgroundsFixture : UserControl
     }
     private void VerifyNarrowGeometry()
     {
-        using var stream=typeof(BauhausBackgroundsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.BauhausNarrow.json")??throw new InvalidOperationException("Missing narrow browser geometry reference.");
+        using var stream=CatalogReferenceResources.Open(typeof(BauhausBackgroundsFixture).Assembly, "Orchard.Catalog.Reference.BauhausNarrow.json")??throw new InvalidOperationException("Missing narrow browser geometry reference.");
         using var reference=JsonDocument.Parse(stream);
         try
         {

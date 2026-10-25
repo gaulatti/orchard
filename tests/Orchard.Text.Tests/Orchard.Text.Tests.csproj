@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <Platforms>x64;ARM64</Platforms>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == '' and '$(Platform)' == 'ARM64'">win-arm64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x64</RuntimeIdentifier>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <WindowsAppSDKBootstrapInitialize>false</WindowsAppSDKBootstrapInitialize>
+    <WindowsAppSDKDeploymentManagerInitialize>false</WindowsAppSDKDeploymentManagerInitialize>
+    <WinUISDKReferences>false</WinUISDKReferences>
+    <SelfContained>false</SelfContained>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/Orchard/Text/BleeckerCssLetterSpacing.cs" Link="BleeckerCssLetterSpacing.cs" />
+    <None Include="../Reference/NavMenu.json" Link="Fixtures/NavMenu.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/FeedItem.json" Link="Fixtures/FeedItem.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../src/Orchard/Assets/Fonts/LibreFranklin-Regular.ttf" Link="Fixtures/LibreFranklin-Regular.ttf" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/Slider.json" Link="Fixtures/Slider.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Medium.ttf" Link="Fixtures/EncodeSans-Medium.ttf" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/Panel.json" Link="Fixtures/Panel.json" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="MSTest" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.Graphics.Win2D" />
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+    <Compile Include="../../src/Orchard/Text/BleeckerInlineText.cs" Link="BleeckerInlineText.cs" />
+    <Compile Include="../../src/Orchard/Text/BleeckerTextTypography.cs" Link="BleeckerTextTypography.cs" />
+    <Compile Include="../../src/Orchard/Text/BleeckerInlineBreaks.cs" Link="BleeckerInlineBreaks.cs" />
+    <Compile Include="../../src/Orchard/Text/BleeckerGlyphWidthRenderer.cs" Link="BleeckerGlyphWidthRenderer.cs" />
+    <Compile Include="../../src/Orchard/Text/BleeckerReferenceFontRuns.cs" Link="BleeckerReferenceFontRuns.cs" />
+    <Compile Include="../../src/Orchard/Controls/BleeckerProgressStackLayout.cs" Link="BleeckerProgressStackLayout.cs" />
+    <Compile Include="../../src/Orchard/Text/BleeckerNumberText.cs" Link="BleeckerNumberText.cs" />
+    <None Include="../Reference/ProgressStack.json" Link="Fixtures/ProgressStack.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/ProgressStackText.json" Link="Fixtures/ProgressStackText.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Regular.ttf" Link="Fixtures/EncodeSans-Regular.ttf" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-SemiBold.ttf" Link="Fixtures/EncodeSans-SemiBold.ttf" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Bold.ttf" Link="Fixtures/EncodeSans-Bold.ttf" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

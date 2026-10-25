@@ -1,0 +1,21 @@
+<UserControl x:Class="Orchard.Catalog.AuthShellsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="AuthShell layout" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Caller-owned brand, form, footer and optional aside. These fictional component examples perform local actions only." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <StackPanel Orientation="Horizontal" Spacing="12"><CheckBox x:Name="Split" Content="Split layout" IsChecked="True" Checked="Change" Unchecked="Change"/><CheckBox x:Name="Start" Content="Aside at start" IsChecked="True" Checked="Change" Unchecked="Change"/><CheckBox x:Name="Rtl" Content="Right-to-left" Checked="Change" Unchecked="Change"/><CheckBox x:Name="TextScale" Content="200% component text" Checked="Change" Unchecked="Change"/></StackPanel>
+  <orchard:BleeckerAuthShell x:Name="Primary" Layout="Split" Side="Start" AsideLabel="Fictional collection note">
+   <orchard:BleeckerAuthShell.Brand><TextBlock Text="ORCHARD ATELIER" FontWeight="SemiBold"/></orchard:BleeckerAuthShell.Brand>
+   <orchard:BleeckerAuthShell.Aside><StackPanel Spacing="24"><TextBlock Text="A place for fictional collections, stories and their readers." FontSize="32" TextWrapping="Wrap"/><TextBlock Text="Elena Marais · Fictional curator"/></StackPanel></orchard:BleeckerAuthShell.Aside>
+   <orchard:BleeckerAuthShell.Footer><TextBlock Text="Fictional component demo · local controls" TextWrapping="Wrap"/></orchard:BleeckerAuthShell.Footer>
+   <StackPanel Spacing="20"><orchard:BleeckerEyebrow Content="Member access"/><TextBlock Text="Welcome back" FontSize="36" FontWeight="SemiBold" TextWrapping="Wrap"/><TextBlock Text="Try the form controls and switch the surrounding layout. Your caller-owned values stay in place." TextWrapping="Wrap"/><orchard:BleeckerField Label="Email address"><orchard:BleeckerInput PlaceholderText="reader@example.test"/></orchard:BleeckerField><orchard:BleeckerField Label="Password"><PasswordBox PlaceholderText="Fictional password"/></orchard:BleeckerField><CheckBox Content="Remember this fictional choice"/><Button Content="Try local action" Click="LocalAction"/><TextBlock x:Name="Result" Text="No local action invoked" TextWrapping="Wrap"/></StackPanel>
+  </orchard:BleeckerAuthShell>
+  <TextBlock Text="Centered recovery and empty/scalar slots" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerAuthShell Brand="Orchard" Footer="Fictional recovery controls"><StackPanel Spacing="20"><TextBlock Text="Recover access" FontSize="28"/><orchard:BleeckerInput PlaceholderText="reader@example.test"/><Button Content="Try local recovery action" Click="LocalAction"/></StackPanel></orchard:BleeckerAuthShell>
+  <orchard:BleeckerAuthShell Content="0" IsEnabled="False"/>
+  <TextBlock Text="Constrained container and root sizing" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="The split example keeps its aside minimum and access padding inside a 300px container. The taller centered examples keep the access section at its natural viewport height." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <Grid Width="300" HorizontalAlignment="Left"><orchard:BleeckerAuthShell Layout="Split" Side="Start" Brand="Narrow fictional brand" Aside="Fictional aside in a constrained container" AsideLabel="Constrained fictional note" Footer="Narrow footer" Content="Caller content keeps the source padding minimum"/></Grid>
+  <orchard:BleeckerAuthShell Height="900" Brand="Taller centered main" Footer="Fictional local footer" Content="The access region keeps its natural height"/>
+  <orchard:BleeckerAuthShell Height="1000" Padding="24" BorderThickness="2" BorderBrush="{ThemeResource BleeckerBorderBrush}" Brand="Root padding and border" Footer="Fictional local footer" Content="Root insets surround the natural access section"/>
+ </StackPanel>
+</UserControl>

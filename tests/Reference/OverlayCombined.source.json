@@ -1,0 +1,1277 @@
+{
+  "format": "orchard-overlay-shadow-layers-source-v1",
+  "passed": true,
+  "diagnosticOnly": true,
+  "librarySourceChanged": false,
+  "browser": "155.0.4283.62",
+  "browserMetadata": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "referenceSha256": "12b264b46566b389eff73d6b21e7f32feb465cdc52f2c86ab8379555a49a075e",
+  "previousReferenceSha256": "a4d486f30f0d2e7245ddfe460b575df2587e797f243b7f17c1402616adbd63d1",
+  "layers": [
+    {
+      "id": "far",
+      "x": 0,
+      "y": 24,
+      "blur": 64,
+      "spread": -20,
+      "opacity": 0.28
+    },
+    {
+      "id": "near",
+      "x": 0,
+      "y": 4,
+      "blur": 14,
+      "spread": 0,
+      "opacity": 0.06
+    }
+  ],
+  "geometries": [
+    {
+      "id": "fixture",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": 14
+    },
+    {
+      "id": "dialog",
+      "viewport": {
+        "width": 1000,
+        "height": 960
+      },
+      "box": {
+        "x": 164,
+        "y": 115.1875,
+        "width": 672,
+        "height": 484.5
+      },
+      "radius": 14
+    }
+  ],
+  "cases": [
+    {
+      "id": "fixture/token-combined-Light",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Light.png",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-far-Light",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-far-Light.png",
+      "sha256": "625e25cd8bd2cfe23f7595cb86a82f505214cf2fcb7aced863683db5f36e214a",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-near-Light",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-near-Light.png",
+      "sha256": "d139ea58d3d48a77d8a59e1276ec8b7f08f587198d7bc5df55b82d198e9cd1de",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-combined-Dark",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Dark.png",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-far-Dark",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-far-Dark.png",
+      "sha256": "800e35a2f129367524be43b5e41c2112c68971207d8ef3e160c8be3d41fa568e",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-near-Dark",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-near-Dark.png",
+      "sha256": "fe4d0c644c667a3e9b64a20884fefe71573a0970417fa295db246c15216e8528",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 228800
+    },
+    {
+      "id": "fixture/token-combined-Transparent",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Transparent.png",
+      "sha256": "852ee726e5531417afc7d66b755788f513d9e96cf3bb5a850035298836537489",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 38796
+    },
+    {
+      "id": "fixture/token-far-Transparent",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-far-Transparent.png",
+      "sha256": "88659bef182258a57dfd9b17ab04fbd63c29ea3b24ff57e408e371981400683d",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 38792
+    },
+    {
+      "id": "fixture/token-near-Transparent",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-near-Transparent.png",
+      "sha256": "400072f3d056336691d62fb41ff9f787e2deb92c8b9ecc2e0cef7fba8849b256",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 8332
+    },
+    {
+      "id": "fixture/mask-blurred-far",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": true,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-mask-blurred-far.png",
+      "sha256": "cce4a03612c631bf5a76a6ef9234e094de1b56c67cc0de3848bf81019acf88a5",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 52950
+    },
+    {
+      "id": "fixture/mask-blurred-near",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": true,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-mask-blurred-near.png",
+      "sha256": "f2e52e79ada4b0ce8afc530a434b9f287ed30e4f140d45b73d847699584731c4",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 12844
+    },
+    {
+      "id": "fixture/mask-unblurred-far",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 24px 0px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 24px 0px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-mask-unblurred-far.png",
+      "sha256": "febd5a2535b0b4b53a803d21c37b577b572a07376428d60fda037bd9d44480bf",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 640
+    },
+    {
+      "id": "fixture/mask-unblurred-near",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 4px 0px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 0px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-mask-unblurred-near.png",
+      "sha256": "fc662e6559e4f79504f98a8b569787334dd755b30f13370c3c471d258d965df3",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 846
+    },
+    {
+      "id": "dialog/token-combined-Light",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Light.png",
+      "sha256": "7453d3ce9089744ed853bc0cc018c34a9f6d052c40d6bfb8dda83d3ba5285a30",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-far-Light",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-far-Light.png",
+      "sha256": "65164c463b2973e38b201dff0d8cdabc3d60bd7d507a15792e9db8f1f02acbc7",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-near-Light",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-near-Light.png",
+      "sha256": "7f8a7268f3fe8ec8e678ca5f28c972d4053a5efed28451da67219a6e776034f5",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-combined-Dark",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Dark.png",
+      "sha256": "0ff65473b816eabdf0749eecd0301bd3c32b08798dd7883757df47767a544436",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-far-Dark",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-far-Dark.png",
+      "sha256": "75ee132845e0b2b9cd32df0ea5fda8ec7fb3977201d84e9a3369b934c07ccb4d",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-near-Dark",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-near-Dark.png",
+      "sha256": "4bcef6e5df690be63acda6f2ab2ab3906768b09fa2976fbf773103536bf9cb13",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 960000
+    },
+    {
+      "id": "dialog/token-combined-Transparent",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Transparent.png",
+      "sha256": "625321ac006ae5c72f9f42fbc9664758c9753175cbeef4e29a4bdaa272f25dde",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 140822
+    },
+    {
+      "id": "dialog/token-far-Transparent",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-far-Transparent.png",
+      "sha256": "30455b5a7aee5def0e0b55dc338268849a422ddc2de50761b83e73ea97f8d006",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 140818
+    },
+    {
+      "id": "dialog/token-near-Transparent",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-near-Transparent.png",
+      "sha256": "f5c0a6db6fb73713e6f6e9e44c3a28e5f41d94eb29bfe31d8c2e7fad8d4f8626",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 30094
+    },
+    {
+      "id": "dialog/mask-blurred-far",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": true,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 24px 64px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgb(255, 255, 255) 0px 24px 64px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-mask-blurred-far.png",
+      "sha256": "3fce855fd05cc3f8d049f1644e86ed4a0ab3196ef38addd401fb6c06c34cc97a",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 173522
+    },
+    {
+      "id": "dialog/mask-blurred-near",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": true,
+      "noBlur": false,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-mask-blurred-near.png",
+      "sha256": "0975b0f33e9bb390da6cabf7676ac74331ec4bc2c0dde59cd30aff7dc93f0a2c",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 44650
+    },
+    {
+      "id": "dialog/mask-unblurred-far",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 24px 0px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgb(255, 255, 255) 0px 24px 0px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-mask-unblurred-far.png",
+      "sha256": "a45249d7fe0c3ad7e466ee5a69c287296f929265795b0d97081c06acffef4ea3",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 2528
+    },
+    {
+      "id": "dialog/mask-unblurred-near",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 4px 0px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 0px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-mask-unblurred-near.png",
+      "sha256": "a32b3e50d102322af444cdf84e38eae3abc3ef79f8dbc6f0c3e9dc467847e64c",
+      "stableFrames": 2,
+      "attempts": 2,
+      "nonzeroAlphaPixels": 2734
+    }
+  ],
+  "baselineRecaptures": [
+    {
+      "theme": "Light",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "byteIdentical": true
+    },
+    {
+      "theme": "Dark",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "byteIdentical": true
+    }
+  ],
+  "externalNetworkRequests": 0,
+  "scriptSha256": "695aa9f1e80c45f921d1519eda53fe4fe5c1caa19213877f0349bfcd79eab427",
+  "nativeComponentAccepted": false
+}

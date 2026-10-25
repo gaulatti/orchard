@@ -1,0 +1,3337 @@
+{
+  "passed": true,
+  "diagnosticOnly": true,
+  "browser": "155.0.4283.62",
+  "browserMetadata": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "gpu": {
+    "featureStatus": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "raw_draw": "disabled_off_ok",
+      "skia_graphite": "disabled_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "unavailable_off",
+      "webgl": "enabled",
+      "webgpu": "enabled",
+      "webnn": "disabled_off"
+    },
+    "auxiliary": {
+      "amdSwitchable": false,
+      "bgra8OverlaySupport": "DIRECT",
+      "canSupportThreadedTextureMailbox": false,
+      "directComposition": true,
+      "directMLFeatureLevel": "Not supported",
+      "directRenderingVersion": "",
+      "displayType": "ANGLE_D3D11",
+      "dx12FeatureLevel": "Not supported",
+      "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 ",
+      "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+      "glRenderer": "ANGLE (Intel, Intel(R) UHD Graphics 630 (0x00003E92) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.101.2141)",
+      "glResetNotificationStrategy": 33362,
+      "glVendor": "Google Inc. (Intel)",
+      "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.48257 git hash: 21c0f7a0f5af)",
+      "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+      "glWsVendor": "Google Inc. (Intel)",
+      "glWsVersion": "1.5 (ANGLE 2.1.48257 git hash: 21c0f7a0f5af)",
+      "inProcessGpu": false,
+      "initializationTime": 0.157024,
+      "isAsan": false,
+      "isClangCoverage": false,
+      "jpegDecodeAcceleratorSupported": false,
+      "maxMsaaSamples": "16",
+      "nv12OverlaySupport": "DIRECT",
+      "optimus": false,
+      "p010OverlaySupport": "SOFTWARE",
+      "passthroughCmdDecoder": true,
+      "pixelShaderVersion": "5.0",
+      "playreadyHardwareDrmSupport": false,
+      "processCrashCount": 0,
+      "rgb10a2OverlaySupport": "SOFTWARE",
+      "sandboxed": false,
+      "skiaBackendType": "GaneshGL",
+      "subpixelFontRendering": true,
+      "supportsD3dSharedImages": false,
+      "supportsDirectML": false,
+      "supportsDx12": false,
+      "supportsOverlays": true,
+      "supportsVulkan": false,
+      "targetCpuBits": 64,
+      "vertexShaderVersion": "5.0",
+      "visibilityCallbackCallCount": 0,
+      "vulkanVersion": "Not supported",
+      "yuy2OverlaySupport": "DIRECT"
+    }
+  },
+  "previousSourceSha256": "98352ef757aef4ab6833a987865196f91a5befe65e9fcf4a2411ab0d39d27adc",
+  "sourceCases": 57,
+  "baselineCasesByteIdentical": 0,
+  "deviceScaleFactor": 1,
+  "osSettingsChanged": false,
+  "hardwareInputSent": false,
+  "externalNetworkRequests": 0,
+  "scriptSha256": "61b9739a8c5d37d7dff16a40071d356f838cddcd5a581caae06ccd7c9136f998",
+  "cases": [
+    {
+      "id": "overlap-r0.25-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r0.25-WhiteMask.png",
+      "sha256": "12d63fe13b2ae7c62861f99dadcd146183faaaefc644038b2bdcca95917422a0",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "0.25px",
+          "0.25px",
+          "0.25px",
+          "0.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.25-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.25-Light.png",
+      "sha256": "f77fd82a3e66e7547a53563b43cd208cacd95ce35df8b00d7a7d422019f2ad84",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.25px",
+          "0.25px",
+          "0.25px",
+          "0.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.25-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.25-Dark.png",
+      "sha256": "58b8c29e6b62ec2c415266f8b8398ab302652b61acbe9e6961de8561b10ef53a",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.25px",
+          "0.25px",
+          "0.25px",
+          "0.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.25-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.25-Transparent.png",
+      "sha256": "e71b7a83e12d7e8787172605eba5fa01391816f1c30ecd4527778be18be8228a",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.25px",
+          "0.25px",
+          "0.25px",
+          "0.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.5-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r0.5-WhiteMask.png",
+      "sha256": "d4f987c95eca223ebf2dd88f581636f2e5b327b93b2e8f190f70e6691a3c8cb6",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "0.5px",
+          "0.5px",
+          "0.5px",
+          "0.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.5-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.5-Light.png",
+      "sha256": "311fbadb1952b18c59e9f3b38514d83ed6da6075600aee95f0e7ca5d6310fead",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.5px",
+          "0.5px",
+          "0.5px",
+          "0.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.5-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.5-Dark.png",
+      "sha256": "32489df750a322c3f34d9349ef67d31c4234942509571c899b9b36eb9135999e",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.5px",
+          "0.5px",
+          "0.5px",
+          "0.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.5-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.5-Transparent.png",
+      "sha256": "138a860f4621b1f0e3bcb60f1b7042c8d0b456eaebde886c20f64fd519bd5245",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.5px",
+          "0.5px",
+          "0.5px",
+          "0.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.75-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.75,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r0.75-WhiteMask.png",
+      "sha256": "d80ca87103dfd5a453f62b7d12453a50c3ce78b4f24d388ef4d88d03b027bdd4",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "0.75px",
+          "0.75px",
+          "0.75px",
+          "0.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.75-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.75,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.75-Light.png",
+      "sha256": "311fbadb1952b18c59e9f3b38514d83ed6da6075600aee95f0e7ca5d6310fead",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.75px",
+          "0.75px",
+          "0.75px",
+          "0.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.75-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.75,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.75-Dark.png",
+      "sha256": "32489df750a322c3f34d9349ef67d31c4234942509571c899b9b36eb9135999e",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.75px",
+          "0.75px",
+          "0.75px",
+          "0.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r0.75-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0.75,
+        0.75,
+        0.75,
+        0.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r0.75-Transparent.png",
+      "sha256": "3a6428897a316fc15d4530dd6e68b87cf8cf852fb178c0cfd43821f2c0b62c33",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0.75px",
+          "0.75px",
+          "0.75px",
+          "0.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.25-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r6.25-WhiteMask.png",
+      "sha256": "18de7ddccb5c3c014602c6b72c7b1392eda8e97389f875e5c67d9bf1ab1005f8",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.25-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.25-Light.png",
+      "sha256": "e24e62f29ce002b3658896cf4bafbdae76fc750ac2ec73ce9627e9ed0f562e51",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.25-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.25-Dark.png",
+      "sha256": "ebd0e072c4cccfc7c7b42db114fb5b5b6b69b54c98ea9025c339dac65ad9571f",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.25-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.25-Transparent.png",
+      "sha256": "42da579054c224eca99c5e3926d086f6d41058e834052662b82318b77053fdba",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.5-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.5,
+        6.5,
+        6.5,
+        6.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r6.5-WhiteMask.png",
+      "sha256": "a7fdca6e27aa05953852e78dec4ef18541d5962577f471815c28d85f94b34119",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "6.5px",
+          "6.5px",
+          "6.5px",
+          "6.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.5-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.5,
+        6.5,
+        6.5,
+        6.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.5-Light.png",
+      "sha256": "940cbaada5e7766e2a2776be8fb583b75285592a85e4c3cb68b9dd3cc8be4630",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.5px",
+          "6.5px",
+          "6.5px",
+          "6.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.5-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.5,
+        6.5,
+        6.5,
+        6.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.5-Dark.png",
+      "sha256": "0c7d202977e5ccb9135104c97d33020f44292dec3eedb014c9ab4227daf97521",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.5px",
+          "6.5px",
+          "6.5px",
+          "6.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.5-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.5,
+        6.5,
+        6.5,
+        6.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.5-Transparent.png",
+      "sha256": "cffb1f9cb0c6fba33993bde3702e03f4a32afec3780c2bf1ccb7c6b365d43c8b",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.5px",
+          "6.5px",
+          "6.5px",
+          "6.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.75-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r6.75-WhiteMask.png",
+      "sha256": "f85a428a35996ae2c9000de9c3224ac0c4ee141ff26d757ad7966ebb7d3aa709",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.75-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.75-Light.png",
+      "sha256": "815201ad72b3ebe214ad651a311be1af5f2d9fcac5603281dd7ad8183eae4fb5",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.75-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.75-Dark.png",
+      "sha256": "9a282eb76601bba06a8a66230f7d8a4b16c2aac789736ea6aec5a176d2e53904",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r6.75-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r6.75-Transparent.png",
+      "sha256": "a96cf7698d819378ac288cbc9268a077938b3927685d7eb295792ba23ded8c44",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.25-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r13.25-WhiteMask.png",
+      "sha256": "ece982ae64231325b4b0bbbf9407cfdc7a9a87a7ca6429b35bebdab9d972fa7a",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.25-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.25-Light.png",
+      "sha256": "088a8e7da0e4f7170fcfb5efab0f8f08c18e0c289e9f5f64f1214309c113e411",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.25-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.25-Dark.png",
+      "sha256": "f36e4fb689d260a423b6e9c7b70c1697b0aca3713b08a8a91f9ea94e91224a64",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.25-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.25-Transparent.png",
+      "sha256": "ca2c98568de12e9605a4738c25b61fc9d6e5abe5202f654129531a195aa88f7f",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.5-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.5,
+        13.5,
+        13.5,
+        13.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r13.5-WhiteMask.png",
+      "sha256": "a5c4435af7ff3a3dab36c0213107cbe3fba43a4588c7ee78ebd0c96a42ea9eac",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "13.5px",
+          "13.5px",
+          "13.5px",
+          "13.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.5-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.5,
+        13.5,
+        13.5,
+        13.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.5-Light.png",
+      "sha256": "31b7d8e1cf8f7f0fbaf2141e5a441e2a68433bf55adbe883a3fda821464c1e5a",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.5px",
+          "13.5px",
+          "13.5px",
+          "13.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.5-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.5,
+        13.5,
+        13.5,
+        13.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.5-Dark.png",
+      "sha256": "ce0acf0b6e480c570f394c4c62fd97ffd61e2c5e947540b4b66b2c8475082107",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.5px",
+          "13.5px",
+          "13.5px",
+          "13.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.5-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.5,
+        13.5,
+        13.5,
+        13.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.5-Transparent.png",
+      "sha256": "cd867d2359944b2335c6155c70cffbd70952d370fb03097fce57cb1e2a03ba5c",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.5px",
+          "13.5px",
+          "13.5px",
+          "13.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.75-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r13.75-WhiteMask.png",
+      "sha256": "1bb95d55bd5c6ff8ae44eed47e7e4d9f440d3faa0f5135b88466b358edc73679",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.75-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.75-Light.png",
+      "sha256": "b8bed8da90c7915119062b0ab59206e6e0215b2751cceab2de30dac977802e40",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.75-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.75-Dark.png",
+      "sha256": "a26a433991e6c8dcb1899facf08d1c9a25fdfcc79c8edd6534c16f0487344549",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r13.75-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r13.75-Transparent.png",
+      "sha256": "405cfaefae5cb7a7379a7d1d9a221aec14370d0819d9b7357bbfe31df34cb7a8",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r27.5-WhiteMask",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        27.5,
+        27.5,
+        27.5,
+        27.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "overlap-r27.5-WhiteMask.png",
+      "sha256": "04ddb6525c78d1ac2c5fdc72b3dffd7ad8022b565b61b322b98989331ca9a2bd",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "27.5px",
+          "27.5px",
+          "27.5px",
+          "27.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r27.5-Light",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        27.5,
+        27.5,
+        27.5,
+        27.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r27.5-Light.png",
+      "sha256": "0c0b438cf4a19ddffb33d859d57153f2412f4f8a5ff761c9d87f9ca9b2d2335f",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "27.5px",
+          "27.5px",
+          "27.5px",
+          "27.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r27.5-Dark",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        27.5,
+        27.5,
+        27.5,
+        27.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r27.5-Dark.png",
+      "sha256": "527c19ab85670153d4436667dc4dee1def8b6e93c4bb9de96429fd9850657440",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "27.5px",
+          "27.5px",
+          "27.5px",
+          "27.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "overlap-r27.5-Transparent",
+      "family": "overlap",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        27.5,
+        27.5,
+        27.5,
+        27.5
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "overlap-r27.5-Transparent.png",
+      "sha256": "d97780b54f7e8245ab98ecef3285c5894a9bbcedad8711aff6a99178ef4c5578",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "27.5px",
+          "27.5px",
+          "27.5px",
+          "27.5px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.25-WhiteMask",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "phase-r6.25-WhiteMask.png",
+      "sha256": "382d4fba68ae4d751fc76eac626d7eb126115949196dc93f1c82f1a673f5b776",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgb(255, 255, 255) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.25-Light",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r6.25-Light.png",
+      "sha256": "7c9829728ff7231c266e3961aba3969ec166809ea37b9e1cca1c02552e7b4fff",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.25-Dark",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r6.25-Dark.png",
+      "sha256": "53af2ad6b7e2cc4ccc23c6fe91273301616781918f3919eaf87f3154539a546d",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.25-Transparent",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.25,
+        6.25,
+        6.25,
+        6.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r6.25-Transparent.png",
+      "sha256": "de7fc9fe1000cad07807f088d8b1277ea6a8b7e5e0b76bad6691b5d33459db15",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.25px",
+          "6.25px",
+          "6.25px",
+          "6.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.75-WhiteMask",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "phase-r6.75-WhiteMask.png",
+      "sha256": "ff2135cb4b9c21057bcaed386892ce1b001b1d92d09647b8d9be52713476f29a",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgb(255, 255, 255) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.75-Light",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r6.75-Light.png",
+      "sha256": "c89674add08703d7686fa46c8ad3a4c698287cd67a0055407525e7bc5e6eba2d",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.75-Dark",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r6.75-Dark.png",
+      "sha256": "8529c88b2412775600a00d938be6863b0d5cc4768756c832f581f634328e432b",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r6.75-Transparent",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        6.75,
+        6.75,
+        6.75,
+        6.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r6.75-Transparent.png",
+      "sha256": "6ff2d1cdb99f44d6cb3d3c3df52a0dc4444d79fceb6185f9efe0ebbc946c0e11",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "6.75px",
+          "6.75px",
+          "6.75px",
+          "6.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.25-WhiteMask",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "phase-r13.25-WhiteMask.png",
+      "sha256": "e4eb39bbbe9a6710fe96299db36da07c265327f62b43ee28780f709bef79cd68",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgb(255, 255, 255) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.25-Light",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r13.25-Light.png",
+      "sha256": "7665ef058b00970783bf196283690dcf58dd14edab6a75f1b6eda941527c1d9b",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.25-Dark",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r13.25-Dark.png",
+      "sha256": "23e7c7e6b1ace8ef553006cc9aeb3ce7b5fdab6a098d4d0bf4832893e1cc516c",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.25-Transparent",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.25,
+        13.25,
+        13.25,
+        13.25
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r13.25-Transparent.png",
+      "sha256": "8f5a8f93a20cb73adfd49af8e97ec3c63062af3a7ee11f26e5a300e11583ee8c",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.25px",
+          "13.25px",
+          "13.25px",
+          "13.25px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.75-WhiteMask",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "phase-r13.75-WhiteMask.png",
+      "sha256": "4220948024f8dba587d76c32ddf4a6dd280d27b935784118e32454938a9db6e2",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgb(255, 255, 255) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.75-Light",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r13.75-Light.png",
+      "sha256": "477c3bfda96e5ebac4a74b466355671af56e89cf0d68c0b849744736a08266c6",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.75-Dark",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r13.75-Dark.png",
+      "sha256": "2f7af0f3d9307aa4ada867dc77008604a35ae0d38a02614a9ef549f0f99f37b2",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "phase-r13.75-Transparent",
+      "family": "phase",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160.375,
+        "y": 140.1875,
+        "width": 200.375,
+        "height": 120.5
+      },
+      "corners": [
+        13.75,
+        13.75,
+        13.75,
+        13.75
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0.25,
+        "y": 4.25
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "phase-r13.75-Transparent.png",
+      "sha256": "22b46a14ef8ce03bbfe714e0027e4ed94d396abbc55462bbf036e5d877c96f0b",
+      "computed": {
+        "box": {
+          "x": 160.375,
+          "y": 140.1875,
+          "width": 200.375,
+          "height": 120.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0.25px 4.25px 14px 0px",
+        "corners": [
+          "13.75px",
+          "13.75px",
+          "13.75px",
+          "13.75px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "zero-overlap",
+      "family": "zero",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "zero-overlap.png",
+      "sha256": "7617807056cfeecb95b195570290ec84ae4a07caf6a5a4625989129b412b8673",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    }
+  ],
+  "librarySourceChanged": false,
+  "nativeComponentAccepted": false
+}

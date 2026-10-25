@@ -12,7 +12,7 @@ public sealed partial class MainWindow
 {
     private async Task RunTextareaCommandsAsync(string folder)
     {
-        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.TextareaCommands.json")??throw new InvalidOperationException("Missing Textarea commands reference.");using var reference=await JsonDocument.ParseAsync(stream);
+        using var stream=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.TextareaCommands.json")??throw new InvalidOperationException("Missing Textarea commands reference.");using var reference=await JsonDocument.ParseAsync(stream);
         var original=Content;var canvas=new Canvas{Height=600,Background=new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.White)};var page=new Page{Content=canvas};NativeInputSession? input=null;
         var frames=new List<object>();var routeEvents=new List<object>();var mismatches=new List<string>();var phase="mount";var passed=false;
         try

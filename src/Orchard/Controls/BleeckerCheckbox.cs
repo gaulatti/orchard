@@ -159,9 +159,9 @@ public sealed partial class BleeckerCheckbox : CheckBox
 
     private string ContentAccessibleName() => JoinNames(
         (Content is null or string) && ContentTemplate is null && ContentTemplateSelector is null
-            ? Content as string ?? "" : RichAccessibleName(richLabel),
+            ? Content as string ?? "" : RichAccessibleName(richLabel ?? (ContentTemplate is null && ContentTemplateSelector is null ? Content as UIElement : null)),
         (Description is null or string) && DescriptionTemplate is null
-            ? Description as string ?? "" : RichAccessibleName(richDescription));
+            ? Description as string ?? "" : RichAccessibleName(richDescription ?? (DescriptionTemplate is null ? Description as UIElement : null)));
 
     private static string RichAccessibleName(DependencyObject? root)
     {

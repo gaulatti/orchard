@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerNavMenu">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/><Setter Property="FontWeight" Value="Medium"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerNavMenu"><Grid x:Name="PART_Items" FlowDirection="LeftToRight" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

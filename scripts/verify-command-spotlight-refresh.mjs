@@ -1,0 +1,25 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+export function verifyRefreshModel(r,{requireHints=true}={}){
+ assert(['orchard-command-spotlight-refresh-native-v1','orchard-command-spotlight-refresh-native-v2'].includes(r.format));const hasHintChecks=r.format.endsWith('v2');if(requireHints)assert.equal(hasHintChecks,true);assert.equal(r.passed,true);assert.equal(r.cases.length,4);assert.equal(r.measurements.length,12);assert.equal(r.profiles.length,21);assert.equal(r.fontCases.length,16);
+ assert.equal(r.focusEvents,0);assert.equal(r.activations,0);assert.equal(r.hostVisible,false);assert.equal(r.hardwareInputSent,false);assert.equal(r.latencyAcceptanceClaimed,false);assert.equal(r.nativeComponentAccepted,false);assert(r.guards>=160);
+ const expected=[];for(const theme of ['Light','Dark'])for(const grouping of ['single','unique'])expected.push({theme,grouping,count:1000,originalRowsAndActionsRetained:true,passed:true});assert.deepEqual(r.cases,expected);
+ const timing=t=>{assert(Number.isFinite(t.synchronousMilliseconds)&&t.synchronousMilliseconds>=0);assert(Number.isFinite(t.settledMilliseconds)&&t.settledMilliseconds>=t.synchronousMilliseconds);assert(Number.isSafeInteger(t.synchronousAllocatedBytes)&&t.synchronousAllocatedBytes>=0);assert.equal(t.count,1000);};
+ const measurementOrder=[];for(const c of expected)for(let sample=0;sample<3;sample++)measurementOrder.push([c.theme,c.grouping,'label-refresh',sample,1]);assert.deepEqual(r.measurements.map(t=>[t.theme,t.grouping,t.phase,t.sample,t.iterations]),measurementOrder);r.measurements.forEach(timing);
+ const profileOrder=[];for(let sample=0;sample<3;sample++)for(const[phase,iterations]of [['font-style-lookup',2000],['row-direct-set',1000],['row-content-update',1000],['text-style-update',2000],['hint-update',1000],['body-update',1],['input-update',1]])profileOrder.push(['Light','single',phase,sample,iterations]);assert.deepEqual(r.profiles.map(t=>[t.theme,t.grouping,t.phase,t.sample,t.iterations]),profileOrder);r.profiles.forEach(timing);
+ const ids=['default','inherited','local','binding-first','binding-second','cleared','replaced','restored'];assert.deepEqual(r.fontCases.map(c=>[c.theme,c.id]),['Light','Dark'].flatMap(theme=>ids.map(id=>[theme,id])));
+ const families={inherited:'Consolas',local:'Courier New','binding-first':'Arial','binding-second':'Tahoma',cleared:'Consolas',replaced:'Segoe UI'};
+ for(const c of r.fontCases){for(const k of ['passed','originalActionRetained','fontOnlyRowRetained','iconBindingRetained','ownerFontBindingRetained'])assert.equal(c[k],true);if(hasHintChecks)assert.equal(c.hintDimensionsVerified,true);assert.equal(typeof c.sameRowAsPrevious,'boolean');if(['local','binding-first','binding-second','cleared'].includes(c.id))assert.equal(c.sameRowAsPrevious,true);for(const k of ['titleFamily','descriptionFamily','groupFamily']){assert.equal(typeof c[k],'string');assert(c[k].length);if(families[c.id])assert.equal(c[k],families[c.id]);}assert.equal(c.fontSize,['default','restored'].includes(c.id)?16:c.id==='replaced'?20:24);if(['local','binding-first','binding-second','cleared','replaced'].includes(c.id)){assert.equal(c.direction,'RightToLeft');assert.equal(c.language,'tr-TR');assert.equal(c.textScaling,false);}else{assert.equal(c.direction,'LeftToRight');assert.equal(c.textScaling,true);}}
+ for(const theme of ['Light','Dark']){const first=r.fontCases.find(c=>c.theme===theme&&c.id==='default'),last=r.fontCases.find(c=>c.theme===theme&&c.id==='restored');for(const field of ['titleFamily','descriptionFamily','groupFamily'])assert.equal(last[field],first[field]);}
+ return{cases:4,measurements:12,profileMeasurements:21,fontCases:16,hintDimensionCases:hasHintChecks?16:0,latencyAcceptanceClaimed:false};
+}
+export async function verifyRefresh(folder,host='Orchard.Catalog.dll',options={}){
+ const bytes=await fs.readFile(path.join(folder,'refresh.json')),r=JSON.parse(bytes),counts=verifyRefreshModel(r,options);assert.equal(hash(await fs.readFile(path.join(folder,'app-identity/Orchard.dll'))),r.librarySha256);assert.equal(hash(await fs.readFile(path.join(folder,'app-identity',host))),r.hostSha256);
+ const p=JSON.parse(await fs.readFile(path.join(folder,'process.json'))),e=JSON.parse(await fs.readFile(path.join(folder,'process-exit.json')));assert.equal(p.foregroundAuthorized,false);assert.equal(p.hardwareInputSent,false);assert.equal(e.exited,true);assert.equal(e.exitCode,0);assert.equal(e.timedOut,false);
+ return{passed:true,reportSha256:hash(bytes),librarySha256:r.librarySha256,...counts,guards:r.guards};
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){const[folder,host,output]=process.argv.slice(2);const r=await verifyRefresh(folder,host);await fs.writeFile(output,JSON.stringify(r,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(r));}

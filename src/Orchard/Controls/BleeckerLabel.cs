@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 
@@ -14,7 +15,8 @@ public sealed class BleeckerLabel : ContentControl
     private TextBlock? text;
     private ContentPresenter? rich;
     private Control? linkedTarget;
-    private UIElement? previousLabel;
+    private object previousLabelValue = DependencyProperty.UnsetValue;
+    private Binding? previousLabelBinding;
 
     public BleeckerLabel()
     {
@@ -68,16 +70,26 @@ public sealed class BleeckerLabel : ContentControl
         UnlinkTarget();
         if (!IsLoaded || Target is null) return;
         linkedTarget = Target;
-        previousLabel = AutomationProperties.GetLabeledBy(linkedTarget);
+        previousLabelValue = linkedTarget.ReadLocalValue(AutomationProperties.LabeledByProperty);
+        previousLabelBinding = linkedTarget.GetBindingExpression(AutomationProperties.LabeledByProperty)?.ParentBinding;
+        // Disconnect before assignment: a live two-way binding would otherwise
+        // write this temporary relationship back into the caller's source.
+        if (previousLabelBinding is not null) linkedTarget.ClearValue(AutomationProperties.LabeledByProperty);
         AutomationProperties.SetLabeledBy(linkedTarget, this);
     }
 
     private void UnlinkTarget()
     {
-        if (linkedTarget is not null && ReferenceEquals(AutomationProperties.GetLabeledBy(linkedTarget), this))
-            AutomationProperties.SetLabeledBy(linkedTarget, previousLabel);
+        if (linkedTarget is not null && linkedTarget.GetBindingExpression(AutomationProperties.LabeledByProperty) is null &&
+            ReferenceEquals(linkedTarget.ReadLocalValue(AutomationProperties.LabeledByProperty), this))
+        {
+            if (previousLabelBinding is not null) linkedTarget.SetBinding(AutomationProperties.LabeledByProperty, previousLabelBinding);
+            else if (previousLabelValue == DependencyProperty.UnsetValue) linkedTarget.ClearValue(AutomationProperties.LabeledByProperty);
+            else linkedTarget.SetValue(AutomationProperties.LabeledByProperty, previousLabelValue);
+        }
         linkedTarget = null;
-        previousLabel = null;
+        previousLabelValue = DependencyProperty.UnsetValue;
+        previousLabelBinding = null;
     }
 
     private void OnTapped(object sender, TappedRoutedEventArgs args)

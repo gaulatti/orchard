@@ -32,7 +32,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
         var referenceName = liveOptions ? "DataTableFiltersLive" : "DataTableFilters";
         var reportName = liveOptions ? "data-table-filters-live" : "data-table-filters";
         var inputName = liveOptions ? "filters-live" : "filters";
-        using var stream = typeof(DataTableFiltersFixture).Assembly.GetManifestResourceStream($"Orchard.Catalog.Reference.{referenceName}.json")!; using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var reference = JsonDocument.Parse(bytes);
+        using var stream = CatalogReferenceResources.Open(typeof(DataTableFiltersFixture).Assembly, $"Orchard.Catalog.Reference.{referenceName}.json")!; using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var reference = JsonDocument.Parse(bytes);
         var root = (Grid)XamlRoot.Content; var app = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId); var originalSize = app.ClientSize; var reports = new List<object>(); var failures = new List<string>(); var focusDifferences = new List<object>();
         try
         {

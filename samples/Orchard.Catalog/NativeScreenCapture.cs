@@ -184,8 +184,15 @@ internal static class NativeScreenCapture
         }
         // BI_RGB reserves the fourth byte; the copied screen is fully opaque.
         for (var offset = 3; offset < pixels.Length; offset += 4) pixels[offset] = 255;
-        if (exactReference is null) NativeCaptureValidation.Verify(pixels,expectedEmptyCanvas);
-        else NativeCaptureValidation.VerifyExact(pixels,exactReference);
+        // Keep a raw diagnostic when an exact reference fails. The comparison
+        // still throws, and no successful runtime report is produced.
+        if (exactReference is not null)
+        {
+            await MainWindow.SavePngAsync(path, pixels, width, height);
+            NativeCaptureValidation.VerifyExact(pixels,exactReference);
+            return new Rect(origin.X, origin.Y, width, height);
+        }
+        NativeCaptureValidation.Verify(pixels,expectedEmptyCanvas);
         await MainWindow.SavePngAsync(path, pixels, width, height);
         return new Rect(origin.X, origin.Y, width, height);
     }

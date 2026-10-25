@@ -1,0 +1,14 @@
+<UserControl x:Class="Orchard.Catalog.SlidersFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Sliders" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Controlled range requests preserve the caller's values and bindings. These examples use fictional local values." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerSlider Label="Consumer-controlled level" Value="25" ShowValue="True" ValueRequested="AcceptValue" AutomationProperties.Name="Consumer level"/>
+  <orchard:BleeckerSlider Label="Fractional range" Min="0.1" Max="1" Step="0.1" Value="0.3" ShowValue="True" ValueRequested="AcceptValue" AutomationProperties.Name="Fractional level"/>
+  <orchard:BleeckerSlider Label="Consumer rejects changes" Value="25" ShowValue="True" AutomationProperties.Name="Fixed consumer level"/>
+  <orchard:BleeckerSlider Label="Displayed value 25.3; native thumb 30" Value="25.3" Step="10" ShowValue="True" ValueRequested="AcceptValue" AutomationProperties.Name="Stepped level"/>
+  <orchard:BleeckerSlider Label="Disabled range" Value="65" ShowValue="True" IsEnabled="False"/>
+  <orchard:BleeckerSlider Label="Right-to-left range" Value="25" ShowValue="True" FlowDirection="RightToLeft" ValueRequested="AcceptValue"/>
+  <orchard:BleeckerSlider Label="Straße 東京 é العربية" Value="50" ShowValue="True" ValueRequested="AcceptValue" AutomationProperties.Name="Multilingual range"/>
+  <TextBlock x:Name="Status" Text="No consumer request yet." Style="{StaticResource BleeckerBodyStyle}"/>
+ </StackPanel>
+</UserControl>

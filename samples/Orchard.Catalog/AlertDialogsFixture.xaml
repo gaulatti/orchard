@@ -1,0 +1,17 @@
+<StackPanel x:Class="Orchard.Catalog.AlertDialogsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="20">
+ <StackPanel.Resources><Style x:Key="WideAlertSurface" TargetType="orchard:BleeckerOverlaySurface" BasedOn="{StaticResource BleeckerAlertDialogSurfaceStyle}"><Setter Property="MaxWidth" Value="512"/><Setter Property="CornerRadius" Value="0"/></Style></StackPanel.Resources>
+ <TextBlock Text="Alert dialog" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local confirmation. Requests remain caller-controlled; this fixture chooses when to close." TextWrapping="Wrap"/>
+ <TextBlock x:Name="Status" Text="No requests" TextWrapping="Wrap"/>
+ <StackPanel Orientation="Horizontal" Spacing="12">
+  <orchard:BleeckerButton Content="Open confirmation" Size="Small" Click="OpenDefault"/>
+  <orchard:BleeckerButton Content="Open destructive confirmation" Size="Small" Variant="Destructive" Click="OpenDestructive"/>
+ </StackPanel>
+ <StackPanel Orientation="Horizontal" Spacing="12">
+  <orchard:BleeckerButton Content="Show temporary loading" Size="Small" Variant="Secondary" Click="OpenLoading"/>
+  <orchard:BleeckerButton Content="Open wide square surface" Size="Small" Variant="Secondary" Click="OpenWide"/>
+ </StackPanel>
+ <orchard:BleeckerAlertDialog x:Name="Default" Title="Fictional confirmation" Description="Review the fictional local component example before continuing." SurfaceStyle="{StaticResource BleeckerAlertDialogSurfaceStyle}" CancelRequested="Canceled" ConfirmRequested="Confirmed"/>
+ <orchard:BleeckerAlertDialog x:Name="Destructive" Title="Discard the fictional example?" Description="This demonstration changes only its local callback count." Variant="Destructive" ConfirmLabel="Discard example" CancelRequested="Canceled" ConfirmRequested="Confirmed"/>
+ <orchard:BleeckerAlertDialog x:Name="Wide" Title="Fictional wide surface" Description="The caller supplies a 512px maximum width and square corners through SurfaceStyle." SurfaceStyle="{StaticResource WideAlertSurface}" CancelRequested="Canceled" ConfirmRequested="Confirmed"/>
+</StackPanel>

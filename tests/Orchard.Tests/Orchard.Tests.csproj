@@ -4,6 +4,240 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="../Reference/OverlayNearFractional.json" Link="Fixtures/OverlayNearFractional.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayNearFractional/*.png" Link="Fixtures/OverlayNearFractional/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayNearGeometry.json" Link="Fixtures/OverlayNearGeometry.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayNearGeometry/**/*" Link="Fixtures/OverlayNearGeometry/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayNearOwner.json" Link="Fixtures/OverlayNearOwner.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayNearOwnerShaders.json" Link="Fixtures/OverlayNearOwnerShaders.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayNearOwner/**/*" Link="Fixtures/OverlayNearOwner/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayShadow.json" Link="Fixtures/OverlayShadow.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayShadow/**/*" Link="Fixtures/OverlayShadow/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayShadowPaint.json" Link="Fixtures/OverlayShadowPaint.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/OverlayShadowPaint/**/*" Link="Fixtures/OverlayShadowPaint/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-overlay-shadow-paint.mjs" Link="Fixtures/CaptureOverlayShadowPaint.mjs" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerShadowPaint.cs" Link="BleeckerShadowPaint.cs" />
+        <Compile Include="../../src/Orchard/Colors/BleeckerOklabFill.cs" Link="BleeckerOklabFill.cs" />
+        <None Include="../Reference/CommandSpotlightSurface.json" Link="Fixtures/CommandSpotlightSurface.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CommandSpotlightSurface/**/*" Link="Fixtures/CommandSpotlightSurface/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerCommandSpotlightKeyboard.cs" Link="BleeckerCommandSpotlightKeyboard.cs" />
+        <Compile Include="../../src/Orchard/Text/BleeckerCommandSpotlightCasing.cs" Link="BleeckerCommandSpotlightCasing.cs" />
+        <EmbeddedResource Include="../../src/Orchard/Text/CommandSpotlightCasing.json" LogicalName="Orchard.Text.CommandSpotlightCasing.json" />
+        <None Include="../Reference/CommandSpotlightHotkeys.json" Link="Fixtures/CommandSpotlightHotkeys.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AuthShellLayout.json" Link="Fixtures/AuthShellLayout.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AuthShellLayout/**/*" Link="Fixtures/AuthShellLayout/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-auth-shell-layout.cjs" Link="Fixtures/CaptureAuthShellLayout.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/auth-shell-layout-client.tsx" Link="Fixtures/AuthShellLayoutClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerAuthShellModel.cs" Link="BleeckerAuthShellModel.cs" />
+        <None Include="../Reference/AuthShell.json" Link="Fixtures/AuthShell.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AuthShell/**/*" Link="Fixtures/AuthShell/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-auth-shell.cjs" Link="Fixtures/CaptureAuthShell.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/auth-shell-client.tsx" Link="Fixtures/AuthShellClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerCommandSpotlightState.cs" Link="BleeckerCommandSpotlightState.cs" />
+        <None Include="../../samples/Orchard.Catalog/CommandSpotlightsFixture.xaml.cs" Link="Fixtures/Catalog/CommandSpotlightsFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CommandSpotlight.json" Link="Fixtures/CommandSpotlight.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CommandSpotlight/**/*" Link="Fixtures/CommandSpotlight/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-command-spotlight.cjs" Link="Fixtures/CaptureCommandSpotlight.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/command-spotlight-client.tsx" Link="Fixtures/CommandSpotlightClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/MediaLibrary.json" Link="Fixtures/MediaLibrary.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/MediaLibrary/**/*" Link="Fixtures/MediaLibrary/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-media-library.cjs" Link="Fixtures/CaptureMediaLibrary.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/media-library-client.tsx" Link="Fixtures/MediaLibraryClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/MediaLibrariesFixture.xaml.cs" Link="Fixtures/Catalog/MediaLibrariesFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/FileInput.json" Link="Fixtures/FileInput.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/FileInput/**/*" Link="Fixtures/FileInput/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-file-input.cjs" Link="Fixtures/CaptureFileInput.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/file-input-client.tsx" Link="Fixtures/FileInputClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerSonnerLifetime.cs" Link="BleeckerSonnerLifetime.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerFileInputSelection.cs" Link="BleeckerFileInputSelection.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerHeroCarouselState.cs" Link="BleeckerHeroCarouselState.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerHeroGradient.cs" Link="BleeckerHeroGradient.cs" />
+        <None Include="../Reference/HeroCarousel.json" Link="Fixtures/HeroCarousel.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/HeroCarousel/**/*" Link="Fixtures/HeroCarousel/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-hero-carousel.cjs" Link="Fixtures/CaptureHeroCarousel.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/hero-carousel-client.tsx" Link="Fixtures/HeroCarouselClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/HeroCarouselsFixture.xaml.cs" Link="Fixtures/Catalog/HeroCarouselsFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/SonnersFixture.xaml.cs" Link="Fixtures/Catalog/SonnersFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Sonner.json" Link="Fixtures/Sonner.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Sonner/**/*" Link="Fixtures/Sonner/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-sonner.cjs" Link="Fixtures/CaptureSonner.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/sonner-client.tsx" Link="Fixtures/SonnerClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerTableModel.cs" Link="BleeckerTableModel.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerDataTableDefinition.cs" Link="BleeckerDataTableDefinition.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerDataTableModel.cs" Link="BleeckerDataTableModel.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerDataTableModel.Values.cs" Link="BleeckerDataTableModel.Values.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerDataTableModel.Filtering.cs" Link="BleeckerDataTableModel.Filtering.cs" />
+        <None Include="../Reference/DataTableFilterPlan.json" Link="Fixtures/DataTableFilterPlan.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DataTable.json" Link="Fixtures/DataTable.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/DataTablesFixture.xaml.cs" Link="Fixtures/Catalog/DataTablesFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Table.json" Link="Fixtures/Table.json" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerSegmentOption.cs" Link="BleeckerSegmentOption.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerAppTabModel.cs" Link="BleeckerAppTabModel.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerOtpModel.cs" Link="BleeckerOtpModel.cs" />
+        <None Include="../Reference/OtpInput.json" Link="Fixtures/OtpInput.json" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerEdgeDialogModel.cs" Link="BleeckerEdgeDialogModel.cs" />
+        <None Include="../Reference/EdgeDialog.json" Link="Fixtures/EdgeDialog.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/EdgeDialogMotion.json" Link="Fixtures/EdgeDialogMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/EdgeDialogPresence.json" Link="Fixtures/EdgeDialogPresence.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/EdgeDialogInterruptions.json" Link="Fixtures/EdgeDialogInterruptions.json" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerModalModel.cs" Link="BleeckerModalModel.cs" />
+        <None Include="../Reference/Modal.json" Link="Fixtures/Modal.json" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerTooltipPlacementModel.cs" Link="BleeckerTooltipPlacementModel.cs" />
+        <None Include="../Reference/Tooltip.json" Link="Fixtures/Tooltip.json" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerAlertDialogModel.cs" Link="BleeckerAlertDialogModel.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerModalStackModel.cs" Link="BleeckerModalStackModel.cs" />
+        <None Include="../Reference/AlertDialogMotion.json" Link="Fixtures/AlertDialogMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-alert-dialog-motion.cjs" Link="Fixtures/CaptureAlertDialogMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/alert-dialog-motion-client.tsx" Link="Fixtures/AlertDialogMotionClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AlertDialog.json" Link="Fixtures/AlertDialog.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AlertDialog/*.png" Link="Fixtures/AlertDialog/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-alert-dialog.cjs" Link="Fixtures/CaptureAlertDialog.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/alert-dialog-client.tsx" Link="Fixtures/AlertDialogClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerScrollAreaModel.cs" Link="BleeckerScrollAreaModel.cs" />
+        <None Include="../Reference/ScrollArea.json" Link="Fixtures/ScrollArea.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ScrollArea/*.png" Link="Fixtures/ScrollArea/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-scroll-area.cjs" Link="Fixtures/CaptureScrollArea.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/scroll-area-client.tsx" Link="Fixtures/ScrollAreaClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerHoverCardModel.cs" Link="BleeckerHoverCardModel.cs" />
+        <None Include="../Reference/HoverCard.json" Link="Fixtures/HoverCard.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/HoverCard/*.png" Link="Fixtures/HoverCard/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-hover-card.cjs" Link="Fixtures/CaptureHoverCard.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/hover-card-client.tsx" Link="Fixtures/HoverCardClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerPopoverModel.cs" Link="BleeckerPopoverModel.cs" />
+        <None Include="../Reference/Popover.json" Link="Fixtures/Popover.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Popover/*.png" Link="Fixtures/Popover/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-popover.cjs" Link="Fixtures/CapturePopover.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/popover-client.tsx" Link="Fixtures/PopoverClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerHeaderModel.cs" Link="BleeckerHeaderModel.cs" />
+        <None Include="../Reference/Header.json" Link="Fixtures/Header.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Header/*.png" Link="Fixtures/Header/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-header.cjs" Link="Fixtures/CaptureHeader.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/header-client.tsx" Link="Fixtures/HeaderClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/HeaderComposition.json" Link="Fixtures/HeaderComposition.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/HeaderComposition/*.png" Link="Fixtures/HeaderComposition/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-header-composition.cjs" Link="Fixtures/CaptureHeaderComposition.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/header-composition-client.tsx" Link="Fixtures/HeaderCompositionClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerFooterModel.cs" Link="BleeckerFooterModel.cs" />
+        <None Include="../Reference/Footer.json" Link="Fixtures/Footer.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Footer/*.png" Link="Fixtures/Footer/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-footer.cjs" Link="Fixtures/CaptureFooter.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/footer-client.tsx" Link="Fixtures/FooterClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerNavMenuModel.cs" Link="BleeckerNavMenuModel.cs" />
+        <None Include="../Reference/NavMenu.json" Link="Fixtures/NavMenu.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/NavMenu/*.png" Link="Fixtures/NavMenu/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-nav-menu.cjs" Link="Fixtures/CaptureNavMenu.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/nav-menu-client.tsx" Link="Fixtures/NavMenuClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CollectionFiltersPaint.json" Link="Fixtures/CollectionFiltersPaint.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CollectionFiltersPaint/*.png" Link="Fixtures/CollectionFiltersPaint/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-collection-filters-paint.cjs" Link="Fixtures/CaptureCollectionFiltersPaint.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../src/Orchard/Themes/CollectionFiltersPalette.g.xaml" Link="Fixtures/CollectionFiltersPalette.g.xaml" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerCollectionFiltersModel.cs" Link="BleeckerCollectionFiltersModel.cs" />
+        <None Include="../Reference/CollectionFilters.json" Link="Fixtures/CollectionFilters.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/CollectionFilters/*.png" Link="Fixtures/CollectionFilters/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-collection-filters.cjs" Link="Fixtures/CaptureCollectionFilters.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/collection-filters-client.tsx" Link="Fixtures/CollectionFiltersClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Motion/BleeckerPaginationAnimation.cs" Link="BleeckerPaginationAnimation.cs" />
+        <None Include="../Reference/PaginationMotion.json" Link="Fixtures/PaginationMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-pagination-motion.cjs" Link="Fixtures/CapturePaginationMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerPaginationModel.cs" Link="BleeckerPaginationModel.cs" />
+        <None Include="../Reference/Pagination.json" Link="Fixtures/Pagination.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Pagination/*.png" Link="Fixtures/Pagination/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-pagination.cjs" Link="Fixtures/CapturePagination.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/pagination-client.tsx" Link="Fixtures/PaginationClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerAdminShellModel.cs" Link="BleeckerAdminShellModel.cs" />
+        <None Include="../Reference/AdminShell.json" Link="Fixtures/AdminShell.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AdminShell/*.png" Link="Fixtures/AdminShell/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-admin-shell.cjs" Link="Fixtures/CaptureAdminShell.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/admin-shell-client.tsx" Link="Fixtures/AdminShellClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../samples/Orchard.Catalog/Demos/WorkspaceDemoModels.cs" Link="WorkspaceDemoModels.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerAppShellModel.cs" Link="BleeckerAppShellModel.cs" />
+        <None Include="../Reference/AppShell.json" Link="Fixtures/AppShell.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/AppShell/*.png" Link="Fixtures/AppShell/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-app-shell.cjs" Link="Fixtures/CaptureAppShell.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/app-shell-client.tsx" Link="Fixtures/AppShellClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerSelectModel.cs" Link="BleeckerSelectModel.cs" />
+        <None Include="../Reference/Select.json" Link="Fixtures/Select.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Select/*.png" Link="Fixtures/Select/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-select.cjs" Link="Fixtures/CaptureSelect.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/select-client.tsx" Link="Fixtures/SelectClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerFeedItemModel.cs" Link="BleeckerFeedItemModel.cs" />
+        <Compile Include="../../src/Orchard/Text/BleeckerInlineText.cs" Link="BleeckerInlineText.cs" />
+        <None Include="../Reference/FeedItem.json" Link="Fixtures/FeedItem.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/FeedItem/*.png" Link="Fixtures/FeedItem/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-feed-item.cjs" Link="Fixtures/CaptureFeedItem.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/feed-item-client.tsx" Link="Fixtures/FeedItemClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../src/Orchard/Assets/Fonts/LibreFranklin-Regular.ttf" Link="Fixtures/LibreFranklin-Regular.ttf" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerFeedColumnModel.cs" Link="BleeckerFeedColumnModel.cs" />
+        <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-Regular.ttf" Link="Fixtures/EncodeSans-Regular.ttf" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../src/Orchard/Assets/Fonts/EncodeSans-SemiBold.ttf" Link="Fixtures/EncodeSans-SemiBold.ttf" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/FeedColumn.json" Link="Fixtures/FeedColumn.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/FeedColumn/*.png" Link="Fixtures/FeedColumn/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-feed-column.cjs" Link="Fixtures/CaptureFeedColumn.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/feed-column-client.tsx" Link="Fixtures/FeedColumnClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerThemeToggleModel.cs" Link="BleeckerThemeToggleModel.cs" />
+        <None Include="../Reference/ThemeToggle.json" Link="Fixtures/ThemeToggle.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ThemeToggle/*.png" Link="Fixtures/ThemeToggle/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-theme-toggle.cjs" Link="Fixtures/CaptureThemeToggle.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/theme-toggle-client.tsx" Link="Fixtures/ThemeToggleClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+                                <Compile Include="../../src/Orchard/Controls/BleeckerSliderModel.cs" Link="BleeckerSliderModel.cs" />
+        <None Include="../Reference/Slider.json" Link="Fixtures/Slider.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Slider/*.png" Link="Fixtures/Slider/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-slider.cjs" Link="Fixtures/CaptureSlider.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/slider-client.tsx" Link="Fixtures/SliderClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerFeedGridModel.cs" Link="BleeckerFeedGridModel.cs" />
+        <None Include="../Reference/FeedGrid.json" Link="Fixtures/FeedGrid.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/FeedGrid/*.png" Link="Fixtures/FeedGrid/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-feed-grid.cjs" Link="Fixtures/CaptureFeedGrid.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/feed-grid-client.tsx" Link="Fixtures/FeedGridClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerPanelFlowModel.cs" Link="BleeckerPanelFlowModel.cs" />
+        <None Include="../Reference/PanelLayout.json" Link="Fixtures/PanelLayout.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/PanelLayout/*.png" Link="Fixtures/PanelLayout/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-panel-layout.cjs" Link="Fixtures/CapturePanelLayout.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/panel-layout-client.tsx" Link="Fixtures/PanelLayoutClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerPanelModel.cs" Link="BleeckerPanelModel.cs" />
+        <None Include="../Reference/Panel.json" Link="Fixtures/Panel.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Panel/*.png" Link="Fixtures/Panel/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-panel.cjs" Link="Fixtures/CapturePanel.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/panel-client.tsx" Link="Fixtures/PanelClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerDetailLayoutModel.cs" Link="BleeckerDetailLayoutModel.cs" />
+        <None Include="../Reference/DetailLayout.json" Link="Fixtures/DetailLayout.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DetailLayout/*.png" Link="Fixtures/DetailLayout/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-detail-layout.cjs" Link="Fixtures/CaptureDetailLayout.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/detail-layout-client.tsx" Link="Fixtures/DetailLayoutClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Text/BleeckerReactContent.cs" Link="BleeckerReactContent.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerPageFrameModel.cs" Link="BleeckerPageFrameModel.cs" />
+        <None Include="../Reference/PageFrame.json" Link="Fixtures/PageFrame.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/PageFrame/*.png" Link="Fixtures/PageFrame/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-page-frame.cjs" Link="Fixtures/CapturePageFrame.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/page-frame-client.tsx" Link="Fixtures/PageFrameClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerFieldModel.cs" Link="BleeckerFieldModel.cs" />
+        <None Include="../Reference/Field.json" Link="Fixtures/Field.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Field/*.png" Link="Fixtures/Field/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-field.cjs" Link="Fixtures/CaptureField.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/field-client.tsx" Link="Fixtures/FieldClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Motion/BleeckerDialogCloseAnimation.cs" Link="BleeckerDialogCloseAnimation.cs" />
+        <None Include="../Reference/DialogCloseButton.json" Link="Fixtures/DialogCloseButton.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/DialogCloseButton/*.png" Link="Fixtures/DialogCloseButton/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-dialog-close-button.cjs" Link="Fixtures/CaptureDialogCloseButton.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/dialog-close-button-client.tsx" Link="Fixtures/DialogCloseButtonClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="../../src/Orchard/Text/BleeckerBundledFontAsset.cs" Link="BleeckerBundledFontAsset.cs" />
+        <Compile Include="../../src/Orchard/Controls/BleeckerTabItem.cs" Link="BleeckerTabItem.cs" />
+        <Compile Include="../../src/Orchard/Motion/BleeckerTabAnimation.cs" Link="BleeckerTabAnimation.cs" />
+        <None Include="../Reference/TabsMotion.json" Link="Fixtures/TabsMotion.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-tabs-motion.cjs" Link="Fixtures/CaptureTabsMotion.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/tabs-motion-client.tsx" Link="Fixtures/TabsMotionClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Tabs.json" Link="Fixtures/Tabs.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/Tabs/*.png" Link="Fixtures/Tabs/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-tabs.cjs" Link="Fixtures/CaptureTabs.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/tabs-client.tsx" Link="Fixtures/TabsClient.tsx" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStackAccessibility.json" Link="Fixtures/ProgressStackAccessibility.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-progress-stack-accessibility.cjs" Link="Fixtures/CaptureProgressStackAccessibility.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStackPaint.json" Link="Fixtures/ProgressStackPaint.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStackPaint/*.png" Link="Fixtures/ProgressStackPaint/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-progress-stack-paint.cjs" Link="Fixtures/CaptureProgressStackPaint.cjs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStackText.json" Link="Fixtures/ProgressStackText.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../Reference/ProgressStackText/*.png" Link="Fixtures/ProgressStackText/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../scripts/reference/capture-progress-stack-text.cjs" Link="Fixtures/CaptureProgressStackText.cjs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/ProgressStack.json" Link="Fixtures/ProgressStack.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/ProgressStack/*.png" Link="Fixtures/ProgressStack/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../scripts/reference/capture-progress-stack.cjs" Link="Fixtures/CaptureProgressStack.cjs" CopyToOutputDirectory="PreserveNewest" />
@@ -168,6 +402,7 @@
         <Compile Include="../../src/Orchard/Motion/BleeckerCssEasing.cs" Link="BleeckerCssEasing.cs" />
         <Compile Include="../../samples/Orchard.Catalog/BauhausMotionTiming.cs" Link="BauhausMotionTiming.cs" />
         <None Include="../Reference/BauhausFrameTiming.json" Link="Fixtures/BauhausFrameTiming.json" CopyToOutputDirectory="PreserveNewest" />
+        <EmbeddedResource Include="../../src/Orchard/Text/Uppercase-17.0.0.txt" LogicalName="Orchard.Text.Uppercase-17.0.0.txt" />
         <EmbeddedResource Include="../../src/Orchard/Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />
         <None Include="../../tokens/bleecker.tokens.json" Link="Fixtures/bleecker.tokens.json" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../Reference/SwitchTransitions.json" Link="Fixtures/SwitchTransitions.json" CopyToOutputDirectory="PreserveNewest" />
@@ -187,8 +422,10 @@
         <None Include="../../src/Orchard/**/*.xaml" Exclude="../../src/Orchard/bin/**;../../src/Orchard/obj/**" Link="Fixtures/Library/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../src/Orchard/**/*.cs" Exclude="../../src/Orchard/bin/**;../../src/Orchard/obj/**" Link="Fixtures/Library/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/catalog-coverage.json" Link="Fixtures/Catalog/catalog-coverage.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/MainWindow.Navigation.cs" Link="Fixtures/Catalog/MainWindow.Navigation.cs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/**/*.xaml" Exclude="../../samples/Orchard.Catalog/bin/**;../../samples/Orchard.Catalog/obj/**" Link="Fixtures/Catalog/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/ChartThemesFixture.xaml.cs" Link="Fixtures/Catalog/ChartThemesFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../samples/Orchard.Catalog/EdgeDialogsFixture.xaml.cs" Link="Fixtures/Catalog/EdgeDialogsFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
         <None Include="../../samples/Orchard.Catalog/DateControlsFixture.xaml.cs" Link="Fixtures/Catalog/DateControlsFixture.xaml.cs" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>

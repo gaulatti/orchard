@@ -1,0 +1,21 @@
+<UserControl x:Class="Orchard.Catalog.FeedColumnsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Feed columns" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Fictional local feeds demonstrate retained filters, editable content and independent scrolling." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
+   <StackPanel Orientation="Horizontal" Spacing="16" Height="420">
+    <orchard:BleeckerFeedColumn x:Name="LocalFeed" Title="Local coverage" Count="3">
+     <orchard:BleeckerFeedColumn.Filter><orchard:BleeckerInput Text="Consumer-owned filter"/></orchard:BleeckerFeedColumn.Filter>
+     <StackPanel Spacing="16" Height="700">
+      <orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Fictional story" Style="{StaticResource BleeckerHeadingStyle}"/><orchard:BleeckerInput Text="Editable local note"/><orchard:BleeckerButton Content="Record local action" Click="RecordAction"/></StackPanel></orchard:BleeckerCard>
+      <TextBlock x:Name="Status" Text="No local action yet." Style="{StaticResource BleeckerBodyStyle}"/>
+      <orchard:BleeckerButton Content="Update header, retain body" Click="UpdateHeader"/>
+     </StackPanel>
+    </orchard:BleeckerFeedColumn>
+    <orchard:BleeckerFeedColumn Title="Empty local feed" Count="0" Width="260" MinWidth="260" Accent="{ThemeResource BleeckerTerracottaBrush}">
+     <TextBlock Text="No fictional items match." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+    </orchard:BleeckerFeedColumn>
+   </StackPanel>
+  </ScrollViewer>
+ </StackPanel>
+</UserControl>

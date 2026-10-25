@@ -1,11 +1,27 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Geometry;
+using System.Numerics;
 using Windows.Foundation;
 
 namespace Orchard;
 
 internal static class BleeckerShadowGeometry
 {
+    internal static CanvasGeometry CanvasMask(CanvasDevice device, double width, double height, CornerRadius corners, double inset)
+    {
+        var contour = RoundedMask(width, height, corners, inset).Figures[0];
+        using var builder = new CanvasPathBuilder(device);
+        builder.BeginFigure(new Vector2((float)contour.StartPoint.X, (float)contour.StartPoint.Y));
+        foreach (var segment in contour.Segments)
+        {
+            if (segment is LineSegment line) builder.AddLine(new Vector2((float)line.Point.X, (float)line.Point.Y));
+            else if (segment is ArcSegment arc) builder.AddArc(new Vector2((float)arc.Point.X, (float)arc.Point.Y), (float)arc.Size.Width, (float)arc.Size.Height, 0, CanvasSweepDirection.Clockwise, CanvasArcSize.Small);
+        }
+        builder.EndFigure(CanvasFigureLoop.Closed);
+        return CanvasGeometry.CreatePath(builder);
+    }
     internal static PathGeometry RoundedMask(double width, double height, CornerRadius corners, double inset)
     {
         var radii = new[] { corners.TopLeft, corners.TopRight, corners.BottomRight, corners.BottomLeft }

@@ -1,0 +1,16 @@
+<StackPanel x:Class="Orchard.Catalog.FooterFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="20">
+ <StackPanel.Resources>
+  <orchard:BleeckerFooterBrand x:Key="Brand" Href="#library" BrandName="Fictional library" Description="Reusable interface components and layout primitives for fictional local demonstrations."/>
+  <orchard:BleeckerFooterSection x:Key="Resources" Title="Resources"/>
+  <DataTemplate x:Key="FooterLink" x:DataType="orchard:BleeckerNavLinkContext"><HyperlinkButton Content="{x:Bind Content, Mode=OneWay}" Command="{x:Bind Command}" Style="{x:Bind Style, Mode=OneWay}" Foreground="{x:Bind Foreground, Mode=OneWay}" Tag="{x:Bind Item, Mode=OneWay}" ToolTipService.ToolTip="{x:Bind Href, Mode=OneWay}" AutomationProperties.Name="{x:Bind Label, Mode=OneWay}"/></DataTemplate>
+ </StackPanel.Resources>
+ <TextBlock Text="Footer" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Viewport-responsive sections and host-owned navigation. All data is fictional." Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerFooter x:Name="Default" Brand="{StaticResource Brand}" BottomLeft="© 2026 Fictional library" ItemInvoked="Invoked"/>
+ <StackPanel Orientation="Horizontal" Spacing="12"><Button Content="Reorder sections" Click="Reorder"/><Button Content="Toggle long link label" Click="Rename"/><Button Content="Toggle empty bottom-right override" Click="OverrideRight"/><Button Content="Toggle accent" Click="ToggleAccent"/></StackPanel>
+ <TextBlock Text="Custom links and original caller input" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerFooter x:Name="Custom" Brand="{StaticResource Brand}" LinkTemplate="{StaticResource FooterLink}" ItemInvoked="Invoked"><orchard:BleeckerFooter.BottomLeft><TextBox x:Name="CallerInput" Width="200" Text="Caller note" AutomationProperties.Name="Footer caller note"/></orchard:BleeckerFooter.BottomLeft></orchard:BleeckerFooter>
+ <TextBlock Text="No sections or accent" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerFooter x:Name="Minimal" Brand="{StaticResource Brand}" BottomLeft="© 2026 Fictional library" ShowBottomAccent="False" ItemInvoked="Invoked"/>
+ <TextBlock x:Name="Status" Text="Choose a destination" Style="{StaticResource BleeckerBodyStyle}"/>
+</StackPanel>

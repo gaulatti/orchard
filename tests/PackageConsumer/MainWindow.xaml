@@ -3,8 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:orchard="using:Orchard"
     Title="Orchard package consumer">
+    <orchard:BleeckerModalHost RequestedTheme="{Binding ElementName=Root, Path=RequestedTheme}">
     <Grid x:Name="Root" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <Grid.Resources>
+            <DataTemplate x:Key="ConsumerTabLink" x:DataType="orchard:BleeckerTabLinkContext">
+                <Button Content="{x:Bind Content}" Command="{x:Bind Command}" Style="{x:Bind Style}" AutomationProperties.Name="{x:Bind Label}" />
+            </DataTemplate>
             <DataTemplate x:Key="ConsumerSidebarLink" x:DataType="orchard:BleeckerSidebarLinkContext">
                 <HyperlinkButton Content="{x:Bind Content, Mode=OneWay}" Style="{x:Bind Style}" Command="{x:Bind Command}" Tag="{x:Bind Item, Mode=OneWay}" AutomationProperties.Name="{x:Bind Label, Mode=OneWay}" AutomationProperties.HelpText="{x:Bind Href, Mode=OneWay}" />
             </DataTemplate>
@@ -30,6 +34,43 @@
             </NavigationView.MenuItems>
             <orchard:BleeckerCard x:Name="PackageCard" Style="{StaticResource ConsumerCardStyle}" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated">
             <StackPanel Spacing="16">
+                <orchard:BleeckerThemeToggle x:Name="PackageThemeToggle"/>
+                <orchard:BleeckerTabs x:Name="PackageTabs" Width="480" Stretch="True" ActiveTab="overview" AutomationProperties.Name="Package tabs" />
+                <orchard:BleeckerDialogCloseButton x:Name="PackageClose" AutomationProperties.Name="Close package preview" />
+                <orchard:BleeckerField x:Name="PackageField" Label="Consumer field" Required="True" Description="Consumer description" Error="Consumer error" Width="320" HorizontalAlignment="Left">
+                    <orchard:BleeckerInput x:Name="PackageFieldInput" Text="Independent Field"/>
+                </orchard:BleeckerField>
+                <orchard:BleeckerPageFrame x:Name="PackagePageFrame" FrameWidth="Reading" VerticalSpacing="Compact">
+                    <orchard:BleeckerInput x:Name="PackagePageFrameInput" Text="Independent page boundary"/>
+                </orchard:BleeckerPageFrame>
+                <orchard:BleeckerDetailLayout x:Name="PackageDetailLayout" Width="500" Sticky="False" SideRailLabel="Consumer related details">
+                    <orchard:BleeckerDetailLayout.SideRail>
+                        <orchard:BleeckerInput x:Name="PackageDetailRail" Text="Independent rail"/>
+                    </orchard:BleeckerDetailLayout.SideRail>
+                    <orchard:BleeckerInput x:Name="PackageDetailMain" Text="Independent main"/>
+                </orchard:BleeckerDetailLayout>
+                <orchard:BleeckerPanel x:Name="PackagePanel" Title="Package panel" Count="0" Width="500" Height="180">
+                    <orchard:BleeckerPanel.Filter><orchard:BleeckerInput x:Name="PackagePanelFilter" Text="Independent filter"/></orchard:BleeckerPanel.Filter>
+                    <orchard:BleeckerPanel.Toolbar><orchard:BleeckerButton x:Name="PackagePanelAction" Content="Independent panel action"/></orchard:BleeckerPanel.Toolbar>
+                    <Grid x:Name="PackagePanelBody" Height="320"><orchard:BleeckerInput x:Name="PackagePanelInput" Text="Independent Panel" VerticalAlignment="Top"/></Grid>
+                </orchard:BleeckerPanel>
+                <orchard:BleeckerPanelLayout x:Name="PackagePanelLayout" Width="600" Height="360">
+                    <orchard:BleeckerPanel x:Name="PackagePanelFixed" Title="Fixed" Width="200"><orchard:BleeckerInput x:Name="PackageLayoutInput" Text="Independent layout"/></orchard:BleeckerPanel>
+                    <orchard:BleeckerPanelColumn x:Name="PackagePanelColumn" Grow="True">
+                        <orchard:BleeckerPanel x:Name="PackagePanelTop" Title="Fixed height" Height="100"/>
+                        <orchard:BleeckerPanel x:Name="PackagePanelBottom" Title="Growing height" Grow="True"><orchard:BleeckerButton x:Name="PackageLayoutAction" Content="Independent layout action"/></orchard:BleeckerPanel>
+                    </orchard:BleeckerPanelColumn>
+                </orchard:BleeckerPanelLayout>
+                <orchard:BleeckerPanelLayout x:Name="PackageGenericLayout" Width="500" Height="60">
+                    <Border Width="120"/>
+                    <Border x:Name="PackageAttachedGrowth" orchard:BleeckerPanelLayout.Grow="True"/>
+                </orchard:BleeckerPanelLayout>
+                <orchard:BleeckerFeedGrid x:Name="PackageFeedGrid" Width="724">
+                    <orchard:BleeckerInput x:Name="PackageFeedInput" Text="Independent feed grid" Height="40" HorizontalAlignment="Stretch"/>
+                    <orchard:BleeckerButton x:Name="PackageFeedAction" Content="Independent grid action" Height="40" HorizontalAlignment="Stretch"/>
+                </orchard:BleeckerFeedGrid>
+                <orchard:BleeckerSlider x:Name="PackageSlider" Label="Independent range" Value="25.3" Step="10" ShowValue="True" Width="320" AutomationProperties.Name="Independent range"/>
+                <orchard:BleeckerTabs x:Name="PackageTabLinks" Width="480" Variant="Enclosed" LinkTemplate="{StaticResource ConsumerTabLink}" AutomationProperties.Name="Package tab links" />
                 <orchard:BleeckerStatusBadge x:Name="PackageStatus" Label="LOCAL" Variant="Info" Description="Independent package preview" />
                 <orchard:BleeckerErrorState x:Name="PackageErrorState" Width="320" HorizontalAlignment="Left" Title="Independent archive unavailable" Description="Consumer-owned failure" RetryLabel="Retry archive" />
                 <orchard:BleeckerPageHeader x:Name="PackagePageHeader" Width="320" HorizontalAlignment="Left" Title="Independent editorial" Description="Consumer-owned page summary" BackHref="#consumer-editorial" />
@@ -163,4 +204,5 @@
         <orchard:BleeckerAlert x:Name="PackageAlert" Message="Independent fictional notice" Type="Success" Duration="0" IsOpen="False" />
         <orchard:BleeckerAlertContainer x:Name="PackageAlertHost" />
     </Grid>
+    </orchard:BleeckerModalHost>
 </Window>

@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {auditPopoverBranches} from './verify-popover-modal-branch.mjs';
+const args=process.argv.slice(2),get=k=>args[args.indexOf(k)+1],folder=get('--native'),output=get('--output'),r=JSON.parse(fs.readFileSync(path.join(folder,'popover-modal-branch.json')));
+auditPopoverBranches(folder);let rejected=0;
+function reject(change){const x=structuredClone(r);change(x);assert.throws(()=>auditPopoverBranches(folder,x));rejected++;}
+for(const k of ['activateCalled','showCalled','focusCalled','hardwareInputSent','nativeKeyboardPointerVerified','sourceRasterParityVerified'])reject(x=>x[k]=true);
+reject(x=>x.passed=false);reject(x=>x.failures.push({error:'failure'}));reject(x=>x.guards=1);reject(x=>x.activations=1);reject(x=>x.focus=1);reject(x=>x.architecture='Arm64');reject(x=>x.librarySha256='0'.repeat(64));reject(x=>x.hostSha256='0'.repeat(64));reject(x=>x.cases.pop());reject(x=>x.cases[0].name='invented');reject(x=>x.cases.reverse());reject(x=>x.cases[0].passed=false);reject(x=>x.cases[0].evidence.bindings=0);reject(x=>x.cases[0].evidence.originalContent=false);reject(x=>x.cases[2].evidence.frameBlocked=false);reject(x=>x.cases[4].evidence.allBlocked=false);reject(x=>x.cases[4].evidence.ancestorDepth=2);reject(x=>x.cases[5].evidence.branches=1);reject(x=>x.cases[6].evidence.bindingRetained=false);reject(x=>x.cases[8].evidence.requestDelta=2);reject(x=>x.cases[10].evidence.detachedBranches=1);reject(x=>x.cases[13].evidence.remounted=false);reject(x=>delete x.cases[12].evidence.backgroundInteractive);reject(x=>x.cases[1].evidence.actual.x+=1);reject(x=>x.cases[1].evidence.actual.y+=1);reject(x=>x.cases[1].evidence.actual.width=0);reject(x=>x.captures=[]);reject(x=>x.captures[0].sha256='0'.repeat(64));reject(x=>x.captures[0].width=400);
+reject(x=>x.softwareNativeInvokes=0);reject(x=>x.cases[14].evidence.nativeButtonInvokes=0);reject(x=>x.cases[14].evidence.backgroundShieldedDuringConfirmation=false);
+reject(x=>x.standalonePopupPhases=0);reject(x=>x.cases[15].evidence.hostPopupCount=1);reject(x=>x.cases[15].evidence.opens=4);reject(x=>x.cases[15].evidence.bindingRetained=false);
+let actualOldRootFailureRejected=false;
+if(args.includes('--old-native')){const old=JSON.parse(fs.readFileSync(path.join(get('--old-native'),'nested-Light.json')));assert.equal(old.diagnostic.branches,1);assert.equal(old.diagnostic.hostFound,true);assert.equal(old.diagnostic.actionLoaded,false);assert.equal(old.flags.observedRoot,'null');reject(x=>x.cases[3].evidence.branches=old.diagnostic.branches);reject(x=>x.cases[3].evidence.nestedSequentialTarget=old.diagnostic.actionLoaded);actualOldRootFailureRejected=true;}
+const result={passed:true,negativeCasesRejected:rejected,actualOldRootFailureRejected,physicalInputVerified:false};fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

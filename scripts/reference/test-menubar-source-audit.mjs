@@ -1,0 +1,82 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import assert from 'node:assert/strict';
+import {verifyMenubarModel,verifyMenubarSource,verifyMenubarPaint} from './verify-menubar-source.mjs';
+import {readRgbaPng} from './read-rgba-png.mjs';
+
+const option=name=>{const i=process.argv.indexOf(name);assert(i>=0&&process.argv[i+1],name);return process.argv[i+1];};
+const referenceFile=option('--reference'),frames=option('--frames'),output=option('--output');
+const original=JSON.parse(await fs.readFile(referenceFile)),rejected=[];
+verifyMenubarModel(original);
+function reject(name,change) {
+  const wrong=structuredClone(original);change(wrong);
+  assert.throws(()=>verifyMenubarModel(wrong),undefined,name);rejected.push(name);
+}
+const c=(r,id)=>r.cases.find(c=>c.id===id&&c.scheme==='Light').measurement;
+const h=(r,id)=>r.histories.find(h=>h.id===id&&h.scheme==='Light');
+reject('wrong revision',r=>r.commit='0'.repeat(40));
+reject('changed source dependency',r=>r.dependencies[2].sha256='0'.repeat(64));
+reject('missing state',r=>r.cases.pop());
+reject('duplicate state',r=>r.cases[1]=r.cases[0]);
+reject('missing history',r=>r.histories.pop());
+reject('invented native success',r=>r.nativeImplemented=true);
+reject('invented acceptance',r=>r.nativeComponentAccepted=true);
+reject('network dependency',r=>r.networkRequests=1);
+reject('path traversal',r=>r.cases[0].file='../outside.png');
+reject('wrong bar spacing',r=>c(r,'closed').bar.paint.gap='4px');
+reject('empty bar hidden',r=>c(r,'empty-bar').bar.box.height=0);
+reject('wrong surface width',r=>c(r,'basic').surfaces[0].box.width=176);
+reject('wrapped checkbox reduced to single line',r=>c(r,'basic').surfaces[0].rows[3].box.height=32);
+reject('checkbox role missing',r=>c(r,'basic').surfaces[0].rows[3].role='menuitem');
+reject('disabled action enabled',r=>c(r,'basic').surfaces[0].rows[1].disabled=false);
+reject('icon dropped',r=>c(r,'rich-action').surfaces[0].rows[0].icons=[]);
+reject('empty menu hidden',r=>c(r,'empty-menu').surfaces[0].box.height=0);
+reject('subsurface replaced with root width',r=>c(r,'submenu').surfaces[1].box.width=224);
+reject('deep menu missing',r=>c(r,'deep-submenu').surfaces.pop());
+reject('disabled hover source observation erased',r=>c(r,'disabled-submenu').surfaces[0].rows[9].expanded='false');
+reject('rtl placement flipped',r=>c(r,'rtl').surfaces[0].box.x=25);
+reject('source overflow silently constrained',r=>c(r,'bottom-right').surfaces[0].box.y=0);
+reject('root font scaling ignored',r=>c(r,'font200').surfaces[0].box.width=224);
+reject('caller refusal ignored',r=>h(r,'checkbox-refused').reopened.surfaces[0].rows[3].checked='true');
+reject('caller acceptance ignored',r=>h(r,'radio-accepted').reopened.surfaces[0].rows[5].checked='false');
+reject('duplicate callback',r=>h(r,'action').after.events.push('new'));
+reject('trigger focus invented after action',r=>h(r,'action').after.focus='File');
+reject('disabled callback invoked',r=>h(r,'disabled-action').after.events.push('disabled'));
+reject('hover switches root',r=>h(r,'hover-other-trigger').after.triggers[0].expanded='false');
+reject('outside dismissal ignored',r=>h(r,'outside-dismiss').after.surfaces=h(r,'outside-dismiss').before.surfaces);
+reject('escape dismissal invented',r=>h(r,'escape').after.surfaces=[]);
+reject('arrow navigation invented',r=>h(r,'arrow-down').after.focus='New fictional draftCtrl+N');
+reject('hint becomes accelerator',r=>h(r,'shortcut-display-only').after.events.push('new'));
+reject('live caller selection ignored',r=>h(r,'live-selection').after.surfaces[0].rows[3].checked='false');
+reject('live label stale',r=>h(r,'replace-items').after.surfaces[0].rows[0].text='New fictional draftCtrl+N');
+reject('active index changed to key ownership',r=>h(r,'prepend-index').after.triggers[0].expanded='false');
+reject('callback failure closes source',r=>h(r,'callback-throws').after.triggers[0].expanded='false');
+reject('tab skips original action',r=>h(r,'tab-and-enter').after.focus='Edit');
+reject('synthetic React instance',r=>h(r,'action').retainedReactInstance=false);
+reject('presence drops immediately',r=>r.presence[0].at50.present=false);
+reject('presence survives unmount timeout',r=>r.presence[0].at180.present=true);
+
+const temporary=await fs.mkdtemp(path.join(os.tmpdir(),'orchard-menubar-source-audit-'));
+try {
+  await fs.cp(path.join(frames,'Source'),path.join(temporary,'Source'),{recursive:true});
+  await assert.rejects(verifyMenubarSource(referenceFile,temporary),{code:'ENOENT'});rejected.push('missing frame');
+  const first=original.cases[0],wrong=Buffer.from(await fs.readFile(path.join(frames,first.file)));wrong[wrong.length-1]^=1;
+  await fs.writeFile(path.join(temporary,first.file),wrong);
+  await assert.rejects(verifyMenubarSource(referenceFile,temporary),{code:'ERR_ASSERTION'});rejected.push('corrupted frame');
+  await fs.writeFile(path.join(temporary,'Source',original.dependencies[0].path),'wrong source');
+  await assert.rejects(verifyMenubarSource(referenceFile,temporary),{code:'ERR_ASSERTION'});rejected.push('changed frozen source');
+} finally {
+  const resolved=path.resolve(temporary),root=path.resolve(os.tmpdir())+path.sep;
+  assert(resolved.startsWith(root)&&path.basename(resolved).startsWith('orchard-menubar-source-audit-'));
+  await fs.rm(resolved,{recursive:true});
+}
+const light=original.cases.find(c=>c.id==='basic'&&c.scheme==='Light'),png=readRgbaPng(await fs.readFile(path.join(frames,light.file)));
+verifyMenubarPaint(light,png);
+const blank={...png,rgba:Buffer.alloc(png.rgba.length,255)};
+assert.throws(()=>verifyMenubarPaint(light,blank));rejected.push('blank active frame');
+const wrongTheme={...light,scheme:'Dark'};
+assert.throws(()=>verifyMenubarPaint(wrongTheme,png));rejected.push('wrong theme frame');
+const result={format:'orchard-menubar-source-rejections-v1',passed:true,negativeCasesRejected:rejected.length,rejected,nativeImplemented:false,nativeComponentAccepted:false};
+await fs.writeFile(output,JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));

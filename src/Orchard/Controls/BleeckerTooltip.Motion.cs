@@ -32,10 +32,7 @@ public sealed partial class BleeckerTooltip
     {
         ResetMotion();
         if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) motionSettings.AnimationsEnabledChanged -= OnMotionSettingsChanged;
-        if (popup is null) return;
-        popup.IsOpen = false;
-        popup.Child = null;
-        DetachInput();
+        ClosePresentation();
     }
 
     private void BeginMotion(bool opening)

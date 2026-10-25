@@ -1,0 +1,66 @@
+{
+  "format": "orchard-app-tab-bar-source-v1",
+  "repository": "gaulatti/sabella",
+  "commit": "f5ac479bfceaa7eab23c1716ac47420ac53dae25",
+  "files": [
+    {
+      "path": "Sources/Sabella/Mobile.swift",
+      "sha256": "1feea91528f96a09679d67e381a9d0a79a58fa9ce8a6e0bc29d36c5edb4f24fa"
+    },
+    {
+      "path": "Sources/Sabella/Surfaces.swift",
+      "sha256": "ee4644277d17e84a133f03dd251aec9f9af76dbc46b26829019dfe65e10ace7f"
+    },
+    {
+      "path": "Sources/Sabella/Tokens.swift",
+      "sha256": "8bcf3538bd1d27fb91f661a7970894f10e73dcad69ccef6622056512683dfca5"
+    },
+    {
+      "path": "Sources/Sabella/Resources/Fonts/EncodeSans-Bold.ttf",
+      "sha256": "b6f0d04888140d10006fbeeebc194d33f28fdb50ece52ff16f6e4f952d2ccc85"
+    }
+  ],
+  "contract": {
+    "boundValue": true,
+    "valueIdentity": true,
+    "genericHashableValues": true,
+    "clickAssignsTabValue": true,
+    "noDeselectionAction": true,
+    "tabDisabled": true,
+    "equalWidthTracks": true,
+    "gap": 0,
+    "minimumButtonHeight": 54,
+    "topInset": 5,
+    "separator": 1,
+    "background": "card",
+    "selectedForeground": "sea",
+    "inactiveForeground": "textSecondary",
+    "iconSize": 18,
+    "selectedIconWeight": 600,
+    "inactiveIconWeight": 400,
+    "labelFont": "Encode Sans",
+    "labelSize": 10,
+    "selectedLabelWeight": 600,
+    "inactiveLabelWeight": 500,
+    "labelLines": 2,
+    "labelMinimumScale": 0.8,
+    "verticalGap": 3,
+    "badgeFont": "Encode Sans",
+    "badgeSize": 8,
+    "badgeWeight": 700,
+    "badgeText": "white",
+    "badgeBackground": "sunset",
+    "badgeMinimumSize": 15,
+    "badgeHorizontalPadding": 4,
+    "badgeOffsetX": 10,
+    "badgeOffsetY": -7,
+    "badgePositiveOnly": true,
+    "badgeCap": "99+",
+    "badgeStatusIncludesRawSignedValue": true,
+    "accessibilityLabelFallback": "null only"
+  },
+  "sourceFontMatchesLibrary": true,
+  "appleRenderingVerified": false,
+  "implicitSwiftUILayoutMeasured": false,
+  "nativeIconMapping": "caller-supplied FontIconSource; no SF Symbols resolver"
+}

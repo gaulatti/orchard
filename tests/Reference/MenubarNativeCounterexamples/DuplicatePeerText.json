@@ -1,0 +1,29 @@
+{
+  "format": "orchard-menubar-peer-counterexample-v1",
+  "sourceReport": "artifacts/current/menubar-peer-tree-catalog-native-v1/menubar.json",
+  "sourceReportSha256": "9a1ac0d57d328562ab0aa62cb1a333ba870033f9c7341545062e582cc2865707",
+  "librarySha256": "677c61d6d606db75dfff9a9f2fac0b2bf4b4540275bd8697f74bba8c6734c65f",
+  "trigger": {
+    "role": "MenuItem",
+    "name": "File",
+    "className": "BleeckerMenubarItem",
+    "control": true,
+    "content": true,
+    "childCount": 1,
+    "truncated": false,
+    "selection": null,
+    "children": [
+      {
+        "role": "Text",
+        "name": "File",
+        "className": "TextBlock",
+        "control": true,
+        "content": true,
+        "childCount": 0,
+        "truncated": false,
+        "selection": null,
+        "children": []
+      }
+    ]
+  }
+}

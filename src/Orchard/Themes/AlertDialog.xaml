@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="AlertDialogScrollTrackBrush" Color="#FFFCFCFC"/><SolidColorBrush x:Key="AlertDialogScrollThumbBrush" Color="#FF8B8B8B"/>
+   <SolidColorBrush x:Key="AlertDialogBackdropBrush" Color="#FF1A374D" Opacity=".38"/><SolidColorBrush x:Key="AlertDialogBackgroundBrush" Color="White"/><SolidColorBrush x:Key="AlertDialogBorderBrush" Color="#FFE6D5B8" Opacity=".3"/><SolidColorBrush x:Key="AlertDialogFooterBorderBrush" Color="#FFE6D5B8" Opacity=".2"/>
+   <SolidColorBrush x:Key="AlertDialogDefaultIconBackgroundBrush" Color="#FFC1814D" Opacity=".07"/><SolidColorBrush x:Key="AlertDialogDefaultIconBorderBrush" Color="#FFC1814D" Opacity=".15"/><SolidColorBrush x:Key="AlertDialogDefaultIconForegroundBrush" Color="#FFC1814D"/>
+   <SolidColorBrush x:Key="AlertDialogDestructiveIconBackgroundBrush" Color="#FFA65D57" Opacity=".07"/><SolidColorBrush x:Key="AlertDialogDestructiveIconBorderBrush" Color="#FFA65D57" Opacity=".15"/><SolidColorBrush x:Key="AlertDialogDestructiveIconForegroundBrush" Color="#FFA65D57"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Dark">
+   <SolidColorBrush x:Key="AlertDialogScrollTrackBrush" Color="#FF2C2C2C"/><SolidColorBrush x:Key="AlertDialogScrollThumbBrush" Color="#FF9F9F9F"/>
+   <SolidColorBrush x:Key="AlertDialogBackdropBrush" Color="Black" Opacity=".65"/><SolidColorBrush x:Key="AlertDialogBackgroundBrush" Color="#FF182533"/><SolidColorBrush x:Key="AlertDialogBorderBrush" Color="White" Opacity=".12"/><SolidColorBrush x:Key="AlertDialogFooterBorderBrush" Color="White" Opacity=".1"/>
+   <SolidColorBrush x:Key="AlertDialogDefaultIconBackgroundBrush" Color="#FFE0AC69" Opacity=".15"/><SolidColorBrush x:Key="AlertDialogDefaultIconBorderBrush" Color="#FFE0AC69" Opacity=".15"/><SolidColorBrush x:Key="AlertDialogDefaultIconForegroundBrush" Color="#FFD4AF37"/>
+   <SolidColorBrush x:Key="AlertDialogDestructiveIconBackgroundBrush" Color="#FFD47B75" Opacity=".15"/><SolidColorBrush x:Key="AlertDialogDestructiveIconBorderBrush" Color="#FFD47B75" Opacity=".15"/><SolidColorBrush x:Key="AlertDialogDestructiveIconForegroundBrush" Color="#FFD47B75"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="AlertDialogScrollTrackBrush" Color="{ThemeResource SystemColorWindowColor}"/><SolidColorBrush x:Key="AlertDialogScrollThumbBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="AlertDialogBackdropBrush" Color="{ThemeResource SystemColorWindowColor}"/><SolidColorBrush x:Key="AlertDialogBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}"/><SolidColorBrush x:Key="AlertDialogBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}"/><SolidColorBrush x:Key="AlertDialogFooterBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="AlertDialogDefaultIconBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}"/><SolidColorBrush x:Key="AlertDialogDefaultIconBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}"/><SolidColorBrush x:Key="AlertDialogDefaultIconForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="AlertDialogDestructiveIconBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}"/><SolidColorBrush x:Key="AlertDialogDestructiveIconBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}"/><SolidColorBrush x:Key="AlertDialogDestructiveIconForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style x:Key="BleeckerAlertDialogSurfaceStyle" TargetType="local:BleeckerOverlaySurface">
+  <Setter Property="MaxWidth" Value="448"/><Setter Property="Padding" Value="0"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="14"/>
+  <Setter Property="Background" Value="{ThemeResource AlertDialogBackgroundBrush}"/><Setter Property="BorderBrush" Value="{ThemeResource AlertDialogBorderBrush}"/><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/>
+  <Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="VerticalContentAlignment" Value="Stretch"/><Setter Property="UseLayoutRounding" Value="False"/>
+ </Style>
+ <Style TargetType="local:BleeckerAlertDialog">
+  <Setter Property="Width" Value="0"/><Setter Property="Height" Value="0"/><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerAlertDialog"><Grid x:Name="PART_Layout" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

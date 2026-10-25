@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="ScrollAreaThumbBrush" Color="#FFE6D5B8" Opacity=".3"/><SolidColorBrush x:Key="ScrollAreaThumbHoverBrush" Color="#FFE6D5B8" Opacity=".5"/></ResourceDictionary>
+  <ResourceDictionary x:Key="Dark"><SolidColorBrush x:Key="ScrollAreaThumbBrush" Color="#FF1A2332" Opacity=".4"/><SolidColorBrush x:Key="ScrollAreaThumbHoverBrush" Color="#FF1A2332" Opacity=".6"/></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="ScrollAreaThumbBrush" Color="{ThemeResource SystemColorWindowTextColor}"/><SolidColorBrush x:Key="ScrollAreaThumbHoverBrush" Color="{ThemeResource SystemColorHighlightColor}"/></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <ControlTemplate x:Key="ScrollAreaThumbTemplate" TargetType="Thumb">
+  <Border x:Name="ThumbFill" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+   <VisualStateManager.VisualStateGroups><VisualStateGroup x:Name="CommonStates">
+    <VisualState x:Name="Normal"/><VisualState x:Name="Disabled"/>
+    <VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="ThumbFill.Background" Value="{ThemeResource ScrollAreaThumbHoverBrush}"/></VisualState.Setters></VisualState>
+    <VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="ThumbFill.Background" Value="{ThemeResource ScrollAreaThumbHoverBrush}"/></VisualState.Setters></VisualState>
+   </VisualStateGroup></VisualStateManager.VisualStateGroups>
+  </Border>
+ </ControlTemplate>
+ <ControlTemplate x:Key="ScrollAreaRepeatTemplate" TargetType="RepeatButton"><Border Background="Transparent"/></ControlTemplate>
+ <Style x:Key="ScrollAreaBarStyle" TargetType="ScrollBar">
+  <Setter Property="MinWidth" Value="0"/><Setter Property="MinHeight" Value="0"/><Setter Property="IsTabStop" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollBar"><Grid>
+   <Grid x:Name="HorizontalRoot" Background="Transparent">
+    <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+    <RepeatButton x:Name="HorizontalSmallDecrease" Visibility="Collapsed" IsTabStop="False"/>
+    <RepeatButton x:Name="HorizontalLargeDecrease" Grid.Column="1" Width="0" Template="{StaticResource ScrollAreaRepeatTemplate}" IsTabStop="False" AllowFocusOnInteraction="False"/>
+    <Thumb x:Name="HorizontalThumb" Grid.Column="2" MinWidth="17" CornerRadius="7.5" Background="{ThemeResource ScrollAreaThumbBrush}" Template="{StaticResource ScrollAreaThumbTemplate}" AutomationProperties.AccessibilityView="Raw"/>
+    <RepeatButton x:Name="HorizontalLargeIncrease" Grid.Column="3" Template="{StaticResource ScrollAreaRepeatTemplate}" IsTabStop="False" AllowFocusOnInteraction="False"/>
+    <RepeatButton x:Name="HorizontalSmallIncrease" Grid.Column="4" Visibility="Collapsed" IsTabStop="False"/>
+   </Grid>
+   <Grid x:Name="VerticalRoot" Background="Transparent">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <RepeatButton x:Name="VerticalSmallDecrease" Visibility="Collapsed" IsTabStop="False"/>
+    <RepeatButton x:Name="VerticalLargeDecrease" Grid.Row="1" Height="0" Template="{StaticResource ScrollAreaRepeatTemplate}" IsTabStop="False" AllowFocusOnInteraction="False"/>
+    <Thumb x:Name="VerticalThumb" Grid.Row="2" MinHeight="17" CornerRadius="3" Background="{ThemeResource ScrollAreaThumbBrush}" Template="{StaticResource ScrollAreaThumbTemplate}" AutomationProperties.AccessibilityView="Raw"/>
+    <RepeatButton x:Name="VerticalLargeIncrease" Grid.Row="3" Template="{StaticResource ScrollAreaRepeatTemplate}" IsTabStop="False" AllowFocusOnInteraction="False"/>
+    <RepeatButton x:Name="VerticalSmallIncrease" Grid.Row="4" Visibility="Collapsed" IsTabStop="False"/>
+   </Grid>
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+ <Style x:Key="BleeckerScrollAreaViewportStyle" TargetType="ScrollView">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="Background" Value="Transparent"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="HorizontalScrollRailMode" Value="Disabled"/><Setter Property="VerticalScrollRailMode" Value="Disabled"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollView">
+   <Grid x:Name="PART_Root" Background="{TemplateBinding Background}" UseLayoutRounding="False">
+    <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+    <ScrollPresenter x:Name="PART_ScrollPresenter" Content="{TemplateBinding Content}" ContentOrientation="{TemplateBinding ContentOrientation}" HorizontalScrollMode="{TemplateBinding HorizontalScrollMode}" VerticalScrollMode="{TemplateBinding VerticalScrollMode}" HorizontalScrollRailMode="{TemplateBinding HorizontalScrollRailMode}" VerticalScrollRailMode="{TemplateBinding VerticalScrollRailMode}" HorizontalScrollChainMode="{TemplateBinding HorizontalScrollChainMode}" VerticalScrollChainMode="{TemplateBinding VerticalScrollChainMode}" ZoomMode="Disabled" IgnoredInputKinds="{TemplateBinding IgnoredInputKinds}" UseLayoutRounding="False"/>
+    <ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Row="1" Height="15" Style="{StaticResource ScrollAreaBarStyle}" Orientation="Horizontal" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+    <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="1" Width="6" Style="{StaticResource ScrollAreaBarStyle}" Orientation="Vertical" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+ <Style TargetType="local:BleeckerScrollArea">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="VerticalAlignment" Value="Top"/>
+  <Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="VerticalContentAlignment" Value="Top"/>
+  <Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Padding" Value="0"/><Setter Property="CornerRadius" Value="0"/>
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="FontSize" Value="16"/><Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerScrollArea"><Grid x:Name="PART_Layout" UseLayoutRounding="False" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

@@ -1,0 +1,179 @@
+{
+  "format": "orchard-menubar-interpolated-transform-counterexample-v1",
+  "librarySha256": "7d5597e1d19ffb33b7bbd86c2eda2dacc24da3e20c747d3b66e3fb646ef04595",
+  "hostSha256": "b1ed2abd5e9f5752965aceb18694256b423afd6dc4c8240cf7824e2c24a92ec2",
+  "reportSha256": "db652a1a28c8476fa0878468a85582a31606721e1b0f6c3d6b48fe719646ad9b",
+  "trace": {
+    "scheme": "Light",
+    "histories": [
+      {
+        "visible": false,
+        "time": 0,
+        "animate": false,
+        "samples": [
+          {
+            "time": 0,
+            "opacity": 0,
+            "scaleX": 0.9919999837875366,
+            "scaleY": 0.9919999837875366,
+            "translateY": -4
+          }
+        ]
+      },
+      {
+        "visible": true,
+        "time": 20,
+        "animate": true,
+        "samples": [
+          {
+            "time": 20,
+            "opacity": 0,
+            "scaleX": 0.9919999837875366,
+            "scaleY": 0.9919999837875366,
+            "translateY": -4
+          },
+          {
+            "time": 75,
+            "opacity": 0.7648647427558899,
+            "scaleX": 0.9981189370155334,
+            "scaleY": 0.9981189370155334,
+            "translateY": -0.9405409693717957
+          },
+          {
+            "time": 130,
+            "opacity": 0.9613825678825378,
+            "scaleX": 0.9996910691261292,
+            "scaleY": 0.9996910691261292,
+            "translateY": -0.15446977317333221
+          },
+          {
+            "time": 240,
+            "opacity": 1,
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateY": 0
+          }
+        ]
+      },
+      {
+        "visible": false,
+        "time": 300,
+        "animate": true,
+        "samples": [
+          {
+            "time": 300,
+            "opacity": 1,
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateY": 0
+          },
+          {
+            "time": 350,
+            "opacity": 0.8438360691070557,
+            "scaleX": 0.9987506866455078,
+            "scaleY": 0.9987506866455078,
+            "translateY": -0.6246557831764221
+          }
+        ]
+      },
+      {
+        "visible": true,
+        "time": 360,
+        "animate": true,
+        "samples": [
+          {
+            "time": 360,
+            "opacity": 0.7851390838623047,
+            "scaleX": 0.9982811212539673,
+            "scaleY": 0.9982811212539673,
+            "translateY": -0.8594436645507812
+          },
+          {
+            "time": 380,
+            "opacity": 0.9849841594696045,
+            "scaleX": 0.9998798966407776,
+            "scaleY": 0.9998798966407776,
+            "translateY": -0.06006335839629173
+          },
+          {
+            "time": 420,
+            "opacity": 1,
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateY": 0
+          },
+          {
+            "time": 580,
+            "opacity": 1,
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateY": 0
+          }
+        ]
+      },
+      {
+        "visible": false,
+        "time": 600,
+        "animate": true,
+        "samples": [
+          {
+            "time": 600,
+            "opacity": 1,
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateY": 0
+          },
+          {
+            "time": 650,
+            "opacity": 0.8438360691070557,
+            "scaleX": 0.9987506866455078,
+            "scaleY": 0.9987506866455078,
+            "translateY": -0.6246557831764221
+          },
+          {
+            "time": 749,
+            "opacity": 0.011315414682030678,
+            "scaleX": 0.9920905232429504,
+            "scaleY": 0.9920905232429504,
+            "translateY": -3.9547383785247803
+          }
+        ]
+      },
+      {
+        "visible": false,
+        "time": 800,
+        "animate": false,
+        "samples": [
+          {
+            "time": 800,
+            "opacity": 0,
+            "scaleX": 0.9919999837875366,
+            "scaleY": 0.9919999837875366,
+            "translateY": -4
+          }
+        ]
+      },
+      {
+        "visible": true,
+        "time": 820,
+        "animate": false,
+        "samples": [
+          {
+            "time": 820,
+            "opacity": 1,
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateY": 0
+          }
+        ]
+      }
+    ],
+    "originalSurfaceRetained": true,
+    "callerOpacityBindingRetained": true,
+    "callerTransformRetained": true,
+    "callerOpacity": 0.4000000059604645,
+    "callerSourceOpacity": 0.4000000059604645,
+    "controlledClock": true,
+    "normalRealtimeMotionVerified": false
+  }
+}

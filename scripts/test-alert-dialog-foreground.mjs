@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {verifyAlertDialogForegroundReport} from './verify-alert-dialog-foreground.mjs';
+import {verifyTableNavigationForegroundPaint} from './verify-table-navigation-foreground.mjs';
+import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const [folder,baseline,reference,output]=process.argv.slice(2);assert(folder&&baseline&&reference&&output);
+const n=JSON.parse(await fs.readFile(`${folder}/alert-dialog-native.json`)),old=JSON.parse(await fs.readFile(`${baseline}/alert-dialog-native.json`)),r=JSON.parse(await fs.readFile(reference));assert.equal(verifyAlertDialogForegroundReport(n,r).brushFailures,0);
+const cases=[['wrong-format',v=>v.format='other'],['foreground-window',v=>v.showCalled=true],['focus',v=>v.focus=1],['hardware-input',v=>v.physicalInputSent=true],['missing-case',v=>v.cases.pop()],['wrong-order',v=>v.cases.reverse()],['enabled-loading-action',v=>v.cases[0].confirmEnabled=true],['wrong-role',v=>v.cases[0].buttonForegrounds[0].role='other'],['missing-producer',v=>v.cases[0].buttonForegrounds[0].foreground=null],['wrong-opacity',v=>v.cases[0].buttonForegrounds[0].foreground.opacity=1],['hidden-loader',v=>v.cases[0].buttonForegrounds[2].visible=false]];
+for(const [name,mutate]of cases){const copy=structuredClone(n);mutate(copy);assert.throws(()=>verifyAlertDialogForegroundReport(copy,r),undefined,name);}
+let geometry=0,opaquePaintRejected=0;for(const c of n.cases){const previous=old.cases.find(v=>v.id===c.id&&v.scheme===c.scheme);for(const key of ['surface','overlay','inner','header','icon','iconSvg','title','description','footer','cancel','confirm'])assert.deepEqual(c[key],previous[key],`${c.id}/${c.scheme}/${key}`);geometry++;
+ const image=readRgbaPng(await fs.readFile(`${baseline}/${c.capture.file}`)),buttons=c.buttonForegrounds.map(v=>({name:v.role,enabled:v.enabled,glyph:v.box,foreground:v.foreground})),failures=verifyTableNavigationForegroundPaint({scheme:c.scheme,kind:c.id,name:'loading',buttons},image);for(const role of ['cancel-label','confirm-label','confirm-loader']){assert(failures.some(v=>v.button===role&&v.pixels>0));opaquePaintRejected++;}}
+const audit={passed:true,corruptReportsRejected:cases.length,geometryCasesUnchanged:geometry,actualOldOpaquePaintRejected:opaquePaintRejected,rawImagesUnmodified:true,nativeComponentAccepted:false};await fs.writeFile(output,JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify(audit));

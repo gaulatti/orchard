@@ -29,7 +29,7 @@ public sealed partial class DataTableColumnTogglesFixture : UserControl
 
     internal async Task VerifySourceAsync(BleeckerColorScheme scheme, string folder)
     {
-        using var stream = typeof(DataTableColumnTogglesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTableColumnToggle.json")!; using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var reference = JsonDocument.Parse(bytes);
+        using var stream = CatalogReferenceResources.Open(typeof(DataTableColumnTogglesFixture).Assembly, "Orchard.Catalog.Reference.DataTableColumnToggle.json")!; using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var reference = JsonDocument.Parse(bytes);
         var root = (Grid)XamlRoot.Content; var app = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId); var originalSize = app.ClientSize; var reports = new List<object>(); var failures = new List<string>(); var focusDifferences = new List<object>();
         try
         {

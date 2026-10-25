@@ -11,7 +11,7 @@ public sealed partial class DataTableToolbarsFixture
 {
     internal async Task<object> VerifyInteractionsAsync(BleeckerColorScheme scheme,string folder)
     {
-        using var referenceStream=typeof(DataTableToolbarsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTableToolbarLayout.json")!;
+        using var referenceStream=CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarLayout.json")!;
         using var referenceBuffer=new MemoryStream();await referenceStream.CopyToAsync(referenceBuffer);var referenceBytes=referenceBuffer.ToArray();
         var referenceSha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(referenceBytes)).ToLowerInvariant();using var reference=JsonDocument.Parse(referenceBytes);
         var root=(Grid)XamlRoot.Content;var app=AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);

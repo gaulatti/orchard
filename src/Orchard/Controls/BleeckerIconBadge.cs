@@ -115,6 +115,7 @@ public sealed class BleeckerIconBadge : ContentControl
             HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch };
         private readonly TextBlock measure = new();
         private readonly BleeckerReferenceText.IntrinsicWidth intrinsic = new();
+        private readonly BleeckerReferenceText.Presentation presentation = new();
         private string logical = "";
         private bool plain;
         private Windows.Foundation.Size childSize;
@@ -177,7 +178,7 @@ public sealed class BleeckerIconBadge : ContentControl
                 }
                 if (line.Length > 0) lines.Add(line);
                 var rendered = string.Join('\n', lines);
-                if (text.Text != rendered) BleeckerReferenceText.Set(text, rendered);
+                presentation.Update(text, rendered);
                 text.Measure(new(width, double.PositiveInfinity));
                 childSize = new(width, text.DesiredSize.Height);
             }

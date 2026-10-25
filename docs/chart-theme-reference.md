@@ -1,5 +1,28 @@
 # Chart theme source contract (in progress)
 
+Current Line/Bar/Area consumer verification passes 126 background native checks
+in both the catalog and independent x64 NuGet host. These checks use real plot
+geometry and legends: literal dictionary keys beat conflicting nested paths,
+live key/name changes update plots and labels, transparent and gradient brushes
+retain caller identity, clearing explicit paint restores the automatic palette,
+and local brand-brush mutations and light/dark changes reach both plots and
+legends. Default palette expectations are checked against the committed token
+JSON. The same fixture checks grid strokes and dashes, axis tick color/size,
+and tooltip surface defaults against the frozen chart theme. It invokes the
+production tooltip renderer at a controlled inspection index to verify actual
+content, heading weight and text colors, including live scoped overrides.
+This renderer check sends no input and does not establish pointer, keyboard,
+focus routing or tooltip effects. Both hosts reject 16 altered reports.
+
+Evidence is under `artifacts/current/chart-theme-defaults-catalog-native-v2`
+and `chart-theme-defaults-package-native-v1`. Run
+`scripts/verify-chart-theme-consumers.ps1` against a frozen host and its manifest
+to reproduce the checks. The shared fixture builds in independent x64 and ARM64
+consumers; native ARM64 execution is unverified. The library package and selected
+delivery archives are unchanged. These targeted checks do not accept complete
+chart visuals, tooltip effects, interaction, motion, scaling or other chart
+families' resource boundaries.
+
 The frozen [Bleecker chart-theme source](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/chart-theme.ts)
 has SHA-256 `94e006606feb77fc8163d05812e83668b04916dcdbb818a8aa8dc0d49e08e750`.
 It exports `chartTheme`, `pickColor` and `ChartSeries`. It defines shared chart
@@ -99,7 +122,7 @@ modules under `artifacts/chart-theme-reference`. Line, Bar and Area consume
 `ChartSeries.key`/`name` unchanged and select `s.color ?? palette[index % 10]`.
 Radar and Scatter use their extended series models with the same color
 precedence. Pie/Donut use each data item's explicit color; Sparkline uses its
-explicit color or the sea role. The future native series model must preserve
+explicit color or the sea role. The native series model preserves
 explicit brush ownership and use a live scoped resource reference only when
 that optional color is absent. An explicit value must not silently fall back
 to a palette color.
@@ -107,9 +130,10 @@ to a palette color.
 The independent package consumer exercises the public style types, source
 palette selection and real scoped XAML brush references across both root
 appearances. Fresh native reports are required before claiming those checks
-passed. The actual chart renderers, tooltip effects, Windows
-contrast/Narrator/scaling and the complete chart acceptance matrices remain
-unimplemented or unverified.
+passed. Actual chart renderer coverage is tracked below and in each chart's
+acceptance record; a palette specimen does not establish complete rendering,
+tooltip effects, scaling or native ARM64 acceptance. Narrator and OS contrast
+campaigns are excluded by the [current library scope](library-scope.md).
 
 `BleeckerChartSeries` supplies the native series model. `Key` and `Name` are
 consumer-owned strings and must be assigned before consumption; reading an
@@ -133,8 +157,9 @@ strings, brush mutation, transparent precedence, clearing color back to the
 live palette and retaining a nonsolid brush. Owned-screen captures require
 exact pixels for explicit, mutated, transparent and automatic states. The
 independent NuGet consumer also exercises the public model through real
-mounted native bindings. These remain series-model/specimen checks; actual
-Line/Bar/Area and other chart consumers are still required for acceptance.
+mounted native bindings. Those earlier results remain series-model/specimen
+checks; the current Line/Bar/Area boundary checks below exercise real plots and
+legends. Other chart-specific requirements remain with their inventory entries.
 
 The focused x64 series fixture passes both themes at
 `artifacts/smoke-chart-series-native`, with exact composed pixels for explicit,

@@ -57,12 +57,12 @@ public sealed partial class BleeckerDataTableToolbar:Control
         reset=new Button{Name="PART_Reset",MinWidth=0,MinHeight=36,Height=36,Padding=new Thickness(14,0,14,0),FontSize=13,UseLayoutRounding=false,CharacterSpacing=0};
         var palette=new ResourceDictionary{Source=new Uri("ms-appx:///Orchard/Themes/Buttons/Ghost.g.xaml")};reset.Resources.MergedDictionaries.Add(palette);reset.Style=(Style)palette[typeof(Button)];
         var caption=new TextBlock{Text="Reset",FontSize=13,LineHeight=19.5,LineStackingStrategy=LineStackingStrategy.BlockLineHeight,UseLayoutRounding=false,VerticalAlignment=VerticalAlignment.Center};
-        caption.SetBinding(TextBlock.ForegroundProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(Foreground))});caption.SetBinding(TextBlock.FontFamilyProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(FontFamily))});caption.SetBinding(TextBlock.FontWeightProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(FontWeight))});
+        caption.SetBinding(TextBlock.FontFamilyProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(FontFamily))});caption.SetBinding(TextBlock.FontWeightProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(FontWeight))});
         var cross=new PathGeometry();
         var first=new PathFigure{StartPoint=new Point(18,6),IsFilled=false};first.Segments.Add(new LineSegment{Point=new Point(6,18)});cross.Figures.Add(first);
         var second=new PathFigure{StartPoint=new Point(6,6),IsFilled=false};second.Segments.Add(new LineSegment{Point=new Point(18,18)});cross.Figures.Add(second);
         var icon=new Microsoft.UI.Xaml.Shapes.Path{Data=cross,StrokeThickness=2,StrokeStartLineCap=PenLineCap.Round,StrokeEndLineCap=PenLineCap.Round};
-        icon.SetBinding(Microsoft.UI.Xaml.Shapes.Shape.StrokeProperty,new Binding{Source=reset,Path=new PropertyPath(nameof(Foreground))});var canvas=new Canvas{Width=24,Height=24};canvas.Children.Add(icon);var glyph=new Viewbox{Width=14,Height=14,Child=canvas,VerticalAlignment=VerticalAlignment.Center};AutomationProperties.SetAccessibilityView(glyph,AccessibilityView.Raw);
+        BleeckerButtonGlyphForeground.Attach(icon);var canvas=new Canvas{Width=24,Height=24};canvas.Children.Add(icon);var glyph=new Viewbox{Width=14,Height=14,Child=canvas,VerticalAlignment=VerticalAlignment.Center};AutomationProperties.SetAccessibilityView(glyph,AccessibilityView.Raw);
         var content=new Grid{ColumnSpacing=8,UseLayoutRounding=false,VerticalAlignment=VerticalAlignment.Center};content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.ColumnDefinitions.Add(new(){Width=GridLength.Auto});content.Children.Add(glyph);var lineBox=new CaptionLineBox(caption);Grid.SetColumn(lineBox,1);content.Children.Add(lineBox);reset.Content=content;
         AutomationProperties.SetName(reset,"Reset");reset.Click+=ResetClicked;AttachResetPresentation(reset);layout.Reset=reset;
         if(IsLoaded)Observe();Refresh();

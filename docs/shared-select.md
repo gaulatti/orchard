@@ -7,6 +7,27 @@ updating state, source identity, display text and checked paint. The shared
 surface owns native input, focus, popup/scroll layout and accessibility, and
 has no dependency on a table feature module or its rows/state.
 
+When declared within `BleeckerModalHost`, all four recipes use its shared portal
+plane. Their original popup border, options and scroll chrome move as one
+surface. A private transparent canvas catches the first outside press, and the
+newest active Select scope traps focus without disabling caller controls.
+Modal-owned menus become inert when another modal is active. Deferred option
+commits are rejected after that ownership change. The same logical popup scope
+keeps a nested Select inside its parent Popover across either native or shared
+portals. Standalone Select keeps its native Popup path.
+
+The native shared-plane fixture verifies 32 frozen open layouts (2,400 geometry
+values), 40 ownership/live-producer/lifecycle cases across all four recipes, and
+two actual nested catalog flows. Its independent gate rejects 66 damaged
+reports, including data from the actual failed empty presenter. The fresh NuGet
+consumer passes eight public-API recipe cases with 16 software native option
+invokes; its gate rejects 30 damaged reports. The original 292 closed layouts,
+58 ownership checks and eight request histories also pass unchanged.
+
+Background checks use only the shared plane and never open a native Popup input
+site or call a focus API. Physical input, focus routing, initial focused-option
+paint and full open-state visual acceptance remain pending.
+
 Pagination retains its original 80px/40px geometry, option objects/tags,
 `Rows per page` name, `OrchardPageSizeChooser` automation class and selection
 callback boundary. Existing resource and palette keys are deliberately kept.

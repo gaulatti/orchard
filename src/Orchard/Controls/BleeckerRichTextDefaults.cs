@@ -11,9 +11,11 @@ internal sealed class BleeckerRichTextDefaults
     private sealed record OwnedValue(FrameworkElement Owner, DependencyProperty Property, object Value);
     private readonly List<OwnedValue> values = [];
     private readonly Dictionary<FrameworkElement, long> styles = [];
+    private DependencyObject? contentRoot;
 
     internal void Apply(DependencyObject root)
     {
+        contentRoot = root;
         var current = Text(root).ToHashSet();
         foreach (var text in styles.Keys.Where(text => !current.Contains(text)).ToArray()) Detach(text);
         foreach (var text in current) ApplyText(text);
@@ -21,6 +23,8 @@ internal sealed class BleeckerRichTextDefaults
 
     private void ApplyText(FrameworkElement text)
     {
+        foreach (var owned in values.Where(item => ReferenceEquals(item.Owner, text) && HasConsumerSetter(text, item.Property)).ToArray())
+            Release(owned);
         var height = text is TextBlock ? TextBlock.LineHeightProperty : RichTextBlock.LineHeightProperty;
         var stacking = text is TextBlock ? TextBlock.LineStackingStrategyProperty : RichTextBlock.LineStackingStrategyProperty;
         Supply(text, height, 20d);
@@ -29,16 +33,31 @@ internal sealed class BleeckerRichTextDefaults
 
     private void Supply(FrameworkElement text, DependencyProperty property, object value)
     {
-        if (text.ReadLocalValue(property) != DependencyProperty.UnsetValue || HasSetter(text.Style, property)) return;
+        if (text.ReadLocalValue(property) != DependencyProperty.UnsetValue || HasConsumerSetter(text, property)) return;
         if (Equals(text.GetValue(property), value)) return;
         if (!styles.ContainsKey(text)) styles.Add(text, text.RegisterPropertyChangedCallback(FrameworkElement.StyleProperty, (_, _) =>
         {
-            foreach (var owned in values.Where(item => ReferenceEquals(item.Owner, text) && HasSetter(text.Style, item.Property)).ToArray())
-                Release(owned);
+            if (!styles.ContainsKey(text)) return;
             ApplyText(text);
         }));
         values.Add(new(text, property, value));
         text.SetValue(property, value);
+    }
+
+    private bool HasConsumerSetter(FrameworkElement text, DependencyProperty property)
+    {
+        if (text.Style is { } explicitStyle) return HasSetter(explicitStyle, property);
+        // Implicit styles do not populate FrameworkElement.Style. Consult
+        // declarations inside this rich-content subtree without installing a
+        // style or changing the framework's resource resolution.
+        var key = text is TextBlock ? typeof(TextBlock) : typeof(RichTextBlock);
+        for (DependencyObject? scope = text; scope is not null; scope = VisualTreeHelper.GetParent(scope))
+        {
+            if (scope is FrameworkElement element && element.Resources.TryGetValue(key, out var resource) && resource is Style implicitStyle)
+                return HasSetter(implicitStyle, property);
+            if (ReferenceEquals(scope, contentRoot)) break;
+        }
+        return false;
     }
 
     private static bool HasSetter(Style? style, DependencyProperty property)
@@ -59,6 +78,7 @@ internal sealed class BleeckerRichTextDefaults
     internal void Clear()
     {
         foreach (var text in styles.Keys.ToArray()) Detach(text);
+        contentRoot = null;
     }
 
     private void Detach(FrameworkElement text)

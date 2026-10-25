@@ -1,5 +1,19 @@
 # Data Table Column Toggle contract
 
+The `0.1.0-table-content-foreground-v2-local` preview lets the owned Columns caption
+inherit the rendered presenter color. Its three vector paths use the existing
+owned-glyph lifecycle helper, with one deferred reconciliation after native
+load/unload transitions to follow the current presenter after reparenting.
+The shared Reset/Columns regression passes all
+24 states and 60 observations, including the source's 45% disabled foreground,
+caller presenter colors and template restoration. It preserves the geometry
+of all 20 rendered states and releases owned foreground bindings on unload.
+The fresh independent x64/ARM64 consumers build, and the x64 package and extracted
+catalog each pass the strengthened probe, including three caller-template cycles.
+Both fictional catalog demos pass. Native ARM64 execution and full acceptance
+remain open. See
+[the focused evidence](data-table-toolbar-reference.md).
+
 The frozen source is `src/components/data-table-column-toggle.tsx` at Bleecker
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `9082ca90691d40083e9bb4b94f687daa56a8e3a064e356ab5dd9afa67ed89df7`.
@@ -92,9 +106,9 @@ including narrow/collision specimens. Its independent audit passes 44 key
 pairs, four complete Shift/Tab modifier sequences and 48 pointer
 presentation/move/click boundaries. Exact popup pixel comparisons still
 differ across all 74 open-popup comparisons (292,724 differing pixels).
-Full raster, theme/override/motion, Narrator,
-contrast, scaling, performance and ARM64 runtime
-acceptance remain open.
+Complete visual review, theme/override/motion, scaling, performance and ARM64
+runtime acceptance remain open. Narrator and OS contrast campaigns are excluded
+by the current library scope.
 
 Reproduce the focused native replay with:
 
@@ -166,7 +180,11 @@ Evidence and artifacts:
   `artifacts/package-consumer-column-toggle-validated-arm64`.
 - Versioned catalog ZIP metadata: `artifacts/column-toggle-catalog-archives.json`.
 
-The fixed 112-entry inventory now contains 52 in-progress and 60 pending
+That historical 112-entry artifact checkpoint recorded 52 in-progress and 60 pending
 entries, with zero accepted components. No completion or platform parity is
 claimed by this artifact checkpoint. Push-triggered Actions remain paused;
 no workflow was dispatched for these validations.
+
+Worker-thread producer notifications are marshaled before any XAML state read.
+See [the producer notification contract](producer-notifications.md) for the
+shared catalog/package regression and its background-only verification limits.

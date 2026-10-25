@@ -1,0 +1,22 @@
+<UserControl x:Class="Orchard.Catalog.AppShellsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="App shell" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Original header, body and footer controls. This bounded component example uses fictional local data; resize or change the suite without replacing the edited note." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerAppShell x:Name="Shell" MinHeight="420" OffsetHeader="False" BorderThickness="1" BorderBrush="{ThemeResource BleeckerBorderBrush}">
+   <orchard:BleeckerAppShell.Header>
+    <Grid Height="56" Padding="12,0" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+     <orchard:BleeckerHeaderSelect x:Name="Suite" Value="monitor" ValueRequested="SelectSuite" AutomationProperties.Name="Local demo suite"/>
+     <Button Grid.Column="1" Content="Clear note" Style="{StaticResource BleeckerSecondaryButtonStyle}" Click="ClearNote"/>
+    </Grid>
+   </orchard:BleeckerAppShell.Header>
+   <StackPanel Height="300" Spacing="12" Margin="12,0">
+    <TextBlock x:Name="Selection" Text="Fictional monitoring suite" Style="{StaticResource BleeckerBodyStyle}"/>
+    <orchard:BleeckerInput x:Name="Note" Text="Edit this original local note" AutomationProperties.Name="Local shell note"/>
+    <orchard:BleeckerFeedColumn Title="Local component preview" Count="1" Height="200" Width="372">
+     <orchard:BleeckerFeedItem Author="Ada Example" Content="A fictional item demonstrates the retained content slot." PostedAt="2026-10-18T15:00:00Z" Relevance="87"/>
+    </orchard:BleeckerFeedColumn>
+   </StackPanel>
+   <orchard:BleeckerAppShell.Footer><Border Height="40" Padding="12,0"><TextBlock Text="Fictional local data · component composition" Style="{StaticResource BleeckerBodyStyle}" VerticalAlignment="Center"/></Border></orchard:BleeckerAppShell.Footer>
+  </orchard:BleeckerAppShell>
+ </StackPanel>
+</UserControl>

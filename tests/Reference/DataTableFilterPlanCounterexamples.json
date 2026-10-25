@@ -1,0 +1,95 @@
+{
+  "format": "orchard-data-table-filter-plan-counterexamples-v1",
+  "actualOldRuntime": true,
+  "librarySha256": "9ef1bd472f351abe8fc68fab0a7b28421568e14f0801ae2758f251ea6441881c",
+  "failures": [
+    {
+      "scheme": "Light",
+      "name": "no-columns",
+      "stage": "global",
+      "expectedFilteredIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "actualFilteredIds": [],
+      "report": "tests/Reference/DataTableFilterPlanRejected-Light-no-columns.json",
+      "reportSha256": "d4593e3570aa55c62f8767f8bcb58be82e228ff250451ccbf773f614b546b551",
+      "frame": "tests/Reference/DataTableFilterPlanRejected-Light-no-columns.png",
+      "frameSha256": "82de0323945a4afe9cdd36b7b9d0f83c8139dbff01474b7be195471e98cc3b25"
+    },
+    {
+      "scheme": "Light",
+      "name": "boolean-only",
+      "stage": "global",
+      "expectedFilteredIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "actualFilteredIds": [],
+      "report": "tests/Reference/DataTableFilterPlanRejected-Light-boolean-only.json",
+      "reportSha256": "d0b43907871a03386c130c338a1108340707cc816408cd856bec1e36faff4e28",
+      "frame": "tests/Reference/DataTableFilterPlanRejected-Light-boolean-only.png",
+      "frameSha256": "1e5cd2d88c072d446e6c5317fae8da293ca40afb14e841d99210f701b0854367"
+    },
+    {
+      "scheme": "Light",
+      "name": "boolean-column-filter",
+      "stage": "global",
+      "expectedFilteredIds": [
+        "0",
+        "2"
+      ],
+      "actualFilteredIds": [],
+      "report": "tests/Reference/DataTableFilterPlanRejected-Light-boolean-column-filter.json",
+      "reportSha256": "610f754b53ec29dc4b195bc1011d6d38093640cdbada705e079be50ddb78c5ad",
+      "frame": "tests/Reference/DataTableFilterPlanRejected-Light-boolean-column-filter.png",
+      "frameSha256": "de4cd987362695ecd7f78a119fe579774d8e12354057dc416b57d8264b971b48"
+    },
+    {
+      "scheme": "Dark",
+      "name": "no-columns",
+      "stage": "global",
+      "expectedFilteredIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "actualFilteredIds": [],
+      "report": "tests/Reference/DataTableFilterPlanRejected-Dark-no-columns.json",
+      "reportSha256": "309efac880c0e3f52cd6de80894f671941fff9ab04e3172cfd0673babfbf7bbe",
+      "frame": "tests/Reference/DataTableFilterPlanRejected-Dark-no-columns.png",
+      "frameSha256": "ec944b4085a74789d118cae88983b8ba4aa5f992249a0b31bbcb4b5e81ef0e42"
+    },
+    {
+      "scheme": "Dark",
+      "name": "boolean-only",
+      "stage": "global",
+      "expectedFilteredIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "actualFilteredIds": [],
+      "report": "tests/Reference/DataTableFilterPlanRejected-Dark-boolean-only.json",
+      "reportSha256": "862976857708908bdc472cc847273b3a0fd9956a1b4ddcc2d3460a22127e9f82",
+      "frame": "tests/Reference/DataTableFilterPlanRejected-Dark-boolean-only.png",
+      "frameSha256": "336e9ce17ed7097194775e94d378b3c5870d36668602da000e9cb08752b4ff57"
+    },
+    {
+      "scheme": "Dark",
+      "name": "boolean-column-filter",
+      "stage": "global",
+      "expectedFilteredIds": [
+        "0",
+        "2"
+      ],
+      "actualFilteredIds": [],
+      "report": "tests/Reference/DataTableFilterPlanRejected-Dark-boolean-column-filter.json",
+      "reportSha256": "8564e5a3d19e24b80d27478e3daec8f1944812be56f37db369c4967c495355c9",
+      "frame": "tests/Reference/DataTableFilterPlanRejected-Dark-boolean-column-filter.png",
+      "frameSha256": "336e9ce17ed7097194775e94d378b3c5870d36668602da000e9cb08752b4ff57"
+    }
+  ]
+}

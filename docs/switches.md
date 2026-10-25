@@ -1,5 +1,61 @@
 # Switch
 
+## Public state and native-input lifecycle
+
+`IsOn` is the authoritative caller-owned Boolean, including before a template
+exists. The public Toggle pattern reports that value without requiring a native
+template part. Activating the public provider requires both the owner and its
+current native input to be mounted. Never-mounted, unloaded and template-cleared
+controls report element-not-available; mounted disabled controls report
+element-not-enabled. Rejected actions preserve caller bindings, values and events.
+
+Events from obsolete or unmounted native inputs do not change public state.
+On remount, the native input synchronizes from the current public `IsOn`, so a
+retained native handle cannot leave the live switch out of sync. Restoring a
+template reconnects the public provider to its current native input. Loaded
+activation, programmatic updates, two-way bindings and exactly-once `Toggled`
+delivery keep their existing behavior. Accessible name precedence and suppression
+of the duplicate native child remain intact.
+
+The hidden lifecycle fixture also covers all four untemplated state/theme
+combinations, retained public/native handles, template removal/restoration,
+disabled behavior, bound caller state, the actual catalog result, and constrained
+LTR/RTL labels. See [current runtime evidence](runtime-evidence.md). Existing
+physical-input and hosted-run records below remain historical; they do not
+establish fresh package or platform acceptance. Narrator and OS contrast
+campaigns are excluded by the [component-library scope](library-scope.md).
+
+## Japanese label fallback
+
+The default label and its intrinsic-width probe now share the existing
+source-derived script-font presentation. Japanese ideographs use Microsoft YaHei
+and kana use Yu Gothic at the inherited weight. A headless Chrome 156 receipt
+corroborates those faces and the pinned Chrome 155 reference width; it does not
+replace the reference. Bundled fonts and the declared Medium family are unchanged.
+
+The correctly styled baseline measures `通知を有効にする` at 99.538086 DIPs.
+The repair measures 111.440002 DIPs against the source's 111.453125 DIPs, within
+the existing 1/64-DIP layout tolerance, while preserving the 20-DIP line height.
+Both rendered label captures contain visible glyphs at the expanded control
+width. Public label/font bindings survive Japanese/Latin edits, custom fonts,
+restoration, unloaded updates, reload and template replacement; typography
+changes emit no toggle events. Custom fonts keep their own native fallback.
+
+The fresh `0.1.0-switch-japanese-v1-local` consumer and extracted catalog each
+pass 14 font/binding observations. Existing lifecycle checks pass unchanged:
+44 in the consumer, 46 with the real catalog fixture. Both source architectures
+and fresh independent x64/ARM64 consumers build; the two fictional demos pass
+66 checks and 577 guards. See `scripts/verify-switch-japanese-fallback.mjs`
+and `artifacts/current/switch-japanese-checkpoint-v1.json`.
+
+Latin geometry remains at its measured baseline of 125.272011 DIPs, versus the
+source's 125.296875 DIPs. That pre-existing difference remains recorded and is
+not counted as source typography acceptance. Full glyph/baseline review,
+physical input, scaling/motion and native ARM64 runtime remain open. No new
+font asset, renderer, size offset or OS-setting change is part of this repair.
+
+## Earlier verification and source contract
+
 The UI Automation control/content visibility metadata is independent of the
 template. XAML can query these properties, including while reading enabled
 state, before PART_Switch exists. Both now use the public owner's native
@@ -219,7 +275,7 @@ also requiring the consumer Boolean to remain unchanged.
 
 Acceptance remains open: complete native/browser raster comparison (glyphs,
 baselines, pill edges, shadows and fallback fonts), actual keyboard/pointer/drag
-matrix, focus visibility, live system appearance/contrast and Narrator,
+matrix, focus visibility and live system appearance,
 constrained widths and isolated text/display scaling, exact interrupted-motion
 timing/color rasterization, and remaining x64/ARM64 state acceptance. Desktop-wide
 display, text size and animation settings must remain unchanged during local

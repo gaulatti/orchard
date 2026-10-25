@@ -12,6 +12,7 @@ namespace Orchard;
 public sealed class BleeckerDataTableSelectFilter : Control
 {
     private Grid? host;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue uiQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread() ?? throw new InvalidOperationException("Select filter requires a UI dispatcher.");
     private BleeckerSelectSurface? select;
     private readonly BleeckerSelectOption empty = new();
     private readonly List<BleeckerSelectOption> observedItems = [];
@@ -83,7 +84,7 @@ public sealed class BleeckerDataTableSelectFilter : Control
         foreach (var item in Options.Distinct()) { if (item is null) throw new InvalidOperationException("Select options must be original non-null consumer objects."); item.PropertyChanged += ItemChanged; observedItems.Add(item); }
         observedRoot = XamlRoot; if (observedRoot is not null) observedRoot.Changed += RootChanged;
     }
-    private void Dispatch(Action work) { if (!IsLoaded) return; if (DispatcherQueue.HasThreadAccess) work(); else if (!DispatcherQueue.TryEnqueue(() => { if (IsLoaded) work(); })) throw new InvalidOperationException("The column filter could not apply its original source notification."); }
+    private void Dispatch(Action work) { if (uiQueue.HasThreadAccess) { if (IsLoaded) work(); } else if (!uiQueue.TryEnqueue(() => { if (IsLoaded) work(); })) throw new InvalidOperationException("The column filter could not apply its original source notification."); }
     private void OptionsChanged(object? sender, NotifyCollectionChangedEventArgs args) => Dispatch(() => { if (ReferenceEquals(sender, GetValue(OptionsProperty))) { Observe(); Refresh(); } });
     private void ItemChanged(object? sender, PropertyChangedEventArgs args) => Dispatch(() => { if (observedItems.Any(item => ReferenceEquals(item, sender))) Refresh(); });
     private void RootChanged(XamlRoot sender, XamlRootChangedEventArgs args) => Refresh();

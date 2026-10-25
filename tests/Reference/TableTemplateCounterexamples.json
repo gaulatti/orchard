@@ -1,0 +1,375 @@
+{
+  "format": "orchard-table-template-counterexamples-v1",
+  "actualOldRuntime": true,
+  "librarySha256": "36262934d2e969c6454c756c38788291d9198afbc39e31c3a332dc8c5e53e794",
+  "hostSha256": "fdf6be0917462b7bbba71db067de51e53faf3a25c707afdde9f54c3dd841db64",
+  "snapshots": [
+    {
+      "scheme": "Light",
+      "rtl": false,
+      "stage": "selector",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": true,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": true,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-False-selector.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": false,
+      "stage": "refreshed",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-False-refreshed.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": false,
+      "stage": "notified",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-False-notified.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": false,
+      "stage": "selectors-cleared",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Right",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-False-selectors-cleared.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": true,
+      "stage": "selector",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": true,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": true,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-True-selector.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": true,
+      "stage": "refreshed",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-True-refreshed.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": true,
+      "stage": "notified",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-True-notified.png"
+    },
+    {
+      "scheme": "Light",
+      "rtl": true,
+      "stage": "selectors-cleared",
+      "body": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 14,
+        "originalCellRetained": true
+      },
+      "header": {
+        "alignment": "Right",
+        "displayAlignment": "Left",
+        "bindingPresent": false,
+        "bindingRetained": false,
+        "fontSize": 11,
+        "originalCellRetained": true
+      },
+      "file": "table-template-Light-True-selectors-cleared.png"
+    }
+  ],
+  "templateCases": [
+    {
+      "scheme": "Light",
+      "kind": "text",
+      "stage": "initial",
+      "minimumWidth": 278.4000701904297,
+      "cellWidth": 200,
+      "scrollableWidth": 0,
+      "originalTextRetained": true,
+      "originalContentRetained": true,
+      "originalTemplateRetained": true,
+      "text": "MMMMMMMMMMMMMMMMMMMM",
+      "file": "table-template-Light-text-initial.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "text",
+      "stage": "restored",
+      "minimumWidth": 278.4000701904297,
+      "cellWidth": 200,
+      "scrollableWidth": 0,
+      "originalTextRetained": true,
+      "originalContentRetained": true,
+      "originalTemplateRetained": true,
+      "text": "MMMMMMMMMMMMMMMMMMMM",
+      "file": "table-template-Light-text-restored.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "selector-border",
+      "stage": "initial",
+      "minimumWidth": 292.4000701904297,
+      "cellWidth": 200,
+      "scrollableWidth": 0,
+      "originalTextRetained": true,
+      "originalContentRetained": true,
+      "originalTemplateRetained": true,
+      "text": "MMMMMMMMMMMMMMMMMMMM",
+      "file": "table-template-Light-selector-border-initial.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "selector-border",
+      "stage": "restored",
+      "minimumWidth": 292.4000701904297,
+      "cellWidth": 200,
+      "scrollableWidth": 0,
+      "originalTextRetained": true,
+      "originalContentRetained": true,
+      "originalTemplateRetained": true,
+      "text": "MMMMMMMMMMMMMMMMMMMM",
+      "file": "table-template-Light-selector-border-restored.png"
+    }
+  ],
+  "harnessIssue": "The baseline stopped at the grid because its text lookup also matched the button caption. The final fixture uses an explicit template text name.",
+  "liveReflow": {
+    "librarySha256": "e6ce71878a88259f4ccc0c682f6b39ad803bef7a2a5b61a99c5537b5420c0ed7",
+    "hostSha256": "bb876d60ed305710499b026e318512f42d7ba5540586e3b754f270909ef3c0ea",
+    "cases": [
+      {
+        "scheme": "Light",
+        "kind": "text",
+        "stage": "short",
+        "minimumWidth": 65.68400192260742,
+        "cellWidth": 278.40008544921875,
+        "scrollableWidth": 78.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Light-text-short.png"
+      },
+      {
+        "scheme": "Light",
+        "kind": "selector-border",
+        "stage": "short",
+        "minimumWidth": 79.68400192260742,
+        "cellWidth": 292.40008544921875,
+        "scrollableWidth": 92.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Light-selector-border-short.png"
+      },
+      {
+        "scheme": "Light",
+        "kind": "grid",
+        "stage": "short",
+        "minimumWidth": 133.68400192260742,
+        "cellWidth": 346.40008544921875,
+        "scrollableWidth": 146.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Light-grid-short.png"
+      },
+      {
+        "scheme": "Light",
+        "kind": "horizontal",
+        "stage": "short",
+        "minimumWidth": 140.68400192260742,
+        "cellWidth": 353.40008544921875,
+        "scrollableWidth": 153.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Light-horizontal-short.png"
+      },
+      {
+        "scheme": "Light",
+        "kind": "vertical",
+        "stage": "short",
+        "minimumWidth": 71.68400192260742,
+        "cellWidth": 284.40008544921875,
+        "scrollableWidth": 84.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Light-vertical-short.png"
+      },
+      {
+        "scheme": "Dark",
+        "kind": "text",
+        "stage": "short",
+        "minimumWidth": 65.68400192260742,
+        "cellWidth": 278.40008544921875,
+        "scrollableWidth": 78.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Dark-text-short.png"
+      },
+      {
+        "scheme": "Dark",
+        "kind": "selector-border",
+        "stage": "short",
+        "minimumWidth": 79.68400192260742,
+        "cellWidth": 292.40008544921875,
+        "scrollableWidth": 92.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Dark-selector-border-short.png"
+      },
+      {
+        "scheme": "Dark",
+        "kind": "grid",
+        "stage": "short",
+        "minimumWidth": 133.68400192260742,
+        "cellWidth": 346.40008544921875,
+        "scrollableWidth": 146.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Dark-grid-short.png"
+      },
+      {
+        "scheme": "Dark",
+        "kind": "horizontal",
+        "stage": "short",
+        "minimumWidth": 140.68400192260742,
+        "cellWidth": 353.40008544921875,
+        "scrollableWidth": 153.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Dark-horizontal-short.png"
+      },
+      {
+        "scheme": "Dark",
+        "kind": "vertical",
+        "stage": "short",
+        "minimumWidth": 71.68400192260742,
+        "cellWidth": 284.40008544921875,
+        "scrollableWidth": 84.40008544921875,
+        "originalTextRetained": true,
+        "originalContentRetained": true,
+        "originalTemplateRetained": true,
+        "text": "Short",
+        "file": "table-template-Dark-vertical-short.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+<UserControl x:Class="Orchard.Catalog.NavigationMenusFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <DataTemplate x:Key="OriginalNavigationLink" x:DataType="orchard:BleeckerNavigationLinkContext">
+   <StackPanel Tag="{x:Bind IsGrouped, Mode=OneWay}">
+    <HyperlinkButton x:Name="CustomNavigationLink" Content="{x:Bind Content, Mode=OneWay}" Style="{x:Bind Style, Mode=OneWay}" Foreground="{x:Bind Foreground, Mode=OneWay}" Command="{x:Bind Command}" Tag="{x:Bind Item, Mode=OneWay}" AutomationProperties.Name="{x:Bind Item.Label, Mode=OneWay}"/>
+    <TextBox x:Name="RetainedNavigationInput" Width="130" HorizontalAlignment="Left" PlaceholderText="Local draft" AutomationProperties.Name="Fictional link-local draft"/>
+    <Button Content="Close group" Command="{x:Bind CloseCommand, Mode=OneWay}"/>
+   </StackPanel>
+  </DataTemplate>
+ </UserControl.Resources>
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Navigation Menu" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Original host-routed links with descriptive groups. All destinations and draft text are fictional local data." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerNavigationMenu x:Name="Default" Width="680" HorizontalAlignment="Left" TopLinkStyle="{StaticResource BleeckerNavigationTopLinkStyle}" GroupLinkStyle="{StaticResource BleeckerNavigationGroupLinkStyle}" TriggerStyle="{StaticResource BleeckerNavigationTriggerStyle}" SurfaceStyle="{StaticResource BleeckerNavigationSurfaceStyle}" ItemInvoked="Invoked" AutomationProperties.Name="Fictional component navigation">
+   <orchard:BleeckerNavigationMenu.Entries><orchard:BleeckerNavigationMenuEntries>
+   <orchard:BleeckerNavigationMenuLink Href="/fictional/home" Label="Home"/>
+   <orchard:BleeckerNavigationMenuGroup Trigger="Components" Href="/fictional/unused-group"><orchard:BleeckerNavigationMenuGroup.Items><orchard:BleeckerNavigationMenuLinks>
+    <orchard:BleeckerNavigationMenuLink Href="/fictional/buttons" Label="Buttons" Description="Actions and choices"/>
+    <orchard:BleeckerNavigationMenuLink Href="/fictional/forms?kind=one%2Ftwo#fields" Label="Forms" Description="Original encoded destination"/>
+    <orchard:BleeckerNavigationMenuLink Href="https://example.invalid/docs" Label="Documentation" Description="Caller handles external intent" External="True"/>
+   </orchard:BleeckerNavigationMenuLinks></orchard:BleeckerNavigationMenuGroup.Items></orchard:BleeckerNavigationMenuGroup>
+   </orchard:BleeckerNavigationMenuEntries></orchard:BleeckerNavigationMenu.Entries>
+  </orchard:BleeckerNavigationMenu>
+  <TextBlock x:Name="Result" Text="No fictional destination selected" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <TextBlock Text="Custom content with retained local input" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerNavigationMenu x:Name="Custom" Width="680" HorizontalAlignment="Left" LinkTemplate="{StaticResource OriginalNavigationLink}" ItemInvoked="Invoked"/>
+  <Button Content="Update original grouped label" Click="Rename"/>
+  <TextBlock Text="Right to left, disabled and empty" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerNavigationMenu x:Name="Rtl" Width="680" HorizontalAlignment="Left" FlowDirection="RightToLeft" ItemInvoked="Invoked"/>
+  <orchard:BleeckerNavigationMenu x:Name="Disabled" Width="680" HorizontalAlignment="Left" IsEnabled="False"/>
+  <orchard:BleeckerNavigationMenu x:Name="Empty" Width="680" HorizontalAlignment="Left"/>
+ </StackPanel>
+</UserControl>

@@ -1,0 +1,11 @@
+<UserControl x:Class="Orchard.Catalog.FeedGridsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Feed grids" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Auto-filling tracks keep their empty columns and retain caller controls as the available width changes." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerFeedGrid MinColumnWidth="240">
+   <orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Fictional local card" Style="{StaticResource BleeckerHeadingStyle}"/><orchard:BleeckerInput Text="Consumer-owned value"/></StackPanel></orchard:BleeckerCard>
+   <orchard:BleeckerCard><StackPanel Spacing="12"><TextBlock Text="Another fictional card" Style="{StaticResource BleeckerHeadingStyle}"/><orchard:BleeckerButton Content="Record local action" Click="RecordAction"/><TextBlock x:Name="Status" Text="No local action yet." Style="{StaticResource BleeckerBodyStyle}"/></StackPanel></orchard:BleeckerCard>
+   <orchard:BleeckerCard><TextBlock Text="The last occupied track" Style="{StaticResource BleeckerBodyStyle}"/></orchard:BleeckerCard>
+  </orchard:BleeckerFeedGrid>
+ </StackPanel>
+</UserControl>

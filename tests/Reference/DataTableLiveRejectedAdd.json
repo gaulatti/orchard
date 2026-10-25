@@ -1,0 +1,309 @@
+{
+  "format": "orchard-data-table-live-native-v1",
+  "passed": false,
+  "stage": "Light-simple-collection-add",
+  "error": "System.InvalidOperationException: Live original object/action was replaced or unloaded.\r\n   at Orchard.Testing.DataTableFixture.Require(Boolean condition, String message) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableFixture.cs:line 27\r\n   at Orchard.Testing.DataTableFixture.\u003C\u003Ec__DisplayClass18_4.\u003C\u003CRunLiveAsync\u003Eg__Record|7\u003Ed.MoveNext() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableLiveFixture.cs:line 111\r\n--- End of stack trace from previous location ---\r\n   at Orchard.Testing.DataTableFixture.RunLiveAsync(Window window, String output, String hostAssembly) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableLiveFixture.cs:line 115",
+  "states": [
+    {
+      "scheme": "Light",
+      "kind": "simple",
+      "snapshot": {
+        "stage": "initial",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 1
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 175.5
+        }
+      },
+      "file": "data-table-live-Light-simple-initial.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "simple",
+      "snapshot": {
+        "stage": "equal-object-notified",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 175.5
+        }
+      },
+      "file": "data-table-live-Light-simple-equal-object-notified.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "simple",
+      "snapshot": {
+        "stage": "collection-add",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          },
+          {
+            "id": "c",
+            "name": "Cedar",
+            "count": 3
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          },
+          {
+            "id": "c",
+            "originalRetained": true,
+            "name": "Cedar",
+            "count": "3",
+            "nameFont": 14,
+            "renderedNameFont": null,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": false,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "c",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 175.5
+        }
+      },
+      "file": "data-table-live-Light-simple-collection-add.png"
+    }
+  ],
+  "contracts": [],
+  "pngs": [
+    {
+      "file": "data-table-live-Light-simple-initial.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "0fdfbeb3bd2cea68afa0dd1378e4b071e67013fe15b3c381ce034120d2fe1bbe"
+    },
+    {
+      "file": "data-table-live-Light-simple-equal-object-notified.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "1d417d216b8bddc3c60731ad03f06c73f5466d9300d1b1f50f01c8042c882571"
+    },
+    {
+      "file": "data-table-live-Light-simple-collection-add.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "970c7d26e70a96a431934024002feb99abd1c9040626a34a3921d99b79bf3329"
+    }
+  ],
+  "guards": 29,
+  "focus": 0,
+  "activations": 0,
+  "librarySha256": "76fda6e9cf1c64835887dc27ac9736516046e416d6700a493ae85ee4682bb37f"
+}

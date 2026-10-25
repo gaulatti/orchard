@@ -1,0 +1,24 @@
+<StackPanel x:Class="Orchard.Catalog.PopoversFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="20">
+ <TextBlock Style="{StaticResource BleeckerHeadingStyle}" Text="Popover"/>
+ <TextBlock Text="Fictional local settings. Original triggers, content and host-controlled requests remain caller-owned." TextWrapping="Wrap"/>
+ <TextBlock x:Name="Status" Text="No open request"/>
+ <orchard:BleeckerPopover x:Name="Default" OpenRequested="Requested">
+  <orchard:BleeckerPopover.Trigger><orchard:BleeckerButton Content="Edit fictional settings" Size="Small"/></orchard:BleeckerPopover.Trigger>
+  <StackPanel Width="240" Spacing="12"><TextBlock Text="Component preview"/><TextBox Text="Original caller input" AutomationProperties.Name="Popover caller input"/><ToggleSwitch Header="Fictional notifications"/><Button Content="Confirm fictional settings" Click="OpenConfirmation"/><Button Content="Close" Click="CloseDefault"/>
+   <orchard:BleeckerAlertDialog x:Name="PopupConfirmation" Title="Apply fictional settings?" Description="This component demo keeps your original popup input while confirmation is open." CancelRequested="CloseConfirmation" ConfirmRequested="CloseConfirmation"/>
+  </StackPanel>
+ </orchard:BleeckerPopover>
+ <orchard:BleeckerPopover x:Name="Controlled" Open="False" Side="Right" Align="Start" OpenRequested="ControlledRequested">
+  <orchard:BleeckerPopover.Trigger><Button Content="Host-controlled popover"/></orchard:BleeckerPopover.Trigger>
+  <StackPanel Width="220" Spacing="12"><TextBlock Text="The host accepts each requested state." TextWrapping="Wrap"/><Button Content="Request close" Click="CloseControlled"/></StackPanel>
+ </orchard:BleeckerPopover>
+ <StackPanel Orientation="Horizontal" Spacing="16">
+  <orchard:BleeckerPopover Side="Top"><orchard:BleeckerPopover.Trigger><Button Content="Top"/></orchard:BleeckerPopover.Trigger><TextBlock Text="Fictional top content"/></orchard:BleeckerPopover>
+  <orchard:BleeckerPopover Side="Left" Align="End"><orchard:BleeckerPopover.Trigger><Button Content="Left / end"/></orchard:BleeckerPopover.Trigger><TextBlock Text="Fictional left content"/></orchard:BleeckerPopover>
+  <orchard:BleeckerPopover Side="Right"><orchard:BleeckerPopover.Trigger><Button Content="Right"/></orchard:BleeckerPopover.Trigger><TextBlock Text="Fictional right content"/></orchard:BleeckerPopover>
+ </StackPanel>
+ <orchard:BleeckerPopover>
+  <orchard:BleeckerPopover.Trigger><Button Content="Nested popovers"/></orchard:BleeckerPopover.Trigger>
+  <StackPanel Spacing="12"><TextBlock Text="Fictional parent content"/><orchard:BleeckerPopover><orchard:BleeckerPopover.Trigger><Button Content="Open child"/></orchard:BleeckerPopover.Trigger><TextBox Width="180" Text="Original child input" AutomationProperties.Name="Nested popover input"/></orchard:BleeckerPopover></StackPanel>
+ </orchard:BleeckerPopover>
+</StackPanel>

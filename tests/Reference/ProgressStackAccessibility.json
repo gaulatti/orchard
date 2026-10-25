@@ -1,0 +1,683 @@
+{
+  "format": "orchard-progress-stack-accessibility-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceFile": "src/components/progress-stack.tsx",
+  "sourceSha256": "101df66952162d978a45935604e468e7b465e8a57afdf873a48e0867a46b6254",
+  "textReferenceSha256": "ebe249ee526a5b24b35c8afdc725b72c261acaa723928551d34013bf19553deb",
+  "clientSha256": "c9258a2a8553fd18320c14f5980ac2e5ce0c309970f76302c530dc5e90826dfb",
+  "sourceCssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "scriptSha256": "47fad9228aab3ae7654a0ebc6790e24c767224df1af6964fba6a12c27cdd8191",
+  "browser": "155.0.4283.62",
+  "cases": [
+    {
+      "id": "mixed",
+      "scheme": "Light",
+      "texts": [
+        "Révision 日本語 العربية",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "b7430a76302db055db1fce6cad498559b4e209e0f914a9090c1e0090fd7af372",
+      "paintedLineBoxes": [
+        "Révision 日本語 ",
+        "العربية",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "mixed-rtl",
+      "scheme": "Light",
+      "texts": [
+        "Révision 日本語 العربية",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "d0db950db22ecfdd9b15e812e1627a47d97adb9aec736f38913f3351a71fc955",
+      "paintedLineBoxes": [
+        " العربية",
+        "Révision 日本語",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-short",
+      "scheme": "Light",
+      "texts": [
+        "日本語公開",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "9e892a4ce0f711a59e50f70298e9d3c90f753edbbe7c5c0ad70d3e5bedfb32ba",
+      "paintedLineBoxes": [
+        "日本",
+        "語公",
+        "開",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-zero",
+      "scheme": "Light",
+      "texts": [
+        "日本語公開",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "d2496f78372583a5f662edf11af81e8a87d2aa2a856f120ab02866afa9ffd6d0",
+      "paintedLineBoxes": [
+        "日",
+        "本",
+        "語",
+        "公",
+        "開",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-narrow",
+      "scheme": "Light",
+      "texts": [
+        "日本語の公開ワークフロー",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "611fdf764445890d4cb0d0c2faaebdff5873153bd12c867bc3f45dfadd00ed1f",
+      "paintedLineBoxes": [
+        "日本語の公開",
+        "ワークフロー",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "hiragana",
+      "scheme": "Light",
+      "texts": [
+        "ひらがなとカタカナ",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "3464c4bcff8532dc5b221df55ade57ead3e870b73d410760cfc16a43f77ce9bb",
+      "paintedLineBoxes": [
+        "ひらがな",
+        "とカタカ",
+        "ナ",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "hangul",
+      "scheme": "Light",
+      "texts": [
+        "한글 공개 작업",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "61671b6a034df6f8df850bdf0c6f099136d2013914f3cd8f46c62c802b41295f",
+      "paintedLineBoxes": [
+        "한글 공개 ",
+        "작업",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "arabic",
+      "scheme": "Light",
+      "texts": [
+        "حالة النشر والمراجعة",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "eb03a8c10aaabfda887928145399bc296c6a33809c5faffcef21566749614142",
+      "paintedLineBoxes": [
+        "حالة النشر ",
+        "والمراجعة",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "hebrew",
+      "scheme": "Light",
+      "texts": [
+        "מצב פרסום ובדיקה",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "76562d9dc8ed6bd6a305f0888e008450e13c92f884d7582224da7fd4ff33c30c",
+      "paintedLineBoxes": [
+        "מצב ",
+        "פרסום ",
+        "ובדיקה",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "combining",
+      "scheme": "Light",
+      "texts": [
+        "Révision café Åland",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "c67b9989df283117247623f5e97a02a867c3e61ff3010bcfdc6ecc1e8eb82999",
+      "paintedLineBoxes": [
+        "Révision café ",
+        "Åland",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "emoji",
+      "scheme": "Light",
+      "texts": [
+        "Review 👩🏽‍💻 🏳️‍🌈 family 👨‍👩‍👧",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "3217568fd5fd3ab844ac254ecad46033c484a026f6f1311dbad8e7897c1d16c8",
+      "paintedLineBoxes": [
+        "Review 👩🏽‍💻 ",
+        "🏳️‍🌈 family 👨‍👩‍👧",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "zero-width-space",
+      "scheme": "Light",
+      "texts": [
+        "Consumer​owned​publication",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "d542be1ca853f7f7bbf9d46ab17bfe59798fa21222e8f0893fb1f7196f30b871",
+      "paintedLineBoxes": [
+        "Consumer​",
+        "owned​",
+        "publication",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "word-joiner",
+      "scheme": "Light",
+      "texts": [
+        "Review⁠queue",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "99d25d0c30aec81667916b953e4a73334a195b82f59500bba8cc4cdadfbcc9e0",
+      "paintedLineBoxes": [
+        "Review⁠queue",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "nonbreaking",
+      "scheme": "Light",
+      "texts": [
+        "Review queue",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "c6e7c207ac8d9b6e80658e5d8380e58611ec4a4983870f576f80eccaaefba9a5",
+      "paintedLineBoxes": [
+        "Review queue",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "soft-hyphen",
+      "scheme": "Light",
+      "texts": [
+        "publi­cation­workflow",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "c5e5675d2c3b3963c581084094b4d9c5ecffe8208de5f99e85e7495629063e87",
+      "paintedLineBoxes": [
+        "publi­cation­",
+        "‐",
+        "workflow",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "punctuation",
+      "scheme": "Light",
+      "texts": [
+        "Consumer-owned/Review—queue",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "41760956bec8de2adfab004131563a5179705e221a75810ac6212d1d3b013d11",
+      "paintedLineBoxes": [
+        "Consumer-",
+        "owned/Review",
+        "—queue",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-punctuation",
+      "scheme": "Light",
+      "texts": [
+        "「日本語」、公開。レビュー",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "09e2c87aef67e0fb9efe268b0d0128ace499c3ff102476870efee80756bdc392",
+      "paintedLineBoxes": [
+        "「日本",
+        "語」、公",
+        "開。レビ",
+        "ュー",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "long-latin",
+      "scheme": "Light",
+      "texts": [
+        "Consumer owned publication workflow",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "4e9af8d1b3bdb99b756e2164bae5669abba80b0eb584c708c20c5c2a786489b1",
+      "paintedLineBoxes": [
+        "Consumer ",
+        "owned ",
+        "publication ",
+        "workflow",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "mixed",
+      "scheme": "Dark",
+      "texts": [
+        "Révision 日本語 العربية",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "ea602728ceea60405d61d042aebd93265b9d15ccfdb72975d844fab27eff2659",
+      "paintedLineBoxes": [
+        "Révision 日本語 ",
+        "العربية",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "mixed-rtl",
+      "scheme": "Dark",
+      "texts": [
+        "Révision 日本語 العربية",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "40c64dc8afd5051795129bb5ad73b2fd0a76674066fbe2b83e2b64adc4b6c8de",
+      "paintedLineBoxes": [
+        " العربية",
+        "Révision 日本語",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-short",
+      "scheme": "Dark",
+      "texts": [
+        "日本語公開",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "4768214a231914159f84fe94d07315eaf8baa6de2dba6fa22aeeb68faf21aa60",
+      "paintedLineBoxes": [
+        "日本",
+        "語公",
+        "開",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-zero",
+      "scheme": "Dark",
+      "texts": [
+        "日本語公開",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "90d66727fb7be89c3e4e7bac690c5342a504f8901af98698fa9bd95933e885e5",
+      "paintedLineBoxes": [
+        "日",
+        "本",
+        "語",
+        "公",
+        "開",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-narrow",
+      "scheme": "Dark",
+      "texts": [
+        "日本語の公開ワークフロー",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "66e2ea54e642572ccb3fe23a473e876b789d2f8f20dc791f80a51ee1b383b23d",
+      "paintedLineBoxes": [
+        "日本語の公開",
+        "ワークフロー",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "hiragana",
+      "scheme": "Dark",
+      "texts": [
+        "ひらがなとカタカナ",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "d6556a41a468ecf9f270ee98ad9031f9b06353da6383bbb4b143c1254ca41154",
+      "paintedLineBoxes": [
+        "ひらがな",
+        "とカタカ",
+        "ナ",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "hangul",
+      "scheme": "Dark",
+      "texts": [
+        "한글 공개 작업",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "6c961957462ad2d3be73e3c02dc84ac8a20a90efadeb7454b007530e5d9439ab",
+      "paintedLineBoxes": [
+        "한글 공개 ",
+        "작업",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "arabic",
+      "scheme": "Dark",
+      "texts": [
+        "حالة النشر والمراجعة",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "bc158e8ebe65066cded894ecf900b8772f90f2b0d83b532a5497f7378ec01fae",
+      "paintedLineBoxes": [
+        "حالة النشر ",
+        "والمراجعة",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "hebrew",
+      "scheme": "Dark",
+      "texts": [
+        "מצב פרסום ובדיקה",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "80666a82bb92bccabb51aeaa246dc70e625d08fbb3dc7d966cde598c393c2d99",
+      "paintedLineBoxes": [
+        "מצב ",
+        "פרסום ",
+        "ובדיקה",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "combining",
+      "scheme": "Dark",
+      "texts": [
+        "Révision café Åland",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "ed49a7fbb9c1141fdc8b742458767361b83b34aa77820e3817dc770e3e188204",
+      "paintedLineBoxes": [
+        "Révision café ",
+        "Åland",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "emoji",
+      "scheme": "Dark",
+      "texts": [
+        "Review 👩🏽‍💻 🏳️‍🌈 family 👨‍👩‍👧",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "380ec41e0c7bd3f294eb817cffc3296b30024b97657adaaaab4a8611b2c33cff",
+      "paintedLineBoxes": [
+        "Review 👩🏽‍💻 ",
+        "🏳️‍🌈 family 👨‍👩‍👧",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "zero-width-space",
+      "scheme": "Dark",
+      "texts": [
+        "Consumer​owned​publication",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "41620dba779cd145ce924dafb0cbeb23e972bbd1ff6398143caf03ce4111e2ee",
+      "paintedLineBoxes": [
+        "Consumer​",
+        "owned​",
+        "publication",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "word-joiner",
+      "scheme": "Dark",
+      "texts": [
+        "Review⁠queue",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "01da87560e3cf7e673420998acf487c735ce3eafcc6567c36ed50a9cb845f3a5",
+      "paintedLineBoxes": [
+        "Review⁠queue",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "nonbreaking",
+      "scheme": "Dark",
+      "texts": [
+        "Review queue",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "815e5dfc58941321a218d5c1fd94bb125d3def6fba2d10c403ee627eaa201f0d",
+      "paintedLineBoxes": [
+        "Review queue",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "soft-hyphen",
+      "scheme": "Dark",
+      "texts": [
+        "publi­cation­workflow",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "7b5620314399965aacefb314db42c100a532dc6fd91d576a90704d1c6d04b70c",
+      "paintedLineBoxes": [
+        "publi­cation­",
+        "‐",
+        "workflow",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "punctuation",
+      "scheme": "Dark",
+      "texts": [
+        "Consumer-owned/Review—queue",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "7cb51a4e7fa159254f99f6a7f4cf1d474c1ed7eafa115643605b0128c9c81221",
+      "paintedLineBoxes": [
+        "Consumer-",
+        "owned/Review",
+        "—queue",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "cjk-punctuation",
+      "scheme": "Dark",
+      "texts": [
+        "「日本語」、公開。レビュー",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "7adfc0646bb32a4e544248cd0be6d298fbd5f1c14ffbc008f604c2247c81ffd8",
+      "paintedLineBoxes": [
+        "「日本",
+        "語」、公",
+        "開。レビ",
+        "ュー",
+        "6",
+        "Draft",
+        "3"
+      ]
+    },
+    {
+      "id": "long-latin",
+      "scheme": "Dark",
+      "texts": [
+        "Consumer owned publication workflow",
+        "6",
+        "Draft",
+        "3"
+      ],
+      "sourcePngSha256": "45f0785bf77ab5726b04c9d5df7e2fa82859d7439d40d83429fd988cf7bc7ef2",
+      "paintedLineBoxes": [
+        "Consumer ",
+        "owned ",
+        "publication ",
+        "workflow",
+        "6",
+        "Draft",
+        "3"
+      ]
+    }
+  ]
+}

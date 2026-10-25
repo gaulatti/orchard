@@ -8,7 +8,7 @@ public enum BleeckerIconButtonVariant { Default, Subtle, Ghost }
 public enum BleeckerIconButtonSize { Small, Medium, Large }
 
 /// <summary>A native icon-only button. Consumers must supply an accessible name.</summary>
-public sealed class BleeckerIconButton : Button
+public class BleeckerIconButton : Button
 {
     private ResourceDictionary? palette;
     private Control? foregroundContent;
@@ -58,6 +58,9 @@ public sealed class BleeckerIconButton : Button
 
     public BleeckerIconButtonVariant Variant { get => (BleeckerIconButtonVariant)GetValue(VariantProperty); set => SetValue(VariantProperty, value); }
     public BleeckerIconButtonSize Size { get => (BleeckerIconButtonSize)GetValue(SizeProperty); set => SetValue(SizeProperty, value); }
+
+    /// <summary>The current palette recipe, for specialized icon-button defaults.</summary>
+    protected Style VariantStyle => (Style)(palette ?? throw new InvalidOperationException("Icon Button palette is not initialized."))[typeof(Button)];
 
     private void ApplyVariant()
     {

@@ -1,0 +1,15 @@
+<UserControl x:Class="Orchard.Catalog.PanelLayoutsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Panel layouts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Fixed and growing panels with caller-owned controls and fictional local values." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerPanelLayout Height="420">
+   <orchard:BleeckerPanel Title="Fixed column" Width="240" Count="3">
+    <StackPanel Spacing="16" Margin="16"><orchard:BleeckerInput Text="Fictional filter"/><TextBlock Text="Consumer content" Style="{StaticResource BleeckerBodyStyle}"/></StackPanel>
+   </orchard:BleeckerPanel>
+   <orchard:BleeckerPanelColumn Grow="True">
+    <orchard:BleeckerPanel Title="Fixed height" Height="160"><TextBlock Text="Fictional local summary" Margin="16" Style="{StaticResource BleeckerBodyStyle}"/></orchard:BleeckerPanel>
+    <orchard:BleeckerPanel Title="Remaining height" Grow="True"><StackPanel Spacing="16" Margin="16"><orchard:BleeckerInput Text="Retained fictional value"/><orchard:BleeckerButton Content="Record local action" Click="RecordAction"/><TextBlock x:Name="Status" Text="No local action yet." Style="{StaticResource BleeckerBodyStyle}"/></StackPanel></orchard:BleeckerPanel>
+   </orchard:BleeckerPanelColumn>
+  </orchard:BleeckerPanelLayout>
+ </StackPanel>
+</UserControl>

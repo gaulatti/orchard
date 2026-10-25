@@ -10,6 +10,19 @@ variants, connected button groups, toggle styles, a native switch preview and
 initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
+
+Download the [October 25 Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261025)
+for the NuGet package and runnable x64 catalog, including the fictional Monitoring
+and Editorial demos. [Release notes](docs/releases/2026-10-25-preview.md) identify
+the verified checks, exact artifact hashes and remaining limitations. This is a
+usable development preview; final component acceptance remains open.
+
+The [Nav Menu preview](docs/nav-menu.md) presents caller-owned links in rows or
+columns, with host routing and custom link templates.
+The [Collection Filters preview](docs/collection-filters.md) composes native
+Select and Date Picker controls with caller-owned filter/sort requests,
+collapsible fields, active chips, responsive layout and source-generated
+surface colors in both themes.
 The [IconBadge preview](docs/icon-badge.md) supplies a passive, themed surface
 with two sizes, three variants and retained consumer content or templates.
 The [Empty preview](docs/empty-reference.md) supplies a passive empty state with
@@ -19,6 +32,102 @@ independent actions, rich content/templates and retained consumer input state.
 The [Radio Group preview](docs/radio-group.md) supplies consumer-controlled
 value-keyed options, descriptions, disabled states and wrapping horizontal or
 vertical layout, with Windows keyboard navigation and selection automation.
+The [Tabs preview](docs/tabs.md) supplies underline, segmented and enclosed strips,
+three sizes, consumer-controlled selection and host-routed links with custom renderers.
+The [Dialog Close Button](docs/dialog-close-button.md) supplies the source close
+action with adjustable icon geometry, native commands and consumer-owned dismissal.
+The [Field preview](docs/field.md) composes labels, controls, actions and messages
+while preserving consumer values, validation and native metadata relationships.
+The [Secure Field preview](docs/secure-field.md) supplies native password editing,
+persistent reveal, caller-owned values and fictional catalog examples.
+The [Segmented Control preview](docs/segmented-control.md) supplies typed value
+selection with keyed options, Windows selection metadata and constrained layouts.
+The [App Tab Bar preview](docs/app-tab-bar.md) supplies typed destination selection,
+caller-owned Windows icons, capped badges and raw-count accessibility metadata.
+The [OTP Input preview](docs/otp-input.md) supplies controlled digit requests,
+native text/password slots and fictional caller-owned validation examples.
+The [Context Menu draft](docs/context-menu.md) supplies native caller-owned
+actions with a distinct context recipe, bindable modality and shared modal ownership. Input,
+visual/motion and platform acceptance remain open.
+The [Table preview](docs/table.md) supplies retained native cells, shared
+columns, spans, scrolling and table metadata. Sortable headers and the basic
+DataTable composition retain original cell/footer producers and nullable
+controlled sort/selection. Source and fresh NuGet hosts verify 26 states and
+72 action snapshots, including live bindings and notifications. Complete
+component/platform acceptance is open; the separate TanStack adapter is pending.
+The latest local preview also verifies Unicode/language header casing and
+ordinal row keys/property names in source and fresh NuGet hosts. Cell styles now
+forward font style/stretch/tracking and draw borders/corners, retaining bound
+values and original content across template restoration. Column styles and live
+alignment bindings now retain precedence; templated content resizes shared
+columns when its bound text grows or shrinks. Retained rows now stay loaded
+during sorting, with measured local performance and cold-mount limitations
+recorded in the Table documentation.
+Explicitly sized rich content skips unnecessary descendant sizing; live bound
+width/minimum/maximum changes, including release to Auto, update shared columns
+while retaining the original content and bindings.
+
+The separate [Data Table](docs/data-table.md) records the pinned
+TanStack composition: filtering, sort cycles, index-based selection and ten-row
+pages. Its 42 source visual states and 166 interaction snapshots are frozen;
+its native model, control and catalog fixture are local drafts. Native replay
+covers all 208 states, including grouped headers and combined filter updates;
+the actual catalog passes 24 interaction states. Complete visual, input and
+platform acceptance remains open.
+The [PageFrame preview](docs/page-frame.md) supplies centered reading/content/wide/full
+boundaries with viewport-responsive spacing and retained consumer content.
+The [DetailLayout preview](docs/detail-layout.md) composes retained main/rail
+content with responsive columns, logical placement and bounded sticky positioning.
+The [Slider draft](docs/slider.md) separates original displayed values from
+sanitized range values and routes changes through consumer-controlled requests.
+Guarded package tests match 182 source layouts and controlled ownership checks.
+Its visible desktop verification is pending.
+
+The [Theme Toggle draft](docs/theme-toggle.md) requests consumer-owned
+Light/Dark/System changes with native icon-button variants and source labels.
+Guarded hidden XAML checks verify its normal geometry and caller metadata
+ownership. Its visible desktop verification is pending.
+
+The [FeedGrid preview](docs/feed-grid.md) auto-fills minimum-width columns,
+reserves empty tracks and retains original caller controls across resizing.
+The [FeedColumn preview](docs/feed-column.md) composes a fixed title/count/filter
+header with an independent native scrolling body and caller-owned content.
+The [FeedItem preview](docs/feed-item.md) presents author/time/relevance metadata,
+wrapped content/categories and consumer-owned source-link requests.
+The [Select and HeaderSelect previews](docs/select.md) provide three menu sizes,
+compact header sizing and requests over original consumer options and bindings.
+The [AppShell preview](docs/app-shell.md) composes original header/body/footer
+controls with a viewport minimum and caller-controlled header offset.
+The [Header prototype](docs/header.md) composes original brand/navigation and
+desktop/mobile actions with responsive, fixed/sticky/static layout.
+The [Popover prototype](docs/popover.md) anchors original caller content to an
+original trigger, with controlled requests, internal history and source
+placement. Hidden source-layout and ownership checks pass; full acceptance is
+in progress.
+The [HoverCard prototype](docs/hover-card.md) retains original trigger/content
+in an inline hover surface with source placement and opacity motion. Hidden
+layout, presentation-clock and ownership diagnostics pass; physical input and
+complete visual/platform acceptance remain open.
+The [ScrollArea prototype](docs/scroll-area.md) retains original content in a
+native viewport with user orientation, programmatic offsets, reserved scrollbar
+space and template support. Hidden source-layout, ownership and thumb-body
+checks pass in the catalog and a fresh package consumer; full acceptance is open.
+The [AdminShell draft](docs/admin-shell.md) adds a retained sidebar and a native
+main scroller containing body and footer. Its independent native consumer matches
+312 initial and 16 scrolled source states and passes 66 ownership checks,
+including zero-minimum reset and live caller width constraints.
+
+The [Monitoring and Editorial component demos](docs/workspace-demos.md) combine
+the library controls into feed selection/review and page editing compositions.
+Both use fictional in-memory data, with retained edits and explicit discard
+decisions. Their visible interaction and platform acceptance remain in progress.
+
+The [PanelLayout preview](docs/panel-layout.md) composes fixed and growing
+panels horizontally and in vertical columns, retaining caller controls and
+horizontal scrolling. The monitoring/editorial demonstrations remain required.
+
+The [Panel preview](docs/panel.md) supplies an accented title/count header,
+optional consumer slots and an independently scrolling body with retained state.
 The [Date controls preview](docs/date-controls-reference.md) supplies a controlled
 Calendar, Date Picker and Date Range Picker with local-date bounds, consumer
 requests, presets and native popup focus. `BleeckerTextLayout.UseReferenceLineBox`
@@ -53,6 +162,9 @@ original content and a real filtered-row catalog view.
 The [Data Table Pagination preview](docs/data-table-pagination-reference.md)
 connects page navigation, size selection and filtered selection counts to the
 consumer's original table and rows, with viewport-responsive controls.
+The separate [Pagination draft](docs/pagination.md) requests caller-owned pages
+through native buttons. Its catalog fixture is available from source; the
+previously verified v20 NuGet preview does not include this new control.
 The [Data Table Column Toggle preview](docs/data-table-column-toggle.md) offers
 eligible original columns in a nonmodal checkbox popover. Visibility changes
 reach the consumer's original columns and visible-cell projection.
@@ -111,6 +223,7 @@ From the repository root, in Windows PowerShell:
 ```powershell
 dotnet build Orchard.sln -c Release -p:Platform=x64
 dotnet test tests/Orchard.Tests/Orchard.Tests.csproj
+dotnet test tests/Orchard.Text.Tests/Orchard.Text.Tests.csproj -c Release
 ./scripts/run-catalog.ps1
 ```
 

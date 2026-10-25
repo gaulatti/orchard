@@ -1,0 +1,141 @@
+# Context Menu draft
+
+The pinned `context-menu.tsx` has its own recipe: 160-DIP minimum width,
+36-DIP minimum action height, Encode Sans Regular 13px/19.5px text, 10/6px
+padding, five-DIP action corners and a 32-DIP inset option. Its focus background
+is light sand in Light and white at 7% in Dark. The popup shares the canonical
+border, six-DIP padding, seven-DIP corners and overlay shadow.
+
+`BleeckerContextMenu` is a native MenuFlyout assigned to a target's
+`ContextFlyout`. Native items retain their original commands, parameters,
+Click handlers and accessible names. The context-specific presenter, plain,
+inset and composed-content styles are registered in `ContextMenusFixture`.
+Tokens and generated styles are owned by `generate-tokens.mjs` and
+`context-menu-styles.mjs`; do not edit generated dictionaries.
+
+Acceptance requires native context invocation, original actions and dismissal,
+source geometry/paint, owner-aware modal placement and inactive input guards,
+source selection cancellation, popup focus and lifecycle handling, runtime
+catalog examples and independent x64/ARM64 NuGet consumers. This first draft
+does not yet establish all those requirements. The public shared-plane adapter
+is now implemented and verified through the actual control in hidden windows.
+It retains the original native presenter as the items/commands and placement
+owner, with a transparent size proxy in its template. The complete original
+styled surface moves into its nearest modal branch. Fourteen public-control
+cases verify automatic mounting, native item peer parentage, original commands
+and bindings, live text/content/theme/style updates, RTL, viewport changes,
+canceled dismissal, owner teardown and remount. A fresh NuGet consumer repeats
+all fourteen cases. Final component acceptance remains open.
+
+`IsModal` is a bindable root option and defaults to `true`. Set it to `false`
+to keep outside controls available while the menu is open. The menu's own
+surface remains hit-testable, and outside pointer/focus handlers request native
+dismissal. A nonmodal menu still belongs to its nearest modal owner; an upper
+modal shields that owner's menu without rewriting caller enabled bindings.
+Standalone nonmodal menus use the same projected original surface without
+requiring a `BleeckerModalHost`. Default standalone modal menus keep their
+original Windows presentation.
+
+Live option changes update the backdrop and focus-scope registration while
+retaining the original native items, public binding and open/close lifecycle.
+The browser source remounts its content on a mode change; that can cause focus
+side effects and even dismissal. The native option preserves caller objects
+instead of recreating them. Actual native focus transitions remain unverified.
+Target removal retires the menu even if normal closing was canceled, including
+the unprojected standalone path; normal cancellation still retains an attached
+menu.
+
+`ContextMenuOptions.json` freezes 24 browser histories, 56 snapshots and four
+PNGs, reproduced byte for byte independently. The public native option fixture
+covers 38 cases in both themes across standalone, hosted and modal-owned roots.
+Its 34 WinUI hit-stack samples check the actual menu subtree: WinUI may report
+an internal PopupRoot Canvas outside a null-background popup, so an empty
+global hit stack is not the input contract. Nonmodal samples retain the outside
+target and exclude the menu plane; modal samples include that plane. These are
+background input-surface checks, not physical pointer or focus-routing tests.
+The actual catalog switch binds the option and demonstrates both modes.
+
+The background root probe now verifies original command/parameter identity,
+native Click → Command → Closed order, and reopening in both themes. A caller
+can cancel the next native close through `Closing` and `args.Cancel = true`;
+the action still fires, the original menu stays open, and a later inherited
+`Hide()` closes it once. Native Click `Handled` does not implement this
+cancellation contract. The root probe tests cancellation separately from
+ordinary dismissal, without introducing another selection event.
+
+Ten native layouts match the source structural recipe: three ordinary rows,
+inset, edge-case content, Unicode and empty menus in both themes. The measured
+inset width is 161 DIPs versus Chromium's 160.578125; the one-DIP advance-width
+tolerance is explicit. Heights, row positions, padding, corner radii, native
+names, disabled state and colors are checked separately. Native surface PNGs
+have independent background-paint checks. This does not verify source popup
+coordinates, hover/focus paint, full text rasterization, shadow parity or motion.
+
+`tests/Reference/Menu.json` freezes ten Context Menu source states among the
+32 menu states. `ContextMenuModal.json` adds eight actual browser histories,
+24 snapshots and six PNGs for ordinary selection, prevented selection, modal
+ownership and owner unmount in both themes. Independent captures reproduce
+the JSON and PNG bytes. The capture validates all 122 CSS-scanned source files
+against the pinned commit and records its 1,762 actual bundled inputs.
+Open/close animation stays disabled pending the source motion implementation.
+The goal remains exclusively the component library and fictional demos.
+
+The source makes an inactive branch inert without changing the enabled state
+or opacity of its items. A programmatic DOM click still invokes selection;
+native original programmatic invocation must likewise remain caller-owned.
+Do not replace commands or rewrite enabled bindings to invent a different
+contract. User pointer/focus shielding and direct programmatic invocation are
+separate boundaries. Source owner unmount removes the portal even when the
+last selection prevented dismissal.
+
+The styled native investigation moves the complete original overlay surface,
+including its real ScrollViewer and ItemsPresenter, into the nearest modal's
+shared plane. Its temporary outer Grid is the only change to the generated
+producer template. Before/after native surface pixels match byte for byte.
+Original actions, composed content, commands, parameters, native cancellation,
+inherited Hide and reopening survive; an upper modal blocks hit testing and
+the inspected focus-ownership plan while caller enabled/opacity state stays
+intact. The test explicitly retains programmatic invocation, as the source does.
+
+Owner teardown detaches the shared branch but canceled closing can leave the
+native marker open. Explicitly closing that marker removes it, and the original
+actions survive owner remount. The public adapter now performs this cleanup
+automatically; the earlier investigation performed it explicitly. Those eight
+native cases are the earlier SDK-boundary prototype. They use
+transient roots, fixed test coordinates and hidden windows with no focus or
+activation. The subsequent public-control cases use no manual move or marker
+closure. They verify a Menu peer whose original item peers identify that menu
+as their parent; inactive ownership removes it from the active automation tree
+without rewriting caller enabled state. A transparent native size proxy keeps
+native placement authoritative while the original styled surface renders in
+the shared plane. Its displayed box uses the native rounded size; content
+observers invalidate natural measurement when a clipped label or composed
+content changes. Actual native focus/key/pointer routing, nested native menu
+extensions, full source modality/focus fidelity, complete source placement/
+raster/motion and physical scaling still require acceptance.
+
+Custom presenter styles may derive from `BleeckerContextMenuPresenterStyle`.
+An overridden template must retain a Grid named `PART_ContextPortalSlot` and
+its direct BleeckerOverlaySurface child named `PART_ContextSurface`. Missing
+parts fail explicitly when a menu joins the shared host.
+
+The actual catalog probe invokes all four enabled original actions in each
+theme and modality, including both composed-content styles. Each invocation updates the
+visible status and dismisses the native menu; both original content elements
+remain attached to their caller-owned items. An isolated NuGet consumer repeats
+all 38 option cases, the root layouts and command/cancellation checks, plus all
+fourteen hosted adapter cases. x64 and ARM64 catalog and consumer builds pass;
+ARM64 runtime is unverified. The local root-option preview package
+contains all 144 loose theme dictionaries, the native PRI, six bundled fonts
+and the current package README. This verifies the adapter's scoped behavior;
+physical input/focus, source motion/placement and platform acceptance stay open.
+
+Run `verify-context-menu-root.ps1` against the catalog output or a fresh package
+consumer (`-HostName PackageConsumer`); run `verify-context-menu-catalog.ps1`
+against the actual catalog output. `verify-context-menu-options.ps1` exercises
+the root option in either host; its auditor also rejects the retained actual
+standalone teardown counterexample. These wrappers reject an active Orchard
+build or a host without their command before launching. The catalog also exits
+with code 2 for unknown `--probe-hidden-*` commands. These guards repair an
+invalidated build/probe overlap that opened an older regular catalog; that
+process was stopped, and the failed run is excluded from successful evidence.

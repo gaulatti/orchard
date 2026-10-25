@@ -1,0 +1,25 @@
+{
+  "format": "orchard-data-table-paint-counterexamples-v1",
+  "files": [
+    {
+      "kind": "generic-light-palette",
+      "frame": "tests/Reference/DataTablePaintRejectedPalette.png",
+      "frameSha256": "db8dce17010aa4cbe3006b7ac5139993d18b86ed5a63aa1ddb7497947bd567d0",
+      "nativeFrame": "data-table-reference-Light-default.png",
+      "originalReportSha256": "cf0cd5fc0c178724843dd87359b4653db8da53b57b6fde957c99198bf37e9bad",
+      "librarySha256": "90241d60f66fb470e7c98be671dff105a1d0fe6eb70eb86350b1ae244df3692d",
+      "hostSha256": "fc79246dc009a88991da7b090656d6ef289b6b860012ffcebbddb5c3b10721f6"
+    },
+    {
+      "kind": "unclipped-shadow-overflow",
+      "frame": "tests/Reference/DataTablePaintRejectedRtlMask.png",
+      "frameSha256": "a8994053c9825c90e5cd07c8822ba2b9530984513de37c615c1254f07f5ee9d3",
+      "nativeFrame": "data-table-reference-Light-rtl.png",
+      "originalReportSha256": "9cd87285a10c8fb5e748da7440978b3e47c15964187e87d57c18cb507df03af9",
+      "librarySha256": "9ef1bd472f351abe8fc68fab0a7b28421568e14f0801ae2758f251ea6441881c",
+      "hostSha256": "4031a2cc336a37b17363bf58711eebcb3e7b1bff1869717458612ba27743668d"
+    }
+  ],
+  "earlyCaptureEndpointMismatchObserved": false,
+  "priorSourcePackagePixelDifferenceCauseVerified": false
+}

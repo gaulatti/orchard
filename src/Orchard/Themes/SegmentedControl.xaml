@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ControlTemplate x:Key="BleeckerSegmentedButtonTemplate" TargetType="Button">
+  <Grid x:Name="SegmentBody">
+   <VisualStateManager.VisualStateGroups>
+    <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal"/><VisualState x:Name="PointerOver"/><VisualState x:Name="Pressed"/><VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="SegmentBody.Opacity" Value=".55"/></VisualState.Setters></VisualState></VisualStateGroup>
+    <VisualStateGroup x:Name="SelectionStates"><VisualState x:Name="SegmentUnselected"/><VisualState x:Name="SegmentSelected"><VisualState.Setters><Setter Target="SegmentBackground.Background" Value="{ThemeResource BleeckerCardBrush}"/><Setter Target="SegmentLabel.Foreground" Value="{ThemeResource BleeckerSeaBrush}"/></VisualState.Setters></VisualState></VisualStateGroup>
+   </VisualStateManager.VisualStateGroups>
+   <Border x:Name="SegmentBackground" Background="Transparent" CornerRadius="{TemplateBinding CornerRadius}"/>
+   <Canvas Opacity="0" IsHitTestVisible="False"><TextBlock x:Name="SegmentFocusPalette" Foreground="{ThemeResource BleeckerSeaBrush}"/></Canvas>
+   <TextBlock x:Name="SegmentLabel" Text="{TemplateBinding Content}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" Foreground="{TemplateBinding Foreground}" Margin="{TemplateBinding Padding}" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw"/>
+  </Grid>
+ </ControlTemplate>
+ <Style TargetType="local:BleeckerSegmentedControl">
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/><Setter Property="FontWeight" Value="Medium"/><Setter Property="FontSize" Value="13"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}"/><Setter Property="Background" Value="{ThemeResource BleeckerMutedBrush}"/>
+  <Setter Property="BorderBrush" Value="{ThemeResource BleeckerBorderBrush}"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="9"/>
+  <Setter Property="HorizontalAlignment" Value="Left"/><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSegmentedControl"><Grid x:Name="PART_Root">
+   <Border x:Name="SegmentedBackground" Background="{TemplateBinding Background}" Opacity=".65" CornerRadius="{TemplateBinding CornerRadius}"/>
+   <Grid x:Name="PART_Items" Margin="4"/>
+   <Border x:Name="SegmentedBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" IsHitTestVisible="False"/>
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

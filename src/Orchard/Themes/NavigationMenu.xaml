@@ -1,0 +1,39 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style x:Key="BleeckerNavigationTopLinkStyle" TargetType="HyperlinkButton">
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/><Setter Property="FontSize" Value="14"/><Setter Property="FontWeight" Value="Medium"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}"/><Setter Property="Background" Value="Transparent"/>
+  <Setter Property="Padding" Value="12,8"/><Setter Property="BorderThickness" Value="0"/><Setter Property="MinWidth" Value="0"/><Setter Property="MinHeight" Value="0"/>
+  <Setter Property="CornerRadius" Value="{StaticResource BleeckerUiCornerRadius}"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="HorizontalAlignment" Value="Stretch"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="VerticalContentAlignment" Value="Center"/>
+  <Setter Property="UseSystemFocusVisuals" Value="True"/><Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerAccentBlueBrush}"/><Setter Property="FocusVisualPrimaryThickness" Value="2"/><Setter Property="FocusVisualSecondaryThickness" Value="0"/><Setter Property="FocusVisualMargin" Value="0"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="HyperlinkButton"><Grid x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" UseLayoutRounding="False">
+   <VisualStateManager.VisualStateGroups><VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal"/><VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="Hover.Opacity" Value="1"/></VisualState.Setters></VisualState><VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="Hover.Opacity" Value="1"/></VisualState.Setters></VisualState><VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="Root.Opacity" Value=".5"/></VisualState.Setters></VisualState></VisualStateGroup></VisualStateManager.VisualStateGroups>
+   <Border x:Name="Hover" Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0"/>
+   <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" UseLayoutRounding="False"/>
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+ <Style x:Key="BleeckerNavigationGroupLinkStyle" TargetType="HyperlinkButton" BasedOn="{StaticResource BleeckerNavigationTopLinkStyle}">
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="Padding" Value="12,10"/>
+ </Style>
+ <Style x:Key="BleeckerNavigationTriggerStyle" TargetType="Button">
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/><Setter Property="FontSize" Value="13"/><Setter Property="FontWeight" Value="Medium"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextSecondaryBrush}"/><Setter Property="Background" Value="Transparent"/><Setter Property="Padding" Value="12,8"/><Setter Property="BorderThickness" Value="0"/><Setter Property="MinWidth" Value="0"/><Setter Property="MinHeight" Value="0"/>
+  <Setter Property="CornerRadius" Value="{StaticResource BleeckerUiCornerRadius}"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="UseSystemFocusVisuals" Value="True"/>
+  <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerAccentBlueBrush}"/><Setter Property="FocusVisualPrimaryThickness" Value="2"/><Setter Property="FocusVisualSecondaryThickness" Value="0"/><Setter Property="FocusVisualMargin" Value="0"/>
+  <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Grid x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" UseLayoutRounding="False"><Grid.RenderTransform><TranslateTransform x:Name="Shift"/></Grid.RenderTransform>
+   <VisualStateManager.VisualStateGroups>
+    <VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal"/><VisualState x:Name="PointerOver"><VisualState.Setters><Setter Target="Hover.Opacity" Value="1"/></VisualState.Setters></VisualState><VisualState x:Name="Pressed"><VisualState.Setters><Setter Target="Hover.Opacity" Value="1"/><Setter Target="Shift.Y" Value="1"/></VisualState.Setters></VisualState><VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="Root.Opacity" Value=".5"/></VisualState.Setters></VisualState></VisualStateGroup>
+    <VisualStateGroup x:Name="MenuStates"><VisualState x:Name="MenuClosed"/><VisualState x:Name="MenuOpen"><VisualState.Setters><Setter Target="Active.Opacity" Value="1"/><Setter Target="Hover.Visibility" Value="Collapsed"/></VisualState.Setters></VisualState></VisualStateGroup>
+   </VisualStateManager.VisualStateGroups>
+   <Border x:Name="Hover" Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0"/><Border x:Name="Active" Background="{ThemeResource BleeckerMenuHoverBrush}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0"/>
+   <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="Center" UseLayoutRounding="False"/>
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+ <Style x:Key="BleeckerNavigationSurfaceStyle" TargetType="local:BleeckerOverlaySurface"><Setter Property="Width" Value="256"/><Setter Property="MinWidth" Value="256"/><Setter Property="Padding" Value="6"/><Setter Property="BorderThickness" Value="1"/></Style>
+ <Style TargetType="local:BleeckerNavigationMenu">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="VerticalAlignment" Value="Top"/>
+  <Setter Property="TopLinkStyle" Value="{StaticResource BleeckerNavigationTopLinkStyle}"/><Setter Property="GroupLinkStyle" Value="{StaticResource BleeckerNavigationGroupLinkStyle}"/><Setter Property="TriggerStyle" Value="{StaticResource BleeckerNavigationTriggerStyle}"/><Setter Property="SurfaceStyle" Value="{StaticResource BleeckerNavigationSurfaceStyle}"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerNavigationMenu"><Grid x:Name="PART_Entries" FlowDirection="LeftToRight" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

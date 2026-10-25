@@ -1,0 +1,40 @@
+{
+  "format": "orchard-overlay-near-shaders-v1",
+  "compilerVersion": "10.0.19041.685 (WinBuild.160101.0800)",
+  "profiles": [
+    "lib_4_0",
+    "ps_4_0"
+  ],
+  "shaders": [
+    {
+      "name": "caster",
+      "sourceSha256": "9c280c692e1c5659f50628432750f88c4ed6c4972d2a902ad34cf8038f1dc1c3",
+      "sha256": "d664aa31216d517eb37b6c99101f2e0a30d227bb30ef1a6a2972b328bb0efdab"
+    },
+    {
+      "name": "mapping",
+      "sourceSha256": "10ef68d1cb5016a00071d9e9dbc586d5e1076444b9c6088db86dc830226e9d45",
+      "sha256": "ac29d43f5a4b27f2150a940dc6cfc036165ee5828fc9e2dbc50492a7ba3f3ae4"
+    },
+    {
+      "name": "gaussian",
+      "sourceSha256": "1843ad2e26e8d4d7fbba260585e7a038d880b99027e4f6153647a25c99a19e88",
+      "sha256": "22b252ad24da30d4c9fac04ea7373cd5e87b945ec3f3aa81aad09d0b0bb3486e"
+    },
+    {
+      "name": "encode2",
+      "sourceSha256": "d9bc8c536923b9a0721b42a5a2f34437ef7dfb2e67c08c3f245ba9d0d865a6a2",
+      "sha256": "ed614691f848c923dbbaa13ef9e159f5ae163e6255b27698c48e8a15be32d897"
+    },
+    {
+      "name": "circle-profile",
+      "sourceSha256": "44b0b72ad2582080e8b434bb5f2a26a8d4ecc2b6263ee7c9e4e368c0f8a275d9",
+      "sha256": "26c6c67556e03f8a82a282c5b07324f013ac66f746bc4341cf7f5f5ed3412c1d"
+    },
+    {
+      "name": "rectangle-profile",
+      "sourceSha256": "89a89837b3122ff0e63615b30ac65a5563a222f256b03a99834dd7d5af0e5e56",
+      "sha256": "53345ec1679d6c853e7a80cc956dcef24282d2e90204a7fc551831b3e0f8dae6"
+    }
+  ]
+}

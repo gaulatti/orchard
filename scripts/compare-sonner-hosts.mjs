@@ -1,0 +1,23 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {verifySonnerNative} from './verify-sonner.mjs';
+
+const option=name=>{const i=process.argv.indexOf(name);assert(i>=0&&process.argv[i+1]);return process.argv[i+1];};
+const source=option('--source'),consumer=option('--consumer'),buildFolder=option('--package-build'),packageFile=option('--package'),output=option('--output');
+const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const read=async file=>JSON.parse(await fs.readFile(file));
+const sourceAudit=await verifySonnerNative(source,'Orchard.Catalog.dll');
+const consumerAudit=await verifySonnerNative(consumer,'PackageConsumer.dll');
+const packageSha256=hash(await fs.readFile(packageFile));
+const build=await read(path.join(buildFolder,'result.json')),cleanup=await read(path.join(buildFolder,'cleanup.json'));
+assert.equal(build.buildPassed,true);assert.equal(build.runtimeVerified,false);assert.equal(build.platform,'x64');assert.equal(build.packageSha256,packageSha256);
+assert.equal(cleanup.removed,true);assert.equal(cleanup.isolatedConsumer,build.isolatedConsumer);
+assert.equal(sourceAudit.librarySha256,consumerAudit.librarySha256);
+assert.equal(hash(await fs.readFile(path.join(buildFolder,'app/Orchard.dll'))),consumerAudit.librarySha256);
+const a=await read(path.join(source,'sonner.json')),b=await read(path.join(consumer,'sonner.json'));
+for(const key of ['states','contracts','presence','standalone'])assert.deepEqual(a[key],b[key],key+' differs between source and fresh package');
+for(const state of a.states)assert.deepEqual(await fs.readFile(path.join(source,state.file)),await fs.readFile(path.join(consumer,state.file)),state.file);
+const result={format:'orchard-sonner-host-comparison-v1',passed:true,source,consumer,package:packageFile,packageSha256,librarySha256:sourceAudit.librarySha256,states:a.states.length,contracts:a.contracts.length,presenceHistories:a.presence.length,standaloneHistories:a.standalone.length,byteIdenticalPngPairs:a.states.length,isolatedPackageBuildVerified:true,sourceRasterParityVerified:false,nativeComponentAccepted:false};
+await fs.writeFile(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(result));

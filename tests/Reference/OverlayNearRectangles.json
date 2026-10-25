@@ -1,0 +1,2598 @@
+{
+  "passed": true,
+  "diagnosticOnly": true,
+  "browser": "155.0.4283.62",
+  "browserMetadata": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "gpu": {
+    "featureStatus": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "raw_draw": "disabled_off_ok",
+      "skia_graphite": "disabled_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "unavailable_off",
+      "webgl": "enabled",
+      "webgpu": "enabled",
+      "webnn": "disabled_off"
+    },
+    "auxiliary": {
+      "amdSwitchable": false,
+      "bgra8OverlaySupport": "DIRECT",
+      "canSupportThreadedTextureMailbox": false,
+      "directComposition": true,
+      "directMLFeatureLevel": "Not supported",
+      "directRenderingVersion": "",
+      "displayType": "ANGLE_D3D11",
+      "dx12FeatureLevel": "Not supported",
+      "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_base_vertex_base_instance_shader_builtin GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_copy_texture_3d GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_multiview_multisample GL_ANGLE_pack_reverse_row_order GL_ANGLE_polygon_mode GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_provoking_vertex GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_texture_usage GL_ANGLE_translated_shader_source GL_APPLE_clip_distance GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_compressed_texture GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_EGL_image_external_wrap_modes GL_EXT_base_instance GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_draw_elements_base_vertex GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_shader_texture_lod GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_NV_EGL_stream_consumer_external GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_depth24 GL_OES_depth32 GL_OES_draw_buffers_indexed GL_OES_draw_elements_base_vertex GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_border_clamp GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_OVR_multiview GL_OVR_multiview2 ",
+      "glImplementationParts": "(gl=egl-angle,angle=d3d11)",
+      "glRenderer": "ANGLE (Intel, Intel(R) UHD Graphics 630 (0x00003E92) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.101.2141)",
+      "glResetNotificationStrategy": 33362,
+      "glVendor": "Google Inc. (Intel)",
+      "glVersion": "OpenGL ES 3.0 (ANGLE 2.1.48257 git hash: 21c0f7a0f5af)",
+      "glWsExtensions": "EGL_EXT_create_context_robustness EGL_ANGLE_d3d_share_handle_client_buffer EGL_ANGLE_d3d_texture_client_buffer EGL_ANGLE_surface_d3d_texture_2d_share_handle EGL_ANGLE_query_surface_pointer EGL_ANGLE_window_fixed_size EGL_ANGLE_keyed_mutex EGL_ANGLE_surface_orientation EGL_ANGLE_direct_composition EGL_NV_post_sub_buffer EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_stream EGL_KHR_stream_consumer_gltexture EGL_NV_stream_consumer_gltexture_yuv EGL_ANGLE_stream_producer_d3d_texture EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_CHROMIUM_sync_control EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_image_d3d11_texture EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_ANGLE_memory_usage_report ",
+      "glWsVendor": "Google Inc. (Intel)",
+      "glWsVersion": "1.5 (ANGLE 2.1.48257 git hash: 21c0f7a0f5af)",
+      "inProcessGpu": false,
+      "initializationTime": 0.149579,
+      "isAsan": false,
+      "isClangCoverage": false,
+      "jpegDecodeAcceleratorSupported": false,
+      "maxMsaaSamples": "16",
+      "nv12OverlaySupport": "DIRECT",
+      "optimus": false,
+      "p010OverlaySupport": "SOFTWARE",
+      "passthroughCmdDecoder": true,
+      "pixelShaderVersion": "5.0",
+      "playreadyHardwareDrmSupport": false,
+      "processCrashCount": 0,
+      "rgb10a2OverlaySupport": "SOFTWARE",
+      "sandboxed": false,
+      "skiaBackendType": "GaneshGL",
+      "subpixelFontRendering": true,
+      "supportsD3dSharedImages": false,
+      "supportsDirectML": false,
+      "supportsDx12": false,
+      "supportsOverlays": true,
+      "supportsVulkan": false,
+      "targetCpuBits": 64,
+      "vertexShaderVersion": "5.0",
+      "visibilityCallbackCallCount": 0,
+      "vulkanVersion": "Not supported",
+      "yuy2OverlaySupport": "DIRECT"
+    }
+  },
+  "previousSourceSha256": "98352ef757aef4ab6833a987865196f91a5befe65e9fcf4a2411ab0d39d27adc",
+  "sourceCases": 44,
+  "baselineCasesByteIdentical": 2,
+  "deviceScaleFactor": 1,
+  "osSettingsChanged": false,
+  "hardwareInputSent": false,
+  "externalNetworkRequests": 0,
+  "scriptSha256": "8e8a5dd6de3561efb5846541249766d38d9f644866c7284dcf3454b6f380bedc",
+  "cases": [
+    {
+      "id": "rect-tiny-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 1,
+        "height": 1
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-tiny-WhiteMask.png",
+      "sha256": "79a3f35598dfe6a38321063f733afa4fafc2e22fbb63bb6580260b27da835abd",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 1,
+          "height": 1
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-tiny-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 1,
+        "height": 1
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-tiny-Light.png",
+      "sha256": "0ceff35addcd12d0a81320f63db3d7288ce941e323cfa44a8dcd9248cfe2d056",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 1,
+          "height": 1
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-tiny-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 1,
+        "height": 1
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-tiny-Dark.png",
+      "sha256": "e97ad9b336581dbb13f13aab78cdacfbf9350ee4720ed12ad8544ab717f6ad5d",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 1,
+          "height": 1
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-tiny-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 1,
+        "height": 1
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-tiny-Transparent.png",
+      "sha256": "5bb2d24a67c75044c16e7a8076cf12d9b64afc9c26b9b2c71e0437ede909a659",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 1,
+          "height": 1
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small7-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 7,
+        "height": 7
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-small7-WhiteMask.png",
+      "sha256": "9ec07373c17b29b343844967b12eb40d0ae10c3b1a345c63e45dbf63a98d5d5c",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 7,
+          "height": 7
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small7-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 7,
+        "height": 7
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small7-Light.png",
+      "sha256": "f2f2f49cbb930e0c62e51549b5de41552f440b3ae196ea31e1f7f44f5f5ee17b",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 7,
+          "height": 7
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small7-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 7,
+        "height": 7
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small7-Dark.png",
+      "sha256": "e97ad9b336581dbb13f13aab78cdacfbf9350ee4720ed12ad8544ab717f6ad5d",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 7,
+          "height": 7
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small7-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 7,
+        "height": 7
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small7-Transparent.png",
+      "sha256": "d8f3bbe5d493b84b1a4894b796dd0e23753eeaf7f46c2a87213fa10842b664cd",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 7,
+          "height": 7
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small20-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-small20-WhiteMask.png",
+      "sha256": "1f78e5e2b5344da8ef5ba2a8672640c0257836e9110a76629daa5f38401a0ed7",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small20-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small20-Light.png",
+      "sha256": "1496bb3a95dadce71ac5361c4e605c60db301ac98dc7392209370793eb8fdb77",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small20-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small20-Dark.png",
+      "sha256": "70fc8386c7f1c669bd85936506e483e64754a8f4fcb363e3933114f34b0f66dd",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small20-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small20-Transparent.png",
+      "sha256": "62f12c08f29d14db1a9a97c53525496e26e3785d3cf3941e25e61545d0b72157",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small40-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 40,
+        "height": 40
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-small40-WhiteMask.png",
+      "sha256": "613a7ede2f4e331ffd058801b43f0f0c29cf74326d3cf6233abc394e4b36ed39",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 40
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small40-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 40,
+        "height": 40
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small40-Light.png",
+      "sha256": "657256d49a2d24d9eb01545f02972357a19503f46992014e05a8f71fef84c43e",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 40
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small40-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 40,
+        "height": 40
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small40-Dark.png",
+      "sha256": "0c23bc03bece2b1f5c6ac73e68a1a8860cca7dc8143c1f8bd384103fc7bc4631",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 40
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small40-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 40,
+        "height": 40
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small40-Transparent.png",
+      "sha256": "4d170bef3d0766f38876885c08313d48f50d0c7a8d73dae491b3137de131f595",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 40,
+          "height": 40
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-below-fast-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 41,
+        "height": 41
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-below-fast-WhiteMask.png",
+      "sha256": "fd8a01f5b3a501d648916e58bbf2894d55c31010e8e30394aa8592e973acc88b",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 41,
+          "height": 41
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-below-fast-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 41,
+        "height": 41
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-below-fast-Light.png",
+      "sha256": "0fa49fa324beeefa3d3cf7154a7e6bb25cb1898c88ec4a8b540cd0fc585a9ab3",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 41,
+          "height": 41
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-below-fast-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 41,
+        "height": 41
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-below-fast-Dark.png",
+      "sha256": "035eb525e323e0e726ec5057e1439cdf9db7b6bfb5f80d4d31efe7983e2b513d",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 41,
+          "height": 41
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-below-fast-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 41,
+        "height": 41
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-below-fast-Transparent.png",
+      "sha256": "40bd96163b935ea01dd2426ea0a105465d934c0789979ecda7c4b7c5403fb92a",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 41,
+          "height": 41
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-fast-boundary-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 42,
+        "height": 42
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-fast-boundary-WhiteMask.png",
+      "sha256": "09cd34826dcf8d8451f5b9b1b4142f0734fbe1296b097f6bc38ad4f23de116c5",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 42,
+          "height": 42
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-fast-boundary-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 42,
+        "height": 42
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-fast-boundary-Light.png",
+      "sha256": "3b61de00f23eba9dbbd7e8c5b261bcce262027bc516276e5e00321ee6a3cd883",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 42,
+          "height": 42
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-fast-boundary-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 42,
+        "height": 42
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-fast-boundary-Dark.png",
+      "sha256": "92bfc41a0a93b4a69e61bbe041098a4c090c9bd81bb4483e5317554b347ebab5",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 42,
+          "height": 42
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-fast-boundary-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 42,
+        "height": 42
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-fast-boundary-Transparent.png",
+      "sha256": "bd177a63eedb6177b1587b3c70375eff2458e915923f318c5db2b9bcc0bad8b1",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 42,
+          "height": 42
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-wide-short-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-wide-short-WhiteMask.png",
+      "sha256": "6f72b5620288bf6dad99d376d112560bfb0a8ec828210aa72a8d5d6621145dd4",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 20
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-wide-short-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-wide-short-Light.png",
+      "sha256": "d99526daf43fa1b4a57c32ba4837cb6a75d972a87780e64676fcff6abe9969c8",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-wide-short-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-wide-short-Dark.png",
+      "sha256": "0b59602d668373af0da540d749dddab05198c81dac574525633ddbf2decfa01d",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-wide-short-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-wide-short-Transparent.png",
+      "sha256": "dcd1c3e26cfbf0d783a1dcba1150c72fad4a362920ca03237ca59049d9de01b8",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-narrow-tall-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 200
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-narrow-tall-WhiteMask.png",
+      "sha256": "e3b8e22eca0933878b150b7ec57ea24456cd6da888d0ab126ef2905a73ee8c8d",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 200
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-narrow-tall-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 200
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-narrow-tall-Light.png",
+      "sha256": "f89a2085dadb8637da0aa4708390c155eb276ea9b284a8a7821ee268941af197",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 200
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-narrow-tall-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 200
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-narrow-tall-Dark.png",
+      "sha256": "2fa65522ef736bbae2137565fc921b924ebab7881ebf870cfb85b142cf9355b2",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 200
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-narrow-tall-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 200
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-narrow-tall-Transparent.png",
+      "sha256": "aad3d9aa6cc7247ccce35800295ea6ffebaf0086d35d9f42579fcfb3f482b475",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 20,
+          "height": 200
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "baselineSha256": "2e0000f60bde2d3d3b63467fcce491d2b651cec59052cd2c0914f5bd25894d97",
+      "file": "rect-large-WhiteMask.png",
+      "sha256": "2e0000f60bde2d3d3b63467fcce491d2b651cec59052cd2c0914f5bd25894d97",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-large-Light.png",
+      "sha256": "0d9744161a2ec3a8cb19c0bfb86f6a43e693744e22333906ce44e98c3e6d8b09",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-large-Dark.png",
+      "sha256": "c7acfed2d0d8d6ddc2fb472e4ed6a7c4ed6191754832af16faeed63d264ec826",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 200,
+        "y": 200
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-large-Transparent.png",
+      "sha256": "bfc18e1167216a9581f4c9b1e9e83dc4f59cf23589eb6b19728cc2e56f9cf301",
+      "computed": {
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 200px 200px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small-overlap-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "file": "rect-small-overlap-WhiteMask.png",
+      "sha256": "b0835cdda5495c0df960cee219413def771e7828404e0449fb2162098404009a",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small-overlap-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small-overlap-Light.png",
+      "sha256": "fb4293cece6a362448432eb502df3ebd1f977b44e8c77aacc2c7e53f3d3afea5",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small-overlap-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small-overlap-Dark.png",
+      "sha256": "821e50bc87e34c9c6605a2dbc2681e0b14f17f73cc8871395f9d9a2de7eea6f4",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-small-overlap-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 20,
+        "height": 20
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-small-overlap-Transparent.png",
+      "sha256": "0234f02567131beeb99d0142d04d948cc726deddc6d830c211c68aeb6cb15b92",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 20,
+          "height": 20
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-overlap-WhiteMask",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "WhiteMask",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": true,
+      "noBlur": false,
+      "baselineSha256": "7617807056cfeecb95b195570290ec84ae4a07caf6a5a4625989129b412b8673",
+      "file": "rect-large-overlap-WhiteMask.png",
+      "sha256": "7617807056cfeecb95b195570290ec84ae4a07caf6a5a4625989129b412b8673",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-overlap-Light",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-large-overlap-Light.png",
+      "sha256": "8c378ca7fd0cb1555f6eea518babdad364996756f48c01d3acf3b97fa236b569",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-overlap-Dark",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-large-overlap-Dark.png",
+      "sha256": "3b913793581c841f1a95279dd657faffe45d271625c7a53b43f4f79d2970b32d",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    },
+    {
+      "id": "rect-large-overlap-Transparent",
+      "family": "rectangle",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "offset": {
+        "x": 0,
+        "y": 4
+      },
+      "canvas": {
+        "theme": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "white": false,
+      "noBlur": false,
+      "file": "rect-large-overlap-Transparent.png",
+      "sha256": "935110c9e24e0c97c3daa2ff3eaacd97f08742fe742f489fe2826e4029cea3de",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "corners": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "stableFrames": 2,
+      "attempts": 2,
+      "externalNetworkRequests": 0
+    }
+  ],
+  "librarySourceChanged": false,
+  "nativeComponentAccepted": false
+}

@@ -1,0 +1,193 @@
+{
+  "format": "orchard-data-table-live-native-v1",
+  "passed": false,
+  "stage": "Light-data-table-equal-object-notified",
+  "error": "System.InvalidOperationException: Live original notification did not reach rendered text.\r\n   at Orchard.Testing.DataTableFixture.Require(Boolean condition, String message) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableFixture.cs:line 27\r\n   at Orchard.Testing.DataTableFixture.\u003C\u003Ec__DisplayClass18_4.\u003C\u003CRunLiveAsync\u003Eg__Record|7\u003Ed.MoveNext() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableLiveFixture.cs:line 111\r\n--- End of stack trace from previous location ---\r\n   at Orchard.Testing.DataTableFixture.RunLiveAsync(Window window, String output, String hostAssembly) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableLiveFixture.cs:line 114",
+  "states": [
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "initial",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 1
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 0,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-initial.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "equal-object-notified",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 0,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-equal-object-notified.png"
+    }
+  ],
+  "contracts": [],
+  "pngs": [
+    {
+      "file": "data-table-live-Light-data-table-initial.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "4238ae63acb6f76aa6142888177e70b193744a780898549e8c2f159fb53fc6c4"
+    },
+    {
+      "file": "data-table-live-Light-data-table-equal-object-notified.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "4238ae63acb6f76aa6142888177e70b193744a780898549e8c2f159fb53fc6c4"
+    }
+  ],
+  "guards": 21,
+  "focus": 0,
+  "activations": 0,
+  "librarySha256": "6819e782c4e01db1fc88619b1eb8c194c766e6ac06930fb85051e5308ed90245"
+}

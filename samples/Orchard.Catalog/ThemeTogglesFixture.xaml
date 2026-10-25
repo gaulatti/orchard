@@ -1,0 +1,22 @@
+<UserControl x:Class="Orchard.Catalog.ThemeTogglesFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Theme toggles" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Consumer-owned appearance. These fictional demos change only their own preview." Style="{StaticResource BleeckerBodyStyle}"/>
+  <Border x:Name="Preview" Background="{ThemeResource BleeckerBackgroundBrush}" Padding="16">
+   <StackPanel Spacing="12">
+    <orchard:BleeckerThemeToggle x:Name="Specimen" ThemeRequested="AcceptTheme"/>
+    <TextBlock x:Name="Status" Text="System theme" Style="{StaticResource BleeckerBodyStyle}"/>
+   </StackPanel>
+  </Border>
+  <StackPanel Orientation="Horizontal" Spacing="12">
+   <orchard:BleeckerThemeToggle Mode="Light" Size="Small"/>
+   <orchard:BleeckerThemeToggle Mode="Dark" Variant="Subtle"/>
+   <orchard:BleeckerThemeToggle Mode="System" Size="Large" Variant="Ghost"/>
+   <orchard:BleeckerThemeToggle Mode="Dark" IsEnabled="False"/>
+  </StackPanel>
+  <orchard:BleeckerThemeToggle Mode="Light" AutomationProperties.Name="Appearance — 東京" ToolTipService.ToolTip="Consumer tooltip"/>
+  <orchard:BleeckerThemeToggle x:Name="StyledMetadata" Mode="Dark"/>
+ </StackPanel>
+</UserControl>

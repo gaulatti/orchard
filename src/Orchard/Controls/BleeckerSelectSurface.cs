@@ -32,6 +32,9 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     private readonly DispatcherQueueTimer triggerSearchReset, contentSearchReset;
     private string triggerSearch = "", contentSearch = "", displayed = "";
     internal event EventHandler? SelectionChanged;
+    internal BleeckerSelectAppearance? Appearance {get;set;}
+    internal Action<BleeckerSelectItem>? RequestSelection {get;set;}
+    internal T AppearancePart<T>(string name) where T:class=>GetTemplateChild(name)as T??throw new InvalidOperationException($"Select requires {name}.");
 
     internal BleeckerSelectSurface(Func<bool> updating, Func<object?> currentSource, Func<string> displayText, Func<BleeckerSelectItem, bool> selectionMatches, string listboxName, string automationClassName)
     {
@@ -73,50 +76,65 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         set
         {
             if (ReferenceEquals(selected,value)) return;
-            if (!updating() && (!IsLoaded || !IsEnabled)) return;
+            if (!updating() && (!IsLoaded || !IsEnabled || !InteractionAllowed)) return;
             if (!updating() && value is { IsEnabled: false }) return;
             if (value is not null && !Items.Contains(value)) throw new ArgumentException("The selected page size must belong to the current options.");
+            if(!updating()&&value is not null&&RequestSelection is not null){RequestSelection(value);return;}
             var previous = selected; selected = value; previous?.NotifySelection(true,false); selected?.NotifySelection(false,true); RenderChooser(); SelectionChanged?.Invoke(this,EventArgs.Empty);
         }
     }
     internal bool IsDropDownOpen
     {
-        get => positionedPopup?.IsOpen == true;
-        set
-        {
-            if (positionedPopup is null) { if (value) throw new InvalidOperationException("The mounted page-size chooser requires its popup template."); return; }
-            if (value && (!IsLoaded || !IsEnabled)) return;
-            if (positionedPopup.IsOpen != value) positionedPopup.IsOpen = value;
-        }
+        get => modalBranch is { } branch ? modalHost?.IsBranchAttached(branch) == true : positionedPopup?.IsOpen == true;
+        set => SetPresentation(value);
     }
 
     protected override void OnApplyTemplate()
     {
-        DetachScrollChrome();
+        DismissWithoutFocus(); DetachScrollChrome();
+        if (popupItems is not null) { popupItems.ItemsSource = null; popupItems = null; }
         if (positionedPopup is not null) { positionedPopup.Opened -= PopupOpened; positionedPopup.Closed -= PopupClosed; positionedPopup.IsOpen = false; }
         base.OnApplyTemplate();
         positionedPopup = GetTemplateChild("Popup") as Popup ?? throw new InvalidOperationException("The page-size template requires Popup.");
+        popupRoot = positionedPopup.Child as Border ?? throw new InvalidOperationException("The chooser popup requires its original border root.");
         positionedPopup.DesiredPlacement = PopupPlacementMode.BottomEdgeAlignedLeft; positionedPopup.VerticalOffset = 4;
         positionedPopup.Opened += PopupOpened; positionedPopup.Closed += PopupClosed;
         trigger = (Border)GetTemplateChild("Trigger"); ring = (Border)GetTemplateChild("Ring"); displayedPresenter = (ContentPresenter)GetTemplateChild("ContentPresenter");
         positionedPopup.PlacementTarget = trigger;
-        var border = (Border)GetTemplateChild("PopupBorder"); border.Width = double.IsNaN(Width) ? ActualWidth : Width;
+        var border = (Border)GetTemplateChild("PopupBorder"); border.Width = Appearance?.PopupWidth??(double.IsNaN(Width) ? ActualWidth : Width);
         var surface = (BleeckerOverlaySurface)GetTemplateChild("PopupSurface");
         var scroll = (ScrollViewer)GetTemplateChild("ScrollViewer"); scroll.BringIntoViewOnFocusChange = false; scroll.IsTabStop = false; surface.Content = null;
+        // A bare ItemsPresenter discovers its owner through the template's
+        // Popup. Give the same original row controls an explicit owner so they
+        // remain mounted after that border moves into the shared portal plane.
+        scroll.Content = null;
+        popupItems = new ItemsControl { Name = "PART_Options", ItemsSource = Items, ItemsPanel = ItemsPanel, Margin = new Thickness(4), IsTabStop = false, UseLayoutRounding = false };
+        popupItems.Template = (ControlTemplate)XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType='ItemsControl'><ItemsPresenter UseLayoutRounding='False'/></ControlTemplate>");
+        AutomationProperties.SetAccessibilityView(popupItems, AccessibilityView.Raw);
+        scroll.Content = popupItems;
         var focusHost = new ChooserViewport(this) { Name = "PART_Listbox", Content = scroll, IsTabStop = true, UseSystemFocusVisuals = false, HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch };
         AutomationProperties.SetName(focusHost,listboxName); surface.Content = focusHost; AttachScrollChrome(surface,scroll,focusHost);
         border.KeyDown += (_, args) => HandleOpenKey(args); border.CharacterReceived += Typeahead;
         RefreshOpenValue();
+        Appearance?.Attach(trigger,ring,displayedPresenter);
     }
     private void PopupOpened(object? sender, object args)
     {
+        if (!ReferenceEquals(sender, positionedPopup) || positionedPopup?.IsOpen != true || modalBranch is not null) return;
+        PresentationOpened();
+    }
+    private void PresentationOpened()
+    {
+        if (openNotified) return; openNotified = true;
+        popupScope = BleeckerPopupScope.Attach(this, (FrameworkElement?)modalCanvas ?? popupRoot!, true, () => HostInteractionAllowed);
+        FocusManager.GettingFocus += KeepPopupFocus;
         ClearControlledFocus();
-        ((Border)positionedPopup!.Child).Width = ActualWidth;
+        popupRoot!.Width = Appearance?.PopupWidth??ActualWidth;
         triggerSearch = contentSearch = ""; triggerSearchReset.Stop(); contentSearchReset.Stop(); typeaheadOffset = null;
-        scrollInitialized = false; positionedPopup!.Child.UpdateLayout(); InitializeScrollIndicators(); RenderChooser(); NotifyExpansion(false,true);
+        scrollInitialized = false; popupRoot.UpdateLayout(); InitializeScrollIndicators(); RenderChooser(); NotifyExpansion(false,true);
         void FocusInitial()
         {
-            if (!IsDropDownOpen) return;
+            if (!IsDropDownOpen || !CanTakeFocus) { QueueOpenPosition(); return; }
             var option = selected is { IsEnabled: true } ? selected : Items.OfType<BleeckerSelectItem>().FirstOrDefault(item => item.IsEnabled);
             initialFocus = true;
             try
@@ -131,14 +149,17 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         else if (!DispatcherQueue.TryEnqueue(FocusInitial)) throw new InvalidOperationException("The opened chooser could not schedule option focus.");
     }
     private void PopupClosed(object? sender, object args)
-    { ClearControlledFocus(); StopScroll(); contentSearch = ""; contentSearchReset.Stop(); typeaheadOffset = null; if (restoreFocus && IsLoaded && IsEnabled) Focus(FocusState.Programmatic); restoreFocus = false; RenderChooser(); NotifyExpansion(true,false); }
+    { if (!ReferenceEquals(sender, positionedPopup) || positionedPopup?.IsOpen == true || modalBranch is not null) return; PresentationClosed(); }
+    private void PresentationClosed()
+    { if (!openNotified) return; openNotified = false; FocusManager.GettingFocus -= KeepPopupFocus; popupScope?.Dispose(); popupScope = null; ClearControlledFocus(); StopScroll(); contentSearch = ""; contentSearchReset.Stop(); typeaheadOffset = null; if (restoreFocus && IsLoaded && IsEnabled && CanTakeFocus) Focus(FocusState.Programmatic); restoreFocus = false; RenderChooser(); NotifyExpansion(true,false); }
     private void Close(bool focus) { restoreFocus = focus; IsDropDownOpen = false; }
+    internal void DismissWithoutFocus(){restoreFocus=false;IsDropDownOpen=false;StopScroll();triggerSearchReset.Stop();contentSearchReset.Stop();}
     protected override void OnPointerEntered(PointerRoutedEventArgs args) { base.OnPointerEntered(args); pointerOver = true; RenderChooser(); }
     protected override void OnPointerExited(PointerRoutedEventArgs args) { base.OnPointerExited(args); pointerOver = false; RenderChooser(); }
     protected override void OnPointerPressed(PointerRoutedEventArgs args)
     {
         base.OnPointerPressed(args);
-        if (!IsEnabled || !args.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
+        if (!IsEnabled || !CanTakeFocus || !args.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
         ClearControlledFocus();
         // Keep this genuine trigger press/release on its native owner while
         // opening a new popup input site and moving keyboard focus into it.
@@ -153,20 +174,21 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     {
         if (IsDropDownOpen) { HandleOpenKey(args); if (args.Handled) return; }
         else if (args.Key == VirtualKey.Space && triggerSearch.Length > 0) { args.Handled = true; return; }
-        else if (IsEnabled && args.Key is VirtualKey.Down or VirtualKey.Up or VirtualKey.Enter or VirtualKey.Space)
+        else if (IsEnabled && CanTakeFocus && args.Key is VirtualKey.Down or VirtualKey.Up or VirtualKey.Enter or VirtualKey.Space)
         { openingFromKeyboard = true; IsDropDownOpen = true; args.Handled = true; return; }
         base.OnKeyDown(args);
     }
     internal void HandleOpenKey(KeyRoutedEventArgs args)
     {
-        if (args.Handled || !IsDropDownOpen) return;
+        if (args.Handled || !IsDropDownOpen || !CanTakeFocus) return;
+        if (args.Key == VirtualKey.Escape && BleeckerTooltip.DismissForEscape(XamlRoot)) { args.Handled = true; return; }
         ClearControlledFocus();
         if (args.Key == VirtualKey.Tab) { args.Handled = true; return; }
         if (args.Key == VirtualKey.Space && contentSearch.Length > 0) { args.Handled = true; return; }
         if (args.Key == VirtualKey.Escape)
         {
             args.Handled = true;
-            if (!DispatcherQueue.TryEnqueue(() => { if (IsLoaded) Close(true); })) throw new InvalidOperationException("The page-size chooser could not finish keyboard dismissal.");
+            if (!DispatcherQueue.TryEnqueue(() => { if (IsLoaded && InteractionAllowed) Close(true); })) throw new InvalidOperationException("The page-size chooser could not finish keyboard dismissal.");
             return;
         }
         var options = Items.OfType<BleeckerSelectItem>().Where(item => item.IsEnabled).ToArray(); var focused = FocusManager.GetFocusedElement(XamlRoot) as BleeckerSelectItem; var index = Array.IndexOf(options,focused);
@@ -182,13 +204,14 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         if (!DispatcherQueue.TryEnqueue(() => { if (ReferenceEquals(currentSource(),source)) Commit(option); })) throw new InvalidOperationException("The page-size chooser could not finish its selection request.");
     }
     internal void Commit(BleeckerSelectItem option)
-    { if (!IsEnabled || !IsLoaded || !option.IsEnabled || !Items.Contains(option)) return; SelectedItem = option; Close(true); }
+    { if (!IsEnabled || !IsLoaded || !InteractionAllowed || !option.IsEnabled || !Items.Contains(option)) return; SelectedItem = option; Close(true); }
     internal bool SelectionMatches(BleeckerSelectItem item) => selectionMatches(item);
     internal void RefreshOpenValue()
     {
         if (displayedPresenter is null) return;
         var value = displayText();
-        var label = new TextBlock { Text = value, FontFamily = FontFamily, FontSize = FontSize, LineHeight = 20, LineStackingStrategy = LineStackingStrategy.BlockLineHeight, TextTrimming = TextTrimming.CharacterEllipsis, IsHitTestVisible = false }; AutomationProperties.SetAccessibilityView(label,AccessibilityView.Raw); displayedPresenter.Content = label;
+        if(Appearance is not null)Appearance.SetDisplay(displayedPresenter,value);
+        else{var label = new TextBlock { Text = value, FontFamily = FontFamily, FontSize = FontSize, LineHeight = 20, LineStackingStrategy = LineStackingStrategy.BlockLineHeight, TextTrimming = TextTrimming.CharacterEllipsis, IsHitTestVisible = false }; AutomationProperties.SetAccessibilityView(label,AccessibilityView.Raw); displayedPresenter.Content = label;}
         if (displayed != value) { var old = displayed; displayed = value; FrameworkElementAutomationPeer.FromElement(this)?.RaisePropertyChangedEvent(ValuePatternIdentifiers.ValueProperty,old,value); }
         RenderChooser();
     }
@@ -201,6 +224,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     {
         if (trigger is null || ring is null) return;
         var focused = FocusState != FocusState.Unfocused || IsDropDownOpen;
+        if(Appearance is not null){Appearance.Paint(pointerOver,focused);foreach(var item in Items.OfType<BleeckerSelectItem>())item.Render();return;}
         trigger.Background = Brush(palette,IsEnabled ? "BleeckerPaginationChooserBackgroundBrush" : "BleeckerPaginationChooserDisabledBrush");
         trigger.BorderBrush = Brush(palette,focused ? "BleeckerPaginationChooserFocusBrush" : pointerOver ? "BleeckerPaginationChooserHoverBrush" : "BleeckerPaginationChooserBorderBrush");
         ring.BorderBrush = Brush(palette,"BleeckerPaginationChooserRingBrush"); ring.Visibility = focused ? Visibility.Visible : Visibility.Collapsed; trigger.Opacity = IsEnabled ? 1 : .6;
@@ -208,13 +232,20 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     }
     internal void QueueOpenPosition()
     {
-        if (!IsDropDownOpen || positionedPopup is null) return;
-        ((Border)positionedPopup.Child).Width = ActualWidth;
-        positionedPopup.Child.UpdateLayout(); InitializeScrollIndicators();
-        var popupTop = positionedPopup.Child.TransformToVisual(XamlRoot.Content).TransformPoint(new Point()).Y;
+        if (!IsDropDownOpen || positionedPopup is null || popupRoot is null || positioning) return;
+        positioning = true;
+        try
+        {
+        var width = Appearance?.PopupWidth??ActualWidth; if (popupRoot.Width != width) popupRoot.Width = width;
+        popupRoot.UpdateLayout(); InitializeScrollIndicators();
+        if (modalBranch is not null) PositionHostedContent();
+        else
+        {
+        var popupTop = popupRoot.TransformToVisual(XamlRoot.Content).TransformPoint(new Point()).Y;
         var triggerTop = TransformToVisual(XamlRoot.Content).TransformPoint(new Point()).Y;
         var offset = popupTop < triggerTop ? -4d : 4d;
-        if (positionedPopup.VerticalOffset != offset) { positionedPopup.VerticalOffset = offset; positionedPopup.Child.UpdateLayout(); }
+        if (positionedPopup.VerticalOffset != offset) { positionedPopup.VerticalOffset = offset; popupRoot.UpdateLayout(); }
+        }
         if (controlledScrollOffset is { } retained && popupScroll is { } retainedScroll)
         {
             var wanted = Math.Clamp(retained, 0, retainedScroll.ScrollableHeight);
@@ -234,10 +265,12 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
             if (bounds.Top < 0) scroll.ChangeView(null,Math.Max(0,scroll.VerticalOffset+bounds.Top),null,true);
             else if (bounds.Bottom > scroll.ActualHeight) scroll.ChangeView(null,scroll.VerticalOffset+bounds.Bottom-scroll.ActualHeight,null,true);
         }
+        }
+        finally { positioning = false; }
     }
     private void Typeahead(UIElement sender, CharacterReceivedRoutedEventArgs args)
     {
-        if (args.Handled || !IsEnabled || char.IsControl(args.Character)) return;
+        if (args.Handled || !IsEnabled || !CanTakeFocus || char.IsControl(args.Character)) return;
         ClearControlledFocus();
         var search = IsDropDownOpen ? contentSearch : triggerSearch;
         if (args.Character == ' ' && search.Length == 0) { args.Handled = true; return; }
@@ -261,6 +294,10 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         args.Handled = true;
     }
     private void NotifyExpansion(bool before, bool after) => FrameworkElementAutomationPeer.FromElement(this)?.RaisePropertyChangedEvent(ExpandCollapsePatternIdentifiers.ExpandCollapseStateProperty,before?ExpandCollapseState.Expanded:ExpandCollapseState.Collapsed,after?ExpandCollapseState.Expanded:ExpandCollapseState.Collapsed);
+    internal void FocusPointerOption(BleeckerSelectItem item)
+    {
+        if (IsDropDownOpen && CanTakeFocus && item.IsEnabled && Items.Contains(item)) { ClearControlledFocus(); item.Focus(FocusState.Pointer); }
+    }
     private sealed class ChooserViewport(BleeckerSelectSurface chooser) : ContentControl
     {
         protected override void OnKeyDown(KeyRoutedEventArgs args) { chooser.HandleOpenKey(args); if (!args.Handled) base.OnKeyDown(args); }
@@ -275,13 +312,20 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
     private sealed class ChooserPeer(BleeckerSelectSurface chooser) : FrameworkElementAutomationPeer(chooser), IExpandCollapseProvider, ISelectionProvider, IValueProvider
     {
         protected override string GetClassNameCore() => chooser.automationClassName;
+        protected override string GetNameCore()=>chooser.Appearance?.Owner.Metadata.GetName()??base.GetNameCore();
+        protected override string GetAutomationIdCore()=>chooser.Appearance?.Owner.Metadata.GetAutomationId()??base.GetAutomationIdCore();
+        protected override string GetHelpTextCore()=>chooser.Appearance?.Owner.Metadata.GetHelpText()??base.GetHelpTextCore();
+        protected override AutomationPeer GetLabeledByCore()=>chooser.Appearance?.Owner.Metadata.GetLabeledBy()??base.GetLabeledByCore();
+        protected override IEnumerable<AutomationPeer> GetDescribedByCore()=>chooser.Appearance?.Owner.DescriptionPeers??base.GetDescribedByCore();
+        protected override bool IsRequiredForFormCore()=>chooser.Appearance?.Owner.Metadata.IsRequiredForForm()??base.IsRequiredForFormCore();
+        protected override bool IsDataValidForFormCore()=>chooser.Appearance?.Owner.Metadata.IsDataValidForForm()??base.IsDataValidForFormCore();
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.ComboBox;
         protected override object GetPatternCore(PatternInterface pattern) => pattern is PatternInterface.ExpandCollapse or PatternInterface.Selection or PatternInterface.Value ? this : base.GetPatternCore(pattern);
         public ExpandCollapseState ExpandCollapseState => chooser.IsDropDownOpen ? ExpandCollapseState.Expanded : ExpandCollapseState.Collapsed;
         public void Expand() { if (!chooser.IsEnabled) throw new ElementNotEnabledException(); if (!chooser.IsLoaded) throw new ElementNotAvailableException(); chooser.openingFromKeyboard = true; chooser.IsDropDownOpen = true; }
         public void Collapse() { if (!chooser.IsEnabled) throw new ElementNotEnabledException(); chooser.Close(true); }
         public bool CanSelectMultiple => false;
-        public bool IsSelectionRequired => false;
+        public bool IsSelectionRequired => chooser.Appearance?.Owner.Required??false;
         public IRawElementProviderSimple[] GetSelection() => chooser.selected is { } item ? [ProviderFromPeer(CreatePeerForElement(item))] : [];
         public bool IsReadOnly => true;
         public string Value => chooser.displayText();
@@ -292,21 +336,23 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
 internal sealed class BleeckerSelectItem : Button
 {
     internal BleeckerSelectSurface Chooser { get; }
+    internal T? AppearancePart<T>(string name)where T:class=>GetTemplateChild(name)as T;
     internal BleeckerSelectItem(BleeckerSelectSurface chooser)
     {
         Chooser = chooser; IsTabStop = true; UseSystemFocusVisuals = false; BorderThickness = new Thickness(0); Padding = new Thickness(12,6,36,6); HorizontalContentAlignment = HorizontalAlignment.Left; HorizontalAlignment = HorizontalAlignment.Stretch; MinWidth = 0; UseLayoutRounding = false;
-        Template = (ControlTemplate)XamlReader.Load("""
+        Template = chooser.Appearance?.OptionTemplate??(ControlTemplate)XamlReader.Load("""
             <ControlTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" TargetType="Button">
              <Grid Background="{TemplateBinding Background}" CornerRadius="5" Padding="{TemplateBinding Padding}" UseLayoutRounding="False"><ContentPresenter Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center"/><Viewbox x:Name="Checkmark" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-24,0" IsHitTestVisible="False"><Canvas Width="24" Height="24"><Path Data="M20 6L9 17L4 12" Stroke="{TemplateBinding Foreground}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/></Canvas></Viewbox></Grid>
             </ControlTemplate>
             """);
         Click += (_, _) => Chooser.QueueCommit(this); GotFocus += (_, _) => { Render(); if (Chooser.IsDropDownOpen) Chooser.QueueOpenPosition(); }; LostFocus += (_, _) => Render();
-        PointerMoved += (_, args) => { if (!args.IsGenerated && Chooser.IsDropDownOpen) { Chooser.ClearControlledFocus(); Focus(FocusState.Pointer); } };
+        PointerMoved += (_, args) => { if (!args.IsGenerated) Chooser.FocusPointerOption(this); };
     }
     protected override void OnApplyTemplate() { base.OnApplyTemplate(); Render(); }
     protected override void OnKeyDown(KeyRoutedEventArgs args) { Chooser.HandleOpenKey(args); if (!args.Handled) base.OnKeyDown(args); }
     internal void Render()
     {
+        if(Chooser.Appearance is not null){Chooser.Appearance.RenderItem(this);return;}
         FontFamily = Chooser.SelectionMatches(this) ? (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"] : Chooser.FontFamily;
         Foreground = Chooser.Brush(Chooser.tokens,Chooser.SelectionMatches(this) ? "BleeckerSeaBrush" : "BleeckerTextPrimaryBrush");
         Background = Chooser.Brush(Chooser.palette,FocusState != FocusState.Unfocused ? "BleeckerPaginationOptionHighlightBrush" : "BleeckerPaginationOptionBackgroundBrush");

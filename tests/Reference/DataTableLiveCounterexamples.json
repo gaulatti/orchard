@@ -1,0 +1,40 @@
+{
+  "format": "orchard-data-table-live-counterexamples-v1",
+  "librarySha256": "6819e782c4e01db1fc88619b1eb8c194c766e6ac06930fb85051e5308ed90245",
+  "files": [
+    {
+      "frameSha256": "4238ae63acb6f76aa6142888177e70b193744a780898549e8c2f159fb53fc6c4",
+      "kind": "data-table",
+      "reportSha256": "a03e8753c1745a51257fa7f6547dd524e0f132f51d7a98db940441014f751b75",
+      "frame": "tests/Reference/DataTableLiveRejectedDataTable.png",
+      "report": "tests/Reference/DataTableLiveRejectedDataTable.json"
+    },
+    {
+      "frameSha256": "0fdfbeb3bd2cea68afa0dd1378e4b071e67013fe15b3c381ce034120d2fe1bbe",
+      "kind": "simple",
+      "reportSha256": "3e8e3d8759e6f002166fe87381192ed6bf81528e5f41517b01770739f586ae5e",
+      "frame": "tests/Reference/DataTableLiveRejectedSimple.png",
+      "report": "tests/Reference/DataTableLiveRejectedSimple.json"
+    },
+    {
+      "report": "tests/Reference/DataTableLiveRejectedReload.json",
+      "frameSha256": "18ace1d5cf5d0a0cc376f204564cd7758af5c84143bea0ff781cc15e82875e4d",
+      "kind": "data-table",
+      "frame": "tests/Reference/DataTableLiveRejectedReload.png",
+      "reportSha256": "e82b76bb73fa0ce1ae05cfdfd6dbe1968e28e46c0dd8e3871a820775741731d5",
+      "error": "Live original row count differs",
+      "stage": "reloaded",
+      "librarySha256": "013ebc6de8e6b787f6c2f5431110f64eaf21c0180313fb1d586fdea5daa3d37a"
+    },
+    {
+      "report": "tests/Reference/DataTableLiveRejectedAdd.json",
+      "stage": "collection-add",
+      "frame": "tests/Reference/DataTableLiveRejectedAdd.png",
+      "error": "Live original object/action was replaced or unloaded",
+      "frameSha256": "970c7d26e70a96a431934024002feb99abd1c9040626a34a3921d99b79bf3329",
+      "kind": "simple",
+      "librarySha256": "76fda6e9cf1c64835887dc27ac9736516046e416d6700a493ae85ee4682bb37f",
+      "reportSha256": "17a4df147e736064668779b7e4647d76c047dcc24a716d852a7e612c727737ea"
+    }
+  ]
+}

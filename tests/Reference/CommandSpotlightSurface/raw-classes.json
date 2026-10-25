@@ -1,0 +1,4089 @@
+{
+  "producerRolesUseFrozenClasses": true,
+  "producerThemeVariablesFromFrozenRoot": true,
+  "compiledStylesSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "format": "orchard-command-spotlight-paint-source-v1",
+  "passed": true,
+  "layer": "rounded-border",
+  "browser": "155.0.4283.62",
+  "referenceSha256": "12b264b46566b389eff73d6b21e7f32feb465cdc52f2c86ab8379555a49a075e",
+  "scriptSha256": "13e8987e8f31d101b79645a9774c6a765c9310a51087794a61c7f5cdc774fe29",
+  "width": 600,
+  "height": 400,
+  "columns": 15,
+  "cell": 40,
+  "externalRequests": 0,
+  "pngSha256": "4b5d88230d8d477b10acd90359be8d94b94f28559a3e8412b2f8ada503804a89",
+  "cases": [
+    {
+      "id": "primitive-0",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.05,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.05)",
+      "index": 0,
+      "x": 20,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.05)",
+      "pixel": [
+        242,
+        242,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "primitive-1",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.05,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 5%, transparent)",
+      "index": 1,
+      "x": 60,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.05)",
+      "pixel": [
+        242,
+        242,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "primitive-2",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.1)",
+      "index": 2,
+      "x": 100,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.1)",
+      "pixel": [
+        229,
+        229,
+        229,
+        255
+      ]
+    },
+    {
+      "id": "primitive-3",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 10%, transparent)",
+      "index": 3,
+      "x": 140,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        229,
+        229,
+        229,
+        255
+      ]
+    },
+    {
+      "id": "primitive-4",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.12,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.12)",
+      "index": 4,
+      "x": 180,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.12)",
+      "pixel": [
+        224,
+        224,
+        224,
+        255
+      ]
+    },
+    {
+      "id": "primitive-5",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.12,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 12%, transparent)",
+      "index": 5,
+      "x": 220,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.12)",
+      "pixel": [
+        224,
+        224,
+        224,
+        255
+      ]
+    },
+    {
+      "id": "primitive-6",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.15,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.15)",
+      "index": 6,
+      "x": 260,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.15)",
+      "pixel": [
+        217,
+        217,
+        217,
+        255
+      ]
+    },
+    {
+      "id": "primitive-7",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.15,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 15%, transparent)",
+      "index": 7,
+      "x": 300,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.15)",
+      "pixel": [
+        217,
+        217,
+        217,
+        255
+      ]
+    },
+    {
+      "id": "primitive-8",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.2,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.2)",
+      "index": 8,
+      "x": 340,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.2)",
+      "pixel": [
+        204,
+        204,
+        204,
+        255
+      ]
+    },
+    {
+      "id": "primitive-9",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.2,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 20%, transparent)",
+      "index": 9,
+      "x": 380,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.2)",
+      "pixel": [
+        204,
+        204,
+        204,
+        255
+      ]
+    },
+    {
+      "id": "primitive-10",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.25,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.25)",
+      "index": 10,
+      "x": 420,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.25)",
+      "pixel": [
+        191,
+        191,
+        191,
+        255
+      ]
+    },
+    {
+      "id": "primitive-11",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.25,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 25%, transparent)",
+      "index": 11,
+      "x": 460,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.25)",
+      "pixel": [
+        191,
+        191,
+        191,
+        255
+      ]
+    },
+    {
+      "id": "primitive-12",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.3)",
+      "index": 12,
+      "x": 500,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.3)",
+      "pixel": [
+        178,
+        178,
+        178,
+        255
+      ]
+    },
+    {
+      "id": "primitive-13",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 30%, transparent)",
+      "index": 13,
+      "x": 540,
+      "y": 20,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        178,
+        178,
+        178,
+        255
+      ]
+    },
+    {
+      "id": "primitive-14",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.35,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.35)",
+      "index": 14,
+      "x": 580,
+      "y": 20,
+      "computedCss": "rgba(0, 0, 0, 0.35)",
+      "pixel": [
+        166,
+        166,
+        166,
+        255
+      ]
+    },
+    {
+      "id": "primitive-15",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.35,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 35%, transparent)",
+      "index": 15,
+      "x": 20,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.35)",
+      "pixel": [
+        166,
+        166,
+        166,
+        255
+      ]
+    },
+    {
+      "id": "primitive-16",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.45)",
+      "index": 16,
+      "x": 60,
+      "y": 60,
+      "computedCss": "rgba(0, 0, 0, 0.45)",
+      "pixel": [
+        140,
+        140,
+        140,
+        255
+      ]
+    },
+    {
+      "id": "primitive-17",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 45%, transparent)",
+      "index": 17,
+      "x": 100,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.45)",
+      "pixel": [
+        140,
+        140,
+        140,
+        255
+      ]
+    },
+    {
+      "id": "primitive-18",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.5)",
+      "index": 18,
+      "x": 140,
+      "y": 60,
+      "computedCss": "rgba(0, 0, 0, 0.5)",
+      "pixel": [
+        127,
+        127,
+        127,
+        255
+      ]
+    },
+    {
+      "id": "primitive-19",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 50%, transparent)",
+      "index": 19,
+      "x": 180,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        127,
+        127,
+        127,
+        255
+      ]
+    },
+    {
+      "id": "primitive-20",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.65,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 0.65)",
+      "index": 20,
+      "x": 220,
+      "y": 60,
+      "computedCss": "rgba(0, 0, 0, 0.65)",
+      "pixel": [
+        89,
+        89,
+        89,
+        255
+      ]
+    },
+    {
+      "id": "primitive-21",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.65,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 65%, transparent)",
+      "index": 21,
+      "x": 260,
+      "y": 60,
+      "computedCss": "oklab(0 0 0 / 0.65)",
+      "pixel": [
+        89,
+        89,
+        89,
+        255
+      ]
+    },
+    {
+      "id": "primitive-22",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(0 0 0 / 1)",
+      "index": 22,
+      "x": 300,
+      "y": 60,
+      "computedCss": "rgb(0, 0, 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "primitive-23",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 100%, transparent)",
+      "index": 23,
+      "x": 340,
+      "y": 60,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "primitive-24",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.05,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.05)",
+      "index": 24,
+      "x": 380,
+      "y": 60,
+      "computedCss": "rgba(44, 87, 132, 0.05)",
+      "pixel": [
+        244,
+        246,
+        249,
+        255
+      ]
+    },
+    {
+      "id": "primitive-25",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.05,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 5%, transparent)",
+      "index": 25,
+      "x": 420,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.05)",
+      "pixel": [
+        244,
+        246,
+        249,
+        255
+      ]
+    },
+    {
+      "id": "primitive-26",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.1)",
+      "index": 26,
+      "x": 460,
+      "y": 60,
+      "computedCss": "rgba(44, 87, 132, 0.1)",
+      "pixel": [
+        233,
+        238,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "primitive-27",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 10%, transparent)",
+      "index": 27,
+      "x": 500,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        233,
+        238,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "primitive-28",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.12,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.12)",
+      "index": 28,
+      "x": 540,
+      "y": 60,
+      "computedCss": "rgba(44, 87, 132, 0.12)",
+      "pixel": [
+        229,
+        234,
+        240,
+        255
+      ]
+    },
+    {
+      "id": "primitive-29",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.12,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 12%, transparent)",
+      "index": 29,
+      "x": 580,
+      "y": 60,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12)",
+      "pixel": [
+        229,
+        234,
+        240,
+        255
+      ]
+    },
+    {
+      "id": "primitive-30",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.15,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.15)",
+      "index": 30,
+      "x": 20,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.15)",
+      "pixel": [
+        224,
+        230,
+        237,
+        255
+      ]
+    },
+    {
+      "id": "primitive-31",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.15,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 15%, transparent)",
+      "index": 31,
+      "x": 60,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.15)",
+      "pixel": [
+        224,
+        230,
+        237,
+        255
+      ]
+    },
+    {
+      "id": "primitive-32",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.2,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.2)",
+      "index": 32,
+      "x": 100,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.2)",
+      "pixel": [
+        213,
+        221,
+        230,
+        255
+      ]
+    },
+    {
+      "id": "primitive-33",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.2,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 20%, transparent)",
+      "index": 33,
+      "x": 140,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.2)",
+      "pixel": [
+        213,
+        221,
+        230,
+        255
+      ]
+    },
+    {
+      "id": "primitive-34",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.25,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.25)",
+      "index": 34,
+      "x": 180,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.25)",
+      "pixel": [
+        202,
+        213,
+        224,
+        255
+      ]
+    },
+    {
+      "id": "primitive-35",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.25,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 25%, transparent)",
+      "index": 35,
+      "x": 220,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25)",
+      "pixel": [
+        202,
+        213,
+        224,
+        255
+      ]
+    },
+    {
+      "id": "primitive-36",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.3)",
+      "index": 36,
+      "x": 260,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.3)",
+      "pixel": [
+        191,
+        204,
+        218,
+        255
+      ]
+    },
+    {
+      "id": "primitive-37",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 30%, transparent)",
+      "index": 37,
+      "x": 300,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        191,
+        204,
+        218,
+        255
+      ]
+    },
+    {
+      "id": "primitive-38",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.35,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.35)",
+      "index": 38,
+      "x": 340,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.35)",
+      "pixel": [
+        181,
+        196,
+        212,
+        255
+      ]
+    },
+    {
+      "id": "primitive-39",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.35,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 35%, transparent)",
+      "index": 39,
+      "x": 380,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.35)",
+      "pixel": [
+        181,
+        196,
+        212,
+        255
+      ]
+    },
+    {
+      "id": "primitive-40",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.45)",
+      "index": 40,
+      "x": 420,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.45)",
+      "pixel": [
+        160,
+        179,
+        199,
+        255
+      ]
+    },
+    {
+      "id": "primitive-41",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 45%, transparent)",
+      "index": 41,
+      "x": 460,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.45)",
+      "pixel": [
+        160,
+        179,
+        199,
+        255
+      ]
+    },
+    {
+      "id": "primitive-42",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.5)",
+      "index": 42,
+      "x": 500,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.5)",
+      "pixel": [
+        149,
+        171,
+        193,
+        255
+      ]
+    },
+    {
+      "id": "primitive-43",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 50%, transparent)",
+      "index": 43,
+      "x": 540,
+      "y": 100,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        149,
+        170,
+        193,
+        255
+      ]
+    },
+    {
+      "id": "primitive-44",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.65,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 0.65)",
+      "index": 44,
+      "x": 580,
+      "y": 100,
+      "computedCss": "rgba(44, 87, 132, 0.65)",
+      "pixel": [
+        118,
+        146,
+        175,
+        255
+      ]
+    },
+    {
+      "id": "primitive-45",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.65,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 65%, transparent)",
+      "index": 45,
+      "x": 20,
+      "y": 140,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.65)",
+      "pixel": [
+        118,
+        146,
+        175,
+        255
+      ]
+    },
+    {
+      "id": "primitive-46",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(44 87 132 / 1)",
+      "index": 46,
+      "x": 60,
+      "y": 140,
+      "computedCss": "rgb(44, 87, 132)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "primitive-47",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 100%, transparent)",
+      "index": 47,
+      "x": 100,
+      "y": 140,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "primitive-48",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.05,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.05)",
+      "index": 48,
+      "x": 140,
+      "y": 140,
+      "computedCss": "rgba(255, 255, 255, 0.05)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-49",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.05,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 5%, transparent)",
+      "index": 49,
+      "x": 180,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-50",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.1)",
+      "index": 50,
+      "x": 220,
+      "y": 140,
+      "computedCss": "rgba(255, 255, 255, 0.1)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-51",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 10%, transparent)",
+      "index": 51,
+      "x": 260,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-52",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.12,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.12)",
+      "index": 52,
+      "x": 300,
+      "y": 140,
+      "computedCss": "rgba(255, 255, 255, 0.12)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-53",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.12,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 12%, transparent)",
+      "index": 53,
+      "x": 340,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-54",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.15,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.15)",
+      "index": 54,
+      "x": 380,
+      "y": 140,
+      "computedCss": "rgba(255, 255, 255, 0.15)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-55",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.15,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 15%, transparent)",
+      "index": 55,
+      "x": 420,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-56",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.2,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.2)",
+      "index": 56,
+      "x": 460,
+      "y": 140,
+      "computedCss": "rgba(255, 255, 255, 0.2)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-57",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.2,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 20%, transparent)",
+      "index": 57,
+      "x": 500,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-58",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.25,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.25)",
+      "index": 58,
+      "x": 540,
+      "y": 140,
+      "computedCss": "rgba(255, 255, 255, 0.25)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-59",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.25,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 25%, transparent)",
+      "index": 59,
+      "x": 580,
+      "y": 140,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-60",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.3)",
+      "index": 60,
+      "x": 20,
+      "y": 180,
+      "computedCss": "rgba(255, 255, 255, 0.3)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-61",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 30%, transparent)",
+      "index": 61,
+      "x": 60,
+      "y": 180,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        255,
+        254,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-62",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.35,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.35)",
+      "index": 62,
+      "x": 100,
+      "y": 180,
+      "computedCss": "rgba(255, 255, 255, 0.35)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-63",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.35,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 35%, transparent)",
+      "index": 63,
+      "x": 140,
+      "y": 180,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.35)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-64",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.45)",
+      "index": 64,
+      "x": 180,
+      "y": 180,
+      "computedCss": "rgba(255, 255, 255, 0.45)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-65",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 45%, transparent)",
+      "index": 65,
+      "x": 220,
+      "y": 180,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.45)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-66",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.5)",
+      "index": 66,
+      "x": 260,
+      "y": 180,
+      "computedCss": "rgba(255, 255, 255, 0.5)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-67",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 50%, transparent)",
+      "index": 67,
+      "x": 300,
+      "y": 180,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        255,
+        254,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-68",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.65,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 0.65)",
+      "index": 68,
+      "x": 340,
+      "y": 180,
+      "computedCss": "rgba(255, 255, 255, 0.65)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-69",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.65,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 65%, transparent)",
+      "index": 69,
+      "x": 380,
+      "y": 180,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.65)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-70",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "rgb(255 255 255 / 1)",
+      "index": 70,
+      "x": 420,
+      "y": 180,
+      "computedCss": "rgb(255, 255, 255)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-71",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 100%, transparent)",
+      "index": 71,
+      "x": 460,
+      "y": 180,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-72",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.05,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.05)",
+      "index": 72,
+      "x": 500,
+      "y": 180,
+      "computedCss": "rgba(0, 0, 0, 0.05)",
+      "pixel": [
+        12,
+        23,
+        31,
+        255
+      ]
+    },
+    {
+      "id": "primitive-73",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.05,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 5%, transparent)",
+      "index": 73,
+      "x": 540,
+      "y": 180,
+      "computedCss": "oklab(0 0 0 / 0.05)",
+      "pixel": [
+        12,
+        23,
+        31,
+        255
+      ]
+    },
+    {
+      "id": "primitive-74",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.1)",
+      "index": 74,
+      "x": 580,
+      "y": 180,
+      "computedCss": "rgba(0, 0, 0, 0.1)",
+      "pixel": [
+        12,
+        22,
+        30,
+        255
+      ]
+    },
+    {
+      "id": "primitive-75",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 10%, transparent)",
+      "index": 75,
+      "x": 20,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.1)",
+      "pixel": [
+        12,
+        22,
+        30,
+        255
+      ]
+    },
+    {
+      "id": "primitive-76",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.12,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.12)",
+      "index": 76,
+      "x": 60,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.12)",
+      "pixel": [
+        11,
+        21,
+        29,
+        255
+      ]
+    },
+    {
+      "id": "primitive-77",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.12,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 12%, transparent)",
+      "index": 77,
+      "x": 100,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.12)",
+      "pixel": [
+        11,
+        21,
+        29,
+        255
+      ]
+    },
+    {
+      "id": "primitive-78",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.15,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.15)",
+      "index": 78,
+      "x": 140,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.15)",
+      "pixel": [
+        11,
+        20,
+        28,
+        255
+      ]
+    },
+    {
+      "id": "primitive-79",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.15,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 15%, transparent)",
+      "index": 79,
+      "x": 180,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.15)",
+      "pixel": [
+        11,
+        20,
+        28,
+        255
+      ]
+    },
+    {
+      "id": "primitive-80",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.2,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.2)",
+      "index": 80,
+      "x": 220,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.2)",
+      "pixel": [
+        10,
+        19,
+        26,
+        255
+      ]
+    },
+    {
+      "id": "primitive-81",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.2,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 20%, transparent)",
+      "index": 81,
+      "x": 260,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.2)",
+      "pixel": [
+        10,
+        19,
+        26,
+        255
+      ]
+    },
+    {
+      "id": "primitive-82",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.25,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.25)",
+      "index": 82,
+      "x": 300,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.25)",
+      "pixel": [
+        10,
+        18,
+        25,
+        255
+      ]
+    },
+    {
+      "id": "primitive-83",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.25,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 25%, transparent)",
+      "index": 83,
+      "x": 340,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.25)",
+      "pixel": [
+        10,
+        18,
+        25,
+        255
+      ]
+    },
+    {
+      "id": "primitive-84",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.3)",
+      "index": 84,
+      "x": 380,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.3)",
+      "pixel": [
+        9,
+        17,
+        23,
+        255
+      ]
+    },
+    {
+      "id": "primitive-85",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.3,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 30%, transparent)",
+      "index": 85,
+      "x": 420,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.3)",
+      "pixel": [
+        9,
+        17,
+        23,
+        255
+      ]
+    },
+    {
+      "id": "primitive-86",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.35,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.35)",
+      "index": 86,
+      "x": 460,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.35)",
+      "pixel": [
+        8,
+        16,
+        21,
+        255
+      ]
+    },
+    {
+      "id": "primitive-87",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.35,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 35%, transparent)",
+      "index": 87,
+      "x": 500,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.35)",
+      "pixel": [
+        8,
+        16,
+        21,
+        255
+      ]
+    },
+    {
+      "id": "primitive-88",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.45)",
+      "index": 88,
+      "x": 540,
+      "y": 220,
+      "computedCss": "rgba(0, 0, 0, 0.45)",
+      "pixel": [
+        7,
+        13,
+        18,
+        255
+      ]
+    },
+    {
+      "id": "primitive-89",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 45%, transparent)",
+      "index": 89,
+      "x": 580,
+      "y": 220,
+      "computedCss": "oklab(0 0 0 / 0.45)",
+      "pixel": [
+        7,
+        13,
+        18,
+        255
+      ]
+    },
+    {
+      "id": "primitive-90",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.5)",
+      "index": 90,
+      "x": 20,
+      "y": 260,
+      "computedCss": "rgba(0, 0, 0, 0.5)",
+      "pixel": [
+        6,
+        12,
+        16,
+        255
+      ]
+    },
+    {
+      "id": "primitive-91",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.5,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 50%, transparent)",
+      "index": 91,
+      "x": 60,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0.5)",
+      "pixel": [
+        6,
+        12,
+        16,
+        255
+      ]
+    },
+    {
+      "id": "primitive-92",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.65,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 0.65)",
+      "index": 92,
+      "x": 100,
+      "y": 260,
+      "computedCss": "rgba(0, 0, 0, 0.65)",
+      "pixel": [
+        5,
+        8,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "primitive-93",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.65,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 65%, transparent)",
+      "index": 93,
+      "x": 140,
+      "y": 260,
+      "computedCss": "oklab(0 0 0 / 0.65)",
+      "pixel": [
+        5,
+        8,
+        12,
+        255
+      ]
+    },
+    {
+      "id": "primitive-94",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(0 0 0 / 1)",
+      "index": 94,
+      "x": 180,
+      "y": 260,
+      "computedCss": "rgb(0, 0, 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "primitive-95",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(0 0 0) 100%, transparent)",
+      "index": 95,
+      "x": 220,
+      "y": 260,
+      "computedCss": "oklab(0 0 0)",
+      "pixel": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    {
+      "id": "primitive-96",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.05,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.05)",
+      "index": 96,
+      "x": 260,
+      "y": 260,
+      "computedCss": "rgba(44, 87, 132, 0.05)",
+      "pixel": [
+        14,
+        27,
+        38,
+        255
+      ]
+    },
+    {
+      "id": "primitive-97",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.05,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 5%, transparent)",
+      "index": 97,
+      "x": 300,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.05)",
+      "pixel": [
+        14,
+        27,
+        38,
+        255
+      ]
+    },
+    {
+      "id": "primitive-98",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.1)",
+      "index": 98,
+      "x": 340,
+      "y": 260,
+      "computedCss": "rgba(44, 87, 132, 0.1)",
+      "pixel": [
+        16,
+        31,
+        43,
+        255
+      ]
+    },
+    {
+      "id": "primitive-99",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 10%, transparent)",
+      "index": 99,
+      "x": 380,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        16,
+        31,
+        43,
+        255
+      ]
+    },
+    {
+      "id": "primitive-100",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.12,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.12)",
+      "index": 100,
+      "x": 420,
+      "y": 260,
+      "computedCss": "rgba(44, 87, 132, 0.12)",
+      "pixel": [
+        16,
+        31,
+        45,
+        255
+      ]
+    },
+    {
+      "id": "primitive-101",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.12,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 12%, transparent)",
+      "index": 101,
+      "x": 460,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.12)",
+      "pixel": [
+        16,
+        31,
+        45,
+        255
+      ]
+    },
+    {
+      "id": "primitive-102",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.15,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.15)",
+      "index": 102,
+      "x": 500,
+      "y": 260,
+      "computedCss": "rgba(44, 87, 132, 0.15)",
+      "pixel": [
+        18,
+        33,
+        48,
+        255
+      ]
+    },
+    {
+      "id": "primitive-103",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.15,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 15%, transparent)",
+      "index": 103,
+      "x": 540,
+      "y": 260,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.15)",
+      "pixel": [
+        18,
+        33,
+        48,
+        255
+      ]
+    },
+    {
+      "id": "primitive-104",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.2,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.2)",
+      "index": 104,
+      "x": 580,
+      "y": 260,
+      "computedCss": "rgba(44, 87, 132, 0.2)",
+      "pixel": [
+        19,
+        36,
+        52,
+        255
+      ]
+    },
+    {
+      "id": "primitive-105",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.2,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 20%, transparent)",
+      "index": 105,
+      "x": 20,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.2)",
+      "pixel": [
+        19,
+        36,
+        52,
+        255
+      ]
+    },
+    {
+      "id": "primitive-106",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.25,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.25)",
+      "index": 106,
+      "x": 60,
+      "y": 300,
+      "computedCss": "rgba(44, 87, 132, 0.25)",
+      "pixel": [
+        21,
+        40,
+        58,
+        255
+      ]
+    },
+    {
+      "id": "primitive-107",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.25,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 25%, transparent)",
+      "index": 107,
+      "x": 100,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.25)",
+      "pixel": [
+        21,
+        40,
+        58,
+        255
+      ]
+    },
+    {
+      "id": "primitive-108",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.3)",
+      "index": 108,
+      "x": 140,
+      "y": 300,
+      "computedCss": "rgba(44, 87, 132, 0.3)",
+      "pixel": [
+        22,
+        43,
+        63,
+        255
+      ]
+    },
+    {
+      "id": "primitive-109",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.3,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 30%, transparent)",
+      "index": 109,
+      "x": 180,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.3)",
+      "pixel": [
+        22,
+        43,
+        63,
+        255
+      ]
+    },
+    {
+      "id": "primitive-110",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.35,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.35)",
+      "index": 110,
+      "x": 220,
+      "y": 300,
+      "computedCss": "rgba(44, 87, 132, 0.35)",
+      "pixel": [
+        23,
+        46,
+        67,
+        255
+      ]
+    },
+    {
+      "id": "primitive-111",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.35,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 35%, transparent)",
+      "index": 111,
+      "x": 260,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.35)",
+      "pixel": [
+        23,
+        46,
+        67,
+        255
+      ]
+    },
+    {
+      "id": "primitive-112",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.45)",
+      "index": 112,
+      "x": 300,
+      "y": 300,
+      "computedCss": "rgba(44, 87, 132, 0.45)",
+      "pixel": [
+        27,
+        52,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "primitive-113",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 45%, transparent)",
+      "index": 113,
+      "x": 340,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.45)",
+      "pixel": [
+        27,
+        52,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "primitive-114",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.5)",
+      "index": 114,
+      "x": 380,
+      "y": 300,
+      "computedCss": "rgba(44, 87, 132, 0.5)",
+      "pixel": [
+        28,
+        56,
+        82,
+        255
+      ]
+    },
+    {
+      "id": "primitive-115",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.5,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 50%, transparent)",
+      "index": 115,
+      "x": 420,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.5)",
+      "pixel": [
+        28,
+        55,
+        82,
+        255
+      ]
+    },
+    {
+      "id": "primitive-116",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.65,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 0.65)",
+      "index": 116,
+      "x": 460,
+      "y": 300,
+      "computedCss": "rgba(44, 87, 132, 0.65)",
+      "pixel": [
+        34,
+        65,
+        98,
+        255
+      ]
+    },
+    {
+      "id": "primitive-117",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.65,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 65%, transparent)",
+      "index": 117,
+      "x": 500,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.65)",
+      "pixel": [
+        34,
+        65,
+        98,
+        255
+      ]
+    },
+    {
+      "id": "primitive-118",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(44 87 132 / 1)",
+      "index": 118,
+      "x": 540,
+      "y": 300,
+      "computedCss": "rgb(44, 87, 132)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "primitive-119",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(44 87 132) 100%, transparent)",
+      "index": 119,
+      "x": 580,
+      "y": 300,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237)",
+      "pixel": [
+        44,
+        87,
+        132,
+        255
+      ]
+    },
+    {
+      "id": "primitive-120",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.05,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.05)",
+      "index": 120,
+      "x": 20,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.05)",
+      "pixel": [
+        25,
+        36,
+        44,
+        255
+      ]
+    },
+    {
+      "id": "primitive-121",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.05,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 5%, transparent)",
+      "index": 121,
+      "x": 60,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "pixel": [
+        25,
+        36,
+        44,
+        255
+      ]
+    },
+    {
+      "id": "primitive-122",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.1)",
+      "index": 122,
+      "x": 100,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.1)",
+      "pixel": [
+        38,
+        48,
+        56,
+        255
+      ]
+    },
+    {
+      "id": "primitive-123",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 10%, transparent)",
+      "index": 123,
+      "x": 140,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+      "pixel": [
+        38,
+        48,
+        56,
+        255
+      ]
+    },
+    {
+      "id": "primitive-124",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.12,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.12)",
+      "index": 124,
+      "x": 180,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.12)",
+      "pixel": [
+        42,
+        52,
+        60,
+        255
+      ]
+    },
+    {
+      "id": "primitive-125",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.12,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 12%, transparent)",
+      "index": 125,
+      "x": 220,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.12)",
+      "pixel": [
+        42,
+        52,
+        60,
+        255
+      ]
+    },
+    {
+      "id": "primitive-126",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.15,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.15)",
+      "index": 126,
+      "x": 260,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.15)",
+      "pixel": [
+        49,
+        58,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "primitive-127",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.15,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 15%, transparent)",
+      "index": 127,
+      "x": 300,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+      "pixel": [
+        49,
+        58,
+        66,
+        255
+      ]
+    },
+    {
+      "id": "primitive-128",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.2,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.2)",
+      "index": 128,
+      "x": 340,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.2)",
+      "pixel": [
+        61,
+        70,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "primitive-129",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.2,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 20%, transparent)",
+      "index": 129,
+      "x": 380,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+      "pixel": [
+        61,
+        70,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "primitive-130",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.25,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.25)",
+      "index": 130,
+      "x": 420,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.25)",
+      "pixel": [
+        74,
+        82,
+        89,
+        255
+      ]
+    },
+    {
+      "id": "primitive-131",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.25,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 25%, transparent)",
+      "index": 131,
+      "x": 460,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+      "pixel": [
+        74,
+        82,
+        89,
+        255
+      ]
+    },
+    {
+      "id": "primitive-132",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.3)",
+      "index": 132,
+      "x": 500,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.3)",
+      "pixel": [
+        86,
+        94,
+        100,
+        255
+      ]
+    },
+    {
+      "id": "primitive-133",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.3,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 30%, transparent)",
+      "index": 133,
+      "x": 540,
+      "y": 340,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)",
+      "pixel": [
+        86,
+        93,
+        100,
+        255
+      ]
+    },
+    {
+      "id": "primitive-134",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.35,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.35)",
+      "index": 134,
+      "x": 580,
+      "y": 340,
+      "computedCss": "rgba(255, 255, 255, 0.35)",
+      "pixel": [
+        97,
+        105,
+        110,
+        255
+      ]
+    },
+    {
+      "id": "primitive-135",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.35,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 35%, transparent)",
+      "index": 135,
+      "x": 20,
+      "y": 380,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.35)",
+      "pixel": [
+        97,
+        105,
+        110,
+        255
+      ]
+    },
+    {
+      "id": "primitive-136",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.45)",
+      "index": 136,
+      "x": 60,
+      "y": 380,
+      "computedCss": "rgba(255, 255, 255, 0.45)",
+      "pixel": [
+        122,
+        128,
+        133,
+        255
+      ]
+    },
+    {
+      "id": "primitive-137",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 45%, transparent)",
+      "index": 137,
+      "x": 100,
+      "y": 380,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.45)",
+      "pixel": [
+        122,
+        128,
+        133,
+        255
+      ]
+    },
+    {
+      "id": "primitive-138",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.5)",
+      "index": 138,
+      "x": 140,
+      "y": 380,
+      "computedCss": "rgba(255, 255, 255, 0.5)",
+      "pixel": [
+        134,
+        140,
+        144,
+        255
+      ]
+    },
+    {
+      "id": "primitive-139",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.5,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 50%, transparent)",
+      "index": 139,
+      "x": 180,
+      "y": 380,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "pixel": [
+        134,
+        139,
+        144,
+        255
+      ]
+    },
+    {
+      "id": "primitive-140",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.65,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 0.65)",
+      "index": 140,
+      "x": 220,
+      "y": 380,
+      "computedCss": "rgba(255, 255, 255, 0.65)",
+      "pixel": [
+        171,
+        174,
+        178,
+        255
+      ]
+    },
+    {
+      "id": "primitive-141",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.65,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 65%, transparent)",
+      "index": 141,
+      "x": 260,
+      "y": 380,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.65)",
+      "pixel": [
+        171,
+        174,
+        178,
+        255
+      ]
+    },
+    {
+      "id": "primitive-142",
+      "role": "primitive",
+      "space": "legacy",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "rgb(255 255 255 / 1)",
+      "index": 142,
+      "x": 300,
+      "y": 380,
+      "computedCss": "rgb(255, 255, 255)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "primitive-143",
+      "role": "primitive",
+      "space": "oklab",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "color-mix(in oklab, rgb(255 255 255) 100%, transparent)",
+      "index": 143,
+      "x": 340,
+      "y": 380,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868)",
+      "pixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "id": "Light-Backdrop",
+      "role": "Backdrop",
+      "theme": "Light",
+      "space": "producer",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.45,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "oklab(0 0 0 / 0.45)",
+      "producerPng": "command-spotlight-13-Light.png",
+      "producerPngSha256": "19b18d07efbc61c9ba2f31525ed81e9c8426ad13fcd0c6397951c5dd7579fe29",
+      "index": 144,
+      "x": 380,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0.45)",
+      "pixel": [
+        140,
+        140,
+        140,
+        255
+      ]
+    },
+    {
+      "id": "Light-SelectedBackground",
+      "role": "SelectedBackground",
+      "theme": "Light",
+      "space": "producer",
+      "rgb": [
+        44,
+        87,
+        132
+      ],
+      "alpha": 0.1,
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "css": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "producerPng": "command-spotlight-13-Light.png",
+      "producerPngSha256": "19b18d07efbc61c9ba2f31525ed81e9c8426ad13fcd0c6397951c5dd7579fe29",
+      "index": 145,
+      "x": 420,
+      "y": 380,
+      "computedCss": "oklab(0.447932 -0.0282684 -0.0838237 / 0.1)",
+      "pixel": [
+        233,
+        238,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "Light-IconBackground",
+      "role": "IconBackground",
+      "theme": "Light",
+      "space": "producer",
+      "rgb": [
+        249,
+        246,
+        242
+      ],
+      "alpha": 0.5,
+      "background": [
+        233,
+        238,
+        242
+      ],
+      "css": "oklab(0.974335 0.00160992 0.00603193 / 0.5)",
+      "producerPng": "command-spotlight-13-Light.png",
+      "producerPngSha256": "19b18d07efbc61c9ba2f31525ed81e9c8426ad13fcd0c6397951c5dd7579fe29",
+      "index": 146,
+      "x": 460,
+      "y": 380,
+      "computedCss": "oklab(0.974335 0.00160992 0.00603193 / 0.5)",
+      "pixel": [
+        241,
+        242,
+        242,
+        255
+      ]
+    },
+    {
+      "id": "Dark-Backdrop",
+      "role": "Backdrop",
+      "theme": "Dark",
+      "space": "producer",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0.45,
+      "background": [
+        13,
+        24,
+        33
+      ],
+      "css": "oklab(0 0 0 / 0.45)",
+      "producerPng": "command-spotlight-63-Dark.png",
+      "producerPngSha256": "4c67aa60cf663e949dc92ebaa7f65493d3073ce80ce4c625abdbdb557ce02d6f",
+      "index": 147,
+      "x": 500,
+      "y": 380,
+      "computedCss": "oklab(0 0 0 / 0.45)",
+      "pixel": [
+        7,
+        13,
+        18,
+        255
+      ]
+    },
+    {
+      "id": "Dark-SelectedBackground",
+      "role": "SelectedBackground",
+      "theme": "Dark",
+      "space": "producer",
+      "rgb": [
+        91,
+        163,
+        245
+      ],
+      "alpha": 0.15,
+      "background": [
+        24,
+        37,
+        51
+      ],
+      "css": "oklab(0.704643 -0.0410104 -0.134962 / 0.15)",
+      "producerPng": "command-spotlight-63-Dark.png",
+      "producerPngSha256": "4c67aa60cf663e949dc92ebaa7f65493d3073ce80ce4c625abdbdb557ce02d6f",
+      "index": 148,
+      "x": 540,
+      "y": 380,
+      "computedCss": "oklab(0.704643 -0.0410104 -0.134962 / 0.15)",
+      "pixel": [
+        34,
+        55,
+        80,
+        255
+      ]
+    },
+    {
+      "id": "Dark-IconBackground",
+      "role": "IconBackground",
+      "theme": "Dark",
+      "space": "producer",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 0.05,
+      "background": [
+        34,
+        55,
+        80
+      ],
+      "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "producerPng": "command-spotlight-63-Dark.png",
+      "producerPngSha256": "4c67aa60cf663e949dc92ebaa7f65493d3073ce80ce4c625abdbdb557ce02d6f",
+      "index": 149,
+      "x": 580,
+      "y": 380,
+      "computedCss": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "pixel": [
+        45,
+        65,
+        89,
+        255
+      ]
+    }
+  ],
+  "threshold": 0,
+  "nativeComponentAccepted": false
+}

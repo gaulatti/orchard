@@ -16,7 +16,7 @@ public sealed partial class MainWindow
         using var input = new NativeInputSession(CatalogRoot.XamlRoot, folder, "loading-overlay"); await input.AcquireAsync(ComponentSearch);
         var root = CatalogRoot.XamlRoot; var size = root.Size;
         Require(root.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Loading overlay reference requires display/text scale 1.");
-        using var stream = typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LoadingOverlay.json") ?? throw new InvalidOperationException("Loading overlay reference is missing.");
+        using var stream = CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.LoadingOverlay.json") ?? throw new InvalidOperationException("Loading overlay reference is missing.");
         using var reference = JsonDocument.Parse(stream);
         var host = new Canvas { Width = size.Width, Height = size.Height, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, UseLayoutRounding = false };
         Grid.SetRowSpan(host, CatalogRoot.RowDefinitions.Count); Grid.SetColumnSpan(host, CatalogRoot.ColumnDefinitions.Count);

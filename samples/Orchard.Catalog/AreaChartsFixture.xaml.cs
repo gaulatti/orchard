@@ -30,7 +30,7 @@ public sealed partial class AreaChartsFixture : UserControl
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         var outside = new Button { Content = "Outside chart", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Style = (Style)Application.Current.Resources["BleeckerSecondaryButtonStyle"] };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
-        using var reference = JsonDocument.Parse(typeof(AreaChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.AreaChartLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(AreaChartsFixture).Assembly, "Orchard.Catalog.Reference.AreaChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try
         {

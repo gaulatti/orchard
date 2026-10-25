@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Text.RegularExpressions;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
@@ -127,14 +126,9 @@ public sealed class BleeckerProgressStack : Control
         }
         protected override Size MeasureOverride(Size available)
         {
-            positions.Clear();var x=0d;var y=0d;var rowHeight=0d;
-            foreach(var item in Children.Cast<LegendItem>())
-            {
-                var width=Math.Min(item.MaximumWidth,Math.Max(item.MinimumWidth,available.Width));
-                if(x>0&&x+width>available.Width){x=0;y+=rowHeight+12;rowHeight=0;}
-                item.Measure(new(width,double.PositiveInfinity));positions.Add(new(x,y,width,item.DesiredSize.Height));x+=width+12;rowHeight=Math.Max(rowHeight,item.DesiredSize.Height);
-            }
-            return new(available.Width,Children.Count==0?0:y+rowHeight);
+            var items=Children.Cast<LegendItem>().ToArray();
+            var bounds=BleeckerProgressStackLayout.Place(available.Width,items.Select(item=>(item.MaximumWidth,item.MinimumWidth)).ToArray(),(index,width)=>{items[index].Measure(new(width,double.PositiveInfinity));return items[index].DesiredSize.Height;});
+            positions.Clear();positions.AddRange(bounds.Items.Select(item=>new Rect(item.X,item.Y,item.Width,item.Height)));return new(available.Width,bounds.Height);
         }
         protected override Size ArrangeOverride(Size final){for(var i=0;i<Children.Count;i++)Children[i].Arrange(positions[i]);return final;}
     }
@@ -145,37 +139,45 @@ public sealed class BleeckerProgressStack : Control
         private readonly TextSlot label=new("ProgressStackLabel"),value=new("ProgressStackValue");
         private double swatchWidth,labelWidth,valueWidth,height;
         internal LegendItem(BleeckerProgressStack owner){this.owner=owner;Name="ProgressStackItem";UseLayoutRounding=false;Children.Add(swatch);Children.Add(label);Children.Add(value);}
-        internal double MaximumWidth=>22+label.MaximumWidth+value.MaximumWidth;
-        internal double MinimumWidth=>22+label.MinimumWidth+value.MinimumWidth;
+        private BleeckerProgressStackLayout.TextWidths LabelWidths=>new(label.MaximumWidth,label.MinimumWidth);
+        private BleeckerProgressStackLayout.TextWidths ValueWidths=>new(value.MaximumWidth,value.MinimumWidth);
+        internal double MaximumWidth=>BleeckerProgressStackLayout.ItemWidth(label.MaximumWidth,value.MaximumWidth);
+        internal double MinimumWidth=>BleeckerProgressStackLayout.ItemWidth(label.MinimumWidth,value.MinimumWidth);
         internal void Update(BleeckerProgressStackItem item){swatch.Background=item.Color;label.Set(owner,item.Label,false);value.Set(owner,BleeckerNumberText.Format(item.Value),true);InvalidateMeasure();}
         protected override Size MeasureOverride(Size available)
         {
-            var free=available.Width-12;var a=10d;var b=label.MaximumWidth;var c=value.MaximumWidth;
-            var frozen=new bool[3];var basis=new[]{a,b,c};var min=new[]{0d,label.MinimumWidth,value.MinimumWidth};var sizes=basis.ToArray();
-            for(var pass=0;pass<3;pass++)
-            {
-                var used=Enumerable.Range(0,3).Where(i=>frozen[i]).Sum(i=>sizes[i]);var total=Enumerable.Range(0,3).Where(i=>!frozen[i]).Sum(i=>basis[i]);var shrink=free-used-total;
-                for(var i=0;i<3;i++)if(!frozen[i]){sizes[i]=basis[i]+(shrink<0&&total>0?shrink*basis[i]/total:0);if(sizes[i]<min[i]){sizes[i]=min[i];frozen[i]=true;}}
-            }
-            swatchWidth=Math.Floor(sizes[0]*64+.5)/64;labelWidth=Math.Floor(sizes[1]*64+.5)/64;valueWidth=Math.Floor(sizes[2]*64+.5)/64;
+            var sizes=BleeckerProgressStackLayout.Allocate(available.Width,LabelWidths,ValueWidths);swatchWidth=sizes.Swatch;labelWidth=sizes.Label;valueWidth=sizes.Value;
             swatch.Measure(new(swatchWidth,10));label.Measure(new(labelWidth,double.PositiveInfinity));value.Measure(new(valueWidth,double.PositiveInfinity));height=Math.Max(10,Math.Max(label.DesiredSize.Height,value.DesiredSize.Height));return new(available.Width,height);
         }
         protected override Size ArrangeOverride(Size final)
         {
-            static double Center(double outer,double inner)=>Math.Truncate((outer-inner)*32)/64;
-            swatch.Arrange(new(0,Center(height,10),swatchWidth,10));label.Arrange(new(swatchWidth+6,Center(height,label.DesiredSize.Height),labelWidth,label.DesiredSize.Height));value.Arrange(new(swatchWidth+labelWidth+12,Center(height,value.DesiredSize.Height),valueWidth,value.DesiredSize.Height));return final;
+            swatch.Arrange(new(0,BleeckerProgressStackLayout.Center(height,10),swatchWidth,10));label.Arrange(new(swatchWidth+6,BleeckerProgressStackLayout.Center(height,label.DesiredSize.Height),labelWidth,label.DesiredSize.Height));value.Arrange(new(swatchWidth+labelWidth+12,BleeckerProgressStackLayout.Center(height,value.DesiredSize.Height),valueWidth,value.DesiredSize.Height));return final;
         }
     }
     private sealed class TextSlot(string name):Panel
     {
         private readonly TextBlock text=new(){UseLayoutRounding=false,TextWrapping=TextWrapping.NoWrap,LineStackingStrategy=LineStackingStrategy.BlockLineHeight};
         private readonly TextBlock probe=new();
-        private readonly BleeckerReferenceText.IntrinsicWidth intrinsic=new(joinWhitespace:true);
+        private readonly BleeckerReferenceText.IntrinsicWidth intrinsic=new(joinWhitespace:true,inlineWidths:true);
+        private readonly BleeckerReferenceText.Presentation presentation=new();
+        private readonly Windows.UI.ViewManagement.UISettings textSettings=new();
+        private BleeckerInlineText? inline;
+        private double inlineScale;
         private string logical="";
         private double paintWidth;
-        internal double MaximumWidth=>WidthOf(logical);
-        internal double MinimumWidth=>logical.Length==0?0:logical.Split(' ').Max(WidthOf);
-        private double WidthOf(string content){BleeckerReferenceText.Set(probe,content);intrinsic.Measure(probe,content);return intrinsic.WhitespaceJoinedWidth;}
+        internal double MaximumWidth=>Inline.MaximumWidth;
+        internal double MinimumWidth=>Inline.MinimumWidth;
+        private double WidthOf(string content){BleeckerReferenceText.Set(probe,content,cjkPunctuation:true);intrinsic.Measure(probe,content);return intrinsic.InlineWidth;}
+        private BleeckerInlineText Inline
+        {
+            get
+            {
+                var scale=probe.IsTextScaleFactorEnabled?textSettings.TextScaleFactor:1;
+                if(inline is not null&&inlineScale==scale)return inline;
+                WidthOf(BleeckerInlineText.Paint(logical));var measureSpan=intrinsic.CaptureInlineSpanMeasure();inlineScale=scale;
+                return inline=new(logical,BleeckerInlineBreaks.Analyze(logical,probe.FlowDirection==FlowDirection.RightToLeft,probe.Language),WidthOf,measureSpan);
+            }
+        }
         internal void Set(BleeckerProgressStack owner,string content,bool semibold)
         {
             Name=name;UseLayoutRounding=false;if(Children.Count==0)Children.Add(text);
@@ -184,13 +186,16 @@ public sealed class BleeckerProgressStack : Control
             if(text.Language!=owner.Language)text.Language=owner.Language;if(probe.Language!=owner.Language)probe.Language=owner.Language;
             text.LineHeight=owner.FontSize*4/3;
             text.Foreground=semibold?owner.Foreground:owner.secondary!.Foreground;
-            logical=Regex.Replace(content,"[ \\t\\r\\n\\f]+"," ").Trim(' ');text.Visibility=logical.Length==0?Visibility.Collapsed:Visibility.Visible;if(logical.Length==0)text.Text="";InvalidateMeasure();
+            // Layout-only newlines and discretionary hyphens must not replace
+            // the label exposed to assistive technology. TextPattern still
+            // reports the native TextBlock's painted text and geometry.
+            logical=BleeckerInlineText.Normalize(content);AutomationProperties.SetName(text,logical);inline=null;text.Visibility=logical.Length==0?Visibility.Collapsed:Visibility.Visible;if(logical.Length==0)text.Text="";InvalidateMeasure();
         }
         protected override Size MeasureOverride(Size available)
         {
             if(logical.Length==0){paintWidth=0;return new(available.Width,0);}
-            var lines=new List<string>();var current="";foreach(var word in logical.Split(' ')){var next=current.Length==0?word:current+" "+word;if(current.Length>0&&WidthOf(next)>available.Width){lines.Add(current);current=word;}else current=next;}lines.Add(current);
-            paintWidth=Math.Max(available.Width,lines.Max(WidthOf));var rendered=string.Join('\n',lines);if(text.Text!=rendered)BleeckerReferenceText.Set(text,rendered);text.Measure(new(paintWidth,double.PositiveInfinity));return new(available.Width,text.DesiredSize.Height);
+            var lines=Inline.Wrap(available.Width);
+            paintWidth=Math.Max(available.Width,lines.Max(WidthOf));var rendered=string.Join('\n',lines);presentation.Update(text,rendered,cjkPunctuation:true);text.Measure(new(paintWidth,double.PositiveInfinity));return new(available.Width,text.DesiredSize.Height);
         }
         protected override Size ArrangeOverride(Size final){text.Arrange(new(0,0,paintWidth,final.Height));return final;}
     }

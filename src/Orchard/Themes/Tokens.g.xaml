@@ -7,9 +7,69 @@
             <SolidColorBrush x:Key="BleeckerMenuBackgroundBrush" Color="#FFFFFFFF" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuBorderBrush" Color="#FFE6D5B8" Opacity="0.35" />
             <SolidColorBrush x:Key="BleeckerMenuHoverBrush" Color="#FFE6D5B8" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerContextMenuHoverBrush" Color="#FFF9F6F2" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerTooltipBackgroundBrush" Color="#FF1A374D" />
             <SolidColorBrush x:Key="BleeckerTooltipForegroundBrush" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="BleeckerAuthShellCanvasBrush" Color="#FFF9F6F2" Opacity="0.35" />
+            <SolidColorBrush x:Key="BleeckerAuthShellAsideForegroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAuthShellCircleBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="#FF1A374D" />
+            <SolidColorBrush x:Key="BleeckerHeroForegroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroEmptyForegroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTitleHoverBrush" Color="#FFFFFFFF" Opacity="0.9" />
+            <SolidColorBrush x:Key="BleeckerHeroDescriptionBrush" Color="#FFF3F4F6" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroDescriptionHoverBrush" Color="#FFE5E7EB" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaBackgroundBrush" Color="#FFFFFFFF" Opacity="0.92" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaHoverBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaForegroundBrush" Color="#FF101828" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaBorderBrush" Color="#FFFFFFFF" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBackgroundBrush" Color="#FF000000" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowHoverBrush" Color="#FF000000" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBorderHoverBrush" Color="#FFFFFFFF" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowForegroundBrush" Color="#FFFFFFFF" Opacity="0.8" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowForegroundHoverBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTagBackgroundBrush" Color="#FF000000" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerHeroTagBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorBrush" Color="#FFFFFFFF" Opacity="0.5" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorHoverBrush" Color="#FFFFFFFF" Opacity="0.8" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorActiveBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroNavigationBackgroundBrush" Color="#FF000000" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerHeroNavigationBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerHeroSeparatorBrush" Color="#FFFFFFFF" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerSonnerBorderBrush" Color="#FFE6D5B8" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSurfaceBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightBorderBrush" Color="#FFE6D5B8" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerSpotlightHeaderBorderBrush" Color="#FFE6D5B8" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSelectedBackgroundBrush" Color="#FF2C5784" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSelectedForegroundBrush" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightRowHoverBrush" Color="#FFE6D5B8" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightIconBackgroundBrush" Color="#FFF9F6F2" Opacity="0.5" />
+            <SolidColorBrush x:Key="BleeckerSpotlightIconBorderBrush" Color="#FFE6D5B8" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerBackgroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerBorderBrush" Color="#FFE6D5B8" Opacity="0.35" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerHoverBrush" Color="#FFF9F6F2" Opacity="0.35" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerHoverBorderBrush" Color="#FFE6D5B8" Opacity="0.65" />
+            <SolidColorBrush x:Key="BleeckerSpotlightFocusBrush" Color="#FF2C5784" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerSpotlightBackdropBrush" Color="#FF000000" Opacity="0.45" />
+            <SolidColorBrush x:Key="BleeckerMediaTileBackgroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaTileBorderBrush" Color="#FFE6D5B8" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerMediaTileHoverBorderBrush" Color="#FFE6D5B8" Opacity="0.55" />
+            <SolidColorBrush x:Key="BleeckerMediaOverlayBrush" Color="#FF1A374D" Opacity="0.82" />
+            <SolidColorBrush x:Key="BleeckerMediaOverlayTextBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaPlaceholderBrush" Color="#FFF9F6F2" Opacity="0.6" />
+            <SolidColorBrush x:Key="BleeckerMediaEmptyBackgroundBrush" Color="#FFF9F6F2" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerMediaEmptyBorderBrush" Color="#FFE6D5B8" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerMediaPreviewBackgroundBrush" Color="#FFF9F6F2" Opacity="0.35" />
+            <SolidColorBrush x:Key="BleeckerMediaPreviewBorderBrush" Color="#FFE6D5B8" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerMediaFocusBrush" Color="#FF2C5784" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerFileBackgroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileBorderBrush" Color="#FFE6D5B8" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerFileChooseBackgroundBrush" Color="#FF2C5784" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerFileChooseHoverBrush" Color="#FF2C5784" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerFileChooseForegroundBrush" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileFocusBrush" Color="#FF2C5784" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSonnerCloseHoverBrush" Color="#FFE6D5B8" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerNotificationCountBackgroundBrush" Color="#FFA65D57" />
             <SolidColorBrush x:Key="BleeckerNotificationCountForegroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FF000000" Opacity="0.05" />
@@ -145,9 +205,69 @@
             <SolidColorBrush x:Key="BleeckerMenuBackgroundBrush" Color="#FF182533" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
             <SolidColorBrush x:Key="BleeckerMenuHoverBrush" Color="#FF1A2332" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerContextMenuHoverBrush" Color="#FFFFFFFF" Opacity="0.07" />
             <SolidColorBrush x:Key="BleeckerTooltipBackgroundBrush" Color="#FF1A2332" />
             <SolidColorBrush x:Key="BleeckerTooltipForegroundBrush" Color="#FFF0F4F8" />
+            <SolidColorBrush x:Key="BleeckerAuthShellCanvasBrush" Color="#FF0D1821" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAuthShellAsideForegroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAuthShellCircleBrush" Color="#FFFFFFFF" Opacity="0.1" />
             <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="#FFF0F4F8" />
+            <SolidColorBrush x:Key="BleeckerHeroForegroundBrush" Color="#FFF0F4F8" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroEmptyForegroundBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTitleHoverBrush" Color="#FFFFFFFF" Opacity="0.9" />
+            <SolidColorBrush x:Key="BleeckerHeroDescriptionBrush" Color="#FFF3F4F6" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroDescriptionHoverBrush" Color="#FFE5E7EB" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaBackgroundBrush" Color="#FF1A2332" Opacity="0.9" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaHoverBrush" Color="#FF243447" Opacity="0.9" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaForegroundBrush" Color="#FFF0F4F8" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaBorderBrush" Color="#FF1A2332" Opacity="0.35" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBackgroundBrush" Color="#FF000000" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowHoverBrush" Color="#FF000000" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBorderHoverBrush" Color="#FFFFFFFF" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowForegroundBrush" Color="#FFFFFFFF" Opacity="0.8" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowForegroundHoverBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTagBackgroundBrush" Color="#FF000000" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerHeroTagBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorBrush" Color="#FFFFFFFF" Opacity="0.5" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorHoverBrush" Color="#FFFFFFFF" Opacity="0.8" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorActiveBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroNavigationBackgroundBrush" Color="#FF000000" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerHeroNavigationBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerHeroSeparatorBrush" Color="#FFFFFFFF" Opacity="0.3" />
+            <SolidColorBrush x:Key="BleeckerSonnerBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSurfaceBrush" Color="#FF182533" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightBorderBrush" Color="#FFFFFFFF" Opacity="0.12" />
+            <SolidColorBrush x:Key="BleeckerSpotlightHeaderBorderBrush" Color="#FF1A2332" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSelectedBackgroundBrush" Color="#FF5BA3F5" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSelectedForegroundBrush" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightRowHoverBrush" Color="#FF1A2332" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerSpotlightIconBackgroundBrush" Color="#FFFFFFFF" Opacity="0.05" />
+            <SolidColorBrush x:Key="BleeckerSpotlightIconBorderBrush" Color="#FFFFFFFF" Opacity="0.06" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerBackgroundBrush" Color="#FF182533" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerHoverBrush" Color="#FFFFFFFF" Opacity="0.06" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerHoverBorderBrush" Color="#FFFFFFFF" Opacity="0.15" />
+            <SolidColorBrush x:Key="BleeckerSpotlightFocusBrush" Color="#FF5BA3F5" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerSpotlightBackdropBrush" Color="#FF000000" Opacity="0.45" />
+            <SolidColorBrush x:Key="BleeckerMediaTileBackgroundBrush" Color="#FF182533" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaTileBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerMediaTileHoverBorderBrush" Color="#FFFFFFFF" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerMediaOverlayBrush" Color="#FF182533" Opacity="0.82" />
+            <SolidColorBrush x:Key="BleeckerMediaOverlayTextBrush" Color="#FFFFFFFF" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaPlaceholderBrush" Color="#FFFFFFFF" Opacity="0.04" />
+            <SolidColorBrush x:Key="BleeckerMediaEmptyBackgroundBrush" Color="#FFFFFFFF" Opacity="0.025" />
+            <SolidColorBrush x:Key="BleeckerMediaEmptyBorderBrush" Color="#FFFFFFFF" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerMediaPreviewBackgroundBrush" Color="#FF000000" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerMediaPreviewBorderBrush" Color="#FFFFFFFF" Opacity="0.07" />
+            <SolidColorBrush x:Key="BleeckerMediaFocusBrush" Color="#FF5BA3F5" Opacity="0.25" />
+            <SolidColorBrush x:Key="BleeckerFileBackgroundBrush" Color="#FF243447" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileBorderBrush" Color="#FF1A2332" Opacity="0.5" />
+            <SolidColorBrush x:Key="BleeckerFileChooseBackgroundBrush" Color="#FF5BA3F5" Opacity="0.1" />
+            <SolidColorBrush x:Key="BleeckerFileChooseHoverBrush" Color="#FF5BA3F5" Opacity="0.2" />
+            <SolidColorBrush x:Key="BleeckerFileChooseForegroundBrush" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileFocusBrush" Color="#FF5BA3F5" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSonnerCloseHoverBrush" Color="#FF1A2332" Opacity="0.2" />
             <SolidColorBrush x:Key="BleeckerNotificationCountBackgroundBrush" Color="#FFD47B75" />
             <SolidColorBrush x:Key="BleeckerNotificationCountForegroundBrush" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="#FFFFFFFF" Opacity="0.1" />
@@ -283,9 +403,69 @@
             <SolidColorBrush x:Key="BleeckerMenuBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerMenuHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerContextMenuHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerTooltipBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
             <SolidColorBrush x:Key="BleeckerTooltipForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" />
+            <SolidColorBrush x:Key="BleeckerAuthShellCanvasBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAuthShellAsideForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerAuthShellCircleBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" />
+            <SolidColorBrush x:Key="BleeckerHeroForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroEmptyForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTitleHoverBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroDescriptionBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroDescriptionHoverBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaHoverBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroCtaBorderBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowHoverBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBorderBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowBorderHoverBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroArrowForegroundHoverBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTagBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroTagBorderBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorHoverBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroIndicatorActiveBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroNavigationBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroNavigationBorderBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerHeroSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSonnerBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSurfaceBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightHeaderBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSelectedBackgroundBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightSelectedForegroundBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightRowHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightIconBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightIconBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightTriggerHoverBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightFocusBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSpotlightBackdropBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaTileBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaTileBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaTileHoverBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaOverlayBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaOverlayTextBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaPlaceholderBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaEmptyBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaEmptyBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaPreviewBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaPreviewBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerMediaFocusBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileChooseBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileChooseHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileChooseForegroundBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerFileFocusBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
+            <SolidColorBrush x:Key="BleeckerSonnerCloseHoverBrush" Color="{ThemeResource SystemColorHighlightColor}" Opacity="1" />
             <SolidColorBrush x:Key="BleeckerNotificationCountBackgroundBrush" Color="{ThemeResource SystemColorHighlightColor}" />
             <SolidColorBrush x:Key="BleeckerNotificationCountForegroundBrush" Color="{ThemeResource SystemColorHighlightTextColor}" />
             <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="1" />
@@ -431,6 +611,7 @@
     <x:Double x:Key="BleeckerSpacingSection">48</x:Double>
     <x:Double x:Key="BleeckerSpacingPage">64</x:Double>
     <FontFamily x:Key="BleeckerPrimaryMediumFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans</FontFamily>
+    <FontFamily x:Key="BleeckerPrimaryBoldFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Bold.ttf#Encode Sans</FontFamily>
     <CornerRadius x:Key="BleeckerButtonCornerRadius">7</CornerRadius>
     <CornerRadius x:Key="BleeckerCardCornerRadius">12</CornerRadius>
     <CornerRadius x:Key="BleeckerUiCornerRadius">7</CornerRadius>

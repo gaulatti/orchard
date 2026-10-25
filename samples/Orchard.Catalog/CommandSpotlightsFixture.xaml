@@ -1,0 +1,37 @@
+<UserControl x:Class="Orchard.Catalog.CommandSpotlightsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <Style x:Key="CompactSpotlightSurface" TargetType="orchard:BleeckerOverlaySurface" BasedOn="{StaticResource BleeckerCommandSpotlightSurfaceStyle}"><Setter Property="MaxWidth" Value="480"/><Setter Property="CornerRadius" Value="8"/></Style>
+  <Style x:Key="WideSpotlightSurface" TargetType="orchard:BleeckerOverlaySurface" BasedOn="{StaticResource BleeckerCommandSpotlightSurfaceStyle}"><Setter Property="MaxWidth" Value="800"/></Style>
+  <Style x:Key="RoomySpotlightTrigger" TargetType="Button" BasedOn="{StaticResource BleeckerCommandSpotlightTriggerStyle}"><Setter Property="Height" Value="48"/><Setter Property="Padding" Value="20,9,24,11"/><Setter Property="Background" Value="{ThemeResource BleeckerSpotlightSelectedBackgroundBrush}"/><Setter Property="BorderBrush" Value="{ThemeResource BleeckerSpotlightSelectedForegroundBrush}"/></Style>
+ </UserControl.Resources>
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Command Spotlight" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Search fictional commands with Ctrl+K. Arrow keys follow the original action order; Enter runs the selected command. All actions and navigation stay in this local component demo." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Primary"><orchard:BleeckerCommandSpotlight.Actions><orchard:BleeckerCommandSpotlightActions/></orchard:BleeckerCommandSpotlight.Actions></orchard:BleeckerCommandSpotlight>
+  <TextBlock x:Name="Result" Text="No fictional command invoked" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <StackPanel Orientation="Horizontal" Spacing="12"><Button Content="Rename original action" Click="Rename"/><Button Content="Reverse caller collection" Click="Reverse"/><CheckBox Content="Right-to-left" Checked="Direction" Unchecked="Direction"/></StackPanel>
+  <TextBlock Text="Controlled requests, empty, disabled and scaled" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="The controlled example accepts open requests unless the checkbox is selected." Style="{StaticResource BleeckerBodyStyle}"/>
+  <CheckBox x:Name="Reject" Content="Reject controlled requests"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Controlled" TriggerLabel="Controlled search" Hotkey="p"/>
+  <orchard:BleeckerCommandSpotlight EmptyMessage="No fictional commands available" TriggerLabel="Empty search" Hotkey="e"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Disabled" IsEnabled="False" TriggerLabel="Disabled search"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Scaled" FontSize="32" TriggerLabel="Scaled search" Hotkey="j"/>
+  <TextBlock Text="Hotkey names and full Unicode casing" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Cycle ß, ArrowUp and / as caller hotkeys. The ß shortcut hint expands to SS; key names follow the current Windows keyboard layout." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <Button x:Name="HotkeyCycle" Content="Use ArrowUp hotkey" Click="CycleHotkey"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Unicode" TriggerLabel="Unicode search" Hotkey="ß"/>
+  <TextBlock Text="Caller-owned collections" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Switch between 32 and 1,000 fictional commands. Filtering and selection keep the original action objects." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <Button x:Name="CollectionCycle" Content="Use 1,000 fictional commands" Click="CycleCollection"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Collection" TriggerLabel="Collection search" Hotkey="b"/>
+  <TextBlock Text="Reusable native styles" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Cycle caller styles to compare compact, wide and default surfaces. Caller height, padding and paint setters take precedence over generated defaults." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <Button x:Name="StyleCycle" Content="Apply compact caller styles" Click="CycleStyles"/>
+  <orchard:BleeckerCommandSpotlight x:Name="Customized" TriggerLabel="Caller-styled search" Hotkey="s"/>
+  <Button Style="{StaticResource BleeckerCommandSpotlightTriggerStyle}" Content="Trigger style"/>
+  <Button Style="{StaticResource BleeckerCommandSpotlightActionStyle}" Content="Action style"/>
+  <TextBox Style="{StaticResource BleeckerCommandSpotlightEditorStyle}" Text="Original caller editor"/>
+  <orchard:BleeckerOverlaySurface Style="{StaticResource BleeckerCommandSpotlightSurfaceStyle}" Padding="20"><TextBlock Text="Caller-owned surface content" Style="{StaticResource BleeckerBodyStyle}"/></orchard:BleeckerOverlaySurface>
+ </StackPanel>
+</UserControl>

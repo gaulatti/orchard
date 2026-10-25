@@ -23,7 +23,7 @@ public sealed partial class DashboardGridsFixture:UserControl
         var presenter=(OverlappedPresenter)window.Presenter;var maximized=presenter.State==OverlappedPresenterState.Maximized;
         var root=(Grid)XamlRoot.Content;var host=new Grid{Margin=new Thickness(20),Background=root.Background};
         Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
-        using var reference=JsonDocument.Parse(typeof(DashboardGridsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DashboardGridLayout.json")!);
+        using var reference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DashboardGridsFixture).Assembly, "Orchard.Catalog.Reference.DashboardGridLayout.json")!);
         var reports=new List<object>();
         try
         {

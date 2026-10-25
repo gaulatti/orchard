@@ -10,6 +10,8 @@ public sealed class TextCasingTests
     [DataRow("և", "ԵՒ")]
     [DataRow("Café · 東京 · 👩🏽‍💻", "CAFÉ · 東京 · 👩🏽‍💻")]
     [DataRow("", "")]
+    [DataRow("\u1C8A", "\u1C89")]
+    [DataRow("\U00010D70", "\U00010D50")]
     public void UppercasePreservesFullMappingsAndUncasedContent(string source, string expected) =>
         Assert.AreEqual(expected, BleeckerTextCasing.Uppercase(source));
 }

@@ -1,0 +1,12 @@
+<StackPanel x:Class="Orchard.Catalog.AppTabBarsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard"
+ Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <TextBlock Text="App tab bar · component preview" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local destinations and notification counts. The caller owns selection and content." Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerAppTabBar x:Name="Sample" AutomationProperties.Name="Fictional desk destinations" SelectionChanged="Changed"/>
+ <TextBlock x:Name="Status" Text="Selected: overview" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerAppTabBar x:Name="TypedSample" AutomationProperties.Name="Typed fictional destinations"/>
+ <orchard:BleeckerAppTabBar x:Name="NarrowSample" Width="160" HorizontalAlignment="Left" AutomationProperties.Name="Constrained fictional destinations"/>
+ <orchard:BleeckerAppTabBar x:Name="DisabledSample" IsEnabled="False" AutomationProperties.Name="Disabled fictional destinations"/>
+ <orchard:BleeckerAppTabBar x:Name="LargeSample" FontSize="20" AutomationProperties.Name="Enlarged fictional destinations"/>
+</StackPanel>

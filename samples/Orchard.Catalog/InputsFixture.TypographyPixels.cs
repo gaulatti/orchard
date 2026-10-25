@@ -19,7 +19,7 @@ public sealed partial class InputsFixture
                 scale = XamlRoot.RasterizationScale, textScale }));
             return;
         }
-        using var stream = typeof(InputsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.InputTypography.json")!;
+        using var stream = CatalogReferenceResources.Open(typeof(InputsFixture).Assembly, "Orchard.Catalog.Reference.InputTypography.json")!;
         using var reference = JsonDocument.Parse(stream);
         var root = reference.RootElement;
         var profile = root.GetProperty("profiles").EnumerateArray().Single(item =>

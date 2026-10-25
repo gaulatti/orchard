@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerSecureField">
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
+  <Setter Property="FontSize" Value="14" /><Setter Property="FontWeight" Value="Normal" />
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}" />
+  <Setter Property="Background" Value="{ThemeResource BleeckerCardBrush}" />
+  <Setter Property="BorderBrush" Value="{ThemeResource BleeckerBorderBrush}" />
+  <Setter Property="BorderThickness" Value="1" /><Setter Property="CornerRadius" Value="7" />
+  <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="40" />
+  <Setter Property="Padding" Value="14,4" /><Setter Property="IsTabStop" Value="False" />
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSecureField">
+   <Grid x:Name="SecureEditor" MinHeight="{TemplateBinding MinHeight}">
+    <VisualStateManager.VisualStateGroups>
+     <VisualStateGroup x:Name="CommonStates">
+      <VisualState x:Name="Normal" /><VisualState x:Name="PointerOver" />
+      <VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="SecureInterior.Opacity" Value="0.55" /></VisualState.Setters></VisualState>
+     </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <Canvas Opacity="0" IsHitTestVisible="False"><Path x:Name="SecureShadowMask" Fill="White" /></Canvas>
+    <Border x:Name="SecureShadowPalette" Background="{ThemeResource BleeckerDeepSeaBrush}" Visibility="Collapsed" />
+    <Grid x:Name="SecureShadowHost" IsHitTestVisible="False" />
+    <Border x:Name="SecureBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" />
+    <Grid x:Name="SecureInterior" Margin="{TemplateBinding Padding}" ColumnSpacing="8">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+     <PasswordBox x:Name="SecurePasswordEditor" PlaceholderText="{TemplateBinding PlaceholderText}" PasswordRevealMode="Hidden" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" MinWidth="0" MinHeight="0" Padding="0" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" SelectionHighlightColor="{ThemeResource BleeckerPrimaryBrush}">
+      <PasswordBox.Template><ControlTemplate TargetType="PasswordBox">
+       <Grid>
+        <VisualStateManager.VisualStateGroups>
+         <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal" /><VisualState x:Name="PointerOver" /><VisualState x:Name="Disabled" />
+          <VisualState x:Name="Focused"><VisualState.Setters><Setter Target="SecureFocus.Opacity" Value="1" /></VisualState.Setters></VisualState>
+         </VisualStateGroup>
+         <VisualStateGroup x:Name="ButtonStates"><VisualState x:Name="ButtonVisible" /><VisualState x:Name="ButtonCollapsed" /></VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Border x:Name="SecureFocus" BorderBrush="{ThemeResource BleeckerRingBrush}" BorderThickness="0,0,0,1" Opacity="0" IsHitTestVisible="False" />
+        <ScrollViewer x:Name="ContentElement" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" VerticalAlignment="Center" HorizontalScrollMode="Auto" HorizontalScrollBarVisibility="Hidden" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden" IsTabStop="False" ZoomMode="Disabled" AutomationProperties.AccessibilityView="Raw" />
+        <TextBlock x:Name="PlaceholderTextContentPresenter" Text="{TemplateBinding PlaceholderText}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" IsTextScaleFactorEnabled="{TemplateBinding IsTextScaleFactorEnabled}" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" VerticalAlignment="Center" IsHitTestVisible="False" />
+       </Grid>
+      </ControlTemplate></PasswordBox.Template>
+     </PasswordBox>
+     <local:BleeckerIconButton x:Name="SecureRevealButton" Grid.Column="1" Size="Small" Variant="Ghost" VerticalAlignment="Center" AutomationProperties.Name="Show password">
+      <Viewbox Width="16" Height="16" AutomationProperties.AccessibilityView="Raw">
+       <Grid Width="24" Height="24">
+        <Path x:Name="SecureEye" Stroke="{ThemeResource BleeckerTextSecondaryBrush}" StrokeThickness="1.8" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M2,12 C5,5 19,5 22,12 C19,19 5,19 2,12 M15,12 C15,16 9,16 9,12 C9,8 15,8 15,12" />
+        <Path x:Name="SecureEyeOff" Visibility="Collapsed" Stroke="{ThemeResource BleeckerTextSecondaryBrush}" StrokeThickness="1.8" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M3,3 L21,21 M2,12 C3,9.5 4.5,8 6,7 M10,6 C15,5 20,8 22,12 C21,14 19.5,16 18,17 M14,18 C9,19 4,16 2,12 M10,10 C7,14 13,17 15,13" />
+       </Grid>
+      </Viewbox>
+     </local:BleeckerIconButton>
+    </Grid>
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

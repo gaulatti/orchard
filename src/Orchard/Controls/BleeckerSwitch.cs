@@ -25,6 +25,8 @@ public sealed class BleeckerSwitch : Control
     private Microsoft.UI.Xaml.Shapes.Ellipse? thumb;
     private TextBlock? label;
     private readonly TextBlock intrinsicLabel = new() { TextWrapping = TextWrapping.NoWrap, UseLayoutRounding = false };
+    private BleeckerReferenceText.Presentation labelPresentation = new();
+    private readonly BleeckerReferenceText.Presentation intrinsicLabelPresentation = new();
     private Grid? shadowHost;
     private TranslateTransform? translation;
     private TextBlock[] probes = [];
@@ -44,10 +46,12 @@ public sealed class BleeckerSwitch : Control
         RegisterPropertyChangedCallback(AutomationProperties.NameProperty, (_, _) => UpdateAccessibleName());
         RegisterPropertyChangedCallback(AutomationProperties.LabeledByProperty, (_, _) => UpdateAccessibleName());
         RegisterPropertyChangedCallback(VisibilityProperty, (_, _) => { if (Visibility != Visibility.Visible) UpdateVisuals(false); });
+        RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => InvalidateMeasure());
         IsEnabledChanged += (_, _) => ProtectedCursor = IsEnabled ? hand : prohibited;
         ProtectedCursor = hand;
         Loaded += (_, _) =>
         {
+            if (action is not null) action.IsOn = IsOn;
             settings.ColorValuesChanged += OnColorsChanged;
             if (OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) settings.AnimationsEnabledChanged += OnMotionChanged;
             ObservePalette(); UpdateVisuals(false); UpdateShadow();
@@ -102,6 +106,7 @@ public sealed class BleeckerSwitch : Control
         track = Part<Border>("PART_Track");
         thumb = Part<Microsoft.UI.Xaml.Shapes.Ellipse>("PART_Thumb");
         label = Part<TextBlock>("PART_Label");
+        labelPresentation = new();
         shadowHost = Part<Grid>("PART_ShadowHost");
         translation = Part<Grid>("SwitchKnob")?.RenderTransform as TranslateTransform;
         probes = new[] { "PART_OffFill", "PART_OnFill", "PART_OffStroke", "PART_OnStroke", "PART_OffThumb", "PART_OnThumb" }
@@ -116,7 +121,10 @@ public sealed class BleeckerSwitch : Control
 
     private T? Part<T>(string name) where T : FrameworkElement =>
         VisualTreeHelper.GetChildrenCount(action) > 0 ? ((FrameworkElement)VisualTreeHelper.GetChild(action, 0)).FindName(name) as T : null;
-    private void OnNativeToggled(object sender, RoutedEventArgs args) { if (action!.IsOn != IsOn) IsOn = action.IsOn; }
+    private void OnNativeToggled(object sender, RoutedEventArgs args)
+    {
+        if (IsLoaded && action is { IsLoaded: true } && ReferenceEquals(sender, action) && action.IsOn != IsOn) IsOn = action.IsOn;
+    }
     private void UpdateAccessibleName()
     {
         if (action is null) return;
@@ -128,14 +136,18 @@ public sealed class BleeckerSwitch : Control
         nativePeer.EventsSource = FrameworkElementAutomationPeer.FromElement(this);
     }
 
-    private void UpdateLabel() { if (label is not null) label.Visibility = string.IsNullOrEmpty(Label) ? Visibility.Collapsed : Visibility.Visible; }
+    private void UpdateLabel()
+    {
+        if (label is not null) { label.Visibility = string.IsNullOrEmpty(Label) ? Visibility.Collapsed : Visibility.Visible; labelPresentation.Update(label, Label ?? string.Empty); }
+        InvalidateMeasure();
+    }
     protected override Windows.Foundation.Size MeasureOverride(Windows.Foundation.Size availableSize)
     {
         if (label is null) return base.MeasureOverride(availableSize);
         // Inline-flex prefers the full label width and wraps only when bounded.
         // A wrapping TextBlock in a star column can instead report its shortest
         // word width on first display, then clip after the final narrow arrange.
-        intrinsicLabel.Text = Label ?? string.Empty;
+        labelPresentation.Update(label, Label ?? string.Empty);
         intrinsicLabel.FontFamily = label.FontFamily;
         intrinsicLabel.FontSize = label.FontSize;
         intrinsicLabel.FontWeight = label.FontWeight;
@@ -145,6 +157,7 @@ public sealed class BleeckerSwitch : Control
         intrinsicLabel.IsTextScaleFactorEnabled = label.IsTextScaleFactorEnabled;
         intrinsicLabel.Language = label.Language;
         intrinsicLabel.FlowDirection = label.FlowDirection;
+        intrinsicLabelPresentation.Update(intrinsicLabel, Label ?? string.Empty);
         intrinsicLabel.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
         var preferredWidth = 36 + (string.IsNullOrEmpty(Label) ? 0 : 12 + intrinsicLabel.DesiredSize.Width);
         // XAML's float-sized layout can round the row back below its measured
@@ -249,8 +262,13 @@ public sealed class BleeckerSwitch : Control
         private AutomationPeer NativePeer => FrameworkElementAutomationPeer.CreatePeerForElement(owner.action
             ?? throw new InvalidOperationException("The switch template is not applied."));
         private IToggleProvider NativeToggle => (IToggleProvider)NativePeer.GetPattern(PatternInterface.Toggle);
-        public ToggleState ToggleState => NativeToggle.ToggleState;
-        public void Toggle() => NativeToggle.Toggle();
+        public ToggleState ToggleState => owner.IsOn ? ToggleState.On : ToggleState.Off;
+        public void Toggle()
+        {
+            if (!owner.IsLoaded || owner.action is not { IsLoaded: true } input) throw new ElementNotAvailableException();
+            if (!owner.IsEnabled || !input.IsEnabled) throw new ElementNotEnabledException();
+            NativeToggle.Toggle();
+        }
         protected override string GetClassNameCore() => nameof(BleeckerSwitch);
         protected override AutomationControlType GetAutomationControlTypeCore() => NativePeer.GetAutomationControlType();
         protected override string GetLocalizedControlTypeCore() => NativePeer.GetLocalizedControlType();

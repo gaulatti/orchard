@@ -16,7 +16,7 @@ public sealed partial class MainWindow
 {
     private async Task RunTextareasAsync(string folder)
     {
-        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.Textarea.json") ?? throw new InvalidOperationException("Missing Textarea reference.");
+        using var stream = CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.Textarea.json") ?? throw new InvalidOperationException("Missing Textarea reference.");
         using var reference = await JsonDocument.ParseAsync(stream);
         var original = Content;
         var canvas = new Canvas { Height = 600 };

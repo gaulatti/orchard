@@ -15,7 +15,11 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="Rendering/Shaders/*.bin" LogicalName="Orchard.NearShadow.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="Rendering/Shaders/Far/*.bin" LogicalName="Orchard.FarShadow.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="Text/CommandSpotlightCasing.json" LogicalName="Orchard.Text.CommandSpotlightCasing.json" />
         <EmbeddedResource Include="Text/SpecialCasing-17.0.0.txt" LogicalName="Orchard.Text.SpecialCasing-17.0.0.txt" />
+        <EmbeddedResource Include="Text/Uppercase-17.0.0.txt" LogicalName="Orchard.Text.Uppercase-17.0.0.txt" />
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
@@ -40,7 +44,7 @@
         <None Include="buildTransitive/Gaulatti.Orchard.targets" Pack="true" PackagePath="buildTransitive/" />
         <Content Remove="Assets/Images/*" />
         <None Remove="Assets/Images/*" />
-        <None Include="Assets/Images/*.svg" Pack="true" PackagePath="assets/images/%(Filename)%(Extension)">
+        <None Include="Assets/Images/*.svg;Assets/Images/*.png" Pack="true" PackagePath="assets/images/%(Filename)%(Extension)">
             <Link>Orchard/Assets/Images/%(Filename)%(Extension)</Link>
             <TargetPath>Orchard/Assets/Images/%(Filename)%(Extension)</TargetPath>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -50,10 +54,13 @@
         <None Include="../../tokens/LICENSE-Bleecker.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Radix.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-FloatingUI.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Unicode.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-D3-Shape.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-EsToolkit.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Recharts.txt" Pack="true" PackagePath="licenses/" />
         <None Include="../../licenses/LICENSE-Skia.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-Chromium.txt" Pack="true" PackagePath="licenses/" />
+        <None Include="../../licenses/LICENSE-TanStackTable.txt" Pack="true" PackagePath="licenses/" />
     </ItemGroup>
 </Project>

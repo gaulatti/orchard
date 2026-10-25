@@ -1,0 +1,635 @@
+{
+  "format": "orchard-collection-filters-css-paint-v1",
+  "scope": "source-css-paint-encoding-only",
+  "repository": "gaulatti/bleecker",
+  "commit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceSha256": "9b220e110dde6293e081ff555c6b69c9a0e34fee352e5b46888646b418774d69",
+  "referenceSha256": "61e610c90cd70940a0e9ce55b287836f20730c01db2b728a115571de09178843",
+  "cssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "clientSha256": "63adb7a26cda4b47622253e8c3a871e91cdee343c5416856620393079f013c25",
+  "scriptSha256": "f3c82ab1501cc222a5ece0320310fca429147358333d04b1fba447115e550053",
+  "browser": "155.0.4283.62",
+  "encoding": "domRgba/domArgb: straight RGBA8 from an unmodified transparent DOM CSS swatch; rgba/argb: independent sRGB canvas diagnostic",
+  "sourceScenePixelsPainted": false,
+  "nativePaintVerified": false,
+  "themes": [
+    {
+      "theme": "Light",
+      "paints": [
+        {
+          "key": "outerBackground",
+          "css": "rgb(255, 255, 255)",
+          "utility": "bg-white",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-white)"
+          ],
+          "rawCss": "var(--color-white)",
+          "resolvedCss": "#fff",
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "argb": "#ffffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "domArgb": "#ffffffff",
+          "file": "collection-filters-paint-outerBackground-Light.png",
+          "pngSha256": "fbc4a7cb850c9e2eb46749ce91b3d34c54a7649aba1163fafae64a2b1a6a93af"
+        },
+        {
+          "key": "outerBorder",
+          "css": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "utility": "border-sand/30",
+          "property": "border-color",
+          "declarations": [
+            "var(--color-sand)",
+            "color-mix(in oklab, var(--color-sand) 30%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-sand) 30%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #e6d5b8 30%, transparent)",
+          "rgba": [
+            229,
+            212,
+            182,
+            77
+          ],
+          "argb": "#4de5d4b6",
+          "domRgba": [
+            229,
+            212,
+            182,
+            77
+          ],
+          "domArgb": "#4de5d4b6",
+          "file": "collection-filters-paint-outerBorder-Light.png",
+          "pngSha256": "cee5add02a5dc1a08a5a758b24dfebc8683ad652dbe3fecd9f4078de727caf43"
+        },
+        {
+          "key": "activeBackground",
+          "css": "oklab(0.974335 0.00160992 0.00603193 / 0.2)",
+          "utility": "bg-light-sand/20",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-light-sand)",
+            "color-mix(in oklab, var(--color-light-sand) 20%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-light-sand) 20%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #f9f6f2 20%, transparent)",
+          "rgba": [
+            250,
+            245,
+            240,
+            51
+          ],
+          "argb": "#33faf5f0",
+          "domRgba": [
+            250,
+            245,
+            240,
+            51
+          ],
+          "domArgb": "#33faf5f0",
+          "file": "collection-filters-paint-activeBackground-Light.png",
+          "pngSha256": "d35347dbaecb7fdb19b3de500f35a18803b0a4af40a9b2a68791bbf00a1deeca"
+        },
+        {
+          "key": "activeBorder",
+          "css": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "utility": "border-sand/20",
+          "property": "border-color",
+          "declarations": [
+            "var(--color-sand)",
+            "color-mix(in oklab, var(--color-sand) 20%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-sand) 20%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #e6d5b8 20%, transparent)",
+          "rgba": [
+            230,
+            215,
+            185,
+            51
+          ],
+          "argb": "#33e6d7b9",
+          "domRgba": [
+            230,
+            215,
+            185,
+            51
+          ],
+          "domArgb": "#33e6d7b9",
+          "file": "collection-filters-paint-activeBorder-Light.png",
+          "pngSha256": "e2761a1b644f7d7363964ca7bd03b06b0bf83aa2738181c399a5971e18469b4f"
+        },
+        {
+          "key": "bodyBackground",
+          "css": "oklab(0.974335 0.00160992 0.00603193 / 0.25)",
+          "utility": "bg-light-sand/25",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-light-sand)",
+            "color-mix(in oklab, var(--color-light-sand) 25%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-light-sand) 25%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #f9f6f2 25%, transparent)",
+          "rgba": [
+            247,
+            247,
+            243,
+            64
+          ],
+          "argb": "#40f7f7f3",
+          "domRgba": [
+            247,
+            243,
+            243,
+            64
+          ],
+          "domArgb": "#40f7f3f3",
+          "file": "collection-filters-paint-bodyBackground-Light.png",
+          "pngSha256": "8feb22096dae743e351de91e07a57ff8e392a313f7fe44d4b7923d64e926470a"
+        },
+        {
+          "key": "bodyBorder",
+          "css": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+          "utility": "border-sand/25",
+          "property": "border-color",
+          "declarations": [
+            "var(--color-sand)",
+            "color-mix(in oklab, var(--color-sand) 25%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-sand) 25%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #e6d5b8 25%, transparent)",
+          "rgba": [
+            231,
+            211,
+            183,
+            64
+          ],
+          "argb": "#40e7d3b7",
+          "domRgba": [
+            231,
+            211,
+            183,
+            64
+          ],
+          "domArgb": "#40e7d3b7",
+          "file": "collection-filters-paint-bodyBorder-Light.png",
+          "pngSha256": "9786f1b63c1530bb9d4674dbb366eae6ddcce5fd72527bb72e156a4c1fc46327"
+        },
+        {
+          "key": "countBackground",
+          "css": "rgb(44, 87, 132)",
+          "utility": "bg-sea",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-sea)"
+          ],
+          "rawCss": "var(--color-sea)",
+          "resolvedCss": "#2c5784",
+          "rgba": [
+            44,
+            87,
+            132,
+            255
+          ],
+          "argb": "#ff2c5784",
+          "domRgba": [
+            44,
+            87,
+            132,
+            255
+          ],
+          "domArgb": "#ff2c5784",
+          "file": "collection-filters-paint-countBackground-Light.png",
+          "pngSha256": "8a4e58918978197530516489e2cce6b3835ed0f386367c8aded6d4c0d48cc6b5"
+        },
+        {
+          "key": "countForeground",
+          "css": "rgb(255, 255, 255)",
+          "utility": "text-white",
+          "property": "color",
+          "declarations": [
+            "var(--color-white)"
+          ],
+          "rawCss": "var(--color-white)",
+          "resolvedCss": "#fff",
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "argb": "#ffffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "domArgb": "#ffffffff",
+          "file": "collection-filters-paint-countForeground-Light.png",
+          "pngSha256": "fbc4a7cb850c9e2eb46749ce91b3d34c54a7649aba1163fafae64a2b1a6a93af"
+        },
+        {
+          "key": "chipBackground",
+          "css": "rgb(255, 255, 255)",
+          "utility": "bg-white",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-white)"
+          ],
+          "rawCss": "var(--color-white)",
+          "resolvedCss": "#fff",
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "argb": "#ffffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "domArgb": "#ffffffff",
+          "file": "collection-filters-paint-chipBackground-Light.png",
+          "pngSha256": "fbc4a7cb850c9e2eb46749ce91b3d34c54a7649aba1163fafae64a2b1a6a93af"
+        },
+        {
+          "key": "chipBorder",
+          "css": "oklab(0.879352 0.00668868 0.0424888 / 0.35)",
+          "utility": "border-sand/35",
+          "property": "border-color",
+          "declarations": [
+            "var(--color-sand)",
+            "color-mix(in oklab, var(--color-sand) 35%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-sand) 35%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #e6d5b8 35%, transparent)",
+          "rgba": [
+            229,
+            212,
+            183,
+            89
+          ],
+          "argb": "#59e5d4b7",
+          "domRgba": [
+            232,
+            215,
+            183,
+            89
+          ],
+          "domArgb": "#59e8d7b7",
+          "file": "collection-filters-paint-chipBorder-Light.png",
+          "pngSha256": "5faf7e11ea063323203432a05e145cd0e12deae1e1c2b037ef318fc5a0550182"
+        },
+        {
+          "key": "toggleBackground",
+          "css": "oklab(0.974335 0.00160992 0.00603193 / 0.75)",
+          "utility": "bg-light-sand/75",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-light-sand)",
+            "color-mix(in oklab, var(--color-light-sand) 75%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-light-sand) 75%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #f9f6f2 75%, transparent)",
+          "rgba": [
+            250,
+            246,
+            242,
+            191
+          ],
+          "argb": "#bffaf6f2",
+          "domRgba": [
+            250,
+            246,
+            243,
+            191
+          ],
+          "domArgb": "#bffaf6f3",
+          "file": "collection-filters-paint-toggleBackground-Light.png",
+          "pngSha256": "9cb130b2e2c17e6e5ead6b1d40e8950d78bfcddeb330d8b1b250e430857ff56b"
+        }
+      ]
+    },
+    {
+      "theme": "Dark",
+      "paints": [
+        {
+          "key": "outerBackground",
+          "css": "rgb(24, 37, 51)",
+          "utility": "dark:bg-deep-sea",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-deep-sea)"
+          ],
+          "rawCss": "var(--color-deep-sea)",
+          "resolvedCss": "#182533",
+          "rgba": [
+            24,
+            37,
+            51,
+            255
+          ],
+          "argb": "#ff182533",
+          "domRgba": [
+            24,
+            37,
+            51,
+            255
+          ],
+          "domArgb": "#ff182533",
+          "file": "collection-filters-paint-outerBackground-Dark.png",
+          "pngSha256": "d818f740a27397ad637c4e45f26d58ad4dd190b455b3b3d866bc8d98fc1a5be1"
+        },
+        {
+          "key": "outerBorder",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "utility": "dark:border-white/10",
+          "property": "border-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.1)",
+            "color-mix(in oklab, var(--color-white) 10%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 10%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 10%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            26
+          ],
+          "argb": "#1affffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            26
+          ],
+          "domArgb": "#1affffff",
+          "file": "collection-filters-paint-outerBorder-Dark.png",
+          "pngSha256": "8e4ebb8681305962cde5cdb501ce36352eae10b38557116d58ce37951e3fc9f3"
+        },
+        {
+          "key": "activeBackground",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.025)",
+          "utility": "dark:bg-white/[0.025]",
+          "property": "background-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.024)",
+            "color-mix(in oklab, var(--color-white) 2.5%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 2.5%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 2.5%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            6
+          ],
+          "argb": "#06ffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            6
+          ],
+          "domArgb": "#06ffffff",
+          "file": "collection-filters-paint-activeBackground-Dark.png",
+          "pngSha256": "33c8d7722e92a6543703bfc9996e1c7623b597bd129486ec6bfaf5b64043b0bd"
+        },
+        {
+          "key": "activeBorder",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "utility": "dark:border-white/[0.07]",
+          "property": "border-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.07)",
+            "color-mix(in oklab, var(--color-white) 7.0%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 7.0%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 7.0%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            18
+          ],
+          "argb": "#12ffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            18
+          ],
+          "domArgb": "#12ffffff",
+          "file": "collection-filters-paint-activeBorder-Dark.png",
+          "pngSha256": "2e39e1ff0e1f293222fae32b2f1ac535574ad52896c34a1813690c8791e97671"
+        },
+        {
+          "key": "bodyBackground",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.025)",
+          "utility": "dark:bg-white/[0.025]",
+          "property": "background-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.024)",
+            "color-mix(in oklab, var(--color-white) 2.5%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 2.5%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 2.5%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            6
+          ],
+          "argb": "#06ffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            6
+          ],
+          "domArgb": "#06ffffff",
+          "file": "collection-filters-paint-bodyBackground-Dark.png",
+          "pngSha256": "33c8d7722e92a6543703bfc9996e1c7623b597bd129486ec6bfaf5b64043b0bd"
+        },
+        {
+          "key": "bodyBorder",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+          "utility": "dark:border-white/[0.08]",
+          "property": "border-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.08)",
+            "color-mix(in oklab, var(--color-white) 8%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 8%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 8%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            20
+          ],
+          "argb": "#14ffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            20
+          ],
+          "domArgb": "#14ffffff",
+          "file": "collection-filters-paint-bodyBorder-Dark.png",
+          "pngSha256": "63b7be6541335e03b61c8e9a4361061053e25b28ee0a613a4750c05308535c05"
+        },
+        {
+          "key": "countBackground",
+          "css": "rgb(91, 163, 245)",
+          "utility": "dark:bg-accent-blue",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-accent-blue)"
+          ],
+          "rawCss": "var(--color-accent-blue)",
+          "resolvedCss": "#5ba3f5",
+          "rgba": [
+            91,
+            163,
+            245,
+            255
+          ],
+          "argb": "#ff5ba3f5",
+          "domRgba": [
+            91,
+            163,
+            245,
+            255
+          ],
+          "domArgb": "#ff5ba3f5",
+          "file": "collection-filters-paint-countBackground-Dark.png",
+          "pngSha256": "65fd30f5ff25a8b8742e12e8d604169a36f8610264271069160b905539cb7b45"
+        },
+        {
+          "key": "countForeground",
+          "css": "rgb(24, 37, 51)",
+          "utility": "dark:text-deep-sea",
+          "property": "color",
+          "declarations": [
+            "var(--color-deep-sea)"
+          ],
+          "rawCss": "var(--color-deep-sea)",
+          "resolvedCss": "#182533",
+          "rgba": [
+            24,
+            37,
+            51,
+            255
+          ],
+          "argb": "#ff182533",
+          "domRgba": [
+            24,
+            37,
+            51,
+            255
+          ],
+          "domArgb": "#ff182533",
+          "file": "collection-filters-paint-countForeground-Dark.png",
+          "pngSha256": "d818f740a27397ad637c4e45f26d58ad4dd190b455b3b3d866bc8d98fc1a5be1"
+        },
+        {
+          "key": "chipBackground",
+          "css": "rgb(24, 37, 51)",
+          "utility": "dark:bg-deep-sea",
+          "property": "background-color",
+          "declarations": [
+            "var(--color-deep-sea)"
+          ],
+          "rawCss": "var(--color-deep-sea)",
+          "resolvedCss": "#182533",
+          "rgba": [
+            24,
+            37,
+            51,
+            255
+          ],
+          "argb": "#ff182533",
+          "domRgba": [
+            24,
+            37,
+            51,
+            255
+          ],
+          "domArgb": "#ff182533",
+          "file": "collection-filters-paint-chipBackground-Dark.png",
+          "pngSha256": "d818f740a27397ad637c4e45f26d58ad4dd190b455b3b3d866bc8d98fc1a5be1"
+        },
+        {
+          "key": "chipBorder",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "utility": "dark:border-white/10",
+          "property": "border-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.1)",
+            "color-mix(in oklab, var(--color-white) 10%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 10%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 10%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            26
+          ],
+          "argb": "#1affffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            26
+          ],
+          "domArgb": "#1affffff",
+          "file": "collection-filters-paint-chipBorder-Dark.png",
+          "pngSha256": "8e4ebb8681305962cde5cdb501ce36352eae10b38557116d58ce37951e3fc9f3"
+        },
+        {
+          "key": "toggleBackground",
+          "css": "oklab(0.999994 0.0000455678 0.0000200868 / 0.07)",
+          "utility": "dark:bg-white/[0.07]",
+          "property": "background-color",
+          "declarations": [
+            "rgba(255, 255, 255, 0.07)",
+            "color-mix(in oklab, var(--color-white) 7.0%, transparent)"
+          ],
+          "rawCss": "color-mix(in oklab, var(--color-white) 7.0%, transparent)",
+          "resolvedCss": "color-mix(in oklab, #fff 7.0%, transparent)",
+          "rgba": [
+            255,
+            255,
+            255,
+            18
+          ],
+          "argb": "#12ffffff",
+          "domRgba": [
+            255,
+            255,
+            255,
+            18
+          ],
+          "domArgb": "#12ffffff",
+          "file": "collection-filters-paint-toggleBackground-Dark.png",
+          "pngSha256": "2e39e1ff0e1f293222fae32b2f1ac535574ad52896c34a1813690c8791e97671"
+        }
+      ]
+    }
+  ]
+}

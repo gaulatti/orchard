@@ -1,5 +1,19 @@
 # Tooltip reference and acceptance
 
+The [current library scope](library-scope.md) excludes Narrator and OS
+accessibility/contrast campaigns. Existing component metadata and theme
+resources remain supported.
+
+The reproducible `tests/Reference/Tooltip.json` adds 40 source states and four
+Escape histories at 900×760, captured twice with identical JSON and PNG bytes.
+It covers both themes, four sides, opposite-edge flips, fixed consumer content,
+text content and modal-owned branches. Unowned source Tooltip wrappers use
+z-index 180; `useModalBranch` gives modal-owned wrappers overlay+1. Escape closes
+the tooltip and retains its parent dialog and focused trigger. The portable
+placement regression compares body and arrow positions against those source
+measurements. It uses the installed source-pinned Floating UI core 1.7.5 arrow
+algorithm, including its integer `clientWidth`/`clientHeight` calculation.
+
 This is a reference audit, not Windows acceptance. An in-progress
 [Windows preview](tooltips.md) now exists.
 The fixed source is Bleecker `a86059013cd59684ce452849278ea81e734f2066`,
@@ -71,7 +85,7 @@ Acceptance must cover all four sides, keyboard and pointer entry, dismissal,
 content transit, collision-driven side changes, modal ownership, consumer
 content and live updates, long/multiline/non-Latin text, disabled triggers,
 open-content appearance changes, text/display scaling, reduced and normal
-motion, UI Automation/Narrator, and actual x64/ARM64 execution. Apply the
-goal's explicit Windows contrast-color adaptation with paired readable colors.
+motion, component UI Automation metadata, and actual x64/ARM64 execution.
+Preserve the existing paired contrast-theme resources without an OS campaign.
 Do not mark this inventory entry complete from a styled preview or a successful
 build. The full component remains in progress.

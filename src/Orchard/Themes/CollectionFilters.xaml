@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.MergedDictionaries><ResourceDictionary Source="ms-appx:///Orchard/Themes/CollectionFiltersPalette.g.xaml"/></ResourceDictionary.MergedDictionaries>
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="CollectionExpandedForeground" Color="#1A374D"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Default">
+   <SolidColorBrush x:Key="CollectionExpandedForeground" Color="#F0F4F8"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style TargetType="local:BleeckerCollectionFilters">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="Background" Value="{ThemeResource CollectionOuterBackground}"/><Setter Property="BorderBrush" Value="{ThemeResource CollectionOuterBorder}"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="12"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerCollectionFilters">
+   <Grid x:Name="PART_Frame" Margin="0,0,0,24" FlowDirection="LeftToRight" UseLayoutRounding="False">
+    <Canvas Opacity="0" IsHitTestVisible="False"><Path x:Name="CollectionShadowMask1" Fill="White"/><Path x:Name="CollectionShadowExterior1" Fill="White"/><Path x:Name="CollectionShadowMask2" Fill="White"/><Path x:Name="CollectionShadowExterior2" Fill="White"/></Canvas>
+    <Grid x:Name="CollectionShadowHost1" IsHitTestVisible="False"/><Grid x:Name="CollectionShadowHost2" IsHitTestVisible="False"/>
+    <Border x:Name="PART_Surface" Background="{TemplateBinding Background}" BackgroundSizing="OuterBorderEdge" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}" UseLayoutRounding="False"><Grid x:Name="PART_Layout" UseLayoutRounding="False"/></Border>
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

@@ -1,0 +1,21 @@
+<UserControl x:Class="Orchard.Catalog.BrandMarksFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Brand mark" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="The original template logo, fitted inside a square. It has no built-in action or selection state." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <StackPanel Orientation="Horizontal" Spacing="32">
+   <orchard:BleeckerBrandMark x:Name="Tiny" Size="16" AutomationProperties.Name="Fictional studio, 16 DIP mark"/>
+   <orchard:BleeckerBrandMark x:Name="Small" Size="32" AutomationProperties.Name="Fictional studio, 32 DIP mark"/>
+   <orchard:BleeckerBrandMark x:Name="Default" AutomationProperties.Name="Fictional studio, default mark"/>
+   <orchard:BleeckerBrandMark x:Name="Large" Size="96" AutomationProperties.Name="Fictional studio, 96 DIP mark"/>
+   <orchard:BleeckerBrandMark x:Name="Disabled" IsEnabled="False" AutomationProperties.Name="Fictional studio, disabled mark"/>
+  </StackPanel>
+  <TextBlock Text="Live size and caller-owned brush changes" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerBrandMark x:Name="Live" AutomationProperties.Name="Fictional studio, live preview"/>
+  <StackPanel Orientation="Horizontal" Spacing="12">
+   <orchard:BleeckerButton Content="Resize preview" Variant="Secondary" Click="ResizePreview"/>
+   <orchard:BleeckerButton Content="Tint preview" Variant="Secondary" Click="TintPreview"/>
+  </StackPanel>
+  <TextBlock x:Name="Outcome" Text="Default 64 DIP mark" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite"/>
+ </StackPanel>
+</UserControl>

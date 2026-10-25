@@ -1,0 +1,7014 @@
+{
+  "format": "orchard-tabs-reference-v1",
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceFile": "src/components/tabs.tsx",
+  "sourceSha256": "812294042eecf36f03ccfe890bac6f1542a6573c1fd8c24b42e963bb560c6827",
+  "sourceCssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "clientSha256": "026e62da003de6a2c3285ba2c0fff854ba47387cb3dcc2ccd2174a4e653e6274",
+  "scriptSha256": "16364a1aa25286fc842577cba158aadcd47436762800aeb65230ba0a2235467c",
+  "browser": "155.0.4283.62",
+  "cases": [
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "underline-sm-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "sm",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 33
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 76.5625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 100.5625,
+              "y": 20,
+              "width": 65.828125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 170.390625,
+              "y": 20,
+              "width": 68.390625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-sm-false-Light.png",
+      "pngSha256": "fdbb55708d01829b07f965868de63aeaa9d0da6e0a589056fd27b7db41278f49"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "underline-sm-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "sm",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 33
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 157.328125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 181.328125,
+              "y": 20,
+              "width": 157.34375,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 342.671875,
+              "y": 20,
+              "width": 157.328125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-sm-true-Light.png",
+      "pngSha256": "b40f700214ced266a80294da73cbe2f22e2a9575c1f20ed7e9b8bca00c3b620b"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "underline-md-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "md",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-md-false-Light.png",
+      "pngSha256": "2a8c1c29529cfdbfc81591064ade56b6e11f99c45d91a52866a9ee6382c66f7f"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "underline-md-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "md",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 157.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 181.328125,
+              "y": 20,
+              "width": 157.34375,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 342.671875,
+              "y": 20,
+              "width": 157.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-md-true-Light.png",
+      "pngSha256": "edac1a5a486c57178b5f1ca77c0f0c732120456076134a964265fa4edb29bb8e"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "underline-lg-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "lg",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 49
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 105.703125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 129.703125,
+              "y": 20,
+              "width": 92.28125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 225.984375,
+              "y": 20,
+              "width": 95.484375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-lg-false-Light.png",
+      "pngSha256": "23ee987b82c7c109b8d87ef25a0f0225f8b181f90dc0ae883f6c2c32a76c8e9c"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "underline-lg-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "lg",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 49
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 157.328125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 181.328125,
+              "y": 20,
+              "width": 157.34375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 342.671875,
+              "y": 20,
+              "width": 157.328125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-lg-true-Light.png",
+      "pngSha256": "f602a9e33c1f9e2cac4306fc6f8a3c1992f0627426b6426aa6c24b6258af4f1b"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "segmented-sm-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "sm",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 232.78125,
+            "height": 40
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+          "border": "rgb(45, 45, 45)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 78.5625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "rgb(255, 255, 255)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 106.5625,
+              "y": 24,
+              "width": 67.828125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 178.390625,
+              "y": 24,
+              "width": 70.390625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-sm-false-Light.png",
+      "pngSha256": "675fd862e2731e4db57f9e9505ba52128a7f4577a7252e583e5b386866cdb9ae"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "segmented-sm-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "sm",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 40
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+          "border": "rgb(45, 45, 45)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 154.65625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "rgb(255, 255, 255)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 182.65625,
+              "y": 24,
+              "width": 154.671875,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341.328125,
+              "y": 24,
+              "width": 154.671875,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-sm-true-Light.png",
+      "pngSha256": "127d4369307b6543dcbe3bf52a8a19b4d941e433550d96a2ed4a36b25b8f6362"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "segmented-md-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "md",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 279.90625,
+            "height": 48
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+          "border": "rgb(45, 45, 45)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 95.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "rgb(255, 255, 255)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 123.328125,
+              "y": 24,
+              "width": 82.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 210.125,
+              "y": 24,
+              "width": 85.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-md-false-Light.png",
+      "pngSha256": "99324aea526dd4df4fb23fc8471341a9ca04aa21d290ed0159ae0d307a60af25"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "segmented-md-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "md",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 48
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+          "border": "rgb(45, 45, 45)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 154.65625,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "rgb(255, 255, 255)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 182.65625,
+              "y": 24,
+              "width": 154.671875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341.328125,
+              "y": 24,
+              "width": 154.671875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-md-true-Light.png",
+      "pngSha256": "ff7a1c3f9285876ee398d975d04518780f400c3c0e4773417a777d8ad88fe86f"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "segmented-lg-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "lg",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 315.46875,
+            "height": 56
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+          "border": "rgb(45, 45, 45)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 107.703125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "rgb(255, 255, 255)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 135.703125,
+              "y": 24,
+              "width": 94.28125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 233.984375,
+              "y": 24,
+              "width": 97.484375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-lg-false-Light.png",
+      "pngSha256": "2abcffd57be7ecb3e212a24f514c7acfd5389dc4c1f23fd4b817f910a20d8568"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "segmented-lg-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "lg",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 56
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+          "border": "rgb(45, 45, 45)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 154.65625,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "rgb(255, 255, 255)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.25)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 182.65625,
+              "y": 24,
+              "width": 154.671875,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341.328125,
+              "y": 24,
+              "width": 154.671875,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-lg-true-Light.png",
+      "pngSha256": "1d974325d5102629ed8d1a3a0bc8d6306f2b70e8b4285d8033cfc147eda269bc"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "enclosed-sm-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "sm",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 234.78125,
+            "height": 42
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgb(255, 255, 255)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 78.5625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 107.5625,
+              "y": 25,
+              "width": 67.828125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 179.390625,
+              "y": 25,
+              "width": 70.390625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-sm-false-Light.png",
+      "pngSha256": "b008a09c00dcbd60930d43d4079a0296ab6ab4b08a7beafc45152fd5c6dcf62d"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "enclosed-sm-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "sm",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 42
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgb(255, 255, 255)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 154,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 183,
+              "y": 25,
+              "width": 154,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341,
+              "y": 25,
+              "width": 154,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-sm-true-Light.png",
+      "pngSha256": "26a5a4bb39a566f50df23598bf88036ece22b1e6e3d84e7e252c3a038a19d0cf"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "enclosed-md-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "md",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 281.90625,
+            "height": 50
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgb(255, 255, 255)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 95.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 124.328125,
+              "y": 25,
+              "width": 82.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 211.125,
+              "y": 25,
+              "width": 85.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-md-false-Light.png",
+      "pngSha256": "c76786add6f3276f394c6d54eb27010af40fe8a15583bd568e384db6c375d899"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "enclosed-md-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "md",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 50
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgb(255, 255, 255)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 154,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 183,
+              "y": 25,
+              "width": 154,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341,
+              "y": 25,
+              "width": 154,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-md-true-Light.png",
+      "pngSha256": "7c12f1872d4291b752310b3248ec919c5e0b246633659cb19ec85616c482eb4a"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "enclosed-lg-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "lg",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 317.46875,
+            "height": 58
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgb(255, 255, 255)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 107.703125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 136.703125,
+              "y": 25,
+              "width": 94.28125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 234.984375,
+              "y": 25,
+              "width": 97.484375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-lg-false-Light.png",
+      "pngSha256": "865b70cbb11c718365fe4d4fae46afa0d9c18ef1e090ebc3a5e23ab482b0d086"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "enclosed-lg-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "lg",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 58
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgb(255, 255, 255)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 154,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(26, 55, 77)",
+            "background": "oklab(0.974335 0.00160992 0.00603193 / 0.7)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.3)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 183,
+              "y": 25,
+              "width": 154,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341,
+              "y": 25,
+              "width": 154,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-lg-true-Light.png",
+      "pngSha256": "68e0e187ada795870dff5112a4cd517e468ec4aec8d1104a04b3adf9b396795f"
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "empty",
+        "tabs": [],
+        "customLink": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 1
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "unknown",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "unknown",
+        "customLink": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "unicode",
+        "tabs": [
+          {
+            "id": "jp",
+            "label": "日本語のタブ"
+          },
+          {
+            "id": "rtl",
+            "label": "العربية"
+          }
+        ],
+        "activeTab": "jp",
+        "customLink": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "日本語のタブالعربية",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 116,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "日本語のタブ",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 140,
+              "y": 20,
+              "width": 70.578125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "العربية",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "spec": {
+        "id": "navigation",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel",
+            "href": "/demo/overview"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel",
+            "href": "/demo/activity"
+          },
+          {
+            "id": "settings",
+            "label": "Settings",
+            "href": "/demo/settings"
+          }
+        ],
+        "activeTab": "overview",
+        "customLink": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": null,
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": null,
+            "selected": null,
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": "/demo/overview",
+            "controls": null,
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": null,
+            "selected": null,
+            "tabIndex": 0,
+            "text": "Activity",
+            "href": "/demo/activity",
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": null,
+            "selected": null,
+            "tabIndex": 0,
+            "text": "Settings",
+            "href": "/demo/settings",
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "underline-sm-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "sm",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 33
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 76.5625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 100.5625,
+              "y": 20,
+              "width": 65.828125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 170.390625,
+              "y": 20,
+              "width": 68.390625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-sm-false-Dark.png",
+      "pngSha256": "f546da6f4be37de01459ce3474e4abdd95682baa42ea40974123ebd07efd249f"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "underline-sm-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "sm",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 33
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 157.328125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 181.328125,
+              "y": 20,
+              "width": 157.34375,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 342.671875,
+              "y": 20,
+              "width": 157.328125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-sm-true-Dark.png",
+      "pngSha256": "f16609b891138d1cb288e35349c8e9444ff745d6b14bccb118efa4b4b33370a2"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "underline-md-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "md",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-md-false-Dark.png",
+      "pngSha256": "330635e68c4939ef38d30a1b0e5c135a0c12106bfca8d17d62f02f9b981fd24f"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "underline-md-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "md",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 157.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 181.328125,
+              "y": 20,
+              "width": 157.34375,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 342.671875,
+              "y": 20,
+              "width": 157.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-md-true-Dark.png",
+      "pngSha256": "8a36d33706c08751165701fa474829bf5787f8dafab73bae16d78e4261d0be63"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "underline-lg-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "lg",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 49
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 105.703125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 129.703125,
+              "y": 20,
+              "width": 92.28125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 225.984375,
+              "y": 20,
+              "width": 95.484375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-lg-false-Dark.png",
+      "pngSha256": "be5f94421d33a0f85f616cb9b911cff3beaa1ca344925919b861540353970020"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "underline-lg-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "underline",
+        "size": "lg",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 49
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 157.328125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 181.328125,
+              "y": 20,
+              "width": 157.34375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 342.671875,
+              "y": 20,
+              "width": 157.328125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "file": "tabs-underline-lg-true-Dark.png",
+      "pngSha256": "70f68f8295a1ae4f891cf88bfa336e8067cb81b35bfa6aba742ebbc0be25dfac"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "segmented-sm-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "sm",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 232.78125,
+            "height": 40
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+          "border": "rgb(240, 244, 248)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 78.5625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgb(24, 37, 51)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 106.5625,
+              "y": 24,
+              "width": 67.828125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 178.390625,
+              "y": 24,
+              "width": 70.390625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-sm-false-Dark.png",
+      "pngSha256": "e2211f9285b5054a10ecf85c816b859a0408e94a55a8bd68b42b288abe82a158"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "segmented-sm-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "sm",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 40
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+          "border": "rgb(240, 244, 248)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 154.65625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgb(24, 37, 51)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 182.65625,
+              "y": 24,
+              "width": 154.671875,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341.328125,
+              "y": 24,
+              "width": 154.671875,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-sm-true-Dark.png",
+      "pngSha256": "e1aff0ad1c48e579d16cdff1c87746576f2f4ce55ceecd8bcbc75f786299c0ea"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "segmented-md-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "md",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 279.90625,
+            "height": 48
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+          "border": "rgb(240, 244, 248)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 95.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgb(24, 37, 51)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 123.328125,
+              "y": 24,
+              "width": 82.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 210.125,
+              "y": 24,
+              "width": 85.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-md-false-Dark.png",
+      "pngSha256": "064fdc09005441d6abc0f4ff06a061859bdc433404c990ed241eaee953d2cfe7"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "segmented-md-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "md",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 48
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+          "border": "rgb(240, 244, 248)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 154.65625,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgb(24, 37, 51)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 182.65625,
+              "y": 24,
+              "width": 154.671875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341.328125,
+              "y": 24,
+              "width": 154.671875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-md-true-Dark.png",
+      "pngSha256": "bb7615ad536e60b389307d0036b25abd4013f3e0533efa1510af4c8e7103309a"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "segmented-lg-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "lg",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 315.46875,
+            "height": 56
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+          "border": "rgb(240, 244, 248)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 107.703125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgb(24, 37, 51)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 135.703125,
+              "y": 24,
+              "width": 94.28125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 233.984375,
+              "y": 24,
+              "width": 97.484375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-lg-false-Dark.png",
+      "pngSha256": "5eb0d3084fa0dfd0cc6ff41b0f76ed54c49a5d52e67499a499932a9dfb18d586"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "segmented-lg-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "segmented",
+        "size": "lg",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 56
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+          "border": "rgb(240, 244, 248)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 24,
+              "y": 24,
+              "width": 154.65625,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgb(24, 37, 51)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 182.65625,
+              "y": 24,
+              "width": 154.671875,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341.328125,
+              "y": 24,
+              "width": 154.671875,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-segmented-lg-true-Dark.png",
+      "pngSha256": "b1e05dcb911cb955712c8bd595e03b1b55bffefb24581c23286a023f439850d4"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "enclosed-sm-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "sm",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 234.78125,
+            "height": 42
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgb(24, 37, 51)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 78.5625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 107.5625,
+              "y": 25,
+              "width": 67.828125,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 179.390625,
+              "y": 25,
+              "width": 70.390625,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-sm-false-Dark.png",
+      "pngSha256": "91176e15bc95bd489d9b8da2ec2eca22e01ec64f6b8c01eca7e04eaf506cdf84"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "enclosed-sm-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "sm",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 42
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgb(24, 37, 51)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 154,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 183,
+              "y": 25,
+              "width": 154,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341,
+              "y": 25,
+              "width": 154,
+              "height": 32
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "lineHeight": "16px",
+            "padding": "0px 12px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-sm-true-Dark.png",
+      "pngSha256": "ec5071075c63ab9c477e29d960933932fc5e8d7c3b832e83332591ff831386e4"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "enclosed-md-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "md",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 281.90625,
+            "height": 50
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgb(24, 37, 51)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 95.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 124.328125,
+              "y": 25,
+              "width": 82.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 211.125,
+              "y": 25,
+              "width": 85.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-md-false-Dark.png",
+      "pngSha256": "34e4a0a75d3694d8168f74943da1140cfbb60c45641425420bc6f985bcee96d1"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "enclosed-md-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "md",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 50
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgb(24, 37, 51)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 154,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 183,
+              "y": 25,
+              "width": 154,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341,
+              "y": 25,
+              "width": 154,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-md-true-Dark.png",
+      "pngSha256": "0131aaf87d4dd2b4e2703f8ee18d2e56a5ca0dbf2efacad1886e81bd4fb3bfb9"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "enclosed-lg-false",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "lg",
+        "stretch": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 317.46875,
+            "height": 58
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgb(24, 37, 51)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 107.703125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 136.703125,
+              "y": 25,
+              "width": 94.28125,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 234.984375,
+              "y": 25,
+              "width": 97.484375,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-lg-false-Dark.png",
+      "pngSha256": "2c39ae97e0b93bf783ba2cbb9a96dd838a4893cb54101c6efe65f76176bda31b"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "enclosed-lg-true",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "overview",
+        "variant": "enclosed",
+        "size": "lg",
+        "stretch": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 58
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgb(24, 37, 51)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)",
+          "borderThickness": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "4px",
+          "radius": "10px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 25,
+              "y": 25,
+              "width": 154,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.08)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 183,
+              "y": 25,
+              "width": 154,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          },
+          {
+            "box": {
+              "x": 341,
+              "y": 25,
+              "width": 154,
+              "height": 48
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "fontSize": "15px",
+            "fontWeight": "500",
+            "lineHeight": "22.5px",
+            "padding": "0px 20px",
+            "radius": "7px"
+          }
+        ]
+      },
+      "file": "tabs-enclosed-lg-true-Dark.png",
+      "pngSha256": "a27027cc3d9f13c316c9137d7d7bd5f49a64f9d50c7155152711e3d8388798bb"
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "empty",
+        "tabs": [],
+        "customLink": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 1
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": []
+      }
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "unknown",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel"
+          },
+          {
+            "id": "settings",
+            "label": "Settings"
+          }
+        ],
+        "activeTab": "unknown",
+        "customLink": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "unicode",
+        "tabs": [
+          {
+            "id": "jp",
+            "label": "日本語のタブ"
+          },
+          {
+            "id": "rtl",
+            "label": "العربية"
+          }
+        ],
+        "activeTab": "jp",
+        "customLink": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "日本語のタブالعربية",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 116,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "日本語のタブ",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 140,
+              "y": 20,
+              "width": 70.578125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "العربية",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Dark",
+      "spec": {
+        "id": "navigation",
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "panelId": "overview-panel",
+            "href": "/demo/overview"
+          },
+          {
+            "id": "activity",
+            "label": "Activity",
+            "panelId": "activity-panel",
+            "href": "/demo/activity"
+          },
+          {
+            "id": "settings",
+            "label": "Settings",
+            "href": "/demo/settings"
+          }
+        ],
+        "activeTab": "overview",
+        "customLink": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": null,
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": null,
+            "selected": null,
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": "/demo/overview",
+            "controls": null,
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": null,
+            "selected": null,
+            "tabIndex": 0,
+            "text": "Activity",
+            "href": "/demo/activity",
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": null,
+            "selected": null,
+            "tabIndex": 0,
+            "text": "Settings",
+            "href": "/demo/settings",
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "scheme": "Light",
+      "accept": false,
+      "requests": [
+        "activity",
+        "settings"
+      ],
+      "clicked": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(45, 45, 45)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.6)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "ended": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(45, 45, 45)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.6)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Light",
+      "accept": true,
+      "requests": [
+        "activity",
+        "settings"
+      ],
+      "clicked": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "ended": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(45, 45, 45)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.879352 0.00668868 0.0424888 / 0.2)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(89, 89, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(45, 45, 45)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "oklab(0.879352 0.00668868 0.0424888 / 0.6)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(44, 87, 132)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(44, 87, 132)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Dark",
+      "accept": false,
+      "requests": [
+        "activity",
+        "settings"
+      ],
+      "clicked": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "ended": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    },
+    {
+      "scheme": "Dark",
+      "accept": true,
+      "requests": [
+        "activity",
+        "settings"
+      ],
+      "clicked": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      },
+      "ended": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 480,
+            "height": 41
+          },
+          "role": "tablist",
+          "selected": null,
+          "tabIndex": -1,
+          "text": "OverviewActivitySettings",
+          "href": null,
+          "controls": null,
+          "foreground": "rgb(240, 244, 248)",
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+          "borderThickness": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "padding": "0px",
+          "radius": "0px"
+        },
+        "items": [
+          {
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 93.328125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Overview",
+            "href": null,
+            "controls": "overview-panel",
+            "foreground": "rgb(184, 197, 214)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgba(0, 0, 0, 0)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 117.328125,
+              "y": 20,
+              "width": 80.796875,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "false",
+            "tabIndex": -1,
+            "text": "Activity",
+            "href": null,
+            "controls": "activity-panel",
+            "foreground": "rgb(240, 244, 248)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          },
+          {
+            "box": {
+              "x": 202.125,
+              "y": 20,
+              "width": 83.78125,
+              "height": 40
+            },
+            "role": "tab",
+            "selected": "true",
+            "tabIndex": 0,
+            "text": "Settings",
+            "href": null,
+            "controls": null,
+            "foreground": "rgb(91, 163, 245)",
+            "background": "rgba(0, 0, 0, 0)",
+            "border": "rgb(91, 163, 245)",
+            "borderThickness": [
+              0,
+              0,
+              0,
+              2
+            ],
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "20px",
+            "padding": "0px 16px",
+            "radius": "0px"
+          }
+        ]
+      }
+    }
+  ]
+}

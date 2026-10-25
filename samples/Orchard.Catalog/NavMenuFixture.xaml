@@ -1,0 +1,18 @@
+<StackPanel x:Class="Orchard.Catalog.NavMenuFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="20">
+ <StackPanel.Resources>
+  <orchard:BleeckerNavItem x:Key="MarkupItem" Href="#markup" Label="Markup link"/>
+  <DataTemplate x:Key="RetainedLink" x:DataType="orchard:BleeckerNavLinkContext"><StackPanel Orientation="Horizontal" Spacing="8" MinWidth="180" Tag="{x:Bind Item, Mode=OneWay}"><HyperlinkButton Content="{x:Bind Content, Mode=OneWay}" Style="{x:Bind Style, Mode=OneWay}" Foreground="{x:Bind Foreground, Mode=OneWay}" Command="{x:Bind Command}" AutomationProperties.Name="{x:Bind Label, Mode=OneWay}" Tag="{x:Bind Href, Mode=OneWay}"/><TextBox Width="120" Text="Local note" AutomationProperties.Name="Link note"/></StackPanel></DataTemplate>
+ </StackPanel.Resources>
+ <TextBlock Text="Navigation links" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="The host handles destinations. Shared items update each presentation." Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerNavMenu x:Name="Horizontal" ItemInvoked="Invoked"/>
+ <orchard:BleeckerNavMenu x:Name="Vertical" Direction="Vertical" ItemInvoked="Invoked"/>
+ <orchard:BleeckerNavMenu x:Name="Constrained" Width="280" HorizontalAlignment="Left" ItemInvoked="Invoked"/>
+ <orchard:BleeckerNavMenu x:Name="Rtl" FlowDirection="RightToLeft" ItemInvoked="Invoked"/>
+ <TextBlock Text="Custom links with retained input" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerNavMenu x:Name="Custom" LinkTemplate="{StaticResource RetainedLink}" ItemInvoked="Invoked"/>
+ <orchard:BleeckerNavMenu x:Name="Markup" ItemInvoked="Invoked"/>
+ <StackPanel Orientation="Horizontal" Spacing="12"><Button Content="Reorder links" Click="Reorder"/><Button Content="Rename first link" Click="Rename"/></StackPanel>
+ <TextBlock x:Name="Status" Text="Choose a destination" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerNavMenu x:Name="Empty"/>
+</StackPanel>

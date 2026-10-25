@@ -65,7 +65,7 @@ public sealed partial class MainWindow
             var toWidth = rangeFields.Single(x => AutomationProperties.GetName(x) == "End date").ActualWidth;
             Require(fromWidth == 130.421875 && toWidth == 132.125, "Packaged range lost source intrinsic field widths.");
             var preset = DateChildren<BleeckerButton>(range).Single(x => x.Content as string == "Package seven days");
-            var presetBaseline = ReferenceBaseline(DateChildren<TextBlock>(preset).Single(), 12);
+            var presetBaseline = ReferenceBaseline(DateChildren<TextBlock>(preset).Single(text => text.Text == "Package seven days"), 12);
             var action = DateChildren<Button>(preset).Single(x => x.Name == "PART_Action");
             var today = DateTime.Now.Date; await KeyAsync(0x20, action, action);
             Require(range.Value == new BleeckerDateRange(today.AddDays(-7).ToString("yyyy-MM-dd"), today.ToString("yyyy-MM-dd")), "Packaged range preset lost local dates.");

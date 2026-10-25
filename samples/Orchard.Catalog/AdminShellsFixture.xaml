@@ -1,0 +1,18 @@
+<UserControl x:Class="Orchard.Catalog.AdminShellsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Admin shell" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Original header and sidebar controls stay outside the scrolling main content. Resize the catalog to change viewport-based spacing." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerButton Content="Toggle wide caller content" Size="Small" HorizontalAlignment="Left" Click="OnToggleWide"/>
+  <orchard:BleeckerAdminShell x:Name="Shell" Height="420" MinHeight="0">
+   <orchard:BleeckerAdminShell.Header><Border Height="48" Padding="12,0"><TextBlock Text="Fictional local workspace" Style="{StaticResource BleeckerBodyStyle}" VerticalAlignment="Center"/></Border></orchard:BleeckerAdminShell.Header>
+   <orchard:BleeckerAdminShell.Sidebar><StackPanel Width="160" Spacing="12" Padding="12"><TextBlock Text="Caller sidebar" Style="{StaticResource BleeckerBodyStyle}"/><orchard:BleeckerInput x:Name="RailInput" Text="Retained rail input" AutomationProperties.Name="Admin shell rail input"/></StackPanel></orchard:BleeckerAdminShell.Sidebar>
+   <StackPanel x:Name="BodyContent" Spacing="16">
+    <orchard:BleeckerField Label="Original caller input"><orchard:BleeckerInput x:Name="BodyInput" Text="Edit and resize"/></orchard:BleeckerField>
+    <TextBlock Text="The footer is below this deliberately tall fictional content. Scroll the main region to reach it." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+    <Border Height="600" Background="{ThemeResource BleeckerMutedBrush}"><TextBlock Text="Caller content" Style="{StaticResource BleeckerBodyStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/></Border>
+    <orchard:BleeckerButton Content="Far edge caller action" Size="Small" HorizontalAlignment="Right" Click="OnFarEdgeAction"/>
+   </StackPanel>
+   <orchard:BleeckerAdminShell.Footer><StackPanel Spacing="8"><TextBlock Text="Caller footer inside the main scroller" Style="{StaticResource BleeckerBodyStyle}"/><orchard:BleeckerButton Content="Local footer action" Size="Small" Click="OnFooterAction"/><TextBlock x:Name="Result" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite"/></StackPanel></orchard:BleeckerAdminShell.Footer>
+  </orchard:BleeckerAdminShell>
+ </StackPanel>
+</UserControl>

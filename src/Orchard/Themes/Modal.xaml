@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light"><SolidColorBrush x:Key="ModalHeaderBorderBrush" Color="#FFE6D5B8" Opacity=".2"/></ResourceDictionary>
+  <ResourceDictionary x:Key="Dark"><SolidColorBrush x:Key="ModalHeaderBorderBrush" Color="White" Opacity=".08"/></ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast"><SolidColorBrush x:Key="ModalHeaderBorderBrush" Color="{ThemeResource SystemColorWindowTextColor}"/></ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style x:Key="BleeckerModalSurfaceStyle" TargetType="local:BleeckerOverlaySurface" BasedOn="{StaticResource BleeckerAlertDialogSurfaceStyle}"><Setter Property="MaxWidth" Value="576"/></Style>
+ <Style TargetType="local:BleeckerModal">
+  <Setter Property="Width" Value="0"/><Setter Property="Height" Value="0"/><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerModal"><Grid x:Name="PART_Layout" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

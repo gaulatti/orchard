@@ -1,0 +1,25 @@
+<UserControl x:Class="Orchard.Catalog.SelectsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Select menus" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Original local options and consumer-owned value requests. Header Select adds its compact placeholder choice." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <TextBlock x:Name="Status" Text="No value requested." Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerHeaderSelect x:Name="Header" Placeholder="Local suite" ValueRequested="ValueRequested">
+   <orchard:BleeckerHeaderSelect.Icon><Border Width="16" Height="16" CornerRadius="3" Background="{ThemeResource BleeckerSeaBrush}"/></orchard:BleeckerHeaderSelect.Icon>
+  </orchard:BleeckerHeaderSelect>
+  <orchard:BleeckerSelect x:Name="Small" Size="Small" Value="a" Style="{StaticResource BleeckerSelectStyle}" ValueRequested="ValueRequested" AutomationProperties.Name="Small local choice"/>
+  <orchard:BleeckerSelect x:Name="Medium" Value="a" ValueRequested="ValueRequested" AutomationProperties.Name="Medium local choice"/>
+  <orchard:BleeckerSelect x:Name="Large" Size="Large" Value="a" ValueRequested="ValueRequested" AutomationProperties.Name="Large local choice"/>
+  <orchard:BleeckerSelect x:Name="Error" Error="True" Required="True" Value="" ValueRequested="ValueRequested" Placeholder="Choose a required local value"/>
+  <orchard:BleeckerSelect x:Name="Disabled" IsEnabled="False" Value="a" AutomationProperties.Name="Disabled local choice"/>
+  <orchard:BleeckerSelect x:Name="Uncontrolled" Value="" ValueRequested="RecordRequest" Placeholder="Empty prop without an empty option"/>
+  <orchard:BleeckerPopover x:Name="InPopover">
+   <orchard:BleeckerPopover.Trigger><Button Content="Open fictional choice panel"/></orchard:BleeckerPopover.Trigger>
+   <StackPanel Width="260" Spacing="12">
+    <TextBlock Text="Choose inside the original popup" TextWrapping="Wrap"/>
+    <orchard:BleeckerSelect x:Name="Nested" Value="a" ValueRequested="ValueRequested" AutomationProperties.Name="Nested fictional choice"/>
+    <Button Content="Show fictional confirmation" Click="OpenNestedConfirmation"/>
+    <orchard:BleeckerAlertDialog x:Name="NestedConfirmation" Title="Fictional nested confirmation" Description="The original choice panel and open menu keep their caller data while this confirmation is shown." CancelRequested="CloseNestedConfirmation" ConfirmRequested="CloseNestedConfirmation"/>
+   </StackPanel>
+  </orchard:BleeckerPopover>
+ </StackPanel>
+</UserControl>

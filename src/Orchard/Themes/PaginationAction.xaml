@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ControlTemplate x:Key="BleeckerPaginationActionTemplate" TargetType="Button">
+  <Grid UseLayoutRounding="False">
+   <VisualStateManager.VisualStateGroups>
+    <VisualStateGroup x:Name="CommonStates">
+     <VisualState x:Name="Normal"/><VisualState x:Name="PointerOver"/>
+     <VisualState x:Name="Pressed"/><VisualState x:Name="Disabled"/>
+    </VisualStateGroup>
+   </VisualStateManager.VisualStateGroups>
+   <ContentPresenter x:Name="PaginationHoverPalette" Visibility="Collapsed"
+    Background="{ThemeResource ButtonBackgroundPointerOver}" BorderBrush="{ThemeResource ButtonBorderBrushPointerOver}"
+    Foreground="{ThemeResource ButtonForegroundPointerOver}" AutomationProperties.AccessibilityView="Raw"/>
+   <ContentPresenter x:Name="ContentPresenter" Background="{TemplateBinding Background}"
+    Foreground="{TemplateBinding Foreground}" BackgroundSizing="{TemplateBinding BackgroundSizing}"
+    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+    Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" ContentTransitions="{TemplateBinding ContentTransitions}"
+    CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}"
+    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+    Control.IsTemplateFocusTarget="True" AutomationProperties.AccessibilityView="Raw" UseLayoutRounding="False"/>
+  </Grid>
+ </ControlTemplate>
+</ResourceDictionary>

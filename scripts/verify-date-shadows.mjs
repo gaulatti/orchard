@@ -3,12 +3,14 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {readRgbaPng} from './reference/read-rgba-png.mjs';
+import {verifyShadowPaintSource,verifyOverlayShadowPaint} from './reference/verify-overlay-shadow-paint-source.mjs';
 
 const option = name => {const index=process.argv.indexOf(name);assert(index>=0&&process.argv[index+1],name);return path.resolve(process.argv[index+1]);};
 const read = async file => JSON.parse((await fs.readFile(file,'utf8')).replace(/^\uFEFF/,''));
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const source = option('--source'),before = option('--before'),after = option('--after');
 const reference = await read(new URL('../tests/Reference/DateControls.json',import.meta.url));
+const overlayPaint = await verifyShadowPaintSource(new URL('../tests/Reference/OverlayShadowPaint.json',import.meta.url),new URL('../tests/Reference/OverlayShadowPaint',import.meta.url));
 const near = (actual,expected,context) => assert(Number.isFinite(actual)&&Math.abs(actual-expected)<.001,`${context}: ${actual} != ${expected}`);
 const layers = css => [...css.matchAll(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)\s+(-?[\d.]+)px\s+(-?[\d.]+)px\s+([\d.]+)px\s+(-?[\d.]+)px/g)]
   .map(item=>({R:+item[1],G:+item[2],B:+item[3],Opacity:item[4]===undefined?1:+item[4],x:+item[5],y:+item[6],blur:+item[7],spread:+item[8]})).filter(item=>item.Opacity>0&&item.blur>0);
@@ -54,7 +56,7 @@ for(const width of [320,640])for(const kind of ['calendar','presentation']){
         near(found.ActualWidth,expected.popup.box.width,'popup width');near(found.ActualHeight,expected.popup.box.height,'popup height');
         for(const [index,layer]of wanted.entries()){
           const actual=found.layers[index];near(actual.BlurRadius,layer.blur,'popup blur');near(actual.sigma,layer.blur/2,'popup sigma');near(actual.x,layer.x,'popup x');near(actual.y,layer.y,'popup y');
-          for(const channel of ['R','G','B'])assert.equal(actual[channel],layer[channel]);assert.equal(actual.A,255);near(actual.Opacity,layer.Opacity,'popup opacity');assert.equal(actual.mask,true);
+          verifyOverlayShadowPaint(actual,layer,overlayPaint.s);assert.equal(actual.mask,true);
           near(actual.insetX,-layer.spread,'popup inset');near(actual.insetY,-layer.spread,'popup inset');popupLayers++;
         }
       }else assert.equal(frame.popupShadow,null);

@@ -19,7 +19,7 @@ public sealed partial class MainWindow
 {
     private async Task RunDateControlsAsync(string folder)
     {
-        using var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.DateControls.json") ?? throw new InvalidOperationException("Missing frozen dates reference.");
+        using var resource = CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.DateControls.json") ?? throw new InvalidOperationException("Missing frozen dates reference.");
         using var reference = await JsonDocument.ParseAsync(resource);
         var original = Content; var canvas = new Canvas { Height = 640, Background = new SolidColorBrush(Microsoft.UI.Colors.White) }; var page = new Page { Content = canvas }; NativeInputSession? input = null;
         var outside = new Button { Name = "DateOutside", Content = "Outside", MinWidth = 0, MinHeight = 0, Padding = new Thickness(0), FontSize = 16, FontFamily = (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"], Template = (ControlTemplate)Microsoft.UI.Xaml.Markup.XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType='Button'><TextBlock Text='{TemplateBinding Content}' FontFamily='{TemplateBinding FontFamily}' FontSize='16' LineHeight='24' LineStackingStrategy='BlockLineHeight' Foreground='{ThemeResource BleeckerTextPrimaryBrush}'/></ControlTemplate>") };

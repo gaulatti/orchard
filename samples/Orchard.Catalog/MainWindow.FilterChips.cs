@@ -16,7 +16,7 @@ public sealed partial class MainWindow
 {
     private async Task RunFilterChipsAsync(string folder)
     {
-        using var sourceStream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.FilterChip.json")??throw new InvalidOperationException("Missing FilterChip reference.");
+        using var sourceStream=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.FilterChip.json")??throw new InvalidOperationException("Missing FilterChip reference.");
         using var source=await JsonDocument.ParseAsync(sourceStream);
         var original=Content;var page=new Page();var canvas=new Canvas();page.Content=canvas;
         var reports=new List<object>();var inputs=new List<object>();var phase="mount";var passed=false;NativeInputSession? input=null;

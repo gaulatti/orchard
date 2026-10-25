@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const option=name=>{const index=process.argv.indexOf(name);assert(index>=0&&process.argv[index+1],name);return process.argv[index+1];};
+const native=path.resolve(option('--native')),app=path.resolve(option('--app')),host=option('--host'),architecture=option('--architecture');
+assert(['Orchard.Catalog','PackageConsumer'].includes(host));assert(['X64','Arm64'].includes(architecture));
+const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex'),read=async name=>JSON.parse(await fs.readFile(path.join(native,name)));
+const report=await read('hidden-producer-threading.json'),exit=await read('process-exit.json');
+assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);assert.equal(report.passed,true);assert.equal(report.diagnosticOnly,true);assert.equal(report.scope,'hidden-producer-threading-regression');
+for(const name of ['activateCalled','showCalled','focusCalled','inputSent','visibleRuntimeVerified','nativeComponentAccepted'])assert.equal(report[name],false,name);
+assert.equal(report.hiddenWindow,true);assert.equal(report.isolated,true);assert.equal(report.activationEvents,0);assert.equal(report.focusEvents,0);assert(report.guardChecks>=80);
+assert.equal(report.processArchitecture,architecture);assert.equal(report.osArchitecture,architecture);assert.deepEqual(report.failures,[]);
+const ids=['select-worker-options-and-metadata','collection-filters-worker-options-and-metadata','pagination-worker-table-options-and-replacement','column-toggle-worker-table-and-replacement','select-filter-worker-table-options-and-metadata'];
+assert.equal(report.checks.length,5);assert.deepEqual(report.checks.map(row=>row.id).sort(),ids.sort());assert(report.checks.every(row=>row.passed===true));
+assert(Number.isInteger(report.uiThread));assert.equal(report.workerThreads.length,23);assert(report.workerThreads.every(thread=>Number.isInteger(thread)&&thread!==report.uiThread));assert.deepEqual(report.selectRecipes,['BleeckerSelect','BleeckerHeaderSelect']);
+const library=hash(await fs.readFile(path.join(app,'Orchard.dll'))),application=hash(await fs.readFile(path.join(app,host+'.dll')));
+assert.equal(report.librarySha256,library);assert.equal(report.hostSha256,application);
+assert.equal(hash(await fs.readFile(path.join(native,'app-identity','Orchard.dll'))),library);assert.equal(hash(await fs.readFile(path.join(native,'app-identity',host+'.dll'))),application);
+let packageSha256;
+if(host==='PackageConsumer'){
+ packageSha256=hash(await fs.readFile(path.resolve(option('--package'))));
+ const build=await read('result.json'),cleanup=await read('cleanup.json');
+ if(Object.hasOwn(build,'buildPassed')){assert.equal(build.buildPassed,true);assert.equal(build.runtimeVerified,false);}else{assert.equal(build.passed,true);assert.equal(build.runtime.passed,true);}
+ assert.equal(build.platform.toLowerCase(),architecture.toLowerCase());assert.equal(build.packageSha256,packageSha256);assert.equal(cleanup.removed,true);assert.equal(cleanup.isolatedConsumer,build.isolatedConsumer);
+ await assert.rejects(fs.access(cleanup.isolatedConsumer),{code:'ENOENT'});
+}
+const audit={passed:true,scope:'hidden-producer-threading-regression',checks:5,workerPublications:23,selectRecipes:report.selectRecipes,guardChecks:report.guardChecks,isolated:true,activationEvents:0,focusEvents:0,librarySha256:library,hostSha256:application,packageSha256,processArchitecture:architecture,visibleRuntimeVerified:false,nativeComponentAccepted:false};
+await fs.writeFile(path.resolve(option('--output')),JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify(audit));

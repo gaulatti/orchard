@@ -1,0 +1,19 @@
+{
+  "format": "orchard-far-shaders-v1",
+  "shaders": [
+    {
+      "name": "integral",
+      "source": "src/Orchard/Rendering/Shaders/Far/integral.hlsl",
+      "sourceSha256": "ff2d38bfd1f3758d379026d67d585f1b871310883b3d1dd8774a360f83843b70",
+      "bytecode": "src/Orchard/Rendering/Shaders/Far/integral.bin",
+      "sha256": "4adffb4b1002606102ab822bac2f10e7d6d5e0b627c3a250b0bfa2e262c2867d"
+    },
+    {
+      "name": "rectangle",
+      "source": "src/Orchard/Rendering/Shaders/Far/rectangle.hlsl",
+      "sourceSha256": "b18649c4357acfb2d0fb61ea99df149c3d333be5a45a08a074aaf5ab7332753e",
+      "bytecode": "src/Orchard/Rendering/Shaders/Far/rectangle.bin",
+      "sha256": "7499a887603e0f5abb24d726fae75ab7cc02a345574a7c425b60df185a5a1ec0"
+    }
+  ]
+}

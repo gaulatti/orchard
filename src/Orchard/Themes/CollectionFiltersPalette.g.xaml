@@ -1,0 +1,27 @@
+<!-- Generated from pinned CSS token DOM swatches; run scripts/generate-collection-filters-palette.mjs. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="CollectionOuterBackground" Color="#FFFFFFFF"/>
+   <SolidColorBrush x:Key="CollectionOuterBorder" Color="#4DE5D4B6"/>
+   <SolidColorBrush x:Key="CollectionActiveBackground" Color="#33FAF5F0"/>
+   <SolidColorBrush x:Key="CollectionActiveBorder" Color="#33E6D7B9"/>
+   <SolidColorBrush x:Key="CollectionBodyBackground" Color="#40F7F3F3"/>
+   <SolidColorBrush x:Key="CollectionBodyBorder" Color="#40E7D3B7"/>
+   <SolidColorBrush x:Key="CollectionCountBackground" Color="#FF2C5784"/>
+   <SolidColorBrush x:Key="CollectionCountForeground" Color="#FFFFFFFF"/>
+   <SolidColorBrush x:Key="CollectionChipBorder" Color="#59E8D7B7"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Default">
+   <SolidColorBrush x:Key="CollectionOuterBackground" Color="#FF182533"/>
+   <SolidColorBrush x:Key="CollectionOuterBorder" Color="#1AFFFFFF"/>
+   <SolidColorBrush x:Key="CollectionActiveBackground" Color="#06FFFFFF"/>
+   <SolidColorBrush x:Key="CollectionActiveBorder" Color="#12FFFFFF"/>
+   <SolidColorBrush x:Key="CollectionBodyBackground" Color="#06FFFFFF"/>
+   <SolidColorBrush x:Key="CollectionBodyBorder" Color="#14FFFFFF"/>
+   <SolidColorBrush x:Key="CollectionCountBackground" Color="#FF5BA3F5"/>
+   <SolidColorBrush x:Key="CollectionCountForeground" Color="#FF182533"/>
+   <SolidColorBrush x:Key="CollectionChipBorder" Color="#1AFFFFFF"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

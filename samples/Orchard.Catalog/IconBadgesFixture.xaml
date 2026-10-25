@@ -15,6 +15,7 @@
             <orchard:BleeckerIconBadge x:Name="Interactive" Variant="Outlined">
                 <Button Content="A" AutomationProperties.Name="Child action" />
             </orchard:BleeckerIconBadge>
+            <orchard:BleeckerIconBadge x:Name="CustomFont" Variant="Outlined" Size="Large" FontFamily="Arial" Content="日本語" AutomationProperties.Name="Consumer typography" />
         </StackPanel>
     </StackPanel>
 </UserControl>

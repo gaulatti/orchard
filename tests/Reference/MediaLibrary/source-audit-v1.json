@@ -1,0 +1,23 @@
+{
+  "format": "orchard-media-library-source-audit-v1",
+  "passed": true,
+  "referenceSha256": "11cbfaa6488702b925f04e498647c59dccce1a3229366c1ed530cd34f56257c5",
+  "states": 100,
+  "histories": 50,
+  "geometryValues": 6510,
+  "paintValues": 7310,
+  "originalValueAssertions": 6436,
+  "pinnedDependencies": 12,
+  "cssInputs": 122,
+  "bundleInputs": 1699,
+  "originalAssets": 7,
+  "pngs": 100,
+  "pngPixels": 92709600,
+  "pngPaletteProbes": 400,
+  "retainedCaptureSamples": 202,
+  "clipboardBoundaryOverridden": true,
+  "systemClipboardModified": false,
+  "coveredDeletePointerOpensPreview": true,
+  "nativeImplemented": false,
+  "nativeComponentAccepted": false
+}

@@ -1,0 +1,3892 @@
+{
+  "format": "orchard-menubar-row-motion-reference-v1",
+  "commit": "a86059013cd59684ce452849278ea81e734f2066",
+  "referenceSha256": "39c1632591815c0eb0df9e1478e8dbbdf05e8f35d888428a04755be3031aa04e",
+  "cssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "bundleSha256": "b60d0f31c948575683834e8e7104a6003c75129bdd504a629fb4cee01273568e",
+  "scriptSha256": "5c6782afcaa9f0b2a0cf0b500570907563623572b06a727ede4d81c39eede4f9",
+  "browser": "156.0.4314.42",
+  "originalCaptureBrowser": "155.0.4283.62",
+  "osSettingsChanged": false,
+  "nativeMotionVerified": false,
+  "transitions": [
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(89, 89, 89)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(45, 45, 45)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0764865)",
+          "foreground": "rgb(55, 55, 55)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0961383)",
+          "foreground": "rgb(47, 47, 47)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0996894)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(45, 45, 45)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0235135)",
+          "foreground": "rgb(79, 79, 79)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.00386175)",
+          "foreground": "rgb(87, 87, 87)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.000310578)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "action",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0764865)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0961383)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0996894)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "action",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0235135)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.00386175)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.000310578)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "checkbox",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0764865)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0961383)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0996894)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "checkbox",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0235135)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.00386175)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.000310578)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "radio",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0764865)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0961383)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0996894)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "radio",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0235135)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.00386175)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.000310578)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "submenu",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0764865)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0961383)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0996894)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "submenu",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.0235135)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.00386175)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.000310578)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "open",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(89, 89, 89)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(44, 87, 132)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(44, 87, 132, 0.765)",
+          "foreground": "rgb(216, 216, 216)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(44, 87, 132, 0.96)",
+          "foreground": "rgb(249, 249, 249)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(44, 87, 132, 0.996)",
+          "foreground": "rgb(254, 254, 254)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "close",
+      "before": {
+        "background": "rgb(44, 87, 132)",
+        "foreground": "rgb(255, 255, 255)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(44, 87, 132)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(44, 87, 132, 0.235)",
+          "foreground": "rgb(128, 128, 128)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(44, 87, 132, 0.04)",
+          "foreground": "rgb(95, 95, 95)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(44, 87, 132, 0.004)",
+          "foreground": "rgb(90, 90, 90)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(89, 89, 89)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(45, 45, 45)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(45, 45, 45)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "action",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "action",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "checkbox",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "checkbox",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "radio",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "radio",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "submenu",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "submenu",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+        "foreground": "rgb(45, 45, 45)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.879352 0.00668868 0.0424888 / 0.1)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(45, 45, 45)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "open",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(89, 89, 89)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(44, 87, 132)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "close",
+      "before": {
+        "background": "rgb(44, 87, 132)",
+        "foreground": "rgb(255, 255, 255)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(44, 87, 132)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(89, 89, 89)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgb(44, 87, 132)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(89, 89, 89)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(184, 197, 214)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(240, 244, 248)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.11473)",
+          "foreground": "rgb(227, 233, 240)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.144207)",
+          "foreground": "rgb(238, 242, 247)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.149534)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(240, 244, 248)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.0352703)",
+          "foreground": "rgb(197, 208, 222)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.00579262)",
+          "foreground": "rgb(186, 199, 215)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.000465867)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "action",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.11473)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.144207)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.149534)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "action",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.0352703)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.00579262)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.000465867)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "checkbox",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.11473)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.144207)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.149534)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "checkbox",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.0352703)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.00579262)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.000465867)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "radio",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.11473)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.144207)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.149534)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "radio",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.0352703)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.00579262)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.000465867)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "submenu",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.11473)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.144207)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.149534)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "submenu",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.0352703)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.00579262)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.000465867)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "open",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(184, 197, 214)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(91, 163, 245)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(91, 163, 245, 0.765)",
+          "foreground": "rgb(238, 241, 245)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(91, 163, 245, 0.96)",
+          "foreground": "rgb(252, 253, 253)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(91, 163, 245, 0.996)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": false,
+      "role": "trigger",
+      "kind": "close",
+      "before": {
+        "background": "rgb(91, 163, 245)",
+        "foreground": "rgb(255, 255, 255)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(91, 163, 245)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 190,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(91, 163, 245, 0.235)",
+          "foreground": "rgb(201, 211, 224)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(91, 163, 245, 0.04)",
+          "foreground": "rgb(187, 199, 216)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(91, 163, 245, 0.004)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(184, 197, 214)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(240, 244, 248)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(240, 244, 248)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "action",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "action",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "checkbox",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "checkbox",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "radio",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "radio",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "submenu",
+      "kind": "hover",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0 0 0 / 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "submenu",
+      "kind": "leave",
+      "before": {
+        "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+        "foreground": "rgb(240, 244, 248)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "oklab(0.254879 -0.00520422 -0.0308993 / 0.15)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(240, 244, 248)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "open",
+      "before": {
+        "background": "rgba(0, 0, 0, 0)",
+        "foreground": "rgb(184, 197, 214)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(91, 163, 245)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "reduced": true,
+      "role": "trigger",
+      "kind": "close",
+      "before": {
+        "background": "rgb(91, 163, 245)",
+        "foreground": "rgb(255, 255, 255)"
+      },
+      "definitions": [
+        {
+          "property": "background-color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgb(91, 163, 245)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "computedOffset": 1
+            }
+          ]
+        },
+        {
+          "property": "color",
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 0.01,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "endDelay": 0,
+            "fill": "backwards",
+            "iterationStart": 0,
+            "iterations": 1
+          },
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(255, 255, 255)",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "linear",
+              "composite": "auto",
+              "color": "rgb(184, 197, 214)",
+              "computedOffset": 1
+            }
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "milliseconds": 0,
+          "background": "rgb(91, 163, 245)",
+          "foreground": "rgb(255, 255, 255)"
+        },
+        {
+          "milliseconds": 47.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 95,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 142.5,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 190,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        },
+        {
+          "milliseconds": 220,
+          "background": "rgba(0, 0, 0, 0)",
+          "foreground": "rgb(184, 197, 214)"
+        }
+      ]
+    }
+  ]
+}

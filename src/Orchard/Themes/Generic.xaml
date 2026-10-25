@@ -3,12 +3,51 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Orchard">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Table.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/DataTable.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AlertDialog.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Modal.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/EdgeDialog.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/ModalHost.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/ScrollArea.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/HoverCard.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Popover.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Menubar.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/CollectionFilters.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/NavMenu.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/NavigationMenu.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Sonner.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/HeroCarousel.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/FileInput.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/CommandSpotlight.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AuthShell.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/MediaLibrary.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Footer.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Pagination.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Select.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AppShell.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AdminShell.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/FeedItem.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/FeedColumn.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/ThemeToggle.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Slider.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Panel.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/PanelLayout.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/DetailLayout.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/PageFrame.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Field.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/DialogCloseButton.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/Tabs.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/ProgressStackPalette.g.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Accordion.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/RadioGroup.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/DateControls.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Metric.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Inputs.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/SecureField.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/SegmentedControl.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/AppTabBar.xaml" />
+        <ResourceDictionary Source="ms-appx:///Orchard/Themes/OtpInput.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Keyboard.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Eyebrow.xaml" />
         <ResourceDictionary Source="ms-appx:///Orchard/Themes/Progress.xaml" />
@@ -376,6 +415,7 @@
     </Style>
     <Style TargetType="local:BleeckerTooltip">
         <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="UseLayoutRounding" Value="False" />
         <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}" />
         <Setter Property="FontSize" Value="12" /><Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Foreground" Value="{ThemeResource BleeckerTooltipForegroundBrush}" />
@@ -388,9 +428,7 @@
                 <local:BleeckerOverlaySurface x:Name="PART_Surface" MaxWidth="224" Background="{TemplateBinding Background}"
                     BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding CornerRadius}"
                     Padding="{TemplateBinding Padding}" AutomationProperties.AccessibilityView="Raw">
-                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
-                        FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
-                        Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" LineHeight="19.5" LineStackingStrategy="BlockLineHeight" />
+                    <Grid x:Name="PART_ContentHost" AutomationProperties.AccessibilityView="Raw" />
                 </local:BleeckerOverlaySurface>
                 <Polygon x:Name="PART_Arrow" Fill="{TemplateBinding Background}" IsHitTestVisible="False" />
             </Grid>
@@ -596,6 +634,7 @@
     </Style>
     <Style TargetType="local:BleeckerButton">
         <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="CharacterSpacing" Value="0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -603,7 +642,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:BleeckerButton">
-                    <Button x:Name="PART_Action" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                    <Button x:Name="PART_Action" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center"
                             CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}"
                             Command="{TemplateBinding Command}" CommandParameter="{TemplateBinding CommandParameter}"
                             AutomationProperties.HelpText="{TemplateBinding AutomationProperties.HelpText}">
@@ -630,6 +669,10 @@
                             </ProgressRing>
                             <ContentPresenter x:Name="PART_Content" Grid.Column="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
                                               VerticalAlignment="Center" />
+                            <Grid x:Name="PART_LinkTextHost" Grid.Column="1" Visibility="Collapsed" UseLayoutRounding="False" VerticalAlignment="Center">
+                                <TextBlock x:Name="PART_LinkText" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" UseLayoutRounding="False"
+                                           AutomationProperties.AccessibilityView="Raw" />
+                            </Grid>
                             <Border x:Name="PART_LinkUnderline" Grid.Column="1" Height="1" VerticalAlignment="Bottom"
                                     Visibility="Collapsed"
                                     IsHitTestVisible="False" />

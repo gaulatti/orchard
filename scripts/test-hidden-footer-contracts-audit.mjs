@@ -1,0 +1,19 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const option=name=>{const index=process.argv.indexOf(name);assert(index>=0&&process.argv[index+1]);return process.argv[index+1];};
+const native=path.resolve(option('--native')),app=path.resolve(option('--app')),output=path.resolve(option('--output')),host=option('--host'),architecture=option('--architecture');
+const fixture=path.join(output,'fixture');await fs.mkdir(fixture,{recursive:true});await fs.cp(path.join(native,'app-identity'),path.join(fixture,'app-identity'),{recursive:true});
+const read=async name=>JSON.parse(await fs.readFile(path.join(native,name))),report=await read('hidden-footer-contracts.json'),exit=await read('process-exit.json');
+const packageConsumer=host==='PackageConsumer',build=packageConsumer?await read('result.json'):null,cleanup=packageConsumer?await read('cleanup.json'):null;
+const write=async(r,e,b=build,c=cleanup)=>{await fs.writeFile(path.join(fixture,'hidden-footer-contracts.json'),JSON.stringify(r));await fs.writeFile(path.join(fixture,'process-exit.json'),JSON.stringify(e));if(packageConsumer){await fs.writeFile(path.join(fixture,'result.json'),JSON.stringify(b));await fs.writeFile(path.join(fixture,'cleanup.json'),JSON.stringify(c));}};
+const run=()=>spawnSync(process.execPath,[fileURLToPath(new URL('./verify-hidden-footer-contracts.mjs',import.meta.url)),'--native',fixture,'--app',app,'--host',host,'--architecture',architecture,'--output',path.join(fixture,'audit.json'),...(packageConsumer?['--package',path.resolve(option('--package'))]:[])],{encoding:'utf8',maxBuffer:1024*1024});
+await write(report,exit);let result=run();assert.equal(result.status,0,result.stdout+result.stderr);
+const mutations=[['failed',r=>r.passed=false],['scope',r=>r.scope='different'],['not-diagnostic',r=>r.diagnosticOnly=false],['visible-window',r=>r.hiddenWindow=false],['activation',r=>r.activateCalled=true],['show',r=>r.showCalled=true],['focus',r=>r.focusCalled=true],['input',r=>r.inputSent=true],['activation-event',r=>r.activationEvents=1],['focus-event',r=>r.focusEvents=1],['not-isolated',r=>r.isolated=false],['missing-guards',r=>r.guardChecks=0],['visible-claim',r=>r.visibleRuntimeVerified=true],['acceptance-claim',r=>r.nativeComponentAccepted=true],['failure',r=>r.failures.push({error:'failure'})],['missing-check',r=>r.checks.pop()],['duplicate-check',r=>r.checks[1]=structuredClone(r.checks[0])],['failed-check',r=>r.checks[0].passed=false],['wrong-architecture',r=>r.processArchitecture='Wrong'],['wrong-os',r=>r.osArchitecture='Wrong'],['library',r=>r.librarySha256='0'.repeat(64)],['host',r=>r.hostSha256='0'.repeat(64)],['exit',(_,e)=>e.exitCode=1]];
+
+mutations.push(['raster-claim',r=>r.sourceRasterParityVerified=true]);
+if(packageConsumer)mutations.push(['package',(_,__,b)=>b.packageSha256='0'.repeat(64)],['build',(_,__,b)=>b.buildPassed=false],['cleanup',(_,__,___,c)=>c.removed=false],['retained-cache',(_,__,b,c)=>{b.isolatedConsumer=app;c.isolatedConsumer=app;}]);
+const rejected=[];for(const[name,mutate]of mutations){const r=structuredClone(report),e=structuredClone(exit),b=structuredClone(build),c=structuredClone(cleanup);mutate(r,e,b,c);await write(r,e,b,c);result=run();assert.notEqual(result.status,0,'Damaged Footer contract receipt accepted: '+name);rejected.push(name);}
+const summary={passed:true,baselineFromActualRuntime:true,negativeCasesRejected:rejected.length,rejected,nativeComponentAccepted:false};await fs.writeFile(path.join(output,'summary.json'),JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify({...summary,rejected:undefined}));

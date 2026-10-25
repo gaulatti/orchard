@@ -1,0 +1,5299 @@
+{
+  "format": "orchard-field-reference-v1",
+  "repository": "gaulatti/bleecker",
+  "commit": "a86059013cd59684ce452849278ea81e734f2066",
+  "source": "src/components/field.tsx",
+  "sourceSha256": "552df290321007582f3605c1bc4538ad5664ed267dee1bd22cb45bac203ec11f",
+  "dependencies": [
+    {
+      "path": "src/components/field.tsx",
+      "sha256": "552df290321007582f3605c1bc4538ad5664ed267dee1bd22cb45bac203ec11f"
+    },
+    {
+      "path": "src/components/input.tsx",
+      "sha256": "01bce586edd4c1ad4aed30415b5aa9cbc6e620a874e4751cf7299bfa54ccc192"
+    },
+    {
+      "path": "src/components/button.tsx",
+      "sha256": "119925584b3ec53c790fb0b762631894cf70eed12d488d5e9ae6743b7a67f929"
+    },
+    {
+      "path": "src/utils/cn.ts",
+      "sha256": "74e8fe9d0d680c442ed6adb13e7d119d6c210c19ae6c114313b2a72552be0883"
+    },
+    {
+      "path": "src/styles/global.css",
+      "sha256": "fa7278f1107d946977c474002a09047be1e83858631f93b056435a3bbf038d96"
+    },
+    {
+      "path": "src/styles/tokens.generated.css",
+      "sha256": "74468d6dd3516687e3f8b96aef47e10bdcce206e31edc912abe985c45b83bf3e"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "EncodeSans-Regular",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "name": "EncodeSans-Medium",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "name": "EncodeSans-SemiBold",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    },
+    {
+      "name": "LibreFranklin-Regular",
+      "sha256": "01e26222a56e141e3abae670ab22be77f063999fc4ef64c4a9651de19b7728a8"
+    }
+  ],
+  "scriptSha256": "3d962aa105825b63dd53375cf41a169e889ab08699638fa1b127e89449483b65",
+  "clientSha256": "664a1fe11640e11ff708fb1ed1b61bdb22cf70ab1ec290894838f433d2612694",
+  "cssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "browser": "155.0.4283.62",
+  "cases": [
+    {
+      "id": "normal",
+      "scheme": "Light",
+      "spec": {
+        "id": "normal"
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_0_-control",
+        "labelFor": "_r_0_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-normal-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "required",
+      "scheme": "Light",
+      "spec": {
+        "id": "required",
+        "required": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_1_-control",
+        "labelFor": "_r_1_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-required-Light.png",
+      "pngSha256": "b6bb782a30f937624d2776a01d679f4eb7d4897b4f63cedc5f837f44e80e879a"
+    },
+    {
+      "id": "optional",
+      "scheme": "Light",
+      "spec": {
+        "id": "optional",
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage titleOptional",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage titleOptional",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 296.609375,
+            "y": 22,
+            "width": 43.390625,
+            "height": 16.5
+          },
+          "text": "Optional",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "lineHeight": "16.5px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_2_-control",
+        "labelFor": "_r_2_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-optional-Light.png",
+      "pngSha256": "a76bd9d62c93a49955bff3d54d74926562a837646eed000ed7accd8e8a8ba7b7"
+    },
+    {
+      "id": "both-flags",
+      "scheme": "Light",
+      "spec": {
+        "id": "both-flags",
+        "required": true,
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title*Optional",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*Optional",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": {
+          "box": {
+            "x": 296.609375,
+            "y": 22,
+            "width": 43.390625,
+            "height": 16.5
+          },
+          "text": "Optional",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "lineHeight": "16.5px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_3_-control",
+        "labelFor": "_r_3_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-both-flags-Light.png",
+      "pngSha256": "929d73ea4e044a65a3fa6bda5e76e83960bb480f580f976e48472329a01ab1b3"
+    },
+    {
+      "id": "action",
+      "scheme": "Light",
+      "spec": {
+        "id": "action",
+        "action": "button",
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 76
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 26
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 25,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 297.421875,
+            "y": 20,
+            "width": 42.578125,
+            "height": 26
+          },
+          "text": "Reset",
+          "foreground": "rgb(44, 87, 132)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 56,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_4_-control",
+        "labelFor": "_r_4_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-action-Light.png",
+      "pngSha256": "c3ea2499f7bd7f87574eb51071454f660eb480edbfaf3340d946407bd421bdd3"
+    },
+    {
+      "id": "action-false",
+      "scheme": "Light",
+      "spec": {
+        "id": "action-false",
+        "action": false,
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_5_-control",
+        "labelFor": "_r_5_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-action-false-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "action-zero",
+      "scheme": "Light",
+      "spec": {
+        "id": "action-zero",
+        "action": 0,
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 74
+          },
+          "text": "Coverage title0",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 24
+          },
+          "text": "Coverage title0",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 24,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 54,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_6_-control",
+        "labelFor": "_r_6_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-action-zero-Light.png",
+      "pngSha256": "10aba51306f91eeaa0f6316a09393aff027f5f47bd798e3290ca156be5bc6b4b"
+    },
+    {
+      "id": "description",
+      "scheme": "Light",
+      "spec": {
+        "id": "description",
+        "description": "Use a concise title."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage titleUse a concise title.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Use a concise title.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_7_-control",
+        "labelFor": "_r_7_-control",
+        "describedBy": [
+          "description"
+        ],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-description-Light.png",
+      "pngSha256": "f9b72d1495cc25558019153654973fb94e5adf464a99fff3473f2fc461b610d6"
+    },
+    {
+      "id": "error",
+      "scheme": "Light",
+      "spec": {
+        "id": "error",
+        "error": "A title is needed."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage titleA title is needed.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "A title is needed.",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_8_-control",
+        "labelFor": "_r_8_-control",
+        "describedBy": [
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-error-Light.png",
+      "pngSha256": "5c200520e7656791ae76f560f93ea44ce75cbd777ba8f3e793f6f4eb48ea5875"
+    },
+    {
+      "id": "messages",
+      "scheme": "Light",
+      "spec": {
+        "id": "messages",
+        "description": "A useful public title.",
+        "error": "Choose a different title."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 129.5
+          },
+          "text": "Coverage titleA useful public title.Choose a different title.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "A useful public title.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 129.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Choose a different title.",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_9_-control",
+        "labelFor": "_r_9_-control",
+        "describedBy": [
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-messages-Light.png",
+      "pngSha256": "1443b9262a318283a118de74f79002c6cd7d8bf8f9cd19c90096a5a61b80a60d"
+    },
+    {
+      "id": "existing-metadata",
+      "scheme": "Light",
+      "spec": {
+        "id": "existing-metadata",
+        "controlId": "consumer-control",
+        "describedBy": "external-help",
+        "invalid": false,
+        "description": "Field description.",
+        "error": "Field error."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 129.5
+          },
+          "text": "Coverage titleField description.Field error.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Field description.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 129.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Field error.",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "consumer-control",
+        "labelFor": "consumer-control",
+        "describedBy": [
+          "external-help",
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-existing-metadata-Light.png",
+      "pngSha256": "ef356a02f88a77cc7ecd6e53f02ad587fb0d1451d531d8443890bd37450a7f80"
+    },
+    {
+      "id": "empty-id",
+      "scheme": "Light",
+      "spec": {
+        "id": "empty-id",
+        "controlId": ""
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "",
+        "labelFor": "",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-empty-id-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "child-invalid",
+      "scheme": "Light",
+      "spec": {
+        "id": "child-invalid",
+        "invalid": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_c_-control",
+        "labelFor": "_r_c_-control",
+        "describedBy": [],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-child-invalid-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "child-required",
+      "scheme": "Light",
+      "spec": {
+        "id": "child-required",
+        "childRequired": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_d_-control",
+        "labelFor": "_r_d_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": true,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-child-required-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "disabled",
+      "scheme": "Light",
+      "spec": {
+        "id": "disabled",
+        "disabled": true,
+        "required": true,
+        "description": "The child owns disabled state."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage title*The child owns disabled state.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "The child owns disabled state.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_e_-control",
+        "labelFor": "_r_e_-control",
+        "describedBy": [
+          "description"
+        ],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": true,
+        "value": "Consumer text",
+        "inputBackground": "oklab(0.974335 0.00160992 0.00603193 / 0.65)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-disabled-Light.png",
+      "pngSha256": "c87a857a99c100236d067393101a1e6c78623df52201213503d29d24de0590f2"
+    },
+    {
+      "id": "empty-label",
+      "scheme": "Light",
+      "spec": {
+        "id": "empty-label",
+        "label": ""
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 50
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 0,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 30,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_f_-control",
+        "labelFor": "_r_f_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-empty-label-Light.png",
+      "pngSha256": "9cfacf40cf2a95f2d6c81f3e1193075084421bb0b7c541db45cc0d0b0ffa57c8"
+    },
+    {
+      "id": "rich-label",
+      "scheme": "Light",
+      "spec": {
+        "id": "rich-label",
+        "rich": true,
+        "required": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage details*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage details*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 107.78125,
+            "height": 19.5
+          },
+          "text": "Coverage details*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 121.625,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_g_-control",
+        "labelFor": "_r_g_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-rich-label-Light.png",
+      "pngSha256": "7da4c91e2e66d98317c16ca3ca52387ec5e4b32af5cc05d7e6bfa914787a7d09",
+      "strongFonts": [
+        {
+          "familyName": "Encode Sans SmBold",
+          "postScriptName": "EncodeSans-SmBold",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ]
+    },
+    {
+      "id": "unicode",
+      "scheme": "Light",
+      "spec": {
+        "id": "unicode",
+        "label": "東京 · العربية",
+        "description": "Consumer 日本語 help."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "東京 · العربيةConsumer 日本語 help.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "東京 · العربية",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 71.4375,
+            "height": 19.5
+          },
+          "text": "東京 · العربية",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Consumer 日本語 help.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_h_-control",
+        "labelFor": "_r_h_-control",
+        "describedBy": [
+          "description"
+        ],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-unicode-Light.png",
+      "pngSha256": "6a8a3753fd51c8e72f875ed8456a05402cc06ad52b71fa424999e3cdaf1622d9"
+    },
+    {
+      "id": "narrow",
+      "scheme": "Light",
+      "spec": {
+        "id": "narrow",
+        "width": 160,
+        "label": "A longer coverage display name",
+        "required": true,
+        "optional": true,
+        "description": "A useful description wraps at the available width.",
+        "error": "The consumer supplies this longer error."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 208.5
+          },
+          "text": "A longer coverage display name*OptionalA useful description wraps at the available width.The consumer supplies this longer error.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 58.5
+          },
+          "text": "A longer coverage display name*Optional",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 100.609375,
+            "height": 58.5
+          },
+          "text": "A longer coverage display name*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 56.53125,
+            "y": 60,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": {
+          "box": {
+            "x": 136.609375,
+            "y": 22,
+            "width": 43.390625,
+            "height": 16.5
+          },
+          "text": "Optional",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "lineHeight": "16.5px",
+          "letterSpacing": "normal"
+        },
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 138.5,
+            "width": 160,
+            "height": 40
+          },
+          "text": "A useful description wraps at the available width.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 188.5,
+            "width": 160,
+            "height": 40
+          },
+          "text": "The consumer supplies this longer error.",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 88.5,
+            "width": 160,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_i_-control",
+        "labelFor": "_r_i_-control",
+        "describedBy": [
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-narrow-Light.png",
+      "pngSha256": "0fff3a599155240d5f59b26a91c704ae3bb56a5c379a39c870ab777d68884108"
+    },
+    {
+      "id": "narrow-action",
+      "scheme": "Light",
+      "spec": {
+        "id": "narrow-action",
+        "width": 160,
+        "label": "A longer coverage title",
+        "action": "button"
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 94
+          },
+          "text": "A longer coverage titleReset",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 44
+          },
+          "text": "A longer coverage titleReset",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 25,
+            "width": 101.421875,
+            "height": 39
+          },
+          "text": "A longer coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 137.421875,
+            "y": 20,
+            "width": 42.578125,
+            "height": 26
+          },
+          "text": "Reset",
+          "foreground": "rgb(44, 87, 132)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 74,
+            "width": 160,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_j_-control",
+        "labelFor": "_r_j_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-narrow-action-Light.png",
+      "pngSha256": "eb35a97633755aef971bdda4c38371a409ea997fc119b9b246fa78e52a16148d"
+    },
+    {
+      "id": "false-messages",
+      "scheme": "Light",
+      "spec": {
+        "id": "false-messages",
+        "description": 0,
+        "error": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_k_-control",
+        "labelFor": "_r_k_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-false-messages-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "true-messages",
+      "scheme": "Light",
+      "spec": {
+        "id": "true-messages",
+        "description": true,
+        "error": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_l_-control",
+        "labelFor": "_r_l_-control",
+        "describedBy": [
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.879352 0.00668868 0.0424888 / 0.4)"
+      },
+      "file": "field-true-messages-Light.png",
+      "pngSha256": "ad8eb5ee6e7b2121924249723b0ebada7d9fe2d681dc5a6f4f076082dc961091"
+    },
+    {
+      "id": "normal",
+      "scheme": "Dark",
+      "spec": {
+        "id": "normal"
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_0_-control",
+        "labelFor": "_r_0_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-normal-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    },
+    {
+      "id": "required",
+      "scheme": "Dark",
+      "spec": {
+        "id": "required",
+        "required": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_1_-control",
+        "labelFor": "_r_1_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-required-Dark.png",
+      "pngSha256": "52151a90825014f47925444a5ce22000d303f9e076eecafad8088526f4e43fbd"
+    },
+    {
+      "id": "optional",
+      "scheme": "Dark",
+      "spec": {
+        "id": "optional",
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage titleOptional",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage titleOptional",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 296.609375,
+            "y": 22,
+            "width": 43.390625,
+            "height": 16.5
+          },
+          "text": "Optional",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "lineHeight": "16.5px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_2_-control",
+        "labelFor": "_r_2_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-optional-Dark.png",
+      "pngSha256": "7e8b1dc1498223c625586a273e89bdb1f1ef16c447ddc2366072200c63aa88cb"
+    },
+    {
+      "id": "both-flags",
+      "scheme": "Dark",
+      "spec": {
+        "id": "both-flags",
+        "required": true,
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title*Optional",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*Optional",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": {
+          "box": {
+            "x": 296.609375,
+            "y": 22,
+            "width": 43.390625,
+            "height": 16.5
+          },
+          "text": "Optional",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "lineHeight": "16.5px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_3_-control",
+        "labelFor": "_r_3_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-both-flags-Dark.png",
+      "pngSha256": "889310232f21f0e4257bff1e9f2283efa12a0dceb6126e64e61acc8722342cf5"
+    },
+    {
+      "id": "action",
+      "scheme": "Dark",
+      "spec": {
+        "id": "action",
+        "action": "button",
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 76
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 26
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 25,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 297.421875,
+            "y": 20,
+            "width": 42.578125,
+            "height": 26
+          },
+          "text": "Reset",
+          "foreground": "rgb(91, 163, 245)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 56,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_4_-control",
+        "labelFor": "_r_4_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-action-Dark.png",
+      "pngSha256": "b152a14b7125430fe5334ea33cb5e57c5acb42a5d4cbf31e11a69b100ebe3f5b"
+    },
+    {
+      "id": "action-false",
+      "scheme": "Dark",
+      "spec": {
+        "id": "action-false",
+        "action": false,
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_5_-control",
+        "labelFor": "_r_5_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-action-false-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    },
+    {
+      "id": "action-zero",
+      "scheme": "Dark",
+      "spec": {
+        "id": "action-zero",
+        "action": 0,
+        "optional": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 74
+          },
+          "text": "Coverage title0",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 24
+          },
+          "text": "Coverage title0",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 24,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 54,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_6_-control",
+        "labelFor": "_r_6_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-action-zero-Dark.png",
+      "pngSha256": "4814f5d337503a3121e970e698c35107f9d2e1913fe19eb83dea5ea9e8481623"
+    },
+    {
+      "id": "description",
+      "scheme": "Dark",
+      "spec": {
+        "id": "description",
+        "description": "Use a concise title."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage titleUse a concise title.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Use a concise title.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_7_-control",
+        "labelFor": "_r_7_-control",
+        "describedBy": [
+          "description"
+        ],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-description-Dark.png",
+      "pngSha256": "9c4458af862e8dc544ed57749fe0b09c3aa5946abe2f302a39fd36be6c152752"
+    },
+    {
+      "id": "error",
+      "scheme": "Dark",
+      "spec": {
+        "id": "error",
+        "error": "A title is needed."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage titleA title is needed.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "A title is needed.",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_8_-control",
+        "labelFor": "_r_8_-control",
+        "describedBy": [
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-error-Dark.png",
+      "pngSha256": "c9a6d167e36e24e5736a2709d2a5f50edc0442a872a7ab5c4f7f7f405e1717ee"
+    },
+    {
+      "id": "messages",
+      "scheme": "Dark",
+      "spec": {
+        "id": "messages",
+        "description": "A useful public title.",
+        "error": "Choose a different title."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 129.5
+          },
+          "text": "Coverage titleA useful public title.Choose a different title.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "A useful public title.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 129.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Choose a different title.",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_9_-control",
+        "labelFor": "_r_9_-control",
+        "describedBy": [
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-messages-Dark.png",
+      "pngSha256": "1c22d828e61f6e3d2144518898d276a2974ab9db0467a4f2f3ad9c25e63f8e95"
+    },
+    {
+      "id": "existing-metadata",
+      "scheme": "Dark",
+      "spec": {
+        "id": "existing-metadata",
+        "controlId": "consumer-control",
+        "describedBy": "external-help",
+        "invalid": false,
+        "description": "Field description.",
+        "error": "Field error."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 129.5
+          },
+          "text": "Coverage titleField description.Field error.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Field description.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 129.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Field error.",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "consumer-control",
+        "labelFor": "consumer-control",
+        "describedBy": [
+          "external-help",
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-existing-metadata-Dark.png",
+      "pngSha256": "27471cd987ca55bf38f74450b9cf0b1b148583905c995ab2999900065b4938af"
+    },
+    {
+      "id": "empty-id",
+      "scheme": "Dark",
+      "spec": {
+        "id": "empty-id",
+        "controlId": ""
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "",
+        "labelFor": "",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-empty-id-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    },
+    {
+      "id": "child-invalid",
+      "scheme": "Dark",
+      "spec": {
+        "id": "child-invalid",
+        "invalid": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_c_-control",
+        "labelFor": "_r_c_-control",
+        "describedBy": [],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-child-invalid-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    },
+    {
+      "id": "child-required",
+      "scheme": "Dark",
+      "spec": {
+        "id": "child-required",
+        "childRequired": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_d_-control",
+        "labelFor": "_r_d_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": true,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-child-required-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    },
+    {
+      "id": "disabled",
+      "scheme": "Dark",
+      "spec": {
+        "id": "disabled",
+        "disabled": true,
+        "required": true,
+        "description": "The child owns disabled state."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage title*The child owns disabled state.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "The child owns disabled state.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_e_-control",
+        "labelFor": "_r_e_-control",
+        "describedBy": [
+          "description"
+        ],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": true,
+        "value": "Consumer text",
+        "inputBackground": "oklab(0.2032 -0.0105396 -0.0216702 / 0.65)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-disabled-Dark.png",
+      "pngSha256": "f0ea005b20b5a5a8de4d9b3d1aba0ba6f8e434dfd2e3c31a446f8f007a806df6"
+    },
+    {
+      "id": "empty-label",
+      "scheme": "Dark",
+      "spec": {
+        "id": "empty-label",
+        "label": ""
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 50
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 0,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 30,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_f_-control",
+        "labelFor": "_r_f_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-empty-label-Dark.png",
+      "pngSha256": "e71ff75caf58a24572603a8806b39cd948ee27a664a15f9a8ed4b71aa664025b"
+    },
+    {
+      "id": "rich-label",
+      "scheme": "Dark",
+      "spec": {
+        "id": "rich-label",
+        "rich": true,
+        "required": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage details*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage details*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 107.78125,
+            "height": 19.5
+          },
+          "text": "Coverage details*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 121.625,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_g_-control",
+        "labelFor": "_r_g_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-rich-label-Dark.png",
+      "pngSha256": "8a1fb34fa53a4227f2d3518fa4c8cec88c85f3c024dadcfa56ca98f140fffedf",
+      "strongFonts": [
+        {
+          "familyName": "Encode Sans SmBold",
+          "postScriptName": "EncodeSans-SmBold",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ]
+    },
+    {
+      "id": "unicode",
+      "scheme": "Dark",
+      "spec": {
+        "id": "unicode",
+        "label": "東京 · العربية",
+        "description": "Consumer 日本語 help."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "東京 · العربيةConsumer 日本語 help.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "東京 · العربية",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 71.4375,
+            "height": 19.5
+          },
+          "text": "東京 · العربية",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Consumer 日本語 help.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_h_-control",
+        "labelFor": "_r_h_-control",
+        "describedBy": [
+          "description"
+        ],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-unicode-Dark.png",
+      "pngSha256": "c229e626b987d694e11a2598d59dc3d9a9ff1b7588aa2db5f29bf6e0a940707d"
+    },
+    {
+      "id": "narrow",
+      "scheme": "Dark",
+      "spec": {
+        "id": "narrow",
+        "width": 160,
+        "label": "A longer coverage display name",
+        "required": true,
+        "optional": true,
+        "description": "A useful description wraps at the available width.",
+        "error": "The consumer supplies this longer error."
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 208.5
+          },
+          "text": "A longer coverage display name*OptionalA useful description wraps at the available width.The consumer supplies this longer error.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 58.5
+          },
+          "text": "A longer coverage display name*Optional",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 100.609375,
+            "height": 58.5
+          },
+          "text": "A longer coverage display name*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 56.53125,
+            "y": 60,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": {
+          "box": {
+            "x": 136.609375,
+            "y": 22,
+            "width": 43.390625,
+            "height": 16.5
+          },
+          "text": "Optional",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "lineHeight": "16.5px",
+          "letterSpacing": "normal"
+        },
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 138.5,
+            "width": 160,
+            "height": 40
+          },
+          "text": "A useful description wraps at the available width.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 188.5,
+            "width": 160,
+            "height": 40
+          },
+          "text": "The consumer supplies this longer error.",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 88.5,
+            "width": 160,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_i_-control",
+        "labelFor": "_r_i_-control",
+        "describedBy": [
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-narrow-Dark.png",
+      "pngSha256": "125c80b6ddbbcfad0998848b281cbbb8bd64b2b31c2972d0ea70acfaef5f6bbf"
+    },
+    {
+      "id": "narrow-action",
+      "scheme": "Dark",
+      "spec": {
+        "id": "narrow-action",
+        "width": 160,
+        "label": "A longer coverage title",
+        "action": "button"
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 94
+          },
+          "text": "A longer coverage titleReset",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 160,
+            "height": 44
+          },
+          "text": "A longer coverage titleReset",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 25,
+            "width": 101.421875,
+            "height": 39
+          },
+          "text": "A longer coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 137.421875,
+            "y": 20,
+            "width": 42.578125,
+            "height": 26
+          },
+          "text": "Reset",
+          "foreground": "rgb(91, 163, 245)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 74,
+            "width": 160,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_j_-control",
+        "labelFor": "_r_j_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-narrow-action-Dark.png",
+      "pngSha256": "6c1047a4fbe21b0dfddcc7e3db29f954cdcbe226c5fb69b8829e993b206c2ccc"
+    },
+    {
+      "id": "false-messages",
+      "scheme": "Dark",
+      "spec": {
+        "id": "false-messages",
+        "description": 0,
+        "error": false
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_k_-control",
+        "labelFor": "_r_k_-control",
+        "describedBy": [],
+        "invalid": null,
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-false-messages-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    },
+    {
+      "id": "true-messages",
+      "scheme": "Dark",
+      "spec": {
+        "id": "true-messages",
+        "description": true,
+        "error": true
+      },
+      "measurement": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 0
+          },
+          "text": "",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_l_-control",
+        "labelFor": "_r_l_-control",
+        "describedBy": [
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer text",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "file": "field-true-messages-Dark.png",
+      "pngSha256": "6e93673ec0b41f55d9d17b32fb58c2e154ba79c85be811c1ab26b65566036423"
+    }
+  ],
+  "interactions": [
+    {
+      "scheme": "Light",
+      "labelFocused": true,
+      "identityRetained": true,
+      "initial": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help"
+        ],
+        "invalid": "false",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)"
+      },
+      "added": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 129.5
+          },
+          "text": "Coverage title*Live description.Live error.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Live description.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 129.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Live error.",
+          "foreground": "rgb(166, 93, 87)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help",
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)"
+      },
+      "removedError": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage titleLive description.",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Live description.",
+          "foreground": "rgb(89, 89, 89)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help",
+          "description"
+        ],
+        "invalid": "false",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)"
+      },
+      "removedMessages": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 76
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 26
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 25,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 297.421875,
+            "y": 20,
+            "width": 42.578125,
+            "height": 26
+          },
+          "text": "Reset",
+          "foreground": "rgb(44, 87, 132)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 56,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(45, 45, 45)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help"
+        ],
+        "invalid": "false",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(255, 255, 255)",
+        "inputBorder": "oklab(0.447932 -0.0282684 -0.0838237 / 0.7)"
+      },
+      "events": [
+        "Consumer edit",
+        "action"
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "labelFocused": true,
+      "identityRetained": true,
+      "initial": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 69.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help"
+        ],
+        "invalid": "false",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.999994 0.0000455678 0.0000200868 / 0.15)"
+      },
+      "added": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 129.5
+          },
+          "text": "Coverage title*Live description.Live error.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 91.1875,
+            "height": 19.5
+          },
+          "text": "Coverage title*",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": {
+          "box": {
+            "x": 105.03125,
+            "y": 21,
+            "width": 6.15625,
+            "height": 16
+          },
+          "text": "*",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Live description.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": {
+          "box": {
+            "x": 20,
+            "y": 129.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Live error.",
+          "foreground": "rgb(212, 123, 117)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help",
+          "description",
+          "error"
+        ],
+        "invalid": "true",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "rgb(91, 163, 245)"
+      },
+      "removedError": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 99.5
+          },
+          "text": "Coverage titleLive description.",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": null,
+        "description": {
+          "box": {
+            "x": 20,
+            "y": 99.5,
+            "width": 320,
+            "height": 20
+          },
+          "text": "Live description.",
+          "foreground": "rgb(184, 197, 214)",
+          "fontFamily": "\"Libre Franklin\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 49.5,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help",
+          "description"
+        ],
+        "invalid": "false",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "rgb(91, 163, 245)"
+      },
+      "removedMessages": {
+        "root": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 76
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "header": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 320,
+            "height": 26
+          },
+          "text": "Coverage titleReset",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "label": {
+          "box": {
+            "x": 20,
+            "y": 25,
+            "width": 81.03125,
+            "height": 19.5
+          },
+          "text": "Coverage title",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "13px",
+          "fontWeight": "500",
+          "lineHeight": "19.5px",
+          "letterSpacing": "normal"
+        },
+        "required": null,
+        "right": {
+          "box": {
+            "x": 297.421875,
+            "y": 20,
+            "width": 42.578125,
+            "height": 26
+          },
+          "text": "Reset",
+          "foreground": "rgb(91, 163, 245)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "500",
+          "lineHeight": "24px",
+          "letterSpacing": "normal"
+        },
+        "description": null,
+        "error": null,
+        "control": {
+          "box": {
+            "x": 20,
+            "y": 56,
+            "width": 320,
+            "height": 40
+          },
+          "text": "",
+          "foreground": "rgb(240, 244, 248)",
+          "fontFamily": "\"Encode Sans\", ui-sans-serif, system-ui, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "20px",
+          "letterSpacing": "normal"
+        },
+        "controlId": "_r_m_-control",
+        "labelFor": "_r_m_-control",
+        "describedBy": [
+          "external-help"
+        ],
+        "invalid": "false",
+        "nativeRequired": false,
+        "disabled": false,
+        "value": "Consumer edit",
+        "inputBackground": "rgb(24, 37, 51)",
+        "inputBorder": "oklab(0.704643 -0.0410104 -0.134962)"
+      },
+      "events": [
+        "Consumer edit",
+        "action"
+      ]
+    }
+  ]
+}

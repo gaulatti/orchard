@@ -19,8 +19,34 @@ Group variants are `Default` and `Outline`; sizes are `Small`, `Medium` (default
 
 Tab uses native focus navigation. Left/Right move focus between enabled visible items, wrap at the ends, and respect right-to-left layout. Home/End focus the first/last enabled item. Focus movement does not change selection; Space activates the focused native toggle. UI Automation exposes group Selection and item SelectionItem/Toggle patterns.
 
+SelectionItem and Toggle actions apply only while the item is mounted in its
+current group. Retained handles reject actions after item removal or group unload
+with the Windows element-not-available error, before changing selection or raising
+selection events. A mounted disabled item or group reports element-not-enabled.
+After remounting or moving the same item to another group, its handle uses the
+current mounted group. This lifecycle contract does not require a screen reader
+or changes to Windows accessibility settings.
+
 ## Verification and remaining acceptance
+
+The current lifecycle fixture runs in a hidden native XAML host: 50 source,
+48 independent-package and 50 archive checks pass, with 70 observations per
+host. It verifies optional single selection and its two-way binding, original
+multiple-selection collection identity, replacement subscription cleanup,
+inactive-model preservation, removal/unload rejection, disabled actions,
+remount/reparent behavior, all six styles in both themes, and the actual catalog
+fixture's displayed selection. All 70 observations match across the three hosts.
+These checks send no hardware input and do not establish keyboard, pointer,
+full visual, scaling or ARM64 runtime acceptance. See the
+[current runtime evidence](runtime-evidence.md#toggle-group-retained-provider-lifecycle-2026-10-24).
 
 Catalog fixtures cover optional single selection, multiple selection, two-way consumer binding, disabled items/groups, both variants, all sizes and constrained multilingual content. Published x64 runtime checks exercise UI Automation selection, collection mutation, removal/reinsertion, disabled inheritance and light/dark rendering. Physical pointer and keyboard checks verify multiple selection, disabled-item skipping, wrapping, Space selection and clearing. The independent NuGet consumer exercises group templates and selection without a project reference. ARM64 compilation is checked separately.
 
-Remaining acceptance: rendered Bleecker comparison across every size, variant, theme and interaction state; branded focus and motion; Narrator announcements; actual Windows contrast settings; display/text scaling; reduced motion; broader keyboard/RTL and error-state fixtures; and ARM64 runtime. Token and interaction checks do not establish visual parity. This component remains in progress in the parity inventory.
+Remaining acceptance: rendered Bleecker comparison across every size, variant,
+theme and interaction state; branded focus and motion; display/text scaling;
+reduced motion; broader keyboard/RTL and error-state fixtures; and ARM64 runtime.
+Narrator and OS contrast campaigns are excluded by the
+[component-library scope](library-scope.md). Historical runtime statements above
+describe their original checks; they do not establish fresh package success.
+Token and interaction checks do not establish visual parity. This component
+remains in progress in the parity inventory.

@@ -27,7 +27,7 @@ public sealed partial class RadarChartsFixture : UserControl
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Radar checks require display/text scale 1.");
         using var input = new NativeInputSession(XamlRoot, folder, $"radar-chart-{scheme}"); await input.AcquireAsync(Specimen);
         var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
-        using var reference = JsonDocument.Parse(typeof(RadarChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.RadarChartLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(RadarChartsFixture).Assembly, "Orchard.Catalog.Reference.RadarChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try
         {

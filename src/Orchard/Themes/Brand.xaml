@@ -7,4 +7,17 @@
   <Setter Property="UseLayoutRounding" Value="False" />
   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerBrandLockup"><Grid><TextBlock x:Name="PART_SeparatorPalette" Foreground="{ThemeResource BleeckerBrandSeparatorBrush}" Visibility="Collapsed" /><TextBlock x:Name="PART_ContrastPalette" Foreground="{ThemeResource BleeckerTextPrimaryBrush}" Visibility="Collapsed" /><Grid x:Name="PART_LinkHost" /></Grid></ControlTemplate></Setter.Value></Setter>
  </Style>
+ <Style TargetType="local:BleeckerBrandMark">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="HorizontalAlignment" Value="Left"/><Setter Property="VerticalAlignment" Value="Center"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerBrandMark">
+   <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+    <Grid Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" FlowDirection="LeftToRight" UseLayoutRounding="False">
+     <Viewbox Stretch="Uniform" UseLayoutRounding="False">
+      <BitmapIcon x:Name="PART_Mark" Width="1024" Height="1024" UriSource="ms-appx:///Orchard/Assets/Images/BleeckerLogo.png" ShowAsMonochrome="True" Opacity="0.9" IsTabStop="False" IsHitTestVisible="False" AutomationProperties.AccessibilityView="Raw"/>
+     </Viewbox>
+    </Grid>
+   </Border>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
 </ResourceDictionary>

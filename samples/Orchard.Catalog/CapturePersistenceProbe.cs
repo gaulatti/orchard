@@ -10,7 +10,7 @@ internal static class CapturePersistenceProbe
 {
     internal static async Task VerifyAsync(string folder)
     {
-        using var source = typeof(CapturePersistenceProbe).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.CapturePersistence.json")
+        using var source = CatalogReferenceResources.Open(typeof(CapturePersistenceProbe).Assembly, "Orchard.Catalog.Reference.CapturePersistence.json")
             ?? throw new InvalidOperationException("Capture persistence reference is missing.");
         using var buffer = new MemoryStream();
         await source.CopyToAsync(buffer);

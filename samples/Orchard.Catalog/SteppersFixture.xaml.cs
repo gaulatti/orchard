@@ -32,7 +32,7 @@ public sealed partial class SteppersFixture : UserControl
         ActualThemeChanged += (_, _) => UpdateFrameBackground();
         UpdateFrameBackground();
     }
-    private static JsonDocument ReadReference() => JsonDocument.Parse(typeof(SteppersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Stepper.json")!);
+    private static JsonDocument ReadReference() => JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SteppersFixture).Assembly, "Orchard.Catalog.Reference.Stepper.json")!);
     private void CaseChanged(object sender, SelectionChangedEventArgs args)
     {
         if (CasePicker.SelectedItem is not string id) return;
@@ -46,8 +46,8 @@ public sealed partial class SteppersFixture : UserControl
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
-        using var reference = JsonDocument.Parse(typeof(SteppersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Stepper.json")!);
-        using var typography = JsonDocument.Parse(typeof(SteppersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.StepperTypography.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SteppersFixture).Assembly, "Orchard.Catalog.Reference.Stepper.json")!);
+        using var typography = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SteppersFixture).Assembly, "Orchard.Catalog.Reference.StepperTypography.json")!);
         var cases = new List<object>(); var failures = new List<string>();
         foreach (var spec in reference.RootElement.GetProperty("cases").EnumerateArray().Where(item => item.GetProperty("scheme").GetString() == scheme.ToString()))
         {

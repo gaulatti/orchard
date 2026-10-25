@@ -1,0 +1,41 @@
+<!-- Generated from canonical Bleecker tokens by scripts/generate-table-palette.mjs. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="BleeckerTableHeaderFill" Color="#F9F6F2" Opacity="0.4"/>
+   <SolidColorBrush x:Key="BleeckerTableHeaderStroke" Color="#E6D5B8" Opacity="0.25"/>
+   <SolidColorBrush x:Key="BleeckerTableFooterFill" Color="#E6D5B8" Opacity="0.05"/>
+   <SolidColorBrush x:Key="BleeckerTableFooterStroke" Color="#E6D5B8" Opacity="0.1"/>
+   <SolidColorBrush x:Key="BleeckerTableRowStroke" Color="#E6D5B8" Opacity="0.2"/>
+   <SolidColorBrush x:Key="BleeckerTableRowHover" Color="#F9F6F2" Opacity="0.45"/>
+   <SolidColorBrush x:Key="BleeckerTableRowSelected" Color="#2C5784" Opacity="0.045"/>
+   <SolidColorBrush x:Key="BleeckerTableSortActive" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="BleeckerTableCardFill" Color="#FFFFFF" Opacity="1"/>
+   <SolidColorBrush x:Key="BleeckerTableCardStroke" Color="#E6D5B8" Opacity="0.3"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Dark">
+   <SolidColorBrush x:Key="BleeckerTableHeaderFill" Color="#FFFFFF" Opacity="0.035"/>
+   <SolidColorBrush x:Key="BleeckerTableHeaderStroke" Color="#FFFFFF" Opacity="0.1"/>
+   <SolidColorBrush x:Key="BleeckerTableFooterFill" Color="#1A2332" Opacity="0.1"/>
+   <SolidColorBrush x:Key="BleeckerTableFooterStroke" Color="#1A2332" Opacity="0.2"/>
+   <SolidColorBrush x:Key="BleeckerTableRowStroke" Color="#FFFFFF" Opacity="0.07"/>
+   <SolidColorBrush x:Key="BleeckerTableRowHover" Color="#FFFFFF" Opacity="0.035"/>
+   <SolidColorBrush x:Key="BleeckerTableRowSelected" Color="#5BA3F5" Opacity="0.08"/>
+   <SolidColorBrush x:Key="BleeckerTableSortActive" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="BleeckerTableCardFill" Color="#182533" Opacity="1"/>
+   <SolidColorBrush x:Key="BleeckerTableCardStroke" Color="#FFFFFF" Opacity="0.1"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="BleeckerTableHeaderFill" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableHeaderStroke" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableFooterFill" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableFooterStroke" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableRowStroke" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableRowHover" Color="{ThemeResource SystemColorHighlightColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableRowSelected" Color="{ThemeResource SystemColorHighlightColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableSortActive" Color="{ThemeResource SystemColorHotlightColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableCardFill" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="BleeckerTableCardStroke" Color="{ThemeResource SystemColorWindowTextColor}"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

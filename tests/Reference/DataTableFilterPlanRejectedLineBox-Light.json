@@ -1,0 +1,863 @@
+{
+  "format": "orchard-data-table-filter-line-box-rejected-v1",
+  "originalReportSha256": "02351f7165a0ca9d5a57889b983179a4f5f2d8ad1915c2802058c37c0bc2339a",
+  "librarySha256": "5f7d57036583a6ed2925a17f57c15f6c63d0d4facb3f13d4fe3ccdd11c34416e",
+  "hostSha256": "75236ad722bf3e5e7dfaf6513f01726f00c0697ff476b6329720a1f0695e8b6d",
+  "state": {
+    "scheme": "Light",
+    "name": "boolean-only",
+    "stage": "initial",
+    "snapshot": {
+      "paint": {
+        "surface": {
+          "box": {
+            "x": 20,
+            "y": 20,
+            "width": 660,
+            "height": 240.5
+          },
+          "fill": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          },
+          "stroke": {
+            "r": 230,
+            "g": 213,
+            "b": 184,
+            "a": 0.25
+          },
+          "border": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "radii": [
+            12,
+            12,
+            12,
+            12
+          ]
+        },
+        "headerFill": {
+          "r": 249,
+          "g": 246,
+          "b": 242,
+          "a": 0.5
+        },
+        "shadowLayers": [
+          {
+            "name": "PART_ShadowNear",
+            "attached": true,
+            "opacity": 0.025,
+            "width": 666,
+            "height": 246.5,
+            "x": -3,
+            "y": -2,
+            "masked": true,
+            "color": [
+              26,
+              55,
+              77,
+              255
+            ]
+          },
+          {
+            "name": "PART_ShadowFar",
+            "attached": true,
+            "opacity": 0.18,
+            "width": 714,
+            "height": 294.5,
+            "x": -27,
+            "y": -17,
+            "masked": true,
+            "color": [
+              26,
+              55,
+              77,
+              255
+            ]
+          }
+        ]
+      },
+      "fixture": {
+        "x": 20,
+        "y": 20,
+        "width": 660,
+        "height": 288.5
+      },
+      "table": {
+        "x": 21,
+        "y": 21,
+        "width": 658,
+        "height": 238.5
+      },
+      "scrollClientWidth": 658,
+      "scrollWidth": 658,
+      "state": {
+        "sorting": [],
+        "columnFilters": [],
+        "rowSelection": {},
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 10
+        },
+        "columnVisibility": {},
+        "globalFilter": null
+      },
+      "pageCount": 1,
+      "canPrevious": false,
+      "canNext": false,
+      "filteredRows": [
+        "0",
+        "1",
+        "2"
+      ],
+      "filteredSelectedRows": [],
+      "sortedRows": [
+        "0",
+        "1",
+        "2"
+      ],
+      "visibleRows": [
+        {
+          "id": "0",
+          "originalId": "true-one",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "count",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "status",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "flag",
+              "value": true,
+              "valueType": "boolean"
+            }
+          ]
+        },
+        {
+          "id": "1",
+          "originalId": "false",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "count",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "status",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "flag",
+              "value": false,
+              "valueType": "boolean"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "originalId": "true-two",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "count",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "status",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "flag",
+              "value": true,
+              "valueType": "boolean"
+            }
+          ]
+        }
+      ],
+      "headerGroups": [
+        {
+          "id": "0",
+          "headers": [
+            {
+              "id": "select",
+              "column": "select",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "name",
+              "column": "name",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "count",
+              "column": "count",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "status",
+              "column": "status",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "flag",
+              "column": "flag",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            }
+          ]
+        }
+      ],
+      "header": [
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 21,
+            "y": 21,
+            "width": 69.9430923461914,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Fictional item",
+          "renderKind": "button",
+          "renderedText": "Fictional item",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 123.58200073242188,
+            "text": [
+              {
+                "Text": "Fictional item",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 125.9430923461914,
+                  "y": 34.25,
+                  "width": 85.58199310302734,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 90.9430923461914,
+            "y": 21,
+            "width": 209.26705932617188,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Count",
+          "renderKind": "button",
+          "renderedText": "Count",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 75.56900024414062,
+            "text": [
+              {
+                "Text": "Count",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 335.21014404296875,
+                  "y": 34.25,
+                  "width": 37.569000244140625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 300.21014404296875,
+            "y": 21,
+            "width": 144.68670654296875,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Status",
+          "renderKind": "text",
+          "renderedText": "STATUS",
+          "buttonPresentation": null,
+          "box": {
+            "x": 444.8968505859375,
+            "y": 21,
+            "width": 103.60546875,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Flag",
+          "renderKind": "button",
+          "renderedText": "Flag",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 65.02000427246094,
+            "text": [
+              {
+                "Text": "Flag",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 583.5023193359375,
+                  "y": 34.25,
+                  "width": 27.02001953125,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 548.5023193359375,
+            "y": 21,
+            "width": 130.4976806640625,
+            "height": 44
+          },
+          "colSpan": 1
+        }
+      ],
+      "body": [
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 21,
+            "y": 65,
+            "width": 69.9430923461914,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "text",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 90.9430923461914,
+            "y": 65,
+            "width": 209.26705932617188,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "text",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 300.21014404296875,
+            "y": 65,
+            "width": 144.68670654296875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "button",
+          "renderedText": "",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 38,
+            "text": []
+          },
+          "box": {
+            "x": 444.8968505859375,
+            "y": 65,
+            "width": 103.60546875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "true",
+          "renderKind": "text",
+          "renderedText": "true",
+          "buttonPresentation": null,
+          "box": {
+            "x": 548.5023193359375,
+            "y": 65,
+            "width": 130.4976806640625,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 21,
+            "y": 130,
+            "width": 69.9430923461914,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "text",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 90.9430923461914,
+            "y": 130,
+            "width": 209.26705932617188,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "text",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 300.21014404296875,
+            "y": 130,
+            "width": 144.68670654296875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "button",
+          "renderedText": "",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 38,
+            "text": []
+          },
+          "box": {
+            "x": 444.8968505859375,
+            "y": 130,
+            "width": 103.60546875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "false",
+          "renderKind": "text",
+          "renderedText": "false",
+          "buttonPresentation": null,
+          "box": {
+            "x": 548.5023193359375,
+            "y": 130,
+            "width": 130.4976806640625,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 21,
+            "y": 195,
+            "width": 69.9430923461914,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "text",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 90.9430923461914,
+            "y": 195,
+            "width": 209.26705932617188,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "text",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 300.21014404296875,
+            "y": 195,
+            "width": 144.68670654296875,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "button",
+          "renderedText": "",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 38,
+            "text": []
+          },
+          "box": {
+            "x": 444.8968505859375,
+            "y": 195,
+            "width": 103.60546875,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "true",
+          "renderKind": "text",
+          "renderedText": "true",
+          "buttonPresentation": null,
+          "box": {
+            "x": 548.5023193359375,
+            "y": 195,
+            "width": 130.4976806640625,
+            "height": 64.5
+          },
+          "colSpan": 1
+        }
+      ],
+      "rows": [
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 65,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 130,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 195,
+            "width": 658,
+            "height": 64.5
+          }
+        }
+      ],
+      "search": [],
+      "checkboxes": [
+        {
+          "name": "Select page",
+          "checked": false,
+          "indeterminate": false,
+          "paint": {
+            "glyphOpacity": 0,
+            "chromeOpacity": 1,
+            "fill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "stroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            },
+            "targetFill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "targetStroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            }
+          },
+          "box": {
+            "x": 37,
+            "y": 33,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 0",
+          "checked": false,
+          "indeterminate": false,
+          "paint": {
+            "glyphOpacity": 0,
+            "chromeOpacity": 1,
+            "fill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "stroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            },
+            "targetFill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "targetStroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            }
+          },
+          "box": {
+            "x": 37,
+            "y": 87.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 1",
+          "checked": false,
+          "indeterminate": false,
+          "paint": {
+            "glyphOpacity": 0,
+            "chromeOpacity": 1,
+            "fill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "stroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            },
+            "targetFill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "targetStroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            }
+          },
+          "box": {
+            "x": 37,
+            "y": 152.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 2",
+          "checked": false,
+          "indeterminate": false,
+          "paint": {
+            "glyphOpacity": 0,
+            "chromeOpacity": 1,
+            "fill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "stroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            },
+            "targetFill": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "targetStroke": {
+              "r": 230,
+              "g": 213,
+              "b": 184,
+              "a": 0.6000000238418579
+            }
+          },
+          "box": {
+            "x": 37,
+            "y": 217.25,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "originalActions": [
+        {
+          "row": "true-one",
+          "disabled": false,
+          "text": ""
+        },
+        {
+          "row": "false",
+          "disabled": false,
+          "text": ""
+        },
+        {
+          "row": "true-two",
+          "disabled": false,
+          "text": ""
+        }
+      ],
+      "footer": {
+        "text": "",
+        "buttons": [
+          {
+            "disabled": true,
+            "box": {
+              "x": 600,
+              "y": 276.5,
+              "width": 32,
+              "height": 32
+            }
+          },
+          {
+            "disabled": true,
+            "box": {
+              "x": 640,
+              "y": 276.5,
+              "width": 32,
+              "height": 32
+            }
+          }
+        ]
+      },
+      "events": [],
+      "originalNativeContentVerified": true
+    },
+    "file": "data-table-filter-plan-Light-boolean-only-initial.png"
+  }
+}

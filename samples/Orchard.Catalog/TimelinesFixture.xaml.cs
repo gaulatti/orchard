@@ -18,7 +18,7 @@ public sealed partial class TimelinesFixture : UserControl
         CasePicker.ItemsSource = reference.RootElement.GetProperty("cases").EnumerateArray().Where(c => c.GetProperty("scheme").GetString() == "Light" && c.GetProperty("viewportWidth").GetInt32() == 1024).Select(c => c.GetProperty("id").GetString()!).ToArray();
         CasePicker.SelectedIndex = 0; ActualThemeChanged += (_, _) => UpdateBackground(); UpdateBackground();
     }
-    private static JsonDocument ReadReference() => JsonDocument.Parse(typeof(TimelinesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Timeline.json")!);
+    private static JsonDocument ReadReference() => JsonDocument.Parse(CatalogReferenceResources.Open(typeof(TimelinesFixture).Assembly, "Orchard.Catalog.Reference.Timeline.json")!);
     private int Viewport => XamlRoot is { Size.Width: < 640 } ? 639 : XamlRoot?.Size.Width == 640 ? 640 : 1024;
     private void CaseChanged(object sender, SelectionChangedEventArgs args)
     {

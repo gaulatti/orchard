@@ -1,0 +1,6 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {verifyAuthShellLayoutSource} from './verify-auth-shell-layout-source.mjs';
+const[folder,comparison,negative,output]=process.argv.slice(2),target='tests/Reference/AuthShellLayout',file='tests/Reference/AuthShellLayout.json';for(const p of[target,file,output])assert(!await fs.stat(p).catch(()=>null));const c=JSON.parse(await fs.readFile(comparison)),n=JSON.parse(await fs.readFile(negative));assert(c.passed&&c.exactCanonicalPngPairs===132&&c.metadataFieldsExcluded.length===0&&c.semanticChanges.length===0);assert(n.passed&&n.rejected>=70);const bytes=await fs.readFile(path.join(folder,'AuthShellLayout.json')),sha=crypto.createHash('sha256').update(bytes).digest('hex');assert.equal(sha,c.first.sha256);await verifyAuthShellLayoutSource(path.join(folder,'AuthShellLayout.json'),folder);await fs.cp(folder,target,{recursive:true});await fs.writeFile(file,bytes,{flag:'wx'});await verifyAuthShellLayoutSource(file,target);const r={reference:file,sha256:sha,states:132,histories:8,independentExactPngs:132,metadataFieldsExcluded:[],rejectedCounterexamples:n.rejected,nativeImplemented:false,nativeComponentAccepted:false};await fs.writeFile(output,JSON.stringify(r,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(r));

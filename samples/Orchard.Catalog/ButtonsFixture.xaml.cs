@@ -23,6 +23,8 @@ public sealed partial class ButtonsFixture : UserControl
             ButtonResult.Text = $"Command {parameter}: {invocations}";
         });
         LoadingAction.Command = previewCommand;
+        InternationalReview.Command = previewCommand;
+        InternationalSave.Command = previewCommand;
     }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme)
@@ -143,6 +145,10 @@ public sealed partial class ButtonsFixture : UserControl
                     var underline = FindNamed<Border>(LoadingAction, "PART_LinkUnderline")!;
                     Require(underline.Background is SolidColorBrush line && presenter.Foreground is SolidColorBrush text && line.Color == text.Color,
                         "Link underline did not follow the rendered text state color.");
+                    var linkText = FindNamed<TextBlock>(LoadingAction, "PART_LinkText")!;
+                    Require(linkText.LineHeight == 24 && linkText.Text == (string)LoadingAction.Content &&
+                        linkText.Foreground is SolidColorBrush renderedText && presenter.Foreground is SolidColorBrush stateText && renderedText.Color == stateText.Color,
+                        "Plain Link text lost its source line height, original content or rendered state color.");
                 }
                 var suffix = state == "Normal" ? "" : state;
                 if (variant == BleeckerButtonVariant.Secondary && state == "PointerOver")

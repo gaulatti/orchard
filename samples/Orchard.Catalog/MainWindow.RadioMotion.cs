@@ -14,7 +14,7 @@ public sealed partial class MainWindow
     private sealed record RadioMotionFrame(double PaintedAt,double StrokeStart,double StrokeDuration,double DotStart,double DotDuration,BleeckerCssColor StrokeFrom,BleeckerCssColor StrokeTarget,double DotFrom,double DotTarget,string Border,double BorderOpacity,double Scale,string Dot,double DotOpacity,double Opacity,bool Animating);
     private async Task RunRadioMotionAsync(string folder)
     {
-        using var resource=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.RadioMotion.json")??throw new InvalidOperationException("Missing radio motion reference.");using var source=await JsonDocument.ParseAsync(resource);
+        using var resource=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.RadioMotion.json")??throw new InvalidOperationException("Missing radio motion reference.");using var source=await JsonDocument.ParseAsync(resource);
         var enabled=new UISettings().AnimationsEnabled;var original=Content;var canvas=new Canvas{Background=new SolidColorBrush(Microsoft.UI.Colors.White)};var reports=new List<object>();var availability=new List<object>();
         try
         {

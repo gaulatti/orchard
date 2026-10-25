@@ -1,0 +1,16 @@
+<StackPanel x:Class="Orchard.Catalog.OtpInputsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard"
+ Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <TextBlock Text="OTP input · controlled component preview" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local digits only. The caller accepts or rejects value requests." Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerOtpInput x:Name="Sample" Value="482" ValueRequested="Accept"/>
+ <TextBlock x:Name="Status" Text="Accepted fictional value: 482" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerOtpInput x:Name="RejectedSample" Value="482" AutomationProperties.Name="Caller keeps the fictional value"/>
+ <orchard:BleeckerOtpInput x:Name="FourSample" Length="4" Value="27" ValueRequested="Accept"/>
+ <orchard:BleeckerOtpInput x:Name="SecureSample" IsSecure="True" Value="482" ValueRequested="Accept"/>
+ <orchard:BleeckerOtpInput x:Name="NarrowSample" Width="160" HorizontalAlignment="Left" Value="482" ValueRequested="Accept"/>
+ <orchard:BleeckerOtpInput x:Name="DisabledSample" IsEnabled="False" Value="482"/>
+ <orchard:BleeckerField Label="Fictional review code" Error="Example caller-owned validation message">
+  <orchard:BleeckerOtpInput x:Name="InvalidSample" Value="42" ValueRequested="Accept"/>
+ </orchard:BleeckerField>
+</StackPanel>

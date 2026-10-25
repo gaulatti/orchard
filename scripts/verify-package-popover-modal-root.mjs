@@ -1,0 +1,21 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import crypto from 'node:crypto';import zlib from 'node:zlib';import {pathToFileURL} from 'node:url';import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+export function packageLibrary(bytes){
+ let end=bytes.length-22;while(end>=Math.max(0,bytes.length-65557)&&bytes.readUInt32LE(end)!==0x06054b50)end--;assert(end>=0,'NuGet central directory missing');
+ let offset=bytes.readUInt32LE(end+16);const count=bytes.readUInt16LE(end+10);
+ for(let i=0;i<count;i++){assert.equal(bytes.readUInt32LE(offset),0x02014b50);const n=bytes.readUInt16LE(offset+28),extra=bytes.readUInt16LE(offset+30),comment=bytes.readUInt16LE(offset+32),name=bytes.subarray(offset+46,offset+46+n).toString('utf8');
+  if(name==='lib/net10.0-windows10.0.26100/Orchard.dll'){const local=bytes.readUInt32LE(offset+42),size=bytes.readUInt32LE(offset+20),length=bytes.readUInt32LE(offset+24),method=bytes.readUInt16LE(offset+10);assert.equal(bytes.readUInt32LE(local),0x04034b50);const start=local+30+bytes.readUInt16LE(local+26)+bytes.readUInt16LE(local+28),compressed=bytes.subarray(start,start+size);assert([0,8].includes(method));const dll=method===8?zlib.inflateRawSync(compressed):compressed;assert.equal(dll.length,length);return dll;}
+  offset+=46+n+extra+comment;
+ }throw Error('NuGet Orchard.dll missing');
+}
+export function auditPackagePopup(folder,packagePath,provided){
+ const read=p=>JSON.parse(fs.readFileSync(path.join(folder,p))),r=provided??read('package-popover-modal-root.json'),exit=read('process-exit.json'),zip=fs.readFileSync(packagePath),dll=packageLibrary(zip);
+ assert.equal(r.format,'orchard-package-popover-modal-root-v1');assert.equal(r.passed,true);assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);assert.equal(exit.timedOut,false);assert.equal(r.architecture,'X64');assert.equal(r.publicApisOnly,true);
+ for(const k of ['activateCalled','showCalled','focusCalled','hardwareInputSent','sourceRasterParityVerified','physicalInputVerified'])assert.equal(r[k],false,k);assert.equal(r.focus,0);assert.equal(r.activations,0);assert(r.guards>=120);assert.equal(r.softwareNativeInvokes,2);
+ assert.equal(r.librarySha256,hash(dll));assert.equal(r.librarySha256,hash(fs.readFileSync(path.join(folder,'app-identity/Orchard.dll'))));assert.equal(r.hostSha256,hash(fs.readFileSync(path.join(folder,'app-identity/PackageConsumer.dll'))));
+ const names=['public-hosted-original-content','native-confirmation-and-binding-shield','caller-close-and-root-remount'],keys=[['logicalOpen','originalContent','originalEditorLoaded','openBindingRetained','nativePopupCount'],['nativeInvokes','modalShielded','enabledBindingStayedLive','originalEditRetained','cancellationRestoredPopup'],['closeReleasedPortal','reopenRetainedEdit','unloadReleasedPortal','remountRetainedBinding']];assert.equal(r.cases.length,6);assert.deepEqual(r.cases.map(c=>c.scheme+':'+c.name),['Light','Dark'].flatMap(s=>names.map(n=>s+':'+n)));
+ for(const c of r.cases){assert.equal(c.passed,true);const e=c.evidence;assert(e);assert.deepEqual(Object.keys(e).sort(),[...keys[names.indexOf(c.name)]].sort());for(const[k,v]of Object.entries(e))assert.equal(v,k==='nativePopupCount'?0:k==='nativeInvokes'?1:true,c.name+':'+k);}
+ assert.equal(r.captures.length,2);for(const[i,c]of r.captures.entries()){assert.equal(c.file,'package-confirmation-'+['light','dark'][i]+'.png');const bytes=fs.readFileSync(path.join(folder,c.file));assert.equal(hash(bytes),c.sha256);const p=readRgbaPng(bytes);assert.equal(p.width,800);assert.equal(p.height,600);assert.equal(c.width,800);assert.equal(c.height,600);assert(p.rgba.some(v=>v!==0));}
+ return {passed:true,cases:6,diagnosticPngs:2,softwareNativeInvokes:2,guards:r.guards,publicApisOnly:true,packageSha256:hash(zip),librarySha256:r.librarySha256,hostSha256:r.hostSha256,physicalInputVerified:false,sourceRasterParityVerified:false};
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){try{const a=process.argv.slice(2),get=k=>a[a.indexOf(k)+1],r=auditPackagePopup(get('--native'),get('--package'));fs.writeFileSync(get('--output'),JSON.stringify(r,null,2)+'\n');console.log(JSON.stringify(r));}catch(e){console.error(e);process.exitCode=1;}}

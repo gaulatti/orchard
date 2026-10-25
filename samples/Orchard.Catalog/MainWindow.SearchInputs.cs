@@ -17,7 +17,7 @@ public sealed partial class MainWindow
 {
     private async Task RunSearchInputsAsync(string folder)
     {
-        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.SearchInput.json")??throw new InvalidOperationException("Missing SearchInput reference.");
+        using var stream=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.SearchInput.json")??throw new InvalidOperationException("Missing SearchInput reference.");
         using var source=await JsonDocument.ParseAsync(stream);
         var original=Content;var page=new Page();var canvas=new Canvas{Name="SearchInputCaptureSurface"};var scope=new ScrollViewer{Content=canvas,IsTabStop=false,HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled,VerticalScrollBarVisibility=ScrollBarVisibility.Disabled};AutomationProperties.SetAutomationId(scope,"SearchA11y-Scope");page.Content=scope;
         var reports=new List<object>();var inputs=new List<object>();var accessibility=new List<object>();var phase="mount";var passed=false;NativeInputSession? input=null;

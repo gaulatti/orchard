@@ -1,0 +1,33 @@
+{
+  "actualOldRuntime": true,
+  "librarySha256": "79cccb5e8f48206e3b0115d8aef8a5bbfddfa9f697dc0a623aefab398682d879",
+  "hostSha256": "6aca0bc8fc152cefd365712bac34c1cccf403bb271ee2e82e567b99b40d4bbff",
+  "source": "artifacts/current/table-cold-load-baseline-template-v1/table-template.json",
+  "description": "Actual previous-library bound Width/MinWidth/MaxWidth release left both themes at 302 DIP rather than the new automatic minimum",
+  "fixedWidthCases": [
+    {
+      "scheme": "Light",
+      "stage": "auto",
+      "expectedCellWidth": 548.8002014160156,
+      "cellWidth": 302,
+      "scrollableWidth": 102,
+      "originalContentRetained": true,
+      "originalTextRetained": true,
+      "bindingsRetained": true,
+      "text": "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+      "file": "table-template-Light-fixed-width-auto.png"
+    },
+    {
+      "scheme": "Dark",
+      "stage": "auto",
+      "expectedCellWidth": 548.8002014160156,
+      "cellWidth": 302,
+      "scrollableWidth": 102,
+      "originalContentRetained": true,
+      "originalTextRetained": true,
+      "bindingsRetained": true,
+      "text": "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+      "file": "table-template-Dark-fixed-width-auto.png"
+    }
+  ]
+}

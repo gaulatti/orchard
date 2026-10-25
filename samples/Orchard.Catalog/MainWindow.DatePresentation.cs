@@ -14,7 +14,7 @@ public sealed partial class MainWindow
 {
     private async Task RunDatePresentationAsync(string folder)
     {
-        using var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.DateControls.json") ?? throw new InvalidOperationException("Missing dates reference.");
+        using var resource = CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.DateControls.json") ?? throw new InvalidOperationException("Missing dates reference.");
         using var reference = await JsonDocument.ParseAsync(resource);
         var original = Content;
         var canvas = new Canvas { Width = 640, Height = 640, Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent) };

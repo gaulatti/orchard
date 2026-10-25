@@ -1,5 +1,26 @@
 # Data Table Toolbar source contract and native acceptance
 
+The `0.1.0-table-content-foreground-v2-local` preview removes Reset's explicit caption color binding,
+so native inheritance follows the active button presenter. Its cross vector uses
+the owned-glyph binding lifecycle. A fresh package replay exposed a late native
+template transition that left its stroke empty. The helper now reconciles once
+on the dispatcher after load/unload transitions; it does not poll during layout.
+The first local package is retained as failed delivery evidence. The revised
+probe cycles the caller template three times to exercise that boundary.
+The shared toolbar/column-picker
+probe verifies 24 states, 20 raw frames and 60 foreground observations across
+Light/Dark, disabled/enabled transitions, caller presenter replacement,
+template restoration and unload. The preceding library has 24 brush mismatches
+and 16 painted-content failures; the repair has zero. All 20 caption, icon and
+button geometry snapshots are unchanged, and font bindings remain intact.
+Fourteen corrupt reports, blank captions/icons and actual old opaque content
+are rejected. The fresh x64 and ARM64 package consumers build. The x64 package
+and extracted catalog each pass the strengthened 24-state/60-observation probe;
+both fictional component demos pass 66 checks in the catalog. The shared helper
+also passes the existing 96-state navigation lifecycle replay. Native ARM64
+execution and full component acceptance remain open. Evidence is recorded in
+`artifacts/current/table-button-content-foreground-checkpoint-v2.json`.
+
 The frozen Bleecker producer is `src/components/data-table-toolbar.tsx` at
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `a2beb795287fd027857d9f4d12df9d0e76406b0fa0703a9fcf20aaa23064a0ef`.
@@ -663,8 +684,10 @@ This correction does not establish full toolbar raster acceptance.
 - Verify native ARM64 runtime; both solution architectures and fresh consumer
   builds pass, and the independent x64 consumer passes physical typing,
   original row/column identity and initial/global reset semantics in both themes.
-- Verify exact rendered parity, full content/override/error matrices, Windows
-  contrast, Narrator, display/text scaling and measured collection performance.
+- Complete visual review under [the acceptance contract](acceptance-contract.md),
+  full content/override/error matrices, display/text scaling and measured
+  collection performance. Narrator and OS contrast campaigns are excluded by
+  [the library scope](library-scope.md).
   Include monitoring/editorial compositions and final matching-source artifacts.
 
 The public wiki is unavailable, so documentation remains in the repository.

@@ -10,7 +10,7 @@
         <orchard:BleeckerEmpty x:Name="ActionEmpty" Title="Nothing published yet" Description="Create an item to get started." Width="360" HorizontalAlignment="Left">
             <orchard:BleeckerEmpty.Action><Button Content="Create item" AutomationProperties.Name="Create item" /></orchard:BleeckerEmpty.Action>
         </orchard:BleeckerEmpty>
-        <orchard:BleeckerEmpty x:Name="CustomEmpty" Title="Consumer icon" Description="The icon keeps its explicit color." Width="360" HorizontalAlignment="Left">
+        <orchard:BleeckerEmpty x:Name="CustomEmpty" Title="日本語 العربية" Description="Consumer font and explicit icon color." FontFamily="Arial" Width="360" HorizontalAlignment="Left">
             <orchard:BleeckerEmpty.Icon><Border Width="24" Height="24" Background="DarkRed" /></orchard:BleeckerEmpty.Icon>
         </orchard:BleeckerEmpty>
     </StackPanel>

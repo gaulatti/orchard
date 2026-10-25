@@ -1,0 +1,846 @@
+{
+  "format": "orchard-overlay-shadow-source-v1",
+  "passed": true,
+  "diagnosticOnly": true,
+  "browser": "155.0.4283.62",
+  "referenceSha256": "12b264b46566b389eff73d6b21e7f32feb465cdc52f2c86ab8379555a49a075e",
+  "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+  "width": 520,
+  "height": 440,
+  "cases": [
+    {
+      "theme": "Light",
+      "id": "theme-opaque",
+      "kind": "solid",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "alpha": 1,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(255,255,255,1)",
+      "computed": {
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-theme-opaque.png",
+      "sha256": "63bb24e4821597ffec2b667269d7a0ea9db3ea850717595bc15f867715673f72",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "transparent",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,0)",
+      "computed": {
+        "background": "rgba(48, 96, 144, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-transparent.png",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "null",
+      "kind": "null",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "none",
+      "computed": {
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-null.png",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "blue-40",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0.4,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,0.4)",
+      "computed": {
+        "background": "rgba(48, 96, 144, 0.4) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-blue-40.png",
+      "sha256": "ff473bb703f286ce0f2918880f2211041e2d463fe0bfd2dbd38f96db2bcba1e9",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        172,
+        191,
+        211,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "blue-80",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0.8,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,0.8)",
+      "computed": {
+        "background": "rgba(48, 96, 144, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-blue-80.png",
+      "sha256": "39e06a6c42332aefe049a6aeb7623e8dc1bc23f8b84637520acde1620e01d58b",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        89,
+        128,
+        166,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "blue-opaque",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 1,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,1)",
+      "computed": {
+        "background": "rgb(48, 96, 144) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-blue-opaque.png",
+      "sha256": "2428ba9420e564e1a0733d1fabf5c1bd8535e20e9a3cfa78b0cc6d4094a42f8e",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        48,
+        96,
+        144,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "gradient-half",
+      "kind": "gradient",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0.6,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "linear-gradient(90deg,rgba(48,96,144,0.6) 0%,rgba(48,96,144,0.6) 50%,rgba(210,80,30,0) 50%,rgba(210,80,30,0) 100%)",
+      "computed": {
+        "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgba(48, 96, 144, 0.6) 0%, rgba(48, 96, 144, 0.6) 50%, rgba(210, 80, 30, 0) 50%, rgba(210, 80, 30, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-gradient-half.png",
+      "sha256": "7b12ae3aff79546a21d360d2a688e100331cc894b33ce4d5af46628d6dddcfe4",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        131,
+        160,
+        189,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Light",
+      "id": "gradient-opaque",
+      "kind": "gradient",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 1,
+      "canvas": [
+        255,
+        255,
+        255
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "linear-gradient(90deg,rgba(48,96,144,1) 0%,rgba(48,96,144,1) 50%,rgba(210,80,30,1) 50%,rgba(210,80,30,1) 100%)",
+      "computed": {
+        "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(48, 96, 144) 0%, rgb(48, 96, 144) 50%, rgb(210, 80, 30) 50%, rgb(210, 80, 30) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Light-gradient-opaque.png",
+      "sha256": "b4d3a3deba28e1fcfc1f365d00ec7a6aa09d043175e18a5abab29d4c995351b0",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        48,
+        96,
+        144,
+        255
+      ],
+      "outside": [
+        249,
+        250,
+        250,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "theme-opaque",
+      "kind": "solid",
+      "rgb": [
+        24,
+        37,
+        51
+      ],
+      "alpha": 1,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(24,37,51,1)",
+      "computed": {
+        "background": "rgb(24, 37, 51) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-theme-opaque.png",
+      "sha256": "908acaad9a061de01a035ea61b3dde17fa40d8e020938e3744cc7a3438b6abcf",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        24,
+        37,
+        51,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "transparent",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,0)",
+      "computed": {
+        "background": "rgba(48, 96, 144, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-transparent.png",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        13,
+        24,
+        33,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "null",
+      "kind": "null",
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "alpha": 0,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "none",
+      "computed": {
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-null.png",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        13,
+        24,
+        33,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "blue-40",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0.4,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,0.4)",
+      "computed": {
+        "background": "rgba(48, 96, 144, 0.4) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-blue-40.png",
+      "sha256": "7ba5d7eda4ade0ce2ebce175a3a8dcdfde23feb4676e02a17e53e355ceb02d7f",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        27,
+        52,
+        78,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "blue-80",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0.8,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,0.8)",
+      "computed": {
+        "background": "rgba(48, 96, 144, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-blue-80.png",
+      "sha256": "277bdb08fa9d34bf3bc43d572cf7b808e062b27e2a932b53686634a5387bf7be",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        41,
+        82,
+        122,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "blue-opaque",
+      "kind": "solid",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 1,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "rgba(48,96,144,1)",
+      "computed": {
+        "background": "rgb(48, 96, 144) none repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-blue-opaque.png",
+      "sha256": "9f55e51f7d2b1810e8a2440cb4abed47897a92c1fefc2159f1a26e6f2f8682b7",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        48,
+        96,
+        144,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "gradient-half",
+      "kind": "gradient",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 0.6,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "linear-gradient(90deg,rgba(48,96,144,0.6) 0%,rgba(48,96,144,0.6) 50%,rgba(210,80,30,0) 50%,rgba(210,80,30,0) 100%)",
+      "computed": {
+        "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgba(48, 96, 144, 0.6) 0%, rgba(48, 96, 144, 0.6) 50%, rgba(210, 80, 30, 0) 50%, rgba(210, 80, 30, 0) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-gradient-half.png",
+      "sha256": "1187704a2ad08e666d874b756309096ea23b981d9a6d1812f98379cb68f884c8",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        34,
+        68,
+        100,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    },
+    {
+      "theme": "Dark",
+      "id": "gradient-opaque",
+      "kind": "gradient",
+      "rgb": [
+        48,
+        96,
+        144
+      ],
+      "alpha": 1,
+      "canvas": [
+        13,
+        24,
+        33
+      ],
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "css": "linear-gradient(90deg,rgba(48,96,144,1) 0%,rgba(48,96,144,1) 50%,rgba(210,80,30,1) 50%,rgba(210,80,30,1) 100%)",
+      "computed": {
+        "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(48, 96, 144) 0%, rgb(48, 96, 144) 50%, rgb(210, 80, 30) 50%, rgb(210, 80, 30) 100%) repeat scroll 0% 0% / auto padding-box border-box",
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "borderRadius": "14px"
+      },
+      "file": "Dark-gradient-opaque.png",
+      "sha256": "44a22eabbe2ea7d0493d04ac394131714529bd3c611e68f483e6814414af7a87",
+      "stableFrames": 2,
+      "attempts": 2,
+      "inside": [
+        48,
+        96,
+        144,
+        255
+      ],
+      "outside": [
+        13,
+        25,
+        34,
+        255
+      ],
+      "outsideDifferencesFromOpaque": 0
+    }
+  ],
+  "scriptSha256": "331a459ee62b001f6a27a2fc7dedfaf70a9d596315c1ef706092296ac8d99a20",
+  "nativeComponentAccepted": false
+}

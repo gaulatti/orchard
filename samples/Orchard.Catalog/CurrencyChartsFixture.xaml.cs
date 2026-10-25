@@ -26,7 +26,7 @@ public sealed partial class CurrencyChartsFixture : UserControl
         var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         var before = new Button { Content = "Before chart", VerticalAlignment = VerticalAlignment.Bottom, HorizontalAlignment = HorizontalAlignment.Right }; host.Children.Add(before);
         using var input = new NativeInputSession(XamlRoot, folder, $"currency-chart-{scheme}"); await input.AcquireAsync(before); await input.MoveAsync(before);
-        using var reference = JsonDocument.Parse(typeof(CurrencyChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.ChartLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(CurrencyChartsFixture).Assembly, "Orchard.Catalog.Reference.ChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try
         {

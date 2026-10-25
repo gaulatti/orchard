@@ -1,0 +1,742 @@
+{
+  "format": "orchard-overlay-shadow-paint-source-v1",
+  "passed": true,
+  "browser": "155.0.4283.62",
+  "browserMetadata": {
+    "protocolVersion": "1.3",
+    "product": "Edg/155.0.4283.62",
+    "revision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "jsVersion": "15.5.9.7"
+  },
+  "referenceSha256": "12b264b46566b389eff73d6b21e7f32feb465cdc52f2c86ab8379555a49a075e",
+  "previousReferenceSha256": "a4d486f30f0d2e7245ddfe460b575df2587e797f243b7f17c1402616adbd63d1",
+  "layerReferenceSha256": "0f2e2aa4ac5ba4da4e48d0ad4050a29879bd26a0e2673add5bf2464452226cb9",
+  "layers": [
+    {
+      "id": "far",
+      "x": 0,
+      "y": 24,
+      "blur": 64,
+      "spread": -20,
+      "opacity": 0.28
+    },
+    {
+      "id": "near",
+      "x": 0,
+      "y": 4,
+      "blur": 14,
+      "spread": 0,
+      "opacity": 0.06
+    }
+  ],
+  "geometries": [
+    {
+      "id": "fixture",
+      "viewport": {
+        "width": 520,
+        "height": 440
+      },
+      "box": {
+        "x": 160,
+        "y": 140,
+        "width": 200,
+        "height": 120
+      },
+      "radius": 14
+    },
+    {
+      "id": "dialog",
+      "viewport": {
+        "width": 1000,
+        "height": 960
+      },
+      "box": {
+        "x": 164,
+        "y": 115.1875,
+        "width": 672,
+        "height": 484.5
+      },
+      "radius": 14
+    }
+  ],
+  "cases": [
+    {
+      "id": "fixture/paint-unblurred-far",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 0px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 0px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-paint-unblurred-far.png",
+      "sha256": "4ef5a022098e0b668fb2cfed3f35148a71ce64fed5e9cde319279d004e9455a8",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "fixture/mask-unblurred-far",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 24px 0px -20px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 24px 0px -20px",
+        "radius": "14px"
+      },
+      "file": "fixture-mask-unblurred-far.png",
+      "sha256": "febd5a2535b0b4b53a803d21c37b577b572a07376428d60fda037bd9d44480bf",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "fixture/paint-unblurred-near",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 0px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 0px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-paint-unblurred-near.png",
+      "sha256": "afad85bd039eba568a06622b1c484f6ef937ae44dc4f54712bbde24e85cc6393",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "fixture/mask-unblurred-near",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 4px 0px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 0px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-mask-unblurred-near.png",
+      "sha256": "fc662e6559e4f79504f98a8b569787334dd755b30f13370c3c471d258d965df3",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "fixture/token-combined-Light",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Light.png",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "fixture/token-combined-Dark",
+      "geometry": {
+        "id": "fixture",
+        "viewport": {
+          "width": 520,
+          "height": 440
+        },
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 160,
+          "y": 140,
+          "width": 200,
+          "height": 120
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "fixture-token-combined-Dark.png",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "dialog/paint-unblurred-far",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": false,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.28) 0px 24px 0px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.28) 0px 24px 0px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-paint-unblurred-far.png",
+      "sha256": "526f43a7052469dd3fcc678342e980f79c382bcbb46cd23e7d966e008f4ae1d5",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "dialog/mask-unblurred-far",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "far",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 24px 0px -20px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgb(255, 255, 255) 0px 24px 0px -20px",
+        "radius": "14px"
+      },
+      "file": "dialog-mask-unblurred-far.png",
+      "sha256": "a45249d7fe0c3ad7e466ee5a69c287296f929265795b0d97081c06acffef4ea3",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "dialog/paint-unblurred-near",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": false,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(26,55,77,0.06) 0px 4px 0px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(26, 55, 77, 0.06) 0px 4px 0px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-paint-unblurred-near.png",
+      "sha256": "bcdf9e7fe0835ab30b2a9537776db3ed4a0dcb8de874cbba3266eca212b7fe23",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "dialog/mask-unblurred-near",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "near",
+      "white": true,
+      "noBlur": true,
+      "canvas": {
+        "id": "Transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(255,255,255,1) 0px 4px 0px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgb(255, 255, 255) 0px 4px 0px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-mask-unblurred-near.png",
+      "sha256": "a32b3e50d102322af444cdf84e38eae3abc3ef79f8dbc6f0c3e9dc467847e64c",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "dialog/token-combined-Light",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Light",
+        "rgba": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "scheme": "light"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Light.png",
+      "sha256": "7453d3ce9089744ed853bc0cc018c34a9f6d052c40d6bfb8dda83d3ba5285a30",
+      "stableFrames": 2,
+      "attempts": 2
+    },
+    {
+      "id": "dialog/token-combined-Dark",
+      "geometry": {
+        "id": "dialog",
+        "viewport": {
+          "width": 1000,
+          "height": 960
+        },
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "radius": 14
+      },
+      "selected": "combined",
+      "white": false,
+      "noBlur": false,
+      "canvas": {
+        "id": "Dark",
+        "rgba": [
+          13,
+          24,
+          33,
+          255
+        ],
+        "scheme": "dark"
+      },
+      "cssShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+      "computed": {
+        "box": {
+          "x": 164,
+          "y": 115.1875,
+          "width": 672,
+          "height": 484.5
+        },
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(26, 55, 77, 0.28) 0px 24px 64px -20px, rgba(26, 55, 77, 0.06) 0px 4px 14px 0px",
+        "radius": "14px"
+      },
+      "file": "dialog-token-combined-Dark.png",
+      "sha256": "0ff65473b816eabdf0749eecd0301bd3c32b08798dd7883757df47767a544436",
+      "stableFrames": 2,
+      "attempts": 2
+    }
+  ],
+  "paintSamples": [
+    {
+      "geometry": "fixture",
+      "layer": "far",
+      "source": "fixture-paint-unblurred-far.png",
+      "whiteMask": "fixture-mask-unblurred-far.png",
+      "fullCoveragePixels": 640,
+      "straightRgba": [
+        25,
+        54,
+        75,
+        71
+      ],
+      "premulRgba": [
+        7,
+        15,
+        21,
+        71
+      ]
+    },
+    {
+      "geometry": "fixture",
+      "layer": "near",
+      "source": "fixture-paint-unblurred-near.png",
+      "whiteMask": "fixture-mask-unblurred-near.png",
+      "fullCoveragePixels": 758,
+      "straightRgba": [
+        34,
+        51,
+        85,
+        15
+      ],
+      "premulRgba": [
+        2,
+        3,
+        5,
+        15
+      ]
+    },
+    {
+      "geometry": "dialog",
+      "layer": "far",
+      "source": "dialog-paint-unblurred-far.png",
+      "whiteMask": "dialog-mask-unblurred-far.png",
+      "fullCoveragePixels": 2528,
+      "straightRgba": [
+        25,
+        54,
+        75,
+        71
+      ],
+      "premulRgba": [
+        7,
+        15,
+        21,
+        71
+      ]
+    },
+    {
+      "geometry": "dialog",
+      "layer": "near",
+      "source": "dialog-paint-unblurred-near.png",
+      "whiteMask": "dialog-mask-unblurred-near.png",
+      "fullCoveragePixels": 2646,
+      "straightRgba": [
+        34,
+        51,
+        85,
+        15
+      ],
+      "premulRgba": [
+        2,
+        3,
+        5,
+        15
+      ]
+    }
+  ],
+  "baselineRecaptures": [
+    {
+      "theme": "Light",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "byteIdentical": true
+    },
+    {
+      "theme": "Dark",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "byteIdentical": true
+    }
+  ],
+  "retainedSourceRecaptures": [
+    {
+      "id": "fixture/mask-unblurred-far",
+      "sha256": "febd5a2535b0b4b53a803d21c37b577b572a07376428d60fda037bd9d44480bf",
+      "byteIdentical": true
+    },
+    {
+      "id": "fixture/mask-unblurred-near",
+      "sha256": "fc662e6559e4f79504f98a8b569787334dd755b30f13370c3c471d258d965df3",
+      "byteIdentical": true
+    },
+    {
+      "id": "fixture/token-combined-Light",
+      "sha256": "0499a73a67187c9fdfa28b95efd402d4fc3bf3a71ba36c85449bed5ed28582d8",
+      "byteIdentical": true
+    },
+    {
+      "id": "fixture/token-combined-Dark",
+      "sha256": "ad82fb3121e52e9e07718411b3f87681a684d8985a179d7034fe48f70104d8a0",
+      "byteIdentical": true
+    },
+    {
+      "id": "dialog/mask-unblurred-far",
+      "sha256": "a45249d7fe0c3ad7e466ee5a69c287296f929265795b0d97081c06acffef4ea3",
+      "byteIdentical": true
+    },
+    {
+      "id": "dialog/mask-unblurred-near",
+      "sha256": "a32b3e50d102322af444cdf84e38eae3abc3ef79f8dbc6f0c3e9dc467847e64c",
+      "byteIdentical": true
+    },
+    {
+      "id": "dialog/token-combined-Light",
+      "sha256": "7453d3ce9089744ed853bc0cc018c34a9f6d052c40d6bfb8dda83d3ba5285a30",
+      "byteIdentical": true
+    },
+    {
+      "id": "dialog/token-combined-Dark",
+      "sha256": "0ff65473b816eabdf0749eecd0301bd3c32b08798dd7883757df47767a544436",
+      "byteIdentical": true
+    }
+  ],
+  "externalNetworkRequests": 0,
+  "scriptSha256": "ebf8e8c30e4508239504797d250a7d143029152f561c1490129e80059656d510",
+  "allPixelsRetained": true,
+  "sourceRasterGateRelaxed": false,
+  "nativeComponentAccepted": false
+}

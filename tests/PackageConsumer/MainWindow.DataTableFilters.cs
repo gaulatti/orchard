@@ -98,18 +98,20 @@ public sealed partial class MainWindow
         var surface = BrandDescendants<BleeckerOverlaySurface>(root).Single(item => item.Name == "PopupSurface");
         var host = BrandDescendants<Grid>(surface).Single(item => item.Name == "PART_ShadowHost");
         var layers = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementChildVisual(host) as Microsoft.UI.Composition.ContainerVisual;
-        Require(surface.IsLoaded && !surface.IsTabStop && layers?.Children.Count == 2, "Packaged Select lost its native overlay shadow layers.");
+        Require(surface.IsLoaded && !surface.IsTabStop && layers?.Children.Count == 2 && layers.Clip is Microsoft.UI.Composition.CompositionGeometricClip, "Packaged Select lost its native overlay shadow layers/outside clip.");
         var bottomToTop = new List<float>();
         foreach (var sprite in layers!.Children.Cast<Microsoft.UI.Composition.SpriteVisual>())
         {
             var effect = sprite.Brush as Microsoft.UI.Composition.CompositionEffectBrush ?? throw new InvalidOperationException("Packaged Select lost its Gaussian brush.");
             Require(effect.Properties.TryGetScalar("cssBlur.BlurAmount", out var sigma) == Microsoft.UI.Composition.CompositionGetValueStatus.Succeeded && sigma is 32 or 7, "Packaged Select lost its CSS Gaussian standard deviation.");
             bottomToTop.Add(sigma);
-            Require(effect.Properties.TryGetColor("shadowTint.Color", out var color) == Microsoft.UI.Composition.CompositionGetValueStatus.Succeeded && color.A == 255 && color.R == 26 && color.G == 55 && color.B == 77 && Math.Abs(sprite.Opacity - (sigma == 32 ? .28 : .06)) < .000001, "Packaged Select lost its shadow color/opacity.");
+            var expectedColor = sigma == 32 ? Windows.UI.Color.FromArgb(71,25,54,75) : Windows.UI.Color.FromArgb(15,34,51,85);
+            Require(effect.Properties.TryGetColor("shadowTint.Color", out var color) == Microsoft.UI.Composition.CompositionGetValueStatus.Succeeded && color == expectedColor && sprite.Opacity == 1, "Packaged Select lost its captured CSS shadow paint.");
             var input = (Microsoft.UI.Composition.CompositionSurfaceBrush)effect.GetSourceParameter("mask");
             var source = (Microsoft.UI.Composition.CompositionVisualSurface)input.Surface;
-            var caster = (Microsoft.UI.Composition.SpriteVisual)source.SourceVisual; var extent = MathF.Ceiling(sigma * 3); var inset = sigma == 32 ? 20 : 0;
-            Require(caster.Brush is not null && caster.Size.X == surface.ActualWidth - 2 * inset && caster.Size.Y == surface.ActualHeight - 2 * inset && source.SourceOffset.X == -extent && source.SourceOffset.Y == -extent && sprite.Size == caster.Size + new System.Numerics.Vector2(2 * extent) && sprite.Offset.X == inset - extent && sprite.Offset.Y == inset + (sigma == 32 ? 24 : 4) - extent, "Packaged Select clipped or misplaced its shadow mask.");
+            var caster = (Microsoft.UI.Composition.ShapeVisual)source.SourceVisual; var extent = MathF.Ceiling(sigma * 3); var inset = sigma == 32 ? 20 : 0;
+            var shape = caster.Shapes.OfType<Microsoft.UI.Composition.CompositionSpriteShape>().Single();
+            Require(shape.Geometry is Microsoft.UI.Composition.CompositionPathGeometry && shape.FillBrush is Microsoft.UI.Composition.CompositionColorBrush fill && fill.Color == Microsoft.UI.Colors.White && caster.Size.X == surface.ActualWidth - 2 * inset && caster.Size.Y == surface.ActualHeight - 2 * inset && source.SourceOffset.X == -extent && source.SourceOffset.Y == -extent && sprite.Size == caster.Size + new System.Numerics.Vector2(2 * extent) && sprite.Offset.X == inset - extent && sprite.Offset.Y == inset + (sigma == 32 ? 24 : 4) - extent, "Packaged Select clipped or misplaced its opaque shadow geometry.");
         }
         Require(bottomToTop.SequenceEqual(new[] { 7f, 32f }), "Packaged Select reversed the source's front-to-back shadow order.");
     }

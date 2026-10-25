@@ -1,0 +1,16 @@
+{
+  "format": "orchard-workspace-demo-contract-v1",
+  "repository": "gaulatti/newsroom",
+  "commit": "82cca98c4d3dfd1d65509f8d8c46e8fece0ead70",
+  "references": [
+    { "path": "Sources/Newsroom/ContentView.swift", "bytes": 120341, "gitBlob": "dbc611d6c061cac682063177aabac5d2d1e1ace4", "sha256": "298091a00a5eb40df25f25901e1755f6338221f6ff08da99e5f7617d0d992f33", "composition": "monitoring-workspace" },
+    { "path": "docs/ariston.md", "bytes": 10769, "gitBlob": "445804666f150607deb574476e0e5a96364ba946", "sha256": "a0b4f512db2e056861c76d176656102673a0e5b1449796f2f3e5f874f945503f", "composition": "editorial-workspace" }
+  ],
+  "boundary": "Catalog-only fictional in-memory state. No network, credentials, timers, backend, product routing, persistence or publishing.",
+  "acceptance": {
+    "monitoring-workspace": ["suite request", "sidebar native action", "independent column searches", "local collection update", "retained original posts and selected controls", "selected-post inspector", "attention view", "locked review snapshot", "keep and explicit discard", "local review record and history"],
+    "editorial-workspace": ["suite request with unsaved decision", "status and language filters", "empty search", "stable sort and selection", "open original page directly", "retained title and body edits", "media selection", "ordered category and author selection", "keep exact draft", "explicit discard before page/section/suite navigation", "save validation", "save into original local page", "catalog remount retains state"]
+  },
+  "visualParityClaimed": false,
+  "publicTableOrModalImplementedByDemo": false
+}

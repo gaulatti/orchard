@@ -242,6 +242,7 @@ public sealed class BleeckerEmpty : Control
         internal TextBlock Text { get; } = new() { UseLayoutRounding=false, TextWrapping=TextWrapping.NoWrap,TextAlignment=TextAlignment.Center,LineStackingStrategy=LineStackingStrategy.BlockLineHeight };
         private readonly TextBlock measure=new();
         private readonly BleeckerReferenceText.IntrinsicWidth intrinsic=new();
+        private readonly BleeckerReferenceText.Presentation presentation=new();
         private string logical="";
         private double paintWidth;
         internal double MaximumWidth => WidthOf(logical);
@@ -259,7 +260,7 @@ public sealed class BleeckerEmpty : Control
         {
             if(logical.Length==0){paintWidth=0;return new(available.Width,0);}
             var lines=new List<string>();var current="";foreach(var word in logical.Split(' ')){var next=current.Length==0?word:current+" "+word;if(current.Length>0&&WidthOf(next)>available.Width){lines.Add(current);current=word;}else current=next;}lines.Add(current);
-            paintWidth=Math.Max(available.Width,lines.Max(WidthOf));var rendered=string.Join('\n',lines);if(Text.Text!=rendered)BleeckerReferenceText.Set(Text,rendered);Text.Measure(new(paintWidth,double.PositiveInfinity));return new(available.Width,Text.DesiredSize.Height);
+            paintWidth=Math.Max(available.Width,lines.Max(WidthOf));var rendered=string.Join('\n',lines);presentation.Update(Text,rendered);Text.Measure(new(paintWidth,double.PositiveInfinity));return new(available.Width,Text.DesiredSize.Height);
         }
         protected override Size ArrangeOverride(Size final){Text.Arrange(new(Center(final.Width,paintWidth),0,paintWidth,final.Height));return final;}
     }

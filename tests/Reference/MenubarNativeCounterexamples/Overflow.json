@@ -1,0 +1,11 @@
+{
+  "file": "Overflow.png",
+  "width": 909,
+  "height": 1007,
+  "sha256": "09c12afb7c11f6b6270af471e40e11a0aa9512581f803e1d1a3f5e83037e282e",
+  "originalFile": "menubar-Light-bottom-right.png",
+  "sourceReport": "artifacts/current/menubar-source-native-v1/menubar.json",
+  "sourceReportSha256": "792a01c8cebaabcc3acb83d8083450ceb663366cdf4e45026565a53aeda00aa8",
+  "librarySha256": "47f5495095ec9d696caacfcaeb7e24f52dea057598937b9a1bd354da793e5fc8",
+  "reason": "Actual initial capture incorrectly included overflow outside the 900x760 viewport. Keep this failed frame as an auditor counterexample; no pixels are changed or resized."
+}

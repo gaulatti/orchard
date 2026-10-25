@@ -1,0 +1,20 @@
+{
+  "format": "orchard-data-table-filter-line-box-counterexamples-v1",
+  "actualOldRuntime": true,
+  "files": [
+    {
+      "scheme": "Light",
+      "report": "tests/Reference/DataTableFilterPlanRejectedLineBox-Light.json",
+      "reportSha256": "1163678e5862f96d9bf460e733f928f55068e8fe490cb44d18e34e92a2735e04",
+      "frame": "tests/Reference/DataTableFilterPlanRejectedLineBox-Light.png",
+      "frameSha256": "6f3e0ebfc4ad8977603293db275e3d679023c0c4974a2ba383bdc68584f9e100"
+    },
+    {
+      "scheme": "Dark",
+      "report": "tests/Reference/DataTableFilterPlanRejectedLineBox-Dark.json",
+      "reportSha256": "a8e22263cd1318bbd2d947937dcdcb00a546527578db976b06f6e1669dd1b113",
+      "frame": "tests/Reference/DataTableFilterPlanRejectedLineBox-Dark.png",
+      "frameSha256": "c0afdbe7ff511ff303c258b961cc55a53814e243135b5159f1dc4476ccf6759b"
+    }
+  ]
+}

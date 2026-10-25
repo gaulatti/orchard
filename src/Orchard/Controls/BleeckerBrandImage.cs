@@ -17,6 +17,8 @@ namespace Orchard;
 // its pixels, rather than replacing custom artwork with a monochrome logo.
 internal sealed class BleeckerBrandImage : Grid
 {
+    internal event EventHandler? IntrinsicOpened;
+    internal bool IsSourceOpened { get; private set; }
     private readonly Image image = new() { Stretch = Stretch.Uniform, IsHitTestVisible = false };
     private readonly Grid sourceHost = new() { IsHitTestVisible = false };
     private readonly Border effectHost = new() { IsHitTestVisible = false };
@@ -41,13 +43,13 @@ internal sealed class BleeckerBrandImage : Grid
         ElementCompositionPreview.SetIsTranslationEnabled(sourceHost, true);
         Loaded += (_, _) => { observedRoot = XamlRoot; if (observedRoot is not null) observedRoot.Changed += OnRootChanged; UpdateSurface(); };
         Unloaded += (_, _) => { if (observedRoot is not null) observedRoot.Changed -= OnRootChanged; observedRoot = null; Disconnect(); };
-        image.ImageOpened += (_, _) => { InvalidateMeasure(); UpdateSurface(); };
-        image.ImageFailed += (sender, args) => ImageFailed?.Invoke(sender, args);
+        image.ImageOpened += (_, _) => { IsSourceOpened = true; InvalidateMeasure(); UpdateSurface(); IntrinsicOpened?.Invoke(this, EventArgs.Empty); };
+        image.ImageFailed += (sender, args) => { IsSourceOpened = false; ImageFailed?.Invoke(sender, args); };
         SizeChanged += (_, _) => UpdateSurface();
         image.SizeChanged += (_, _) => UpdateSurface();
     }
 
-    internal ImageSource? Source { get => image.Source; set => image.Source = value; }
+    internal ImageSource? Source { get => image.Source; set { if (ReferenceEquals(image.Source, value)) return; IsSourceOpened = false; image.Source = value; } }
     internal void SetAppearance(bool dark, bool highContrast, Color foreground)
     {
         invert = dark; contrast = highContrast; maskColor = foreground; UpdateSurface();
@@ -84,7 +86,11 @@ internal sealed class BleeckerBrandImage : Grid
         // native window, preserving its live source and alpha without painting
         // the unfiltered image beneath the filtered output. Translation survives
         // layout changes; caller geometry and hit testing remain XAML-owned.
-        var translation = filtered ? -(float)(XamlRoot.Size.Width + ActualWidth + 1) : 0;
+        // Keep the private decoder on physical pixels. A fractional off-screen
+        // translation otherwise introduces fractional ancestor render bounds and
+        // partially transparent viewport edges, although caller layout is unchanged.
+        var scale = XamlRoot.RasterizationScale;
+        var translation = filtered ? -(float)(Math.Ceiling((XamlRoot.Size.Width + ActualWidth + 1) * scale) / scale) : 0;
         ElementCompositionPreview.GetElementVisual(sourceHost).Properties.InsertVector3("Translation", new Vector3(translation, 0, 0));
     }
     private void Disconnect()

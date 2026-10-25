@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="White" Opacity=".95"/>
+   <SolidColorBrush x:Key="HeaderBottomRuleBrush" Color="#FFE6D5B8" Opacity=".25"/>
+   <SolidColorBrush x:Key="HeaderMobileBackgroundBrush" Color="White"/>
+   <SolidColorBrush x:Key="HeaderMobileRuleBrush" Color="#FFE6D5B8" Opacity=".2"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Dark">
+   <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="#FF182533" Opacity=".95"/>
+   <SolidColorBrush x:Key="HeaderBottomRuleBrush" Color="White" Opacity=".09"/>
+   <SolidColorBrush x:Key="HeaderMobileBackgroundBrush" Color="#FF182533"/>
+   <SolidColorBrush x:Key="HeaderMobileRuleBrush" Color="White" Opacity=".1"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="HeaderBottomRuleBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+   <SolidColorBrush x:Key="HeaderMobileBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="HeaderMobileRuleBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style TargetType="local:BleeckerHeader">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="VerticalAlignment" Value="Top"/><Setter Property="Canvas.ZIndex" Value="50"/>
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="FontSize" Value="16"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/><Setter Property="Background" Value="{ThemeResource HeaderBackgroundBrush}"/><Setter Property="BorderBrush" Value="{ThemeResource HeaderBottomRuleBrush}"/>
+  <Setter Property="HeaderHeight" Value="{ThemeResource BleeckerHeaderHeight}"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerHeader"><Grid x:Name="PART_Header" UseLayoutRounding="False" FlowDirection="LeftToRight" HorizontalAlignment="Left" VerticalAlignment="Top"/></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

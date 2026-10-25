@@ -1,0 +1,18 @@
+{
+  "format": "orchard-data-table-native-counterexamples-v1",
+  "reason": "Actual native text-button padding clips the pagination arrows; both initial captures fail the corrected paint gate.",
+  "librarySha256": "033b182d73b7b775c86bd899362ed4723c7715f93c7cdd1b4a04a0312fb4568f",
+  "hostSha256": "ca96966e22a6b81fbbde7f7588b886909af719176a20b88da3a76e75ad435c7c",
+  "files": [
+    {
+      "scheme": "Light",
+      "path": "tests/Reference/DataTableNativeRejectedArrows-Light.png",
+      "sha256": "693a1b11ad4730948b7b7eceaa1b3b70fb5d4aa533c530b83ff237b36e3260b2"
+    },
+    {
+      "scheme": "Dark",
+      "path": "tests/Reference/DataTableNativeRejectedArrows-Dark.png",
+      "sha256": "57f35342dfd7510524bd4a6d99dc802b423dc66fd3013da3740375ae4ae5521f"
+    }
+  ]
+}

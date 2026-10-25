@@ -10,7 +10,7 @@ permissions:
 jobs:
   windows:
     runs-on: windows-2025
-    timeout-minutes: 25
+    timeout-minutes: 35
     env:
       CI: 'true'
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
@@ -24,13 +24,277 @@ jobs:
         with:
           node-version: '24'
       - name: Verify token generation
-        run: node scripts/generate-tokens.mjs --check
+        run: |
+          node scripts/generate-tokens.mjs --check
+          node scripts/generate-table-palette.mjs --check
+          node scripts/generate-data-table-palette.mjs --check
+          node scripts/generate-collection-filters-palette.mjs --check
       - name: Build the Visual Studio solution
         run: dotnet build Orchard.sln -c Release -p:Platform=x64
+      - name: Verify frozen menu source evidence
+        run: |
+          node scripts/reference/verify-menu-source.mjs --reference tests/Reference/Menu.json --frames tests/Reference/Menu --output artifacts/menu-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen menu source audit failed.' }
+          node scripts/reference/test-menu-source-audit.mjs --reference tests/Reference/Menu.json --frames tests/Reference/Menu --output artifacts/menu-source-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen menu source rejection audit failed.' }
+      - name: Verify frozen Menubar source evidence
+        run: |
+          node scripts/reference/verify-menubar-source.mjs --reference tests/Reference/Menubar.json --frames tests/Reference/Menubar --output artifacts/menubar-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Menubar source audit failed.' }
+          node scripts/reference/test-menubar-source-audit.mjs --reference tests/Reference/Menubar.json --frames tests/Reference/Menubar --output artifacts/menubar-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Menubar source rejection audit failed.' }
+      - name: Verify frozen Navigation Menu source evidence
+        run: |
+          node scripts/reference/verify-navigation-menu-source.mjs --reference tests/Reference/NavigationMenu.json --frames tests/Reference/NavigationMenu --output artifacts/navigation-menu-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Navigation Menu source audit failed.' }
+          node scripts/reference/test-navigation-menu-source-audit.mjs --reference tests/Reference/NavigationMenu.json --frames tests/Reference/NavigationMenu --output artifacts/navigation-menu-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Navigation Menu source rejection audit failed.' }
+      - name: Verify frozen Sonner source evidence
+        run: |
+          node scripts/reference/verify-sonner-source.mjs --reference tests/Reference/Sonner.json --frames tests/Reference/Sonner --frozen-only --output artifacts/sonner-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Sonner source audit failed.' }
+          node scripts/reference/test-sonner-source-audit.mjs --reference tests/Reference/Sonner.json --frames tests/Reference/Sonner --frozen-only --output artifacts/sonner-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Sonner source rejection audit failed.' }
+      - name: Verify frozen Hero Carousel source evidence
+        run: |
+          node scripts/reference/verify-hero-carousel-source.mjs --reference tests/Reference/HeroCarousel.json --frames tests/Reference/HeroCarousel --frozen-only --output artifacts/hero-carousel-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hero Carousel source audit failed.' }
+          node scripts/reference/test-hero-carousel-source-audit.mjs --reference tests/Reference/HeroCarousel.json --frames tests/Reference/HeroCarousel --frozen-only --output artifacts/hero-carousel-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hero Carousel source rejection audit failed.' }
       - name: Test token and resource contracts
         run: dotnet test tests/Orchard.Tests/Orchard.Tests.csproj -c Release --logger trx --results-directory artifacts/tests
+      - name: Verify frozen Table source contracts
+        run: |
+          node scripts/reference/verify-table-source.mjs --reference tests/Reference/Table.json --frames tests/Reference/Table --output artifacts/table-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table source audit failed.' }
+          node scripts/reference/test-table-source-audit.mjs --reference tests/Reference/Table.json --frames tests/Reference/Table --output artifacts/table-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table source rejection audit failed.' }
+          node scripts/reference/verify-data-table-source.mjs --reference tests/Reference/DataTable.json --frames tests/Reference/DataTable --output artifacts/data-table-source-audit.json
+          node scripts/reference/verify-data-table-filter-plan-source.mjs --reference tests/Reference/DataTableFilterPlan.json --frames tests/Reference/DataTableFilterPlan --output artifacts/data-table-filter-plan-source-audit.json
+          node scripts/reference/verify-brand-mark-source.mjs --reference tests/Reference/BrandMark.json --files tests/Reference/BrandMark --output artifacts/brand-mark-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Data Table source audit failed.' }
+          node scripts/reference/test-data-table-source-audit.mjs --reference tests/Reference/DataTable.json --frames tests/Reference/DataTable --output artifacts/data-table-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Data Table source rejection audit failed.' }
+      - name: Verify frozen Context Menu modal histories
+        run: |
+          node scripts/reference/verify-context-menu-modal-source.mjs --reference tests/Reference/ContextMenuModal.json --frames tests/Reference/ContextMenuModal --output artifacts/context-menu-modal-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu modal source audit failed.' }
+          node scripts/reference/test-context-menu-modal-source-audit.mjs --reference tests/Reference/ContextMenuModal.json --output artifacts/context-menu-modal-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu modal source rejection audit failed.' }
+      - name: Verify styled Context Menu portal primitive
+        run: |
+          ./scripts/verify-context-menu-styled-portal.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/context-menu-styled-portal
+          node scripts/test-context-menu-styled-portal-audit.mjs --native artifacts/context-menu-styled-portal --output artifacts/context-menu-styled-portal/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Styled Context Menu portal rejection audit failed.' }
+      - name: Verify frozen Context Menu modality histories
+        run: |
+          node scripts/reference/verify-context-menu-options-source.mjs --reference tests/Reference/ContextMenuOptions.json --frames tests/Reference/ContextMenuOptions --output artifacts/context-menu-options-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu modality source audit failed.' }
+          node scripts/reference/test-context-menu-options-source-audit.mjs --reference tests/Reference/ContextMenuOptions.json --output artifacts/context-menu-options-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu modality source rejection audit failed.' }
+      - name: Verify frozen Drawer and Sheet source evidence
+        run: |
+          node scripts/reference/verify-edge-dialog-source.mjs --source tests/Reference/EdgeDialog.json --motion tests/Reference/EdgeDialogMotion.json --presence tests/Reference/EdgeDialogPresence.json --frozen-only --output artifacts/edge-dialog-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen Drawer/Sheet source audit failed.' }
+          node scripts/reference/test-edge-dialog-source-audit.mjs --source tests/Reference/EdgeDialog.json --motion tests/Reference/EdgeDialogMotion.json --presence tests/Reference/EdgeDialogPresence.json --output artifacts/edge-dialog-source-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet source rejection audit failed.' }
+          node scripts/reference/verify-edge-interruptions.mjs --reference tests/Reference/EdgeDialogInterruptions.json --frozen-only --output artifacts/edge-interruption-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet interruption source audit failed.' }
+          node scripts/reference/test-edge-interruption-audit.mjs --reference tests/Reference/EdgeDialogInterruptions.json --output artifacts/edge-interruption-source-negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet interruption source rejection audit failed.' }
+      - name: Test native Unicode shaping and line breaking without a window
+        run: dotnet test tests/Orchard.Text.Tests/Orchard.Text.Tests.csproj -c Release --logger trx --results-directory artifacts/text-tests
       - name: Publish unpackaged catalog
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore -o artifacts/catalog
+      - name: Verify hidden modal host layout prototype
+        run: |
+          ./scripts/verify-modal-host-probe.ps1 -AppDirectory artifacts/catalog -Output artifacts/modal-host-core
+          node scripts/test-modal-host-probe-audit.mjs --native artifacts/modal-host-core --app artifacts/modal-host-core/app-identity --reference tests/Reference/AlertDialog.json --output artifacts/modal-host-core/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Modal host prototype rejection audit failed.' }
+          ./scripts/verify-modal-host-ownership.ps1 -AppDirectory artifacts/catalog -Output artifacts/modal-host-ownership
+          node scripts/test-modal-host-ownership-audit.mjs --native artifacts/modal-host-ownership --output artifacts/modal-host-ownership/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Modal host ownership rejection audit failed.' }
+      - name: Verify hidden Table primitives and catalog
+        run: |
+          node scripts/reference/generate-uppercase-data.mjs --unicode-data tests/Reference/UnicodeData-17.0.0.txt --check
+          if ($LASTEXITCODE -ne 0) { throw 'Unicode uppercase mappings are stale.' }
+          node scripts/reference/verify-table-text-source.mjs --reference tests/Reference/TableText.json --frames tests/Reference/TableText --output artifacts/table-text-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table text source audit failed.' }
+          ./scripts/verify-table-text.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/table-text
+          node scripts/test-table-text-audit.mjs --native artifacts/table-text --reference tests/Reference/TableText.json --output artifacts/table-text/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table text rejection audit failed.' }
+          ./scripts/verify-table-customization.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/table-customization
+          node scripts/test-table-customization-audit.mjs --native artifacts/table-customization --output artifacts/table-customization/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table customization rejection audit failed.' }
+          ./scripts/verify-table-template.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/table-template
+          node scripts/test-table-template-audit.mjs --native artifacts/table-template --output artifacts/table-template/negative-audit.json
+          ./scripts/verify-brand-mark.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/brand-mark
+          node scripts/test-brand-mark-audit.mjs --native artifacts/brand-mark --output artifacts/brand-mark/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Brand Mark rejection audit failed.' }
+          ./scripts/verify-menubar.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/menubar
+          node scripts/test-menubar-audit.mjs --native artifacts/menubar --output artifacts/menubar/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Menubar rejection audit failed.' }
+          ./scripts/verify-navigation-menu.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/navigation-menu
+          node scripts/test-navigation-menu-audit.mjs --native artifacts/navigation-menu --output artifacts/navigation-menu/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Navigation Menu rejection audit failed.' }
+          ./scripts/verify-sonner.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/sonner
+          node scripts/test-sonner-audit.mjs --native artifacts/sonner --host-assembly Orchard.Catalog.dll --output artifacts/sonner/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Sonner rejection audit failed.' }
+          ./scripts/verify-hero-carousel.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/hero-carousel
+          node scripts/test-hero-carousel-audit.mjs --native artifacts/hero-carousel --host-assembly Orchard.Catalog.dll --output artifacts/hero-carousel/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hero Carousel rejection audit failed.' }
+          if ($LASTEXITCODE -ne 0) { throw 'Table template rejection audit failed.' }
+          ./scripts/verify-table-performance.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/table-performance
+          node scripts/test-table-performance-audit.mjs --native artifacts/table-performance --output artifacts/table-performance/negative-audit.json
+          ./scripts/verify-data-table-performance.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/data-table-performance
+          node scripts/test-data-table-performance-audit.mjs --native artifacts/data-table-performance --output artifacts/data-table-performance/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table performance/lifecycle rejection audit failed.' }
+          ./scripts/verify-simple-data-table.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/simple-data-table
+          node scripts/test-simple-data-table-audit.mjs --native artifacts/simple-data-table --reference tests/Reference/Table.json --output artifacts/simple-data-table/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Simple DataTable rejection audit failed.' }
+          ./scripts/verify-data-table.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/data-table
+          node scripts/test-data-table-audit.mjs --native artifacts/data-table --output artifacts/data-table/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Data Table native rejection audit failed.' }
+          ./scripts/verify-data-table-reference.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/data-table-reference
+          node scripts/test-data-table-reference-audit.mjs --native artifacts/data-table-reference --output artifacts/data-table-reference/negative-audit.json
+          ./scripts/verify-data-table-filter-plan.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/data-table-filter-plan
+          node scripts/test-data-table-filter-plan-audit.mjs --native artifacts/data-table-filter-plan --output artifacts/data-table-filter-plan/negative-audit.json
+          node scripts/verify-data-table-paint.mjs --native artifacts/data-table-reference --output artifacts/data-table-reference/paint-audit.json
+          node scripts/test-data-table-paint-audit.mjs --native artifacts/data-table-reference --output artifacts/data-table-reference/paint-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Data Table full reference rejection audit failed.' }
+          ./scripts/verify-data-table-catalog.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/data-table-catalog
+          node scripts/test-data-table-catalog-audit.mjs --native artifacts/data-table-catalog --output artifacts/data-table-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Data Table actual catalog rejection audit failed.' }
+          ./scripts/verify-data-table-live.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/data-table-live
+          node scripts/test-data-table-live-audit.mjs --native artifacts/data-table-live --output artifacts/data-table-live/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Live table producer rejection audit failed.' }
+          ./scripts/verify-simple-table-catalog.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/simple-table-catalog
+          node scripts/test-simple-table-catalog-audit.mjs --native artifacts/simple-table-catalog --output artifacts/simple-table-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Simple Table catalog rejection audit failed.' }
+          ./scripts/verify-table-primitives.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/table-primitives
+          node scripts/test-table-primitives-audit.mjs --native artifacts/table-primitives --reference tests/Reference/Table.json --output artifacts/table-primitives/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table primitive rejection audit failed.' }
+          ./scripts/verify-table-catalog.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/table-catalog
+          node scripts/test-table-catalog-audit.mjs --native artifacts/table-catalog --output artifacts/table-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table catalog rejection audit failed.' }
+      - name: Verify hidden Context Menu native foundation
+        run: |
+          ./scripts/verify-context-menu-options.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/context-menu-options
+          node scripts/test-context-menu-options-audit.mjs --native artifacts/context-menu-options --output artifacts/context-menu-options/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu root modality rejection audit failed.' }
+          ./scripts/verify-context-menu-modal.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/context-menu-modal
+          node scripts/test-context-menu-modal-audit.mjs --native artifacts/context-menu-modal --output artifacts/context-menu-modal/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public Context Menu modal rejection audit failed.' }
+          ./scripts/verify-context-menu-root.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/context-menu-root
+          node scripts/test-context-menu-root-audit.mjs --native artifacts/context-menu-root --output artifacts/context-menu-root/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu root rejection audit failed.' }
+          ./scripts/verify-context-menu-catalog.ps1 -AppDirectory samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64 -Output artifacts/context-menu-catalog
+          node scripts/test-context-menu-catalog-audit.mjs --native artifacts/context-menu-catalog --output artifacts/context-menu-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Context Menu catalog rejection audit failed.' }
+      - name: Verify hidden OTP Input public contracts
+        run: |
+          ./scripts/verify-otp-input.ps1 -AppDirectory artifacts/catalog -Output artifacts/otp-input
+          node scripts/test-otp-input-audit.mjs --native artifacts/otp-input --output artifacts/otp-input/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'OTP Input rejection audit failed.' }
+          ./scripts/verify-otp-input.ps1 -AppDirectory artifacts/catalog -Catalog -Output artifacts/otp-input-catalog
+          node scripts/test-otp-input-catalog-audit.mjs --native artifacts/otp-input-catalog --output artifacts/otp-input-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'OTP Input catalog rejection audit failed.' }
+      - name: Verify hidden App Tab Bar public contracts
+        run: |
+          ./scripts/verify-app-tab-bar.ps1 -AppDirectory artifacts/catalog -Output artifacts/app-tab-bar
+          node scripts/test-app-tab-bar-audit.mjs --native artifacts/app-tab-bar --output artifacts/app-tab-bar/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'App Tab Bar rejection audit failed.' }
+          ./scripts/verify-app-tab-bar.ps1 -AppDirectory artifacts/catalog -Catalog -Output artifacts/app-tab-bar-catalog
+          node scripts/test-app-tab-bar-catalog-audit.mjs --native artifacts/app-tab-bar-catalog --output artifacts/app-tab-bar-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'App Tab Bar catalog rejection audit failed.' }
+      - name: Verify hidden Segmented Control public contracts
+        run: |
+          ./scripts/verify-segmented-control.ps1 -AppDirectory artifacts/catalog -Output artifacts/segmented-control
+          node scripts/test-segmented-control-audit.mjs --native artifacts/segmented-control --output artifacts/segmented-control/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Segmented Control rejection audit failed.' }
+          ./scripts/verify-segmented-control.ps1 -AppDirectory artifacts/catalog -Catalog -Output artifacts/segmented-control-catalog
+          node scripts/test-segmented-control-catalog-audit.mjs --native artifacts/segmented-control-catalog --output artifacts/segmented-control-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Segmented Control catalog rejection audit failed.' }
+      - name: Verify hidden Secure Field public contracts
+        # Uses the existing PR/manual workflow; push stays paused.
+        run: |
+          ./scripts/verify-secure-field.ps1 -AppDirectory artifacts/catalog -Output artifacts/secure-field
+          node scripts/test-secure-field-audit.mjs --native artifacts/secure-field --output artifacts/secure-field/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Secure Field rejection audit failed.' }
+          ./scripts/verify-secure-field.ps1 -AppDirectory artifacts/catalog -Catalog -Output artifacts/secure-field-catalog
+          node scripts/test-secure-field-catalog-audit.mjs --native artifacts/secure-field-catalog --output artifacts/secure-field-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Secure Field catalog rejection audit failed.' }
+      - name: Verify hidden Drawer and Sheet public contracts and catalog
+        # Uses the existing PR/manual workflow; push stays paused.
+        run: |
+          ./scripts/verify-edge-dialog-native.ps1 -AppDirectory artifacts/catalog -Output artifacts/edge-dialog-native
+          node scripts/test-edge-dialog-native-audit.mjs --native artifacts/edge-dialog-native --reference tests/Reference/EdgeDialog.json --output artifacts/edge-dialog-native/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet native rejection audit failed.' }
+          ./scripts/verify-edge-dialog-catalog.ps1 -AppDirectory artifacts/catalog -Output artifacts/edge-dialog-catalog
+          node scripts/test-edge-dialog-catalog-audit.mjs --native artifacts/edge-dialog-catalog --output artifacts/edge-dialog-catalog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet catalog rejection audit failed.' }
+          ./scripts/verify-edge-composition.ps1 -AppDirectory artifacts/catalog -Output artifacts/edge-composition
+          node scripts/test-edge-composition-audit.mjs --native artifacts/edge-composition --output artifacts/edge-composition/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet composition rejection audit failed.' }
+          ./scripts/verify-edge-motion.ps1 -AppDirectory artifacts/catalog -Output artifacts/edge-motion
+          node scripts/test-edge-motion-audit.mjs --native artifacts/edge-motion --output artifacts/edge-motion/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Drawer/Sheet motion-property rejection audit failed.' }
+      - name: Verify hidden public modal root and catalog integration
+        run: |
+          ./scripts/verify-public-modal-host.ps1 -AppDirectory artifacts/catalog -Output artifacts/public-modal-host
+          node scripts/test-public-modal-host-audit.mjs --native artifacts/public-modal-host --output artifacts/public-modal-host/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public modal host rejection audit failed.' }
+      - name: Verify hidden AlertDialog geometry and controlled requests
+        run: |
+          ./scripts/verify-alert-dialog-native.ps1 -AppDirectory artifacts/catalog -Output artifacts/alert-dialog
+          node scripts/test-alert-dialog-native-audit.mjs --native artifacts/alert-dialog --reference tests/Reference/AlertDialog.json --output artifacts/alert-dialog/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'AlertDialog source rejection audit failed.' }
+          ./scripts/verify-alert-dialog-actions.ps1 -AppDirectory artifacts/catalog -Output artifacts/alert-dialog-actions
+          node scripts/test-alert-dialog-actions-audit.mjs --native artifacts/alert-dialog-actions --output artifacts/alert-dialog-actions/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'AlertDialog request rejection audit failed.' }
+      - name: Verify hidden Popover modal branches
+        # Runs only with the existing PR/manual workflow; push runs stay paused.
+        # The portal fixture never activates a window or sends hardware input.
+        run: |
+          ./scripts/verify-popover-modal-branch.ps1 -AppDirectory artifacts/catalog -Output artifacts/popover-modal-branch
+          node scripts/test-popover-modal-branch-audit.mjs --native artifacts/popover-modal-branch --output artifacts/popover-modal-branch/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Popover modal branch rejection audit failed.' }
+      - name: Verify hidden Select modal branches
+        run: |
+          ./scripts/verify-select-modal-branch.ps1 -AppDirectory artifacts/catalog -Output artifacts/select-modal-branch
+          node scripts/test-select-modal-branch-audit.mjs --native artifacts/select-modal-branch --reference tests/Reference/Select.json --output artifacts/select-modal-branch/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Select modal branch rejection audit failed.' }
+      - name: Verify hidden Tooltip modal branches
+        # Tooltip checks remain inside the existing PR/manual workflow.
+        # No desktop input, window activation or OS setting changes are used.
+        run: |
+          ./scripts/verify-tooltip-modal-branch.ps1 -AppDirectory artifacts/catalog -Output artifacts/tooltip-modal-branch
+          node scripts/test-tooltip-modal-branch-audit.mjs --native artifacts/tooltip-modal-branch --reference tests/Reference/Tooltip.json --output artifacts/tooltip-modal-branch/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Tooltip modal branch rejection audit failed.' }
+          node scripts/reference/verify-tooltip-source.mjs --reference tests/Reference/Tooltip.json --frames tests/Reference/Tooltip --output artifacts/tooltip-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen Tooltip source audit failed.' }
+      - name: Verify hidden Modal source, content and ownership
+        run: |
+          node scripts/verify-modal-source.mjs --source tests/Reference/Modal.json --frozen-only --output artifacts/modal-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen Modal source audit failed.' }
+          ./scripts/verify-modal-native.ps1 -AppDirectory artifacts/catalog -Output artifacts/modal-native
+          node scripts/test-modal-audits.mjs --source tests/Reference/Modal.json --native artifacts/modal-native/modal-native.json --output artifacts/modal-native/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Modal rejection audit failed.' }
+      - name: Verify Modal live content and actual catalog handlers
+        run: |
+          node scripts/verify-modal-content-source.mjs --source tests/Reference/ModalContent.json --frozen-only --output artifacts/modal-content-source-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Modal live-content source audit failed.' }
+          ./scripts/verify-modal-content.ps1 -AppDirectory artifacts/catalog -Output artifacts/modal-content
+          node scripts/test-modal-content-audit.mjs --native artifacts/modal-content/modal-content.json --output artifacts/modal-content/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Modal live-content rejection audit failed.' }
+          ./scripts/verify-modal-catalog.ps1 -AppDirectory artifacts/catalog -Output artifacts/modal-catalog
+      - name: Verify hidden component composition demos
+        run: |
+          ./scripts/verify-hidden-workspaces.ps1 -AppDirectory artifacts/catalog -Output artifacts/workspace-demos
+          node scripts/verify-hidden-workspaces.mjs --report artifacts/workspace-demos/hidden-workspaces.json --app artifacts/catalog --output artifacts/workspace-demos/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden component demo audit failed.' }
+          node scripts/test-hidden-workspaces-audit.mjs --report artifacts/workspace-demos/hidden-workspaces.json --output artifacts/workspace-demos/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden component demo audit regression failed.' }
       - name: Verify application resource packaging
         run: |
           dotnet msbuild samples/Orchard.Catalog/Orchard.Catalog.csproj -target:Build -p:Configuration=Release -p:Platform=x64 -getProperty:OutputType,AppxGeneratePriEnabled,ProjectPriFileName,PriInitialPath,ProjectPriFullPath,_SupportXbfAsEmbedFileResources
@@ -69,13 +333,9 @@ jobs:
         id: error_state_smoke
         if: ${{ !cancelled() && (steps.line_chart_smoke.outcome == 'success' || steps.line_chart_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component error-state -Output artifacts/error-state -ExpectedArchitecture X64
-      - name: Verify Error State live Windows contrast
-        id: error_state_contrast
-        if: ${{ !cancelled() && (steps.error_state_smoke.outcome == 'success' || steps.error_state_smoke.outcome == 'failure') }}
-        run: ./scripts/smoke-catalog.ps1 -Component error-state-contrast -Output artifacts/error-state-contrast -ExpectedArchitecture X64
       - name: Verify native retry after Line Chart keyboard input
         id: error_state_after_chart
-        if: ${{ !cancelled() && (steps.error_state_contrast.outcome == 'success' || steps.error_state_contrast.outcome == 'failure') }}
+        if: ${{ !cancelled() && (steps.error_state_smoke.outcome == 'success' || steps.error_state_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component error-state-after-chart -Output artifacts/error-state-after-chart -ExpectedArchitecture X64
       - name: Verify Page Header viewport, content and native Back
         id: page_header_smoke
@@ -182,6 +442,19 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ProgressStack source audit failed.' }
           node scripts/test-progress-stack-audit.mjs --native artifacts/progress-stack --source tests/Reference/ProgressStack --output artifacts/progress-stack-negative
           if ($LASTEXITCODE -ne 0) { throw 'ProgressStack audit regression failed.' }
+          ./scripts/smoke-catalog.ps1 -Component progress-stack-text -ClientSize 640,400 -Output artifacts/progress-stack-text -ExpectedArchitecture X64
+          node scripts/verify-progress-stack.mjs --text --native artifacts/progress-stack-text --source tests/Reference/ProgressStackText --output artifacts/progress-stack-text/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack Unicode source audit failed.' }
+          node scripts/test-progress-stack-audit.mjs --text --native artifacts/progress-stack-text --source tests/Reference/ProgressStackText --output artifacts/progress-stack-text-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack Unicode audit regression failed.' }
+      - name: Verify ProgressStack external accessible names
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component progress-stack-accessibility -ClientSize 640,400 -Output artifacts/progress-stack-accessibility -ExpectedArchitecture ([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString())
+          node scripts/verify-progress-stack-accessibility.mjs --native artifacts/progress-stack-accessibility --output artifacts/progress-stack-accessibility/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack external UIA audit failed.' }
+          node scripts/test-progress-stack-accessibility-audit.mjs --native artifacts/progress-stack-accessibility --output artifacts/progress-stack-accessibility/negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack external UIA negative checks failed.' }
       - name: Verify DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
@@ -276,14 +549,6 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay two-window audit failed.' }
           node scripts/test-loading-overlay-windows-audit.mjs --native artifacts/loading-overlay-windows --output artifacts/loading-overlay-windows-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay two-window negative audit failed.' }
-          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast-entry -ClientSize 640,480 -Output artifacts/loading-overlay-contrast-entry -ExpectedArchitecture X64
-          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry/audit.json
-          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay contrast-entry audit failed.' }
-          node scripts/test-loading-overlay-contrast-entry-audit.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry-negative-audit.json
-          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay contrast-entry negative audit failed.' }
-          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast -ClientSize 640,480 -Output artifacts/loading-overlay-contrast -ExpectedArchitecture X64
-          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast --output artifacts/loading-overlay-contrast/audit.json
-          if ($LASTEXITCODE -ne 0) { throw 'Loading Overlay Windows contrast audit failed.' }
       - name: Verify chart focus across native load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
@@ -301,15 +566,335 @@ jobs:
           ./scripts/smoke-catalog.ps1 -Component brush-alpha -ClientSize 1024,745 -Output artifacts/capture-persistence -ExpectedArchitecture X64
           node scripts/verify-capture-persistence.mjs --native artifacts/capture-persistence --output artifacts/capture-persistence/audit.json
           if ($LASTEXITCODE -ne 0) { throw 'PNG persistence regression failed.' }
-      - name: Verify live Windows contrast transition
+      - name: Verify X64 Theme Toggle controlled mode, native input and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component theme-toggle -Output artifacts/theme-toggle -ExpectedArchitecture X64
+          node scripts/verify-theme-toggle.mjs --native artifacts/theme-toggle --source tests/Reference/ThemeToggle --output artifacts/theme-toggle/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Theme Toggle reference audit failed.' }
+      - name: Verify X64 Nav Menu source layout, native input and lifetime
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component nav-menu -ClientSize 1280,900 -Output artifacts/nav-menu -ExpectedArchitecture X64
+          node scripts/verify-nav-menu.mjs --native artifacts/nav-menu --app artifacts/catalog --source tests/Reference/NavMenu --output artifacts/nav-menu/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Nav Menu source audit failed.' }
+          node scripts/test-nav-menu-audit.mjs --native artifacts/nav-menu --app artifacts/catalog --source tests/Reference/NavMenu --output artifacts/nav-menu-negative
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Nav Menu rejection audit failed.' }
+      - name: Verify X64 controlled Collection Filters and complete source capture
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component collection-filters -Output artifacts/collection-filters -ExpectedArchitecture X64
+          node scripts/verify-collection-filters.mjs --native artifacts/collection-filters --app artifacts/catalog --source tests/Reference/CollectionFilters --output artifacts/collection-filters/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Collection Filters source audit failed.' }
+          node scripts/test-collection-filters-audit.mjs --native artifacts/collection-filters --app artifacts/catalog --source tests/Reference/CollectionFilters --output artifacts/collection-filters-negative
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Collection Filters rejection audit failed.' }
+      - name: Verify X64 controlled Pagination, input and raw raster receipt
+        shell: pwsh
+        run: |
+          node scripts/verify-pagination-motion-reference.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'Pinned Pagination source motion differs.' }
+          ./scripts/smoke-catalog.ps1 -Component pagination -ClientSize 700,160 -Output artifacts/component-pagination -ExpectedArchitecture X64
+          node scripts/verify-pagination.mjs --native artifacts/component-pagination --app artifacts/catalog --source tests/Reference/Pagination --output artifacts/component-pagination/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Pagination source audit failed.' }
+          node scripts/test-pagination-audit.mjs --native artifacts/component-pagination --app artifacts/catalog --source tests/Reference/Pagination --output artifacts/component-pagination-negative
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Pagination rejection audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component pagination-motion -ClientSize 700,160 -Output artifacts/pagination-motion -ExpectedArchitecture X64
+          node scripts/verify-pagination-motion.mjs --native artifacts/pagination-motion --app artifacts/catalog --output artifacts/pagination-motion/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 controlled-time Pagination paint audit failed.' }
+          node scripts/test-pagination-motion-audit.mjs --native artifacts/pagination-motion --app artifacts/catalog --output artifacts/pagination-motion-negative
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Pagination motion rejection audit failed.' }
+      - name: Verify X64 controlled Slider geometry, input and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component slider -Output artifacts/slider -ExpectedArchitecture X64
+          node scripts/verify-slider.mjs --native artifacts/slider --source tests/Reference/Slider --output artifacts/slider/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Slider reference audit failed.' }
+          node scripts/test-slider-audit.mjs --native artifacts/slider --source tests/Reference/Slider --output artifacts/slider-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Slider audit regression failed.' }
+      - name: Verify X64 AdminShell geometry and complete raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component admin-shell -ClientSize 900,640 -Output artifacts/admin-shell -ExpectedArchitecture X64
+          node scripts/verify-admin-shell.mjs --native artifacts/admin-shell --source tests/Reference/AdminShell --app artifacts/catalog --output artifacts/admin-shell/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 AdminShell reference audit failed.' }
+          node scripts/test-admin-shell-audit.mjs --native artifacts/admin-shell --source tests/Reference/AdminShell --app artifacts/catalog --output artifacts/admin-shell-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'X64 AdminShell audit regression failed.' }
+      - name: Verify X64 FeedGrid auto-fill, caller retention and full raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component feed-grid -Output artifacts/feed-grid -ExpectedArchitecture X64
+          node scripts/verify-feed-grid.mjs --native artifacts/feed-grid --source tests/Reference/FeedGrid --output artifacts/feed-grid/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 FeedGrid reference audit failed.' }
+          node scripts/test-feed-grid-audit.mjs --native artifacts/feed-grid --source tests/Reference/FeedGrid --output artifacts/feed-grid-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'X64 FeedGrid audit regression failed.' }
+      - name: Verify X64 PanelLayout tracks, child retention and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component panel-layout -Output artifacts/panel-layout -ExpectedArchitecture X64
+          node scripts/verify-panel-layout.mjs --native artifacts/panel-layout --source tests/Reference/PanelLayout --output artifacts/panel-layout/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 PanelLayout reference audit failed.' }
+          node scripts/test-panel-layout-audit.mjs --native artifacts/panel-layout --source tests/Reference/PanelLayout --output artifacts/panel-layout-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'X64 PanelLayout audit regression failed.' }
+      - name: Verify X64 Panel geometry, slots, scrolling and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component panel -Output artifacts/panel -ExpectedArchitecture X64
+          node scripts/verify-panel.mjs --native artifacts/panel --source tests/Reference/Panel --output artifacts/panel/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Panel reference audit failed.' }
+          node scripts/test-panel-audit.mjs --native artifacts/panel --source tests/Reference/Panel --output artifacts/panel-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'X64 Panel audit regression failed.' }
+      - name: Verify X64 DetailLayout tracks, sticky ownership and exact flat layout
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component detail-layout -Output artifacts/detail-layout -ExpectedArchitecture X64
+          node scripts/verify-detail-layout.mjs --native artifacts/detail-layout --source tests/Reference/DetailLayout --output artifacts/detail-layout/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'X64 DetailLayout reference differs.' }
+          node scripts/test-detail-layout-audit.mjs --native artifacts/detail-layout --source tests/Reference/DetailLayout --output artifacts/detail-layout-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'X64 DetailLayout audit regression failed.' }
+      - name: Verify PageFrame viewport, native ownership and exact flat layout
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
-        run: ./scripts/smoke-catalog.ps1 -Component contrast -Output artifacts/contrast -ExpectedArchitecture X64
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component page-frame -Output artifacts/page-frame -ExpectedArchitecture X64
+          node scripts/verify-page-frame.mjs --native artifacts/page-frame --source tests/Reference/PageFrame --output artifacts/page-frame/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'PageFrame reference differs.' }
+          node scripts/test-page-frame-audit.mjs --native artifacts/page-frame --source tests/Reference/PageFrame --output artifacts/page-frame-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'PageFrame audit regression failed.' }
+      - name: Verify Field composition and Link button presentation
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component buttons -Output artifacts/field-buttons -ExpectedArchitecture X64
+          ./scripts/smoke-catalog.ps1 -Component field -ClientSize 640,360 -Output artifacts/field -ExpectedArchitecture X64
+          node scripts/verify-field.mjs --native artifacts/field --source tests/Reference/Field --output artifacts/field/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Field source/native contract differs.' }
+          node scripts/test-field-audit.mjs --native artifacts/field --source tests/Reference/Field --output artifacts/field-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Field audit regression failed.' }
+      - name: Verify Dialog Close Button
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component dialog-close -ClientSize 200,120 -Output artifacts/dialog-close -ExpectedArchitecture X64
+          node scripts/verify-dialog-close-button.mjs --native artifacts/dialog-close --source tests/Reference/DialogCloseButton --output artifacts/dialog-close/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Dialog Close Button reference differs.' }
+          node scripts/test-dialog-close-audit.mjs --native artifacts/dialog-close --source tests/Reference/DialogCloseButton --output artifacts/dialog-close-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Dialog Close Button audit regression failed.' }
+      - name: Verify Tabs selection and host-owned navigation
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component tabs -Output artifacts/tabs -ExpectedArchitecture X64
+          ./scripts/smoke-catalog.ps1 -Component tabs-reference -ClientSize 640,240 -Output artifacts/tabs-reference -ExpectedArchitecture X64
+          node scripts/verify-tabs.mjs --native artifacts/tabs-reference --source tests/Reference/Tabs --output artifacts/tabs-reference/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Tabs rendered contract differs.' }
+          node scripts/test-tabs-audit.mjs --native artifacts/tabs-reference --source tests/Reference/Tabs --output artifacts/tabs-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Tabs audit regression failed.' }
       - name: Pack library and verify independent consumption
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: |
           dotnet pack src/Orchard/Orchard.csproj -c Release -p:Platform=x64 --no-restore -o artifacts/packages
           if ($LASTEXITCODE -ne 0) { throw 'Library pack failed.' }
           ./scripts/verify-package.ps1
+          # Reuse the freshly compiled independent consumer for hidden contracts.
+          $contractsOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-component-contracts.json')
+          $contractsReferences = [IO.Path]::GetFullPath('tests/Reference')
+          $contractsProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$contractsOutput`" --verify-hidden-component-contracts `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $contractsProcess.WaitForExit(60000)) { $contractsProcess.Kill(); throw 'Hidden component contracts timed out.' }
+          if ($contractsProcess.ExitCode -ne 0) { throw 'Hidden component contracts failed.' }
+          node scripts/verify-hidden-component-contracts.mjs --native artifacts/package-consumer --output artifacts/package-consumer/hidden-contracts-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden component source audit failed.' }
+          node scripts/test-hidden-component-contracts-audit.mjs --native artifacts/package-consumer --output artifacts/hidden-contracts-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden component audit regression failed.' }
+          $sliderContractsOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-slider-contracts.json')
+          $sliderContractsProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$sliderContractsOutput`" --verify-hidden-slider-contracts `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $sliderContractsProcess.WaitForExit(60000)) { $sliderContractsProcess.Kill(); throw 'Hidden Slider contracts timed out.' }
+          if ($sliderContractsProcess.ExitCode -ne 0) { throw 'Hidden Slider contracts failed.' }
+          node scripts/verify-hidden-slider-contracts.mjs --native artifacts/package-consumer --output artifacts/package-consumer/hidden-slider-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Slider source audit failed.' }
+          node scripts/test-hidden-slider-contracts-audit.mjs --native artifacts/package-consumer --output artifacts/hidden-slider-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Slider audit regression failed.' }
+          $feedOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-feed-columns.json')
+          $feedProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$feedOutput`" --verify-hidden-feed-columns `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $feedProcess.WaitForExit(60000)) { $feedProcess.Kill(); throw 'Hidden FeedColumn contracts timed out.' }
+          if ($feedProcess.ExitCode -ne 0) { throw 'Hidden FeedColumn contracts failed.' }
+          node scripts/verify-hidden-feed-columns.mjs --reference tests/Reference/FeedColumn.json --capture artifacts/package-consumer --output artifacts/package-consumer/hidden-feed-column-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedColumn source audit failed.' }
+          node scripts/test-hidden-feed-columns-audit.mjs --reference tests/Reference/FeedColumn.json --capture artifacts/package-consumer --output artifacts/hidden-feed-column-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedColumn audit regression failed.' }
+          $feedItemOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-feed-items.json')
+          $feedItemProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$feedItemOutput`" --verify-hidden-feed-items `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $feedItemProcess.WaitForExit(60000)) { $feedItemProcess.Kill(); throw 'Hidden FeedItem contracts timed out.' }
+          if ($feedItemProcess.ExitCode -ne 0) { throw 'Hidden FeedItem contracts failed.' }
+          node scripts/verify-hidden-feed-items.mjs --reference tests/Reference/FeedItem.json --capture artifacts/package-consumer --output artifacts/package-consumer/hidden-feed-item-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedItem source audit failed.' }
+          node scripts/test-hidden-feed-items-audit.mjs --reference tests/Reference/FeedItem.json --capture artifacts/package-consumer --output artifacts/hidden-feed-item-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedItem audit regression failed.' }
+          $selectOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-selects.json')
+          $selectProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$selectOutput`" --verify-hidden-selects `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $selectProcess.WaitForExit(60000)) { $selectProcess.Kill(); throw 'Hidden Select contracts timed out.' }
+          if ($selectProcess.ExitCode -ne 0) { throw 'Hidden Select contracts failed.' }
+          node scripts/verify-hidden-selects.mjs --reference tests/Reference/Select.json --capture artifacts/package-consumer --output artifacts/package-consumer/hidden-select-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Select source audit failed.' }
+          node scripts/test-hidden-selects-audit.mjs --reference tests/Reference/Select.json --capture artifacts/package-consumer --output artifacts/hidden-select-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Select audit regression failed.' }
+          $appShellOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-app-shells.json')
+          $appShellProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$appShellOutput`" --verify-hidden-app-shells `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $appShellProcess.WaitForExit(60000)) { $appShellProcess.Kill(); throw 'Hidden AppShell contracts timed out.' }
+          if ($appShellProcess.ExitCode -ne 0) { throw 'Hidden AppShell contracts failed.' }
+          node scripts/verify-hidden-app-shells.mjs --reference tests/Reference/AppShell.json --capture artifacts/package-consumer --output artifacts/package-consumer/hidden-app-shell-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden AppShell source audit failed.' }
+          node scripts/test-hidden-app-shells-audit.mjs --reference tests/Reference/AppShell.json --capture artifacts/package-consumer --output artifacts/hidden-app-shell-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden AppShell audit regression failed.' }
+          $adminShellOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/hidden-admin-shells.json')
+          $adminShellProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$adminShellOutput`" --verify-hidden-admin-shells `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $adminShellProcess.WaitForExit(60000)) { $adminShellProcess.Kill(); throw 'Hidden AdminShell contracts timed out.' }
+          if ($adminShellProcess.ExitCode -ne 0) { throw 'Hidden AdminShell contracts failed.' }
+          node scripts/verify-hidden-admin-shells.mjs --reference tests/Reference/AdminShell.json --capture artifacts/package-consumer --output artifacts/package-consumer/hidden-admin-shell-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden AdminShell source audit failed.' }
+          node scripts/test-hidden-admin-shells-audit.mjs --reference tests/Reference/AdminShell.json --capture artifacts/package-consumer --output artifacts/hidden-admin-shell-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden AdminShell audit regression failed.' }
+          $paginationOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/pagination.json')
+          $paginationProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$paginationOutput`" --verify-hidden-paginations `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $paginationProcess.WaitForExit(60000)) { $paginationProcess.Kill(); throw 'Hidden Pagination contracts timed out.' }
+          @{ exited = $true; exitCode = $paginationProcess.ExitCode } | ConvertTo-Json | Set-Content artifacts/package-consumer/pagination-exit.json
+          if ($paginationProcess.ExitCode -ne 0) { throw 'Hidden Pagination contracts failed.' }
+          node scripts/verify-hidden-paginations.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --output artifacts/package-consumer/pagination-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Pagination source audit failed.' }
+          node scripts/test-hidden-paginations-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --output artifacts/hidden-pagination-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Pagination rejection audit failed.' }
+          $collectionOutput = [IO.Path]::GetFullPath('artifacts/package-consumer/collection-filters.json')
+          $collectionProcess = Start-Process -FilePath 'artifacts/package-consumer/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$collectionOutput`" --verify-hidden-collection-filters `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $collectionProcess.WaitForExit(60000)) { $collectionProcess.Kill(); throw 'Hidden Collection Filters timed out.' }
+          @{ exited = $true; exitCode = $collectionProcess.ExitCode } | ConvertTo-Json | Set-Content artifacts/package-consumer/collection-filters-exit.json
+          if ($collectionProcess.ExitCode -ne 0) { throw 'Hidden Collection Filters failed.' }
+          node scripts/verify-hidden-collection-filters.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --output artifacts/package-consumer/collection-filters-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Collection Filters source audit failed.' }
+          node scripts/test-hidden-collection-filters-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --output artifacts/hidden-collection-filters-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Collection Filters rejection audit failed.' }
+          ./scripts/verify-hidden-nav-menus.ps1 -AppDirectory artifacts/package-consumer/app -Platform x64 -Output artifacts/package-consumer
+          node scripts/test-hidden-nav-menus-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --output artifacts/hidden-nav-menus-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Nav Menu rejection audit failed.' }
+          ./scripts/verify-hidden-footer-package.ps1 -AppDirectory artifacts/package-consumer/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-hidden-footers-audit.mjs --package-consumer --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --native artifacts/package-consumer --app artifacts/package-consumer/app --output artifacts/hidden-footer-package-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Footer package rejection audit failed.' }
+          ./scripts/verify-hidden-producer-threading.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-hidden-producer-threading-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-producer-threading-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Producer-threading rejection audit failed.' }
+          ./scripts/verify-hidden-footer-contracts.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-hidden-footer-contracts-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-footer-contracts-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Footer contract rejection audit failed.' }
+          ./scripts/verify-hidden-headers.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-hidden-header-audits.mjs --kind layout --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-header-layout-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Header layout rejection audit failed.' }
+          ./scripts/verify-hidden-header-contracts.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-hidden-header-audits.mjs --kind contracts --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-header-contract-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Header contract rejection audit failed.' }
+          ./scripts/verify-hidden-popovers.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-popover-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --reference tests/Reference/Popover.json --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-popover-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Popover rejection audit failed.' }
+          ./scripts/verify-package-popover-modal-root.ps1 -AppDirectory artifacts/package-consumer/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -Output artifacts/package-popover-modal-root
+          node scripts/test-package-popover-modal-root-audit.mjs --native artifacts/package-popover-modal-root --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/package-popover-modal-root/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public package Popover root rejection audit failed.' }
+          ./scripts/verify-package-select-modal-root.ps1 -AppDirectory artifacts/package-consumer/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -Output artifacts/package-select-modal-root
+          node scripts/test-package-select-modal-root-audit.mjs --native artifacts/package-select-modal-root --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/package-select-modal-root/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public package Select root rejection audit failed.' }
+          ./scripts/verify-package-tooltip-modal-root.ps1 -AppDirectory artifacts/package-consumer/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -Output artifacts/package-tooltip-modal-root
+          node scripts/test-package-tooltip-modal-root-audit.mjs --native artifacts/package-tooltip-modal-root --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/package-tooltip-modal-root/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public package Tooltip root rejection audit failed.' }
+          ./scripts/verify-modal-native.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-modal-native
+          ./scripts/verify-edge-dialog-native.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-edge-dialog-native
+          node scripts/test-edge-dialog-native-audit.mjs --native artifacts/package-edge-dialog-native --reference tests/Reference/EdgeDialog.json --output artifacts/package-edge-dialog-native/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Drawer/Sheet rejection audit failed.' }
+          ./scripts/verify-edge-composition.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-edge-composition
+          node scripts/test-edge-composition-audit.mjs --native artifacts/package-edge-composition --output artifacts/package-edge-composition/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Drawer/Sheet composition rejection audit failed.' }
+          ./scripts/verify-edge-motion.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-edge-motion
+          node scripts/test-edge-motion-audit.mjs --native artifacts/package-edge-motion --output artifacts/package-edge-motion/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Drawer/Sheet motion-property rejection audit failed.' }
+          ./scripts/verify-secure-field.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-secure-field
+          node scripts/test-secure-field-audit.mjs --native artifacts/package-secure-field --output artifacts/package-secure-field/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Secure Field rejection audit failed.' }
+          ./scripts/verify-segmented-control.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-segmented-control
+          node scripts/test-segmented-control-audit.mjs --native artifacts/package-segmented-control --output artifacts/package-segmented-control/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Segmented Control rejection audit failed.' }
+          ./scripts/verify-app-tab-bar.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-app-tab-bar
+          node scripts/test-app-tab-bar-audit.mjs --native artifacts/package-app-tab-bar --output artifacts/package-app-tab-bar/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package App Tab Bar rejection audit failed.' }
+          ./scripts/verify-otp-input.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-otp-input
+          node scripts/test-otp-input-audit.mjs --native artifacts/package-otp-input --output artifacts/package-otp-input/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package OTP Input rejection audit failed.' }
+          ./scripts/verify-context-menu-root.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-context-menu-root
+          node scripts/test-context-menu-root-audit.mjs --native artifacts/package-context-menu-root --output artifacts/package-context-menu-root/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Context Menu root rejection audit failed.' }
+          ./scripts/verify-context-menu-modal.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-context-menu-modal
+          node scripts/test-context-menu-modal-audit.mjs --native artifacts/package-context-menu-modal --output artifacts/package-context-menu-modal/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package Context Menu modal rejection audit failed.' }
+          ./scripts/verify-context-menu-options.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-context-menu-options
+          node scripts/test-context-menu-options-audit.mjs --native artifacts/package-context-menu-options --output artifacts/package-context-menu-options/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged Context Menu modality rejection audit failed.' }
+          ./scripts/verify-simple-data-table.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-simple-data-table
+          ./scripts/verify-data-table.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-data-table
+          node scripts/test-data-table-audit.mjs --native artifacts/package-data-table --output artifacts/package-data-table/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged Data Table native rejection audit failed.' }
+          ./scripts/verify-data-table-reference.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-data-table-reference
+          node scripts/test-data-table-reference-audit.mjs --native artifacts/package-data-table-reference --output artifacts/package-data-table-reference/negative-audit.json
+          ./scripts/verify-data-table-filter-plan.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-data-table-filter-plan
+          node scripts/test-data-table-filter-plan-audit.mjs --native artifacts/package-data-table-filter-plan --output artifacts/package-data-table-filter-plan/negative-audit.json
+          node scripts/verify-data-table-paint.mjs --native artifacts/package-data-table-reference --host-assembly PackageConsumer.dll --output artifacts/package-data-table-reference/paint-audit.json
+          node scripts/test-data-table-paint-audit.mjs --native artifacts/package-data-table-reference --output artifacts/package-data-table-reference/paint-negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged Data Table full reference rejection audit failed.' }
+          ./scripts/verify-data-table-live.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-data-table-live
+          node scripts/test-data-table-live-audit.mjs --native artifacts/package-data-table-live --output artifacts/package-data-table-live/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged live table producer rejection audit failed.' }
+          ./scripts/verify-table-text.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-table-text
+          node scripts/test-table-text-audit.mjs --native artifacts/package-table-text --reference tests/Reference/TableText.json --output artifacts/package-table-text/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged Table text rejection audit failed.' }
+          ./scripts/verify-table-customization.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-table-customization
+          node scripts/test-table-customization-audit.mjs --native artifacts/package-table-customization --host-assembly PackageConsumer.dll --output artifacts/package-table-customization/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table customization rejection audit failed.' }
+          ./scripts/verify-table-template.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-table-template
+          node scripts/test-table-template-audit.mjs --native artifacts/package-table-template --output artifacts/package-table-template/negative-audit.json
+          ./scripts/verify-brand-mark.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-brand-mark
+          node scripts/test-brand-mark-audit.mjs --native artifacts/package-brand-mark --output artifacts/package-brand-mark/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Brand Mark package rejection audit failed.' }
+          ./scripts/verify-menubar.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-menubar
+          node scripts/test-menubar-audit.mjs --native artifacts/package-menubar --output artifacts/package-menubar/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Menubar package rejection audit failed.' }
+          ./scripts/verify-navigation-menu.ps1 -AppDirectory artifacts/package-consumer/app -Output artifacts/package-navigation-menu -HostName PackageConsumer
+          node scripts/test-navigation-menu-audit.mjs --native artifacts/package-navigation-menu --output artifacts/package-navigation-menu/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Navigation Menu package rejection audit failed.' }
+          ./scripts/verify-sonner.ps1 -AppDirectory artifacts/package-consumer/app -Output artifacts/package-sonner -HostName PackageConsumer
+          node scripts/test-sonner-audit.mjs --native artifacts/package-sonner --host-assembly PackageConsumer.dll --output artifacts/package-sonner/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Sonner package rejection audit failed.' }
+          ./scripts/verify-hero-carousel.ps1 -AppDirectory artifacts/package-consumer/app -Output artifacts/package-hero-carousel -HostName PackageConsumer
+          node scripts/test-hero-carousel-audit.mjs --native artifacts/package-hero-carousel --host-assembly PackageConsumer.dll --output artifacts/package-hero-carousel/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hero Carousel package rejection audit failed.' }
+          node scripts/compare-hero-carousel-hosts.mjs --source artifacts/hero-carousel --consumer artifacts/package-hero-carousel --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hero-carousel-host-comparison.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hero Carousel source/package runtime comparison failed.' }
+          if ($LASTEXITCODE -ne 0) { throw 'Table template rejection audit failed.' }
+          ./scripts/verify-table-performance.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-table-performance
+          node scripts/test-table-performance-audit.mjs --native artifacts/package-table-performance --output artifacts/package-table-performance/negative-audit.json
+          ./scripts/verify-data-table-performance.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-data-table-performance
+          node scripts/test-data-table-performance-audit.mjs --native artifacts/package-data-table-performance --output artifacts/package-data-table-performance/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Table performance/lifecycle rejection audit failed.' }
+          node scripts/test-simple-data-table-audit.mjs --native artifacts/package-simple-data-table --reference tests/Reference/Table.json --output artifacts/package-simple-data-table/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged simple DataTable rejection audit failed.' }
+          ./scripts/verify-table-primitives.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-table-primitives
+          node scripts/test-table-primitives-audit.mjs --native artifacts/package-table-primitives --reference tests/Reference/Table.json --output artifacts/package-table-primitives/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Packaged Table primitive rejection audit failed.' }
+          node scripts/test-modal-audits.mjs --source tests/Reference/Modal.json --native artifacts/package-modal-native/modal-native.json --output artifacts/package-modal-native/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public package Modal rejection audit failed.' }
+          ./scripts/verify-modal-content.ps1 -AppDirectory artifacts/package-consumer/app -HostName PackageConsumer -Output artifacts/package-modal-content
+          node scripts/test-modal-content-audit.mjs --native artifacts/package-modal-content/modal-content.json --output artifacts/package-modal-content/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Public package Modal content rejection audit failed.' }
+          ./scripts/verify-hidden-hover-cards.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-hover-card-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --reference tests/Reference/HoverCard.json --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-hover-card-negative
+          if ($LASTEXITCODE -ne 0) { throw 'HoverCard rejection audit failed.' }
+          ./scripts/verify-hidden-scroll-areas.ps1 -AppDirectory artifacts/package-consumer/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture X64 -Output artifacts/package-consumer
+          node scripts/test-scroll-area-audit.mjs --native artifacts/package-consumer --app artifacts/package-consumer/app --host PackageConsumer --reference tests/Reference/ScrollArea.json --architecture X64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-scroll-area-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ScrollArea rejection audit failed.' }
+          ./scripts/verify-button-default-style-probe.ps1 -AppDirectory artifacts/package-consumer/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -Output artifacts/package-consumer/button-default-style
+          ./scripts/verify-hidden-progress-stack.ps1 -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -Platform x64 -Output artifacts/package-hidden-progress-stack
+          node scripts/verify-hidden-progress-stack.mjs --input artifacts/package-hidden-progress-stack/hidden-progress-stack.json --reference tests/Reference --output artifacts/package-hidden-progress-stack/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden WinUI layout and font transitions failed.' }
+          node scripts/test-hidden-progress-stack-audit.mjs --input artifacts/package-hidden-progress-stack/hidden-progress-stack.json --reference tests/Reference --output artifacts/hidden-progress-stack-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden WinUI audit regression failed.' }
           & pwsh -NoProfile -File ./scripts/verify-package-cleanup.ps1
           if ($LASTEXITCODE -ne 0) { throw 'Package consumer cleanup regression failed.' }
       - name: Upload catalog and verification evidence
@@ -375,8 +960,17 @@ jobs:
         run: dotnet build Orchard.sln -c Release -p:Platform=ARM64
       - name: Test token and resource contracts
         run: dotnet test tests/Orchard.Tests/Orchard.Tests.csproj -c Release --logger trx --results-directory artifacts/tests
+      - name: Test native ARM64 Unicode shaping and line breaking without a window
+        run: dotnet test tests/Orchard.Text.Tests/Orchard.Text.Tests.csproj -c Release -p:Platform=ARM64 --logger trx --results-directory artifacts/text-tests
       - name: Publish ARM64 catalog
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=ARM64 --no-restore -o artifacts/catalog
+      - name: Verify hidden ARM64 component composition demos
+        run: |
+          ./scripts/verify-hidden-workspaces.ps1 -AppDirectory artifacts/catalog -Platform ARM64 -Output artifacts/workspace-demos
+          node scripts/verify-hidden-workspaces.mjs --report artifacts/workspace-demos/hidden-workspaces.json --app artifacts/catalog --output artifacts/workspace-demos/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden component demo audit failed.' }
+          node scripts/test-hidden-workspaces-audit.mjs --report artifacts/workspace-demos/hidden-workspaces.json --output artifacts/workspace-demos/negative-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden component demo audit regression failed.' }
       - name: Verify application resource packaging
         run: |
           if (-not (Test-Path artifacts/catalog/resources.pri)) {
@@ -413,13 +1007,9 @@ jobs:
         id: error_state_smoke
         if: ${{ !cancelled() && (steps.line_chart_smoke.outcome == 'success' || steps.line_chart_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component error-state -Output artifacts/error-state -ExpectedArchitecture Arm64
-      - name: Verify native ARM64 Error State Windows contrast
-        id: error_state_contrast
-        if: ${{ !cancelled() && (steps.error_state_smoke.outcome == 'success' || steps.error_state_smoke.outcome == 'failure') }}
-        run: ./scripts/smoke-catalog.ps1 -Component error-state-contrast -Output artifacts/error-state-contrast -ExpectedArchitecture Arm64
       - name: Verify native ARM64 retry after Line Chart keyboard input
         id: error_state_after_chart
-        if: ${{ !cancelled() && (steps.error_state_contrast.outcome == 'success' || steps.error_state_contrast.outcome == 'failure') }}
+        if: ${{ !cancelled() && (steps.error_state_smoke.outcome == 'success' || steps.error_state_smoke.outcome == 'failure') }}
         run: ./scripts/smoke-catalog.ps1 -Component error-state-after-chart -Output artifacts/error-state-after-chart -ExpectedArchitecture Arm64
       - name: Verify native ARM64 Page Header viewport, content and Back
         id: page_header_smoke
@@ -526,6 +1116,19 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ProgressStack source audit failed.' }
           node scripts/test-progress-stack-audit.mjs --native artifacts/progress-stack --source tests/Reference/ProgressStack --output artifacts/progress-stack-negative
           if ($LASTEXITCODE -ne 0) { throw 'ProgressStack audit regression failed.' }
+          ./scripts/smoke-catalog.ps1 -Component progress-stack-text -ClientSize 640,400 -Output artifacts/progress-stack-text -ExpectedArchitecture Arm64
+          node scripts/verify-progress-stack.mjs --text --native artifacts/progress-stack-text --source tests/Reference/ProgressStackText --output artifacts/progress-stack-text/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack Unicode source audit failed.' }
+          node scripts/test-progress-stack-audit.mjs --text --native artifacts/progress-stack-text --source tests/Reference/ProgressStackText --output artifacts/progress-stack-text-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack Unicode audit regression failed.' }
+      - name: Verify ProgressStack external accessible names
+        if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component progress-stack-accessibility -ClientSize 640,400 -Output artifacts/progress-stack-accessibility -ExpectedArchitecture ([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString())
+          node scripts/verify-progress-stack-accessibility.mjs --native artifacts/progress-stack-accessibility --output artifacts/progress-stack-accessibility/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack external UIA audit failed.' }
+          node scripts/test-progress-stack-accessibility-audit.mjs --native artifacts/progress-stack-accessibility --output artifacts/progress-stack-accessibility/negative.json
+          if ($LASTEXITCODE -ne 0) { throw 'ProgressStack external UIA negative checks failed.' }
       - name: Verify native ARM64 DataList source and viewport boundaries
         if: ${{ !cancelled() && (steps.radio_motion_smoke.outcome == 'success' || steps.radio_motion_smoke.outcome == 'failure') }}
         id: data_list_smoke
@@ -620,14 +1223,6 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay two-window audit failed.' }
           node scripts/test-loading-overlay-windows-audit.mjs --native artifacts/loading-overlay-windows --output artifacts/loading-overlay-windows-negative-audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay two-window negative audit failed.' }
-          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast-entry -ClientSize 640,480 -Output artifacts/loading-overlay-contrast-entry -ExpectedArchitecture Arm64
-          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry/audit.json
-          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay contrast-entry audit failed.' }
-          node scripts/test-loading-overlay-contrast-entry-audit.mjs --native artifacts/loading-overlay-contrast-entry --output artifacts/loading-overlay-contrast-entry-negative-audit.json
-          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay contrast-entry negative audit failed.' }
-          ./scripts/smoke-catalog.ps1 -Component loading-overlay-contrast -ClientSize 640,480 -Output artifacts/loading-overlay-contrast -ExpectedArchitecture Arm64
-          node scripts/verify-loading-overlay-contrast.mjs --native artifacts/loading-overlay-contrast --output artifacts/loading-overlay-contrast/audit.json
-          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Loading Overlay Windows contrast audit failed.' }
       - name: Verify native ARM64 chart focus across load boundaries
         if: ${{ !cancelled() && (steps.loading_overlay_smoke.outcome == 'success' || steps.loading_overlay_smoke.outcome == 'failure') }}
         id: chart_load_focus
@@ -645,15 +1240,240 @@ jobs:
           ./scripts/smoke-catalog.ps1 -Component brush-alpha -ClientSize 1024,745 -Output artifacts/capture-persistence -ExpectedArchitecture Arm64
           node scripts/verify-capture-persistence.mjs --native artifacts/capture-persistence --output artifacts/capture-persistence/audit.json
           if ($LASTEXITCODE -ne 0) { throw 'ARM64 PNG persistence regression failed.' }
-      - name: Verify live Windows contrast transition
+      - name: Verify Arm64 Theme Toggle controlled mode, native input and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component theme-toggle -Output artifacts/theme-toggle -ExpectedArchitecture Arm64
+          node scripts/verify-theme-toggle.mjs --native artifacts/theme-toggle --source tests/Reference/ThemeToggle --output artifacts/theme-toggle/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Theme Toggle reference audit failed.' }
+      - name: Verify Arm64 Nav Menu source layout, native input and lifetime
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component nav-menu -ClientSize 1280,900 -Output artifacts/nav-menu -ExpectedArchitecture Arm64
+          node scripts/verify-nav-menu.mjs --native artifacts/nav-menu --app artifacts/catalog --source tests/Reference/NavMenu --output artifacts/nav-menu/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Nav Menu source audit failed.' }
+          node scripts/test-nav-menu-audit.mjs --native artifacts/nav-menu --app artifacts/catalog --source tests/Reference/NavMenu --output artifacts/nav-menu-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Nav Menu rejection audit failed.' }
+      - name: Verify Arm64 controlled Collection Filters and complete source capture
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component collection-filters -Output artifacts/collection-filters -ExpectedArchitecture Arm64
+          node scripts/verify-collection-filters.mjs --native artifacts/collection-filters --app artifacts/catalog --source tests/Reference/CollectionFilters --output artifacts/collection-filters/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Collection Filters source audit failed.' }
+          node scripts/test-collection-filters-audit.mjs --native artifacts/collection-filters --app artifacts/catalog --source tests/Reference/CollectionFilters --output artifacts/collection-filters-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Collection Filters rejection audit failed.' }
+      - name: Verify Arm64 controlled Pagination, input and raw raster receipt
+        shell: pwsh
+        run: |
+          node scripts/verify-pagination-motion-reference.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'Pinned Pagination source motion differs.' }
+          ./scripts/smoke-catalog.ps1 -Component pagination -ClientSize 700,160 -Output artifacts/component-pagination -ExpectedArchitecture Arm64
+          node scripts/verify-pagination.mjs --native artifacts/component-pagination --app artifacts/catalog --source tests/Reference/Pagination --output artifacts/component-pagination/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Pagination source audit failed.' }
+          node scripts/test-pagination-audit.mjs --native artifacts/component-pagination --app artifacts/catalog --source tests/Reference/Pagination --output artifacts/component-pagination-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Pagination rejection audit failed.' }
+          ./scripts/smoke-catalog.ps1 -Component pagination-motion -ClientSize 700,160 -Output artifacts/pagination-motion -ExpectedArchitecture Arm64
+          node scripts/verify-pagination-motion.mjs --native artifacts/pagination-motion --app artifacts/catalog --output artifacts/pagination-motion/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 controlled-time Pagination paint audit failed.' }
+          node scripts/test-pagination-motion-audit.mjs --native artifacts/pagination-motion --app artifacts/catalog --output artifacts/pagination-motion-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Pagination motion rejection audit failed.' }
+      - name: Verify Arm64 controlled Slider geometry, input and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component slider -Output artifacts/slider -ExpectedArchitecture Arm64
+          node scripts/verify-slider.mjs --native artifacts/slider --source tests/Reference/Slider --output artifacts/slider/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Slider reference audit failed.' }
+          node scripts/test-slider-audit.mjs --native artifacts/slider --source tests/Reference/Slider --output artifacts/slider-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Slider audit regression failed.' }
+      - name: Verify Arm64 AdminShell geometry and complete raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component admin-shell -ClientSize 900,640 -Output artifacts/admin-shell -ExpectedArchitecture Arm64
+          node scripts/verify-admin-shell.mjs --native artifacts/admin-shell --source tests/Reference/AdminShell --app artifacts/catalog --output artifacts/admin-shell/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 AdminShell reference audit failed.' }
+          node scripts/test-admin-shell-audit.mjs --native artifacts/admin-shell --source tests/Reference/AdminShell --app artifacts/catalog --output artifacts/admin-shell-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 AdminShell audit regression failed.' }
+      - name: Verify Arm64 FeedGrid auto-fill, caller retention and full raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component feed-grid -Output artifacts/feed-grid -ExpectedArchitecture Arm64
+          node scripts/verify-feed-grid.mjs --native artifacts/feed-grid --source tests/Reference/FeedGrid --output artifacts/feed-grid/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 FeedGrid reference audit failed.' }
+          node scripts/test-feed-grid-audit.mjs --native artifacts/feed-grid --source tests/Reference/FeedGrid --output artifacts/feed-grid-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 FeedGrid audit regression failed.' }
+      - name: Verify Arm64 PanelLayout tracks, child retention and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component panel-layout -Output artifacts/panel-layout -ExpectedArchitecture Arm64
+          node scripts/verify-panel-layout.mjs --native artifacts/panel-layout --source tests/Reference/PanelLayout --output artifacts/panel-layout/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 PanelLayout reference audit failed.' }
+          node scripts/test-panel-layout-audit.mjs --native artifacts/panel-layout --source tests/Reference/PanelLayout --output artifacts/panel-layout-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 PanelLayout audit regression failed.' }
+      - name: Verify Arm64 Panel geometry, slots, scrolling and raw raster receipt
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component panel -Output artifacts/panel -ExpectedArchitecture Arm64
+          node scripts/verify-panel.mjs --native artifacts/panel --source tests/Reference/Panel --output artifacts/panel/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Panel reference audit failed.' }
+          node scripts/test-panel-audit.mjs --native artifacts/panel --source tests/Reference/Panel --output artifacts/panel-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 Panel audit regression failed.' }
+      - name: Verify Arm64 DetailLayout tracks, sticky ownership and exact flat layout
+        shell: pwsh
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component detail-layout -Output artifacts/detail-layout -ExpectedArchitecture Arm64
+          node scripts/verify-detail-layout.mjs --native artifacts/detail-layout --source tests/Reference/DetailLayout --output artifacts/detail-layout/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 DetailLayout reference differs.' }
+          node scripts/test-detail-layout-audit.mjs --native artifacts/detail-layout --source tests/Reference/DetailLayout --output artifacts/detail-layout-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'Arm64 DetailLayout audit regression failed.' }
+      - name: Verify native ARM64 PageFrame viewport and exact flat layout
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
-        run: ./scripts/smoke-catalog.ps1 -Component contrast -Output artifacts/contrast -ExpectedArchitecture Arm64
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component page-frame -Output artifacts/page-frame -ExpectedArchitecture Arm64
+          node scripts/verify-page-frame.mjs --native artifacts/page-frame --source tests/Reference/PageFrame --output artifacts/page-frame/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 PageFrame reference differs.' }
+          node scripts/test-page-frame-audit.mjs --native artifacts/page-frame --source tests/Reference/PageFrame --output artifacts/page-frame-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 PageFrame audit regression failed.' }
+      - name: Verify native ARM64 Field composition and Link presentation
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component buttons -Output artifacts/field-buttons -ExpectedArchitecture Arm64
+          ./scripts/smoke-catalog.ps1 -Component field -ClientSize 640,360 -Output artifacts/field -ExpectedArchitecture Arm64
+          node scripts/verify-field.mjs --native artifacts/field --source tests/Reference/Field --output artifacts/field/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Field source/native contract differs.' }
+          node scripts/test-field-audit.mjs --native artifacts/field --source tests/Reference/Field --output artifacts/field-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Field audit regression failed.' }
+      - name: Verify native ARM64 Dialog Close Button
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component dialog-close -ClientSize 200,120 -Output artifacts/dialog-close -ExpectedArchitecture Arm64
+          node scripts/verify-dialog-close-button.mjs --native artifacts/dialog-close --source tests/Reference/DialogCloseButton --output artifacts/dialog-close/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Dialog Close Button reference differs.' }
+          node scripts/test-dialog-close-audit.mjs --native artifacts/dialog-close --source tests/Reference/DialogCloseButton --output artifacts/dialog-close-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Dialog Close Button audit regression failed.' }
+      - name: Verify native ARM64 Tabs selection and navigation
+        if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
+        run: |
+          ./scripts/smoke-catalog.ps1 -Component tabs -Output artifacts/tabs -ExpectedArchitecture Arm64
+          ./scripts/smoke-catalog.ps1 -Component tabs-reference -ClientSize 640,240 -Output artifacts/tabs-reference -ExpectedArchitecture Arm64
+          node scripts/verify-tabs.mjs --native artifacts/tabs-reference --source tests/Reference/Tabs --output artifacts/tabs-reference/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Tabs rendered contract differs.' }
+          node scripts/test-tabs-audit.mjs --native artifacts/tabs-reference --source tests/Reference/Tabs --output artifacts/tabs-audit-regression
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Tabs audit regression failed.' }
       - name: Pack library and verify native ARM64 consumption
         if: ${{ !cancelled() && (steps.native_smoke.outcome == 'success' || steps.native_smoke.outcome == 'failure') }}
         run: |
           dotnet pack src/Orchard/Orchard.csproj -c Release -p:Platform=ARM64 --no-restore -o artifacts/packages
           if ($LASTEXITCODE -ne 0) { throw 'Library pack failed.' }
           ./scripts/verify-package.ps1 -Platform ARM64 -Output artifacts/package-consumer-arm64
+          # Reuse the freshly compiled independent consumer for hidden contracts.
+          $contractsOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-component-contracts.json')
+          $contractsReferences = [IO.Path]::GetFullPath('tests/Reference')
+          $contractsProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$contractsOutput`" --verify-hidden-component-contracts `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $contractsProcess.WaitForExit(60000)) { $contractsProcess.Kill(); throw 'ARM64 hidden component contracts timed out.' }
+          if ($contractsProcess.ExitCode -ne 0) { throw 'ARM64 hidden component contracts failed.' }
+          node scripts/verify-hidden-component-contracts.mjs --native artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-contracts-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden component source audit failed.' }
+          node scripts/test-hidden-component-contracts-audit.mjs --native artifacts/package-consumer-arm64 --output artifacts/hidden-contracts-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden component audit regression failed.' }
+          $sliderContractsOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-slider-contracts.json')
+          $sliderContractsProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$sliderContractsOutput`" --verify-hidden-slider-contracts `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $sliderContractsProcess.WaitForExit(60000)) { $sliderContractsProcess.Kill(); throw 'ARM64 hidden Slider contracts timed out.' }
+          if ($sliderContractsProcess.ExitCode -ne 0) { throw 'ARM64 hidden Slider contracts failed.' }
+          node scripts/verify-hidden-slider-contracts.mjs --native artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-slider-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Slider source audit failed.' }
+          node scripts/test-hidden-slider-contracts-audit.mjs --native artifacts/package-consumer-arm64 --output artifacts/hidden-slider-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Slider audit regression failed.' }
+          $feedOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-feed-columns.json')
+          $feedProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$feedOutput`" --verify-hidden-feed-columns `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $feedProcess.WaitForExit(60000)) { $feedProcess.Kill(); throw 'Hidden FeedColumn contracts timed out.' }
+          if ($feedProcess.ExitCode -ne 0) { throw 'Hidden FeedColumn contracts failed.' }
+          node scripts/verify-hidden-feed-columns.mjs --reference tests/Reference/FeedColumn.json --capture artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-feed-column-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedColumn source audit failed.' }
+          node scripts/test-hidden-feed-columns-audit.mjs --reference tests/Reference/FeedColumn.json --capture artifacts/package-consumer-arm64 --output artifacts/hidden-feed-column-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedColumn audit regression failed.' }
+          $feedItemOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-feed-items.json')
+          $feedItemProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$feedItemOutput`" --verify-hidden-feed-items `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $feedItemProcess.WaitForExit(60000)) { $feedItemProcess.Kill(); throw 'Hidden FeedItem contracts timed out.' }
+          if ($feedItemProcess.ExitCode -ne 0) { throw 'Hidden FeedItem contracts failed.' }
+          node scripts/verify-hidden-feed-items.mjs --reference tests/Reference/FeedItem.json --capture artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-feed-item-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedItem source audit failed.' }
+          node scripts/test-hidden-feed-items-audit.mjs --reference tests/Reference/FeedItem.json --capture artifacts/package-consumer-arm64 --output artifacts/hidden-feed-item-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden FeedItem audit regression failed.' }
+          $selectOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-selects.json')
+          $selectProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$selectOutput`" --verify-hidden-selects `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $selectProcess.WaitForExit(60000)) { $selectProcess.Kill(); throw 'Hidden Select contracts timed out.' }
+          if ($selectProcess.ExitCode -ne 0) { throw 'Hidden Select contracts failed.' }
+          node scripts/verify-hidden-selects.mjs --reference tests/Reference/Select.json --capture artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-select-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Select source audit failed.' }
+          node scripts/test-hidden-selects-audit.mjs --reference tests/Reference/Select.json --capture artifacts/package-consumer-arm64 --output artifacts/hidden-select-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden Select audit regression failed.' }
+          $appShellOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-app-shells.json')
+          $appShellProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$appShellOutput`" --verify-hidden-app-shells `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $appShellProcess.WaitForExit(60000)) { $appShellProcess.Kill(); throw 'Hidden AppShell contracts timed out.' }
+          if ($appShellProcess.ExitCode -ne 0) { throw 'Hidden AppShell contracts failed.' }
+          node scripts/verify-hidden-app-shells.mjs --reference tests/Reference/AppShell.json --capture artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-app-shell-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden AppShell source audit failed.' }
+          node scripts/test-hidden-app-shells-audit.mjs --reference tests/Reference/AppShell.json --capture artifacts/package-consumer-arm64 --output artifacts/hidden-app-shell-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden AppShell audit regression failed.' }
+          $adminShellOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/hidden-admin-shells.json')
+          $adminShellProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$adminShellOutput`" --verify-hidden-admin-shells `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $adminShellProcess.WaitForExit(60000)) { $adminShellProcess.Kill(); throw 'ARM64 hidden AdminShell contracts timed out.' }
+          if ($adminShellProcess.ExitCode -ne 0) { throw 'ARM64 hidden AdminShell contracts failed.' }
+          node scripts/verify-hidden-admin-shells.mjs --reference tests/Reference/AdminShell.json --capture artifacts/package-consumer-arm64 --output artifacts/package-consumer-arm64/hidden-admin-shell-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden AdminShell source audit failed.' }
+          node scripts/test-hidden-admin-shells-audit.mjs --reference tests/Reference/AdminShell.json --capture artifacts/package-consumer-arm64 --output artifacts/hidden-admin-shell-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden AdminShell audit regression failed.' }
+          $paginationOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/pagination.json')
+          $paginationProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$paginationOutput`" --verify-hidden-paginations `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $paginationProcess.WaitForExit(60000)) { $paginationProcess.Kill(); throw 'ARM64 hidden Pagination contracts timed out.' }
+          @{ exited = $true; exitCode = $paginationProcess.ExitCode } | ConvertTo-Json | Set-Content artifacts/package-consumer-arm64/pagination-exit.json
+          if ($paginationProcess.ExitCode -ne 0) { throw 'ARM64 hidden Pagination contracts failed.' }
+          node scripts/verify-hidden-paginations.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --output artifacts/package-consumer-arm64/pagination-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Pagination source audit failed.' }
+          node scripts/test-hidden-paginations-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --output artifacts/hidden-pagination-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Pagination rejection audit failed.' }
+          $collectionOutput = [IO.Path]::GetFullPath('artifacts/package-consumer-arm64/collection-filters.json')
+          $collectionProcess = Start-Process -FilePath 'artifacts/package-consumer-arm64/app/PackageConsumer.exe' -ArgumentList "--verify-output `"$collectionOutput`" --verify-hidden-collection-filters `"$contractsReferences`"" -PassThru -WindowStyle Hidden
+          if (-not $collectionProcess.WaitForExit(60000)) { $collectionProcess.Kill(); throw 'ARM64 hidden Collection Filters timed out.' }
+          @{ exited = $true; exitCode = $collectionProcess.ExitCode } | ConvertTo-Json | Set-Content artifacts/package-consumer-arm64/collection-filters-exit.json
+          if ($collectionProcess.ExitCode -ne 0) { throw 'ARM64 hidden Collection Filters failed.' }
+          node scripts/verify-hidden-collection-filters.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --output artifacts/package-consumer-arm64/collection-filters-audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Collection Filters source audit failed.' }
+          node scripts/test-hidden-collection-filters-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --output artifacts/hidden-collection-filters-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Collection Filters rejection audit failed.' }
+          ./scripts/verify-hidden-nav-menus.ps1 -AppDirectory artifacts/package-consumer-arm64/app -Platform ARM64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hidden-nav-menus-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --output artifacts/hidden-nav-menus-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Nav Menu rejection audit failed.' }
+          ./scripts/verify-hidden-footer-package.ps1 -AppDirectory artifacts/package-consumer-arm64/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hidden-footers-audit.mjs --package-consumer --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --output artifacts/hidden-footer-package-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 hidden Footer package rejection audit failed.' }
+          ./scripts/verify-hidden-producer-threading.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hidden-producer-threading-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-producer-threading-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 producer-threading rejection audit failed.' }
+          ./scripts/verify-hidden-footer-contracts.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hidden-footer-contracts-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-footer-contracts-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Footer contract rejection audit failed.' }
+          ./scripts/verify-hidden-headers.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hidden-header-audits.mjs --kind layout --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-header-layout-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Header layout rejection audit failed.' }
+          ./scripts/verify-hidden-header-contracts.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hidden-header-audits.mjs --kind contracts --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-header-contract-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Header contract rejection audit failed.' }
+          ./scripts/verify-hidden-popovers.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-popover-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --reference tests/Reference/Popover.json --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-popover-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 Popover rejection audit failed.' }
+          ./scripts/verify-hidden-hover-cards.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-hover-card-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --reference tests/Reference/HoverCard.json --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-hover-card-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 HoverCard rejection audit failed.' }
+          ./scripts/verify-hidden-scroll-areas.ps1 -AppDirectory artifacts/package-consumer-arm64/app -HostKind PackageConsumer -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64
+          node scripts/test-scroll-area-audit.mjs --native artifacts/package-consumer-arm64 --app artifacts/package-consumer-arm64/app --host PackageConsumer --reference tests/Reference/ScrollArea.json --architecture Arm64 --package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg --output artifacts/hidden-scroll-area-negative
+          if ($LASTEXITCODE -ne 0) { throw 'ARM64 ScrollArea rejection audit failed.' }
+          ./scripts/verify-button-default-style-probe.ps1 -AppDirectory artifacts/package-consumer-arm64/app -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -ExpectedArchitecture Arm64 -Output artifacts/package-consumer-arm64/button-default-style
+          ./scripts/verify-hidden-progress-stack.ps1 -Package artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg -Platform ARM64 -Output artifacts/package-hidden-progress-stack
+          node scripts/verify-hidden-progress-stack.mjs --input artifacts/package-hidden-progress-stack/hidden-progress-stack.json --reference tests/Reference --output artifacts/package-hidden-progress-stack/audit.json
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden WinUI layout and font transitions failed.' }
+          node scripts/test-hidden-progress-stack-audit.mjs --input artifacts/package-hidden-progress-stack/hidden-progress-stack.json --reference tests/Reference --output artifacts/hidden-progress-stack-negative
+          if ($LASTEXITCODE -ne 0) { throw 'Hidden WinUI audit regression failed.' }
           & pwsh -NoProfile -File ./scripts/verify-package-cleanup.ps1
           if ($LASTEXITCODE -ne 0) { throw 'Package consumer cleanup regression failed.' }
       - name: Upload ARM64 runtime evidence

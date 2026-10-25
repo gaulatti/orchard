@@ -1,0 +1,1154 @@
+{
+  "format": "orchard-data-table-live-native-v1",
+  "passed": false,
+  "stage": "Light-data-table-reloaded",
+  "error": "System.InvalidOperationException: Live original row count differs.\r\n   at Orchard.Testing.DataTableFixture.Require(Boolean condition, String message) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableFixture.cs:line 27\r\n   at Orchard.Testing.DataTableFixture.\u003C\u003Ec__DisplayClass18_4.\u003C\u003CRunLiveAsync\u003Eg__Record|7\u003Ed.MoveNext() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableLiveFixture.cs:line 111\r\n--- End of stack trace from previous location ---\r\n   at Orchard.Testing.DataTableFixture.RunLiveAsync(Window window, String output, String hostAssembly) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\DataTableLiveFixture.cs:line 117",
+  "states": [
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "initial",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 1
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-initial.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "equal-object-notified",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-equal-object-notified.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "collection-add",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          },
+          {
+            "id": "c",
+            "name": "Cedar",
+            "count": 3
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "c",
+            "originalRetained": true,
+            "name": "Cedar",
+            "count": "3",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 195,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "c",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 288.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-collection-add.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "collection-move",
+        "expectedRows": [
+          {
+            "id": "c",
+            "name": "Cedar",
+            "count": 3
+          },
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 1
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "c",
+            "originalRetained": true,
+            "name": "Cedar",
+            "count": "3",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "1",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 195,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "c",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 288.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-collection-move.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "collection-replace",
+        "expectedRows": [
+          {
+            "id": "c",
+            "name": "Cedar",
+            "count": 3
+          },
+          {
+            "id": "d",
+            "name": "Birch",
+            "count": 4
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "c",
+            "originalRetained": true,
+            "name": "Cedar",
+            "count": "3",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "d",
+            "originalRetained": true,
+            "name": "Birch",
+            "count": "4",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 195,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "c",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "d",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 288.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-collection-replace.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "retired-item-notified",
+        "expectedRows": [
+          {
+            "id": "c",
+            "name": "Cedar",
+            "count": 3
+          },
+          {
+            "id": "d",
+            "name": "Birch",
+            "count": 4
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "c",
+            "originalRetained": true,
+            "name": "Cedar",
+            "count": "3",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "d",
+            "originalRetained": true,
+            "name": "Birch",
+            "count": "4",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 195,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "c",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "d",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 288.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-retired-item-notified.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "collection-remove",
+        "expectedRows": [
+          {
+            "id": "c",
+            "name": "Cedar",
+            "count": 3
+          },
+          {
+            "id": "d",
+            "name": "Birch",
+            "count": 4
+          }
+        ],
+        "rows": [
+          {
+            "id": "c",
+            "originalRetained": true,
+            "name": "Cedar",
+            "count": "3",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "d",
+            "originalRetained": true,
+            "name": "Birch",
+            "count": "4",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "b",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "c",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "d",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-collection-remove.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "collection-clear",
+        "expectedRows": [],
+        "rows": [],
+        "emptyText": "No results.",
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "b",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "c",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "d",
+            "count": 0,
+            "expected": 0
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 190
+        }
+      },
+      "file": "data-table-live-Light-data-table-collection-clear.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "collection-restored",
+        "expectedRows": [
+          {
+            "id": "a",
+            "name": "Twin",
+            "count": 99
+          },
+          {
+            "id": "b",
+            "name": "Twin",
+            "count": 42
+          }
+        ],
+        "rows": [
+          {
+            "id": "a",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "99",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "b",
+            "originalRetained": true,
+            "name": "Twin",
+            "count": "42",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "b",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "c",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "d",
+            "count": 0,
+            "expected": 0
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-collection-restored.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "source-replaced",
+        "expectedRows": [
+          {
+            "id": "u",
+            "name": "Orchard",
+            "count": 5
+          },
+          {
+            "id": "v",
+            "name": "Grove",
+            "count": 6
+          }
+        ],
+        "rows": [
+          {
+            "id": "u",
+            "originalRetained": true,
+            "name": "Orchard",
+            "count": "5",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "v",
+            "originalRetained": true,
+            "name": "Grove",
+            "count": "6",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "b",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "c",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "d",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "u",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "v",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-source-replaced.png"
+    },
+    {
+      "scheme": "Light",
+      "kind": "data-table",
+      "snapshot": {
+        "stage": "reloaded",
+        "expectedRows": [
+          {
+            "id": "u",
+            "name": "Orchard",
+            "count": 5
+          },
+          {
+            "id": "v",
+            "name": "Grove",
+            "count": 77
+          },
+          {
+            "id": "w",
+            "name": "Meadow",
+            "count": 7
+          }
+        ],
+        "rows": [
+          {
+            "id": "u",
+            "originalRetained": true,
+            "name": "Orchard",
+            "count": "5",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 658,
+              "height": 65
+            }
+          },
+          {
+            "id": "v",
+            "originalRetained": true,
+            "name": "Grove",
+            "count": "77",
+            "nameFont": 14,
+            "renderedNameFont": 14,
+            "headerFont": 11,
+            "alignment": "Left",
+            "originalActionRetained": true,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 658,
+              "height": 64.5
+            }
+          }
+        ],
+        "emptyText": null,
+        "subscriptions": [
+          {
+            "id": "a",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "b",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "c",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "d",
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "id": "u",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "v",
+            "count": 1,
+            "expected": 1
+          },
+          {
+            "id": "w",
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "collectionSubscriptions": [
+          {
+            "count": 0,
+            "expected": 0
+          },
+          {
+            "count": 1,
+            "expected": 1
+          }
+        ],
+        "invoked": [],
+        "loaded": true,
+        "box": {
+          "x": 20,
+          "y": 20,
+          "width": 660,
+          "height": 223.5
+        }
+      },
+      "file": "data-table-live-Light-data-table-reloaded.png"
+    }
+  ],
+  "contracts": [],
+  "pngs": [
+    {
+      "file": "data-table-live-Light-data-table-initial.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "4238ae63acb6f76aa6142888177e70b193744a780898549e8c2f159fb53fc6c4"
+    },
+    {
+      "file": "data-table-live-Light-data-table-equal-object-notified.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "2df7471af40a68e9f6d56ecb4a9d6c5e4eb326aed39440936c962f5427f952d0"
+    },
+    {
+      "file": "data-table-live-Light-data-table-collection-add.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "f975b752787647af2b68a38ef72ec3693fbd2d124a9679c69034d9c0f303c77f"
+    },
+    {
+      "file": "data-table-live-Light-data-table-collection-move.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "bdb4006e9e95ca887a8382b7fa76edaa17e209b35f3d4a3798fe2cf2c2f4cf51"
+    },
+    {
+      "file": "data-table-live-Light-data-table-collection-replace.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "6988db92e2e1ff2dda5d3269ad07df91e1734425b13dafae754136ef56b10863"
+    },
+    {
+      "file": "data-table-live-Light-data-table-retired-item-notified.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "6988db92e2e1ff2dda5d3269ad07df91e1734425b13dafae754136ef56b10863"
+    },
+    {
+      "file": "data-table-live-Light-data-table-collection-remove.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "34a136def083a5b87b93721976d191124c0df09364afcb96659ee923b441c85e"
+    },
+    {
+      "file": "data-table-live-Light-data-table-collection-clear.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "5e9aba456183c2f8e4f290db1537fe3d930ebf2f2ffc6cf4eb25d9c52bd39633"
+    },
+    {
+      "file": "data-table-live-Light-data-table-collection-restored.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "ead6ba45374386c23897bfbe7b8820fa8bd51f6feded341daf484a7e3af7b976"
+    },
+    {
+      "file": "data-table-live-Light-data-table-source-replaced.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "f3cd28d0b8ba091a908a06249207c5166e04fecc54a85493916e7e762fade1fb"
+    },
+    {
+      "file": "data-table-live-Light-data-table-reloaded.png",
+      "width": 900,
+      "height": 1000,
+      "sha256": "18ace1d5cf5d0a0cc376f204564cd7758af5c84143bea0ff781cc15e82875e4d"
+    }
+  ],
+  "guards": 98,
+  "focus": 0,
+  "activations": 0,
+  "librarySha256": "013ebc6de8e6b787f6c2f5431110f64eaf21c0180313fb1d586fdea5daa3d37a"
+}

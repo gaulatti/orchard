@@ -37,6 +37,23 @@
             <orchard:BleeckerButton Variant="Secondary" Content="Preview" />
             <orchard:BleeckerButton Variant="Secondary" Content="Details" />
         </orchard:BleeckerButtonGroup>
+        <TextBlock Text="Connected actions · wrapping international labels" Style="{StaticResource BleeckerBodyStyle}" />
+        <orchard:BleeckerButtonGroup x:Name="LongGroupedActions" Width="360" HorizontalAlignment="Left"
+                                    AutomationProperties.Name="International review actions">
+            <orchard:BleeckerButton x:Name="InternationalReview" Variant="Secondary" CommandParameter="international-review"
+                                   IsEnabled="{Binding IsOn, ElementName=ConsumerEnabled}">
+                <TextBlock Text="Review international coverage and retain the original action" TextWrapping="Wrap" />
+            </orchard:BleeckerButton>
+            <orchard:BleeckerButton Variant="Secondary"><TextBlock Text="東京の編集内容を確認して保存" TextWrapping="Wrap" /></orchard:BleeckerButton>
+            <orchard:BleeckerButton Variant="Secondary"><TextBlock Text="مراجعة التغطية الدولية وحفظ التغييرات" TextWrapping="Wrap" /></orchard:BleeckerButton>
+        </orchard:BleeckerButtonGroup>
+        <orchard:BleeckerButtonGroup x:Name="VerticalGroupedActions" Orientation="Vertical" Width="260" FlowDirection="RightToLeft"
+                                    HorizontalAlignment="Left" AutomationProperties.Name="Right-to-left review actions">
+            <Button x:Name="InternationalSave" CommandParameter="international-save" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                <TextBlock Text="مراجعة التغطية الدولية وحفظ التغييرات" TextWrapping="Wrap" />
+            </Button>
+            <Button IsEnabled="False" Style="{StaticResource BleeckerSecondaryButtonStyle}"><TextBlock Text="東京の編集内容を確認して保存" TextWrapping="Wrap" /></Button>
+        </orchard:BleeckerButtonGroup>
         <orchard:BleeckerButton Variant="Secondary" MaxWidth="260" AutomationProperties.Name="Review international coverage">
             <TextBlock Text="Review international coverage · 東京 · São Paulo · القاهرة" TextWrapping="Wrap" />
         </orchard:BleeckerButton>

@@ -382,3 +382,7 @@ shadow-only outside-click reference. The original browser JSON and all
 276-state input/geometry/ownership gates remain unchanged. Full-client RGBA
 comparisons retain remaining source paint differences without masks or
 tolerance; complete component acceptance remains open.
+
+Worker-thread producer notifications are marshaled before any XAML state read.
+See [the producer notification contract](producer-notifications.md) for the
+shared catalog/package regression and its background-only verification limits.

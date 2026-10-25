@@ -1,0 +1,24 @@
+{
+  "file": "ExpandedBlue.png",
+  "sha256": "31be9d5f389c3c459158a640db4c86e1f49332aa9d267d653eda835259236f4f",
+  "sourceReport": "artifacts/current/menubar-source-native-v6/menubar.json",
+  "sourceReportSha256": "e2dad24e1cc0defdcb665fce571198c460854168646025bea35e71ecb03b71ff",
+  "librarySha256": "5331707ea8bd32fd6fa6b1a5a22c900c9f4ccb9949ea1a1725c4c7ddd516c1db",
+  "probe": {
+    "x": 263,
+    "y": 368,
+    "observed": [
+      44,
+      87,
+      132,
+      255
+    ],
+    "expected": [
+      255,
+      255,
+      255,
+      255
+    ]
+  },
+  "reason": "Actual original native expanded submenu incorrectly inherited the top-level selected blue tint. Unmodified raw frame retained as a regression counterexample."
+}

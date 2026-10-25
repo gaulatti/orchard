@@ -21,7 +21,7 @@ public sealed partial class SunburstChartsFixture : UserControl
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Sunburst checks require display/text scale 1.");
         var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
-        using var reference = JsonDocument.Parse(typeof(SunburstChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SunburstChartLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SunburstChartsFixture).Assembly, "Orchard.Catalog.Reference.SunburstChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try
         {

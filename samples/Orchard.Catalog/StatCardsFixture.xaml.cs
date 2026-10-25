@@ -21,7 +21,7 @@ public sealed partial class StatCardsFixture:UserControl
         Require(XamlRoot.RasterizationScale==1&&new Windows.UI.ViewManagement.UISettings().TextScaleFactor==1,"Frozen Stat Card comparison requires display/text scale 1; scaling acceptance remains open.");
         using var input=new NativeInputSession(XamlRoot,folder,$"stat-card-{scheme}");await input.AcquireAsync(Specimen);
         var root=(Grid)XamlRoot.Content;var host=new Grid{Margin=new Thickness(20),Background=root.Background};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
-        using var reference=JsonDocument.Parse(typeof(StatCardsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.StatCardLayout.json")!);var reports=new List<object>();
+        using var reference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(StatCardsFixture).Assembly, "Orchard.Catalog.Reference.StatCardLayout.json")!);var reports=new List<object>();
         try
         {
             foreach(var item in reference.RootElement.GetProperty("cases").EnumerateArray().Where(x=>x.GetProperty("scheme").GetString()==scheme.ToString()))

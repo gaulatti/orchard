@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <SolidColorBrush x:Key="BleeckerAppTabBadgeTextBrush" Color="White"/>
+ <ControlTemplate x:Key="BleeckerAppTabButtonTemplate" TargetType="Button">
+  <Grid x:Name="AppTabBody" Background="Transparent">
+   <VisualStateManager.VisualStateGroups><VisualStateGroup x:Name="CommonStates"><VisualState x:Name="Normal"/><VisualState x:Name="PointerOver"/><VisualState x:Name="Pressed"/><VisualState x:Name="Disabled"><VisualState.Setters><Setter Target="AppTabBody.Opacity" Value=".55"/></VisualState.Setters></VisualState></VisualStateGroup></VisualStateManager.VisualStateGroups>
+   <Canvas Opacity="0" IsHitTestVisible="False">
+    <TextBlock x:Name="AppTabSelectedPalette" Foreground="{ThemeResource BleeckerSeaBrush}" FontFamily="{StaticResource BleeckerPrimarySemiboldFontFamily}"/>
+    <TextBlock x:Name="AppTabInactivePalette" Foreground="{ThemeResource BleeckerTextSecondaryBrush}" FontFamily="{StaticResource BleeckerPrimaryMediumFontFamily}"/>
+    <TextBlock x:Name="AppTabBadgePalette" Foreground="{ThemeResource BleeckerSunsetBrush}"/>
+    <TextBlock x:Name="AppTabBadgeTextPalette" Foreground="{ThemeResource BleeckerAppTabBadgeTextBrush}" FontFamily="{StaticResource BleeckerPrimaryBoldFontFamily}"/>
+   </Canvas>
+   <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+  </Grid>
+ </ControlTemplate>
+ <Style TargetType="local:BleeckerAppTabBar">
+  <Setter Property="FontSize" Value="10"/><Setter Property="Background" Value="{ThemeResource BleeckerCardBrush}"/>
+  <Setter Property="BorderBrush" Value="{ThemeResource BleeckerBorderBrush}"/><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerAppTabBar"><Grid Background="{TemplateBinding Background}">
+   <Grid x:Name="PART_Items" Margin="0,5,0,0"/>
+   <Border Height="1" VerticalAlignment="Top" Background="{TemplateBinding BorderBrush}" IsHitTestVisible="False"/>
+  </Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

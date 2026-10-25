@@ -22,6 +22,7 @@ namespace Orchard;
 public sealed partial class BleeckerDataTablePagination : Control
 {
     private Grid? host;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue uiQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread() ?? throw new InvalidOperationException("Pagination requires a UI dispatcher.");
     private PaginationPanel? layout;
     private TextBlock? summary, page;
     private PageSizeChooser? size;
@@ -93,7 +94,7 @@ public sealed partial class BleeckerDataTablePagination : Control
         button.Resources.MergedDictionaries.Add(palette); AutomationProperties.SetName(button, label);
         var canvas = new Canvas { Width = 24, Height = 24, IsHitTestVisible = false };
         var path = (ShapePath)XamlReader.Load("<Path xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Data='" + figures + "' StrokeThickness='2' StrokeStartLineCap='Round' StrokeEndLineCap='Round' StrokeLineJoin='Round'/>");
-        path.SetBinding(ShapePath.StrokeProperty, new Binding { Source = button, Path = new PropertyPath(nameof(Foreground)) }); canvas.Children.Add(path);
+        BleeckerButtonGlyphForeground.Attach(path); canvas.Children.Add(path);
         var icon = new Viewbox { Width = 16, Height = 16, Child = canvas, IsHitTestVisible = false }; AutomationProperties.SetAccessibilityView(icon, AccessibilityView.Raw); button.Content = icon;
         button.Click += clicked; return button;
     }
@@ -115,7 +116,7 @@ public sealed partial class BleeckerDataTablePagination : Control
         observedOptions = PageSizeOptions as INotifyCollectionChanged; if (observedOptions is not null) observedOptions.CollectionChanged += OptionsChanged;
         observedRoot = XamlRoot; if (observedRoot is not null) observedRoot.Changed += RootChanged;
     }
-    private void Dispatch(Action action) { if (!IsLoaded) return; if (DispatcherQueue.HasThreadAccess) action(); else DispatcherQueue.TryEnqueue(() => { if (IsLoaded) action(); }); }
+    private void Dispatch(Action action) { if (uiQueue.HasThreadAccess) { if (IsLoaded) action(); } else if (!uiQueue.TryEnqueue(() => { if (IsLoaded) action(); })) throw new InvalidOperationException("Pagination could not dispatch its original source notification."); }
     private void OptionsChanged(object? sender, NotifyCollectionChangedEventArgs args) => Dispatch(() => { if (ReferenceEquals(sender, PageSizeOptions)) Refresh(); });
     private void RootChanged(XamlRoot sender, XamlRootChangedEventArgs args) => Refresh();
     private void Disconnect()

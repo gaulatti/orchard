@@ -1,0 +1,39 @@
+{
+  "format": "orchard-context-menu-adapter-counterexamples-v1",
+  "geometry": {
+    "report": "artifacts/current/context-menu-adapter-native-v2/context-menu-modal.json",
+    "reportSha256": "3ea16f14df3d7dc41c564ecb71b46fc7d917b9dfaf8e05b15595871eae50cd30",
+    "nativeReportPassed": false,
+    "librarySha256": "4c557a283b8c5bdb260a75ce79df5d9d311f1cbd96726933d7fe8bcb1bbccb51",
+    "snapshot": {
+      "stage": "Light-public-mount-and-tree",
+      "frame": 7,
+      "portalWidth": 200.2935028076172,
+      "portalHeight": 122,
+      "width": 200,
+      "height": 122,
+      "nativeWidth": 200,
+      "nativeHeight": 122,
+      "nativeDesiredWidth": 200,
+      "nativeDesiredHeight": 122,
+      "surfaceWidth": 200.2935028076172,
+      "surfaceHeight": 122,
+      "proxy": [
+        {
+          "Width": 200.2935028076172,
+          "Height": 122,
+          "actualWidth": 200.2935028076172,
+          "actualHeight": 122
+        }
+      ]
+    }
+  },
+  "reflow": {
+    "report": "artifacts/current/context-menu-adapter-native-v3/context-menu-modal.json",
+    "reportSha256": "684801cc99a6d05924692ef2958483c4d8f286b94132b1a8563c24096d1f8527",
+    "nativeReportPassed": false,
+    "librarySha256": "dcdb739b535e74731c288889bd51c462ee055abc0915b6b18aa5c68fa23ef7da",
+    "initialWidth": 201,
+    "dynamicWidth": 201
+  }
+}

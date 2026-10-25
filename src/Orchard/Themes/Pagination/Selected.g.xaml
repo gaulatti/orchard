@@ -1,0 +1,57 @@
+<!-- Generated from pinned Bleecker pagination.tsx; use scripts/generate-pagination-palettes.mjs. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="ButtonBackground" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrush" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#FFFFFF" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#FFFFFF" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#2C5784" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForegroundDisabled" Color="#FFFFFF" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#2C5784" Opacity="1"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Default">
+   <SolidColorBrush x:Key="ButtonBackground" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForeground" Color="#182533" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrush" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#182533" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#182533" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#5BA3F5" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonForegroundDisabled" Color="#182533" Opacity="1"/>
+   <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="#5BA3F5" Opacity="1"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+  <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+  <Setter Property="BackgroundSizing" Value="OuterBorderEdge"/>
+  <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
+  <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
+  <Setter Property="BorderThickness" Value="1"/>
+  <Setter Property="Height" Value="36"/>
+  <Setter Property="MinHeight" Value="36"/>
+  <Setter Property="MinWidth" Value="36"/>
+  <Setter Property="Padding" Value="10,0"/>
+  <Setter Property="CornerRadius" Value="{StaticResource BleeckerButtonCornerRadius}"/>
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryMediumFontFamily}"/>
+  <Setter Property="FontSize" Value="13"/>
+  <Setter Property="FontWeight" Value="Medium"/>
+  <Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="HorizontalAlignment" Value="Stretch"/>
+  <Setter Property="HorizontalContentAlignment" Value="Center"/>
+  <Setter Property="VerticalContentAlignment" Value="Center"/>
+  <Setter Property="UseSystemFocusVisuals" Value="True"/>
+  <Setter Property="FocusVisualPrimaryBrush" Value="{ThemeResource BleeckerSeaBrush}"/>
+  <Setter Property="FocusVisualPrimaryThickness" Value="2"/>
+  <Setter Property="FocusVisualSecondaryThickness" Value="2"/>
+  <Setter Property="FocusVisualMargin" Value="-4"/>
+ </Style>
+</ResourceDictionary>

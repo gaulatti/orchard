@@ -1,5 +1,61 @@
 # Checkbox
 
+## Rich-content names and implicit text styles
+
+Direct consumer-owned rich labels and descriptions retain their default native
+automation names before first templating and after template removal. When a
+presenter exists, its displayed subtree remains authoritative. A template-backed
+model does not contribute a name through its `ToString()` while its presentation
+is absent. Explicit `AutomationProperties.Name` and `LabeledBy` retain precedence;
+collapsed children and named subtrees keep their existing semantics.
+
+The rich-text defaults helper also respects implicit setters declared inside the
+consumer content subtree, including merged dictionaries and `BasedOn` chains.
+Implicit styles need not populate the native `Style` property. Orchard leaves
+resource selection to WinUI and avoids writing local defaults over those
+declared setters. Explicit style changes release owned values; caller bindings
+and values survive unload. The helper detaches its observers and subtree root
+when the presentation is retired.
+
+The shared hidden `CheckboxContentFixture` verifies 72 source/archive checks and
+70 independent-consumer checks across Light and Dark. It covers direct and
+template-backed names, live text, explicit metadata, native toggle events,
+two-way bindings, implicit/merged/inherited styles, `RichTextBlock`, explicit
+style replacement and unload ownership. It also instantiates the existing
+Checkboxes catalog fixture with its explicit rich-label name intact. The gate
+rejects 35 corrupted reports, 16 retained wrong-name states, three retained
+wrong implicit-style states and eight actual unready observations per host.
+Two incorrect initial catalog test
+expectations remain distinguished from actual component failures.
+The earlier v2 harness recorded four source/archive and 13 source/consumer
+`IsLoaded` differences. A separate 24-case probe reproduced incomplete readiness
+in plain WinUI as well as Orchard: only three controls were loaded after the
+layout waits, while all 24 were loaded after a hidden native render and unloaded
+after removal. The v3 fixture renders its hidden root and asserts native
+readiness before observing mounted contracts. All shared raw checks now agree
+across source, consumer and archive, including `IsLoaded`; two source runs also
+produce identical reports. The original v2 evidence remains retained. This is a
+fixture correction with no library workaround or native toggle-policy change.
+All ten prior/source/consumer/archive native image pairs are byte identical.
+
+The v4 fixture also retains its readiness bitmap through native completion.
+Button and Checkbox readiness use the same `NativeRenderReadiness` helper; its
+separate forced-GC regression verifies actual render completion while recording
+the pinned runtime's unretained-owner counterexample. Normal fixtures do not
+force collection. Current source/package/archive replays pass 72/70/72 checks,
+including the original readiness, rich-name, style and binding contracts.
+
+Run `scripts/verify-checkbox-content.ps1` with a fresh `-Output` folder and the
+built `-AppDirectory`; use `-HostName PackageConsumer` for a restored consumer.
+These checks use hidden windows without focus, hardware input or system changes.
+They establish these component contracts, not whole Checkbox visual/motion,
+physical-input, scaling or native ARM64 acceptance. The combined preview is
+`0.1.0-checkbox-rich-v1-local`; its NuGet bytes remain unchanged. The catalog
+fixture revision is `0.1.0-checkbox-ready-v1-local`. Current evidence is in
+`artifacts/current/checkbox-loaded-checkpoint-v1.json`, separately from the
+historical campaigns below. Independent consumer builds reuse the previously
+verified package cache; they are not a new fresh restore.
+
 The shared Input cursor handover regression verifies hovered border RGB and
 fractional brush opacity separately during all three stationary remounts:
 opaque sand with `.7` in Light, opaque white with `.25` in Dark. The prior

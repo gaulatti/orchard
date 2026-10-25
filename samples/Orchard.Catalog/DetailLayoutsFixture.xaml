@@ -1,0 +1,24 @@
+<UserControl x:Class="Orchard.Catalog.DetailLayoutsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Detail layout" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="A responsive content/rail composition. Scroll to see the rail remain within this local demonstration." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerDetailLayout SideRailLabel="Fictional related details">
+   <StackPanel Spacing="16">
+    <TextBlock Text="Consumer content" Style="{StaticResource BleeckerHeadingStyle}"/>
+    <orchard:BleeckerInput Text="Fictional detail title"/>
+    <TextBlock Text="The main content and side rail keep their own controls, values and actions." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+    <Border Height="360" Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}" BorderThickness="1"/>
+    <orchard:BleeckerButton Content="Record local action" Click="RecordAction" HorizontalAlignment="Left"/>
+    <TextBlock x:Name="Status" Text="No local action yet." Style="{StaticResource BleeckerBodyStyle}"/>
+   </StackPanel>
+   <orchard:BleeckerDetailLayout.SideRail>
+    <StackPanel Spacing="12">
+     <TextBlock Text="Related details" Style="{StaticResource BleeckerHeadingStyle}"/>
+     <orchard:BleeckerInput Text="Fictional rail value"/>
+     <TextBlock Text="Source sticky placement starts at the large viewport breakpoint." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+    </StackPanel>
+   </orchard:BleeckerDetailLayout.SideRail>
+  </orchard:BleeckerDetailLayout>
+ </StackPanel>
+</UserControl>

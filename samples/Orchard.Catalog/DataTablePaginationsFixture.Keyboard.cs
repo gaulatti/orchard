@@ -12,7 +12,7 @@ public sealed partial class DataTablePaginationsFixture
 {
     internal async Task VerifyKeyboardAsync(BleeckerColorScheme scheme, string folder, bool pairedKeys = false)
     {
-        using var bytes = new MemoryStream(); await typeof(DataTablePaginationsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTablePaginationKeyboard.json")!.CopyToAsync(bytes);
+        using var bytes = new MemoryStream(); await CatalogReferenceResources.Open(typeof(DataTablePaginationsFixture).Assembly, "Orchard.Catalog.Reference.DataTablePaginationKeyboard.json")!.CopyToAsync(bytes);
         using var reference = JsonDocument.Parse(bytes.ToArray()); var reports = new List<object>(); var failures = new List<string>();
         var root = (Grid)XamlRoot.Content; var app = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId); var original = app.ClientSize;
         try

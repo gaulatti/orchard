@@ -11,7 +11,7 @@ public sealed partial class MainWindow
 {
     private async Task RunRadioGroupsAsync(string folder)
     {
-        using var resource=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.RadioGroup.json")??throw new InvalidOperationException("Missing radio reference.");using var source=await JsonDocument.ParseAsync(resource);
+        using var resource=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.RadioGroup.json")??throw new InvalidOperationException("Missing radio reference.");using var source=await JsonDocument.ParseAsync(resource);
         var original=Content;var canvas=new Canvas{Background=new SolidColorBrush(Microsoft.UI.Colors.White)};var frames=new List<object>();var errors=new List<object>();
         try
         {

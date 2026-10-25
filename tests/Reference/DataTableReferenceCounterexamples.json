@@ -1,0 +1,13 @@
+{
+  "format": "orchard-data-table-reference-counterexamples-v1",
+  "reason": "Actual native combined-filter clear-name frame retains two old rows while the source/model require six; new original actions have no visual parent.",
+  "librarySha256": "661d2bfad6f156d7695a00946c787e950069d4b5020c6da0232af0ad1eaf76a6",
+  "files": [
+    {
+      "scheme": "Light",
+      "path": "tests/Reference/DataTableNativeRejectedExpansion-Light.png",
+      "frame": "data-table-reference-Light-history-consumer-filters-clear-name.png",
+      "sha256": "1e204cb3623b063cecb2292b92dbc0c6f4bbdf776efaaf27672ac7a497ef88c4"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<UserControl x:Class="Orchard.Catalog.TabsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <DataTemplate x:Key="ConsumerTabLink" x:DataType="orchard:BleeckerTabLinkContext">
+   <Button Style="{x:Bind Style}" Content="{x:Bind Content}" Command="{x:Bind Command}" AutomationProperties.Name="{x:Bind Label}"/>
+  </DataTemplate>
+ </UserControl.Resources>
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Tabs" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Consumer-owned selection, local panels and host-routed navigation" Style="{StaticResource BleeckerBodyStyle}"/>
+  <Button Style="{StaticResource BleeckerTabButtonStyle}" Content="Tab style specimen" IsEnabled="False" HorizontalAlignment="Left"/>
+  <orchard:BleeckerTabs x:Name="Controlled" ActiveTab="overview" AutomationProperties.Name="Component details"/>
+  <TextBlock x:Name="Panel" Text="Overview panel" Style="{StaticResource BleeckerBodyStyle}"/>
+  <TextBlock Text="All variants and sizes" Style="{StaticResource BleeckerHeadingStyle}" FontSize="18"/>
+  <StackPanel x:Name="Variants" Spacing="12"/>
+  <TextBlock Text="A declined selection request leaves the active tab unchanged" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerTabs x:Name="Declined" ActiveTab="overview" Variant="Segmented" AutomationProperties.Name="Declined requests"/>
+  <TextBlock Text="Navigation metadata is delivered to the consumer" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerTabs x:Name="Navigation" ActiveTab="overview" Variant="Enclosed" AutomationProperties.Name="Demo navigation"/>
+  <orchard:BleeckerTabs x:Name="CustomLinks" ActiveTab="overview" Variant="Segmented" LinkTemplate="{StaticResource ConsumerTabLink}" AutomationProperties.Name="Custom link renderer"/>
+  <TextBlock x:Name="NavigationStatus" Text="No navigation requested" Style="{StaticResource BleeckerBodyStyle}"/>
+  <TextBlock Text="Disabled and empty strips" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerTabs x:Name="Disabled" IsEnabled="False" ActiveTab="overview" AutomationProperties.Name="Disabled tabs"/>
+  <orchard:BleeckerTabs x:Name="Empty" AutomationProperties.Name="Empty tabs"/>
+ </StackPanel>
+</UserControl>

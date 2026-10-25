@@ -314,6 +314,15 @@ contrast transitions remain gated to isolated hosted runners by the existing
 
 ### Text metrics and remaining acceptance
 
+The local `0.1.0-tabs-motion-local` candidate extracts the date outer-shadow
+renderer into `BleeckerCssShadow` for reuse by Tabs. Date recipes remain behind
+the existing adapter. A fresh 188-frame replay at both widths preserves every
+preceding live day/trigger/popup shadow graph: 4,680 days, 84 triggers and 20
+popups. Geometry, paint, real input and disposal checks also pass. Evidence is
+in `artifacts/current/tabs-motion-date-regression`; exact raster and normal
+native motion acceptance remain open. This replay reads system settings without
+changing them and does not run an OS contrast campaign.
+
 Typography measurements are now recorded separately in
 `tests/Reference/DateTypography.json`: 6,076 text entries across the same 188
 frames. The optional `--typography` collector mode combines live DOM text ranges

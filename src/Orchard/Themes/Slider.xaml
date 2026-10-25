@@ -1,0 +1,48 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="SliderThumbBrush" Color="White"/>
+   <SolidColorBrush x:Key="SliderOffsetBrush" Color="White"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Default">
+   <SolidColorBrush x:Key="SliderThumbBrush" Color="White"/>
+   <SolidColorBrush x:Key="SliderOffsetBrush" Color="White"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="SliderThumbBrush" Color="{ThemeResource SystemColorWindowColor}"/>
+   <SolidColorBrush x:Key="SliderOffsetBrush" Color="{ThemeResource SystemColorWindowColor}"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <ControlTemplate x:Key="SliderThumbTemplate" TargetType="Thumb">
+  <Grid UseLayoutRounding="False">
+   <Grid x:Name="SliderThumbShadow0" IsHitTestVisible="False"/>
+   <Grid x:Name="SliderThumbShadow1" IsHitTestVisible="False"/>
+   <Path x:Name="SliderThumbMask0" Fill="Black" Visibility="Collapsed" IsHitTestVisible="False"/>
+   <Path x:Name="SliderThumbExterior0" Fill="Black" Visibility="Collapsed" IsHitTestVisible="False"/>
+   <Path x:Name="SliderThumbMask1" Fill="Black" Visibility="Collapsed" IsHitTestVisible="False"/>
+   <Path x:Name="SliderThumbExterior1" Fill="Black" Visibility="Collapsed" IsHitTestVisible="False"/>
+   <Border x:Name="SliderThumbBorder" CornerRadius="10" BorderThickness="2" UseLayoutRounding="False"/>
+  </Grid>
+ </ControlTemplate>
+ <Style TargetType="local:BleeckerSlider">
+  <Setter Property="IsTabStop" Value="True"/>
+  <Setter Property="UseSystemFocusVisuals" Value="False"/>
+  <Setter Property="HorizontalAlignment" Value="Stretch"/>
+  <Setter Property="VerticalAlignment" Value="Top"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/>
+  <Setter Property="BorderBrush" Value="{ThemeResource BleeckerAccentBlueBrush}"/>
+  <Setter Property="BorderThickness" Value="2"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSlider">
+   <Grid x:Name="PART_Root" FlowDirection="LeftToRight" Background="{TemplateBinding Background}" UseLayoutRounding="False">
+    <Grid Visibility="Collapsed" IsHitTestVisible="False">
+     <TextBlock x:Name="PART_SandSource" Foreground="{ThemeResource BleeckerSandBrush}"/>
+     <TextBlock x:Name="PART_AccentSource" Foreground="{ThemeResource BleeckerAccentBlueBrush}"/>
+     <TextBlock x:Name="PART_ThumbSource" Foreground="{ThemeResource SliderThumbBrush}"/>
+     <TextBlock x:Name="PART_OffsetSource" Foreground="{ThemeResource SliderOffsetBrush}"/>
+     <TextBlock x:Name="PART_ValueLightSource" Foreground="{ThemeResource BleeckerTextSecondaryBrush}"/>
+     <TextBlock x:Name="PART_ValueDarkSource" Foreground="{ThemeResource BleeckerTextPrimaryBrush}"/>
+    </Grid>
+   </Grid>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

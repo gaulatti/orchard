@@ -1,0 +1,32 @@
+{
+  "format": "orchard-table-customization-counterexamples-v1",
+  "actualOldRuntime": true,
+  "baselineFolder": "artifacts/current/table-customization-native-baseline-v2",
+  "librarySha256": "7eecef7b4dc689ed5061e43c3b078145b3191166766ed86d31bd3fe53ece719e",
+  "hostSha256": "1e4ae8246f1c97f596ff30a71525631d0ad1419e484a970497642e7b96a9cbef",
+  "templateRetirement": {
+    "passed": false,
+    "stage": "Light-template-restored",
+    "error": "System.InvalidOperationException: A table cell requires PART_Text.\r\n   at Orchard.BleeckerTableCell.OnApplyTemplate() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\src\\Orchard\\Controls\\BleeckerTableCell.cs:line 38\r\n   at Microsoft.UI.Xaml.FrameworkElement.Microsoft.UI.Xaml.IFrameworkElementOverrides.OnApplyTemplate()\r\n   at ABI.Microsoft.UI.Xaml.IFrameworkElementOverrides.Do_Abi_OnApplyTemplate_2(IntPtr thisPtr)"
+  },
+  "captures": [
+    {
+      "stage": "style",
+      "scheme": "Light",
+      "file": "table-customization-Light-style.png",
+      "sha256": "3d1264cd979dc462460a50a49a1ad0133a29b1e9f3e250458a7309d7694bff72"
+    },
+    {
+      "stage": "binding",
+      "scheme": "Light",
+      "file": "table-customization-Light-binding.png",
+      "sha256": "efe1587197fdec5e443ef0db15ea29b285cbf0e776f635f35e405be160819f34"
+    },
+    {
+      "stage": "notified",
+      "scheme": "Light",
+      "file": "table-customization-Light-notified.png",
+      "sha256": "4390e6819728729bdcbbda8dc9bca704161248908ce8c164d6f7aa9ed0621247"
+    }
+  ]
+}

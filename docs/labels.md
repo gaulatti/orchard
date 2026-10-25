@@ -21,6 +21,14 @@ relationship. Detaching or changing Target restores the earlier relationship if
 the consumer has not replaced it in the meantime. Explicit input automation
 names remain consumer-owned. Use one owning label per Target.
 
+The temporary association preserves the target's original local-value or style
+precedence and original runtime binding object. A captured binding is detached
+before assigning the temporary label, so a two-way source does not receive that
+temporary value. Detach, retarget and unload reconnect the original binding to
+its current source value. Originally unset values are cleared; an explicitly
+local null stays local. Newer consumer bindings and local/style ownership are
+preserved even when their current effective value is the temporary label.
+
 IsEnabled=false is the explicit Windows disabled adaptation and renders label
 content at .6 opacity. It is independent of Target.IsEnabled: the source's
 disabled appearance comes from a preceding disabled CSS peer, not automatically
@@ -33,8 +41,8 @@ consumer styling: terracotta in light appearance and primary text in dark. See
 
 This is an in-progress component. Exact glyph/baseline matching, empty and rich
 content comparison, the full pointer and nested-action matrix,
-live appearance, contrast,
-Narrator, text/display scaling and ARM64 runtime remain unaccepted. Catalog
+live appearance, text/display scaling and ARM64 runtime remain unaccepted. Narrator
+and OS contrast campaigns are excluded by [the library scope](library-scope.md). Catalog
 coverage includes plain, disabled, empty, wrapped, non-Latin and rich labels;
 the package consumer exercises the public typography and association contract.
 
@@ -47,3 +55,24 @@ Content and lifecycle regression passes in both themes at artifacts/smoke-label-
 Live appearance checks pass in both directions at artifacts/smoke-label-theme-cursor: normal text follows primary text, the consumer error label changes between terracotta/light and primary/dark, and dimensions and association remain unchanged. A separate physical disabled-cursor probe on a fully visible maximized catalog still displayed an arrow despite assigning UniversalNo to ProtectedCursor (artifacts/label-disabled-cursor-full.jpg). That ineffective assignment was removed; disabled-cursor parity remains open.
 
 Nested-action verification: artifacts/smoke-label-nested passes both themes, including UIA invocation of a nested non-tabbable button. Physical dark-theme clicks increment its consumer action count and preserve focus in the previously focused EmailInput rather than redirecting it to RichInput (artifacts/label-nested-pointer-focus.jpg). x64 publish and ARM64 build pass. The complete nested input/control matrix remains unverified.
+
+The catalog's linked-label lifecycle example toggles a temporary label and
+changes the original caption through fictional local state. The shared hidden
+`LabelAssociationFixture` covers original local/null/unset/style values,
+one-way/two-way bindings, newer same-value consumer bindings/styles, bound
+Target transfer, unload/reload, rich content and disabled metadata. Run
+`scripts/verify-label-association.ps1` against the catalog or a fresh package
+consumer. It does not focus a control, invoke an enabled button, activate a
+window or send hardware input. These checks do not establish physical label
+activation, actual display/text scaling or native ARM64 runtime acceptance.
+
+Local preview `0.1.0-label-ownership-v1-local` passes 28 source, 26 isolated
+package and 28 extracted-catalog checks, with 222 recorded relationship/name
+observations across those hosts. Each audit rejects 29 corrupted reports and
+the actual earlier source-mutation/lost-binding report. Before the repair,
+16 source checks failed; the two-way source received the temporary label.
+The same audit also reproduced Button Group writing temporary geometry into
+all five two-way producers. Both repairs pass in source and package, and the
+two label catalog captures are byte-identical after archive extraction.
+Both root/consumer build architectures and all 505 unit/text tests pass.
+All inventory acceptance remains open under the broader platform contract.

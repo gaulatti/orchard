@@ -1,0 +1,26 @@
+<UserControl x:Class="Orchard.Catalog.HeroCarouselsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <LinearGradientBrush x:Key="CallerHeroInk" StartPoint="0,0" EndPoint="1,0"><GradientStop Offset="0" Color="{Binding Color,Source={ThemeResource BleeckerAccentBlueBrush}}"/><GradientStop Offset="1" Color="{Binding Color,Source={ThemeResource BleeckerTerracottaBrush}}"/></LinearGradientBrush>
+  <DataTemplate x:Key="OriginalHeroLink" x:DataType="orchard:BleeckerHeroCarouselLinkContext">
+   <HyperlinkButton Command="{x:Bind Command}" Style="{x:Bind Style,Mode=OneWay}" AutomationProperties.Name="{x:Bind AccessibleName,Mode=OneWay}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+    <Grid Tag="{x:Bind Item,Mode=OneWay}"><ContentPresenter Content="{x:Bind Content,Mode=OneWay}"/><StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,90"><TextBlock Text="{x:Bind Item.Title,Mode=OneWay}"/><TextBox Header="Original caller editor" Text="Caller-owned local edit" Width="240"/></StackPanel></Grid>
+   </HyperlinkButton>
+  </DataTemplate>
+ </UserControl.Resources>
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Hero Carousel" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Reusable featured content with original items, images and host routing. Examples use fictional local data. Source behavior: inactive slides retain Tab and click input; arrow keys throughout this window advance every carousel except while a native input owns focus." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerHeroCarousel x:Name="Hero" AutoAdvanceMilliseconds="5000" LinkStyle="{StaticResource BleeckerHeroCarouselLinkStyle}" ArrowStyle="{StaticResource BleeckerHeroCarouselArrowStyle}" IndicatorStyle="{StaticResource BleeckerHeroCarouselIndicatorStyle}" TagStyle="{StaticResource BleeckerHeroCarouselTagStyle}" CtaStyle="{StaticResource BleeckerHeroCarouselCtaStyle}">
+   <orchard:BleeckerHeroCarousel.Items><orchard:BleeckerHeroCarouselItems/></orchard:BleeckerHeroCarousel.Items>
+  </orchard:BleeckerHeroCarousel>
+  <TextBlock Text="Tags, action labels and navigation use live blurred underlays. Enable the local images to inspect the blur and glyph shadows over detail." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <StackPanel Orientation="Horizontal" Spacing="8"><Button Content="Previous" Click="Previous"/><Button Content="Next" Click="Next"/><Button Content="Reorder original items" Click="Reorder"/><Button Content="Update original title" Click="UpdateTitle"/><Button Content="Remove last item" Click="RemoveLast"/><Button Content="Restore items" Click="Restore"/></StackPanel>
+  <StackPanel Orientation="Horizontal" Spacing="12"><CheckBox Content="Hide indicators" Checked="Indicators" Unchecked="Indicators"/><CheckBox Content="Hide controls" Checked="Controls" Unchecked="Controls"/><CheckBox Content="Use original local images" Checked="Images" Unchecked="Images"/><CheckBox Content="Right-to-left" Checked="Direction" Unchecked="Direction"/><CheckBox Content="Disable input" Checked="Disable" Unchecked="Disable"/></StackPanel>
+  <StackPanel Orientation="Horizontal" Spacing="12"><CheckBox x:Name="CallerFont" Content="Use secondary font family" Checked="FontFamilyChanged" Unchecked="FontFamilyChanged"/><CheckBox x:Name="CallerInk" Content="Use token gradient title" Checked="ForegroundChanged" Unchecked="ForegroundChanged"/></StackPanel>
+  <TextBlock x:Name="Result" Text="No original destination invoked" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <TextBlock Text="Original custom link content" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerHeroCarousel x:Name="Custom" LinkTemplate="{StaticResource OriginalHeroLink}" AutoAdvanceMilliseconds="15000"/>
+  <TextBlock Text="Caller-owned empty content" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerHeroCarousel x:Name="Empty"><orchard:BleeckerHeroCarousel.EmptyState><StackPanel><TextBlock Text="Original fictional empty state"/><TextBox Header="Retained caller empty editor" Text="Original empty edit" Width="260"/></StackPanel></orchard:BleeckerHeroCarousel.EmptyState></orchard:BleeckerHeroCarousel>
+ </StackPanel>
+</UserControl>

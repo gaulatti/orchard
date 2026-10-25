@@ -12,7 +12,7 @@ public sealed partial class MainWindow
 {
     private async Task RunAccordionMotionAsync(string folder)
     {
-        using var resource=typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.AccordionMotion.json")??throw new InvalidOperationException("Accordion motion reference missing.");using var source=await JsonDocument.ParseAsync(resource);
+        using var resource=CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.AccordionMotion.json")??throw new InvalidOperationException("Accordion motion reference missing.");using var source=await JsonDocument.ParseAsync(resource);
         var original=Content;var canvas=new Canvas();var enabled=new UISettings().AnimationsEnabled;var reports=new List<object>();var reversals=new List<object>();
         try
         {

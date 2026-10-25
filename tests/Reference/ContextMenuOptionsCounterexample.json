@@ -1,0 +1,15 @@
+{
+  "format": "orchard-context-menu-retirement-counterexample-v1",
+  "nativeReportPassed": false,
+  "report": "artifacts/current/context-menu-options-native-v5/context-menu-options.json",
+  "reportSha256": "f3e72cc303a1696e32e15c1cff805990b01472c96e3b58d5cfac3a63f64c0e6c",
+  "librarySha256": "d872f16c0e5be885294c9d9b9c6915aa6c70cfe3fddfec73a3f081365e832c23",
+  "snapshot": {
+    "isOpen": true,
+    "opens": 2,
+    "closes": 1,
+    "remainingPopups": 1,
+    "originalItemLoaded": true
+  },
+  "reason": "Canceling normal closing retained the unprojected standalone native popup after its target was removed."
+}

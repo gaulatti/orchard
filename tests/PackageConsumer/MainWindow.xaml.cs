@@ -21,6 +21,8 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        PackageTabs.Items = [new("overview", "Overview"), new("activity", "Activity"), new("disabled", "Unavailable", disabled: true)];
+        PackageTabLinks.Items = [new("local", "Local", "../consumer/tab?keep=%2F#part"), new("external", "External", "https://example.invalid/tabs", external: true)];
         InitializeToolbar();
         InitializePagination();
         InitializeDataList();
@@ -50,7 +52,7 @@ public sealed partial class MainWindow : Window
         if (!Environment.GetCommandLineArgs().Contains("--verify-output")) return;
         try
         {
-            foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf", "OFL-EncodeSans.txt", "OFL-LibreFranklin.txt" })
+            foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "EncodeSans-Bold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf", "OFL-EncodeSans.txt", "OFL-LibreFranklin.txt" })
                 Require(File.Exists(Path.Combine(AppContext.BaseDirectory, "Orchard", "Assets", "Fonts", font)), $"Missing package asset: {font}");
             Require(Heading.FontFamily.Source.Contains("EncodeSans-SemiBold.ttf#Encode Sans"), "Package font URI not selected.");
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -58,6 +60,16 @@ public sealed partial class MainWindow : Window
                 Root.RequestedTheme = theme;
                 await Task.Delay(250);
                 Root.UpdateLayout();
+                VerifyPackageTabs();
+                await VerifyPackageCloseAsync();
+                VerifyPackageField();
+                VerifyPackagePageFrame();
+                VerifyPackageDetailLayout();
+                await VerifyPackagePanelAsync();
+                await VerifyPackagePanelLayoutAsync();
+                await VerifyPackageFeedGridAsync();
+                await VerifyPackageSliderAsync();
+                await VerifyPackageThemeToggleAsync();
                 var switchPeer = FrameworkElementAutomationPeer.CreatePeerForElement(PackageSwitch);
                 var nativeSwitchPeer = FrameworkElementAutomationPeer.CreatePeerForElement((ToggleSwitch)VisualTreeHelper.GetChild(PackageSwitch, 0));
                 var switchToggle = (IToggleProvider)switchPeer.GetPattern(PatternInterface.Toggle);

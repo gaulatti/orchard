@@ -14,5 +14,23 @@
   <orchard:BleeckerProgressStack x:Name="PartialStack" Width="360" HorizontalAlignment="Left" />
   <orchard:BleeckerProgressStack x:Name="HiddenStack" Width="360" HorizontalAlignment="Left" ShowLegend="False" />
   <orchard:BleeckerProgressStack x:Name="WrappedStack" Width="160" HorizontalAlignment="Left" />
+  <orchard:BleeckerProgressStack x:Name="UnicodeStack" Width="100" HorizontalAlignment="Left" AutomationProperties.Name="Unicode publication distribution">
+   <orchard:BleeckerProgressStack.Items>
+    <orchard:BleeckerProgressStackItem Label="日本語の公開ワークフロー" Value="6" Color="#2c5784" />
+    <orchard:BleeckerProgressStackItem Label="Draft" Value="3" Color="#bd7067" />
+   </orchard:BleeckerProgressStack.Items>
+  </orchard:BleeckerProgressStack>
+  <orchard:BleeckerProgressStack x:Name="BreakControlStack" Width="100" HorizontalAlignment="Left">
+   <orchard:BleeckerProgressStack.Items>
+    <orchard:BleeckerProgressStackItem Label="publi&#xAD;cation&#xAD;workflow" Value="6" Color="#2c5784" />
+    <orchard:BleeckerProgressStackItem Label="Draft" Value="3" Color="#bd7067" />
+   </orchard:BleeckerProgressStack.Items>
+  </orchard:BleeckerProgressStack>
+  <orchard:BleeckerProgressStack x:Name="CustomFontStack" Width="160" FontFamily="Arial" HorizontalAlignment="Left">
+   <orchard:BleeckerProgressStack.Items>
+    <orchard:BleeckerProgressStackItem Label="日本語 العربية" Value="6" Color="#2c5784" />
+    <orchard:BleeckerProgressStackItem Label="Draft" Value="3" Color="#bd7067" />
+   </orchard:BleeckerProgressStack.Items>
+  </orchard:BleeckerProgressStack>
  </StackPanel>
 </UserControl>

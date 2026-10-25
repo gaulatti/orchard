@@ -15,10 +15,13 @@ public sealed partial class MainWindow
     private void InitializeNavigation()
     {
         components.AddRange([
+            ("Tables", Tables),
+            ("Sortable tables", SimpleDataTables),
+            ("Data Table", DataTables),
             ("Foundation", Foundation), ("Toggles", Toggles), ("Buttons", Buttons), ("Accordion", Accordions),
             ("Icon buttons", IconButtons), ("Icon badges", IconBadges), ("Empty states", Empties), ("Progress stacks", ProgressStacks), ("Toggle groups", ToggleGroups),
             ("Loading spinners", LoadingSpinners), ("Cards", Cards), ("Skeletons", Skeletons), ("Avatars", Avatars), ("Breadcrumbs", Breadcrumbs), ("Separators", Separators),
-            ("Status badges", StatusBadges), ("Menus", Menus), ("Notifications", Notifications), ("Alerts", Alerts), ("Brand lockups", BrandLockups), ("Bauhaus backgrounds", BauhausBackgrounds),
+            ("Status badges", StatusBadges), ("Menus", Menus), ("Menubar", Menubars), ("Notifications", Notifications), ("Alerts", Alerts), ("Brand lockups", BrandLockups), ("Brand mark", BrandMarks), ("Bauhaus backgrounds", BauhausBackgrounds),
             ("Activity items",ActivityItems),
             ("Attention surfaces",AttentionSurfaces),
             ("Chart theme",ChartThemes),
@@ -48,10 +51,44 @@ public sealed partial class MainWindow
             ("Loading overlay",LoadingOverlays),
             ("Filter chips",FilterChips),
             ("Search inputs",SearchInputs),
+            ("Secure fields",SecureFields),
+            ("Segmented controls",SegmentedControls),
+            ("App tab bars",AppTabBars),
+            ("OTP inputs",OtpInputs),
+            ("Context menus",ContextMenus),
             ("Text areas",Textareas),
+            ("Tabs",Tabs),
+            ("Dialog close buttons",DialogCloseButtons),
+            ("Fields",Fields),
+            ("Page frames",PageFrames),
+            ("Detail layouts",DetailLayouts),
+            ("Panels",Panels),
+            ("Panel layouts",PanelLayouts),
+            ("Feed grids",FeedGrids),
+            ("Feed columns",FeedColumns),
+            ("Feed items",FeedItems),
+            ("Select menus",Selects),
+            ("Collection filters",CollectionFilters),
+            ("Nav menu",NavMenus), ("Navigation Menu", NavigationMenus),
+            ("Sonner", Sonners), ("Hero Carousel", HeroCarousels), ("File Input", FileInputs), ("Media Library", MediaLibraries), ("Command Spotlight", CommandSpotlights), ("Auth shells", AuthShells),
+            ("Footer",Footers),
+            ("Header",Headers),
+            ("Alert dialogs",AlertDialogs),
+            ("Modal",Modals),
+            ("Drawer and Sheet",EdgeDialogs),
+            ("Popover",Popovers),
+            ("Hover card",HoverCards),
+            ("Scroll area",ScrollAreas),
+            ("App shells",AppShells),
+            ("Admin shells",AdminShells),
+            ("Monitoring demo",MonitoringWorkspace),
+            ("Editorial demo",EditorialWorkspace),
+            ("Sliders",Sliders),
+            ("Theme toggles",ThemeToggles),
             ("Dates",DateControls),
             ("Data table toolbar",DataTableToolbars),
             ("Data table pagination",DataTablePaginations),
+            ("Pagination",Paginations),
             ("Data table columns",DataTableColumnToggles),
             ("Data table filters",DataTableFilters),
             ("Tooltips", Tooltips), ("Field help", FieldHelp), ("Labels", Labels), ("Input", Inputs), ("Keyboard shortcuts", Keyboard), ("Eyebrows", Eyebrows), ("Progress", Progress), ("Switches", Switches), ("Checkboxes", Checkboxes), ("Radio groups", RadioGroups), ("Windows contrast", Contrast)
@@ -59,8 +96,10 @@ public sealed partial class MainWindow
         var declared = FixtureHost.Children.OfType<FrameworkElement>().ToArray();
         Require(declared.Length == components.Count && components.Select(entry => entry.Fixture).Distinct().Count() == declared.Length &&
             declared.All(fixture => components.Any(entry => ReferenceEquals(entry.Fixture, fixture))),
-            "Every declared catalog fixture must have exactly one navigation entry.");
+            $"Every declared catalog fixture must have exactly one navigation entry. Declared={declared.Length}; registered={components.Count}; unregistered={string.Join(',', declared.Where(fixture => !components.Any(entry => ReferenceEquals(entry.Fixture, fixture))).Select(fixture => fixture.Name))}; missing={string.Join(',', components.Where(entry => !declared.Contains(entry.Fixture)).Select(entry => entry.Title))}.");
         FixtureHost.Children.Clear();
+        MonitoringWorkspace.SuiteRequested += suite => { if (suite == "editorial") ShowFixture(EditorialWorkspace); };
+        EditorialWorkspace.SuiteRequested += suite => { if (suite == "monitoring") ShowFixture(MonitoringWorkspace); };
         ShowFixture(Foundation);
         RenderNavigation();
     }

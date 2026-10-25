@@ -15,6 +15,7 @@ namespace Orchard;
 public sealed partial class BleeckerDataTableColumnToggle : Control
 {
     private Grid? host;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue uiQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread() ?? throw new InvalidOperationException("Column toggle requires a UI dispatcher.");
     private TriggerButton? trigger;
     private TextBlock? caption;
     private Popup? popup;
@@ -62,10 +63,10 @@ public sealed partial class BleeckerDataTableColumnToggle : Control
         var icon = (Viewbox)XamlReader.Load("""
             <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Width="14" Height="14" IsHitTestVisible="False"><Canvas Width="24" Height="24" FlowDirection="LeftToRight"><Path Data="M14 17H5 M19 7H10" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/><Ellipse Width="6" Height="6" Canvas.Left="14" Canvas.Top="14" StrokeThickness="2"/><Ellipse Width="6" Height="6" Canvas.Left="4" Canvas.Top="4" StrokeThickness="2"/></Canvas></Viewbox>
             """);
-        foreach (var shape in ((Canvas)icon.Child).Children.OfType<Microsoft.UI.Xaml.Shapes.Shape>()) shape.SetBinding(Microsoft.UI.Xaml.Shapes.Shape.StrokeProperty, new Binding { Source = trigger, Path = new PropertyPath(nameof(Foreground)) });
+        foreach (var shape in ((Canvas)icon.Child).Children.OfType<Microsoft.UI.Xaml.Shapes.Shape>()) BleeckerButtonGlyphForeground.Attach(shape);
         AutomationProperties.SetAccessibilityView(icon, AccessibilityView.Raw); content.Children.Add(icon);
         caption = new TextBlock { FontSize = 13, LineHeight = 19.5, LineStackingStrategy = LineStackingStrategy.BlockLineHeight, VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false };
-        caption.SetBinding(TextBlock.ForegroundProperty, new Binding { Source = trigger, Path = new PropertyPath(nameof(Foreground)) }); caption.SetBinding(TextBlock.FontFamilyProperty, new Binding { Source = trigger, Path = new PropertyPath(nameof(FontFamily)) }); caption.SetBinding(TextBlock.FontWeightProperty, new Binding { Source = trigger, Path = new PropertyPath(nameof(FontWeight)) });
+        caption.SetBinding(TextBlock.FontFamilyProperty, new Binding { Source = trigger, Path = new PropertyPath(nameof(FontFamily)) }); caption.SetBinding(TextBlock.FontWeightProperty, new Binding { Source = trigger, Path = new PropertyPath(nameof(FontWeight)) });
         Grid.SetColumn(caption, 1); content.Children.Add(caption); trigger.Content = content; trigger.Click += TriggerClicked;
         surface = (BleeckerOverlaySurface)XamlReader.Load("""
             <local:BleeckerOverlaySurface xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="using:Orchard" Name="PART_Surface" Width="208" MinWidth="224" Padding="6" UseLayoutRounding="False" Background="{ThemeResource BleeckerMenuBackgroundBrush}" BorderBrush="{ThemeResource BleeckerMenuBorderBrush}" BorderThickness="1" CornerRadius="{StaticResource BleeckerUiCornerRadius}"/>
@@ -96,9 +97,9 @@ public sealed partial class BleeckerDataTableColumnToggle : Control
         if (observedTable is not null && tableChanged is not null) observedTable.Changed -= tableChanged; observedTable = null; tableChanged = null;
         if (observedRoot is not null) observedRoot.Changed -= RootChanged; observedRoot = null;
     }
-    private void Dispatch(Action work) { if (!IsLoaded) return; if (DispatcherQueue.HasThreadAccess) work(); else DispatcherQueue.TryEnqueue(() => { if (IsLoaded) work(); }); }
+    private void Dispatch(Action work) { if (uiQueue.HasThreadAccess) { if (IsLoaded) work(); } else if (!uiQueue.TryEnqueue(() => { if (IsLoaded) work(); })) throw new InvalidOperationException("Column toggle could not dispatch its original source notification."); }
     private void RootChanged(XamlRoot sender, XamlRootChangedEventArgs args) => UpdatePosition();
-    private void ColorsChanged(UISettings sender, object args) => DispatcherQueue.TryEnqueue(() => { if (IsLoaded) RenderRows(); });
+    private void ColorsChanged(UISettings sender, object args) => uiQueue.TryEnqueue(() => { if (IsLoaded) RenderRows(); });
     private void Refresh()
     {
         if (trigger is null || caption is null || columnHost is null) return;

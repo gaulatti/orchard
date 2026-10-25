@@ -1,0 +1,20 @@
+<UserControl x:Class="Orchard.Catalog.PageFramesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="20" Margin="0,0,0,40">
+  <TextBlock Text="Page frame" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="A centered boundary around consumer content. Spacing follows the window viewport." Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerPageFrame x:Name="Reading" Element="Article" FrameWidth="Reading" Gutter="Compact" VerticalSpacing="Compact"
+   Background="{ThemeResource BleeckerCardBrush}" BorderBrush="{ThemeResource BleeckerBorderBrush}" BorderThickness="1">
+   <StackPanel Spacing="12">
+    <TextBlock Text="Reading width" Style="{StaticResource BleeckerHeadingStyle}"/>
+    <TextBlock Text="The page boundary retains this input and the consumer's action." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+    <orchard:BleeckerInput x:Name="Title" Text="Fictional component demo"/>
+    <orchard:BleeckerButton Content="Record local action" Click="RecordAction" HorizontalAlignment="Left"/>
+    <TextBlock x:Name="Status" Text="No local action yet." Style="{StaticResource BleeckerBodyStyle}"/>
+   </StackPanel>
+  </orchard:BleeckerPageFrame>
+  <orchard:BleeckerPageFrame FrameWidth="Full" Gutter="Spacious" VerticalSpacing="Compact" Background="{ThemeResource BleeckerCardBrush}">
+   <TextBlock Text="Full width · spacious gutters" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  </orchard:BleeckerPageFrame>
+ </StackPanel>
+</UserControl>

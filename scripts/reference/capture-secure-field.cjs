@@ -1,0 +1,15 @@
+// Freeze only explicit Sabella contracts; Apple rendering is a separate boundary.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const option=name=>{const i=process.argv.indexOf(name);assert(i>=0&&process.argv[i+1],name);return process.argv[i+1];};
+const source=option('--source'),output=option('--output'),pin='f5ac479bfceaa7eab23c1716ac47420ac53dae25';
+const read=file=>fs.readFileSync(path.join(source,'Sources/Sabella',file),'utf8'),sha=text=>crypto.createHash('sha256').update(text).digest('hex');
+const controls=read('Controls.swift'),tokens=read('Tokens.swift');
+assert.equal(sha(controls),'e344bd2f5b9aa88f5c37abb27e70db2e487262fdcfd73d76c59c4e493467057d');
+const secure=controls.slice(controls.indexOf('public struct BleeckerSecureField:'),controls.indexOf('public struct BleeckerTextArea:'));
+for(const fragment of ['@Binding var text: String','@State private var revealed = false','TextField(placeholder, text: $text)','SecureField(placeholder, text: $text)','revealed.toggle()','revealed ? "eye.slash" : "eye"','p.textSecondary','BleeckerTypography.primary(14)','padding(.horizontal, 14)','frame(minHeight: 40)','bleeckerSurface(radius: BleeckerRadius.ui)'])assert(secure.includes(fragment),fragment);
+for(const fragment of ['public static let ui: CGFloat = 7','.background(palette.card)','strokeBorder(palette.border)','scheme == .dark ? 0 : 0.055','radius: 14, y: 5','card: .white','card: .hex(0x182533)','border: .black.opacity(0.08)','border: .white.opacity(0.08)'])assert(tokens.includes(fragment),fragment);
+const result={format:'orchard-secure-field-source-v1',repository:'gaulatti/sabella',commit:pin,files:[{path:'Sources/Sabella/Controls.swift',sha256:sha(controls)},{path:'Sources/Sabella/Tokens.swift',sha256:sha(tokens)}],contract:{callerBoundValue:true,initiallyRevealed:false,persistentToggle:true,placeholderShared:true,revealDoesNotWriteValue:true,concealedEditor:'SecureField',revealedEditor:'TextField',fontFamily:'Encode Sans',fontSize:14,horizontalPadding:14,minHeight:40,radius:7,light:{background:'#ffffff',border:'#000000',borderOpacity:.08,text:'#2d2d2d',secondary:'#595959',shadowColor:'#1a374d',shadowOpacity:.055},dark:{background:'#182533',border:'#ffffff',borderOpacity:.08,text:'#f0f4f8',secondary:'#b8c5d6',shadowOpacity:0},shadowRadius:14,shadowY:5},appleRenderingVerified:false,implicitHStackGeometryMeasured:false};
+const sourceFont=fs.readFileSync(path.join(source,'Sources/Sabella/Resources/Fonts/EncodeSans-Regular.ttf'));
+assert.equal(sha(sourceFont),sha(fs.readFileSync('src/Orchard/Assets/Fonts/EncodeSans-Regular.ttf')),'Sabella and Orchard primary font files differ.');
+result.files.push({path:'Sources/Sabella/Resources/Fonts/EncodeSans-Regular.ttf',sha256:sha(sourceFont)});result.sourceFontMatchesLibrary=true;
+fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({passed:true,sourceHash:sha(controls),explicitContractFrozen:true,sourceFontMatchesLibrary:true,appleRenderingVerified:false}));

@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <Style TargetType="local:BleeckerDetailLayout">
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/>
+  <Setter Property="HorizontalAlignment" Value="Stretch"/><Setter Property="VerticalAlignment" Value="Top"/>
+  <Setter Property="FontFamily" Value="{StaticResource BleeckerPrimaryFontFamily}"/><Setter Property="FontSize" Value="16"/>
+  <Setter Property="Foreground" Value="{ThemeResource BleeckerTextPrimaryBrush}"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerDetailLayout">
+   <Grid x:Name="PART_Root" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"
+    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" UseLayoutRounding="False"/>
+  </ControlTemplate></Setter.Value></Setter>
+ </Style>
+</ResourceDictionary>

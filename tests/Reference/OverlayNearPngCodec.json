@@ -1,0 +1,33 @@
+{
+  "format": "orchard-reference-png-codec-v1",
+  "diagnosticOnly": true,
+  "componentRendererInput": false,
+  "browser": "155.0.4283.62",
+  "browserRevision": "@aa3a7406ba8c53a83536df539f07124d73c899bd",
+  "captureAudit": "artifacts/current/overlay-shadow-near-owner-codec-palette-audit-v1.json",
+  "legalChannelAlphaPairs": 32896,
+  "crossPaletteChannelComparisons": 296064,
+  "table": "tests/PackageConsumer/ReferencePngCodec.u8",
+  "sha256": "061cf15eea0aa59807de4064bc52532d647bcc0aba68e63cc6087219d9ab75e4",
+  "bytes": 65536,
+  "index": "alpha*256+premultipliedChannel; reject channel>alpha",
+  "allMappingsRecoverPremultipliedByte": true,
+  "mappingInjectiveForEveryAlpha": true,
+  "palettes": [
+    {
+      "palette": "gray",
+      "rawSha256": "dfc32b094501a1f98234a786e636f0fe756059663b6f20adde7be31f58bacd7a",
+      "pngSha256": "101fc4160a374251cbb19b81de99360c69dbca2e7a0f7c6b363ed92dd087019e"
+    },
+    {
+      "palette": "cross",
+      "rawSha256": "1a8b2f365b10a1f693ab3e072e944dda97b7e76f38dea9f9832ff52bba34ca1a",
+      "pngSha256": "5f0332cf32662eaad26c62b2cc592def175f5347d8d2a88e3cd574ea92dbc1a9"
+    },
+    {
+      "palette": "permuted",
+      "rawSha256": "6a8dd3d028da71b171b1f49ff3cb4fbbb00217316b492eaca2150124f772a349",
+      "pngSha256": "3e7e6c4df0dffb3d528a02dfc2f68f09dbf8129da122c1fba1640567656d84d4"
+    }
+  ]
+}

@@ -20,8 +20,8 @@ public sealed partial class PieChartsFixture : UserControl
         using var input = new NativeInputSession(XamlRoot, folder, $"pie-chart-{scheme}"); await input.AcquireAsync(Specimen);
         var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
-        using var reference = JsonDocument.Parse(typeof(PieChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.PieChartLayout.json")!);
-        using var pointerStream=typeof(PieChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.PiePointer.json")!;
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(PieChartsFixture).Assembly, "Orchard.Catalog.Reference.PieChartLayout.json")!);
+        using var pointerStream=CatalogReferenceResources.Open(typeof(PieChartsFixture).Assembly, "Orchard.Catalog.Reference.PiePointer.json")!;
         using var pointerBuffer=new MemoryStream();await pointerStream.CopyToAsync(pointerBuffer);var pointerBytes=pointerBuffer.ToArray();using var pointerReference=JsonDocument.Parse(pointerBytes);
         var pointerReferenceSha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(pointerBytes)).ToLowerInvariant();
         var reports = new List<object>(); var failures = new List<string>();

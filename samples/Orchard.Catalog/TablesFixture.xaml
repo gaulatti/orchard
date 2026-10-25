@@ -1,0 +1,22 @@
+<StackPanel x:Class="Orchard.Catalog.TablesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:o="using:Orchard" Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <TextBlock Text="Table components" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local rows with original actions and retained content." Style="{StaticResource BleeckerBodyStyle}"/>
+ <o:BleeckerTable x:Name="OriginalTable" Width="660" HorizontalAlignment="Left" Style="{StaticResource BleeckerTableStyle}">
+  <o:BleeckerTableCaption Content="Original fictional caption" Style="{StaticResource BleeckerTableCaptionStyle}"/>
+  <o:BleeckerTableHeader Style="{StaticResource BleeckerTableHeaderStyle}"><o:BleeckerTableRow Style="{StaticResource BleeckerTableRowStyle}">
+   <o:BleeckerTableHead Content="Original heading" Style="{StaticResource BleeckerTableHeadStyle}"/>
+   <o:BleeckerTableHead Content="Count" Style="{StaticResource BleeckerTableHeadStyle}"/>
+   <o:BleeckerTableHead Content="Original action" Style="{StaticResource BleeckerTableHeadStyle}"/>
+  </o:BleeckerTableRow></o:BleeckerTableHeader>
+  <o:BleeckerTableBody Style="{StaticResource BleeckerTableBodyStyle}">
+   <o:BleeckerTableRow x:Name="OriginalRow" Style="{StaticResource BleeckerTableRowStyle}">
+    <o:BleeckerTableCell Content="Original retained content" Style="{StaticResource BleeckerTableCellStyle}"/>
+    <o:BleeckerTableCell Content="12" Style="{StaticResource BleeckerTableCellStyle}"/>
+    <o:BleeckerTableCell Style="{StaticResource BleeckerTableCellStyle}"><Button x:Name="OriginalAction" Content="Inspect fictional item" Click="Changed" MinWidth="0" MinHeight="0" Padding="0" BorderThickness="0" Background="Transparent"><Button.Template><ControlTemplate TargetType="Button"><TextBlock Text="{TemplateBinding Content}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" TextWrapping="WrapWholeWords" LineHeight="20" LineStackingStrategy="BlockLineHeight"/></ControlTemplate></Button.Template></Button></o:BleeckerTableCell>
+   </o:BleeckerTableRow>
+   <o:BleeckerTableRow Style="{StaticResource BleeckerTableRowStyle}"><o:BleeckerTableCell ColumnSpan="2" Content="Two-column original cell" Style="{StaticResource BleeckerTableCellStyle}"/><o:BleeckerTableCell Style="{StaticResource BleeckerTableCellStyle}"><o:BleeckerCheckbox IsChecked="True" AutomationProperties.Name="Original cell checkbox"/></o:BleeckerTableCell></o:BleeckerTableRow>
+  </o:BleeckerTableBody>
+  <o:BleeckerTableFooter Style="{StaticResource BleeckerTableFooterStyle}"><o:BleeckerTableRow Style="{StaticResource BleeckerTableRowStyle}"><o:BleeckerTableCell ColumnSpan="3" Content="Original fictional footer" Style="{StaticResource BleeckerTableCellStyle}"/></o:BleeckerTableRow></o:BleeckerTableFooter>
+ </o:BleeckerTable>
+ <TextBlock x:Name="Status" Text="No fictional table action yet" Style="{StaticResource BleeckerBodyStyle}"/>
+</StackPanel>

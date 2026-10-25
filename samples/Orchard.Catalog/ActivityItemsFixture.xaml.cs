@@ -14,7 +14,7 @@ public sealed partial class ActivityItemsFixture : UserControl
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"activity-{scheme}"); await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
         UpdateLayout(); await MainWindow.AwaitPresentationAsync(this); var measurements = new List<object>();
-        using var reference = JsonDocument.Parse(typeof(ActivityItemsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.ActivityLayout.json")
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(ActivityItemsFixture).Assembly, "Orchard.Catalog.Reference.ActivityLayout.json")
             ?? throw new InvalidOperationException("Missing pinned browser activity reference."));
         var browserRows = reference.RootElement.GetProperty("schemes").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString()).GetProperty("measurements");
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1,

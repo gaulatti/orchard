@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Orchard">
+ <ResourceDictionary.ThemeDictionaries>
+  <ResourceDictionary x:Key="Light">
+   <SolidColorBrush x:Key="FooterBackgroundBrush" Color="#FFF9F6F2"/><SolidColorBrush x:Key="FooterTopRuleBrush" Color="#FFE6D5B8" Opacity=".3"/><SolidColorBrush x:Key="FooterBottomRuleBrush" Color="#FFE6D5B8" Opacity=".2"/><SolidColorBrush x:Key="FooterAccentBrush" Color="#FF2C5784" Opacity=".7"/><SolidColorBrush x:Key="FooterSourceTextBrush" Color="#FF595959" Opacity=".7"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="Dark">
+   <SolidColorBrush x:Key="FooterBackgroundBrush" Color="#FF1A2332"/><SolidColorBrush x:Key="FooterTopRuleBrush" Color="White" Opacity=".1"/><SolidColorBrush x:Key="FooterBottomRuleBrush" Color="#FF1A2332" Opacity=".2"/><SolidColorBrush x:Key="FooterAccentBrush" Color="#FF5BA3F5" Opacity=".7"/><SolidColorBrush x:Key="FooterSourceTextBrush" Color="#FFB8C5D6" Opacity=".7"/>
+  </ResourceDictionary>
+  <ResourceDictionary x:Key="HighContrast">
+   <SolidColorBrush x:Key="FooterBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}"/><SolidColorBrush x:Key="FooterTopRuleBrush" Color="{ThemeResource SystemColorWindowTextColor}"/><SolidColorBrush x:Key="FooterBottomRuleBrush" Color="{ThemeResource SystemColorWindowTextColor}"/><SolidColorBrush x:Key="FooterAccentBrush" Color="{ThemeResource SystemColorHighlightColor}"/><SolidColorBrush x:Key="FooterSourceTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"/>
+  </ResourceDictionary>
+ </ResourceDictionary.ThemeDictionaries>
+ <Style TargetType="local:BleeckerFooter"><Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="Background" Value="{ThemeResource FooterBackgroundBrush}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerFooter"><Grid x:Name="PART_Footer" Background="{TemplateBinding Background}" FlowDirection="LeftToRight" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter></Style>
+</ResourceDictionary>

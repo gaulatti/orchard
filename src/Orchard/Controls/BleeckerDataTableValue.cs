@@ -15,8 +15,8 @@ internal static class BleeckerDataTableValue
         int number=>number!=0,uint number=>number!=0,long number=>number!=0,ulong number=>number!=0,decimal number=>number!=0,
         _=>true
     };
-    internal static string InputText(object? value)=>String(value,new HashSet<object>(ReferenceEqualityComparer.Instance));
-    private static string String(object? value,HashSet<object> path)
+    internal static string InputText(object? value)=>String(value,null);
+    private static string String(object? value,HashSet<object>? path)
     {
         if(value is null)return "";
         if(value is string text)return text;
@@ -25,6 +25,7 @@ internal static class BleeckerDataTableValue
         if(value is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal)return BleeckerNumberText.Format(Convert.ToDouble(value,CultureInfo.InvariantCulture));
         if(value is IEnumerable array && value is not IDictionary)
         {
+            path ??= new HashSet<object>(ReferenceEqualityComparer.Instance);
             if(!path.Add(value))throw new ArgumentException("A cyclic filter array cannot be rendered as input text.");
             try{return string.Join(',',array.Cast<object?>().Select(item=>String(item,path)));}finally{path.Remove(value);}
         }

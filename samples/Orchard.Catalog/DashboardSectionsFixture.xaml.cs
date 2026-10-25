@@ -28,7 +28,7 @@ public sealed partial class DashboardSectionsFixture : UserControl
         var root = (Grid)XamlRoot.Content;
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
-        using var reference = JsonDocument.Parse(typeof(DashboardSectionsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DashboardSectionLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DashboardSectionsFixture).Assembly, "Orchard.Catalog.Reference.DashboardSectionLayout.json")!);
         var reports = new List<object>();
         try
         {

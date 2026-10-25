@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {verifyAuthShellSource} from './verify-auth-shell-source.mjs';
+const[input,recaptureFile,negativeFile,output]=process.argv.slice(2);assert(input&&recaptureFile&&negativeFile&&output);const target='tests/Reference/AuthShell',record='tests/Reference/AuthShell.json';for(const p of[target,record,output])assert(!await fs.stat(p).catch(()=>null),'fresh reference required: '+p);
+const recapture=JSON.parse(await fs.readFile(recaptureFile)),negative=JSON.parse(await fs.readFile(negativeFile));assert(recapture.passed&&recapture.exactCanonicalPngPairs===104&&recapture.semanticChanges.length===0&&recapture.metadataFieldsExcluded.length===0);assert(negative.passed&&negative.rejected>=100);const bytes=await fs.readFile(path.join(input,'AuthShell.json')),sha=crypto.createHash('sha256').update(bytes).digest('hex');assert.equal(sha,recapture.first.sha256);await verifyAuthShellSource(path.join(input,'AuthShell.json'),input);await fs.cp(input,target,{recursive:true});await fs.writeFile(record,bytes,{flag:'wx'});await verifyAuthShellSource(record,target);const result={reference:record,sha256:sha,states:104,histories:20,independentlyIdenticalPngPairs:104,metadataFieldsExcluded:[],auditCounterexamplesRejected:negative.rejected,authenticationImplemented:false,nativeImplemented:false,nativeComponentAccepted:false};await fs.writeFile(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(result));

@@ -1,0 +1,54 @@
+<UserControl x:Class="Orchard.Catalog.Demos.EditorialWorkspaceFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Editorial component demo" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Fictional pages, media, categories and authors. Save changes only this local sample; data resets on restart." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerAppShell x:Name="Shell" MinHeight="760" OffsetHeader="False">
+   <orchard:BleeckerAppShell.Header>
+    <Grid Height="60" Padding="12" ColumnSpacing="12"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+     <orchard:BleeckerHeaderSelect x:Name="Suite" Value="editorial" AutomationProperties.Name="Component demo suite"/>
+     <TextBlock Grid.Column="1" Text="Local sample editor" Style="{StaticResource BleeckerBodyStyle}" VerticalAlignment="Center"/>
+     <orchard:BleeckerButton x:Name="Save" Grid.Column="2" Content="Save local sample" Size="Small"/>
+    </Grid>
+   </orchard:BleeckerAppShell.Header>
+   <Grid ColumnSpacing="12" Height="650"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+    <orchard:BleeckerSidebar x:Name="Sidebar" Width="192" Height="640" Header="Editorial" Footer="Fictional local data"/>
+    <Grid Grid.Column="1" RowSpacing="12" Padding="0,0,12,0"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+     <StackPanel x:Name="Decision" Visibility="Collapsed" Spacing="8" AutomationProperties.LiveSetting="Polite">
+      <TextBlock Text="Discard unsaved local changes before continuing?" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+      <StackPanel Orientation="Horizontal" Spacing="8"><orchard:BleeckerButton x:Name="KeepEditing" Content="Keep editing" Variant="Secondary" Size="Small"/><orchard:BleeckerButton x:Name="Discard" Content="Discard changes" Variant="Destructive" Size="Small"/></StackPanel>
+     </StackPanel>
+     <TextBlock x:Name="Summary" Grid.Row="1" Style="{StaticResource BleeckerBodyStyle}" AutomationProperties.LiveSetting="Polite"/>
+     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+      <Grid MinWidth="720" RowSpacing="12"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+       <Grid x:Name="Filters" ColumnSpacing="8"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <orchard:BleeckerSearchInput x:Name="Search" PlaceholderText="Search fictional pages" InputSize="Small" AutomationProperties.Name="Search fictional pages"/>
+        <orchard:BleeckerSelect x:Name="StatusFilter" Grid.Column="1" Value="" Size="Small" Width="140" AutomationProperties.Name="Filter local status"/>
+        <orchard:BleeckerSelect x:Name="LanguageFilter" Grid.Column="2" Value="" Size="Small" Width="130" AutomationProperties.Name="Filter local language"/>
+        <orchard:BleeckerButton x:Name="Sort" Grid.Column="3" Content="Title A–Z" Variant="Secondary" Size="Small"/>
+       </Grid>
+       <Grid x:Name="PagesView" Grid.Row="1" ColumnSpacing="16"><Grid.ColumnDefinitions><ColumnDefinition Width="300"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+        <StackPanel Spacing="12"><TextBlock Text="Select rows or open a page" Style="{StaticResource BleeckerBodyStyle}"/><StackPanel x:Name="Rows" Spacing="8"/></StackPanel>
+        <orchard:BleeckerPanel x:Name="Editor" Grid.Column="1" Title="Local page editor" Visibility="Collapsed">
+         <StackPanel x:Name="EditorFields" Spacing="12">
+          <orchard:BleeckerField x:Name="TitleField" Label="Title" Required="True"><orchard:BleeckerInput x:Name="PageTitle" AutomationProperties.Name="Local page title"/></orchard:BleeckerField>
+          <orchard:BleeckerField Label="Body"><orchard:BleeckerTextarea x:Name="Body" Rows="5" AutomationProperties.Name="Local page body"/></orchard:BleeckerField>
+          <orchard:BleeckerField Label="Local status"><orchard:BleeckerSelect x:Name="PageStatus" AutomationProperties.Name="Local page status"/></orchard:BleeckerField>
+          <orchard:BleeckerField Label="Media illustration"><orchard:BleeckerSelect x:Name="Media" AutomationProperties.Name="Local media selection"/></orchard:BleeckerField>
+          <TextBlock x:Name="MediaPreview" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+          <TextBlock Text="Categories · selected order is retained" Style="{StaticResource BleeckerBodyStyle}"/><StackPanel x:Name="Categories" Spacing="8"/>
+          <TextBlock Text="Authors · selected order is retained" Style="{StaticResource BleeckerBodyStyle}"/><StackPanel x:Name="Authors" Spacing="8"/>
+         </StackPanel>
+        </orchard:BleeckerPanel>
+       </Grid>
+       <StackPanel x:Name="ChoicesView" Grid.Row="1" Visibility="Collapsed" Spacing="12"/>
+      </Grid>
+     </ScrollViewer>
+    </Grid>
+   </Grid>
+   <orchard:BleeckerAppShell.Footer><TextBlock x:Name="Feedback" Style="{StaticResource BleeckerBodyStyle}" Margin="12" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite"/></orchard:BleeckerAppShell.Footer>
+  </orchard:BleeckerAppShell>
+ </StackPanel>
+</UserControl>

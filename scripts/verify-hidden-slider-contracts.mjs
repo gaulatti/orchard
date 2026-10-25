@@ -1,0 +1,32 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {assertNativePaint} from './reference/css-paint.mjs';
+const option=name=>{const at=process.argv.indexOf(name);assert(at>=0&&process.argv[at+1]);return path.resolve(process.argv[at+1]);};
+const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex'),native=option('--native'),referenceBytes=await fs.readFile(new URL('../tests/Reference/Slider.json',import.meta.url)),reference=JSON.parse(referenceBytes),report=JSON.parse(await fs.readFile(path.join(native,'hidden-slider-contracts.json'),'utf8'));
+assert.equal(report.scope,'hidden-slider-contracts');
+for(const field of['hiddenWindow','isolated'])assert.equal(report[field],true,field);
+for(const field of['activateCalled','showCalled','focusCalled','inputSent','visible','nativeVisible','visibleRuntimeVerified','physicalInputVerified','sourceRasterParityVerified','normalMotionVerified','nativeComponentAccepted'])assert.equal(report[field],false,field);
+assert.equal(report.activationEvents,0);assert.equal(report.isolationFailure,null);assert.equal(report.failure,null);
+assert(['X64','Arm64'].includes(report.processArchitecture));assert.equal(report.processArchitecture,report.osArchitecture);assert.equal(report.displayScale,1);
+assert.equal(report.referenceSha256,hash(referenceBytes));assert.equal(report.librarySha256,hash(await fs.readFile(path.join(native,'app/Orchard.dll'))));
+const key=row=>row.id+'/'+row.scheme;assert.equal(reference.cases.length,182);assert.deepEqual(report.frames.map(key).sort(),reference.cases.map(key).sort());
+const errors=[],contractErrors=report.failures.map(error=>({error}));let maximumGeometryError=0,maximumPropertyError=0,lateFrames=0;
+function near(a,b,context,geometry=false){assert(Number.isFinite(a)&&Number.isFinite(b),context);const error=Math.abs(a-b);if(geometry)maximumGeometryError=Math.max(maximumGeometryError,error);else maximumPropertyError=Math.max(maximumPropertyError,error);if(error>=.001)errors.push({context,actual:a,expected:b,error});}
+function box(actual,expected,context){assert.equal(actual===null,expected===null,context+'/presence');if(!expected)return;for(const field of['x','y','width','height'])near(actual[field],expected[field],context+'/'+field,true);}
+function paint(actual,expected,context){const color='#'+[actual.a,actual.r,actual.g,actual.b].map(value=>value.toString(16).padStart(2,'0')).join('');assertNativePaint({color,opacity:actual.opacity},expected,context);}
+for(const row of reference.cases){const frame=report.frames.find(frame=>key(frame)===key(row)),actual=frame.measurement,expected=row.measurement,context=key(row);
+ for(const part of['outer','row','track','fill','header'])box(actual[part],expected[part],context+'/'+part);
+ for(const part of['label','display']){assert.equal(actual[part]===null,expected[part]===null,context+'/'+part);if(expected[part]){box(actual[part].box,expected[part].box,context+'/'+part);assert.equal(actual[part].text,expected[part].text,context+'/'+part+'/text');}}
+ box(actual.thumb.box,row.thumb.box,context+'/thumb');near(actual.thumb.opacity,expected.disabled?.5:1,context+'/thumb-opacity');assert.equal(actual.actualValue,expected.actualValue,context+'/value');assert.equal(actual.name,expected.name,context+'/name');assert.equal(actual.disabled,expected.disabled);assert.equal(actual.role,'Slider');assert.equal(actual.readOnly,false);assert.equal(actual.tabStop,true);assert.equal(actual.loaded,true);assert.equal(actual.hostVisible,false);
+ assert(Number.isFinite(actual.minimum)&&Number.isFinite(actual.maximum)&&actual.minimum<=actual.maximum&&actual.smallChange>0&&actual.largeChange>=actual.smallChange);
+ paint(actual.trackPaint,expected.trackPaint.background,context+'/track-paint');paint(actual.fillPaint,expected.fillPaint.background,context+'/fill-paint');paint(actual.thumbPaint,row.thumb.style['background-color'],context+'/thumb-paint');paint(actual.thumbBorderPaint,row.thumb.style['border-top-color'],context+'/thumb-border-paint');near(actual.thumbBorderThickness,Number.parseFloat(row.thumb.style['border-top-width']),context+'/thumb-border');
+ if(actual.renderingActive)contractErrors.push({context,error:'Invisible Slider retained a rendering subscription.'});if(frame.lateMeasurement)lateFrames++;
+}
+assert.equal(report.history.length,reference.history.length);for(const row of reference.history){const actual=report.history.find(frame=>key(frame)===key(row));assert(actual);assert.equal(actual.actualValue,row.measurement.actualValue);near(actual.fillWidth,row.measurement.fillWidth,key(row)+'/retained-fill',true);assert.equal(actual.hostVisible,false);if(actual.renderingActive)contractErrors.push({context:key(row),error:'Invisible history control retained a rendering subscription.'});}
+const ids=['original-and-normalized-values','same-normalized-value','rejected-request','accepted-request','live-bounds-and-step','bound-constraints','invalid-requests','name-binding','empty-name-binding','empty-style-name','style-removal-name','caller-label','template-detach-resources','template-binding','disabled-request','detached-request-and-observers','remount-binding','collapsed-timelines'];
+assert.deepEqual(report.checks.map(check=>check.id).sort(),['Light','Dark'].flatMap(scheme=>ids.map(id=>scheme+'/'+id)).sort());for(const check of report.checks)if(!check.passed)assert(report.failures.some(error=>error.startsWith(check.id+':')));
+assert.equal(report.enabledRangeRequests,4);assert(report.guardChecks>=182*3+36*2);
+const audit={passed:report.passed&&errors.length===0&&contractErrors.length===0,frames:report.frames.length,historyFrames:report.history.length,ownershipChecks:report.checks.length,enabledRangeRequests:report.enabledRangeRequests,maximumGeometryError,maximumPropertyError,lateFrames,errors,contractErrors,isolated:true,guardChecks:report.guardChecks,librarySha256:report.librarySha256,visibleRuntimeVerified:false,physicalInputVerified:false,sourceRasterParityVerified:false,normalMotionVerified:false,nativeComponentAccepted:false};
+await fs.writeFile(option('--output'),JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify({...audit,errors:errors.slice(0,12),contractErrors:contractErrors.slice(0,12)}));assert(audit.passed,'Hidden Slider contract differs from its source or ownership requirements.');

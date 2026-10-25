@@ -1,0 +1,1573 @@
+{
+  "appResourceSha256": "d24f237022b7d59ce3a6f76017f1a7690303e5ddef9e01b3a4a20004f7b288c4",
+  "librarySha256": "c02006f9cc8d92d3dead5f5faf68c6f555847766fd967ee573078f3321dde8ba",
+  "format": "orchard-data-table-geometry-rejected-v1",
+  "scene": {
+    "scheme": "Light",
+    "name": "rtl",
+    "snapshot": {
+      "fixture": {
+        "x": 20,
+        "y": 20,
+        "width": 660,
+        "height": 799.5
+      },
+      "table": {
+        "x": 21,
+        "y": 77,
+        "width": 658,
+        "height": 693.5
+      },
+      "scrollClientWidth": 658,
+      "scrollWidth": 658,
+      "state": {
+        "sorting": [],
+        "columnFilters": [],
+        "rowSelection": {},
+        "pagination": {
+          "pageIndex": 0,
+          "pageSize": 10
+        },
+        "columnVisibility": {},
+        "globalFilter": null
+      },
+      "pageCount": 3,
+      "canPrevious": false,
+      "canNext": true,
+      "filteredRows": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22"
+      ],
+      "filteredSelectedRows": [],
+      "sortedRows": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22"
+      ],
+      "visibleRows": [
+        {
+          "id": "0",
+          "originalId": "fictional-00",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Cedar 1",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 0,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Queued",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "1",
+          "originalId": "fictional-01",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Birch 2",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 7,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Ready",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "originalId": "fictional-02",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Ash 3",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 14,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Queued",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "originalId": "fictional-03",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Cedar 4",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 21,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Ready",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "originalId": "fictional-04",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Birch 5",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 28,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Queued",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "originalId": "fictional-05",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Ash 6",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 6,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Ready",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "6",
+          "originalId": "fictional-06",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Cedar 7",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 13,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Queued",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "7",
+          "originalId": "fictional-07",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Birch 8",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 20,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Ready",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "8",
+          "originalId": "fictional-08",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Ash 9",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 27,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Queued",
+              "valueType": "string"
+            }
+          ]
+        },
+        {
+          "id": "9",
+          "originalId": "fictional-09",
+          "selected": false,
+          "values": [
+            {
+              "column": "select",
+              "value": null,
+              "valueType": "undefined"
+            },
+            {
+              "column": "name",
+              "value": "Cedar 10",
+              "valueType": "string"
+            },
+            {
+              "column": "count",
+              "value": 5,
+              "valueType": "number"
+            },
+            {
+              "column": "status",
+              "value": "Ready",
+              "valueType": "string"
+            }
+          ]
+        }
+      ],
+      "headerGroups": [
+        {
+          "id": "0",
+          "headers": [
+            {
+              "id": "select",
+              "column": "select",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "name",
+              "column": "name",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "count",
+              "column": "count",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            },
+            {
+              "id": "status",
+              "column": "status",
+              "placeholder": false,
+              "colSpan": 1,
+              "rowSpan": 0
+            }
+          ]
+        }
+      ],
+      "header": [
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 77,
+            "width": 78.74652099609375,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Fictional item",
+          "renderKind": "button",
+          "renderedText": "Fictional item",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 123.58200073242188,
+            "text": [
+              {
+                "Text": "Fictional item",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 399.6468505859375,
+                  "y": 90.25,
+                  "width": 85.58200073242188,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 364.6468505859375,
+            "y": 77,
+            "width": 235.60662841796875,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Count",
+          "renderKind": "button",
+          "renderedText": "Count",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 75.56900024414062,
+            "text": [
+              {
+                "Text": "Count",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 236.74905395507812,
+                  "y": 90.25,
+                  "width": 37.569000244140625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 201.74903869628906,
+            "y": 77,
+            "width": 162.89781188964844,
+            "height": 44
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Status",
+          "renderKind": "text",
+          "renderedText": "STATUS",
+          "buttonPresentation": null,
+          "box": {
+            "x": 21.000015258789062,
+            "y": 77,
+            "width": 180.74903869628906,
+            "height": 44
+          },
+          "colSpan": 1
+        }
+      ],
+      "body": [
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 121,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Cedar 1",
+          "renderKind": "text",
+          "renderedText": "Cedar 1",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 121,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "0",
+          "renderKind": "text",
+          "renderedText": "0",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 121,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Queued",
+          "renderKind": "button",
+          "renderedText": "Queued",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 87.35699462890625,
+            "text": [
+              {
+                "Text": "Queued",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 117.39202880859375,
+                  "y": 144.75,
+                  "width": 49.35699462890625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 121,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 186,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Birch 2",
+          "renderKind": "text",
+          "renderedText": "Birch 2",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 186,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "7",
+          "renderKind": "text",
+          "renderedText": "7",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 186,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ready",
+          "renderKind": "button",
+          "renderedText": "Ready",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 77.375,
+            "text": [
+              {
+                "Text": "Ready",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 127.3740234375,
+                  "y": 209.75,
+                  "width": 39.375,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 186,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 251,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ash 3",
+          "renderKind": "text",
+          "renderedText": "Ash 3",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 251,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "14",
+          "renderKind": "text",
+          "renderedText": "14",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 251,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Queued",
+          "renderKind": "button",
+          "renderedText": "Queued",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 87.35699462890625,
+            "text": [
+              {
+                "Text": "Queued",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 117.39202880859375,
+                  "y": 274.75,
+                  "width": 49.35699462890625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 251,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 316,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Cedar 4",
+          "renderKind": "text",
+          "renderedText": "Cedar 4",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 316,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "21",
+          "renderKind": "text",
+          "renderedText": "21",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 316,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ready",
+          "renderKind": "button",
+          "renderedText": "Ready",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 77.375,
+            "text": [
+              {
+                "Text": "Ready",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 127.3740234375,
+                  "y": 339.75,
+                  "width": 39.375,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 316,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 381,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Birch 5",
+          "renderKind": "text",
+          "renderedText": "Birch 5",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 381,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "28",
+          "renderKind": "text",
+          "renderedText": "28",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 381,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Queued",
+          "renderKind": "button",
+          "renderedText": "Queued",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 87.35699462890625,
+            "text": [
+              {
+                "Text": "Queued",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 117.39202880859375,
+                  "y": 404.75,
+                  "width": 49.35699462890625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 381,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 446,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ash 6",
+          "renderKind": "text",
+          "renderedText": "Ash 6",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 446,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "6",
+          "renderKind": "text",
+          "renderedText": "6",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 446,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ready",
+          "renderKind": "button",
+          "renderedText": "Ready",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 77.375,
+            "text": [
+              {
+                "Text": "Ready",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 127.3740234375,
+                  "y": 469.75,
+                  "width": 39.375,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 446,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 511,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Cedar 7",
+          "renderKind": "text",
+          "renderedText": "Cedar 7",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 511,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "13",
+          "renderKind": "text",
+          "renderedText": "13",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 511,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Queued",
+          "renderKind": "button",
+          "renderedText": "Queued",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 87.35699462890625,
+            "text": [
+              {
+                "Text": "Queued",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 117.39202880859375,
+                  "y": 534.75,
+                  "width": 49.35699462890625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 511,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 576,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Birch 8",
+          "renderKind": "text",
+          "renderedText": "Birch 8",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 576,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "20",
+          "renderKind": "text",
+          "renderedText": "20",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 576,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ready",
+          "renderKind": "button",
+          "renderedText": "Ready",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 77.375,
+            "text": [
+              {
+                "Text": "Ready",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 127.3740234375,
+                  "y": 599.75,
+                  "width": 39.375,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 576,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 641,
+            "width": 78.74652099609375,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ash 9",
+          "renderKind": "text",
+          "renderedText": "Ash 9",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 641,
+            "width": 235.60662841796875,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "27",
+          "renderKind": "text",
+          "renderedText": "27",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 641,
+            "width": 162.89781188964844,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Queued",
+          "renderKind": "button",
+          "renderedText": "Queued",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 87.35699462890625,
+            "text": [
+              {
+                "Text": "Queued",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 117.39202880859375,
+                  "y": 664.75,
+                  "width": 49.35699462890625,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 641,
+            "width": 180.74903869628906,
+            "height": 65
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "",
+          "renderKind": "checkbox",
+          "renderedText": "",
+          "buttonPresentation": null,
+          "box": {
+            "x": 600.2534790039062,
+            "y": 706,
+            "width": 78.74652099609375,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Cedar 10",
+          "renderKind": "text",
+          "renderedText": "Cedar 10",
+          "buttonPresentation": null,
+          "box": {
+            "x": 364.6468505859375,
+            "y": 706,
+            "width": 235.60662841796875,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "5",
+          "renderKind": "text",
+          "renderedText": "5",
+          "buttonPresentation": null,
+          "box": {
+            "x": 201.74903869628906,
+            "y": 706,
+            "width": 162.89781188964844,
+            "height": 64.5
+          },
+          "colSpan": 1
+        },
+        {
+          "text": "Ready",
+          "renderKind": "button",
+          "renderedText": "Ready",
+          "buttonPresentation": {
+            "wrapperSpacing": 0,
+            "actionSpacing": 0,
+            "presenterSpacing": 0,
+            "actionFontSize": 14,
+            "actionFontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+            "actionFontWeight": 500,
+            "buttonWidth": 77.375,
+            "text": [
+              {
+                "Text": "Ready",
+                "CharacterSpacing": 0,
+                "FontSize": 14,
+                "fontFamily": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+                "fontWeight": 500,
+                "box": {
+                  "x": 127.3740234375,
+                  "y": 729.5,
+                  "width": 39.375,
+                  "height": 17.5
+                }
+              }
+            ]
+          },
+          "box": {
+            "x": 21.000015258789062,
+            "y": 706,
+            "width": 180.74903869628906,
+            "height": 64.5
+          },
+          "colSpan": 1
+        }
+      ],
+      "rows": [
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 121,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 186,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 251,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 316,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 381,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 446,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 511,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 576,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 641,
+            "width": 658,
+            "height": 65
+          }
+        },
+        {
+          "state": "false",
+          "selected": null,
+          "primitiveSelected": false,
+          "box": {
+            "x": 21,
+            "y": 706,
+            "width": 658,
+            "height": 64.5
+          }
+        }
+      ],
+      "search": [
+        {
+          "value": "",
+          "placeholder": "Search name...",
+          "box": {
+            "x": 296,
+            "y": 20,
+            "width": 384,
+            "height": 40
+          }
+        }
+      ],
+      "checkboxes": [
+        {
+          "name": "Select page",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 616.2534790039062,
+            "y": 89,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 0",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 143.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 1",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 208.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 2",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 273.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 3",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 338.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 4",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 403.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 5",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 468.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 6",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 533.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 7",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 598.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 8",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 663.5,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "name": "Select row 9",
+          "checked": false,
+          "indeterminate": false,
+          "box": {
+            "x": 643,
+            "y": 728.25,
+            "width": 20,
+            "height": 20
+          }
+        }
+      ],
+      "originalActions": [
+        {
+          "row": "fictional-00",
+          "disabled": false,
+          "text": "Queued"
+        },
+        {
+          "row": "fictional-01",
+          "disabled": false,
+          "text": "Ready"
+        },
+        {
+          "row": "fictional-02",
+          "disabled": false,
+          "text": "Queued"
+        },
+        {
+          "row": "fictional-03",
+          "disabled": false,
+          "text": "Ready"
+        },
+        {
+          "row": "fictional-04",
+          "disabled": false,
+          "text": "Queued"
+        },
+        {
+          "row": "fictional-05",
+          "disabled": false,
+          "text": "Ready"
+        },
+        {
+          "row": "fictional-06",
+          "disabled": false,
+          "text": "Queued"
+        },
+        {
+          "row": "fictional-07",
+          "disabled": false,
+          "text": "Ready"
+        },
+        {
+          "row": "fictional-08",
+          "disabled": false,
+          "text": "Queued"
+        },
+        {
+          "row": "fictional-09",
+          "disabled": false,
+          "text": "Ready"
+        }
+      ],
+      "footer": {
+        "text": "",
+        "buttons": [
+          {
+            "disabled": true,
+            "box": {
+              "x": 68,
+              "y": 787.5,
+              "width": 32,
+              "height": 32
+            }
+          },
+          {
+            "disabled": false,
+            "box": {
+              "x": 28,
+              "y": 787.5,
+              "width": 32,
+              "height": 32
+            }
+          }
+        ]
+      },
+      "events": [],
+      "originalNativeContentVerified": true
+    }
+  }
+}

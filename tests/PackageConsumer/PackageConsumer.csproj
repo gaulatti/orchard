@@ -24,6 +24,10 @@
         <OrchardPackageVersion Condition="'$(OrchardPackageVersion)' == ''">0.1.0</OrchardPackageVersion>
     </PropertyGroup>
     <ItemGroup>
+        <EmbeddedResource Include="ReferencePngCodec.u8" LogicalName="Orchard.Testing.ReferencePngCodec.u8" />
+        <EmbeddedResource Include="ScreenshotPngCodec.u8" LogicalName="Orchard.Testing.ScreenshotPngCodec.u8" />
+        <EmbeddedResource Include="OverlayShadowSamplingTrace.bin" LogicalName="Orchard.Testing.ShadowSampling.bin" />
+        <EmbeddedResource Include="OverlayFarCoverageTrace.bin" LogicalName="Orchard.Testing.FarCoverage.bin" />
         <Manifest Include="$(ApplicationManifest)" />
         <PackageReference Include="Gaulatti.Orchard" Version="$(OrchardPackageVersion)" />
         <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.5.1" />

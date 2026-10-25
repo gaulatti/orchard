@@ -404,3 +404,9 @@ end-to-end contract.
 - The user requires fully unattended work and recommended choices. Resolve
   optional component decisions with the recommended choice and continue;
   preserve existing scope, desktop and external-action restrictions.
+- Evaluate overengineering before each implementation or verification step.
+  Tie the step to a concrete component requirement or observed defect; prefer
+  existing mechanisms and focused regression checks. Reuse valid evidence for
+  unaffected behavior, batch package qualification at meaningful milestones,
+  and do not make byte-identical raster research a public-component delivery
+  gate. Preserve actual failures and required runtime/delivery checks.

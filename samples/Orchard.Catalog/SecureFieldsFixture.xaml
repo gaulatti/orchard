@@ -1,0 +1,15 @@
+<UserControl x:Class="Orchard.Catalog.SecureFieldsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="12" Margin="0,0,0,40" MaxWidth="480" HorizontalAlignment="Left" Background="{ThemeResource BleeckerBackgroundBrush}">
+  <TextBlock Text="Secure field · native password editing preview" Style="{StaticResource BleeckerHeadingStyle}" />
+  <TextBlock Text="Fictional local values only. Reveal persists until toggled. No sign-in or network service." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap" />
+  <orchard:BleeckerField Label="Fictional sample" HorizontalAlignment="Left">
+   <orchard:BleeckerSecureField x:Name="Sample" Width="320" HorizontalAlignment="Left" PlaceholderText="Enter a fictional value" AutomationProperties.Name="Fictional sample" PasswordChanged="Changed" />
+  </orchard:BleeckerField>
+  <orchard:BleeckerSecureField Width="320" HorizontalAlignment="Left" Password="Fictional sample" IsEnabled="False" AutomationProperties.Name="Disabled fictional sample" />
+  <orchard:BleeckerSecureField Width="160" HorizontalAlignment="Left" PlaceholderText="Constrained sample" AutomationProperties.Name="Constrained fictional sample" />
+  <orchard:BleeckerSecureField Width="320" HorizontalAlignment="Left" FontSize="28" PlaceholderText="Larger text sample" AutomationProperties.Name="Larger text fictional sample" />
+  <orchard:BleeckerButton Content="Clear sample" Click="Clear" />
+  <TextBlock x:Name="Status" Text="Value length: 0" Style="{StaticResource BleeckerBodyStyle}" />
+ </StackPanel>
+</UserControl>

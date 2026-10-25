@@ -1,0 +1,21 @@
+<UserControl x:Class="Orchard.Catalog.FieldsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="24" Margin="0,0,0,40">
+  <TextBlock Text="Field composition" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Consumer controls keep their value, validation and commands." Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerField Label="Coverage title" Required="True" Description="Use a concise title." Width="320" HorizontalAlignment="Left">
+   <orchard:BleeckerInput Text="Consumer-owned title"/>
+  </orchard:BleeckerField>
+  <orchard:BleeckerField Label="Summary" Optional="True" Description="Description and error nodes keep separate native relationships." Error="A shorter summary is needed." Width="320" HorizontalAlignment="Left">
+   <orchard:BleeckerInput Text="Consumer summary"/>
+  </orchard:BleeckerField>
+  <orchard:BleeckerField Label="Reference code" Optional="True" Width="320" HorizontalAlignment="Left">
+   <orchard:BleeckerField.Action><orchard:BleeckerButton Variant="Link" Content="Reset" Click="ResetRequested"/></orchard:BleeckerField.Action>
+   <orchard:BleeckerInput x:Name="Code" Text="Consumer code"/>
+  </orchard:BleeckerField>
+  <orchard:BleeckerField Label="A longer coverage display name" Required="True" Optional="True" Description="Help wraps at the available width." Width="160" HorizontalAlignment="Left">
+   <orchard:BleeckerInput Text="Narrow field"/>
+  </orchard:BleeckerField>
+  <TextBlock x:Name="Status" Text="No action requested." Style="{StaticResource BleeckerBodyStyle}"/>
+ </StackPanel>
+</UserControl>

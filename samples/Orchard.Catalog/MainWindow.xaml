@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:orchard="using:Orchard"
     xmlns:local="using:Orchard.Catalog"
+    xmlns:demos="using:Orchard.Catalog.Demos"
     Title="orchard · Windows component catalog">
+    <orchard:BleeckerModalHost x:Name="ModalHost" RequestedTheme="{Binding ElementName=CatalogRoot, Path=RequestedTheme}">
     <Grid x:Name="CatalogRoot" Background="{ThemeResource BleeckerBackgroundBrush}" Loaded="OnLoaded">
         <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
         <Grid.ColumnDefinitions><ColumnDefinition Width="224" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
@@ -88,6 +90,15 @@
                 <local:NotificationsFixture x:Name="Notifications" />
                 <local:AlertsFixture x:Name="Alerts" />
                 <local:BrandLockupsFixture x:Name="BrandLockups" />
+                <local:BrandMarksFixture x:Name="BrandMarks" />
+                <local:MenubarsFixture x:Name="Menubars" />
+                <local:NavigationMenusFixture x:Name="NavigationMenus" />
+                <local:SonnersFixture x:Name="Sonners" />
+                <local:HeroCarouselsFixture x:Name="HeroCarousels" />
+                <local:FileInputsFixture x:Name="FileInputs" />
+                <local:MediaLibrariesFixture x:Name="MediaLibraries" />
+                <local:CommandSpotlightsFixture x:Name="CommandSpotlights" />
+                <local:AuthShellsFixture x:Name="AuthShells" />
                 <local:BauhausBackgroundsFixture x:Name="BauhausBackgrounds" />
                 <local:ActivityItemsFixture x:Name="ActivityItems" />
                 <local:AttentionSurfacesFixture x:Name="AttentionSurfaces" />
@@ -122,6 +133,17 @@
                 <local:DateControlsFixture x:Name="DateControls" />
                 <local:DataTableToolbarsFixture x:Name="DataTableToolbars" />
                 <local:DataTablePaginationsFixture x:Name="DataTablePaginations" />
+                <local:PaginationsFixture x:Name="Paginations" />
+                <local:CollectionFiltersFixture x:Name="CollectionFilters" />
+                <local:NavMenuFixture x:Name="NavMenus" />
+                <local:FooterFixture x:Name="Footers" />
+                <local:HeaderFixture x:Name="Headers" />
+                <local:AlertDialogsFixture x:Name="AlertDialogs" />
+                <local:ModalsFixture x:Name="Modals" />
+                <local:EdgeDialogsFixture x:Name="EdgeDialogs" />
+                <local:PopoversFixture x:Name="Popovers" />
+                <local:HoverCardsFixture x:Name="HoverCards" />
+                <local:ScrollAreasFixture x:Name="ScrollAreas" />
                 <local:DataTableColumnTogglesFixture x:Name="DataTableColumnToggles" />
                 <local:DataTableFiltersFixture x:Name="DataTableFilters" />
                 <local:TooltipsFixture x:Name="Tooltips" />
@@ -134,9 +156,35 @@
                 <local:SwitchesFixture x:Name="Switches" />
                 <local:CheckboxesFixture x:Name="Checkboxes" />
                 <local:RadioGroupsFixture x:Name="RadioGroups" />
+                <local:TabsFixture x:Name="Tabs" />
+                <local:DialogCloseButtonsFixture x:Name="DialogCloseButtons" />
+                <local:FieldsFixture x:Name="Fields" />
+                <local:SecureFieldsFixture x:Name="SecureFields" />
+                <local:SegmentedControlsFixture x:Name="SegmentedControls" />
+                <local:AppTabBarsFixture x:Name="AppTabBars" />
+                <local:OtpInputsFixture x:Name="OtpInputs" />
+                <local:ContextMenusFixture x:Name="ContextMenus" />
+                <local:TablesFixture x:Name="Tables" />
+                <local:SimpleDataTablesFixture x:Name="SimpleDataTables" />
+                <local:DataTablesFixture x:Name="DataTables" />
+                <local:PageFramesFixture x:Name="PageFrames" />
+                <local:DetailLayoutsFixture x:Name="DetailLayouts" />
+                <local:PanelsFixture x:Name="Panels" />
+                <local:PanelLayoutsFixture x:Name="PanelLayouts" />
+                <local:FeedGridsFixture x:Name="FeedGrids" />
+                <local:FeedColumnsFixture x:Name="FeedColumns" />
+                <local:FeedItemsFixture x:Name="FeedItems" />
+                <local:SelectsFixture x:Name="Selects" />
+                <local:AppShellsFixture x:Name="AppShells" />
+                <local:AdminShellsFixture x:Name="AdminShells" />
+                <demos:MonitoringWorkspaceFixture x:Name="MonitoringWorkspace" />
+                <demos:EditorialWorkspaceFixture x:Name="EditorialWorkspace" />
+                <local:SlidersFixture x:Name="Sliders" />
+                <local:ThemeTogglesFixture x:Name="ThemeToggles" />
                 <local:AccordionsFixture x:Name="Accordions" />
                 <local:ContrastFixture x:Name="Contrast" />
             </StackPanel>
         </ScrollViewer>
     </Grid>
+    </orchard:BleeckerModalHost>
 </Window>

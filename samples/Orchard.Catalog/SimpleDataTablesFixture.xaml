@@ -1,0 +1,24 @@
+<StackPanel x:Class="Orchard.Catalog.SimpleDataTablesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:o="using:Orchard" Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <StackPanel.Resources>
+  <Style x:Key="FictionalCountCellStyle" TargetType="o:BleeckerTableCell" BasedOn="{StaticResource BleeckerTableCellStyle}"><Setter Property="HorizontalContentAlignment" Value="Center"/></Style>
+  <Style x:Key="FictionalCountHeaderStyle" TargetType="o:BleeckerSortableTableHeader" BasedOn="{StaticResource BleeckerSortableTableHeaderStyle}"><Setter Property="HorizontalContentAlignment" Value="Center"/></Style>
+  <DataTemplate x:Key="FictionalNameTemplate"><TextBlock Text="{Binding}" TextWrapping="WrapWholeWords"/></DataTemplate>
+  <Style x:Key="FictionalNameCellStyle" TargetType="o:BleeckerTableCell" BasedOn="{StaticResource BleeckerTableCellStyle}"><Setter Property="ContentTemplate" Value="{StaticResource FictionalNameTemplate}"/></Style>
+ </StackPanel.Resources>
+ <TextBlock Text="Sortable table composition" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Sort and select fictional local rows. Cells keep their state when rows move." Style="{StaticResource BleeckerBodyStyle}"/>
+ <o:BleeckerTable Width="660" HorizontalAlignment="Left"><o:BleeckerTableHeader><o:BleeckerTableRow>
+  <o:BleeckerSortableTableHeader x:Name="StandaloneHeader" Field="name" Label="Standalone sortable heading" SortRequested="StandaloneSort" Style="{StaticResource BleeckerSortableTableHeaderStyle}"/>
+ </o:BleeckerTableRow></o:BleeckerTableHeader></o:BleeckerTable>
+ <o:BleeckerTable Width="660" HorizontalAlignment="Left"><o:BleeckerTableHeader><o:BleeckerTableRow>
+  <o:BleeckerTableHead Content="Straße ﬃ" Language="en-US"/>
+  <o:BleeckerSortableTableHeader Field="turkish" Label="iyi ışık" Language="tr-TR"/>
+  <o:BleeckerSortableTableHeader Field="greek" Label="Μαΐου" Language="el-GR" IsSortable="False"/>
+ </o:BleeckerTableRow></o:BleeckerTableHeader></o:BleeckerTable>
+ <o:BleeckerTable Width="660" HorizontalAlignment="Left"><o:BleeckerTableBody><o:BleeckerTableRow>
+  <o:BleeckerTableCell Content="Fictional styled cell" FontStyle="Italic" CharacterSpacing="120" Padding="20,14" BorderThickness="2" BorderBrush="{ThemeResource BleeckerTableSortActive}" CornerRadius="8"/>
+  <o:BleeckerTableCell Content="Caller typography and border values"/>
+ </o:BleeckerTableRow></o:BleeckerTableBody></o:BleeckerTable>
+ <o:BleeckerSimpleDataTable x:Name="Data" Width="660" HorizontalAlignment="Left" IsSelectable="True" Caption="Three fictional local items" Style="{StaticResource BleeckerSimpleDataTableStyle}" SortRequested="Sorted" SelectionRequested="Selected"/>
+ <TextBlock x:Name="Status" Text="No composition action yet" Style="{StaticResource BleeckerBodyStyle}"/>
+</StackPanel>

@@ -30,7 +30,7 @@ public sealed partial class BarChartsFixture : UserControl
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         var outside = new Button { Content = "Outside chart", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Style = (Style)Application.Current.Resources["BleeckerSecondaryButtonStyle"] };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
-        using var reference = JsonDocument.Parse(typeof(BarChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.BarChartLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(BarChartsFixture).Assembly, "Orchard.Catalog.Reference.BarChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try
         {

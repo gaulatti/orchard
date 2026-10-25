@@ -50,10 +50,17 @@ public sealed class BleeckerButtonGroup : Panel
         for (var i = 0; i < visible.Length; i++)
         {
             var child = visible[i];
-            if (!appearances.ContainsKey(child)) appearances.Add(child, new ChildAppearance(child));
+            if (!appearances.ContainsKey(child))
+            {
+                var appearance = new ChildAppearance(child);
+                appearances.Add(child, appearance);
+                appearance.DetachBindings(child);
+            }
             var first = i == 0;
             var last = i == visible.Length - 1;
             child.Margin = new Thickness(0);
+            child.HorizontalAlignment = HorizontalAlignment.Stretch;
+            child.VerticalAlignment = VerticalAlignment.Stretch;
             child.CornerRadius = Orientation == Orientation.Horizontal
                 ? new CornerRadius(first ? radius : 0, last ? radius : 0, last ? radius : 0, first ? radius : 0)
                 : new CornerRadius(first ? radius : 0, first ? radius : 0, last ? radius : 0, last ? radius : 0);
@@ -81,18 +88,27 @@ public sealed class BleeckerButtonGroup : Panel
 
     protected override Size ArrangeOverride(Size finalSize)
     {
+        // Quantize shared edges together: rounding each width separately can
+        // leave a pixel gap or overlap between proportionally sized actions.
+        double Edge(double value) => UseLayoutRounding && XamlRoot is { } root
+            ? Math.Round(value * root.RasterizationScale, MidpointRounding.AwayFromZero) / root.RasterizationScale
+            : value;
         double offset = 0;
         for (var i = 0; i < visible.Length; i++)
         {
             if (Orientation == Orientation.Horizontal)
             {
-                visible[i].Arrange(new Rect(offset, 0, widths[i], finalSize.Height));
+                var start = Edge(offset);
+                var end = Edge(offset + widths[i]);
+                visible[i].Arrange(new Rect(start, 0, end - start, Edge(finalSize.Height)));
                 offset += widths[i];
             }
             else
             {
                 var height = visible[i].DesiredSize.Height;
-                visible[i].Arrange(new Rect(0, offset, finalSize.Width, height));
+                var start = Edge(offset);
+                var end = Edge(offset + height);
+                visible[i].Arrange(new Rect(0, start, Edge(finalSize.Width), end - start));
                 offset += height;
             }
         }
@@ -110,11 +126,23 @@ public sealed class BleeckerButtonGroup : Panel
         private readonly LocalValue radius = new(child, Control.CornerRadiusProperty);
         private readonly LocalValue border = new(child, Control.BorderThicknessProperty);
         private readonly LocalValue margin = new(child, MarginProperty);
+        private readonly LocalValue horizontal = new(child, HorizontalAlignmentProperty);
+        private readonly LocalValue vertical = new(child, VerticalAlignmentProperty);
+        public void DetachBindings(Control target)
+        {
+            radius.Detach(target, Control.CornerRadiusProperty);
+            border.Detach(target, Control.BorderThicknessProperty);
+            margin.Detach(target, MarginProperty);
+            horizontal.Detach(target, HorizontalAlignmentProperty);
+            vertical.Detach(target, VerticalAlignmentProperty);
+        }
         public void Restore(Control target)
         {
             radius.Restore(target, Control.CornerRadiusProperty);
             border.Restore(target, Control.BorderThicknessProperty);
             margin.Restore(target, MarginProperty);
+            horizontal.Restore(target, HorizontalAlignmentProperty);
+            vertical.Restore(target, VerticalAlignmentProperty);
         }
     }
 
@@ -122,6 +150,10 @@ public sealed class BleeckerButtonGroup : Panel
     {
         private readonly object value = element.ReadLocalValue(property);
         private readonly Binding? binding = element.GetBindingExpression(property)?.ParentBinding;
+        public void Detach(FrameworkElement target, DependencyProperty property)
+        {
+            if (binding is not null) target.ClearValue(property);
+        }
         public void Restore(FrameworkElement target, DependencyProperty property)
         {
             if (binding is not null) target.SetBinding(property, binding);

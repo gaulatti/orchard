@@ -26,6 +26,37 @@ The reference recipes use 10% light / 15% dark surface tints for hover and selec
 
 The x64 published catalog's `TogglesFixture.VerifyAsync` toggles on/off through the native automation provider, verifies the consumer's visible result, and checks eight rendered states for both variants in light/dark. All six styles are registered with the catalog coverage gate. The smoke artifact includes `toggles-light.png`, `toggles-dark.png`, and the result report.
 
+The shared hidden `ToggleGroupFixture` also exercises standalone native toggles
+with all six styles in both themes. These 12 cases verify two-way selection in
+both directions, exact selection-event counts, `CanExecuteChanged`, preservation
+of caller-disabled state, live command/parameter replacement, old-command
+detachment and retention of all four caller bindings. The existing background
+runner and window guards are reused; these checks do not send hardware input
+or change OS settings.
+
+The [native Toggle automation method](https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.peers.togglebuttonautomationpeer.toggle?view=windows-app-sdk-2.0)
+cycles selection state. The current pinned-runtime tests additionally record
+command execution through that native provider. The auditor requires exactly
+two executions with the original command and two with its replacement in each
+case; caller parameter identity is checked inside each execution. Calling the
+consumer's command directly would not establish this control behavior.
+
+The current catalog and independent x64 NuGet consumer each pass all 12
+standalone cases, with two original-command and two replacement-command
+executions per case. The surrounding Toggle Group regression passes 62 catalog
+checks and 60 package checks; its 70 group observations are unchanged. Both
+auditors reject 41 damaged reports, including missing command executions and
+lost bindings, and retain the earlier actual retired-selection failure.
+Evidence is under `artifacts/current/toggle-binding-catalog-native-v1` and
+`toggle-binding-package-native-v1`. The shared fixture builds in independent
+x64 and ARM64 consumers. Library implementation and delivery artifacts are
+unchanged; native ARM64 execution is unverified.
+
 In the Windows 11 desktop session, Tab/Shift+Tab showed native focus, Space selected Follow updates, pointer activation cleared it, and Tab moved to Large. Pointer activation also cleared the selected outline toggle. Both theme captures were inspected, including the wrapped Japanese, Portuguese and Arabic label at a constrained width.
 
-Remaining acceptance: Narrator, actual Windows contrast settings, increased text/display scale, reduced motion, command and two-way binding regression coverage, and ARM64 runtime. These styles are implemented; the parity entry remains in progress until all required evidence exists.
+Remaining acceptance: increased text/display scale, reduced motion, and ARM64
+runtime. Narrator and OS contrast
+campaigns are excluded by the [component-library scope](library-scope.md).
+Historical runtime statements above describe their original checks. These styles
+are implemented; the parity entry remains in progress until all required evidence
+exists.

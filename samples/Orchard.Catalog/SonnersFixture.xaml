@@ -1,0 +1,16 @@
+<UserControl x:Class="Orchard.Catalog.SonnersFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Sonner" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Reusable notifications with fictional local content. Actions keep the original toast until the caller dismisses it or its timer expires." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerSonner x:Name="Host" SurfaceStyle="{StaticResource BleeckerSonnerSurfaceStyle}" DismissButtonStyle="{StaticResource BleeckerSonnerDismissButtonStyle}" LinkActionStyle="{StaticResource BleeckerSonnerLinkActionStyle}" ButtonActionStyle="{StaticResource BleeckerSonnerButtonActionStyle}"/>
+  <ComboBox x:Name="Position" Header="Position" SelectedIndex="5" SelectionChanged="PositionChanged" HorizontalAlignment="Left" Width="220">
+   <ComboBoxItem Content="Top left"/><ComboBoxItem Content="Top center"/><ComboBoxItem Content="Top right"/><ComboBoxItem Content="Bottom left"/><ComboBoxItem Content="Bottom center"/><ComboBoxItem Content="Bottom right"/>
+  </ComboBox>
+  <CheckBox Content="Persistent notifications" Checked="PersistentChanged" Unchecked="PersistentChanged"/>
+  <StackPanel Orientation="Horizontal" Spacing="8"><Button Content="Default" Tag="Default" Click="ShowVariant"/><Button Content="Success" Tag="Success" Click="ShowVariant"/><Button Content="Error" Tag="Error" Click="ShowVariant"/><Button Content="Warning" Tag="Warning" Click="ShowVariant"/><Button Content="Info" Tag="Info" Click="ShowVariant"/></StackPanel>
+  <TextBlock Text="Caller-owned action variants" Style="{StaticResource BleeckerBodyStyle}"/>
+  <StackPanel Orientation="Horizontal" Spacing="8"><Button Content="Default action" Tag="Primary" Click="ShowAction"/><Button Content="Secondary" Tag="Secondary" Click="ShowAction"/><Button Content="Outline" Tag="Outline" Click="ShowAction"/><Button Content="Subtle" Tag="Subtle" Click="ShowAction"/><Button Content="Ghost" Tag="Ghost" Click="ShowAction"/><Button Content="Destructive" Tag="Destructive" Click="ShowAction"/><Button Content="Link" Tag="Link" Click="ShowAction"/></StackPanel>
+  <StackPanel Orientation="Horizontal" Spacing="8"><Button Content="Long multilingual content" Click="ShowLong"/><Button Content="Twelve original items" Click="ShowStack"/><Button Content="Dismiss latest immediately" Click="DismissLatest"/><Button Content="Global API example" Click="ShowGlobal"/></StackPanel>
+  <TextBlock x:Name="Result" Text="No fictional action invoked" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+ </StackPanel>
+</UserControl>

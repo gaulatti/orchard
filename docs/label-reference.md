@@ -56,8 +56,9 @@ non-Latin text and increased text size still need rendered reference checks.
 - Register default, error composition, explicit disabled adaptation, empty,
   long/multiline, non-Latin and rich-content fixtures. Match both reference
   themes and test live appearance changes.
-- Use paired Windows contrast colors in actual contrast mode. Verify keyboard,
-  pointer, Narrator, text/display scaling and x64/ARM64 runtime separately.
+- Preserve existing component theme and accessibility metadata support. Verify
+  keyboard, pointer, text/display scaling and x64/ARM64 runtime separately.
+  Narrator and OS contrast campaigns are excluded by [the library scope](library-scope.md).
 - Verify the public label API through the isolated NuGet consumer and document
   platform adaptations. No component acceptance follows from this reference
   audit alone.

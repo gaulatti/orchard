@@ -1,0 +1,20 @@
+<UserControl x:Class="Orchard.Catalog.MediaLibrariesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="Media Library" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Original fictional local images and caller-owned metadata. This demo accepts search requests and handles Delete by removing its own item. Preview selection retains the original object. Nothing is uploaded." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <orchard:BleeckerMediaLibrary x:Name="Primary" Title="Original fictional media">
+   <orchard:BleeckerMediaLibrary.Items><orchard:BleeckerMediaLibraryItems/></orchard:BleeckerMediaLibrary.Items>
+   <orchard:BleeckerMediaLibrary.Actions><Button Content="Restore fictional items" Click="Restore"/></orchard:BleeckerMediaLibrary.Actions>
+   <orchard:BleeckerMediaLibrary.Filter><TextBox Header="Caller filter note" Text="Retained original edit"/></orchard:BleeckerMediaLibrary.Filter>
+  </orchard:BleeckerMediaLibrary>
+  <TextBlock x:Name="Result" Text="No copy or deletion requested" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <StackPanel Orientation="Horizontal" Spacing="12"><CheckBox Content="Reject search requests" Checked="RejectSearch" Unchecked="RejectSearch"/><CheckBox Content="Disable library" Checked="Disable" Unchecked="Disable"/><CheckBox Content="Right-to-left" Checked="Direction" Unchecked="Direction"/><Button Content="Update original filename" Click="Rename"/><Button Content="Remove first original item" Click="RemoveFirst"/></StackPanel>
+  <TextBlock Text="Empty, disabled, constrained and scaled" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerMediaLibrary Title="Original empty collection" EmptyMessage="No fictional attachments"/>
+  <orchard:BleeckerMediaLibrary x:Name="Disabled" Title="Disabled original media" IsEnabled="False"/>
+  <orchard:BleeckerMediaLibrary x:Name="Constrained" Title="Constrained original media" Width="420" HorizontalAlignment="Left"/>
+  <orchard:BleeckerMediaLibrary x:Name="Scaled" Title="Scaled original media" FontSize="32"/>
+  <TextBlock Text="Tile and open styles" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <Border Style="{StaticResource BleeckerMediaLibraryTileStyle}" Width="220" Height="80" HorizontalAlignment="Left"><Button Style="{StaticResource BleeckerMediaLibraryOpenStyle}" Content="Original tile action" AutomationProperties.Name="Original fictional tile action"/></Border>
+ </StackPanel>
+</UserControl>

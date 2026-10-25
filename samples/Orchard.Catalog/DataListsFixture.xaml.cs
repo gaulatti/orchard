@@ -20,7 +20,7 @@ public sealed partial class DataListsFixture : UserControl
         CasePicker.SelectedIndex = 0;
         ActualThemeChanged += (_, _) => UpdateBackground(); UpdateBackground();
     }
-    private static JsonDocument ReadReference() => JsonDocument.Parse(typeof(DataListsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataList.json")!);
+    private static JsonDocument ReadReference() => JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DataListsFixture).Assembly, "Orchard.Catalog.Reference.DataList.json")!);
     private int Viewport => XamlRoot is { Size.Width: < 640 } ? 639 : XamlRoot?.Size.Width == 640 ? 640 : 1024;
     private void CaseChanged(object sender, SelectionChangedEventArgs args)
     {
@@ -61,7 +61,7 @@ public sealed partial class DataListsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         using var reference = ReadReference();
-        using var typography = JsonDocument.Parse(typeof(DataListsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataListTypography.json")!);
+        using var typography = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DataListsFixture).Assembly, "Orchard.Catalog.Reference.DataListTypography.json")!);
         var cases = new List<object>(); var failures = new List<string>();
         var viewport = Viewport;
         foreach (var spec in reference.RootElement.GetProperty("cases").EnumerateArray().Where(c => c.GetProperty("scheme").GetString() == scheme.ToString() && c.GetProperty("viewportWidth").GetInt32() == viewport))

@@ -1,0 +1,1727 @@
+{
+  "format": "orchard-data-table-filter-plan-source-v1",
+  "passed": true,
+  "sourceCommit": "a86059013cd59684ce452849278ea81e734f2066",
+  "sourceReferenceSha256": "ce1ae5820aab65a1d1e84076cdc70cd6f8c5047df4071fef2e138d116b9bd24f",
+  "sourceBundleSha256": "8e8943ba37634f9e46cbedc26677001a468eea4e5ac3b5c9555c1fc21e0c5f92",
+  "sourceCssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "modules": [
+    {
+      "name": "react",
+      "version": "19.2.4",
+      "packageSha256": "e60b92f6031f023907bbfab8f96e63e44307776ec1488f310ba61d41b8cda8cc"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.2.4",
+      "packageSha256": "b8448092689c7e6191595a98526ced808288f35138d97fbce5801a94922e3c36"
+    },
+    {
+      "name": "lucide-react",
+      "version": "0.563.0",
+      "packageSha256": "e33c46807b6a6ee6cd2dbf3e4f66f3f2919a0838ef8854b2163dbc54bde1452e"
+    },
+    {
+      "name": "@tanstack/react-table",
+      "version": "8.21.3",
+      "packageSha256": "06484aa892e133fd488097c4aa74f91452b73338a9115bc6c8939def748e8ce0"
+    },
+    {
+      "name": "@tanstack/table-core",
+      "version": "8.21.3",
+      "packageSha256": "897ae7d8c7ec183550fd6c1b685f732a33f516d8ed43d6c19117a91f9bf67b7e"
+    }
+  ],
+  "browser": "155.0.4283.62",
+  "scriptSha256": "a61ef7e271ecc82c3d8b574bca400c408dd9d7e4f38c3d9395dc7034d1eb57c9",
+  "sourceCodeModified": false,
+  "osInputSent": false,
+  "cases": [
+    {
+      "scheme": "Light",
+      "name": "no-columns",
+      "spec": {
+        "rows": [
+          {
+            "id": "cedar",
+            "name": "Cedar",
+            "count": 1,
+            "status": "Queued"
+          },
+          {
+            "id": "birch",
+            "name": "Birch",
+            "count": 2,
+            "status": "Ready"
+          },
+          {
+            "id": "ash",
+            "name": "Ash",
+            "count": 3,
+            "status": "Queued"
+          }
+        ]
+      },
+      "query": "no fictional match",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status"
+            ],
+            "renderedRows": [
+              {
+                "text": "Cedar1Queued",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Birch2Ready",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Ash3Queued",
+                "cells": 4,
+                "height": 64.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": "no fictional match",
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "name": "boolean-only",
+      "spec": {
+        "rows": [
+          {
+            "id": "true-one",
+            "flag": true
+          },
+          {
+            "id": "false",
+            "flag": false
+          },
+          {
+            "id": "true-two",
+            "flag": true
+          }
+        ],
+        "boolean": true
+      },
+      "query": "no fictional match",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": "no fictional match",
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "name": "boolean-column-filter",
+      "spec": {
+        "rows": [
+          {
+            "id": "true-one",
+            "flag": true
+          },
+          {
+            "id": "false",
+            "flag": false
+          },
+          {
+            "id": "true-two",
+            "flag": true
+          }
+        ],
+        "boolean": true
+      },
+      "query": "no fictional match",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [
+                {
+                  "id": "flag",
+                  "value": true
+                }
+              ],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [
+                {
+                  "id": "flag",
+                  "value": true
+                }
+              ],
+              "globalFilter": "no fictional match",
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Light",
+      "name": "hidden-eligible",
+      "spec": {
+        "rows": [
+          {
+            "id": "cedar",
+            "name": "Cedar",
+            "count": 1,
+            "status": "Queued"
+          },
+          {
+            "id": "birch",
+            "name": "Birch",
+            "count": 2,
+            "status": "Ready"
+          },
+          {
+            "id": "ash",
+            "name": "Ash",
+            "count": 3,
+            "status": "Queued"
+          }
+        ]
+      },
+      "query": "Cedar",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status"
+            ],
+            "renderedRows": [
+              {
+                "text": "Cedar1Queued",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Birch2Ready",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Ash3Queued",
+                "cells": 4,
+                "height": 64.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {
+                "name": false,
+                "count": false,
+                "status": false
+              },
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select"
+            ],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 1,
+                "height": 45
+              },
+              {
+                "text": "",
+                "cells": 1,
+                "height": 45
+              },
+              {
+                "text": "",
+                "cells": 1,
+                "height": 44.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": "Cedar",
+              "columnVisibility": {
+                "name": false,
+                "count": false,
+                "status": false
+              },
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0"
+            ],
+            "sortedIds": [
+              "0"
+            ],
+            "visibleOriginalIds": [
+              "cedar"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select"
+            ],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 1,
+                "height": 44.5
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "name": "no-columns",
+      "spec": {
+        "rows": [
+          {
+            "id": "cedar",
+            "name": "Cedar",
+            "count": 1,
+            "status": "Queued"
+          },
+          {
+            "id": "birch",
+            "name": "Birch",
+            "count": 2,
+            "status": "Ready"
+          },
+          {
+            "id": "ash",
+            "name": "Ash",
+            "count": 3,
+            "status": "Queued"
+          }
+        ]
+      },
+      "query": "no fictional match",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status"
+            ],
+            "renderedRows": [
+              {
+                "text": "Cedar1Queued",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Birch2Ready",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Ash3Queued",
+                "cells": 4,
+                "height": 64.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": "no fictional match",
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              },
+              {
+                "text": "",
+                "cells": 0,
+                "height": 0
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "name": "boolean-only",
+      "spec": {
+        "rows": [
+          {
+            "id": "true-one",
+            "flag": true
+          },
+          {
+            "id": "false",
+            "flag": false
+          },
+          {
+            "id": "true-two",
+            "flag": true
+          }
+        ],
+        "boolean": true
+      },
+      "query": "no fictional match",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": "no fictional match",
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "name": "boolean-column-filter",
+      "spec": {
+        "rows": [
+          {
+            "id": "true-one",
+            "flag": true
+          },
+          {
+            "id": "false",
+            "flag": false
+          },
+          {
+            "id": "true-two",
+            "flag": true
+          }
+        ],
+        "boolean": true
+      },
+      "query": "no fictional match",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "false",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "false",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [
+                {
+                  "id": "flag",
+                  "value": true
+                }
+              ],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [
+                {
+                  "id": "flag",
+                  "value": true
+                }
+              ],
+              "globalFilter": "no fictional match",
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "true-one",
+              "true-two"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status",
+              "flag"
+            ],
+            "renderedRows": [
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 69
+              },
+              {
+                "text": "true",
+                "cells": 5,
+                "height": 68.5
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    },
+    {
+      "scheme": "Dark",
+      "name": "hidden-eligible",
+      "spec": {
+        "rows": [
+          {
+            "id": "cedar",
+            "name": "Cedar",
+            "count": 1,
+            "status": "Queued"
+          },
+          {
+            "id": "birch",
+            "name": "Birch",
+            "count": 2,
+            "status": "Ready"
+          },
+          {
+            "id": "ash",
+            "name": "Ash",
+            "count": 3,
+            "status": "Queued"
+          }
+        ]
+      },
+      "query": "Cedar",
+      "snapshots": [
+        {
+          "stage": "initial",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {},
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select",
+              "name",
+              "count",
+              "status"
+            ],
+            "renderedRows": [
+              {
+                "text": "Cedar1Queued",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Birch2Ready",
+                "cells": 4,
+                "height": 65
+              },
+              {
+                "text": "Ash3Queued",
+                "cells": 4,
+                "height": 64.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "prepared",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": null,
+              "columnVisibility": {
+                "name": false,
+                "count": false,
+                "status": false
+              },
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "sortedIds": [
+              "0",
+              "1",
+              "2"
+            ],
+            "visibleOriginalIds": [
+              "cedar",
+              "birch",
+              "ash"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select"
+            ],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 1,
+                "height": 45
+              },
+              {
+                "text": "",
+                "cells": 1,
+                "height": 45
+              },
+              {
+                "text": "",
+                "cells": 1,
+                "height": 44.5
+              }
+            ],
+            "emptyText": null
+          }
+        },
+        {
+          "stage": "global",
+          "snapshot": {
+            "state": {
+              "sorting": [],
+              "columnFilters": [],
+              "globalFilter": "Cedar",
+              "columnVisibility": {
+                "name": false,
+                "count": false,
+                "status": false
+              },
+              "pagination": {
+                "pageIndex": 0,
+                "pageSize": 10
+              }
+            },
+            "filteredIds": [
+              "0"
+            ],
+            "sortedIds": [
+              "0"
+            ],
+            "visibleOriginalIds": [
+              "cedar"
+            ],
+            "pageCount": 1,
+            "globallyFilterableColumnIds": [
+              "name",
+              "count",
+              "status"
+            ],
+            "visibleColumns": [
+              "select"
+            ],
+            "renderedRows": [
+              {
+                "text": "",
+                "cells": 1,
+                "height": 44.5
+              }
+            ],
+            "emptyText": null
+          }
+        }
+      ]
+    }
+  ],
+  "pngs": [
+    {
+      "file": "data-table-filter-plan-Light-no-columns-initial.png",
+      "sha256": "a362280f70c0f6d4b1b9366be3d48008d7d3f9cd1d212c748e414425368b573c",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-no-columns-prepared.png",
+      "sha256": "0af4a3aeb06931a662c497615deaf4ea7fbaa3f122e80f071f62bc638333594a",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-no-columns-global.png",
+      "sha256": "0af4a3aeb06931a662c497615deaf4ea7fbaa3f122e80f071f62bc638333594a",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-boolean-only-initial.png",
+      "sha256": "cd2f901c23a24f8666d975330729645b23270c3b61d284a3b9f4fae49d905030",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-boolean-only-prepared.png",
+      "sha256": "cd2f901c23a24f8666d975330729645b23270c3b61d284a3b9f4fae49d905030",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-boolean-only-global.png",
+      "sha256": "cd2f901c23a24f8666d975330729645b23270c3b61d284a3b9f4fae49d905030",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-boolean-column-filter-initial.png",
+      "sha256": "cd2f901c23a24f8666d975330729645b23270c3b61d284a3b9f4fae49d905030",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-boolean-column-filter-prepared.png",
+      "sha256": "bb61919e22120f074b3ea2e14533f6b65fb0cf689ae4f3b52293c2bba845ee69",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-boolean-column-filter-global.png",
+      "sha256": "bb61919e22120f074b3ea2e14533f6b65fb0cf689ae4f3b52293c2bba845ee69",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-hidden-eligible-initial.png",
+      "sha256": "a362280f70c0f6d4b1b9366be3d48008d7d3f9cd1d212c748e414425368b573c",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-hidden-eligible-prepared.png",
+      "sha256": "0f845645736e67c18a65b0cd7c697265727d1fa7057c6fe47f9e86c61d37fce4",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Light-hidden-eligible-global.png",
+      "sha256": "62ccf195a5e8f191b641d9d26f6b47eb923dd8fdb393d9ad59332d26de2d27b8",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-no-columns-initial.png",
+      "sha256": "40296464c9f026418bd16a7f872654ebedeb625e66733e135cd937fde6c8e4d7",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-no-columns-prepared.png",
+      "sha256": "4e39f03b4abfa946418ea23613745238a122531f59d687ab5ab9a1de085a8b55",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-no-columns-global.png",
+      "sha256": "4e39f03b4abfa946418ea23613745238a122531f59d687ab5ab9a1de085a8b55",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-boolean-only-initial.png",
+      "sha256": "a0e6aa33ee5a022e21acd06d41b860e89d590ba16d054b9961a1bae654387f7d",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-boolean-only-prepared.png",
+      "sha256": "a0e6aa33ee5a022e21acd06d41b860e89d590ba16d054b9961a1bae654387f7d",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-boolean-only-global.png",
+      "sha256": "a0e6aa33ee5a022e21acd06d41b860e89d590ba16d054b9961a1bae654387f7d",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-boolean-column-filter-initial.png",
+      "sha256": "a0e6aa33ee5a022e21acd06d41b860e89d590ba16d054b9961a1bae654387f7d",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-boolean-column-filter-prepared.png",
+      "sha256": "4c49cea983248ea56969e4f32cebfb67e051ba6a54bc8ad4f8b0788872b8b8ac",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-boolean-column-filter-global.png",
+      "sha256": "4c49cea983248ea56969e4f32cebfb67e051ba6a54bc8ad4f8b0788872b8b8ac",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-hidden-eligible-initial.png",
+      "sha256": "40296464c9f026418bd16a7f872654ebedeb625e66733e135cd937fde6c8e4d7",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-hidden-eligible-prepared.png",
+      "sha256": "b2c5c89c5c6262239748bbe72d122efefd6831e90c404fe618fc5c04c7137efd",
+      "width": 900,
+      "height": 1000
+    },
+    {
+      "file": "data-table-filter-plan-Dark-hidden-eligible-global.png",
+      "sha256": "efecb93e3d4e0165cefbf4fa1bc271f36aa65f1fd920078e060ba60b7f8bea55",
+      "width": 900,
+      "height": 1000
+    }
+  ]
+}

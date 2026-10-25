@@ -1,0 +1,20 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const option=name=>{const at=process.argv.indexOf(name);assert(at>=0&&process.argv[at+1],name);return process.argv[at+1];};
+const native=path.resolve(option('--native')),app=path.join(native,'app'),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),read=async file=>JSON.parse(await fs.readFile(path.join(native,file)));
+const report=await read('hover-card-inline.json'),exit=await read('process-exit.json'),build=await read('result.json'),cleanup=await read('cleanup.json');
+assert.equal(report.passed,true);assert.deepEqual(report.failures,[]);assert.equal(report.scope,'hidden-inline-hover-card-primitive');assert.equal(report.diagnosticOnly,true);assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);
+for(const field of ['activateCalled','showCalled','focusCalled','inputSent','nativeHoverCardImplemented','nativeComponentAccepted'])assert.equal(report[field],false,field);
+assert.equal(report.activations,0);assert.equal(report.focus,0);assert(report.guards>=34);assert.equal(report.processArchitecture,'X64');assert.equal(report.osArchitecture,'X64');
+assert.equal(build.buildPassed,true);assert.equal(build.runtimeVerified,false);assert.equal(build.platform,'x64');assert.equal(build.packageSha256,hash(await fs.readFile(path.resolve(option('--package')))));assert.equal(cleanup.removed,true);assert.equal(cleanup.isolatedConsumer,build.isolatedConsumer);await assert.rejects(fs.access(cleanup.isolatedConsumer),{code:'ENOENT'});
+assert.equal(report.librarySha256,hash(await fs.readFile(path.join(app,'Orchard.dll'))));assert.equal(report.hostSha256,hash(await fs.readFile(path.join(app,'PackageConsumer.dll'))));
+const source=JSON.parse(await fs.readFile('tests/Reference/HoverCard.json'));
+assert.deepEqual(report.cases.map(r=>r.name),['bottom','top','closed','clipped']);assert.equal(report.captures.length,4);
+let pixels=0,hits=0;for(const row of report.cases){const id={bottom:'ltr-bottom-open',top:'ltr-top-open',closed:'ltr-bottom-closed',clipped:'clipped'}[row.name],frozen=source.cases.find(r=>r.scheme==='Light'&&r.id===id);assert(frozen);assert.deepEqual(row.bounds,frozen.measurement.surface);assert.deepEqual(row.flow,{width:80,height:32});assert.equal(row.originalEditorFocusable,true);assert.equal(row.passed,true);
+ const capture=report.captures.find(r=>r.name===row.name);assert.equal(capture.file,row.name+'.png');assert.equal(capture.width,800);assert.equal(capture.height,600);const bytes=await fs.readFile(path.join(native,capture.file));assert.equal(hash(bytes),capture.sha256);const png=readRgbaPng(bytes);assert.equal(png.width,800);assert.equal(png.height,600);
+ assert.equal(row.samples.length,3);for(const[index,sample]of row.samples.entries()){const x=[260,340,340][index],y=row.bounds.y+[50,50,80][index],visible=['top','bottom'].includes(row.name)||row.name==='clipped'&&index===1,expected=visible?[25,80,120,255]:[255,255,255,255];assert.equal(sample.x,x);assert.equal(sample.y,y);assert.deepEqual(sample.rgba,expected);assert.equal(sample.surfaceHit,visible);const at=(y*800+x)*4;assert.deepEqual([...png.rgba.subarray(at,at+4)],expected);pixels++;hits++;}}
+const result={passed:true,primitiveOnly:true,cases:4,fullClientPngs:4,sourceRectanglesMatched:4,pixelSamples:pixels,hitTestSamples:hits,closedOriginalEditorFocusable:true,guardChecks:report.guards,librarySha256:report.librarySha256,hostSha256:report.hostSha256,baselinePackageSha256:build.packageSha256,nativeHoverCardImplemented:false,nativeComponentAccepted:false,visibleRuntimeVerified:false,nativeInputVerified:false};
+await fs.writeFile(path.resolve(option('--output')),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

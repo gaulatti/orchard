@@ -1,0 +1,55 @@
+{
+  "format": "orchard-secure-field-source-v1",
+  "repository": "gaulatti/sabella",
+  "commit": "f5ac479bfceaa7eab23c1716ac47420ac53dae25",
+  "files": [
+    {
+      "path": "Sources/Sabella/Controls.swift",
+      "sha256": "e344bd2f5b9aa88f5c37abb27e70db2e487262fdcfd73d76c59c4e493467057d"
+    },
+    {
+      "path": "Sources/Sabella/Tokens.swift",
+      "sha256": "8bcf3538bd1d27fb91f661a7970894f10e73dcad69ccef6622056512683dfca5"
+    },
+    {
+      "path": "Sources/Sabella/Resources/Fonts/EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    }
+  ],
+  "contract": {
+    "callerBoundValue": true,
+    "initiallyRevealed": false,
+    "persistentToggle": true,
+    "placeholderShared": true,
+    "revealDoesNotWriteValue": true,
+    "concealedEditor": "SecureField",
+    "revealedEditor": "TextField",
+    "fontFamily": "Encode Sans",
+    "fontSize": 14,
+    "horizontalPadding": 14,
+    "minHeight": 40,
+    "radius": 7,
+    "light": {
+      "background": "#ffffff",
+      "border": "#000000",
+      "borderOpacity": 0.08,
+      "text": "#2d2d2d",
+      "secondary": "#595959",
+      "shadowColor": "#1a374d",
+      "shadowOpacity": 0.055
+    },
+    "dark": {
+      "background": "#182533",
+      "border": "#ffffff",
+      "borderOpacity": 0.08,
+      "text": "#f0f4f8",
+      "secondary": "#b8c5d6",
+      "shadowOpacity": 0
+    },
+    "shadowRadius": 14,
+    "shadowY": 5
+  },
+  "appleRenderingVerified": false,
+  "implicitHStackGeometryMeasured": false,
+  "sourceFontMatchesLibrary": true
+}

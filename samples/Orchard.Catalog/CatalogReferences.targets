@@ -1,0 +1,56 @@
+<Project>
+  <UsingTask TaskName="CompressCatalogReferenceJson" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Resources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <OutputDirectory ParameterType="System.String" Required="true" />
+      <OriginalResources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+      <CompressedResources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.IO.Compression" />
+      <Using Namespace="System.Collections.Generic" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        var originals = new List<Microsoft.Build.Framework.ITaskItem>();
+        var compressed = new List<Microsoft.Build.Framework.ITaskItem>();
+        Directory.CreateDirectory(OutputDirectory);
+        foreach (var resource in Resources)
+        {
+            var name = resource.GetMetadata("LogicalName");
+            if (!name.StartsWith("Orchard.Catalog.Reference.", StringComparison.Ordinal) || !name.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) continue;
+            var target = Path.Combine(OutputDirectory, name + ".gz");
+            byte[] bytes;
+            using (var buffer = new MemoryStream())
+            {
+                using (var input = File.OpenRead(resource.GetMetadata("FullPath")))
+                using (var gzip = new GZipStream(buffer, CompressionLevel.Optimal, true)) input.CopyTo(gzip);
+                bytes = buffer.ToArray();
+            }
+            var equal = false;
+            if (File.Exists(target))
+            {
+                var old = File.ReadAllBytes(target); equal = old.Length == bytes.Length;
+                for (var i = 0; equal && i < old.Length; i++) equal = old[i] == bytes[i];
+            }
+            if (!equal) File.WriteAllBytes(target, bytes);
+            var replacement = new Microsoft.Build.Utilities.TaskItem(resource) { ItemSpec = target };
+            replacement.SetMetadata("LogicalName", name);
+            originals.Add(resource); compressed.Add(replacement);
+        }
+        OriginalResources = originals.ToArray(); CompressedResources = compressed.ToArray();
+      ]]></Code>
+    </Task>
+  </UsingTask>
+  <Target Name="CompressCatalogReferences" BeforeTargets="_GenerateCompileInputs" DependsOnTargets="PrepareResourceNames">
+    <CompressCatalogReferenceJson Resources="@(EmbeddedResource)" OutputDirectory="$(IntermediateOutputPath)CatalogReferences">
+      <Output TaskParameter="OriginalResources" ItemName="_CatalogOriginalJson" />
+      <Output TaskParameter="CompressedResources" ItemName="_CatalogCompressedJson" />
+    </CompressCatalogReferenceJson>
+    <ItemGroup>
+      <EmbeddedResource Remove="@(_CatalogOriginalJson)" />
+      <EmbeddedResource Include="@(_CatalogCompressedJson)" />
+      <FileWrites Include="@(_CatalogCompressedJson)" />
+    </ItemGroup>
+  </Target>
+</Project>

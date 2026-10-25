@@ -12,8 +12,8 @@ public sealed partial class DataTableToolbarsFixture
 {
     internal async Task<bool> VerifyPressAsync(BleeckerColorScheme scheme, string folder)
     {
-        using var layout = JsonDocument.Parse(typeof(DataTableToolbarsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTableToolbarLayout.json")!);
-        using var stream = typeof(DataTableToolbarsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTableToolbarPress.json")!;
+        using var layout = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarLayout.json")!);
+        using var stream = CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarPress.json")!;
         using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var referenceBytes = buffer.ToArray(); using var reference = JsonDocument.Parse(referenceBytes);
         var sample = layout.RootElement.GetProperty("cases").EnumerateArray().Single(item => item.GetProperty("id").GetString() == "global-filter" && item.GetProperty("scheme").GetString() == scheme.ToString());
         var root = (Grid)XamlRoot.Content; var reports = new List<object>(); var transfers = new List<object>(); var failures = new List<string>();

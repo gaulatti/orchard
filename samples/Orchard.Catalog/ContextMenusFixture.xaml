@@ -1,0 +1,15 @@
+<StackPanel x:Class="Orchard.Catalog.ContextMenusFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <TextBlock Text="Context menu · native recipe draft" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local actions. Right-click the target or use its native context-menu key." Style="{StaticResource BleeckerBodyStyle}"/>
+ <ToggleSwitch x:Name="ModalMode" Header="Modal context menu" IsOn="True" OnContent="Outside actions are blocked" OffContent="Outside actions remain available"/>
+ <Button x:Name="Target" Content="Fictional context target" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+  <Button.ContextFlyout><orchard:BleeckerContextMenu x:Name="Menu" IsModal="{x:Bind ModalMode.IsOn, Mode=OneWay}" MenuFlyoutPresenterStyle="{StaticResource BleeckerContextMenuPresenterStyle}">
+   <MenuFlyoutItem x:Name="Action" Text="Inspect fictional item" Click="Changed" Style="{StaticResource BleeckerContextMenuItemStyle}"/>
+   <MenuFlyoutItem Text="Unavailable fictional action" IsEnabled="False" Style="{StaticResource BleeckerContextMenuItemStyle}"/>
+   <MenuFlyoutItem x:Name="InsetAction" Text="Indented fictional action" Click="Changed" Style="{StaticResource BleeckerContextMenuInsetItemStyle}"/>
+   <orchard:BleeckerMenuContentItem Text="Composed fictional action" Click="Changed" Style="{StaticResource BleeckerContextMenuContentItemStyle}"><TextBlock Text="Composed fictional action" LineHeight="19.5" LineStackingStrategy="BlockLineHeight"/></orchard:BleeckerMenuContentItem>
+   <orchard:BleeckerMenuContentItem Text="Indented composed action" Click="Changed" Style="{StaticResource BleeckerContextMenuInsetContentItemStyle}"><TextBlock Text="Indented composed action" LineHeight="19.5" LineStackingStrategy="BlockLineHeight"/></orchard:BleeckerMenuContentItem>
+  </orchard:BleeckerContextMenu></Button.ContextFlyout>
+ </Button>
+ <TextBlock x:Name="Status" Text="No fictional context action yet" Style="{StaticResource BleeckerBodyStyle}"/>
+</StackPanel>

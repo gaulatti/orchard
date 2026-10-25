@@ -1,0 +1,19 @@
+{
+  "files": [
+    {
+      "frameSha256": "2e7c479ad6f3343131123c3b5d4ee5d9a75b49674a8d77c6a23d4f17ba972f02",
+      "report": "tests/Reference/DataTableGeometryRejected.json",
+      "frame": "tests/Reference/DataTableGeometryRejected.png",
+      "kind": "columns-and-button-tracking",
+      "reportSha256": "fe2636db3b6b950e855a2bcb1db4a4e980bec5140e6ed700810d99f3aa8ad546"
+    },
+    {
+      "frameSha256": "c57bd9cd0f1eac02d1cca9945308a4ab4a39ad1250413ceb83a8db4855d314b2",
+      "report": "tests/Reference/DataTableGeometryRejectedRtl.json",
+      "frame": "tests/Reference/DataTableGeometryRejectedRtl.png",
+      "kind": "rtl-header-checkbox",
+      "reportSha256": "56171b4a5da1f3c2500760341ffc20da3861ef11cc40d32b2053340b9bcbf5a9"
+    }
+  ],
+  "format": "orchard-data-table-geometry-counterexamples-v1"
+}

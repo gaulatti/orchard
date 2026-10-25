@@ -13,6 +13,29 @@ Build the architectures sequentially because their projects share restore state.
 Do not create a new self-contained publish directory for every experiment.
 Each copy includes the Windows App SDK and .NET runtime and is roughly 300 MB.
 
+The catalog embeds its reference JSON as gzip data generated under `obj` by
+`CatalogReferences.targets`, using the installed .NET SDK. Authoritative JSON
+files and logical resource names stay unchanged. Catalog fixtures read through
+`CatalogReferenceResources.Open`, which restores the original bytes in seekable,
+read-only streams; PNG and binary resources pass through unchanged. No reference,
+fixture or component demo is removed. This keeps large JSON captures from adding
+about 66 MB to every catalog assembly copy. The reusable library and NuGet payload
+are unaffected.
+
+After changing this resource path, run the catalog with
+`--verify-catalog-reference-resources --verify-output <report.json>` and audit
+the report against the original resource names, lengths and hashes with
+`scripts/verify-catalog-reference-resources.mjs`. Also exercise both fictional
+demos from the extracted catalog archive. A build alone does not verify decoding
+or delivery.
+
+Pass the clean `publish` directory itself to `scripts/package-catalog.ps1`.
+Do not archive its parent build directory: that directory can contain an older
+nested `publish` tree and would bundle stale application binaries alongside the
+current application. The packaging script rejects that input before writing an
+archive. Verify the extracted application and required component demos before
+claiming runtime delivery.
+
 Keep the current package, release archives, independent consumers and reports
 under `artifacts/current`. Reuse the x64 and ARM64 consumer output directories;
 `scripts/verify-package.ps1` removes its own temporary source and package cache.

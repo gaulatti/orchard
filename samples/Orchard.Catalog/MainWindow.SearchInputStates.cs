@@ -15,7 +15,7 @@ public sealed partial class MainWindow
 {
     private async Task RunSearchInputStatesAsync(string folder)
     {
-        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("Orchard.Catalog.Reference.SearchInputStates.json")??throw new InvalidOperationException("Missing SearchInputStates reference.");using var source=await JsonDocument.ParseAsync(stream);
+        using var stream=CatalogReferenceResources.Open(Assembly.GetExecutingAssembly(), "Orchard.Catalog.Reference.SearchInputStates.json")??throw new InvalidOperationException("Missing SearchInputStates reference.");using var source=await JsonDocument.ParseAsync(stream);
         var original=Content;var page=new Page{IsTabStop=true};var canvas=new Canvas{Name="SearchInputStateSurface"};page.Content=canvas;NativeInputSession? input=null;var reports=new List<object>();var paletteChecks=new List<object>();var paintGates=new List<object>();var phase="mount";var passed=false;
         try
         {

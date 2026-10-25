@@ -13,7 +13,7 @@ public sealed partial class MainWindow
 {
     private async Task RunAccordionsAsync(string folder)
     {
-        using var stream=typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Accordion.json")??throw new InvalidOperationException("Accordion reference missing.");using var document=await JsonDocument.ParseAsync(stream);
+        using var stream=CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.Accordion.json")??throw new InvalidOperationException("Accordion reference missing.");using var document=await JsonDocument.ParseAsync(stream);
         var original=Content;var canvas=new Canvas();var frames=new List<object>();
         try
         {

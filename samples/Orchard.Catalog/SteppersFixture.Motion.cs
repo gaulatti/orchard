@@ -12,7 +12,7 @@ public sealed partial class SteppersFixture
 {
     internal async Task VerifyMotionAsync(BleeckerColorScheme scheme, string folder)
     {
-        using var reference = JsonDocument.Parse(typeof(SteppersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.StepperMotion.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SteppersFixture).Assembly, "Orchard.Catalog.Reference.StepperMotion.json")!);
         var enabled = new UISettings().AnimationsEnabled;
         var reports = new List<object>(); var failures = new List<string>();
         stepper.Steps = [new BleeckerStep("stage", "Draft") { Description = "Write a story" }];

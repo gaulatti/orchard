@@ -3,9 +3,11 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {readRgbaPng} from './reference/read-rgba-png.mjs';
+import {verifyShadowPaintSource,verifyOverlayShadowPaint} from './reference/verify-overlay-shadow-paint-source.mjs';
 
 const option=name=>{const at=process.argv.indexOf(name);assert.ok(at>=0&&process.argv[at+1],`Pass ${name} <path>.`);return path.resolve(process.argv[at+1]);};
 const source=option('--source'),before=option('--before'),after=option('--after'),output=option('--output');
+const overlayPaint=await verifyShadowPaintSource(new URL('../tests/Reference/OverlayShadowPaint.json',import.meta.url),new URL('../tests/Reference/OverlayShadowPaint',import.meta.url));
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const read=async file=>JSON.parse((await fs.readFile(file,'utf8')).replace(/^\uFEFF/,''));
 const bytes=await fs.readFile(new URL('../tests/Reference/DataTableFilters.json',import.meta.url)),reference=JSON.parse(bytes),referenceSha256=hash(bytes);
@@ -30,7 +32,7 @@ for(const scheme of ['Light','Dark']){
     const shadow=geometry.shadow;assert.ok(shadow);near(shadow.ActualWidth,state.popup.box.width);near(shadow.ActualHeight,state.popup.box.height);assert.equal(shadow.radius,Number.parseFloat(state.popup.style.borderRadius));
     layers=[...state.popup.style.boxShadow.matchAll(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)\s+(-?[\d.]+)px\s+(-?[\d.]+)px\s+([\d.]+)px\s+(-?[\d.]+)px/g)].map(match=>({R:+match[1],G:+match[2],B:+match[3],Opacity:+match[4],x:+match[5],y:+match[6],BlurRadius:+match[7],spread:+match[8]})).filter(layer=>layer.Opacity>0).sort((a,b)=>b.BlurRadius-a.BlurRadius);
     assert.equal(layers.length,2);assert.equal(shadow.layers.length,2);
-    for(const [i,expected]of layers.entries()){const layer=shadow.layers[i];for(const key of ['R','G','B','Opacity','x','y','BlurRadius'])assert.equal(layer[key],expected[key]);assert.equal(layer.sigma,expected.BlurRadius/2);assert.equal(layer.A,255);assert.equal(layer.mask,true);near(layer.insetX,-expected.spread);near(layer.insetY,-expected.spread);near(layer.width,Math.max(0,state.popup.box.width+2*expected.spread));near(layer.height,Math.max(0,state.popup.box.height+2*expected.spread));}
+    for(const [i,expected]of layers.entries()){const layer=shadow.layers[i];for(const key of ['x','y','BlurRadius'])assert.equal(layer[key],expected[key]);verifyOverlayShadowPaint(layer,expected,overlayPaint.s);assert.equal(layer.sigma,expected.BlurRadius/2);assert.equal(layer.mask,true);near(layer.insetX,-expected.spread);near(layer.insetY,-expected.spread);near(layer.width,Math.max(0,state.popup.box.width+2*expected.spread));near(layer.height,Math.max(0,state.popup.box.height+2*expected.spread));}
     seenSurface=true;open++;
    }else{if(seenSurface){assert.equal(actual.shadowClosed,true);closures++;}else assert.equal(actual.shadowClosed,null);closed++;}
    const sourceBytes=await fs.readFile(path.join(source,point.file)),oldBytes=await fs.readFile(path.join(before,previous.file)),newBytes=await fs.readFile(path.join(after,actual.file));assert.equal(hash(sourceBytes),point.sha256);

@@ -1,0 +1,673 @@
+{
+  "format": "orchard-simple-table-actual-counterexamples-v1",
+  "originalReport": "artifacts/current/simple-data-table-native-v1/simple-data-table.json",
+  "originalReportSha256": "1162521affd74efd01986ea172c903447cc37413ad2b54ac2234a785f12a0eb7",
+  "librarySha256": "482d7671d2e4148910450e7c87566b6e0f166e0a36b5c0202a8e83366f798cab",
+  "actualCases": [
+    {
+      "scheme": "Light",
+      "name": "rtl",
+      "passed": true,
+      "snapshot": {
+        "fixture": {
+          "x": 680,
+          "y": 20,
+          "width": 660,
+          "height": 262.5
+        },
+        "table": {
+          "x": 679,
+          "y": 21,
+          "width": 658,
+          "height": 260.5
+        },
+        "caption": {
+          "text": "Fictional local component data",
+          "box": {
+            "x": 679,
+            "y": 261.5,
+            "width": 658,
+            "height": 20
+          }
+        },
+        "header": [
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 73,
+              "y": 21,
+              "width": 52,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Fictional item",
+            "box": {
+              "x": 342.8453063964844,
+              "y": 21,
+              "width": 269.8453063964844,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Count",
+            "box": {
+              "x": 510.79119873046875,
+              "y": 21,
+              "width": 167.9459228515625,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Status",
+            "box": {
+              "x": 679,
+              "y": 21,
+              "width": 168.2087860107422,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          }
+        ],
+        "body": [
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 73,
+              "y": 65,
+              "width": 52,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Cedar bulletin",
+            "box": {
+              "x": 342.8453063964844,
+              "y": 65,
+              "width": 269.8453063964844,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "12",
+            "box": {
+              "x": 510.79119873046875,
+              "y": 65,
+              "width": 167.9459228515625,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Queued:0",
+            "box": {
+              "x": 679,
+              "y": 65,
+              "width": 168.2087860107422,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 73,
+              "y": 110,
+              "width": 52,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Birch update",
+            "box": {
+              "x": 342.8453063964844,
+              "y": 110,
+              "width": 269.8453063964844,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "3",
+            "box": {
+              "x": 510.79119873046875,
+              "y": 110,
+              "width": 167.9459228515625,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Ready:1",
+            "box": {
+              "x": 679,
+              "y": 110,
+              "width": 168.2087860107422,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 73,
+              "y": 155,
+              "width": 52,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Ash brief",
+            "box": {
+              "x": 342.8453063964844,
+              "y": 155,
+              "width": 269.8453063964844,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "25",
+            "box": {
+              "x": 510.79119873046875,
+              "y": 155,
+              "width": 167.9459228515625,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Draft:2",
+            "box": {
+              "x": 679,
+              "y": 155,
+              "width": 168.2087860107422,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          }
+        ],
+        "footer": [
+          {
+            "text": "Fictional total",
+            "box": {
+              "x": 342.8453063964844,
+              "y": 200,
+              "width": 321.8453063964844,
+              "height": 45
+            },
+            "colSpan": 2,
+            "rowSpan": 1
+          },
+          {
+            "text": "40",
+            "box": {
+              "x": 510.79119873046875,
+              "y": 200,
+              "width": 167.9459228515625,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          }
+        ],
+        "rows": [
+          {
+            "id": "cedar",
+            "index": "0",
+            "selected": null,
+            "box": {
+              "x": 679,
+              "y": 65,
+              "width": 658,
+              "height": 45
+            }
+          },
+          {
+            "id": "birch",
+            "index": "1",
+            "selected": null,
+            "box": {
+              "x": 679,
+              "y": 110,
+              "width": 658,
+              "height": 45
+            }
+          },
+          {
+            "id": "ash",
+            "index": "2",
+            "selected": null,
+            "box": {
+              "x": 679,
+              "y": 155,
+              "width": 658,
+              "height": 45
+            }
+          }
+        ],
+        "checkboxes": [
+          {
+            "label": "Select all",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 57,
+              "y": 33,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "label": "Select row cedar",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 57,
+              "y": 77.5,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "label": "Select row birch",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 57,
+              "y": 122.5,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "label": "Select row ash",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 57,
+              "y": 167.5,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "footerOrder": "cedar,birch,ash",
+        "events": []
+      }
+    },
+    {
+      "scheme": "Light",
+      "name": "constrained",
+      "passed": true,
+      "snapshot": {
+        "fixture": {
+          "x": 20,
+          "y": 20,
+          "width": 320,
+          "height": 282.5
+        },
+        "table": {
+          "x": 21,
+          "y": 21,
+          "width": 318,
+          "height": 280.5
+        },
+        "caption": {
+          "text": "Fictional local component data",
+          "box": {
+            "x": 21,
+            "y": 281.5,
+            "width": 335,
+            "height": 20
+          }
+        },
+        "header": [
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 21,
+              "y": 21,
+              "width": 52,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Fictional item",
+            "box": {
+              "x": 73,
+              "y": 21,
+              "width": 114,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Count",
+            "box": {
+              "x": 187,
+              "y": 21,
+              "width": 92,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Status",
+            "box": {
+              "x": 279,
+              "y": 21,
+              "width": 77,
+              "height": 44
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          }
+        ],
+        "body": [
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 52,
+              "height": 65
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Cedar bulletin",
+            "box": {
+              "x": 73,
+              "y": 65,
+              "width": 114,
+              "height": 65
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "12",
+            "box": {
+              "x": 187,
+              "y": 65,
+              "width": 92,
+              "height": 65
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Queued:0",
+            "box": {
+              "x": 279,
+              "y": 65,
+              "width": 77,
+              "height": 65
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 52,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Birch update",
+            "box": {
+              "x": 73,
+              "y": 130,
+              "width": 114,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "3",
+            "box": {
+              "x": 187,
+              "y": 130,
+              "width": 92,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Ready:1",
+            "box": {
+              "x": 279,
+              "y": 130,
+              "width": 77,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Orchard.BleeckerCheckbox",
+            "box": {
+              "x": 21,
+              "y": 175,
+              "width": 52,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Ash brief",
+            "box": {
+              "x": 73,
+              "y": 175,
+              "width": 114,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "25",
+            "box": {
+              "x": 187,
+              "y": 175,
+              "width": 92,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "text": "Draft:2",
+            "box": {
+              "x": 279,
+              "y": 175,
+              "width": 77,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          }
+        ],
+        "footer": [
+          {
+            "text": "Fictional total",
+            "box": {
+              "x": 21,
+              "y": 220,
+              "width": 166,
+              "height": 45
+            },
+            "colSpan": 2,
+            "rowSpan": 1
+          },
+          {
+            "text": "40",
+            "box": {
+              "x": 187,
+              "y": 220,
+              "width": 92,
+              "height": 45
+            },
+            "colSpan": 1,
+            "rowSpan": 1
+          }
+        ],
+        "rows": [
+          {
+            "id": "cedar",
+            "index": "0",
+            "selected": null,
+            "box": {
+              "x": 21,
+              "y": 65,
+              "width": 335,
+              "height": 65
+            }
+          },
+          {
+            "id": "birch",
+            "index": "1",
+            "selected": null,
+            "box": {
+              "x": 21,
+              "y": 130,
+              "width": 335,
+              "height": 45
+            }
+          },
+          {
+            "id": "ash",
+            "index": "2",
+            "selected": null,
+            "box": {
+              "x": 21,
+              "y": 175,
+              "width": 335,
+              "height": 45
+            }
+          }
+        ],
+        "checkboxes": [
+          {
+            "label": "Select all",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 37,
+              "y": 33,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "label": "Select row cedar",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 37,
+              "y": 87.5,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "label": "Select row birch",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 37,
+              "y": 142.5,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "label": "Select row ash",
+            "checked": false,
+            "indeterminate": false,
+            "box": {
+              "x": 37,
+              "y": 187.5,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "footerOrder": "cedar,birch,ash",
+        "events": []
+      }
+    }
+  ],
+  "reason": "First native run passed20 action histories but failed source layout: RTL mirrored twice; wrapped original text minimum clipped. The old coordinate probe also used the RTL origin instead of physical bounds.",
+  "actualHistorySnapshots": [
+    {
+      "scheme": "Light",
+      "action": "internal-sort",
+      "stage": "name-asc",
+      "footer": [
+        {
+          "text": "Fictional total",
+          "box": {
+            "x": 21,
+            "y": 200,
+            "width": 322.3333435058594,
+            "height": 45
+          },
+          "colSpan": 2,
+          "rowSpan": 1
+        },
+        {
+          "text": "40",
+          "box": {
+            "x": 343.3333435058594,
+            "y": 200,
+            "width": 168.15084838867188,
+            "height": 45
+          },
+          "colSpan": 1,
+          "rowSpan": 1
+        }
+      ],
+      "librarySha256": "fb1c97eed26a9c9eac161f1e7937cdf62b33dfbc166d743402b159fbe7fc5bf9",
+      "report": "artifacts/current/simple-data-table-native-v6/simple-data-table.json"
+    }
+  ],
+  "historyReason": "The original footer cells retained stale shared-column bounds after sorting, although header/body widths updated. Shared row panels now invalidate arrangement after layout recomputes cell bounds."
+}

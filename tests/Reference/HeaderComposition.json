@@ -1,0 +1,424 @@
+{
+  "format": "orchard-header-composition-reference-v1",
+  "commit": "a86059013cd59684ce452849278ea81e734f2066",
+  "dependencies": [
+    {
+      "path": "package-lock.json",
+      "sha256": "6ce0a460b61d1087b9d51ed49f949ba264005ba8bfbe0fc26260e7c8bf16f437"
+    },
+    {
+      "path": "src/assets/logo.ts",
+      "sha256": "1a49600fba4ae45bb2b5acf35426501bc12bdfc1ef19ccaf60084b32599138aa"
+    },
+    {
+      "path": "src/components/brand-lockup.tsx",
+      "sha256": "8b2319f72c31ffb0c5e775484ed3b59d2ceeb59a4e73a779c805053585d601e6"
+    },
+    {
+      "path": "src/components/icon-button.tsx",
+      "sha256": "e736238d8e00884638fb1e633365ab7a8859d5edc9a3ec49175422f5176971ff"
+    },
+    {
+      "path": "src/components/nav-menu.tsx",
+      "sha256": "1a9b3d9c7c7d43c52d23080c37af477211d37ed457f1c6a8eb2a18269b2f8cc5"
+    },
+    {
+      "path": "src/layout/header.tsx",
+      "sha256": "e6d0c2969a7f042e13cf3261043c74dc8ae9c7caf9c7225db9271ea3d28bd009"
+    },
+    {
+      "path": "src/styles/global.css",
+      "sha256": "fa7278f1107d946977c474002a09047be1e83858631f93b056435a3bbf038d96"
+    },
+    {
+      "path": "src/styles/tokens.generated.css",
+      "sha256": "74468d6dd3516687e3f8b96aef47e10bdcce206e31edc912abe985c45b83bf3e"
+    },
+    {
+      "path": "src/utils/cn.ts",
+      "sha256": "74e8fe9d0d680c442ed6adb13e7d119d6c210c19ae6c114313b2a72552be0883"
+    },
+    {
+      "path": "stories/layout/Header.stories.tsx",
+      "sha256": "3ed994e14a0578ca7d31b4e4fb11c2d2b831b15c2ed6278f1483573f97006e1a"
+    },
+    {
+      "path": "src/layout/app-shell.tsx",
+      "sha256": "21cbb676b184bcad28ffb5577b19a1ccc34d18ab420221b08cf936a23919c3e1"
+    }
+  ],
+  "modules": [
+    {
+      "name": "react",
+      "version": "19.2.4",
+      "packageSha256": "e60b92f6031f023907bbfab8f96e63e44307776ec1488f310ba61d41b8cda8cc"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.2.4",
+      "packageSha256": "b8448092689c7e6191595a98526ced808288f35138d97fbce5801a94922e3c36"
+    },
+    {
+      "name": "clsx",
+      "version": "2.1.1",
+      "packageSha256": "a5e616b9883177fb47c1fca22b6a4ab42be1c3ed6ffae8595a5c7d88630eeec2"
+    },
+    {
+      "name": "tailwind-merge",
+      "version": "3.5.0",
+      "packageSha256": "1358964098a2e5c2d23ff14d01db747b852a0a368ada191fc223de7c456101da"
+    },
+    {
+      "name": "lucide-react",
+      "version": "0.563.0",
+      "packageSha256": "e33c46807b6a6ee6cd2dbf3e4f66f3f2919a0838ef8854b2163dbc54bde1452e"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Encode Sans",
+      "weight": 400,
+      "name": "EncodeSans-Regular.ttf",
+      "sha256": "756006a45004ac1fe39ed907c7d71d1c721524d4b1c87ed0a479cb913aeba182"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": 500,
+      "name": "EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    },
+    {
+      "family": "Encode Sans",
+      "weight": 600,
+      "name": "EncodeSans-SemiBold.ttf",
+      "sha256": "9972f69621823bdd3c67738c02c813c8a52067871e92e467880cb2fa0a47ced5"
+    },
+    {
+      "family": "Libre Franklin",
+      "weight": 400,
+      "name": "LibreFranklin-Regular.ttf",
+      "sha256": "01e26222a56e141e3abae670ab22be77f063999fc4ef64c4a9651de19b7728a8"
+    }
+  ],
+  "scriptSha256": "3547756ada9aa1c0e6fa9dc14fb0ccdf56e941a26028ea0c6da91d053b712f63",
+  "clientSha256": "00c4e1523a3add9d4cfeb7fe0e9c58339bb231de8034f0fee40bc8e9ca3cac8a",
+  "cssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "browser": "155.0.4283.62",
+  "locale": "en-US",
+  "timezone": "America/New_York",
+  "motion": "reduce",
+  "cases": [
+    {
+      "id": "wide",
+      "scheme": "Light",
+      "spec": {
+        "id": "wide",
+        "width": 1280,
+        "open": false
+      },
+      "measurement": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 73
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 868
+        },
+        "content": {
+          "x": 0,
+          "y": 72,
+          "width": 1280,
+          "height": 796
+        },
+        "body": {
+          "x": 0,
+          "y": 72,
+          "width": 160,
+          "height": 32
+        },
+        "footer": {
+          "x": 0,
+          "y": 868,
+          "width": 1280,
+          "height": 32
+        },
+        "point": {
+          "x": 1100,
+          "y": 30
+        },
+        "headerOwnsHit": true,
+        "originalBody": true,
+        "text": "Original body edited",
+        "selectionStart": 2,
+        "selectionLength": 3
+      },
+      "file": "header-composition-wide-Light.png",
+      "pngSha256": "79fc536966fbda40f9b4c5d652435972f92280ede35857fb1e45d06a398196d2"
+    },
+    {
+      "id": "narrow",
+      "scheme": "Light",
+      "spec": {
+        "id": "narrow",
+        "width": 640,
+        "open": false
+      },
+      "measurement": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 73
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 868
+        },
+        "content": {
+          "x": 0,
+          "y": 72,
+          "width": 640,
+          "height": 796
+        },
+        "body": {
+          "x": 0,
+          "y": 72,
+          "width": 160,
+          "height": 32
+        },
+        "footer": {
+          "x": 0,
+          "y": 868,
+          "width": 640,
+          "height": 32
+        },
+        "point": {
+          "x": 560,
+          "y": 30
+        },
+        "headerOwnsHit": true,
+        "originalBody": true,
+        "text": "Original body edited",
+        "selectionStart": 2,
+        "selectionLength": 3
+      },
+      "file": "header-composition-narrow-Light.png",
+      "pngSha256": "b4f76fbfb02169f20444f17371439c0d69fe9591fa2a49c47af9dd65fd8de5e2"
+    },
+    {
+      "id": "narrow-open",
+      "scheme": "Light",
+      "spec": {
+        "id": "narrow-open",
+        "width": 640,
+        "open": true
+      },
+      "measurement": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 73
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 868
+        },
+        "content": {
+          "x": 0,
+          "y": 72,
+          "width": 640,
+          "height": 796
+        },
+        "body": {
+          "x": 0,
+          "y": 72,
+          "width": 160,
+          "height": 32
+        },
+        "footer": {
+          "x": 0,
+          "y": 868,
+          "width": 640,
+          "height": 32
+        },
+        "point": {
+          "x": 560,
+          "y": 100
+        },
+        "headerOwnsHit": true,
+        "originalBody": true,
+        "text": "Original body edited",
+        "selectionStart": 2,
+        "selectionLength": 3
+      },
+      "file": "header-composition-narrow-open-Light.png",
+      "pngSha256": "2255d3d454c9ccc2808a79ffea29ba43f12b0236300461ebe03fba3d78817675"
+    },
+    {
+      "id": "wide",
+      "scheme": "Dark",
+      "spec": {
+        "id": "wide",
+        "width": 1280,
+        "open": false
+      },
+      "measurement": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 73
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 868
+        },
+        "content": {
+          "x": 0,
+          "y": 72,
+          "width": 1280,
+          "height": 796
+        },
+        "body": {
+          "x": 0,
+          "y": 72,
+          "width": 160,
+          "height": 32
+        },
+        "footer": {
+          "x": 0,
+          "y": 868,
+          "width": 1280,
+          "height": 32
+        },
+        "point": {
+          "x": 1100,
+          "y": 30
+        },
+        "headerOwnsHit": true,
+        "originalBody": true,
+        "text": "Original body edited",
+        "selectionStart": 2,
+        "selectionLength": 3
+      },
+      "file": "header-composition-wide-Dark.png",
+      "pngSha256": "993cd1d7dd7057cca940c3790ea4f5f42086c4bb83e339783abf687c3803d7ac"
+    },
+    {
+      "id": "narrow",
+      "scheme": "Dark",
+      "spec": {
+        "id": "narrow",
+        "width": 640,
+        "open": false
+      },
+      "measurement": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 73
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 868
+        },
+        "content": {
+          "x": 0,
+          "y": 72,
+          "width": 640,
+          "height": 796
+        },
+        "body": {
+          "x": 0,
+          "y": 72,
+          "width": 160,
+          "height": 32
+        },
+        "footer": {
+          "x": 0,
+          "y": 868,
+          "width": 640,
+          "height": 32
+        },
+        "point": {
+          "x": 560,
+          "y": 30
+        },
+        "headerOwnsHit": true,
+        "originalBody": true,
+        "text": "Original body edited",
+        "selectionStart": 2,
+        "selectionLength": 3
+      },
+      "file": "header-composition-narrow-Dark.png",
+      "pngSha256": "a7efdda245935019cb668e64c40154f9e95aef582006903e11013afc09867da0"
+    },
+    {
+      "id": "narrow-open",
+      "scheme": "Dark",
+      "spec": {
+        "id": "narrow-open",
+        "width": 640,
+        "open": true
+      },
+      "measurement": {
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 73
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 868
+        },
+        "content": {
+          "x": 0,
+          "y": 72,
+          "width": 640,
+          "height": 796
+        },
+        "body": {
+          "x": 0,
+          "y": 72,
+          "width": 160,
+          "height": 32
+        },
+        "footer": {
+          "x": 0,
+          "y": 868,
+          "width": 640,
+          "height": 32
+        },
+        "point": {
+          "x": 560,
+          "y": 100
+        },
+        "headerOwnsHit": true,
+        "originalBody": true,
+        "text": "Original body edited",
+        "selectionStart": 2,
+        "selectionLength": 3
+      },
+      "file": "header-composition-narrow-open-Dark.png",
+      "pngSha256": "0159f1836f529cedfac9452458dca07a04e62c20a94e1104d9e8a798b03e0afa"
+    }
+  ]
+}

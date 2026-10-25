@@ -1,5 +1,19 @@
 # BrandLockup reference and acceptance
 
+The current native API exposes `IsLogoLoaded` and `LogoOpened` for the actual
+logo decoder, separately from element loading. `LogoFailed` remains the failure
+producer. Readiness resets when the source changes or decoding fails; an explicit
+null source remains unloaded. Header captures wait for this producer, matching
+the original browser capture's image decode boundary. The public APIs and async
+inline metric updates do not substitute a different logo.
+
+The private decoder used by dark and component contrast filtering remains live
+outside the window. Its translation rounds outward to physical pixels at the
+current rasterization scale. This avoids fractional ancestor render bounds and
+partially transparent capture edges while preserving caller layout, artwork and
+the visible effect surface. No system settings are changed.
+
+
 The frozen source is
 [`brand-lockup.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/brand-lockup.tsx),
 SHA-256 `8b2319f72c31ffb0c5e775484ed3b59d2ceeb59a4e73a779c805053585d601e6`.

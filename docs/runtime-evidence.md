@@ -1,5 +1,1587 @@
 # Native Windows runtime evidence
 
+## Render-pass table alignment styles, 2026-10-24
+
+The `2dabe1ac…` source candidate reuses equivalent generated alignment styles
+among newly presented cells in one synchronous Data Table/Simple Data Table
+refresh. Retained cells keep their presentation caches, caller styles use
+reference identity, selectors still execute per cell, and no lookup survives
+the pass. Both the original library and candidate pass the strengthened 84-state
+live fixture. Detached-owner probes show all styles sealed before load and all
+mutation attempts rejected, with caller bases and alignment unchanged.
+
+Three normal processes retain every one of the 360 baseline semantic/lifecycle
+operations. Preselected large-page paging allocation medians fall 9.4% at 2,048
+rows and 2.6% at 16,384 rows; both allocation ranges are nonoverlapping. Timing
+results remain mixed, with 26 fixed budget failures in both versions. Fifteen of
+18 image pairs are exact; the other three retain one/four/five unexplained pixels.
+All nine applicable native suites pass, including 208 reference states,
+48,368 geometry values, 3,090 paint probes and 1,864 checkbox endpoints.
+Both solution architectures and 495 portable plus 10 Windows text tests pass.
+
+Local preview `0.1.0-table-style-v1-local` freshly restores into independent
+x64 and ARM64 version caches and builds for both architectures, reusing existing
+third-party dependencies. Its AnyCPU library and all package XAML, fonts, images,
+PRI, README, transitive targets and licenses match current source. The dedicated
+self-contained catalog publishes 550 verified files, reusing 546 unchanged
+immutable SDK/resource files and extracting four changed files. It contains
+one publish output, without a nested historical publish tree.
+
+Fresh source, consumer and extracted catalog each pass 120 table semantic
+operations, 84 live states and 72/70/72 Checkbox checks. Both fictional demos pass
+66 checks per source/archive host. All raw shared states and lifecycle contracts
+match. Of 274 native image pairs, 272 are exact: all live and Checkbox pairs,
+plus ten of twelve delivery performance pairs; two retain tiny unexplained
+differences. No thresholds or image masks change.
+
+A later incremental catalog build reused temporary diagnostic object output.
+A clean catalog rebuild produced the normal `aa68de58…` host; normal command
+markers and all delivery replays were verified. The qualifying three-process
+timing set retains its exact earlier `fa038fb1…` host and the same `2dabe1ac…`
+library. Fresh delivery processes establish semantic correspondence, not a new
+three-process timing median. Always rebuild and verify the normal catalog after
+a temporary compile-item diagnostic override; restoring only bin files does not
+qualify the intermediate compiler state.
+
+See `artifacts/current/table-column-style-checkpoint-v1.json` for separate build,
+package and catalog evidence. Full performance, visual/motion/scaling,
+physical-input and native ARM64 acceptance remain open. All 112 entries and both
+fictional-data demos remain in progress, zero accepted.
+
+## Table queued-layout diagnostic and rejected language probe, 2026-10-24
+
+A bounded current-library diagnostic passes 20 semantic/lifecycle operations
+with exact original snapshots and cleanup contracts. It records 168 layout-pass
+samples and identifies dispatcher wait as the dominant post-mutation stage.
+A separate traced replay preserves those same contracts. The trace covers all
+process phases; its nested sampled-thread-time values do not establish CPU
+utilization or exclusive causes. Earlier full native-cost evidence remains
+retained separately.
+
+A narrow private-probe `Language` setter experiment then passes all 360 normal
+semantic/lifecycle operations in three processes, but fails 28 fixed timing
+budgets versus the prior 26. It has four nonoverlapping timing improvements and
+three regressions; all allocation budgets pass. Seventeen of 18 image pairs are
+exact, with five unexplained pixels in the remaining pair. The experiment is
+preserved and reverted. No fresh package, native ARM64 runtime or full component
+acceptance is claimed. Both production source hashes and eight normal source
+host files are restored; a fresh 72-check Checkbox report matches the sealed
+baseline byte for byte. The first output restore's PowerShell null-path argument
+error and successful recovery remain recorded.
+
+See `artifacts/current/table-probe-language-checkpoint-v1.json` and
+[the performance account](data-table.md#shared-notification-callbacks).
+The verified library/NuGet/catalog remain the preceding Checkbox-ready preview.
+All 112 entries and both fictional-data demos remain in progress, zero accepted.
+
+## Hidden Checkbox readiness correction, 2026-10-24
+
+The earlier rich-content checkpoint below retained 13 source/consumer and four
+source/archive `IsLoaded` differences. A separate plain-WinUI/Orchard diagnostic
+records 224 observations over 24 cases. Three cases report loaded after layout
+waits alone; all 24 report loaded after a hidden native render and unloaded after
+removal. Late subscription after actual readiness was not tested.
+
+The v3 shared fixture now renders its hidden root and asserts readiness before
+mounted checks. Source passes 72 checks twice with identical reports; the
+independent consumer passes 70 and extracted catalog passes 72. All shared raw
+checks, including loaded state, match exactly. Each gate rejects 34 corruptions,
+16 original wrong-name states, three wrong-style states and eight retained
+unready observations. Both fictional demos pass 66 checks per source/archive.
+All ten prior/source/consumer/archive native image pairs are byte identical.
+Root and independent consumer fixture builds pass for x64 and ARM64; ARM64
+runtime remains unverified. No foreground activation or hardware input is used.
+
+This changes only validation and documentation. Library `22f84eba…` and NuGet
+`0.1.0-checkbox-rich-v1-local` (`2ebf07f3…`) remain unchanged. Consumers reuse the
+previously verified package cache. The refreshed self-contained catalog is
+`0.1.0-checkbox-ready-v1-local` (`3035504b…`). The 505 regression tests and table
+timings below are inherited from the preceding checkpoint, not rerun against
+the new capture host `c193e65a…`; the 26 timing-budget failures remain open.
+See `artifacts/current/checkbox-loaded-checkpoint-v1.json`. Full visual, motion,
+scaling, physical-input and native ARM64 acceptance remain open. All 112 entries
+and both required fictional-data demos remain in progress, zero accepted.
+
+## Checkbox rich-content and combined table preview, 2026-10-24
+
+Preview `0.1.0-checkbox-rich-v1-local` preserves direct rich-content names when
+Checkbox presentation is absent and keeps consumer implicit text styles from
+being overwritten by local defaults. The preceding library reproduced 16 empty
+rich-name states. The name-only repair exposed three remaining style failures;
+both original reports and sources remain retained. Two initial catalog name
+assertions were harness errors because the demo supplies an explicit name.
+
+Current source/package/extracted catalog pass 72/70/72 checks, including merged
+styles, inherited setters, `RichTextBlock`, binding ownership, explicit metadata,
+rendered template names and native toggle events. Each negative gate rejects
+30 corruptions plus the 16 actual wrong-name and three wrong-style states.
+Both fictional-data component demos pass 66 checks per source/archive host.
+Root x64/ARM64 builds and all 505 regression tests pass. Independent consumers
+restore the same fresh NuGet bytes and build for both architectures; their x64
+runtime is verified separately from ARM64 compilation. The package retains its
+AnyCPU library, 157 loose XAML files, one PRI, six fonts, two images and current
+README/notices. The full standalone x64 ZIP verifies 1,360 files.
+
+The combined preview retains the table callback allocation draft below. Three
+fresh source processes and one independent-consumer process pass 480 semantic
+operations. The current library fails 26 of 120 source timing profiles; all
+allocation budgets pass. Large-page paging allocation medians are about 18%
+and 15% below the fresh Switch-package baseline. Fifteen of 18 table image pairs
+are byte identical; the remaining three have four/five unexplained pixels.
+All ten Checkbox image pairs are byte identical. Its raw hidden-host `IsLoaded`
+observations vary in four source/archive and 13 source/consumer checks, so full
+lifecycle equivalence is not claimed. Final source/delivery fingerprints are
+recorded in `artifacts/current/checkbox-content-checkpoint-v1.json`. Full
+visual/motion/scaling, physical-input, collection-performance and native ARM64
+acceptance remain open. All 112 entries and both required demos remain in
+progress, with zero accepted.
+
+## Table callback allocation draft, 2026-10-24
+
+Current source `32b869ec…` shares equivalent table property callbacks while
+retaining every property notification, cleanup token and original consumer
+object. Three independent baseline processes of the verified Switch package
+and three candidate source processes preserve all 360 semantic/lifecycle
+snapshots. Median large-page paging allocations fall about 27% at 2,048 rows
+and 15% at 16,384 rows. Timings remain mixed: the fixed budget audit fails
+26 baseline and 27 candidate profiles. All allocation budgets pass; performance
+acceptance remains open. Four of 18 native image pairs have one to five changed
+pixels with unverified causes; 14 pairs are byte identical.
+
+Eight native suites pass for customization, templates, text, table primitives,
+Data Table composition, live data, supplemental filtering and reference history.
+The reference replay covers 208 states, 7,560 rendered cells and 48,368 geometry
+values; the paint gate checks 3,090 probes and 1,864 checkbox endpoints. Both
+root architecture builds and all 505 regression tests pass. These are hidden
+x64 runtime checks, with no foreground activation or hardware input. ARM64
+runtime, full visual/motion/scaling and performance acceptance remain open.
+
+The source-only evidence is retained in
+`artifacts/current/table-callback-checkpoint-v2.json`. It is not a new package
+delivery: the Switch checkpoint below remains the newest verified NuGet/catalog
+preview. Fresh package/consumer verification is required for the next batched
+delivery. Inventory remains 112 started and in progress, zero accepted, with
+both fictional-data component demos required and in progress.
+
+## Switch public state and native-input lifecycle, 2026-10-24
+
+Preview `0.1.0-switch-lifecycle-v1-local` makes Toggle state available from
+caller-owned `IsOn` before templating, rejects public activation while the owner
+or native input is unmounted, ignores obsolete native input events, and
+synchronizes the live input from public state on remount. The preceding library
+reproduced 24 failed checks and 16 caller-state mutations, across both Boolean
+states and themes. The original reports and production source remain retained.
+
+Current source/package/archive pass 46/44/46 checks with 84/82/84 observations.
+Each host verifies four untemplated states, rejects 12 unavailable and four
+disabled actions, isolates eight retired native inputs, and records 48 bound
+state observations. Event counts are asserted where measured; other state
+observations explicitly record an unmeasured count as null. Name precedence,
+single accessibility representation, template replacement, constrained LTR/RTL
+labels and actual catalog caller output remain passing. Thirty corrupted reports
+per host and the actual before-repair caller-mutation report are rejected.
+
+All 84 source/archive observations and 82 common source/package observations
+match. Six before/after captures and 12 source/package/archive image pairs are
+byte-identical, with the zero-difference diagnostic unchanged. These comparisons
+show native correspondence; they do not establish browser/native visual parity,
+physical input, scaling or motion acceptance. No foreground input or OS settings
+changes were used.
+
+The 495 portable and ten Windows text tests pass. Both root and fresh isolated
+NuGet-consumer architectures build cleanly. The package's AnyCPU assembly,
+157 loose XAML files, 156 themes, PRI, fonts, images and current README pass
+payload checks. Root binary identities are recorded separately; the current
+lifecycle methods have matching compiled sizes in x64/ARM64, which does not
+establish ARM64 runtime behavior. The initial identity-inspection helper's
+PowerShell extension-method error is retained; the corrected helper passes.
+
+The standalone catalog ZIP contains all 1,360 files. Its local validation copy
+reuses 1,356 byte-verified files from the preceding immutable archive and freshly
+extracts four changed files. It has no hard links to mutable build output.
+Every ZIP/source/expanded file hash matches. Both fictional Monitoring and
+Editorial demos pass 66 hidden checks per current source/archive host.
+
+All 112 entries and both required demos remain in progress and unaccepted.
+Complete visual/motion/scaling, physical-input and native ARM64 acceptance remain
+open. This preview has no qualified collection-performance baseline or fresh
+Data Table image comparison; earlier failures retain their original scope.
+Evidence uses `artifacts/current/switch-lifecycle-*`; see the
+[Switch contract](switches.md).
+
+## Toggle Group retained-provider lifecycle, 2026-10-24
+
+Preview `0.1.0-toggle-lifecycle-v1-local` prevents retained SelectionItem and
+native Toggle handles from changing state after item removal or group unload.
+The component checks current mounted ownership before selection actions and
+native Toggle, and ignores events from retired children. Remounting and moving
+an item to another group reconnect its handle to the current group. Active
+native Toggle behavior and caller selection models remain intact.
+
+The unchanged preceding library reproduced 32 failed lifecycle checks and 14
+state-mutation observations. Four additional initial disabled-Toggle failures
+were test error-mapping mistakes: the native UIA COM HRESULT differs from the
+managed WinRT exception's HRESULT. The corrected check accepts the exact managed
+exception type or the native UIA error code, and still requires unchanged state
+and no selection events. Raw reports and an independent baseline analysis remain
+retained; those four mapping failures are not counted as component defects.
+
+Current source/package/archive pass 50/48/50 checks with 70 observations per
+host. Each host rejects 32 retired-handle and 16 disabled actions and verifies
+all six size/variant styles in both themes. Twenty-eight corrupt reports per
+host and the actual before-repair mutation report are rejected. All 70
+observations match across the three hosts; the source/archive reports are
+byte-identical. These are behavior/style observations, not browser-image parity.
+The actual catalog fixture displays the bound caller selection correctly.
+
+Root and fresh independent-consumer x64/ARM64 builds pass. The package's AnyCPU
+assembly, 157 loose XAML files, 156 themes, PRI, fonts, images and current README
+pass payload checks. All 1,360 catalog archive files match the source bytes.
+The 495 portable and ten Windows text tests pass. Both fictional Monitoring and
+Editorial demos pass 66 hidden checks per current source/archive host.
+
+Both root-build libraries are AnyCPU IL and contain the current lifecycle guard
+methods. Their binary hashes differ and are recorded independently; the cause
+of that difference is unverified. Both independent consumer architectures restore
+the same verified package bytes. No ARM64 native runtime equivalence is claimed.
+
+Full visual/motion/scaling acceptance, physical input and native ARM64 runtime
+remain open. This preview has no qualified collection-performance baseline or
+fresh Data Table image comparison. The preceding library's six differing table
+pixels and the last qualified baseline's 26 failed budgets remain historical
+evidence with their original scope. All 112 entries and both demos remain
+unaccepted. Evidence uses `artifacts/current/toggle-group-*`; see the
+[Toggle Group contract](toggle-groups.md).
+
+## Temporary binding ownership repair, 2026-10-24
+
+Preview `0.1.0-label-ownership-v1-local` repairs Label losing original runtime
+bindings/style precedence and writing its temporary relationship into two-way
+sources. It preserves newer bindings and style ownership even when they resolve
+to the same label. Button Group now disconnects captured bindings before
+assigning temporary geometry, preserving caller two-way values. Original
+binding objects reconnect to current source values on release. See
+[Label ownership](labels.md) and [Button Group ownership](button-group.md).
+
+Source/package/archive pass 28/26/28 Label checks with 222 relationship/name
+observations, and 22/20/22 group checks with the existing 80 layout states.
+Twenty-nine corrupt reports are rejected per component/host. The actual
+before-repair Label source mutation and previous native group overlap remain
+rejected. All 18 group image comparisons and both source/archive Label captures
+are byte-identical. Both root and independent-consumer architectures build;
+495 portable and ten Windows text tests pass. The standalone Button's ten
+style/template and twelve spacing-binding states remain passing. Both fictional
+demos pass 66 hidden checks in each current source/archive host.
+
+All 120 packaged Data Table semantic/lifecycle operations match the preceding
+preview. Four of six captures are byte-identical; six pixels differ across two
+images, maximum channel difference 20, cause unverified. The zero image gate
+still fails. No current three-process performance baseline is claimed; the last
+qualified baseline had 26 failing budgets. Native ARM64 runtime, physical input,
+actual scaling and full visual/motion acceptance remain open. All 112 entries
+and both demos remain in progress and unaccepted. Evidence uses
+`artifacts/current/label-association-*`; previous results retain their scope.
+
+## Connected Button Group repair, 2026-10-24
+
+Preview `0.1.0-button-group-v2-local` repairs wrapping groups that left gaps,
+overlapped by a pixel, or rendered actions narrower/shorter than their allocated
+slots. The group restores caller local values, style values and original
+appearance/alignment bindings after removal or unload. Its shared rounded
+edges use the mounted root's rasterization scale. The default Button native
+action fills its wrapper. See [the contract and native cases](button-group.md).
+
+Source, independent NuGet consumer and extracted catalog pass respectively
+20/18/20 hidden checks and 28/24/28 layout states. Each verifies 14 appearance
+and eight alignment restorations. All twelve common native image comparisons
+are byte-identical; the 22 captures also verify painted action coverage.
+Twenty-six corrupt reports and the retained actual one-pixel overlap are
+rejected per host. Both x64/ARM64 root and independent-consumer builds pass;
+495 portable and ten Windows text tests pass. The current package also passes
+the standalone Button's ten style/template states, twelve spacing-binding
+states and all 120 Data Table semantic/lifecycle operations. Both fictional
+demos pass 66 hidden checks in each current source/archive host.
+
+The current table snapshots and lifecycle contracts match the preceding
+preview. Five of six table captures are byte-identical; one pixel differs at
+maximum channel difference 20, with the cause unverified. Its zero image gate
+still fails. The last qualified three-process performance baseline had 26
+failing budgets; no new performance acceptance is claimed for this package.
+Native ARM64 runtime, physical input, actual scaling and full inventory
+acceptance remain open. All 112 entries and both demos remain unaccepted.
+Evidence uses `artifacts/current/button-group-contract-*`; older preview and
+strict image results below retain their original scope and identities.
+
+## Current package boundary, 2026-10-24
+
+Local preview `0.1.0-component-validation-v1-local` is built from the current
+library sources. Its AnyCPU DLL matches the fresh x64 source build and catalog
+(`3afe4362853fef3c2b270e015769a7c57bbc0bac8e278cbe91ad6880906b9b9b`).
+The payload audit verifies all 157 loose XAML files against source, 156 themes,
+the PRI, six fonts, two images, current README and required notices. The fresh
+x64 root build has zero warnings/errors; 495 portable and ten Windows text
+tests pass. Independent x64 and ARM64 consumers restore the exact package into
+fresh Orchard caches without repository project references. Installed third
+party dependency packages are reused.
+
+The first ARM64 publish ran out of disk space. Its failed output and logs are
+retained. After hash-preserving NTFS compression of 64 finished diagnostic host
+copies recovered about 2.7 GB, the same isolated restore publishes successfully
+to a fresh output using the pinned SDK's build/publish hardlink options. This
+is an ARM64 build result, not native ARM64 runtime evidence.
+
+The independent x64 consumer passes 116 hidden Theme Toggle states and 42
+ownership/metadata checks, with zero geometry error. The catalog ZIP has 1,360
+files, each verified after extraction. Source and extracted catalog separately
+pass all 66 hidden Monitoring/Editorial demo checks in light and dark themes,
+including original data, selection, filtering, editing and remount contracts.
+These checks guard against activation, visibility, focus and hardware input.
+They do not establish foreground interaction or complete visual acceptance.
+
+The packaged Data Table passes all 120 native semantic/lifecycle operations,
+matching the qualified source baseline's snapshots and contracts. The verifier
+rejects 74 corrupt reports and the retained late-observation failure. Five of
+six original captures are byte-identical; the 2,048-row append capture differs
+at five pixels, maximum channel difference 20, with the cause unverified. The
+comparison retains its zero threshold and reports exact-image failure.
+
+Reports use the `artifacts/current/component-delivery-*` prefix. The prior
+combined-renderer delivery and strict image diagnostics retain their own
+identities and actual results. The current preview does not inherit those
+runtime results as fresh package evidence. All 112 inventory entries and both
+fictional demos remain in progress and unaccepted. The qualified three-process
+Data Table baseline still has 26 failing performance budgets; a new package
+smoke run cannot replace that baseline. Follow the
+[acceptance contract](acceptance-contract.md) for remaining visual, behavior,
+motion, scaling, platform and delivery requirements.
+
+## AlertDialog source/model preparation, 2026-10-19
+
+The latest continuation is `artifacts/current/alert-dialog-preparation-checkpoint.json`.
+The frozen source contains 56 layouts/PNGs, 36 input histories, 40 presence
+samples and 20 endpoint CSS samples. Final independent captures match all 57
+files. The source layout/presence/endpoint model matches these contracts, and
+all 315 portable tests pass. The source verifier decodes every PNG and checks
+surface fill, reserved scrollbars, relationships, loading and focus metadata.
+
+These are original headless browser interactions, not native modal tests.
+Browser-realm clocks and Web Animations control timer/presentation samples;
+no Windows preferences or time settings change. The native control, fixture,
+modal host/integration, interrupted motion and package remain pending. The
+current model is newer than the verified ScrollArea package. Inventory stays
+92 in progress/20 pending/zero accepted of 112 — 82.1% entries started — with
+both fictional-data demos required/in progress and unaccepted. See
+[the measured contract and acceptance gaps](alert-dialog-reference.md).
+
+## ScrollArea native prototype, 2026-10-19
+
+The implementation checkpoint is `artifacts/current/scroll-area-implementation-checkpoint.json`.
+Catalog and fresh `0.1.0-scroll-area-v2-local` consumer each pass 94 layouts,
+12 controlled scrolling histories, 3,076 zero-error geometry values and five
+contract groups. Fourteen raw native client PNGs bind 12 paint samples,
+17,952 straight thumb-body pixels (maximum channel error one) and 960 zero-height
+clipping pixels. The source scrollbar capsule uses native 3/7.5-DIP radii;
+an earlier elliptical native PNG is retained as a rejection fixture. The auditor
+rejects 28 damaged catalog and 32 damaged package receipts. All runs record zero
+visibility, activation, focus and physical input. Native scroll methods and
+visual states are injected; physical event routing remains unverified.
+
+Both catalog architectures and clean package consumers compile. All 309 portable
+and nine windowless font tests pass. The control/fixture and both keyed style
+examples are registered in navigation and `catalog-coverage.json`. Package
+payload bytes and both catalog archives are checked separately. See
+[the public contract and acceptance gaps](scroll-area.md).
+
+The same package passes HoverCard 44 layouts/five contract groups, Popover
+122 layouts/five groups, Header 72 layouts/23 scenarios with the existing
+one-channel paint gate, Footer 192 frames/11 contracts and AppShell 168 layouts/
+44 ownership checks. These are fresh regressions on the ScrollArea package.
+
+Inventory: 92 in progress, 20 pending, zero accepted of 112 — 82.1% entries
+started. Both fictional-data demos remain required/in progress and unaccepted.
+Complete raster/rounded edges, physical input/focus, broader integration,
+scaling/performance, visible startup and native ARM64 acceptance remain open.
+Background only; no Narrator, OS settings, pointer heartbeat, Actions or pushes.
+
+## ScrollArea source/model preparation, 2026-10-19
+
+The preparation checkpoint is `artifacts/current/scroll-area-preparation-checkpoint.json`.
+Independent source captures match 107 receipt/PNG files: 94 layouts, 12 scrollbar
+paint states and 16 input histories. The collector explicitly removes
+Playwright's headless `--hide-scrollbars` switch. Five new portable regressions
+bring the passing suite to 309. The model compiles for x64 and ARM64.
+
+Ten hidden native capability scenarios establish a suitable `ScrollView`
+configuration and reserved-gutter template. Ninety geometry comparisons include
+eight original source thumb bounds; ten full native client PNGs and 18 fill
+samples pass. There are 338 guards with zero visibility, activation, focus or
+input. The auditor rejects 27 damaged receipts. This diagnostic uses the old
+HoverCard package as its host and does not implement or package ScrollArea.
+The current model is newer than that package. See [the contract](scroll-area-reference.md).
+
+Inventory remains 91 in progress, 21 pending, zero accepted of 112 — 81.3%
+entries started. ScrollArea remains pending; its native control, fixture and
+package remain open. Both fictional-data demos remain required/in progress.
+All broader component acceptance remains open. Background only; no Narrator,
+OS settings, pointer heartbeat, Actions or pushes.
+
+## HoverCard native prototype, 2026-10-19
+
+Local `0.1.0-hover-card-v1-local` implements the reusable inline control and
+catalog fixture. Catalog and fresh x64 package consumer each pass 44 source
+states, 1,020 zero-error geometry/layout values, 132 brush comparisons, 96
+native presentation samples and five contract groups. Actual native point
+queries cover direct content, the literal gap, disabled originals and caller
+stacking. Private model/time injection does not prove physical input delivery.
+Eight complete native client PNGs bind dimensions, hashes and fill samples;
+complete source raster/shadows remain unverified. All runs record zero
+visibility, activation, focus and input. The auditor rejects 21 damaged catalog
+and 25 damaged package receipts.
+
+The same package passes Popover 122 states/five contracts, Header 72 layouts/
+23 scenarios with source paint error at most one, Footer 192 layouts/11
+contracts and AppShell 168 layouts/44 ownership checks. All 304 portable tests
+pass; the nine windowless font tests are inherited only after their unchanged
+inputs are rehashed. Both architecture catalogs and clean package consumers
+compile. Versioned archives and package payload bytes are verified. Native
+ARM64, physical input/focus, nested/ancestor integration, full visual/motion,
+scaling, performance and normal visible startup remain open.
+
+The continuation is `artifacts/current/hover-card-implementation-checkpoint.json`.
+Inventory: 91 in progress, 21 pending, zero accepted of 112 — 81.3% entries
+started. Both fictional-data component demos remain required/in progress and
+unaccepted. No Narrator, OS settings, pointer heartbeat, Actions or pushes.
+
+## HoverCard source preparation, 2026-10-19
+
+`tests/Reference/HoverCard.json` records 44 source states, four input histories
+and 16 motion timelines. Independent final captures match all 45 receipt/PNG
+files. Five new portable tests bring the suite to 304 passing tests and match
+the production placement/motion model against 44 layouts and 96 timeline samples.
+The source is an inline CSS hover group: no portal/collision handling, no
+keyboard opening or Escape dismissal, and snapping translation with animated
+opacity. See [its complete contract](hover-card-reference.md).
+
+`artifacts/current/hover-card-preparation-checkpoint.json` seals this preparation.
+Native inline overflow/hit testing, the mounted control/fixture and a fresh
+HoverCard package remain unverified. The Popover package below remains the last
+verified implementation package; it does not contain the new HoverCard model.
+Inventory stays 90 in progress, 22 pending and zero accepted: 80.4% entries
+started. Both fictional-data demos remain required/in progress/unaccepted.
+
+## Popover native prototype, 2026-10-19
+
+Local `0.1.0-popover-v1-local` implements the reusable control and catalog
+fixture. Catalog and fresh x64 package consumer both pass 122 source states,
+1,920 zero-error geometry/layout values, 360 brush comparisons and five
+ownership/lifecycle groups. Native child PNG dimensions/background samples
+pass; complete source raster and shadows remain unverified. Runs record zero
+visibility, activation, focus and input. Fourteen damaged catalog receipts and
+17 damaged package receipts are rejected.
+
+The same package passes Header 72 layouts/23 scenarios (source paint error at
+most one), Footer 192 layouts/11 contracts and AppShell 168 layouts/44 ownership
+checks. All 299 portable and nine windowless font tests pass. Both architecture
+catalogs and isolated package consumers compile; ARM64 runtime remains open.
+Versioned catalog archives match all built files, and package DLL, XAML, PRI,
+README and Floating UI license bytes are verified. Earlier native layout-cycle,
+initial-sizing and presentation failures remain recorded and are addressed by
+the passing final catalog/package runs. See [the API and remaining gaps](popover.md).
+
+The continuation is `artifacts/current/popover-implementation-checkpoint.json`.
+Inventory: 90 in progress, 22 pending, zero accepted of 112, or 80.4% entries
+started. Both fictional-data demos remain required/in progress/unaccepted.
+Native input/focus, nested/modal integration, full raster, scaling, performance,
+visible startup and complete ARM64 acceptance remain open. Background work only;
+no Narrator, OS settings, pointer heartbeat, Actions or pushes.
+
+## Popover source and native primitive preparation, 2026-10-19
+
+`tests/Reference/Popover.json` binds 122 source states and 16 histories, with
+byte-identical independent captures and actual nested-module provenance. The
+production state/placement model matches all 120 open source rectangles and
+side/alignment choices. Five new tests bring the portable suite to 299 passing
+tests. The source normal stylesheet reports no popup animation despite its
+220/150-ms tokens; the implementation must follow the effective styles.
+
+A new isolated x64 consumer harness opens a real, root-constrained native Popup
+under a hidden window. Its anchor-relative bounds and child pixel sample match,
+with 13 isolation checks and zero visibility, activation, focus or input. That
+probe uses the existing Header paint package only as a baseline dependency;
+it does not validate a Popover component or package. The reusable Popover control
+and fixture remain pending. See [the full source contract](popover-reference.md).
+The continuation is sealed by `artifacts/current/popover-preparation-checkpoint.json`.
+
+## Header solid paint repair, 2026-10-19
+
+Local `0.1.0-header-paint-v1-local` preserves public source brush values while
+encoding combined solid alpha once into private native paint. Catalog and fresh
+x64 consumer pass 23 native scenarios, including paint ownership/lifecycle;
+their independent source paint gates pass at maximum error one. The gate's
+one-level limit and frozen PNGs are unchanged. The package passes 72 layouts,
+6,096 zero-error geometry checks, 952 source brushes and 144 exact private alpha
+checks. Both architecture builds and fresh consumer compilations pass, as do
+294 portable tests. Full raster, input/focus, normal motion, scaling/performance,
+broader integration, visible startup and native ARM64 acceptance remain open.
+Work remains in the background; both fictional-data demos remain required.
+The exact package also passes Footer192/11 and AppShell168/44 regressions;
+44 layout and 68 contract corruptions are rejected against fully passing valid
+baselines. Versioned catalog archives match their builds byte for byte. See
+`artifacts/current/header-paint-checkpoint.json` for source and evidence hashes.
+
+## Earlier Header/AppShell repair draft with an open visual gate, 2026-10-19
+
+`artifacts/current/header-integration-checkpoint.json` records the local
+`0.1.0-header-integration-v3-local` prototype. Header and footer slot wrappers
+follow original root stacking, fixing Header painting/hit order above AppShell's
+opaque main. Twenty-two native scenario assertions pass; actual ScrollViewer,
+ScrollView, reparenting and live position paths are exercised. Six original
+composition states match 120 geometry checks. Raw native frames and lossless
+viewport extraction are preserved, including dark logo decoder bounds.
+
+The independent structural audit passes. The source paint probe gate remains red:
+dark closed bottom-rule pixels differ by two channel levels, above the existing
+one-level gate. Overall audit `passed` is false, and component acceptance is
+unproven. Both builds and fresh consumer compilations pass; 294 portable and
+nine windowless font tests pass. Native ARM64 and normal visible/input, motion,
+scaling, performance and complete raster checks remain open. Work is background
+only; both required fictional-data demos remain preserved and unaccepted.
+
+## Earlier Header native prototype and original-model selection, 2026-10-19
+
+The local Header v2 package and catalog pass 72 source states each, with 6,096
+zero-error geometry checks and 952 brushes. Fifteen public contracts pass,
+including real ScrollViewer presentation, original slot/model/selector ownership,
+worker updates, retirement and template replacement. The fresh x64 package
+rejects 42 damaged layout receipts and 37 contract receipts/images. Both builds
+and isolated consumer compilations pass; ARM64 execution remains open. The
+exact package also passes Footer192/15,216zero-error/1,890brushes and eleven
+public contracts, plus AppShell168layouts/44ownership/zeroerror.293portable and
+nine windowless font tests pass. No native input or full raster parity is claimed.
+Inventory is 89 started,23pending,0accepted; both fictional demos remain required.
+See [Header](header.md) and [shared content presenters](content-presenters.md).
+
+## Header source and native placement investigation, 2026-10-19
+
+Header remains pending. Its 72 source states and four interaction histories
+match independent captures; five new reference tests pass, bringing the portable
+suite to 293. A hidden, fresh x64 package consumer exposed a clipping defect in
+the initially considered zero-flow layout despite correct measured rectangles.
+An owned template surface with negative margins passes both candidate placement
+scenarios; the same binary reproduces 12 rejected-design failures across three
+scenarios. The independent auditor checks all 5,760,000 diagnostic pixels and
+the hit-test tree, with 45 guards and no activation, focus or input. It rejects
+39 damaged receipts/images. The existing Footer package/library and catalog
+archives remain the verified local component artifacts. No native Header parity
+or component acceptance is claimed. See [Header](header-reference.md).
+
+## Expanded Footer source layout, 2026-10-19
+
+Sixty-four source states now cover wrapping, empty values, long bottom slots,
+multirow sections, narrow RTL/CJK text and live mutations. Independent recaptures
+match and all original 48 images/measurements remain unchanged. The stronger
+baseline exposed 318 geometry failures. The corrected final catalog and fresh
+x64 package each pass all 192 layouts and 15,216 geometry checks with zero error,
+1,890 brushes, seven lifetime checks and 1,877 guards. Their auditors reject
+46/50 damaged receipts. Eleven public contracts pass, alongside both builds,
+fresh consumers, 288 portable tests and nine windowless font tests. The fresh
+package's Nav Menu and threading regressions pass too. Every check is background
+only: no activation, focus, input, OS setting change or hosted workflow. Visible
+rendering/input, broader properties and native ARM64 remain unverified. See
+[Footer](footer.md) for package hashes and the checkpoint.
+
+## Footer public-API contracts, 2026-10-19
+
+Ten slot/link/lifecycle scenarios pass in both the catalog and a fresh isolated
+x64 NuGet application, with 179 isolation guards and no activation, focus or
+native input. Original editor selection, bound model/template/selector handling,
+original link metadata, explicit command parameters and action retirement are
+covered. Auditors reject 24 catalog and 28 package corruptions. Both architecture
+builds and fresh consumer compilations pass alongside 287 portable tests. The
+library DLL/package remain unchanged; no new library behavior is claimed.
+See [Footer](footer.md) for the exact scenario list and remaining acceptance work.
+
+## Producer notification regression, 2026-10-19
+
+The catalog and independent x64 NuGet consumer pass actual worker-thread
+notifications through Select, Header Select, Collection Filters and the three
+DataTable views. Five scenarios cover 23 publications, original metadata/items,
+source replacement and unload, with 191 isolation guards and no activation,
+focus or input. The saved prior package fails all five dispatcher boundaries
+with `0x8001010E`. The new catalog/package rejection audits reject 27/31 damaged
+receipts. Footer catalog and package layout/paint regressions pass against the
+same new library DLL. Both architecture builds and fresh consumer compilations
+pass; ARM64 runtime remains open. See [producer notifications](producer-notifications.md).
+Inventory is unchanged at 88 in progress, 24 pending and zero accepted.
+
+## Footer prototype, 2026-10-19
+
+Footer has a registered fictional-data fixture and initial public metadata,
+section/link and bottom-content APIs. Its 48 source layouts are independently
+reproducible at a 900-pixel client height; all geometry matches the prior
+1600-pixel-height reference. The production breakpoint/nullish-content models
+and reference provenance are covered by the 287 passing portable tests.
+
+The initial visible attempts are failed/incomplete runtime evidence. The first sequence retained
+one PNG before a WinUI exception. Subsequent sequences completed 41 and 39 state
+records before stack overflows; all partial reports and raw PNGs remain intact.
+Background reproduction found a motion callback accessing `IsLoaded` off-thread,
+followed by recursive failure while the error reporter queried UI resources.
+Callbacks now dispatch before reading UI state; reporting avoids that UI query.
+The current hidden run completes 144 layouts (three full source cycles), 8,040
+exact geometry checks, 1,434 actual brush checks and seven lifetime/threading
+checks, with 1,349 isolation guards and zero activation/focus events. It sends
+no input. All 40 damaged reports are rejected. Exact tested DLLs are preserved.
+Brand wrapping uses the existing text bridge and unbreakable link widths retain
+their source overflow. Both current architecture builds and 287 portable tests
+pass. The fresh local Footer v1 package builds independent x64/ARM64 consumers;
+its x64 hidden runtime repeats the same 144 layouts, 8,040 exact geometry and
+1,434 brush checks, seven lifetime/threading checks and 1,349 isolation guards.
+All 44 damaged package receipts are rejected, and the generated restore/source
+caches are removed. DLL, four XAML files, PRI and README match the package.
+This is an unaccepted local package; full visible runtime acceptance is not
+claimed. The earlier verified Nav Menu package remains preserved;
+a current-binary Nav Menu source audit is still required after shared changes.
+
+Visible native tests are no longer authorized after October 18 midnight EDT.
+Continue background builds, hidden-window diagnostics without activation/focus
+or input, and source analysis. Inventory is 88 in progress, 24 pending and zero
+accepted (78.6% entries started). Both required fictional-data demos remain.
+
+## Nav Menu draft, 2026-10-18
+
+The source-bound x64 run passes 42 layouts, 888 exact geometry checks, 138
+actual paint checks, eight native mouse/keyboard histories (24 samples) and
+26 lifetime checks. Original item identities, raw destinations, custom renderers,
+retained input/selection/focus after reorder, live brush opacity and retired
+actions are covered. Forty damaged foreground reports are rejected.
+
+Both catalog architectures and fresh isolated consumers of
+`0.1.0-nav-menu-v2-local` build cleanly. Its x64 hidden runtime passes 42 layouts,
+888 exact geometry checks, 78 normal-state paint checks, 16 ownership checks
+and 336 isolation guards without activation/focus. Forty-two damaged hidden
+reports are rejected; temporary restore directories are removed. The package's
+DLL, four loose XAML files, compiled PRI and README match the verified inputs.
+
+All 285 portable and nine Windows text tests pass. The latter bind cursive
+tracking to source widths while preserving Japanese/Latin measurements.
+Four raw PNGs are exact; 88,562 pixels still differ over 42 full images. No
+masks, tolerance, resampling or scene painting are used. Full raster, native
+motion, scaling, further customization/integration and native ARM64 runtime
+remain open. This draft is unaccepted. Inventory: 87 in progress, 25 pending,
+zero accepted; 77.7% entries started. Monitoring and Editorial demos remain
+required. No OS settings, Narrator, pointer heartbeat or Actions were used.
+See [Nav Menu](nav-menu.md) for the API and evidence boundary.
+
+## Collection Filters draft, 2026-10-18
+
+The source-bound x64 run passes 50 layouts, 3,408 exact geometry checks and all
+44 input/state samples from eight browser sequences. The control never assigns
+its caller's filter dictionary or sort object. Both themes verify accepted and
+declined filtering/sorting, boolean false, removal, Clear all, default expansion
+updates and binding retention. Template replacement, inactive/hidden peers and
+disabled actions cannot emit requests. The initial stale-peer test exposed a
+callback closing over the replacement action; callbacks now validate their
+actual sender against the current visible template.
+
+The initial source comparison also exposed duplicate RTL mirroring, a composed
+Date Picker retaining its standalone width, and Windows formatter-added LRM
+markers in generated chip strings. Those are corrected. The native input harness
+waits for the popup's original option focus before sending keyboard input.
+Self-removing chip clicks are proven by trusted native mouse presses, physical
+releases and the resulting consumer request, without requiring the retired node
+to receive a later routed release event.
+
+All 50 complete physical client PNGs are retained. Two empty states match
+exactly; 48 retain 661,819 differing pixels. The owned palette is generated from
+22 unchanged CSS-token DOM swatches, with alpha encoded once in each brush color.
+Both foreground and hidden package runs pass 420 actual-brush checks. The
+original 48 cases retain 630,648 differing pixels, down 81.5% from 3,403,374;
+the two new numeric cases add 31,171. No masks, resampling or pixel tolerance are
+applied. All 44 damaged foreground receipts are rejected. Both catalog
+architectures build cleanly, and 282 portable tests pass.
+
+The fresh `0.1.0-collection-filters-v4-local` package (SHA-256
+`471e70cb179af43e7ee05c3669ee867ebffdd27d81947838bd8e986852b5c263`)
+builds independent x64 and ARM64 consumers with their own feed/cache and no
+source-project reference. Both builds are warning-free. The x64 hidden runtime
+passes 50 layouts, 1,944 geometry checks, 16
+ownership checks and 558 isolation guards with zero activation/focus events.
+Temporary source and package caches are removed after publishing the runnable
+consumer. All 31 corrupted hidden receipts are rejected. The packaged DLL,
+six loose XAML files and compiled PRI match the tested build. This hidden
+evidence is separate from foreground input and raster.
+
+Numeric-key coverage includes zero, the last valid array index and non-canonical
+spellings such as `01`, `-0` and `4294967295`. The old model fails the browser-bound
+regression; chips and emitted dictionaries now follow source order without
+changing the original dictionary. Actual mouse removal and keyboard re-selection
+match accepted and declined source histories. The 12-filter case exposed the
+count's missing tabular numerals; the corrected toggle matches source width.
+
+See `artifacts/current/collection-filters-order-native-v2/audit.json` and
+`docs/collection-filters.md`. Exact paint/raster, normal motion, broader prop/date
+input, customization/scaling, final integration checks and native ARM64
+runtime remain open. The v20 preview and earlier checkpoints remain preserved;
+no push or workflow dispatch was performed. The public wiki remains unavailable,
+so documentation is maintained here.
+
+## Pagination draft, 2026-10-18
+
+The controlled Pagination control passes all 66 native/source geometry
+states with zero error. It uses the actual bundled medium font, source page
+window arithmetic and native buttons; availability comes from the caller's
+booleans. The initial capture exposed a 1/128-DIP centering error on fractional
+labels. Snapping the initial allocation to the source's layout grid resolves
+it, with the failed receipt retained separately.
+
+Both themes pass physical click/Space/Enter requests, declined requests without
+page/binding mutation, retained focused buttons, programmatic updates without
+requests, empty layout, disabled/detached peer rejection, template replacement
+and remount. Complete raw client PNGs remain unmodified. Six empty states match
+exactly; the remaining 60 have 79,424 differing pixels. On the retained original
+58 states, differences fall from 91,442 to 67,532. All 32 damaged foreground
+receipts are rejected, including a real old PNG with a self-consistent hash and
+mismatch receipt. This is not complete visual or motion acceptance.
+
+`OuterBorderEdge` paints beneath transparent borders, resolving the inactive
+Dark page-button gap. The audit requires 260 actual composed border pixels to
+match exactly. Dark arrow hover uses the pinned dark sand token; page labels
+follow the native presenter's hover foreground. Actual text/path foreground and
+presenter background/border values match the source across all 66 states.
+
+Both catalog builds and all 274 portable tests pass. The fresh
+`0.1.0-pagination-v4-local` package (SHA-256
+`6987db7df672f368d05ea5a7df2c9d72a331688ab9675f6703b039a77f166f76`)
+builds independent x64 and ARM64 consumers. The x64 package also passes 52
+hidden source layouts, 18 ownership/lifecycle checks and 436 isolation guards;
+all 23 damaged hidden receipts are rejected. The 392 native package buttons and
+their template presenters retain outer-border fill. Native ARM64 runtime remains
+unverified. Neither isolated consumer has a source-project reference; its
+temporary source/package cache is removed after publishing the runnable output.
+
+The motion collector verifies 64 source transitions and 384 samples in both
+themes and motion preferences. The production per-property clocks now implement
+190ms premium easing and source color-space interpolation; pressed scale stays
+immediate. A focused catalog replay derives targets from actual native input and
+properties, then presents the production paint method at controlled times. All
+352 native samples match source RGB, source alpha serialization, opacity and
+scale, and all 64 detached scopes release paint subscriptions. Four raw native
+PNGs are retained; 28 damaged motion receipts are rejected. Windows reports
+animations disabled. No OS setting was changed, and this controlled-time
+diagnostic does not establish normal real-time preference-path playback.
+
+See `artifacts/current/pagination-motion-native-v2/audit.json`,
+`artifacts/current/pagination-motion-presentation-v2/audit.json`,
+`artifacts/current/pagination-motion-consumer-x64-v1/pagination-audit.json` and
+`artifacts/current/pagination-motion-checkpoint.json`. The v20 preview package remains
+preserved separately. No workflow was dispatched or push performed; automatic
+push triggers remain paused. The public wiki is unavailable, so documentation
+stays in this repository.
+
+## AdminShell text rendering diagnostic, 2026-10-18
+
+The latest probe expands to 68 complete raw client PNGs: native text, seven
+standard Win2D profiles, 24 custom gamma/contrast profiles and two coverage
+profiles per theme. All retain zero source geometry error and the pinned font.
+The catalog-only COM bridge uses the installed Win2D 1.4.0 native interop
+interfaces with DirectWrite's
+[CreateCustomRenderingParams](https://learn.microsoft.com/en-us/windows/win32/api/dwrite/nf-dwrite-idwritefactory-createcustomrenderingparams).
+Readback from each actual drawing session verifies gamma, enhanced contrast,
+ClearType level, pixel geometry and rendering mode. OS settings are unchanged.
+
+The source header's channel values largely fit five/six/five-bit coverage
+quantization; that observation alone does not identify the source renderer.
+Two private probes quantize coverage freshly generated from the font and blend
+the fixture's foreground/background colors. They never paint source pixels or
+modify comparison images. RGB565 reduces Light's differing pixels to 533 from
+native's 575, but Dark retains 589 versus native's 575. The best Light aggregate
+RGBA error is 23,134 with gamma 1, contrast 0 and NaturalSymmetric mode; the
+default profile remains better for Dark. None matches exactly.
+
+Both current catalog builds pass with zero warnings/errors and native x64 exits
+with code zero. All 38 damaged-receipt checks reject false metadata, including
+requested/applied parameter changes, missing readback and coverage-order damage.
+See `artifacts/current/admin-shell-text-coverage-native-v1/audit.json`,
+`artifacts/current/admin-shell-text-coverage-negative-v1/summary.json` and
+`artifacts/current/admin-shell-text-parameters-checkpoint.json`. The production
+v20 package and library are unchanged; its 4,067 differing text pixels remain
+open. Arbitrary backgrounds, native ARM64 runtime and full acceptance remain
+unverified.
+
+The preceding standard-profile checkpoint is preserved below.
+
+The isolated text fixture retains the verified v20 library binary and compares
+the native header with seven Win2D profiles in both themes. All 16 complete raw
+client PNGs retain zero source geometry error and the exact pinned regular font.
+The revised offscreen-target fixture exits cleanly; x64 and ARM64 catalog builds
+have zero warnings/errors. All 28 damaged diagnostic receipts are rejected,
+including a successful payload paired with a failed native process exit.
+
+For the Light header, native grayscale has 575 differing pixels and 54,575 total
+RGBA-channel error. Default ClearType has 596 differing pixels and 29,736 total
+error. Dark has 575/56,454 and 598/28,292 respectively. ClearType brings the color
+closer, but it does not establish exact parity. No tested standard profile is a
+production replacement; the library preview remains v20 with 4,067 text pixels
+open across its full source matrix. Arbitrary-background rendering is unverified.
+
+The first live-surface probe wrote all frames but ended with native exception
+`0xc0000374` during shutdown. It remains unaccepted. The revised fixture uses a
+disposed offscreen render target and a decoded native image; its exit code is
+zero. Complete images are compared without masks, resampling or source-pixel
+painting. See `artifacts/current/admin-shell-text-native-v2/audit.json` and
+`artifacts/current/admin-shell-text-negative-v2/summary.json`.
+
+The pinned dependency is Win2D 1.4.0. Its rendering mode/grid-fit constructor
+was checked against the installed API and
+[Microsoft's rendering parameter documentation](https://microsoft.github.io/Win2D/WinUI3/html/M_Microsoft_Graphics_Canvas_Text_CanvasTextRenderingParameters__ctor.htm).
+The opaque-target constraint follows Microsoft's
+[text antialiasing guidance](https://microsoft.github.io/Win2D/WinUI2/html/T_Microsoft_Graphics_Canvas_Text_CanvasTextAntialiasing.htm).
+The expanded probe above rules out those tested per-draw parameter combinations.
+No production library, Actions trigger, commit or push
+changed; the public wiki remains unavailable.
+
+## AdminShell fractional footer paint, 2026-10-18
+
+The v20 candidate keeps the logical footer wrapper fractional and paints its
+border through a separate native template. Its component-owned translation
+accounts for the scrolling parent's separately rounded origin. Layout and view
+changes update only that decoration. Original caller controls, metadata and
+bindings remain intact; the scroll subscription disconnects on release.
+Production code does not override framework composition-node flags.
+
+`artifacts/current/admin-shell-footer-native-v20/audit.json` passes all 312
+initial and 16 scrolled geometry/clip checks with zero error. Both complete
+fractional surface PNGs now match the frozen source exactly. Of all 88 PNGs,
+74 match exactly; the remaining 14 scalar-text images retain 4,067 differing
+pixels. The preceding v16 preview had 72 exact frames and 6,071 differing pixels.
+The audit now requires exact fractional surface pixels in both themes.
+All 39 damaged foreground receipts are rejected, including two complete-image
+substitutions whose hashes and mismatch receipts are internally consistent.
+No masks, tolerance, resampling or source-pixel painting are used.
+
+The fresh v20 independent package passes 72 ownership checks and 2,680 isolation
+guards, including a caller-owned footer rounding binding. Both catalog and
+consumer architectures build, and all 9,434 library method bodies, normalized
+metadata, resources and static data match across x64/ARM64. Native ARM64
+runtime, full interaction/customization, scaling and complete raster acceptance
+remain open. The 112-entry inventory remains 84 started, 28 pending and zero
+accepted. Six related package runtime/source replays and both required demos
+pass on these exact binaries; the demos retain 66 checks and 577 isolation
+guards, and all 25 damaged demo receipts are rejected. Twelve visible captures
+verify original keyboard/pointer handlers, wheel scrolling, width reset and
+retained edits across theme and maximize/restore. The recorded preview is
+`artifacts/current/admin-shell-footer-checkpoint.json`; full component acceptance
+remains false.
+
+The constructor and loaded visual-flag attempts are retained as rejected
+v17/v18 diagnostics. WinUI overwrote those framework-owned flags. The v19
+template-only attempt retained geometry but did not improve the raster count.
+These attempts are evidence, not accepted previews. No OS settings, Narrator,
+product commit, push or workflow dispatch was used. The wiki remains unavailable.
+The current 32-probe focused fixture also passes on v20, with both fresh baseline
+images matching exactly. A preceding post-input capture contains the computer-use
+pointer halo outside the component at the bottom-right client corner. Resetting
+the computer-use JavaScript kernel removed it. The clean receipt is under
+`artifacts/current/admin-shell-footer-focused-v20-clean`; the contaminated raw
+images and their explicit contamination receipt remain preserved without masks.
+
+## AdminShell device-aligned main clip, 2026-10-18
+
+The v16 component fixes an extra main-region fringe at fractional coordinates.
+Its native viewport paints the background through a one-way binding; the outer
+main region owns a device-aligned clip after layout. Logical caller geometry,
+original controls and bindings remain unchanged. Caller viewport-background
+overrides retain ownership, and all added observers detach on unload/release.
+No production code modifies internal composition nodes.
+
+`artifacts/current/admin-shell-clip-native-v16/audit.json` passes all 312 initial
+and 16 scrolled geometry/clip checks. Of 88 complete raw native PNGs, 72 match
+the frozen browser exactly; 6,071 pixels differ in the other 16, reduced from
+7,170. No masks, tolerance or resampling are used. Fresh two-theme diagnostic
+instances independently confirm the main fringe is removed; fractional footer
+border and shared text antialiasing differences remain open.
+
+The local `0.1.0-admin-shell-clip-v16-local` package passes 70 hidden ownership
+checks and 2,676 isolation guards, six related native runtime replays and the
+66-check/577-guard Monitoring and Editorial demo replay. All 59 damaged hidden,
+36 foreground, 41 AppShell and 25 demo receipts are rejected. All 266 portable
+tests pass. Both catalog architectures build with zero warnings/errors and
+match all 9,430 library method bodies, normalized metadata, resources and static
+data. Fresh x64/ARM64 consumers build; native ARM64 runtime remains unverified.
+
+Twelve visible captures in `artifacts/current/admin-shell-clip-visible-v16`
+bind these exact library/catalog binaries. Tab reveals the far-edge original
+button; Enter and pointer clicks reach its handler. Space and pointer clicks
+invoke the original footer action. Wheel scrolling leaves header/sidebar fixed.
+Edited input and action results survive width reset, theme change and
+maximize/restore. Full interaction/customization, raster, scaling and ARM64
+acceptance remain open. The checkpoint is
+`artifacts/current/admin-shell-clip-checkpoint.json`; the inventory remains 84
+started, 28 pending and zero accepted of 112. No OS settings, Narrator, push,
+product commit or workflow dispatch was used. The public wiki remains unavailable.
+
+## AdminShell complete native PNG receipt, 2026-10-18
+
+`artifacts/current/admin-shell-raster-native-v6/audit.json` verifies all 312
+initial and 16 horizontally scrolled native layouts with zero geometry error.
+The foreground run saves all 88 complete client PNGs and binds the actual
+catalog/library hashes to the frozen source. It compares every pixel without
+masks, resampling or tolerance: 72 frames match exactly and 7,170 pixels differ
+across the remaining 16. Text antialiasing and fractional border/clip edges
+remain unresolved; full source raster parity is explicitly false.
+
+Scrolled captures wait three seconds for the existing native scroll indicator
+to finish its resting transition. The immediate captures are retained in
+`admin-shell-raster-native-v1`. All 35 corrupted foreground receipts are rejected.
+The capture uses the unchanged 100% display/text scale and changes no OS settings.
+The x64 and ARM64 CI jobs register the capture, audit and negative receipt checks;
+push-triggered Actions stay paused, and no workflow was dispatched.
+
+The library and independent-consumer sources match the preceding stable
+overflow checkpoint. Experimental decorative footer renderers did not improve
+the raw pixels and were removed. The rebuilt library has a new generated WinRT
+binary identity, so package and demo evidence is bound to the rebuilt candidate
+rather than treating previous binaries as interchangeable.
+
+The local `0.1.0-admin-shell-raster-v14-local` package passes fresh x64/ARM64
+consumer builds, all 66 hidden AdminShell ownership checks, and the six related
+AppShell, Select, FeedItem, FeedColumn, Slider and ThemeToggle runtime replays.
+Both required demo fixtures pass 66 checks and 577 isolation guards on the new
+catalog. The 266 portable tests pass; both catalog builds have zero warnings and
+the library architectures match all 9,426 method bodies, normalized metadata,
+resources and static data. Native ARM64 runtime remains unverified. The new
+checkpoint is `artifacts/current/admin-shell-raster-checkpoint.json`; the
+112-entry inventory remains 84 started, 28 pending and zero accepted.
+
+## AdminShell horizontal overflow checkpoint, 2026-10-18
+
+The current v10 independent package consumer matches all 312 initial and 16
+horizontally scrolled source states with zero geometry error. All 66 ownership
+checks and 2,644 isolation guards pass, and all 57 damaged receipts are rejected.
+The reference binds 88 complete source PNGs. Caller width bindings, minimum and
+maximum constraints, wide native template roots, observer cleanup and remounts
+are included. Root callbacks invalidate the private flow when a caller width
+changes without changing the clipped desired size reported to its parent.
+
+Actual visible checks in Dark and Light confirm that Tab reveals a fully drawn
+far-edge action, Enter and pointer clicks reach its original handler, and header
+and sidebar stay in place. Resetting the original width removes the horizontal
+range and retains the action result. Ordinary wrapped content has no empty
+horizontal range. Six original window captures and matching observations are
+saved in `artifacts/current/admin-shell-overflow-visible-v10`.
+
+The earlier v8 prototype passed rectangle/extent checks but failed visible
+clipping and introduced empty horizontal space. V9 repaired those visible
+failures but reproduced a stale extent of 1,232 while the original bound width
+had reached 1,400. Those failed receipts and images remain preserved. The final
+flow keeps viewport-sized background/border wrappers separate from wider
+content slots and observes original root constraints without replacing bindings.
+
+All six related package runtime replays and the 66-check Monitoring/Editorial
+demo replay pass on the same library. Both catalog architectures and fresh
+consumers compile cleanly; the library builds match all 9,426 method bodies,
+normalized metadata, resources and static data. All 266 portable tests pass.
+ARM64 consumer verification is build-only. Full source-raster, interaction,
+customization, scaling and native ARM64 runtime acceptance remains open. The
+inventory is unchanged at 84 started, 28 pending and zero accepted of 112.
+No OS settings, Narrator or Actions runs were used. The wiki remote remains
+unavailable; documentation is maintained here.
+
+## AdminShell hidden and initial visible verification, 2026-10-18
+
+The fresh v7 x64 package consumer passes the full source audit: 296 states have
+zero measured geometry error and matching checked paint/scroll values. All 52
+ownership checks and 2,402 isolation guards pass, and all 49 damaged receipts are
+rejected. The footer uses a themed brush with the exact source 8% opacity.
+The extended AppShell explicit-zero regression also passes all 44 checks on
+that package. Both catalog architectures compile without warnings; all 266
+portable tests pass.
+
+The reconnected desktop permits visible tests again. The actual catalog retains
+keyboard-edited body text across native maximize/restore and Light/Dark changes.
+Tab reveals and focuses the offscreen footer action; Enter and pointer clicks
+reach its original handler. Shift+Tab reveals the retained input. Pointer-wheel
+scrolling moves the main body/footer while the original header/sidebar stay in
+place. Raw window captures and accessibility observations are preserved in
+`artifacts/current/admin-shell-visible-v1`; the input attempt before explicitly
+focusing search is not counted. This is initial visible evidence, not complete
+interaction, source-raster, scaling or native ARM64 acceptance.
+
+The shared viewport-minimum helper suppresses its private visual state whenever
+caller locals, bindings or inherited Style setters own the property. WinUI
+does not notify when a local zero is cleared to metadata zero. Only loaded
+explicit zero overrides observe that boundary on a 16-ms dispatcher tick;
+the consumer proves observation stops on unload and resumes on remount.
+One-way/two-way BindingExpression identities and zero producer values survive
+resize. No caller values, bindings or styles are rewritten.
+
+### Earlier failed diagnostics retained
+
+The frozen AdminShell collector records 296 source states, 56 complete PNGs and
+two real source input/action continuity sequences. A fresh x64 NuGet consumer
+matches all measured rectangles with zero geometry error. This is a diagnostic:
+the full native run fails two of 36 ownership checks, reproducing a caller's
+zero-minimum reset in both themes. Thirty-four other ownership, template,
+scrolling, metadata and lifecycle checks pass; 2,280 isolation guards pass.
+An extended AppShell replay on that same package reproduces the same boundary
+in two of 44 checks, with 168 frames captured and 1,641 isolation guards. The
+old passing AppShell checkpoint did not cover clearing an explicit zero.
+
+The x64 catalog and fresh package consumer compile; 266 portable tests pass.
+The current candidate is unfinished and unaccepted. A LayoutUpdated observer
+does not fix the reset. Isolated native probes have ruled out changing a string
+DefaultStyleKey and shown that replacing a numeric ThemeResource does not
+update an already applied minimum. These are historical failures preserved
+alongside the repaired candidate. The final helper uses the narrowly scoped UI
+dispatcher observation described above. No OS configuration changes were made.
+
+## Component demo hidden checkpoint, 2026-10-18
+
+The catalog's actual Monitoring and Editorial fixtures pass 66 native checks
+across Light and Dark, including real hidden client resizing to an 800-DIP
+viewport. Native button/sidebar invocation, chooser selection providers and
+actual editing/checkbox properties exercise retained selection, per-column
+search, updates, review snapshots/history, keep/discard decisions, filters,
+sorting, empty rows, original-page saves, ordered relation rows, validation and
+catalog remounts. All 577 isolation guards pass, with no resource or binding
+diagnostics. The audit rejects 25 damaged receipts. Eleven new model regression
+tests bring the portable suite to 262 passing tests.
+
+Both catalog architectures compile without warnings. Library implementation is
+unchanged from the AppShell package checkpoint; its exact x64 assembly identity
+is retained, and both architecture builds have the same 9,279 method bodies,
+normalized metadata, resources and static data. The existing independent NuGet
+consumer evidence applies to that unchanged library; this demo checkpoint does
+not claim a new consumer runtime run.
+
+See [demo usage and boundaries](workspace-demos.md). The execution user session
+is disconnected, so visible keyboard/pointer, focus behavior, raster comparison,
+scaling and native ARM64 runtime acceptance remain open. No window was activated,
+shown or focused, and no physical input or OS configuration changes were made.
+
+## AppShell hidden checkpoint, 2026-10-18
+
+The independent NuGet consumer matches all 168 original AppShell rectangles and
+checked paint properties with zero geometry error. It resizes its real hidden
+XAML client viewport rather than substituting a test viewport value. Forty-four
+checks preserve original controls, edits, slot/value/template bindings, inherited
+minimum setters, a Main landmark and readable scalar text metadata. They cover
+header offset/token changes, zero padding overrides, smaller/larger viewport
+minimums, template cleanup and remounts. Isolation passes 1,625 guards, and all
+41 damaged receipts are rejected. The frozen reference retains 56 complete PNGs
+and actual edited-input/action continuity in both browser themes.
+
+Runtime checks found and corrected a layout cycle from measuring during arrange,
+unchanged-slot remounts and a cached private minimum that prevented shrinking
+after viewport changes. Scalar slot text is exposed as native content text;
+supplied controls and templates retain their own peers. All 251 portable tests
+pass. The registered App shells fixture composes the suite selector, input and
+feed components using fictional local data. Both full monitoring/editorial demos
+remain required and pending.
+
+Exact native raster, real pointer/keyboard/focus, scaling, native ARM64 runtime,
+broader positioning/customization and complete runtime integration remain open.
+The Windows execution session is still disconnected, so visible tests are not
+claimed. No OS settings or pointer heartbeat were changed, and Actions push
+triggers remain paused. Inventory is 83/112 started (74.1%), 29 pending and zero
+fully accepted. Two-hour status emails remain active; the wiki is unavailable.
+
+## Select and HeaderSelect hidden checkpoint, 2026-10-18
+
+The independent x64 NuGet consumer matches all 292 closed source layouts with
+zero geometry error. Checked normal paint matches in 288 cases; four source
+autofocus cases have geometry checks while focused paint/input remain deferred.
+Eight genuine source request histories match the native selection provider.
+Fifty-eight checks retain caller bindings, original option/icon/template models,
+metadata (including descriptions), controlled rejection/acceptance, observable
+updates and lifecycle state. They also exercise the shared legacy table filter
+and pagination recipes without opening a popup. Isolation passes 1,938 guards;
+all 48 damaged evidence receipts are rejected. Ninety-two complete original
+browser PNGs and 32 open source states are retained for later visible comparison.
+
+Native testing found and fixed long HeaderSelect labels exceeding the 208-DIP
+maximum: the private surface now measures against the actual available width.
+All 248 portable and eight windowless font tests pass. Both catalog builds and
+fresh package consumer builds pass; 9,171 complete method bodies, metadata,
+resources and static data match between architectures. These compilation and
+hidden checks do not establish native ARM64 runtime, real input/focus, popup
+placement/scroll, motion, scaling or exact raster acceptance.
+
+The user authorized desktop tests for October 18. The first desktop launch
+attempt failed with `GetCursorPos failed: Access is denied (0x80070005)`;
+Windows reports the execution user's session 1 as disconnected. Reconnection
+is pending. No visible test is claimed, and no OS settings were changed.
+Inventory is 82/112 started (73.2%), 30 pending and zero fully accepted; both
+required component demos remain pending. The requested two-hour status email
+automation is active. Actions push triggers remain paused. The wiki is still
+unavailable, so the API, fixtures and evidence are documented in this repository.
+
+## FeedItem hidden checkpoint, 2026-10-18
+
+The current x64 package matches 100 source layouts and checked paint properties
+with zero geometry error. Thirty ownership/lifecycle checks retain original
+producer data/bindings, collections, Avatar and source-link instances, request
+URLs and command parameters. They cover image failure, rejected/disabled/stale
+actions, template cleanup, unload/remount and an unbounded native parent. Four
+enabled source requests use the component's guarded peer without focus or input.
+The run stayed invisible through 708 guards. All 43 damaged receipts are rejected.
+
+The browser reference binds 64 complete PNGs, 21 timestamp cases across three
+locales and actual timestamp tooltip bodies. Native checks inject the reference
+clock internally; Windows time/settings are unchanged. An RTL baseline exposed
+the physical auto-margin relevance placement, physical-left source link and
+1/64-DIP nowrap timestamp allocation. These are corrected; 243 portable tests
+and eight windowless native font tests pass. Ordinary shared text consumers
+retain their previous measurement mode. The registered Feed items fixture
+demonstrates composition with FeedColumn and fictional local metadata.
+
+Both catalog architectures compile without warnings/errors. Exact visible
+raster, actual pointer/keyboard/focus/tooltip and motion behavior, real scaling,
+native ARM64, full runtime integration, and broader locale/legacy/extended-date
+semantics remain open. Inventory is 80/112 started (71.4%), 32 pending and zero
+fully accepted; both required component demos remain pending. Actions push
+triggers and pointer heartbeat stay paused. The wiki remains unavailable, so
+the API and evidence are documented in this repository.
+
+## FeedColumn hidden checkpoint, 2026-10-18
+
+FeedColumn's independent x64 package consumer matches all 154 source rectangles
+with zero geometry error and the checked border/dot/count paint properties.
+Twenty-eight ownership checks retain original controls, edits, viewport/scroll,
+header/accent/name bindings, original template/selector models, and lifecycle
+state. The run never showed or activated its window, focused a control, sent
+input or changed OS settings; 968 guards verified isolation. Native testing
+found and fixed premature template application and vertically centered short
+body content. The frozen reference retains 58 original complete PNGs.
+
+All 238 portable tests pass. The Feed columns fixture is registered alongside
+the existing composition controls. Both required monitoring/editorial demos
+remain pending; this work adds no product services. Visible raster/input,
+rounded clipping/shadows/gradient rendering, actual scaling, native ARM64 and
+full integration remain unverified. The goal remains active with 79/112 entries
+started (70.5%), 33 pending, and zero fully accepted. Push Actions stay paused.
+
+Both x64/ARM64 catalog builds have zero warnings/errors. Fresh x64 and ARM64
+consumers restore the same local package; isolated sources/caches are removed.
+The compiled library's 8,772 complete method bodies, metadata, resources and
+referenced static data match across architectures after separating MVID and
+physical RVA differences. The same x64 package replays Slider's 182 layouts,
+14 retained-fill states and 36 ownership checks, plus Theme Toggle's 116 layouts
+and 42 checks. All 35 deliberately damaged FeedColumn receipts are rejected.
+Native ARM64 execution and full catalog/package runtime remain separate gates.
+
+## Current Slider ownership checkpoint, 2026-10-18
+
+The packaged x64 hidden check now matches all 182 initial source layouts and
+paint properties with zero numeric error, fourteen retained fill-history states
+and 36 ownership/lifecycle checks. Four enabled native range requests verify
+accepted/rejected consumer models without focus or physical input. Value,
+bounds, step, enabled, name and style bindings survive updates and remounts;
+invalid, disabled and detached actions are rejected. Template detachment releases
+owned clips, shadows, input and rendering resources. All 44 damaged receipts
+are rejected, including a later frame that tries to conceal an initial mismatch.
+
+The baseline reproduced an empty styled-name override being replaced by the
+label and a multilingual label measuring 1/64 DIP too wide. Native names now
+respect local and inherited-style empty values. Shared plain-text slots use the
+combined inline advance already used by ProgressStack, with a new direct Win2D
+regression. All 234 portable and seven windowless native font tests pass. The
+source reference, original thumb measurements and 44 full PNGs are unchanged.
+The catalog adds the multilingual example; its prepared foreground harness also
+handles absent header parts and checks style naming boundaries.
+
+The same independently built consumer replays Theme Toggle's 116 exact hidden
+layouts and 42 ownership checks. The Slider run stayed invisible through 1,244
+guards; neither replay showed/activated a window, focused a control, sent input
+or changed OS preferences. These results do not establish visible raster,
+physical pointer/keyboard, normal motion, actual scaling, full shared-consumer
+integration or native ARM64. Further desktop availability remains pending.
+Current receipts are in `artifacts/current/slider-ownership-checkpoint.json`;
+FeedGrid remains the last verified foreground checkpoint.
+
+CI reuses the already compiled independent consumer for these hidden checks.
+No hosted workflow was dispatched; push runs and the pointer heartbeat remain
+paused. Inventory stays at 78 in progress and 34 pending out of 112 (69.6%
+started), zero fully accepted, and both required composition demos pending.
+The wiki remains unavailable, so repository documentation was updated.
+
+## Previous Theme Toggle ownership checkpoint, 2026-10-18
+
+The native preview now respects caller local/style/`BasedOn` names and tooltips,
+including empty names, absent styled tooltips and local null values. Defaults
+live in the native palette style and resolve through per-control resources;
+clearing local metadata restores style/default values, and sharing a style
+keeps each control's mode distinct. Initial disabled state now dims the icon
+before interaction. The catalog adds a style-owned metadata example.
+
+A fresh independent x64 NuGet consumer ran a real loaded XAML tree in an
+invisible window. All 116 source normal-state layouts match with zero geometry
+error. All 42 ownership/lifecycle checks pass in both themes, including binding
+and content preservation, shared styles, label/name precedence, empty and null
+values, default restoration, template replacement, remounts and disabled/detached
+rejection. All 34 corrupted receipts are rejected. The source reference and 134
+original PNGs are unchanged; all 234 portable tests pass.
+
+The check remained invisible through 830 guards. It never activated/showed a
+window, focused a control, invoked an enabled button, sent input or changed OS
+preferences. These results do not prove visible rendering, physical input,
+normal motion, scaling, full package/library integration or native ARM64. Those
+acceptance gaps remain open; further desktop availability is still pending.
+Native foreground Slider and Theme Toggle checks have not run. FeedGrid remains
+the last verified foreground checkpoint. Current receipts are in
+`artifacts/current/theme-toggle-ownership-checkpoint.json`.
+
+CI uses the already built independent consumer for this hidden check. No
+workflow was dispatched, and push-triggered Actions and the pointer heartbeat
+remain paused. Inventory stays at 78 in progress and 34 pending out of 112
+(69.6% started), zero fully accepted, with both required composition demos
+pending. The wiki remains unavailable; repository documentation was updated.
+
+## Previous Theme Toggle background draft, 2026-10-18
+
+The uncommitted draft adds `BleeckerThemeToggle`: Light/Dark/System requests,
+native Icon Button sizes/variants, original Lucide geometry, and consumer-owned
+mode, metadata and root appearance. The Theme Toggles fixture changes only its
+own fictional preview. The original component/provider/Icon Button generate 134
+frozen states/full PNGs and twelve real browser click/Space/Enter sequences.
+The reference includes current Tailwind 4 gray paint rather than older palette
+assumptions. All 234 portable tests pass, including source labels, source cycle,
+glyph paths, icon paint and all reference image hashes.
+
+`--smoke-theme-toggle`, a complete raw raster/numeric audit and isolated package
+runtime assertions are prepared. These native checks have not run. Source
+observations and compilation do not establish native interaction, appearance,
+motion, lifecycle, metadata, scaling or ARM64 runtime. The desktop availability
+question remains pending; all work continues in the background. Current build
+and package compilation receipts are in
+`artifacts/current/theme-toggle-draft-checkpoint.json`. Slider is also an
+unverified native draft; FeedGrid remains the last verified native checkpoint.
+Inventory coverage is 78 in progress and 34 pending out of 112 (69.6% started),
+with zero fully accepted entries and both required composition demos pending.
+Actions push runs and the pointer heartbeat stay paused. No Narrator or OS
+preference changes are used. The public repository wiki remains unavailable;
+in-repository usage, architecture and runtime documentation govern this draft.
+
+## Previous Slider background draft, 2026-10-18
+
+The uncommitted library draft adds `BleeckerSlider`, its controlled request API,
+native Thumb input, range automation peer, styling and fictional catalog fixture.
+All 231 portable tests and six windowless native font tests pass. The new source
+reference contains 182 states, 44 unchanged full PNGs, measured browser shadow
+thumb boxes, 18 real keyboard sequences and 14 retained-style updates. Decimal
+step ties, RTL, PageUp/PageDown, raw versus sanitized values, frozen requests and
+invalid fill assignment history match those source observations.
+
+Native foreground checks have not run. The user's desktop window ended at
+08:00; further availability was requested while background work continued.
+`--smoke-slider`, the source/native audit, corruption checks and independent
+package runtime assertions are prepared, with no claimed runtime success.
+Native geometry, raster, pointer dragging, keyboard/focus, automation, lifecycle,
+normal motion, scaling and ARM64 runtime remain unverified. The current x64
+catalog compilation passes without warnings/errors; background architecture
+and isolated package compilation receipts are tracked in the draft checkpoint.
+The package `0.1.0-slider-local` is a build-only draft. The last verified native
+checkpoint remains FeedGrid. Implementation coverage is 77 in progress and
+35 pending, with zero fully accepted entries and both composition demos pending.
+No Narrator, system preference changes, Actions run or pointer heartbeat was used.
+
+## Current FeedGrid preview, 2026-10-18
+
+The local component-library candidate adds `BleeckerFeedGrid`, preserving empty
+auto-fill tracks and original native children. All 227 portable tests pass.
+The x64 run matches all 144 frozen source layouts with zero geometry error,
+and all 22 complete raw PNGs match exactly: zero differing pixels, masks,
+resampling or tolerance. Both themes pass real editing, pointer/Space actions,
+723/724 DIP boundary changes, live minimum-width bindings, native collection
+moves with zero child unloads and retained focus, visibility, remounts, caller
+naming metadata and invalid-value rejection.
+
+The final linear arrangement pass retains the same exact geometry/raster.
+Twenty loaded native layout updates average 0.165/0.476/2.159 ms for
+128/512/2,048 simple Borders; these exclude rendering and application-specific
+child work. Twenty-two corrupted reports/images are rejected. Both catalog
+builds and fresh x64 runtime/ARM64 consumer compilation pass, with temporary
+sources/caches removed. The focused native and x64 consumer UI finished before
+the user's 08:00 desktop window ended; subsequent work is background-only.
+
+The reference covers default/custom minimum width, zero minimum, empty tracks,
+variable row heights, fractional widths, RTL, hidden children and explicit
+gap/padding overrides. The Feed grids catalog fixture uses fictional local
+content. Current package/build receipts are recorded in
+`artifacts/current/feed-grid-checkpoint.json`; actual scaling, native ARM64,
+broader overrides and complete integration/release acceptance remain open.
+Inventory coverage is 76 in progress and 36 pending out of 112; both required
+composition demos remain pending. Actions push runs and the pointer heartbeat
+remain paused. No Narrator or system preference changes were used.
+
+## Current PanelLayout / PanelColumn preview, 2026-10-18
+
+The local component-library candidate adds horizontal fixed/growing tracks and
+vertical fixed/growing columns. All 224 portable and five windowless native
+font tests pass. The focused x64 run measures all 86 original source layouts
+with zero geometry error, covering nested columns, RTL, fractional sizes,
+padding, hidden/empty children and constrained overflow. Both themes pass
+native editing, pointer/Space actions, live grow bindings, retained keyboard
+focus and zero child unloads across collection moves, template replacement,
+remounts, horizontal scroll retention, native Right Arrow scrolling and
+unbounded-parent measurement. The catalog registers a fictional composition
+fixture, with two additional complete native demo screenshots.
+
+Twenty-three corrupted reports/images are rejected. All 34 original full
+reference PNGs and their raw native counterparts are hash-bound and compared
+without masks, resampling or pixel tolerance. Eighteen match exactly; sixteen
+retain 12,082 differing pixels. Fractional RTL/viewport painting therefore
+remains an open visual acceptance item. Failed exact captures are retained as
+raw evidence; completing the remaining geometry/input checks does not turn
+those failures into visual acceptance.
+
+Current build, package-consumer and Panel integration results are recorded in
+`artifacts/current/panel-layout-checkpoint.json`. The package is
+`0.1.0-panel-layout-local`. Both catalog builds have zero warnings/errors;
+fresh x64 runtime and ARM64 consumer compilation pass, including XAML attached
+growth and live binding. Temporary consumer sources/caches are removed. The
+current Panel regression again matches all 266 layouts with zero geometry
+error; its raw differences remain unchanged. Actual scaling, native ARM64 execution and final
+complete catalog/release acceptance remain open. Inventory coverage is 75 in
+progress and 37 pending out of 112, with zero fully accepted components and
+both required monitoring/editorial demonstrations pending. Actions push runs
+and the pointer heartbeat remain paused. No Narrator or system preference
+changes were used.
+
+## Current Panel preview, 2026-10-18
+
+The uncommitted component-library candidate adds `BleeckerPanel`: a title/count
+header, optional consumer filter/toolbar/handle slots and an independently
+scrolling body. All 221 portable and five windowless native font tests pass.
+The x64 runtime matches all 266 source layouts with zero geometry error and
+matching measured theme/alpha paint. Twenty-nine corrupted reports/images are
+rejected. All 58 full raw PNGs are hash-bound to the report and compared without
+masks, resampling or pixel tolerance. There are 661,516 differing pixels, so
+complete raster parity remains false. Native text and translucent/composed
+surfaces still need their final visual acceptance.
+
+Both themes pass real editing, native pointer/Space actions, count bindings,
+original template models/selectors, metadata precedence, template replacement,
+remounts, retained scrolling across header updates, keyboard PageDown/Home and
+unbounded horizontal-parent measurement. A plain overflow viewport is
+focusable; editable content retains its own path without an extra viewport Tab
+stop. The source border timeline supplies 14 normal-motion samples; actual
+native normal-motion verification remains pending on this reduced-motion host.
+The tabular glyph bridge preserves kerning, including infinity count widths.
+Unchanged slot presenters are retained so header updates keep caller state.
+
+Both catalog architectures build without warnings/errors. Local package
+`0.1.0-panel-local`, SHA-256
+`277d40f1bf88b9decab7eee41aa94adb43a2d6451bb600a385b7048ad7339b1c`,
+passes fresh independent x64 runtime in both themes and ARM64 consumer
+compilation after the border-background correction. Both temporary source/
+package caches are removed. Field passes its 44-state, zero-error measured
+regression and 52 external UIA snapshots. DetailLayout passes all 888 layouts
+and 48 exact full PNGs again with the current typography helper. The checkpoint
+is `artifacts/current/panel-checkpoint.json`; older checkpoints remain retained.
+Complete-catalog replay, hosted CI and native ARM64 runtime are not current for
+this package.
+
+Inventory is 74 in progress, 38 pending and zero fully accepted: 66.1% started.
+Both monitoring/editorial demonstrations remain required and pending. Full
+raster, normal native motion, broader overrides, actual display/text scaling,
+native ARM64 execution, PanelLayout growth consumption and final integration/
+release acceptance remain open. The goal is active. Push-triggered Actions and
+the pointer heartbeat remain paused. No product commit/push, hosted dispatch or
+system preference change occurred. The wiki remains unavailable; documentation
+is maintained in this repository.
+
+## Earlier DetailLayout preview, 2026-10-18
+
+The uncommitted component-library candidate adds `BleeckerDetailLayout`: retained
+main/rail content, Primary/Balanced ratios, logical Start/End placement and
+container-bounded sticky positioning. All 217 portable tests pass. The source
+matrix contains 888 layouts and 48 original full-frame PNGs; the measured native
+matrix has zero geometry error and zero differing RGBA pixels. No masks,
+resampling or pixel tolerance are used. The browser host's white top margin and
+the opaque box specimen's fractional logical and snapped paint parts are
+reproduced in the fixture. The library leaves caller rendering untouched.
+
+Both themes pass real input and pointer/Space actions, main-before-rail physical
+Tab order, live viewport changes, retained templates/selectors and original
+numeric/Boolean model types, template replacement and remounts. Nested
+ScrollViewer and ScrollView checks verify nearest-owner selection, sticky
+toggles, owner replacement, detached-owner isolation and container clamping.
+All 27 corrupted reports/images are rejected. The physical Tab harness expects
+key-down on main and key-up on the newly focused rail; the generic same-focus
+key helper remains unchanged. Current Field checks pass all 44 measured states
+with zero geometry error and 52 external UIA snapshots. PageFrame passes its
+792-state, 40-exact-PNG and both-theme ownership regression with this library.
+
+Both catalog architectures build without warnings/errors. Local package
+`0.1.0-detail-layout-local`, SHA-256
+`1b3e9c2d43a3cb3600a52d21ca924aa6264da85887d1083a2ef80aaa4bd9aae1`,
+passes fresh independent x64 runtime in both themes and ARM64 consumer
+compilation. Both temporary source/package caches are removed. The consumers
+include retained main/rail inputs, template replacement, named complementary
+semantics, live recipes and original numeric/Boolean template values. Native
+ARM64 execution remains pending. The checkpoint is
+`artifacts/current/detail-layout-checkpoint.json`; older checkpoints are retained.
+Historical complete-catalog runs do not verify this package.
+
+Inventory is 73 in progress, 39 pending and zero fully accepted: 65.2% started.
+Both monitoring/editorial component demonstrations remain required and pending. Broader overrides,
+actual display/text scaling, native ARM64, remaining components and final
+integration/release acceptance stay open. The goal remains active. No product
+commit/push, hosted workflow dispatch or system preference changes occurred.
+Push-triggered Actions and the pointer heartbeat remain paused. The wiki is
+unavailable; documentation stays here.
+
+## Earlier PageFrame preview, 2026-10-18
+
+The current uncommitted component-library candidate adds `BleeckerPageFrame`,
+four width presets, four horizontal/vertical spacing recipes and native semantic
+grouping. All 213 portable tests pass. The focused x64 runtime matches all 792
+source layouts with zero measured geometry error. All 40 complete original
+source PNGs match every RGBA pixel, including the fractional-host case. No masks,
+resampling or pixel tolerance are used. The caller-owned flat filler separates
+its fractional logical box and device-snapped paint part to match the browser's
+opaque CSS rectangle; the library component leaves caller rendering unchanged.
+
+Both themes pass actual viewport changes of an existing narrow frame, native
+editing and pointer/Space actions, binding/style precedence, ClearValue recipe
+restoration, template/selector retention, remount, semantic metadata precedence
+and invalid-enum rejection. Twenty damaged reports/images are rejected, including
+a swapped full screenshot. Failed exact captures retain their actual raw pixels
+and still fail; the shared generic nonblank guard remains unchanged.
+
+Both catalog architectures build without warnings/errors. Package
+`0.1.0-page-frame-local`, SHA-256
+`b1ae323397b7922da0d11dc7db83ed94b540b062fd6a9bed81e060f7651a968a`,
+passes fresh independent x64 runtime in both themes and ARM64 consumer compilation.
+Both temporary source/package caches are removed. Field runtime and all 44
+zero-error measured states pass again with the current library. Its raster
+acceptance stays open. The checkpoint is
+`artifacts/current/page-frame-checkpoint.json`; prior checkpoints are retained.
+Historical complete-catalog results do not verify this package.
+
+Inventory is 72 in progress, 40 pending and zero fully accepted: 64.3% started.
+Both monitoring/editorial component demonstrations remain. Broader consumer
+overrides, actual scaling, native ARM64 runtime, remaining library components and
+final integration/release acceptance remain open. The goal stays active. No
+system settings, product commit/push, hosted workflow dispatch or pointer
+automation changes occurred. Push-triggered Actions remain paused. The wiki is
+unavailable; documentation remains in this repository.
+
+## Earlier Field preview, 2026-10-18
+
+The current uncommitted component-library candidate adds `BleeckerField`:
+consumer-owned label/control/action/message composition with retained editor
+identity, value, validation and commands. All 210 portable tests and four native
+Unicode shaping tests pass. Forty-four source/native states have zero measured
+geometry error and matching measured typography/paint, including optional and
+action text, required-marker allocation, narrow wrapping and a rich label using
+the browser's actual resolved pinned SemiBold face. Raw native marker line boxes,
+layout allocations and face metrics remain in the report. Full-frame comparison
+retains 137,761 differing pixels; no masks, resampling or pixel tolerance are used.
+
+Both themes pass real label focus, editing and action input. Fifty-two external
+UIA3 snapshots verify names, IDs, required/valid state and ordered descriptions.
+The native test also verifies binding restoration, template detach/replacement,
+unload/remount, child replacement and normal explicit-child text-scale precedence.
+Nineteen corrupted reports are rejected. The existing button variant/state,
+command, naming, template and theme checks pass with the updated Link text branch.
+
+Both catalog builds pass without warnings or errors. Local package
+`0.1.0-field-local`, SHA-256
+`700bf7f25c5a493ca2a38050d8586fa1aee15cfc0f2245ce6aa9c25e8a56da47`,
+passes a fresh independent x64 consumer in both themes and a separate ARM64
+consumer build. The date preset test now selects its actual caption explicitly
+because the button template also contains a collapsed Link text branch. Original
+date geometry/baseline assertions and native input remain active. Both temporary
+consumer sources/caches are removed. The checkpoint is
+`artifacts/current/field-checkpoint.json`; current consumer directories are reused.
+Earlier full-catalog and Tabs reference results describe their older candidates.
+
+Inventory is 71 in progress, 41 pending and zero fully accepted: 63.4% started.
+Both required component demonstration screens remain. Exact raster, broader rich
+template/consumer override behavior, actual scaling, native ARM64 execution and
+final integration/release acceptance remain open. The goal stays active. System
+settings are unchanged; push-triggered Actions and the pointer heartbeat stay
+paused. No product commit, push or hosted workflow dispatch occurred. The public
+wiki remains unavailable; documentation stays in this repository.
+
+## Earlier Dialog Close Button preview, 2026-10-18
+
+The current uncommitted component-library candidate adds
+`BleeckerDialogCloseButton`, with native commands, an adjustable Lucide X,
+source hover/press behavior and consumer-owned dismissal. All 205 portable tests
+pass, including 110 production motion samples against 20 actual browser
+sequences. Sixteen source/native states match measured paint, geometry and icon
+properties, with maximum geometry error 0.000003814697265625 DIP. Both themes
+pass real pointer release, Space/Enter, exact command parameter identity,
+disabled rejection, live theme paint, template replacement and remounts. Actual
+old shadow graphs are cleared on template replacement and unload. Eleven corrupted
+reports are rejected. Full-frame comparison retains 9,621 differing pixels;
+no masks, resampling or pixel tolerance are used.
+
+Both catalog builds pass with zero warnings/errors. The current local package is
+`0.1.0-dialog-close-input-local`; its package hash is recorded in the current
+checkpoint. The earlier 14-state package/checkpoint is retained separately.
+Fresh independent consumers pass native x64 and cross-build ARM64 separately;
+both temporary sources/caches are removed. ARM64 execution remains unverified.
+The current checkpoint is `artifacts/current/dialog-close-checkpoint.json`.
+Tabs runtime and all 44 zero-error geometry/paint cases are rechecked against
+the current library; older full-catalog reports remain historical evidence.
+
+Inventory is 70 in progress, 42 pending and zero fully accepted: 62.5% started.
+Both required component demonstration screens remain. Exact raster, normal
+native motion, broader overrides/scaling, native ARM64 and final release
+acceptance remain open. System preferences are unchanged. Push-triggered
+Actions and the pointer heartbeat remain paused; no hosted workflow is dispatched.
+The public wiki remains unavailable, so documentation stays in this repository.
+
+## Earlier Tabs preview, 2026-10-18
+
+The preceding uncommitted component-library candidate adds `BleeckerTabs` with
+three variants, three sizes, consumer-controlled selection and host-routed links.
+Its pinned browser reference has 44 rendered cases and four selection sequences.
+All 201 portable tests pass. The focused x64 native check passes Light and Dark:
+source-rounded stretch tracks, accepted/declined requests, keyed updates,
+template replacement, disabled/stale-peer rejection, original command parameters
+and CanExecute checks, custom links, real keyboard navigation including Home/End,
+RTL, pointer selection and immediate held-pointer displacement. Both x64 and
+ARM64 catalog builds pass without warnings or errors. A cold-start font-validation
+re-entry failure was fixed without changing asset resolution or hiding errors.
+
+All 44 native/reference cases have zero geometry error and matching measured
+paint, padding, border thickness, weight, line height and radius. The verifier
+rejects nine deliberately damaged reports. Thirty-six complete source PNGs are
+retained and hash-checked. Full-frame pixels still differ with zero masks,
+resampling or pixel tolerance; no exact raster acceptance is claimed.
+
+The production Tabs paint clocks match 528 samples from 96 actual browser motion
+sequences and 192 interpolation-space mappings. Source colors and shadows use
+190ms premium timing; the one-pixel press displacement is immediate. This host
+reports animations disabled, so normal native motion presentation remains open.
+The extracted CSS shadow renderer preserves the preceding live compositor graphs
+across 188 date frames, 4,680 days, 84 triggers and 20 popups. Existing date
+geometry, paint, shadow, input and disposal audits pass independently.
+
+Package `0.1.0-tabs-motion-local`, SHA-256
+`3db5a80b8a6b1a2523e0a582c3eb6b4506cc8e1f6ecd1788711b4ae51b94e441`,
+passes a fresh independent x64 consumer in both themes and a separate ARM64
+consumer build. Both helpers confirm cleanup of their temporary sources and
+caches. Outputs reuse the current consumer directories. The current checkpoint
+is `artifacts/current/tabs-motion-checkpoint.json`; older full-catalog reports describe
+earlier package bytes and do not verify the new candidate.
+
+Inventory remains 69 in progress, 43 pending and zero formally accepted, with
+both component demonstration screens retained. Exact raster, native normal motion,
+broader customization/scaling/lifecycle, native ARM64 runtime and final release
+acceptance remain open. No push, hosted workflow or publication occurred.
+The [component-library scope](library-scope.md) excludes Narrator and OS contrast
+campaigns; their older mentions below are historical. Push-triggered Actions and
+the pointer heartbeat remain paused.
+
+## Earlier checkpoints
+
 Source `48d8fd3` passes 177 tests, both catalog builds and the complete x64
 sequence: 156 phases and all 1,154 PNGs in 471.9537397 seconds, with 2,040 pointer
 gates, 1,778 key actions, 96 clicks and 174 unchanged protected glyph hashes.
@@ -2571,3 +4153,126 @@ open. No full catalog rerun, Windows preference change or Actions dispatch
 occurred. Push-triggered Actions remain paused. Inventory is unchanged at 59
 in progress, 53 pending and zero accepted. Versioned hashes and evidence are
 in [the checkpoint](native-validation-checkpoint.md).
+
+## Button template retirement — October 24, 2026
+
+The current local candidate is library `c6508753` and NuGet
+`0.1.0-button-lifecycle-v1-local` (package SHA-256
+`be9ede5e58f2c95cb7e4eaf400bb2d0ba41590c6317bbfe1cb537db066a0f03c`).
+Clearing a BleeckerButton template previously let ContentControl synthesize a
+text-only template without another property notification; the wrapper then
+threw because that native template has no PART_Action. The repair remembers the
+explicit clear operation, releases its old parts/palette/event handlers and
+spinner, and resumes normal part initialization after a caller restores a
+template or clears the local template value. Caller bindings and native command
+behavior remain intact.
+
+The source catalog and fresh isolated x64 package consumer each pass 448 hidden
+native checks across seven variants, both themes and default/custom templates:
+896 checks, 56 cases and 168 images. Each host rejects 52 damaged reports. The
+first retained original-library run mounts and activates successfully before its
+actual null-template exception. An early repaired fixture incorrectly expected
+unloaded native Invoke to suppress its command; its 28 expectation failures are
+retained. Native commands remain unchanged, and retired parts do not forward
+Orchard Click events. Default-template restoration, loading retirement and owned
+spinner reset are checked. All 84 source/package button image pairs and the one
+original-library initial button image have identical RGBA pixels.
+
+All 495 portable and 10 Windows text tests pass; root and fresh-version package
+consumer builds pass for x64 and ARM64. The fresh C# package probe passes ten
+resource/style/template samples and twelve spacing-binding samples. Source and
+package ButtonGroup checks pass (22 and 20); their six common images match.
+Current live tables pass 84 states per host with identical raw states/contracts.
+Four of their 84 source/package image pairs each differ by one pixel and one
+channel level; this remains unexplained. Source fictional Monitoring and
+Editorial demos pass 66 checks. These runs do not qualify current table timing
+performance: the last qualified `2dabe1ac` table library has 26 failing timing
+profiles and earlier unresolved image differences.
+
+The new self-contained catalog archive has 550 verified files: 548 link only to
+verified immutable evidence and two are freshly extracted. Its native replay
+started at 17:45:11 UTC in PID 33576 and passed 128 checks before making no further
+layout/capture progress in Light/Ghost/default. No assertion failure is recorded,
+and the process was nonterminal at that observation. A three-second sampled-thread-time trace
+and read-only session checks are retained. Both owned hidden windows respond;
+one repaint and one one-pixel resize-and-restore of the main test window did not
+advance the run. Bounds, hidden state and foreground ownership remained unchanged.
+No process was killed or restarted, hardware input sent, or OS setting changed.
+At that working-checkpoint observation, archive lifecycle, integration and demo
+replays remained pending. The subsequent lifetime diagnosis and completed
+corrected replays are recorded below; that older observation does not describe
+the current process state. A timeout alone never justified restarting it.
+
+The explicit-null behavior was checked against installed WinUI 2.3.9 under
+WindowsAppSDK 2.5.1 and the actual native transitions. The retained upstream main
+ContentControl source explains its text-template synthesis but is not asserted
+to be the exact pinned source revision. The working checkpoint and framework
+reference distinguish these evidence scopes. Native ARM64 execution, full
+browser/native raster parity, normal motion, physical input and scaling remain
+open. All 112 entries and both fictional-data demos remain in progress; none is
+accepted. The goal remains exclusively the reusable component library and demos.
+
+## Retained native capture ownership and completed button delivery — October 24
+
+The archive stall was a fixture ownership defect, not evidence of a Button
+failure. Two ClrMD snapshots of the same owned PID found its Layout state waiting
+on the RenderAsync task while the UI thread sat in WinUI's message loop. No
+RenderTargetBitmap object remained in the managed heap, and the generated await
+state did not retain one. An isolated hidden probe on the exact pinned WinUI DLL
+reproduced three unretained owners whose native actions stayed Started after two
+subsequent retained frames completed. All seven retained captures completed.
+The native probe used .NET 10.0.12 and Microsoft.UI.Xaml SHA-256 aad12524….
+Upstream main explains the non-owning manager list, but is not claimed to be the
+exact pinned native source revision.
+
+After establishing this orphaned-operation diagnosis, the owned hidden main
+window of PID 33576 was closed gracefully at 18:37:32 UTC. Its original driver
+recorded exit 0 without a final test report; that aborted run is not accepted.
+This was not a restart caused solely by an observation timeout. The snapshots,
+probe, 128 completed checks and shutdown rationale remain retained.
+
+Only two readiness-only calls had this lifetime gap. Shared
+NativeRenderReadiness now keeps its bitmap alive through the native await;
+normal component captures that read pixels afterward already retain theirs.
+The helper adds no forced collection to ordinary runs. A maintained lifetime
+fixture forces collection only for its diagnostic cases and fails before
+awaiting if the required owner was lost. An initial extra nonzero-dimension
+assertion rejected the intentionally empty layout root; that assertion was
+removed, and its failed report is preserved.
+
+Corrected source, independent NuGet consumer and extracted archive each pass
+448 Button lifecycle checks and seven retained-frame/three unretained-owner
+lifetime controls. Their 1,344 Button checks and 252 images cover all seven
+variants, both themes and default/custom templates; 159 altered Button reports
+and 54 altered lifetime reports are rejected. Checkbox v4 passes 72/70/72 checks
+with 105 altered reports, 48 historical wrong-name states, nine historical style
+failures and 24 historical unready observations rejected across the three hosts.
+ButtonGroup passes 22/20/22 checks; live tables pass 84 states per host; both
+fictional demos pass 66 source and 66 archive checks. The fresh C# package probe
+passes ten default-style samples and twelve spacing samples.
+
+Both root architectures and both isolated package-consumer architectures build;
+495 portable and ten Windows text tests pass. The rebuilt consumers reuse the
+already verified package version cache and third-party dependencies; they are
+not claimed to perform another fresh-version restore. Library c6508753 and NuGet
+0.1.0-button-lifecycle-v1-local remain byte unchanged. The new runnable catalog
+0.1.0-button-lifecycle-render-v2-local contains 550 byte-verified files, reusing
+549 immutable files and freshly extracting one PDB. No mutable output links into
+immutable evidence. Current source/package/archive comparison verifies 360 of
+361 image pairs exactly; one live-table source/package pair differs by one pixel
+and one channel level. All button, Checkbox and connected-group pairs match.
+The unexplained table difference retains its failing exact-pixel classification.
+
+Byte-preserving hardlink coalescing of closed, manifest-verified evidence
+recovered about 2.7 GB of observed free space while preserving original paths
+and hashes. Automatic approval review blocked deleting the obsolete fully
+archived staging folder; it remains untouched. No prior blocked deletion was
+retried. The library's public implementation did not change during this capture
+repair, and test assets were not externalized or given a fallback path.
+
+Current table timing remains unqualified: the previous qualified 2dabe1ac
+library had 26 failing timing profiles. Full browser/native raster, normal
+motion, physical input/scaling and native ARM64 runtime acceptance remain open.
+All 112 components and both required fictional-data demos remain in progress,
+zero accepted. Work stays within the reusable component library and its demos;
+no Narrator, OS settings, pointer heartbeat, GitHub Actions or pushes were used.

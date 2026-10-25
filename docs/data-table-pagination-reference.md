@@ -1,5 +1,17 @@
 # Data Table Pagination contract and acceptance
 
+The working navigation-foreground repair shares the Data Table's native glyph
+binding. It follows the active content presenter's foreground, including its
+disabled state, and releases obsolete bindings on unload or retemplating.
+Caller templates with a named presenter keep their own foreground; direct-hosted
+caller content retains the native button's foreground producer. It adds no
+public API or opacity token. The shared hidden fixture covers both controls,
+live source/theme changes and caller-template lifecycle. The
+`0.1.0-table-navigation-v1-local` package passes independent x64 and ARM64 builds;
+its x64 consumer and extracted catalog each pass 96 states/264 observations.
+Native ARM64 execution and full component acceptance remain open. See
+[the regression and current limits](data-table.md#pagination-arrow-foreground).
+
 The frozen Bleecker producer is `src/components/data-table-pagination.tsx` at
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `385a8ae19a8b052be43ae29e7c43b3662ac35ccf892f20c4ef1fc0b893d10897`.
@@ -657,3 +669,7 @@ public API, reference data and the validated package/catalog checkpoint remain
 unchanged. There is no backend or metrics impact. The public wiki is still
 unavailable, push-triggered Actions stay paused, and all 112 inventory statuses
 remain unchanged (51 in progress, 61 pending, zero accepted).
+
+Worker-thread producer notifications are marshaled before any XAML state read.
+See [the producer notification contract](producer-notifications.md) for the
+shared catalog/package regression and its background-only verification limits.

@@ -13,14 +13,14 @@ using Windows.Foundation;
 namespace Orchard.Catalog;
 public sealed partial class MainWindow
 {
- private async Task RunProgressStacksAsync(string folder)
+ private async Task RunProgressStacksAsync(string folder,bool unicode=false)
  {
-  using var stream=typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.ProgressStack.json")??throw new InvalidOperationException("ProgressStack reference missing.");using var reference=await JsonDocument.ParseAsync(stream);
+  using var stream=CatalogReferenceResources.Open(typeof(MainWindow).Assembly, unicode?"Orchard.Catalog.Reference.ProgressStackText.json":"Orchard.Catalog.Reference.ProgressStack.json")??throw new InvalidOperationException("ProgressStack reference missing.");using var reference=await JsonDocument.ParseAsync(stream);
   var original=Content;var canvas=new Canvas{UseLayoutRounding=false};var frames=new List<object>();var lifecycle=new List<object>();var completed=false;
   object Box(FrameworkElement element){var rect=element.TransformToVisual(canvas).TransformBounds(new Rect(0,0,element.ActualWidth,element.ActualHeight));return new{x=rect.X,y=rect.Y,width=rect.Width,height=rect.Height};}
   object Paint(Brush? brush)=>brush is SolidColorBrush color?new{r=color.Color.R,g=color.Color.G,b=color.Color.B,a=color.Color.A,opacity=color.Opacity}:new{r=(byte)0,g=(byte)0,b=(byte)0,a=(byte)0,opacity=1d};
   FrameworkElement Part(BleeckerProgressStack control,string name)=>Desc<FrameworkElement>(control).Single(element=>element.Name==name);
-  object Text(FrameworkElement element){var text=Desc<TextBlock>(element).Single();return new{box=Box(element),text=text.Text.Replace('\n',' '),color=Paint(text.Foreground),weight=text.FontWeight.Weight,fontSize=text.FontSize,lineHeight=text.LineHeight};}
+  object Text(FrameworkElement element){var text=Desc<TextBlock>(element).Single();return new{box=Box(element),text=text.Text.Replace('\n',' '),renderedText=text.Text,color=Paint(text.Foreground),weight=text.FontWeight.Weight,fontSize=text.FontSize,lineHeight=text.LineHeight};}
   object Snapshot(BleeckerProgressStack control)
   {
    var bar=(Border)Part(control,"ProgressStackTrack");var peer=FrameworkElementAutomationPeer.CreatePeerForElement(control);
@@ -49,12 +49,18 @@ public sealed partial class MainWindow
      foreach(var content in new[]{"Published"," ","\u00a0"," Published ","\u00a0Published\u00a0"}){var text=new TextBlock{FontFamily=target.FontFamily,FontSize=target.FontSize,FontWeight=target.FontWeight,CharacterSpacing=target.CharacterSpacing,Language=target.Language,IsTextScaleFactorEnabled=target.IsTextScaleFactorEnabled};BleeckerReferenceText.Set(text,content);var metric=new BleeckerReferenceText.IntrinsicWidth(joinWhitespace:true);var measuredSpan=metric.Measure(text,content);probes.Add(new{content,width=measuredSpan,metric.WhitespaceJoinedWidth,metric.RawWidth,metric.RegionWidths,metric.GlyphRuns});}
      await File.WriteAllTextAsync(Path.Combine(folder,"font-probes.json"),JsonSerializer.Serialize(probes,new JsonSerializerOptions{WriteIndented=true}));
     }
-    frames.Add(new{id=row.GetProperty("id").GetString(),scheme=theme.ToString(),motion=row.GetProperty("motion").GetString(),measurement=Snapshot(control)});await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,row.GetProperty("file").GetString()!));
+    frames.Add(new{id=row.GetProperty("id").GetString(),scheme=theme.ToString(),motion=row.GetProperty("motion").GetString(),labels=control.Items.Select(item=>item.Label).ToArray(),measurement=Snapshot(control)});await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,row.GetProperty("file").GetString()!));
    }
    foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
    {
     canvas.RequestedTheme=theme;canvas.Children.Clear();var control=new BleeckerProgressStack{Width=280};foreach(var item in ProgressStacksFixture.Sample())control.Items.Add(item);Canvas.SetLeft(control,20);Canvas.SetTop(control,20);canvas.Children.Add(control);var editor=new TextBox{Width=120,Height=32,Text="Retained"};Canvas.SetTop(editor,200);canvas.Children.Add(editor);var tail=new Button{Content="Next",Width=80,Height=32};Canvas.SetTop(tail,250);canvas.Children.Add(tail);await AwaitPresentationAsync(control);await input.ClickAsync(editor);await input.HeldKeyAsync(0x09,editor,()=>tail,()=>AwaitPresentationAsync(control));Require(ReferenceEquals(FocusManager.GetFocusedElement(canvas.XamlRoot),tail),"ProgressStack entered keyboard order.");
     editor.Focus(FocusState.Keyboard);var retained=control.Items[0];var brush=new SolidColorBrush(Microsoft.UI.Colors.Red);retained.Label="Updated";retained.Value=8;retained.Color=brush;await AwaitPresentationAsync(control);Require(ReferenceEquals(control.Items[0],retained)&&ReferenceEquals(Desc<Border>(control).First(part=>part.Name=="ProgressStackSegment").Background,brush)&&ReferenceEquals(FocusManager.GetFocusedElement(canvas.XamlRoot),editor),"ProgressStack live data lost ownership or focus.");lifecycle.Add(new{scheme=theme.ToString(),phase="live-item",retained=true});
+    if(unicode)
+    {
+     const string originalLabel="Révision 日本語 العربية\u2060 👩🏽‍💻";retained.Label=originalLabel;await AwaitPresentationAsync(control);
+     Require(retained.Label==originalLabel&&ToolTipService.GetToolTip(Desc<Border>(control).First(part=>part.Name=="ProgressStackSegment"))?.ToString()==originalLabel+": 8"&&ReferenceEquals(FocusManager.GetFocusedElement(canvas.XamlRoot),editor),"ProgressStack Unicode update changed its consumer label, tooltip or focus.");
+     lifecycle.Add(new{scheme=theme.ToString(),phase="unicode-label",retained=true});
+    }
     var old=control.Items;control.Items=new ObservableCollection<BleeckerProgressStackItem>(old.Reverse());await AwaitPresentationAsync(control);old.Clear();retained.Value=9;await AwaitPresentationAsync(control);Require(control.Items.Count==3&&ReferenceEquals(control.Items[^1],retained),"ProgressStack observed a replaced collection or lost an item.");retained.Value=0;retained.Value=-0d;Require(BitConverter.DoubleToInt64Bits(retained.Value)==long.MinValue,"ProgressStack replaced the original negative zero.");lifecycle.Add(new{scheme=theme.ToString(),phase="replace-reorder",retained=true});
     control.ShowLegend=false;await AwaitPresentationAsync(control);Require(control.ActualHeight==12,"ProgressStack retained a hidden legend gap.");control.Items.Clear();control.ShowLegend=true;await AwaitPresentationAsync(control);Require(control.ActualHeight==24,"ProgressStack lost its empty legend spacing.");lifecycle.Add(new{scheme=theme.ToString(),phase="hide-clear",retained=true});
     control.Items.Add(retained);canvas.Children.Remove(control);retained.Value=12;canvas.Children.Add(control);await AwaitPresentationAsync(control);Require(control.Items.Single().Value==12&&editor.Text=="Retained","ProgressStack remount lost data.");lifecycle.Add(new{scheme=theme.ToString(),phase="detach-remount",retained=true});

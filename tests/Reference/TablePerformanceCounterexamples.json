@@ -1,0 +1,170 @@
+{
+  "format": "orchard-table-performance-counterexamples-v1",
+  "actualOldRuntime": true,
+  "librarySha256": "02a7e85d640209852a4ae13cf742dd83c130723f52d34f96994d6ada2e089969",
+  "hostSha256": "381c07bc5daea4b872bc8d215e21ba779466911b9882ab7ba10b075c5aacefd1",
+  "measurements": [
+    {
+      "rows": 32,
+      "operation": "sort-ascending",
+      "mutationMilliseconds": 36.086,
+      "settledMilliseconds": 120.6911,
+      "cpuMilliseconds": 125,
+      "managedAllocatedBytes": 884992,
+      "privateMemoryDeltaBytes": 962560,
+      "gcCollections": [
+        0,
+        0,
+        0
+      ],
+      "gcPauseMilliseconds": 0,
+      "producerCalls": 32,
+      "trackedRowLoads": 32,
+      "trackedRowUnloads": 31
+    },
+    {
+      "rows": 32,
+      "operation": "sort-descending",
+      "mutationMilliseconds": 38.2526,
+      "settledMilliseconds": 152.4006,
+      "cpuMilliseconds": 171.875,
+      "managedAllocatedBytes": 1308912,
+      "privateMemoryDeltaBytes": -3792896,
+      "gcCollections": [
+        1,
+        1,
+        1
+      ],
+      "gcPauseMilliseconds": 21.115,
+      "producerCalls": 32,
+      "trackedRowLoads": 31,
+      "trackedRowUnloads": 31
+    },
+    {
+      "rows": 32,
+      "operation": "release-sort",
+      "mutationMilliseconds": 36.0698,
+      "settledMilliseconds": 120.1361,
+      "cpuMilliseconds": 140.625,
+      "managedAllocatedBytes": 1249528,
+      "privateMemoryDeltaBytes": 40960,
+      "gcCollections": [
+        0,
+        0,
+        0
+      ],
+      "gcPauseMilliseconds": 0,
+      "producerCalls": 32,
+      "trackedRowLoads": 31,
+      "trackedRowUnloads": 31
+    },
+    {
+      "rows": 128,
+      "operation": "sort-ascending",
+      "mutationMilliseconds": 142.5733,
+      "settledMilliseconds": 583.0381,
+      "cpuMilliseconds": 828.125,
+      "managedAllocatedBytes": 3858672,
+      "privateMemoryDeltaBytes": -5271552,
+      "gcCollections": [
+        2,
+        2,
+        1
+      ],
+      "gcPauseMilliseconds": 112.232,
+      "producerCalls": 128,
+      "trackedRowLoads": 128,
+      "trackedRowUnloads": 127
+    },
+    {
+      "rows": 128,
+      "operation": "sort-descending",
+      "mutationMilliseconds": 150.7979,
+      "settledMilliseconds": 597.0324,
+      "cpuMilliseconds": 1062.5,
+      "managedAllocatedBytes": 4730288,
+      "privateMemoryDeltaBytes": -2027520,
+      "gcCollections": [
+        3,
+        2,
+        2
+      ],
+      "gcPauseMilliseconds": 97.176,
+      "producerCalls": 128,
+      "trackedRowLoads": 127,
+      "trackedRowUnloads": 127
+    },
+    {
+      "rows": 128,
+      "operation": "release-sort",
+      "mutationMilliseconds": 142.9532,
+      "settledMilliseconds": 600.8681,
+      "cpuMilliseconds": 703.125,
+      "managedAllocatedBytes": 4208080,
+      "privateMemoryDeltaBytes": 8876032,
+      "gcCollections": [
+        3,
+        2,
+        2
+      ],
+      "gcPauseMilliseconds": 94.075,
+      "producerCalls": 128,
+      "trackedRowLoads": 127,
+      "trackedRowUnloads": 127
+    },
+    {
+      "rows": 512,
+      "operation": "sort-ascending",
+      "mutationMilliseconds": 625.1075,
+      "settledMilliseconds": 2212.9009,
+      "cpuMilliseconds": 2328.125,
+      "managedAllocatedBytes": 24358016,
+      "privateMemoryDeltaBytes": -9359360,
+      "gcCollections": [
+        3,
+        2,
+        1
+      ],
+      "gcPauseMilliseconds": 279.694,
+      "producerCalls": 512,
+      "trackedRowLoads": 512,
+      "trackedRowUnloads": 511
+    },
+    {
+      "rows": 512,
+      "operation": "sort-descending",
+      "mutationMilliseconds": 615.9619,
+      "settledMilliseconds": 2367.4895,
+      "cpuMilliseconds": 2453.125,
+      "managedAllocatedBytes": 17136008,
+      "privateMemoryDeltaBytes": -4227072,
+      "gcCollections": [
+        5,
+        3,
+        2
+      ],
+      "gcPauseMilliseconds": 436.125,
+      "producerCalls": 512,
+      "trackedRowLoads": 511,
+      "trackedRowUnloads": 511
+    },
+    {
+      "rows": 512,
+      "operation": "release-sort",
+      "mutationMilliseconds": 620.3743,
+      "settledMilliseconds": 2295.5346,
+      "cpuMilliseconds": 2312.5,
+      "managedAllocatedBytes": 16695040,
+      "privateMemoryDeltaBytes": 2043904,
+      "gcCollections": [
+        4,
+        3,
+        2
+      ],
+      "gcPauseMilliseconds": 381.689,
+      "producerCalls": 512,
+      "trackedRowLoads": 511,
+      "trackedRowUnloads": 511
+    }
+  ]
+}

@@ -16,7 +16,7 @@ public sealed partial class MetricsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         await MainWindow.AwaitPresentationAsync(this);
-        using var stream = typeof(MetricsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Metric.json")!;
+        using var stream = CatalogReferenceResources.Open(typeof(MetricsFixture).Assembly, "Orchard.Catalog.Reference.Metric.json")!;
         using var reference = JsonDocument.Parse(stream);
         var receipts = new List<object>();
         foreach (var item in reference.RootElement.GetProperty("cases").EnumerateArray().Where(item => item.GetProperty("scheme").GetString() == scheme.ToString()))

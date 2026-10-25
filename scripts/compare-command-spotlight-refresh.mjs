@@ -1,0 +1,11 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {verifyRefresh} from './verify-command-spotlight-refresh.mjs';
+const[beforeFolder,afterFolder,host,output]=process.argv.slice(2);assert(output);
+await verifyRefresh(beforeFolder,'PackageConsumer.dll',{requireHints:false});await verifyRefresh(afterFolder,host);
+const read=async p=>JSON.parse(await fs.readFile(p)),before=await read(beforeFolder+'/refresh.json'),after=await read(afterFolder+'/refresh.json'),median=a=>a.slice().sort((a,b)=>a-b)[Math.floor(a.length/2)];
+assert.deepEqual(before.cases,after.cases);const fontCore=cases=>cases.map(({hintDimensionsVerified,...rest})=>rest);assert.deepEqual(fontCore(before.fontCases),fontCore(after.fontCases));assert(after.fontCases.every(c=>c.hintDimensionsVerified===true));
+const compare=(b,a)=>{assert.equal(b.length,3);assert.equal(a.length,3);const first=median(b.map(t=>t.synchronousMilliseconds)),second=median(a.map(t=>t.synchronousMilliseconds));return{beforeMilliseconds:first,afterMilliseconds:second,ratio:second/first,beforeAllocatedBytes:median(b.map(t=>t.synchronousAllocatedBytes)),afterAllocatedBytes:median(a.map(t=>t.synchronousAllocatedBytes))};};
+const timings=before.cases.map(c=>({theme:c.theme,grouping:c.grouping,count:1000,...compare(before.measurements.filter(t=>t.theme===c.theme&&t.grouping===c.grouping),after.measurements.filter(t=>t.theme===c.theme&&t.grouping===c.grouping))}));
+const profiles=['font-style-lookup','row-direct-set','row-content-update','text-style-update','hint-update','body-update','input-update'].map(phase=>({phase,...compare(before.profiles.filter(t=>t.phase===phase),after.profiles.filter(t=>t.phase===phase))}));
+const report={passed:true,originalObjectsAndFontContractsIdentical:true,baselineHintDimensionCases:before.fontCases.filter(c=>c.hintDimensionsVerified===true).length,afterHintDimensionCases:16,beforeLibrarySha256:before.librarySha256,afterLibrarySha256:after.librarySha256,timings,profiles,latencyAcceptanceClaimed:false,nativeComponentAccepted:false};await fs.writeFile(output,JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));

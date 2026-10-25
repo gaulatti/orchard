@@ -15,7 +15,7 @@ public sealed partial class MainWindow
 {
     private async Task RunEmptiesAsync(string folder)
     {
-        using var stream=typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.Empty.json")??throw new InvalidOperationException("Empty reference missing.");
+        using var stream=CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.Empty.json")??throw new InvalidOperationException("Empty reference missing.");
         using var document=await JsonDocument.ParseAsync(stream);
         var original=Content;var canvas=new Canvas{UseLayoutRounding=false};var frames=new List<object>();var lifecycle=new List<object>();var completed=false;
         try

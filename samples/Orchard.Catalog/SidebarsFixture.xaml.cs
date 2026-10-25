@@ -22,7 +22,7 @@ public sealed partial class SidebarsFixture:UserControl
     public SidebarsFixture(){InitializeComponent();current=Preview;Preview.ItemInvoked+=(_,item)=>Status.Text="Consumer invoked "+item.Href;}
     internal async Task VerifyAsync(BleeckerColorScheme scheme,string folder)
     {
-        using var document=JsonDocument.Parse(typeof(SidebarsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SidebarLayout.json")??throw new InvalidOperationException("Missing Sidebar reference."));
+        using var document=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SidebarsFixture).Assembly, "Orchard.Catalog.Reference.SidebarLayout.json")??throw new InvalidOperationException("Missing Sidebar reference."));
         using var sourceInput=new NativeInputSession(XamlRoot,folder,$"sidebar-source-{scheme}");await sourceInput.AcquireAsync(Outside);await sourceInput.MoveAsync(Outside);
         var measurements=new List<object>();BleeckerSidebar? sourceSidebar=null;
         try

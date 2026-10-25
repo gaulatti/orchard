@@ -67,6 +67,48 @@ public sealed partial class MainWindow : Window
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "metric", environment = RuntimeEnvironment() }));
             }
             else if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
+            else if (args.Contains("--smoke-dialog-close")) await RunDialogCloseButtonsAsync(folder);
+            else if (args.Contains("--smoke-field")) await RunFieldsAsync(folder);
+            else if (args.Contains("--smoke-admin-shell")) await RunAdminShellsAsync(folder);
+            else if (args.Contains("--smoke-admin-shell-diagnostic")) await RunAdminShellsAsync(folder, diagnosticOnly: true);
+            else if (args.Contains("--smoke-admin-shell-text-diagnostic")) await RunAdminShellTextDiagnosticAsync(folder);
+            else if (args.Contains("--smoke-page-frame")) await RunPageFramesAsync(folder);
+            else if (args.Contains("--smoke-detail-layout")) await RunDetailLayoutsAsync(folder);
+            else if (args.Contains("--smoke-panel-layout")) await RunPanelLayoutsAsync(folder);
+            else if (args.Contains("--smoke-feed-grid")) await RunFeedGridsAsync(folder);
+            else if (args.Contains("--smoke-slider")) await RunSlidersAsync(folder);
+            else if (args.Contains("--smoke-theme-toggle")) await RunThemeTogglesAsync(folder);
+            else if (args.Contains("--smoke-pagination")) await RunPaginationsAsync(folder);
+            else if (args.Contains("--smoke-pagination-motion")) await RunPaginationMotionAsync(folder);
+            else if (args.Contains("--smoke-collection-filters")) await RunCollectionFiltersAsync(folder);
+            else if (args.Contains("--smoke-nav-menu")) await RunNavMenuAsync(folder);
+            else if (args.Contains("--smoke-footer")) await RunFooterAsync(folder);
+            else if (args.Contains("--smoke-panel")) await RunPanelsAsync(folder);
+            else if (args.Contains("--smoke-buttons"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Buttons);
+                    using var buttonInput = new NativeInputSession(CatalogRoot.XamlRoot, folder, "buttons-" + theme);
+                    var heading = (FrameworkElement)((StackPanel)Buttons.Content).Children[0];
+                    await buttonInput.AcquireAsync(heading); await buttonInput.MoveAsync(heading);
+                    await Buttons.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+                    await CaptureFixtureAsync(Buttons, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "buttons", environment = RuntimeEnvironment() }));
+            }
+            else if (args.Contains("--smoke-tabs-reference"))
+                await RunTabsReferenceAsync(folder);
+            else if (args.Contains("--smoke-tabs"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Tabs);
+                    await Tabs.VerifyAsync(theme, folder);
+                    await CaptureFixtureAsync(Tabs, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "tabs", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-textarea")) await RunTextareasAsync(folder);
             else if (args.Contains("--smoke-textarea-font")) await RunTextareaFontProbeAsync(folder);
             else if (args.Contains("--smoke-textarea-resize")) await RunTextareaResizeAsync(folder);
@@ -91,6 +133,8 @@ public sealed partial class MainWindow : Window
             else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
             else if(args.Contains("--smoke-empty"))await RunEmptiesAsync(folder);
             else if(args.Contains("--smoke-progress-stack"))await RunProgressStacksAsync(folder);
+            else if(args.Contains("--smoke-progress-stack-text"))await RunProgressStacksAsync(folder,unicode:true);
+            else if(args.Contains("--smoke-progress-stack-accessibility"))await RunProgressStackAccessibilityAsync(folder);
             else if(args.Contains("--smoke-icon-badge"))await RunIconBadgeAsync(folder);
             else if(args.Contains("--smoke-accordion-scalars"))await RunAccordionScalarsAsync(folder);
             else if(args.Contains("--smoke-accordion-continuity"))await RunAccordionContinuityAsync(folder);

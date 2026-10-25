@@ -1,0 +1,11 @@
+<StackPanel x:Class="Orchard.Catalog.DataTablesFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:o="using:Orchard" Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <TextBlock Text="Data Table" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Filter, sort, select and page through fictional local rows. Original native cell actions remain caller-owned." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+ <o:BleeckerDataTable x:Name="Data" Width="660" HorizontalAlignment="Left" SearchKey="Name" Style="{StaticResource BleeckerDataTableStyle}"/>
+ <TextBlock x:Name="Status" Text="Fictional rows ready." Style="{StaticResource BleeckerBodyStyle}"/>
+ <TextBlock Text="Data Table header surface" Style="{StaticResource BleeckerBodyStyle}"/>
+ <o:BleeckerTable Width="660" HorizontalAlignment="Left">
+  <o:BleeckerTableHeader Style="{StaticResource BleeckerDataTableHeaderStyle}"><o:BleeckerTableRow><o:BleeckerTableHead Content="Fictional item"/><o:BleeckerTableHead Content="Count"/></o:BleeckerTableRow></o:BleeckerTableHeader>
+  <o:BleeckerTableBody><o:BleeckerTableRow><o:BleeckerTableCell Content="Cedar preview"/><o:BleeckerTableCell Content="12"/></o:BleeckerTableRow></o:BleeckerTableBody>
+ </o:BleeckerTable>
+</StackPanel>

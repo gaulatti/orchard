@@ -22,6 +22,124 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
+        <Content Include="Assets/Hero*.svg" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="Assets/MediaLibrary/*.svg" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Compile Include="../../tests/PackageConsumer/BrandMarkFixture.cs" Link="BrandMarkFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/MenubarFixture.cs" Link="MenubarFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/NavigationMenuFixture.cs" Link="NavigationMenuFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/HeroCarouselFixture.cs" Link="HeroCarouselFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/FileInputFixture.cs" Link="FileInputFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/MediaLibraryFixture.cs" Link="MediaLibraryFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightFixture.cs" Link="CommandSpotlightFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightFixture.Styles.cs" Link="CommandSpotlightFixture.Styles.cs" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightFixture.Hotkeys.cs" Link="CommandSpotlightFixture.Hotkeys.cs" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightCollectionFixture.cs" Link="CommandSpotlightCollectionFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightRefreshFixture.cs" Link="CommandSpotlightRefreshFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightSurfaceFixture.cs" Link="CommandSpotlightSurfaceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayShadowFixture.cs" Link="OverlayShadowFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayNearOwnerFixture.cs" Link="OverlayNearOwnerFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayNearGeometryFixture.cs" Link="OverlayNearGeometryFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayFarFixture.cs" Link="OverlayFarFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayEmptyCasterFixture.cs" Link="OverlayEmptyCasterFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayCombinedFixture.cs" Link="OverlayCombinedFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayShadowLifetimeFixture.cs" Link="OverlayShadowLifetimeFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OverlayShadowSamplingTrace.cs" Link="OverlayShadowSamplingTrace.cs" />
+        <EmbeddedResource Include="../../tests/PackageConsumer/OverlayShadowSamplingTrace.bin" LogicalName="Orchard.Testing.ShadowSampling.bin" />
+        <Compile Include="../../tests/PackageConsumer/OverlayFarPrecisionTrace.cs" Link="OverlayFarPrecisionTrace.cs" />
+        <EmbeddedResource Include="../../tests/PackageConsumer/OverlayFarCoverageTrace.bin" LogicalName="Orchard.Testing.FarCoverage.bin" />
+        <Compile Include="../../tests/PackageConsumer/ReferencePngCodec.cs" Link="ReferencePngCodec.cs" />
+        <Compile Include="../../tests/PackageConsumer/ScreenshotPngCodec.cs" Link="ScreenshotPngCodec.cs" />
+        <EmbeddedResource Include="../../tests/PackageConsumer/ReferencePngCodec.u8" LogicalName="Orchard.Testing.ReferencePngCodec.u8" />
+        <EmbeddedResource Include="../../tests/PackageConsumer/ScreenshotPngCodec.u8" LogicalName="Orchard.Testing.ScreenshotPngCodec.u8" />
+        <Compile Include="../../tests/PackageConsumer/CommandSpotlightPaintFixture.cs" Link="CommandSpotlightPaintFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/AuthShellFixture.cs" Link="AuthShellFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/AuthShellLayoutFixture.cs" Link="AuthShellLayoutFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/HeroCarouselFixture.Effects.cs" Link="HeroCarouselFixture.Effects.cs" />
+        <Compile Include="../../tests/PackageConsumer/HeroCarouselFixture.Input.cs" Link="HeroCarouselFixture.Input.cs" />
+        <Compile Include="../../tests/PackageConsumer/SonnerFixture.cs" Link="SonnerFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ProducerThreadingFixture.cs" Link="ProducerThreadingFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ButtonGroupFixture.cs" Link="ButtonGroupFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/LabelAssociationFixture.cs" Link="LabelAssociationFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ToggleGroupFixture.cs" Link="ToggleGroupFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ChartThemeConsumersFixture.cs" Link="ChartThemeConsumersFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/SwitchLifecycleFixture.cs" Link="SwitchLifecycleFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/NativeRenderReadiness.cs" Link="NativeRenderReadiness.cs" />
+        <Compile Include="../../tests/PackageConsumer/RenderOwnerLifetimeFixture.cs" Link="RenderOwnerLifetimeFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ButtonLifecycleFixture.cs" Link="ButtonLifecycleFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/CheckboxContentFixture.cs" Link="CheckboxContentFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/PopoverReferenceFixture.cs" Link="PopoverReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/HoverCardReferenceFixture.cs" Link="HoverCardReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ScrollAreaReferenceFixture.cs" Link="ScrollAreaReferenceFixture.cs" />
+        <Compile Include="../../tests/Native/ModalHostCoreProbe.cs" Link="ModalHostCoreProbe.cs" />
+        <Compile Include="../../tests/Native/ModalHostOwnershipProbe.cs" Link="ModalHostOwnershipProbe.cs" />
+        <Compile Include="../../tests/Native/PopoverModalBranchProbe.cs" Link="PopoverModalBranchProbe.cs" />
+        <Compile Include="../../tests/Native/SelectModalBranchProbe.cs" Link="SelectModalBranchProbe.cs" />
+        <Compile Include="../../tests/Native/TooltipModalBranchProbe.cs" Link="TooltipModalBranchProbe.cs" />
+        <Compile Include="../../tests/Native/MenuPortalPrimitiveProbe.cs" Link="MenuPortalPrimitiveProbe.cs" />
+        <Compile Include="../../tests/Native/ModalHostPublicProbe.cs" Link="ModalHostPublicProbe.cs" />
+        <Compile Include="../../tests/PackageConsumer/AlertDialogReferenceFixture.cs" Link="AlertDialogReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ModalReferenceFixture.cs" Link="ModalReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/EdgeDialogReferenceFixture.cs" Link="EdgeDialogReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/EdgeDialogCompositionFixture.cs" Link="EdgeDialogCompositionFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/EdgeMotionFixture.cs" Link="EdgeMotionFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/SecureFieldFixture.cs" Link="SecureFieldFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/SegmentedControlFixture.cs" Link="SegmentedControlFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/AppTabBarFixture.cs" Link="AppTabBarFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/OtpInputFixture.cs" Link="OtpInputFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ContextMenuFixture.cs" Link="ContextMenuFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ContextMenuModalFixture.cs" Link="ContextMenuModalFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TablePerformanceFixture.cs" Link="TablePerformanceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableTemplateFixture.cs" Link="TableTemplateFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableLabelRasterFixture.cs" Link="TableLabelRasterFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableMinimumFixture.cs" Link="TableMinimumFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableNavigationForegroundFixture.cs" Link="TableNavigationForegroundFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TabsBorderPaintFixture.cs" Link="TabsBorderPaintFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableButtonContentForegroundFixture.cs" Link="TableButtonContentForegroundFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableCustomizationFixture.cs" Link="TableCustomizationFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TableTextFixture.cs" Link="TableTextFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/DataTableReferenceFixture.cs" Link="DataTableReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/DataTablePerformanceFixture.cs" Link="DataTablePerformanceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/DataTableReferenceFixture.Context.cs" Link="DataTableReferenceFixture.Context.cs" />
+        <Compile Include="../../tests/PackageConsumer/DataTableReferenceFixture.Filtering.cs" Link="DataTableReferenceFixture.Filtering.cs" />
+        <Compile Include="../../tests/PackageConsumer/DataTableFixture.cs" Link="DataTableFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/DataTableLiveFixture.cs" Link="DataTableLiveFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/SimpleDataTableFixture.cs" Link="SimpleDataTableFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/TablePrimitiveFixture.cs" Link="TablePrimitiveFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/ContextMenuOptionsFixture.cs" Link="ContextMenuOptionsFixture.cs" />
+        <Compile Include="../../tests/Native/ContextMenuStyledPortalProbe.cs" Link="ContextMenuStyledPortalProbe.cs" />
+        <Compile Include="../../tests/PackageConsumer/ModalContentFixture.cs" Link="ModalContentFixture.cs" />
+        <Compile Include="../../tests/Native/AlertDialogActionsProbe.cs" Link="AlertDialogActionsProbe.cs" />
+        <Compile Include="../../tests/PackageConsumer/FooterContractFixture.cs" Link="FooterContractFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/HeaderReferenceFixture.cs" Link="HeaderReferenceFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/HeaderReferenceFixture.Contracts.cs" Link="HeaderReferenceFixture.Contracts.cs" />
+        <EmbeddedResource Include="../../tests/Reference/NavMenu.json" LogicalName="Orchard.Catalog.Reference.NavMenu.json" />
+        <EmbeddedResource Include="../../tests/Reference/Footer.json" LogicalName="Orchard.Catalog.Reference.Footer.json" />
+        <EmbeddedResource Include="../../tests/Reference/NavMenu/nav-menu-empty-*.png" LogicalName="Orchard.Catalog.Reference.NavMenu.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/CollectionFilters.json" LogicalName="Orchard.Catalog.Reference.CollectionFilters.json" />
+        <EmbeddedResource Include="../../tests/Reference/CollectionFilters/collection-filters-empty-*.png" LogicalName="Orchard.Catalog.Reference.CollectionFilters.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/PaginationMotion.json" LogicalName="Orchard.Catalog.Reference.PaginationMotion.json" />
+        <EmbeddedResource Include="../../tests/Reference/Pagination.json" LogicalName="Orchard.Catalog.Reference.Pagination.json" />
+        <EmbeddedResource Include="../../tests/Reference/Pagination/*.png" LogicalName="Orchard.Catalog.Reference.Pagination.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/Slider.json" LogicalName="Orchard.Catalog.Reference.Slider.json" />
+        <EmbeddedResource Include="../../tests/Reference/ThemeToggle.json" LogicalName="Orchard.Catalog.Reference.ThemeToggle.json" />
+        <EmbeddedResource Include="../../tests/Reference/ThemeToggle/*.png" LogicalName="Orchard.Catalog.Reference.ThemeToggle.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/Slider/*.png" LogicalName="Orchard.Catalog.Reference.Slider.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/FeedGrid.json" LogicalName="Orchard.Catalog.Reference.FeedGrid.json" />
+        <EmbeddedResource Include="../../tests/Reference/AdminShell.json" LogicalName="Orchard.Catalog.Reference.AdminShell.json" />
+        <EmbeddedResource Include="../../tests/Reference/AdminShell/*.png" LogicalName="Orchard.Catalog.Reference.AdminShell.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/FeedGrid/*.png" LogicalName="Orchard.Catalog.Reference.FeedGrid.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/PanelLayout.json" LogicalName="Orchard.Catalog.Reference.PanelLayout.json" />
+        <EmbeddedResource Include="../../tests/Reference/PanelLayout/*.png" LogicalName="Orchard.Catalog.Reference.PanelLayout.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/Panel.json" LogicalName="Orchard.Catalog.Reference.Panel.json" />
+        <EmbeddedResource Include="../../tests/Reference/Panel/*.png" LogicalName="Orchard.Catalog.Reference.Panel.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/Tabs.json" LogicalName="Orchard.Catalog.Reference.Tabs.json" />
+        <EmbeddedResource Include="../../tests/Reference/DialogCloseButton.json" LogicalName="Orchard.Catalog.Reference.DialogCloseButton.json" />
+        <EmbeddedResource Include="../../tests/Reference/Field.json" LogicalName="Orchard.Catalog.Reference.Field.json" />
+        <EmbeddedResource Include="../../tests/Reference/PageFrame.json" LogicalName="Orchard.Catalog.Reference.PageFrame.json" />
+        <EmbeddedResource Include="../../tests/Reference/DetailLayout.json" LogicalName="Orchard.Catalog.Reference.DetailLayout.json" />
+        <EmbeddedResource Include="../../tests/Reference/DetailLayout/*.png" LogicalName="Orchard.Catalog.Reference.DetailLayout.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/PageFrame/*.png" LogicalName="Orchard.Catalog.Reference.PageFrame.%(Filename)%(Extension)" />
+        <EmbeddedResource Include="../../tests/Reference/ProgressStackText.json" LogicalName="Orchard.Catalog.Reference.ProgressStackText.json" />
         <EmbeddedResource Include="../../tests/Reference/ProgressStack.json" LogicalName="Orchard.Catalog.Reference.ProgressStack.json" />
         <EmbeddedResource Include="../../tests/Reference/Empty.json" LogicalName="Orchard.Catalog.Reference.Empty.json" />
         <EmbeddedResource Include="../../tests/Reference/IconBadge.json" LogicalName="Orchard.Catalog.Reference.IconBadge.json" />
@@ -91,10 +209,13 @@
         <EmbeddedResource Include="../../tests/Reference/DataTableToolbarPress.json" LogicalName="Orchard.Catalog.Reference.DataTableToolbarPress.json" />
         <EmbeddedResource Include="../../tests/Reference/NegativeChartDomains.json" LogicalName="Orchard.Catalog.Reference.NegativeChartDomains.json" />
         <None Include="../../licenses/LICENSE-Lucide.txt" Link="licenses/LICENSE-Lucide.txt" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="../../licenses/LICENSE-FloatingUI.txt" Link="licenses/LICENSE-FloatingUI.txt" CopyToOutputDirectory="PreserveNewest" />
         <ProjectReference Include="../../src/Orchard/Orchard.csproj" />
         <Content Include="../../scripts/LoadingOverlayUiaProbe.cs" Link="LoadingOverlayUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Content Include="../../scripts/FilterChipUiaProbe.cs" Link="FilterChipUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Content Include="../../scripts/SearchInputUiaProbe.cs" Link="SearchInputUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="../../scripts/ProgressStackUiaProbe.cs" Link="ProgressStackUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="../../scripts/FieldUiaProbe.cs" Link="FieldUiaProbe.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <Content Include="../../scripts/FilterChipUiaSession.cs" Link="FilterChipUiaSession.cs" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
         <EmbeddedResource Include="../../tests/Reference/Stepper.json" LogicalName="Orchard.Catalog.Reference.Stepper.json" />
         <EmbeddedResource Include="../../tests/Reference/DataList.json" LogicalName="Orchard.Catalog.Reference.DataList.json" />
@@ -107,4 +228,5 @@
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />
     </ItemGroup>
+    <Import Project="CatalogReferences.targets" />
 </Project>

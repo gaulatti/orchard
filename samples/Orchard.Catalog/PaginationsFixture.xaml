@@ -1,0 +1,16 @@
+<UserControl x:Class="Orchard.Catalog.PaginationsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16">
+  <TextBlock Text="Pagination" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <TextBlock Text="Consumer-owned pages and availability. These controls request navigation without loading data." Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerPagination x:Name="Accepted" CurrentPage="4" TotalPages="12" HasPrevPage="True" HasNextPage="True" PageRequested="AcceptPage"/>
+  <TextBlock x:Name="Status" Text="Page 4 of 12" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerPagination CurrentPage="4" TotalPages="12" HasPrevPage="True" HasNextPage="True" PageRequested="DeclinePage" AutomationProperties.Name="Declined page requests"/>
+  <orchard:BleeckerPagination CurrentPage="1" TotalPages="7" HasPrevPage="False" HasNextPage="True"/>
+  <orchard:BleeckerPagination CurrentPage="12" TotalPages="12" HasPrevPage="True" HasNextPage="False"/>
+  <orchard:BleeckerPagination CurrentPage="4" TotalPages="12" IsEnabled="False" AutomationProperties.Name="Disabled pagination"/>
+  <orchard:BleeckerPagination CurrentPage="1" TotalPages="1"/>
+  <orchard:BleeckerPagination CurrentPage="5" TotalPages="12" HasPrevPage="True" HasNextPage="True" FlowDirection="RightToLeft"/>
+  <orchard:BleeckerPagination CurrentPage="4" TotalPages="12" HasPrevPage="True" HasNextPage="True" Width="320" HorizontalAlignment="Center"/>
+ </StackPanel>
+</UserControl>

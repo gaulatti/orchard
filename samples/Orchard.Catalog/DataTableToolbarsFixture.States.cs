@@ -10,7 +10,7 @@ public sealed partial class DataTableToolbarsFixture
 {
     private async Task VerifyResetStatesAsync(NativeInputSession input,BleeckerColorScheme scheme,string folder)
     {
-        using var reference=JsonDocument.Parse(typeof(DataTableToolbarsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTableToolbarReset.json")!);
+        using var reference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarReset.json")!);
         var source=reference.RootElement.GetProperty("results").EnumerateArray().Single(item=>item.GetProperty("scheme").GetString()==scheme.ToString()&&item.GetProperty("reducedMotion").GetString()=="reduce");
         var sourceNormal=source.GetProperty("hover").GetProperty("box");var sourceHeld=source.GetProperty("held").GetProperty("box");
         var scaleX=sourceHeld.GetProperty("width").GetDouble()/sourceNormal.GetProperty("width").GetDouble();

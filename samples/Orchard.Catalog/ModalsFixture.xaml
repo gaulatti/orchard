@@ -1,0 +1,19 @@
+<StackPanel x:Class="Orchard.Catalog.ModalsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard" Spacing="20">
+ <StackPanel.Resources><Style x:Key="WideModalSurface" TargetType="orchard:BleeckerOverlaySurface" BasedOn="{StaticResource BleeckerModalSurfaceStyle}"><Setter Property="MaxWidth" Value="672"/><Setter Property="CornerRadius" Value="0"/></Style></StackPanel.Resources>
+ <TextBlock Text="Modal" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local content, caller-controlled close requests, nested components and a scrollable surface." TextWrapping="Wrap"/>
+ <TextBlock x:Name="Status" Text="No close requests"/>
+ <StackPanel Orientation="Horizontal" Spacing="12"><orchard:BleeckerButton Content="Open component example" Size="Small" Click="OpenDefault"/><orchard:BleeckerButton Content="Open wide square example" Variant="Secondary" Size="Small" Click="OpenWide"/></StackPanel>
+ <orchard:BleeckerModal x:Name="Default" Title="Fictional component demonstration" SurfaceStyle="{StaticResource BleeckerModalSurfaceStyle}" CloseRequested="Closed">
+  <StackPanel Spacing="16">
+   <TextBlock Text="This is a reusable content slot. Editing and selection remain owned by the original caller controls." TextWrapping="Wrap"/>
+   <TextBox Header="Fictional note" Text="Original local value"/>
+   <orchard:BleeckerButton x:Name="DetailButton" Content="Expand fictional content" Size="Small" Variant="Secondary" Click="ToggleDetails"/>
+   <TextBlock x:Name="DynamicText" Text="Fictional short detail" FontSize="16" LineHeight="24" LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap"/>
+   <orchard:BleeckerButton Content="Open nested confirmation" Size="Small" Click="OpenNested"/>
+   <orchard:BleeckerAlertDialog x:Name="Nested" Title="Fictional nested confirmation" Description="Only the top surface handles a close request." CancelRequested="NestedClosed" ConfirmRequested="NestedClosed"/>
+   <TextBlock Text="The close request in this example is accepted by the catalog caller. The component itself keeps IsOpen caller-controlled." TextWrapping="Wrap"/>
+  </StackPanel>
+ </orchard:BleeckerModal>
+ <orchard:BleeckerModal x:Name="Wide" Title="Fictional wide surface" SurfaceStyle="{StaticResource WideModalSurface}" CloseRequested="Closed"><StackPanel Height="1000" Spacing="16"><TextBlock Text="Fictional long content scrolls together with the title and close button." TextWrapping="Wrap"/><TextBox Header="Retained fictional text" Text="Local component example"/><TextBlock Text="End of the fictional content" VerticalAlignment="Bottom"/></StackPanel></orchard:BleeckerModal>
+</StackPanel>

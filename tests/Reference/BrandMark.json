@@ -1,0 +1,57 @@
+{
+  "format": "orchard-brand-mark-source-v1",
+  "sourceCommit": "f5ac479bfceaa7eab23c1716ac47420ac53dae25",
+  "kind": "pinned-source-code-and-original-template-image",
+  "sourceRuntimeVerified": false,
+  "sourceCodeModified": false,
+  "assetBytesModified": false,
+  "inputs": [
+    {
+      "path": "Sources/Sabella/Navigation.swift",
+      "sha256": "14cec81653ac61cfc7b0287b512047af6c90f98eadb63a9bc31b24db04f04f2e"
+    },
+    {
+      "path": "Sources/Sabella/Tokens.swift",
+      "sha256": "8bcf3538bd1d27fb91f661a7970894f10e73dcad69ccef6622056512683dfca5"
+    },
+    {
+      "path": "Sources/Sabella/Resources/Assets.xcassets/BleeckerLogo.imageset/Contents.json",
+      "sha256": "e3f281b2806082e3d2845f44d0650093584b4a5ddba1f92bd7d3d56b4302c04a"
+    },
+    {
+      "path": "Sources/Sabella/Resources/Assets.xcassets/BleeckerLogo.imageset/BleeckerLogo.png",
+      "sha256": "3eadafd84a1f3b37261bad85b8a8e5512ed7aa9b3baae38aa8321cc3a6cbb9c2"
+    }
+  ],
+  "defaultSize": 64,
+  "aspectFit": true,
+  "templateImage": true,
+  "opacity": 0.9,
+  "themes": {
+    "light": "#2D2D2D",
+    "dark": "#F0F4F8"
+  },
+  "asset": {
+    "file": "BleeckerLogo.png",
+    "sha256": "3eadafd84a1f3b37261bad85b8a8e5512ed7aa9b3baae38aa8321cc3a6cbb9c2",
+    "width": 1024,
+    "height": 1024,
+    "bitDepth": 8,
+    "colorType": 4,
+    "opaquePixels": 194745,
+    "transparentPixels": 843835,
+    "partialAlphaPixels": 9996,
+    "alphaBounds": {
+      "minX": 170,
+      "minY": 71,
+      "maxX": 853,
+      "maxY": 952
+    }
+  },
+  "interaction": {
+    "action": false,
+    "selection": false,
+    "focusable": false
+  },
+  "scriptSha256": "a9ade38f1b6bcca393701c6fb611a8f4986e23c41cd685547aa6a186d122400b"
+}

@@ -1,0 +1,49 @@
+{
+  "format": "orchard-segmented-control-source-v1",
+  "repository": "gaulatti/sabella",
+  "commit": "f5ac479bfceaa7eab23c1716ac47420ac53dae25",
+  "files": [
+    {
+      "path": "Sources/Sabella/Buttons.swift",
+      "sha256": "5a75a79ed533c33b7d1a5753c1aeb74a31695950f3f8bb26a00938f5cc09182b"
+    },
+    {
+      "path": "Sources/Sabella/Controls.swift",
+      "sha256": "e344bd2f5b9aa88f5c37abb27e70db2e487262fdcfd73d76c59c4e493467057d"
+    },
+    {
+      "path": "Sources/Sabella/Tokens.swift",
+      "sha256": "8bcf3538bd1d27fb91f661a7970894f10e73dcad69ccef6622056512683dfca5"
+    },
+    {
+      "path": "Sources/Sabella/Resources/Fonts/EncodeSans-Medium.ttf",
+      "sha256": "40a222af6b6dcd6940866415df454f2e27e798f5dc16539d72c67449c0eeca98"
+    }
+  ],
+  "contract": {
+    "boundValue": true,
+    "valueIdentity": true,
+    "genericHashableValues": true,
+    "clickAssignsOptionValue": true,
+    "noDeselectionAction": true,
+    "optionDisabled": true,
+    "fontFamily": "Encode Sans",
+    "fontSize": 13,
+    "fontWeight": 500,
+    "gap": 2,
+    "horizontalButtonPadding": 12,
+    "minimumButtonHeight": 32,
+    "buttonRadius": 7,
+    "framePadding": 4,
+    "frameRadius": 9,
+    "frameBackgroundOpacity": 0.65,
+    "selectedBackground": "card",
+    "inactiveBackground": "clear",
+    "selectedForeground": "sea",
+    "inactiveForeground": "textSecondary",
+    "border": "border"
+  },
+  "sourceFontMatchesLibrary": true,
+  "appleRenderingVerified": false,
+  "implicitHStackCompressionMeasured": false
+}

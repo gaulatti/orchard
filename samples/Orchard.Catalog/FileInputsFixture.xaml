@@ -1,0 +1,20 @@
+<UserControl x:Class="Orchard.Catalog.FileInputsFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <StackPanel Spacing="16" Margin="0,0,0,40">
+  <TextBlock Text="File Input" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
+  <TextBlock Text="Native local file selection with original file objects. Windows filters use explicit extensions. These examples read and upload no selected content." Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <TextBlock Text="Small, medium and large" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerFileInput x:Name="Small" InputSize="Small" Width="384" HorizontalAlignment="Left" AutomationProperties.Name="Small fictional attachment"/>
+  <orchard:BleeckerFileInput x:Name="Primary" Style="{StaticResource BleeckerFileInputStyle}" Width="384" HorizontalAlignment="Left" AutomationProperties.Name="Original fictional attachment" AutomationProperties.HelpText="Choose local files; nothing is uploaded"/>
+  <orchard:BleeckerFileInput x:Name="Large" InputSize="Large" Width="384" HorizontalAlignment="Left" AutomationProperties.Name="Large fictional attachment"/>
+  <StackPanel Orientation="Horizontal" Spacing="12"><CheckBox x:Name="Multiple" Content="Multiple selection" Checked="MultipleChanged" Unchecked="MultipleChanged"/><CheckBox Content="Error border" Checked="ErrorChanged" Unchecked="ErrorChanged"/><CheckBox Content="Disable input" Checked="DisabledChanged" Unchecked="DisabledChanged"/><CheckBox Content="Required selection" Checked="RequiredChanged" Unchecked="RequiredChanged"/></StackPanel>
+  <StackPanel Orientation="Horizontal" Spacing="8"><Button Content="Use fictional local files" Click="UseFictional"/><Button Content="Clear selection silently" Click="Clear"/><Button Content="Filter PNG/JPEG extensions" Click="ImagesOnly"/><Button Content="Allow every file type" Click="EveryType"/></StackPanel>
+  <TextBlock x:Name="Result" Text="No file selected" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
+  <TextBlock Text="Disabled and error states" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerFileInput IsEnabled="False" Width="384" HorizontalAlignment="Left" AutomationProperties.Name="Disabled fictional attachment"/>
+  <orchard:BleeckerFileInput IsError="True" IsRequired="True" Width="384" HorizontalAlignment="Left" AutomationProperties.Name="Required fictional attachment"/>
+  <TextBlock Text="Constrained, scaled and caller typography" Style="{StaticResource BleeckerHeadingStyle}"/>
+  <orchard:BleeckerFileInput Width="160" HorizontalAlignment="Left" AutomationProperties.Name="Constrained fictional attachment"/>
+  <orchard:BleeckerFileInput FontScale="2" Width="480" HorizontalAlignment="Left" AutomationProperties.Name="Scaled fictional attachment"/>
+  <orchard:BleeckerFileInput FontFamily="Consolas" FontSize="20" Padding="9,13,9,13" CornerRadius="12" Width="480" HorizontalAlignment="Left" AutomationProperties.Name="Caller styled fictional attachment"/>
+ </StackPanel>
+</UserControl>

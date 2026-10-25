@@ -31,5 +31,14 @@
                 </orchard:BleeckerTooltip>
             </orchard:BleeckerTooltipService.ToolTip>
         </Button>
+        <orchard:BleeckerPopover x:Name="TooltipPopover" HorizontalAlignment="Left" Margin="110,0,0,32">
+            <orchard:BleeckerPopover.Trigger><Button Content="Fictional component help" Style="{StaticResource BleeckerSecondaryButtonStyle}" /></orchard:BleeckerPopover.Trigger>
+            <StackPanel Spacing="8">
+                <TextBlock Text="Tooltip in original Popover content" TextWrapping="Wrap" />
+                <Button x:Name="NestedTooltipTrigger" Content="Fictional nested guidance" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+                    <orchard:BleeckerTooltipService.ToolTip><orchard:BleeckerTooltip Content="Reusable component help with fictional local content." /></orchard:BleeckerTooltipService.ToolTip>
+                </Button>
+            </StackPanel>
+        </orchard:BleeckerPopover>
     </StackPanel>
 </UserControl>

@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {readRgbaPng} from './reference/read-rgba-png.mjs';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const names=['owned-public-content-and-bindings','native-anchored-placement','background-popup-is-inert','nested-popup-keeps-nearest-modal-owner','child-modal-shields-owned-popup-branches','inactive-owner-can-retain-controlled-popup','bound-enabled-state-survives-shield','closing-child-restores-parent-branches','controlled-close-is-request-only','reopen-retains-original-edit-and-controls','template-replacement-releases-portal','declaration-unload-releases-and-remounts','modal-teardown-restores-background-popup','root-unload-releases-background-portal'];
+const keys=[['branches','originalContent','originalTrigger','bindings','opens','closes','requests','ownedSequentialTarget'],['anchor','actual','expected'],['frameBlocked','originalEnabled','logicalOpen','focusRejected'],['branches','sameModalOwner','nestedSequentialTarget'],['ancestorDepth','branches','allBlocked','callerStateRetained'],['branches','allBlocked','controlledOpen','nestedLogicalOpenRetained'],['liveDisabledAndRestored','bindingRetained','shieldRetained'],['branches','allInteractive','nestedTargetRestored'],['requestDelta','callerStatePreservedUntilUpdate','closedBranches','bindingsRetained'],['branches','originalContent','editRetained','bindingsRetained'],['detachedBranches','remountedBranches','editAndBindingsRetained'],['detachedBranches','remountedBranches','logicalOpenRetained','editRetained'],['activeModalRemoved','ownedContentUnloaded','callerStateRetained','backgroundInteractive'],['contentUnloaded','remounted','logicalOpenRetained']];
+names.push('catalog-confirmation-from-original-popup');keys.push(['nativeButtonInvokes','originalEditRetained','backgroundShieldedDuringConfirmation','callerCanceled','popupRestored']);
+names.push('transfer-between-native-popup-and-shared-host');keys.push(['nativePopupPhases','hostPopupCount','opens','closes','requests','originalContentAndEditRetained','bindingRetained']);
+export function auditPopoverBranches(folder,provided){
+ const read=p=>JSON.parse(fs.readFileSync(path.join(folder,p),'utf8')),r=provided??read('popover-modal-branch.json'),exit=read('process-exit.json');
+ assert.equal(r.format,'orchard-popover-modal-branch-v1');assert(r.passed);assert.deepEqual(r.failures,[]);assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);assert.equal(exit.timedOut,false);
+ assert.equal(r.architecture,'X64');for(const k of ['activateCalled','showCalled','focusCalled','hardwareInputSent','nativeKeyboardPointerVerified','sourceRasterParityVerified'])assert.equal(r[k],false,k);assert.equal(r.activations,0);assert.equal(r.focus,0);assert(r.guards>=300);
+ assert.equal(r.librarySha256,hash(fs.readFileSync(path.join(folder,'app-identity/Orchard.dll'))));assert.equal(r.hostSha256,hash(fs.readFileSync(path.join(folder,'app-identity/Orchard.Catalog.dll'))));
+ assert.equal(r.softwareNativeInvokes,2);assert.equal(r.standalonePopupPhases,4);assert.equal(r.cases.length,32);assert.deepEqual(r.cases.map(c=>c.scheme+':'+c.name),['Light','Dark'].flatMap(s=>names.map(n=>s+':'+n)));
+ for(const c of r.cases){assert.equal(c.passed,true,c.name);assert(c.evidence);assert.deepEqual(Object.keys(c.evidence).sort(),[...keys[names.indexOf(c.name)]].sort());for(const[k,v]of Object.entries(c.evidence)){if(['branches','bindings','opens','closes','requests','ancestorDepth','requestDelta','closedBranches','detachedBranches','remountedBranches','nativeButtonInvokes','nativePopupPhases','hostPopupCount'].includes(k))assert(Number.isInteger(v));else if(!['anchor','actual','expected'].includes(k))assert.equal(v,true,c.name+':'+k);}const e=c.evidence;
+  if(c.name==='owned-public-content-and-bindings'){assert.equal(e.branches,1);assert.equal(e.bindings,2);assert.equal(e.opens,1);assert.equal(e.closes,0);assert.equal(e.requests,0);}
+  if(c.name==='native-anchored-placement'){const {anchor:a,actual:b,expected:x}=e;for(const n of [...Object.values(a),...Object.values(b),...Object.values(x)])assert(Number.isFinite(n));assert(b.width>220&&b.height>100);assert(Math.abs(b.x-Math.round(a.x+a.width/2-b.width/2))<=1/64);assert(Math.abs(b.y-Math.round(a.y+a.height+4))<=1/64);assert(Math.abs(b.x-x.x)<=1/64&&Math.abs(b.y-x.y)<=1/64);}
+  if(['nested-popup-keeps-nearest-modal-owner','child-modal-shields-owned-popup-branches','inactive-owner-can-retain-controlled-popup','closing-child-restores-parent-branches'].includes(c.name))assert.equal(e.branches,2);
+  if(c.name==='child-modal-shields-owned-popup-branches')assert.equal(e.ancestorDepth,1);
+  if(c.name==='controlled-close-is-request-only'){assert.equal(e.requestDelta,1);assert.equal(e.closedBranches,0);}
+  if(c.name==='reopen-retains-original-edit-and-controls')assert.equal(e.branches,1);
+  if(['template-replacement-releases-portal','declaration-unload-releases-and-remounts'].includes(c.name)){assert.equal(e.detachedBranches,0);assert.equal(e.remountedBranches,1);}
+  if(c.name==='catalog-confirmation-from-original-popup')assert.equal(e.nativeButtonInvokes,1);
+  if(c.name==='transfer-between-native-popup-and-shared-host'){assert.equal(e.nativePopupPhases,2);assert.equal(e.hostPopupCount,0);assert.equal(e.opens,3);assert.equal(e.closes,3);assert.equal(e.requests,0);}
+ }
+ assert.equal(r.captures.length,4);for(const [i,c]of r.captures.entries()){assert.equal(c.file,['owned-light.png','catalog-confirmation-light.png','owned-dark.png','catalog-confirmation-dark.png'][i]);const b=fs.readFileSync(path.join(folder,c.file));assert.equal(hash(b),c.sha256);const p=readRgbaPng(b);assert.equal(p.width,800);assert.equal(p.height,600);assert.equal(c.width,800);assert.equal(c.height,600);assert(p.rgba.some(n=>n!==0),'Empty native capture');}
+ return {passed:true,cases:32,diagnosticPngs:4,softwareNativeInvokes:2,standalonePopupPhases:4,guards:r.guards,librarySha256:r.librarySha256,hostSha256:r.hostSha256,nativeKeyboardPointerVerified:false,sourceRasterParityVerified:false};
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){try{const a=process.argv.slice(2),get=k=>a[a.indexOf(k)+1],result=auditPopoverBranches(get('--native'));fs.writeFileSync(get('--output'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));}catch(e){console.error(e);process.exitCode=1;}}

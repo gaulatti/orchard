@@ -1,0 +1,12 @@
+<StackPanel x:Class="Orchard.Catalog.SegmentedControlsFixture"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard"
+ Spacing="12" Margin="0,0,0,40" Background="{ThemeResource BleeckerBackgroundBrush}">
+ <TextBlock Text="Segmented control · value selection preview" Style="{StaticResource BleeckerHeadingStyle}"/>
+ <TextBlock Text="Fictional local choices. Click the selected option again to keep the same value." Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerSegmentedControl x:Name="Sample" AutomationProperties.Name="Fictional coverage mode" SelectionChanged="Changed"/>
+ <TextBlock x:Name="Status" Text="Selection: brief" Style="{StaticResource BleeckerBodyStyle}"/>
+ <orchard:BleeckerSegmentedControl x:Name="TypedSample" AutomationProperties.Name="Fictional typed value"/>
+ <orchard:BleeckerSegmentedControl x:Name="NarrowSample" Width="160" AutomationProperties.Name="Constrained fictional choices"/>
+ <orchard:BleeckerSegmentedControl x:Name="DisabledSample" IsEnabled="False" AutomationProperties.Name="Disabled fictional choices"/>
+ <orchard:BleeckerSegmentedControl x:Name="LargeSample" FontSize="26" AutomationProperties.Name="Enlarged fictional choices"/>
+</StackPanel>

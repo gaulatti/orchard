@@ -30,5 +30,15 @@
         </orchard:BleeckerLabel>
         <TextBox x:Name="RichInput" Width="384" HorizontalAlignment="Left" PlaceholderText="Coverage" Style="{StaticResource BleeckerTextBoxStyle}" />
         <TextBlock x:Name="NestedResult" Text="No nested action yet" Style="{StaticResource BleeckerBodyStyle}" />
+        <TextBlock Text="Linked label lifecycle" Style="{StaticResource BleeckerHeadingStyle}" FontSize="18" />
+        <TextBlock x:Name="AssociationOriginal" Text="Original account caption" Style="{StaticResource BleeckerBodyStyle}" />
+        <TextBlock x:Name="AssociationAlternate" Text="Updated account caption" Style="{StaticResource BleeckerBodyStyle}" />
+        <Border x:Name="AssociationProducer" Tag="{Binding ElementName=AssociationOriginal}" Visibility="Collapsed" />
+        <ToggleSwitch x:Name="AssociationEnabled" Header="Use linked label" IsOn="True" />
+        <orchard:BleeckerLabel x:Name="AssociationLabel" Content="Account name" />
+        <TextBox x:Name="AssociationInput" Width="384" HorizontalAlignment="Left" Style="{StaticResource BleeckerTextBoxStyle}"
+                 AutomationProperties.LabeledBy="{Binding Tag, ElementName=AssociationProducer}" />
+        <Button x:Name="AssociationChange" Content="Change original caption" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+        <TextBlock x:Name="AssociationResult" Text="Input label: Account name" Style="{StaticResource BleeckerBodyStyle}" />
     </StackPanel>
 </UserControl>

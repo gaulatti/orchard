@@ -21,7 +21,7 @@ public sealed partial class SectionHeadersFixture : UserControl
             "Frozen Section Header comparison requires display/text scale 1; scaling acceptance remains open.");
         using var input = new NativeInputSession(XamlRoot, folder, $"section-header-{scheme}");
         await input.AcquireAsync(Specimen);
-        using var reference = JsonDocument.Parse(typeof(SectionHeadersFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.SectionHeaderLayout.json")!);
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SectionHeadersFixture).Assembly, "Orchard.Catalog.Reference.SectionHeaderLayout.json")!);
         var root = (Grid)XamlRoot.Content;
         var host = new StackPanel { Margin = new Thickness(20), Background = root.Background, VerticalAlignment = VerticalAlignment.Top };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count);

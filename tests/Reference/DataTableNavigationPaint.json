@@ -1,0 +1,25 @@
+{
+  "format": "orchard-data-table-navigation-paint-v1",
+  "commit": "a86059013cd59684ce452849278ea81e734f2066",
+  "reference": "tests/Reference/DataTable.json",
+  "referenceSha256": "ce1ae5820aab65a1d1e84076cdc70cd6f8c5047df4071fef2e138d116b9bd24f",
+  "buttonSource": "tests/Reference/AuthShell/Source/src/components/button.tsx",
+  "buttonSourceSha256": "119925584b3ec53c790fb0b762631894cf70eed12d488d5e9ae6743b7a67f929",
+  "disabledOpacity": 0.45,
+  "foregroundRgba": {
+    "Light": [
+      45,
+      45,
+      45,
+      255
+    ],
+    "Dark": [
+      240,
+      244,
+      248,
+      255
+    ]
+  },
+  "sourceRule": "Pinned Button disabled:opacity-45 applies to SVG ink as well as its surface",
+  "imageComparisonMasksChanged": false
+}

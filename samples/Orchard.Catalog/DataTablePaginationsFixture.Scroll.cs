@@ -92,5 +92,5 @@ public sealed partial class DataTablePaginationsFixture
         }
     }
     private static async Task<byte[]> ReadScrollReferenceAsync()
-    { using var stream = typeof(DataTablePaginationsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.DataTablePaginationScroll.json")!; using var bytes = new MemoryStream(); await stream.CopyToAsync(bytes); return bytes.ToArray(); }
+    { using var stream = CatalogReferenceResources.Open(typeof(DataTablePaginationsFixture).Assembly, "Orchard.Catalog.Reference.DataTablePaginationScroll.json")!; using var bytes = new MemoryStream(); await stream.CopyToAsync(bytes); return bytes.ToArray(); }
 }

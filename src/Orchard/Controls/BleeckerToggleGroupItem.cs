@@ -16,11 +16,11 @@ public sealed class BleeckerToggleGroupItem : ToggleButton
 
     protected override AutomationPeer OnCreateAutomationPeer() => new ItemPeer(this);
 
-    private sealed class ItemPeer(BleeckerToggleGroupItem item) : ToggleButtonAutomationPeer(item), ISelectionItemProvider
+    private sealed class ItemPeer(BleeckerToggleGroupItem item) : ToggleButtonAutomationPeer(item), ISelectionItemProvider, IToggleProvider
     {
         public bool IsSelected => item.IsChecked == true;
         public IRawElementProviderSimple SelectionContainer => ProviderFromPeer(CreatePeerForElement(OwnerGroup));
-        private BleeckerToggleGroup OwnerGroup => item.Group ?? throw new InvalidOperationException("The toggle item is not attached to a group.");
+        private BleeckerToggleGroup OwnerGroup => item.Group is { } group && group.Owns(item) ? group : throw new ElementNotAvailableException();
         public void AddToSelection()
         {
             EnsureEnabled();
@@ -30,10 +30,13 @@ public sealed class BleeckerToggleGroupItem : ToggleButton
         }
         public void RemoveFromSelection() { EnsureEnabled(); OwnerGroup.SetSelected(item, false, false); }
         public void Select() { EnsureEnabled(); OwnerGroup.SetSelected(item, true, true); }
+        void IToggleProvider.Toggle() { EnsureEnabled(); base.Toggle(); }
+        ToggleState IToggleProvider.ToggleState => base.ToggleState;
         private void EnsureEnabled()
         {
-            if (!item.IsEnabled) throw new ElementNotEnabledException();
+            var group = OwnerGroup;
+            if (!group.IsEnabled || !item.IsEnabled) throw new ElementNotEnabledException();
         }
-        protected override object GetPatternCore(PatternInterface patternInterface) => patternInterface == PatternInterface.SelectionItem ? this : base.GetPatternCore(patternInterface);
+        protected override object GetPatternCore(PatternInterface patternInterface) => patternInterface is PatternInterface.SelectionItem or PatternInterface.Toggle ? this : base.GetPatternCore(patternInterface);
     }
 }

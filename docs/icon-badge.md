@@ -92,3 +92,9 @@ Narrator, isolated text/display scaling and contrast, native ARM64 runtime,
 and the full catalog and independent package consumer. See [parity](parity.md).
 
 The current version `0.1.0-77f387a` passes the full 477-second x64 replay using a scoped Windows MouseKeys virtual mouse, plus a fresh x64 consumer in both themes. MouseKeys configuration is restored after each scope. This supersedes the earlier missing-mouse replay failure; see the [current checkpoint](native-validation-checkpoint.md).
+
+The current local candidate refreshes unchanged plain text when `FontFamily`
+changes. A consumer font clears Orchard's previously selected script faces;
+restoring Encode Sans restores them. The catalog adds an Arial Japanese
+caption, and the hidden package diagnostic covers live font transitions in
+both themes. This new behavior still needs visible runtime/raster replay.

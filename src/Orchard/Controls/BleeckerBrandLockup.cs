@@ -34,6 +34,42 @@ public sealed class BleeckerBrandLockup : Control
     private bool opacityRendering;
     private ICommand? observedCommand;
     private bool hovering;
+    private BleeckerContentText? inlineName;
+    internal event EventHandler? IntrinsicMetricsChanged;
+    internal bool InlineMetricsReady => logo is not null && name is not null;
+    // A composed inline host needs the preferred width before applying its
+    // shrink-to-fit constraint; measuring a wrapping star column alone gives
+    // its minimum content width in that context.
+    internal void PrepareInline(double available)
+    {
+        if (brand is null || logo is null || name is null) throw new InvalidOperationException("Inline brand metrics require an applied template.");
+        logo.Width = double.NaN; logo.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+        var logoWidth = Math.Floor(logo.DesiredSize.Width * 64) / 64; logo.Width = logoWidth;
+        if (inlineName is null)
+        {
+            inlineName = new("PART_InlineName", "BleeckerPrimarySemiboldFontFamily", 30, 36, "BleeckerTextPrimaryBrush");
+            inlineName.VerticalAlignment = VerticalAlignment.Center; Grid.SetColumn(inlineName, 2); brand.Children.Remove(name); brand.Children.Add(inlineName);
+        }
+        inlineName.Text.FontFamily = name.FontFamily; inlineName.Text.FontWeight = name.FontWeight; inlineName.Text.FontSize = name.FontSize; inlineName.Text.LineHeight = name.LineHeight; inlineName.Text.CharacterSpacing = name.CharacterSpacing; inlineName.Text.Foreground = name.Foreground; inlineName.Text.IsTextScaleFactorEnabled = IsTextScaleFactorEnabled;
+        inlineName.FlowDirection = FlowDirection; inlineName.Language = Language; inlineName.Set(BrandName, null); inlineName.Width = double.NaN; inlineName.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+        var named = !string.IsNullOrEmpty(BrandName); var gap = named ? 33 : 0; var preferred = logoWidth + gap + inlineName.NaturalWidth;
+        // The source's auto-width image contributes zero to inline-flex's
+        // intrinsic minimum, then keeps its actual width during flex layout.
+        // Its empty one-pixel separator may shrink; the text stops at its
+        // original min-content width, so a very narrow anchor can overflow.
+        var width = Math.Max(named ? gap + inlineName.MinimumWidth : 0, Math.Min(available, preferred));
+        var room = width - logoWidth - (named ? 32 : 0); var separatorWidth = named ? 1d : 0;
+        if (named && room < 1 + inlineName.NaturalWidth)
+        {
+            separatorWidth = Math.Clamp(room / (1 + inlineName.NaturalWidth), 0, 1);
+            if (room - separatorWidth < inlineName.MinimumWidth) separatorWidth = Math.Max(0, room - inlineName.MinimumWidth);
+            separatorWidth = Math.Round(separatorWidth * 64, MidpointRounding.AwayFromZero) / 64;
+        }
+        separator!.Width = separatorWidth;
+        var textWidth = Math.Max(inlineName.MinimumWidth, Math.Min(inlineName.NaturalWidth, Math.Max(0, room - separatorWidth)));
+        inlineName.Width = textWidth; inlineName.Visibility = named ? Visibility.Visible : Visibility.Collapsed;
+        if (Width != width) Width = width;
+    }
 
     public BleeckerBrandLockup()
     {
@@ -88,6 +124,9 @@ public sealed class BleeckerBrandLockup : Control
     public object? CommandParameter { get => GetValue(CommandParameterProperty); set => SetValue(CommandParameterProperty, value); }
     public event EventHandler<string>? Invoked;
     public event ExceptionRoutedEventHandler? LogoFailed;
+    public event EventHandler? LogoOpened;
+    /// <summary>Whether the current non-null logo has completed its native decoder's ImageOpened event.</summary>
+    public bool IsLogoLoaded => logo?.IsSourceOpened == true;
     private static void OnChanged(DependencyObject owner, DependencyPropertyChangedEventArgs _) { var control = (BleeckerBrandLockup)owner; control.ObserveCommand(); control.Render(); }
 
     protected override void OnApplyTemplate()
@@ -106,7 +145,7 @@ public sealed class BleeckerBrandLockup : Control
         StopObservingPalette(); separatorPalette = contrastPalette = null;
         if (context is not null) context.Content = null;
         if (link is not null) link.Content = null;
-        host?.Children.Clear(); host = brand = null; logo = null; separator = null; name = null; link = null; context = null; renderedTemplate = null;
+        host?.Children.Clear(); host = brand = null; logo = null; separator = null; name = null; inlineName = null; link = null; context = null; renderedTemplate = null;
     }
     private void Render()
     {
@@ -122,6 +161,7 @@ public sealed class BleeckerBrandLockup : Control
             brand.ColumnDefinitions.Add(new() { Width = GridLength.Auto }); brand.ColumnDefinitions.Add(new() { Width = GridLength.Auto });
             brand.ColumnDefinitions.Add(new() { Width = new GridLength(1, GridUnitType.Star) });
             logo = new BleeckerBrandImage { Name = "PART_Logo", VerticalAlignment = VerticalAlignment.Center, UseLayoutRounding = false };
+            logo.IntrinsicOpened += (_, _) => { InvalidateMeasure(); IntrinsicMetricsChanged?.Invoke(this, EventArgs.Empty); LogoOpened?.Invoke(this, EventArgs.Empty); };
             logo.ImageFailed += (sender, args) => LogoFailed?.Invoke(this, args);
             separator = new Border { Name = "PART_Separator", Width = 1, VerticalAlignment = VerticalAlignment.Center, IsHitTestVisible = false };
             name = new TextBlock { Name = "PART_Name", FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,

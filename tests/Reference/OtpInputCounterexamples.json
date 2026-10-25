@@ -1,0 +1,31 @@
+{
+  "format": "orchard-otp-input-counterexamples-v1",
+  "controlled": {
+    "nativeReportPassed": false,
+    "source": "artifacts/current/otp-input-native-v2/otp-input.json",
+    "sourceSha256": "93f21aa1e499a35bf38c16c2d89b66eb2ebb1af51437cc722d3a90f3bfc8316e",
+    "librarySha256": "ae92588404363f0fa8d982208efe1d3d415cd4e0df2e4c1e16e70cb9ccb744bd",
+    "snapshot": {
+      "accept": false,
+      "requested": "472",
+      "callerValue": "482",
+      "propertyValue": "482",
+      "editedSlot": "7"
+    },
+    "failure": "System.InvalidOperationException: Native edit bypassed controlled caller acceptance: requests=472, value=482, caller=482, editor=7, loaded=True/True.\r\n   at Orchard.Testing.OtpInputFixture.RunAsync(Window window, String output, String hostPath, String referencePath) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\OtpInputFixture.cs:line 62"
+  },
+  "captures": [
+    {
+      "file": "OtpInputRejectedViewport-Light.png",
+      "sha256": "2a04b10718e16b392aa840cafac4a73d48fb3597e1dfbc4d031916e0bf5e9553",
+      "expectedViewportWidth": 480,
+      "expectedViewportHeight": 200
+    },
+    {
+      "file": "OtpInputRejectedViewport-Dark.png",
+      "sha256": "aac14b8a973cdfb188ff8003e99fc2f2cc2582a5bfeb6096b55478043153b7f4",
+      "expectedViewportWidth": 480,
+      "expectedViewportHeight": 200
+    }
+  ]
+}

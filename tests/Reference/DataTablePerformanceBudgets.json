@@ -1,0 +1,15 @@
+{
+  "format": "orchard-data-table-performance-budgets-v1",
+  "establishedAt": "2026-10-24T05:13:07.705Z",
+  "scope": "Local hidden x64 fixture on Intel Core i7-8700, 6 cores / 12 logical processors, Windows 11 build 26200, .NET 10.0.12",
+  "timing": "Mutation plus three dispatcher/layout passes; construction, replacement-data preparation, captures, verification and motion settling excluded",
+  "independentSequentialProcesses": 3,
+  "sourceRows": [128, 2048, 16384],
+  "operationsPerProfile": 20,
+  "budgets": [
+    {"pageSize": 10, "medianThreePassMilliseconds": 200, "medianManagedAllocatedBytes": 16777216},
+    {"pageSize": 100, "medianThreePassMilliseconds": 1000, "medianManagedAllocatedBytes": 67108864}
+  ],
+  "physicalInputLatencyClaimed": false,
+  "completeMotionTimingClaimed": false
+}

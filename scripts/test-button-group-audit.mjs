@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';import path from 'node:path';import assert from 'node:assert/strict';
+import {verifyButtonGroupModel} from './verify-button-group.mjs';
+const option=k=>{const i=process.argv.indexOf(k);assert(i>=0&&process.argv[i+1]);return process.argv[i+1];};
+const r=JSON.parse(await fs.readFile(path.join(option('--native'),'button-group.json'),'utf8'));verifyButtonGroupModel(r);
+const long=n=>n.frames.find(f=>f.id==='Light/long-LeftToRight');
+const changes=[
+ ['format',n=>n.format='unknown'],['failure',n=>n.passed=false],['activation',n=>n.activations=1],['focus',n=>n.focus=1],['visible',n=>n.hostVisible=true],['input',n=>n.hardwareInputSent=true],['physical-claim',n=>n.physicalInputVerified=true],['scaling-claim',n=>n.actualDisplayOrTextScalingVerified=true],['missing-check',n=>n.checks.pop()],['failed-check',n=>n.checks[0].passed=false],['missing-frame',n=>n.frames.pop()],['wrong-radius',n=>long(n).children[0].radius[0]=0],['double-border',n=>long(n).children[0].border[2]=1],['margin',n=>long(n).children[0].margin[0]=2],['alignment',n=>long(n).children[0].horizontalAlignment='Left'],['native-action-not-filling',n=>long(n).children[0].actionHeight--],
+ ['one-pixel-gap',n=>{long(n).children[0].width--;long(n).children[0].actionWidth--;}],['one-pixel-overlap',n=>{long(n).children[0].width++;long(n).children[0].actionWidth++;}],['narrow-vertical',n=>{const c=n.frames.find(f=>f.id==='Light/long-vertical').children[1];c.width--;c.actionWidth--;}],
+ ['lost-original-binding',n=>n.restorations.find(v=>v.id==='Light/bound-removed').originalBindingsRestored[0]=false],['stale-producer-value',n=>n.restorations.find(v=>v.id==='Light/removed-producer-update').margin=[3,3,3,3]],['style-local-value',n=>n.restorations.find(v=>v.id==='Light/style-removed').localValuesUnset[0]=false],['lost-alignment-binding',n=>n.alignmentRestorations.find(v=>v.id==='Light/binding-removed').originalBindingsRestored=false],['lost-caller-alignment',n=>n.alignmentRestorations.find(v=>v.id==='Light/local-removed').horizontal='Stretch'],['missing-unload-restoration',n=>n.alignmentRestorations.pop()],['missing-capture',n=>n.pngs.pop()]
+];
+if(r.format==='orchard-button-group-native-v2')changes.push(['two-way-source-overwritten',n=>n.twoWayRestorations[0].sourcePreserved=false],['two-way-radius-overwritten',n=>n.twoWayRestorations[0].radius=[7,7,7,7]],['two-way-binding-lost',n=>n.twoWayRestorations.find(v=>v.id==='Light/released').originalBindingsRestored[0]=false]);
+for(const[id,change]of changes){const bad=structuredClone(r);change(bad);assert.throws(()=>verifyButtonGroupModel(bad),undefined,id);}
+const actual=JSON.parse(await fs.readFile(option('--actual-overlap-report'),'utf8'));assert.throws(()=>verifyButtonGroupModel(actual),/horizontal-gap/);
+const result={passed:true,corruptReportsRejected:changes.length,actualNativeOnePixelOverlapRejected:true,actualNativeLibrarySha256:actual.librarySha256,nativeComponentAccepted:false};
+await fs.writeFile(option('--output'),JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(result));

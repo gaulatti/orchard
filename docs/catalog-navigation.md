@@ -1,5 +1,17 @@
 # Catalog navigation
 
+The window's single `BleeckerModalHost` wraps the complete catalog root. It is
+registered against `MainWindow.xaml`, retaining the existing fixture registry
+and the appearance selector's requested theme. The hidden public-host probe
+loads Foundation, Scroll area, Popover, Hover card, Monitoring and Editorial in
+both themes and opens a diagnostic internal layer. This is root/layout evidence;
+it does not establish foreground input or a public AlertDialog implementation.
+Header is registered immediately after Footer; its previously declared fixture
+must remain reachable through the same navigation registry as other components.
+Alert dialogs follows Header. Its fictional examples cover normal/destructive
+requests, a temporary loading state, and a caller-supplied wide square surface.
+The fixture accepts request events by updating its own open value.
+
 **Dates** follows Textareas and precedes Keyboard. It includes a controlled
 Calendar, normal and disabled Date Pickers, a Date Range Picker with presets,
 and the nine public date text/control styles. Its full-sequence check drives
@@ -254,10 +266,12 @@ baseline/occupied-row results in composed desktop captures, plus typography
 after content changes, fractional-origin moves, remount and template replacement.
 RTL glyph advance and complete glyph raster accuracy remain open.
 
-Focused `-Component font-audit` is a capture-only diagnostic for the five bundled
-font faces, canonical/legacy names, weight selection and explicit system/missing
+Focused `-Component font-audit` is a capture-only diagnostic for the five original
+bundled font faces, canonical/legacy names, weight selection and explicit system/missing
 family comparisons. `result.json` marks `captureOnly` true and `parityVerified`
 false. It is separate from the full acceptance suite.
+The newer sixth face, Encode Sans Bold, has dedicated App Tab Bar native badge
+and windowless DirectWrite coverage; this historical diagnostic does not capture it.
 
 Focused `-Component stepper-raster` captures the existing Stepper reference
 frame fully on screen and as a bitmap for all 44 source cases. Its independent
@@ -320,6 +334,11 @@ consumer-owned RGBA artwork, a typed link template, command availability,
 disabled, constrained international text and a failed source. Its focused
 runtime path is `scripts/smoke-catalog.ps1 -Component brand`; it also participates
 in the full catalog. See [the contract and current evidence](brand-lockup-reference.md).
+
+**Brand mark** follows Brand lockups in the component navigation. It demonstrates
+the original decorative Sabella template image at 16, 32, 64 and 96 DIPs,
+disabled rendering, and live caller-owned size and tint changes. It adds no
+navigation action to the image. See [the Brand Mark contract](brand-mark.md).
 
 The **Bauhaus backgrounds** page follows Brand lockups. It shows four variants,
 RGBA image blending, square/tall layouts and the missing application-owned hero

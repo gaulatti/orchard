@@ -26,7 +26,7 @@ public sealed partial class TooltipsFixture
                 frames++;
                 var motion = Descendants<FrameworkElement>(tip).SingleOrDefault(element => element.Name == "PART_MotionRoot");
                 var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).SingleOrDefault(item => ReferenceEquals(item.Child, tip));
-                var settled = tip.IsOpen && tip.IsLoaded && popup?.IsOpen == true && motion?.Opacity == 1 &&
+                var settled = tip.IsOpen && tip.IsLoaded && tip.PresentationMounted && motion?.Opacity == 1 &&
                     motion.RenderTransform is ScaleTransform { ScaleX: 1, ScaleY: 1 } && tip.ActualWidth > 0 && tip.ActualHeight > 0;
                 if (!settled) { previous = null; stable = 0; observations.Add(new { milliseconds = watch.Elapsed.TotalMilliseconds, settled, tip.IsOpen, tip.IsLoaded, popupOpen = popup?.IsOpen, motionOpacity = motion?.Opacity, scaleX = (motion?.RenderTransform as ScaleTransform)?.ScaleX, scaleY = (motion?.RenderTransform as ScaleTransform)?.ScaleY, tip.ActualWidth, tip.ActualHeight }); return; }
                 var origin = tip.TransformToVisual(tip.PlacementTarget).TransformPoint(new Windows.Foundation.Point());
@@ -60,5 +60,5 @@ public sealed partial class TooltipsFixture
         }
     }
     private Task AwaitTooltipClosedAsync(BleeckerTooltip tip) => AwaitVerificationAsync(() => Require(!tip.IsOpen &&
-        !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, tip)), "Completed tooltip dismissal retained its popup."));
+        !tip.PresentationMounted && !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, tip)), "Completed tooltip dismissal retained its presentation."));
 }

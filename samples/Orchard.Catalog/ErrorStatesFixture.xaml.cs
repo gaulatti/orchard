@@ -27,7 +27,7 @@ public sealed partial class ErrorStatesFixture : UserControl
         command.Allowed = true; command.RaiseChanged();
         foreach (var control in new[] { Default, Retrying, Custom, Long, Rtl, EmptyTitle, EmptyText }) control.ApplyTemplate();
         UpdateLayout();
-        using var reference = JsonDocument.Parse(typeof(ErrorStatesFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.ErrorStateLayout.json")
+        using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(ErrorStatesFixture).Assembly, "Orchard.Catalog.Reference.ErrorStateLayout.json")
             ?? throw new InvalidOperationException("Missing frozen Error State browser reference."));
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1,
             "The frozen Error State geometry comparison requires display/text scale 1; broader scaling acceptance remains open.");

@@ -16,13 +16,13 @@ foreach ($reportName in @('result.json', 'runtime.json', 'cleanup.json')) {
 $archive = [IO.Compression.ZipFile]::OpenRead($packagePath)
 try {
     $entries = @($archive.Entries | ForEach-Object FullName)
-    foreach ($required in @('buildTransitive/Gaulatti.Orchard.targets', 'README.md', 'licenses/LICENSE-Bleecker.txt', 'licenses/LICENSE-Lucide.txt', 'licenses/LICENSE-Radix.txt', 'licenses/LICENSE-D3-Shape.txt', 'licenses/LICENSE-EsToolkit.txt', 'licenses/LICENSE-Recharts.txt', 'licenses/LICENSE-Skia.txt',
-        'assets/fonts/EncodeSans-Regular.ttf', 'assets/fonts/EncodeSans-Medium.ttf', 'assets/fonts/EncodeSans-SemiBold.ttf',
+    foreach ($required in @('buildTransitive/Gaulatti.Orchard.targets', 'README.md', 'licenses/LICENSE-Bleecker.txt', 'licenses/LICENSE-Lucide.txt', 'licenses/LICENSE-Radix.txt', 'licenses/LICENSE-FloatingUI.txt', 'licenses/LICENSE-D3-Shape.txt', 'licenses/LICENSE-EsToolkit.txt', 'licenses/LICENSE-Recharts.txt', 'licenses/LICENSE-Skia.txt',
+        'assets/fonts/EncodeSans-Regular.ttf', 'assets/fonts/EncodeSans-Medium.ttf', 'assets/fonts/EncodeSans-SemiBold.ttf', 'assets/fonts/EncodeSans-Bold.ttf',
         'assets/fonts/LibreFranklin-Regular.ttf', 'assets/fonts/LibreFranklin-SemiBold.ttf',
-        'assets/fonts/OFL-EncodeSans.txt', 'assets/fonts/OFL-LibreFranklin.txt', 'assets/images/gaulatti-logo.svg')) {
+        'assets/fonts/OFL-EncodeSans.txt', 'assets/fonts/OFL-LibreFranklin.txt', 'assets/images/gaulatti-logo.svg', 'assets/images/BleeckerLogo.png')) {
         if ($required -notin $entries) { throw "Missing package entry: $required" }
     }
-    if (@($entries | Where-Object { $_ -match '\.ttf$' }).Count -ne 5) { throw 'Package must contain each bundled font exactly once.' }
+    if (@($entries | Where-Object { $_ -match '\.ttf$' }).Count -ne 6) { throw 'Package must contain each bundled font exactly once.' }
     if ($entries | Where-Object { $_ -match 'Catalog|Tests|\.cs$' }) { throw 'Application-facing package contains development infrastructure.' }
     $assemblyEntries = @($archive.Entries | Where-Object { $_.FullName -match '^lib/[^/]+/Orchard\.dll$' })
     if ($assemblyEntries.Count -ne 1) { throw 'Package must expose exactly one portable Orchard assembly.' }

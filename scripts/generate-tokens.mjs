@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import * as source from '../tokens/bleecker.source.ts';
 import { menuStyles } from './menu-styles.mjs';
+import { contextMenuStyles } from './context-menu-styles.mjs';
 
 const root = new URL('../', import.meta.url);
 const check = process.argv.includes('--check');
@@ -45,10 +46,75 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
     ['Border', theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : argb(theme === 'Default' ? '#ffffff' : colors.sand), theme === 'Default' ? .15 : .35],
     ['Hover', theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors.sand), theme === 'Default' ? .15 : .1]])
     xaml += `            <SolidColorBrush x:Key="BleeckerMenu${name}Brush" Color="${color}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  xaml += `            <SolidColorBrush x:Key="BleeckerContextMenuHoverBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : theme === 'Default' ? '#FFFFFFFF' : argb(colors.lightSand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .07 : 1}" />\n`;
   for (const [name, color, system] of [['Background', theme === 'Default' ? colors.sand : colors.deepSea, 'SystemColorWindowColor'], ['Foreground', theme === 'Default' ? colors.textPrimary : '#ffffff', 'SystemColorWindowTextColor']])
     xaml += `            <SolidColorBrush x:Key="BleeckerTooltip${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(color)}" />\n`;
+  // Pinned auth-shell.tsx: theme canvas, white aside ink and clipped white/10 circles.
+  for (const [name, color, opacity] of [
+    ['Canvas', theme === 'Default' ? colors.background : colors.lightSand, theme === 'Default' ? 1 : .35],
+    ['AsideForeground', '#ffffff', 1], ['Circle', '#ffffff', .1]])
+    xaml += `            <SolidColorBrush x:Key="BleeckerAuthShell${name}Brush" Color="${theme === 'HighContrast' ? (name === 'Canvas' ? '{ThemeResource SystemColorWindowColor}' : '{ThemeResource SystemColorWindowTextColor}') : argb(color)}" Opacity="${theme === 'HighContrast' ? 1 : opacity}" />\n`;
   // Pinned separator.tsx: bg-black/5 dark:bg-white/10; no interaction styling.
   xaml += `            <SolidColorBrush x:Key="BleeckerNotificationLinkHoverBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(theme === 'Default' ? colors.textPrimary : colors.deepSea)}" />\n`;
+  // Pinned sonner.tsx: sand/25 and white/10 borders; sand/10 and sand/20 close hover.
+  // Pinned hero-carousel.tsx and Tailwind 4.2.2 gray endpoints. These semantic
+  // brushes share the existing brand/theme source rather than a second palette.
+  for (const [name, light, dark, alpha] of [
+    ['Foreground', '#ffffff', colors.textPrimary, 1], ['EmptyForeground', '#ffffff', '#ffffff', 1], ['TitleHover', '#ffffff', '#ffffff', .9],
+    ['Description', '#f3f4f6', '#f3f4f6', 1], ['DescriptionHover', '#e5e7eb', '#e5e7eb', 1],
+    ['CtaBackground', '#ffffff', colors.sand, theme === 'Default' ? .9 : .92],
+    ['CtaHover', '#ffffff', colors.darkSand, theme === 'Default' ? .9 : 1],
+    ['CtaForeground', '#101828', colors.textPrimary, 1], ['CtaBorder', '#ffffff', colors.sand, theme === 'Default' ? .35 : .25],
+    ['ArrowBackground', '#000000', '#000000', .2], ['ArrowHover', '#000000', '#000000', .3],
+    ['ArrowBorder', '#ffffff', '#ffffff', .15], ['ArrowBorderHover', '#ffffff', '#ffffff', .25],
+    ['ArrowForeground', '#ffffff', '#ffffff', .8], ['ArrowForegroundHover', '#ffffff', '#ffffff', 1],
+    ['TagBackground', '#000000', '#000000', .15], ['TagBorder', '#ffffff', '#ffffff', .15],
+    ['Indicator', '#ffffff', '#ffffff', .5], ['IndicatorHover', '#ffffff', '#ffffff', .8], ['IndicatorActive', '#ffffff', '#ffffff', 1],
+    ['NavigationBackground', '#000000', '#000000', .2], ['NavigationBorder', '#ffffff', '#ffffff', .1], ['Separator', '#ffffff', '#ffffff', .3]
+  ]) {
+    const foreground = /Foreground|Title|Description|Indicator|Separator/.test(name);
+    xaml += `            <SolidColorBrush x:Key="BleeckerHero${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource SystemColor${foreground ? 'WindowText' : 'Window'}Color}` : argb(theme === 'Default' ? dark : light)}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  }
+  xaml += `            <SolidColorBrush x:Key="BleeckerSonnerBorderBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : argb(theme === 'Default' ? '#ffffff' : colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .25}" />\n`;
+  // Pinned file-input.tsx: outer sand border, native file-button sea/accent ink.
+  // Pinned Command Spotlight. Windows hides the whole narrow shortcut hint.
+  for (const [name, color, alpha, system] of [
+    ['Surface', theme === 'Default' ? colors.deepSea : '#ffffff', 1, 'Window'],
+    ['Border', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .12 : .3, 'WindowText'],
+    ['HeaderBorder', colors.sand, theme === 'Default' ? .2 : .15, 'WindowText'],
+    ['SelectedBackground', theme === 'Default' ? colors.accentBlue : colors.sea, theme === 'Default' ? .15 : .1, 'Highlight'],
+    ['SelectedForeground', theme === 'Default' ? colors.accentBlue : colors.sea, 1, 'Highlight'],
+    ['RowHover', colors.sand, theme === 'Default' ? .15 : .1, 'Highlight'],
+    ['IconBackground', theme === 'Default' ? '#ffffff' : colors.lightSand, theme === 'Default' ? .05 : .5, 'Window'],
+    ['IconBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .06 : .15, 'WindowText'],
+    ['TriggerBackground', theme === 'Default' ? colors.deepSea : '#ffffff', 1, 'Window'],
+    ['TriggerBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .15 : .35, 'WindowText'],
+    ['TriggerHover', theme === 'Default' ? '#ffffff' : colors.lightSand, theme === 'Default' ? .06 : .35, 'Highlight'],
+    ['TriggerHoverBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .15 : .65, 'WindowText'],
+    ['Focus', colors.sea, .25, 'Highlight'], ['Backdrop', '#000000', .45, 'Window']
+  ]) xaml += `            <SolidColorBrush x:Key="BleeckerSpotlight${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource SystemColor${system}Color}` : argb(color)}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  // Pinned media-library.tsx. The user requires pointer Delete above Open.
+  for (const [name, color, alpha, system] of [
+    ['TileBackground', theme === 'Default' ? colors.deepSea : '#ffffff', 1, 'Window'],
+    ['TileBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .1 : .3, 'WindowText'],
+    ['TileHoverBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .2 : .55, 'WindowText'],
+    ['Overlay', colors.deepSea, .82, 'Window'], ['OverlayText', '#ffffff', 1, 'WindowText'],
+    ['Placeholder', theme === 'Default' ? '#ffffff' : colors.lightSand, theme === 'Default' ? .04 : .6, 'Window'],
+    ['EmptyBackground', theme === 'Default' ? '#ffffff' : colors.lightSand, theme === 'Default' ? .025 : .25, 'Window'],
+    ['EmptyBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .1 : .25, 'WindowText'],
+    ['PreviewBackground', theme === 'Default' ? '#000000' : colors.lightSand, theme === 'Default' ? .2 : .35, 'Window'],
+    ['PreviewBorder', theme === 'Default' ? '#ffffff' : colors.sand, theme === 'Default' ? .07 : .2, 'WindowText'],
+    ['Focus', colors.sea, .25, 'Highlight']
+  ]) xaml += `            <SolidColorBrush x:Key="BleeckerMedia${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource SystemColor${system}Color}` : argb(color)}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  for (const [name, color, alpha, system] of [
+    ['Background', theme === 'Default' ? colors.darkSand : '#ffffff', 1, 'Window'],
+    ['Border', colors.sand, theme === 'Default' ? .5 : .3, 'WindowText'],
+    ['ChooseBackground', theme === 'Default' ? colors.accentBlue : colors.sea, .1, 'Window'],
+    ['ChooseHover', theme === 'Default' ? colors.accentBlue : colors.sea, .2, 'Highlight'],
+    ['ChooseForeground', theme === 'Default' ? colors.accentBlue : colors.sea, 1, 'WindowText'],
+    ['Focus', theme === 'Default' ? colors.accentBlue : colors.sea, 1, 'Highlight']
+  ]) xaml += `            <SolidColorBrush x:Key="BleeckerFile${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource SystemColor${system}Color}` : argb(color)}" Opacity="${theme === 'HighContrast' ? 1 : alpha}" />\n`;
+  xaml += `            <SolidColorBrush x:Key="BleeckerSonnerCloseHoverBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorHighlightColor}' : argb(colors.sand)}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .2 : .1}" />\n`;
   for (const [name, color, system] of [['Background', colors.terracotta, 'SystemColorHighlightColor'], ['Foreground', '#ffffff', 'SystemColorHighlightTextColor']])
     xaml += `            <SolidColorBrush x:Key="BleeckerNotificationCount${name}Brush" Color="${theme === 'HighContrast' ? `{ThemeResource ${system}}` : argb(color)}" />\n`;
   xaml += `            <SolidColorBrush x:Key="BleeckerSeparatorBrush" Color="${theme === 'HighContrast' ? '{ThemeResource SystemColorWindowTextColor}' : theme === 'Default' ? '#FFFFFFFF' : '#FF000000'}" Opacity="${theme === 'HighContrast' ? 1 : theme === 'Default' ? .1 : .05}" />\n`;
@@ -141,6 +207,7 @@ for (const [role, family] of Object.entries(tokens.fontFamilies)) {
 }
 for (const [key, value] of Object.entries(tokens.spacing)) xaml += `    <x:Double x:Key="BleeckerSpacing${pascal(key)}">${value}</x:Double>\n`;
 xaml += '    <FontFamily x:Key="BleeckerPrimaryMediumFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans</FontFamily>\n';
+xaml += '    <FontFamily x:Key="BleeckerPrimaryBoldFontFamily">ms-appx:///Orchard/Assets/Fonts/EncodeSans-Bold.ttf#Encode Sans</FontFamily>\n';
 for (const [key, value] of Object.entries(tokens.radii)) xaml += `    <CornerRadius x:Key="Bleecker${pascal(key)}CornerRadius">${value}</CornerRadius>\n`;
 xaml += '    <x:Double x:Key="BleeckerIconBadgeMediumExtent">56</x:Double>\n';
 xaml += '    <x:Double x:Key="BleeckerIconBadgeLargeExtent">64</x:Double>\n';
@@ -269,7 +336,9 @@ for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', token
 outputs['src/Orchard/Themes/EmptyPalette.g.xaml'] = emptyPalette + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 let progressStackPalette = `<!-- Generated from pinned progress-stack.tsx; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
 for (const [theme,colors] of [['Light',tokens.themes.light],['Default',tokens.themes.dark],['HighContrast',tokens.themes.light]]) {
-  progressStackPalette += `        <ResourceDictionary x:Key="${theme}">\n            <SolidColorBrush x:Key="ProgressStackTrack" Color="${theme==='HighContrast'?'{ThemeResource SystemColorWindowTextColor}':argb(colors.sand)}" Opacity="${theme==='HighContrast'?1:.2}" />\n        </ResourceDictionary>\n`;
+  // The source's .2 alpha is exactly 51/255. Brush.Opacity premultiplies
+  // opaque channels by truncation; color alpha retains the browser's rounding.
+  progressStackPalette += `        <ResourceDictionary x:Key="${theme}">\n            <SolidColorBrush x:Key="ProgressStackTrack" Color="${theme==='HighContrast'?'{ThemeResource SystemColorWindowTextColor}':'#33'+argb(colors.sand).slice(3)}" Opacity="1" />\n        </ResourceDictionary>\n`;
 }
 outputs['src/Orchard/Themes/ProgressStackPalette.g.xaml'] = progressStackPalette + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 // Tailwind 4.2.2 theme.css, pinned by the Bleecker component reference.
@@ -298,6 +367,7 @@ for (const variant of ['Default', 'Live', 'Offline', 'Warning', 'Info']) {
   outputs[`src/Orchard/Themes/StatusBadges/${variant}.g.xaml`] = badge + '    </ResourceDictionary.ThemeDictionaries>\n</ResourceDictionary>\n';
 }
 outputs['src/Orchard/Themes/Menus.g.xaml'] = menuStyles();
+outputs['src/Orchard/Themes/ContextMenus.g.xaml'] = contextMenuStyles();
 let checkbox = `<!-- Generated from the pinned checkbox.tsx contract and Bleecker token snapshot ${lock.commit}; do not edit. -->\n<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">\n    <ResourceDictionary.ThemeDictionaries>\n`;
 for (const [theme, colors] of [['Light', tokens.themes.light], ['Default', tokens.themes.dark], ['HighContrast', tokens.themes.light]]) {
   const dark = theme === 'Default', contrast = theme === 'HighContrast';

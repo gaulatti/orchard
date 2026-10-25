@@ -105,7 +105,7 @@ public sealed partial class LineChartsFixture : UserControl
         await input.MoveAsync(Before);Chart.Series=new ObservableCollection<BleeckerChartSeries>{new(){Key="total",Name="Consumer total"}};
         Chart.Data=new ObservableCollection<IReadOnlyDictionary<string,object?>>{Record("Harbor",100,0),Record("Reed",220,0),Record("Vale",140,0),Record("North",310,0)};
         await RemountChartAsync();var root=(FrameworkElement)VisualTreeHelper.GetChild(Chart,0);var popup=(Border)root.FindName("PART_Tooltip");var active=(Canvas)root.FindName("PART_Active");var items=(StackPanel)root.FindName("PART_TooltipItems");
-        using var stream=typeof(LineChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LineInteraction.json")??throw new InvalidOperationException("Missing frozen interaction sequence.");using var reference=JsonDocument.Parse(stream);
+        using var stream=CatalogReferenceResources.Open(typeof(LineChartsFixture).Assembly, "Orchard.Catalog.Reference.LineInteraction.json")??throw new InvalidOperationException("Missing frozen interaction sequence.");using var reference=JsonDocument.Parse(stream);
         var sequence=reference.RootElement.GetProperty("results").EnumerateArray().Single(item=>item.GetProperty("scheme").GetString()==scheme.ToString());var evidence=new List<object>();
         foreach(var expected in sequence.GetProperty("steps").EnumerateArray())
         {
@@ -151,7 +151,7 @@ public sealed partial class LineChartsFixture : UserControl
     }
     private async Task VerifyShadowPixelsAsync(BleeckerColorScheme scheme, string folder)
     {
-        using var referenceStream = typeof(LineChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LineShadow.json") ?? throw new InvalidOperationException("Missing source shadow pixels.");
+        using var referenceStream = CatalogReferenceResources.Open(typeof(LineChartsFixture).Assembly, "Orchard.Catalog.Reference.LineShadow.json") ?? throw new InvalidOperationException("Missing source shadow pixels.");
         using var reference = JsonDocument.Parse(referenceStream); var expected = reference.RootElement.GetProperty("results").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString());
         using var file = File.OpenRead(System.IO.Path.Combine(folder, $"line-chart-{scheme}-keyboard.png")); using var random = file.AsRandomAccessStream(); var decoder = await BitmapDecoder.CreateAsync(random);
         var pixels = (await decoder.GetPixelDataAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, new BitmapTransform(), ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage)).DetachPixelData();
@@ -167,7 +167,7 @@ public sealed partial class LineChartsFixture : UserControl
     }
     private async Task VerifyBlurProbeAsync(BleeckerColorScheme scheme, string folder, NativeInputSession input)
     {
-        using var referenceStream = typeof(LineChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LineBlur.json") ?? throw new InvalidOperationException("Missing source blur probe.");
+        using var referenceStream = CatalogReferenceResources.Open(typeof(LineChartsFixture).Assembly, "Orchard.Catalog.Reference.LineBlur.json") ?? throw new InvalidOperationException("Missing source blur probe.");
         using var reference = JsonDocument.Parse(referenceStream); var expected = reference.RootElement.GetProperty("results").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString());
         var probe = new BleeckerLineChart { Width = 640, XAxisKey = "label", HorizontalAlignment = HorizontalAlignment.Left };
         probe.Resources["BleeckerCardBrush"] = new SolidColorBrush(Microsoft.UI.Colors.White) { Opacity = .25 };
@@ -201,7 +201,7 @@ public sealed partial class LineChartsFixture : UserControl
     }
     private async Task<int> VerifyTooltipCasesAsync(BleeckerColorScheme scheme, string folder, NativeInputSession input, FrameworkElement root)
     {
-        using var stream = typeof(LineChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LineTooltip.json") ?? throw new InvalidOperationException("Missing frozen tooltip capture.");
+        using var stream = CatalogReferenceResources.Open(typeof(LineChartsFixture).Assembly, "Orchard.Catalog.Reference.LineTooltip.json") ?? throw new InvalidOperationException("Missing frozen tooltip capture.");
         using var reference = JsonDocument.Parse(stream); Require(reference.RootElement.GetProperty("recharts").GetString() == "3.8.1", "Tooltip renderer version changed.");
         var popup = (Border)root.FindName("PART_Tooltip"); var container = (Grid)root.FindName("PART_TooltipContainer"); var items = (StackPanel)root.FindName("PART_TooltipItems"); var active = (Canvas)root.FindName("PART_Active");
         var evidence = new List<object>(); var checkedCases = 0;
@@ -265,7 +265,7 @@ public sealed partial class LineChartsFixture : UserControl
     }
     private async Task<int> VerifySourceCasesAsync(BleeckerColorScheme scheme, string folder, Canvas plot, Canvas legend)
     {
-        using var stream = typeof(LineChartsFixture).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.LineLayout.json") ?? throw new InvalidOperationException("Missing frozen Line Chart layout evidence.");
+        using var stream = CatalogReferenceResources.Open(typeof(LineChartsFixture).Assembly, "Orchard.Catalog.Reference.LineLayout.json") ?? throw new InvalidOperationException("Missing frozen Line Chart layout evidence.");
         using var reference = JsonDocument.Parse(stream);
         Require(reference.RootElement.GetProperty("sourceSha256").GetString() == "673539e9a2c5a264fbfb6c35f09e7d956d2dbde9670f3ae6cf1888e752ec403a" && reference.RootElement.GetProperty("recharts").GetString() == "3.8.1", "Line Chart reference changed its source boundary.");
         var checkedCases = 0;

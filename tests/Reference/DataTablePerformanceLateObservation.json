@@ -1,0 +1,150 @@
+{
+  "format": "orchard-data-table-performance-late-observation-v1",
+  "kind": "benchmark-late-loaded-listener-observer-effect",
+  "originalReportSha256": "001faecb37ff6b7a74ff325082f0f2e622940ad60923b722d097e24eab5e0e40",
+  "librarySha256": "9ef1bd472f351abe8fc68fab0a7b28421568e14f0801ae2758f251ea6441881c",
+  "hostSha256": "c512d1ffea926493aac774d8838c2632c95b0779f958d49a4ae73f2dd84fd743",
+  "scene": {
+    "rows": 128,
+    "pageSize": 10,
+    "operation": "bind-data",
+    "snapshot": {
+      "operation": "bind-data",
+      "sourceCount": 128,
+      "coreRows": 128,
+      "filteredRows": 128,
+      "filteredSelectedRows": 0,
+      "pageIndex": 0,
+      "pageSize": 10,
+      "pageCount": 13,
+      "selectedCount": 0,
+      "selectedIdsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceOriginalIdsSha256": "89ed3aecdf8e27eed819e93b3e0692db0735297f6351a4df1f824333d1ca9970",
+      "filteredOriginalIdsSha256": "89ed3aecdf8e27eed819e93b3e0692db0735297f6351a4df1f824333d1ca9970",
+      "sortedOriginalIdsSha256": "89ed3aecdf8e27eed819e93b3e0692db0735297f6351a4df1f824333d1ca9970",
+      "rows": [
+        {
+          "rowId": "0",
+          "originalId": "fictional-00000",
+          "name": "Group 0 item 00000",
+          "count": "128",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "1",
+          "originalId": "fictional-00001",
+          "name": "Group 1 item 00001",
+          "count": "127",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "2",
+          "originalId": "fictional-00002",
+          "name": "Group 2 item 00002",
+          "count": "126",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "3",
+          "originalId": "fictional-00003",
+          "name": "Group 3 item 00003",
+          "count": "125",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "4",
+          "originalId": "fictional-00004",
+          "name": "Group 4 item 00004",
+          "count": "124",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "5",
+          "originalId": "fictional-00005",
+          "name": "Group 5 item 00005",
+          "count": "123",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "6",
+          "originalId": "fictional-00006",
+          "name": "Group 6 item 00006",
+          "count": "122",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "7",
+          "originalId": "fictional-00007",
+          "name": "Group 7 item 00007",
+          "count": "121",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "8",
+          "originalId": "fictional-00008",
+          "name": "Group 0 item 00008",
+          "count": "120",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 65
+        },
+        {
+          "rowId": "9",
+          "originalId": "fictional-00009",
+          "name": "Group 1 item 00009",
+          "count": "119",
+          "selected": false,
+          "originalActionRetained": true,
+          "loaded": false,
+          "width": 658,
+          "height": 64.5
+        }
+      ],
+      "retainedNativeRows": 0,
+      "retainedNativeRowUnloads": 0,
+      "itemSubscriptions": 128,
+      "collectionSubscriptions": 1,
+      "wrongItemSubscriptions": 0,
+      "wrongCollectionSubscriptions": 0,
+      "sortInvocations": 0,
+      "selectionInvocations": 0
+    }
+  },
+  "frame": "tests/Reference/DataTablePerformanceLateObservation.png",
+  "frameSha256": "c2b94340c9111ff43d66dc909cedda31864509e1c2178e70ee94876d34fe17a7",
+  "componentDefectClaimed": false
+}

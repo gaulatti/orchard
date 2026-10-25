@@ -18,7 +18,7 @@ public sealed partial class MainWindow
 {
     private async Task RunIconBadgeAsync(string folder)
     {
-        using var stream = typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.IconBadge.json") ?? throw new InvalidOperationException("IconBadge reference missing.");
+        using var stream = CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.IconBadge.json") ?? throw new InvalidOperationException("IconBadge reference missing.");
         using var document = await JsonDocument.ParseAsync(stream);
         var original = Content; var canvas = new Canvas { UseLayoutRounding = false }; var frames = new List<object>(); var lifecycle = new List<object>();
         try
@@ -90,7 +90,7 @@ public sealed partial class MainWindow
                 {
                     // This reference legitimately has only one/two flat colors.
                     // Require every composed pixel to match its frozen PNG.
-                    using var frozen = typeof(MainWindow).Assembly.GetManifestResourceStream("Orchard.Catalog.Reference.IconBadgeLarge" + theme + ".png")!;
+                    using var frozen = CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.IconBadgeLarge" + theme + ".png")!;
                     using var bytes = new MemoryStream(); await frozen.CopyToAsync(bytes);
                     Require(Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(bytes.ToArray())) == reference.GetProperty("pngSha256").GetString(), "Large IconBadge frozen frame changed.");
                     using var random = new Windows.Storage.Streams.InMemoryRandomAccessStream();
