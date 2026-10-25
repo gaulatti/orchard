@@ -1,16 +1,16 @@
-name: Windows ink source diagnostic
+name: Windows highlight ink diagnostic
 on:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  ink-source:
+  highlight-ink:
     strategy:
       fail-fast: false
       matrix:
         include:
-          - {os: windows-2025, platform: x64, expected: X64, mode: foreground-color}
-          - {os: windows-11-arm, platform: ARM64, expected: Arm64, mode: foreground-color}
+          - {os: windows-2025, platform: x64, expected: X64}
+          - {os: windows-11-arm, platform: ARM64, expected: Arm64}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     env:
@@ -28,19 +28,21 @@ jobs:
       - name: Publish the exact diagnostic catalog
         shell: pwsh
         run: dotnet publish samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=${{ matrix.platform }} -o artifacts/catalog
-      - name: Probe one paint source with the first original raster retained
+      - name: Probe both actual error labels with the first original rasters retained
         shell: pwsh
-        run: ./scripts/Probe-InkBrushSources.ps1 -Mode '${{ matrix.mode }}' -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/ink-source-probe
+        run: ./scripts/Probe-HighlightInkSources.ps1 -ExpectedArchitecture '${{ matrix.expected }}' -Output artifacts/highlight-ink-probe
       - name: Retain bounded diagnostic JSON and cropped PNGs in logs
         if: always()
         shell: pwsh
         run: |
-          if (Test-Path artifacts/ink-source-probe) {
-            Get-ChildItem artifacts/ink-source-probe -File | Where-Object { $_.Extension -in @('.json','.jsonl') -or $_.Name -like 'ink-probe-*.png' } | Sort-Object Name | ForEach-Object {
+          if (Test-Path artifacts/highlight-ink-probe) {
+            $root = (Resolve-Path artifacts/highlight-ink-probe).Path
+            Get-ChildItem $root -Recurse -File | Where-Object { $_.Extension -in @('.json','.jsonl') -or $_.Name -like 'highlight-ink-*.png' } | Sort-Object FullName | ForEach-Object {
               if ($_.Length -gt 524288) { throw 'Diagnostic file exceeds the bounded log evidence limit.' }
               $bytes = [IO.File]::ReadAllBytes($_.FullName)
               $sha = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
-              $entry = [ordered]@{ name=$_.Name; bytes=$bytes.Length; sha256=$sha; base64=[Convert]::ToBase64String($bytes) }
-              Write-Host ('INKPROBE_FILE ' + ($entry | ConvertTo-Json -Compress))
+              $name = [IO.Path]::GetRelativePath($root,$_.FullName).Replace('\','/')
+              $entry = [ordered]@{ name=$name; bytes=$bytes.Length; sha256=$sha; base64=[Convert]::ToBase64String($bytes) }
+              Write-Host ('HIGHLIGHTPROBE_FILE ' + ($entry | ConvertTo-Json -Compress))
             }
           }

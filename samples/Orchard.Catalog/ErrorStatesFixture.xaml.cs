@@ -184,6 +184,18 @@ public sealed partial class ErrorStatesFixture : UserControl
         await ContrastFixture.ProbeInkSourceAsync(input, Part<TextBlock>(Default, "PART_Description"),
             Part<StackPanel>(Default, "PART_Text"), folder, mode);
     }
+    internal async Task ProbeHighlightInkAsync(string folder)
+    {
+        using var input = new NativeInputSession(XamlRoot, folder, "error-state-highlight-ink-probe");
+        await input.AcquireAsync(Heading); Default.ApplyTemplate(); await input.MoveAsync(Default);
+        var backdrop = Part<StackPanel>(Default, "PART_Text");
+        foreach (var (part, label) in new[] { ("PART_Title", "error-title"), ("PART_Description", "error-description") })
+        {
+            var output = System.IO.Path.Combine(folder, label);
+            Directory.CreateDirectory(output);
+            await ContrastFixture.ProbeHighlightInkAsync(input, Part<TextBlock>(Default, part), backdrop, output, label);
+        }
+    }
     internal async Task VerifyContrastAsync(string folder)
     {
         using var contrast = new NativeContrastSession(folder);

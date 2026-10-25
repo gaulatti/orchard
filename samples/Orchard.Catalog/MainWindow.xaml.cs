@@ -590,6 +590,14 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component=args.Contains("--smoke-error-state-after-chart")?"error-state-after-chart":"error-state",environment=RuntimeEnvironment()}));
             }
+            else if (args.Contains("--smoke-error-state-highlight-ink-probe"))
+            {
+                CatalogRoot.RequestedTheme = ElementTheme.Dark; await SelectFixtureAsync(ErrorStates);
+                await ErrorStates.ProbeHighlightInkAsync(folder);
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new
+                { passed = true, diagnosticOnly = true, componentAcceptance = false,
+                    component = "error-state-highlight-ink-probe", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-error-state-ink-source-probe"))
             {
                 var modeIndex = Array.IndexOf(args, "--ink-probe-mode");
