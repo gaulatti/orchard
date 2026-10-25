@@ -15,6 +15,12 @@ const focusedMutations=[['missing-measurement',n=>n.measurements.pop()],['wrong-
 for(const[name,mutate]of focusedMutations){const bad=structuredClone(focused);mutate(bad);assert.throws(()=>verifyDataTablePerformance(bad,{pagingOnly:true}),undefined,name);}
 const state=n=>n.snapshots[0].snapshot;
 const mutations=[
+ ...(native.containerContracts ? [
+  ['missing-container-mode',n=>n.containerContracts.pop()],
+  ['implicit-style-container-reused',n=>n.containerContracts.find(row=>row.mode==='row-style').reusedRowContainers=2],
+  ['caller-editor-state-lost',n=>n.containerContracts.find(row=>row.mode==='default').returnedContentCorrect=false],
+  ['retired-caller-editor-loaded',n=>n.containerContracts.find(row=>row.mode==='cell-template').retiredContentUnloaded=false]
+ ] : []),
  ['unknown-format',n=>n.format='orchard-data-table-performance-native-unknown'],
  ...(native.format!=='orchard-data-table-performance-native-v1' ? [['strong-retired-row-tracker',n=>n.retiredRowsTrackedWeakly=false],['missing-tracker-contract',n=>delete n.retiredRowsTrackedWeakly]] : []),
  ...(native.format==='orchard-data-table-performance-native-v3' ? [['strong-operation-identities',n=>n.operationIdentityReferencesWeak=false],['missing-operation-identity-contract',n=>delete n.operationIdentityReferencesWeak]] : []),

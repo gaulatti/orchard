@@ -9,6 +9,13 @@ const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 const digest=values=>hash(values.join('\n'));
 export const dataTablePerformanceOperations=['bind-data','sort-descending','sort-ascending','next-page','select-page','deselect-page','select-all','deselect-all','notify-hidden','notify-visible','range-filter','clear-range','search-group','clear-search','global-group','clear-global','reverse-source','clear-sort','remove-first','append-original'];
 export function verifyDataTablePerformance(n,{diagnostic=false,pagingOnly=false}={}){
+ if(n.containerContracts!==undefined){
+  assert.deepEqual(n.containerContracts.map(row=>row.mode).sort(),['cell-context','cell-template','default','row-context','row-style']);
+  for(const row of n.containerContracts){
+   for(const field of ['passed','originalDataRetained','retiredContentUnloaded','returnedContentCorrect'])assert.equal(row[field],true,row.mode+'/'+field);
+   if(row.mode==='default')assert([0,2].includes(row.reusedRowContainers));else assert.equal(row.reusedRowContainers,0,row.mode+'/caller lifecycle');
+  }
+ }
  if(n.performanceScope!==undefined)assert(['full','paging-16384-100'].includes(n.performanceScope),'Known performance scope required');
  if(diagnostic){assert.equal(n.format,'orchard-data-table-performance-diagnostic-v1');assert.equal(n.diagnosticEvents,true);assert.equal(n.normalTimingRun,false);assert(Number.isInteger(n.phaseMarkers)&&n.phaseMarkers>=2000);}
  else{assert(['orchard-data-table-performance-native-v1','orchard-data-table-performance-native-v2','orchard-data-table-performance-native-v3'].includes(n.format),'Known native benchmark format required');assert.notEqual(n.diagnosticEvents,true,'Diagnostic traces cannot qualify as performance runs');assert.notEqual(n.normalTimingRun,false);}

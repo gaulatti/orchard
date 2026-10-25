@@ -23,6 +23,25 @@ establish performance acceptance or authorize replacing the published package.
 The raw comparison, budget failures and image differences remain in
 `artifacts/current/data-table-container-reuse-full-results-v1.json`.
 
+Three additional alternating pairs reproduced slow small-page results in both
+binaries. Across all six processes per version, that case's median is 253.7109 ms
+for the baseline and 299.6877 ms for the prototype; both exceed 200 ms.
+Large-page medians are 1,613.9699 and 1,328.6983 ms, still above 1,000 ms.
+These pooled observations supplement the two separate three-process budget
+audits; they do not replace or erase either audit's failures. The prototype is
+shelved and its production source edits are restored. See
+`artifacts/current/data-table-container-reuse-confirmation-results-v1.json` and
+`data-table-container-reuse-shelved-v1.json`.
+
+The shared performance fixture retains five caller-content lifecycle checks:
+default cells, a cell template, an implicit row style, local row data context and
+local cell data context. Paging away and back must preserve original data,
+editors and local edits, unload retired content, and restore the correct
+presentation/context. Caller-controlled presentations must retain their existing
+container lifecycle. Both the catalog and independent consumer compile this
+fixture; the published baseline passes all five checks. The audit rejects
+missing modes, lost edits, loaded retired content and recycled custom containers.
+
 The current source's hidden reference fixture writes a small failure report
 and exits with code 1 when capture, input or report generation fails. If the
 failure report itself cannot be written, it still exits with code 1 and writes
