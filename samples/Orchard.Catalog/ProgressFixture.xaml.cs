@@ -73,7 +73,7 @@ public sealed partial class ProgressFixture : UserControl
                 Plain.Value = value;
                 await SettleAsync(() => Math.Abs(Find<Border>(Plain, "PART_Fill").ActualWidth -
                     Find<Border>(Plain, "PART_Track").ActualWidth * percentage / 100) < 1);
-                Require(range.Value == value && range.Maximum == 200 &&
+                Require(Plain.Value == value && range.Value == Math.Clamp(value, 0, 200) && range.Maximum == 200 &&
                     Find<TextBlock>(Plain, "PART_Label").Text == $"{Math.Floor(percentage + .5)}%",
                     "Progress normalization changed consumer values or rounded its label incorrectly.");
             }

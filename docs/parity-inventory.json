@@ -4095,14 +4095,35 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/ProgressFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ProgressRangeFixture.cs",
+        "scripts/verify-progress-range.ps1",
+        "scripts/verify-progress-range.mjs",
+        "scripts/test-progress-range-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Finish rendered comparison, enabled/interrupted motion and lifecycle checks in docs/progress.md",
-        "Verify edge maxima/nonfinite values, native UIA, isolated scaling, remaining ARM64 state acceptance",
-        "Verify runtime, accessibility and visuals"
-      ]
+        "Isolated scaling, native ARM64 execution of the range repair and remaining state acceptance",
+        "Full visual, runtime and accessibility metadata acceptance; focused bounded range and invalid-input recovery contracts are verified"
+      ],
+      "nativePreview": {
+        "sourceAudit": "artifacts/current/progress-range-source-native-v2/audit.json",
+        "packageAudit": "artifacts/current/progress-range-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/progress-range-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-progress-range-v1-local",
+        "librarySha256": "78cbfcdeeaacd38cf3eb2c1ead5128437940f73bbdb1d973c94695d766d0fb04",
+        "states": 14,
+        "invalidInputCases": 32,
+        "bindingContracts": 8,
+        "invalidBindingContracts": 4,
+        "negativeCasesRejected": 10,
+        "baselineValidLayoutAndLabelsRetained": 14,
+        "newProbePackagedInCatalog": true,
+        "nativeARM64RuntimeVerified": false,
+        "displayScalingVerified": false,
+        "nativeComponentAccepted": false
+      }
     },
     {
       "id": "progress-stack",

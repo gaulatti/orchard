@@ -11,11 +11,14 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261026.1)
+Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261026.2)
 for the NuGet package and runnable x64 catalog, including the fictional Monitoring
-and Editorial demos. [Release notes](docs/releases/2026-10-26-separator-scale-preview.md) identify
+and Editorial demos. [Release notes](docs/releases/2026-10-26-progress-range-preview.md) identify
 the verified checks, exact artifact hashes and remaining limitations. This is a
 usable development preview; final component acceptance remains open.
+
+Progress rejects invalid ranges and exposes its displayed, bounded value to
+UI Automation while retaining valid caller values and bindings. See [Progress](docs/progress.md).
 
 Separator preserves fractional one-logical-pixel coverage. Its native scale
 fixture uses an owned hidden XAML island. See [Separator](docs/separator.md).

@@ -9,11 +9,21 @@ at commit `a86059013cd59684ce452849278ea81e734f2066`.
     Variant="Warning" ShowLabel="True" AutomationProperties.Name="Upload" />
 ```
 
-Value defaults to 0 and Max to 100. The displayed fraction is `Value / Max`,
+Value defaults to 0 and Max to 100. Value must be finite; Max must be finite and
+greater than zero. Invalid CLR assignments throw `ArgumentOutOfRangeException`
+before replacing the current value. Dependency-property assignments are checked
+by the same update path and fail explicitly; callers must correct an invalid
+assigned value before using the control again. Validation never replaces a
+caller binding or substitutes an invented range.
+
+The displayed fraction is `Value / Max`,
 clamped to 0–100%, while the consumer values remain unchanged. The optional
 percentage label rounds halves upward as in the reference. The control exposes
-a ProgressBar role and read-only RangeValue pattern with the raw consumer value,
-minimum 0 and consumer maximum. It is not a tab stop and does not add disabled
+a ProgressBar role and read-only RangeValue pattern with its displayed value
+clamped between 0 and the consumer maximum. The raw public Value remains
+unchanged. Changing Max also updates the exposed bounded value. This follows
+the [Windows RangeValue convention](https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-implementingrangevalue).
+It is not a tab stop and does not add disabled
 dimming. Supply an accessible name for the operation being represented.
 
 Small, Medium and Large tracks are 6, 8 and 12px high. Default and Success use
@@ -80,7 +90,26 @@ both themes. See [runtime evidence](runtime-evidence.md).
 
 Acceptance remains open: rendered native/browser comparison, exact pill edges
 and typography, enabled/interrupted motion, live appearance and unload/reload,
-invalid or zero maxima/nonfinite values, out-of-range native UIA
-conformance, contrast/Narrator, isolated scaling and the remaining ARM64 state
-checks. Do not change
+isolated scaling and the remaining ARM64 state
+checks. Narrator and OS contrast campaigns are excluded by the current
+[library scope](library-scope.md). Do not change
 the developer's desktop-wide settings to perform scaling checks.
+
+## Focused range regression
+
+`--probe-hidden-progress-range` checks 14 valid/out-of-range states in both
+themes, 32 invalid CLR/dependency-property assignments, eight live binding
+updates and four invalid-bound-data recovery contracts. It checks the actual
+read-only automation provider, rendered fill geometry, percentage labels,
+retained raw finite values and binding expressions. The baseline library exposes
+four out-of-range provider values and accepts all 32 invalid inputs, including
+`NaN%` for zero or NaN maxima. Native results and delivery identities are listed
+in the [range preview notes](releases/2026-10-26-progress-range-preview.md).
+
+```powershell
+./scripts/verify-progress-range.ps1 -AppDirectory <frozen-app> -Output <fresh-output>
+```
+
+These are hidden x64 checks without hardware input or OS changes. The focused
+range results do not establish enabled-motion, physical scaling, native ARM64
+execution or complete visual acceptance.

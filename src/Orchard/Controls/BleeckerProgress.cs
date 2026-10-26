@@ -43,17 +43,31 @@ public sealed class BleeckerProgress : Control
         {
             var control = (BleeckerProgress)owner;
             control.UpdateValue(true);
-            FrameworkElementAutomationPeer.FromElement(control)?.RaisePropertyChangedEvent(RangeValuePatternIdentifiers.ValueProperty, args.OldValue, args.NewValue);
+            if (FrameworkElementAutomationPeer.FromElement(control) is { } peer)
+            {
+                var oldValue = (double)args.OldValue;
+                if (double.IsFinite(oldValue)) control.RaiseRangeValueChanged(peer, Math.Clamp(oldValue, 0, control.Max));
+                else peer.InvalidatePeer();
+            }
         }));
-    public double Value { get => (double)GetValue(ValueProperty); set => SetValue(ValueProperty, value); }
+    public double Value { get => (double)GetValue(ValueProperty); set { ValidateValue(value); SetValue(ValueProperty, value); } }
     public static readonly DependencyProperty MaxProperty = DependencyProperty.Register(nameof(Max), typeof(double), typeof(BleeckerProgress),
         new PropertyMetadata(100d, (owner, args) =>
         {
             var control = (BleeckerProgress)owner;
             control.UpdateValue(true);
-            FrameworkElementAutomationPeer.FromElement(control)?.RaisePropertyChangedEvent(RangeValuePatternIdentifiers.MaximumProperty, args.OldValue, args.NewValue);
+            if (FrameworkElementAutomationPeer.FromElement(control) is { } peer)
+            {
+                var oldMaximum = (double)args.OldValue;
+                if (double.IsFinite(oldMaximum) && oldMaximum > 0)
+                {
+                    peer.RaisePropertyChangedEvent(RangeValuePatternIdentifiers.MaximumProperty, oldMaximum, control.Max);
+                    control.RaiseRangeValueChanged(peer, Math.Clamp(control.Value, 0, oldMaximum));
+                }
+                else peer.InvalidatePeer();
+            }
         }));
-    public double Max { get => (double)GetValue(MaxProperty); set => SetValue(MaxProperty, value); }
+    public double Max { get => (double)GetValue(MaxProperty); set { ValidateMaximum(value); SetValue(MaxProperty, value); } }
     public static readonly DependencyProperty ShowLabelProperty = DependencyProperty.Register(nameof(ShowLabel), typeof(bool), typeof(BleeckerProgress),
         new PropertyMetadata(false, (owner, _) => ((BleeckerProgress)owner).UpdateValue(false)));
     public bool ShowLabel { get => (bool)GetValue(ShowLabelProperty); set => SetValue(ShowLabelProperty, value); }
@@ -93,6 +107,7 @@ public sealed class BleeckerProgress : Control
 
     private void UpdateValue(bool animate)
     {
+        ValidateRange();
         if (track is null || fill is null || label is null) return;
         var percentage = Math.Clamp(Value / Max * 100, 0, 100);
         var from = fill.ActualWidth;
@@ -117,6 +132,24 @@ public sealed class BleeckerProgress : Control
         motion = storyboard;
         storyboard.Begin();
         CompositionTarget.Rendering += OnWidthFrame;
+    }
+
+    private static void ValidateValue(double value)
+    {
+        if (!double.IsFinite(value)) throw new ArgumentOutOfRangeException(nameof(Value), "Progress value must be finite.");
+    }
+
+    private static void ValidateMaximum(double maximum)
+    {
+        if (!double.IsFinite(maximum) || maximum <= 0) throw new ArgumentOutOfRangeException(nameof(Max), "Progress maximum must be finite and greater than zero.");
+    }
+
+    private void ValidateRange() { ValidateValue(Value); ValidateMaximum(Max); }
+    private double RangeValue { get { ValidateRange(); return Math.Clamp(Value, 0, Max); } }
+    private void RaiseRangeValueChanged(AutomationPeer peer, double previous)
+    {
+        var current = RangeValue;
+        if (previous != current) peer.RaisePropertyChangedEvent(RangeValuePatternIdentifiers.ValueProperty, previous, current);
     }
 
     private void StopMotion()
@@ -167,8 +200,8 @@ public sealed class BleeckerProgress : Control
         public double LargeChange => 0;
         public double SmallChange => 0;
         public double Minimum => 0;
-        public double Maximum => owner.Max;
-        public double Value => owner.Value;
+        public double Maximum { get { owner.ValidateRange(); return owner.Max; } }
+        public double Value => owner.RangeValue;
         public void SetValue(double value) => throw new InvalidOperationException("Progress is a read-only display.");
     }
 }
