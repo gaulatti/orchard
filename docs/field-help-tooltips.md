@@ -12,7 +12,7 @@ The Windows preview uses a native Button with an explicit template, no Windows b
 
 The registered FieldHelpFixture covers an inline label, empty help, normal/hover/pressed/disabled state values, keyboard focus, bottom help, updated text and empty/restored transitions in both themes. A clean package fixture checks the public component's template, dimensions, accessible name and bottom placement.
 
-This component is in progress. Exact rendered motion-curve comparison, the full physical keyboard/pointer matrix, rendered light/dark reference comparison, actual Windows contrast, Narrator, scaling, and ARM64 runtime remain unaccepted. It also inherits the shared Tooltip's remaining acceptance gaps. Disabled is a native Windows adaptation; the reference does not expose a disabled prop or custom disabled palette. No complete parity claim is made from the preview.
+This component is in progress. Exact rendered motion-curve comparison, the full physical keyboard/pointer matrix, rendered light/dark reference comparison, scaling, and ARM64 runtime remain unaccepted. It also inherits the shared Tooltip's remaining acceptance gaps. Disabled is a native Windows adaptation; the reference does not expose a disabled prop or custom disabled palette. No complete parity claim is made from the preview. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md); existing accessibility metadata and theme resources remain in scope.
 
 The x64 published catalog run at artifacts/smoke-field-help-verified passes both themes, including all four state values, keyboard-triggered help, naming, live text, collapse and restoration. State captures and dark tooltip content were inspected. Scale assertions allow only one-millionth numeric precision on each axis around the exact reference targets. All 13 unit tests and x64/ARM64 builds pass; ARM64 runtime remains unavailable.
 
@@ -24,9 +24,9 @@ Tooltip layout and exit-cleanup checks await exact conditions with a bounded one
 
 Reduced-motion verification passes at artifacts/smoke-field-help-motion-reduced-final in both themes. Windows Animation effects is restored to its original Off setting. The wrapped-button activation fixture explicitly completes layout and awaits its template before inspecting the native trigger.
 
-The animated icon observes Color changes on its active source brush, including in-place consumer palette updates. Changing state or replacing a brush updates that subscription; unloading removes it. The runtime fixture checks normal and hover updates, inactive-brush isolation and replacement. Actual Windows contrast switching remains a separate acceptance requirement.
+The animated icon observes Color changes on its active source brush, including in-place consumer palette updates. Changing state or replacing a brush updates that subscription; unloading removes it. The runtime fixture checks normal and hover updates, inactive-brush isolation and replacement. Historical Windows contrast runs remain evidence for their original binary; OS contrast switching is excluded from current acceptance.
 
-The live-brush regression passes in both themes at artifacts/smoke-field-help-brush-ready, with Windows animations disabled. It waits for each requested state before mutating the active brush. This proves in-place source-color propagation; it does not replace an actual Windows contrast-mode or animated reversal check.
+The live-brush regression passes in both themes at artifacts/smoke-field-help-brush-ready, with Windows animations disabled. It waits for each requested state before mutating the active brush. This proves in-place source-color propagation; animated reversal remains a separate component check. The historical Windows contrast-mode result retains its original scope.
 
 Native ARM64 run `38485003280` at `1cf7c76` fails the immediate hover-brush
 mutation assertion with animations enabled. Waiting for byte color equality

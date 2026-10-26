@@ -444,8 +444,10 @@ SDK style can resolve the normal-state brushes in the SDK dictionary scope and
 retain Windows accent colors. The native templates and their state machines remain
 inherited; the published runtime regression checks the actual content presenter’s
 normal, hover, pressed and disabled color/opacity in light and dark appearances.
-These checks exercise visual states programmatically; physical input, Narrator and
-Windows contrast verification remain separate acceptance requirements.
+These checks exercise visual states programmatically; applicable physical input
+remains a separate component check. Existing accessibility metadata and
+system-color theme resources remain part of the library. Narrator and OS
+contrast campaigns are excluded by the [current library scope](library-scope.md).
 
 Use `ThemeResource` for color consumers and `StaticResource` for typography and
 geometry. Load `XamlControlsResources` before Orchard resources. Font files

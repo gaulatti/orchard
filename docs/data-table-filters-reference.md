@@ -31,8 +31,9 @@ User-observable acceptance requires the following complete path:
   values require real layout/input evidence.
 - Native acceptance additionally requires disabled and stale input rejection,
   live options and metadata, template replacement, unload/remount, original
-  object ownership, accessible names/roles/selection, contrast/Narrator,
-  display/text scaling, motion and collection performance.
+  object ownership, accessible names/roles/selection, display/text scaling,
+  motion and collection performance. Narrator and OS contrast campaigns are
+  excluded by the [current library scope](library-scope.md).
 
 The Select implementation converts an empty option to its internal literal
 `__bleecker_empty_option__`. Consumer duplicates and literal collisions are
@@ -192,8 +193,10 @@ The independent audit hashes all 276 original/native images and compares all
 is false. The desktop replay does not establish component acceptance. The
 separate live-update checkpoint below covers keyed option replacement,
 reordering and focused disabled/value changes. Full collection/content,
-visual/motion/override/RTL matrices, Narrator, contrast, text
-and display scaling, performance and native ARM64 runtime remain required.
+visual/motion/override/RTL matrices, text and display scaling, performance
+and native ARM64 runtime remain required. Existing automation metadata and
+theme resources remain in scope; the [current library scope](library-scope.md)
+excludes Narrator and OS contrast campaigns.
 The clean release checkpoint below verifies the isolated consumer and the
 integrated full run while retaining those acceptance gaps.
 

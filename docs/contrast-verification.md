@@ -1,12 +1,18 @@
 # Windows contrast verification
 
-The new Loading Overlay gate is prepared as
+This page preserves historical Windows contrast test evidence. The
+[current component-library scope](library-scope.md) excludes Narrator and
+OS contrast campaigns; none of the mode-changing commands or historical gates
+below is a current completion requirement. Existing component accessibility
+metadata and system-color theme resources remain part of the library.
+
+The historical Loading Overlay gate was prepared as
 `scripts/smoke-catalog.ps1 -Component loading-overlay-contrast -ClientSize 640,480`.
-It preserves the hosted-runner-only mutation boundary and requires live system
+It preserved the hosted-runner-only mutation boundary and required live system
 colors, opaque paint, blur/shadow suppression, established glyph pixels,
 pointer/Space behavior and state restoration in both themes. Its actual
-transition remains unverified while Actions are paused and a local exception
-has not been authorized.
+transition was unverified at that checkpoint. Current work does not run this
+mode-changing gate.
 
 The separate `loading-overlay-contrast-entry` mode changes no Windows setting.
 Its Light/Dark native captures each establish 217 solid label pixels and retain
@@ -75,8 +81,8 @@ scroll/color/background transitions in each theme at
 `artifacts/smoke-attention-scroll-native-ascent`. No mask offset, crop change,
 pixel tolerance or deadline is introduced. The independently restored package
 consumer also verifies text origins and consumer paint across fractional
-scrolling. This is a locally verified renderer correction; the existing real
-Windows contrast mode gate remains required on both hosted architectures.
+scrolling. This was a locally verified renderer correction; at that checkpoint,
+the historical real Windows contrast gate still required both architectures.
 Run `38525069103` at `90fdad6` verifies the Attention correction in the actual
 Windows contrast transition on both architectures. The native ARM64 archive
 is retained at `artifacts/ci-90fdad6-arm64.zip`, verified against SHA-256
@@ -151,7 +157,7 @@ foreground or pointer target to become owned before its existing single guarded
 recovery attempt. It does not move the pointer, dismiss the system cover or
 relax ownership. The x64 archive `11832183204` has verified SHA-256
 `296ff67ef1ac1e019225364458d543bc87114befb326c6b1ddcb2b53864c759d`.
-Its contrast acceptance remains open.
+Its contrast acceptance remained open under that historical campaign.
 
 Run `38431196521` at `f074df3` passes the live color assertion on x64 and reaches
 popup/focus verification. Its trace records a native window deactivation while
@@ -185,8 +191,8 @@ requesting Keyboard focus after a mouse move did not establish the user's last
 input device. The ordinary Light/Dark suite verifies this same entry and actual
 Escape dismissal with retained keyboard focus, without changing Windows mode.
 The existing popup/focus retention assertion is unchanged.
-Independent package verification runs after either native-smoke outcome, even
-when contrast fails; those failures still fail the required job.
+Independent package verification ran after either native-smoke outcome, even
+when contrast failed; those failures still failed that historical job.
 
 The same run's ARM64 phase retains its popup and keyboard focus, then fails the
 immediate painted-background assertion. Archive `11831991299` has verified
@@ -274,9 +280,11 @@ also passes at `artifacts/smoke-contrast-physical-all`, including the shared
 physical Tab/Escape entry in both themes with the repaired styles. Build/resource checks alone do
 not establish a contrast pass.
 
-This initial check covers the runner's configured contrast scheme and these
-representatives. All four built-in themes, every component/state, focus pixels,
-additional open overlays, Narrator and scaling remain acceptance gaps. The
+This initial check covered the runner's configured contrast scheme and these
+representatives. Under the former contrast campaign, all four built-in themes,
+every component/state, focus pixels, additional open overlays and Narrator
+remained unverified. Current acceptance excludes that campaign; applicable
+component scaling and accessibility metadata remain in scope. The
 [Windows contrast guidance](https://learn.microsoft.com/en-us/windows/apps/design/accessibility/high-contrast-themes)
 defines system color pairing; the wiki remote is unavailable, so this contract
 is maintained in the repository.
@@ -327,8 +335,9 @@ composition flush, retains exact before/final label crops, and keeps the mask
 established before the mode change. All those established positions must still
 match exact Windows foreground with alpha 255 within eight seconds. The ordinary
 keyboard-entry fixture also reads the composed Attention baseline without
-changing Windows settings. Fresh hosted contrast verification is required; the
-capture change does not assert that the observed displayed glyphs already pass.
+changing Windows settings. Fresh hosted contrast verification was required by
+the historical campaign; the capture change did not assert that the observed
+displayed glyphs already passed.
 
 The ordinary x64 full suite passes the composed Attention baseline reads in
 both themes at `artifacts/smoke-notifications-theme-composed-ink-all`. This proves
