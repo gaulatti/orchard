@@ -113,7 +113,7 @@ empty titles, constrained widths, RTL and multilingual content. Focused
 `-Component section-header` uses the same navigation path and verifies the
 frozen source layouts, real heading peers, live bindings, remount/template
 replacement and physical forward/reverse Tab traversal. Complete text raster,
-contrast, scaling and Narrator acceptance remains open.
+theme contrast, scaling and remaining visual acceptance remain open.
 
 Dashboard Sections follows Section Headers. Focused `-Component dashboard-section`
 checks the frozen source's 639/640px viewport boundary, trailing/bottom action
@@ -304,8 +304,8 @@ compilation pass. The full navigation/catalog fixture checks now also pass on
 native ARM64; see [runtime evidence](runtime-evidence.md) for architecture
 reports and the remaining platform acceptance.
 
-Text-size/density controls, the remaining unimplemented inventory and full
-keyboard/Narrator/responsive acceptance are still required. Catalog navigation
+Text-size/density controls and full keyboard/responsive acceptance are still
+required across the started inventory. Catalog navigation
 does not make any component's visual or interaction acceptance complete.
 
 For an explicit constrained-window runtime check, pass `-ClientSize width,height`

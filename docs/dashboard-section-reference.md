@@ -125,7 +125,7 @@ The published x64 catalog passes all 50 focused cases at
 validation remains deferred while automatic push Actions are paused.
 
 Complete glyph/baseline raster comparison, wrappable-action minimum-content constraints,
-the complete consumer override matrix, actual contrast schemes, Narrator,
+the complete consumer override matrix, component theme contrast,
 display/text scaling and native ARM64 validation remain open. The inventory
 entry remains in progress. This native passive composition has no backend,
 configuration or telemetry impact. The public wiki remote is unavailable;
