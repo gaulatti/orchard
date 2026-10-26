@@ -19,7 +19,9 @@ package host also passes 17 hidden native-peer validity cases spanning Input,
 Textarea and Field, including Textarea error, explicit override, Field precedence
 and Field-error removal. Its report is in
 `artifacts/current/text-media-v3-validity-x64-v2`; native ARM64 runtime remains
-open.
+open. The separately built, extracted x64 catalog archive also passes the
+hidden native-peer validity check; its Orchard DLL is not byte-identical to
+the NuGet DLL.
 
 ## Native preview and boundaries
 

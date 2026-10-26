@@ -232,5 +232,14 @@ PNG audits. The audit checks the broken-full marker's placement and rendered
 ink in both themes. The packaged Orchard DLL SHA-256
 `13ab2e380421a2fb0850f1ffe2bcdcb157b1952d4d3175812859c6ed730f0f9e`
 matches the source host tested for text-editor validity. This is current NuGet
-delivery evidence, not a catalog archive or native ARM64 runtime result.
-Physical input and full visual acceptance remain open.
+delivery evidence; at that checkpoint the catalog archive and native ARM64
+runtime remained open.
+
+Versioned local catalog archives now contain the same source repair for x64
+(`47871b84cde5471b7fdb4eabb0c1e6336e44e42a7d401e6c4680309c8c198069`)
+and ARM64 (`4822bde19c7c21d48f0408861f732c5bbe6e5962def9b1a66c2766ab52985d22`).
+All 664 x64 and 660 ARM64 files match their extracted ZIP entries. The extracted
+x64 catalog passes 100 Media Library states, 38 contracts, both catalog themes
+and 102 PNG audits, including the broken-full marker. Its Orchard DLL has a
+different build hash from the NuGet DLL, so these are separate runtime results.
+Physical input, full visual acceptance and native ARM64 runtime remain open.

@@ -78,7 +78,15 @@ x64 hidden demo gate: 66 checks and 577 isolation guards. Its Orchard DLL SHA-25
 matches the independently consumed NuGet package. The report and audit are in
 `artifacts/current/text-media-v3-workspace-demos`. This verifies the current
 catalog compositions in a hidden x64 host; visible interaction, scaling,
-native ARM64 runtime and a current catalog archive remain open.
+native ARM64 runtime and a current catalog archive remained open at that check.
+
+The versioned `0.1.0-text-media-v3-local` x64 and ARM64 catalog ZIPs now include
+both compiled demo fixtures, with every extracted file byte-verified. The
+extracted x64 archive passes the same 66 hidden demo checks and 577 isolation
+guards. It also decodes all 653 embedded reference resources against their
+original hashes. Its compiled Orchard DLL differs from the NuGet build and was
+qualified independently. Visible input, scaling and native ARM64 runtime remain
+open; the demos are not yet accepted.
 
 No backend, environment variables or metrics are involved. GitHub's wiki remote
 is unavailable; this document is the in-repository usage and verification source.
