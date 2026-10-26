@@ -17,7 +17,11 @@ namespace Orchard.Catalog;
 
 public sealed partial class SkeletonsFixture : UserControl
 {
-    public SkeletonsFixture() => InitializeComponent();
+    public SkeletonsFixture()
+    {
+        InitializeComponent();
+        CallerSlotButton.Click += (_, _) => CallerSlotStatus.Text = "Caller action: " + CallerSlotInput.Text;
+    }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {

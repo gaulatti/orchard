@@ -1,6 +1,12 @@
 # Gaulatti.Orchard
 
 Native Windows components and Bleecker theme resources for C# / WinUI 3.
+`BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
+`ContentTemplateSelector`. Content and opacity bindings survive template changes
+and remounts; child controls keep their own actions and accessible peers.
+`Width`, `Height`, `Padding` and content alignment remain caller-owned. The
+container stays decorative and follows native WinUI opacity composition.
+Normal pulse timing and final visual/platform acceptance remain open.
 Orchard's scope is the reusable component library and its fictional monitoring
 and editorial demos. Narrator and Windows/OS contrast test campaigns are excluded;
 existing component accessibility metadata and theme support remain in scope.
@@ -17,7 +23,7 @@ thumbnail never switches to the full image. Raw `Url`, `Alt` and `CreatedAt` sta
 caller-owned. Use the window's `BleeckerModalHost`. Removing or replacing a row
 does not replace its selected original; unloading clears preview selection.
 Both light/dark catalog demos use fictional local data. This is a preview;
-strict image equality, physical input, complete scaling/motion/customization
+full visual review, physical input, complete scaling/motion/customization
 and native ARM64 runtime acceptance remain open.
 
 `BleeckerFileInput` provides native file selection with original `StorageFile`

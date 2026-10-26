@@ -10,6 +10,16 @@
             <orchard:BleeckerSkeleton x:Name="Circle" Circle="True" Width="40" Height="40" />
             <orchard:BleeckerSkeleton x:Name="Capsule" Circle="True" Width="80" Height="40" />
         </StackPanel>
+        <StackPanel Spacing="8">
+            <TextBlock Text="Caller content" Style="{StaticResource BleeckerBodyStyle}" />
+            <orchard:BleeckerSkeleton Width="280" Height="140" Padding="12">
+                <StackPanel Spacing="8">
+                    <TextBox x:Name="CallerSlotInput" Text="Fictional draft" />
+                    <Button x:Name="CallerSlotButton" Content="Invoke caller action" />
+                    <TextBlock x:Name="CallerSlotStatus" Text="Ready" />
+                </StackPanel>
+            </orchard:BleeckerSkeleton>
+        </StackPanel>
         <Grid ColumnSpacing="16" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions><ColumnDefinition Width="320" /><ColumnDefinition Width="320" /></Grid.ColumnDefinitions>
             <orchard:BleeckerSkeletonCard x:Name="DefaultCard" Width="320" VerticalAlignment="Top" />

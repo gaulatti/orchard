@@ -8,8 +8,8 @@ using Windows.UI.ViewManagement;
 
 namespace Orchard;
 
-/// <summary>A decorative Bleecker loading shape. Width and Height belong to the consumer.</summary>
-public sealed class BleeckerSkeleton : Control
+/// <summary>A decorative Bleecker loading shape with consumer-owned content, width and height.</summary>
+public sealed class BleeckerSkeleton : ContentControl
 {
     private readonly UISettings settings = new();
     private Border? surface;

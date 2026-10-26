@@ -1950,13 +1950,42 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/SkeletonsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/SkeletonContentFixture.cs",
+        "tests/Reference/Skeleton.json",
+        "tests/Reference/Skeleton/source.tsx",
+        "tests/Reference/Skeleton/tokens.generated.css",
+        "scripts/verify-skeleton-content.ps1",
+        "scripts/verify-skeleton-content.mjs",
+        "scripts/test-skeleton-content-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete source-derived visual review and full normal pulse timing under docs/acceptance-contract.md; retain exact native/browser raster diagnostics separately",
-        "Display/text scaling and final visual acceptance"
-      ]
+        "Finish source-derived visual review of compositor shadows and normal pulse timing;36 reduced-motion default geometry/palette states and caller content are verified through source and exact NuGet",
+        "Actual display/text scaling, native ARM64 execution and final visual/integration acceptance"
+      ],
+      "callerContentVerification": {
+        "source": {
+          "report": "artifacts/current/skeleton-content-candidate-native-v3/skeleton-content.json",
+          "audit": "artifacts/current/skeleton-content-candidate-native-v3/audit.json"
+        },
+        "independentConsumer": {
+          "report": "artifacts/current/skeleton-content-package-native-v1/skeleton-content.json",
+          "audit": "artifacts/current/skeleton-content-package-native-v1/audit.json"
+        },
+        "packageVersion": "0.1.0-skeleton-content-v1-local",
+        "librarySha256": "c0856b7251fc8e42bf2906855fe50779c5bc827537e937364b0bd683d081c939",
+        "defaultStatesPerHost": 36,
+        "callerContractsPerHost": 16,
+        "negativeCasesPerHost": 18,
+        "originalChildrenBindingsTemplatesAndModelsVerified": true,
+        "childActionAndPeerTreeVerified": true,
+        "reducedMotionVerified": true,
+        "normalPulseVerified": false,
+        "callerOpacitySourceGroupRasterVerified": false,
+        "nativeARM64RuntimeVerified": false,
+        "fullComponentAccepted": false
+      }
     },
     {
       "id": "stepper",

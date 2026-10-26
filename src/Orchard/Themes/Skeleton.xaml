@@ -3,10 +3,17 @@
     <Style TargetType="local:BleeckerSkeleton">
         <Setter Property="IsTabStop" Value="False" /><Setter Property="UseSystemFocusVisuals" Value="False" />
         <Setter Property="MinWidth" Value="0" /><Setter Property="MinHeight" Value="0" /><Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" /><Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Background" Value="{ThemeResource BleeckerSkeletonBrush}" />
         <Setter Property="CornerRadius" Value="{StaticResource BleeckerUiCornerRadius}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSkeleton">
-            <Border x:Name="PART_Surface" Background="{TemplateBinding Background}" AutomationProperties.AccessibilityView="Raw" />
+            <Grid UseLayoutRounding="False">
+                <Border x:Name="PART_Surface" Background="{TemplateBinding Background}" AutomationProperties.AccessibilityView="Raw" />
+                <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" Padding="{TemplateBinding Padding}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" UseLayoutRounding="False" />
+            </Grid>
         </ControlTemplate></Setter.Value></Setter>
     </Style>
     <Style TargetType="local:BleeckerSkeletonCard">

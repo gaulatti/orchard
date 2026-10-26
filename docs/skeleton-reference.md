@@ -40,11 +40,13 @@ six empty row containers and preserves 40px of vertical gaps; it does not
 collapse the entire composition to zero height.
 
 The actual source was inspected in both appearances without component restyling.
-Local reference evidence is retained in `artifacts/skeleton-reference-contract.json` and
-`artifacts/skeleton-reference-{Light,Dark}.jpg`; the source harness is
-`artifacts/font-audit/skeleton.html`. These captures use the existing local
-reduced-motion preference. Normal pulse raster timing, Windows contrast and full
-Windows visual/accessibility/scaling checks remain unverified. The native runtime
+The current reproducible contract is [Skeleton.json](../tests/Reference/Skeleton.json),
+with the pinned [component source](../tests/Reference/Skeleton/source.tsx) and
+[token CSS](../tests/Reference/Skeleton/tokens.generated.css). The original
+`artifacts/skeleton-reference-*` images and font-audit harness are no longer
+present at their documented paths. Normal pulse timing and full Windows
+visual/scaling checks remain unverified. OS contrast and Narrator campaigns are
+excluded by the [library scope](library-scope.md). The native runtime
 checkpoint below covers lifecycle, consumer counts and package consumption.
 The public wiki remote
 is unavailable; the contract is recorded in this repository.
@@ -55,8 +57,65 @@ for circles or capsules. `BleeckerSkeletonCard.Rows` defaults to 3;
 integers. Negative counts render zero items, as the producer's `Array.from`
 does; the supplied dependency-property value and consumer binding are retained.
 All three controls are decorative and absent from the UIA control/content views.
+The Skeleton wrapper does not hide caller-owned child controls from those views.
 Applications announce the associated loading operation through their own status
 region. Skeleton shapes do not add focus stops or disabled dimming.
+
+## Caller content
+
+The pinned source spreads its div attributes, including React children, onto
+the Skeleton element. `BleeckerSkeleton` therefore derives from `ContentControl`
+and exposes `Content`, `ContentTemplate` and `ContentTemplateSelector`. Its
+background and caller presentation are separate template siblings, so the
+loading surface does not replace the original child subtree. Padding and
+horizontal/vertical content alignment use standard native properties.
+
+```xml
+<orchard:BleeckerSkeleton Width="280" Height="140" Padding="12">
+    <StackPanel Spacing="8">
+        <TextBox Text="Fictional draft" />
+        <Button Content="Invoke caller action" Command="{Binding CallerAction}" />
+    </StackPanel>
+</orchard:BleeckerSkeleton>
+```
+
+The catalog includes this caller-content example. The independent consumer also
+compiles nested XAML content. The shared hidden fixture checks original content,
+live bindings, editor state, native child actions/peer trees, template clearing
+and restoration, original template/selector models, and opacity bindings across
+unload/remount. It preserves the native content-loading behavior when a template
+is cleared; it does not require an artificial unload event.
+
+The old published `c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483`
+library fails the new content-slot regression as expected. The
+`0.1.0-skeleton-content-v1-local` candidate passes 36 default shape/card/table
+states and 16 caller-content checks in both the x64 catalog and independent exact
+NuGet consumer. Each host retains 40 images, verifies 236 source palette samples
+and 51,200 empty-table pixels, and rejects 18 corrupted reports. The old library
+and the first failing candidate reports remain retained.
+
+Run `scripts/verify-skeleton-content.ps1 -AppDirectory <current-app> -Output <fresh-directory>`;
+use `-HostName PackageConsumer` for the independent consumer. Add an immutable app
+manifest with `-ImmutableManifest` when using a frozen qualification app. The
+runner requires its recognized hidden command and never opens the default app,
+shows/focuses a window, sends hardware input or changes OS settings. This new
+command is absent from the earlier October 25 preview ZIP.
+
+These checks qualify the currently reduced-motion environment. All 51 retained
+older motion traces also have animations disabled, so they cannot prove the
+normal 2-second curve. Current normal timing, live OS preference transitions and
+native ARM64 execution are not claimed.
+
+The caller-opacity images are consistent with native per-primitive opacity
+multiplication; that explanation is inferred from their raw samples. They differ
+from CSS isolated-group compositing by up to four channel values in the selected
+sample. The library retains native WinUI opacity behavior. The disagreement is
+preserved in `artifacts/current/skeleton-content-caller-opacity-review-v1.json`;
+isolated-group raster parity and on-screen compositor behavior remain unverified.
+The distinction between layer and multiply opacity is documented by
+[DirectComposition](https://learn.microsoft.com/en-us/windows/win32/api/dcomptypes/ne-dcomptypes-dcomposition_opacity_mode).
+Default geometry/brush checks retain their original tolerances. No pixel masks,
+resampling or custom opacity renderer are used to hide this difference.
 
 The default templates consume centrally generated theme brushes and canonical
 7px/12px radii. High contrast uses an opaque system window-text shape and system
@@ -91,8 +150,10 @@ checks pass in both themes on x64 and ARM64 at `71a7fb8`, including normal-motio
 ARM64 run failed an Input cursor phase before reaching Skeleton; that issue did
 not recur and its cause remains unresolved. See [checked runtime evidence](runtime-evidence.md).
 The source audit and successful compilation do not establish visual acceptance.
-Exact native/browser raster parity, full pulse timing, contrast/Narrator and
-display/text scaling remain acceptance gaps.
+Those historical architecture-labelled results do not establish current native
+ARM64 execution. Full source-derived visual review, normal pulse timing and
+display/text scaling remain open. Exact-raster diagnostics retain their original
+scope under the [acceptance contract](acceptance-contract.md).
 
 At `4de3160`, both native jobs reach the capture boundary after the Light
 geometry, consumer-count, decorative-peer, motion and template-lifecycle checks.

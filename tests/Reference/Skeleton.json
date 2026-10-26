@@ -1,0 +1,114 @@
+{
+  "cases": [
+    {
+      "circle": false,
+      "radius": 7,
+      "height": 16,
+      "kind": "shape",
+      "shapes": 1,
+      "id": "rectangle",
+      "width": 240
+    },
+    {
+      "circle": true,
+      "radius": 20,
+      "height": 40,
+      "kind": "shape",
+      "shapes": 1,
+      "id": "circle",
+      "width": 40
+    },
+    {
+      "circle": true,
+      "radius": 20,
+      "height": 40,
+      "kind": "shape",
+      "shapes": 1,
+      "id": "capsule",
+      "width": 80
+    },
+    {
+      "height": 160,
+      "kind": "card",
+      "shapes": 6,
+      "rows": 3,
+      "id": "card-default",
+      "useDefaults": true,
+      "width": 320
+    },
+    {
+      "height": 88,
+      "kind": "card",
+      "shapes": 3,
+      "rows": 0,
+      "id": "card-zero",
+      "useDefaults": false,
+      "width": 320
+    },
+    {
+      "height": 232,
+      "kind": "card",
+      "shapes": 9,
+      "rows": 6,
+      "id": "card-six",
+      "useDefaults": false,
+      "width": 320
+    },
+    {
+      "height": 272,
+      "columns": 4,
+      "useDefaults": true,
+      "width": 320,
+      "rows": 5,
+      "id": "table-default",
+      "kind": "table",
+      "shapes": 24
+    },
+    {
+      "height": 32,
+      "columns": 2,
+      "useDefaults": false,
+      "width": 320,
+      "rows": 0,
+      "id": "table-header",
+      "kind": "table",
+      "shapes": 2
+    },
+    {
+      "height": 40,
+      "columns": 0,
+      "useDefaults": false,
+      "width": 320,
+      "rows": 5,
+      "id": "table-zero-columns",
+      "kind": "table",
+      "shapes": 0
+    }
+  ],
+  "componentSource": {
+    "path": "Skeleton/source.tsx",
+    "commit": "a86059013cd59684ce452849278ea81e734f2066",
+    "sha256": "acc108ca2c34011adfaf1792d7f758c87e0dce9dfd65a3642ca55e7f7bd0837b"
+  },
+  "tokenSource": {
+    "path": "Skeleton/tokens.generated.css",
+    "origin": "Pinned auth-shell-layout-source-v5 source export",
+    "sha256": "74468d6dd3516687e3f8b96aef47e10bdcce206e31edc912abe985c45b83bf3e"
+  },
+  "themes": {
+    "Light": {
+      "shapeOpacity": 0.2,
+      "shape": "#FFE6D5B8",
+      "card": "#FFFFFFFF",
+      "background": "#FFFFFFFF"
+    },
+    "Dark": {
+      "shapeOpacity": 0.1,
+      "shape": "#FFFFFFFF",
+      "card": "#FF182533",
+      "background": "#FF0D1821"
+    }
+  },
+  "format": "orchard-skeleton-reference-v1",
+  "geometryToleranceDip": 0.02
+}
