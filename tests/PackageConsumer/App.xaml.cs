@@ -31,6 +31,7 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        if(Environment.GetCommandLineArgs().Contains("--probe-hidden-status-badge")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.StatusBadgeFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-separator")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.SeparatorFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-avatar-sizing")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.AvatarSizingFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-kbd-content")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.KbdContentFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}

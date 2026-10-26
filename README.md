@@ -11,11 +11,14 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261025.5)
+Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261026)
 for the NuGet package and runnable x64 catalog, including the fictional Monitoring
-and Editorial demos. [Release notes](docs/releases/2026-10-25-file-input-styles-preview.md) identify
+and Editorial demos. [Release notes](docs/releases/2026-10-26-status-badge-metadata-preview.md) identify
 the verified checks, exact artifact hashes and remaining limitations. This is a
 usable development preview; final component acceptance remains open.
+
+Status Badge preserves caller automation names and help text, including explicit
+empty values and inherited styles. See [Status Badge](docs/status-badge.md).
 
 File Input honors ancestor implicit font/padding styles while preserving original
 selected files across size changes. See [File Input](docs/file-input.md).

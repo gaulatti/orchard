@@ -11,7 +11,8 @@
             <orchard:BleeckerStatusBadge Label="EVENTS" Variant="Info" />
             <orchard:BleeckerStatusBadge Label="UNKNOWN" />
         </StackPanel>
-        <orchard:BleeckerStatusBadge x:Name="Changing" Label="LOCAL" Description="Consumer-owned status" Variant="Info" />
+        <orchard:BleeckerStatusBadge x:Name="Changing" Label="LOCAL" Description="Consumer-owned status" Variant="Info"
+            AutomationProperties.Name="" AutomationProperties.HelpText="" />
         <orchard:BleeckerStatusBadge x:Name="Constrained" Label="東京" Description="São Paulo · القاهرة · local coverage continues without a network dependency" Width="240" />
         <orchard:BleeckerStatusBadge x:Name="LongLabel" Label="REGIONAL COVERAGE TEMPORARILY DEGRADED" Description="Updates continue during local review" Variant="Live" Width="320" />
     </StackPanel>

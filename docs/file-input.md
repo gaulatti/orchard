@@ -189,8 +189,8 @@ size-dependent defaults. Changing `InputSize` or `FontScale` preserves the calle
 style and the original selected-file objects/list. Explicit styles take
 precedence over ancestor implicit styles through normal WinUI resource lookup.
 
-The catalog adds an implicitly styled attachment example. The current hidden
-source, exact NuGet consumer and catalog archive each pass 68 existing visual
+The catalog adds an implicitly styled attachment example. The implicit-style
+preview (library `758d2398…`) source, exact NuGet consumer and catalog archive each pass 68 existing visual
 states and 34 selection/lifecycle/style contracts. New cases cover implicit font
 and padding across all three sizes, both font scales and both text directions.
 Auditors reject 69 damaged reports/files each. All 34 native states/images reached

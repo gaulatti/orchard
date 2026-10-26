@@ -54,10 +54,10 @@ double-equality failure is retained separately, and the repaired assertion uses
 the existing native fixture's numeric tolerance. The production separator and
 published NuGet bytes are unchanged. The independent consumer restores exactly
 `0.1.0-file-input-styles-v1-local` and verifies its package hash before running;
-it contains no repository project reference. The new probe command is available
-from a source build and is not yet in the published catalog ZIP. Packaging it
-is deferred to the next catalog milestone; no new NuGet version is needed for
-this validation-only change.
+it contains no repository project reference. The Status Badge metadata preview
+now packages this probe in the catalog ZIP. Source, exact NuGet and archive
+hosts also rerun all 32 states, eight caller contracts and ten negative cases
+with library `87755ce3…`. The Separator implementation itself is unchanged.
 
 Source catalog and independent consumer compilation also pass for x64 and ARM64.
 This distinguishes architecture build coverage from the x64 native runs above;

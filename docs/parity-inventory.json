@@ -4381,11 +4381,13 @@
         "Current native ARM64 state acceptance"
       ],
       "nativePreview": {
-        "sourceAudit": "artifacts/current/separator-source-native-v2/audit.json",
-        "packageAudit": "artifacts/current/separator-package-native-v1/audit.json",
-        "packageVersion": "0.1.0-file-input-styles-v1-local",
-        "newProbePackagedInPublicCatalog": false,
-        "sourceLibrarySha256": "758d23980168a5381c59500336d6db14042055af41b31ebeee83a35c6b1c6efb",
+        "sourceAudit": "artifacts/current/status-badge-separator-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/status-badge-separator-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/status-badge-separator-archive-native-v1/audit.json",
+        "previousQualificationAudit": "artifacts/current/separator-source-native-v2/audit.json",
+        "packageVersion": "0.1.0-status-badge-metadata-v1-local",
+        "newProbePackagedInPublicCatalog": true,
+        "sourceLibrarySha256": "87755ce30a712f4ce61957ec9b560bd3cdaee43aa8bf1c78408731b349107985",
         "states": 32,
         "callerContracts": 8,
         "capturedPixelsAudited": 2048000,
@@ -6459,14 +6461,33 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/StatusBadgesFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/StatusBadgeFixture.cs",
+        "scripts/verify-status-badge.ps1",
+        "scripts/verify-status-badge.mjs",
+        "scripts/test-status-badge-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Full baseline, gamut and extreme-label layout comparison",
-        "Scaling and physical keyboard traversal",
+        "Actual text/display scaling; display-only metadata and no-tab-stop checks are applicable instead of a keyboard action",
         "Remaining ARM64 state acceptance and complete rendered parity"
-      ]
+      ],
+      "nativePreview": {
+        "sourceAudit": "artifacts/current/status-badge-source-native-v3/audit.json",
+        "packageAudit": "artifacts/current/status-badge-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/status-badge-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-status-badge-metadata-v1-local",
+        "librarySha256": "87755ce30a712f4ce61957ec9b560bd3cdaee43aa8bf1c78408731b349107985",
+        "states": 18,
+        "callerContracts": 26,
+        "negativeCasesRejected": 11,
+        "baselineDefaultCapturesByteIdentical": 9,
+        "callerMetadataPrecedenceVerified": true,
+        "nativeARM64RuntimeVerified": false,
+        "displayScalingVerified": false,
+        "nativeComponentAccepted": false
+      }
     },
     {
       "id": "table",

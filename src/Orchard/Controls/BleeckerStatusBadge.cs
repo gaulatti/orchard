@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -105,13 +106,39 @@ public sealed class BleeckerStatusBadge : Control
             current.Color = replacement.Color; current.Opacity = replacement.Opacity;
         }
     }
+    private bool HasSuppliedMetadata(DependencyProperty property)
+    {
+        if (ReadLocalValue(property) != DependencyProperty.UnsetValue) return true;
+        static bool Sets(Style? style, DependencyProperty property)
+        {
+            for (; style is not null; style = style.BasedOn)
+                if (style.Setters.OfType<Setter>().Any(setter => setter.Property == property)) return true;
+            return false;
+        }
+        if (Style is { } explicitStyle) return Sets(explicitStyle, property);
+        // WinUI does not populate Style for ancestor implicit styles.
+        for (DependencyObject? scope = this; scope is not null; scope = VisualTreeHelper.GetParent(scope))
+            if (scope is FrameworkElement element && element.Resources.TryGetValue(typeof(BleeckerStatusBadge), out var resource) && resource is Style implicitStyle)
+                return Sets(implicitStyle, property);
+        return Application.Current.Resources.TryGetValue(typeof(BleeckerStatusBadge), out var applicationStyle) && applicationStyle is Style style && Sets(style, property);
+    }
     protected override AutomationPeer OnCreateAutomationPeer() => new BadgePeer(this);
     private sealed class BadgePeer(BleeckerStatusBadge owner) : FrameworkElementAutomationPeer(owner)
     {
         protected override string GetClassNameCore() => nameof(BleeckerStatusBadge);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Text;
-        protected override string GetNameCore() => string.IsNullOrEmpty(base.GetNameCore()) ? owner.Label ?? "" : base.GetNameCore();
-        protected override string GetHelpTextCore() => string.IsNullOrEmpty(base.GetHelpTextCore()) ? owner.Description ?? "" : base.GetHelpTextCore();
+        protected override string GetNameCore()
+        {
+            if (owner.HasSuppliedMetadata(AutomationProperties.NameProperty)) return AutomationProperties.GetName(owner);
+            var name = base.GetNameCore();
+            return !string.IsNullOrEmpty(name) || AutomationProperties.GetLabeledBy(owner) is not null ? name : owner.Label ?? "";
+        }
+        protected override string GetHelpTextCore()
+        {
+            if (owner.HasSuppliedMetadata(AutomationProperties.HelpTextProperty)) return AutomationProperties.GetHelpText(owner);
+            var help = base.GetHelpTextCore();
+            return string.IsNullOrEmpty(help) ? owner.Description ?? "" : help;
+        }
         protected override IList<AutomationPeer> GetChildrenCore() => null!;
     }
 }

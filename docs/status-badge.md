@@ -24,3 +24,33 @@ text/display scaling and current native ARM64 runtime remain open. The badge is
 display-only; its input contract is the absence of an unwanted focus stop.
 Narrator and OS contrast campaigns are excluded by the current
 [library scope](library-scope.md). The inventory entry remains in progress.
+
+## Caller metadata
+
+Explicit `AutomationProperties.Name` and `AutomationProperties.HelpText` values
+take precedence over the label/description defaults, including empty strings,
+bindings, inherited explicit styles and ancestor implicit styles. A caller's
+`LabeledBy` association is retained even when its label is empty. Clearing the
+override restores the applicable style or label/description default. Live label
+updates, template replacement and remounting preserve caller bindings.
+
+The catalog's changing badge demonstrates empty caller metadata. The focused
+`--probe-hidden-status-badge` test runs in a source-built catalog or independent
+NuGet consumer. It covers all five palettes in both themes, constrained and wide
+layout in both text directions, and the caller metadata cases above. The
+preceding published library reproduces the local-empty override failure.
+Source raster/gamut comparison, actual scaling and current native ARM64 execution
+remain separate open checks.
+
+The source catalog, independent NuGet consumer and catalog archive each pass
+18 visual/layout states, 26 metadata/binding/style/lifecycle contracts and
+11 damaged-report checks with library `87755ce3…`. All nine earlier baseline
+captures and snapshots are unchanged. The source/catalog hosts mount all eight
+registered examples in both themes, including the explicit-empty metadata case.
+The tests stay hidden and record zero focus or activation. Their audit verifies
+source palette/typography recipes and existing constrained geometry; it does not
+claim complete browser/native glyph or gamut equivalence.
+
+```powershell
+./scripts/verify-status-badge.ps1 -AppDirectory <frozen-catalog-app> -Output <new-output-directory>
+```
