@@ -7469,6 +7469,16 @@
         "causalRepairEstablished": false,
         "libraryChanged": false,
         "nativeComponentAccepted": false
+      },
+      "currentFocusedPagingObservation": {
+        "librarySha256": "409b32e7bfc9fee28c38ee5ad211acfd579088463eb263d1db1acc84f9d78072",
+        "audit": "artifacts/current/data-table-current-3939c80-paging-v1/data-table-performance-audit.json",
+        "independentProcesses": 1,
+        "semanticOperationsPassed": 20,
+        "nextPage16384Page100Milliseconds": 1678.42,
+        "nextPageBudgetMilliseconds": 1000,
+        "fullPerformanceMatrixVerified": false,
+        "performancePassed": false
       }
     },
     {
