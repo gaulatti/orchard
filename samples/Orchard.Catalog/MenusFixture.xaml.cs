@@ -132,7 +132,7 @@ public sealed partial class MenusFixture : UserControl
         RichAction.Content = content;
         RichAction.UpdateLayout();
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(RichAction);
-        Require(peer.GetName() == "Edit profile" && peer.GetPattern(PatternInterface.Invoke) is not null,
+        Require(peer.GetName() == "Edit fictional item" && peer.GetPattern(PatternInterface.Invoke) is not null,
             "Composed menu lost its native action name or invoke pattern.");
         foreach (var item in new MenuFlyoutItem[] { Action, InsetAction, RichAction, Checkbox, Compact })
         {
@@ -140,7 +140,7 @@ public sealed partial class MenusFixture : UserControl
             var layout = (Grid)root.Children[1];
             var shortcut = layout.Children.OfType<TextBlock>().Single(text => text.Name == "KeyboardAcceleratorTextBlock");
             var hasShortcut = !string.IsNullOrEmpty(item.KeyboardAcceleratorTextOverride);
-            Require((hasShortcut ? shortcut.Visibility == Visibility.Visible && shortcut.ActualWidth > 0 : shortcut.ActualWidth == 0) && shortcut.Margin == new Thickness(0),
+            Require((hasShortcut ? shortcut.Visibility == Visibility.Visible && shortcut.ActualWidth > 0 && shortcut.Text == item.KeyboardAcceleratorTextOverride : shortcut.ActualWidth == 0) && shortcut.Margin == new Thickness(0),
                 $"Menu shortcut layout mismatch: {item.Text}, hint={hasShortcut}, visibility={shortcut.Visibility}, width={shortcut.ActualWidth}, margin={shortcut.Margin}.");
         }
     }
