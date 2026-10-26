@@ -1,5 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Media;
 
 namespace Orchard;
 
@@ -11,6 +13,9 @@ public sealed partial class BleeckerInput : TextBox
     private bool pointerOver;
     private string? appearanceState;
     private bool applyingAppearance;
+    private readonly TextBlock geometryDefaults = new();
+    private Binding? defaultFontBinding, defaultPaddingBinding, defaultMinHeightBinding;
+    private bool updatingDefaults;
 
     public BleeckerInput()
     {
@@ -19,7 +24,9 @@ public sealed partial class BleeckerInput : TextBox
         InitializeMotion();
         InitializePointer();
         InitializeTypography();
-        RegisterPropertyChangedCallback(HeightProperty, (_, _) => UpdateMinimumHeight(Geometry.Height));
+        RegisterPropertyChangedCallback(HeightProperty, (_, _) => UpdateGeometry());
+        foreach (var property in new[] { FontSizeProperty, PaddingProperty, MinHeightProperty, StyleProperty })
+            RegisterPropertyChangedCallback(property, (_, _) => EnsureDefaultBindings());
         GotFocus += (_, _) => UpdateAppearance();
         LostFocus += (_, _) => UpdateAppearance();
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { UpdatePointerObservation(); UpdateAppearance(); });
@@ -57,18 +64,52 @@ public sealed partial class BleeckerInput : TextBox
         BleeckerInputSize.Large => (44d, 16d, 15d),
         _ => throw new ArgumentOutOfRangeException(nameof(InputSize))
     };
-    private void UpdateMinimumHeight(double height)
-    {
-        // An explicit source height (for example Toolbar's h-9 over the
-        // default medium h-10 recipe) must be able to replace that recipe.
-        MinHeight = double.IsNaN(Height) ? height : Math.Min(height, Height);
-    }
     private void UpdateGeometry()
     {
         var (height,inset,font)=Geometry;
-        UpdateMinimumHeight(height);
-        FontSize = font;
-        Padding = new Thickness(StartIcon is null ? inset : 40, 0, EndIcon is null ? inset : 40, 0);
+        // A caller's explicit Height can replace the size recipe's height.
+        geometryDefaults.MinHeight = double.IsNaN(Height) ? height : Math.Min(height, Height);
+        geometryDefaults.FontSize = font;
+        geometryDefaults.Padding = new Thickness(StartIcon is null ? inset : 40, 0, EndIcon is null ? inset : 40, 0);
+        EnsureDefaultBindings();
+    }
+    private void EnsureDefaultBindings()
+    {
+        if (updatingDefaults) return;
+        updatingDefaults = true;
+        try
+        {
+            static bool Sets(Style? style, DependencyProperty property)
+            {
+                // The framework TextBox style is the baseline, not a caller
+                // override. A derived Input style can override that baseline.
+                for (; style is not null && style.TargetType != typeof(TextBox); style = style.BasedOn)
+                    if (style.Setters.OfType<Setter>().Any(setter => setter.Property == property)) return true;
+                return false;
+            }
+            bool Styled(DependencyProperty property)
+            {
+                if (Style is { } explicitStyle) return Sets(explicitStyle, property);
+                for (DependencyObject? scope = this; scope is not null; scope = VisualTreeHelper.GetParent(scope))
+                    if (scope is FrameworkElement element && element.Resources.TryGetValue(typeof(BleeckerInput), out var resource) && resource is Style implicitStyle)
+                        return Sets(implicitStyle, property);
+                return Application.Current.Resources.TryGetValue(typeof(BleeckerInput), out var applicationStyle) && applicationStyle is Style style && Sets(style, property);
+            }
+            void Default(DependencyProperty property, ref Binding? binding, string path)
+            {
+                var owned = binding is not null && ReferenceEquals(GetBindingExpression(property)?.ParentBinding, binding);
+                if (Styled(property)) { if (owned) ClearValue(property); return; }
+                if (ReadLocalValue(property) == DependencyProperty.UnsetValue)
+                {
+                    binding = new Binding { Source = geometryDefaults, Path = new PropertyPath(path) };
+                    SetBinding(property, binding);
+                }
+            }
+            Default(FontSizeProperty, ref defaultFontBinding, nameof(TextBlock.FontSize));
+            Default(PaddingProperty, ref defaultPaddingBinding, nameof(TextBlock.Padding));
+            Default(MinHeightProperty, ref defaultMinHeightBinding, nameof(TextBlock.MinHeight));
+        }
+        finally { updatingDefaults = false; }
     }
 
     private void UpdateAppearance(bool animate = true)

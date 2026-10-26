@@ -3631,6 +3631,9 @@
         "tests/Reference/InputPaintMotion.json",
         "samples/Orchard.Catalog/MainWindow.SearchInputs.cs",
         "scripts/verify-search-input.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
+        "scripts/verify-content-scale.mjs",
+        "scripts/test-content-scale-audit.mjs",
         "tests/PackageConsumer/MainWindow.SearchInput.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],

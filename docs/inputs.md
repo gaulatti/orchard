@@ -375,6 +375,18 @@ minimum heights, 13/14/15px Encode Sans text and 12/14/16px horizontal padding.
 Each supplied adornment reserves 40px on its side. Adornment presenters are
 decorative and do not intercept pointer input. Consumers supply their icon
 artwork and accessible input name through the normal WinUI automation contract.
+These size and adornment values are defaults: caller-local `FontSize`, `Padding`
+and `MinHeight`, live bindings, and explicit or implicit style setters retain
+precedence when the size or adornments change. Clearing a caller-local value
+restores the current size/adornment default. The catalog includes a caller-sized
+example. The hidden native source check at
+`artifacts/current/input-geometry-overrides-source-v3` verifies eight default,
+local, bound, styled and remount cases; all passed on x64. The same hidden,
+no-input cases pass against the independently restored x64 package at
+`artifacts/current/input-geometry-overrides-package-v1`. The broad package
+smoke still fails in its Data Table pagination popup check. The source catalog
+builds without warnings for x64 and ARM64; native ARM64 and full Input visual
+acceptance remain open.
 
 Native TextBox text, selection, read-only state, bindings and value automation
 remain available. IsError currently controls appearance only; it does not

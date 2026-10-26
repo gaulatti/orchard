@@ -17,6 +17,8 @@ public sealed partial class InputsFixture : UserControl
         await MainWindow.AwaitPresentationAsync(this);
         UpdateLayout();
         Require(SmallInput.ActualHeight == 36 && MediumInput.ActualHeight == 40 && LargeInput.ActualHeight == 44, "Input size heights differ from the reference.");
+        Require(CallerGeometryInput.FontSize == 20 && CallerGeometryInput.Padding == new Thickness(24, 0, 28, 0) && CallerGeometryInput.MinHeight == 32,
+            "The catalog Input replaced caller-owned font, padding or minimum height.");
         Require(new[]{SmallInput,MediumInput,LargeInput,IconsInput,ErrorInput,DisabledInput,DisabledErrorInput,ReadOnlyInput}
             .All(control=>Find<Border>(control,"BorderElement").BackgroundSizing==BackgroundSizing.OuterBorderEdge),
             "Input backgrounds do not extend beneath their source translucent borders.");
