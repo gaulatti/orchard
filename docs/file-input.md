@@ -141,6 +141,10 @@ of original filenames, required metadata and selection validity. Caller supplied
 names and label associations remain native automation properties. Narrator and
 OS setting changes are excluded from this goal.
 
+The evidence in the following paragraphs describes the original File Input
+preview with library identity `4575c2f0e0efb146ddb3365655d8ba771583a5bad71a6348bc1bda1647234657`.
+Its test counts and older shared-demo runs retain that source/binary scope.
+
 `FileInputsFixture` is registered in the catalog with all three sizes,
 error/disabled/required, constrained width, 200% source scaling, caller typography,
 live filter/multiple changes, silent clearing and optional fictional local files.
@@ -175,3 +179,22 @@ browser/native image equality. Source and package auditors reject 64 corrupted
 reports/files each. All 10 Windows text tests pass as well.
 The previous Hero Carousel v5 package is historical for these newer sources.
 The repository wiki is unavailable, so the contract is maintained here.
+
+## Implicit caller styles
+
+Ancestor implicit `BleeckerFileInput` styles can supply `FontSize` and `Padding`,
+including `BasedOn` styles. These override the size/font-scale defaults just as
+explicit caller styles do. The standard library style continues to use its
+size-dependent defaults. Changing `InputSize` or `FontScale` preserves the caller
+style and the original selected-file objects/list. Explicit styles take
+precedence over ancestor implicit styles through normal WinUI resource lookup.
+
+The catalog adds an implicitly styled attachment example. The current hidden
+source, exact NuGet consumer and catalog archive each pass 68 existing visual
+states and 34 selection/lifecycle/style contracts. New cases cover implicit font
+and padding across all three sizes, both font scales and both text directions.
+Auditors reject 69 damaged reports/files each. All 34 native states/images reached
+before the preceding package's implicit-style failure remain unchanged.
+Browser/native strict raster diagnostics retain their actual failures and do not
+establish component acceptance. System-picker interaction, physical input,
+native ARM64 execution, scaling and complete visual acceptance stay open.

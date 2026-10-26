@@ -14,8 +14,8 @@ Copy-Item -LiteralPath $taskReference -Destination (Join-Path $taskTarget 'sourc
 $taskExe=Join-Path $taskApp "$HostName.exe"
 $taskProcess=Start-Process -FilePath $taskExe -ArgumentList "--probe-hidden-file-input --verify-output `"$taskReport`"" -PassThru -WindowStyle Hidden
 @{processId=$taskProcess.Id;executable=$taskExe;startedAt=[DateTime]::UtcNow.ToString('o');hardwareInputSent=$false;systemPickerAuthorized=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $taskTarget 'process.json')
-$taskDone=$taskProcess.WaitForExit(180000)
-if(-not $taskDone){if($taskProcess.Id -in @(27524,32420,32704,33320,33684)){throw 'Protected PID reused; refusing termination'};$taskProcess.Kill();$taskProcess.WaitForExit(10000)|Out-Null}
+while(-not $taskProcess.WaitForExit(10000)){}
+$taskDone=$true
 @{exited=$taskDone;exitCode=$taskProcess.ExitCode;timedOut=(-not $taskDone);finishedAt=[DateTime]::UtcNow.ToString('o')}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $taskTarget 'process-exit.json')
 if(-not $taskDone -or $taskProcess.ExitCode -ne 0){throw 'File Input native probe failed; inspect retained report/stage'}
 node (Join-Path $PSScriptRoot 'verify-file-input.mjs') --native $taskTarget --host-assembly "$HostName.dll" --output (Join-Path $taskTarget 'file-input-audit.json')

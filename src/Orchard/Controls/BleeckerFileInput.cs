@@ -202,8 +202,20 @@ public sealed class BleeckerFileInput : Button, INotifyPropertyChanged
             var standard=(Style)Application.Current.Resources["BleeckerFileInputStyle"];
             bool CallerStyleSets(DependencyProperty property)
             {
-                for(var style=Style;style is not null&&!ReferenceEquals(style,standard);style=style.BasedOn)
-                    if(style.Setters.OfType<Setter>().Any(setter=>setter.Property==property))return true;
+                bool HasSetter(Style? style)
+                {
+                    for(;style is not null&&!ReferenceEquals(style,standard);style=style.BasedOn)
+                        if(style.Setters.OfType<Setter>().Any(setter=>setter.Property==property))return true;
+                    return false;
+                }
+                if(Style is {} explicitStyle)return HasSetter(explicitStyle);
+                // Implicit styles leave Style null. Respect the nearest declaration
+                // while retaining the standard style's size-dependent defaults.
+                for(DependencyObject? scope=this;scope is not null;scope=VisualTreeHelper.GetParent(scope))
+                    if(scope is FrameworkElement element&&element.Resources.TryGetValue(typeof(BleeckerFileInput),out var resource)&&resource is Style implicitStyle)
+                        return HasSetter(implicitStyle);
+                if(Application.Current.Resources.TryGetValue(typeof(BleeckerFileInput),out var applicationStyle)&&applicationStyle is Style style)
+                    return HasSetter(style);
                 return false;
             }
             void Default(DependencyProperty property,ref Binding binding,string sourceProperty)

@@ -16,5 +16,9 @@
   <orchard:BleeckerFileInput Width="160" HorizontalAlignment="Left" AutomationProperties.Name="Constrained fictional attachment"/>
   <orchard:BleeckerFileInput FontScale="2" Width="480" HorizontalAlignment="Left" AutomationProperties.Name="Scaled fictional attachment"/>
   <orchard:BleeckerFileInput FontFamily="Consolas" FontSize="20" Padding="9,13,9,13" CornerRadius="12" Width="480" HorizontalAlignment="Left" AutomationProperties.Name="Caller styled fictional attachment"/>
+  <Grid HorizontalAlignment="Left">
+   <Grid.Resources><Style TargetType="orchard:BleeckerFileInput" BasedOn="{StaticResource BleeckerFileInputStyle}"><Setter Property="FontSize" Value="20"/><Setter Property="Padding" Value="9,13,9,13"/></Style></Grid.Resources>
+   <orchard:BleeckerFileInput Width="480" AutomationProperties.Name="Implicitly styled fictional attachment"/>
+  </Grid>
  </StackPanel>
 </UserControl>
