@@ -6754,12 +6754,15 @@
         "tests/PackageConsumer/StatusBadgeFixture.cs",
         "scripts/verify-status-badge.ps1",
         "scripts/verify-status-badge.mjs",
-        "scripts/test-status-badge-audit.mjs"
+        "scripts/test-status-badge-audit.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
+        "scripts/verify-content-scale.mjs",
+        "scripts/test-content-scale-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Full baseline, gamut and extreme-label layout comparison",
-        "Actual text/display scaling; display-only metadata and no-tab-stop checks are applicable instead of a keyboard action",
+        "System text scaling and physical monitor-DPI changes remain open; isolated native rasterization at 100/125/150/200% passes in both themes with display-only metadata and no-tab-stop checks",
         "Remaining ARM64 state acceptance and complete rendered parity"
       ],
       "nativePreview": {

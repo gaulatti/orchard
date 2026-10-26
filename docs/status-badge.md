@@ -20,7 +20,7 @@ The registered fixture covers all variants, optional descriptions, international
 The rendered Bleecker Live reference measures 57.625 × 24px, with the typography, dot, padding and gaps above. A 320px fixture with label `REGIONAL COVERAGE TEMPORARILY DEGRADED` and description `Updates continue during local review` gives the browser badge 190.203125 × 39px and the description 121.796875px of width. The native regression checks the same 39px badge height and both allocated widths within 3px, then widens to 640px and narrows again to verify reflow. It retains a visible fixture and captures in `artifacts/smoke-status-layout-dot`.
 
 Full baseline/shaping and gamut comparison, widths below unbreakable-word minima,
-text/display scaling and current native ARM64 runtime remain open. The badge is
+system text scaling, physical monitor-DPI changes and current native ARM64 runtime remain open. The badge is
 display-only; its input contract is the absence of an unwanted focus stop.
 Narrator and OS contrast campaigns are excluded by the current
 [library scope](library-scope.md). The inventory entry remains in progress.
@@ -39,8 +39,19 @@ The catalog's changing badge demonstrates empty caller metadata. The focused
 NuGet consumer. It covers all five palettes in both themes, constrained and wide
 layout in both text directions, and the caller metadata cases above. The
 preceding published library reproduces the local-empty override failure.
-Source raster/gamut comparison, actual scaling and current native ARM64 execution
-remain separate open checks.
+Source raster/gamut comparison, physical monitor DPI, system text scaling and
+current native ARM64 execution remain separate open checks.
+
+The existing hidden catalog scaling fixture now checks the badge at 100%, 125%,
+150% and 200% isolated native XAML rasterization in both themes. It verifies the
+24px logical badge surface, 6px dot, visible label and description, caller-empty
+automation metadata, non-tab-stop semantics, placement inside the owned island,
+physical PNG dimensions and visible surface paint. Its 22 damaged-report cases
+include missing badge content, collapsed surface and unwanted tab focus. The
+fixture changes no Windows setting and does not establish system text scaling,
+physical monitor-DPI behavior, complete browser/native glyph parity or ARM64
+runtime. See `artifacts/current/status-badge-isolated-scale-v1` for the local
+report and PNGs.
 
 The source catalog, independent NuGet consumer and catalog archive each pass
 18 visual/layout states, 26 metadata/binding/style/lifecycle contracts and
