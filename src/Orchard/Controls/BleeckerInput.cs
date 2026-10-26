@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
@@ -42,8 +43,12 @@ public sealed partial class BleeckerInput : TextBox
     public static readonly DependencyProperty EndIconProperty = DependencyProperty.Register(nameof(EndIcon), typeof(object), typeof(BleeckerInput), new PropertyMetadata(null, OnGeometryChanged));
     public object? EndIcon { get => GetValue(EndIconProperty); set => SetValue(EndIconProperty, value); }
     public static readonly DependencyProperty IsErrorProperty = DependencyProperty.Register(nameof(IsError), typeof(bool), typeof(BleeckerInput),
-        new PropertyMetadata(false, (owner, _) => ((BleeckerInput)owner).UpdateAppearance()));
+        new PropertyMetadata(false, (owner, _) => { var input = (BleeckerInput)owner; input.UpdateAccessibility(); input.UpdateAppearance(); }));
     public bool IsError { get => (bool)GetValue(IsErrorProperty); set => SetValue(IsErrorProperty, value); }
+    public static readonly DependencyProperty IsInvalidProperty = DependencyProperty.Register(nameof(IsInvalid), typeof(object), typeof(BleeckerInput),
+        new PropertyMetadata(null, (owner, _) => ((BleeckerInput)owner).UpdateAccessibility()));
+    /// <summary>Overrides error-derived automation validity without changing the error paint.</summary>
+    public bool? IsInvalid { get => GetValue(IsInvalidProperty) is bool value ? value : null; set => SetValue(IsInvalidProperty, value); }
 
     protected override void OnApplyTemplate()
     {
@@ -55,6 +60,13 @@ public sealed partial class BleeckerInput : TextBox
         UpdateGeometry();
         UpdateAppearance(false);
     }
+
+    protected override AutomationPeer OnCreateAutomationPeer() => new InputPeer(this);
+    private sealed class InputPeer(BleeckerInput input) : TextBoxAutomationPeer(input)
+    {
+        protected override bool IsDataValidForFormCore() => base.IsDataValidForFormCore() && !(input.IsInvalid ?? input.IsError);
+    }
+    private void UpdateAccessibility() => FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
 
     private static void OnGeometryChanged(DependencyObject owner, DependencyPropertyChangedEventArgs _) => ((BleeckerInput)owner).UpdateGeometry();
     private (double Height,double Inset,double Font) Geometry=>InputSize switch

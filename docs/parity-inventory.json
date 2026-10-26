@@ -3625,6 +3625,7 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/InputsFixture.xaml.cs",
+        "samples/Orchard.Catalog/App.HiddenInputValidity.cs",
         "samples/Orchard.Catalog/InputsFixture.RoundedPointer.cs",
         "tests/Orchard.Tests/InputRoundedHitTests.cs",
         "tests/Orchard.Tests/InputPaintMotionTests.cs",
@@ -3640,8 +3641,8 @@
       "status": "in-progress",
       "remainingGaps": [
         "Finish appearance, shadows, motion and input-type contracts documented in docs/inputs.md",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
+        "Verify remaining physical keyboard/pointer and display/text scaling states",
+        "Verify ARM64 runtime and full visual parity"
       ]
     },
     {

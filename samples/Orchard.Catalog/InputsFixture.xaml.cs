@@ -52,6 +52,7 @@ public sealed partial class InputsFixture : UserControl
         Require(IconsInput.Padding.Left == 40 && IconsInput.Padding.Right == 40, "Adornments overlap the text inset.");
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(MediumInput);
         Require(peer.GetAutomationControlType() == AutomationControlType.Edit && peer.GetName() == "Search channels", "Input lost native edit semantics.");
+        Require(!FrameworkElementAutomationPeer.CreatePeerForElement(ErrorInput).IsDataValidForForm(), "The catalog error Input lost invalid form metadata.");
         // Native TextBox patterns are exposed to external UIA clients, not managed IValueProvider.
         MediumInput.Text = "Consumer update";
         MediumInput.Select(0, 8);

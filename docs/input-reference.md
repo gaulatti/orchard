@@ -189,6 +189,10 @@ value. The Error story renders `aria-invalid=true`. Native search cancel chrome
 is explicitly removed. Read-only, disabled, selection, editing, password/search
 types, constraints and consumer accessibility names need explicit Windows
 mapping and runtime verification, rather than an assumed type equivalence.
+The Windows `BleeckerInput.IsInvalid` override maps this validity precedence to
+the native TextBox automation peer; `IsError` remains the visual error flag.
+Native TextBox editing and automation patterns stay in place. Validation rules
+and error-message content remain consumer-owned.
 
 The pinned WinUI 2.3.9 `DefaultTextBoxStyle` uses a named `ContentElement`
 ScrollViewer for native editing, a placeholder presenter, header/description
@@ -316,7 +320,7 @@ Input suite remains required when this shared primitive changes.
   validation/accessibility semantics and consumer data updates. Preserve normal
   editing behavior through the actual TextBox content host.
 - Verify constrained width, long/non-Latin values, increased text/display size,
-  reduced motion, actual Windows contrast colors and Narrator.
+  reduced motion, component theme contrast and native UI Automation metadata.
 - Cover the independent package consumer and physical x64 runtime; retain the
   ARM64 runtime gap until hardware is available. Builds do not close that gap.
 - Replace remaining preview consumers only when their applicable contracts are

@@ -30,8 +30,8 @@ values independently with a one-millionth bound for native float storage.
 Strict whole-frame raster parity remains open: the 40 Search Input frames
 improve from 101,288 to 83,452 differing pixels without masks or resampling.
 This does not accept compositing, antialiasing, typography, focus-ring spread
-or shadow differences. Native enabled-motion presentation, actual Windows
-scaling/contrast, Narrator and current native ARM64 runtime remain unverified.
+or shadow differences. Native enabled-motion presentation, display/text
+scaling, component theme contrast and current native ARM64 runtime remain unverified.
 No Windows preference changed and push-triggered Actions remain paused.
 
 At `17b0e1b`, run `38597371241` passes the entire x64 job and ARM64 cross-build.
@@ -394,10 +394,16 @@ been rerun under the background-only desktop restriction. Native ARM64 and full
 Input visual acceptance remain open.
 
 Native TextBox text, selection, read-only state, bindings and value automation
-remain available. IsError currently controls appearance only; it does not
-validate consumer data or yet expose a complete validation accessibility API.
-Use a separate label and description composition. Password masking and native
-HTML input-type adaptations are not provided by this text-editor preview.
+remain available. `IsError` paints the error state and marks the native TextBox
+automation peer invalid. Nullable `IsInvalid` overrides that error-derived
+validity without changing the paint, matching the pinned source's explicit
+`aria-invalid` override. The peer also honors consumer-owned
+`AutomationProperties.IsDataValidForForm` and a composing `BleeckerField` error.
+The hidden x64 catalog check at `artifacts/current/input-validity-v1` verifies
+the existing Input examples, live overrides, native edit role/selection and
+Field composition without showing or focusing a window. It does not validate
+consumer data. Use a separate label and description composition. Password
+masking and native HTML input-type adaptations are not provided by this preview.
 
 The template owns background, border, focus ring, shadow and placeholder colors; it
 omits the Windows underline and clear button. The focus palette includes the
@@ -407,9 +413,9 @@ Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 
 Remaining work includes exact glyph/baseline and scaling comparison, custom
-cursor restoration, error semantics, shadow raster and motion comparison,
+cursor restoration, validation-message behavior, shadow raster and motion comparison,
 live brush updates, broader editing/clipboard
-regressions, physical keyboard/pointer, Narrator and ARM64 runtime verification.
+regressions, physical keyboard/pointer and ARM64 runtime verification.
 The catalog fixture covers all sizes and representative empty, populated,
 adorned, error, disabled, read-only and constrained multilingual examples.
 The focused smoke also captures every size with identical entered/placeholder
@@ -588,8 +594,8 @@ cases pass repeated reversals. The earlier clipped implementation also passes
 `artifacts/input-shadow-exterior-pointer-result.json` and the focused suite at
 `artifacts/smoke-input-shadow-exterior`.
 
-Exact native/browser blur and antialias comparison, scaling, Windows contrast,
-Narrator, observer performance and ARM64 runtime remain unverified. This
+Exact native/browser blur and antialias comparison, scaling, component theme
+contrast, observer performance and ARM64 runtime remain unverified. This
 checkpoint does not establish complete Input parity.
 
 The final full enabled-motion catalog suite passes at
@@ -702,7 +708,7 @@ do not show the apparent blue shadow-channel artifact from isolated low-alpha
 element PNG previews. The comparison is retained in
 `artifacts/input-composited-7024b9e-comparison.json`; archive/package digests are
 recorded in [runtime evidence](runtime-evidence.md). Browser/native parity,
-enabled corner interaction, contrast/Narrator and scaling remain open.
+enabled corner interaction, component theme contrast and scaling remain open.
 
 The local `artifacts/smoke-brand-motion-all` run stops at the reading-direction
 opaque-span assertion. Its isolated element preview alone cannot identify the
