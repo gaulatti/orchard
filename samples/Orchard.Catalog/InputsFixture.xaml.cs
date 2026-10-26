@@ -10,6 +10,22 @@ namespace Orchard.Catalog;
 public sealed partial class InputsFixture : UserControl
 {
     public InputsFixture() => InitializeComponent();
+    private bool styledGeometryApplied;
+
+    private void OnStyledGeometryLoaded(object sender, RoutedEventArgs args)
+    {
+        if (styledGeometryApplied) return;
+        LargeInput.ApplyTemplate();
+        var template = LargeInput.Template ?? throw new InvalidOperationException("The Input style example requires the branded template.");
+        var textBoxStyle = new Style { TargetType = typeof(TextBox) };
+        textBoxStyle.Setters.Add(new Setter(Control.FontSizeProperty, 21d));
+        textBoxStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(20, 0, 26, 0)));
+        textBoxStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty, 29d));
+        var inputStyle = new Style { TargetType = typeof(BleeckerInput), BasedOn = textBoxStyle };
+        inputStyle.Setters.Add(new Setter(Control.TemplateProperty, template));
+        styledGeometryApplied = true;
+        StyledGeometryInput.Style = inputStyle;
+    }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
@@ -19,6 +35,8 @@ public sealed partial class InputsFixture : UserControl
         Require(SmallInput.ActualHeight == 36 && MediumInput.ActualHeight == 40 && LargeInput.ActualHeight == 44, "Input size heights differ from the reference.");
         Require(CallerGeometryInput.FontSize == 20 && CallerGeometryInput.Padding == new Thickness(24, 0, 28, 0) && CallerGeometryInput.MinHeight == 32,
             "The catalog Input replaced caller-owned font, padding or minimum height.");
+        Require(StyledGeometryInput.FontSize == 21 && StyledGeometryInput.Padding == new Thickness(20, 0, 26, 0) && StyledGeometryInput.MinHeight == 29,
+            "The catalog Input replaced caller-owned TextBox base-style geometry.");
         Require(new[]{SmallInput,MediumInput,LargeInput,IconsInput,ErrorInput,DisabledInput,DisabledErrorInput,ReadOnlyInput}
             .All(control=>Find<Border>(control,"BorderElement").BackgroundSizing==BackgroundSizing.OuterBorderEdge),
             "Input backgrounds do not extend beneath their source translucent borders.");

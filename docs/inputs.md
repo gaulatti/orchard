@@ -377,16 +377,21 @@ decorative and do not intercept pointer input. Consumers supply their icon
 artwork and accessible input name through the normal WinUI automation contract.
 These size and adornment values are defaults: caller-local `FontSize`, `Padding`
 and `MinHeight`, live bindings, and explicit or implicit style setters retain
-precedence when the size or adornments change. Clearing a caller-local value
-restores the current size/adornment default. The catalog includes a caller-sized
-example. The hidden native source check at
-`artifacts/current/input-geometry-overrides-source-v3` verifies eight default,
-local, bound, styled and remount cases; all passed on x64. The same hidden,
-no-input cases pass against the independently restored x64 package at
-`artifacts/current/input-geometry-overrides-package-v1`. The broad package
-smoke still fails in its Data Table pagination popup check. The source catalog
-builds without warnings for x64 and ARM64; native ARM64 and full Input visual
-acceptance remain open.
+precedence when the size or adornments change. This includes caller-owned
+`TextBox` base styles; only the canonical WinUI `DefaultTextBoxStyle` is skipped
+when detecting overrides. Clearing a caller-local value restores the current
+size/adornment default. The catalog includes local-value and inherited-style
+examples. The hidden native source and independent package checks at
+`artifacts/current/input-textbox-base-catalog-v1` and
+`artifacts/current/input-textbox-base-package-v1` each pass ten default, local,
+bound, styled and remount cases on x64. The unchanged implementation failed the
+new inherited-style case at `artifacts/current/input-textbox-base-pre-repair-v1`.
+The source catalog builds without warnings for x64 and ARM64, and the exact
+NuGet package restores and builds in isolated consumers for both architectures.
+An earlier broad package smoke failed at a stale native-Popup lookup in Data
+Table pagination; that test was corrected, but the full keyboard smoke has not
+been rerun under the background-only desktop restriction. Native ARM64 and full
+Input visual acceptance remain open.
 
 Native TextBox text, selection, read-only state, bindings and value automation
 remain available. IsError currently controls appearance only; it does not

@@ -81,9 +81,10 @@ public sealed partial class BleeckerInput : TextBox
         {
             static bool Sets(Style? style, DependencyProperty property)
             {
-                // The framework TextBox style is the baseline, not a caller
-                // override. A derived Input style can override that baseline.
-                for (; style is not null && style.TargetType != typeof(TextBox); style = style.BasedOn)
+                // Skip only the canonical WinUI baseline. A caller can also
+                // base an Input style on their own TextBox style.
+                Application.Current.Resources.TryGetValue("DefaultTextBoxStyle", out var frameworkBaseline);
+                for (; style is not null && !ReferenceEquals(style, frameworkBaseline); style = style.BasedOn)
                     if (style.Setters.OfType<Setter>().Any(setter => setter.Property == property)) return true;
                 return false;
             }
