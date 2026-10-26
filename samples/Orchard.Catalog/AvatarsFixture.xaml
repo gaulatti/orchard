@@ -15,6 +15,12 @@
    <orchard:BleeckerAvatar AvatarSize="ExtraSmall" VerticalAlignment="Bottom" /><orchard:BleeckerAvatar AvatarSize="Small" VerticalAlignment="Bottom" />
    <orchard:BleeckerAvatar VerticalAlignment="Bottom" /><orchard:BleeckerAvatar AvatarSize="Large" VerticalAlignment="Bottom" /><orchard:BleeckerAvatar AvatarSize="ExtraLarge" VerticalAlignment="Bottom" />
   </StackPanel>
+  <TextBlock Text="Caller dimensions and typography" Style="{StaticResource BleeckerBodyStyle}" />
+  <TextBlock x:Name="CallerMetrics" Width="74" Height="42" FontSize="17" Visibility="Collapsed" />
+  <StackPanel Orientation="Horizontal" Spacing="16">
+   <orchard:BleeckerAvatar Width="{Binding Width, ElementName=CallerMetrics}" Height="{Binding Height, ElementName=CallerMetrics}" FontSize="{Binding FontSize, ElementName=CallerMetrics}" Fallback="Fictional Harbor" />
+   <orchard:BleeckerAvatar Width="74" Height="42" />
+  </StackPanel>
   <TextBlock Text="Consumer-owned fictional image and failed image" Style="{StaticResource BleeckerBodyStyle}" />
   <StackPanel x:Name="Images" Orientation="Horizontal" Spacing="16">
    <orchard:BleeckerAvatar x:Name="Photo" AvatarSize="ExtraLarge" Alt="Fictional color blocks" />

@@ -127,6 +127,29 @@ The catalog resource-reference test rejects unknown Bleecker keys. Native checks
 also verify collection resolution after load, rejected direct null input, shared
 binding updates and retained overflow identity/elevation. Earlier startup and
 update failures are recorded in the runtime evidence page.
-Exact native/browser raster parity, contrast/Narrator, display/text scaling,
-constrained widths and consumer style/geometry overrides remain acceptance gaps.
+Complete native/browser visual review, display/text scaling, constrained widths
+and remaining image/customization acceptance stay open. Caller sizing and style
+precedence qualification is recorded below.
 Neither a successful build nor nonblank screenshots establishes visual acceptance.
+
+## Caller sizing
+
+`Width`, `Height` and `FontSize` remain caller-owned. Local values and bindings
+survive template application, `AvatarSize` changes and remounting, including a
+caller value equal to the current size default. Explicit styles, `BasedOn`
+setters and the nearest implicit avatar style take precedence over the size
+recipe. Clearing an override restores the applicable style or current size
+default. The empty silhouette's viewport uses 60% of each actual dimension;
+custom non-square avatars retain native uniform SVG scaling within that viewport.
+
+The catalog includes bound caller dimensions/font size and a non-square empty
+avatar. `--probe-hidden-avatar-sizing` qualifies five default sizes, bound/local
+and styled overrides, updates and clearing, templates/remounts, and retained
+default/styled group positions. It runs without desktop input. OS accessibility
+campaigns follow the exclusions in [library scope](library-scope.md).
+
+The current source, exact NuGet consumer and catalog archive hosts each pass
+280 sizing states and 32 caller/group lifecycle checks in Light/Dark and LTR/RTL.
+Each run records 1,757 isolation guards with zero focus or activation. The ten
+Light/LTR default initials/silhouette images across all five sizes are unchanged.
+These checks do not establish complete image, visual or platform acceptance.

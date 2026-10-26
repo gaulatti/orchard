@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Windows.UI.ViewManagement;
@@ -26,6 +27,9 @@ public sealed class BleeckerAvatar : Control
     private string? overflowText;
     private readonly UISettings settings = new();
     private readonly AccessibilitySettings accessibility = new();
+    private readonly TextBlock sizeDefaults = new();
+    private Binding? defaultWidthBinding, defaultHeightBinding, defaultFontBinding;
+    private bool updatingDefaults;
 
     public BleeckerAvatar()
     {
@@ -33,6 +37,8 @@ public sealed class BleeckerAvatar : Control
         SizeChanged += (_, _) => UpdateSurface();
         RegisterPropertyChangedCallback(CornerRadiusProperty, (_, _) => UpdateSurface());
         RegisterPropertyChangedCallback(BorderThicknessProperty, (_, _) => UpdateSurface());
+        foreach (var property in new[] { WidthProperty, HeightProperty, FontSizeProperty, StyleProperty })
+            RegisterPropertyChangedCallback(property, (_, _) => { if (!updatingDefaults) EnsureDefaultBindings(); });
         Loaded += (_, _) => { settings.ColorValuesChanged += OnColorsChanged; UpdateSurface(); };
         Unloaded += (_, _) => { settings.ColorValuesChanged -= OnColorsChanged; ClearShadow(); };
         UpdateSize();
@@ -73,10 +79,57 @@ public sealed class BleeckerAvatar : Control
     private void UpdateSize()
     {
         var metrics = Metrics(AvatarSize);
-        Width = Height = metrics.Edge;
-        FontSize = overflow ? metrics.OverflowFont : metrics.Font;
+        sizeDefaults.Width = sizeDefaults.Height = metrics.Edge;
+        sizeDefaults.FontSize = overflow ? metrics.OverflowFont : metrics.Font;
+        EnsureDefaultBindings();
         if (text is not null) text.LineHeight = overflow ? metrics.OverflowLine : metrics.Line;
-        if (person is not null) person.Width = person.Height = metrics.Edge * .6;
+    }
+    private void EnsureDefaultBindings()
+    {
+        if (updatingDefaults) return;
+        updatingDefaults = true;
+        try
+        {
+            bool Styled(DependencyProperty property)
+            {
+                static bool HasSetter(Style? style, DependencyProperty property)
+                {
+                    for (; style is not null; style = style.BasedOn)
+                        if (style.Setters.OfType<Setter>().Any(setter => setter.Property == property)) return true;
+                    return false;
+                }
+                if (Style is { } explicitStyle) return HasSetter(explicitStyle, property);
+                // WinUI leaves Style null for implicit styles. Observe the same
+                // nearest resource declaration without installing a different style.
+                for (DependencyObject? scope = this; scope is not null; scope = VisualTreeHelper.GetParent(scope))
+                    if (scope is FrameworkElement element && element.Resources.TryGetValue(typeof(BleeckerAvatar), out var resource) && resource is Style implicitStyle)
+                        return HasSetter(implicitStyle, property);
+                if (Application.Current.Resources.TryGetValue(typeof(BleeckerAvatar), out var applicationStyle) && applicationStyle is Style style)
+                    return HasSetter(style, property);
+                return false;
+            }
+            void Default(DependencyProperty property, ref Binding? binding, string path)
+            {
+                var owned = binding is not null && ReferenceEquals(GetBindingExpression(property)?.ParentBinding, binding);
+                if (Styled(property)) { if (owned) ClearValue(property); return; }
+                if (ReadLocalValue(property) == DependencyProperty.UnsetValue)
+                {
+                    // A binding expression distinguishes our defaults from a caller
+                    // assigning even the same value, and survives size updates.
+                    binding = new Binding { Source = sizeDefaults, Path = new PropertyPath(path) };
+                    SetBinding(property, binding);
+                }
+            }
+            Default(WidthProperty, ref defaultWidthBinding, nameof(TextBlock.Width));
+            Default(HeightProperty, ref defaultHeightBinding, nameof(TextBlock.Height));
+            Default(FontSizeProperty, ref defaultFontBinding, nameof(TextBlock.FontSize));
+        }
+        finally { updatingDefaults = false; }
+    }
+    protected override Windows.Foundation.Size MeasureOverride(Windows.Foundation.Size availableSize)
+    {
+        EnsureDefaultBindings();
+        return base.MeasureOverride(availableSize);
     }
     protected override void OnApplyTemplate()
     {
@@ -133,7 +186,9 @@ public sealed class BleeckerAvatar : Control
     private void ClearShadow() { if (shadowHost is not null) ElementCompositionPreview.SetElementChildVisual(shadowHost, null); }
     private void UpdateSurface()
     {
-        if (surface is null || photo is null || ring is null || groupRingProbe is null || shadowHost is null || nearMask is null || farMask is null) return;
+        if (surface is null || photo is null || ring is null || groupRingProbe is null || shadowHost is null || nearMask is null || farMask is null || person is null) return;
+        person.Width = ActualWidth * .6;
+        person.Height = ActualHeight * .6;
         var corners = CornerRadius;
         var factor = Math.Min(1, Math.Min(Math.Min(Ratio(ActualWidth, corners.TopLeft + corners.TopRight), Ratio(ActualWidth, corners.BottomLeft + corners.BottomRight)),
             Math.Min(Ratio(ActualHeight, corners.TopLeft + corners.BottomLeft), Ratio(ActualHeight, corners.TopRight + corners.BottomRight))));

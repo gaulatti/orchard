@@ -2858,14 +2858,16 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/AvatarsFixture.xaml.cs: VerifyAsync",
-        "tests/PackageConsumer/MainWindow.xaml.cs: OnLoaded"
+        "tests/PackageConsumer/MainWindow.xaml.cs: OnLoaded",
+        "tests/PackageConsumer/AvatarSizingFixture.cs",
+        "scripts/verify-avatar-sizing.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Full visual/input/accessibility/scaling acceptance remains open; scoped native x64/ARM64 catalog and package checks pass at 2f265e3",
         "Complete source-derived visual review across all five sizes and both themes under docs/acceptance-contract.md; retain exact native/browser raster diagnostics separately",
         "Display/text scaling and constrained-width acceptance",
-        "Consumer geometry/style overrides and complete lifecycle acceptance",
+        "Complete remaining image/customization lifecycle acceptance; current x64 caller sizing regression covers280 states/32 contracts including bindings, equal values, explicit/BasedOn/implicit styles and retained group children; ten default captures unchanged",
         "See docs/avatar-reference.md for the pinned source and API contract"
       ]
     },
