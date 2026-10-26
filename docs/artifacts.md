@@ -91,3 +91,8 @@ fails so the failure can be examined. Old successful runs and their copied
 application binaries still need pruning or a full artifact reset. After any
 reset, regenerate the evidence needed for active acceptance checks rather than
 claiming that old checkpoint paths still exist.
+
+The Media Library negative auditor likewise removes its copied counterexample
+directory after a successful run and leaves a failing copy available for
+diagnosis. This prevents the normal audit from retaining a second copy of all
+100 rendered states.

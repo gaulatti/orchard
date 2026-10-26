@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Markup;
@@ -21,6 +22,8 @@ public sealed partial class BleeckerMediaLibrary
         private readonly Grid content = new() { UseLayoutRounding = false };
         private readonly Image image = new() { Name = "MediaTileImage", Stretch = Stretch.UniformToFill, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, IsHitTestVisible = false, FlowDirection = FlowDirection.LeftToRight };
         private readonly TextBlock missing, failure, filename;
+        private readonly Grid failureVisual = new() { Name = "MediaFailedImage", IsHitTestVisible = false, Visibility = Visibility.Collapsed };
+        private readonly Microsoft.UI.Xaml.Shapes.Path failureGlyph;
         private readonly Border placeholder = new() { Name = "MediaNoPreview", IsHitTestVisible = false };
         private readonly Grid overlay = new() { Name = "MediaTileOverlay", VerticalAlignment = VerticalAlignment.Bottom, UseLayoutRounding = false };
         private readonly Border overlayPaint = new() { Name = "MediaOverlayPaint", IsHitTestVisible = false };
@@ -47,10 +50,16 @@ public sealed partial class BleeckerMediaLibrary
             var secondary = (FontFamily)Application.Current.Resources["BleeckerSecondaryFontFamily"];
             missing = Text("MediaNoPreviewText", secondary, 12, 16); missing.Text = "No preview"; missing.HorizontalAlignment = HorizontalAlignment.Center; missing.VerticalAlignment = VerticalAlignment.Center; missing.IsHitTestVisible = false; placeholder.Child = missing;
             failure = Text("MediaFailedImageText", (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"], 16, 24); failure.IsHitTestVisible = false; failure.VerticalAlignment = VerticalAlignment.Top; failure.Visibility = Visibility.Collapsed;
+            // A failed browser image retains a visible marker before its original alt text.
+            failureGlyph = (Microsoft.UI.Xaml.Shapes.Path)XamlReader.Load("<Path xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Name='MediaFailedImageGlyph' Width='16' Height='16' Stretch='None' StrokeThickness='1' Data='M1.5,1.5 H14.5 V14.5 H1.5 Z M3.5,11 L6,8 L8,10 L10,7 L13,11 M10,5 A1,1 0 1 0 8,5 A1,1 0 1 0 10,5'/>");
+            failureGlyph.IsHitTestVisible = false; failureGlyph.VerticalAlignment = VerticalAlignment.Top; AutomationProperties.SetAccessibilityView(failureGlyph, AccessibilityView.Raw);
+            failureVisual.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(16) });
+            failureVisual.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            Grid.SetColumn(failure, 1); failureVisual.Children.Add(failureGlyph); failureVisual.Children.Add(failure);
             filename = Text("MediaTileFilename", (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"], 12, 18); filename.FontWeight = Microsoft.UI.Text.FontWeights.Medium; filename.TextWrapping = TextWrapping.NoWrap; filename.TextTrimming = TextTrimming.CharacterEllipsis; filename.IsHitTestVisible = false;
             overlayContent = new() { Child = overlayStack, UseLayoutRounding = false }; overlayStack.Children.Add(filename); overlayStack.Children.Add(delete); overlay.Children.Add(backdrop.Host); overlay.Children.Add(overlayPaint); overlay.Children.Add(overlayContent); overlay.RenderTransform = shift;
             delete.Content = Icon("M3,6 L21,6 M19,6 L18,20 L6,20 L5,6 M9,6 L9,3 L15,3 L15,6 M10,10 L10,16 M14,10 L14,16", 16, "Delete"); AutomationProperties.SetName(delete, "Delete media item"); ToolTipService.SetToolTip(delete, "Delete"); delete.Click += DeleteClicked;
-            content.Children.Add(image); content.Children.Add(placeholder); content.Children.Add(failure); content.Children.Add(Open); content.Children.Add(overlay); Canvas.SetZIndex(Open, 10); Canvas.SetZIndex(overlay, 20); chrome.Child = content;
+            content.Children.Add(image); content.Children.Add(placeholder); content.Children.Add(failureVisual); content.Children.Add(Open); content.Children.Add(overlay); Canvas.SetZIndex(Open, 10); Canvas.SetZIndex(overlay, 20); chrome.Child = content;
             for (var i = 0; i < 2; i++) { var host = new Grid { Name = "MediaShadow" + i, IsHitTestVisible = false }; var mask = new Microsoft.UI.Xaml.Shapes.Path { Fill = new SolidColorBrush(Microsoft.UI.Colors.White) }; var exterior = new Microsoft.UI.Xaml.Shapes.Path { Fill = new SolidColorBrush(Microsoft.UI.Colors.White) }; var masks = new Canvas { Opacity = 0, IsHitTestVisible = false }; masks.Children.Add(mask); masks.Children.Add(exterior); Root.Children.Add(masks); Root.Children.Add(host); shadows.Add(new(owner, chrome, host, mask, exterior)); }
             Root.Children.Add(chrome); Root.Children.Add(focusRing);
             Root.PointerEntered += (_, _) => SetOver(true); Root.PointerExited += (_, _) => SetOver(false); Root.GotFocus += (_, _) => SetFocused(true); Root.LostFocus += (_, _) => SetFocused(FocusWithin());
@@ -80,12 +89,12 @@ public sealed partial class BleeckerMediaLibrary
             var next = item.ThumbnailSource ?? item.ImageSource; if (!ReferenceEquals(image.Source, next)) { failed = false; image.Source = next; }
             filename.Text = item.Filename; var f = owner.RemScale; filename.Margin = new(0, 0, 0, 8 * f); missing.FontSize = 12 * f; missing.LineHeight = 16 * f; overlayContent.Padding = new(12 * f); delete.Width = delete.Height = delete.MinWidth = delete.MinHeight = 40 * f;
             foreach (var text in new[] { missing, failure, filename }) { text.FlowDirection = owner.FlowDirection; text.Language = owner.Language; text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; }
-            overlay.FlowDirection = owner.FlowDirection; UpdateImage(); UpdateInput(); Paint();
+            overlay.FlowDirection = failureVisual.FlowDirection = owner.FlowDirection; UpdateImage(); UpdateInput(); Paint();
         }
         private void UpdateImage()
         {
             if (Item is null) return; var label = string.IsNullOrEmpty(Item.Alt) ? Item.Filename : Item.Alt; AutomationProperties.SetName(image, label); failure.Text = label;
-            placeholder.Visibility = image.Source is null ? Visibility.Visible : Visibility.Collapsed; image.Visibility = image.Source is not null && !failed ? Visibility.Visible : Visibility.Collapsed; failure.Visibility = failed ? Visibility.Visible : Visibility.Collapsed;
+            placeholder.Visibility = image.Source is null ? Visibility.Visible : Visibility.Collapsed; image.Visibility = image.Source is not null && !failed ? Visibility.Visible : Visibility.Collapsed; failureVisual.Visibility = failure.Visibility = failed ? Visibility.Visible : Visibility.Collapsed;
         }
         internal void UpdateInput() { Open.IsEnabled = owner.InputAllowed; delete.Visibility = owner.HasDelete ? Visibility.Visible : Visibility.Collapsed; delete.IsEnabled = owner.InputAllowed && owner.DeleteCommand?.CanExecute(Item.Id) != false; }
         private void Paint()
@@ -95,7 +104,7 @@ public sealed partial class BleeckerMediaLibrary
             reveal.Retarget(over || focused ? 1 : 0, now, 220, animate); hover.Retarget(over ? 1 : 0, now, 220, animate);
             var brush = owner.Brush(over ? "TileHoverBorder" : "TileBorder"); var color = brush.Color; border.Retarget(BleeckerCssColor.FromRgba((color.R, color.G, color.B, color.A / 255d * brush.Opacity), false), now, 220, animate);
             if (owner.TileStyle is null) chrome.BorderBrush = animatedBorder;
-            missing.Foreground = owner.Brush("Secondary"); failure.Foreground = owner.Foreground; placeholder.Background = owner.Brush("Placeholder"); overlayPaint.Background = owner.Brush("Overlay"); filename.Foreground = owner.Brush("OverlayText"); delete.Foreground = owner.Brush("Delete"); focusRing.BorderBrush = owner.Brush("Focus"); focusRing.Visibility = focused ? Visibility.Visible : Visibility.Collapsed;
+            missing.Foreground = owner.Brush("Secondary"); failure.Foreground = owner.Foreground; failureGlyph.Stroke = owner.Brush("Secondary"); placeholder.Background = owner.Brush("Placeholder"); overlayPaint.Background = owner.Brush("Overlay"); filename.Foreground = owner.Brush("OverlayText"); delete.Foreground = owner.Brush("Delete"); focusRing.BorderBrush = owner.Brush("Focus"); focusRing.Visibility = focused ? Visibility.Visible : Visibility.Collapsed;
             Present(); if (!subscribed && (reveal.IsRunning(now) || hover.IsRunning(now) || border.IsRunning(now))) { CompositionTarget.Rendering += Rendering; subscribed = true; }
         }
         private void Rendering(object? sender, object args) { Present(); var now = clock.Elapsed.TotalMilliseconds; if (!reveal.IsRunning(now) && !hover.IsRunning(now) && !border.IsRunning(now)) StopFrames(); }

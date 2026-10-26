@@ -71,6 +71,11 @@ The tile uses a nonempty thumbnail URL before a nonempty full URL, with alt text
 falling back to the filename. With neither image value it displays `No preview`.
 An image decoding failure does not select another source. The preview uses only
 the full URL, so a thumbnail-only item has an empty image frame in the modal.
+For a failed tile thumbnail, the original alt text remains visible with a small
+image-failure marker at its start, matching the source's broken-image affordance.
+The marker uses Orchard's secondary text brush in each theme and adds no pointer
+or accessibility stop. This is an intentional Windows rendering of the browser's
+default broken-image icon rather than a replacement image or URL fallback.
 Alt text, URL and creation-date sections follow the original truthiness checks;
 an empty filename selects the modal heading `Media Preview`. Created dates use
 the browser's local date formatting, including its visible invalid-date result.
@@ -168,3 +173,16 @@ Strict image equality remains failed: source/package differs at 9,171 pixels
 (maximum channel 102; zero identical PNG pairs), source/archive at 10,366 pixels
 (maximum 102; 11 identical pairs). Both permit zero difference. These previews
 verify delivery and behavior without claiming complete visual/input acceptance.
+
+The subsequent failed-thumbnail repair uses the existing fictional broken-image
+catalog case. `artifacts/current/media-library-broken-image-v2` passes 100 hidden
+x64 states, 38 behavior checks and 102 rendered PNG audits; its light and dark
+default captures were inspected. The audit checks the 16px marker beside the
+original alt text, top-edge placement, non-hit-testable presentation and visible
+marker ink. An initial capture with the marker centered vertically is retained
+as a failed visual diagnostic; the corrected capture places it beside the text.
+The negative audit rejects 85 altered reports and images, including a hidden or
+erased marker. Its successful scratch copy is removed after the audit. Both x64
+and ARM64 catalog builds pass without warnings. This is source-host evidence;
+fresh NuGet delivery, physical input, full visual comparison and ARM64 runtime
+remain open, so the component is not accepted.
