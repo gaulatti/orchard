@@ -45,7 +45,17 @@ supplied null. Omission captures the host default for that new item; null, NaN,
 zero and negative values are persistent. Changing the host default does not
 restart existing timers. Positive durations use the source browser timer's
 signed 32-bit millisecond conversion, including fractional truncation and
-overflow; extreme numeric inputs still require supplemental runtime evidence.
+overflow. A current source-built hidden x64 host and an isolated x64 consumer of
+the existing `0.1.0-display-metadata-v1-local` package each pass 28 behavior
+contracts, including a positive 0.5ms timeout, a 2³²+1000ms duration that wraps
+to 1000ms, and an explicit NaN that remains mounted. Their negative auditors
+reject 63 and 61 damaged reports respectively. The ARM64 solution compiles with
+zero warnings; native ARM64 execution, other extreme values, physical input and
+full package integration remain open. The broad consumer run reached a separate
+Pagination physical-input check and did not pass, so it is not counted as full
+package verification. Focused evidence is in
+`artifacts/current/sonner-timer-source-native-v1` and
+`artifacts/current/sonner-timer-package-native-v1`.
 
 Actions retain their original `ICommand` and parameter. The action variant uses
 `BleeckerButtonVariant`; omission selects Primary, and Link is a separate

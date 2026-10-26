@@ -6,11 +6,11 @@ import {pathToFileURL} from 'node:url';
 import {readRgbaPng} from './reference/read-rgba-png.mjs';
 
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
-const contractIds=['active-modal-isolation','original-action-command','api-dismiss-immediate','default-timeout','explicit-duration-override','live-default-capture','global-variants','multiple-host-cleanup','disabled-hidden-owner-ancestor','unload-reload-retirement','live-theme-retained'];
+const contractIds=['active-modal-isolation','original-action-command','api-dismiss-immediate','default-timeout','fractional-timeout','wrapped-timeout','nan-persistent','explicit-duration-override','live-default-capture','global-variants','multiple-host-cleanup','disabled-hidden-owner-ancestor','unload-reload-retirement','live-theme-retained'];
 export function verifySonnerReport(native,reference,hostAssembly){
  assert.equal(native.format,'orchard-sonner-native-v1');assert.equal(native.passed,true);assert.equal(native.focus,0);assert.equal(native.activations,0);assert(native.guards>100);
  for(const field of ['activateCalled','showWindowCalled','focusCalled','hardwareInputSent','physicalInputVerified','sourceRasterParityVerified','nativeComponentAccepted'])assert.equal(native[field],false,field);
- assert.equal(native.publicApisOnly,true);assert.equal(native.states.length,66);assert.equal(native.contracts.length,22);assert.equal(native.presence.length,2);assert.equal(native.standalone.length,2);assert.equal(native.catalog.length,hostAssembly==='Orchard.Catalog.dll'?2:0);assert.equal(native.pngs.length,66+native.catalog.length);
+ assert.equal(native.publicApisOnly,true);assert.equal(native.states.length,66);assert.equal(native.contracts.length,28);assert.equal(native.presence.length,2);assert.equal(native.standalone.length,2);assert.equal(native.catalog.length,hostAssembly==='Orchard.Catalog.dll'?2:0);assert.equal(native.pngs.length,66+native.catalog.length);
  assert(['X64','Arm64'].includes(native.processArchitecture));assert.equal(native.osArchitecture,native.processArchitecture);for(const c of native.catalog){assert.equal(c.stylesApplied,true);assert.equal(c.publicStylesVerified,4);}
  let geometryValues=0,maximumGeometryError=0,paletteValues=0;
  const close=(actual,expected,label)=>{assert(Number.isFinite(actual)&&Number.isFinite(expected),label);const error=Math.abs(actual-expected);maximumGeometryError=Math.max(maximumGeometryError,error);assert(error<=.02,label+': '+actual+' != '+expected);geometryValues++;};
