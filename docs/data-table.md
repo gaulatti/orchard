@@ -707,6 +707,20 @@ zero threshold. The candidate is preserved and reverted; all 566 library source
 hashes and eight normal output files match the baseline again. It establishes
 no library performance improvement.
 
+An additional plain-cell experiment reused the realized text width when the
+string had no word-break opportunity, avoiding a second text measurement for
+those cells. Three alternating baseline/candidate x64 focused-paging pairs
+passed all 20 operations per run, with matching semantic snapshots and caller
+lifecycle contracts. At 16,384 rows/page 100, next-page medians were 1,686.8
+and 1,655.9 ms; their ranges overlap and both exceed the 1,000 ms budget.
+Other timings moved in both directions, including a slower clear-global median.
+The change was reverted; a rebuilt normal x64 host passed the same 20 focused
+operations with matching semantic snapshots and caller lifecycle contracts.
+This focused result neither qualifies the full
+120-profile matrix nor establishes a reliable speedup. Raw reports and the
+decision are under `artifacts/current/table-no-break-*-v[1-3]` and
+`artifacts/current/table-no-break-decision-v1.json`.
+
 Run the diagnostic workflow from the repository root after a normal x64 build
 and a matching qualifying benchmark run. Use fresh output directories. Install
 the pinned tool once with `dotnet tool install dotnet-trace --tool-path
