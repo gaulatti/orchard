@@ -26,6 +26,11 @@ Consumer `CornerRadius` values and bindings apply to the keycap and its 1px
 downward shadow, including generated keys in a combination. Square and asymmetric
 bottom corners retain their shape; overlapping corner radii scale together to
 fit the keycap. Live changes, resize and template replacement update the shadow.
+`HorizontalContentAlignment` and `VerticalContentAlignment` default to Center,
+matching the pinned keycap appearance. Caller values and bindings control content
+placement within the border and padding; combination children retain live
+alignment bindings to their owner. Content, templates and selectors remain
+caller-owned through key combinations, template replacement and remounting.
 Theme resources provide the light/dark palettes and system colors in contrast
 mode. No disabled dimming or animation is added.
 
@@ -66,10 +71,22 @@ campaigns are excluded by the current [library scope](library-scope.md).
 ```
 
 The published Skeleton-preview library fails the square-corner pixel regression.
-The repaired source catalog, exact NuGet consumer and catalog archive runtime
+The corner-preview source catalog, exact NuGet consumer and catalog archive runtime
 each pass all 32 radius/size/theme/direction states and four
 combination/template/remount contexts with zero focus or activation. Source and
 independent consumer builds pass for x64 and ARM64; native ARM64 execution remains
 unverified for this repair.
 The unaffected default Light/LTR capture is unchanged. This focused result does
 not establish complete browser/native visual parity or actual display scaling.
+
+The content-alignment preview qualifies all 16 horizontal/vertical alignment
+combinations in both themes and text directions, using native Border layout as
+the reference for the actual caller element. Source, independent package and
+archive hosts each pass 64 alignment states and 16 checks for live combination
+bindings, original model templates/selectors, and retained content through
+retemplating and remounting. The source host also reruns the 32-state corner
+regression; all four default Light/Dark and LTR/RTL keycap captures are unchanged.
+
+```powershell
+./scripts/verify-kbd-content.ps1 -AppDirectory <frozen-catalog-app> -Output <new-output-directory>
+```

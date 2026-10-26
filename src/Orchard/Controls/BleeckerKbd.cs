@@ -88,6 +88,7 @@ public sealed class BleeckerKbd : ContentControl
                     (FontWeightProperty, nameof(FontWeight)), (ForegroundProperty, nameof(Foreground)),
                     (BackgroundProperty, nameof(Background)), (BorderBrushProperty, nameof(BorderBrush)),
                     (BorderThicknessProperty, nameof(BorderThickness)), (PaddingProperty, nameof(Padding)),
+                    (HorizontalContentAlignmentProperty, nameof(HorizontalContentAlignment)), (VerticalContentAlignmentProperty, nameof(VerticalContentAlignment)),
                     (CornerRadiusProperty, nameof(CornerRadius)), (IsTextScaleFactorEnabledProperty, nameof(IsTextScaleFactorEnabled)) })
                     cap.SetBinding(property, new Binding { Source = this, Path = new PropertyPath(name) });
                 combination.Children.Add(cap);

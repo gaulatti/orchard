@@ -12,6 +12,10 @@
         <orchard:BleeckerKbd FlowDirection="RightToLeft" Content="مفتاح" />
         <orchard:BleeckerKbd x:Name="Rich" AutomationProperties.Name="Shift"><TextBlock Text="⇧" /></orchard:BleeckerKbd>
         <StackPanel Orientation="Horizontal" Spacing="8">
+            <orchard:BleeckerKbd Content="Start" Width="80" Height="32" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
+            <orchard:BleeckerKbd Content="End" Width="80" Height="32" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
             <orchard:BleeckerKbd Content="Square" CornerRadius="0" />
             <orchard:BleeckerKbd Content="Rounded" CornerRadius="8" />
             <orchard:BleeckerKbd Content="Asymmetric" CornerRadius="3,7,8,0" />

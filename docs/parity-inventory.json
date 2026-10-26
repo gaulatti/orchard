@@ -3482,11 +3482,13 @@
         "samples/Orchard.Catalog/KeyboardFixture.xaml.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "tests/PackageConsumer/KbdCornersFixture.cs",
-        "scripts/verify-kbd-corners.ps1"
+        "scripts/verify-kbd-corners.ps1",
+        "tests/PackageConsumer/KbdContentFixture.cs",
+        "scripts/verify-kbd-content.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete rendered comparison and remaining rich/template lifecycle acceptance in docs/keyboard.md; caller corner bindings, combination shadows, remounts and32 radius/size/theme/direction states pass in current x64 source/package/archive hosts",
+        "Complete rendered typography/inline alignment and remaining catalog/collection lifecycle acceptance in docs/keyboard.md;64 caller alignment states and16 content/template/selector contracts pass in current x64 source/package/archive hosts; source corner32-state regression and four unchanged default captures pass",
         "Verify isolated scaling, remaining ARM64 state acceptance",
         "Verify runtime, accessibility and visuals"
       ]
