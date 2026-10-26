@@ -159,12 +159,64 @@ internal static class ChartThemeConsumersFixture
                 }
                 root.Children.Clear(); await Layout();
             }
-            Guard(); await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-chart-theme-consumers-v1", passed = true, checks, guards, focus, activations, processArchitecture = RuntimeInformation.ProcessArchitecture.ToString(), showWindowCalled = false, focusCalled = false, hardwareInputSent = false, osSettingsChanged = false, sourceRasterParityVerified = false, nativeComponentAccepted = false, librarySha256 = Convert.ToHexStringLower(SHA256.HashData(await File.ReadAllBytesAsync(typeof(BleeckerLineChart).Assembly.Location))), hostSha256 = Convert.ToHexStringLower(SHA256.HashData(await File.ReadAllBytesAsync(hostAssembly))) }, new JsonSerializerOptions { WriteIndented = true }));
+            foreach (var scoped in new[] { false, true })
+            {
+                var rows = new ObservableCollection<IReadOnlyDictionary<string, object?>>();
+                for (var i = 0; i < 3; i++) rows.Add(new Dictionary<string, object?> { ["subject"] = ((char)('A' + i)).ToString(), ["metric.a"] = 10d * (i + 1), ["metric.b"] = 30d - 10 * i });
+                var first = new BleeckerRadarSeries { Key = "metric.a", Name = "Fictional alpha", Fill = true };
+                var second = new BleeckerRadarSeries { Key = "metric.b", Name = "Fictional beta" };
+                var series = new ObservableCollection<BleeckerRadarSeries> { first, second };
+                var owner = new BleeckerRadarChart { Data = rows, Series = series, SubjectKey = "subject", ShowLegend = true, Width = 640, Height = 300, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
+                var scope = new Grid(); var sea = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 25, 115, 145)); var desert = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 169, 101, 39));
+                if (scoped) { scope.Resources["BleeckerSeaBrush"] = sea; scope.Resources["BleeckerDesertBrush"] = desert; }
+                scope.Children.Add(owner); root.Children.Add(scope); await Layout();
+                var chart = Elements(owner).OfType<BleeckerLineChart>().Single(); var plot = Elements(chart).OfType<Canvas>().Single(e => e.Name == "PART_Plot"); var legend = Elements(chart).OfType<Canvas>().Single(e => e.Name == "PART_Legend");
+                ShapePath[] Shapes(int index) => plot.Children.OfType<ShapePath>().Where(p => p.Tag is ValueTuple<string, int> marker && marker.Item2 == index && marker.Item1.StartsWith("radar-", StringComparison.Ordinal)).ToArray();
+                static Brush ShapePaint(ShapePath path) => ((ValueTuple<string, int>)path.Tag).Item1 == "radar-fill" ? path.Fill : path.Stroke;
+                TextBlock Label(BleeckerRadarSeries item) => Elements(legend).OfType<TextBlock>().Single(e => e.Text == item.Name);
+                Microsoft.UI.Xaml.Shapes.Rectangle Icon(BleeckerRadarSeries item) => Elements(legend).OfType<Canvas>().Single(e => e.Children.OfType<TextBlock>().Any(label => label.Text == item.Name)).Children.OfType<Microsoft.UI.Xaml.Shapes.Rectangle>().Single();
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    root.RequestedTheme = theme; first.Key = "metric.a"; first.Name = "Fictional alpha"; first.Color = null; second.Color = null;
+                    sea.Color = Windows.UI.Color.FromArgb(255, 25, 115, 145); desert.Color = Windows.UI.Color.FromArgb(255, 169, 101, 39); await Layout();
+                    var id = "Radar/" + (scoped ? "scoped" : "regular") + "/" + theme;
+                    var colors = BleeckerTokens.Colors(theme == ElementTheme.Dark ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light);
+                    var expectedSea = scoped ? Hex(sea) : colors["sea"]; var expectedDesert = scoped ? Hex(desert) : colors["desert"];
+                    var paints = Shapes(0).Select(ShapePaint).Concat(Shapes(1).Select(ShapePaint)).Select(Hex).ToArray();
+                    Check(id + "/automatic-palette", ReferenceEquals(owner.Data, rows) && ReferenceEquals(owner.Series, series) && Shapes(0).Length == 2 && Shapes(1).Length == 2
+                        && Shapes(0).All(p => Hex(ShapePaint(p)) == expectedSea) && Shapes(1).All(p => Hex(ShapePaint(p)) == expectedDesert)
+                        && Hex(Label(first).Foreground) == expectedSea && Hex(Label(second).Foreground) == expectedDesert && Hex(Icon(first).Fill) == expectedSea && Hex(Icon(second).Fill) == expectedDesert
+                        && Math.Abs(Shapes(0).Single(p => ((ValueTuple<string, int>)p.Tag).Item1 == "radar-fill").Opacity - .35) < 1e-6 && Shapes(1).Single(p => ((ValueTuple<string, int>)p.Tag).Item1 == "radar-fill").Opacity == 0,
+                        new { aliases = ReferenceEquals(owner.Data, rows) && ReferenceEquals(owner.Series, series), paints, labelPaints = new[] { Hex(Label(first).Foreground), Hex(Label(second).Foreground) }, iconPaints = new[] { Hex(Icon(first).Fill), Hex(Icon(second).Fill) }, fillOpacities = new[] { Shapes(0)[0].Opacity, Shapes(1)[0].Opacity } });
+                    var originalStart = ((PathGeometry)Shapes(0).Single(p => ((ValueTuple<string, int>)p.Tag).Item1 == "radar-stroke").Data).Figures[0].StartPoint;
+                    first.Key = "metric.b"; first.Name = "Updated alpha"; await Layout();
+                    var updatedStart = ((PathGeometry)Shapes(0).Single(p => ((ValueTuple<string, int>)p.Tag).Item1 == "radar-stroke").Data).Figures[0].StartPoint;
+                    Check(id + "/live-key-name", Math.Abs(updatedStart.X - originalStart.X) + Math.Abs(updatedStart.Y - originalStart.Y) > 1 && Label(first).Text == "Updated alpha" && !Elements(legend).OfType<TextBlock>().Any(e => e.Text == "Fictional alpha"),
+                        new { beforeX = originalStart.X, beforeY = originalStart.Y, afterX = updatedStart.X, afterY = updatedStart.Y, label = Label(first).Text });
+                    var explicitPaint = new SolidColorBrush(Microsoft.UI.Colors.Transparent); second.Color = explicitPaint; await Layout();
+                    Check(id + "/explicit-transparent", Shapes(1).All(p => ReferenceEquals(ShapePaint(p), explicitPaint)) && ReferenceEquals(Label(second).Foreground, explicitPaint) && ReferenceEquals(Icon(second).Fill, explicitPaint),
+                        new { originalBrushRetained = Shapes(1).All(p => ReferenceEquals(ShapePaint(p), explicitPaint)), legendBrushRetained = ReferenceEquals(Label(second).Foreground, explicitPaint), iconBrushRetained = ReferenceEquals(Icon(second).Fill, explicitPaint) });
+                    explicitPaint.Color = Microsoft.UI.Colors.OrangeRed; await Layout();
+                    Check(id + "/live-explicit-paint", Shapes(1).All(p => Hex(ShapePaint(p)) == "#FFFF4500") && Hex(Label(second).Foreground) == "#FFFF4500" && Hex(Icon(second).Fill) == "#FFFF4500",
+                        new { paints = Shapes(1).Select(p => Hex(ShapePaint(p))).ToArray(), labelPaint = Hex(Label(second).Foreground), iconPaint = Hex(Icon(second).Fill) });
+                    second.Color = null; await Layout();
+                    Check(id + "/restore-automatic", Shapes(1).All(p => Hex(ShapePaint(p)) == expectedDesert) && Hex(Label(second).Foreground) == expectedDesert && Hex(Icon(second).Fill) == expectedDesert,
+                        new { expected = expectedDesert, paints = Shapes(1).Select(p => Hex(ShapePaint(p))).ToArray(), labelPaint = Hex(Label(second).Foreground), iconPaint = Hex(Icon(second).Fill) });
+                    if (scoped)
+                    {
+                        sea.Color = Microsoft.UI.Colors.Red; desert.Color = Microsoft.UI.Colors.Blue; await Layout();
+                        Check(id + "/live-scoped-palette", Shapes(0).All(p => Hex(ShapePaint(p)) == Hex(sea)) && Shapes(1).All(p => Hex(ShapePaint(p)) == Hex(desert)) && Hex(Label(first).Foreground) == Hex(sea) && Hex(Label(second).Foreground) == Hex(desert) && Hex(Icon(first).Fill) == Hex(sea) && Hex(Icon(second).Fill) == Hex(desert),
+                            new { paints = Shapes(0).Concat(Shapes(1)).Select(p => Hex(ShapePaint(p))).ToArray(), labelPaints = new[] { Hex(Label(first).Foreground), Hex(Label(second).Foreground) }, iconPaints = new[] { Hex(Icon(first).Fill), Hex(Icon(second).Fill) } });
+                    }
+                }
+                root.Children.Clear(); await Layout();
+            }
+            Guard(); await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-chart-theme-consumers-v2", passed = true, checks, guards, focus, activations, processArchitecture = RuntimeInformation.ProcessArchitecture.ToString(), showWindowCalled = false, focusCalled = false, hardwareInputSent = false, osSettingsChanged = false, sourceRasterParityVerified = false, nativeComponentAccepted = false, librarySha256 = Convert.ToHexStringLower(SHA256.HashData(await File.ReadAllBytesAsync(typeof(BleeckerLineChart).Assembly.Location))), hostSha256 = Convert.ToHexStringLower(SHA256.HashData(await File.ReadAllBytesAsync(hostAssembly))) }, new JsonSerializerOptions { WriteIndented = true }));
             window.Close(); Environment.Exit(0);
         }
         catch (Exception error)
         {
-            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-chart-theme-consumers-v1", passed = false, error = error.ToString(), checks, guards, focus, activations }, new JsonSerializerOptions { WriteIndented = true })); window.Close(); Environment.Exit(1);
+            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-chart-theme-consumers-v2", passed = false, error = error.ToString(), checks, guards, focus, activations }, new JsonSerializerOptions { WriteIndented = true })); window.Close(); Environment.Exit(1);
         }
     }
 }

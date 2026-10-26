@@ -113,7 +113,18 @@ with owned final points and at least two unchanged transitions; twenty wait for
 an initially unowned point. Maximum settling is 184.4789ms. The runnable catalog
 is `artifacts/catalog-radar-chart`. Push-triggered Actions remain paused.
 
-No Radar inventory entry is accepted. Full raster/effects, normal/interrupted motion, complete data and
-override/RTL coverage, actual contrast, Narrator, display/text scaling,
-collection performance and native ARM64 acceptance remain required. This native
-presentation work has no backend or Prometheus surface.
+The shared chart-theme fixture also exercises the actual Radar renderer and
+legend in a hidden x64 catalog and package-reference consumer: 22 current
+checks across Light/Dark and regular/scoped palettes verify fill/stroke/legend
+colors, source fill opacity, live key/name changes, explicit transparent paint,
+paint mutation, automatic restoration and scoped brush updates. The results are
+`artifacts/current/chart-theme-radar-source-v2/audit.json` and
+`artifacts/current/chart-theme-radar-package-v1/audit.json`. These checks send
+no input and do not replace the existing 72-case reference matrix.
+
+No Radar inventory entry is accepted. Full visual/effects,
+normal/interrupted motion, complete data and override/RTL coverage,
+display/text scaling, collection performance and native ARM64 acceptance
+remain required. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). This native presentation work has
+no backend or Prometheus surface.

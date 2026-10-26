@@ -1,7 +1,22 @@
 # Chart theme source contract (in progress)
 
-The current source-built x64 catalog and a fresh isolated x64 NuGet consumer
-each pass 148 hidden native checks across Line, Bar, Area and Scatter at
+The current source-built x64 catalog and the package-reference consumer each
+pass 170 hidden native checks across Line, Bar, Area, Scatter and Radar at
+`artifacts/current/chart-theme-radar-source-v2/audit.json` and
+`artifacts/current/chart-theme-radar-package-v1/audit.json`. The latter uses
+the previously qualified `0.1.0-chart-theme-scatter-v1-local` NuGet, whose
+cached archive hash matches the retained package; this run does not requalify
+the whole package or claim an isolated restore.
+Radar adds 22 checks for both themes and regular/scoped resources: real polygon
+fill/stroke and legend paint, fill opacity, live key/name changes, transparent
+caller brush identity and mutation, automatic restoration and scoped palette
+updates. The existing registered Radar catalog page remains the visual fixture.
+The independent audit rejects 20 damaged reports per host. Native ARM64,
+physical input and full chart appearance acceptance remain open. Both current
+fixture hosts compile for ARM64; that is build evidence only.
+
+The preceding source catalog and fresh isolated x64 NuGet consumer pass 148
+checks across Line, Bar, Area and Scatter at
 `artifacts/current/chart-theme-scatter-source-v1/audit.json` and
 `artifacts/current/chart-theme-scatter-package-native-v1/audit.json`.
 Scatter adds two series, verifying sea/desert palette entries, scoped brush

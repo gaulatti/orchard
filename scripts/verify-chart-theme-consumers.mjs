@@ -11,7 +11,7 @@ const argb = value => {
   return '#' + [Math.round(Number(rgba[4]) * 255), ...rgba.slice(1, 4).map(Number)].map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
 };
 export function verifyChartThemeConsumers(report, tokens, reference) {
-  assert.equal(report.format, 'orchard-chart-theme-consumers-v1');
+  assert.equal(report.format, 'orchard-chart-theme-consumers-v2');
   assert.equal(report.passed, true); assert.equal(report.error, undefined);
   for (const k of ['showWindowCalled', 'focusCalled', 'hardwareInputSent', 'osSettingsChanged', 'sourceRasterParityVerified', 'nativeComponentAccepted']) assert.equal(report[k], false, k);
   assert.equal(report.focus, 0); assert.equal(report.activations, 0); assert.equal(report.processArchitecture, 'X64'); assert(report.guards >= 300);
@@ -78,9 +78,23 @@ export function verifyChartThemeConsumers(report, tokens, reference) {
       if (phase === 'live-scoped-palette') { assert.deepEqual(o.paints, ['#FFFF0000', '#FFFF0000', '#FFFF0000', '#FF0000FF', '#FF0000FF', '#FF0000FF']); assert.deepEqual(o.labelPaints, ['#FFFF0000', '#FF0000FF']); }
     }
   }
-  assert.deepEqual(report.checks.map(c => c.id).sort(), ids.sort()); assert.equal(ids.length, 148);
+  for (const scope of ['regular', 'scoped']) for (const theme of ['Light', 'Dark']) {
+    const prefix = `Radar/${scope}/${theme}`, values = tokens.themes[theme.toLowerCase()];
+    const sea = scope === 'scoped' ? '#FF197391' : argb(values.sea), desert = scope === 'scoped' ? '#FFA96527' : argb(values.desert);
+    const phases = ['automatic-palette', 'live-key-name', 'explicit-transparent', 'live-explicit-paint', 'restore-automatic', ...(scope === 'scoped' ? ['live-scoped-palette'] : [])];
+    for (const phase of phases) {
+      const id = `${prefix}/${phase}`; ids.push(id); const check = report.checks.find(c => c.id === id); assert(check, id); assert.equal(check.passed, true, id); const o = check.observed;
+      if (phase === 'automatic-palette') { assert.equal(o.aliases, true); assert.deepEqual(o.paints, [sea, sea, desert, desert]); assert.deepEqual(o.labelPaints, [sea, desert]); assert.deepEqual(o.iconPaints, [sea, desert]); assert(Math.abs(o.fillOpacities[0] - .35) < 1e-6); assert.equal(o.fillOpacities[1], 0); }
+      if (phase === 'live-key-name') { assert(Math.abs(o.afterX - o.beforeX) + Math.abs(o.afterY - o.beforeY) > 1); assert.equal(o.label, 'Updated alpha'); }
+      if (phase === 'explicit-transparent') { assert.equal(o.originalBrushRetained, true); assert.equal(o.legendBrushRetained, true); assert.equal(o.iconBrushRetained, true); }
+      if (phase === 'live-explicit-paint') { assert.deepEqual(o.paints, ['#FFFF4500', '#FFFF4500']); assert.equal(o.labelPaint, '#FFFF4500'); assert.equal(o.iconPaint, '#FFFF4500'); }
+      if (phase === 'restore-automatic') { assert.equal(o.expected, desert); assert.deepEqual(o.paints, [desert, desert]); assert.equal(o.labelPaint, desert); assert.equal(o.iconPaint, desert); }
+      if (phase === 'live-scoped-palette') { assert.deepEqual(o.paints, ['#FFFF0000', '#FFFF0000', '#FF0000FF', '#FF0000FF']); assert.deepEqual(o.labelPaints, ['#FFFF0000', '#FF0000FF']); assert.deepEqual(o.iconPaints, ['#FFFF0000', '#FF0000FF']); }
+    }
+  }
+  assert.deepEqual(report.checks.map(c => c.id).sort(), ids.sort()); assert.equal(ids.length, 170);
   for (const k of ['librarySha256', 'hostSha256']) assert.match(report[k], /^[0-9a-f]{64}$/);
-  return {passed: true, checks: 148, chartConsumers: ['Line', 'Bar', 'Area', 'Scatter'], themes: 2, scopes: 2, literalAndLiveKeysVerified: true, liveLegendNamesVerified: true, originalTransparentAndGradientBrushesRetained: true, automaticAndScopedPaletteVerified: true, axisGridAndTooltipSurfaceDefaultsVerified: true, liveScopedDefaultRoleUpdatesVerified: true, controlledTooltipRendererVerified: true, tooltipInteractionVerified: false, tooltipEffectsVerified: false, guards: report.guards, librarySha256: report.librarySha256, hostSha256: report.hostSha256, physicalInputVerified: false, sourceRasterParityVerified: false, nativeComponentAccepted: false};
+  return {passed: true, checks: 170, chartConsumers: ['Line', 'Bar', 'Area', 'Scatter', 'Radar'], themes: 2, scopes: 2, literalAndLiveKeysVerified: true, liveLegendNamesVerified: true, originalTransparentAndGradientBrushesRetained: true, automaticAndScopedPaletteVerified: true, axisGridAndTooltipSurfaceDefaultsVerified: true, liveScopedDefaultRoleUpdatesVerified: true, controlledTooltipRendererVerified: true, tooltipInteractionVerified: false, tooltipEffectsVerified: false, guards: report.guards, librarySha256: report.librarySha256, hostSha256: report.hostSha256, physicalInputVerified: false, sourceRasterParityVerified: false, nativeComponentAccepted: false};
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
@@ -104,7 +118,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     r => r.checks.find(c => c.id.endsWith('/rendered-tooltip-defaults')).observed.item = 'Wrong series : 10',
     r => r.checks.find(c => c.id.endsWith('/rendered-live-scoped-tooltip')).observed.itemPaint = '#FFFFFFFF',
     r => r.checks.find(c => c.id === 'Scatter/regular/Light/automatic-palette').observed.paints[3] = '#FF000000',
-    r => r.checks.find(c => c.id === 'Scatter/scoped/Dark/explicit-transparent').observed.legendBrushRetained = false);
+    r => r.checks.find(c => c.id === 'Scatter/scoped/Dark/explicit-transparent').observed.legendBrushRetained = false,
+    r => r.checks.find(c => c.id === 'Radar/regular/Light/automatic-palette').observed.iconPaints[1] = '#FF000000',
+    r => r.checks.find(c => c.id === 'Radar/scoped/Dark/live-scoped-palette').observed.paints[2] = '#FF000000');
   for (const mutate of mutations) { const bad = structuredClone(report); mutate(bad); assert.throws(() => verifyChartThemeConsumers(bad, tokens, reference)); }
   const audit = {...result, reportSha256: hash(bytes), negativeCasesRejected: mutations.length};
   await fs.writeFile(arg('--output'), JSON.stringify(audit, null, 2) + '\n', {flag: 'wx'}); console.log(JSON.stringify(audit));
