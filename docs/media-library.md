@@ -216,6 +216,21 @@ case in both themes. `artifacts/current/media-library-preview-failure-v1` passes
 and dark broken-full captures were compared with the pinned source, and the
 negative audit rejects 87 corruptions, including a hidden or erased preview
 marker. The x64 and ARM64 catalog builds pass without warnings; 498 portable
-tests pass. The v2 NuGet above predates this repair, so fresh package and
-catalog delivery, physical input, full visual review and ARM64 native runtime
-remain open. The component is still not accepted.
+tests pass. At that checkpoint the v2 NuGet predates this repair, so fresh
+package and catalog delivery, physical input, full visual review and ARM64
+native runtime remain open. The component is still not accepted.
+
+Local package `0.1.0-text-media-v3-local` (SHA-256
+`96f6000fb4d97fa6c7e362c6d3788781c4768f5d0825043ecd750c24b3ee8954`)
+contains the full-preview marker repair and the later Input/Textarea validity
+changes. Its payload has one AnyCPU library, one PRI, all 157 tracked XAML
+files (156 themes), six fonts and two images; every packaged XAML file matches
+its source hash. Fresh isolated x64 and ARM64 consumers restored and built that
+exact package, then removed their temporary restore workspaces. The packaged
+x64 Media Library host passes 100 hidden states, 38 behavior contracts and 100
+PNG audits. The audit checks the broken-full marker's placement and rendered
+ink in both themes. The packaged Orchard DLL SHA-256
+`13ab2e380421a2fb0850f1ffe2bcdcb157b1952d4d3175812859c6ed730f0f9e`
+matches the source host tested for text-editor validity. This is current NuGet
+delivery evidence, not a catalog archive or native ARM64 runtime result.
+Physical input and full visual acceptance remain open.

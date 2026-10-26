@@ -48,6 +48,8 @@ runtime delivery.
 Keep the current package, release archives, independent consumers and reports
 under `artifacts/current`. Reuse the x64 and ARM64 consumer output directories;
 `scripts/verify-package.ps1` removes its own temporary source and package cache.
+The Media Library package payload check compares its XAML paths and hashes with
+the tracked `src/Orchard` sources; its theme count follows that source inventory.
 Create versioned archives for deliverable checkpoints, rather than every local
 iteration. Replace obsolete deliverables after their replacement is verified.
 

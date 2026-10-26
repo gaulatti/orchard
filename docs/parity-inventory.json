@@ -5817,7 +5817,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Strict browser/native image comparison fails:13349376pixels/max242; source/package9171/max102 and source/archive10366/max102; zero thresholds unchanged",
+        "Complete source-derived visual review; historical strict image diagnostics failed at 13349376 pixels/max242 for browser/native, 9171/max102 for source/package and 10366/max102 for source/archive; byte-identical raster is not an acceptance gate",
         "Physical pointer/keyboard/focus/Tab and native ARM64 runtime remain unverified",
         "Complete display/text/modal scaling, motion/customization and collection performance acceptance"
       ],

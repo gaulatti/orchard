@@ -12,8 +12,10 @@ The native RichEdit automation peer also combines its attached validity with
 `BleeckerField` clears its own error while the Textarea still has one, and
 preserves an explicit `IsInvalid=false` override. The hidden x64 catalog check
 at `artifacts/current/text-validity-v2` exercises both text editors and Field
-composition without a visible or focused window. Fresh NuGet and native ARM64
-runtime evidence for this change remain open.
+composition without a visible or focused window. The later
+`0.1.0-text-media-v3-local` NuGet package has the same Orchard DLL bytes and
+passes fresh isolated x64 and ARM64 consumer builds. Direct packaged Textarea
+validity runtime and native ARM64 runtime remain open.
 
 ## Native preview and boundaries
 
