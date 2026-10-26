@@ -54,8 +54,29 @@ unchanged; native ARM64 execution is unverified.
 
 In the Windows 11 desktop session, Tab/Shift+Tab showed native focus, Space selected Follow updates, pointer activation cleared it, and Tab moved to Large. Pointer activation also cleared the selected outline toggle. Both theme captures were inspected, including the wrapped Japanese, Portuguese and Arabic label at a constrained width.
 
-Remaining acceptance: increased text/display scale, reduced motion, and ARM64
-runtime. Narrator and OS contrast
+The shared hidden XAML-island scale fixture now mounts all six selected native
+Toggle styles at 100%, 125%, 150% and 200% rasterization scale in both themes.
+All 48 style observations retain their 108-DIP row width, size-specific minimum
+height, caller accessibility name, checked state and Tab eligibility, with
+visible native paint and no selection events, focus or window activation. The
+source catalog and the exact independent `0.1.0-menu-label-unicode-v1-local`
+consumer each pass eight native frames; all 16 source/package PNG pairs from
+the shared Separator/Switch/Toggle fixture match byte for byte. Both x64 and
+ARM64 catalog and consumer builds pass, and each native audit rejects 18
+corrupted reports. Source and consumer reports are under
+`artifacts/current/toggle-isolated-scale-source-v2` and
+`artifacts/current/toggle-isolated-scale-package-v1`; their 32 PNGs and small
+reports are also in the 464-KB
+`artifacts/current/toggle-isolated-scale-evidence-v1.tar`, which survives the
+generated-directory cleanup. This tests the registered
+styles at an owned XAML-root scale; it does not change monitor DPI or Windows
+text scaling. The first fixture pass used overlong string labels in fixed-width
+cells and visibly clipped two examples; the current pass uses labels that fit
+the source-sized examples. Consumers should use the documented wrapping
+TextBlock for long labels.
+
+Remaining acceptance: actual monitor-DPI and increased text-scale behavior,
+reduced motion, broader visual review and ARM64 runtime. Narrator and OS contrast
 campaigns are excluded by the [component-library scope](library-scope.md).
 Historical runtime statements above describe their original checks. These styles
 are implemented; the parity entry remains in progress until all required evidence

@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
@@ -26,7 +27,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -64,8 +65,34 @@ internal static class ContentScaleFixture
                 using var stream=new InMemoryRandomAccessStream();var encoder=await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId,stream);encoder.SetPixelData(BitmapPixelFormat.Bgra8,BitmapAlphaMode.Premultiplied,(uint)bitmap.PixelWidth,(uint)bitmap.PixelHeight,96,96,bytes);await encoder.FlushAsync();stream.Seek(0);using var reader=new DataReader(stream);await reader.LoadAsync((uint)stream.Size);var png=new byte[(int)stream.Size];reader.ReadBytes(png);await File.WriteAllBytesAsync(Path.Combine(Path.GetDirectoryName(output)!,file),png);frames.Add(new{theme=theme.ToString(),requestedScale=scale,width=bitmap.PixelWidth,height=bitmap.PixelHeight,file,sha256=Convert.ToHexStringLower(SHA256.HashData(png))});
                 Require(bitmap.PixelWidth==width&&bitmap.PixelHeight==height,"Native island capture did not use its actual rasterization scale.");
             }
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v2",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator and Switch; no physical monitor DPI or system text-scale change",observations,frames,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedSwitchRasterizationVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            root.Children.Clear();
+            var styleNames=new[]{"BleeckerSmallToggleStyle","BleeckerToggleStyle","BleeckerLargeToggleStyle","BleeckerSmallOutlineToggleStyle","BleeckerOutlineToggleStyle","BleeckerLargeOutlineToggleStyle"};
+            var labels=new[]{"Small","Medium","Large","S outline","M outline","L outline"};
+            var scaledToggles=new ToggleButton[styleNames.Length];var toggleChanges=0;
+            for(var i=0;i<styleNames.Length;i++)
+            {
+                var toggle=new ToggleButton{Width=108,Content=labels[i],IsChecked=true,Style=(Style)Application.Current.Resources[styleNames[i]]};
+                AutomationProperties.SetName(toggle,$"Fictional {labels[i]} toggle");
+                toggle.Checked+=(_,_)=>toggleChanges++;toggle.Unchecked+=(_,_)=>toggleChanges++;
+                Canvas.SetLeft(toggle,24+(i%3)*122);Canvas.SetTop(toggle,12+(i/3)*68);root.Children.Add(toggle);scaledToggles[i]=toggle;
+            }
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})foreach(var scale in new[]{1f,1.25f,1.5f,2f})
+            {
+                stage=$"toggle/{theme}/{scale}";root.RequestedTheme=theme;island.SiteBridge.OverrideScale=scale;var width=(int)Math.Round(400*scale);var height=(int)Math.Round(160*scale);window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(width,height));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,width,height));await Layout();
+                var states=scaledToggles.Select((toggle,i)=>
+                {
+                    var peer=FrameworkElementAutomationPeer.CreatePeerForElement(toggle);var bounds=toggle.TransformToVisual(root).TransformBounds(new Rect(0,0,toggle.ActualWidth,toggle.ActualHeight));
+                    return new{id=styleNames[i],label=labels[i],name=peer.GetName(),width=toggle.ActualWidth,height=toggle.ActualHeight,bounds=new{x=bounds.X,y=bounds.Y,width=bounds.Width,height=bounds.Height},checkedState=toggle.IsChecked,loaded=toggle.IsLoaded,tabStop=toggle.IsTabStop};
+                }).ToArray();
+                Require(states.All((state)=>state.loaded&&state.checkedState==true&&state.tabStop&&state.width==108&&state.height>=32&&state.bounds.x>=24&&state.bounds.y>=12&&state.bounds.x+state.bounds.width<=400&&state.bounds.y+state.bounds.height<=160),"Scaled native Toggle style lost geometry or selection.");
+                Require(toggleChanges==0,"Theme or rasterization scale changed a caller Toggle selection.");
+                toggleObservations.Add(new{theme=theme.ToString(),requestedScale=scale,actualRasterizationScale=root.XamlRoot.RasterizationScale,states,toggleChanges});
+                Guard();var bitmap=new RenderTargetBitmap();await bitmap.RenderAsync(root);Guard();var bytes=System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeBufferExtensions.ToArray(await bitmap.GetPixelsAsync());var file=$"toggle-scale-{theme}-{scale.ToString(System.Globalization.CultureInfo.InvariantCulture)}.png";
+                using var stream=new InMemoryRandomAccessStream();var encoder=await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId,stream);encoder.SetPixelData(BitmapPixelFormat.Bgra8,BitmapAlphaMode.Premultiplied,(uint)bitmap.PixelWidth,(uint)bitmap.PixelHeight,96,96,bytes);await encoder.FlushAsync();stream.Seek(0);using var reader=new DataReader(stream);await reader.LoadAsync((uint)stream.Size);var png=new byte[(int)stream.Size];reader.ReadBytes(png);await File.WriteAllBytesAsync(Path.Combine(Path.GetDirectoryName(output)!,file),png);toggleFrames.Add(new{theme=theme.ToString(),requestedScale=scale,width=bitmap.PixelWidth,height=bitmap.PixelHeight,file,sha256=Convert.ToHexStringLower(SHA256.HashData(png))});
+                Require(bitmap.PixelWidth==width&&bitmap.PixelHeight==height&&Math.Abs(root.XamlRoot.RasterizationScale-scale)<.0001,"Toggle capture did not use the requested native rasterization scale.");
+            }
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Switch and native Toggle styles; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedSwitchRasterizationVerified=true,isolatedToggleRasterizationVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v2",passed=false,stage,error=error.ToString(),observations,frames,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
 }

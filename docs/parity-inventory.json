@@ -5115,13 +5115,33 @@
         "samples/Orchard.Catalog/TogglesFixture.xaml"
       ],
       "regressionTests": [
-        "samples/Orchard.Catalog/TogglesFixture.xaml.cs: VerifyAsync"
+        "samples/Orchard.Catalog/TogglesFixture.xaml.cs: VerifyAsync",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
+        "scripts/verify-content-scale.mjs",
+        "scripts/test-content-scale-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify increased text/display scale and reduced motion",
+        "Verify physical monitor-DPI and increased Windows text scale beyond isolated native rasterization",
+        "Verify reduced motion and complete visual states",
         "Verify remaining ARM64 state acceptance"
       ],
+      "nativeRasterizationVerification": {
+        "sourceAudit": "artifacts/current/toggle-isolated-scale-source-v2/audit.json",
+        "packageAudit": "artifacts/current/toggle-isolated-scale-package-v1/audit.json",
+        "packageVersion": "0.1.0-menu-label-unicode-v1-local",
+        "scaleThemeFrames": 8,
+        "styleStates": 48,
+        "sourceAndPackagePngPairsIdentical": 16,
+        "negativeReportsRejectedPerHost": 18,
+        "nativeSelectedPaintVerified": true,
+        "callerNamesAndSelectionRetained": true,
+        "physicalMonitorDpiChangeVerified": false,
+        "systemTextScalingVerified": false,
+        "packageReplayVerified": true,
+        "nativeArm64RuntimeVerified": false,
+        "nativeComponentAccepted": false
+      },
       "nativeCommandBindingVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",

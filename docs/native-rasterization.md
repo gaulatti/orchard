@@ -8,11 +8,15 @@ pinned WinUI 2.3.9 and InteractiveExperiences 2.1.9 packages. See Microsoft's
 The fixture checks actual `XamlRoot.RasterizationScale`, loaded component state
 and physical PNG dimensions at 100%, 125%, 150% and 200% in both themes. It checks
 horizontal and vertical Separators, the default fractional edge coverage, and
-retained caller bindings that enable layout rounding. It uses no hardware input,
-window activation or OS setting changes.
+retained caller bindings that enable layout rounding. It also checks Switch
+track, thumb and wrapped-label presentation and all six native Toggle styles.
+The Toggle cases retain selected state, caller names, size-specific minimum
+heights and visible paint across eight theme/scale frames. It uses no hardware
+input, window activation or OS setting changes.
 
-This establishes isolated native XAML scaling. The physical display remains at
-100%; real monitor-DPI transitions and Windows text scaling remain unverified.
+This establishes isolated native XAML scaling for the tested states. The physical
+display remains at 100%; real monitor-DPI transitions and Windows text scaling
+remain unverified.
 Recovered historical ARM64 execution covers the pre-repair baseline only, not
 the new fractional default.
 
