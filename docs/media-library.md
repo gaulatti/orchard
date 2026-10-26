@@ -195,4 +195,15 @@ captures are checked for text ink at that edge, in addition to marker placement.
 `artifacts/current/media-library-inline-failure-v4` passes 100 hidden x64
 states, 38 behavior checks and 102 rendered PNGs. The 319px light capture was
 compared with the pinned source capture. This evidence is for the source host;
-the pending delivery and physical-input checks above still apply.
+the package boundary is qualified separately below.
+
+Local delivery preview `0.1.0-media-library-v2-local` contains both failed-image
+repairs (NuGet SHA-256
+`1daf2dcf4ee6a8b6139aa96b06ee56100aa89ca84957607adc381a64c646dac0`).
+Fresh isolated x64 and ARM64 consumers restored that exact package and built;
+both temporary restore workspaces were removed on success. The packaged x64
+host passes 100 hidden Media Library states, 38 behavior checks and 100 actual
+PNG audits, including narrow failed-alt wrapping. Its state snapshots and
+behavior results match the source host. ARM64 has build evidence only; native
+ARM64 runtime, physical pointer/keyboard input and the remaining full visual
+review are still open. Media Library is not yet an accepted inventory entry.
