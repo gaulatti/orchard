@@ -656,7 +656,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify remaining chart-family resource roles/overrides beyond Line/Bar/Area first-palette, explicit-series paint, grid/axis and controlled tooltip styling",
+        "Verify remaining chart-family resource roles/overrides beyond the source-host Line/Bar/Area/Scatter palette, explicit-series paint, grid/axis and controlled tooltip checks; qualify the expanded fixture in an independent package host",
         "Register variants and applicable interactive states",
         "Verify runtime, accessibility and visuals"
       ],
@@ -688,8 +688,23 @@
           "ARM64"
         ],
         "nativeArm64RuntimeVerified": false,
-        "fullChartAcceptance": false
-      }
+      "fullChartAcceptance": false
+    },
+    "sourceScatterVerification": {
+      "audit": "artifacts/current/chart-theme-scatter-source-v1/audit.json",
+      "reportSha256": "f220a71a7dd2f5bfb72fa4a876c87540406f23807355c4157c96a6b0d1000bf1",
+      "librarySha256": "07254437e626f59eb4e9516d4ec46933e962088864acd18d1457b03a56e46b1e",
+      "hostSha256": "60f9c0db137c6df263f38b1da4ae6297f88024fe9403e93ba70ade6dfd23b71f",
+      "chartConsumers": ["Line", "Bar", "Area", "Scatter"],
+      "checks": 148,
+      "negativeCasesRejected": 18,
+      "themes": 2,
+      "scopes": 2,
+      "hiddenNativeX64": true,
+      "independentPackageRuntimeVerified": false,
+      "nativeArm64RuntimeVerified": false,
+      "fullChartAcceptance": false
+    }
     },
     {
       "id": "line-chart",

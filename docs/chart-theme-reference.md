@@ -1,5 +1,16 @@
 # Chart theme source contract (in progress)
 
+The current source-built x64 catalog also passes 148 hidden native checks across
+Line, Bar, Area and Scatter at
+`artifacts/current/chart-theme-scatter-source-v1/audit.json`. Scatter adds two
+series, verifying sea/desert palette entries, scoped brush changes, explicit
+transparent paint and live paint mutation in both themes. Its grid, axis and
+tooltip surface defaults resolve through the same token roles. The report
+rejects 18 damaged variants and confirms that the host stayed hidden without
+hardware input. This source-host extension has not yet been run in an
+independent package consumer; the earlier package result below covers only
+Line, Bar and Area. No full chart, native ARM64 or visual acceptance is claimed.
+
 Current Line/Bar/Area consumer verification passes 126 background native checks
 in both the catalog and independent x64 NuGet host. These checks use real plot
 geometry and legends: literal dictionary keys beat conflicting nested paths,
@@ -20,8 +31,8 @@ and `chart-theme-defaults-package-native-v1`. Run
 to reproduce the checks. The shared fixture builds in independent x64 and ARM64
 consumers; native ARM64 execution is unverified. The library package and selected
 delivery archives are unchanged. These targeted checks do not accept complete
-chart visuals, tooltip effects, interaction, motion, scaling or other chart
-families' resource boundaries.
+chart visuals, tooltip effects, interaction, motion, scaling or chart families
+beyond Scatter.
 
 The frozen [Bleecker chart-theme source](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/chart-theme.ts)
 has SHA-256 `94e006606feb77fc8163d05812e83668b04916dcdbb818a8aa8dc0d49e08e750`.

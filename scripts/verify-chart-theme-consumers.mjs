@@ -58,9 +58,29 @@ export function verifyChartThemeConsumers(report, tokens, reference) {
       }
     }
   }
-  assert.deepEqual(report.checks.map(c => c.id).sort(), ids.sort()); assert.equal(ids.length, 126);
+  for (const scope of ['regular', 'scoped']) for (const theme of ['Light', 'Dark']) {
+    const prefix = `Scatter/${scope}/${theme}`, values = tokens.themes[theme.toLowerCase()];
+    const sea = scope === 'scoped' ? '#FF197391' : argb(values.sea), desert = scope === 'scoped' ? '#FFA96527' : argb(values.desert);
+    const expected = [sea, sea, sea, desert, desert, desert];
+    const phases = ['automatic-palette', 'grid-axis-tooltip-defaults', 'explicit-transparent', 'live-explicit-paint', 'restore-automatic', ...(scope === 'scoped' ? ['live-scoped-palette'] : [])];
+    for (const phase of phases) {
+      const id = `${prefix}/${phase}`; ids.push(id); const check = report.checks.find(c => c.id === id);
+      assert(check, id); assert.equal(check.passed, true, id); const o = check.observed;
+      if (phase === 'automatic-palette') { assert.equal(o.aliases, true); assert.deepEqual(o.paints, expected); assert.deepEqual(o.labels, ['Fictional first', 'Fictional second']); assert.deepEqual(o.labelPaints, [sea, desert]); }
+      if (phase === 'grid-axis-tooltip-defaults') {
+        const border = scope === 'scoped' ? '#FF805020' : argb(values.border), tick = scope === 'scoped' ? '#FF704090' : argb(values.textSecondary), card = scope === 'scoped' ? '#FF203040' : argb(values.card);
+        assert(o.gridStrokes.length > 0 && o.tickPaints.length >= 3); assert(o.gridStrokes.every(p => p === border)); assert(o.tickPaints.every(p => p === tick)); assert(o.tickSizes.every(size => size === reference.theme.axis.tick.fontSize));
+        assert.equal(o.tooltipBackground, card); assert.equal(o.tooltipBorder, border); assert.deepEqual(o.gridDashes, Array.from({length: o.gridStrokes.length}, () => reference.theme.grid.strokeDasharray.split(' ').map(Number)));
+      }
+      if (phase === 'explicit-transparent') { assert.equal(o.pointBrushRetained, true); assert.equal(o.legendBrushRetained, true); }
+      if (phase === 'live-explicit-paint') { assert.deepEqual(o.paints, Array(3).fill('#FFFF4500')); assert.equal(o.labelPaint, '#FFFF4500'); }
+      if (phase === 'restore-automatic') { assert.deepEqual(o.paints, Array(3).fill(desert)); assert.equal(o.labelPaint, desert); }
+      if (phase === 'live-scoped-palette') { assert.deepEqual(o.paints, ['#FFFF0000', '#FFFF0000', '#FFFF0000', '#FF0000FF', '#FF0000FF', '#FF0000FF']); assert.deepEqual(o.labelPaints, ['#FFFF0000', '#FF0000FF']); }
+    }
+  }
+  assert.deepEqual(report.checks.map(c => c.id).sort(), ids.sort()); assert.equal(ids.length, 148);
   for (const k of ['librarySha256', 'hostSha256']) assert.match(report[k], /^[0-9a-f]{64}$/);
-  return {passed: true, checks: 126, chartConsumers: ['Line', 'Bar', 'Area'], themes: 2, scopes: 2, literalAndLiveKeysVerified: true, liveLegendNamesVerified: true, originalTransparentAndGradientBrushesRetained: true, automaticAndScopedPaletteVerified: true, axisGridAndTooltipSurfaceDefaultsVerified: true, liveScopedDefaultRoleUpdatesVerified: true, controlledTooltipRendererVerified: true, tooltipInteractionVerified: false, tooltipEffectsVerified: false, guards: report.guards, librarySha256: report.librarySha256, hostSha256: report.hostSha256, physicalInputVerified: false, sourceRasterParityVerified: false, nativeComponentAccepted: false};
+  return {passed: true, checks: 148, chartConsumers: ['Line', 'Bar', 'Area', 'Scatter'], themes: 2, scopes: 2, literalAndLiveKeysVerified: true, liveLegendNamesVerified: true, originalTransparentAndGradientBrushesRetained: true, automaticAndScopedPaletteVerified: true, axisGridAndTooltipSurfaceDefaultsVerified: true, liveScopedDefaultRoleUpdatesVerified: true, controlledTooltipRendererVerified: true, tooltipInteractionVerified: false, tooltipEffectsVerified: false, guards: report.guards, librarySha256: report.librarySha256, hostSha256: report.hostSha256, physicalInputVerified: false, sourceRasterParityVerified: false, nativeComponentAccepted: false};
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
@@ -82,7 +102,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     r => r.checks.find(c => c.id.endsWith('/live-scoped-defaults')).observed.tooltipBackground = '#FFFFFFFF',
     r => r.checks.find(c => c.id.endsWith('/rendered-tooltip-defaults')).observed.headingWeight = 400,
     r => r.checks.find(c => c.id.endsWith('/rendered-tooltip-defaults')).observed.item = 'Wrong series : 10',
-    r => r.checks.find(c => c.id.endsWith('/rendered-live-scoped-tooltip')).observed.itemPaint = '#FFFFFFFF');
+    r => r.checks.find(c => c.id.endsWith('/rendered-live-scoped-tooltip')).observed.itemPaint = '#FFFFFFFF',
+    r => r.checks.find(c => c.id === 'Scatter/regular/Light/automatic-palette').observed.paints[3] = '#FF000000',
+    r => r.checks.find(c => c.id === 'Scatter/scoped/Dark/explicit-transparent').observed.legendBrushRetained = false);
   for (const mutate of mutations) { const bad = structuredClone(report); mutate(bad); assert.throws(() => verifyChartThemeConsumers(bad, tokens, reference)); }
   const audit = {...result, reportSha256: hash(bytes), negativeCasesRejected: mutations.length};
   await fs.writeFile(arg('--output'), JSON.stringify(audit, null, 2) + '\n', {flag: 'wx'}); console.log(JSON.stringify(audit));

@@ -122,6 +122,43 @@ internal static class ChartThemeConsumersFixture
                 }
                 root.Children.Clear(); await Layout();
             }
+            foreach (var scoped in new[] { false, true })
+            {
+                var rows = new ObservableCollection<IReadOnlyDictionary<string, object?>>();
+                for (var i = 0; i < 3; i++) rows.Add(new Dictionary<string, object?> { ["x"] = i + 1d, ["y"] = (i + 1d) * 10 });
+                var first = new BleeckerScatterSeries { Key = "first", Name = "Fictional first", XKey = "x", YKey = "y" };
+                var second = new BleeckerScatterSeries { Key = "second", Name = "Fictional second", XKey = "x", YKey = "y" };
+                var series = new ObservableCollection<BleeckerScatterSeries> { first, second };
+                var owner = new BleeckerScatterChart { Data = rows, Series = series, ShowLegend = true, Width = 640, Height = 300, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
+                var scope = new Grid(); var sea = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 25, 115, 145)); var desert = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 169, 101, 39));
+                var border = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 80, 32)); var secondary = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 112, 64, 144)); var card = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 32, 48, 64));
+                if (scoped) { scope.Resources["BleeckerSeaBrush"] = sea; scope.Resources["BleeckerDesertBrush"] = desert; scope.Resources["BleeckerBorderBrush"] = border; scope.Resources["BleeckerTextSecondaryBrush"] = secondary; scope.Resources["BleeckerCardBrush"] = card; }
+                scope.Children.Add(owner); root.Children.Add(scope); await Layout();
+                var chart = Elements(owner).OfType<BleeckerLineChart>().Single(); var plot = Elements(chart).OfType<Canvas>().Single(e => e.Name == "PART_Plot"); var legend = Elements(chart).OfType<Canvas>().Single(e => e.Name == "PART_Legend");
+                ShapePath[] Points() => plot.Children.OfType<ShapePath>().ToArray();
+                TextBlock[] Names() => Elements(legend).OfType<TextBlock>().Where(e => e.Text.StartsWith("Fictional ", StringComparison.Ordinal)).ToArray();
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    root.RequestedTheme = theme; second.Color = null; sea.Color = Windows.UI.Color.FromArgb(255, 25, 115, 145); desert.Color = Windows.UI.Color.FromArgb(255, 169, 101, 39); await Layout();
+                    var id = "Scatter/" + (scoped ? "scoped" : "regular") + "/" + theme;
+                    var colors = BleeckerTokens.Colors(theme == ElementTheme.Dark ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light);
+                    var expectedSea = scoped ? Hex(sea) : colors["sea"]; var expectedDesert = scoped ? Hex(desert) : colors["desert"];
+                    var points = Points(); var names = Names();
+                    Check(id + "/automatic-palette", ReferenceEquals(owner.Data, rows) && ReferenceEquals(owner.Series, series) && points.Length == 6 && names.Length == 2
+                        && points.Take(3).All(p => Hex(p.Fill) == expectedSea) && points.Skip(3).All(p => Hex(p.Fill) == expectedDesert)
+                        && names[0].Text == first.Name && names[1].Text == second.Name && Hex(names[0].Foreground) == expectedSea && Hex(names[1].Foreground) == expectedDesert,
+                        new { aliases = ReferenceEquals(owner.Data, rows) && ReferenceEquals(owner.Series, series), paints = points.Select(p => Hex(p.Fill)).ToArray(), labels = names.Select(n => n.Text).ToArray(), labelPaints = names.Select(n => Hex(n.Foreground)).ToArray() });
+                    Defaults(id + "/grid-axis-tooltip-defaults", chart, plot, scoped ? Hex(border) : colors["border"], scoped ? Hex(secondary) : colors["textSecondary"], scoped ? Hex(card) : colors["card"]);
+                    var explicitPaint = new SolidColorBrush(Microsoft.UI.Colors.Transparent); second.Color = explicitPaint; await Layout();
+                    Check(id + "/explicit-transparent", Points().Skip(3).All(p => ReferenceEquals(p.Fill, explicitPaint)) && ReferenceEquals(Names()[1].Foreground, explicitPaint), new { pointBrushRetained = Points().Skip(3).All(p => ReferenceEquals(p.Fill, explicitPaint)), legendBrushRetained = ReferenceEquals(Names()[1].Foreground, explicitPaint) });
+                    explicitPaint.Color = Microsoft.UI.Colors.OrangeRed; await Layout();
+                    Check(id + "/live-explicit-paint", Points().Skip(3).All(p => Hex(p.Fill) == "#FFFF4500") && Hex(Names()[1].Foreground) == "#FFFF4500", new { paints = Points().Skip(3).Select(p => Hex(p.Fill)).ToArray(), labelPaint = Hex(Names()[1].Foreground) });
+                    second.Color = null; await Layout();
+                    Check(id + "/restore-automatic", Points().Skip(3).All(p => Hex(p.Fill) == expectedDesert) && Hex(Names()[1].Foreground) == expectedDesert, new { paints = Points().Skip(3).Select(p => Hex(p.Fill)).ToArray(), labelPaint = Hex(Names()[1].Foreground) });
+                    if (scoped) { sea.Color = Microsoft.UI.Colors.Red; desert.Color = Microsoft.UI.Colors.Blue; await Layout(); Check(id + "/live-scoped-palette", Points().Take(3).All(p => Hex(p.Fill) == Hex(sea)) && Points().Skip(3).All(p => Hex(p.Fill) == Hex(desert)) && Hex(Names()[0].Foreground) == Hex(sea) && Hex(Names()[1].Foreground) == Hex(desert), new { paints = Points().Select(p => Hex(p.Fill)).ToArray(), labelPaints = Names().Select(n => Hex(n.Foreground)).ToArray() }); }
+                }
+                root.Children.Clear(); await Layout();
+            }
             Guard(); await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-chart-theme-consumers-v1", passed = true, checks, guards, focus, activations, processArchitecture = RuntimeInformation.ProcessArchitecture.ToString(), showWindowCalled = false, focusCalled = false, hardwareInputSent = false, osSettingsChanged = false, sourceRasterParityVerified = false, nativeComponentAccepted = false, librarySha256 = Convert.ToHexStringLower(SHA256.HashData(await File.ReadAllBytesAsync(typeof(BleeckerLineChart).Assembly.Location))), hostSha256 = Convert.ToHexStringLower(SHA256.HashData(await File.ReadAllBytesAsync(hostAssembly))) }, new JsonSerializerOptions { WriteIndented = true }));
             window.Close(); Environment.Exit(0);
         }
