@@ -10,8 +10,9 @@ The observable acceptance contract is all four number formats with source
 rounding/precision, empty missing/NaN values, signed zero/infinity, live updates,
 retained consumer content, noninteractive text accessibility, source tabular
 numerals and refined tracking, wrapping and theme-aware text. Full acceptance
-also requires native raster, scaling, contrast, Narrator and ARM64 runtime
-evidence; these remain open until separately verified.
+also requires native raster, scaling and ARM64 runtime evidence; these remain
+open until separately verified. Narrator and OS contrast campaigns are excluded
+by the current [library scope](library-scope.md).
 
 ```xml
 <orchard:BleeckerMetric Value="1248" Language="en-US" Suffix=" reviews" />
@@ -92,3 +93,8 @@ remain under `artifacts/metric-*` as diagnostics. No component is fully accepted
 
 Caller automation-name overrides, including empty values and styles, follow
 [the shared metadata contract](automation-metadata.md).
+
+The [constrained rich-content regression](rich-content-layout.md) additionally
+checks both slots at 72/140/320 DIPs, including live size changes and empty values,
+in both themes and directions. It qualifies placement and retained ownership,
+not complete source glyph/wrapping parity.

@@ -1475,7 +1475,10 @@
         "tests/PackageConsumer/DisplayMetadataFixture.cs",
         "scripts/verify-display-metadata.ps1",
         "scripts/verify-display-metadata.mjs",
-        "tests/Reference/DisplayMetadata/defaults.json"
+        "tests/Reference/DisplayMetadata/defaults.json",
+        "tests/PackageConsumer/RichContentLayoutFixture.cs",
+        "scripts/verify-rich-content-layout.ps1",
+        "scripts/verify-rich-content-layout.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -1493,6 +1496,35 @@
         "helpCases": 0,
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      },
+      "richContentQualification": {
+        "sourceAudit": "artifacts/current/rich-content-layout-baseline-native-v4/audit.json",
+        "packageAudit": "artifacts/current/rich-content-layout-package-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "casesPerControl": 60,
+        "themes": [
+          "Light",
+          "Dark"
+        ],
+        "flowDirections": [
+          "LeftToRight",
+          "RightToLeft"
+        ],
+        "widthsDips": [
+          72,
+          140,
+          320
+        ],
+        "scope": "Original rich value/icon/footer retain visual ancestry and mounted lifecycle through title, summary and size changes",
+        "sourceAndConsumerArchitecturesCompiled": [
+          "x64",
+          "ARM64"
+        ],
+        "nativeRuntimeArchitecture": "x64",
+        "newProbePackagedInPublicCatalog": false,
+        "libraryChanged": false,
         "fullComponentAcceptance": false
       }
     },
@@ -2639,7 +2671,10 @@
         "tests/PackageConsumer/DisplayMetadataFixture.cs",
         "scripts/verify-display-metadata.ps1",
         "scripts/verify-display-metadata.mjs",
-        "tests/Reference/DisplayMetadata/defaults.json"
+        "tests/Reference/DisplayMetadata/defaults.json",
+        "tests/PackageConsumer/RichContentLayoutFixture.cs",
+        "scripts/verify-rich-content-layout.ps1",
+        "scripts/verify-rich-content-layout.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -2658,6 +2693,35 @@
         "helpCases": 0,
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      },
+      "richContentQualification": {
+        "sourceAudit": "artifacts/current/rich-content-layout-baseline-native-v4/audit.json",
+        "packageAudit": "artifacts/current/rich-content-layout-package-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "casesPerControl": 60,
+        "themes": [
+          "Light",
+          "Dark"
+        ],
+        "flowDirections": [
+          "LeftToRight",
+          "RightToLeft"
+        ],
+        "widthsDips": [
+          72,
+          140,
+          320
+        ],
+        "scope": "Both original rich slots and bindings retained through live value/size changes; actual inline-slot placement within0.05DIP, observed zero error",
+        "sourceAndConsumerArchitecturesCompiled": [
+          "x64",
+          "ARM64"
+        ],
+        "nativeRuntimeArchitecture": "x64",
+        "newProbePackagedInPublicCatalog": false,
+        "libraryChanged": false,
         "fullComponentAcceptance": false
       }
     },

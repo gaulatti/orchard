@@ -212,7 +212,8 @@ icon/footer text, and anonymous zero slots. It compares every pixel in the
 captured text rectangles with their background, without a color threshold or
 pixel mask. Matching occupied rows verifies placement, not complete glyph
 shaping, horizontal advances, antialiasing or raster equality. Those gaps,
-contrast/Narrator/scaling and native ARM64 acceptance remain open.
+scaling and native ARM64 acceptance remain open. Narrator and OS contrast
+campaigns are excluded by the current [library scope](library-scope.md).
 
 The registered gallery adds a wrapped title/summary with raw icon and footer
 text. Native checks pass at `artifacts/smoke-stat-typography-stable`, including
@@ -246,3 +247,8 @@ verification results and do not establish native ARM64 or hosted acceptance.
 
 Caller automation-name overrides, including empty values and styles, follow
 [the shared metadata contract](automation-metadata.md).
+
+The [constrained rich-content regression](rich-content-layout.md) checks retained
+rich value/icon/footer elements through title, summary and child-size changes
+at 72/140/320 DIPs in both themes/directions. It does not establish full visual
+or source wrapping acceptance.
