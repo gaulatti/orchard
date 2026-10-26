@@ -36,6 +36,12 @@ current application. The packaging script rejects that input before writing an
 archive. The Catalog project copies compiled XAML (`.xbf`) into `publish`; the
 packaging script checks that every source fixture, including both fictional
 Monitoring and Editorial demos, has a matching compiled file before archiving.
+The catalog publish target copies compiled XAML only from the build output root
+and `Demos` directory. Repeated publishes must not copy an earlier `publish`
+tree into `publish/publish`; the packaging script rejects nested output.
+If an older build already left a nested `publish/publish` directory, remove
+that generated subdirectory before using the normal publish directory for
+packaging. A fresh publish directory does not contain it.
 Verify the extracted application and required component demos before claiming
 runtime delivery.
 

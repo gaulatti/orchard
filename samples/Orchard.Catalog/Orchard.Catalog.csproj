@@ -242,7 +242,8 @@
     <Import Project="CatalogReferences.targets" />
     <Target Name="IncludeCompiledCatalogXamlInPublish" AfterTargets="ComputeFilesToPublish">
         <ItemGroup>
-            <_CatalogCompiledXaml Include="$(TargetDir)**\*.xbf" />
+            <!-- TargetDir also contains earlier publish output on repeat builds. -->
+            <_CatalogCompiledXaml Include="$(TargetDir)*.xbf;$(TargetDir)Demos\*.xbf" />
         </ItemGroup>
         <AssignTargetPath Files="@(_CatalogCompiledXaml)" RootFolder="$(TargetDir)">
             <Output TaskParameter="AssignedFiles" ItemName="_CatalogCompiledXamlWithTargetPath" />
