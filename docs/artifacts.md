@@ -33,8 +33,11 @@ Pass the clean `publish` directory itself to `scripts/package-catalog.ps1`.
 Do not archive its parent build directory: that directory can contain an older
 nested `publish` tree and would bundle stale application binaries alongside the
 current application. The packaging script rejects that input before writing an
-archive. Verify the extracted application and required component demos before
-claiming runtime delivery.
+archive. The Catalog project copies compiled XAML (`.xbf`) into `publish`; the
+packaging script checks that every source fixture, including both fictional
+Monitoring and Editorial demos, has a matching compiled file before archiving.
+Verify the extracted application and required component demos before claiming
+runtime delivery.
 
 Keep the current package, release archives, independent consumers and reports
 under `artifacts/current`. Reuse the x64 and ARM64 consumer output directories;

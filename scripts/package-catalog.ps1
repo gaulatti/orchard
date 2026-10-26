@@ -6,6 +6,14 @@ $taskArchive=[IO.Path]::GetFullPath($Archive)
 $taskExpanded=[IO.Path]::GetFullPath($ExpandedDirectory)
 foreach($taskPath in @($taskArchive,$taskExpanded,[IO.Path]::GetFullPath($Output))){if(Test-Path -LiteralPath $taskPath){throw 'Use fresh catalog artifact paths'}}
 foreach($taskRequired in @('Orchard.Catalog.exe','Orchard.Catalog.dll','Orchard.dll','resources.pri','AuthShellsFixture.xbf','CommandSpotlightsFixture.xbf')){if(-not(Test-Path -LiteralPath (Join-Path $taskApp $taskRequired) -PathType Leaf)){throw "Required catalog entry missing: $taskRequired"}}
+$taskSource=Join-Path $PSScriptRoot '../samples/Orchard.Catalog'
+$taskExpectedXbf=@(
+    Get-ChildItem -LiteralPath $taskSource -Filter '*.xaml' -File | ForEach-Object { "$($_.BaseName).xbf" }
+    Get-ChildItem -LiteralPath (Join-Path $taskSource 'Demos') -Filter '*.xaml' -File | ForEach-Object { "Demos/$($_.BaseName).xbf" }
+)
+$taskActualXbf=@(Get-ChildItem -LiteralPath $taskApp -Filter '*.xbf' -Recurse -File | ForEach-Object { [IO.Path]::GetRelativePath($taskApp,$_.FullName).Replace('\','/') })
+$taskXbfDifference=@(Compare-Object -ReferenceObject $taskExpectedXbf -DifferenceObject $taskActualXbf -CaseSensitive)
+if($taskXbfDifference.Count -gt 0){throw "Catalog compiled XAML mismatch: $($taskXbfDifference | ConvertTo-Json -Compress)"}
 [IO.Compression.ZipFile]::CreateFromDirectory($taskApp,$taskArchive,[IO.Compression.CompressionLevel]::Optimal,$false)
 [IO.Compression.ZipFile]::ExtractToDirectory($taskArchive,$taskExpanded)
 $taskFiles=@(Get-ChildItem -LiteralPath $taskApp -Recurse -File | ForEach-Object {

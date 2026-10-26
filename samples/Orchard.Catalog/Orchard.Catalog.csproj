@@ -240,4 +240,18 @@
         <PackageReference Include="Microsoft.Windows.SDK.BuildTools" PrivateAssets="all" />
     </ItemGroup>
     <Import Project="CatalogReferences.targets" />
+    <Target Name="IncludeCompiledCatalogXamlInPublish" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <_CatalogCompiledXaml Include="$(TargetDir)**\*.xbf" />
+        </ItemGroup>
+        <AssignTargetPath Files="@(_CatalogCompiledXaml)" RootFolder="$(TargetDir)">
+            <Output TaskParameter="AssignedFiles" ItemName="_CatalogCompiledXamlWithTargetPath" />
+        </AssignTargetPath>
+        <ItemGroup>
+            <ResolvedFileToPublish Include="@(_CatalogCompiledXamlWithTargetPath)">
+                <RelativePath>%(_CatalogCompiledXamlWithTargetPath.TargetPath)</RelativePath>
+                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            </ResolvedFileToPublish>
+        </ItemGroup>
+    </Target>
 </Project>
