@@ -21,8 +21,12 @@ reject('implicit padding replaced',r=>d(r,'implicit-style-ltr').snapshot.padding
 reject('implicit style lost original list',r=>d(r,'implicit-style-ltr').originalListRetained=false);
 reject('implicit style lost selected file',r=>d(r,'implicit-style-ltr').snapshot.files=[]);
 reject('implicit RTL removed',r=>d(r,'implicit-style-rtl').snapshot.flowDirection='LeftToRight');
-const copy=path.join(path.dirname(folder),path.basename(folder)+'-counterexamples-v1');assert(!fs.existsSync(copy));fs.cpSync(folder,copy,{recursive:true});
+const copy=output+'.cases';assert(!fs.existsSync(copy));fs.cpSync(folder,copy,{recursive:true});
 const first=original.cases[0],png=path.join(copy,first.file),bad=Buffer.from(fs.readFileSync(png));bad[bad.length-1]^=1;fs.writeFileSync(png,bad);assert.throws(()=>verifyFileInputNative(copy,host));rejected.push('corrupted actual PNG');fs.copyFileSync(path.join(folder,first.file),png);
 const dark=c(original,'default','Dark'),light=c(original,'default'),forged=structuredClone(original),wrong=fs.readFileSync(path.join(folder,light.file));fs.writeFileSync(path.join(copy,dark.file),wrong);forged.pngs.find(p=>p.file===dark.file).sha256=crypto.createHash('sha256').update(wrong).digest('hex');fs.writeFileSync(path.join(copy,'file-input.json'),JSON.stringify(forged));assert.throws(()=>verifyFileInputNative(copy,host));rejected.push('actual wrong-theme PNG with recomputed hash');fs.copyFileSync(path.join(folder,dark.file),path.join(copy,dark.file));fs.copyFileSync(path.join(folder,'file-input.json'),path.join(copy,'file-input.json'));
 fs.writeFileSync(path.join(copy,'app-identity/Orchard.dll'),'unrelated library bytes');assert.throws(()=>verifyFileInputNative(copy,host));rejected.push('actual library identity changed');
-const result={passed:true,negativeCasesRejected:rejected.length,counterexamples:rejected,nativeComponentAccepted:false};fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({passed:true,negativeCasesRejected:rejected.length}));
+const result={passed:true,negativeCasesRejected:rejected.length,counterexamples:rejected,nativeComponentAccepted:false};fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
+// The source capture and audit receipt reproduce these rejected cases. Keep
+// the copied counterexamples only when an assertion fails for investigation.
+fs.rmSync(copy,{recursive:true,force:true});
+console.log(JSON.stringify({passed:true,negativeCasesRejected:rejected.length}));

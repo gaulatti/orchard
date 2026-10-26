@@ -98,3 +98,9 @@ The Media Library negative auditor likewise removes its copied counterexample
 directory after a successful run and leaves a failing copy available for
 diagnosis. This prevents the normal audit from retaining a second copy of all
 100 rendered states.
+
+The File Input negative auditor follows the same rule: its copied native
+capture is removed after the audit receipt is written successfully, while an
+unexpected failure keeps the copy for diagnosis. Older successful
+`*-counterexamples-v1` directories predate this cleanup and remain disposable
+generated output.
