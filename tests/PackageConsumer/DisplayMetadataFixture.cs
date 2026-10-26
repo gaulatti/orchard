@@ -23,7 +23,7 @@ internal static class DisplayMetadataFixture
     private static IEnumerable<DependencyObject> Descendants(DependencyObject node){for(var i=0;i<VisualTreeHelper.GetChildrenCount(node);i++){var child=VisualTreeHelper.GetChild(node,i);yield return child;foreach(var nested in Descendants(child))yield return nested;}}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var defaults=new List<object>();var cases=new List<object>();var helpCases=new List<object>();var eyebrowCasing=new List<object>();var titleCasing=new List<object>();var guards=0;var focus=0;var activations=0;var matches=true;var stage="initial";
+        var defaults=new List<object>();var cases=new List<object>();var helpCases=new List<object>();var eyebrowCasing=new List<object>();var menuLabelCasing=new List<object>();var titleCasing=new List<object>();var guards=0;var focus=0;var activations=0;var matches=true;var stage="initial";
         try
         {
             var root=new Canvas{Width=480,Height=240};window.Content=root;root.GotFocus+=(_,_)=>focus++;window.Activated+=(_,e)=>{if(e.WindowActivationState!=WindowActivationState.Deactivated)activations++;};
@@ -41,6 +41,15 @@ internal static class DisplayMetadataFixture
                         stage=$"{theme}/{type}/language-{language}";eyebrow.Language=language;await Layout();peer.InvalidatePeer();var actual=displayText.Text;var name=peer.GetName();var passed=actual==expected&&Equals(eyebrow.Content,"istanbul")&&name=="istanbul";matches&=passed;eyebrowCasing.Add(new{theme=theme.ToString(),language,expected,actual,content=eyebrow.Content,name,passed});
                     }
                     eyebrow.Content="Desk";eyebrow.Language=originalLanguage;await Layout();
+                }
+                if(owner is BleeckerMenuLabel menuLabel)
+                {
+                    var originalLanguage=menuLabel.Language;var displayText=Descendants(menuLabel).OfType<TextBlock>().Single(text=>text.Name=="PART_Text");
+                    foreach(var (language,value,expected) in new[]{("de-DE","Straße · ﬃ","STRASSE · FFI"),("tr-TR","istanbul","İSTANBUL"),("en-US","istanbul","ISTANBUL")})
+                    {
+                        stage=$"{theme}/{type}/menu-label-{language}";menuLabel.Text=value;menuLabel.Language=language;await Layout();peer.InvalidatePeer();var actual=displayText.Text;var name=peer.GetName();var passed=actual==expected&&menuLabel.Text==value&&name==value;matches&=passed;menuLabelCasing.Add(new{theme=theme.ToString(),language,value,expected,actual,name,passed});
+                    }
+                    menuLabel.Text="Section";menuLabel.Language=originalLanguage;await Layout();
                 }
                 void Check(string id,string expected){stage=$"{theme}/{type}/{id}";peer.InvalidatePeer();var actual=peer.GetName();var passed=actual==expected;matches&=passed;cases.Add(new{theme=theme.ToString(),type,id,expected,actual,passed});}
                 Check("default",generated);AutomationProperties.SetName(owner,"");Check("local-empty","");AutomationProperties.SetName(owner,"Caller name");Check("local-name","Caller name");var source=new Border{Tag=""};owner.SetBinding(AutomationProperties.NameProperty,new Binding{Source=source,Path=new PropertyPath("Tag")});await Layout();Check("bound-empty","");source.Tag="Bound name";await Layout();Check("bound-name","Bound name");source.Tag="";await Layout();Check("bound-empty-again","");if(owner.GetBindingExpression(AutomationProperties.NameProperty)is null)throw new InvalidOperationException("Caller name binding was replaced.");owner.ClearValue(AutomationProperties.NameProperty);Check("clear-restores-default",generated);
@@ -75,8 +84,8 @@ internal static class DisplayMetadataFixture
                 }
                 root.Children.Clear();await Layout();
             }
-            Guard();await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-display-metadata-v3",passed=true,metadataContractPassed=matches,defaults,cases,helpCases,eyebrowCasing,titleCasing,guards,focus,activations,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerKbd).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-display-metadata-v4",passed=true,metadataContractPassed=matches,defaults,cases,helpCases,eyebrowCasing,menuLabelCasing,titleCasing,guards,focus,activations,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerKbd).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{passed=false,stage,error=error.ToString(),defaults,cases,helpCases,eyebrowCasing,titleCasing,guards,focus,activations}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{passed=false,stage,error=error.ToString(),defaults,cases,helpCases,eyebrowCasing,menuLabelCasing,titleCasing,guards,focus,activations}));Environment.Exit(1);}
     }
 }

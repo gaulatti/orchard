@@ -1,4 +1,3 @@
-using System.Globalization;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
@@ -35,7 +34,7 @@ public sealed class BleeckerMenuLabel : MenuFlyoutItem
 
     private void UpdateText()
     {
-        if (text is not null) text.Text = Text.ToUpper(CultureInfo.GetCultureInfo(Language));
+        if (text is not null) text.Text = BleeckerTextCasing.Uppercase(Text, Language);
         FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
     }
 

@@ -178,6 +178,11 @@ public sealed partial class MenusFixture : UserControl
         }
         var sectionLayout = (Grid)VisualTreeHelper.GetChild(SectionLabel, 0);
         var sectionText = (TextBlock)sectionLayout.Children[1];
+        var unicodeLayout = (Grid)VisualTreeHelper.GetChild(UnicodeLabel, 0);
+        var unicodeText = (TextBlock)unicodeLayout.Children[1];
+        Require(unicodeText.Text == "STRASSE · FFI" && UnicodeLabel.Text == "Straße · ﬃ" &&
+            FrameworkElementAutomationPeer.CreatePeerForElement(UnicodeLabel).GetName() == "Straße · ﬃ",
+            "Menu section label lost full Unicode uppercase or caller-owned text semantics.");
         var originalLanguage = SectionLabel.Language;
         SectionLabel.Language = "tr-TR";
         SectionLabel.Text = "içerik";

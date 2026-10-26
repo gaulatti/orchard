@@ -11,6 +11,7 @@
             <Button.Flyout>
                 <orchard:BleeckerDropdownMenu x:Name="Menu">
                     <orchard:BleeckerMenuLabel x:Name="SectionLabel" Text="Account" />
+                    <orchard:BleeckerMenuLabel x:Name="UnicodeLabel" Text="Straße · ﬃ" />
                     <MenuFlyoutItem x:Name="Action" Text="Profile" Click="OnAction" orchard:BleeckerMenuFocus.IsEnabled="True" Style="{StaticResource BleeckerMenuItemStyle}" />
                     <orchard:BleeckerMenuContentItem x:Name="RichAction" Text="Edit fictional item" KeyboardAcceleratorTextOverride="Ctrl+E" Click="OnAction" Style="{StaticResource BleeckerMenuContentItemStyle}">
                         <StackPanel Orientation="Horizontal" Spacing="8">
