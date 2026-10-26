@@ -1,6 +1,7 @@
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
@@ -208,7 +209,16 @@ public sealed partial class BleeckerTextarea : RichEditBox
         var caret = TextDocument.Selection.EndPosition;
         TextDocument.Selection.SetRange(caret, caret);
     }
-    private void UpdateAccessibility() => AutomationProperties.SetIsDataValidForForm(this, !(IsInvalid ?? IsError));
+    protected override AutomationPeer OnCreateAutomationPeer() => new TextareaPeer(this);
+    private sealed class TextareaPeer(BleeckerTextarea editor) : RichEditBoxAutomationPeer(editor)
+    {
+        protected override bool IsDataValidForFormCore() => base.IsDataValidForFormCore() && !(editor.IsInvalid ?? editor.IsError);
+    }
+    private void UpdateAccessibility()
+    {
+        AutomationProperties.SetIsDataValidForForm(this, !(IsInvalid ?? IsError));
+        FrameworkElementAutomationPeer.FromElement(this)?.InvalidatePeer();
+    }
     private void UpdateNativeReadOnly()
     {
         if (documentEditDepth == 0) base.IsReadOnly = IsReadOnly;

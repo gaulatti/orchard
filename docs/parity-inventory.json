@@ -3625,7 +3625,7 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/InputsFixture.xaml.cs",
-        "samples/Orchard.Catalog/App.HiddenInputValidity.cs",
+        "samples/Orchard.Catalog/App.HiddenTextValidity.cs",
         "samples/Orchard.Catalog/InputsFixture.RoundedPointer.cs",
         "tests/Orchard.Tests/InputRoundedHitTests.cs",
         "tests/Orchard.Tests/InputPaintMotionTests.cs",
@@ -5065,6 +5065,7 @@
         "scripts/verify-textarea-commands.mjs",
         "scripts/test-textarea-commands-audit.mjs",
         "samples/Orchard.Catalog/TextareasFixture.xaml.cs",
+        "samples/Orchard.Catalog/App.HiddenTextValidity.cs",
         "samples/Orchard.Catalog/MainWindow.TextareaCatalog.cs",
         "scripts/verify-textarea-catalog.mjs",
         "scripts/test-textarea-catalog-audit.mjs",

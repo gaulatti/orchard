@@ -7,6 +7,14 @@ and nullable `IsInvalid`. The latter maps an explicit accessibility override to
 shows sizes, rows, empty/error, disabled/read-only, constrained and Arabic examples.
 No component acceptance is claimed.
 
+The native RichEdit automation peer also combines its attached validity with
+`IsInvalid ?? IsError`. This keeps the Textarea invalid when a composing
+`BleeckerField` clears its own error while the Textarea still has one, and
+preserves an explicit `IsInvalid=false` override. The hidden x64 catalog check
+at `artifacts/current/text-validity-v2` exercises both text editors and Field
+composition without a visible or focused window. Fresh NuGet and native ARM64
+runtime evidence for this change remain open.
+
 ## Native preview and boundaries
 
 The x64 runs at `artifacts/textarea-live-readiness-runtime-320` and

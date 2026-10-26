@@ -15,7 +15,7 @@ public partial class App
     [DllImport("user32.dll", EntryPoint = "IsWindowVisible")] private static extern bool IsWindowVisibleInputValidity(nint handle);
     [DllImport("user32.dll", EntryPoint = "GetWindowThreadProcessId")] private static extern uint GetWindowThreadProcessIdInputValidity(nint handle, out uint process);
 
-    private async void RunHiddenInputValidityAsync(string output)
+    private async void RunHiddenTextValidityAsync(string output)
     {
         var stage = "startup";
         var guards = 0;
@@ -33,7 +33,7 @@ public partial class App
             guards++;
             GetWindowThreadProcessIdInputValidity(GetForegroundWindowInputValidity(), out var foreground);
             Require(!_window!.Visible && !_window.AppWindow.IsVisible && !IsWindowVisibleInputValidity(handle) && foreground != Environment.ProcessId && focusEvents == 0 && activationEvents == 0,
-                "Input validity probe became visible or owned foreground input.");
+                "Text validity probe became visible or owned foreground input.");
         }
         try
         {
@@ -96,12 +96,51 @@ public partial class App
             field.Error = null; Verify("child-error-after-composed-clear", fieldInput, fieldPeer, false);
             Require(AutomationProperties.GetIsDataValidForForm(fieldInput), "Field failed to restore the caller-owned validity metadata.");
             fieldInput.IsError = false; Verify("composed-all-clear", fieldInput, fieldPeer, true);
+            stage = "textarea-composition";
+            root.Children.Clear();
+            var notes = new BleeckerTextarea { Text = "Fictional local notes" };
+            root.Children.Add(notes);
+            for (var i = 0; i < 3; i++)
+            {
+                root.Measure(new Size(500, 650)); root.Arrange(new Rect(0, 0, 500, 650)); root.UpdateLayout();
+                Guard(); await Task.Delay(16);
+            }
+            var notesPeer = FrameworkElementAutomationPeer.CreatePeerForElement(notes);
+            Require(notesPeer.GetAutomationControlType() == AutomationControlType.Edit && notes.Text == "Fictional local notes",
+                "Textarea lost its native edit role or consumer text.");
+            Require(notesPeer.IsDataValidForForm(), "Normal Textarea was invalid.");
+            notes.IsError = true;
+            Require(!notesPeer.IsDataValidForForm() && !AutomationProperties.GetIsDataValidForForm(notes),
+                "Textarea error did not reach native validity.");
+            notes.IsInvalid = false;
+            Require(notesPeer.IsDataValidForForm() && AutomationProperties.GetIsDataValidForForm(notes),
+                "Textarea explicit validity did not override the visual error.");
+            notes.IsInvalid = null;
+            Require(!notesPeer.IsDataValidForForm(), "Clearing Textarea override lost its error-derived validity.");
+            notes.IsError = false;
+            root.Children.Clear();
+            var notesField = new BleeckerField { Label = "Notes", Error = "Review local notes.", Content = notes };
+            root.Children.Add(notesField);
+            for (var i = 0; i < 3; i++)
+            {
+                root.Measure(new Size(500, 650)); root.Arrange(new Rect(0, 0, 500, 650)); root.UpdateLayout();
+                Guard(); await Task.Delay(16);
+            }
+            Require(!notesPeer.IsDataValidForForm(), "Field error did not invalidate its Textarea.");
+            notes.IsInvalid = false;
+            Require(!notesPeer.IsDataValidForForm(), "Field error lost precedence over Textarea's explicit valid state.");
+            notes.IsInvalid = null;
+            notes.IsError = true;
+            notesField.Error = null;
+            Require(!notesPeer.IsDataValidForForm(), "Clearing Field error hid the Textarea's own error.");
+            notes.IsInvalid = false;
+            Require(notesPeer.IsDataValidForForm(), "Textarea explicit validity did not recover after Field error cleared.");
             Guard(); passed = true;
         }
         catch (Exception error) { failure = error.ToString(); }
         finally
         {
-            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { passed, scope = "hidden-input-validity", stage, guards,
+            await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { passed, scope = "hidden-text-validity", stage, guards,
                 hiddenWindow = true, visible = _window?.Visible, nativeVisible = IsWindowVisibleInputValidity(handle),
                 focusEvents, activationEvents, inputSent = false, failure }, new JsonSerializerOptions { WriteIndented = true }));
             _window?.Close();

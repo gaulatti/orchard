@@ -17,6 +17,9 @@ elements inside a rich label keep their own input. The required star is
 decorative: `Required` does not set the child's native required property. A
 truthy `Error` temporarily sets `AutomationProperties.IsDataValidForForm` to
 false without setting `BleeckerInput.IsError` or changing its border.
+The Input and Textarea native automation peers combine that temporary Field
+error with their own error/explicit-validity state; clearing Field's error
+does not erase a child's remaining invalid state.
 
 Existing child automation IDs, including an explicitly empty ID, are preserved.
 Otherwise Field supplies a stable ID for that Field instance. An existing
