@@ -29,6 +29,10 @@ public sealed partial class EyebrowsFixture : UserControl
         Require(peer.GetAutomationControlType() == AutomationControlType.Text && !Accent.IsTabStop,
             "Eyebrow lost its noninteractive text role.");
         Require(Wrapped.ActualHeight > 16 && Disabled.Opacity == 1, "Wrapped or disabled eyebrow appearance differs.");
+        Require(Rtl.FlowDirection == FlowDirection.RightToLeft &&
+            Find<TextBlock>(Rtl, "PART_Text").Text == "القاهرة · ÉDITION" &&
+            (string)Rtl.Content == "القاهرة · édition",
+            "Right-to-left eyebrow changed its caller content or displayed casing.");
         var original = (Accent.Content, Accent.Tone, Accent.Rule, Accent.Language);
         try
         {

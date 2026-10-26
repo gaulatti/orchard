@@ -3519,7 +3519,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Reconcile Unicode and rich-content casing; finish rendered reference comparison in docs/eyebrows.md",
-        "Verify template, RTL, accessibility, isolated scaling and remaining ARM64 state acceptance",
+        "Verify template, broader RTL text/visual edges beyond the measured four rule-gap cases, accessibility, isolated scaling and remaining ARM64 state acceptance",
         "Verify runtime, accessibility and visuals"
       ],
       "metadataPreview": {

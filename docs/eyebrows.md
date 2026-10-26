@@ -29,8 +29,9 @@ the current foreground and is excluded from accessibility. The control is not
 a tab stop and exposes text semantics. It adds no disabled dimming or motion.
 
 The **Eyebrows** catalog fixture includes the three pinned story examples,
-empty/long/non-Latin/disabled content, a constrained wrapped label and rich
-content. Its runtime check exercises all six tone/rule combinations in each
+empty/long/non-Latin/disabled content, a constrained wrapped label, a
+right-to-left rule with Arabic and accented text, and rich content. Its runtime
+check exercises all six tone/rule combinations in each
 theme, consumer content retention, live updates, current-color rule geometry,
 instance isolation and foreground overrides. An independent NuGet consumer
 also instantiates the control. Build or source assertions alone do not establish
@@ -62,13 +63,20 @@ The rendered pinned Bleecker audit confirms the same five regression outputs:
 and the reference capture are retained at
 `artifacts/eyebrow-uppercase-reference.json` and
 `artifacts/eyebrow-uppercase-reference.png`. This verifies these text outputs;
-native glyph and baseline parity still need the runtime comparison.
+native glyph and baseline parity still need the runtime comparison. A focused
+hidden x64 catalog run at `artifacts/current/eyebrow-rtl-source-v2` measures the
+rule's 28×1 line and 12px gap in both text directions and both themes. All four
+cases pass with 393 hidden-window guards, zero focus/activation and no hardware
+input. The report auditor checks each direction/theme case and the source binary
+hash. The updated x64 and ARM64 catalogs build without warnings. This verifies
+rule geometry at one layout width; it does not establish
+full rendered RTL parity or native ARM64 behavior.
 
 Acceptance remains open. Broader context-sensitive CSS casing still requires
 reconciliation. Consumer rich content/templates retain their
 text and must currently supply uppercase content themselves. This does not yet
 match the reference's inherited CSS text transform. Exact native/browser glyph
-and tracking comparison, inline/baseline behavior, template/RTL edge cases,
+and tracking comparison, inline/baseline behavior, template and broader RTL edge cases,
 isolated scaling and the remaining ARM64 state checks remain
 unverified. HTML
 `div`/`p`/`span` selection has no direct native equivalent; composed layout and
