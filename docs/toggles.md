@@ -63,12 +63,13 @@ source catalog and the exact independent `0.1.0-menu-label-unicode-v1-local`
 consumer each pass eight native frames; all 16 source/package PNG pairs from
 the shared Separator/Switch/Toggle fixture match byte for byte. Both x64 and
 ARM64 catalog and consumer builds pass, and each native audit rejects 18
-corrupted reports. Source and consumer reports are under
-`artifacts/current/toggle-isolated-scale-source-v2` and
-`artifacts/current/toggle-isolated-scale-package-v1`; their 32 PNGs and small
-reports are also in the 464-KB
+corrupted reports. Source and consumer audits are retained at
+`artifacts/current/toggle-isolated-scale-source-audit-v1.json` and
+`artifacts/current/toggle-isolated-scale-package-audit-v1.json`; their 32 PNGs
+and native reports are also in the 464-KB
 `artifacts/current/toggle-isolated-scale-evidence-v1.tar`, which survives the
-generated-directory cleanup. This tests the registered
+generated-directory cleanup. The compact result is indexed by
+`artifacts/current/toggle-isolated-scale-checkpoint-v1.json`. This tests the registered
 styles at an owned XAML-root scale; it does not change monitor DPI or Windows
 text scaling. The first fixture pass used overlong string labels in fixed-width
 cells and visibly clipped two examples; the current pass uses labels that fit

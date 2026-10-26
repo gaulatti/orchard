@@ -5127,8 +5127,8 @@
         "Verify remaining ARM64 state acceptance"
       ],
       "nativeRasterizationVerification": {
-        "sourceAudit": "artifacts/current/toggle-isolated-scale-source-v2/audit.json",
-        "packageAudit": "artifacts/current/toggle-isolated-scale-package-v1/audit.json",
+        "sourceAudit": "artifacts/current/toggle-isolated-scale-source-audit-v1.json",
+        "packageAudit": "artifacts/current/toggle-isolated-scale-package-audit-v1.json",
         "packageVersion": "0.1.0-menu-label-unicode-v1-local",
         "scaleThemeFrames": 8,
         "styleStates": 48,
