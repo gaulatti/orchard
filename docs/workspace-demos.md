@@ -72,5 +72,13 @@ compile without warnings. Visible demo interaction acceptance remains open.
 The gate also passes on the AdminShell v10 library with all 66 checks and 577
 isolation guards. Its audit rejects all 25 damaged receipts.
 
+The `0.1.0-text-media-v3-local` component-library build also passes the current
+x64 hidden demo gate: 66 checks and 577 isolation guards. Its Orchard DLL SHA-256
+(`13ab2e380421a2fb0850f1ffe2bcdcb157b1952d4d3175812859c6ed730f0f9e`)
+matches the independently consumed NuGet package. The report and audit are in
+`artifacts/current/text-media-v3-workspace-demos`. This verifies the current
+catalog compositions in a hidden x64 host; visible interaction, scaling,
+native ARM64 runtime and a current catalog archive remain open.
+
 No backend, environment variables or metrics are involved. GitHub's wiki remote
 is unavailable; this document is the in-repository usage and verification source.
