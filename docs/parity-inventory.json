@@ -656,7 +656,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify remaining chart-family resource roles/overrides beyond the source-host Line/Bar/Area/Scatter palette, explicit-series paint, grid/axis and controlled tooltip checks; qualify the expanded fixture in an independent package host",
+        "Verify remaining chart-family resource roles/overrides beyond the Line/Bar/Area/Scatter x64 catalog and package palette, explicit-series paint, grid/axis and controlled tooltip checks",
         "Register variants and applicable interactive states",
         "Verify runtime, accessibility and visuals"
       ],
@@ -690,18 +690,23 @@
         "nativeArm64RuntimeVerified": false,
       "fullChartAcceptance": false
     },
-    "sourceScatterVerification": {
-      "audit": "artifacts/current/chart-theme-scatter-source-v1/audit.json",
-      "reportSha256": "f220a71a7dd2f5bfb72fa4a876c87540406f23807355c4157c96a6b0d1000bf1",
-      "librarySha256": "07254437e626f59eb4e9516d4ec46933e962088864acd18d1457b03a56e46b1e",
-      "hostSha256": "60f9c0db137c6df263f38b1da4ae6297f88024fe9403e93ba70ade6dfd23b71f",
+    "currentScatterVerification": {
+      "catalogAudit": "artifacts/current/chart-theme-scatter-source-v1/audit.json",
+      "catalogReportSha256": "f220a71a7dd2f5bfb72fa4a876c87540406f23807355c4157c96a6b0d1000bf1",
+      "catalogLibrarySha256": "07254437e626f59eb4e9516d4ec46933e962088864acd18d1457b03a56e46b1e",
+      "packageAudit": "artifacts/current/chart-theme-scatter-package-native-v1/audit.json",
+      "packageReportSha256": "76d396ef436b3d63d3aed66865dc075895d6d9a8eee67c062280163fa732931d",
+      "packageLibrarySha256": "a2a178d202f4b60a12e8c0a806560fc4ab3eed2ceef8abb27159a0be992a0753",
+      "package": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-chart-theme-scatter-v1-local.nupkg",
+      "packageSha256": "1b8ed813dda5352cb2d1def41aa3dcd5e87b93b6fb486b2392908602a68f390b",
       "chartConsumers": ["Line", "Bar", "Area", "Scatter"],
       "checks": 148,
       "negativeCasesRejected": 18,
       "themes": 2,
       "scopes": 2,
-      "hiddenNativeX64": true,
-      "independentPackageRuntimeVerified": false,
+      "hiddenNativeX64CatalogAndPackage": true,
+      "independentPackageRuntimeVerified": true,
+      "independentConsumerArm64BuildVerified": true,
       "nativeArm64RuntimeVerified": false,
       "fullChartAcceptance": false
     }

@@ -1,17 +1,21 @@
 # Chart theme source contract (in progress)
 
-The current source-built x64 catalog also passes 148 hidden native checks across
-Line, Bar, Area and Scatter at
-`artifacts/current/chart-theme-scatter-source-v1/audit.json`. Scatter adds two
-series, verifying sea/desert palette entries, scoped brush changes, explicit
-transparent paint and live paint mutation in both themes. Its grid, axis and
-tooltip surface defaults resolve through the same token roles. The report
-rejects 18 damaged variants and confirms that the host stayed hidden without
-hardware input. This source-host extension has not yet been run in an
-independent package consumer; the earlier package result below covers only
-Line, Bar and Area. No full chart, native ARM64 or visual acceptance is claimed.
+The current source-built x64 catalog and a fresh isolated x64 NuGet consumer
+each pass 148 hidden native checks across Line, Bar, Area and Scatter at
+`artifacts/current/chart-theme-scatter-source-v1/audit.json` and
+`artifacts/current/chart-theme-scatter-package-native-v1/audit.json`.
+Scatter adds two series, verifying sea/desert palette entries, scoped brush
+changes, explicit transparent paint and live paint mutation in both themes.
+Its grid, axis and tooltip surface defaults resolve through the same token
+roles. Each host rejects 18 damaged variants and confirms no hardware input.
+The independent consumer restores package
+`0.1.0-chart-theme-scatter-v1-local` (SHA-256
+`1b8ed813dda5352cb2d1def41aa3dcd5e87b93b6fb486b2392908602a68f390b`)
+into a fresh Orchard cache; the ARM64 consumer also compiles with an ARM64
+apphost. Neither native ARM64 execution nor complete chart visual, tooltip
+interaction/effects, motion or scaling acceptance is claimed.
 
-Current Line/Bar/Area consumer verification passes 126 background native checks
+The earlier Line/Bar/Area consumer verification passes 126 background native checks
 in both the catalog and independent x64 NuGet host. These checks use real plot
 geometry and legends: literal dictionary keys beat conflicting nested paths,
 live key/name changes update plots and labels, transparent and gradient brushes
