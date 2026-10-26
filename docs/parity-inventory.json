@@ -4983,13 +4983,16 @@
         "scripts/verify-switch-lifecycle.mjs",
         "scripts/test-switch-lifecycle-audit.mjs",
         "scripts/verify-switch-japanese-fallback.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
+        "scripts/verify-content-scale.mjs",
+        "scripts/test-content-scale-audit.mjs",
         "tests/Reference/SwitchFonts.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Verify current native ARM64 runtime and remaining physical/consumer states; old hosted WWAHost occlusion reports remain historical diagnostics. Current source and fresh consumers build for x64/ARM64; current hidden x64 lifecycle/font checks pass",
         "Complete native/browser typography, pill, shadow and animation raster comparison",
-        "Verify remaining drag/cursor/focus, animated appearance, isolated scaling"
+        "Verify remaining drag/cursor/focus, animated appearance, physical monitor-DPI transitions and system text scaling; isolated 100/125/150/200% native rasterization passes in both themes and package consumer"
       ]
     },
     {

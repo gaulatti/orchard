@@ -54,6 +54,28 @@ not counted as source typography acceptance. Full glyph/baseline review,
 physical input, scaling/motion and native ARM64 runtime remain open. No new
 font asset, renderer, size offset or OS-setting change is part of this repair.
 
+## Isolated display-scale verification
+
+The existing hidden native XAML-island fixture now includes an on Switch with a
+two-line fictional editorial label. In light and dark themes at 100%, 125%,
+150% and 200% `XamlRoot.RasterizationScale`, the source catalog and the current
+`0.1.0-menu-label-unicode-v1-local` NuGet consumer each pass eight cases. The
+track stays 36×20 DIPs, the thumb 16×16 DIPs, and the label stays within the
+320-DIP row with visible glyph ink, its original accessible name and no toggle,
+focus or activation events. All eight source/consumer PNG pairs are byte
+identical. The verifier rejects 13 damaged reports, including clipped labels,
+unexpected toggles and lost names. The pre-existing strict browser/Separator
+image diagnostic still reports 4,128 one-channel pixel differences; this Switch
+check does not alter that result.
+
+The island changes only its owned rasterization scale. Physical monitor-DPI
+transitions, system text scaling, Switch reduced-motion transitions, native
+ARM64 runtime and complete component acceptance remain open. The small native
+reports are retained as `artifacts/current/switch-isolated-scale-source-report-v1.json`
+and `artifacts/current/switch-isolated-scale-package-report-v1.json`; all 16
+tested PNG frames are in `artifacts/current/switch-isolated-scale-frames-v1.zip`. These
+root-level files survive generated-directory cleanup.
+
 ## Earlier verification and source contract
 
 The UI Automation control/content visibility metadata is independent of the
